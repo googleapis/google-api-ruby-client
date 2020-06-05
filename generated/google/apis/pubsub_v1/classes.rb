@@ -203,6 +203,20 @@ module Google
         end
       end
       
+      # Response for the DetachSubscription method.
+      # Reserved for future use.
+      class DetachSubscriptionResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -401,7 +415,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The names of the subscriptions that match the request.
+        # The names of subscriptions attached to the topic specified in the request.
         # Corresponds to the JSON property `subscriptions`
         # @return [Array<String>]
         attr_accessor :subscriptions

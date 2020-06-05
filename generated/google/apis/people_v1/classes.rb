@@ -1239,6 +1239,11 @@ module Google
         # @return [String]
         attr_accessor :phonetic_middle_name
       
+        # The free form name value.
+        # Corresponds to the JSON property `unstructuredName`
+        # @return [String]
+        attr_accessor :unstructured_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1259,6 +1264,7 @@ module Google
           @phonetic_honorific_prefix = args[:phonetic_honorific_prefix] if args.key?(:phonetic_honorific_prefix)
           @phonetic_honorific_suffix = args[:phonetic_honorific_suffix] if args.key?(:phonetic_honorific_suffix)
           @phonetic_middle_name = args[:phonetic_middle_name] if args.key?(:phonetic_middle_name)
+          @unstructured_name = args[:unstructured_name] if args.key?(:unstructured_name)
         end
       end
       

@@ -4600,7 +4600,7 @@ module Google
       
         # URL of the disk type resource describing which disk type to use to create the
         # disk. Provide this when creating the disk. For example: projects/project/zones/
-        # zone/diskTypes/pd-standard or pd-ssd
+        # zone/diskTypes/pd-standard  or pd-ssd
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -10078,8 +10078,8 @@ module Google
         alias_method :start_restricted?, :start_restricted
       
         # [Output Only] The status of the instance. One of the following values:
-        # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and
-        # TERMINATED.
+        # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING,
+        # and TERMINATED.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -23483,7 +23483,7 @@ module Google
       end
       
       # Represents a Cloud Router resource.
-      # For more information about Cloud Router, read the the Cloud Router overview.
+      # For more information about Cloud Router, read the Cloud Router overview.
       class Router
         include Google::Apis::Core::Hashable
       
@@ -24441,7 +24441,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a Cloud Router resource.
-        # For more information about Cloud Router, read the the Cloud Router overview.
+        # For more information about Cloud Router, read the Cloud Router overview.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeV1::Router]
         attr_accessor :resource

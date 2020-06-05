@@ -6018,6 +6018,7 @@ module Google
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
       
           property :id, :numeric_string => true, as: 'id'
+          property :interface, as: 'interface'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
@@ -7359,6 +7360,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :can_ip_forward, as: 'canIpForward'
+          property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::ComputeBeta::ConfidentialInstanceConfig, decorator: Google::Apis::ComputeBeta::ConfidentialInstanceConfig::Representation
+      
           property :cpu_platform, as: 'cpuPlatform'
           property :creation_timestamp, as: 'creationTimestamp'
           property :deletion_protection, as: 'deletionProtection'

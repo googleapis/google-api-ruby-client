@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DetachSubscriptionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +268,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dead_letter_topic, as: 'deadLetterTopic'
           property :max_delivery_attempts, as: 'maxDeliveryAttempts'
+        end
+      end
+      
+      class DetachSubscriptionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

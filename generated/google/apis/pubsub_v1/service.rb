@@ -502,6 +502,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Detaches a subscription from this topic. All messages retained in the
+        # subscription are dropped. Subsequent `Pull` and `StreamingPull` requests
+        # will return FAILED_PRECONDITION. If the subscription is a push
+        # subscription, pushes to the endpoint will stop.
+        # @param [String] subscription
+        #   Required. The subscription to detach.
+        #   Format is `projects/`project`/subscriptions/`subscription``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PubsubV1::DetachSubscriptionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PubsubV1::DetachSubscriptionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def detach_project_subscription(subscription, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+subscription}:detach', options)
+          command.response_representation = Google::Apis::PubsubV1::DetachSubscriptionResponse::Representation
+          command.response_class = Google::Apis::PubsubV1::DetachSubscriptionResponse
+          command.params['subscription'] = subscription unless subscription.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the configuration details of a subscription.
         # @param [String] subscription
         #   Required. The name of the subscription to get.
@@ -1264,7 +1298,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the names of the subscriptions on this topic.
+        # Lists the names of the attached subscriptions on this topic.
         # @param [String] topic
         #   Required. The name of the topic that subscriptions are attached to.
         #   Format is `projects/`project`/topics/`topic``.

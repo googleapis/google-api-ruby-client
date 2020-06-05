@@ -490,6 +490,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class V1Beta1ImportProducerQuotaPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1Beta1ProducerQuotaPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class V1Beta1QuotaOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1358,6 +1370,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :overrides, as: 'overrides', class: Google::Apis::ServiceconsumermanagementV1::V1Beta1QuotaOverride, decorator: Google::Apis::ServiceconsumermanagementV1::V1Beta1QuotaOverride::Representation
       
+        end
+      end
+      
+      class V1Beta1ImportProducerQuotaPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :policies, as: 'policies', class: Google::Apis::ServiceconsumermanagementV1::V1Beta1ProducerQuotaPolicy, decorator: Google::Apis::ServiceconsumermanagementV1::V1Beta1ProducerQuotaPolicy::Representation
+      
+        end
+      end
+      
+      class V1Beta1ProducerQuotaPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container, as: 'container'
+          hash :dimensions, as: 'dimensions'
+          property :metric, as: 'metric'
+          property :name, as: 'name'
+          property :policy_value, :numeric_string => true, as: 'policyValue'
+          property :unit, as: 'unit'
         end
       end
       

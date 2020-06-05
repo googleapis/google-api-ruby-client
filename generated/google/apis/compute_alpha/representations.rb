@@ -310,18 +310,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AutoscalingPolicyQueueBasedScaling
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AutoscalingPolicyQueueBasedScalingCloudPubSub
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AutoscalingPolicyScaleDownControl
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1007,6 +995,12 @@ module Google
       end
       
       class GrpcHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetOwnerInstanceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5953,8 +5947,6 @@ module Google
           property :max_num_replicas, as: 'maxNumReplicas'
           property :min_num_replicas, as: 'minNumReplicas'
           property :mode, as: 'mode'
-          property :queue_based_scaling, as: 'queueBasedScaling', class: Google::Apis::ComputeAlpha::AutoscalingPolicyQueueBasedScaling, decorator: Google::Apis::ComputeAlpha::AutoscalingPolicyQueueBasedScaling::Representation
-      
           property :scale_down_control, as: 'scaleDownControl', class: Google::Apis::ComputeAlpha::AutoscalingPolicyScaleDownControl, decorator: Google::Apis::ComputeAlpha::AutoscalingPolicyScaleDownControl::Representation
       
           property :scale_in_control, as: 'scaleInControl', class: Google::Apis::ComputeAlpha::AutoscalingPolicyScaleInControl, decorator: Google::Apis::ComputeAlpha::AutoscalingPolicyScaleInControl::Representation
@@ -5985,24 +5977,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :utilization_target, as: 'utilizationTarget'
-        end
-      end
-      
-      class AutoscalingPolicyQueueBasedScaling
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :acceptable_backlog_per_instance, as: 'acceptableBacklogPerInstance'
-          property :cloud_pub_sub, as: 'cloudPubSub', class: Google::Apis::ComputeAlpha::AutoscalingPolicyQueueBasedScalingCloudPubSub, decorator: Google::Apis::ComputeAlpha::AutoscalingPolicyQueueBasedScalingCloudPubSub::Representation
-      
-          property :single_worker_throughput_per_sec, as: 'singleWorkerThroughputPerSec'
-        end
-      end
-      
-      class AutoscalingPolicyQueueBasedScalingCloudPubSub
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :subscription, as: 'subscription'
-          property :topic, as: 'topic'
         end
       end
       
@@ -6667,6 +6641,7 @@ module Google
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
       
           property :id, :numeric_string => true, as: 'id'
+          property :interface, as: 'interface'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
@@ -7336,6 +7311,13 @@ module Google
           property :port, as: 'port'
           property :port_name, as: 'portName'
           property :port_specification, as: 'portSpecification'
+        end
+      end
+      
+      class GetOwnerInstanceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
         end
       end
       

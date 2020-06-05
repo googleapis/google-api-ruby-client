@@ -1004,7 +1004,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A path to a file in Google Cloud Storage.
-        # Example: gs://build-app-1414623860166/app-debug-unaligned.apk
+        # Example: gs://build-app-1414623860166/app%40debug-unaligned.apk
+        # These paths are expected to be url encoded (percent encoding)
         # Corresponds to the JSON property `gcsPath`
         # @return [String]
         attr_accessor :gcs_path

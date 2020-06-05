@@ -5740,6 +5740,11 @@ module Google
         # @return [Array<Google::Apis::ContentV2::OrderShipmentLineItemShipment>]
         attr_accessor :line_items
       
+        # Delivery details of the shipment if scheduling is needed.
+        # Corresponds to the JSON property `scheduledDeliveryDetails`
+        # @return [Google::Apis::ContentV2::OrderShipmentScheduledDeliveryDetails]
+        attr_accessor :scheduled_delivery_details
+      
         # The status of the shipment.
         # Acceptable values are:
         # - "`delivered`"
@@ -5766,6 +5771,7 @@ module Google
           @delivery_date = args[:delivery_date] if args.key?(:delivery_date)
           @id = args[:id] if args.key?(:id)
           @line_items = args[:line_items] if args.key?(:line_items)
+          @scheduled_delivery_details = args[:scheduled_delivery_details] if args.key?(:scheduled_delivery_details)
           @status = args[:status] if args.key?(:status)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
         end
@@ -5801,6 +5807,31 @@ module Google
           @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
           @product_id = args[:product_id] if args.key?(:product_id)
           @quantity = args[:quantity] if args.key?(:quantity)
+        end
+      end
+      
+      # 
+      class OrderShipmentScheduledDeliveryDetails
+        include Google::Apis::Core::Hashable
+      
+        # The phone number of the carrier fulfilling the delivery.
+        # Corresponds to the JSON property `carrierPhoneNumber`
+        # @return [String]
+        attr_accessor :carrier_phone_number
+      
+        # The date a shipment is scheduled for delivery, in ISO 8601 format.
+        # Corresponds to the JSON property `scheduledDate`
+        # @return [String]
+        attr_accessor :scheduled_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier_phone_number = args[:carrier_phone_number] if args.key?(:carrier_phone_number)
+          @scheduled_date = args[:scheduled_date] if args.key?(:scheduled_date)
         end
       end
       
@@ -10955,6 +10986,7 @@ module Google
         # - "`new`"
         # - "`shipped`"
         # - "`undeliverable`"
+        # - "`pending`"
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state

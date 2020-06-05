@@ -808,6 +808,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrderShipmentScheduledDeliveryDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderinvoicesCreateChargeInvoiceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3115,6 +3121,8 @@ module Google
           property :id, as: 'id'
           collection :line_items, as: 'lineItems', class: Google::Apis::ContentV2::OrderShipmentLineItemShipment, decorator: Google::Apis::ContentV2::OrderShipmentLineItemShipment::Representation
       
+          property :scheduled_delivery_details, as: 'scheduledDeliveryDetails', class: Google::Apis::ContentV2::OrderShipmentScheduledDeliveryDetails, decorator: Google::Apis::ContentV2::OrderShipmentScheduledDeliveryDetails::Representation
+      
           property :status, as: 'status'
           property :tracking_id, as: 'trackingId'
         end
@@ -3126,6 +3134,14 @@ module Google
           property :line_item_id, as: 'lineItemId'
           property :product_id, as: 'productId'
           property :quantity, as: 'quantity'
+        end
+      end
+      
+      class OrderShipmentScheduledDeliveryDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier_phone_number, as: 'carrierPhoneNumber'
+          property :scheduled_date, as: 'scheduledDate'
         end
       end
       

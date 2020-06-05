@@ -679,6 +679,7 @@ module Google
           property :phonetic_honorific_prefix, as: 'phoneticHonorificPrefix'
           property :phonetic_honorific_suffix, as: 'phoneticHonorificSuffix'
           property :phonetic_middle_name, as: 'phoneticMiddleName'
+          property :unstructured_name, as: 'unstructuredName'
         end
       end
       

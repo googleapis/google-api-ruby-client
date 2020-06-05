@@ -2276,11 +2276,6 @@ module Google
         # @return [String]
         attr_accessor :mode
       
-        # Configuration parameters of autoscaling based on queuing system.
-        # Corresponds to the JSON property `queueBasedScaling`
-        # @return [Google::Apis::ComputeAlpha::AutoscalingPolicyQueueBasedScaling]
-        attr_accessor :queue_based_scaling
-      
         # Configuration that allows for slower scale down so that even if Autoscaler
         # recommends an abrupt scale down of a MIG, it will be throttled as specified by
         # the parameters below.
@@ -2308,7 +2303,6 @@ module Google
           @max_num_replicas = args[:max_num_replicas] if args.key?(:max_num_replicas)
           @min_num_replicas = args[:min_num_replicas] if args.key?(:min_num_replicas)
           @mode = args[:mode] if args.key?(:mode)
-          @queue_based_scaling = args[:queue_based_scaling] if args.key?(:queue_based_scaling)
           @scale_down_control = args[:scale_down_control] if args.key?(:scale_down_control)
           @scale_in_control = args[:scale_in_control] if args.key?(:scale_in_control)
         end
@@ -2457,74 +2451,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @utilization_target = args[:utilization_target] if args.key?(:utilization_target)
-        end
-      end
-      
-      # Configuration parameters of autoscaling based on queuing system.
-      class AutoscalingPolicyQueueBasedScaling
-        include Google::Apis::Core::Hashable
-      
-        # Scaling based on the average number of tasks in the queue per each active
-        # instance. The autoscaler keeps the average number of tasks per instance below
-        # this number, based on data collected in the last couple of minutes. The
-        # autoscaler will also take into account incoming tasks when calculating when to
-        # scale.
-        # Corresponds to the JSON property `acceptableBacklogPerInstance`
-        # @return [Float]
-        attr_accessor :acceptable_backlog_per_instance
-      
-        # Configuration parameters for scaling based on Cloud Pub/Sub subscription queue.
-        # Corresponds to the JSON property `cloudPubSub`
-        # @return [Google::Apis::ComputeAlpha::AutoscalingPolicyQueueBasedScalingCloudPubSub]
-        attr_accessor :cloud_pub_sub
-      
-        # The scaling algorithm will also calculate throughput estimates on its own; if
-        # you explicitly provide this value, the autoscaler will take into account your
-        # value as well as automatic estimates when deciding how to scale.
-        # Corresponds to the JSON property `singleWorkerThroughputPerSec`
-        # @return [Float]
-        attr_accessor :single_worker_throughput_per_sec
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @acceptable_backlog_per_instance = args[:acceptable_backlog_per_instance] if args.key?(:acceptable_backlog_per_instance)
-          @cloud_pub_sub = args[:cloud_pub_sub] if args.key?(:cloud_pub_sub)
-          @single_worker_throughput_per_sec = args[:single_worker_throughput_per_sec] if args.key?(:single_worker_throughput_per_sec)
-        end
-      end
-      
-      # Configuration parameters for scaling based on Cloud Pub/Sub subscription queue.
-      class AutoscalingPolicyQueueBasedScalingCloudPubSub
-        include Google::Apis::Core::Hashable
-      
-        # Cloud Pub/Sub subscription used for scaling. Provide the partial URL (starting
-        # with projects/) or just the subscription name. The subscription must be
-        # assigned to the topic specified in topicName and must be in a pull
-        # configuration. The subscription must belong to the same project as the
-        # Autoscaler.
-        # Corresponds to the JSON property `subscription`
-        # @return [String]
-        attr_accessor :subscription
-      
-        # Cloud Pub/Sub topic used for scaling. Provide the partial URL or partial URL (
-        # starting with projects/) or just the topic name. The topic must belong to the
-        # same project as the Autoscaler resource.
-        # Corresponds to the JSON property `topic`
-        # @return [String]
-        attr_accessor :topic
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @subscription = args[:subscription] if args.key?(:subscription)
-          @topic = args[:topic] if args.key?(:topic)
         end
       end
       
@@ -5435,6 +5361,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # Specifies the disk interface to use for attaching this disk, which is either
+        # SCSI or NVME. The default is SCSI.
+        # Corresponds to the JSON property `interface`
+        # @return [String]
+        attr_accessor :interface
+      
         # [Output Only] Type of the resource. Always compute#disk for disks.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -5665,7 +5597,7 @@ module Google
       
         # URL of the disk type resource describing which disk type to use to create the
         # disk. Provide this when creating the disk. For example: projects/project/zones/
-        # zone/diskTypes/pd-standard or pd-ssd
+        # zone/diskTypes/pd-standard  or pd-ssd
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -5695,6 +5627,7 @@ module Google
           @erase_windows_vss_signature = args[:erase_windows_vss_signature] if args.key?(:erase_windows_vss_signature)
           @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @id = args[:id] if args.key?(:id)
+          @interface = args[:interface] if args.key?(:interface)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
@@ -8453,6 +8386,25 @@ module Google
       end
       
       # 
+      class GetOwnerInstanceResponse
+        include Google::Apis::Core::Hashable
+      
+        # Full instance resource URL.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+        end
+      end
+      
+      # 
       class GlobalNetworkEndpointGroupsAttachEndpointsRequest
         include Google::Apis::Core::Hashable
       
@@ -9329,6 +9281,7 @@ module Google
         # @return [String]
         attr_accessor :health_status_aggregation_policy
       
+        # This field is deprecated. Use health_status_aggregation_policy instead.
         # Policy for how the results from multiple health checks for the same endpoint
         # are aggregated.
         # - NO_AGGREGATION. An EndpointHealth message is returned for each backend in
@@ -12068,8 +12021,8 @@ module Google
         alias_method :start_restricted?, :start_restricted
       
         # [Output Only] The status of the instance. One of the following values:
-        # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and
-        # TERMINATED.
+        # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING,
+        # and TERMINATED.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -29165,7 +29118,7 @@ module Google
       end
       
       # Represents a Cloud Router resource.
-      # For more information about Cloud Router, read the the Cloud Router overview.
+      # For more information about Cloud Router, read the Cloud Router overview.
       class Router
         include Google::Apis::Core::Hashable
       
@@ -29451,12 +29404,14 @@ module Google
         attr_accessor :asn
       
         # The interval in seconds between BGP keepalive messages that are sent to the
-        # peer. Hold time is three times the interval at which keepalive messages are
-        # sent, and the hold time is the maximum number of seconds allowed to elapse
-        # between successive keepalive messages that BGP receives from a peer. BGP will
-        # use the smaller of either the local hold time value or the peer's hold time
-        # value as the hold time for the BGP connection between the two peers. If set,
-        # this value must be between 1 and 120. The default is 20.
+        # peer.
+        # Not currently available publicly.
+        # Hold time is three times the interval at which keepalive messages are sent,
+        # and the hold time is the maximum number of seconds allowed to elapse between
+        # successive keepalive messages that BGP receives from a peer.
+        # BGP will use the smaller of either the local hold time value or the peer's
+        # hold time value as the hold time for the BGP connection between the two peers.
+        # If set, this value must be between 1 and 120. The default is 20.
         # Corresponds to the JSON property `keepaliveInterval`
         # @return [Fixnum]
         attr_accessor :keepalive_interval
@@ -29514,14 +29469,16 @@ module Google
         attr_accessor :advertised_route_priority
       
         # BFD configuration for the BGP peering.
+        # Not currently available publicly.
         # Corresponds to the JSON property `bfd`
         # @return [Google::Apis::ComputeAlpha::RouterBgpPeerBfd]
         attr_accessor :bfd
       
-        # The status of the BGP peer connection. If set to FALSE, any active session
-        # with the peer is terminated and all associated routing information is removed.
-        # If set to TRUE, the peer connection can be established with routing
-        # information. The default is TRUE.
+        # The status of the BGP peer connection.
+        # Not currently available publicly.
+        # If set to FALSE, any active session with the peer is terminated and all
+        # associated routing information is removed. If set to TRUE, the peer connection
+        # can be established with routing information. The default is TRUE.
         # Corresponds to the JSON property `enable`
         # @return [String]
         attr_accessor :enable
@@ -29598,8 +29555,10 @@ module Google
         # The minimum interval, in milliseconds, between BFD control packets received
         # from the peer router. The actual value is negotiated between the two routers
         # and is equal to the greater of this value and the transmit interval of the
-        # other router. If set, this value must be between 100 and 30000. The default is
-        # 300.
+        # other router.
+        # Not currently available publicly.
+        # If set, this value must be between 100 and 30000.
+        # The default is 300.
         # Corresponds to the JSON property `minReceiveInterval`
         # @return [Fixnum]
         attr_accessor :min_receive_interval
@@ -29607,8 +29566,10 @@ module Google
         # The minimum interval, in milliseconds, between BFD control packets transmitted
         # to the peer router. The actual value is negotiated between the two routers and
         # is equal to the greater of this value and the corresponding receive interval
-        # of the other router. If set, this value must be between 100 and 30000. The
-        # default is 300.
+        # of the other router.
+        # Not currently available publicly.
+        # If set, this value must be between 100 and 30000.
+        # The default is 300.
         # Corresponds to the JSON property `minTransmitInterval`
         # @return [Fixnum]
         attr_accessor :min_transmit_interval
@@ -29623,7 +29584,9 @@ module Google
         attr_accessor :mode
       
         # The number of consecutive BFD packets that must be missed before BFD declares
-        # that a peer is unavailable. If set, the value must be a value between 2 and 16.
+        # that a peer is unavailable.
+        # Not currently available publicly.
+        # If set, the value must be a value between 2 and 16.
         # The default is 3.
         # Corresponds to the JSON property `multiplier`
         # @return [Fixnum]
@@ -29641,11 +29604,12 @@ module Google
         # @return [String]
         attr_accessor :packet_mode
       
-        # The BFD session initialization mode for this BGP peer. If set to ACTIVE, the
-        # Cloud Router will initiate the BFD session for this BGP peer. If set to
-        # PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD
-        # session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP
-        # peer. The default is PASSIVE.
+        # The BFD session initialization mode for this BGP peer.
+        # Not currently available publicly.
+        # If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP
+        # peer. If set to PASSIVE, the Cloud Router will wait for the peer router to
+        # initiate the BFD session for this BGP peer. If set to DISABLED, BFD is
+        # disabled for this BGP peer. The default is PASSIVE.
         # Corresponds to the JSON property `sessionInitializationMode`
         # @return [String]
         attr_accessor :session_initialization_mode
@@ -30346,7 +30310,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a Cloud Router resource.
-        # For more information about Cloud Router, read the the Cloud Router overview.
+        # For more information about Cloud Router, read the Cloud Router overview.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeAlpha::Router]
         attr_accessor :resource

@@ -22,6 +22,12 @@ module Google
   module Apis
     module ServiceusageV1
       
+      class AdminQuotaPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Api
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportAdminQuotaPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportConsumerOverridesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -488,6 +500,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdminQuotaPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container, as: 'container'
+          hash :dimensions, as: 'dimensions'
+          property :metric, as: 'metric'
+          property :name, as: 'name'
+          property :policy_value, :numeric_string => true, as: 'policyValue'
+          property :unit, as: 'unit'
+        end
       end
       
       class Api
@@ -965,6 +989,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :overrides, as: 'overrides', class: Google::Apis::ServiceusageV1::QuotaOverride, decorator: Google::Apis::ServiceusageV1::QuotaOverride::Representation
+      
+        end
+      end
+      
+      class ImportAdminQuotaPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :policies, as: 'policies', class: Google::Apis::ServiceusageV1::AdminQuotaPolicy, decorator: Google::Apis::ServiceusageV1::AdminQuotaPolicy::Representation
       
         end
       end

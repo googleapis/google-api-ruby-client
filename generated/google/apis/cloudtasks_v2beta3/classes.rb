@@ -1157,6 +1157,14 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Immutable. The type of a queue (push or pull).
+        # `Queue.type` is an immutable property of the queue that is set at the queue
+        # creation time. When left unspecified, the default value of `PUSH` is
+        # selected.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1170,6 +1178,7 @@ module Google
           @retry_config = args[:retry_config] if args.key?(:retry_config)
           @stackdriver_logging_config = args[:stackdriver_logging_config] if args.key?(:stackdriver_logging_config)
           @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

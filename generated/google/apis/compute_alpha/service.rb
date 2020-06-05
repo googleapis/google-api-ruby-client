@@ -4443,6 +4443,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Find owner instance from given ip address
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] ip_address
+        #   The ip_address could be external IPv4, or internal IPv4 within IPv6 form of
+        #   virtual_network_id with internal IPv4. IPv6 is not supported yet.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::GetOwnerInstanceResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::GetOwnerInstanceResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_global_address_owner_instance(project, ip_address: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/global/addresses/getOwnerInstance', options)
+          command.response_representation = Google::Apis::ComputeAlpha::GetOwnerInstanceResponse::Representation
+          command.response_class = Google::Apis::ComputeAlpha::GetOwnerInstanceResponse
+          command.params['project'] = project unless project.nil?
+          command.query['ipAddress'] = ip_address unless ip_address.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates an address resource in the specified project by using the data
         # included in the request.
         # @param [String] project

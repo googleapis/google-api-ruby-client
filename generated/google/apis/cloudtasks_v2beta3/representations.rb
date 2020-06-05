@@ -403,6 +403,7 @@ module Google
           property :stackdriver_logging_config, as: 'stackdriverLoggingConfig', class: Google::Apis::CloudtasksV2beta3::StackdriverLoggingConfig, decorator: Google::Apis::CloudtasksV2beta3::StackdriverLoggingConfig::Representation
       
           property :state, as: 'state'
+          property :type, as: 'type'
         end
       end
       

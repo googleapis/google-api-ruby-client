@@ -4071,6 +4071,103 @@ module Google
         end
       end
       
+      # Response message for ImportProducerQuotaPolicies
+      class V1Beta1ImportProducerQuotaPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The policies that were created from the imported data.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::ServiceconsumermanagementV1::V1Beta1ProducerQuotaPolicy>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
+      # Quota policy created by service producer.
+      class V1Beta1ProducerQuotaPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The cloud resource container at which the quota policy is created. The
+        # format is `container_type`/`container_number`
+        # Corresponds to the JSON property `container`
+        # @return [String]
+        attr_accessor :container
+      
+        # If this map is nonempty, then this policy applies only to specific values
+        # for dimensions defined in the limit unit.
+        # For example, an policy on a limit with the unit 1/`project`/`region`
+        # could contain an entry with the key "region" and the value "us-east-1";
+        # the policy is only applied to quota consumed in that region.
+        # This map has the following restrictions:
+        # *   Keys that are not defined in the limit's unit are not valid keys.
+        # Any string appearing in `brackets` in the unit (besides `project` or
+        # `user`) is a defined key.
+        # *   "project" is not a valid key; the project is already specified in
+        # the parent resource name.
+        # *   "user" is not a valid key; the API does not support quota polcies
+        # that apply only to a specific user.
+        # *   If "region" appears as a key, its value must be a valid Cloud region.
+        # *   If "zone" appears as a key, its value must be a valid Cloud zone.
+        # *   If any valid key other than "region" or "zone" appears in the map, then
+        # all valid keys other than "region" or "zone" must also appear in the
+        # map.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Hash<String,String>]
+        attr_accessor :dimensions
+      
+        # The name of the metric to which this policy applies.
+        # An example name would be:
+        # `compute.googleapis.com/cpus`
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # The resource name of the producer policy.
+        # An example name would be:
+        # `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/
+        # compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerQuotaPolicies/
+        # 4a3f2c1d`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The quota policy value.
+        # Can be any nonnegative integer, or -1 (unlimited quota).
+        # Corresponds to the JSON property `policyValue`
+        # @return [Fixnum]
+        attr_accessor :policy_value
+      
+        # The limit unit of the limit to which this policy applies.
+        # An example unit would be:
+        # `1/`project`/`region``
+        # Note that ``project`` and ``region`` are not placeholders in this example;
+        # the literal characters ``` and ``` occur in the string.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container = args[:container] if args.key?(:container)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @metric = args[:metric] if args.key?(:metric)
+          @name = args[:name] if args.key?(:name)
+          @policy_value = args[:policy_value] if args.key?(:policy_value)
+          @unit = args[:unit] if args.key?(:unit)
+        end
+      end
+      
       # A quota override
       class V1Beta1QuotaOverride
         include Google::Apis::Core::Hashable

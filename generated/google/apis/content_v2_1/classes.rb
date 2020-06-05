@@ -4984,14 +4984,16 @@ module Google
       class OrderPromotion
         include Google::Apis::Core::Hashable
       
-        # Items which this promotion may be applied to. If empty, there are no
-        # restrictions on applicable items and quantity.
+        # Items that this promotion may be applied to. If empty, there are no
+        # restrictions on applicable items and quantity. This field will also be empty
+        # for shipping promotions because shipping is not tied to any specific item.
         # Corresponds to the JSON property `applicableItems`
         # @return [Array<Google::Apis::ContentV2_1::OrderPromotionItem>]
         attr_accessor :applicable_items
       
-        # Items which this promotion have been applied to. Do not provide for `orders.
-        # createtestorder`.
+        # Items that this promotion have been applied to. Do not provide for `orders.
+        # createtestorder`. This field will be empty for shipping promotions because
+        # shipping is not tied to any specific item.
         # Corresponds to the JSON property `appliedItems`
         # @return [Array<Google::Apis::ContentV2_1::OrderPromotionItem>]
         attr_accessor :applied_items
@@ -5478,6 +5480,11 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::OrderShipmentLineItemShipment>]
         attr_accessor :line_items
       
+        # Delivery details of the shipment if scheduling is needed.
+        # Corresponds to the JSON property `scheduledDeliveryDetails`
+        # @return [Google::Apis::ContentV2_1::OrderShipmentScheduledDeliveryDetails]
+        attr_accessor :scheduled_delivery_details
+      
         # The shipment group ID of the shipment. This is set in shiplineitems request.
         # Corresponds to the JSON property `shipmentGroupId`
         # @return [String]
@@ -5509,6 +5516,7 @@ module Google
           @delivery_date = args[:delivery_date] if args.key?(:delivery_date)
           @id = args[:id] if args.key?(:id)
           @line_items = args[:line_items] if args.key?(:line_items)
+          @scheduled_delivery_details = args[:scheduled_delivery_details] if args.key?(:scheduled_delivery_details)
           @shipment_group_id = args[:shipment_group_id] if args.key?(:shipment_group_id)
           @status = args[:status] if args.key?(:status)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
@@ -5545,6 +5553,31 @@ module Google
           @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
           @product_id = args[:product_id] if args.key?(:product_id)
           @quantity = args[:quantity] if args.key?(:quantity)
+        end
+      end
+      
+      # 
+      class OrderShipmentScheduledDeliveryDetails
+        include Google::Apis::Core::Hashable
+      
+        # The phone number of the carrier fulfilling the delivery.
+        # Corresponds to the JSON property `carrierPhoneNumber`
+        # @return [String]
+        attr_accessor :carrier_phone_number
+      
+        # The date a shipment is scheduled for delivery, in ISO 8601 format.
+        # Corresponds to the JSON property `scheduledDate`
+        # @return [String]
+        attr_accessor :scheduled_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier_phone_number = args[:carrier_phone_number] if args.key?(:carrier_phone_number)
+          @scheduled_date = args[:scheduled_date] if args.key?(:scheduled_date)
         end
       end
       
@@ -8896,7 +8929,7 @@ module Google
         # @return [String]
         attr_accessor :destination
       
-        # 
+        # Destination approval status in targetCountry of the offer.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -10128,6 +10161,7 @@ module Google
         # - "`new`"
         # - "`shipped`"
         # - "`undeliverable`"
+        # - "`pending`"
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
