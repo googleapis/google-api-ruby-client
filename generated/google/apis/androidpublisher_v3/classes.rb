@@ -847,6 +847,16 @@ module Google
         # @return [String]
         attr_accessor :purchase_type
       
+        # Whether or not the developer wants the specific subscription to be
+        # resubscribable. If the developer doesn't use PBL2.0, this value is ignored
+        # since the feature is only for developers using PBL2.0. This feature allows
+        # users to resubscribe to an expired subscription directly from the subscription
+        # center by clicking on a "Resubscribe" CTA under the entry for the expired
+        # subscription.
+        # Corresponds to the JSON property `resubscribeEligibility`
+        # @return [String]
+        attr_accessor :resubscribe_eligibility
+      
         # The stock-keeping-unit (SKU) of the product, unique within an app.
         # Corresponds to the JSON property `sku`
         # @return [String]
@@ -884,6 +894,7 @@ module Google
           @package_name = args[:package_name] if args.key?(:package_name)
           @prices = args[:prices] if args.key?(:prices)
           @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
+          @resubscribe_eligibility = args[:resubscribe_eligibility] if args.key?(:resubscribe_eligibility)
           @sku = args[:sku] if args.key?(:sku)
           @status = args[:status] if args.key?(:status)
           @subscription_period = args[:subscription_period] if args.key?(:subscription_period)

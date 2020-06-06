@@ -582,7 +582,8 @@ module Google
         # @return [Google::Apis::StoragetransferV1::Status]
         attr_accessor :error
       
-        # Represents the transfer operation object.
+        # Represents the transfer operation object. To request a TransferOperation
+        # object, use transferOperations.get.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata

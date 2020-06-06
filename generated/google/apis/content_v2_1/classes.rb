@@ -4012,6 +4012,11 @@ module Google
         attr_accessor :acknowledged
         alias_method :acknowledged?, :acknowledged
       
+        # List of key-value pairs that are attached to a given order.
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::ContentV2_1::OrderOrderAnnotation>]
+        attr_accessor :annotations
+      
         # The billing address.
         # Corresponds to the JSON property `billingAddress`
         # @return [Google::Apis::ContentV2_1::OrderAddress]
@@ -4160,6 +4165,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @acknowledged = args[:acknowledged] if args.key?(:acknowledged)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @billing_address = args[:billing_address] if args.key?(:billing_address)
           @customer = args[:customer] if args.key?(:customer)
           @delivery_details = args[:delivery_details] if args.key?(:delivery_details)
@@ -4830,6 +4836,12 @@ module Google
         # @return [Google::Apis::ContentV2_1::OrderLineItemShippingDetailsMethod]
         attr_accessor :method_prop
       
+        # The promised time in minutes in which the order will be ready for pickup. This
+        # only applies to buy-online-pickup-in-store same-day order.
+        # Corresponds to the JSON property `pickupPromiseInMinutes`
+        # @return [Fixnum]
+        attr_accessor :pickup_promise_in_minutes
+      
         # Required. The ship by date, in ISO 8601 format.
         # Corresponds to the JSON property `shipByDate`
         # @return [String]
@@ -4852,6 +4864,7 @@ module Google
         def update!(**args)
           @deliver_by_date = args[:deliver_by_date] if args.key?(:deliver_by_date)
           @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @pickup_promise_in_minutes = args[:pickup_promise_in_minutes] if args.key?(:pickup_promise_in_minutes)
           @ship_by_date = args[:ship_by_date] if args.key?(:ship_by_date)
           @type = args[:type] if args.key?(:type)
         end
@@ -4923,6 +4936,31 @@ module Google
       end
       
       # 
+      class OrderOrderAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Key for additional google provided (as key-value pairs) annotation.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Value for additional google provided (as key-value pairs) annotation.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
       class OrderPickupDetails
         include Google::Apis::Core::Hashable
       
@@ -4943,6 +4981,17 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
+        # The pickup type of this order.
+        # Acceptable values are:
+        # - "`merchantStore`"
+        # - "`merchantStoreCurbside`"
+        # - "`merchantStoreLocker`"
+        # - "`thirdPartyPickupPoint`"
+        # - "`thirdPartyLocker`"
+        # Corresponds to the JSON property `pickupType`
+        # @return [String]
+        attr_accessor :pickup_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4952,6 +5001,7 @@ module Google
           @address = args[:address] if args.key?(:address)
           @collectors = args[:collectors] if args.key?(:collectors)
           @location_id = args[:location_id] if args.key?(:location_id)
+          @pickup_type = args[:pickup_type] if args.key?(:pickup_type)
         end
       end
       
@@ -6589,6 +6639,84 @@ module Google
       end
       
       # 
+      class OrdersCustomBatchRequestEntryRefundItemItem
+        include Google::Apis::Core::Hashable
+      
+        # The amount that is refunded. In case of multiple refunds,
+        # - If the quantity of refunded items changed, this should contain the total
+        # refund per item.
+        # - If the quantity of the refunded items remained the same, this should be the
+        # newly refunded amount.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::ContentV2_1::MonetaryAmount]
+        attr_accessor :amount
+      
+        # If true, the full item will be refunded. If this is true, amount should not be
+        # provided and will be ignored.
+        # Corresponds to the JSON property `fullRefund`
+        # @return [Boolean]
+        attr_accessor :full_refund
+        alias_method :full_refund?, :full_refund
+      
+        # The ID of the line item. Either lineItemId or productId is required.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The ID of the product. This is the REST ID used in the products service.
+        # Either lineItemId or productId is required.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # The number of products that are refunded.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @full_refund = args[:full_refund] if args.key?(:full_refund)
+          @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequestEntryRefundItemShipping
+        include Google::Apis::Core::Hashable
+      
+        # The amount that is refunded. If this is not the first refund for the shipment,
+        # this should be the newly refunded amount.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :amount
+      
+        # If set to true, all shipping costs for the order will be refunded. If this is
+        # true, amount should not be provided and will be ignored.
+        # Corresponds to the JSON property `fullRefund`
+        # @return [Boolean]
+        attr_accessor :full_refund
+        alias_method :full_refund?, :full_refund
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @full_refund = args[:full_refund] if args.key?(:full_refund)
+        end
+      end
+      
+      # 
       class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
         include Google::Apis::Core::Hashable
       
@@ -6810,6 +6938,173 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # 
+      class OrdersRefundItemRequest
+        include Google::Apis::Core::Hashable
+      
+        # The items that are refunded. Either Item or Shipping must be provided in the
+        # request.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ContentV2_1::OrdersCustomBatchRequestEntryRefundItemItem>]
+        attr_accessor :items
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The reason for the refund.
+        # Acceptable values are:
+        # - "`shippingCostAdjustment`"
+        # - "`priceAdjustment`"
+        # - "`taxAdjustment`"
+        # - "`feeAdjustment`"
+        # - "`courtesyAdjustment`"
+        # - "`adjustment`"
+        # - "`customerCancelled`"
+        # - "`noInventory`"
+        # - "`productNotAsDescribed`"
+        # - "`undeliverableShippingAddress`"
+        # - "`wrongProductShipped`"
+        # - "`lateShipmentCredit`"
+        # - "`deliveredLateByCarrier`"
+        # - "`productArrivedDamaged`"
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        # The refund on shipping. Optional, but either Item or Shipping must be provided
+        # in the request.
+        # Corresponds to the JSON property `shipping`
+        # @return [Google::Apis::ContentV2_1::OrdersCustomBatchRequestEntryRefundItemShipping]
+        attr_accessor :shipping
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @reason = args[:reason] if args.key?(:reason)
+          @reason_text = args[:reason_text] if args.key?(:reason_text)
+          @shipping = args[:shipping] if args.key?(:shipping)
+        end
+      end
+      
+      # 
+      class OrdersRefundItemResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Acceptable values are:
+        # - "`duplicate`"
+        # - "`executed`"
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersRefundItemResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class OrdersRefundOrderRequest
+        include Google::Apis::Core::Hashable
+      
+        # The amount that is refunded. If this is not the first refund for the order,
+        # this should be the newly refunded amount.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::ContentV2_1::MonetaryAmount]
+        attr_accessor :amount
+      
+        # If true, the full order will be refunded, including shipping. If this is true,
+        # amount should not be provided and will be ignored.
+        # Corresponds to the JSON property `fullRefund`
+        # @return [Boolean]
+        attr_accessor :full_refund
+        alias_method :full_refund?, :full_refund
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The reason for the refund.
+        # Acceptable values are:
+        # - "`courtesyAdjustment`"
+        # - "`other`"
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @full_refund = args[:full_refund] if args.key?(:full_refund)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @reason = args[:reason] if args.key?(:reason)
+          @reason_text = args[:reason_text] if args.key?(:reason_text)
+        end
+      end
+      
+      # 
+      class OrdersRefundOrderResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Acceptable values are:
+        # - "`duplicate`"
+        # - "`executed`"
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersRefundOrderResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -7292,10 +7587,23 @@ module Google
         # @return [String]
         attr_accessor :delivery_date
       
+        # Date after which the pickup will expire, in ISO 8601 format. Required only
+        # when order is buy-online-pickup-in-store(BOPIS) and `status` is `ready for
+        # pickup`.
+        # Corresponds to the JSON property `lastPickupDate`
+        # @return [String]
+        attr_accessor :last_pickup_date
+      
         # The ID of the operation. Unique across all operations for a given order.
         # Corresponds to the JSON property `operationId`
         # @return [String]
         attr_accessor :operation_id
+      
+        # Date on which the shipment has been ready for pickup, in ISO 8601 format.
+        # Optional and can be provided only if `status` is `ready for pickup`.
+        # Corresponds to the JSON property `readyPickupDate`
+        # @return [String]
+        attr_accessor :ready_pickup_date
       
         # The ID of the shipment.
         # Corresponds to the JSON property `shipmentId`
@@ -7306,6 +7614,7 @@ module Google
         # Acceptable values are:
         # - "`delivered`"
         # - "`undeliverable`"
+        # - "`readyForPickup`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -7315,6 +7624,12 @@ module Google
         # @return [String]
         attr_accessor :tracking_id
       
+        # Date on which the shipment has been undeliverable, in ISO 8601 format.
+        # Optional and can be provided only if `status` is `undeliverable`.
+        # Corresponds to the JSON property `undeliveredDate`
+        # @return [String]
+        attr_accessor :undelivered_date
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7323,10 +7638,13 @@ module Google
         def update!(**args)
           @carrier = args[:carrier] if args.key?(:carrier)
           @delivery_date = args[:delivery_date] if args.key?(:delivery_date)
+          @last_pickup_date = args[:last_pickup_date] if args.key?(:last_pickup_date)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @ready_pickup_date = args[:ready_pickup_date] if args.key?(:ready_pickup_date)
           @shipment_id = args[:shipment_id] if args.key?(:shipment_id)
           @status = args[:status] if args.key?(:status)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
+          @undelivered_date = args[:undelivered_date] if args.key?(:undelivered_date)
         end
       end
       

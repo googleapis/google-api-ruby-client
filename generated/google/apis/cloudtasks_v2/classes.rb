@@ -47,8 +47,9 @@ module Google
       # The AppEngineRouting used to construct the URL that the task is
       # delivered to can be set at the queue-level or task-level:
       # * If app_engine_routing_override is set on the
-      # queue, this value is used for all
-      # tasks in the queue, no matter what the setting is for the task-level
+      # queue, this value
+      # is used for all tasks in the queue, no matter what the setting is for the
+      # task-level
       # app_engine_routing.
       # The `url` that the task will be sent to is:
       # * `url =` host `+`
@@ -1553,8 +1554,9 @@ module Google
         # The AppEngineRouting used to construct the URL that the task is
         # delivered to can be set at the queue-level or task-level:
         # * If app_engine_routing_override is set on the
-        # queue, this value is used for all
-        # tasks in the queue, no matter what the setting is for the task-level
+        # queue, this value
+        # is used for all tasks in the queue, no matter what the setting is for the
+        # task-level
         # app_engine_routing.
         # The `url` that the task will be sent to is:
         # * `url =` host `+`

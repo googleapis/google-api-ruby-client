@@ -748,6 +748,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrderOrderAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderPickupDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1000,6 +1006,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrdersCustomBatchRequestEntryRefundItemItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersCustomBatchRequestEntryRefundItemShipping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1031,6 +1049,30 @@ module Google
       end
       
       class OrdersListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersRefundItemRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersRefundItemResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersRefundOrderRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersRefundOrderResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2825,6 +2867,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acknowledged, as: 'acknowledged'
+          collection :annotations, as: 'annotations', class: Google::Apis::ContentV2_1::OrderOrderAnnotation, decorator: Google::Apis::ContentV2_1::OrderOrderAnnotation::Representation
+      
           property :billing_address, as: 'billingAddress', class: Google::Apis::ContentV2_1::OrderAddress, decorator: Google::Apis::ContentV2_1::OrderAddress::Representation
       
           property :customer, as: 'customer', class: Google::Apis::ContentV2_1::OrderCustomer, decorator: Google::Apis::ContentV2_1::OrderCustomer::Representation
@@ -3023,6 +3067,7 @@ module Google
           property :deliver_by_date, as: 'deliverByDate'
           property :method_prop, as: 'method', class: Google::Apis::ContentV2_1::OrderLineItemShippingDetailsMethod, decorator: Google::Apis::ContentV2_1::OrderLineItemShippingDetailsMethod::Representation
       
+          property :pickup_promise_in_minutes, as: 'pickupPromiseInMinutes'
           property :ship_by_date, as: 'shipByDate'
           property :type, as: 'type'
         end
@@ -3046,6 +3091,14 @@ module Google
         end
       end
       
+      class OrderOrderAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class OrderPickupDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3054,6 +3107,7 @@ module Google
           collection :collectors, as: 'collectors', class: Google::Apis::ContentV2_1::OrderPickupDetailsCollector, decorator: Google::Apis::ContentV2_1::OrderPickupDetailsCollector::Representation
       
           property :location_id, as: 'locationId'
+          property :pickup_type, as: 'pickupType'
         end
       end
       
@@ -3462,6 +3516,27 @@ module Google
         end
       end
       
+      class OrdersCustomBatchRequestEntryRefundItemItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::ContentV2_1::MonetaryAmount, decorator: Google::Apis::ContentV2_1::MonetaryAmount::Representation
+      
+          property :full_refund, as: 'fullRefund'
+          property :line_item_id, as: 'lineItemId'
+          property :product_id, as: 'productId'
+          property :quantity, as: 'quantity'
+        end
+      end
+      
+      class OrdersCustomBatchRequestEntryRefundItemShipping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :full_refund, as: 'fullRefund'
+        end
+      end
+      
       class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3520,6 +3595,47 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::ContentV2_1::Order, decorator: Google::Apis::ContentV2_1::Order::Representation
       
+        end
+      end
+      
+      class OrdersRefundItemRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ContentV2_1::OrdersCustomBatchRequestEntryRefundItemItem, decorator: Google::Apis::ContentV2_1::OrdersCustomBatchRequestEntryRefundItemItem::Representation
+      
+          property :operation_id, as: 'operationId'
+          property :reason, as: 'reason'
+          property :reason_text, as: 'reasonText'
+          property :shipping, as: 'shipping', class: Google::Apis::ContentV2_1::OrdersCustomBatchRequestEntryRefundItemShipping, decorator: Google::Apis::ContentV2_1::OrdersCustomBatchRequestEntryRefundItemShipping::Representation
+      
+        end
+      end
+      
+      class OrdersRefundItemResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class OrdersRefundOrderRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::ContentV2_1::MonetaryAmount, decorator: Google::Apis::ContentV2_1::MonetaryAmount::Representation
+      
+          property :full_refund, as: 'fullRefund'
+          property :operation_id, as: 'operationId'
+          property :reason, as: 'reason'
+          property :reason_text, as: 'reasonText'
+        end
+      end
+      
+      class OrdersRefundOrderResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
         end
       end
       
@@ -3646,10 +3762,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :carrier, as: 'carrier'
           property :delivery_date, as: 'deliveryDate'
+          property :last_pickup_date, as: 'lastPickupDate'
           property :operation_id, as: 'operationId'
+          property :ready_pickup_date, as: 'readyPickupDate'
           property :shipment_id, as: 'shipmentId'
           property :status, as: 'status'
           property :tracking_id, as: 'trackingId'
+          property :undelivered_date, as: 'undeliveredDate'
         end
       end
       

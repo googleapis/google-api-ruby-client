@@ -7392,6 +7392,7 @@ module Google
         # Acceptable values are:
         # - "`delivered`"
         # - "`undeliverable`"
+        # - "`readyForPickup`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -8387,6 +8388,7 @@ module Google
         # Acceptable values are:
         # - "`delivered`"
         # - "`undeliverable`"
+        # - "`readyForPickup`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status

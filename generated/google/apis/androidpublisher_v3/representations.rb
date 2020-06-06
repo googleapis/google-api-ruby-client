@@ -682,6 +682,7 @@ module Google
           hash :prices, as: 'prices', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
       
           property :purchase_type, as: 'purchaseType'
+          property :resubscribe_eligibility, as: 'resubscribeEligibility'
           property :sku, as: 'sku'
           property :status, as: 'status'
           property :subscription_period, as: 'subscriptionPeriod'

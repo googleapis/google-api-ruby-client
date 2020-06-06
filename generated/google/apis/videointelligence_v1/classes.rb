@@ -5264,7 +5264,7 @@ module Google
         # @return [Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults]
         attr_accessor :annotation_results
       
-        # Google Cloud Storage(GCS) URI that stores annotation results of one
+        # Google Cloud Storage URI that stores annotation results of one
         # streaming session in JSON format.
         # It is the annotation_result_storage_directory
         # from the request followed by '/cloud_project_number-session_id'.
