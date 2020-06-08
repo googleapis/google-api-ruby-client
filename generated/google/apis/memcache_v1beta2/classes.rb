@@ -464,6 +464,12 @@ module Google
         # @return [Hash<String,Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>]
         attr_accessor :maintenance_schedules
       
+        # Maintenance settings associated with instance. Allows service producers and
+        # end users to assign settings that controls maintenance on this instance.
+        # Corresponds to the JSON property `maintenanceSettings`
+        # @return [Google::Apis::MemcacheV1beta2::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings]
+        attr_accessor :maintenance_settings
+      
         # Unique name of the resource. It uses the form:
         # `projects/`project_id`/locations/`location_id`/instances/`instance_id``
         # Corresponds to the JSON property `name`
@@ -531,6 +537,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @maintenance_policy_names = args[:maintenance_policy_names] if args.key?(:maintenance_policy_names)
           @maintenance_schedules = args[:maintenance_schedules] if args.key?(:maintenance_schedules)
+          @maintenance_settings = args[:maintenance_settings] if args.key?(:maintenance_settings)
           @name = args[:name] if args.key?(:name)
           @producer_metadata = args[:producer_metadata] if args.key?(:producer_metadata)
           @provisioned_resources = args[:provisioned_resources] if args.key?(:provisioned_resources)
@@ -583,6 +590,30 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @rollout_management_policy = args[:rollout_management_policy] if args.key?(:rollout_management_policy)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Maintenance settings associated with instance. Allows service producers and
+      # end users to assign settings that controls maintenance on this instance.
+      class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Exclude instance from maintenance. When true, rollout service will
+        # not
+        # attempt maintenance on the instance. Rollout service will include the
+        # instance in reported rollout progress as not attempted.
+        # Corresponds to the JSON property `exclude`
+        # @return [Boolean]
+        attr_accessor :exclude
+        alias_method :exclude?, :exclude
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude = args[:exclude] if args.key?(:exclude)
         end
       end
       
@@ -794,7 +825,7 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
-        # Optional. The full name of the Google Compute Engine
+        # The full name of the Google Compute Engine
         # [network](/compute/docs/networks-and-firewalls#networks) to which the
         # instance is connected. If left unspecified, the `default` network
         # will be used.
@@ -812,7 +843,7 @@ module Google
         # @return [String]
         attr_accessor :discovery_endpoint
       
-        # Optional. User provided name for the instance only used for display
+        # User provided name for the instance only used for display
         # purposes. Cannot be more than 80 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -823,7 +854,7 @@ module Google
         # @return [Array<Google::Apis::MemcacheV1beta2::InstanceMessage>]
         attr_accessor :instance_messages
       
-        # Optional. Resource labels to represent user-provided metadata.
+        # Resource labels to represent user-provided metadata.
         # Refer to cloud documentation on labels for more details.
         # https://cloud.google.com/compute/docs/labeling-resources
         # Corresponds to the JSON property `labels`
@@ -844,7 +875,7 @@ module Google
         # @return [Array<Google::Apis::MemcacheV1beta2::Node>]
         attr_accessor :memcache_nodes
       
-        # Optional. The major version of Memcached software.
+        # The major version of Memcached software.
         # If not provided, latest supported version will be used. Currently the
         # latest supported major version is MEMCACHE_1_5.
         # The minor version will be automatically determined by our system based on
@@ -890,7 +921,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Optional. Zones where Memcached nodes should be provisioned in.
+        # Zones where Memcached nodes should be provisioned in.
         # Memcached nodes will be equally distributed across these zones. If not
         # provided, the service will by default create nodes in all zones in the
         # region for the instance.
