@@ -1,3 +1,56 @@
+# 0.40.1
+* Backwards compatible changes:
+  * Updated `admob_v1`
+  * Updated `androidenterprise_v1`
+  * Updated `androidpublisher_v3`
+  * Updated `appsmarket_v2`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudbuild_v1alpha1`
+  * Updated `cloudbuild_v1alpha2`
+  * Updated `cloudsearch_v1`
+  * Updated `cloudtasks_v2`
+  * Updated `cloudtasks_v2beta3`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `content_v2`
+  * Updated `content_v2_1`
+  * Updated `dataproc_v1`
+  * Updated `dataproc_v1beta2`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `displayvideo_v1`
+  * Updated `file_v1`
+  * Updated `file_v1beta1`
+  * Updated `firebasehosting_v1beta1`
+  * Updated `fitness_v1`
+  * Updated `games_v1`
+  * Updated `healthcare_v1`
+  * Updated `healthcare_v1beta1`
+  * Updated `memcache_v1beta2`
+  * Updated `people_v1`
+  * Updated `prod_tt_sasportal_v1alpha1`
+  * Updated `pubsub_v1`
+  * Updated `run_v1`
+  * Updated `run_v1alpha1`
+  * Updated `sasportal_v1alpha1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `serviceconsumermanagement_v1beta1`
+  * Updated `servicecontrol_v1`
+  * Updated `serviceusage_v1`
+  * Updated `serviceusage_v1beta1`
+  * Updated `sourcerepo_v1`
+  * Updated `spanner_v1`
+  * Updated `sql_v1beta4`
+  * Updated `storagetransfer_v1`
+  * Updated `testing_v1`
+  * Updated `videointelligence_v1`
+  * Updated `videointelligence_v1beta2`
+  * Updated `videointelligence_v1p1beta1`
+  * Updated `videointelligence_v1p2beta1`
+  * Updated `videointelligence_v1p3beta1`
+  * Updated `youtube_partner_v1`
+
 # 0.40.0
 * Breaking changes:
   * Deleted `pagespeedonline_v4`
