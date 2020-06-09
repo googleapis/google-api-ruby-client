@@ -131,7 +131,7 @@ module Google
       # `
       # "audit_configs": [
       # `
-      # "service": "allServices"
+      # "service": "allServices",
       # "audit_log_configs": [
       # `
       # "log_type": "DATA_READ",
@@ -140,18 +140,18 @@ module Google
       # ]
       # `,
       # `
-      # "log_type": "DATA_WRITE",
+      # "log_type": "DATA_WRITE"
       # `,
       # `
-      # "log_type": "ADMIN_READ",
+      # "log_type": "ADMIN_READ"
       # `
       # ]
       # `,
       # `
-      # "service": "sampleservice.googleapis.com"
+      # "service": "sampleservice.googleapis.com",
       # "audit_log_configs": [
       # `
-      # "log_type": "DATA_READ",
+      # "log_type": "DATA_READ"
       # `,
       # `
       # "log_type": "DATA_WRITE",
@@ -203,7 +203,7 @@ module Google
       # ]
       # `,
       # `
-      # "log_type": "DATA_WRITE",
+      # "log_type": "DATA_WRITE"
       # `
       # ]
       # `
@@ -567,6 +567,11 @@ module Google
         # @return [String]
         attr_accessor :notification_config_name
       
+        # Information related to the Google Cloud resource.
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1Resource]
+        attr_accessor :resource
+      
         def initialize(**args)
            update!(**args)
         end
@@ -575,6 +580,51 @@ module Google
         def update!(**args)
           @finding = args[:finding] if args.key?(:finding)
           @notification_config_name = args[:notification_config_name] if args.key?(:notification_config_name)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # Information related to the Google Cloud resource.
+      class GoogleCloudSecuritycenterV1Resource
+        include Google::Apis::Core::Hashable
+      
+        # The full resource name of the resource. See:
+        # https://cloud.google.com/apis/design/resource_names#full_resource_name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The full resource name of resource's parent.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # The human readable name of resource's parent.
+        # Corresponds to the JSON property `parentDisplayName`
+        # @return [String]
+        attr_accessor :parent_display_name
+      
+        # The full resource name of project that the resource belongs to.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # The human readable name of project that the resource belongs to.
+        # Corresponds to the JSON property `projectDisplayName`
+        # @return [String]
+        attr_accessor :project_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @parent = args[:parent] if args.key?(:parent)
+          @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
+          @project = args[:project] if args.key?(:project)
+          @project_display_name = args[:project_display_name] if args.key?(:project_display_name)
         end
       end
       
@@ -843,6 +893,11 @@ module Google
         # @return [String]
         attr_accessor :notification_config_name
       
+        # Information related to the Google Cloud resource.
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1Resource]
+        attr_accessor :resource
+      
         # Wrapper over asset object that also captures the state change for the asset
         # e.g. if it was a newly created asset vs updated or deleted asset.
         # Corresponds to the JSON property `temporalAsset`
@@ -857,7 +912,52 @@ module Google
         def update!(**args)
           @finding = args[:finding] if args.key?(:finding)
           @notification_config_name = args[:notification_config_name] if args.key?(:notification_config_name)
+          @resource = args[:resource] if args.key?(:resource)
           @temporal_asset = args[:temporal_asset] if args.key?(:temporal_asset)
+        end
+      end
+      
+      # Information related to the Google Cloud resource.
+      class GoogleCloudSecuritycenterV1p1beta1Resource
+        include Google::Apis::Core::Hashable
+      
+        # The full resource name of the resource. See:
+        # https://cloud.google.com/apis/design/resource_names#full_resource_name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The full resource name of resource's parent.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # The human readable name of resource's parent.
+        # Corresponds to the JSON property `parentDisplayName`
+        # @return [String]
+        attr_accessor :parent_display_name
+      
+        # The full resource name of project that the resource belongs to.
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # The human readable name of project that the resource belongs to.
+        # Corresponds to the JSON property `projectDisplayName`
+        # @return [String]
+        attr_accessor :project_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @parent = args[:parent] if args.key?(:parent)
+          @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
+          @project = args[:project] if args.key?(:project)
+          @project_display_name = args[:project_display_name] if args.key?(:project_display_name)
         end
       end
       

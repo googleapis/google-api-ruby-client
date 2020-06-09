@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/service-usage/
     module ServiceusageV1
       VERSION = 'V1'
-      REVISION = '20200603'
+      REVISION = '20200606'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

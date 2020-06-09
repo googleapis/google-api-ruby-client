@@ -2807,6 +2807,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The project ID associated with the Apigee organization.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
         # Message for compatibility with legacy Edge specification for Java Properties
         # object in JSON.
         # Corresponds to the JSON property `properties`
@@ -2849,6 +2854,7 @@ module Google
           @environments = args[:environments] if args.key?(:environments)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
+          @project_id = args[:project_id] if args.key?(:project_id)
           @properties = args[:properties] if args.key?(:properties)
           @runtime_type = args[:runtime_type] if args.key?(:runtime_type)
           @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
@@ -4269,7 +4275,7 @@ module Google
       # `
       # "audit_configs": [
       # `
-      # "service": "allServices"
+      # "service": "allServices",
       # "audit_log_configs": [
       # `
       # "log_type": "DATA_READ",
@@ -4278,18 +4284,18 @@ module Google
       # ]
       # `,
       # `
-      # "log_type": "DATA_WRITE",
+      # "log_type": "DATA_WRITE"
       # `,
       # `
-      # "log_type": "ADMIN_READ",
+      # "log_type": "ADMIN_READ"
       # `
       # ]
       # `,
       # `
-      # "service": "sampleservice.googleapis.com"
+      # "service": "sampleservice.googleapis.com",
       # "audit_log_configs": [
       # `
-      # "log_type": "DATA_READ",
+      # "log_type": "DATA_READ"
       # `,
       # `
       # "log_type": "DATA_WRITE",
@@ -4341,7 +4347,7 @@ module Google
       # ]
       # `,
       # `
-      # "log_type": "DATA_WRITE",
+      # "log_type": "DATA_WRITE"
       # `
       # ]
       # `

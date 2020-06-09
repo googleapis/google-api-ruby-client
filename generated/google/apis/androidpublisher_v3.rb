@@ -18,14 +18,14 @@ require 'google/apis/androidpublisher_v3/representations.rb'
 
 module Google
   module Apis
-    # Google Play Developer API
+    # Google Play Android Developer API
     #
-    # Accesses Android application developers' Google Play accounts.
+    # Lets Android application developers access their Google Play accounts.
     #
     # @see https://developers.google.com/android-publisher
     module AndroidpublisherV3
       VERSION = 'V3'
-      REVISION = '20200602'
+      REVISION = '20200607'
 
       # View and manage your Google Play Developer account
       AUTH_ANDROIDPUBLISHER = 'https://www.googleapis.com/auth/androidpublisher'

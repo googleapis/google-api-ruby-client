@@ -952,11 +952,6 @@ module Google
         attr_accessor :allow_cors
         alias_method :allow_cors?, :allow_cors
       
-        # The list of features enabled on this endpoint.
-        # Corresponds to the JSON property `features`
-        # @return [Array<String>]
-        attr_accessor :features
-      
         # The canonical name of this endpoint.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -979,7 +974,6 @@ module Google
         def update!(**args)
           @aliases = args[:aliases] if args.key?(:aliases)
           @allow_cors = args[:allow_cors] if args.key?(:allow_cors)
-          @features = args[:features] if args.key?(:features)
           @name = args[:name] if args.key?(:name)
           @target = args[:target] if args.key?(:target)
         end
@@ -3560,6 +3554,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The units in which the metric value is reported.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3570,6 +3569,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @metric = args[:metric] if args.key?(:metric)
           @name = args[:name] if args.key?(:name)
+          @unit = args[:unit] if args.key?(:unit)
         end
       end
       

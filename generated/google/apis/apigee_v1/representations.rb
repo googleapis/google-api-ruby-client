@@ -1365,6 +1365,7 @@ module Google
           collection :environments, as: 'environments'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
+          property :project_id, as: 'projectId'
           property :properties, as: 'properties', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties::Representation
       
           property :runtime_type, as: 'runtimeType'

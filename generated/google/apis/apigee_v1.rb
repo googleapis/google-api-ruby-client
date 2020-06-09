@@ -31,7 +31,7 @@ module Google
     # @see https://cloud.google.com/apigee-api-management/
     module ApigeeV1
       VERSION = 'V1'
-      REVISION = '20200521'
+      REVISION = '20200604'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

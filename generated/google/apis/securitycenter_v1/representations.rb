@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1Resource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +125,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV1p1beta1NotificationMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1Resource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -421,6 +433,19 @@ module Google
           property :finding, as: 'finding', class: Google::Apis::SecuritycenterV1::Finding, decorator: Google::Apis::SecuritycenterV1::Finding::Representation
       
           property :notification_config_name, as: 'notificationConfigName'
+          property :resource, as: 'resource', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1Resource, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1Resource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1Resource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :parent_display_name, as: 'parentDisplayName'
+          property :project, as: 'project'
+          property :project_display_name, as: 'projectDisplayName'
         end
       end
       
@@ -486,8 +511,21 @@ module Google
           property :finding, as: 'finding', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1Finding, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1Finding::Representation
       
           property :notification_config_name, as: 'notificationConfigName'
+          property :resource, as: 'resource', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1Resource, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1Resource::Representation
+      
           property :temporal_asset, as: 'temporalAsset', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1TemporalAsset, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1TemporalAsset::Representation
       
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1Resource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :parent_display_name, as: 'parentDisplayName'
+          property :project, as: 'project'
+          property :project_display_name, as: 'projectDisplayName'
         end
       end
       
