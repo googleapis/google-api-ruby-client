@@ -439,8 +439,8 @@ module Google
       
         # Optional. A field mask to restrict which fields on the person are returned.
         # Multiple
-        # fields can be specified by separating them with commas. Defaults to empty
-        # if not set, which will skip the post mutate get. Valid values are:
+        # fields can be specified by separating them with commas. Defaults to the
+        # copy mask with metadata and membership fields if not set. Valid values are:
         # * addresses
         # * ageRanges
         # * biographies
@@ -470,6 +470,14 @@ module Google
         # @return [String]
         attr_accessor :read_mask
       
+        # Optional. A mask of what source types to return. Defaults to
+        # ReadSourceType.CONTACT and
+        # ReadSourceType.PROFILE if not
+        # set.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<String>]
+        attr_accessor :sources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -478,6 +486,7 @@ module Google
         def update!(**args)
           @copy_mask = args[:copy_mask] if args.key?(:copy_mask)
           @read_mask = args[:read_mask] if args.key?(:read_mask)
+          @sources = args[:sources] if args.key?(:sources)
         end
       end
       
@@ -2302,6 +2311,14 @@ module Google
         # @return [String]
         attr_accessor :photo_bytes
       
+        # Optional. A mask of what source types to return. Defaults to
+        # ReadSourceType.CONTACT and
+        # ReadSourceType.PROFILE if not
+        # set.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<String>]
+        attr_accessor :sources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2310,6 +2327,7 @@ module Google
         def update!(**args)
           @person_fields = args[:person_fields] if args.key?(:person_fields)
           @photo_bytes = args[:photo_bytes] if args.key?(:photo_bytes)
+          @sources = args[:sources] if args.key?(:sources)
         end
       end
       

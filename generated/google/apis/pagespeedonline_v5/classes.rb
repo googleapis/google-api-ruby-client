@@ -496,6 +496,12 @@ module Google
         # @return [Hash<String,Google::Apis::PagespeedonlineV5::UserPageLoadMetricV5>]
         attr_accessor :metrics
       
+        # True if the result is an origin fallback from a page, false otherwise.
+        # Corresponds to the JSON property `origin_fallback`
+        # @return [Boolean]
+        attr_accessor :origin_fallback
+        alias_method :origin_fallback?, :origin_fallback
+      
         # The human readable speed "category" of the id.
         # Corresponds to the JSON property `overall_category`
         # @return [String]
@@ -510,6 +516,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @initial_url = args[:initial_url] if args.key?(:initial_url)
           @metrics = args[:metrics] if args.key?(:metrics)
+          @origin_fallback = args[:origin_fallback] if args.key?(:origin_fallback)
           @overall_category = args[:overall_category] if args.key?(:overall_category)
         end
       end

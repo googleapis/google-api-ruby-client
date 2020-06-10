@@ -254,10 +254,10 @@ module Google
         end
         
         # Batch gets the update history of assets that overlap a time window.
-        # For RESOURCE content, this API outputs history with asset in both
-        # non-delete or deleted status.
         # For IAM_POLICY content, this API outputs history when the asset and its
         # attached IAM POLICY both exist. This can create gaps in the output history.
+        # Otherwise, this API outputs history with asset in both non-delete or
+        # deleted status.
         # If a specified asset does not exist, this API returns an INVALID_ARGUMENT
         # error.
         # @param [String] parent
@@ -311,13 +311,15 @@ module Google
         end
         
         # Exports assets with time and resource types to a given Cloud Storage
-        # location. The output format is newline-delimited JSON. Each line represents
-        # a google.cloud.asset.v1.Asset in the JSON format.
-        # This API implements the google.longrunning.Operation API allowing you
-        # to keep track of the export. We recommend intervals of at least 2 seconds
-        # with exponential retry to poll the export operation result. For
-        # regular-size resource parent, the export operation usually finishes within
-        # 5 minutes.
+        # location/BigQuery table. For Cloud Storage location destinations, the
+        # output format is newline-delimited JSON. Each line represents a
+        # google.cloud.asset.v1.Asset in the JSON format; for BigQuery table
+        # destinations, the output table stores the fields in asset proto as columns.
+        # This API implements the google.longrunning.Operation API
+        # , which allows you to keep track of the export. We recommend intervals of
+        # at least 2 seconds with exponential retry to poll the export operation
+        # result. For regular-size resource parent, the export operation usually
+        # finishes within 5 minutes.
         # @param [String] parent
         #   Required. The relative name of the root asset. This can only be an
         #   organization number (such as "organizations/123"), a project ID (such as
@@ -348,183 +350,6 @@ module Google
           command.response_representation = Google::Apis::CloudassetV1::Operation::Representation
           command.response_class = Google::Apis::CloudassetV1::Operation
           command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Searches all the IAM policies within the given accessible scope (e.g., a
-        # project, a folder or an organization). Callers should have
-        # cloud.assets.SearchAllIamPolicies permission upon the requested scope,
-        # otherwise the request will be rejected.
-        # @param [String] scope
-        #   Required. A scope can be a project, a folder or an organization. The search is
-        #   limited to the IAM policies within the `scope`.
-        #   The allowed values are:
-        #   * projects/`PROJECT_ID`
-        #   * projects/`PROJECT_NUMBER`
-        #   * folders/`FOLDER_NUMBER`
-        #   * organizations/`ORGANIZATION_NUMBER`
-        # @param [Fixnum] page_size
-        #   Optional. The page size for search result pagination. Page size is capped at
-        #   500 even
-        #   if a larger value is given. If set to zero, server will pick an appropriate
-        #   default. Returned results may be fewer than requested. When this happens,
-        #   there could be more results as long as `next_page_token` is returned.
-        # @param [String] page_token
-        #   Optional. If present, retrieve the next batch of results from the preceding
-        #   call to
-        #   this method. `page_token` must be the value of `next_page_token` from the
-        #   previous response. The values of all other method parameters must be
-        #   identical to those in the previous call.
-        # @param [String] query
-        #   Optional. The query statement. An empty query can be specified to search all
-        #   the IAM
-        #   policies within the given `scope`.
-        #   Examples:
-        #   * `policy : "amy@gmail.com"` to find Cloud IAM policy bindings that
-        #   specify user "amy@gmail.com".
-        #   * `policy : "roles/compute.admin"` to find Cloud IAM policy bindings that
-        #   specify the Compute Admin role.
-        #   * `policy.role.permissions : "storage.buckets.update"` to find Cloud IAM
-        #   policy bindings that specify a role containing "storage.buckets.update"
-        #   permission.
-        #   * `resource : "organizations/123"` to find Cloud IAM policy bindings that
-        #   are set on "organizations/123".
-        #   * `(resource : ("organizations/123" OR "folders/1234") AND policy : "amy")`
-        #   to find Cloud IAM policy bindings that are set on "organizations/123" or
-        #   "folders/1234", and also specify user "amy".
-        #   See [how to construct a
-        #   query](https://cloud.google.com/asset-inventory/docs/searching-iam-policies#
-        #   how_to_construct_a_query)
-        #   for more details.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudassetV1::SearchAllIamPoliciesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudassetV1::SearchAllIamPoliciesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_all_iam_policies(scope, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+scope}:searchAllIamPolicies', options)
-          command.response_representation = Google::Apis::CloudassetV1::SearchAllIamPoliciesResponse::Representation
-          command.response_class = Google::Apis::CloudassetV1::SearchAllIamPoliciesResponse
-          command.params['scope'] = scope unless scope.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['query'] = query unless query.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Searches all the resources within the given accessible scope (e.g., a
-        # project, a folder or an organization). Callers should have
-        # cloud.assets.SearchAllResources permission upon the requested scope,
-        # otherwise the request will be rejected.
-        # @param [String] scope
-        #   Required. A scope can be a project, a folder or an organization. The search is
-        #   limited to the resources within the `scope`.
-        #   The allowed values are:
-        #   * projects/`PROJECT_ID`
-        #   * projects/`PROJECT_NUMBER`
-        #   * folders/`FOLDER_NUMBER`
-        #   * organizations/`ORGANIZATION_NUMBER`
-        # @param [Array<String>, String] asset_types
-        #   Optional. A list of asset types that this request searches for. If empty, it
-        #   will
-        #   search all the [searchable asset
-        #   types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#
-        #   searchable_asset_types).
-        # @param [String] order_by
-        #   Optional. A comma separated list of fields specifying the sorting order of the
-        #   results. The default order is ascending. Add " DESC" after the field name
-        #   to indicate descending order. Redundant space characters are ignored.
-        #   Example: "location DESC, name". See [supported resource metadata
-        #   fields](https://cloud.google.com/asset-inventory/docs/searching-resources#
-        #   query_on_resource_metadata_fields)
-        #   for more details.
-        # @param [Fixnum] page_size
-        #   Optional. The page size for search result pagination. Page size is capped at
-        #   500 even
-        #   if a larger value is given. If set to zero, server will pick an appropriate
-        #   default. Returned results may be fewer than requested. When this happens,
-        #   there could be more results as long as `next_page_token` is returned.
-        # @param [String] page_token
-        #   Optional. If present, then retrieve the next batch of results from the
-        #   preceding call
-        #   to this method. `page_token` must be the value of `next_page_token` from
-        #   the previous response. The values of all other method parameters, must be
-        #   identical to those in the previous call.
-        # @param [String] query
-        #   Optional. The query statement. An empty query can be specified to search all
-        #   the
-        #   resources of certain `asset_types` within the given `scope`.
-        #   Examples:
-        #   * `name : "Important"` to find Cloud resources whose name contains
-        #   "Important" as a word.
-        #   * `displayName : "Impor*"` to find Cloud resources whose display name
-        #   contains "Impor" as a word prefix.
-        #   * `description : "*por*"` to find Cloud resources whose description
-        #   contains "por" as a substring.
-        #   * `location : "us-west*"` to find Cloud resources whose location is
-        #   prefixed with "us-west".
-        #   * `labels : "prod"` to find Cloud resources whose labels contain "prod" as
-        #   a key or value.
-        #   * `labels.env : "prod"` to find Cloud resources which have a label "env"
-        #   and its value is "prod".
-        #   * `labels.env : *` to find Cloud resources which have a label "env".
-        #   * `"Important"` to find Cloud resources which contain "Important" as a word
-        #   in any of the searchable fields.
-        #   * `"Impor*"` to find Cloud resources which contain "Impor" as a word prefix
-        #   in any of the searchable fields.
-        #   * `"*por*"` to find Cloud resources which contain "por" as a substring in
-        #   any of the searchable fields.
-        #   * `("Important" AND location : ("us-west1" OR "global"))` to find Cloud
-        #   resources which contain "Important" as a word in any of the searchable
-        #   fields and are also located in the "us-west1" region or the "global"
-        #   location.
-        #   See [how to construct a
-        #   query](https://cloud.google.com/asset-inventory/docs/searching-resources#
-        #   how_to_construct_a_query)
-        #   for more details.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudassetV1::SearchAllResourcesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudassetV1::SearchAllResourcesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_all_resources(scope, asset_types: nil, order_by: nil, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+scope}:searchAllResources', options)
-          command.response_representation = Google::Apis::CloudassetV1::SearchAllResourcesResponse::Representation
-          command.response_class = Google::Apis::CloudassetV1::SearchAllResourcesResponse
-          command.params['scope'] = scope unless scope.nil?
-          command.query['assetTypes'] = asset_types unless asset_types.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['query'] = query unless query.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

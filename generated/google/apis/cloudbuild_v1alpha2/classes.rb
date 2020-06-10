@@ -381,8 +381,8 @@ module Google
         # @return [String]
         attr_accessor :log_streaming_option
       
-        # Option to specify the logging mode, which determines where the logs are
-        # stored.
+        # Option to specify the logging mode, which determines if and where build
+        # logs are stored.
         # Corresponds to the JSON property `logging`
         # @return [String]
         attr_accessor :logging

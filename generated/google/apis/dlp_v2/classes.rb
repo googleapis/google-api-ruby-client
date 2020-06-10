@@ -36,7 +36,8 @@ module Google
         # Publish a message into given Pub/Sub topic when DlpJob has completed. The
         # message contains a single field, `DlpJobName`, which is equal to the
         # finished job's
-        # [`DlpJob.name`](/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob).
+        # [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.
+        # dlpJobs#DlpJob).
         # Compatible with: Inspect, Risk
         # Corresponds to the JSON property `pubSub`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub]
@@ -1576,8 +1577,8 @@ module Google
       
         # Message for detecting output from deidentification transformations
         # such as
-        # [`CryptoReplaceFfxFpeConfig`](/dlp/docs/reference/rest/v2/organizations.
-        # deidentifyTemplates#cryptoreplaceffxfpeconfig).
+        # [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/
+        # v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig).
         # These types of transformations are
         # those that perform pseudonymization, thereby producing a "surrogate" as
         # output. This should be used in conjunction with a field on the
@@ -4895,7 +4896,8 @@ module Google
       # Publish a message into given Pub/Sub topic when DlpJob has completed. The
       # message contains a single field, `DlpJobName`, which is equal to the
       # finished job's
-      # [`DlpJob.name`](/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob).
+      # [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.
+      # dlpJobs#DlpJob).
       # Compatible with: Inspect, Risk
       class GooglePrivacyDlpV2PublishToPubSub
         include Google::Apis::Core::Hashable
@@ -5975,8 +5977,8 @@ module Google
       
       # Message for detecting output from deidentification transformations
       # such as
-      # [`CryptoReplaceFfxFpeConfig`](/dlp/docs/reference/rest/v2/organizations.
-      # deidentifyTemplates#cryptoreplaceffxfpeconfig).
+      # [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/
+      # v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig).
       # These types of transformations are
       # those that perform pseudonymization, thereby producing a "surrogate" as
       # output. This should be used in conjunction with a field on the

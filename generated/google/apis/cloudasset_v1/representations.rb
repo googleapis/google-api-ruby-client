@@ -70,12 +70,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Explanation
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ExportAssetsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,12 +184,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IamPolicySearchResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListFeedsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,12 +202,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Permissions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,24 +215,6 @@ module Google
       end
       
       class Resource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ResourceSearchResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SearchAllIamPoliciesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SearchAllResourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,6 +262,7 @@ module Google
       
           property :service_perimeter, as: 'servicePerimeter', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeter, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeter::Representation
       
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -357,14 +322,6 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Explanation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :matched_permissions, as: 'matchedPermissions', class: Google::Apis::CloudassetV1::Permissions, decorator: Google::Apis::CloudassetV1::Permissions::Representation
-      
         end
       end
       
@@ -566,18 +523,6 @@ module Google
         end
       end
       
-      class IamPolicySearchResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :explanation, as: 'explanation', class: Google::Apis::CloudassetV1::Explanation, decorator: Google::Apis::CloudassetV1::Explanation::Representation
-      
-          property :policy, as: 'policy', class: Google::Apis::CloudassetV1::Policy, decorator: Google::Apis::CloudassetV1::Policy::Representation
-      
-          property :project, as: 'project'
-          property :resource, as: 'resource'
-        end
-      end
-      
       class ListFeedsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -605,13 +550,6 @@ module Google
       
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::CloudassetV1::GcsDestination, decorator: Google::Apis::CloudassetV1::GcsDestination::Representation
       
-        end
-      end
-      
-      class Permissions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
         end
       end
       
@@ -644,39 +582,6 @@ module Google
           property :parent, as: 'parent'
           property :resource_url, as: 'resourceUrl'
           property :version, as: 'version'
-        end
-      end
-      
-      class ResourceSearchResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :additional_attributes, as: 'additionalAttributes'
-          property :asset_type, as: 'assetType'
-          property :description, as: 'description'
-          property :display_name, as: 'displayName'
-          hash :labels, as: 'labels'
-          property :location, as: 'location'
-          property :name, as: 'name'
-          collection :network_tags, as: 'networkTags'
-          property :project, as: 'project'
-        end
-      end
-      
-      class SearchAllIamPoliciesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :results, as: 'results', class: Google::Apis::CloudassetV1::IamPolicySearchResult, decorator: Google::Apis::CloudassetV1::IamPolicySearchResult::Representation
-      
-        end
-      end
-      
-      class SearchAllResourcesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :results, as: 'results', class: Google::Apis::CloudassetV1::ResourceSearchResult, decorator: Google::Apis::CloudassetV1::ResourceSearchResult::Representation
-      
         end
       end
       

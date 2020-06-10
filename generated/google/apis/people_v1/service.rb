@@ -329,8 +329,104 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # List all other contacts, that is contacts that are not in a contact group.
+        # Other contacts are typically auto created contacts from interactions.
+        # @param [Fixnum] page_size
+        #   Optional. The number of other contacts to include in the response. Valid
+        #   values are
+        #   between 1 and 1000, inclusive. Defaults to 100 if not set or set to 0.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListOtherContacts` call.
+        #   Provide this to retrieve the subsequent page.
+        #   When paginating, all other parameters provided to `ListOtherContacts`
+        #   must match the call that provided the page token.
+        # @param [String] read_mask
+        #   Required. A field mask to restrict which fields on each person are returned.
+        #   Multiple
+        #   fields can be specified by separating them with commas. Valid values are:
+        #   * emailAddresses
+        #   * names
+        #   * phoneNumbers
+        # @param [Boolean] request_sync_token
+        #   Optional. Whether the response should include `next_sync_token`, which can be
+        #   used to
+        #   get all changes since the last request. For subsequent sync requests use
+        #   the `sync_token` param instead. Initial sync requests that specify
+        #   `request_sync_token` have an additional rate limit.
+        # @param [String] sync_token
+        #   Optional. A sync token, received from a previous `ListOtherContacts` call.
+        #   Provide this to retrieve only the resources changed since the last request.
+        #   Sync requests that specify `sync_token` have an additional rate limit.
+        #   When syncing, all other parameters provided to `ListOtherContacts`
+        #   must match the call that provided the sync token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PeopleV1::ListOtherContactsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PeopleV1::ListOtherContactsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_other_contacts(page_size: nil, page_token: nil, read_mask: nil, request_sync_token: nil, sync_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/otherContacts', options)
+          command.response_representation = Google::Apis::PeopleV1::ListOtherContactsResponse::Representation
+          command.response_class = Google::Apis::PeopleV1::ListOtherContactsResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['requestSyncToken'] = request_sync_token unless request_sync_token.nil?
+          command.query['syncToken'] = sync_token unless sync_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a new contact and return the person resource for that contact.
         # @param [Google::Apis::PeopleV1::Person] person_object
+        # @param [String] person_fields
+        #   Required. A field mask to restrict which fields on each person are returned.
+        #   Multiple
+        #   fields can be specified by separating them with commas. Defaults to all
+        #   fields if not set. Valid values are:
+        #   * addresses
+        #   * ageRanges
+        #   * biographies
+        #   * birthdays
+        #   * coverPhotos
+        #   * emailAddresses
+        #   * events
+        #   * genders
+        #   * imClients
+        #   * interests
+        #   * locales
+        #   * memberships
+        #   * metadata
+        #   * names
+        #   * nicknames
+        #   * occupations
+        #   * organizations
+        #   * phoneNumbers
+        #   * photos
+        #   * relations
+        #   * residences
+        #   * sipAddresses
+        #   * skills
+        #   * urls
+        #   * userDefined
+        # @param [Array<String>, String] sources
+        #   Optional. A mask of what source types to return. Defaults to
+        #   ReadSourceType.CONTACT and
+        #   ReadSourceType.PROFILE if not
+        #   set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -348,12 +444,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_person_contact(person_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_person_contact(person_object = nil, person_fields: nil, sources: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/people:createContact', options)
           command.request_representation = Google::Apis::PeopleV1::Person::Representation
           command.request_object = person_object
           command.response_representation = Google::Apis::PeopleV1::Person::Representation
           command.response_class = Google::Apis::PeopleV1::Person
+          command.query['personFields'] = person_fields unless person_fields.nil?
+          command.query['sources'] = sources unless sources.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -422,6 +520,11 @@ module Google
         #   * skills
         #   * urls
         #   * userDefined
+        # @param [Array<String>, String] sources
+        #   Optional. A mask of what source types to return. Defaults to
+        #   ReadSourceType.CONTACT and
+        #   ReadSourceType.PROFILE if not
+        #   set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -439,12 +542,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_person_contact_photo(resource_name, person_fields: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_person_contact_photo(resource_name, person_fields: nil, sources: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+resourceName}:deleteContactPhoto', options)
           command.response_representation = Google::Apis::PeopleV1::DeleteContactPhotoResponse::Representation
           command.response_class = Google::Apis::PeopleV1::DeleteContactPhotoResponse
           command.params['resourceName'] = resource_name unless resource_name.nil?
           command.query['personFields'] = person_fields unless person_fields.nil?
+          command.query['sources'] = sources unless sources.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -495,6 +599,12 @@ module Google
         #   Each
         #   path should start with `person.`: for example, `person.names` or
         #   `person.photos`.
+        # @param [Array<String>, String] sources
+        #   Optional. A mask of what source types to return. Defaults to
+        #   ReadSourceType.PROFILE
+        #   and
+        #   ReadSourceType.CONTACT
+        #   if not set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -512,13 +622,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_person(resource_name, person_fields: nil, request_mask_include_field: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_person(resource_name, person_fields: nil, request_mask_include_field: nil, sources: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+resourceName}', options)
           command.response_representation = Google::Apis::PeopleV1::Person::Representation
           command.response_class = Google::Apis::PeopleV1::Person
           command.params['resourceName'] = resource_name unless resource_name.nil?
           command.query['personFields'] = person_fields unless person_fields.nil?
           command.query['requestMask.includeField'] = request_mask_include_field unless request_mask_include_field.nil?
+          command.query['sources'] = sources unless sources.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -571,6 +682,12 @@ module Google
         #   identifies the contact as returned by
         #   [`people.connections.list`](/people/api/rest/v1/people.connections/list).
         #   You can include up to 50 resource names in one request.
+        # @param [Array<String>, String] sources
+        #   Optional. A mask of what source types to return. Defaults to
+        #   ReadSourceType.CONTACT
+        #   and
+        #   ReadSourceType.PROFILE
+        #   if not set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -588,13 +705,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_people(person_fields: nil, request_mask_include_field: nil, resource_names: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_people(person_fields: nil, request_mask_include_field: nil, resource_names: nil, sources: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/people:batchGet', options)
           command.response_representation = Google::Apis::PeopleV1::GetPeopleResponse::Representation
           command.response_class = Google::Apis::PeopleV1::GetPeopleResponse
           command.query['personFields'] = person_fields unless person_fields.nil?
           command.query['requestMask.includeField'] = request_mask_include_field unless request_mask_include_field.nil?
           command.query['resourceNames'] = resource_names unless resource_names.nil?
+          command.query['sources'] = sources unless sources.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -615,6 +733,41 @@ module Google
         #   with a max length of 27 characters, in the form of
         #   `people/`person_id``.
         # @param [Google::Apis::PeopleV1::Person] person_object
+        # @param [String] person_fields
+        #   Optional. A field mask to restrict which fields on each person are returned.
+        #   Multiple
+        #   fields can be specified by separating them with commas. Defaults to all
+        #   fields if not set. Valid values are:
+        #   * addresses
+        #   * ageRanges
+        #   * biographies
+        #   * birthdays
+        #   * coverPhotos
+        #   * emailAddresses
+        #   * events
+        #   * genders
+        #   * imClients
+        #   * interests
+        #   * locales
+        #   * memberships
+        #   * metadata
+        #   * names
+        #   * nicknames
+        #   * occupations
+        #   * organizations
+        #   * phoneNumbers
+        #   * photos
+        #   * relations
+        #   * residences
+        #   * sipAddresses
+        #   * skills
+        #   * urls
+        #   * userDefined
+        # @param [Array<String>, String] sources
+        #   Optional. A mask of what source types to return. Defaults to
+        #   ReadSourceType.CONTACT and
+        #   ReadSourceType.PROFILE if not
+        #   set.
         # @param [String] update_person_fields
         #   Required. A field mask to restrict which fields on the person are updated.
         #   Multiple
@@ -657,13 +810,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_person_contact(resource_name, person_object = nil, update_person_fields: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_person_contact(resource_name, person_object = nil, person_fields: nil, sources: nil, update_person_fields: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+resourceName}:updateContact', options)
           command.request_representation = Google::Apis::PeopleV1::Person::Representation
           command.request_object = person_object
           command.response_representation = Google::Apis::PeopleV1::Person::Representation
           command.response_class = Google::Apis::PeopleV1::Person
           command.params['resourceName'] = resource_name unless resource_name.nil?
+          command.query['personFields'] = person_fields unless person_fields.nil?
+          command.query['sources'] = sources unless sources.nil?
           command.query['updatePersonFields'] = update_person_fields unless update_person_fields.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -760,6 +915,12 @@ module Google
         # @param [String] sort_order
         #   Optional. The order in which the connections should be sorted. Defaults to
         #   `LAST_MODIFIED_ASCENDING`.
+        # @param [Array<String>, String] sources
+        #   Optional. A mask of what source types to return. Defaults to
+        #   ReadSourceType.CONTACT
+        #   and
+        #   ReadSourceType.PROFILE if not
+        #   set.
         # @param [String] sync_token
         #   Optional. A sync token, received from a previous `ListConnections` call.
         #   Provide this to retrieve only the resources changed since the last request.
@@ -783,7 +944,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_person_connections(resource_name, page_size: nil, page_token: nil, person_fields: nil, request_mask_include_field: nil, request_sync_token: nil, sort_order: nil, sync_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_person_connections(resource_name, page_size: nil, page_token: nil, person_fields: nil, request_mask_include_field: nil, request_sync_token: nil, sort_order: nil, sources: nil, sync_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+resourceName}/connections', options)
           command.response_representation = Google::Apis::PeopleV1::ListConnectionsResponse::Representation
           command.response_class = Google::Apis::PeopleV1::ListConnectionsResponse
@@ -794,67 +955,7 @@ module Google
           command.query['requestMask.includeField'] = request_mask_include_field unless request_mask_include_field.nil?
           command.query['requestSyncToken'] = request_sync_token unless request_sync_token.nil?
           command.query['sortOrder'] = sort_order unless sort_order.nil?
-          command.query['syncToken'] = sync_token unless sync_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List all other contacts, that is contacts that are not in a contact group.
-        # Other contacts are typically auto created contacts from interactions.
-        # @param [Fixnum] page_size
-        #   Optional. The number of other contacts to include in the response. Valid
-        #   values are
-        #   between 1 and 1000, inclusive. Defaults to 100 if not set or set to 0.
-        # @param [String] page_token
-        #   Optional. A page token, received from a previous `ListOtherContacts` call.
-        #   Provide this to retrieve the subsequent page.
-        #   When paginating, all other parameters provided to `ListOtherContacts`
-        #   must match the call that provided the page token.
-        # @param [String] read_mask
-        #   Required. A field mask to restrict which fields on each person are returned.
-        #   Multiple
-        #   fields can be specified by separating them with commas. Valid values are:
-        #   * emailAddresses
-        #   * names
-        #   * phoneNumbers
-        # @param [Boolean] request_sync_token
-        #   Optional. Whether the response should include `next_sync_token`, which can be
-        #   used to
-        #   get all changes since the last request. For subsequent sync requests use
-        #   the `sync_token` param instead. Initial sync requests that specify
-        #   `request_sync_token` have an additional rate limit.
-        # @param [String] sync_token
-        #   Optional. A sync token, received from a previous `ListOtherContacts` call.
-        #   Provide this to retrieve only the resources changed since the last request.
-        #   Sync requests that specify `sync_token` have an additional rate limit.
-        #   When syncing, all other parameters provided to `ListOtherContacts`
-        #   must match the call that provided the sync token.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PeopleV1::ListOtherContactsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::PeopleV1::ListOtherContactsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def other_contacts(page_size: nil, page_token: nil, read_mask: nil, request_sync_token: nil, sync_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/otherContacts', options)
-          command.response_representation = Google::Apis::PeopleV1::ListOtherContactsResponse::Representation
-          command.response_class = Google::Apis::PeopleV1::ListOtherContactsResponse
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['readMask'] = read_mask unless read_mask.nil?
-          command.query['requestSyncToken'] = request_sync_token unless request_sync_token.nil?
+          command.query['sources'] = sources unless sources.nil?
           command.query['syncToken'] = sync_token unless sync_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

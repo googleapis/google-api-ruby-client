@@ -461,8 +461,7 @@ module Google
         end
       end
       
-      # A request message to initiate patching across Google Compute Engine
-      # instances.
+      # A request message to initiate patching across Compute Engine instances.
       class ExecutePatchJobRequest
         include Google::Apis::Core::Hashable
       
@@ -1182,8 +1181,8 @@ module Google
       class PatchInstanceFilterGroupLabel
         include Google::Apis::Core::Hashable
       
-        # Google Compute Engine instance labels that must be present for a VM
-        # instance to be targeted by this filter.
+        # Compute Engine instance labels that must be present for a VM instance to
+        # be targeted by this filter.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1200,8 +1199,8 @@ module Google
       
       # A high level representation of a patch job that is either in progress
       # or has completed.
-      # Instances details are not included in the job. To paginate through instance
-      # details, use ListPatchJobInstanceDetails.
+      # Instance details are not included in the job. To paginate through instance
+      # details, use `ListPatchJobInstanceDetails`.
       # For more information about patch jobs, see
       # [Creating patch
       # jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-
@@ -1283,7 +1282,7 @@ module Google
         # @return [Float]
         attr_accessor :percent_complete
       
-        # The current state of the PatchJob .
+        # The current state of the PatchJob.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state

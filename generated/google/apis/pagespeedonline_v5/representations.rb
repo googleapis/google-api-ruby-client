@@ -266,6 +266,7 @@ module Google
           property :initial_url, as: 'initial_url'
           hash :metrics, as: 'metrics', class: Google::Apis::PagespeedonlineV5::UserPageLoadMetricV5, decorator: Google::Apis::PagespeedonlineV5::UserPageLoadMetricV5::Representation
       
+          property :origin_fallback, as: 'origin_fallback'
           property :overall_category, as: 'overall_category'
         end
       end

@@ -28,7 +28,7 @@ module Google
     # @see https://developers.google.com/speed/docs/insights/v5/about
     module PagespeedonlineV5
       VERSION = 'V5'
-      REVISION = '20200305'
+      REVISION = '20200608'
 
       # Associate you with your personal info on Google
       PENID = 'openid'

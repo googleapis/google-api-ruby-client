@@ -47,12 +47,12 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Searches all the IAM policies under a given accessible CRM scope
-        # (project/folder/organization). This RPC gives callers
-        # especially admins the ability to search all the IAM policies under a scope,
-        # even if they don't have .getIamPolicy permission of all the IAM policies.
-        # Callers should have cloud.assets.SearchAllIamPolicies permission on the
-        # requested scope, otherwise it will be rejected.
+        # Searches all the IAM policies within a given accessible CRM scope
+        # (project/folder/organization). This RPC gives callers especially
+        # administrators the ability to search all the IAM policies within a scope,
+        # even if they don't have `.getIamPolicy` permission of all the IAM policies.
+        # Callers should have `cloud.assets.SearchAllIamPolicies` permission on the
+        # requested scope, otherwise the request will be rejected.
         # @param [String] scope
         #   Required. The relative name of an asset. The search is limited to the
         #   resources
@@ -74,8 +74,7 @@ module Google
         #   previous response. The values of all other method parameters must be
         #   identical to those in the previous call.
         # @param [String] query
-        #   Optional. The query statement.
-        #   Examples:
+        #   Optional. The query statement. Examples:
         #   * "policy:myuser@mydomain.com"
         #   * "policy:(myuser@mydomain.com viewer)"
         # @param [String] fields
@@ -108,12 +107,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Searches all the resources under a given accessible CRM scope
-        # (project/folder/organization). This RPC gives callers
-        # especially admins the ability to search all the resources under a scope,
-        # even if they don't have .get permission of all the resources. Callers
-        # should have cloud.assets.SearchAllResources permission on the requested
-        # scope, otherwise it will be rejected.
+        # Searches all the resources within a given accessible CRM scope
+        # (project/folder/organization). This RPC gives callers especially
+        # administrators the ability to search all the resources within a scope, even
+        # if they don't have `.get` permission of all the resources. Callers should
+        # have `cloud.assets.SearchAllResources` permission on the requested scope,
+        # otherwise the request will be rejected.
         # @param [String] scope
         #   Required. The relative name of an asset. The search is limited to the
         #   resources
@@ -128,9 +127,9 @@ module Google
         #   search all the supported asset types.
         # @param [String] order_by
         #   Optional. A comma separated list of fields specifying the sorting order of the
-        #   results. The default order is ascending. Add " desc" after the field name
+        #   results. The default order is ascending. Add ` DESC` after the field name
         #   to indicate descending order. Redundant space characters are ignored. For
-        #   example, "  foo ,  bar  desc  ".
+        #   example, `  location DESC ,  name  `.
         # @param [Fixnum] page_size
         #   Optional. The page size for search result pagination. Page size is capped at
         #   500 even

@@ -62,7 +62,8 @@ module Google
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] parent
-        #   The parent resource name, for example locations/`location_id`.
+        #   The parent resource name.
+        #   - Format:locations/[LOCATION-ID]
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -97,7 +98,8 @@ module Google
         # supports. See https://cloud.google.com/dlp/docs/infotypes-reference to
         # learn more.
         # @param [String] parent
-        #   The parent resource name, for example locations/`location_id`.
+        #   The parent resource name.
+        #   - Format:locations/[LOCATION-ID]
         # @param [String] filter
         #   filter to only return infoTypes supported by certain parts of the
         #   API. Defaults to supported_by=INSPECT.
@@ -142,8 +144,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -248,8 +253,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -342,8 +350,11 @@ module Google
         # for inspecting content, images, and storage.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -445,8 +456,11 @@ module Google
         # Lists InspectTemplates.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -538,8 +552,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -644,8 +661,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -738,8 +758,11 @@ module Google
         # for inspecting content, images, and storage.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -841,8 +864,11 @@ module Google
         # Lists InspectTemplates.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -933,8 +959,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1038,8 +1067,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -1133,8 +1165,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1238,8 +1273,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -1337,7 +1375,9 @@ module Google
         # system will automatically choose what detectors to run. By default this may
         # be all types, but may change over time as detectors are updated.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id.
+        #   Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentRequest] google_privacy_dlp_v2_deidentify_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1376,7 +1416,9 @@ module Google
         # For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images
         # and https://cloud.google.com/dlp/docs/inspecting-text,
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id.
+        #   Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentRequest] google_privacy_dlp_v2_inspect_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1414,6 +1456,8 @@ module Google
         # to learn more.
         # @param [String] parent
         #   Required. The parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentRequest] google_privacy_dlp_v2_reidentify_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1449,8 +1493,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1555,8 +1602,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -1689,7 +1739,9 @@ module Google
         # system will automatically choose what detectors to run. By default this may
         # be all types, but may change over time as detectors are updated.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDlpJobRequest] google_privacy_dlp_v2_create_dlp_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1790,7 +1842,9 @@ module Google
         # See https://cloud.google.com/dlp/docs/inspecting-storage and
         # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [String] filter
         #   Allows filtering.
         #   Supported syntax:
@@ -1875,7 +1929,9 @@ module Google
         # system will automatically choose what detectors to run. By default this may
         # be all types, but may change over time as detectors are updated.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id.
+        #   The parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageRequest] google_privacy_dlp_v2_redact_image_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1910,8 +1966,11 @@ module Google
         # for inspecting content, images, and storage.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2013,8 +2072,11 @@ module Google
         # Lists InspectTemplates.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -2140,7 +2202,9 @@ module Google
         # sensitive information on a set schedule.
         # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateJobTriggerRequest] google_privacy_dlp_v2_create_job_trigger_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2238,7 +2302,9 @@ module Google
         # Lists job triggers.
         # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example `projects/my-project-id`.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [String] filter
         #   Allows filtering.
         #   Supported syntax:
@@ -2355,7 +2421,9 @@ module Google
         # system will automatically choose what detectors to run. By default this may
         # be all types, but may change over time as detectors are updated.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id.
+        #   Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentRequest] google_privacy_dlp_v2_deidentify_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2394,7 +2462,9 @@ module Google
         # For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images
         # and https://cloud.google.com/dlp/docs/inspecting-text,
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id.
+        #   Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentRequest] google_privacy_dlp_v2_inspect_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2432,6 +2502,8 @@ module Google
         # to learn more.
         # @param [String] parent
         #   Required. The parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentRequest] google_privacy_dlp_v2_reidentify_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2467,8 +2539,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2573,8 +2648,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -2707,7 +2785,9 @@ module Google
         # system will automatically choose what detectors to run. By default this may
         # be all types, but may change over time as detectors are updated.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDlpJobRequest] google_privacy_dlp_v2_create_dlp_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2884,7 +2964,9 @@ module Google
         # See https://cloud.google.com/dlp/docs/inspecting-storage and
         # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [String] filter
         #   Allows filtering.
         #   Supported syntax:
@@ -2969,7 +3051,9 @@ module Google
         # system will automatically choose what detectors to run. By default this may
         # be all types, but may change over time as detectors are updated.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id.
+        #   The parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageRequest] google_privacy_dlp_v2_redact_image_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3004,8 +3088,11 @@ module Google
         # for inspecting content, images, and storage.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3107,8 +3194,11 @@ module Google
         # Lists InspectTemplates.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -3234,7 +3324,9 @@ module Google
         # sensitive information on a set schedule.
         # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateJobTriggerRequest] google_privacy_dlp_v2_create_job_trigger_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3372,7 +3464,9 @@ module Google
         # Lists job triggers.
         # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example `projects/my-project-id`.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [String] filter
         #   Allows filtering.
         #   Supported syntax:
@@ -3485,8 +3579,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3590,8 +3687,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
@@ -3685,8 +3785,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3790,8 +3893,11 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] parent
-        #   Required. The parent resource name, for example projects/my-project-id or
-        #   organizations/my-org-id.
+        #   Required. Parent resource name.
+        #   - Format:projects/[PROJECT-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]
+        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by

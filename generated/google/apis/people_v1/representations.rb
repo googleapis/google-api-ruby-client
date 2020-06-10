@@ -465,6 +465,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :copy_mask, as: 'copyMask'
           property :read_mask, as: 'readMask'
+          collection :sources, as: 'sources'
         end
       end
       
@@ -950,6 +951,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :person_fields, as: 'personFields'
           property :photo_bytes, :base64 => true, as: 'photoBytes'
+          collection :sources, as: 'sources'
         end
       end
       

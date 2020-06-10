@@ -511,7 +511,8 @@ module Google
         # @return [Google::Apis::CloudassetV1p4beta1::GoogleCloudAssetV1p4beta1AnalysisState]
         attr_accessor :analysis_state
       
-        # The [full resource name](https://aip.dev/122#full-resource-names).
+        # The [full resource
+        # name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
@@ -603,14 +604,20 @@ module Google
         # within
         # the parent will be analyzed. This can only be an organization number (such
         # as "organizations/123") or a folder number (such as "folders/123").
+        # To know how to get organization id, visit [here
+        # ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        # organization#retrieving_your_organization_id).
+        # To know how to get folder id, visit [here
+        # ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#
+        # viewing_or_listing_folders_and_projects).
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
         # Specifies the resource to analyze for access policies, which may be set
         # directly on the resource, or on ancestors such as organizations, folders or
-        # projects. At least one of ResourceSelector, IdentitySelector or
-        # AccessSelector must be specified in a request.
+        # projects. Either ResourceSelector or IdentitySelector must be
+        # specified in a request.
         # Corresponds to the JSON property `resourceSelector`
         # @return [Google::Apis::CloudassetV1p4beta1::ResourceSelector]
         attr_accessor :resource_selector
@@ -639,7 +646,9 @@ module Google
         # @return [Array<Google::Apis::CloudassetV1p4beta1::GoogleCloudAssetV1p4beta1AccessControlList>]
         attr_accessor :access_control_lists
       
-        # The full name of the resource to which the iam_binding policy attaches.
+        # The [full resource
+        # name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+        # of the resource to which the iam_binding policy attaches.
         # Corresponds to the JSON property `attachedResourceFullName`
         # @return [String]
         attr_accessor :attached_resource_full_name
@@ -685,6 +694,13 @@ module Google
         # Required. The identity appear in the form of members in
         # [IAM policy
         # binding](https://cloud.google.com/iam/reference/rest/v1/Binding).
+        # The examples of supported forms are:
+        # "user:mike@example.com",
+        # "group:admins@example.com",
+        # "domain:google.com",
+        # "serviceAccount:my-project-id@appspot.gserviceaccount.com".
+        # Notice that wildcard characters (such as * and ?) are not supported.
+        # You must give a specific identity.
         # Corresponds to the JSON property `identity`
         # @return [String]
         attr_accessor :identity
@@ -859,14 +875,16 @@ module Google
       
       # Specifies the resource to analyze for access policies, which may be set
       # directly on the resource, or on ancestors such as organizations, folders or
-      # projects. At least one of ResourceSelector, IdentitySelector or
-      # AccessSelector must be specified in a request.
+      # projects. Either ResourceSelector or IdentitySelector must be
+      # specified in a request.
       class ResourceSelector
         include Google::Apis::Core::Hashable
       
         # Required. The [full resource
-        # name](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-        # .
+        # name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+        # of a resource of [supported resource
+        # types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#
+        # analyzable_asset_types).
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name

@@ -54,6 +54,12 @@ module Google
         #   within
         #   the parent will be analyzed. This can only be an organization number (such
         #   as "organizations/123") or a folder number (such as "folders/123").
+        #   To know how to get organization id, visit [here
+        #   ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        #   organization#retrieving_your_organization_id).
+        #   To know how to get folder id, visit [here
+        #   ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#
+        #   viewing_or_listing_folders_and_projects).
         # @param [Array<String>, String] analysis_query_access_selector_permissions
         #   Optional. The permissions to appear in result.
         # @param [Array<String>, String] analysis_query_access_selector_roles
@@ -62,16 +68,25 @@ module Google
         #   Required. The identity appear in the form of members in
         #   [IAM policy
         #   binding](https://cloud.google.com/iam/reference/rest/v1/Binding).
+        #   The examples of supported forms are:
+        #   "user:mike@example.com",
+        #   "group:admins@example.com",
+        #   "domain:google.com",
+        #   "serviceAccount:my-project-id@appspot.gserviceaccount.com".
+        #   Notice that wildcard characters (such as * and ?) are not supported.
+        #   You must give a specific identity.
         # @param [String] analysis_query_resource_selector_full_resource_name
         #   Required. The [full resource
-        #   name](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-        #   .
+        #   name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+        #   of a resource of [supported resource
+        #   types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#
+        #   analyzable_asset_types).
         # @param [Boolean] options_analyze_service_account_impersonation
         #   Optional. If true, the response will include access analysis from identities
         #   to
         #   resources via service account impersonation. This is a very expensive
         #   operation, because many derived queries will be executed. We highly
-        #   recommend you use ExportIamPolicyAnalysis rpc instead.
+        #   recommend you use AssetService.ExportIamPolicyAnalysis rpc instead.
         #   For example, if the request analyzes for which resources user A has
         #   permission P, and there's an IAM policy states user A has
         #   iam.serviceAccounts.getAccessToken permission to a service account SA,
@@ -175,6 +190,12 @@ module Google
         #   within
         #   the parent will be analyzed. This can only be an organization number (such
         #   as "organizations/123") or a folder number (such as "folders/123").
+        #   To know how to get organization id, visit [here
+        #   ](https://cloud.google.com/resource-manager/docs/creating-managing-
+        #   organization#retrieving_your_organization_id).
+        #   To know how to get folder id, visit [here
+        #   ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#
+        #   viewing_or_listing_folders_and_projects).
         # @param [Google::Apis::CloudassetV1p4beta1::ExportIamPolicyAnalysisRequest] export_iam_policy_analysis_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
