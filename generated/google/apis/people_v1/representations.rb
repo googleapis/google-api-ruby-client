@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FileAs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Gender
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +179,12 @@ module Google
       end
       
       class ListContactGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDirectoryPeopleResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -287,6 +299,12 @@ module Google
       end
       
       class Residence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchDirectoryPeopleResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -551,6 +569,15 @@ module Google
         end
       end
       
+      class FileAs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
+      
+          property :value, as: 'value'
+        end
+      end
+      
       class Gender
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -612,6 +639,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           property :next_sync_token, as: 'nextSyncToken'
           property :total_items, as: 'totalItems'
+        end
+      end
+      
+      class ListDirectoryPeopleResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          property :next_sync_token, as: 'nextSyncToken'
+          collection :people, as: 'people', class: Google::Apis::PeopleV1::Person, decorator: Google::Apis::PeopleV1::Person::Representation
+      
         end
       end
       
@@ -746,6 +783,8 @@ module Google
       
           property :etag, as: 'etag'
           collection :events, as: 'events', class: Google::Apis::PeopleV1::Event, decorator: Google::Apis::PeopleV1::Event::Representation
+      
+          collection :file_ases, as: 'fileAses', class: Google::Apis::PeopleV1::FileAs, decorator: Google::Apis::PeopleV1::FileAs::Representation
       
           collection :genders, as: 'genders', class: Google::Apis::PeopleV1::Gender, decorator: Google::Apis::PeopleV1::Gender::Representation
       
@@ -885,6 +924,16 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
           property :value, as: 'value'
+        end
+      end
+      
+      class SearchDirectoryPeopleResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :people, as: 'people', class: Google::Apis::PeopleV1::Person, decorator: Google::Apis::PeopleV1::Person::Representation
+      
+          property :total_size, as: 'totalSize'
         end
       end
       

@@ -780,6 +780,31 @@ module Google
         end
       end
       
+      # The name that should be used to sort the person in a list.
+      class FileAs
+        include Google::Apis::Core::Hashable
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The file-as value
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A person's gender.
       class Gender
         include Google::Apis::Core::Hashable
@@ -1019,6 +1044,40 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @next_sync_token = args[:next_sync_token] if args.key?(:next_sync_token)
           @total_items = args[:total_items] if args.key?(:total_items)
+        end
+      end
+      
+      # The response to a request for the authenticated user's domain directory.
+      class ListDirectoryPeopleResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A token, which can be sent as `sync_token` to retrieve changes since the
+        # last request. Request must set `request_sync_token` to return the sync
+        # token.
+        # Corresponds to the JSON property `nextSyncToken`
+        # @return [String]
+        attr_accessor :next_sync_token
+      
+        # The list of people in the domain directory.
+        # Corresponds to the JSON property `people`
+        # @return [Array<Google::Apis::PeopleV1::Person>]
+        attr_accessor :people
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @next_sync_token = args[:next_sync_token] if args.key?(:next_sync_token)
+          @people = args[:people] if args.key?(:people)
         end
       end
       
@@ -1514,6 +1573,11 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Event>]
         attr_accessor :events
       
+        # The person's file-ases.
+        # Corresponds to the JSON property `fileAses`
+        # @return [Array<Google::Apis::PeopleV1::FileAs>]
+        attr_accessor :file_ases
+      
         # The person's genders.
         # Corresponds to the JSON property `genders`
         # @return [Array<Google::Apis::PeopleV1::Gender>]
@@ -1645,6 +1709,7 @@ module Google
           @email_addresses = args[:email_addresses] if args.key?(:email_addresses)
           @etag = args[:etag] if args.key?(:etag)
           @events = args[:events] if args.key?(:events)
+          @file_ases = args[:file_ases] if args.key?(:file_ases)
           @genders = args[:genders] if args.key?(:genders)
           @im_clients = args[:im_clients] if args.key?(:im_clients)
           @interests = args[:interests] if args.key?(:interests)
@@ -2062,6 +2127,39 @@ module Google
           @current = args[:current] if args.key?(:current)
           @metadata = args[:metadata] if args.key?(:metadata)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # The response to a request for people in the authenticated user's domain
+      # directory that match the specified query.
+      class SearchDirectoryPeopleResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of people in the domain directory that match the query.
+        # Corresponds to the JSON property `people`
+        # @return [Array<Google::Apis::PeopleV1::Person>]
+        attr_accessor :people
+      
+        # The total number of items in the list without pagination.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @people = args[:people] if args.key?(:people)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       

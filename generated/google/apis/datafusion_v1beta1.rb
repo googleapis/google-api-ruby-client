@@ -34,7 +34,7 @@ module Google
     # @see https://cloud.google.com/data-fusion/docs
     module DatafusionV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20200311'
+      REVISION = '20200609'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

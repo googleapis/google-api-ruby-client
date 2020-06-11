@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAvailableVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -247,6 +253,15 @@ module Google
         end
       end
       
+      class ListAvailableVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :available_versions, as: 'availableVersions', class: Google::Apis::DatafusionV1beta1::Version, decorator: Google::Apis::DatafusionV1beta1::Version::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -378,6 +393,7 @@ module Google
       class Version
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_version, as: 'defaultVersion'
           property :version_number, as: 'versionNumber'
         end
       end

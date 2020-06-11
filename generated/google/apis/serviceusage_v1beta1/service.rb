@@ -251,6 +251,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generate service identity for service.
+        # @param [String] parent
+        #   Name of the consumer and service to generate an identity for.
+        #   The `GenerateServiceIdentity` methods currently only support projects.
+        #   An example name would be:
+        #   `projects/123/services/example.googleapis.com` where `123` is the
+        #   project number.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_service_service_identity(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}:generateServiceIdentity', options)
+          command.response_representation = Google::Apis::ServiceusageV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the service configuration and enabled state for a given service.
         # @param [String] name
         #   Name of the consumer and service to get the `ConsumerState` for.

@@ -718,6 +718,174 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Provides a list of domain profiles and domain contacts in the authenticated
+        # user's domain directory.
+        # @param [Array<String>, String] merge_sources
+        #   Optional. Additional data to merge into the directory sources if they are
+        #   connected
+        #   through verified join keys such as email addresses or phone numbers.
+        # @param [Fixnum] page_size
+        #   Optional. The number of people to include in the response. Valid values are
+        #   between 1 and 1000, inclusive. Defaults to 100 if not set or set to 0.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListDirectoryPeople` call.
+        #   Provide this to retrieve the subsequent page.
+        #   When paginating, all other parameters provided to `ListDirectoryPeople`
+        #   must match the call that provided the page token.
+        # @param [String] read_mask
+        #   Required. A field mask to restrict which fields on each person are returned.
+        #   Multiple
+        #   fields can be specified by separating them with commas. Valid values are:
+        #   * addresses
+        #   * ageRanges
+        #   * biographies
+        #   * birthdays
+        #   * coverPhotos
+        #   * emailAddresses
+        #   * events
+        #   * genders
+        #   * imClients
+        #   * interests
+        #   * locales
+        #   * memberships
+        #   * metadata
+        #   * names
+        #   * nicknames
+        #   * occupations
+        #   * organizations
+        #   * phoneNumbers
+        #   * photos
+        #   * relations
+        #   * residences
+        #   * sipAddresses
+        #   * skills
+        #   * urls
+        #   * userDefined
+        # @param [Boolean] request_sync_token
+        #   Optional. Whether the response should include `next_sync_token`, which can be
+        #   used to
+        #   get all changes since the last request. For subsequent sync requests use
+        #   the `sync_token` param instead.
+        # @param [Array<String>, String] sources
+        #   Required. Directory sources to return.
+        # @param [String] sync_token
+        #   Optional. A sync token, received from a previous `ListDirectoryPeople` call.
+        #   Provide this to retrieve only the resources changed since the last request.
+        #   When syncing, all other parameters provided to `ListDirectoryPeople`
+        #   must match the call that provided the sync token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PeopleV1::ListDirectoryPeopleResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PeopleV1::ListDirectoryPeopleResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_person_directory_people(merge_sources: nil, page_size: nil, page_token: nil, read_mask: nil, request_sync_token: nil, sources: nil, sync_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/people:listDirectoryPeople', options)
+          command.response_representation = Google::Apis::PeopleV1::ListDirectoryPeopleResponse::Representation
+          command.response_class = Google::Apis::PeopleV1::ListDirectoryPeopleResponse
+          command.query['mergeSources'] = merge_sources unless merge_sources.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['requestSyncToken'] = request_sync_token unless request_sync_token.nil?
+          command.query['sources'] = sources unless sources.nil?
+          command.query['syncToken'] = sync_token unless sync_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Provides a list of domain profiles and domain contacts in the authenticated
+        # user's domain directory that match the search query.
+        # @param [Array<String>, String] merge_sources
+        #   Optional. Additional data to merge into the directory sources if they are
+        #   connected
+        #   through verified join keys such as email addresses or phone numbers.
+        # @param [Fixnum] page_size
+        #   Optional. The number of people to include in the response. Valid values are
+        #   between 1 and 500, inclusive. Defaults to 100 if not set or set to 0.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `SearchDirectoryPeople` call.
+        #   Provide this to retrieve the subsequent page.
+        #   When paginating, all other parameters provided to `SearchDirectoryPeople`
+        #   must match the call that provided the page token.
+        # @param [String] query
+        #   Required. Prefix query that matches fields in the person. Does NOT use the
+        #   read_mask for determining what fields to match.
+        # @param [String] read_mask
+        #   Required. A field mask to restrict which fields on each person are returned.
+        #   Multiple
+        #   fields can be specified by separating them with commas. Valid values are:
+        #   * addresses
+        #   * ageRanges
+        #   * biographies
+        #   * birthdays
+        #   * coverPhotos
+        #   * emailAddresses
+        #   * events
+        #   * genders
+        #   * imClients
+        #   * interests
+        #   * locales
+        #   * memberships
+        #   * metadata
+        #   * names
+        #   * nicknames
+        #   * occupations
+        #   * organizations
+        #   * phoneNumbers
+        #   * photos
+        #   * relations
+        #   * residences
+        #   * sipAddresses
+        #   * skills
+        #   * urls
+        #   * userDefined
+        # @param [Array<String>, String] sources
+        #   Required. Directory sources to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PeopleV1::SearchDirectoryPeopleResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PeopleV1::SearchDirectoryPeopleResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_person_directory_people(merge_sources: nil, page_size: nil, page_token: nil, query: nil, read_mask: nil, sources: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/people:searchDirectoryPeople', options)
+          command.response_representation = Google::Apis::PeopleV1::SearchDirectoryPeopleResponse::Representation
+          command.response_class = Google::Apis::PeopleV1::SearchDirectoryPeopleResponse
+          command.query['mergeSources'] = merge_sources unless merge_sources.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['sources'] = sources unless sources.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Update contact data for an existing contact person. Any non-contact data
         # will not be modified.
         # The request throws a 400 error if `updatePersonFields` is not specified.

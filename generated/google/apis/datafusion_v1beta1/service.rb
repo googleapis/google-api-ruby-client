@@ -241,6 +241,9 @@ module Google
         #   Requests for policies with any conditional bindings must specify version 3.
         #   Policies without any conditional bindings may specify any valid value or
         #   leave the field unset.
+        #   To learn which resources support conditions in their IAM policies, see the
+        #   [IAM
+        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -394,7 +397,7 @@ module Google
         
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
-        # Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED
+        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -430,7 +433,7 @@ module Google
         
         # Returns permissions that a caller has on the specified resource.
         # If the resource does not exist, this will return an empty set of
-        # permissions, not a NOT_FOUND error.
+        # permissions, not a `NOT_FOUND` error.
         # Note: This operation is designed to be used for building permission-aware
         # UIs and command-line tools, not for authorization checking. This operation
         # may "fail open" without warning.
@@ -651,6 +654,50 @@ module Google
           command.response_class = Google::Apis::DatafusionV1beta1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists possible versions for Data Fusion instances in the specified project
+        # and location.
+        # @param [String] parent
+        #   Required. The project and location for which to retrieve instance information
+        #   in the format projects/`project`/locations/`location`.
+        # @param [Boolean] latest_patch_only
+        #   Whether or not to return the latest patch of every available minor version.
+        #   If true, only the latest patch will be returned. Ex. if allowed versions is
+        #   [6.1.1, 6.1.2, 6.2.0] then response will be [6.1.2, 6.2.0]
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return.
+        # @param [String] page_token
+        #   The next_page_token value to use if there are additional
+        #   results to retrieve for this list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatafusionV1beta1::ListAvailableVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatafusionV1beta1::ListAvailableVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_versions(parent, latest_patch_only: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/versions', options)
+          command.response_representation = Google::Apis::DatafusionV1beta1::ListAvailableVersionsResponse::Representation
+          command.response_class = Google::Apis::DatafusionV1beta1::ListAvailableVersionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['latestPatchOnly'] = latest_patch_only unless latest_patch_only.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
