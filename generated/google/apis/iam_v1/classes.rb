@@ -56,7 +56,7 @@ module Google
       # `
       # "audit_configs": [
       # `
-      # "service": "allServices"
+      # "service": "allServices",
       # "audit_log_configs": [
       # `
       # "log_type": "DATA_READ",
@@ -65,18 +65,18 @@ module Google
       # ]
       # `,
       # `
-      # "log_type": "DATA_WRITE",
+      # "log_type": "DATA_WRITE"
       # `,
       # `
-      # "log_type": "ADMIN_READ",
+      # "log_type": "ADMIN_READ"
       # `
       # ]
       # `,
       # `
-      # "service": "sampleservice.googleapis.com"
+      # "service": "sampleservice.googleapis.com",
       # "audit_log_configs": [
       # `
-      # "log_type": "DATA_READ",
+      # "log_type": "DATA_READ"
       # `,
       # `
       # "log_type": "DATA_WRITE",
@@ -149,7 +149,7 @@ module Google
       # ]
       # `,
       # `
-      # "log_type": "DATA_WRITE",
+      # "log_type": "DATA_WRITE"
       # `
       # ]
       # `
@@ -414,19 +414,15 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # A service account in the Identity and Access Management API.
-        # To create a service account, specify the `project_id` and the `account_id`
-        # for the account.  The `account_id` is unique within the project, and is used
-        # to generate the service account email address and a stable
-        # `unique_id`.
-        # If the account already exists, the account's resource name is returned
-        # in the format of projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`. The caller
-        # can use the name in other methods to access the account.
-        # All other methods can identify the service account using the format
-        # `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
-        # Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
-        # the account. The `ACCOUNT` value can be the `email` address or the
-        # `unique_id` of the service account.
+        # An IAM service account.
+        # A service account is an account for an application or a virtual machine (VM)
+        # instance, not a person. You can use a service account to call Google APIs. To
+        # learn more, read the [overview of service
+        # accounts](https://cloud.google.com/iam/help/service-accounts/overview).
+        # When you create a service account, you specify the project ID that owns the
+        # service account, as well as a name that must be unique within the project.
+        # IAM uses these values to create an email address that identifies the service
+        # account.
         # Corresponds to the JSON property `serviceAccount`
         # @return [Google::Apis::IamV1::ServiceAccount]
         attr_accessor :service_account
@@ -751,23 +747,24 @@ module Google
         end
       end
       
-      # The patch service account request.
+      # The request for
+      # PatchServiceAccount.
+      # You can patch only the `display_name` and `description` fields. You must use
+      # the `update_mask` field to specify which of these fields you want to patch.
+      # Only the fields specified in the request are guaranteed to be returned in
+      # the response. Other fields may be empty in the response.
       class PatchServiceAccountRequest
         include Google::Apis::Core::Hashable
       
-        # A service account in the Identity and Access Management API.
-        # To create a service account, specify the `project_id` and the `account_id`
-        # for the account.  The `account_id` is unique within the project, and is used
-        # to generate the service account email address and a stable
-        # `unique_id`.
-        # If the account already exists, the account's resource name is returned
-        # in the format of projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`. The caller
-        # can use the name in other methods to access the account.
-        # All other methods can identify the service account using the format
-        # `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
-        # Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
-        # the account. The `ACCOUNT` value can be the `email` address or the
-        # `unique_id` of the service account.
+        # An IAM service account.
+        # A service account is an account for an application or a virtual machine (VM)
+        # instance, not a person. You can use a service account to call Google APIs. To
+        # learn more, read the [overview of service
+        # accounts](https://cloud.google.com/iam/help/service-accounts/overview).
+        # When you create a service account, you specify the project ID that owns the
+        # service account, as well as a name that must be unique within the project.
+        # IAM uses these values to create an email address that identifies the service
+        # account.
         # Corresponds to the JSON property `serviceAccount`
         # @return [Google::Apis::IamV1::ServiceAccount]
         attr_accessor :service_account
@@ -1262,77 +1259,82 @@ module Google
         end
       end
       
-      # A service account in the Identity and Access Management API.
-      # To create a service account, specify the `project_id` and the `account_id`
-      # for the account.  The `account_id` is unique within the project, and is used
-      # to generate the service account email address and a stable
-      # `unique_id`.
-      # If the account already exists, the account's resource name is returned
-      # in the format of projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`. The caller
-      # can use the name in other methods to access the account.
-      # All other methods can identify the service account using the format
-      # `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
-      # Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
-      # the account. The `ACCOUNT` value can be the `email` address or the
-      # `unique_id` of the service account.
+      # An IAM service account.
+      # A service account is an account for an application or a virtual machine (VM)
+      # instance, not a person. You can use a service account to call Google APIs. To
+      # learn more, read the [overview of service
+      # accounts](https://cloud.google.com/iam/help/service-accounts/overview).
+      # When you create a service account, you specify the project ID that owns the
+      # service account, as well as a name that must be unique within the project.
+      # IAM uses these values to create an email address that identifies the service
+      # account.
       class ServiceAccount
         include Google::Apis::Core::Hashable
       
-        # Optional. A user-specified opaque description of the service account.
-        # Must be less than or equal to 256 UTF-8 bytes.
+        # Optional. A user-specified, human-readable description of the service account.
+        # The
+        # maximum length is 256 UTF-8 bytes.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # @OutputOnly A bool indicate if the service account is disabled.
-        # The field is currently in alpha phase.
+        # Output only. Whether the service account is disabled.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Optional. A user-specified name for the service account.
-        # Must be less than or equal to 100 UTF-8 bytes.
+        # Optional. A user-specified, human-readable name for the service account. The
+        # maximum
+        # length is 100 UTF-8 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # @OutputOnly The email address of the service account.
+        # Output only. The email address of the service account.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
       
-        # Optional. Note: `etag` is an inoperable legacy field that is only returned
-        # for backwards compatibility.
+        # Deprecated. Do not use.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
-        # The resource name of the service account in the following format:
-        # `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
-        # Requests using `-` as a wildcard for the `PROJECT_ID` will infer the
-        # project from the `account` and the `ACCOUNT` value can be the `email`
-        # address or the `unique_id` of the service account.
-        # In responses the resource name will always be in the format
-        # `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
+        # The resource name of the service account.
+        # Use one of the following formats:
+        # * `projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS``
+        # * `projects/`PROJECT_ID`/serviceAccounts/`UNIQUE_ID``
+        # As an alternative, you can use the `-` wildcard character instead of the
+        # project ID:
+        # * `projects/-/serviceAccounts/`EMAIL_ADDRESS``
+        # * `projects/-/serviceAccounts/`UNIQUE_ID``
+        # When possible, avoid using the `-` wildcard character, because it can cause
+        # response messages to contain misleading error codes. For example, if you
+        # try to get the service account
+        # `projects/-/serviceAccounts/fake@example.com`, which does not exist, the
+        # response contains an HTTP `403 Forbidden` error instead of a `404 Not
+        # Found` error.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # @OutputOnly The OAuth2 client id for the service account.
-        # This is used in conjunction with the OAuth2 clientconfig API to make
-        # three legged OAuth2 (3LO) flows to access the data of Google users.
+        # Output only. The OAuth 2.0 client ID for the service account.
         # Corresponds to the JSON property `oauth2ClientId`
         # @return [String]
         attr_accessor :oauth2_client_id
       
-        # @OutputOnly The id of the project that owns the service account.
+        # Output only. The ID of the project that owns the service account.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # @OutputOnly The unique and stable id of the service account.
+        # Output only. The unique, stable numeric ID for the service account.
+        # Each service account retains its unique ID even if you delete the service
+        # account. For example, if you delete a service account, then create a new
+        # service account with the same name, the new service account has a different
+        # unique ID than the deleted service account.
         # Corresponds to the JSON property `uniqueId`
         # @return [String]
         attr_accessor :unique_id
@@ -1589,7 +1591,15 @@ module Google
       class SignJwtRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The JWT payload to sign, a JSON JWT Claim set.
+        # Required. The JWT payload to sign. Must be a serialized JSON object that
+        # contains a
+        # JWT Claims Set. For example: ``"sub": "user@example.com", "iat": 313435``
+        # If the JWT Claims Set contains an expiration time (`exp`) claim, it must be
+        # an integer timestamp that is not in the past and no more than 1 hour in the
+        # future.
+        # If the JWT Claims Set does not contain an expiration time (`exp`) claim,
+        # this claim is added automatically, with a timestamp that is 1 hour in the
+        # future.
         # Corresponds to the JSON property `payload`
         # @return [String]
         attr_accessor :payload
@@ -1708,19 +1718,15 @@ module Google
       class UndeleteServiceAccountResponse
         include Google::Apis::Core::Hashable
       
-        # A service account in the Identity and Access Management API.
-        # To create a service account, specify the `project_id` and the `account_id`
-        # for the account.  The `account_id` is unique within the project, and is used
-        # to generate the service account email address and a stable
-        # `unique_id`.
-        # If the account already exists, the account's resource name is returned
-        # in the format of projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`. The caller
-        # can use the name in other methods to access the account.
-        # All other methods can identify the service account using the format
-        # `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
-        # Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
-        # the account. The `ACCOUNT` value can be the `email` address or the
-        # `unique_id` of the service account.
+        # An IAM service account.
+        # A service account is an account for an application or a virtual machine (VM)
+        # instance, not a person. You can use a service account to call Google APIs. To
+        # learn more, read the [overview of service
+        # accounts](https://cloud.google.com/iam/help/service-accounts/overview).
+        # When you create a service account, you specify the project ID that owns the
+        # service account, as well as a name that must be unique within the project.
+        # IAM uses these values to create an email address that identifies the service
+        # account.
         # Corresponds to the JSON property `restoredAccount`
         # @return [Google::Apis::IamV1::ServiceAccount]
         attr_accessor :restored_account

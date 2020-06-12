@@ -247,9 +247,10 @@ module Google
       
         # Required. The JWT payload to sign. Must be a serialized JSON object that
         # contains a
-        # JWT Claim Set. For example: ``"sub": "user@example.com", "iat": 313435``
-        # If the claim set contains an `exp` claim, it must be an integer timestamp
-        # that is not in the past and at most 12 hours in the future.
+        # JWT Claims Set. For example: ``"sub": "user@example.com", "iat": 313435``
+        # If the JWT Claims Set contains an expiration time (`exp`) claim, it must be
+        # an integer timestamp that is not in the past and no more than 12 hours in
+        # the future.
         # Corresponds to the JSON property `payload`
         # @return [String]
         attr_accessor :payload

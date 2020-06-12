@@ -2714,7 +2714,7 @@ module Google
         # @return [String]
         attr_accessor :js_tracker_url
       
-        # Output only. The IDs of the line items this creative associated with.
+        # Output only. The IDs of the line items this creative is associated with.
         # To associate a creative to a line item, use
         # LineItem.creative_ids instead.
         # Corresponds to the JSON property `lineItemIds`

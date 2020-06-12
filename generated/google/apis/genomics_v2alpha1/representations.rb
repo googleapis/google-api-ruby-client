@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +227,12 @@ module Google
       end
       
       class UnexpectedExitStatusEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadSosReportResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -388,6 +400,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cause, as: 'cause'
           property :code, as: 'code'
+        end
+      end
+      
+      class HttpBody
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_type, as: 'contentType'
+          property :data, :base64 => true, as: 'data'
+          collection :extensions, as: 'extensions'
         end
       end
       
@@ -570,6 +591,12 @@ module Google
         end
       end
       
+      class UploadSosReportResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class VirtualMachine
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -580,6 +607,7 @@ module Google
           property :cpu_platform, as: 'cpuPlatform'
           collection :disks, as: 'disks', class: Google::Apis::GenomicsV2alpha1::Disk, decorator: Google::Apis::GenomicsV2alpha1::Disk::Representation
       
+          collection :docker_cache_images, as: 'dockerCacheImages'
           property :enable_stackdriver_monitoring, as: 'enableStackdriverMonitoring'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'

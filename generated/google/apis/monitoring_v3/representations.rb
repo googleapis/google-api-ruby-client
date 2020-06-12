@@ -1089,6 +1089,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :time_series, as: 'timeSeries', class: Google::Apis::MonitoringV3::TimeSeries, decorator: Google::Apis::MonitoringV3::TimeSeries::Representation
       
+          property :unit, as: 'unit'
         end
       end
       

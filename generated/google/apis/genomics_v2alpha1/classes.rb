@@ -602,6 +602,67 @@ module Google
         end
       end
       
+      # Message that represents an arbitrary HTTP body. It should only be used for
+      # payload formats that can't be represented as JSON, such as raw binary or
+      # an HTML page.
+      # This message can be used both in streaming and non-streaming API methods in
+      # the request as well as the response.
+      # It can be used as a top-level request field, which is convenient if one
+      # wants to extract parameters from either the URL or HTTP template into the
+      # request fields and also want access to the raw HTTP body.
+      # Example:
+      # message GetResourceRequest `
+      # // A unique request id.
+      # string request_id = 1;
+      # // The raw HTTP body is bound to this field.
+      # google.api.HttpBody http_body = 2;
+      # `
+      # service ResourceService `
+      # rpc GetResource(GetResourceRequest) returns (google.api.HttpBody);
+      # rpc UpdateResource(google.api.HttpBody) returns
+      # (google.protobuf.Empty);
+      # `
+      # Example with streaming methods:
+      # service CaldavService `
+      # rpc GetCalendar(stream google.api.HttpBody)
+      # returns (stream google.api.HttpBody);
+      # rpc UpdateCalendar(stream google.api.HttpBody)
+      # returns (stream google.api.HttpBody);
+      # `
+      # Use of this type only changes how the request and response bodies are
+      # handled, all other features will continue to work unchanged.
+      class HttpBody
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP Content-Type header value specifying the content type of the body.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # The HTTP request/response body as raw binary.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Application specific response metadata. Must be set in the first response
+        # for streaming APIs.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :extensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @data = args[:data] if args.key?(:data)
+          @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -1253,6 +1314,19 @@ module Google
         end
       end
       
+      # The response to the UploadSOSReport method.
+      class UploadSosReportResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Carries information about a Compute Engine VM resource.
       class VirtualMachine
         include Google::Apis::Core::Hashable
@@ -1298,6 +1372,15 @@ module Google
         # Corresponds to the JSON property `disks`
         # @return [Array<Google::Apis::GenomicsV2alpha1::Disk>]
         attr_accessor :disks
+      
+        # The Compute Engine Disk Images to use as a Docker cache. The disks will be
+        # mounted into the Docker folder in a way that the images present in the
+        # cache will not need to be pulled. The digests of the cached images must
+        # match those of the tags used or the latest version will still be pulled.
+        # Only a single image is supported.
+        # Corresponds to the JSON property `dockerCacheImages`
+        # @return [Array<String>]
+        attr_accessor :docker_cache_images
       
         # Whether Stackdriver monitoring should be enabled on the VM.
         # Corresponds to the JSON property `enableStackdriverMonitoring`
@@ -1364,6 +1447,7 @@ module Google
           @boot_image = args[:boot_image] if args.key?(:boot_image)
           @cpu_platform = args[:cpu_platform] if args.key?(:cpu_platform)
           @disks = args[:disks] if args.key?(:disks)
+          @docker_cache_images = args[:docker_cache_images] if args.key?(:docker_cache_images)
           @enable_stackdriver_monitoring = args[:enable_stackdriver_monitoring] if args.key?(:enable_stackdriver_monitoring)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)

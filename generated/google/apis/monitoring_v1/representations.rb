@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StatisticalTimeSeriesFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Text
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -405,6 +411,14 @@ module Google
         end
       end
       
+      class StatisticalTimeSeriesFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_time_series, as: 'numTimeSeries'
+          property :ranking_method, as: 'rankingMethod'
+        end
+      end
+      
       class Text
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -433,6 +447,8 @@ module Google
       
           property :secondary_aggregation, as: 'secondaryAggregation', class: Google::Apis::MonitoringV1::Aggregation, decorator: Google::Apis::MonitoringV1::Aggregation::Representation
       
+          property :statistical_time_series_filter, as: 'statisticalTimeSeriesFilter', class: Google::Apis::MonitoringV1::StatisticalTimeSeriesFilter, decorator: Google::Apis::MonitoringV1::StatisticalTimeSeriesFilter::Representation
+      
         end
       end
       
@@ -446,6 +462,8 @@ module Google
           property :pick_time_series_filter, as: 'pickTimeSeriesFilter', class: Google::Apis::MonitoringV1::PickTimeSeriesFilter, decorator: Google::Apis::MonitoringV1::PickTimeSeriesFilter::Representation
       
           property :secondary_aggregation, as: 'secondaryAggregation', class: Google::Apis::MonitoringV1::Aggregation, decorator: Google::Apis::MonitoringV1::Aggregation::Representation
+      
+          property :statistical_time_series_filter, as: 'statisticalTimeSeriesFilter', class: Google::Apis::MonitoringV1::StatisticalTimeSeriesFilter, decorator: Google::Apis::MonitoringV1::StatisticalTimeSeriesFilter::Representation
       
         end
       end

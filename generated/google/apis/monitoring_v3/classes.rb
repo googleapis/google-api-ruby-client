@@ -1990,6 +1990,15 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::TimeSeries>]
         attr_accessor :time_series
       
+        # The unit in which all time_series point values are reported. unit follows the
+        # UCUM format for units as seen in https://unitsofmeasure.org/ucum.html. If
+        # different time_series have different units (for example, because they come
+        # from different metric types, or a unit is absent), then unit will be "`
+        # not_a_unit`".
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1999,6 +2008,7 @@ module Google
           @execution_errors = args[:execution_errors] if args.key?(:execution_errors)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @time_series = args[:time_series] if args.key?(:time_series)
+          @unit = args[:unit] if args.key?(:unit)
         end
       end
       

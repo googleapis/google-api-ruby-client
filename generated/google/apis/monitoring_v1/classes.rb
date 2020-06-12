@@ -815,6 +815,36 @@ module Google
         end
       end
       
+      # A filter that ranks streams based on their statistical relation to other
+      # streams in a request. Note: This field is deprecated and completely ignored by
+      # the API.
+      class StatisticalTimeSeriesFilter
+        include Google::Apis::Core::Hashable
+      
+        # How many time series to output.
+        # Corresponds to the JSON property `numTimeSeries`
+        # @return [Fixnum]
+        attr_accessor :num_time_series
+      
+        # rankingMethod is applied to a set of time series, and then the produced value
+        # for each individual time series is used to compare a given time series to
+        # others. These are methods that cannot be applied stream-by-stream, but rather
+        # require the full context of a request to evaluate time series.
+        # Corresponds to the JSON property `rankingMethod`
+        # @return [String]
+        attr_accessor :ranking_method
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_time_series = args[:num_time_series] if args.key?(:num_time_series)
+          @ranking_method = args[:ranking_method] if args.key?(:ranking_method)
+        end
+      end
+      
       # A widget that displays textual content.
       class Text
         include Google::Apis::Core::Hashable
@@ -950,6 +980,13 @@ module Google
         # @return [Google::Apis::MonitoringV1::Aggregation]
         attr_accessor :secondary_aggregation
       
+        # A filter that ranks streams based on their statistical relation to other
+        # streams in a request. Note: This field is deprecated and completely ignored by
+        # the API.
+        # Corresponds to the JSON property `statisticalTimeSeriesFilter`
+        # @return [Google::Apis::MonitoringV1::StatisticalTimeSeriesFilter]
+        attr_accessor :statistical_time_series_filter
+      
         def initialize(**args)
            update!(**args)
         end
@@ -960,6 +997,7 @@ module Google
           @filter = args[:filter] if args.key?(:filter)
           @pick_time_series_filter = args[:pick_time_series_filter] if args.key?(:pick_time_series_filter)
           @secondary_aggregation = args[:secondary_aggregation] if args.key?(:secondary_aggregation)
+          @statistical_time_series_filter = args[:statistical_time_series_filter] if args.key?(:statistical_time_series_filter)
         end
       end
       
@@ -1016,6 +1054,13 @@ module Google
         # @return [Google::Apis::MonitoringV1::Aggregation]
         attr_accessor :secondary_aggregation
       
+        # A filter that ranks streams based on their statistical relation to other
+        # streams in a request. Note: This field is deprecated and completely ignored by
+        # the API.
+        # Corresponds to the JSON property `statisticalTimeSeriesFilter`
+        # @return [Google::Apis::MonitoringV1::StatisticalTimeSeriesFilter]
+        attr_accessor :statistical_time_series_filter
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1026,6 +1071,7 @@ module Google
           @numerator = args[:numerator] if args.key?(:numerator)
           @pick_time_series_filter = args[:pick_time_series_filter] if args.key?(:pick_time_series_filter)
           @secondary_aggregation = args[:secondary_aggregation] if args.key?(:secondary_aggregation)
+          @statistical_time_series_filter = args[:statistical_time_series_filter] if args.key?(:statistical_time_series_filter)
         end
       end
       
