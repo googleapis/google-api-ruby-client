@@ -457,7 +457,7 @@ module Google
         end
       end
       
-      # 
+      # A policy constraining the storage of messages published to the topic.
       class MessageStoragePolicy
         include Google::Apis::Core::Hashable
       
@@ -937,6 +937,40 @@ module Google
         end
       end
       
+      # A policy that specifies how Cloud Pub/Sub retries message delivery.
+      # Retry delay will be exponential based on provided minimum and maximum
+      # backoffs. https://en.wikipedia.org/wiki/Exponential_backoff.
+      # RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded
+      # events for a given message.
+      # Retry Policy is implemented on a best effort basis. At times, the delay
+      # between consecutive deliveries may not match the configuration. That is,
+      # delay can be more or less than configured backoff.
+      class RetryPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The maximum delay between consecutive deliveries of a given message.
+        # Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+        # Corresponds to the JSON property `maximumBackoff`
+        # @return [String]
+        attr_accessor :maximum_backoff
+      
+        # The minimum delay between consecutive deliveries of a given message.
+        # Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+        # Corresponds to the JSON property `minimumBackoff`
+        # @return [String]
+        attr_accessor :minimum_backoff
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maximum_backoff = args[:maximum_backoff] if args.key?(:maximum_backoff)
+          @minimum_backoff = args[:minimum_backoff] if args.key?(:minimum_backoff)
+        end
+      end
+      
       # Request for the `Seek` method.
       class SeekRequest
         include Google::Apis::Core::Hashable
@@ -1161,9 +1195,6 @@ module Google
         # then only `PubsubMessage`s whose `attributes` field matches the filter are
         # delivered on this subscription. If empty, then no messages are filtered
         # out.
-        # <b>EXPERIMENTAL:</b> This feature is part of a closed alpha release. This
-        # API might be changed in backward-incompatible ways and is not recommended
-        # for production use. It is not subject to any SLA or deprecation policy.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1211,6 +1242,18 @@ module Google
         attr_accessor :retain_acked_messages
         alias_method :retain_acked_messages?, :retain_acked_messages
       
+        # A policy that specifies how Cloud Pub/Sub retries message delivery.
+        # Retry delay will be exponential based on provided minimum and maximum
+        # backoffs. https://en.wikipedia.org/wiki/Exponential_backoff.
+        # RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded
+        # events for a given message.
+        # Retry Policy is implemented on a best effort basis. At times, the delay
+        # between consecutive deliveries may not match the configuration. That is,
+        # delay can be more or less than configured backoff.
+        # Corresponds to the JSON property `retryPolicy`
+        # @return [Google::Apis::PubsubV1::RetryPolicy]
+        attr_accessor :retry_policy
+      
         # Required. The name of the topic from which this subscription is receiving
         # messages.
         # Format is `projects/`project`/topics/`topic``.
@@ -1235,6 +1278,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @push_config = args[:push_config] if args.key?(:push_config)
           @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
+          @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
           @topic = args[:topic] if args.key?(:topic)
         end
       end
@@ -1298,9 +1342,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Policy constraining the set of Google Cloud Platform regions where messages
-        # published to the topic may be stored. If not present, then no constraints
-        # are in effect.
+        # A policy constraining the storage of messages published to the topic.
         # Corresponds to the JSON property `messageStoragePolicy`
         # @return [Google::Apis::PubsubV1::MessageStoragePolicy]
         attr_accessor :message_storage_policy

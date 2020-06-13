@@ -5433,9 +5433,9 @@ module Google
         attr_accessor :options
       
         # Physical block size of the persistent disk, in bytes. If not present in a
-        # request, a default value is used. Currently supported sizes are 4096 and 16384,
-        # other sizes may be added in the future. If an unsupported value is requested,
-        # the error message will list the supported values for the caller's project.
+        # request, a default value is used. The currently supported size is 4096, other
+        # sizes may be added in the future. If an unsupported value is requested, the
+        # error message will list the supported values for the caller's project.
         # Corresponds to the JSON property `physicalBlockSizeBytes`
         # @return [Fixnum]
         attr_accessor :physical_block_size_bytes
@@ -13464,6 +13464,13 @@ module Google
       class InstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
+        # Flag to update all instances instead of specified list of ?instances?. If the
+        # flag is set to true then the instances may not be specified in the request.
+        # Corresponds to the JSON property `allInstances`
+        # @return [Boolean]
+        attr_accessor :all_instances
+        alias_method :all_instances?, :all_instances
+      
         # The list of URLs of one or more instances for which you want to apply updates.
         # Each URL can be a full URL or a partial URL, such as zones/[ZONE]/instances/[
         # INSTANCE_NAME].
@@ -13507,6 +13514,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances = args[:all_instances] if args.key?(:all_instances)
           @instances = args[:instances] if args.key?(:instances)
           @maximal_action = args[:maximal_action] if args.key?(:maximal_action)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
@@ -26614,6 +26622,13 @@ module Google
       class RegionInstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
+        # Flag to update all instances instead of specified list of ?instances?. If the
+        # flag is set to true then the instances may not be specified in the request.
+        # Corresponds to the JSON property `allInstances`
+        # @return [Boolean]
+        attr_accessor :all_instances
+        alias_method :all_instances?, :all_instances
+      
         # The list of URLs of one or more instances for which you want to apply updates.
         # Each URL can be a full URL or a partial URL, such as zones/[ZONE]/instances/[
         # INSTANCE_NAME].
@@ -26657,6 +26672,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances = args[:all_instances] if args.key?(:all_instances)
           @instances = args[:instances] if args.key?(:instances)
           @maximal_action = args[:maximal_action] if args.key?(:maximal_action)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
@@ -28076,6 +28092,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # An InstanceSchedulePolicy specifies when and how frequent certain operations
+        # are performed on the instance.
+        # Corresponds to the JSON property `instanceSchedulePolicy`
+        # @return [Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicy]
+        attr_accessor :instance_schedule_policy
+      
         # [Output Only] Type of the resource. Always compute#resource_policies for
         # resource policies.
         # Corresponds to the JSON property `kind`
@@ -28135,6 +28157,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @group_placement_policy = args[:group_placement_policy] if args.key?(:group_placement_policy)
           @id = args[:id] if args.key?(:id)
+          @instance_schedule_policy = args[:instance_schedule_policy] if args.key?(:instance_schedule_policy)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
@@ -28390,6 +28413,59 @@ module Google
         end
       end
       
+      # An InstanceSchedulePolicy specifies when and how frequent certain operations
+      # are performed on the instance.
+      class ResourcePolicyInstanceSchedulePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Schedule for the instance operation.
+        # Corresponds to the JSON property `vmStartSchedule`
+        # @return [Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicySchedule]
+        attr_accessor :vm_start_schedule
+      
+        # Schedule for the instance operation.
+        # Corresponds to the JSON property `vmStopSchedule`
+        # @return [Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicySchedule]
+        attr_accessor :vm_stop_schedule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @vm_start_schedule = args[:vm_start_schedule] if args.key?(:vm_start_schedule)
+          @vm_stop_schedule = args[:vm_stop_schedule] if args.key?(:vm_stop_schedule)
+        end
+      end
+      
+      # Schedule for the instance operation.
+      class ResourcePolicyInstanceSchedulePolicySchedule
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the frequency for the operation, using the unix-cron format.
+        # Corresponds to the JSON property `schedule`
+        # @return [String]
+        attr_accessor :schedule
+      
+        # Specifies the time zone to be used in interpreting Schedule.schedule. The
+        # value of this field must be a time zone name from the tz database: http://en.
+        # wikipedia.org/wiki/Tz_database.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schedule = args[:schedule] if args.key?(:schedule)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
       # 
       class ResourcePolicyList
         include Google::Apis::Core::Hashable
@@ -28616,6 +28692,11 @@ module Google
       class ResourcePolicySnapshotSchedulePolicySnapshotProperties
         include Google::Apis::Core::Hashable
       
+        # Chain name that the snapshot is created in.
+        # Corresponds to the JSON property `chainName`
+        # @return [String]
+        attr_accessor :chain_name
+      
         # Indication to perform a 'guest aware' snapshot.
         # Corresponds to the JSON property `guestFlush`
         # @return [Boolean]
@@ -28640,6 +28721,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chain_name = args[:chain_name] if args.key?(:chain_name)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
           @labels = args[:labels] if args.key?(:labels)
           @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
@@ -32235,6 +32317,11 @@ module Google
         attr_accessor :auto_created
         alias_method :auto_created?, :auto_created
       
+        # Chain name should conform to RFC1035.
+        # Corresponds to the JSON property `chainName`
+        # @return [String]
+        attr_accessor :chain_name
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -32381,6 +32468,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_created = args[:auto_created] if args.key?(:auto_created)
+          @chain_name = args[:chain_name] if args.key?(:chain_name)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)

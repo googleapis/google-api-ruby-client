@@ -3730,6 +3730,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourcePolicyInstanceSchedulePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyInstanceSchedulePolicySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourcePolicyList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -8487,6 +8499,7 @@ module Google
       class InstanceGroupManagersApplyUpdatesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances, as: 'allInstances'
           collection :instances, as: 'instances'
           property :maximal_action, as: 'maximalAction'
           property :minimal_action, as: 'minimalAction'
@@ -11881,6 +11894,7 @@ module Google
       class RegionInstanceGroupManagersApplyUpdatesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances, as: 'allInstances'
           collection :instances, as: 'instances'
           property :maximal_action, as: 'maximalAction'
           property :minimal_action, as: 'minimalAction'
@@ -12282,6 +12296,8 @@ module Google
           property :group_placement_policy, as: 'groupPlacementPolicy', class: Google::Apis::ComputeAlpha::ResourcePolicyGroupPlacementPolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicyGroupPlacementPolicy::Representation
       
           property :id, :numeric_string => true, as: 'id'
+          property :instance_schedule_policy, as: 'instanceSchedulePolicy', class: Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicy, decorator: Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicy::Representation
+      
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'
@@ -12358,6 +12374,24 @@ module Google
         end
       end
       
+      class ResourcePolicyInstanceSchedulePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vm_start_schedule, as: 'vmStartSchedule', class: Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicySchedule, decorator: Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicySchedule::Representation
+      
+          property :vm_stop_schedule, as: 'vmStopSchedule', class: Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicySchedule, decorator: Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicySchedule::Representation
+      
+        end
+      end
+      
+      class ResourcePolicyInstanceSchedulePolicySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schedule, as: 'schedule'
+          property :time_zone, as: 'timeZone'
+        end
+      end
+      
       class ResourcePolicyList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12427,6 +12461,7 @@ module Google
       class ResourcePolicySnapshotSchedulePolicySnapshotProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chain_name, as: 'chainName'
           property :guest_flush, as: 'guestFlush'
           hash :labels, as: 'labels'
           collection :storage_locations, as: 'storageLocations'
@@ -13306,6 +13341,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_created, as: 'autoCreated'
+          property :chain_name, as: 'chainName'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'

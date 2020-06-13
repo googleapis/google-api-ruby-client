@@ -22,7 +22,8 @@ module Google
     module GroupsmigrationV1
       # Groups Migration API
       #
-      # Groups Migration Api.
+      # The Groups Migration API allows domain administrators to archive
+      #  emails into Google groups.
       #
       # @example
       #    require 'google/apis/groupsmigration_v1'
@@ -38,16 +39,12 @@ module Google
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'groups/v1/groups/')
+          super('https://www.googleapis.com/', '')
           @batch_path = 'batch/groupsmigration/v1'
         end
         
@@ -57,10 +54,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [IO, String] upload_source
         #   IO stream or filename containing content to upload
         # @param [String] content_type
@@ -77,11 +72,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_archive(group_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_archive(group_id, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command = make_simple_command(:post, '{groupId}/archive', options)
+            command = make_simple_command(:post, 'groups/v1/groups/{groupId}/archive', options)
           else
-            command = make_upload_command(:post, '{groupId}/archive', options)
+            command = make_upload_command(:post, 'groups/v1/groups/{groupId}/archive', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -90,7 +85,6 @@ module Google
           command.params['groupId'] = group_id unless group_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -99,7 +93,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end

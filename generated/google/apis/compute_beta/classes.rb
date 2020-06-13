@@ -4931,9 +4931,9 @@ module Google
         attr_accessor :options
       
         # Physical block size of the persistent disk, in bytes. If not present in a
-        # request, a default value is used. Currently supported sizes are 4096 and 16384,
-        # other sizes may be added in the future. If an unsupported value is requested,
-        # the error message will list the supported values for the caller's project.
+        # request, a default value is used. The currently supported size is 4096, other
+        # sizes may be added in the future. If an unsupported value is requested, the
+        # error message will list the supported values for the caller's project.
         # Corresponds to the JSON property `physicalBlockSizeBytes`
         # @return [Fixnum]
         attr_accessor :physical_block_size_bytes
@@ -25369,6 +25369,11 @@ module Google
       class ResourcePolicySnapshotSchedulePolicySnapshotProperties
         include Google::Apis::Core::Hashable
       
+        # Chain name that the snapshot is created in.
+        # Corresponds to the JSON property `chainName`
+        # @return [String]
+        attr_accessor :chain_name
+      
         # Indication to perform a 'guest aware' snapshot.
         # Corresponds to the JSON property `guestFlush`
         # @return [Boolean]
@@ -25393,6 +25398,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chain_name = args[:chain_name] if args.key?(:chain_name)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
           @labels = args[:labels] if args.key?(:labels)
           @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
@@ -28291,6 +28297,11 @@ module Google
         attr_accessor :auto_created
         alias_method :auto_created?, :auto_created
       
+        # Chain name should conform to RFC1035.
+        # Corresponds to the JSON property `chainName`
+        # @return [String]
+        attr_accessor :chain_name
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -28425,6 +28436,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_created = args[:auto_created] if args.key?(:auto_created)
+          @chain_name = args[:chain_name] if args.key?(:chain_name)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)

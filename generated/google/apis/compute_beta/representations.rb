@@ -11165,6 +11165,7 @@ module Google
       class ResourcePolicySnapshotSchedulePolicySnapshotProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chain_name, as: 'chainName'
           property :guest_flush, as: 'guestFlush'
           hash :labels, as: 'labels'
           collection :storage_locations, as: 'storageLocations'
@@ -11872,6 +11873,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_created, as: 'autoCreated'
+          property :chain_name, as: 'chainName'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'

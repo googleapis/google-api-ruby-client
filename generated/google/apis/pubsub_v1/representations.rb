@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RetryPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SeekRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -445,6 +451,14 @@ module Google
         end
       end
       
+      class RetryPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maximum_backoff, as: 'maximumBackoff'
+          property :minimum_backoff, as: 'minimumBackoff'
+        end
+      end
+      
       class SeekRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -492,6 +506,8 @@ module Google
           property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1::PushConfig, decorator: Google::Apis::PubsubV1::PushConfig::Representation
       
           property :retain_acked_messages, as: 'retainAckedMessages'
+          property :retry_policy, as: 'retryPolicy', class: Google::Apis::PubsubV1::RetryPolicy, decorator: Google::Apis::PubsubV1::RetryPolicy::Representation
+      
           property :topic, as: 'topic'
         end
       end

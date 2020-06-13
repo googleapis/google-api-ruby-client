@@ -20,12 +20,13 @@ module Google
   module Apis
     # Groups Migration API
     #
-    # Groups Migration Api.
+    # The Groups Migration API allows domain administrators to archive
+    # emails into Google groups.
     #
     # @see https://developers.google.com/google-apps/groups-migration/
     module GroupsmigrationV1
       VERSION = 'V1'
-      REVISION = '20180803'
+      REVISION = '20200608'
 
       # Manage messages in groups on your domain
       AUTH_APPS_GROUPS_MIGRATION = 'https://www.googleapis.com/auth/apps.groups.migration'
