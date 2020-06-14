@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Play Custom App Publishing API
     #
-    # An API to publish custom Android apps.
+    # API to create and publish custom Android apps
     #
-    # @see https://developers.google.com/android/work/play/custom-app-api
+    # @see https://developers.google.com/android/work/play/custom-app-api/
     module PlaycustomappV1
       VERSION = 'V1'
-      REVISION = '20170622'
+      REVISION = '20200611'
 
       # View and manage your Google Play Developer account
       AUTH_ANDROIDPUBLISHER = 'https://www.googleapis.com/auth/androidpublisher'

@@ -31,6 +31,12 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Output only. Package name of the created Android app.
+        # Only present in the API response.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
         # Title for the Android app.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -43,6 +49,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @package_name = args[:package_name] if args.key?(:package_name)
           @title = args[:title] if args.key?(:title)
         end
       end

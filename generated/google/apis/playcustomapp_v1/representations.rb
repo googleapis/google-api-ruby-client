@@ -32,6 +32,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :language_code, as: 'languageCode'
+          property :package_name, as: 'packageName'
           property :title, as: 'title'
         end
       end
