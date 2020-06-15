@@ -237,6 +237,119 @@ module Google
         end
       end
       
+      # Error information explaining why a package was not imported.
+      class GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ArtifactregistryV1beta1::Status]
+        attr_accessor :error
+      
+        # Google Cloud Storage location for the input content.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::ArtifactregistryV1beta1::GoogleDevtoolsArtifactregistryV1alpha1GcsSource]
+        attr_accessor :gcs_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
+      # Google Cloud Storage location for the input content.
+      class GoogleDevtoolsArtifactregistryV1alpha1GcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
+        # Corresponds to the JSON property `uris`
+        # @return [Array<String>]
+        attr_accessor :uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uris = args[:uris] if args.key?(:uris)
+        end
+      end
+      
+      # The response message from importing artifacts.
+      class GoogleDevtoolsArtifactregistryV1alpha1ImportArtifactsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Detailed error info for packages that were not imported.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::ArtifactregistryV1beta1::GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo>]
+        attr_accessor :errors
+      
+        # The packages updated.
+        # Corresponds to the JSON property `packages`
+        # @return [Array<Google::Apis::ArtifactregistryV1beta1::GoogleDevtoolsArtifactregistryV1alpha1Package>]
+        attr_accessor :packages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @packages = args[:packages] if args.key?(:packages)
+        end
+      end
+      
+      # Packages are named collections of versions.
+      class GoogleDevtoolsArtifactregistryV1alpha1Package
+        include Google::Apis::Core::Hashable
+      
+        # The time when the package was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The display name of the package.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The name of the package, for example:
+        # "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The time when the package was last updated. This includes publishing a new
+        # version of the package.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # A hash of file content.
       class HashProp
         include Google::Apis::Core::Hashable
