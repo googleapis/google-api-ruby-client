@@ -609,7 +609,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A URL pointing to a related entry in an issue tracking system.
-        # Example: https://github.com/user/project/issues/4
+        # Example: `https://github.com/user/project/issues/4`
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url

@@ -2149,6 +2149,8 @@ module Google
       
         # The description of the page element. Combined with title to display alt
         # text.
+        # The field is not supported for Group
+        # elements.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -2203,6 +2205,8 @@ module Google
       
         # The title of the page element. Combined with description to display alt
         # text.
+        # The field is not supported for Group
+        # elements.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title

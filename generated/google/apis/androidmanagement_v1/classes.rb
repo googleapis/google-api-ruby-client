@@ -446,6 +446,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :block_after_days
       
+        # Specifies the scope of this BlockAction. Only applicable to devices that are
+        # company-owned.
+        # Corresponds to the JSON property `blockScope`
+        # @return [String]
+        attr_accessor :block_scope
+      
         def initialize(**args)
            update!(**args)
         end
@@ -453,6 +459,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @block_after_days = args[:block_after_days] if args.key?(:block_after_days)
+          @block_scope = args[:block_scope] if args.key?(:block_scope)
         end
       end
       
@@ -776,6 +783,11 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::NonComplianceDetail>]
         attr_accessor :non_compliance_details
       
+        # Ownership of the managed device.
+        # Corresponds to the JSON property `ownership`
+        # @return [String]
+        attr_accessor :ownership
+      
         # Whether the device is compliant with its policy.
         # Corresponds to the JSON property `policyCompliant`
         # @return [Boolean]
@@ -872,6 +884,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_info = args[:network_info] if args.key?(:network_info)
           @non_compliance_details = args[:non_compliance_details] if args.key?(:non_compliance_details)
+          @ownership = args[:ownership] if args.key?(:ownership)
           @policy_compliant = args[:policy_compliant] if args.key?(:policy_compliant)
           @policy_name = args[:policy_name] if args.key?(:policy_name)
           @power_management_events = args[:power_management_events] if args.key?(:power_management_events)
@@ -1035,6 +1048,11 @@ module Google
         # @return [String]
         attr_accessor :additional_data
       
+        # Controls personal usage on devices provisioned using this enrollment token.
+        # Corresponds to the JSON property `allowPersonalUsage`
+        # @return [String]
+        attr_accessor :allow_personal_usage
+      
         # The length of time the enrollment token is valid, ranging from 1 minute to 30
         # days. If not specified, the default duration is 1 hour.
         # Corresponds to the JSON property `duration`
@@ -1098,6 +1116,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_data = args[:additional_data] if args.key?(:additional_data)
+          @allow_personal_usage = args[:allow_personal_usage] if args.key?(:allow_personal_usage)
           @duration = args[:duration] if args.key?(:duration)
           @expiration_timestamp = args[:expiration_timestamp] if args.key?(:expiration_timestamp)
           @name = args[:name] if args.key?(:name)
@@ -2203,6 +2222,84 @@ module Google
         end
       end
       
+      # Policies for apps on the personal profile of a Corporate Owned Personally
+      # Enabled device.
+      class PersonalApplicationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The type of installation to perform.
+        # Corresponds to the JSON property `installType`
+        # @return [String]
+        attr_accessor :install_type
+      
+        # The package name of the application.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @install_type = args[:install_type] if args.key?(:install_type)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
+      # Policies controlling personal usage on a Corporate Owned Personally Enabled
+      # device.
+      class PersonalUsagePolicies
+        include Google::Apis::Core::Hashable
+      
+        # Account types that can't be managed by the user.
+        # Corresponds to the JSON property `accountTypesWithManagementDisabled`
+        # @return [Array<String>]
+        attr_accessor :account_types_with_management_disabled
+      
+        # Whether camera is disabled.
+        # Corresponds to the JSON property `cameraDisabled`
+        # @return [Boolean]
+        attr_accessor :camera_disabled
+        alias_method :camera_disabled?, :camera_disabled
+      
+        # Controls how long the work profile can stay off.
+        # Corresponds to the JSON property `maxDaysWithWorkOff`
+        # @return [Fixnum]
+        attr_accessor :max_days_with_work_off
+      
+        # Policy applied to applications on the personal profile.
+        # Corresponds to the JSON property `personalApplications`
+        # @return [Array<Google::Apis::AndroidmanagementV1::PersonalApplicationPolicy>]
+        attr_accessor :personal_applications
+      
+        # Controls how apps on the personal profile are allowed or blocked.
+        # Corresponds to the JSON property `personalPlayStoreMode`
+        # @return [String]
+        attr_accessor :personal_play_store_mode
+      
+        # Whether screen capture is disabled.
+        # Corresponds to the JSON property `screenCaptureDisabled`
+        # @return [Boolean]
+        attr_accessor :screen_capture_disabled
+        alias_method :screen_capture_disabled?, :screen_capture_disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_types_with_management_disabled = args[:account_types_with_management_disabled] if args.key?(:account_types_with_management_disabled)
+          @camera_disabled = args[:camera_disabled] if args.key?(:camera_disabled)
+          @max_days_with_work_off = args[:max_days_with_work_off] if args.key?(:max_days_with_work_off)
+          @personal_applications = args[:personal_applications] if args.key?(:personal_applications)
+          @personal_play_store_mode = args[:personal_play_store_mode] if args.key?(:personal_play_store_mode)
+          @screen_capture_disabled = args[:screen_capture_disabled] if args.key?(:screen_capture_disabled)
+        end
+      end
+      
       # A policy resource represents a group of settings that govern the behavior of a
       # managed device and the apps installed on it.
       class Policy
@@ -2541,6 +2638,12 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::PersistentPreferredActivity>]
         attr_accessor :persistent_preferred_activities
       
+        # Policies controlling personal usage on a Corporate Owned Personally Enabled
+        # device.
+        # Corresponds to the JSON property `personalUsagePolicies`
+        # @return [Google::Apis::AndroidmanagementV1::PersonalUsagePolicies]
+        attr_accessor :personal_usage_policies
+      
         # This mode controls which apps are available to the user in the Play Store and
         # the behavior on the device when apps are removed from the policy.
         # Corresponds to the JSON property `playStoreMode`
@@ -2767,6 +2870,7 @@ module Google
           @permitted_accessibility_services = args[:permitted_accessibility_services] if args.key?(:permitted_accessibility_services)
           @permitted_input_methods = args[:permitted_input_methods] if args.key?(:permitted_input_methods)
           @persistent_preferred_activities = args[:persistent_preferred_activities] if args.key?(:persistent_preferred_activities)
+          @personal_usage_policies = args[:personal_usage_policies] if args.key?(:personal_usage_policies)
           @play_store_mode = args[:play_store_mode] if args.key?(:play_store_mode)
           @policy_enforcement_rules = args[:policy_enforcement_rules] if args.key?(:policy_enforcement_rules)
           @private_key_selection_enabled = args[:private_key_selection_enabled] if args.key?(:private_key_selection_enabled)
@@ -2993,6 +3097,18 @@ module Google
       class SigninDetail
         include Google::Apis::Core::Hashable
       
+        # Controls whether personal usage is allowed on a device provisioned with this
+        # enrollment token.For company-owned devices:
+        # Enabling personal usage allows the user to set up a work profile on the device.
+        # Disabling personal usage requires the user provision the device as a fully
+        # managed device.For personally-owned devices:
+        # Enabling personal usage allows the user to set up a work profile on the device.
+        # Disabling personal usage will prevent the device from provisioning. Personal
+        # usage cannot be disabled on personally-owned device.
+        # Corresponds to the JSON property `allowPersonalUsage`
+        # @return [String]
+        attr_accessor :allow_personal_usage
+      
         # A JSON string whose UTF-8 representation can be used to generate a QR code to
         # enroll a device with this enrollment token. To enroll a device using NFC, the
         # NFC record must contain a serialized java.util.Properties representation of
@@ -3022,6 +3138,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_personal_usage = args[:allow_personal_usage] if args.key?(:allow_personal_usage)
           @qr_code = args[:qr_code] if args.key?(:qr_code)
           @signin_enrollment_token = args[:signin_enrollment_token] if args.key?(:signin_enrollment_token)
           @signin_url = args[:signin_url] if args.key?(:signin_url)

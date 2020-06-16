@@ -292,6 +292,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PersonalApplicationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PersonalUsagePolicies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -522,6 +534,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :block_after_days, as: 'blockAfterDays'
+          property :block_scope, as: 'blockScope'
         end
       end
       
@@ -603,6 +616,7 @@ module Google
       
           collection :non_compliance_details, as: 'nonComplianceDetails', class: Google::Apis::AndroidmanagementV1::NonComplianceDetail, decorator: Google::Apis::AndroidmanagementV1::NonComplianceDetail::Representation
       
+          property :ownership, as: 'ownership'
           property :policy_compliant, as: 'policyCompliant'
           property :policy_name, as: 'policyName'
           collection :power_management_events, as: 'powerManagementEvents', class: Google::Apis::AndroidmanagementV1::PowerManagementEvent, decorator: Google::Apis::AndroidmanagementV1::PowerManagementEvent::Representation
@@ -656,6 +670,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :additional_data, as: 'additionalData'
+          property :allow_personal_usage, as: 'allowPersonalUsage'
           property :duration, as: 'duration'
           property :expiration_timestamp, as: 'expirationTimestamp'
           property :name, as: 'name'
@@ -937,6 +952,27 @@ module Google
         end
       end
       
+      class PersonalApplicationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :install_type, as: 'installType'
+          property :package_name, as: 'packageName'
+        end
+      end
+      
+      class PersonalUsagePolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :account_types_with_management_disabled, as: 'accountTypesWithManagementDisabled'
+          property :camera_disabled, as: 'cameraDisabled'
+          property :max_days_with_work_off, as: 'maxDaysWithWorkOff'
+          collection :personal_applications, as: 'personalApplications', class: Google::Apis::AndroidmanagementV1::PersonalApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::PersonalApplicationPolicy::Representation
+      
+          property :personal_play_store_mode, as: 'personalPlayStoreMode'
+          property :screen_capture_disabled, as: 'screenCaptureDisabled'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1006,6 +1042,8 @@ module Google
           property :permitted_input_methods, as: 'permittedInputMethods', class: Google::Apis::AndroidmanagementV1::PackageNameList, decorator: Google::Apis::AndroidmanagementV1::PackageNameList::Representation
       
           collection :persistent_preferred_activities, as: 'persistentPreferredActivities', class: Google::Apis::AndroidmanagementV1::PersistentPreferredActivity, decorator: Google::Apis::AndroidmanagementV1::PersistentPreferredActivity::Representation
+      
+          property :personal_usage_policies, as: 'personalUsagePolicies', class: Google::Apis::AndroidmanagementV1::PersonalUsagePolicies, decorator: Google::Apis::AndroidmanagementV1::PersonalUsagePolicies::Representation
       
           property :play_store_mode, as: 'playStoreMode'
           collection :policy_enforcement_rules, as: 'policyEnforcementRules', class: Google::Apis::AndroidmanagementV1::PolicyEnforcementRule, decorator: Google::Apis::AndroidmanagementV1::PolicyEnforcementRule::Representation
@@ -1106,6 +1144,7 @@ module Google
       class SigninDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_personal_usage, as: 'allowPersonalUsage'
           property :qr_code, as: 'qrCode'
           property :signin_enrollment_token, as: 'signinEnrollmentToken'
           property :signin_url, as: 'signinUrl'
