@@ -847,6 +847,14 @@ module Google
         # @return [String]
         attr_accessor :format
       
+        # The Cloud KMS resource name of the customer managed encryption key that’s
+        # used to encrypt the contents of the Repository. Has the form:
+        # `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+        # This value may not be changed after the Repository has been created.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
         # Labels with user-defined metadata.
         # This field may contain up to 64 entries. Label keys and values may be no
         # longer than 63 characters. Label keys must begin with a lowercase letter
@@ -876,6 +884,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @format = args[:format] if args.key?(:format)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)

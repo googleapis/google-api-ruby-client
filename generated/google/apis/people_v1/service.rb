@@ -296,9 +296,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Copies an other contact to a new contact in the user's MY_CONTACTS group
+        # Copies an "Other contact" to a new contact in the user's "myContacts" group
         # @param [String] resource_name
-        #   Required. The resource name of the other contact to copy.
+        #   Required. The resource name of the "Other contact" to copy.
         # @param [Google::Apis::PeopleV1::CopyOtherContactToMyContactsGroupRequest] copy_other_contact_to_my_contacts_group_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -329,10 +329,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all other contacts, that is contacts that are not in a contact group.
-        # Other contacts are typically auto created contacts from interactions.
+        # List all "Other contacts", that is contacts that are not in a contact
+        # group. "Other contacts" are typically auto created contacts from
+        # interactions.
         # @param [Fixnum] page_size
-        #   Optional. The number of other contacts to include in the response. Valid
+        #   Optional. The number of "Other contacts" to include in the response. Valid
         #   values are
         #   between 1 and 1000, inclusive. Defaults to 100 if not set or set to 0.
         # @param [String] page_token

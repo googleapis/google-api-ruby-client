@@ -2707,6 +2707,36 @@ module Google
         end
       end
       
+      # Request message for ImportConsumerOverrides
+      class ImportConsumerOverridesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Whether to force the creation of the quota overrides.
+        # If creating an override would cause the effective quota for the consumer to
+        # decrease by more than 10 percent, the call is rejected, as a safety measure
+        # to avoid accidentally decreasing quota too quickly. Setting the force
+        # parameter to true ignores this restriction.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # Import data embedded in the request message
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::ServiceusageV1beta1::OverrideInlineSource]
+        attr_accessor :inline_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+        end
+      end
+      
       # Response message for ImportConsumerOverrides
       class ImportConsumerOverridesResponse
         include Google::Apis::Core::Hashable
@@ -3237,6 +3267,7 @@ module Google
         # * `min`   minute
         # * `h`     hour
         # * `d`     day
+        # * `1`     dimensionless
         # **Prefixes (PREFIX)**
         # * `k`     kilo    (10^3)
         # * `M`     mega    (10^6)
@@ -3491,8 +3522,8 @@ module Google
       # * The first label of the monitored resource descriptor must be
       # `resource_container`. There are legacy monitored resource descritptors
       # start with `project_id`.
-      # * It must include a `location` label. * Maximum of default 5 service defined
-      # monitored resource descriptors
+      # * It must include a `location` label.
+      # * Maximum of default 5 service defined monitored resource descriptors
       # is allowed per service.
       # * Maximum of default 10 labels per monitored resource is allowed.
       # The default maximum limit can be overridden. Please follow
@@ -3542,6 +3573,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Required. The monitored resource type. For example, the type
+        # `cloudsql_database` represents databases in Google Cloud SQL.
+        # All service defined monitored resource types must be prefixed with the
+        # service name, in the format of ``service name`/`relative resource name``.
+        # The relative resource name must follow:
+        # * Only upper and lower-case letters and digits are allowed.
+        # * It must start with upper case character and is recommended to use Upper
+        # Camel Case style.
+        # * The maximum number of characters allowed for the relative_resource_name
+        # is 100.
         # Note there are legacy service monitored resources not following this rule.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -3823,6 +3864,27 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Import data embedded in the request message
+      class OverrideInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # The overrides to create.
+        # Each override must have a value for 'metric' and 'unit', to specify
+        # which metric and which limit the override should be applied to.
+        # Corresponds to the JSON property `overrides`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::QuotaOverride>]
+        attr_accessor :overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @overrides = args[:overrides] if args.key?(:overrides)
         end
       end
       

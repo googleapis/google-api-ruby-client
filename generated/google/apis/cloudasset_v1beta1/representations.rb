@@ -70,6 +70,90 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudOrgpolicyV1BooleanPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV1ListPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV1Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudOrgpolicyV1RestoreDefault
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1AccessLevel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1AccessPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1BasicLevel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1Condition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1CustomLevel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1DevicePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1OsConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1ServicePerimeter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -115,11 +199,19 @@ module Google
       class Asset
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_level, as: 'accessLevel', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1AccessLevel, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1AccessLevel::Representation
+      
+          property :access_policy, as: 'accessPolicy', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1AccessPolicy, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1AccessPolicy::Representation
+      
           property :asset_type, as: 'assetType'
           property :iam_policy, as: 'iamPolicy', class: Google::Apis::CloudassetV1beta1::Policy, decorator: Google::Apis::CloudassetV1beta1::Policy::Representation
       
           property :name, as: 'name'
+          collection :org_policy, as: 'orgPolicy', class: Google::Apis::CloudassetV1beta1::GoogleCloudOrgpolicyV1Policy, decorator: Google::Apis::CloudassetV1beta1::GoogleCloudOrgpolicyV1Policy::Representation
+      
           property :resource, as: 'resource', class: Google::Apis::CloudassetV1beta1::Resource, decorator: Google::Apis::CloudassetV1beta1::Resource::Representation
+      
+          property :service_perimeter, as: 'servicePerimeter', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1ServicePerimeter, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1ServicePerimeter::Representation
       
         end
       end
@@ -185,6 +277,155 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
           property :uri_prefix, as: 'uriPrefix'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV1BooleanPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enforced, as: 'enforced'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV1ListPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_values, as: 'allValues'
+          collection :allowed_values, as: 'allowedValues'
+          collection :denied_values, as: 'deniedValues'
+          property :inherit_from_parent, as: 'inheritFromParent'
+          property :suggested_value, as: 'suggestedValue'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV1Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boolean_policy, as: 'booleanPolicy', class: Google::Apis::CloudassetV1beta1::GoogleCloudOrgpolicyV1BooleanPolicy, decorator: Google::Apis::CloudassetV1beta1::GoogleCloudOrgpolicyV1BooleanPolicy::Representation
+      
+          property :constraint, as: 'constraint'
+          property :etag, :base64 => true, as: 'etag'
+          property :list_policy, as: 'listPolicy', class: Google::Apis::CloudassetV1beta1::GoogleCloudOrgpolicyV1ListPolicy, decorator: Google::Apis::CloudassetV1beta1::GoogleCloudOrgpolicyV1ListPolicy::Representation
+      
+          property :restore_default, as: 'restoreDefault', class: Google::Apis::CloudassetV1beta1::GoogleCloudOrgpolicyV1RestoreDefault, decorator: Google::Apis::CloudassetV1beta1::GoogleCloudOrgpolicyV1RestoreDefault::Representation
+      
+          property :update_time, as: 'updateTime'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudOrgpolicyV1RestoreDefault
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1AccessLevel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :basic, as: 'basic', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1BasicLevel, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1BasicLevel::Representation
+      
+          property :custom, as: 'custom', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1CustomLevel, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1CustomLevel::Representation
+      
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1AccessPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1BasicLevel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :combining_function, as: 'combiningFunction'
+          collection :conditions, as: 'conditions', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1Condition, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1Condition::Representation
+      
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1Condition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_policy, as: 'devicePolicy', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1DevicePolicy, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1DevicePolicy::Representation
+      
+          collection :ip_subnetworks, as: 'ipSubnetworks'
+          collection :members, as: 'members'
+          property :negate, as: 'negate'
+          collection :regions, as: 'regions'
+          collection :required_access_levels, as: 'requiredAccessLevels'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1CustomLevel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expr, as: 'expr', class: Google::Apis::CloudassetV1beta1::Expr, decorator: Google::Apis::CloudassetV1beta1::Expr::Representation
+      
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1DevicePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_device_management_levels, as: 'allowedDeviceManagementLevels'
+          collection :allowed_encryption_statuses, as: 'allowedEncryptionStatuses'
+          collection :os_constraints, as: 'osConstraints', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1OsConstraint, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1OsConstraint::Representation
+      
+          property :require_admin_approval, as: 'requireAdminApproval'
+          property :require_corp_owned, as: 'requireCorpOwned'
+          property :require_screenlock, as: 'requireScreenlock'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1OsConstraint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :minimum_version, as: 'minimumVersion'
+          property :os_type, as: 'osType'
+          property :require_verified_chrome_os, as: 'requireVerifiedChromeOs'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1ServicePerimeter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :perimeter_type, as: 'perimeterType'
+          property :spec, as: 'spec', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig::Representation
+      
+          property :status, as: 'status', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig::Representation
+      
+          property :title, as: 'title'
+          property :use_explicit_dry_run_spec, as: 'useExplicitDryRunSpec'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_levels, as: 'accessLevels'
+          collection :resources, as: 'resources'
+          collection :restricted_services, as: 'restrictedServices'
+          property :vpc_accessible_services, as: 'vpcAccessibleServices', class: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices, decorator: Google::Apis::CloudassetV1beta1::GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices::Representation
+      
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_services, as: 'allowedServices'
+          property :enable_restriction, as: 'enableRestriction'
         end
       end
       

@@ -294,12 +294,12 @@ module Google
         end
       end
       
-      # A role or permission that appears in an access control list.
+      # An IAM role or permission under analysis.
       class GoogleCloudAssetV1p4beta1Access
         include Google::Apis::Core::Hashable
       
-        # Represents analysis state of each node in the result graph or non-critical
-        # errors in the response.
+        # Represents the detailed state of an entity under analysis, such as a
+        # resource, an identity or an access.
         # Corresponds to the JSON property `analysisState`
         # @return [Google::Apis::CloudassetV1p4beta1::GoogleCloudAssetV1p4beta1AnalysisState]
         attr_accessor :analysis_state
@@ -376,8 +376,8 @@ module Google
         end
       end
       
-      # Represents analysis state of each node in the result graph or non-critical
-      # errors in the response.
+      # Represents the detailed state of an entity under analysis, such as a
+      # resource, an identity or an access.
       class GoogleCloudAssetV1p4beta1AnalysisState
         include Google::Apis::Core::Hashable
       
@@ -388,9 +388,10 @@ module Google
       
         # The Google standard error code that best describes the state.
         # For example:
-        # - OK means the node has been successfully explored;
+        # - OK means the analysis on this entity has been successfully finished;
         # - PERMISSION_DENIED means an access denied error is encountered;
-        # - DEADLINE_EXCEEDED means the node hasn't been explored in time;
+        # - DEADLINE_EXCEEDED means the analysis on this entity hasn't been started
+        # in time;
         # Corresponds to the JSON property `code`
         # @return [String]
         attr_accessor :code
@@ -431,12 +432,12 @@ module Google
         end
       end
       
-      # An identity that appears in an access control list.
+      # An identity under analysis.
       class GoogleCloudAssetV1p4beta1Identity
         include Google::Apis::Core::Hashable
       
-        # Represents analysis state of each node in the result graph or non-critical
-        # errors in the response.
+        # Represents the detailed state of an entity under analysis, such as a
+        # resource, an identity or an access.
         # Corresponds to the JSON property `analysisState`
         # @return [Google::Apis::CloudassetV1p4beta1::GoogleCloudAssetV1p4beta1AnalysisState]
         attr_accessor :analysis_state
@@ -501,12 +502,12 @@ module Google
         end
       end
       
-      # A GCP resource that appears in an access control list.
+      # A Google Cloud resource under analysis.
       class GoogleCloudAssetV1p4beta1Resource
         include Google::Apis::Core::Hashable
       
-        # Represents analysis state of each node in the result graph or non-critical
-        # errors in the response.
+        # Represents the detailed state of an entity under analysis, such as a
+        # resource, an identity or an access.
         # Corresponds to the JSON property `analysisState`
         # @return [Google::Apis::CloudassetV1p4beta1::GoogleCloudAssetV1p4beta1AnalysisState]
         attr_accessor :analysis_state
@@ -616,8 +617,7 @@ module Google
       
         # Specifies the resource to analyze for access policies, which may be set
         # directly on the resource, or on ancestors such as organizations, folders or
-        # projects. Either ResourceSelector or IdentitySelector must be
-        # specified in a request.
+        # projects.
         # Corresponds to the JSON property `resourceSelector`
         # @return [Google::Apis::CloudassetV1p4beta1::ResourceSelector]
         attr_accessor :resource_selector
@@ -653,8 +653,8 @@ module Google
         # @return [String]
         attr_accessor :attached_resource_full_name
       
-        # Represents whether all nodes in the transitive closure of the
-        # iam_binding node have been explored.
+        # Represents whether all analyses on the iam_binding have successfully
+        # finished.
         # Corresponds to the JSON property `fullyExplored`
         # @return [Boolean]
         attr_accessor :fully_explored
@@ -875,8 +875,7 @@ module Google
       
       # Specifies the resource to analyze for access policies, which may be set
       # directly on the resource, or on ancestors such as organizations, folders or
-      # projects. Either ResourceSelector or IdentitySelector must be
-      # specified in a request.
+      # projects.
       class ResourceSelector
         include Google::Apis::Core::Hashable
       

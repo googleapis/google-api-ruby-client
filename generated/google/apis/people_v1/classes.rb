@@ -423,7 +423,7 @@ module Google
         end
       end
       
-      # A request to copy an other contact to my contacts group.
+      # A request to copy an "Other contact" to my contacts group.
       class CopyOtherContactToMyContactsGroupRequest
         include Google::Apis::Core::Hashable
       
@@ -1081,7 +1081,7 @@ module Google
         end
       end
       
-      # The response to a request for the authenticated user's other contacts.
+      # The response to a request for the authenticated user's "Other contacts".
       class ListOtherContactsResponse
         include Google::Apis::Core::Hashable
       
@@ -1098,8 +1098,8 @@ module Google
         # @return [String]
         attr_accessor :next_sync_token
       
-        # The list of other contacts returned as Person resources. Other contacts
-        # support a limited subset of supported fields. See
+        # The list of "Other contacts" returned as Person resources. "Other contacts"
+        # support a limited subset of fields. See
         # ListOtherContactsRequest.request_mask for more detailed information.
         # Corresponds to the JSON property `otherContacts`
         # @return [Array<Google::Apis::PeopleV1::Person>]

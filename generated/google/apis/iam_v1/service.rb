@@ -312,6 +312,7 @@ module Google
         #   ID or organization ID.
         # @param [Fixnum] page_size
         #   Optional limit on the number of roles to include in the response.
+        #   The default is 300, and the maximum is 1,000.
         # @param [String] page_token
         #   Optional pagination token returned in an earlier ListRolesResponse.
         # @param [Boolean] show_deleted
@@ -686,6 +687,7 @@ module Google
         #   ID or organization ID.
         # @param [Fixnum] page_size
         #   Optional limit on the number of roles to include in the response.
+        #   The default is 300, and the maximum is 1,000.
         # @param [String] page_token
         #   Optional pagination token returned in an earlier ListRolesResponse.
         # @param [Boolean] show_deleted
@@ -1096,6 +1098,7 @@ module Google
         #   response. Further accounts can subsequently be obtained by including the
         #   ListServiceAccountsResponse.next_page_token
         #   in a subsequent request.
+        #   The default is 20, and the maximum is 100.
         # @param [String] page_token
         #   Optional pagination token returned in an earlier
         #   ListServiceAccountsResponse.next_page_token.
@@ -1672,6 +1675,7 @@ module Google
         # that is defined for an organization or project.
         # @param [Fixnum] page_size
         #   Optional limit on the number of roles to include in the response.
+        #   The default is 300, and the maximum is 1,000.
         # @param [String] page_token
         #   Optional pagination token returned in an earlier ListRolesResponse.
         # @param [String] parent

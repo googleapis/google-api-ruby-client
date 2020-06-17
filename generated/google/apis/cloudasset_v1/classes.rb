@@ -27,7 +27,10 @@ module Google
       # hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-
       # resource-hierarchy),
       # a resource outside the Google Cloud resource hierarchy (such as Google
-      # Kubernetes Engine clusters and objects), or a Cloud IAM policy.
+      # Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM policy).
+      # See [Supported asset
+      # types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+      # for more information.
       class Asset
         include Google::Apis::Core::Hashable
       
@@ -834,7 +837,7 @@ module Google
         attr_accessor :denied_values
       
         # Determines the inheritance behavior for this `Policy`.
-        # By default, a `ListPolicy` set at a resource supercedes any `Policy` set
+        # By default, a `ListPolicy` set at a resource supersedes any `Policy` set
         # anywhere up the resource hierarchy. However, if `inherit_from_parent` is
         # set to `true`, then the values from the effective `Policy` of the parent
         # resource are inherited, meaning the values set in this `Policy` are
@@ -958,6 +961,9 @@ module Google
       
         # The name of the `Constraint` the `Policy` is configuring, for example,
         # `constraints/serviceuser.services`.
+        # A [list of available
+        # constraints](/resource-manager/docs/organization-policy/org-policy-constraints)
+        # is available.
         # Immutable after creation.
         # Corresponds to the JSON property `constraint`
         # @return [String]
@@ -1963,7 +1969,10 @@ module Google
         # hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-
         # resource-hierarchy),
         # a resource outside the Google Cloud resource hierarchy (such as Google
-        # Kubernetes Engine clusters and objects), or a Cloud IAM policy.
+        # Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM policy).
+        # See [Supported asset
+        # types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+        # for more information.
         # Corresponds to the JSON property `asset`
         # @return [Google::Apis::CloudassetV1::Asset]
         attr_accessor :asset

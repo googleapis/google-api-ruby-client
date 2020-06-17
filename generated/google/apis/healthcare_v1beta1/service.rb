@@ -470,6 +470,196 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new Annotation store within the parent dataset.
+        # @param [String] parent
+        #   The name of the dataset this Annotation store belongs to.
+        # @param [Google::Apis::HealthcareV1beta1::AnnotationStore] annotation_store_object
+        # @param [String] annotation_store_id
+        #   The ID of the Annotation store that is being created.
+        #   The string must match the following regex: `[\p`L`\p`N`_\-\.]`1,256``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::AnnotationStore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::AnnotationStore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_dataset_annotation_store(parent, annotation_store_object = nil, annotation_store_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/annotationStores', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::AnnotationStore::Representation
+          command.request_object = annotation_store_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::AnnotationStore::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::AnnotationStore
+          command.params['parent'] = parent unless parent.nil?
+          command.query['annotationStoreId'] = annotation_store_id unless annotation_store_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified Annotation store and removes all annotations that are
+        # contained within it.
+        # @param [String] name
+        #   The resource name of the Annotation store to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_dataset_annotation_store(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Evaluate an Annotation store against a
+        # ground truth Annotation store.
+        # When the operation finishes successfully, a detailed response is returned
+        # of type EvaluateAnnotationStoreResponse, contained in the response. The
+        # metadata field type is
+        # OperationMetadata.
+        # Errors are logged to Cloud Logging
+        # (see [Viewing logs](/healthcare/docs/how-tos/logging)).
+        # @param [String] eval_store
+        #   The Annotation store to compare against `golden_store`, in the format of
+        #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   annotationStores/`annotation_store_id``.
+        # @param [Google::Apis::HealthcareV1beta1::EvaluateAnnotationStoreRequest] evaluate_annotation_store_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def evaluate_annotation_store(eval_store, evaluate_annotation_store_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+evalStore}:evaluate', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::EvaluateAnnotationStoreRequest::Representation
+          command.request_object = evaluate_annotation_store_request_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Operation
+          command.params['evalStore'] = eval_store unless eval_store.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Export
+        # Annotations from
+        # the Annotation
+        # store.
+        # If the request is successful, a detailed response is returned of type
+        # ExportAnnotationsResponse, contained in the
+        # response field when the
+        # operation finishes.
+        # The metadata field type is
+        # OperationMetadata.
+        # If errors occur, the error
+        # field type is ImportAnnotationsErrorDetails.
+        # Errors are also logged to Cloud Logging
+        # (see [Viewing logs](/healthcare/docs/how-tos/logging)).
+        # @param [String] annotation_store
+        #   The name of the Annotation store to export annotations to, in
+        #   the format of
+        #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   annotationStores/`annotation_store_id``.
+        # @param [Google::Apis::HealthcareV1beta1::ExportAnnotationsRequest] export_annotations_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_annotation_store_annotations(annotation_store, export_annotations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+annotationStore}:export', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::ExportAnnotationsRequest::Representation
+          command.request_object = export_annotations_request_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Operation
+          command.params['annotationStore'] = annotation_store unless annotation_store.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified Annotation store or returns NOT_FOUND if it does not
+        # exist.
+        # @param [String] name
+        #   The resource name of the Annotation store to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::AnnotationStore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::AnnotationStore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_annotation_store(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::AnnotationStore::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::AnnotationStore
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a resource.
         # Returns an empty policy if the resource exists and does not have a policy
         # set.
@@ -509,6 +699,139 @@ module Google
           command.response_class = Google::Apis::HealthcareV1beta1::Policy
           command.params['resource'] = resource unless resource.nil?
           command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Import
+        # Annotations to
+        # the Annotation
+        # store by
+        # loading data from the specified sources.
+        # If the request is successful, a detailed response is returned as of type
+        # ImportAnnotationsResponse, contained in the
+        # response field when the
+        # operation finishes.
+        # The metadata field type is
+        # OperationMetadata.
+        # If errors occur, the error
+        # field type is ImportAnnotationsErrorDetails.
+        # Errors are also logged to Cloud Logging
+        # (see [Viewing logs](/healthcare/docs/how-tos/logging)).
+        # @param [String] annotation_store
+        #   The name of the Annotation store to which the server imports annotations,
+        #   in the format
+        #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   annotationStores/`annotation_store_id``.
+        # @param [Google::Apis::HealthcareV1beta1::ImportAnnotationsRequest] import_annotations_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_annotation_store_annotations(annotation_store, import_annotations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+annotationStore}:import', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::ImportAnnotationsRequest::Representation
+          command.request_object = import_annotations_request_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Operation
+          command.params['annotationStore'] = annotation_store unless annotation_store.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the Annotation stores in the given dataset for a source store.
+        # @param [String] parent
+        #   Name of the dataset.
+        # @param [String] filter
+        #   Restricts stores returned to those matching a filter. Syntax:
+        #   https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+        #   Only filtering on labels is supported, for example `labels.key=value`.
+        # @param [Fixnum] page_size
+        #   Limit on the number of Annotation stores to return in a single response.
+        #   If zero the default page size of 100 is used.
+        # @param [String] page_token
+        #   The next_page_token value returned from the previous List request, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::ListAnnotationStoresResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::ListAnnotationStoresResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_dataset_annotation_stores(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/annotationStores', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::ListAnnotationStoresResponse::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::ListAnnotationStoresResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified Annotation store.
+        # @param [String] name
+        #   Resource name of the Annotation store, of the form
+        #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   annotationStores/`annotation_store_id``.
+        # @param [Google::Apis::HealthcareV1beta1::AnnotationStore] annotation_store_object
+        # @param [String] update_mask
+        #   The update mask applies to the resource. For the `FieldMask` definition,
+        #   see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::AnnotationStore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::AnnotationStore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_dataset_annotation_store(name, annotation_store_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::AnnotationStore::Representation
+          command.request_object = annotation_store_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::AnnotationStore::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::AnnotationStore
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -584,6 +907,198 @@ module Google
           command.response_representation = Google::Apis::HealthcareV1beta1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Annotation record. It is
+        # valid to create Annotation objects for the same source more than once since
+        # a unique ID is assigned to each record by this service.
+        # @param [String] parent
+        #   The name of the Annotation store this annotation belongs to. For example,
+        #   `projects/my-project/locations/us-central1/datasets/mydataset/annotationStores/
+        #   myannotationstore`.
+        # @param [Google::Apis::HealthcareV1beta1::Annotation] annotation_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Annotation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Annotation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_dataset_annotation_store_annotation(parent, annotation_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/annotations', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::Annotation::Representation
+          command.request_object = annotation_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::Annotation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Annotation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an Annotation or returns
+        # NOT_FOUND if it does not exist.
+        # @param [String] name
+        #   The resource name of the Annotation to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_dataset_annotation_store_annotation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::Empty::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an Annotation.
+        # @param [String] name
+        #   The resource name of the Annotation to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Annotation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Annotation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_dataset_annotation_store_annotation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::Annotation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Annotation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the Annotations in the given
+        # Annotation store for a source
+        # resource.
+        # @param [String] parent
+        #   Name of the Annotation store to retrieve Annotations from.
+        # @param [String] filter
+        #   Restricts Annotations returned to those matching a filter. Functions
+        #   available for filtering are:
+        #   - `matches("annotation_source.cloud_healthcare_source.name", substring)`.
+        #   Filter on `cloud_healthcare_source.name`. For example:
+        #   `matches("annotation_source.cloud_healthcare_source.name", "some source")`.
+        #   - `matches("annotation", substring)`. Filter on all fields of annotation.
+        #   For example: `matches("annotation", "some-content")`.
+        #   - `type("text")`, `type("image")`, `type("resource")`. Filter on the type
+        #   of annotation `data`.
+        # @param [Fixnum] page_size
+        #   Limit on the number of Annotations to return in a single response.
+        #   If zero the default page size of 100 is used.
+        # @param [String] page_token
+        #   The next_page_token value returned from the previous List request, if any.
+        # @param [String] view
+        #   Controls which fields are populated in the response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::ListAnnotationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::ListAnnotationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_dataset_annotation_store_annotations(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/annotations', options)
+          command.response_representation = Google::Apis::HealthcareV1beta1::ListAnnotationsResponse::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::ListAnnotationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the Annotation.
+        # @param [String] name
+        #   Resource name of the Annotation, of the form
+        #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   annotationStores/`annotation_store_id`/annotations/`annotation_id``.
+        # @param [Google::Apis::HealthcareV1beta1::Annotation] annotation_object
+        # @param [String] update_mask
+        #   The update mask applies to the resource. For the `FieldMask` definition,
+        #   see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Annotation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Annotation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_dataset_annotation_store_annotation(name, annotation_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::Annotation::Representation
+          command.request_object = annotation_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::Annotation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Annotation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1565,6 +2080,8 @@ module Google
         # DeleteInstance deletes an instance associated with the given study, series,
         # and SOP Instance UID. Delete requests are equivalent to the GET requests
         # specified in the Retrieve transaction.
+        # Study and series search results can take a few seconds to be updated after
+        # an instance is deleted using DeleteInstance.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/

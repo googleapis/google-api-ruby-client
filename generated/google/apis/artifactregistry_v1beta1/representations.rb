@@ -380,6 +380,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :format, as: 'format'
+          property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'

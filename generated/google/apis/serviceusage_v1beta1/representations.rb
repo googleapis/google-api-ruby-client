@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportConsumerOverridesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportConsumerOverridesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +437,12 @@ module Google
       end
       
       class Option
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OverrideInlineSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1046,6 +1058,15 @@ module Google
         end
       end
       
+      class ImportConsumerOverridesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force, as: 'force'
+          property :inline_source, as: 'inlineSource', class: Google::Apis::ServiceusageV1beta1::OverrideInlineSource, decorator: Google::Apis::ServiceusageV1beta1::OverrideInlineSource::Representation
+      
+        end
+      end
+      
       class ImportConsumerOverridesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1266,6 +1287,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           hash :value, as: 'value'
+        end
+      end
+      
+      class OverrideInlineSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :overrides, as: 'overrides', class: Google::Apis::ServiceusageV1beta1::QuotaOverride, decorator: Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
+      
         end
       end
       

@@ -2433,6 +2433,7 @@ module Google
         # * `min`   minute
         # * `h`     hour
         # * `d`     day
+        # * `1`     dimensionless
         # **Prefixes (PREFIX)**
         # * `k`     kilo    (10^3)
         # * `M`     mega    (10^6)
@@ -2687,8 +2688,8 @@ module Google
       # * The first label of the monitored resource descriptor must be
       # `resource_container`. There are legacy monitored resource descritptors
       # start with `project_id`.
-      # * It must include a `location` label. * Maximum of default 5 service defined
-      # monitored resource descriptors
+      # * It must include a `location` label.
+      # * Maximum of default 5 service defined monitored resource descriptors
       # is allowed per service.
       # * Maximum of default 10 labels per monitored resource is allowed.
       # The default maximum limit can be overridden. Please follow
@@ -2738,6 +2739,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Required. The monitored resource type. For example, the type
+        # `cloudsql_database` represents databases in Google Cloud SQL.
+        # All service defined monitored resource types must be prefixed with the
+        # service name, in the format of ``service name`/`relative resource name``.
+        # The relative resource name must follow:
+        # * Only upper and lower-case letters and digits are allowed.
+        # * It must start with upper case character and is recommended to use Upper
+        # Camel Case style.
+        # * The maximum number of characters allowed for the relative_resource_name
+        # is 100.
         # Note there are legacy service monitored resources not following this rule.
         # Corresponds to the JSON property `type`
         # @return [String]

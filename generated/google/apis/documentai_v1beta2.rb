@@ -12,26 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudidentity_v1/service.rb'
-require 'google/apis/cloudidentity_v1/classes.rb'
-require 'google/apis/cloudidentity_v1/representations.rb'
+require 'google/apis/documentai_v1beta2/service.rb'
+require 'google/apis/documentai_v1beta2/classes.rb'
+require 'google/apis/documentai_v1beta2/representations.rb'
 
 module Google
   module Apis
-    # Cloud Identity API
+    # Cloud Document AI API
     #
-    # API for provisioning and managing identity resources.
+    # Service to parse structured information from unstructured or semi-structured
+    # documents using state-of-the-art Google AI such as natural language, computer
+    # vision, translation, and AutoML.
     #
-    # @see https://cloud.google.com/identity/
-    module CloudidentityV1
-      VERSION = 'V1'
+    # @see https://cloud.google.com/document-ai/docs/
+    module DocumentaiV1beta2
+      VERSION = 'V1beta2'
       REVISION = '20200612'
-
-      # See, change, create, and delete any of the Cloud Identity Groups that you can access, including the members of each group
-      AUTH_CLOUD_IDENTITY_GROUPS = 'https://www.googleapis.com/auth/cloud-identity.groups'
-
-      # See any Cloud Identity Groups that you can access, including group members and their emails
-      AUTH_CLOUD_IDENTITY_GROUPS_READONLY = 'https://www.googleapis.com/auth/cloud-identity.groups.readonly'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
