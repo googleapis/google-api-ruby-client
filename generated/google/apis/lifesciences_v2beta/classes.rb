@@ -1192,6 +1192,15 @@ module Google
         # @return [Array<Google::Apis::LifesciencesV2beta::Disk>]
         attr_accessor :disks
       
+        # The Compute Engine Disk Images to use as a Docker cache. The disks will be
+        # mounted into the Docker folder in a way that the images present in the
+        # cache will not need to be pulled. The digests of the cached images must
+        # match those of the tags used or the latest version will still be pulled.
+        # Only a single image is supported.
+        # Corresponds to the JSON property `dockerCacheImages`
+        # @return [Array<String>]
+        attr_accessor :docker_cache_images
+      
         # Whether Stackdriver monitoring should be enabled on the VM.
         # Corresponds to the JSON property `enableStackdriverMonitoring`
         # @return [Boolean]
@@ -1257,6 +1266,7 @@ module Google
           @boot_image = args[:boot_image] if args.key?(:boot_image)
           @cpu_platform = args[:cpu_platform] if args.key?(:cpu_platform)
           @disks = args[:disks] if args.key?(:disks)
+          @docker_cache_images = args[:docker_cache_images] if args.key?(:docker_cache_images)
           @enable_stackdriver_monitoring = args[:enable_stackdriver_monitoring] if args.key?(:enable_stackdriver_monitoring)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)

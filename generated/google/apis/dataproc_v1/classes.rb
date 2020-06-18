@@ -416,6 +416,11 @@ module Google
         # @return [Google::Apis::DataprocV1::EncryptionConfig]
         attr_accessor :encryption_config
       
+        # Endpoint config for this cluster
+        # Corresponds to the JSON property `endpointConfig`
+        # @return [Google::Apis::DataprocV1::EndpointConfig]
+        attr_accessor :endpoint_config
+      
         # Common config settings for resources of Compute Engine cluster instances,
         # applicable to all instances in the cluster.
         # Corresponds to the JSON property `gceClusterConfig`
@@ -464,6 +469,17 @@ module Google
         # @return [Google::Apis::DataprocV1::SoftwareConfig]
         attr_accessor :software_config
       
+        # Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data,
+        # such as Spark and MapReduce history files. If you do not specify a temp
+        # bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or
+        # EU) for your cluster's temp bucket according to the Compute Engine zone where
+        # your cluster is deployed, and then create and manage this project-level, per-
+        # location bucket. The default bucket has a TTL of 90 days, but you can use any
+        # TTL (or none) if you specify a bucket.
+        # Corresponds to the JSON property `tempBucket`
+        # @return [String]
+        attr_accessor :temp_bucket
+      
         # The config settings for Compute Engine resources in an instance group, such as
         # a master or worker group.
         # Corresponds to the JSON property `workerConfig`
@@ -479,6 +495,7 @@ module Google
           @autoscaling_config = args[:autoscaling_config] if args.key?(:autoscaling_config)
           @config_bucket = args[:config_bucket] if args.key?(:config_bucket)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @endpoint_config = args[:endpoint_config] if args.key?(:endpoint_config)
           @gce_cluster_config = args[:gce_cluster_config] if args.key?(:gce_cluster_config)
           @initialization_actions = args[:initialization_actions] if args.key?(:initialization_actions)
           @lifecycle_config = args[:lifecycle_config] if args.key?(:lifecycle_config)
@@ -486,6 +503,7 @@ module Google
           @secondary_worker_config = args[:secondary_worker_config] if args.key?(:secondary_worker_config)
           @security_config = args[:security_config] if args.key?(:security_config)
           @software_config = args[:software_config] if args.key?(:software_config)
+          @temp_bucket = args[:temp_bucket] if args.key?(:temp_bucket)
           @worker_config = args[:worker_config] if args.key?(:worker_config)
         end
       end
@@ -819,6 +837,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gce_pd_kms_key_name = args[:gce_pd_kms_key_name] if args.key?(:gce_pd_kms_key_name)
+        end
+      end
+      
+      # Endpoint config for this cluster
+      class EndpointConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, enable http access to specific ports on the cluster from
+        # external sources. Defaults to false.
+        # Corresponds to the JSON property `enableHttpPortAccess`
+        # @return [Boolean]
+        attr_accessor :enable_http_port_access
+        alias_method :enable_http_port_access?, :enable_http_port_access
+      
+        # Output only. The map of port descriptions to URLs. Will only be populated if
+        # enable_http_port_access is true.
+        # Corresponds to the JSON property `httpPorts`
+        # @return [Hash<String,String>]
+        attr_accessor :http_ports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_http_port_access = args[:enable_http_port_access] if args.key?(:enable_http_port_access)
+          @http_ports = args[:http_ports] if args.key?(:http_ports)
         end
       end
       

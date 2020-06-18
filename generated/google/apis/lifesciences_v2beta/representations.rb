@@ -500,6 +500,7 @@ module Google
           property :cpu_platform, as: 'cpuPlatform'
           collection :disks, as: 'disks', class: Google::Apis::LifesciencesV2beta::Disk, decorator: Google::Apis::LifesciencesV2beta::Disk::Representation
       
+          collection :docker_cache_images, as: 'dockerCacheImages'
           property :enable_stackdriver_monitoring, as: 'enableStackdriverMonitoring'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'

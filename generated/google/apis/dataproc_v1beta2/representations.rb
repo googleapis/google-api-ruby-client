@@ -605,6 +605,7 @@ module Google
       
           property :software_config, as: 'softwareConfig', class: Google::Apis::DataprocV1beta2::SoftwareConfig, decorator: Google::Apis::DataprocV1beta2::SoftwareConfig::Representation
       
+          property :temp_bucket, as: 'tempBucket'
           property :worker_config, as: 'workerConfig', class: Google::Apis::DataprocV1beta2::InstanceGroupConfig, decorator: Google::Apis::DataprocV1beta2::InstanceGroupConfig::Representation
       
         end

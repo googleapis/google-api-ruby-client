@@ -138,7 +138,7 @@ module Google
         # <br>
         # <br>Since a FirebaseProject is actually also a GCP `Project`, a
         # `FirebaseProject` uses underlying GCP identifiers (most importantly,
-        # the `projectId`) as its own for easy interop with GCP APIs.
+        # the `PROJECT_NUMBER`) as its own for easy interop with GCP APIs.
         # <br>
         # <br>The result of this call is an [`Operation`](../../v1beta1/operations).
         # Poll the `Operation` to track the provisioning process by calling
@@ -164,11 +164,11 @@ module Google
         # @param [String] project
         #   The resource name of the GCP `Project` to which Firebase resources will be
         #   added, in the format:
-        #   <br><code>projects/<var>projectId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var></code>
         #   After calling `AddFirebase`, the
-        #   [`projectId`](https://cloud.google.com/resource-manager/reference/rest/v1/
+        #   [`project_id`](https://cloud.google.com/resource-manager/reference/rest/v1/
         #   projects#Project.FIELDS.project_id)
-        #   of the GCP `Project` is also the `projectId` of the FirebaseProject.
+        #   of the GCP `Project` is also the `project_id` of the FirebaseProject.
         # @param [Google::Apis::FirebaseV1beta1::AddFirebaseRequest] add_firebase_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -255,7 +255,7 @@ module Google
         # @param [String] parent
         #   The parent `FirebaseProject` to link to an existing Google Analytics
         #   account, in the format:
-        #   <br><code>projects/<var>projectId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var></code>
         # @param [Google::Apis::FirebaseV1beta1::AddGoogleAnalyticsRequest] add_google_analytics_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -289,7 +289,7 @@ module Google
         # Gets the FirebaseProject identified by the specified resource name.
         # @param [String] name
         #   The fully qualified resource name of the Project, in the format:
-        #   <br><code>projects/<var>projectId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var></code>
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -325,7 +325,7 @@ module Google
         # command.
         # @param [String] name
         #   The fully qualified resource name of the Project, in the format:
-        #   <br><code>projects/<var>projectId</var>/adminSdkConfig</code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var>/adminSdkConfig</code>
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -360,7 +360,7 @@ module Google
         # the response to `GetAnalyticsDetails` is NOT_FOUND.
         # @param [String] name
         #   The fully qualified resource name, in the format:
-        #   <br><code>projects/<var>projectId</var>/analyticsDetails</code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var>/analyticsDetails</code>
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -505,7 +505,7 @@ module Google
         # @param [String] parent
         #   The parent `FirebaseProject` to unlink from its Google Analytics account,
         #   in the format:
-        #   <br><code>projects/<var>projectId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var></code>
         # @param [Google::Apis::FirebaseV1beta1::RemoveAnalyticsRequest] remove_analytics_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -544,7 +544,7 @@ module Google
         # known Apps (such as for App selector interfaces).
         # @param [String] parent
         #   The parent Project for which to list Apps, in the format:
-        #   <br><code>projects/<var>projectId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var></code>
         # @param [Fixnum] page_size
         #   The maximum number of Apps to return in the response.
         #   <br>
@@ -592,7 +592,7 @@ module Google
         # completion, so there is no need to call `DeleteOperation`.
         # @param [String] parent
         #   The parent Project in which to create an App, in the format:
-        #   <br><code>projects/<var>projectId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var></code>
         # @param [Google::Apis::FirebaseV1beta1::AndroidApp] android_app_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -626,10 +626,11 @@ module Google
         # Gets the AndroidApp identified by the specified resource name.
         # @param [String] name
         #   The fully qualified resource name of the App, in the format:
-        #   <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var></code>
-        #   <br>As an <var>appId</var> is a unique identifier, the Unique Resource
+        #   <br><code>projects/<var>PROJECT_NUMBER</var>/androidApps/<var>APP_ID</var></
+        #   code>
+        #   <br>As an <var>APP_ID</var> is a unique identifier, the Unique Resource
         #   from Sub-Collection access pattern may be used here, in the format:
-        #   <br><code>projects/-/androidApps/<var>appId</var></code>
+        #   <br><code>projects/-/androidApps/<var>APP_ID</var></code>
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -661,11 +662,11 @@ module Google
         # AndroidApp.
         # @param [String] name
         #   The resource name of the App configuration to download, in the format:
-        #   <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var>/config</
-        #   code>
-        #   <br>As an <var>appId</var> is a unique identifier, the Unique Resource
+        #   <br><code>projects/<var>PROJECT_NUMBER</var>/androidApps/<var>APP_ID</var>/
+        #   config</code>
+        #   <br>As an <var>APP_ID</var> is a unique identifier, the Unique Resource
         #   from Sub-Collection access pattern may be used here, in the format:
-        #   <br><code>projects/-/androidApps/<var>appId</var></code>
+        #   <br><code>projects/-/androidApps/<var>APP_ID</var></code>
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -700,7 +701,7 @@ module Google
         # `pageToken`.
         # @param [String] parent
         #   The parent Project for which to list Apps, in the format:
-        #   <br><code>projects/<var>projectId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var></code>
         # @param [Fixnum] page_size
         #   The maximum number of Apps to return in the response.
         #   <br>
@@ -747,7 +748,7 @@ module Google
         # @param [Google::Apis::FirebaseV1beta1::AndroidApp] android_app_object
         # @param [String] update_mask
         #   Specifies which fields to update.
-        #   <br>Note that the fields `name`, `appId`, `projectId`, and `packageName`
+        #   <br>Note that the fields `name`, `app_id`, `project_id`, and `package_name`
         #   are all immutable.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -782,10 +783,11 @@ module Google
         # Adds a SHA certificate to the specified AndroidApp.
         # @param [String] parent
         #   The parent App to which a SHA certificate will be added, in the format:
-        #   <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var></code>
-        #   <br>As an <var>appId</var> is a unique identifier, the Unique Resource
+        #   <br><code>projects/<var>PROJECT_NUMBER</var>/androidApps/<var>APP_ID</var></
+        #   code>
+        #   <br>As an <var>APP_ID</var> is a unique identifier, the Unique Resource
         #   from Sub-Collection access pattern may be used here, in the format:
-        #   <br><code>projects/-/androidApps/<var>appId</var></code>
+        #   <br><code>projects/-/androidApps/<var>APP_ID</var></code>
         # @param [Google::Apis::FirebaseV1beta1::ShaCertificate] sha_certificate_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -819,8 +821,8 @@ module Google
         # Removes a SHA certificate from the specified AndroidApp.
         # @param [String] name
         #   The fully qualified resource name of the `sha-key`, in the format:
-        #   <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var>/sha/<var>
-        #   shaId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var>/androidApps/<var>APP_ID</var>/sha/
+        #   <var>SHA_ID</var></code>
         #   <br>You can obtain the full name from the response of
         #   [`ListShaCertificates`](../projects.androidApps.sha/list) or the original
         #   [`CreateShaCertificate`](../projects.androidApps.sha/create).
@@ -855,10 +857,11 @@ module Google
         # AndroidApp.
         # @param [String] parent
         #   The parent App for which to list SHA certificates, in the format:
-        #   <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var></code>
-        #   <br>As an <var>appId</var> is a unique identifier, the Unique Resource
+        #   <br><code>projects/<var>PROJECT_NUMBER</var>/androidApps/<var>APP_ID</var></
+        #   code>
+        #   <br>As an <var>APP_ID</var> is a unique identifier, the Unique Resource
         #   from Sub-Collection access pattern may be used here, in the format:
-        #   <br><code>projects/-/androidApps/<var>appId</var></code>
+        #   <br><code>projects/-/androidApps/<var>APP_ID</var></code>
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -902,15 +905,14 @@ module Google
         # policy/defining-locations)
         # for the specified Project and, thus, might return a subset of all possible
         # GCP resource locations. To list all GCP resource locations (regardless of
-        # any restrictions), call the endpoint without specifying a `projectId` (that
-        # is, `/v1beta1/`parent=projects/-`/listAvailableLocations`).
-        # <br>
+        # any restrictions), call the endpoint without specifying a `PROJECT_NUMBER`
+        # (that is, `/v1beta1/`parent=projects/-`/listAvailableLocations`). <br>
         # <br>To call `ListAvailableLocations` with a specified project, a member
         # must be at minimum a Viewer of the project. Calls without a specified
         # project do not require any specific project permissions.
         # @param [String] parent
         #   The Project for which to list GCP resource locations, in the format:
-        #   <br><code>projects/<var>projectId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var></code>
         #   <br>If no project is specified (that is, `projects/-`), the returned list
         #   does not take into account org-specific or project-specific location
         #   restrictions.
@@ -997,7 +999,7 @@ module Google
         # @param [String] parent
         #   The resource name of the Project for which the default GCP resource
         #   location will be set, in the format:
-        #   <br><code>projects/<var>projectId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var></code>
         # @param [Google::Apis::FirebaseV1beta1::FinalizeDefaultLocationRequest] finalize_default_location_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1035,7 +1037,7 @@ module Google
         # completion, so there is no need to call `DeleteOperation`.
         # @param [String] parent
         #   The parent Project in which to create an App, in the format:
-        #   <br><code>projects/<var>projectId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var></code>
         # @param [Google::Apis::FirebaseV1beta1::IosApp] ios_app_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1069,10 +1071,10 @@ module Google
         # Gets the IosApp identified by the specified resource name.
         # @param [String] name
         #   The fully qualified resource name of the App, in the format:
-        #   <code>projects/<var>projectId</var>/iosApps/<var>appId</var></code>
-        #   <br>As an <var>appId</var> is a unique identifier, the Unique Resource
+        #   <code>projects/<var>PROJECT_NUMBER</var>/iosApps/<var>APP_ID</var></code>
+        #   <br>As an <var>APP_ID</var> is a unique identifier, the Unique Resource
         #   from Sub-Collection access pattern may be used here, in the format:
-        #   <br><code>projects/-/iosApps/<var>appId</var></code>
+        #   <br><code>projects/-/iosApps/<var>APP_ID</var></code>
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1103,10 +1105,11 @@ module Google
         # Gets the configuration artifact associated with the specified IosApp.
         # @param [String] name
         #   The resource name of the App configuration to download, in the format:
-        #   <br><code>projects/<var>projectId</var>/iosApps/<var>appId</var>/config</code>
-        #   <br>As an <var>appId</var> is a unique identifier, the Unique Resource
+        #   <br><code>projects/<var>PROJECT_NUMBER</var>/iosApps/<var>APP_ID</var>/config</
+        #   code>
+        #   <br>As an <var>APP_ID</var> is a unique identifier, the Unique Resource
         #   from Sub-Collection access pattern may be used here, in the format:
-        #   <br><code>projects/-/iosApps/<var>appId</var></code>
+        #   <br><code>projects/-/iosApps/<var>APP_ID</var></code>
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1141,7 +1144,7 @@ module Google
         # `pageToken`.
         # @param [String] parent
         #   The parent Project for which to list Apps, in the format:
-        #   <br><code>projects/<var>projectId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var></code>
         # @param [Fixnum] page_size
         #   The maximum number of Apps to return in the response.
         #   <br>
@@ -1227,7 +1230,7 @@ module Google
         # completion, so there is no need to call `DeleteOperation`.
         # @param [String] parent
         #   The parent Project in which to create an App, in the format:
-        #   <br><code>projects/<var>projectId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var></code>
         # @param [Google::Apis::FirebaseV1beta1::WebApp] web_app_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1261,10 +1264,10 @@ module Google
         # Gets the WebApp identified by the specified resource name.
         # @param [String] name
         #   The fully qualified resource name of the App, in the format:
-        #   <br><code>projects/<var>projectId</var>/webApps/<var>appId</var></code>
-        #   <br>As an <var>appId</var> is a unique identifier, the Unique Resource
+        #   <br><code>projects/<var>PROJECT_NUMBER</var>/webApps/<var>APP_ID</var></code>
+        #   <br>As an <var>APP_ID</var> is a unique identifier, the Unique Resource
         #   from Sub-Collection access pattern may be used here, in the format:
-        #   <br><code>projects/-/webApps/<var>appId</var></code>
+        #   <br><code>projects/-/webApps/<var>APP_ID</var></code>
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1295,10 +1298,11 @@ module Google
         # Gets the configuration artifact associated with the specified WebApp.
         # @param [String] name
         #   The resource name of the App configuration to download, in the format:
-        #   <br><code>projects/<var>projectId</var>/webApps/<var>appId</var>/config</code>
-        #   <br>As an <var>appId</var> is a unique identifier, the Unique Resource
+        #   <br><code>projects/<var>PROJECT_NUMBER</var>/webApps/<var>APP_ID</var>/config</
+        #   code>
+        #   <br>As an <var>APP_ID</var> is a unique identifier, the Unique Resource
         #   from Sub-Collection access pattern may be used here, in the format:
-        #   <br><code>projects/-/webApps/<var>appId</var></code>
+        #   <br><code>projects/-/webApps/<var>APP_ID</var></code>
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1333,7 +1337,7 @@ module Google
         # `pageToken`.
         # @param [String] parent
         #   The parent Project for which to list Apps, in the format:
-        #   <br><code>projects/<var>projectId</var></code>
+        #   <br><code>projects/<var>PROJECT_NUMBER</var></code>
         # @param [Fixnum] page_size
         #   The maximum number of Apps to return in the response.
         #   <br>

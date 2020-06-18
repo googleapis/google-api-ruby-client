@@ -474,6 +474,17 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::SoftwareConfig]
         attr_accessor :software_config
       
+        # Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data,
+        # such as Spark and MapReduce history files. If you do not specify a temp
+        # bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or
+        # EU) for your cluster's temp bucket according to the Compute Engine zone where
+        # your cluster is deployed, and then create and manage this project-level, per-
+        # location bucket. The default bucket has a TTL of 90 days, but you can use any
+        # TTL (or none) if you specify a bucket.
+        # Corresponds to the JSON property `tempBucket`
+        # @return [String]
+        attr_accessor :temp_bucket
+      
         # The config settings for Compute Engine resources in an instance group, such as
         # a master or worker group.
         # Corresponds to the JSON property `workerConfig`
@@ -498,6 +509,7 @@ module Google
           @secondary_worker_config = args[:secondary_worker_config] if args.key?(:secondary_worker_config)
           @security_config = args[:security_config] if args.key?(:security_config)
           @software_config = args[:software_config] if args.key?(:software_config)
+          @temp_bucket = args[:temp_bucket] if args.key?(:temp_bucket)
           @worker_config = args[:worker_config] if args.key?(:worker_config)
         end
       end

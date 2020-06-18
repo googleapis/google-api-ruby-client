@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EndpointConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -557,6 +563,8 @@ module Google
           property :config_bucket, as: 'configBucket'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::DataprocV1::EncryptionConfig, decorator: Google::Apis::DataprocV1::EncryptionConfig::Representation
       
+          property :endpoint_config, as: 'endpointConfig', class: Google::Apis::DataprocV1::EndpointConfig, decorator: Google::Apis::DataprocV1::EndpointConfig::Representation
+      
           property :gce_cluster_config, as: 'gceClusterConfig', class: Google::Apis::DataprocV1::GceClusterConfig, decorator: Google::Apis::DataprocV1::GceClusterConfig::Representation
       
           collection :initialization_actions, as: 'initializationActions', class: Google::Apis::DataprocV1::NodeInitializationAction, decorator: Google::Apis::DataprocV1::NodeInitializationAction::Representation
@@ -571,6 +579,7 @@ module Google
       
           property :software_config, as: 'softwareConfig', class: Google::Apis::DataprocV1::SoftwareConfig, decorator: Google::Apis::DataprocV1::SoftwareConfig::Representation
       
+          property :temp_bucket, as: 'tempBucket'
           property :worker_config, as: 'workerConfig', class: Google::Apis::DataprocV1::InstanceGroupConfig, decorator: Google::Apis::DataprocV1::InstanceGroupConfig::Representation
       
         end
@@ -669,6 +678,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gce_pd_kms_key_name, as: 'gcePdKmsKeyName'
+        end
+      end
+      
+      class EndpointConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_http_port_access, as: 'enableHttpPortAccess'
+          hash :http_ports, as: 'httpPorts'
         end
       end
       
