@@ -4175,6 +4175,13 @@ module Google
       class QuotaOverride
         include Google::Apis::Core::Hashable
       
+        # The resource name of the ancestor that requested the override. For example:
+        # "organizations/12345" or "folders/67890".
+        # Used by admin overrides only.
+        # Corresponds to the JSON property `adminOverrideAncestor`
+        # @return [String]
+        attr_accessor :admin_override_ancestor
+      
         # If this map is nonempty, then this override applies only to specific values
         # for dimensions defined in the limit unit.
         # For example, an override on a limit with the unit 1/`project`/`region`
@@ -4238,6 +4245,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @admin_override_ancestor = args[:admin_override_ancestor] if args.key?(:admin_override_ancestor)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @metric = args[:metric] if args.key?(:metric)
           @name = args[:name] if args.key?(:name)

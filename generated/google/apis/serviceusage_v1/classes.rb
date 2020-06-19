@@ -943,6 +943,11 @@ module Google
       class DisableServiceRequest
         include Google::Apis::Core::Hashable
       
+        # Defines the behavior for checking service usage when disabling a service.
+        # Corresponds to the JSON property `checkIfServiceHasUsage`
+        # @return [String]
+        attr_accessor :check_if_service_has_usage
+      
         # Indicates if services that are enabled and which depend on this service
         # should also be disabled. If not set, an error will be generated if any
         # enabled services depend on the service to be disabled. When set, the
@@ -959,6 +964,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @check_if_service_has_usage = args[:check_if_service_has_usage] if args.key?(:check_if_service_has_usage)
           @disable_dependent_services = args[:disable_dependent_services] if args.key?(:disable_dependent_services)
         end
       end
@@ -3913,6 +3919,13 @@ module Google
       class QuotaOverride
         include Google::Apis::Core::Hashable
       
+        # The resource name of the ancestor that requested the override. For example:
+        # "organizations/12345" or "folders/67890".
+        # Used by admin overrides only.
+        # Corresponds to the JSON property `adminOverrideAncestor`
+        # @return [String]
+        attr_accessor :admin_override_ancestor
+      
         # If this map is nonempty, then this override applies only to specific values
         # for dimensions defined in the limit unit.
         # For example, an override on a limit with the unit 1/`project`/`region`
@@ -3976,6 +3989,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @admin_override_ancestor = args[:admin_override_ancestor] if args.key?(:admin_override_ancestor)
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @metric = args[:metric] if args.key?(:metric)
           @name = args[:name] if args.key?(:name)

@@ -787,6 +787,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The display name (only if the space is a room).
+        # Please note that this field might not be populated in direct messages
+        # between humans.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name

@@ -714,6 +714,7 @@ module Google
       class DisableServiceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_if_service_has_usage, as: 'checkIfServiceHasUsage'
           property :disable_dependent_services, as: 'disableDependentServices'
         end
       end
@@ -1235,6 +1236,7 @@ module Google
       class QuotaOverride
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_override_ancestor, as: 'adminOverrideAncestor'
           hash :dimensions, as: 'dimensions'
           property :metric, as: 'metric'
           property :name, as: 'name'

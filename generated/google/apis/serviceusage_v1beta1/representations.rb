@@ -1352,6 +1352,7 @@ module Google
       class QuotaOverride
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_override_ancestor, as: 'adminOverrideAncestor'
           hash :dimensions, as: 'dimensions'
           property :metric, as: 'metric'
           property :name, as: 'name'
