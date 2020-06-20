@@ -4041,6 +4041,7 @@ module Google
           property :availability, as: 'availability'
           property :availability_date, as: 'availabilityDate'
           property :brand, as: 'brand'
+          property :canonical_link, as: 'canonicalLink'
           property :channel, as: 'channel'
           property :color, as: 'color'
           property :condition, as: 'condition'

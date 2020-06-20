@@ -1288,6 +1288,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProductProductDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProductShipping
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1319,6 +1325,12 @@ module Google
       end
       
       class ProductStatusItemLevelIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductSubscriptionCost
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4018,6 +4030,7 @@ module Google
           property :availability, as: 'availability'
           property :availability_date, as: 'availabilityDate'
           property :brand, as: 'brand'
+          property :canonical_link, as: 'canonicalLink'
           property :channel, as: 'channel'
           property :color, as: 'color'
           property :condition, as: 'condition'
@@ -4067,6 +4080,9 @@ module Google
           property :pattern, as: 'pattern'
           property :price, as: 'price', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
+          collection :product_details, as: 'productDetails', class: Google::Apis::ContentV2_1::ProductProductDetail, decorator: Google::Apis::ContentV2_1::ProductProductDetail::Representation
+      
+          collection :product_highlights, as: 'productHighlights'
           collection :product_types, as: 'productTypes'
           collection :promotion_ids, as: 'promotionIds'
           property :sale_price, as: 'salePrice', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
@@ -4088,6 +4104,8 @@ module Google
           property :size_type, as: 'sizeType'
           collection :sizes, as: 'sizes'
           property :source, as: 'source'
+          property :subscription_cost, as: 'subscriptionCost', class: Google::Apis::ContentV2_1::ProductSubscriptionCost, decorator: Google::Apis::ContentV2_1::ProductSubscriptionCost::Representation
+      
           property :target_country, as: 'targetCountry'
           property :tax_category, as: 'taxCategory'
           collection :taxes, as: 'taxes', class: Google::Apis::ContentV2_1::ProductTax, decorator: Google::Apis::ContentV2_1::ProductTax::Representation
@@ -4110,6 +4128,15 @@ module Google
       
           property :tax_amount, as: 'taxAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
+        end
+      end
+      
+      class ProductProductDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_name, as: 'attributeName'
+          property :attribute_value, as: 'attributeValue'
+          property :section_name, as: 'sectionName'
         end
       end
       
@@ -4179,6 +4206,16 @@ module Google
           property :documentation, as: 'documentation'
           property :resolution, as: 'resolution'
           property :servability, as: 'servability'
+        end
+      end
+      
+      class ProductSubscriptionCost
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :period, as: 'period'
+          property :period_length, :numeric_string => true, as: 'periodLength'
         end
       end
       

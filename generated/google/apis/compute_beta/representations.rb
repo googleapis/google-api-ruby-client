@@ -1426,6 +1426,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerStatusStatefulPerInstanceConfigs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerStatusVersionTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5182,6 +5188,7 @@ module Google
           collection :local_ssds, as: 'localSsds', class: Google::Apis::ComputeBeta::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk, decorator: Google::Apis::ComputeBeta::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk::Representation
       
           property :machine_type, as: 'machineType'
+          property :maintenance_interval, as: 'maintenanceInterval'
           property :min_cpu_platform, as: 'minCpuPlatform'
         end
       end
@@ -7685,6 +7692,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :has_stateful_config, as: 'hasStatefulConfig'
           property :is_stateful, as: 'isStateful'
+          property :per_instance_configs, as: 'perInstanceConfigs', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusStatefulPerInstanceConfigs, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusStatefulPerInstanceConfigs::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerStatusStatefulPerInstanceConfigs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_effective, as: 'allEffective'
         end
       end
       
@@ -10295,6 +10311,7 @@ module Google
           property :name, as: 'name'
           property :preserved_state, as: 'preservedState', class: Google::Apis::ComputeBeta::PreservedState, decorator: Google::Apis::ComputeBeta::PreservedState::Representation
       
+          property :status, as: 'status'
         end
       end
       
@@ -11761,6 +11778,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authentication, as: 'authentication'
+          property :client_tls_policy, as: 'clientTlsPolicy'
           collection :subject_alt_names, as: 'subjectAltNames'
         end
       end
@@ -12541,6 +12559,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authentication, as: 'authentication'
           property :authorization, as: 'authorization'
+          property :authorization_policy, as: 'authorizationPolicy'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
@@ -12550,6 +12569,7 @@ module Google
           property :quic_override, as: 'quicOverride'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :server_tls_policy, as: 'serverTlsPolicy'
           collection :ssl_certificates, as: 'sslCertificates'
           property :ssl_policy, as: 'sslPolicy'
           property :url_map, as: 'urlMap'

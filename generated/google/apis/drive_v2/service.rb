@@ -181,9 +181,7 @@ module Google
         # @param [String] drive_id
         #   The shared drive from which the change is returned.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] team_drive_id
@@ -227,9 +225,7 @@ module Google
         #   The ID of the shared drive for which the starting pageToken for listing future
         #   changes from that shared drive is returned.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] team_drive_id
@@ -281,9 +277,7 @@ module Google
         #   Whether to include changes indicating that items have been removed from the
         #   list of changes, for example by deletion or loss of access.
         # @param [Boolean] include_items_from_all_drives
-        #   Deprecated - Whether both My Drive and shared drive items should be included
-        #   in results. This parameter will only be effective until June 1, 2020.
-        #   Afterwards shared drive items are included in the results.
+        #   Whether both My Drive and shared drive items should be included in results.
         # @param [Boolean] include_subscribed
         #   Whether to include changes outside the My Drive hierarchy in the result. When
         #   set to false, changes to files such as those in the Application Data folder or
@@ -302,9 +296,7 @@ module Google
         # @param [Fixnum] start_change_id
         #   Deprecated - use pageToken instead.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] team_drive_id
@@ -366,9 +358,7 @@ module Google
         #   Whether to include changes indicating that items have been removed from the
         #   list of changes, for example by deletion or loss of access.
         # @param [Boolean] include_items_from_all_drives
-        #   Deprecated - Whether both My Drive and shared drive items should be included
-        #   in results. This parameter will only be effective until June 1, 2020.
-        #   Afterwards shared drive items are included in the results.
+        #   Whether both My Drive and shared drive items should be included in results.
         # @param [Boolean] include_subscribed
         #   Whether to include changes outside the My Drive hierarchy in the result. When
         #   set to false, changes to files such as those in the Application Data folder or
@@ -387,9 +377,7 @@ module Google
         # @param [Fixnum] start_change_id
         #   Deprecated - use pageToken instead.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] team_drive_id
@@ -557,9 +545,7 @@ module Google
         #   increase the number of the child's parents fail, except when the
         #   canAddMyDriveParent file capability is true and a single parent is being added.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] fields
@@ -1163,9 +1149,7 @@ module Google
         #   Whether to pin the head revision of the new copy. A file can have a maximum of
         #   200 pinned revisions.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] timed_text_language
@@ -1222,9 +1206,7 @@ module Google
         # @param [String] file_id
         #   The ID of the file to delete.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] fields
@@ -1376,9 +1358,7 @@ module Google
         #   Specifies the Revision ID that should be downloaded. Ignored unless alt=media
         #   is specified.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] update_viewed_date
@@ -1443,9 +1423,7 @@ module Google
         #   Whether to pin the head revision of the uploaded file. A file can have a
         #   maximum of 200 pinned revisions.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] timed_text_language
@@ -1520,9 +1498,7 @@ module Google
         # @param [String] drive_id
         #   ID of the shared drive to search.
         # @param [Boolean] include_items_from_all_drives
-        #   Deprecated - Whether both My Drive and shared drive items should be included
-        #   in results. This parameter will only be effective until June 1, 2020.
-        #   Afterwards shared drive items will be included in the results.
+        #   Whether both My Drive and shared drive items should be included in results.
         # @param [Boolean] include_team_drive_items
         #   Deprecated use includeItemsFromAllDrives instead.
         # @param [Fixnum] max_results
@@ -1546,9 +1522,7 @@ module Google
         #   A comma-separated list of spaces to query. Supported values are 'drive', '
         #   appDataFolder' and 'photos'.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] team_drive_id
@@ -1636,9 +1610,7 @@ module Google
         #   and false is equivalent to modifiedDateBehavior=now. To prevent any changes
         #   to the modified date set modifiedDateBehavior=noChange.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] timed_text_language
@@ -1701,9 +1673,7 @@ module Google
         # @param [String] file_id
         #   The ID of the file to update.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] fields
@@ -1743,9 +1713,7 @@ module Google
         # @param [String] file_id
         #   The ID of the file to trash.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] fields
@@ -1784,9 +1752,7 @@ module Google
         # @param [String] file_id
         #   The ID of the file to untrash.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] fields
@@ -1861,9 +1827,7 @@ module Google
         #   and false is equivalent to modifiedDateBehavior=now. To prevent any changes
         #   to the modified date set modifiedDateBehavior=noChange.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] timed_text_language
@@ -1945,9 +1909,7 @@ module Google
         #   Specifies the Revision ID that should be downloaded. Ignored unless alt=media
         #   is specified.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] update_viewed_date
@@ -2086,9 +2048,7 @@ module Google
         #   increase the number of the child's parents fail, except when the
         #   canAddMyDriveParent file capability is true and a single parent is being added.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [String] fields
@@ -2165,9 +2125,7 @@ module Google
         # @param [String] permission_id
         #   The ID for the permission.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] use_domain_admin_access
@@ -2213,9 +2171,7 @@ module Google
         # @param [String] permission_id
         #   The ID for the permission.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] use_domain_admin_access
@@ -2312,9 +2268,7 @@ module Google
         #   Whether to send notification emails when sharing to users or groups. This
         #   parameter is ignored and an email is sent if the role is owner.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] use_domain_admin_access
@@ -2372,9 +2326,7 @@ module Google
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of 'nextPageToken' from the previous response.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] use_domain_admin_access
@@ -2426,9 +2378,7 @@ module Google
         # @param [Boolean] remove_expiration
         #   Whether to remove the expiration date.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] transfer_ownership
@@ -2486,9 +2436,7 @@ module Google
         # @param [Boolean] remove_expiration
         #   Whether to remove the expiration date.
         # @param [Boolean] supports_all_drives
-        #   Deprecated - Whether the requesting application supports both My Drives and
-        #   shared drives. This parameter will only be effective until June 1, 2020.
-        #   Afterwards all applications are assumed to support shared drives.
+        #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated use supportsAllDrives instead.
         # @param [Boolean] transfer_ownership

@@ -1054,8 +1054,8 @@ module Google
         # Permission is denied if the policy or the resource does not exist.
         # Authorization requires the Google IAM permission
         # `resourcemanager.projects.getIamPolicy` on the project.
-        # For additional information about resource structure and identification,
-        # see [Resource Names](/apis/design/resource_names).
+        # For additional information about `resource` (e.g. my-project-id) structure
+        # and identification, see [Resource Names](/apis/design/resource_names).
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.
         #   See the operation documentation for the appropriate value for this field.
@@ -1142,13 +1142,14 @@ module Google
         # difference.
         # @param [String] filter
         #   An expression for filtering the results of the request.  Filter rules are
-        #   case insensitive. The fields eligible for filtering are:
+        #   case insensitive. Some eligible fields for filtering are:
         #   + `name`
         #   + `id`
         #   + `labels.<key>` (where *key* is the name of a label)
         #   + `parent.type`
         #   + `parent.id`
-        #   Some examples of using labels as filters:
+        #   + `lifecycleState`
+        #   Some examples of filter strings:
         #   | Filter           | Description                                         |
         #   |------------------|-----------------------------------------------------|
         #   | name:how*        | The project's name starts with "how".               |
@@ -1157,8 +1158,12 @@ module Google
         #   | NAME:howl        | Equivalent to above.                                |
         #   | labels.color:*   | The project has the label `color`.                  |
         #   | labels.color:red | The project's label `color` has the value `red`.    |
-        #   | labels.color:red&nbsp;labels.size:big |The project's label `color` has
-        #   the value `red` and its label `size` has the value `big`.              |
+        #   | labels.color:red&nbsp;labels.size:big | The project's label `color`    |
+        #   :                                       : has the value `red` and its    :
+        #   :                                       : label`size` has the value      :
+        #   :                                       : `big`.                         :
+        #   | lifecycleState:DELETE_REQUESTED       | Only show projects that are    |
+        #   :                                       : pending deletion.              :
         #   If no filter is specified, the call will return projects for which the user
         #   has the `resourcemanager.projects.get` permission.
         #   NOTE: To perform a by-parent query (eg., what projects are directly in a
@@ -1278,6 +1283,8 @@ module Google
         # NOTE: Removing service accounts from policies or changing their roles can
         # render services completely inoperable. It is important to understand how
         # the service account is being used before removing or updating its roles.
+        # For additional information about `resource` (e.g. my-project-id) structure
+        # and identification, see [Resource Names](/apis/design/resource_names).
         # The following constraints apply when using `setIamPolicy()`:
         # + Project does not support `allUsers` and `allAuthenticatedUsers` as
         # `members` in a `Binding` of a `Policy`.
@@ -1378,6 +1385,8 @@ module Google
         end
         
         # Returns permissions that a caller has on the specified Project.
+        # For additional information about `resource` (e.g. my-project-id) structure
+        # and identification, see [Resource Names](/apis/design/resource_names).
         # There are no permissions required for making this API call.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested.

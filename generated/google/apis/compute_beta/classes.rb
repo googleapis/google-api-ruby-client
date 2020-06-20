@@ -1091,7 +1091,7 @@ module Google
         end
       end
       
-      # Properties of the SKU instances being reserved.
+      # Properties of the SKU instances being reserved. Next ID: 9
       class AllocationSpecificSkuAllocationReservedInstanceProperties
         include Google::Apis::Core::Hashable
       
@@ -1113,6 +1113,13 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Specifies whether this VM may be a stable fleet VM. Setting this to "Periodic"
+        # designates this VM as a Stable Fleet VM.
+        # See go/stable-fleet-ug for more details.
+        # Corresponds to the JSON property `maintenanceInterval`
+        # @return [String]
+        attr_accessor :maintenance_interval
+      
         # Minimum cpu platform the reservation.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
@@ -1127,6 +1134,7 @@ module Google
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @local_ssds = args[:local_ssds] if args.key?(:local_ssds)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
         end
       end
@@ -1145,7 +1153,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :in_use_count
       
-        # Properties of the SKU instances being reserved.
+        # Properties of the SKU instances being reserved. Next ID: 9
         # Corresponds to the JSON property `instanceProperties`
         # @return [Google::Apis::ComputeBeta::AllocationSpecificSkuAllocationReservedInstanceProperties]
         attr_accessor :instance_properties
@@ -2699,8 +2707,12 @@ module Google
       end
       
       # Represents a Backend Service resource.
-      # A backend service contains configuration values for Google Cloud Platform load
-      # balancing services.
+      # A backend service defines how Google Cloud load balancers distribute traffic.
+      # The backend service configuration contains a set of values, such as the
+      # protocol used to connect to backends, various distribution and session
+      # settings, health checks, and timeouts. These settings provide fine-grained
+      # control over how your load balancer behaves. Most of the settings have default
+      # values that allow for easy configuration if you need to get started quickly.
       # Backend services in Google Compute Engine can be either regionally or globally
       # scoped.
       # * [Global](/compute/docs/reference/rest/`$api_version`/backendServices) * [
@@ -10861,7 +10873,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 11
+        # Sets the scheduling options for an Instance. NextID: 12
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeBeta::Scheduling]
         attr_accessor :scheduling
@@ -12149,6 +12161,11 @@ module Google
         attr_accessor :is_stateful
         alias_method :is_stateful?, :is_stateful
       
+        # [Output Only] Status of per-instance configs on the instance.
+        # Corresponds to the JSON property `perInstanceConfigs`
+        # @return [Google::Apis::ComputeBeta::InstanceGroupManagerStatusStatefulPerInstanceConfigs]
+        attr_accessor :per_instance_configs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -12157,6 +12174,29 @@ module Google
         def update!(**args)
           @has_stateful_config = args[:has_stateful_config] if args.key?(:has_stateful_config)
           @is_stateful = args[:is_stateful] if args.key?(:is_stateful)
+          @per_instance_configs = args[:per_instance_configs] if args.key?(:per_instance_configs)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatusStatefulPerInstanceConfigs
+        include Google::Apis::Core::Hashable
+      
+        # A bit indicating if all of the group's per-instance configs (listed in the
+        # output of a listPerInstanceConfigs API call) have status EFFECTIVE or there
+        # are no per-instance-configs.
+        # Corresponds to the JSON property `allEffective`
+        # @return [Boolean]
+        attr_accessor :all_effective
+        alias_method :all_effective?, :all_effective
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_effective = args[:all_effective] if args.key?(:all_effective)
         end
       end
       
@@ -13592,7 +13632,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 11
+        # Sets the scheduling options for an Instance. NextID: 12
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeBeta::Scheduling]
         attr_accessor :scheduling
@@ -16421,7 +16461,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # GCS bucket storage location of the machine image (regional or multi-regional).
+        # The regional or multi-regional Cloud Storage bucket location where the machine
+        # image is stored.
         # Corresponds to the JSON property `storageLocations`
         # @return [Array<String>]
         attr_accessor :storage_locations
@@ -22212,6 +22253,12 @@ module Google
         # @return [Google::Apis::ComputeBeta::PreservedState]
         attr_accessor :preserved_state
       
+        # The status of applying this per-instance config on the corresponding managed
+        # instance.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -22221,6 +22268,7 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @name = args[:name] if args.key?(:name)
           @preserved_state = args[:preserved_state] if args.key?(:preserved_state)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -27206,7 +27254,7 @@ module Google
         end
       end
       
-      # Sets the scheduling options for an Instance. NextID: 11
+      # Sets the scheduling options for an Instance. NextID: 12
       class Scheduling
         include Google::Apis::Core::Hashable
       
@@ -27900,24 +27948,32 @@ module Google
       class SecuritySettings
         include Google::Apis::Core::Hashable
       
-        # A URL referring to a networksecurity.Authentication resource that describes
-        # how clients should authenticate with this service's backends. If left blank,
-        # communications between services are not encrypted (i.e., the TLS policy is set
-        # to OPEN). When sending traffic to this service's backends, the OriginationTls
-        # setting of Authentication.TransportAuthentication is applied. Refer to the
-        # Authentication and Authentication.TransportAuthentication.OriginationTls
-        # resources for additional details. authentication only applies to a global
-        # BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # [Deprecated] Use clientTlsPolicy instead.
         # Corresponds to the JSON property `authentication`
         # @return [String]
         attr_accessor :authentication
       
-        # Optional. A list of subject alternate names to verify the subject identity (
-        # SAN) in the certificate presented by the server, to authorize the SAN list as
-        # identities to run the service represented by this BackendService. If specified,
-        # the client will verify that the server certificate's subject alt name matches
-        # one of the specified values. Only applies to a global BackendService with the
+        # Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that
+        # describes how clients should authenticate with this service's backends.
+        # clientTlsPolicy only applies to a global BackendService with the
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # If left blank, communications are not encrypted.
+        # Corresponds to the JSON property `clientTlsPolicy`
+        # @return [String]
+        attr_accessor :client_tls_policy
+      
+        # Optional. A list of Subject Alternative Names (SANs) that the client verifies
+        # during a mutual TLS handshake with an server/endpoint for this BackendService.
+        # When the server presents its X.509 certificate to the client, the client
+        # inspects the certificate's subjectAltName field. If the field contains one of
+        # the specified values, the communication continues. Otherwise, it fails. This
+        # additional check enables the client to verify that the server is authorized to
+        # run the requested service.
+        # Note that the contents of the server certificate's subjectAltName field are
+        # configured by the Public Key Infrastructure which provisions server identities.
+        # Only applies to a global BackendService with loadBalancingScheme set to
+        # INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached
+        # clientTlsPolicy with clientCertificate (mTLS mode).
         # Corresponds to the JSON property `subjectAltNames`
         # @return [Array<String>]
         attr_accessor :subject_alt_names
@@ -27929,6 +27985,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authentication = args[:authentication] if args.key?(:authentication)
+          @client_tls_policy = args[:client_tls_policy] if args.key?(:client_tls_policy)
           @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
         end
       end
@@ -28698,7 +28755,7 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # Sets the scheduling options for an Instance. NextID: 11
+        # Sets the scheduling options for an Instance. NextID: 12
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeBeta::Scheduling]
         attr_accessor :scheduling
@@ -28750,9 +28807,9 @@ module Google
       # to five PEM-encoded certificates. The API call creates an object (
       # sslCertificate) that holds this data. You can use SSL keys and certificates to
       # secure connections to a load balancer. For more information, read  Creating
-      # and using SSL certificates and SSL certificates quotas and limits. (==
-      # resource_for `$api_version`.sslCertificates ==) (== resource_for `$api_version`
-      # .regionSslCertificates ==)
+      # and using SSL certificates, SSL certificates quotas and limits, and
+      # Troubleshooting SSL certificates. (== resource_for `$api_version`.
+      # sslCertificates ==) (== resource_for `$api_version`.regionSslCertificates ==)
       class SslCertificate
         include Google::Apis::Core::Hashable
       
@@ -30977,30 +31034,26 @@ module Google
       class TargetHttpsProxy
         include Google::Apis::Core::Hashable
       
-        # A URL referring to a networksecurity.Authentication resource that describes
-        # how the proxy should authenticate inbound traffic. If left blank,
-        # communications between services are not encrypted (i.e., the TLS policy is set
-        # to OPEN). When terminating inbound traffic to this proxy, the TerminationTls
-        # setting of Authentication.TransportAuthentication is applied.
-        # Refer to the Authentication and Authentication.TransportAuthentication.
-        # TerminationTls resources for additional details.
-        # authentication only applies to a global TargetHttpsProxy attached to
-        # globalForwardingRules with the loadBalancingScheme set to
-        # INTERNAL_SELF_MANAGED.
+        # [Deprecated] Use serverTlsPolicy instead.
         # Corresponds to the JSON property `authentication`
         # @return [String]
         attr_accessor :authentication
       
-        # A URL referring to a networksecurity.Authorization resource that describes how
-        # the proxy should authorize inbound traffic. If left blank, access will not be
-        # restricted by an authorization policy.
-        # Refer to the Authorization resource for additional details.
-        # authorization only applies to a global TargetHttpsProxy attached to
-        # globalForwardingRules with the loadBalancingScheme set to
-        # INTERNAL_SELF_MANAGED.
+        # [Deprecated] Use authorizationPolicy instead.
         # Corresponds to the JSON property `authorization`
         # @return [String]
         attr_accessor :authorization
+      
+        # Optional. A URL referring to a networksecurity.AuthorizationPolicy resource
+        # that describes how the proxy should authorize inbound traffic. If left blank,
+        # access will not be restricted by an authorization policy.
+        # Refer to the AuthorizationPolicy resource for additional details.
+        # authorizationPolicy only applies to a global TargetHttpsProxy attached to
+        # globalForwardingRules with the loadBalancingScheme set to
+        # INTERNAL_SELF_MANAGED.
+        # Corresponds to the JSON property `authorizationPolicy`
+        # @return [String]
+        attr_accessor :authorization_policy
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -31067,6 +31120,16 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that
+        # describes how the proxy should authenticate inbound traffic.
+        # serverTlsPolicy only applies to a global TargetHttpsProxy attached to
+        # globalForwardingRules with the loadBalancingScheme set to
+        # INTERNAL_SELF_MANAGED.
+        # If left blank, communications are not encrypted.
+        # Corresponds to the JSON property `serverTlsPolicy`
+        # @return [String]
+        attr_accessor :server_tls_policy
+      
         # URLs to SslCertificate resources that are used to authenticate connections
         # between users and the load balancer. At least one SSL certificate must be
         # specified. Currently, you may specify up to 15 SSL certificates.
@@ -31099,6 +31162,7 @@ module Google
         def update!(**args)
           @authentication = args[:authentication] if args.key?(:authentication)
           @authorization = args[:authorization] if args.key?(:authorization)
+          @authorization_policy = args[:authorization_policy] if args.key?(:authorization_policy)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
@@ -31108,6 +31172,7 @@ module Google
           @quic_override = args[:quic_override] if args.key?(:quic_override)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @server_tls_policy = args[:server_tls_policy] if args.key?(:server_tls_policy)
           @ssl_certificates = args[:ssl_certificates] if args.key?(:ssl_certificates)
           @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
           @url_map = args[:url_map] if args.key?(:url_map)

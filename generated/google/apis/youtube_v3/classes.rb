@@ -7200,6 +7200,44 @@ module Google
         end
       end
       
+      # 
+      class TestItem
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # 
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::TestItemTestItemSnippet]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @snippet = args[:snippet] if args.key?(:snippet)
+        end
+      end
+      
+      # 
+      class TestItemTestItemSnippet
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A thumbnail is an image representing a YouTube resource.
       class Thumbnail
         include Google::Apis::Core::Hashable

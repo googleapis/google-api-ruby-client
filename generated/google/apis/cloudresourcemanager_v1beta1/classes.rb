@@ -384,7 +384,7 @@ module Google
       end
       
       # The request sent to the
-      # GetAncestry
+      # [google.cloudresourcemanager.projects.v1beta1.DeveloperProjects.GetAncestry]
       # method.
       class GetAncestryRequest
         include Google::Apis::Core::Hashable
@@ -398,7 +398,9 @@ module Google
         end
       end
       
-      # Response from the GetAncestry method.
+      # Response from the
+      # projects.getAncestry
+      # method.
       class GetAncestryResponse
         include Google::Apis::Core::Hashable
       

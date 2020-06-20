@@ -367,7 +367,6 @@ module Google
         # Partially updates an instance within a project. This method can modify all
         # fields of an Instance and is the preferred way to update an Instance.
         # @param [String] name
-        #   Required. (`OutputOnly`)
         #   The unique name of the instance. Values are of the form
         #   `projects/`project`/instances/a-z+[a-z0-9]`.
         # @param [Google::Apis::BigtableadminV2::Instance] instance_object
@@ -477,7 +476,6 @@ module Google
         # name and type for an Instance. To update other Instance properties, such as
         # labels, use PartialUpdateInstance.
         # @param [String] name
-        #   Required. (`OutputOnly`)
         #   The unique name of the instance. Values are of the form
         #   `projects/`project`/instances/a-z+[a-z0-9]`.
         # @param [Google::Apis::BigtableadminV2::Instance] instance_object
@@ -668,9 +666,8 @@ module Google
         
         # Updates an app profile within an instance.
         # @param [String] name
-        #   (`OutputOnly`)
         #   The unique name of the app profile. Values are of the form
-        #   `projects/<project>/instances/<instance>/appProfiles/_a-zA-Z0-9*`.
+        #   `projects/`project`/instances/`instance`/appProfiles/_a-zA-Z0-9*`.
         # @param [Google::Apis::BigtableadminV2::AppProfile] app_profile_object
         # @param [Boolean] ignore_warnings
         #   If true, ignore safety checks when updating the app profile.
@@ -850,7 +847,6 @@ module Google
         
         # Updates a cluster within an instance.
         # @param [String] name
-        #   Required. (`OutputOnly`)
         #   The unique name of the cluster. Values are of the form
         #   `projects/`project`/instances/`instance`/clusters/a-z*`.
         # @param [Google::Apis::BigtableadminV2::Cluster] cluster_object

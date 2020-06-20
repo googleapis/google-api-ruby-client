@@ -349,12 +349,12 @@ module Google
       # restricted. For example, it controls which cloud services can be activated
       # across an organization, or whether a Compute Engine instance can have
       # serial port connections established. `Constraints` can be configured by the
-      # organization's policy adminstrator to fit the needs of the organzation by
+      # organization's policy administrator to fit the needs of the organzation by
       # setting Policies for `Constraints` at different locations in the
       # organization's resource hierarchy. Policies are inherited down the resource
       # hierarchy from higher levels, but can also be overridden. For details about
       # the inheritance rules please read about
-      # Policies.
+      # [Policies](/resource-manager/reference/rest/v1/Policy).
       # `Constraints` have a default behavior determined by the `constraint_default`
       # field, which is the enforcement behavior that is used in the absence of a
       # `Policy` being defined or inherited for the resource in question.
@@ -369,7 +369,7 @@ module Google
         # @return [Google::Apis::CloudresourcemanagerV1::BooleanConstraint]
         attr_accessor :boolean_constraint
       
-        # The evaluation behavior of this constraint in the absense of 'Policy'.
+        # The evaluation behavior of this constraint in the absence of 'Policy'.
         # Corresponds to the JSON property `constraintDefault`
         # @return [String]
         attr_accessor :constraint_default
@@ -575,7 +575,9 @@ module Google
         end
       end
       
-      # Response from the GetAncestry method.
+      # Response from the
+      # projects.getAncestry
+      # method.
       class GetAncestryResponse
         include Google::Apis::Core::Hashable
       
@@ -742,8 +744,8 @@ module Google
         end
       end
       
-      # The request sent to the [ListAvailableOrgPolicyConstraints]
-      # google.cloud.OrgPolicy.v1.ListAvailableOrgPolicyConstraints] method.
+      # The request sent to the `ListAvailableOrgPolicyConstraints` method on the
+      # project, folder, or organization.
       class ListAvailableOrgPolicyConstraintsRequest
         include Google::Apis::Core::Hashable
       
@@ -771,7 +773,7 @@ module Google
         end
       end
       
-      # The response returned from the ListAvailableOrgPolicyConstraints method.
+      # The response returned from the `ListAvailableOrgPolicyConstraints` method.
       # Returns all `Constraints` that could be set at this level of the hierarchy
       # (contrast with the response from `ListPolicies`, which returns all policies
       # which are set).
@@ -884,7 +886,7 @@ module Google
         end
       end
       
-      # The response returned from the ListOrgPolicies method. It will be empty
+      # The response returned from the `ListOrgPolicies` method. It will be empty
       # if no `Policies` are set on the resource.
       class ListOrgPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -953,7 +955,7 @@ module Google
         attr_accessor :denied_values
       
         # Determines the inheritance behavior for this `Policy`.
-        # By default, a `ListPolicy` set at a resource supercedes any `Policy` set
+        # By default, a `ListPolicy` set at a resource supersedes any `Policy` set
         # anywhere up the resource hierarchy. However, if `inherit_from_parent` is
         # set to `true`, then the values from the effective `Policy` of the parent
         # resource are inherited, meaning the values set in this `Policy` are
@@ -1179,6 +1181,9 @@ module Google
       
         # The name of the `Constraint` the `Policy` is configuring, for example,
         # `constraints/serviceuser.services`.
+        # A [list of available
+        # constraints](/resource-manager/docs/organization-policy/org-policy-constraints)
+        # is available.
         # Immutable after creation.
         # Corresponds to the JSON property `constraint`
         # @return [String]

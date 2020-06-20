@@ -396,7 +396,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Merchant Center account.
+        # Updates a Merchant Center account. Any fields that are not provided are
+        # deleted from the resource.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and `accountId` must be the
@@ -667,7 +668,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the tax settings of the account.
+        # Updates the tax settings of the account. Any fields that are not provided are
+        # deleted from the resource.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and `accountId` must be the
@@ -928,7 +930,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a datafeed configuration of your Merchant Center account.
+        # Updates a datafeed configuration of your Merchant Center account. Any fields
+        # that are not provided are deleted from the resource.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the datafeed. This account cannot be a
         #   multi-client account.
@@ -1453,7 +1456,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the LIA settings of the account.
+        # Updates the LIA settings of the account. Any fields that are not provided are
+        # deleted from the resource.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and `accountId` must be the
@@ -4250,7 +4254,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the shipping settings of the account.
+        # Updates the shipping settings of the account. Any fields that are not provided
+        # are deleted from the resource.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
         #   then this account must be a multi-client account and `accountId` must be the

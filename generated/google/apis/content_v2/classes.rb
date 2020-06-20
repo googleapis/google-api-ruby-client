@@ -9365,6 +9365,11 @@ module Google
         # @return [String]
         attr_accessor :brand
       
+        # Link to the canonical version of the landing page.
+        # Corresponds to the JSON property `canonicalLink`
+        # @return [String]
+        attr_accessor :canonical_link
+      
         # Required. The item's channel (online or local).
         # Acceptable values are:
         # - "`local`"
@@ -9534,7 +9539,7 @@ module Google
         # @return [String]
         attr_accessor :image_link
       
-        # Number and amount of installments to pay for an item. Brazil only.
+        # Number and amount of installments to pay for an item.
         # Corresponds to the JSON property `installment`
         # @return [Google::Apis::ContentV2::Installment]
         attr_accessor :installment
@@ -9810,6 +9815,7 @@ module Google
           @availability = args[:availability] if args.key?(:availability)
           @availability_date = args[:availability_date] if args.key?(:availability_date)
           @brand = args[:brand] if args.key?(:brand)
+          @canonical_link = args[:canonical_link] if args.key?(:canonical_link)
           @channel = args[:channel] if args.key?(:channel)
           @color = args[:color] if args.key?(:color)
           @condition = args[:condition] if args.key?(:condition)

@@ -880,6 +880,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TestItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestItemTestItemSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Thumbnail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2915,6 +2927,21 @@ module Google
           property :alt_text, as: 'altText'
           property :alt_text_language, as: 'altTextLanguage'
           property :sticker_id, as: 'stickerId'
+        end
+      end
+      
+      class TestItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::TestItemTestItemSnippet, decorator: Google::Apis::YoutubeV3::TestItemTestItemSnippet::Representation
+      
+        end
+      end
+      
+      class TestItemTestItemSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

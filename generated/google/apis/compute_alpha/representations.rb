@@ -922,6 +922,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRuleMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallPolicyRuleMatcherLayer4Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FixedOrPercent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1517,6 +1565,12 @@ module Google
       end
       
       class InstanceGroupManagerStatusStateful
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerStatusStatefulPerInstanceConfigs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5713,6 +5767,7 @@ module Google
           property :long_term_release, as: 'longTermRelease'
           property :machine_type, as: 'machineType'
           property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
+          property :maintenance_interval, as: 'maintenanceInterval'
           property :min_cpu_platform, as: 'minCpuPlatform'
         end
       end
@@ -7172,6 +7227,104 @@ module Google
         end
       end
       
+      class FirewallPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associations, as: 'associations', class: Google::Apis::ComputeAlpha::FirewallPolicyAssociation, decorator: Google::Apis::ComputeAlpha::FirewallPolicyAssociation::Representation
+      
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :rule_tuple_count, as: 'ruleTupleCount'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::FirewallPolicyRule, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRule::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+        end
+      end
+      
+      class FirewallPolicyAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_target, as: 'attachmentTarget'
+          property :display_name, as: 'displayName'
+          property :firewall_policy_id, as: 'firewallPolicyId'
+          property :name, as: 'name'
+        end
+      end
+      
+      class FirewallPolicyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::FirewallPolicy, decorator: Google::Apis::ComputeAlpha::FirewallPolicy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::FirewallPolicyList::Warning, decorator: Google::Apis::ComputeAlpha::FirewallPolicyList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::FirewallPolicyList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::FirewallPolicyList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class FirewallPolicyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :description, as: 'description'
+          property :direction, as: 'direction'
+          property :enable_logging, as: 'enableLogging'
+          property :kind, as: 'kind'
+          property :match, as: 'match', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcher, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcher::Representation
+      
+          property :preview, as: 'preview'
+          property :priority, as: 'priority'
+          property :rule_tuple_count, as: 'ruleTupleCount'
+          collection :target_resources, as: 'targetResources'
+          collection :target_service_accounts, as: 'targetServiceAccounts'
+        end
+      end
+      
+      class FirewallPolicyRuleMatcher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dest_ip_ranges, as: 'destIpRanges'
+          collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config::Representation
+      
+          collection :src_ip_ranges, as: 'srcIpRanges'
+        end
+      end
+      
+      class FirewallPolicyRuleMatcherLayer4Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_protocol, as: 'ipProtocol'
+          collection :ports, as: 'ports'
+        end
+      end
+      
       class FixedOrPercent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8453,6 +8606,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :has_stateful_config, as: 'hasStatefulConfig'
           property :is_stateful, as: 'isStateful'
+          property :per_instance_configs, as: 'perInstanceConfigs', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusStatefulPerInstanceConfigs, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusStatefulPerInstanceConfigs::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerStatusStatefulPerInstanceConfigs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_effective, as: 'allEffective'
         end
       end
       
@@ -10006,6 +10168,7 @@ module Google
           property :auto_create_subnetworks, as: 'autoCreateSubnetworks'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :firewall_policy, as: 'firewallPolicy'
           property :gateway_i_pv4, as: 'gatewayIPv4'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
@@ -11314,6 +11477,7 @@ module Google
           property :name, as: 'name'
           property :preserved_state, as: 'preservedState', class: Google::Apis::ComputeAlpha::PreservedState, decorator: Google::Apis::ComputeAlpha::PreservedState::Representation
       
+          property :status, as: 'status'
         end
       end
       
@@ -13159,6 +13323,7 @@ module Google
       
           property :authorization_config, as: 'authorizationConfig', class: Google::Apis::ComputeAlpha::AuthorizationConfig, decorator: Google::Apis::ComputeAlpha::AuthorizationConfig::Representation
       
+          property :client_tls_policy, as: 'clientTlsPolicy'
           property :client_tls_settings, as: 'clientTlsSettings', class: Google::Apis::ComputeAlpha::ClientTlsSettings, decorator: Google::Apis::ComputeAlpha::ClientTlsSettings::Representation
       
           collection :subject_alt_names, as: 'subjectAltNames'
@@ -14081,6 +14246,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authentication, as: 'authentication'
           property :authorization, as: 'authorization'
+          property :authorization_policy, as: 'authorizationPolicy'
           property :certificate_map, as: 'certificateMap'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -14092,6 +14258,7 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :server_tls_policy, as: 'serverTlsPolicy'
           collection :ssl_certificates, as: 'sslCertificates'
           property :ssl_policy, as: 'sslPolicy'
           property :url_map, as: 'urlMap'

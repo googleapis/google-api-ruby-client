@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/bigtable/
     module BigtableadminV2
       VERSION = 'V2'
-      REVISION = '20200424'
+      REVISION = '20200512'
 
       # Administer your Cloud Bigtable tables and clusters
       AUTH_BIGTABLE_ADMIN = 'https://www.googleapis.com/auth/bigtable.admin'

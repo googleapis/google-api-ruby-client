@@ -28,15 +28,14 @@ module Google
       class Cluster
         include Google::Apis::Core::Hashable
       
-        # (`CreationOnly`)
-        # The type of storage used by this cluster to serve its
+        # Immutable. The type of storage used by this cluster to serve its
         # parent instance's tables, unless explicitly overridden.
         # Corresponds to the JSON property `defaultStorageType`
         # @return [String]
         attr_accessor :default_storage_type
       
-        # (`CreationOnly`)
-        # The location where this cluster's nodes and storage reside. For best
+        # Immutable. The location where this cluster's nodes and storage reside. For
+        # best
         # performance, clients should be located as close as possible to this
         # cluster. Currently only zones are supported, so values should be of the
         # form `projects/`project`/locations/`zone``.
@@ -44,7 +43,6 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # Required. (`OutputOnly`)
         # The unique name of the cluster. Values are of the form
         # `projects/`project`/instances/`instance`/clusters/a-z*`.
         # Corresponds to the JSON property `name`
@@ -58,8 +56,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :serve_nodes
       
-        # (`OutputOnly`)
-        # The current state of the cluster.
+        # Output only. The current state of the cluster.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -266,15 +263,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. (`OutputOnly`)
         # The unique name of the instance. Values are of the form
         # `projects/`project`/instances/a-z+[a-z0-9]`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # (`OutputOnly`)
-        # The current state of the instance.
+        # Output only. The current state of the instance.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state

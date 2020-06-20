@@ -4790,6 +4790,7 @@ module Google
           collection :local_ssds, as: 'localSsds', class: Google::Apis::ComputeV1::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk, decorator: Google::Apis::ComputeV1::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk::Representation
       
           property :machine_type, as: 'machineType'
+          property :maintenance_interval, as: 'maintenanceInterval'
           property :min_cpu_platform, as: 'minCpuPlatform'
         end
       end

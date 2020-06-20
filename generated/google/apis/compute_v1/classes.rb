@@ -1070,7 +1070,7 @@ module Google
         end
       end
       
-      # Properties of the SKU instances being reserved.
+      # Properties of the SKU instances being reserved. Next ID: 9
       class AllocationSpecificSkuAllocationReservedInstanceProperties
         include Google::Apis::Core::Hashable
       
@@ -1092,6 +1092,13 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Specifies whether this VM may be a stable fleet VM. Setting this to "Periodic"
+        # designates this VM as a Stable Fleet VM.
+        # See go/stable-fleet-ug for more details.
+        # Corresponds to the JSON property `maintenanceInterval`
+        # @return [String]
+        attr_accessor :maintenance_interval
+      
         # Minimum cpu platform the reservation.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
@@ -1106,6 +1113,7 @@ module Google
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @local_ssds = args[:local_ssds] if args.key?(:local_ssds)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
         end
       end
@@ -1124,7 +1132,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :in_use_count
       
-        # Properties of the SKU instances being reserved.
+        # Properties of the SKU instances being reserved. Next ID: 9
         # Corresponds to the JSON property `instanceProperties`
         # @return [Google::Apis::ComputeV1::AllocationSpecificSkuAllocationReservedInstanceProperties]
         attr_accessor :instance_properties
@@ -2585,8 +2593,12 @@ module Google
       end
       
       # Represents a Backend Service resource.
-      # A backend service contains configuration values for Google Cloud Platform load
-      # balancing services.
+      # A backend service defines how Google Cloud load balancers distribute traffic.
+      # The backend service configuration contains a set of values, such as the
+      # protocol used to connect to backends, various distribution and session
+      # settings, health checks, and timeouts. These settings provide fine-grained
+      # control over how your load balancer behaves. Most of the settings have default
+      # values that allow for easy configuration if you need to get started quickly.
       # Backend services in Google Compute Engine can be either regionally or globally
       # scoped.
       # * [Global](/compute/docs/reference/rest/`$api_version`/backendServices) * [
@@ -10040,7 +10052,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 11
+        # Sets the scheduling options for an Instance. NextID: 12
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
@@ -12383,7 +12395,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 11
+        # Sets the scheduling options for an Instance. NextID: 12
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
@@ -24673,7 +24685,7 @@ module Google
         end
       end
       
-      # Sets the scheduling options for an Instance. NextID: 11
+      # Sets the scheduling options for an Instance. NextID: 12
       class Scheduling
         include Google::Apis::Core::Hashable
       
@@ -25701,9 +25713,9 @@ module Google
       # to five PEM-encoded certificates. The API call creates an object (
       # sslCertificate) that holds this data. You can use SSL keys and certificates to
       # secure connections to a load balancer. For more information, read  Creating
-      # and using SSL certificates and SSL certificates quotas and limits. (==
-      # resource_for `$api_version`.sslCertificates ==) (== resource_for `$api_version`
-      # .regionSslCertificates ==)
+      # and using SSL certificates, SSL certificates quotas and limits, and
+      # Troubleshooting SSL certificates. (== resource_for `$api_version`.
+      # sslCertificates ==) (== resource_for `$api_version`.regionSslCertificates ==)
       class SslCertificate
         include Google::Apis::Core::Hashable
       

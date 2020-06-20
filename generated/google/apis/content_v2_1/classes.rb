@@ -6642,11 +6642,10 @@ module Google
       class OrdersCustomBatchRequestEntryRefundItemItem
         include Google::Apis::Core::Hashable
       
-        # The amount that is refunded. In case of multiple refunds,
-        # - If the quantity of refunded items changed, this should contain the total
-        # refund per item.
-        # - If the quantity of the refunded items remained the same, this should be the
-        # newly refunded amount.
+        # The total amount that is refunded. (e.g. refunding $5 each for 2 products
+        # should be done by setting quantity to 2 and amount to 10$) In case of multiple
+        # refunds, this should be the amount you currently want to refund to the
+        # customer.
         # Corresponds to the JSON property `amount`
         # @return [Google::Apis::ContentV2_1::MonetaryAmount]
         attr_accessor :amount
@@ -8578,6 +8577,11 @@ module Google
         # @return [String]
         attr_accessor :brand
       
+        # Link to the canonical version of the landing page.
+        # Corresponds to the JSON property `canonicalLink`
+        # @return [String]
+        attr_accessor :canonical_link
+      
         # Required. The item's channel (online or local).
         # Acceptable values are:
         # - "`local`"
@@ -8732,7 +8736,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :included_destinations
       
-        # Number and amount of installments to pay for an item. Brazil only.
+        # Number and amount of installments to pay for an item.
         # Corresponds to the JSON property `installment`
         # @return [Google::Apis::ContentV2_1::Installment]
         attr_accessor :installment
@@ -8825,6 +8829,16 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :price
       
+        # Technical specification or additional product details
+        # Corresponds to the JSON property `productDetails`
+        # @return [Array<Google::Apis::ContentV2_1::ProductProductDetail>]
+        attr_accessor :product_details
+      
+        # List of important bullet points describing the product
+        # Corresponds to the JSON property `productHighlights`
+        # @return [Array<String>]
+        attr_accessor :product_highlights
+      
         # Categories of the item (formatted as in products data specification).
         # Corresponds to the JSON property `productTypes`
         # @return [Array<String>]
@@ -8908,6 +8922,12 @@ module Google
         # @return [String]
         attr_accessor :source
       
+        # Number of periods (months or years) and amount of payment per period for an
+        # item with an associated subscription contract.
+        # Corresponds to the JSON property `subscriptionCost`
+        # @return [Google::Apis::ContentV2_1::ProductSubscriptionCost]
+        attr_accessor :subscription_cost
+      
         # Required. The CLDR territory code for the item.
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
@@ -8960,6 +8980,7 @@ module Google
           @availability = args[:availability] if args.key?(:availability)
           @availability_date = args[:availability_date] if args.key?(:availability_date)
           @brand = args[:brand] if args.key?(:brand)
+          @canonical_link = args[:canonical_link] if args.key?(:canonical_link)
           @channel = args[:channel] if args.key?(:channel)
           @color = args[:color] if args.key?(:color)
           @condition = args[:condition] if args.key?(:condition)
@@ -9004,6 +9025,8 @@ module Google
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @pattern = args[:pattern] if args.key?(:pattern)
           @price = args[:price] if args.key?(:price)
+          @product_details = args[:product_details] if args.key?(:product_details)
+          @product_highlights = args[:product_highlights] if args.key?(:product_highlights)
           @product_types = args[:product_types] if args.key?(:product_types)
           @promotion_ids = args[:promotion_ids] if args.key?(:promotion_ids)
           @sale_price = args[:sale_price] if args.key?(:sale_price)
@@ -9019,6 +9042,7 @@ module Google
           @size_type = args[:size_type] if args.key?(:size_type)
           @sizes = args[:sizes] if args.key?(:sizes)
           @source = args[:source] if args.key?(:source)
+          @subscription_cost = args[:subscription_cost] if args.key?(:subscription_cost)
           @target_country = args[:target_country] if args.key?(:target_country)
           @tax_category = args[:tax_category] if args.key?(:tax_category)
           @taxes = args[:taxes] if args.key?(:taxes)
@@ -9057,6 +9081,37 @@ module Google
           @price_amount = args[:price_amount] if args.key?(:price_amount)
           @remitted_tax_amount = args[:remitted_tax_amount] if args.key?(:remitted_tax_amount)
           @tax_amount = args[:tax_amount] if args.key?(:tax_amount)
+        end
+      end
+      
+      # 
+      class ProductProductDetail
+        include Google::Apis::Core::Hashable
+      
+        # The name of the product detail.
+        # Corresponds to the JSON property `attributeName`
+        # @return [String]
+        attr_accessor :attribute_name
+      
+        # The value of the product detail.
+        # Corresponds to the JSON property `attributeValue`
+        # @return [String]
+        attr_accessor :attribute_value
+      
+        # The section header used to group a set of product details.
+        # Corresponds to the JSON property `sectionName`
+        # @return [String]
+        attr_accessor :section_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_name = args[:attribute_name] if args.key?(:attribute_name)
+          @attribute_value = args[:attribute_value] if args.key?(:attribute_value)
+          @section_name = args[:section_name] if args.key?(:section_name)
         end
       end
       
@@ -9247,7 +9302,7 @@ module Google
         # @return [String]
         attr_accessor :destination
       
-        # Destination approval status in targetCountry of the offer.
+        # Destination approval status in `targetCountry` of the offer.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -9321,6 +9376,37 @@ module Google
           @documentation = args[:documentation] if args.key?(:documentation)
           @resolution = args[:resolution] if args.key?(:resolution)
           @servability = args[:servability] if args.key?(:servability)
+        end
+      end
+      
+      # 
+      class ProductSubscriptionCost
+        include Google::Apis::Core::Hashable
+      
+        # The amount the buyer has to pay per subscription period.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :amount
+      
+        # The type of subscription period.
+        # Corresponds to the JSON property `period`
+        # @return [String]
+        attr_accessor :period
+      
+        # The number of subscription periods the buyer has to pay.
+        # Corresponds to the JSON property `periodLength`
+        # @return [Fixnum]
+        attr_accessor :period_length
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @period = args[:period] if args.key?(:period)
+          @period_length = args[:period_length] if args.key?(:period_length)
         end
       end
       
