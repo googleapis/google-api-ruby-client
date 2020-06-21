@@ -724,16 +724,16 @@ module Google
       
         # End time of the range of transfer runs. For example,
         # `"2017-05-30T00:00:00+00:00"`. The end_time must not be in the future.
-        # Creates transfer runs where run_time is in the range betwen start_time
-        # (inclusive) and end_time (exlusive).
+        # Creates transfer runs where run_time is in the range between start_time
+        # (inclusive) and end_time (exclusive).
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
         # Start time of the range of transfer runs. For example,
         # `"2017-05-25T00:00:00+00:00"`. The start_time must be strictly less than
-        # the end_time. Creates transfer runs where run_time is in the range betwen
-        # start_time (inclusive) and end_time (exlusive).
+        # the end_time. Creates transfer runs where run_time is in the range
+        # between start_time (inclusive) and end_time (exclusive).
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
