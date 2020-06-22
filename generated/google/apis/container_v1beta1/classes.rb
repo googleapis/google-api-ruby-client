@@ -196,25 +196,39 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodeManagement]
         attr_accessor :management
       
-        # Minimum CPU platform to be used for NAP created node pools.
-        # The instance may be scheduled on the specified or newer CPU platform.
-        # Applicable values are the friendly names of CPU platforms, such as
+        # Minimum CPU platform to be used by this instance. The instance may be
+        # scheduled on the specified or newer CPU platform. Applicable values are the
+        # friendly names of CPU platforms, such as
         # <code>minCpuPlatform: &quot;Intel Haswell&quot;</code> or
         # <code>minCpuPlatform: &quot;Intel Sandy Bridge&quot;</code>. For more
         # information, read [how to specify min CPU
         # platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-
         # platform)
-        # To unset the min cpu platform field pass "automatic" as field value.
+        # To unset the min cpu platform field pass "automatic"
+        # as field value.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
       
-        # Scopes that are used by NAP when creating node pools.
+        # The set of Google API scopes to be made available on all of the
+        # node VMs under the "default" service account.
+        # The following scopes are recommended, but not required, and by default are
+        # not included:
+        # * `https://www.googleapis.com/auth/compute` is required for mounting
+        # persistent storage on your nodes.
+        # * `https://www.googleapis.com/auth/devstorage.read_only` is required for
+        # communicating with **gcr.io**
+        # (the [Google Container
+        # Registry](https://cloud.google.com/container-registry/)).
+        # If unspecified, no scopes are added, unless Cloud Logging or Cloud
+        # Monitoring are enabled, in which case their required scopes will be added.
         # Corresponds to the JSON property `oauthScopes`
         # @return [Array<String>]
         attr_accessor :oauth_scopes
       
         # The Google Cloud Platform Service Account to be used by the node VMs.
+        # Specify the email address of the Service Account; otherwise, if no Service
+        # Account is specified, the "default" service account is used.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -3540,12 +3554,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :valid_image_types
       
-        # List of valid master versions.
+        # List of valid master versions, in descending order.
         # Corresponds to the JSON property `validMasterVersions`
         # @return [Array<String>]
         attr_accessor :valid_master_versions
       
-        # List of valid node upgrade target versions.
+        # List of valid node upgrade target versions, in descending order.
         # Corresponds to the JSON property `validNodeVersions`
         # @return [Array<String>]
         attr_accessor :valid_node_versions
