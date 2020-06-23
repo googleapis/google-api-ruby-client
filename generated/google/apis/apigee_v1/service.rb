@@ -3947,8 +3947,8 @@ module Google
         # is not possible with protocol buffer and since this parameter is
         # predominantly used by Edge UI, we are introducing a separate api.
         # @param [String] name
-        #   Required. The organization and environment name for which the interactive
-        #   query will be executed. Must be of the form
+        #   Required. The resource name for which the interactive query will be executed.
+        #   Must be of the form
         #   `organizations/`organization_id`/environments/`environment_id/stats/`
         #   dimensions``
         #   Dimensions let you view metrics in meaningful groupings. E.g. apiproxy,
@@ -3956,27 +3956,27 @@ module Google
         #   shown below
         #   `organizations/`org`/environments/`env`/stats/apiproxy,request_verb`
         # @param [String] accuracy
-        #   Legacy field. not used anymore
+        #   Legacy field: not used anymore.
         # @param [String] agg_table
         #   If customers want to query custom aggregate tables, then this parameter
         #   can be used to specify the table name. If this parameter is skipped, then
         #   Edge Query will try to retrieve the data from fact tables which will be
         #   expensive.
         # @param [String] filter
-        #   Enables drill-down on specific dimension values
+        #   Enables drill-down on specific dimension values.
         # @param [String] limit
         #   This parameter is used to limit the number of result items.
-        #   Default and the max value is 14400
+        #   Default and the max value is 14400.
         # @param [String] offset
         #   Use offset with limit to enable pagination of results. For example,
         #   to display results 11-20, set limit to '10' and offset to '10'.
         # @param [Boolean] realtime
-        #   Legacy field: not used anymore
+        #   Legacy field: not used anymore.
         # @param [String] select
-        #   Required. The select parameter contains a comma separated list of metrics
+        #   Required. The select parameter contains a comma separated list of metrics.
         #   E.g. sum(message_count),sum(error_count)
         # @param [Boolean] sonar
-        #   This parameter routes the query to api monitoring service for last hour
+        #   This parameter routes the query to api monitoring service for last hour.
         # @param [String] sort
         #   This parameter specifies if the sort order should be ascending or
         #   descending Supported values are DESC and ASC.
@@ -3995,7 +3995,7 @@ module Google
         #   Lists timestamps in ascending order if set to true. Recommend setting
         #   this value to true if you are using sortby with sort=DESC.
         # @param [String] tzo
-        #   This parameters contains the timezone offset value
+        #   This parameters contains the timezone offset value.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4043,7 +4043,7 @@ module Google
         # an ID that refer to the query. In addition to the HTTP status 201, the
         # `state` of "enqueued" means that the request succeeded.
         # @param [String] parent
-        #   Required. The parent organization and environment names.
+        #   Required. The parent resource name.
         #   Must be of the form `organizations/`org`/environments/`env``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Query] google_cloud_apigee_v1_query_object
         # @param [String] fields
@@ -4146,7 +4146,7 @@ module Google
         
         # Return a list of Asynchronous Queries
         # @param [String] parent
-        #   Required. The parent organization and environment names.
+        #   Required. The parent resource name.
         #   Must be of the form `organizations/`org`/environments/`env``.
         # @param [String] dataset
         #   Filter response list by dataset.
@@ -4156,12 +4156,11 @@ module Google
         #   created after this date time.
         #   Time must be in ISO date-time format like '2011-12-03T10:15:30Z'.
         # @param [String] incl_queries_without_report
-        #   Flag to include asynchronous queries that don't have a report
-        #   denifition.
+        #   Flag to include asynchronous queries that don't have a report denifition.
         # @param [String] status
-        #   Filter response list by asynchronous query status
+        #   Filter response list by asynchronous query status.
         # @param [String] submitted_by
-        #   Filter response list by user who submitted queries
+        #   Filter response list by user who submitted queries.
         # @param [String] to
         #   Filter response list by returning asynchronous queries that
         #   created before this date time.
@@ -4687,8 +4686,8 @@ module Google
         # optional in which case the metrics are computed on the entire data
         # for the given timerange.
         # @param [String] name
-        #   Required. The organization and environment name for which the interactive
-        #   query will be executed. Must be of the form
+        #   Required. The resource name for which the interactive query will be executed.
+        #   Must be of the form
         #   `organizations/`organization_id`/environments/`environment_id/stats/`
         #   dimensions``
         #   Dimensions let you view metrics in meaningful groupings. E.g. apiproxy,
@@ -4696,8 +4695,8 @@ module Google
         #   shown below
         #   `organizations/`org`/environments/`env`/stats/apiproxy,request_verb`
         # @param [String] accuracy
-        #   Legacy field. not used anymore
-        #   This field is present to support UI calls which still use this parameter
+        #   Legacy field: not used anymore.
+        #   This field is present to support UI calls which still use this parameter.
         # @param [String] agg_table
         #   If customers want to query custom aggregate tables, then this parameter
         #   can be used to specify the table name. If this parameter is skipped, then
@@ -4707,17 +4706,17 @@ module Google
         #   Enables drill-down on specific dimension values
         # @param [String] limit
         #   This parameter is used to limit the number of result items.
-        #   Default and the max value is 14400
+        #   Default and the max value is 14400.
         # @param [String] offset
         #   Use offset with limit to enable pagination of results. For example,
         #   to display results 11-20, set limit to '10' and offset to '10'.
         # @param [Boolean] realtime
-        #   Legacy field: not used anymore
+        #   Legacy field: not used anymore.
         # @param [String] select
-        #   The select parameter contains a comma separated list of metrics
+        #   The select parameter contains a comma separated list of metrics.
         #   E.g. sum(message_count),sum(error_count)
         # @param [Boolean] sonar
-        #   This parameter routes the query to api monitoring service for last hour
+        #   This parameter routes the query to api monitoring service for last hour.
         # @param [String] sort
         #   This parameter specifies if the sort order should be ascending or
         #   descending Supported values are DESC and ASC.
@@ -4736,7 +4735,7 @@ module Google
         #   Lists timestamps in ascending order if set to true. Recommend setting
         #   this value to true if you are using sortby with sort=DESC.
         # @param [String] tzo
-        #   This parameters contains the timezone offset value
+        #   This parameters contains the timezone offset value.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

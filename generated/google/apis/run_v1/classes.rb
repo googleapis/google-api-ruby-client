@@ -2449,9 +2449,7 @@ module Google
         # @return [String]
         attr_accessor :service_account_name
       
-        # TimeoutSeconds holds the max duration the instance is allowed for
-        # responding to a request.
-        # Not currently used by Cloud Run.
+        # 
         # Corresponds to the JSON property `timeoutSeconds`
         # @return [Fixnum]
         attr_accessor :timeout_seconds

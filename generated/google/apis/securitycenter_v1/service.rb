@@ -181,8 +181,7 @@ module Google
         #   is "UNUSED",  which will be the state_change set for all assets present at
         #   read_time.
         # @param [String] field_mask
-        #   Optional. A field mask to specify the ListAssetsResult fields to be listed in
-        #   the
+        #   A field mask to specify the ListAssetsResult fields to be listed in the
         #   response.
         #   An empty field mask will list all fields.
         # @param [String] filter
@@ -529,7 +528,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a notification config.
+        # Updates a notification config. The following update
+        # fields are allowed: description, pubsub_topic, streaming_config.filter
         # @param [String] name
         #   The relative resource name of this notification config. See:
         #   https://cloud.google.com/apis/design/resource_names#relative_resource_name
@@ -1082,8 +1082,7 @@ module Google
         #   is "UNUSED", which will be the state_change set for all findings present at
         #   read_time.
         # @param [String] field_mask
-        #   Optional. A field mask to specify the Finding fields to be listed in the
-        #   response.
+        #   A field mask to specify the Finding fields to be listed in the response.
         #   An empty field mask will list all fields.
         # @param [String] filter
         #   Expression that defines the filter to apply across findings.

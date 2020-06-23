@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DnsCacheConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -545,6 +551,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_run_config, as: 'cloudRunConfig', class: Google::Apis::ContainerV1::CloudRunConfig, decorator: Google::Apis::ContainerV1::CloudRunConfig::Representation
       
+          property :dns_cache_config, as: 'dnsCacheConfig', class: Google::Apis::ContainerV1::DnsCacheConfig, decorator: Google::Apis::ContainerV1::DnsCacheConfig::Representation
+      
           property :horizontal_pod_autoscaling, as: 'horizontalPodAutoscaling', class: Google::Apis::ContainerV1::HorizontalPodAutoscaling, decorator: Google::Apis::ContainerV1::HorizontalPodAutoscaling::Representation
       
           property :http_load_balancing, as: 'httpLoadBalancing', class: Google::Apis::ContainerV1::HttpLoadBalancing, decorator: Google::Apis::ContainerV1::HttpLoadBalancing::Representation
@@ -807,6 +815,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key_name, as: 'keyName'
           property :state, as: 'state'
+        end
+      end
+      
+      class DnsCacheConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       

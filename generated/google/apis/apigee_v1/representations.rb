@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1DataCollectorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1DebugMask
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -954,6 +960,14 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1DataCollectorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
       class GoogleCloudApigeeV1DebugMask
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1114,6 +1128,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          collection :data_collectors, as: 'dataCollectors', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollectorConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollectorConfig::Representation
+      
           property :debug_mask, as: 'debugMask', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugMask, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugMask::Representation
       
           collection :deployments, as: 'deployments', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentConfig::Representation

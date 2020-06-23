@@ -58,6 +58,11 @@ module Google
         # @return [Google::Apis::ContainerV1::CloudRunConfig]
         attr_accessor :cloud_run_config
       
+        # Configuration for NodeLocal DNSCache
+        # Corresponds to the JSON property `dnsCacheConfig`
+        # @return [Google::Apis::ContainerV1::DnsCacheConfig]
+        attr_accessor :dns_cache_config
+      
         # Configuration options for the horizontal pod autoscaling feature, which
         # increases or decreases the number of replica pods a replication controller
         # has based on the resource usage of the existing pods.
@@ -90,6 +95,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cloud_run_config = args[:cloud_run_config] if args.key?(:cloud_run_config)
+          @dns_cache_config = args[:dns_cache_config] if args.key?(:dns_cache_config)
           @horizontal_pod_autoscaling = args[:horizontal_pod_autoscaling] if args.key?(:horizontal_pod_autoscaling)
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
           @kubernetes_dashboard = args[:kubernetes_dashboard] if args.key?(:kubernetes_dashboard)
@@ -419,7 +425,7 @@ module Google
       
         # [Output only] Deprecated, use
         # [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/
-        # rest/v1/projects.zones.clusters.nodePools)
+        # rest/v1/projects.locations.clusters.nodePools)
         # instead. The current version of the node software components. If they are
         # currently at multiple versions because they're in the process of being
         # upgraded, this reflects the minimum version of all nodes.
@@ -1214,6 +1220,26 @@ module Google
         def update!(**args)
           @key_name = args[:key_name] if args.key?(:key_name)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Configuration for NodeLocal DNSCache
+      class DnsCacheConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether NodeLocal DNSCache is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -2974,12 +3000,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :valid_image_types
       
-        # List of valid master versions.
+        # List of valid master versions, in descending order.
         # Corresponds to the JSON property `validMasterVersions`
         # @return [Array<String>]
         attr_accessor :valid_master_versions
       
-        # List of valid node upgrade target versions.
+        # List of valid node upgrade target versions, in descending order.
         # Corresponds to the JSON property `validNodeVersions`
         # @return [Array<String>]
         attr_accessor :valid_node_versions

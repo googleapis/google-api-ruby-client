@@ -791,17 +791,17 @@ module Google
       class GoogleCloudApigeeV1AsyncQuery
         include Google::Apis::Core::Hashable
       
-        # Creation time of the query
+        # Creation time of the query.
         # Corresponds to the JSON property `created`
         # @return [String]
         attr_accessor :created
       
-        # Error is set when query fails
+        # Error is set when query fails.
         # Corresponds to the JSON property `error`
         # @return [String]
         attr_accessor :error
       
-        # ExecutionTime is available only after the query is completed
+        # ExecutionTime is available only after the query is completed.
         # Corresponds to the JSON property `executionTime`
         # @return [String]
         attr_accessor :execution_time
@@ -811,8 +811,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Contains information like metrics, dimenstions etc
-        # of the AsyncQuery
+        # Contains information like metrics, dimenstions etc of the AsyncQuery.
         # Corresponds to the JSON property `queryParams`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryMetadata]
         attr_accessor :query_params
@@ -822,22 +821,22 @@ module Google
         # @return [String]
         attr_accessor :report_definition_id
       
-        # Result is available only after the query is completed
+        # Result is available only after the query is completed.
         # Corresponds to the JSON property `result`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQueryResult]
         attr_accessor :result
       
-        # ResultFileSize is available only after the query is completed
+        # ResultFileSize is available only after the query is completed.
         # Corresponds to the JSON property `resultFileSize`
         # @return [String]
         attr_accessor :result_file_size
       
-        # ResultRows is available only after the query is completed
+        # ResultRows is available only after the query is completed.
         # Corresponds to the JSON property `resultRows`
         # @return [Fixnum]
         attr_accessor :result_rows
       
-        # Self link of the query
+        # Self link of the query.
         # Example:
         # `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-
         # 318d0cb961bd`
@@ -845,13 +844,12 @@ module Google
         # @return [String]
         attr_accessor :self
       
-        # Query state could be "enqueued", "running", "completed",
-        # "failed"
+        # Query state could be "enqueued", "running", "completed", "failed".
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Last updated timestamp for the query
+        # Last updated timestamp for the query.
         # Corresponds to the JSON property `updated`
         # @return [String]
         attr_accessor :updated
@@ -886,7 +884,7 @@ module Google
         # @return [String]
         attr_accessor :expires
       
-        # Self link of the query results
+        # Self link of the query results.
         # Example:
         # `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-
         # 318d0cb961bd/result`
@@ -1338,6 +1336,32 @@ module Google
         def update!(**args)
           @function = args[:function] if args.key?(:function)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A DataCollector and its configuration.
+      class GoogleCloudApigeeV1DataCollectorConfig
+        include Google::Apis::Core::Hashable
+      
+        # The name of the data collector. Must be of the form
+        # 'organizations/`org`/datacollectors/`dc`'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The data type this DataCollector accepts.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1890,16 +1914,16 @@ module Google
         end
       end
       
-      # This message type encapsulates a metric grouped by dimension
+      # This message type encapsulates a metric grouped by dimension.
       class GoogleCloudApigeeV1DimensionMetric
         include Google::Apis::Core::Hashable
       
-        # This field contains a list of metrics
+        # This field contains a list of metrics.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metric>]
         attr_accessor :metrics
       
-        # This field contains the name of the dimension
+        # This field contains the name of the dimension.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2008,6 +2032,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # The list of Data Collectors used by deployments in the environment.
+        # Corresponds to the JSON property `dataCollectors`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollectorConfig>]
+        attr_accessor :data_collectors
+      
         # Debug mask that applies to all deployments in the environment.
         # Corresponds to the JSON property `debugMask`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugMask]
@@ -2092,6 +2121,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_collectors = args[:data_collectors] if args.key?(:data_collectors)
           @debug_mask = args[:debug_mask] if args.key?(:debug_mask)
           @deployments = args[:deployments] if args.key?(:deployments)
           @feature_flags = args[:feature_flags] if args.key?(:feature_flags)
@@ -2166,7 +2196,7 @@ module Google
         alias_method :continue_on_error?, :continue_on_error
       
         # The name of the flow hook. Must be of the form
-        # 'organizations/`org`/environments/`env`/flowhooks/`point`''.
+        # 'organizations/`org`/environments/`env`/flowhooks/`point`'.
         # Known points are PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook,
         # and PostTargetFlowHook
         # Corresponds to the JSON property `name`
@@ -2367,11 +2397,11 @@ module Google
         end
       end
       
-      # The response for ListAsyncQueries
+      # The response for ListAsyncQueries.
       class GoogleCloudApigeeV1ListAsyncQueriesResponse
         include Google::Apis::Core::Hashable
       
-        # The asynchronous queries belong to requested organization and environment
+        # The asynchronous queries belong to requested resource name.
         # Corresponds to the JSON property `queries`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQuery>]
         attr_accessor :queries
@@ -2566,11 +2596,11 @@ module Google
         end
       end
       
-      # This message type encapsulates additional information about query execution
+      # This message type encapsulates additional information about query execution.
       class GoogleCloudApigeeV1Metadata
         include Google::Apis::Core::Hashable
       
-        # List of error messages as strings
+        # List of error messages as strings.
         # Corresponds to the JSON property `errors`
         # @return [Array<String>]
         attr_accessor :errors
@@ -2599,8 +2629,8 @@ module Google
         end
       end
       
-      # This message type encapsulates the metric data point
-      # Example
+      # This message type encapsulates the metric data point.
+      # Example:
       # `
       # "name": "sum(message_count)",
       # "values" : [ `
@@ -2620,13 +2650,13 @@ module Google
       class GoogleCloudApigeeV1Metric
         include Google::Apis::Core::Hashable
       
-        # This field contains the metric name
+        # This field contains the metric name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # List of metric values
-        # Possible value format
+        # List of metric values.
+        # Possible value format:
         # "values":["39.0"] or
         # "values":[ ` "value": "39.0", "timestamp": 1232434354` ]
         # Corresponds to the JSON property `values`
@@ -2679,7 +2709,7 @@ module Google
       class GoogleCloudApigeeV1OptimizedStats
         include Google::Apis::Core::Hashable
       
-        # This message type encapsulates a response format for Js Optimized Scenario
+        # This message type encapsulates a response format for Js Optimized Scenario.
         # Corresponds to the JSON property `Response`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1OptimizedStatsResponse]
         attr_accessor :response
@@ -2694,7 +2724,37 @@ module Google
         end
       end
       
-      # 
+      # This message type encapsulates a data node as represented below:
+      # `
+      # "identifier": `
+      # "names": [
+      # "apiproxy"
+      # ],
+      # "values": [
+      # "sirjee"
+      # ]
+      # `,
+      # "metric": [
+      # `
+      # "env": "prod",
+      # "name": "sum(message_count)",
+      # "values": [
+      # 36.0
+      # ]
+      # `
+      # ]
+      # `
+      # OR
+      # `
+      # "env": "prod",
+      # "name": "sum(message_count)",
+      # "values": [
+      # 36.0
+      # ]
+      # `
+      # Depending on whether a dimension is present in the query or not
+      # the data node type can be a simple metric value or dimension identifier
+      # with list of metrics.
       class GoogleCloudApigeeV1OptimizedStatsNode
         include Google::Apis::Core::Hashable
       
@@ -2713,7 +2773,7 @@ module Google
         end
       end
       
-      # This message type encapsulates a response format for Js Optimized Scenario
+      # This message type encapsulates a response format for Js Optimized Scenario.
       class GoogleCloudApigeeV1OptimizedStatsResponse
         include Google::Apis::Core::Hashable
       
@@ -2723,7 +2783,7 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :time_unit
       
-        # This message type encapsulates additional information about query execution
+        # This message type encapsulates additional information about query execution.
         # Corresponds to the JSON property `metaData`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metadata]
         attr_accessor :meta_data
@@ -2735,7 +2795,37 @@ module Google
         attr_accessor :result_truncated
         alias_method :result_truncated?, :result_truncated
       
-        # This field contains a stats results
+        # This message type encapsulates a data node as represented below:
+        # `
+        # "identifier": `
+        # "names": [
+        # "apiproxy"
+        # ],
+        # "values": [
+        # "sirjee"
+        # ]
+        # `,
+        # "metric": [
+        # `
+        # "env": "prod",
+        # "name": "sum(message_count)",
+        # "values": [
+        # 36.0
+        # ]
+        # `
+        # ]
+        # `
+        # OR
+        # `
+        # "env": "prod",
+        # "name": "sum(message_count)",
+        # "values": [
+        # 36.0
+        # ]
+        # `
+        # Depending on whether a dimension is present in the query or not
+        # the data node type can be a simple metric value or dimension identifier
+        # with list of metrics.
         # Corresponds to the JSON property `stats`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1OptimizedStatsNode]
         attr_accessor :stats
@@ -3073,7 +3163,7 @@ module Google
         # @return [String]
         attr_accessor :csv_delimiter
       
-        # A list of dimensions
+        # A list of dimensions.
         # https://docs.apigee.com/api-platform/analytics/analytics-reference#dimensions
         # Corresponds to the JSON property `dimensions`
         # @return [Array<String>]
@@ -3109,7 +3199,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :limit
       
-        # A list of Metrics
+        # A list of Metrics.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryMetric>]
         attr_accessor :metrics
@@ -3227,17 +3317,17 @@ module Google
         # @return [String]
         attr_accessor :alias
       
-        # Aggregation function: avg, min, max, or sum
+        # Aggregation function: avg, min, max, or sum.
         # Corresponds to the JSON property `function`
         # @return [String]
         attr_accessor :function
       
-        # Required. Metric name
+        # Required. Metric name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # One of `+`, `-`, `/`, `%`, `*`
+        # One of `+`, `-`, `/`, `%`, `*`.
         # Corresponds to the JSON property `operator`
         # @return [String]
         attr_accessor :operator
@@ -3808,16 +3898,16 @@ module Google
         end
       end
       
-      # This message type encapsulates a stats response
+      # This message type encapsulates a stats response.
       class GoogleCloudApigeeV1Stats
         include Google::Apis::Core::Hashable
       
-        # 
+        # This field contains a list of query results on environment level.
         # Corresponds to the JSON property `environments`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1StatsEnvironmentStats>]
         attr_accessor :environments
       
-        # This message type encapsulates additional information about query execution
+        # This message type encapsulates additional information about query execution.
         # Corresponds to the JSON property `metaData`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metadata]
         attr_accessor :meta_data
@@ -3833,7 +3923,7 @@ module Google
         end
       end
       
-      # This message type encapsulates the environment wrapper
+      # This message type encapsulates the environment wrapper:
       # "environments": [
       # `
       # "metrics": [
@@ -3850,7 +3940,7 @@ module Google
       class GoogleCloudApigeeV1StatsEnvironmentStats
         include Google::Apis::Core::Hashable
       
-        # This field contains the list of metrics grouped under dimensions
+        # This field contains the list of metrics grouped under dimensions.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DimensionMetric>]
         attr_accessor :dimensions
@@ -3893,7 +3983,7 @@ module Google
         # "name": "prod"
         # `
         # ]
-        # This field contains the list of metric values
+        # This field contains the list of metric values.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Metric>]
         attr_accessor :metrics

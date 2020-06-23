@@ -181,7 +181,6 @@ module Google
         #   is "UNUSED",  which will be the state_change set for all assets present at
         #   read_time.
         # @param [String] field_mask
-        #   Optional.
         #   A field mask to specify the ListAssetsResult fields to be listed in the
         #   response.
         #   An empty field mask will list all fields.
@@ -530,7 +529,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a notification config.
+        # Updates a notification config. The following update
+        # fields are allowed: description, pubsub_topic, streaming_config.filter
         # @param [String] name
         #   The relative resource name of this notification config. See:
         #   https://cloud.google.com/apis/design/resource_names#relative_resource_name
@@ -976,8 +976,6 @@ module Google
         # @param [Google::Apis::SecuritycenterV1p1beta1::GoogleCloudSecuritycenterV1p1beta1Finding] google_cloud_securitycenter_v1p1beta1_finding_object
         # @param [String] finding_id
         #   Required. Unique identifier provided by the client within the parent scope.
-        #   It must be alphanumeric and less than or equal to 32 characters and
-        #   greater than 0 characters in length.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1083,7 +1081,6 @@ module Google
         #   is "UNUSED", which will be the state_change set for all findings present at
         #   read_time.
         # @param [String] field_mask
-        #   Optional.
         #   A field mask to specify the Finding fields to be listed in the response.
         #   An empty field mask will list all fields.
         # @param [String] filter
