@@ -3105,7 +3105,7 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::TimeSeriesData>]
         attr_accessor :time_series_data
       
-        # A descriptor for the labels and points in a timeseries.
+        # A descriptor for the labels and points in a time series.
         # Corresponds to the JSON property `timeSeriesDescriptor`
         # @return [Google::Apis::MonitoringV3::TimeSeriesDescriptor]
         attr_accessor :time_series_descriptor
@@ -3691,7 +3691,7 @@ module Google
         end
       end
       
-      # A descriptor for the labels and points in a timeseries.
+      # A descriptor for the labels and points in a time series.
       class TimeSeriesDescriptor
         include Google::Apis::Core::Hashable
       

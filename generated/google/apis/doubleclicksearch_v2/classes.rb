@@ -54,7 +54,7 @@ module Google
         attr_accessor :segmentation_name
       
         # The segmentation type that this availability is for (its default value is
-        # FLOODLIGHT).
+        # `FLOODLIGHT`).
         # Corresponds to the JSON property `segmentationType`
         # @return [String]
         attr_accessor :segmentation_type
@@ -109,9 +109,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :campaign_id
       
-        # Sales channel for the product. Acceptable values are:
-        # - "local": a physical store
-        # - "online": an online store
+        # Sales channel for the product. Acceptable values are: <ul>
+        # <li>"`local`": a physical store</li> <li>"`online`":
+        # an online store</li> </ul>
         # Corresponds to the JSON property `channel`
         # @return [String]
         attr_accessor :channel
@@ -121,12 +121,13 @@ module Google
         # @return [String]
         attr_accessor :click_id
       
-        # For offline conversions, advertisers provide this ID. Advertisers can specify
-        # any ID that is meaningful to them. Each conversion in a request must specify a
-        # unique ID, and the combination of ID and timestamp must be unique amongst all
-        # conversions within the advertiser.
-        # For online conversions, DS copies the dsConversionId or floodlightOrderId into
-        # this property depending on the advertiser's Floodlight instructions.
+        # For offline conversions, advertisers provide this ID. Advertisers can
+        # specify any ID that is meaningful to them. Each conversion in a request
+        # must specify a unique ID, and the combination of ID and timestamp must be
+        # unique amongst all conversions within the advertiser.<br> For online
+        # conversions, DS copies the `dsConversionId` or
+        # `floodlightOrderId` into this property depending on the
+        # advertiser's Floodlight instructions.
         # Corresponds to the JSON property `conversionId`
         # @return [String]
         attr_accessor :conversion_id
@@ -138,7 +139,7 @@ module Google
       
         # The time at which the conversion took place, in epoch millis UTC.
         # Corresponds to the JSON property `conversionTimestamp`
-        # @return [Fixnum]
+        # @return [String]
         attr_accessor :conversion_timestamp
       
         # Available to advertisers only after contacting DoubleClick Search customer
@@ -189,14 +190,14 @@ module Google
         # @return [String]
         attr_accessor :floodlight_order_id
       
-        # ID that DS generates and uses to uniquely identify the inventory account that
-        # contains the product.
+        # ID that DS generates and uses to uniquely identify the inventory account
+        # that contains the product.
         # Corresponds to the JSON property `inventoryAccountId`
         # @return [Fixnum]
         attr_accessor :inventory_account_id
       
-        # The country registered for the Merchant Center feed that contains the product.
-        # Use an ISO 3166 code to specify a country.
+        # The country registered for the Merchant Center feed that contains the
+        # product. Use an ISO 3166 code to specify a country.
         # Corresponds to the JSON property `productCountry`
         # @return [String]
         attr_accessor :product_country
@@ -211,8 +212,8 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # The language registered for the Merchant Center feed that contains the product.
-        # Use an ISO 639 code to specify a language.
+        # The language registered for the Merchant Center feed that contains the
+        # product. Use an ISO 639 code to specify a language.
         # Corresponds to the JSON property `productLanguage`
         # @return [String]
         attr_accessor :product_language
@@ -222,11 +223,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity_millis
       
-        # The revenue amount of this TRANSACTION conversion, in micros (value multiplied
-        # by 1000000, no decimal). For example, to specify a revenue value of "10" enter
-        # "10000000" (10 million) in your request.
+        # The revenue amount of this `TRANSACTION` conversion, in micros
+        # (value multiplied by 1000000, no decimal). For example, to specify a
+        # revenue value of "10"  enter "10000000" (10 million) in your request.
         # Corresponds to the JSON property `revenueMicros`
-        # @return [Fixnum]
+        # @return [String]
         attr_accessor :revenue_micros
       
         # The numeric segmentation identifier (for example, DoubleClick Search
@@ -241,28 +242,31 @@ module Google
         # @return [String]
         attr_accessor :segmentation_name
       
-        # The segmentation type of this conversion (for example, FLOODLIGHT).
+        # The segmentation type of this conversion (for example,
+        # `FLOODLIGHT`).
         # Corresponds to the JSON property `segmentationType`
         # @return [String]
         attr_accessor :segmentation_type
       
-        # The state of the conversion, that is, either ACTIVE or REMOVED. Note: state
-        # DELETED is deprecated.
+        # The state of the conversion, that is, either `ACTIVE` or
+        # `REMOVED`. Note: state DELETED is deprecated.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
         # The ID of the local store for which the product was advertised. Applicable
-        # only when the channel is "local".
+        # only when the channel is "`local`".
         # Corresponds to the JSON property `storeId`
         # @return [String]
         attr_accessor :store_id
       
-        # The type of the conversion, that is, either ACTION or TRANSACTION. An ACTION
-        # conversion is an action by the user that has no monetarily quantifiable value,
-        # while a TRANSACTION conversion is an action that does have a monetarily
-        # quantifiable value. Examples are email list signups (ACTION) versus ecommerce
-        # purchases (TRANSACTION).
+        # The type of the conversion, that is, either `ACTION` or
+        # `TRANSACTION`. An `ACTION` conversion is an action by
+        # the user that has no monetarily quantifiable value, while a
+        # `TRANSACTION` conversion is an action that does have a
+        # monetarily quantifiable value. Examples are email list signups
+        # (`ACTION`) versus ecommerce purchases
+        # (`TRANSACTION`).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -319,7 +323,7 @@ module Google
         attr_accessor :conversion
       
         # Identifies this as a ConversionList resource. Value: the fixed string
-        # doubleclicksearch#conversionList.
+        # <code>doubleclicksearch#conversionList</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -335,7 +339,7 @@ module Google
         end
       end
       
-      # A message containing the custome dimension.
+      # A message containing the custom dimension.
       class CustomDimension
         include Google::Apis::Core::Hashable
       
@@ -360,7 +364,7 @@ module Google
         end
       end
       
-      # A message containing the custome metric.
+      # A message containing the custom metric.
       class CustomMetric
         include Google::Apis::Core::Hashable
       
@@ -386,13 +390,13 @@ module Google
       end
       
       # A DoubleClick Search report. This object contains the report request, some
-      # report metadata such as currency code, and the generated report rows or report
-      # files.
+      # report metadata such as currency code, and the generated report rows or
+      # report files.
       class Report
         include Google::Apis::Core::Hashable
       
-        # Asynchronous report only. Contains a list of generated report files once the
-        # report has successfully completed.
+        # Asynchronous report only. Contains a list of generated report files once
+        # the report has successfully completed.
         # Corresponds to the JSON property `files`
         # @return [Array<Google::Apis::DoubleclicksearchV2::Report::File>]
         attr_accessor :files
@@ -410,7 +414,7 @@ module Google
         alias_method :is_report_ready?, :is_report_ready
       
         # Identifies this as a Report resource. Value: the fixed string
-        # doubleclicksearch#report.
+        # `doubleclicksearch#report`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -431,9 +435,9 @@ module Google
         attr_accessor :rows
       
         # The currency code of all monetary values produced in the report, including
-        # values that are set by users (e.g., keyword bid settings) and metrics (e.g.,
-        # cost and revenue). The currency code of a report is determined by the
-        # statisticsCurrency field of the report request.
+        # values that are set by users (e.g., keyword bid settings) and metrics
+        # (e.g., cost and revenue). The currency code of a report is determined by
+        # the `statisticsCurrency` field of the report request.
         # Corresponds to the JSON property `statisticsCurrencyCode`
         # @return [String]
         attr_accessor :statistics_currency_code
@@ -499,68 +503,69 @@ module Google
         # Segments a report by a custom dimension. The report must be scoped to an
         # advertiser or lower, and the custom dimension must already be set up in
         # DoubleClick Search. The custom dimension name, which appears in DoubleClick
-        # Search, is case sensitive.
-        # If used in a conversion report, returns the value of the specified custom
-        # dimension for the given conversion, if set. This column does not segment the
-        # conversion report.
+        # Search, is case sensitive.\
+        # If used in a conversion report, returns the
+        # value of the specified custom dimension for the given conversion, if set.
+        # This column does not segment the conversion report.
         # Corresponds to the JSON property `customDimensionName`
         # @return [String]
         attr_accessor :custom_dimension_name
       
-        # Name of a custom metric to include in the report. The report must be scoped to
-        # an advertiser or lower, and the custom metric must already be set up in
+        # Name of a custom metric to include in the report. The report must be scoped
+        # to an advertiser or lower, and the custom metric must already be set up in
         # DoubleClick Search. The custom metric name, which appears in DoubleClick
         # Search, is case sensitive.
         # Corresponds to the JSON property `customMetricName`
         # @return [String]
         attr_accessor :custom_metric_name
       
-        # Inclusive day in YYYY-MM-DD format. When provided, this overrides the overall
-        # time range of the report for this column only. Must be provided together with
-        # startDate.
+        # Inclusive day in YYYY-MM-DD format. When provided, this overrides the
+        # overall time range of the report for this column only. Must be provided
+        # together with `startDate`.
         # Corresponds to the JSON property `endDate`
         # @return [String]
         attr_accessor :end_date
       
-        # Synchronous report only. Set to true to group by this column. Defaults to
-        # false.
+        # Synchronous report only. Set to `true` to group by this column.
+        # Defaults to `false`.
         # Corresponds to the JSON property `groupByColumn`
         # @return [Boolean]
         attr_accessor :group_by_column
         alias_method :group_by_column?, :group_by_column
       
-        # Text used to identify this column in the report output; defaults to columnName
-        # or savedColumnName when not specified. This can be used to prevent collisions
-        # between DoubleClick Search columns and saved columns with the same name.
+        # Text used to identify this column in the report output; defaults to
+        # `columnName` or `savedColumnName` when not specified.
+        # This can be used to prevent collisions between DoubleClick Search columns
+        # and saved columns with the same name.
         # Corresponds to the JSON property `headerText`
         # @return [String]
         attr_accessor :header_text
       
-        # The platform that is used to provide data for the custom dimension. Acceptable
-        # values are "floodlight".
+        # The platform that is used to provide data for the custom dimension.
+        # Acceptable values are "floodlight".
         # Corresponds to the JSON property `platformSource`
         # @return [String]
         attr_accessor :platform_source
       
-        # Returns metrics only for a specific type of product activity. Accepted values
-        # are:
-        # - "sold": returns metrics only for products that were sold
-        # - "advertised": returns metrics only for products that were advertised in a
-        # Shopping campaign, and that might or might not have been sold
+        # Returns metrics only for a specific type of product activity. Accepted
+        # values are: <ul> <li>"`sold`": returns metrics only for products
+        # that were sold</li> <li>"`advertised`": returns metrics only for
+        # products that were advertised in a Shopping campaign, and that might or
+        # might not have been sold</li> </ul>
         # Corresponds to the JSON property `productReportPerspective`
         # @return [String]
         attr_accessor :product_report_perspective
       
-        # Name of a saved column to include in the report. The report must be scoped at
-        # advertiser or lower, and this saved column must already be created in the
-        # DoubleClick Search UI.
+        # Name of a saved column to include in the report. The report must be scoped
+        # at advertiser or lower, and this saved column must already be created in
+        # the DoubleClick Search UI.
         # Corresponds to the JSON property `savedColumnName`
         # @return [String]
         attr_accessor :saved_column_name
       
-        # Inclusive date in YYYY-MM-DD format. When provided, this overrides the overall
-        # time range of the report for this column only. Must be provided together with
-        # endDate.
+        # Inclusive date in YYYY-MM-DD format. When provided, this overrides the
+        # overall time range of the report for this column only. Must be provided
+        # together with `endDate`.
         # Corresponds to the JSON property `startDate`
         # @return [String]
         attr_accessor :start_date
@@ -589,49 +594,52 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The columns to include in the report. This includes both DoubleClick Search
-        # columns and saved columns. For DoubleClick Search columns, only the columnName
-        # parameter is required. For saved columns only the savedColumnName parameter is
-        # required. Both columnName and savedColumnName cannot be set in the same stanza.
+        # columns and saved columns. For DoubleClick Search columns, only the
+        # `columnName` parameter is required. For saved columns only the
+        # `savedColumnName` parameter is required. Both
+        # `columnName` and `savedColumnName` cannot be set in
+        # the same stanza.\
         # The maximum number of columns per request is 300.
         # Corresponds to the JSON property `columns`
         # @return [Array<Google::Apis::DoubleclicksearchV2::ReportApiColumnSpec>]
         attr_accessor :columns
       
-        # Format that the report should be returned in. Currently csv or tsv is
-        # supported.
+        # Format that the report should be returned in. Currently `csv` or
+        # `tsv` is supported.
         # Corresponds to the JSON property `downloadFormat`
         # @return [String]
         attr_accessor :download_format
       
-        # A list of filters to be applied to the report.
+        # A list of filters to be applied to the report.\
         # The maximum number of filters per request is 300.
         # Corresponds to the JSON property `filters`
         # @return [Array<Google::Apis::DoubleclicksearchV2::ReportRequest::Filter>]
         attr_accessor :filters
       
-        # Determines if removed entities should be included in the report. Defaults to
-        # false. Deprecated, please use includeRemovedEntities instead.
+        # Determines if removed entities should be included in the report. Defaults
+        # to `false`. Deprecated, please use
+        # `includeRemovedEntities` instead.
         # Corresponds to the JSON property `includeDeletedEntities`
         # @return [Boolean]
         attr_accessor :include_deleted_entities
         alias_method :include_deleted_entities?, :include_deleted_entities
       
-        # Determines if removed entities should be included in the report. Defaults to
-        # false.
+        # Determines if removed entities should be included in the report. Defaults
+        # to `false`.
         # Corresponds to the JSON property `includeRemovedEntities`
         # @return [Boolean]
         attr_accessor :include_removed_entities
         alias_method :include_removed_entities?, :include_removed_entities
       
-        # Asynchronous report only. The maximum number of rows per report file. A large
-        # report is split into many files based on this field. Acceptable values are
-        # 1000000 to 100000000, inclusive.
+        # Asynchronous report only. The maximum number of rows per report file. A
+        # large report is split into many files based on this field. Acceptable
+        # values are `1000000` to `100000000`, inclusive.
         # Corresponds to the JSON property `maxRowsPerFile`
         # @return [Fixnum]
         attr_accessor :max_rows_per_file
       
-        # Synchronous report only. A list of columns and directions defining sorting to
-        # be performed on the report rows.
+        # Synchronous report only. A list of columns and directions defining sorting
+        # to be performed on the report rows.\
         # The maximum number of orderings per request is 300.
         # Corresponds to the JSON property `orderBy`
         # @return [Array<Google::Apis::DoubleclicksearchV2::ReportRequest::OrderBy>]
@@ -644,42 +652,47 @@ module Google
         # @return [Google::Apis::DoubleclicksearchV2::ReportRequest::ReportScope]
         attr_accessor :report_scope
       
-        # Determines the type of rows that are returned in the report. For example, if
-        # you specify reportType: keyword, each row in the report will contain data
-        # about a keyword. See the Types of Reports reference for the columns that are
+        # Determines the type of rows that are returned in the report. For example,
+        # if you specify `reportType: keyword`, each row in the report
+        # will contain data about a keyword. See the [Types of
+        # Reports](/search-ads/v2/report-types/) reference for the columns that are
         # available for each type.
         # Corresponds to the JSON property `reportType`
         # @return [String]
         attr_accessor :report_type
       
-        # Synchronous report only. The maximum number of rows to return; additional rows
-        # are dropped. Acceptable values are 0 to 10000, inclusive. Defaults to 10000.
+        # Synchronous report only. The maximum number of rows to return; additional
+        # rows are dropped. Acceptable values are `0` to
+        # `10000`, inclusive. Defaults to `10000`.
         # Corresponds to the JSON property `rowCount`
         # @return [Fixnum]
         attr_accessor :row_count
       
         # Synchronous report only. Zero-based index of the first row to return.
-        # Acceptable values are 0 to 50000, inclusive. Defaults to 0.
+        # Acceptable values are `0` to `50000`, inclusive.
+        # Defaults to `0`.
         # Corresponds to the JSON property `startRow`
         # @return [Fixnum]
         attr_accessor :start_row
       
-        # Specifies the currency in which monetary will be returned. Possible values are:
-        # usd, agency (valid if the report is scoped to agency or lower), advertiser (
-        # valid if the report is scoped to * advertiser or lower), or account (valid if
-        # the report is scoped to engine account or lower).
+        # Specifies the currency in which monetary will be returned. Possible values
+        # are: `usd`, `agency` (valid if the report is scoped
+        # to agency or lower), `advertiser` (valid if the report is scoped
+        # to * advertiser or lower), or `account` (valid if the report is
+        # scoped to engine account or lower).
         # Corresponds to the JSON property `statisticsCurrency`
         # @return [String]
         attr_accessor :statistics_currency
       
-        # If metrics are requested in a report, this argument will be used to restrict
-        # the metrics to a specific time range.
+        # If metrics are requested in a report, this argument will be used to
+        # restrict the metrics to a specific time range.
         # Corresponds to the JSON property `timeRange`
         # @return [Google::Apis::DoubleclicksearchV2::ReportRequest::TimeRange]
         attr_accessor :time_range
       
-        # If true, the report would only be created if all the requested stat data are
-        # sourced from a single timezone. Defaults to false.
+        # If `true`, the report would only be created if all the requested
+        # stat data are sourced from a single timezone. Defaults to
+        # `false`.
         # Corresponds to the JSON property `verifySingleTimeZone`
         # @return [Boolean]
         attr_accessor :verify_single_time_zone
@@ -722,7 +735,7 @@ module Google
           # @return [String]
           attr_accessor :operator
         
-          # A list of values to filter the column value against.
+          # A list of values to filter the column value against.\
           # The maximum number of filter values per request is 300.
           # Corresponds to the JSON property `values`
           # @return [Array<Object>]
@@ -749,7 +762,8 @@ module Google
           # @return [Google::Apis::DoubleclicksearchV2::ReportApiColumnSpec]
           attr_accessor :column
         
-          # The sort direction, which is either ascending or descending.
+          # The sort direction, which is either `ascending` or
+          # `descending`.
           # Corresponds to the JSON property `sortOrder`
           # @return [String]
           attr_accessor :sort_order
@@ -822,21 +836,23 @@ module Google
           end
         end
         
-        # If metrics are requested in a report, this argument will be used to restrict
-        # the metrics to a specific time range.
+        # If metrics are requested in a report, this argument will be used to
+        # restrict the metrics to a specific time range.
         class TimeRange
           include Google::Apis::Core::Hashable
         
-          # Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See
-          # additional references on how changed attribute reports work.
+          # Inclusive UTC timestamp in RFC format, e.g.,
+          # `2013-07-16T10:16:23.555Z`. See additional references on how
+          # changed attribute reports work.
           # Corresponds to the JSON property `changedAttributesSinceTimestamp`
-          # @return [DateTime]
+          # @return [String]
           attr_accessor :changed_attributes_since_timestamp
         
-          # Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See
-          # additional references on how changed metrics reports work.
+          # Inclusive UTC timestamp in RFC format, e.g.,
+          # `2013-07-16T10:16:23.555Z`. See additional references on how
+          # changed metrics reports work.
           # Corresponds to the JSON property `changedMetricsSinceTimestamp`
-          # @return [DateTime]
+          # @return [String]
           attr_accessor :changed_metrics_since_timestamp
         
           # Inclusive date in YYYY-MM-DD format.
@@ -868,7 +884,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Identifies this as a SavedColumn resource. Value: the fixed string
-        # doubleclicksearch#savedColumn.
+        # <code>doubleclicksearch#savedColumn</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -897,8 +913,8 @@ module Google
       
       # A list of saved columns. Advertisers create saved columns to report on
       # Floodlight activities, Google Analytics goals, or custom KPIs. To request
-      # reports with saved columns, you'll need the saved column names that are
-      # available from this list.
+      # reports with saved columns,
+      # you'll need the saved column names that are available from this list.
       class SavedColumnList
         include Google::Apis::Core::Hashable
       
@@ -908,7 +924,7 @@ module Google
         attr_accessor :items
       
         # Identifies this as a SavedColumnList resource. Value: the fixed string
-        # doubleclicksearch#savedColumnList.
+        # <code>doubleclicksearch#savedColumnList</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

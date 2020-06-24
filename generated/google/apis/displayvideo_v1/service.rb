@@ -615,6 +615,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new channel. Returns the newly created channel if successful.
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the created channel.
+        # @param [Google::Apis::DisplayvideoV1::Channel] channel_object
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the created channel.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Channel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Channel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_advertiser_channel(advertiser_id, channel_object = nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{+advertiserId}/channels', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::DisplayvideoV1::Channel::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Channel
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates an existing inventory source.
         # Returns the updated inventory source if successful.
         # Gets a channel for a partner or advertiser.
@@ -1079,6 +1115,7 @@ module Google
         #   - `approvalStatus`
         #   - `exchangeReviewStatus`
         #   - `dynamic`
+        #   - `creativeId`
         #   * The operator must be `HAS (:)` for the following fields:
         #   - `lineItemIds`
         #   * For `entityStatus`, `minDuration`, `maxDuration`, and `dynamic` there may
@@ -1090,6 +1127,8 @@ module Google
         #   `"`duration`s"`. Only seconds are supported with millisecond granularity.
         #   * There may be multiple `lineItemIds` restrictions in order to search
         #   against multiple possible line item IDs.
+        #   * There may be multiple `creativeId` restrictions in order to search
+        #   against multiple possible creative IDs.
         #   Examples:
         #   * All native creatives: `creativeType="CREATIVE_TYPE_NATIVE"`
         #   * All active creatives with 300x400 or 50x100 dimensions:
@@ -1101,7 +1140,9 @@ module Google
         #   (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED"
         #   OR exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")`
         #   * All video creatives that are associated with line item ID 1 or 2:
-        #   creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR lineItemIds:2)
+        #   `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR lineItemIds:2)`
+        #   * Find creatives by multiple creative IDs:
+        #   `creativeId=1 OR creativeId=2`
         #   The length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list.
@@ -3946,6 +3987,42 @@ module Google
           command.response_representation = Google::Apis::DisplayvideoV1::GoogleBytestreamMedia::Representation
           command.response_class = Google::Apis::DisplayvideoV1::GoogleBytestreamMedia
           command.params['resourceName'] = resource_name unless resource_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new channel. Returns the newly created channel if successful.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the created channel.
+        # @param [Google::Apis::DisplayvideoV1::Channel] channel_object
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the created channel.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Channel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Channel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_partner_channel(partner_id, channel_object = nil, advertiser_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/partners/{+partnerId}/channels', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::DisplayvideoV1::Channel::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Channel
+          command.params['partnerId'] = partner_id unless partner_id.nil?
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

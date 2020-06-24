@@ -149,7 +149,7 @@ module Google
           property :click_id, as: 'clickId'
           property :conversion_id, as: 'conversionId'
           property :conversion_modified_timestamp, :numeric_string => true, as: 'conversionModifiedTimestamp'
-          property :conversion_timestamp, :numeric_string => true, as: 'conversionTimestamp'
+          property :conversion_timestamp, as: 'conversionTimestamp'
           property :count_millis, :numeric_string => true, as: 'countMillis'
           property :criterion_id, :numeric_string => true, as: 'criterionId'
           property :currency_code, as: 'currencyCode'
@@ -167,7 +167,7 @@ module Google
           property :product_id, as: 'productId'
           property :product_language, as: 'productLanguage'
           property :quantity_millis, :numeric_string => true, as: 'quantityMillis'
-          property :revenue_micros, :numeric_string => true, as: 'revenueMicros'
+          property :revenue_micros, as: 'revenueMicros'
           property :segmentation_id, :numeric_string => true, as: 'segmentationId'
           property :segmentation_name, as: 'segmentationName'
           property :segmentation_type, as: 'segmentationType'
@@ -302,10 +302,8 @@ module Google
         class TimeRange
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :changed_attributes_since_timestamp, as: 'changedAttributesSinceTimestamp', type: DateTime
-        
-            property :changed_metrics_since_timestamp, as: 'changedMetricsSinceTimestamp', type: DateTime
-        
+            property :changed_attributes_since_timestamp, as: 'changedAttributesSinceTimestamp'
+            property :changed_metrics_since_timestamp, as: 'changedMetricsSinceTimestamp'
             property :end_date, as: 'endDate'
             property :start_date, as: 'startDate'
           end

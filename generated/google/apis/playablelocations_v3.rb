@@ -12,27 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/dialogflow_v2/service.rb'
-require 'google/apis/dialogflow_v2/classes.rb'
-require 'google/apis/dialogflow_v2/representations.rb'
+require 'google/apis/playablelocations_v3/service.rb'
+require 'google/apis/playablelocations_v3/classes.rb'
+require 'google/apis/playablelocations_v3/representations.rb'
 
 module Google
   module Apis
-    # Dialogflow API
+    # Playable Locations API
     #
-    # Builds conversational interfaces (for example, chatbots, and voice-powered
-    # apps and devices).
+    # 
     #
-    # @see https://cloud.google.com/dialogflow/
-    module DialogflowV2
-      VERSION = 'V2'
+    # @see https://developers.google.com/maps/contact-sales/
+    module PlayablelocationsV3
+      VERSION = 'V3'
       REVISION = '20200622'
-
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # View, manage and query your Dialogflow agents
-      AUTH_DIALOGFLOW = 'https://www.googleapis.com/auth/dialogflow'
     end
   end
 end

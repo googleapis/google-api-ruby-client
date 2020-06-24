@@ -2202,10 +2202,21 @@ module Google
       class FirstAndThirdPartyAudience
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_display_audience_size, :numeric_string => true, as: 'activeDisplayAudienceSize'
+          property :audience_source, as: 'audienceSource'
+          property :audience_type, as: 'audienceType'
+          property :description, as: 'description'
+          property :display_audience_size, :numeric_string => true, as: 'displayAudienceSize'
+          property :display_desktop_audience_size, :numeric_string => true, as: 'displayDesktopAudienceSize'
+          property :display_mobile_app_audience_size, :numeric_string => true, as: 'displayMobileAppAudienceSize'
+          property :display_mobile_web_audience_size, :numeric_string => true, as: 'displayMobileWebAudienceSize'
           property :display_name, as: 'displayName'
           property :first_and_third_party_audience_id, :numeric_string => true, as: 'firstAndThirdPartyAudienceId'
           property :first_and_third_party_audience_type, as: 'firstAndThirdPartyAudienceType'
+          property :gmail_audience_size, :numeric_string => true, as: 'gmailAudienceSize'
+          property :membership_duration_days, :numeric_string => true, as: 'membershipDurationDays'
           property :name, as: 'name'
+          property :youtube_audience_size, :numeric_string => true, as: 'youtubeAudienceSize'
         end
       end
       

@@ -704,8 +704,7 @@ module Google
       end
       
       # A single assigned targeting option, which defines the state of a targeting
-      # option for an entity with targeting settings, such as a Line Item or
-      # Insertion Order.
+      # option for an entity with targeting settings.
       class AssignedTargetingOption
         include Google::Apis::Core::Hashable
       
@@ -3810,6 +3809,71 @@ module Google
       class FirstAndThirdPartyAudience
         include Google::Apis::Core::Hashable
       
+        # Output only. The estimated audience size for the Display network in the past
+        # month.
+        # If the size is less than 1000, the number will be hidden and 0 will be
+        # returned due to privacy reasons. Otherwise, the number will be rounded off
+        # to two significant digits.
+        # Only returned in GET request.
+        # Corresponds to the JSON property `activeDisplayAudienceSize`
+        # @return [Fixnum]
+        attr_accessor :active_display_audience_size
+      
+        # Output only. The source of the audience.
+        # Corresponds to the JSON property `audienceSource`
+        # @return [String]
+        attr_accessor :audience_source
+      
+        # Output only. The type of the audience.
+        # Corresponds to the JSON property `audienceType`
+        # @return [String]
+        attr_accessor :audience_type
+      
+        # Output only. The description of the first and third party audience.
+        # Only applicable to first party audiences.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The estimated audience size for the Display network.
+        # If the size is less than 1000, the number will be hidden and 0 will be
+        # returned due to privacy reasons. Otherwise, the number will be rounded off
+        # to two significant digits.
+        # Only returned in GET request.
+        # Corresponds to the JSON property `displayAudienceSize`
+        # @return [Fixnum]
+        attr_accessor :display_audience_size
+      
+        # Output only. The estimated desktop audience size in Display network.
+        # If the size is less than 1000, the number will be hidden and 0 will be
+        # returned due to privacy reasons. Otherwise, the number will be rounded off
+        # to two significant digits.
+        # Only applicable to first party audiences.
+        # Only returned in GET request.
+        # Corresponds to the JSON property `displayDesktopAudienceSize`
+        # @return [Fixnum]
+        attr_accessor :display_desktop_audience_size
+      
+        # Output only. The estimated mobile app audience size in Display network.
+        # If the size is less than 1000, the number will be hidden and 0 will be
+        # returned due to privacy reasons. Otherwise, the number will be rounded off
+        # to two significant digits.
+        # Only applicable to first party audiences.
+        # Only returned in GET request.
+        # Corresponds to the JSON property `displayMobileAppAudienceSize`
+        # @return [Fixnum]
+        attr_accessor :display_mobile_app_audience_size
+      
+        # Output only. The estimated mobile web audience size in Display network.
+        # If the size is less than 1000, the number will be hidden and 0 will be
+        # returned due to privacy reasons. Otherwise, the number will be rounded off
+        # to two significant digits.
+        # Only applicable to first party audiences.
+        # Only returned in GET request.
+        # Corresponds to the JSON property `displayMobileWebAudienceSize`
+        # @return [Fixnum]
+        attr_accessor :display_mobile_web_audience_size
+      
         # Output only. The display name of the first and third party audience.
         # .
         # Corresponds to the JSON property `displayName`
@@ -3829,10 +3893,38 @@ module Google
         # @return [String]
         attr_accessor :first_and_third_party_audience_type
       
+        # Output only. The estimated audience size for Gmail network.
+        # If the size is less than 1000, the number will be hidden and 0 will be
+        # returned due to privacy reasons. Otherwise, the number will be rounded off
+        # to two significant digits.
+        # Only applicable to first party audiences.
+        # Only returned in GET request.
+        # Corresponds to the JSON property `gmailAudienceSize`
+        # @return [Fixnum]
+        attr_accessor :gmail_audience_size
+      
+        # Output only. The duration in days that an entry remains in the audience after
+        # the
+        # qualifying event.
+        # Only applicable to first party audiences.
+        # Corresponds to the JSON property `membershipDurationDays`
+        # @return [Fixnum]
+        attr_accessor :membership_duration_days
+      
         # Output only. The resource name of the first and third party audience.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. The estimated audience size for YouTube network.
+        # If the size is less than 1000, the number will be hidden and 0 will be
+        # returned due to privacy reasons. Otherwise, the number will be rounded off
+        # to two significant digits.
+        # Only applicable to first party audiences.
+        # Only returned in GET request.
+        # Corresponds to the JSON property `youtubeAudienceSize`
+        # @return [Fixnum]
+        attr_accessor :youtube_audience_size
       
         def initialize(**args)
            update!(**args)
@@ -3840,10 +3932,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_display_audience_size = args[:active_display_audience_size] if args.key?(:active_display_audience_size)
+          @audience_source = args[:audience_source] if args.key?(:audience_source)
+          @audience_type = args[:audience_type] if args.key?(:audience_type)
+          @description = args[:description] if args.key?(:description)
+          @display_audience_size = args[:display_audience_size] if args.key?(:display_audience_size)
+          @display_desktop_audience_size = args[:display_desktop_audience_size] if args.key?(:display_desktop_audience_size)
+          @display_mobile_app_audience_size = args[:display_mobile_app_audience_size] if args.key?(:display_mobile_app_audience_size)
+          @display_mobile_web_audience_size = args[:display_mobile_web_audience_size] if args.key?(:display_mobile_web_audience_size)
           @display_name = args[:display_name] if args.key?(:display_name)
           @first_and_third_party_audience_id = args[:first_and_third_party_audience_id] if args.key?(:first_and_third_party_audience_id)
           @first_and_third_party_audience_type = args[:first_and_third_party_audience_type] if args.key?(:first_and_third_party_audience_type)
+          @gmail_audience_size = args[:gmail_audience_size] if args.key?(:gmail_audience_size)
+          @membership_duration_days = args[:membership_duration_days] if args.key?(:membership_duration_days)
           @name = args[:name] if args.key?(:name)
+          @youtube_audience_size = args[:youtube_audience_size] if args.key?(:youtube_audience_size)
         end
       end
       

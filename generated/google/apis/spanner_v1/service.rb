@@ -1299,6 +1299,8 @@ module Google
         # be queried using the Operations API.
         # @param [String] database
         #   Required. The database whose schema we wish to get.
+        #   Values are of the form
+        #   `projects/<project>/instances/<instance>/databases/<database>`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

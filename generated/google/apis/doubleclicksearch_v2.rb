@@ -20,13 +20,13 @@ module Google
   module Apis
     # Search Ads 360 API
     #
-    # Reports and modifies your advertising data in DoubleClick Search (for example,
-    # campaigns, ad groups, keywords, and conversions).
+    # The Search Ads 360 API allows developers to automate uploading conversions and
+    # downloading reports from Search Ads 360.
     #
-    # @see https://developers.google.com/doubleclick-search/
+    # @see https://developers.google.com/search-ads
     module DoubleclicksearchV2
       VERSION = 'V2'
-      REVISION = '20200325'
+      REVISION = '20200616'
 
       # View and manage your advertising data in DoubleClick Search
       AUTH_DOUBLECLICKSEARCH = 'https://www.googleapis.com/auth/doubleclicksearch'

@@ -26,7 +26,7 @@ module Google
     # @see https://firebase.google.com/docs/cloud-messaging
     module FcmV1
       VERSION = 'V1'
-      REVISION = '20200615'
+      REVISION = '20200622'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
