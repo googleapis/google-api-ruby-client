@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SasPortalDeviceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SasPortalDeviceModel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -265,6 +271,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_config, as: 'activeConfig', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeviceConfig, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeviceConfig::Representation
       
+          property :device_metadata, as: 'deviceMetadata', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeviceMetadata, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeviceMetadata::Representation
+      
           property :display_name, as: 'displayName'
           property :fcc_id, as: 'fccId'
           collection :grants, as: 'grants', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeviceGrant, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeviceGrant::Representation
@@ -316,6 +324,12 @@ module Google
       
           property :state, as: 'state'
           collection :suspension_reason, as: 'suspensionReason'
+        end
+      end
+      
+      class SasPortalDeviceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

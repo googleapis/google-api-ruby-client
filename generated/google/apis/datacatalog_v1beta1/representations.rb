@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -534,6 +540,13 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :parent_policy_tag, as: 'parentPolicyTag'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_enum_value_display_name, as: 'newEnumValueDisplayName'
         end
       end
       

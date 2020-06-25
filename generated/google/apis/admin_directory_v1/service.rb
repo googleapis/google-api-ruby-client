@@ -279,8 +279,7 @@ module Google
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
         # @param [String] query
-        #   Search string in the format given at http://support.google.com/chromeos/a/bin/
-        #   answer.py?answer=1698333
+        #   Search string in the format provided by this Help Center article.
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order. Only of use when
         #   orderBy is also used
@@ -1549,7 +1548,7 @@ module Google
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [Fixnum] max_results
-        #   Maximum number of results to return. Max allowed value is 100.
+        #   Maximum number of results to return.
         # @param [String] order_by
         #   Column to use for sorting results
         # @param [String] page_token
@@ -1557,8 +1556,7 @@ module Google
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
         # @param [String] query
-        #   Search string in the format given at http://support.google.com/a/bin/answer.py?
-        #   answer=1408863#search
+        #   Search string in the format provided by this Help Center article.
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order. Only of use when
         #   orderBy is also used

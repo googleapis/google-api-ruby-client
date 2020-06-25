@@ -2681,6 +2681,7 @@ module Google
         # * `min`   minute
         # * `h`     hour
         # * `d`     day
+        # * `1`     dimensionless
         # **Prefixes (PREFIX)**
         # * `k`     kilo    (10^3)
         # * `M`     mega    (10^6)

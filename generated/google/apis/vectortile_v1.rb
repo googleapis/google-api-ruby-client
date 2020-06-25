@@ -12,23 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/prod_tt_sasportal_v1alpha1/service.rb'
-require 'google/apis/prod_tt_sasportal_v1alpha1/classes.rb'
-require 'google/apis/prod_tt_sasportal_v1alpha1/representations.rb'
+require 'google/apis/vectortile_v1/service.rb'
+require 'google/apis/vectortile_v1/classes.rb'
+require 'google/apis/vectortile_v1/representations.rb'
 
 module Google
   module Apis
-    # SAS Portal API (Testing)
+    # Semantic Tile API
     #
-    # 
+    # Serves vector tiles containing geospatial data.
     #
-    # @see https://developers.google.com/spectrum-access-system/
-    module ProdTtSasportalV1alpha1
-      VERSION = 'V1alpha1'
-      REVISION = '20200623'
-
-      # View your email address
-      AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
+    # @see https://developers.google.com/maps/contact-sales/
+    module VectortileV1
+      VERSION = 'V1'
+      REVISION = '20200622'
     end
   end
 end

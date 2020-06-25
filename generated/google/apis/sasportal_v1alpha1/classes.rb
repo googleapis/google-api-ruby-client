@@ -159,6 +159,11 @@ module Google
         # @return [Google::Apis::SasportalV1alpha1::SasPortalDeviceConfig]
         attr_accessor :active_config
       
+        # Device data overridable by both SAS Portal and registration requests.
+        # Corresponds to the JSON property `deviceMetadata`
+        # @return [Google::Apis::SasportalV1alpha1::SasPortalDeviceMetadata]
+        attr_accessor :device_metadata
+      
         # Device display name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -202,6 +207,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @active_config = args[:active_config] if args.key?(:active_config)
+          @device_metadata = args[:device_metadata] if args.key?(:device_metadata)
           @display_name = args[:display_name] if args.key?(:display_name)
           @fcc_id = args[:fcc_id] if args.key?(:fcc_id)
           @grants = args[:grants] if args.key?(:grants)
@@ -372,6 +378,19 @@ module Google
           @move_list = args[:move_list] if args.key?(:move_list)
           @state = args[:state] if args.key?(:state)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
+        end
+      end
+      
+      # Device data overridable by both SAS Portal and registration requests.
+      class SasPortalDeviceMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

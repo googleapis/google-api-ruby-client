@@ -323,6 +323,19 @@ module Google
         #   <a href="/composer/docs/concepts/versioning/composer-versions">Cloud
         #   Composer Version List</a> for valid values.</td>
         #   </tr>
+        #   <tr>
+        #   <td>config.databaseConfig.machineType</td>
+        #   <td>Cloud SQL machine type used by Airflow database.
+        #   It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8
+        #   or db-n1-standard-16.</td>
+        #   </tr>
+        #   <tr>
+        #   <td>config.webServerConfig.machineType</td>
+        #   <td>Machine type on which Airflow web server is running.
+        #   It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or
+        #   composer-n1-webserver-8.
+        #   </td>
+        #   </tr>
         #   </tbody>
         #   </table>
         # @param [String] fields

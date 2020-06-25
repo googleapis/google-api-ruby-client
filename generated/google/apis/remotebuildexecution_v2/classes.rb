@@ -3002,7 +3002,7 @@ module Google
         attr_accessor :reserved
         alias_method :reserved?, :reserved
       
-        # Output only. The name of the image used by each VM.
+        # The name of the image used by each VM.
         # Corresponds to the JSON property `vmImage`
         # @return [String]
         attr_accessor :vm_image

@@ -127,6 +127,12 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class LastKnownNetwork
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class RecentUser
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -684,6 +690,8 @@ module Google
           property :kind, as: 'kind'
           property :last_enrollment_time, as: 'lastEnrollmentTime', type: DateTime
       
+          collection :last_known_network, as: 'lastKnownNetwork', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::LastKnownNetwork, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::LastKnownNetwork::Representation
+      
           property :last_sync, as: 'lastSync', type: DateTime
       
           property :mac_address, as: 'macAddress'
@@ -762,6 +770,14 @@ module Google
               property :storage_total, :numeric_string => true, as: 'storageTotal'
               property :volume_id, as: 'volumeId'
             end
+          end
+        end
+        
+        class LastKnownNetwork
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :ip_address, as: 'ipAddress'
+            property :wan_ip_address, as: 'wanIpAddress'
           end
         end
         

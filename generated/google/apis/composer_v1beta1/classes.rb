@@ -58,8 +58,9 @@ module Google
       class DatabaseConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Cloud SQL tier used by Airflow database.
-        # If not specified, db-n1-standard-2 will be used.
+        # Optional. Cloud SQL machine type used by Airflow database.
+        # It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8
+        # or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -902,7 +903,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Machine type on which Airflow web server is running.
-        # For example: composer-n1-webserver-2, composer-n1-webserver-4,
+        # It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or
         # composer-n1-webserver-8.
         # If not specified, composer-n1-webserver-2 will be used.
         # Value custom is returned only in response, if Airflow web server parameters

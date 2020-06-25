@@ -579,12 +579,13 @@ module Google
       class GoogleCloudDatacatalogV1beta1FieldTypeEnumType
         include Google::Apis::Core::Hashable
       
-        # Required on create; optional on update. The set of allowed values for
-        # this enum. This set must not be empty, the display names of the values in
-        # this set must not be empty and the display names of the values must be
-        # case-insensitively unique within this set. Currently, enum values can
-        # only be added to the list of allowed values. Deletion and renaming of
-        # enum values are not supported. Can have up to 500 allowed values.
+        # The set of allowed values for this enum. This set must not be empty, the
+        # display names of the values in this set must not be empty and the display
+        # names of the values must be case-insensitively unique within this set.
+        # The order of items in this list is preserved. This field can be used to
+        # create, remove and reorder enum values. In order to rename enum value use
+        # RenameTagTemplateFieldEnumValue method. Can have up to 500 allowed
+        # values.
         # Corresponds to the JSON property `allowedValues`
         # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>]
         attr_accessor :allowed_values
@@ -653,10 +654,12 @@ module Google
       class GoogleCloudDatacatalogV1beta1GcsFilesetSpec
         include Google::Apis::Core::Hashable
       
-        # Required. Patterns to identify a set of files in Google Cloud Storage. See [
-        # Cloud
-        # Storage documentation](/storage/docs/gsutil/addlhelp/WildcardNames) for
-        # more information. Note that bucket wildcards are currently not supported.
+        # Required. Patterns to identify a set of files in Google Cloud Storage.
+        # See [Cloud Storage
+        # documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/
+        # WildcardNames)
+        # for more information. Note that bucket wildcards are currently not
+        # supported.
         # Examples of valid file_patterns:
         # * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir`
         # directory.
@@ -949,6 +952,27 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @parent_policy_tag = args[:parent_policy_tag] if args.key?(:parent_policy_tag)
+        end
+      end
+      
+      # Request message for
+      # RenameTagTemplateFieldEnumValue.
+      class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The new display name of the enum value. For example, `
+        # my_new_enum_value`.
+        # Corresponds to the JSON property `newEnumValueDisplayName`
+        # @return [String]
+        attr_accessor :new_enum_value_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_enum_value_display_name = args[:new_enum_value_display_name] if args.key?(:new_enum_value_display_name)
         end
       end
       

@@ -693,6 +693,11 @@ module Google
         # @return [DateTime]
         attr_accessor :last_enrollment_time
       
+        # Contains last used network (Read-only)
+        # Corresponds to the JSON property `lastKnownNetwork`
+        # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::LastKnownNetwork>]
+        attr_accessor :last_known_network
+      
         # Date and time the device was last synchronized with the policy settings in the
         # G Suite administrator control panel (Read-only)
         # Corresponds to the JSON property `lastSync`
@@ -810,6 +815,7 @@ module Google
           @firmware_version = args[:firmware_version] if args.key?(:firmware_version)
           @kind = args[:kind] if args.key?(:kind)
           @last_enrollment_time = args[:last_enrollment_time] if args.key?(:last_enrollment_time)
+          @last_known_network = args[:last_known_network] if args.key?(:last_known_network)
           @last_sync = args[:last_sync] if args.key?(:last_sync)
           @mac_address = args[:mac_address] if args.key?(:mac_address)
           @manufacture_date = args[:manufacture_date] if args.key?(:manufacture_date)
@@ -995,6 +1001,31 @@ module Google
               @storage_total = args[:storage_total] if args.key?(:storage_total)
               @volume_id = args[:volume_id] if args.key?(:volume_id)
             end
+          end
+        end
+        
+        # 
+        class LastKnownNetwork
+          include Google::Apis::Core::Hashable
+        
+          # The IP address
+          # Corresponds to the JSON property `ipAddress`
+          # @return [String]
+          attr_accessor :ip_address
+        
+          # The WAN IP address
+          # Corresponds to the JSON property `wanIpAddress`
+          # @return [String]
+          attr_accessor :wan_ip_address
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @ip_address = args[:ip_address] if args.key?(:ip_address)
+            @wan_ip_address = args[:wan_ip_address] if args.key?(:wan_ip_address)
           end
         end
         
