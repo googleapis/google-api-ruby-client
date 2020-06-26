@@ -2549,6 +2549,13 @@ module Google
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Scheduling]
         attr_accessor :scheduling
       
+        # Optional. Specifies the service account for workload run-as account.
+        # Users submitting jobs must have act-as permission on this run-as account.
+        # If not specified, then CMLE P4SA will be used by default.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Optional. Use `chief` instead of `master` in the `TF_CONFIG` environment
         # variable when training with a custom container. Defaults to `false`. [Learn
         # more about this
@@ -2618,6 +2625,7 @@ module Google
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @scale_tier = args[:scale_tier] if args.key?(:scale_tier)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @use_chief_in_tf_config = args[:use_chief_in_tf_config] if args.key?(:use_chief_in_tf_config)
           @worker_config = args[:worker_config] if args.key?(:worker_config)
           @worker_count = args[:worker_count] if args.key?(:worker_count)

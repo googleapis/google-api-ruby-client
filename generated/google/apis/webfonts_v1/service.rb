@@ -20,11 +20,11 @@ require 'google/apis/errors'
 module Google
   module Apis
     module WebfontsV1
-      # Google Fonts Developer API
+      # Web Fonts Developer API
       #
-      # Accesses the metadata for all families served by Google Fonts, providing a
-      #  list of families currently available (including available styles and a list of
-      #  supported script subsets).
+      # The Google Web Fonts Developer API lets you retrieve information about web
+      #  fonts served
+      #  by Google.
       #
       # @example
       #    require 'google/apis/webfonts_v1'
@@ -40,29 +40,24 @@ module Google
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'webfonts/v1/')
+          super('https://www.googleapis.com/', '')
           @batch_path = 'batch/webfonts/v1'
         end
         
-        # Retrieves the list of fonts currently served by the Google Fonts Developer API
+        # Retrieves the list of fonts currently served by the Google Fonts Developer
+        # API.
         # @param [String] sort
-        #   Enables sorting of the list
+        #   Enables sorting of the list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -75,14 +70,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_webfonts(sort: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'webfonts', options)
+        def list_webfonts(sort: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/webfonts', options)
           command.response_representation = Google::Apis::WebfontsV1::WebfontList::Representation
           command.response_class = Google::Apis::WebfontsV1::WebfontList
           command.query['sort'] = sort unless sort.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -91,7 +85,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end

@@ -1109,6 +1109,7 @@ module Google
           property :scale_tier, as: 'scaleTier'
           property :scheduling, as: 'scheduling', class: Google::Apis::MlV1::GoogleCloudMlV1Scheduling, decorator: Google::Apis::MlV1::GoogleCloudMlV1Scheduling::Representation
       
+          property :service_account, as: 'serviceAccount'
           property :use_chief_in_tf_config, as: 'useChiefInTfConfig'
           property :worker_config, as: 'workerConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
       

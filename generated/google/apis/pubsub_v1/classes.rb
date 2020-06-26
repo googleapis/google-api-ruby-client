@@ -742,7 +742,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Attributes for this message. If this field is empty, the message must
-        # contain non-empty data.
+        # contain non-empty data. This can be used to filter messages on the
+        # subscription.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,String>]
         attr_accessor :attributes
@@ -1191,7 +1192,8 @@ module Google
         # @return [Google::Apis::PubsubV1::ExpirationPolicy]
         attr_accessor :expiration_policy
       
-        # An expression written in the Cloud Pub/Sub filter language. If non-empty,
+        # An expression written in the Pub/Sub [filter
+        # language](https://cloud.google.com/pubsub/docs/filtering). If non-empty,
         # then only `PubsubMessage`s whose `attributes` field matches the filter are
         # delivered on this subscription. If empty, then no messages are filtered
         # out.

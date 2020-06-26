@@ -67,7 +67,7 @@ module Google
       # `
       # "audit_configs": [
       # `
-      # "service": "allServices"
+      # "service": "allServices",
       # "audit_log_configs": [
       # `
       # "log_type": "DATA_READ",
@@ -76,18 +76,18 @@ module Google
       # ]
       # `,
       # `
-      # "log_type": "DATA_WRITE",
+      # "log_type": "DATA_WRITE"
       # `,
       # `
-      # "log_type": "ADMIN_READ",
+      # "log_type": "ADMIN_READ"
       # `
       # ]
       # `,
       # `
-      # "service": "sampleservice.googleapis.com"
+      # "service": "sampleservice.googleapis.com",
       # "audit_log_configs": [
       # `
-      # "log_type": "DATA_READ",
+      # "log_type": "DATA_READ"
       # `,
       # `
       # "log_type": "DATA_WRITE",
@@ -139,7 +139,7 @@ module Google
       # ]
       # `,
       # `
-      # "log_type": "DATA_WRITE",
+      # "log_type": "DATA_WRITE"
       # `
       # ]
       # `
@@ -404,6 +404,32 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Encapsulates the geographic taxonomy data for a sku.
+      class GeoTaxonomy
+        include Google::Apis::Core::Hashable
+      
+        # The list of regions associated with a sku. Empty for Global skus, which are
+        # associated with all GCP regions.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<String>]
+        attr_accessor :regions
+      
+        # The type of Geo Taxonomy: GLOBAL, REGIONAL, or MULTI_REGIONAL.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @regions = args[:regions] if args.key?(:regions)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1012,6 +1038,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Encapsulates the geographic taxonomy data for a sku.
+        # Corresponds to the JSON property `geoTaxonomy`
+        # @return [Google::Apis::CloudbillingV1::GeoTaxonomy]
+        attr_accessor :geo_taxonomy
+      
         # The resource name for the SKU.
         # Example: "services/DA34-426B-A397/skus/AA95-CD31-42FE"
         # Corresponds to the JSON property `name`
@@ -1050,6 +1081,7 @@ module Google
         def update!(**args)
           @category = args[:category] if args.key?(:category)
           @description = args[:description] if args.key?(:description)
+          @geo_taxonomy = args[:geo_taxonomy] if args.key?(:geo_taxonomy)
           @name = args[:name] if args.key?(:name)
           @pricing_info = args[:pricing_info] if args.key?(:pricing_info)
           @service_provider_name = args[:service_provider_name] if args.key?(:service_provider_name)

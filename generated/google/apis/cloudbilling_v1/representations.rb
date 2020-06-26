@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeoTaxonomy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBillingAccountsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,6 +226,14 @@ module Google
         end
       end
       
+      class GeoTaxonomy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :regions, as: 'regions'
+          property :type, as: 'type'
+        end
+      end
+      
       class ListBillingAccountsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -339,6 +353,8 @@ module Google
           property :category, as: 'category', class: Google::Apis::CloudbillingV1::Category, decorator: Google::Apis::CloudbillingV1::Category::Representation
       
           property :description, as: 'description'
+          property :geo_taxonomy, as: 'geoTaxonomy', class: Google::Apis::CloudbillingV1::GeoTaxonomy, decorator: Google::Apis::CloudbillingV1::GeoTaxonomy::Representation
+      
           property :name, as: 'name'
           collection :pricing_info, as: 'pricingInfo', class: Google::Apis::CloudbillingV1::PricingInfo, decorator: Google::Apis::CloudbillingV1::PricingInfo::Representation
       

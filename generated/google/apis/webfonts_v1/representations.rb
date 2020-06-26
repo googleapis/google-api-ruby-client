@@ -41,8 +41,7 @@ module Google
           property :family, as: 'family'
           hash :files, as: 'files'
           property :kind, as: 'kind'
-          property :last_modified, as: 'lastModified', type: Date
-      
+          property :last_modified, as: 'lastModified'
           collection :subsets, as: 'subsets'
           collection :variants, as: 'variants'
           property :version, as: 'version'

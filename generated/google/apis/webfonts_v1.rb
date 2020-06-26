@@ -18,16 +18,16 @@ require 'google/apis/webfonts_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Fonts Developer API
+    # Web Fonts Developer API
     #
-    # Accesses the metadata for all families served by Google Fonts, providing a
-    # list of families currently available (including available styles and a list of
-    # supported script subsets).
+    # The Google Web Fonts Developer API lets you retrieve information about web
+    # fonts served
+    # by Google.
     #
     # @see https://developers.google.com/fonts/docs/developer_api
     module WebfontsV1
       VERSION = 'V1'
-      REVISION = '20160302'
+      REVISION = '20200622'
     end
   end
 end

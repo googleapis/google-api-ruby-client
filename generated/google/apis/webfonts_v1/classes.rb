@@ -22,7 +22,7 @@ module Google
   module Apis
     module WebfontsV1
       
-      # 
+      # Metadata describing a family of fonts.
       class Webfont
         include Google::Apis::Core::Hashable
       
@@ -49,7 +49,7 @@ module Google
       
         # The date (format "yyyy-MM-dd") the font was modified for the last time.
         # Corresponds to the JSON property `lastModified`
-        # @return [Date]
+        # @return [String]
         attr_accessor :last_modified
       
         # The scripts supported by the font.
@@ -84,7 +84,8 @@ module Google
         end
       end
       
-      # 
+      # Response containing the list of fonts currently served by the
+      # Google Fonts API.
       class WebfontList
         include Google::Apis::Core::Hashable
       

@@ -695,7 +695,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Attributes for this message. If this field is empty, the message must
-        # contain non-empty data.
+        # contain non-empty data. This can be used to filter messages on the
+        # subscription.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,String>]
         attr_accessor :attributes
