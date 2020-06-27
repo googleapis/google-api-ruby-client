@@ -79,11 +79,6 @@ module Google
         # @return [String]
         attr_accessor :absentee_voting_info_url
       
-        # 
-        # Corresponds to the JSON property `addressLines`
-        # @return [Array<String>]
-        attr_accessor :address_lines
-      
         # A URL provided by this administrative body to give contest information to the
         # voter.
         # Corresponds to the JSON property `ballotInfoUrl`
@@ -156,7 +151,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @absentee_voting_info_url = args[:absentee_voting_info_url] if args.key?(:absentee_voting_info_url)
-          @address_lines = args[:address_lines] if args.key?(:address_lines)
           @ballot_info_url = args[:ballot_info_url] if args.key?(:ballot_info_url)
           @correspondence_address = args[:correspondence_address] if args.key?(:correspondence_address)
           @election_info_url = args[:election_info_url] if args.key?(:election_info_url)
@@ -449,63 +443,6 @@ module Google
         end
       end
       
-      # 
-      class ContextParams
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `clientProfile`
-        # @return [String]
-        attr_accessor :client_profile
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @client_profile = args[:client_profile] if args.key?(:client_profile)
-        end
-      end
-      
-      # A request to look up representative information for a single division.
-      class DivisionRepresentativeInfoRequest
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `contextParams`
-        # @return [Google::Apis::CivicinfoV2::ContextParams]
-        attr_accessor :context_params
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @context_params = args[:context_params] if args.key?(:context_params)
-        end
-      end
-      
-      # A search request for political geographies.
-      class DivisionSearchRequest
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `contextParams`
-        # @return [Google::Apis::CivicinfoV2::ContextParams]
-        attr_accessor :context_params
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @context_params = args[:context_params] if args.key?(:context_params)
-        end
-      end
-      
       # The result of a division search query.
       class SearchDivisionResponse
         include Google::Apis::Core::Hashable
@@ -550,7 +487,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The unique Open Civic Data identifier for this division.
+        # The unique Open Civic Data identifier for this division
         # Corresponds to the JSON property `ocdId`
         # @return [String]
         attr_accessor :ocd_id
@@ -650,25 +587,6 @@ module Google
         end
       end
       
-      # 
-      class ElectionsQueryRequest
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `contextParams`
-        # @return [Google::Apis::CivicinfoV2::ContextParams]
-        attr_accessor :context_params
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @context_params = args[:context_params] if args.key?(:context_params)
-        end
-      end
-      
       # The list of elections available for this version of the API.
       class QueryElectionsResponse
         include Google::Apis::Core::Hashable
@@ -705,11 +623,6 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # 
-        # Corresponds to the JSON property `kgForeignKey`
-        # @return [String]
-        attr_accessor :kg_foreign_key
-      
         # The name of the district.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -730,28 +643,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
-          @kg_foreign_key = args[:kg_foreign_key] if args.key?(:kg_foreign_key)
           @name = args[:name] if args.key?(:name)
           @scope = args[:scope] if args.key?(:scope)
-        end
-      end
-      
-      # 
-      class FieldMetadataProto
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `internal`
-        # @return [Google::Apis::CivicinfoV2::InternalFieldMetadataProto]
-        attr_accessor :internal
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @internal = args[:internal] if args.key?(:internal)
         end
       end
       
@@ -759,14 +652,13 @@ module Google
       class GeographicDivision
         include Google::Apis::Core::Hashable
       
-        # Any other valid OCD IDs that refer to the same division.
-        # Because OCD IDs are meant to be human-readable and at least somewhat
-        # predictable, there are occasionally several identifiers for a single division.
-        # These identifiers are defined to be equivalent to one another, and one is
-        # always indicated as the primary identifier. The primary identifier will be
-        # returned in ocd_id above, and any other equivalent valid identifiers will be
-        # returned in this list.
-        # For example, if this division's OCD ID is ocd-division/country:us/district:dc,
+        # Any other valid OCD IDs that refer to the same division.\n\nBecause OCD IDs
+        # are meant to be human-readable and at least somewhat predictable, there are
+        # occasionally several identifiers for a single division. These identifiers are
+        # defined to be equivalent to one another, and one is always indicated as the
+        # primary identifier. The primary identifier will be returned in ocd_id above,
+        # and any other equivalent valid identifiers will be returned in this list.\n\
+        # nFor example, if this division's OCD ID is ocd-division/country:us/district:dc,
         # this will contain ocd-division/country:us/state:dc.
         # Corresponds to the JSON property `alsoKnownAs`
         # @return [Array<String>]
@@ -793,57 +685,6 @@ module Google
           @also_known_as = args[:also_known_as] if args.key?(:also_known_as)
           @name = args[:name] if args.key?(:name)
           @office_indices = args[:office_indices] if args.key?(:office_indices)
-        end
-      end
-      
-      # 
-      class InternalFieldMetadataProto
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `isAuto`
-        # @return [Boolean]
-        attr_accessor :is_auto
-        alias_method :is_auto?, :is_auto
-      
-        # 
-        # Corresponds to the JSON property `sourceSummary`
-        # @return [Google::Apis::CivicinfoV2::InternalSourceSummaryProto]
-        attr_accessor :source_summary
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @is_auto = args[:is_auto] if args.key?(:is_auto)
-          @source_summary = args[:source_summary] if args.key?(:source_summary)
-        end
-      end
-      
-      # 
-      class InternalSourceSummaryProto
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `dataset`
-        # @return [String]
-        attr_accessor :dataset
-      
-        # 
-        # Corresponds to the JSON property `provider`
-        # @return [String]
-        attr_accessor :provider
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dataset = args[:dataset] if args.key?(:dataset)
-          @provider = args[:provider] if args.key?(:provider)
         end
       end
       
@@ -966,37 +807,6 @@ module Google
         end
       end
       
-      # 
-      class PointProto
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `latE7`
-        # @return [Fixnum]
-        attr_accessor :lat_e7
-      
-        # 
-        # Corresponds to the JSON property `lngE7`
-        # @return [Fixnum]
-        attr_accessor :lng_e7
-      
-        # 
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::CivicinfoV2::FieldMetadataProto]
-        attr_accessor :metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @lat_e7 = args[:lat_e7] if args.key?(:lat_e7)
-          @lng_e7 = args[:lng_e7] if args.key?(:lng_e7)
-          @metadata = args[:metadata] if args.key?(:metadata)
-        end
-      end
-      
       # A location where a voter can vote. This may be an early vote site, an election
       # day voting location, or a drop off location for a completed ballot.
       class PollingLocation
@@ -1091,217 +901,11 @@ module Google
       end
       
       # 
-      class PostalAddress
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `addressLines`
-        # @return [Array<String>]
-        attr_accessor :address_lines
-      
-        # 
-        # Corresponds to the JSON property `administrativeAreaName`
-        # @return [String]
-        attr_accessor :administrative_area_name
-      
-        # 
-        # Corresponds to the JSON property `countryName`
-        # @return [String]
-        attr_accessor :country_name
-      
-        # 
-        # Corresponds to the JSON property `countryNameCode`
-        # @return [String]
-        attr_accessor :country_name_code
-      
-        # 
-        # Corresponds to the JSON property `dependentLocalityName`
-        # @return [String]
-        attr_accessor :dependent_locality_name
-      
-        # 
-        # Corresponds to the JSON property `dependentThoroughfareName`
-        # @return [String]
-        attr_accessor :dependent_thoroughfare_name
-      
-        # 
-        # Corresponds to the JSON property `firmName`
-        # @return [String]
-        attr_accessor :firm_name
-      
-        # 
-        # Corresponds to the JSON property `isDisputed`
-        # @return [Boolean]
-        attr_accessor :is_disputed
-        alias_method :is_disputed?, :is_disputed
-      
-        # 
-        # Corresponds to the JSON property `languageCode`
-        # @return [String]
-        attr_accessor :language_code
-      
-        # 
-        # Corresponds to the JSON property `localityName`
-        # @return [String]
-        attr_accessor :locality_name
-      
-        # 
-        # Corresponds to the JSON property `postBoxNumber`
-        # @return [String]
-        attr_accessor :post_box_number
-      
-        # 
-        # Corresponds to the JSON property `postalCodeNumber`
-        # @return [String]
-        attr_accessor :postal_code_number
-      
-        # 
-        # Corresponds to the JSON property `postalCodeNumberExtension`
-        # @return [String]
-        attr_accessor :postal_code_number_extension
-      
-        # 
-        # Corresponds to the JSON property `premiseName`
-        # @return [String]
-        attr_accessor :premise_name
-      
-        # 
-        # Corresponds to the JSON property `recipientName`
-        # @return [String]
-        attr_accessor :recipient_name
-      
-        # 
-        # Corresponds to the JSON property `sortingCode`
-        # @return [String]
-        attr_accessor :sorting_code
-      
-        # 
-        # Corresponds to the JSON property `subAdministrativeAreaName`
-        # @return [String]
-        attr_accessor :sub_administrative_area_name
-      
-        # 
-        # Corresponds to the JSON property `subPremiseName`
-        # @return [String]
-        attr_accessor :sub_premise_name
-      
-        # 
-        # Corresponds to the JSON property `thoroughfareName`
-        # @return [String]
-        attr_accessor :thoroughfare_name
-      
-        # 
-        # Corresponds to the JSON property `thoroughfareNumber`
-        # @return [String]
-        attr_accessor :thoroughfare_number
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @address_lines = args[:address_lines] if args.key?(:address_lines)
-          @administrative_area_name = args[:administrative_area_name] if args.key?(:administrative_area_name)
-          @country_name = args[:country_name] if args.key?(:country_name)
-          @country_name_code = args[:country_name_code] if args.key?(:country_name_code)
-          @dependent_locality_name = args[:dependent_locality_name] if args.key?(:dependent_locality_name)
-          @dependent_thoroughfare_name = args[:dependent_thoroughfare_name] if args.key?(:dependent_thoroughfare_name)
-          @firm_name = args[:firm_name] if args.key?(:firm_name)
-          @is_disputed = args[:is_disputed] if args.key?(:is_disputed)
-          @language_code = args[:language_code] if args.key?(:language_code)
-          @locality_name = args[:locality_name] if args.key?(:locality_name)
-          @post_box_number = args[:post_box_number] if args.key?(:post_box_number)
-          @postal_code_number = args[:postal_code_number] if args.key?(:postal_code_number)
-          @postal_code_number_extension = args[:postal_code_number_extension] if args.key?(:postal_code_number_extension)
-          @premise_name = args[:premise_name] if args.key?(:premise_name)
-          @recipient_name = args[:recipient_name] if args.key?(:recipient_name)
-          @sorting_code = args[:sorting_code] if args.key?(:sorting_code)
-          @sub_administrative_area_name = args[:sub_administrative_area_name] if args.key?(:sub_administrative_area_name)
-          @sub_premise_name = args[:sub_premise_name] if args.key?(:sub_premise_name)
-          @thoroughfare_name = args[:thoroughfare_name] if args.key?(:thoroughfare_name)
-          @thoroughfare_number = args[:thoroughfare_number] if args.key?(:thoroughfare_number)
-        end
-      end
-      
-      # 
-      class Provenance
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `collidedSegmentSource`
-        # @return [Google::Apis::CivicinfoV2::StreetSegmentList]
-        attr_accessor :collided_segment_source
-      
-        # 
-        # Corresponds to the JSON property `ctclContestUuid`
-        # @return [String]
-        attr_accessor :ctcl_contest_uuid
-      
-        # 
-        # Corresponds to the JSON property `ctclOfficeUuid`
-        # @return [String]
-        attr_accessor :ctcl_office_uuid
-      
-        # 
-        # Corresponds to the JSON property `datasetId`
-        # @return [Fixnum]
-        attr_accessor :dataset_id
-      
-        # 
-        # Corresponds to the JSON property `precinctId`
-        # @return [Fixnum]
-        attr_accessor :precinct_id
-      
-        # 
-        # Corresponds to the JSON property `precinctSplitId`
-        # @return [Fixnum]
-        attr_accessor :precinct_split_id
-      
-        # 
-        # Corresponds to the JSON property `tsStreetSegmentId`
-        # @return [String]
-        attr_accessor :ts_street_segment_id
-      
-        # 
-        # Corresponds to the JSON property `vip5PrecinctId`
-        # @return [String]
-        attr_accessor :vip5_precinct_id
-      
-        # 
-        # Corresponds to the JSON property `vip5StreetSegmentId`
-        # @return [String]
-        attr_accessor :vip5_street_segment_id
-      
-        # 
-        # Corresponds to the JSON property `vipStreetSegmentId`
-        # @return [Fixnum]
-        attr_accessor :vip_street_segment_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @collided_segment_source = args[:collided_segment_source] if args.key?(:collided_segment_source)
-          @ctcl_contest_uuid = args[:ctcl_contest_uuid] if args.key?(:ctcl_contest_uuid)
-          @ctcl_office_uuid = args[:ctcl_office_uuid] if args.key?(:ctcl_office_uuid)
-          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
-          @precinct_id = args[:precinct_id] if args.key?(:precinct_id)
-          @precinct_split_id = args[:precinct_split_id] if args.key?(:precinct_split_id)
-          @ts_street_segment_id = args[:ts_street_segment_id] if args.key?(:ts_street_segment_id)
-          @vip5_precinct_id = args[:vip5_precinct_id] if args.key?(:vip5_precinct_id)
-          @vip5_street_segment_id = args[:vip5_street_segment_id] if args.key?(:vip5_street_segment_id)
-          @vip_street_segment_id = args[:vip_street_segment_id] if args.key?(:vip_street_segment_id)
-        end
-      end
-      
-      # 
       class RepresentativeInfoData
         include Google::Apis::Core::Hashable
       
-        # Political geographic divisions that contain the requested address.
+        # A map of political geographic divisions that contain the requested address,
+        # keyed by the unique Open Civic Data identifier for this division.
         # Corresponds to the JSON property `divisions`
         # @return [Hash<String,Google::Apis::CivicinfoV2::GeographicDivision>]
         attr_accessor :divisions
@@ -1330,31 +934,12 @@ module Google
         end
       end
       
-      # A request for political geography and representative information for an
-      # address.
-      class RepresentativeInfoRequest
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `contextParams`
-        # @return [Google::Apis::CivicinfoV2::ContextParams]
-        attr_accessor :context_params
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @context_params = args[:context_params] if args.key?(:context_params)
-        end
-      end
-      
       # The result of a representative info lookup query.
       class RepresentativeInfoResponse
         include Google::Apis::Core::Hashable
       
-        # Political geographic divisions that contain the requested address.
+        # A map of political geographic divisions that contain the requested address,
+        # keyed by the unique Open Civic Data identifier for this division.
         # Corresponds to the JSON property `divisions`
         # @return [Hash<String,Google::Apis::CivicinfoV2::GeographicDivision>]
         attr_accessor :divisions
@@ -1477,336 +1062,6 @@ module Google
         end
       end
       
-      # 
-      class StreetSegment
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `administrationRegionIds`
-        # @return [Array<String>]
-        attr_accessor :administration_region_ids
-      
-        # 
-        # Corresponds to the JSON property `beforeGeocodeId`
-        # @return [String]
-        attr_accessor :before_geocode_id
-      
-        # 
-        # Corresponds to the JSON property `catalistUniquePrecinctCode`
-        # @return [String]
-        attr_accessor :catalist_unique_precinct_code
-      
-        # 
-        # Corresponds to the JSON property `city`
-        # @return [String]
-        attr_accessor :city
-      
-        # 
-        # Corresponds to the JSON property `cityCouncilDistrict`
-        # @return [String]
-        attr_accessor :city_council_district
-      
-        # 
-        # Corresponds to the JSON property `congressionalDistrict`
-        # @return [String]
-        attr_accessor :congressional_district
-      
-        # 
-        # Corresponds to the JSON property `contestIds`
-        # @return [Array<String>]
-        attr_accessor :contest_ids
-      
-        # 
-        # Corresponds to the JSON property `countyCouncilDistrict`
-        # @return [String]
-        attr_accessor :county_council_district
-      
-        # 
-        # Corresponds to the JSON property `countyFips`
-        # @return [String]
-        attr_accessor :county_fips
-      
-        # 
-        # Corresponds to the JSON property `datasetId`
-        # @return [Fixnum]
-        attr_accessor :dataset_id
-      
-        # 
-        # Corresponds to the JSON property `earlyVoteSiteByIds`
-        # @return [Array<String>]
-        attr_accessor :early_vote_site_by_ids
-      
-        # 
-        # Corresponds to the JSON property `endHouseNumber`
-        # @return [Fixnum]
-        attr_accessor :end_house_number
-      
-        # 
-        # Corresponds to the JSON property `geocodedPoint`
-        # @return [Google::Apis::CivicinfoV2::PointProto]
-        attr_accessor :geocoded_point
-      
-        # 
-        # Corresponds to the JSON property `geographicDivisionOcdIds`
-        # @return [Array<String>]
-        attr_accessor :geographic_division_ocd_ids
-      
-        # 
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # 
-        # Corresponds to the JSON property `judicialDistrict`
-        # @return [String]
-        attr_accessor :judicial_district
-      
-        # 
-        # Corresponds to the JSON property `mailOnly`
-        # @return [Boolean]
-        attr_accessor :mail_only
-        alias_method :mail_only?, :mail_only
-      
-        # 
-        # Corresponds to the JSON property `municipalDistrict`
-        # @return [String]
-        attr_accessor :municipal_district
-      
-        # 
-        # Corresponds to the JSON property `ncoaAddress`
-        # @return [String]
-        attr_accessor :ncoa_address
-      
-        # 
-        # Corresponds to the JSON property `oddOrEvens`
-        # @return [Array<String>]
-        attr_accessor :odd_or_evens
-      
-        # 
-        # Corresponds to the JSON property `originalId`
-        # @return [String]
-        attr_accessor :original_id
-      
-        # 
-        # Corresponds to the JSON property `pollinglocationByIds`
-        # @return [Array<String>]
-        attr_accessor :pollinglocation_by_ids
-      
-        # 
-        # Corresponds to the JSON property `precinctName`
-        # @return [String]
-        attr_accessor :precinct_name
-      
-        # 
-        # Corresponds to the JSON property `precinctOcdId`
-        # @return [String]
-        attr_accessor :precinct_ocd_id
-      
-        # 
-        # Corresponds to the JSON property `provenances`
-        # @return [Array<Google::Apis::CivicinfoV2::Provenance>]
-        attr_accessor :provenances
-      
-        # 
-        # Corresponds to the JSON property `published`
-        # @return [Boolean]
-        attr_accessor :published
-        alias_method :published?, :published
-      
-        # 
-        # Corresponds to the JSON property `schoolDistrict`
-        # @return [String]
-        attr_accessor :school_district
-      
-        # 
-        # Corresponds to the JSON property `startHouseNumber`
-        # @return [Fixnum]
-        attr_accessor :start_house_number
-      
-        # 
-        # Corresponds to the JSON property `startLatE7`
-        # @return [Fixnum]
-        attr_accessor :start_lat_e7
-      
-        # 
-        # Corresponds to the JSON property `startLngE7`
-        # @return [Fixnum]
-        attr_accessor :start_lng_e7
-      
-        # 
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # 
-        # Corresponds to the JSON property `stateHouseDistrict`
-        # @return [String]
-        attr_accessor :state_house_district
-      
-        # 
-        # Corresponds to the JSON property `stateSenateDistrict`
-        # @return [String]
-        attr_accessor :state_senate_district
-      
-        # 
-        # Corresponds to the JSON property `streetName`
-        # @return [String]
-        attr_accessor :street_name
-      
-        # 
-        # Corresponds to the JSON property `subAdministrativeAreaName`
-        # @return [String]
-        attr_accessor :sub_administrative_area_name
-      
-        # 
-        # Corresponds to the JSON property `surrogateId`
-        # @return [Fixnum]
-        attr_accessor :surrogate_id
-      
-        # 
-        # Corresponds to the JSON property `targetsmartUniquePrecinctCode`
-        # @return [String]
-        attr_accessor :targetsmart_unique_precinct_code
-      
-        # 
-        # Corresponds to the JSON property `townshipDistrict`
-        # @return [String]
-        attr_accessor :township_district
-      
-        # 
-        # Corresponds to the JSON property `unitNumber`
-        # @return [String]
-        attr_accessor :unit_number
-      
-        # 
-        # Corresponds to the JSON property `unitType`
-        # @return [String]
-        attr_accessor :unit_type
-      
-        # 
-        # Corresponds to the JSON property `vanPrecinctCode`
-        # @return [String]
-        attr_accessor :van_precinct_code
-      
-        # 
-        # Corresponds to the JSON property `voterGeographicDivisionOcdIds`
-        # @return [Array<String>]
-        attr_accessor :voter_geographic_division_ocd_ids
-      
-        # 
-        # Corresponds to the JSON property `wardDistrict`
-        # @return [String]
-        attr_accessor :ward_district
-      
-        # 
-        # Corresponds to the JSON property `wildcard`
-        # @return [Boolean]
-        attr_accessor :wildcard
-        alias_method :wildcard?, :wildcard
-      
-        # 
-        # Corresponds to the JSON property `zip`
-        # @return [String]
-        attr_accessor :zip
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @administration_region_ids = args[:administration_region_ids] if args.key?(:administration_region_ids)
-          @before_geocode_id = args[:before_geocode_id] if args.key?(:before_geocode_id)
-          @catalist_unique_precinct_code = args[:catalist_unique_precinct_code] if args.key?(:catalist_unique_precinct_code)
-          @city = args[:city] if args.key?(:city)
-          @city_council_district = args[:city_council_district] if args.key?(:city_council_district)
-          @congressional_district = args[:congressional_district] if args.key?(:congressional_district)
-          @contest_ids = args[:contest_ids] if args.key?(:contest_ids)
-          @county_council_district = args[:county_council_district] if args.key?(:county_council_district)
-          @county_fips = args[:county_fips] if args.key?(:county_fips)
-          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
-          @early_vote_site_by_ids = args[:early_vote_site_by_ids] if args.key?(:early_vote_site_by_ids)
-          @end_house_number = args[:end_house_number] if args.key?(:end_house_number)
-          @geocoded_point = args[:geocoded_point] if args.key?(:geocoded_point)
-          @geographic_division_ocd_ids = args[:geographic_division_ocd_ids] if args.key?(:geographic_division_ocd_ids)
-          @id = args[:id] if args.key?(:id)
-          @judicial_district = args[:judicial_district] if args.key?(:judicial_district)
-          @mail_only = args[:mail_only] if args.key?(:mail_only)
-          @municipal_district = args[:municipal_district] if args.key?(:municipal_district)
-          @ncoa_address = args[:ncoa_address] if args.key?(:ncoa_address)
-          @odd_or_evens = args[:odd_or_evens] if args.key?(:odd_or_evens)
-          @original_id = args[:original_id] if args.key?(:original_id)
-          @pollinglocation_by_ids = args[:pollinglocation_by_ids] if args.key?(:pollinglocation_by_ids)
-          @precinct_name = args[:precinct_name] if args.key?(:precinct_name)
-          @precinct_ocd_id = args[:precinct_ocd_id] if args.key?(:precinct_ocd_id)
-          @provenances = args[:provenances] if args.key?(:provenances)
-          @published = args[:published] if args.key?(:published)
-          @school_district = args[:school_district] if args.key?(:school_district)
-          @start_house_number = args[:start_house_number] if args.key?(:start_house_number)
-          @start_lat_e7 = args[:start_lat_e7] if args.key?(:start_lat_e7)
-          @start_lng_e7 = args[:start_lng_e7] if args.key?(:start_lng_e7)
-          @state = args[:state] if args.key?(:state)
-          @state_house_district = args[:state_house_district] if args.key?(:state_house_district)
-          @state_senate_district = args[:state_senate_district] if args.key?(:state_senate_district)
-          @street_name = args[:street_name] if args.key?(:street_name)
-          @sub_administrative_area_name = args[:sub_administrative_area_name] if args.key?(:sub_administrative_area_name)
-          @surrogate_id = args[:surrogate_id] if args.key?(:surrogate_id)
-          @targetsmart_unique_precinct_code = args[:targetsmart_unique_precinct_code] if args.key?(:targetsmart_unique_precinct_code)
-          @township_district = args[:township_district] if args.key?(:township_district)
-          @unit_number = args[:unit_number] if args.key?(:unit_number)
-          @unit_type = args[:unit_type] if args.key?(:unit_type)
-          @van_precinct_code = args[:van_precinct_code] if args.key?(:van_precinct_code)
-          @voter_geographic_division_ocd_ids = args[:voter_geographic_division_ocd_ids] if args.key?(:voter_geographic_division_ocd_ids)
-          @ward_district = args[:ward_district] if args.key?(:ward_district)
-          @wildcard = args[:wildcard] if args.key?(:wildcard)
-          @zip = args[:zip] if args.key?(:zip)
-        end
-      end
-      
-      # 
-      class StreetSegmentList
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `segments`
-        # @return [Array<Google::Apis::CivicinfoV2::StreetSegment>]
-        attr_accessor :segments
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @segments = args[:segments] if args.key?(:segments)
-        end
-      end
-      
-      # A request for information about a voter.
-      class VoterInfoRequest
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `contextParams`
-        # @return [Google::Apis::CivicinfoV2::ContextParams]
-        attr_accessor :context_params
-      
-        # 
-        # Corresponds to the JSON property `voterInfoSegmentResult`
-        # @return [Google::Apis::CivicinfoV2::VoterInfoSegmentResult]
-        attr_accessor :voter_info_segment_result
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @context_params = args[:context_params] if args.key?(:context_params)
-          @voter_info_segment_result = args[:voter_info_segment_result] if args.key?(:voter_info_segment_result)
-        end
-      end
-      
       # The result of a voter info lookup query.
       class VoterInfoResponse
         include Google::Apis::Core::Hashable
@@ -1876,11 +1131,6 @@ module Google
         # @return [String]
         attr_accessor :precinct_id
       
-        # 
-        # Corresponds to the JSON property `segments`
-        # @return [Array<Google::Apis::CivicinfoV2::StreetSegment>]
-        attr_accessor :segments
-      
         # Local Election Information for the state that the voter votes in. For the US,
         # there will only be one element in this array.
         # Corresponds to the JSON property `state`
@@ -1903,45 +1153,7 @@ module Google
           @other_elections = args[:other_elections] if args.key?(:other_elections)
           @polling_locations = args[:polling_locations] if args.key?(:polling_locations)
           @precinct_id = args[:precinct_id] if args.key?(:precinct_id)
-          @segments = args[:segments] if args.key?(:segments)
           @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # 
-      class VoterInfoSegmentResult
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `generatedMillis`
-        # @return [Fixnum]
-        attr_accessor :generated_millis
-      
-        # 
-        # Corresponds to the JSON property `postalAddress`
-        # @return [Google::Apis::CivicinfoV2::PostalAddress]
-        attr_accessor :postal_address
-      
-        # A request for information about a voter.
-        # Corresponds to the JSON property `request`
-        # @return [Google::Apis::CivicinfoV2::VoterInfoRequest]
-        attr_accessor :request
-      
-        # The result of a voter info lookup query.
-        # Corresponds to the JSON property `response`
-        # @return [Google::Apis::CivicinfoV2::VoterInfoResponse]
-        attr_accessor :response
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @generated_millis = args[:generated_millis] if args.key?(:generated_millis)
-          @postal_address = args[:postal_address] if args.key?(:postal_address)
-          @request = args[:request] if args.key?(:request)
-          @response = args[:response] if args.key?(:response)
         end
       end
     end

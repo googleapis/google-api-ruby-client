@@ -1518,8 +1518,10 @@ module Google
           property :create_disposition, as: 'createDisposition'
           property :destination_encryption_configuration, as: 'destinationEncryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
       
+          property :destination_expiration_time, as: 'destinationExpirationTime'
           property :destination_table, as: 'destinationTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
+          property :operation_type, as: 'operationType'
           property :source_table, as: 'sourceTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
           collection :source_tables, as: 'sourceTables', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
@@ -1972,6 +1974,7 @@ module Google
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :definition_body, as: 'definitionBody'
           property :description, as: 'description'
+          property :determinism_level, as: 'determinismLevel'
           property :etag, as: 'etag'
           collection :imported_libraries, as: 'importedLibraries'
           property :language, as: 'language'
@@ -2340,6 +2343,7 @@ module Google
           property :num_clusters, :numeric_string => true, as: 'numClusters'
           property :num_factors, :numeric_string => true, as: 'numFactors'
           property :optimization_strategy, as: 'optimizationStrategy'
+          property :preserve_input_structs, as: 'preserveInputStructs'
           property :subsample, as: 'subsample'
           property :user_column, as: 'userColumn'
           property :wals_alpha, as: 'walsAlpha'

@@ -87,7 +87,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] Maximum accelerator cards allowed per instance.
+        # [Output Only] Maximum number of accelerator cards allowed per instance.
         # Corresponds to the JSON property `maximumCardsPerInstance`
         # @return [Fixnum]
         attr_accessor :maximum_cards_per_instance
@@ -97,7 +97,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] Server-defined fully-qualified URL for this resource.
+        # [Output Only] Server-defined, fully qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -1366,6 +1366,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Indicates whether or not the disk can be read/write attached to more than one
+        # instance.
+        # Corresponds to the JSON property `multiWriter`
+        # @return [Boolean]
+        attr_accessor :multi_writer
+        alias_method :multi_writer?, :multi_writer
+      
         # Specifies which action to take on instance update with this disk. Default is
         # to use the existing disk.
         # Corresponds to the JSON property `onUpdateAction`
@@ -1433,6 +1440,7 @@ module Google
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @labels = args[:labels] if args.key?(:labels)
+          @multi_writer = args[:multi_writer] if args.key?(:multi_writer)
           @on_update_action = args[:on_update_action] if args.key?(:on_update_action)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @source_image = args[:source_image] if args.key?(:source_image)
@@ -1450,10 +1458,10 @@ module Google
       # specified in each AuditConfig are enabled, and the exempted_members in each
       # AuditLogConfig are exempted.
       # Example Policy with multiple AuditConfigs:
-      # ` "audit_configs": [ ` "service": "allServices" "audit_log_configs": [ ` "
+      # ` "audit_configs": [ ` "service": "allServices", "audit_log_configs": [ ` "
       # log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] `, ` "
-      # log_type": "DATA_WRITE", `, ` "log_type": "ADMIN_READ", ` ] `, ` "service": "
-      # sampleservice.googleapis.com" "audit_log_configs": [ ` "log_type": "DATA_READ",
+      # log_type": "DATA_WRITE" `, ` "log_type": "ADMIN_READ" ` ] `, ` "service": "
+      # sampleservice.googleapis.com", "audit_log_configs": [ ` "log_type": "DATA_READ"
       # `, ` "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com"
       # ] ` ] ` ] `
       # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
@@ -1493,7 +1501,7 @@ module Google
       
       # Provides the configuration for logging a type of permissions. Example:
       # ` "audit_log_configs": [ ` "log_type": "DATA_READ", "exempted_members": [ "
-      # user:jose@example.com" ] `, ` "log_type": "DATA_WRITE", ` ] `
+      # user:jose@example.com" ] `, ` "log_type": "DATA_WRITE" ` ] `
       # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@
       # example.com from DATA_READ logging.
       class AuditLogConfig
@@ -2117,6 +2125,13 @@ module Google
         # @return [Google::Apis::ComputeBeta::AutoscalingPolicyScaleDownControl]
         attr_accessor :scale_down_control
       
+        # Configuration that allows for slower scale in so that even if Autoscaler
+        # recommends an abrupt scale in of a MIG, it will be throttled as specified by
+        # the parameters below.
+        # Corresponds to the JSON property `scaleInControl`
+        # @return [Google::Apis::ComputeBeta::AutoscalingPolicyScaleInControl]
+        attr_accessor :scale_in_control
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2131,6 +2146,7 @@ module Google
           @min_num_replicas = args[:min_num_replicas] if args.key?(:min_num_replicas)
           @mode = args[:mode] if args.key?(:mode)
           @scale_down_control = args[:scale_down_control] if args.key?(:scale_down_control)
+          @scale_in_control = args[:scale_in_control] if args.key?(:scale_in_control)
         end
       end
       
@@ -2292,6 +2308,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_scaled_down_replicas = args[:max_scaled_down_replicas] if args.key?(:max_scaled_down_replicas)
+          @time_window_sec = args[:time_window_sec] if args.key?(:time_window_sec)
+        end
+      end
+      
+      # Configuration that allows for slower scale in so that even if Autoscaler
+      # recommends an abrupt scale in of a MIG, it will be throttled as specified by
+      # the parameters below.
+      class AutoscalingPolicyScaleInControl
+        include Google::Apis::Core::Hashable
+      
+        # Encapsulates numeric value that can be either absolute or relative.
+        # Corresponds to the JSON property `maxScaledInReplicas`
+        # @return [Google::Apis::ComputeBeta::FixedOrPercent]
+        attr_accessor :max_scaled_in_replicas
+      
+        # How long back autoscaling should look when computing recommendations to
+        # include directives regarding slower scale in, as described above.
+        # Corresponds to the JSON property `timeWindowSec`
+        # @return [Fixnum]
+        attr_accessor :time_window_sec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_scaled_in_replicas = args[:max_scaled_in_replicas] if args.key?(:max_scaled_in_replicas)
           @time_window_sec = args[:time_window_sec] if args.key?(:time_window_sec)
         end
       end
@@ -3248,18 +3292,22 @@ module Google
       class BackendServiceIap
         include Google::Apis::Core::Hashable
       
-        # 
+        # Whether the serving infrastructure will authenticate and authorize all
+        # incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields
+        # must be non-empty.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # 
+        # OAuth2 client ID to use for the authentication flow.
         # Corresponds to the JSON property `oauth2ClientId`
         # @return [String]
         attr_accessor :oauth2_client_id
       
-        # 
+        # OAuth2 client secret to use for the authentication flow. For security reasons,
+        # this value cannot be retrieved via the API. Instead, the SHA-256 hash of the
+        # value is returned in the oauth2ClientSecretSha256 field.
         # Corresponds to the JSON property `oauth2ClientSecret`
         # @return [String]
         attr_accessor :oauth2_client_secret
@@ -4927,6 +4975,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :licenses
       
+        # Indicates whether or not the disk can be read/write attached to more than one
+        # instance.
+        # Corresponds to the JSON property `multiWriter`
+        # @return [Boolean]
+        attr_accessor :multi_writer
+        alias_method :multi_writer?, :multi_writer
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -5093,6 +5148,7 @@ module Google
           @last_detach_timestamp = args[:last_detach_timestamp] if args.key?(:last_detach_timestamp)
           @license_codes = args[:license_codes] if args.key?(:license_codes)
           @licenses = args[:licenses] if args.key?(:licenses)
+          @multi_writer = args[:multi_writer] if args.key?(:multi_writer)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
           @physical_block_size_bytes = args[:physical_block_size_bytes] if args.key?(:physical_block_size_bytes)
@@ -6655,7 +6711,7 @@ module Google
       
         # Deprecated in favor of enable in LogConfig. This field denotes whether to
         # enable logging for a particular firewall rule. If logging is enabled, logs
-        # will be exported to Stackdriver.
+        # will be exported t Cloud Logging.
         # Corresponds to the JSON property `enableLogging`
         # @return [Boolean]
         attr_accessor :enable_logging
@@ -10406,11 +10462,13 @@ module Google
         # @return [String]
         attr_accessor :source_disk_id
       
-        # URL of the source image used to create this image. This can be a full or valid
-        # partial URL. You must provide exactly one of:
-        # - this property, or
-        # - the rawDisk.source property, or
-        # - the sourceDisk property   in order to create an image.
+        # URL of the source image used to create this image.
+        # In order to create an image, you must provide the full or partial URL of one
+        # of the following:
+        # - The selfLink URL
+        # - This property
+        # - The rawDisk.source URL
+        # - The sourceDisk URL
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -10427,12 +10485,14 @@ module Google
         # @return [String]
         attr_accessor :source_image_id
       
-        # URL of the source snapshot used to create this image. This can be a full or
-        # valid partial URL. You must provide exactly one of:
-        # - this property, or
-        # - the sourceImage property, or
-        # - the rawDisk.source property, or
-        # - the sourceDisk property   in order to create an image.
+        # URL of the source snapshot used to create this image.
+        # In order to create an image, you must provide the full or partial URL of one
+        # of the following:
+        # - The selfLink URL
+        # - This property
+        # - The sourceImage URL
+        # - The rawDisk.source URL
+        # - The sourceDisk URL
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -15184,8 +15244,7 @@ module Google
       end
       
       # Describes a single physical circuit between the Customer and Google.
-      # CircuitInfo objects are created by Google, so all fields are output only. Next
-      # id: 4
+      # CircuitInfo objects are created by Google, so all fields are output only.
       class InterconnectCircuitInfo
         include Google::Apis::Core::Hashable
       
@@ -15793,7 +15852,7 @@ module Google
         end
       end
       
-      # Description of a planned outage on this Interconnect. Next id: 9
+      # Description of a planned outage on this Interconnect.
       class InterconnectOutageNotification
         include Google::Apis::Core::Hashable
       
@@ -17563,7 +17622,7 @@ module Google
         end
       end
       
-      # The network endpoint. Next ID: 7
+      # The network endpoint.
       class NetworkEndpoint
         include Google::Apis::Core::Hashable
       
@@ -17630,6 +17689,33 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Configuration for an App Engine network endpoint group (NEG). The service is
+        # optional, may be provided explicitly or in the URL mask. The version is
+        # optional and can only be provided explicitly or in the URL mask when service
+        # is present.
+        # Note: App Engine service must be in the same project and located in the same
+        # region as the Serverless NEG.
+        # Corresponds to the JSON property `appEngine`
+        # @return [Google::Apis::ComputeBeta::NetworkEndpointGroupAppEngine]
+        attr_accessor :app_engine
+      
+        # Configuration for a Cloud Function network endpoint group (NEG). The function
+        # must be provided explicitly or in the URL mask.
+        # Note: Cloud Function must be in the same project and located in the same
+        # region as the Serverless NEG.
+        # Corresponds to the JSON property `cloudFunction`
+        # @return [Google::Apis::ComputeBeta::NetworkEndpointGroupCloudFunction]
+        attr_accessor :cloud_function
+      
+        # Configuration for a Cloud Run network endpoint group (NEG). The service must
+        # be provided explicitly or in the URL mask. The tag is optional, may be
+        # provided explicitly or in the URL mask.
+        # Note: Cloud Run service must be in the same project and located in the same
+        # region as the Serverless NEG.
+        # Corresponds to the JSON property `cloudRun`
+        # @return [Google::Apis::ComputeBeta::NetworkEndpointGroupCloudRun]
+        attr_accessor :cloud_run
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -17685,6 +17771,12 @@ module Google
         # @return [String]
         attr_accessor :network_endpoint_type
       
+        # [Output Only] The URL of the region where the network endpoint group is
+        # located.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -17713,6 +17805,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @app_engine = args[:app_engine] if args.key?(:app_engine)
+          @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
+          @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @default_port = args[:default_port] if args.key?(:default_port)
           @description = args[:description] if args.key?(:description)
@@ -17722,6 +17817,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_endpoint_type = args[:network_endpoint_type] if args.key?(:network_endpoint_type)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size = args[:size] if args.key?(:size)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
@@ -17845,6 +17941,134 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Configuration for an App Engine network endpoint group (NEG). The service is
+      # optional, may be provided explicitly or in the URL mask. The version is
+      # optional and can only be provided explicitly or in the URL mask when service
+      # is present.
+      # Note: App Engine service must be in the same project and located in the same
+      # region as the Serverless NEG.
+      class NetworkEndpointGroupAppEngine
+        include Google::Apis::Core::Hashable
+      
+        # Optional serving service.
+        # The service name must be 1-63 characters long, and comply with RFC1035.
+        # Example value: "default", "my-service".
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # A template to parse service and version fields from a request URL. URL mask
+        # allows for routing to multiple App Engine services without having to create
+        # multiple Network Endpoint Groups and backend services.
+        # For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-
+        # appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask
+        # "-dot-appname.appspot.com/". The URL mask will parse them to ` service = "foo1"
+        # , version = "v1" ` and ` service = "foo1", version = "v2" ` respectively.
+        # Corresponds to the JSON property `urlMask`
+        # @return [String]
+        attr_accessor :url_mask
+      
+        # Optional serving version.
+        # The version must be 1-63 characters long, and comply with RFC1035.
+        # Example value: "v1", "v2".
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+          @url_mask = args[:url_mask] if args.key?(:url_mask)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for a Cloud Function network endpoint group (NEG). The function
+      # must be provided explicitly or in the URL mask.
+      # Note: Cloud Function must be in the same project and located in the same
+      # region as the Serverless NEG.
+      class NetworkEndpointGroupCloudFunction
+        include Google::Apis::Core::Hashable
+      
+        # A user-defined name of the Cloud Function.
+        # The function name is case-sensitive and must be 1-63 characters long.
+        # Example value: "func1".
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
+        # A template to parse function field from a request URL. URL mask allows for
+        # routing to multiple Cloud Functions without having to create multiple Network
+        # Endpoint Groups and backend services.
+        # For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+        # can be backed by the same Serverless NEG with URL mask "/". The URL mask will
+        # parse them to ` function = "function1" ` and ` function = "function2" `
+        # respectively.
+        # Corresponds to the JSON property `urlMask`
+        # @return [String]
+        attr_accessor :url_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @function = args[:function] if args.key?(:function)
+          @url_mask = args[:url_mask] if args.key?(:url_mask)
+        end
+      end
+      
+      # Configuration for a Cloud Run network endpoint group (NEG). The service must
+      # be provided explicitly or in the URL mask. The tag is optional, may be
+      # provided explicitly or in the URL mask.
+      # Note: Cloud Run service must be in the same project and located in the same
+      # region as the Serverless NEG.
+      class NetworkEndpointGroupCloudRun
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Run service is the main resource of Cloud Run.
+        # The service must be 1-63 characters long, and comply with RFC1035.
+        # Example value: "run-service".
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # Optional Cloud Run tag represents the "named-revision" to provide additional
+        # fine-grained traffic routing information.
+        # The tag must be 1-63 characters long, and comply with RFC1035.
+        # Example value: "revision-0010".
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        # A template to parse service and tag fields from a request URL. URL mask allows
+        # for routing to multiple Run services without having to create multiple network
+        # endpoint groups and backend services.
+        # For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2"
+        # can be backed by the same Serverless Network Endpoint Group (NEG) with URL
+        # mask ".domain.com/". The URL mask will parse them to ` service="bar1", tag="
+        # foo1" ` and ` service="bar2", tag="foo2" ` respectively.
+        # Corresponds to the JSON property `urlMask`
+        # @return [String]
+        attr_accessor :url_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+          @tag = args[:tag] if args.key?(:tag)
+          @url_mask = args[:url_mask] if args.key?(:url_mask)
         end
       end
       
@@ -18078,7 +18302,7 @@ module Google
       class NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter
         include Google::Apis::Core::Hashable
       
-        # The network endpoint. Next ID: 7
+        # The network endpoint.
         # Corresponds to the JSON property `networkEndpoint`
         # @return [Google::Apis::ComputeBeta::NetworkEndpoint]
         attr_accessor :network_endpoint
@@ -18307,7 +18531,7 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::HealthStatusForNetworkEndpoint>]
         attr_accessor :healths
       
-        # The network endpoint. Next ID: 7
+        # The network endpoint.
         # Corresponds to the JSON property `networkEndpoint`
         # @return [Google::Apis::ComputeBeta::NetworkEndpoint]
         attr_accessor :network_endpoint
@@ -19501,7 +19725,7 @@ module Google
       # Represent a sole-tenant Node Template resource.
       # You can use a template to define properties for nodes in a node group. For
       # more information, read Creating node groups and instances. (== resource_for `$
-      # api_version`.nodeTemplates ==) (== NextID: 19 ==)
+      # api_version`.nodeTemplates ==)
       class NodeTemplate
         include Google::Apis::Core::Hashable
       
@@ -22088,6 +22312,8 @@ module Google
         # defaultService must not be set. Conversely if defaultService is set,
         # defaultRouteAction cannot contain any  weightedBackendServices.
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
+        # within a pathMatcher's defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeBeta::HttpRouteAction]
         attr_accessor :default_route_action
@@ -22191,6 +22417,8 @@ module Google
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any  weightedBackendServices.
         # Only one of routeAction or urlRedirect must be set.
+        # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
+        # within a pathRule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeBeta::HttpRouteAction]
         attr_accessor :route_action
@@ -26803,7 +27031,7 @@ module Google
         end
       end
       
-      # Status of a NAT contained in this router. Next tag: 9
+      # Status of a NAT contained in this router.
       class RouterStatusNatStatus
         include Google::Apis::Core::Hashable
       
@@ -27290,8 +27518,9 @@ module Google
         attr_accessor :on_host_maintenance
       
         # Defines whether the instance is preemptible. This can only be set during
-        # instance creation, it cannot be set or changed after the instance has been
-        # created.
+        # instance creation or while the instance is stopped and therefore, in a `
+        # TERMINATED` state. See Instance Life Cycle for more information on the
+        # possible instance states.
         # Corresponds to the JSON property `preemptible`
         # @return [Boolean]
         attr_accessor :preemptible
@@ -33460,6 +33689,8 @@ module Google
         # must not be set. Conversely if defaultService is set, defaultRouteAction
         # cannot contain any  weightedBackendServices.
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
+        # within defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeBeta::HttpRouteAction]
         attr_accessor :default_route_action

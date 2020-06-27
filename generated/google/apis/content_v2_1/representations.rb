@@ -1708,6 +1708,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TestOrderAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestOrderDeliveryDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestOrderLineItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1715,6 +1727,18 @@ module Google
       end
       
       class TestOrderLineItemProduct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestOrderPickupDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestOrderPickupDetailsPickupPerson
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4885,11 +4909,15 @@ module Google
       class TestOrder
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delivery_details, as: 'deliveryDetails', class: Google::Apis::ContentV2_1::TestOrderDeliveryDetails, decorator: Google::Apis::ContentV2_1::TestOrderDeliveryDetails::Representation
+      
           property :enable_orderinvoices, as: 'enableOrderinvoices'
           property :kind, as: 'kind'
           collection :line_items, as: 'lineItems', class: Google::Apis::ContentV2_1::TestOrderLineItem, decorator: Google::Apis::ContentV2_1::TestOrderLineItem::Representation
       
           property :notification_mode, as: 'notificationMode'
+          property :pickup_details, as: 'pickupDetails', class: Google::Apis::ContentV2_1::TestOrderPickupDetails, decorator: Google::Apis::ContentV2_1::TestOrderPickupDetails::Representation
+      
           property :predefined_billing_address, as: 'predefinedBillingAddress'
           property :predefined_delivery_address, as: 'predefinedDeliveryAddress'
           property :predefined_email, as: 'predefinedEmail'
@@ -4899,6 +4927,29 @@ module Google
           property :shipping_cost, as: 'shippingCost', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
           property :shipping_option, as: 'shippingOption'
+        end
+      end
+      
+      class TestOrderAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
+          collection :full_address, as: 'fullAddress'
+          property :is_post_office_box, as: 'isPostOfficeBox'
+          property :locality, as: 'locality'
+          property :postal_code, as: 'postalCode'
+          property :recipient_name, as: 'recipientName'
+          property :region, as: 'region'
+          collection :street_address, as: 'streetAddress'
+        end
+      end
+      
+      class TestOrderDeliveryDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address', class: Google::Apis::ContentV2_1::TestOrderAddress, decorator: Google::Apis::ContentV2_1::TestOrderAddress::Representation
+      
+          property :phone_number, as: 'phoneNumber'
         end
       end
       
@@ -4934,6 +4985,26 @@ module Google
           property :title, as: 'title'
           collection :variant_attributes, as: 'variantAttributes', class: Google::Apis::ContentV2_1::OrderLineItemProductVariantAttribute, decorator: Google::Apis::ContentV2_1::OrderLineItemProductVariantAttribute::Representation
       
+        end
+      end
+      
+      class TestOrderPickupDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location_code, as: 'locationCode'
+          property :pickup_location_address, as: 'pickupLocationAddress', class: Google::Apis::ContentV2_1::TestOrderAddress, decorator: Google::Apis::ContentV2_1::TestOrderAddress::Representation
+      
+          property :pickup_location_type, as: 'pickupLocationType'
+          collection :pickup_persons, as: 'pickupPersons', class: Google::Apis::ContentV2_1::TestOrderPickupDetailsPickupPerson, decorator: Google::Apis::ContentV2_1::TestOrderPickupDetailsPickupPerson::Representation
+      
+        end
+      end
+      
+      class TestOrderPickupDetailsPickupPerson
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :phone_number, as: 'phoneNumber'
         end
       end
       

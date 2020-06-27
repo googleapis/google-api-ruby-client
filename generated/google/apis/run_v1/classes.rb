@@ -2449,7 +2449,12 @@ module Google
         # @return [String]
         attr_accessor :service_account_name
       
-        # 
+        # TimeoutSeconds holds the max duration the instance is allowed for
+        # responding to a request.
+        # Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum
+        # allowed value is 900 seconds (15 minutes).
+        # Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed
+        # value is configurable by the cluster operator.
         # Corresponds to the JSON property `timeoutSeconds`
         # @return [Fixnum]
         attr_accessor :timeout_seconds

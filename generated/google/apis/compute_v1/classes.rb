@@ -87,7 +87,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] Maximum accelerator cards allowed per instance.
+        # [Output Only] Maximum number of accelerator cards allowed per instance.
         # Corresponds to the JSON property `maximumCardsPerInstance`
         # @return [Fixnum]
         attr_accessor :maximum_cards_per_instance
@@ -97,7 +97,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] Server-defined fully-qualified URL for this resource.
+        # [Output Only] Server-defined, fully qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -1419,10 +1419,10 @@ module Google
       # specified in each AuditConfig are enabled, and the exempted_members in each
       # AuditLogConfig are exempted.
       # Example Policy with multiple AuditConfigs:
-      # ` "audit_configs": [ ` "service": "allServices" "audit_log_configs": [ ` "
+      # ` "audit_configs": [ ` "service": "allServices", "audit_log_configs": [ ` "
       # log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] `, ` "
-      # log_type": "DATA_WRITE", `, ` "log_type": "ADMIN_READ", ` ] `, ` "service": "
-      # sampleservice.googleapis.com" "audit_log_configs": [ ` "log_type": "DATA_READ",
+      # log_type": "DATA_WRITE" `, ` "log_type": "ADMIN_READ" ` ] `, ` "service": "
+      # sampleservice.googleapis.com", "audit_log_configs": [ ` "log_type": "DATA_READ"
       # `, ` "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com"
       # ] ` ] ` ] `
       # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
@@ -1462,7 +1462,7 @@ module Google
       
       # Provides the configuration for logging a type of permissions. Example:
       # ` "audit_log_configs": [ ` "log_type": "DATA_READ", "exempted_members": [ "
-      # user:jose@example.com" ] `, ` "log_type": "DATA_WRITE", ` ] `
+      # user:jose@example.com" ] `, ` "log_type": "DATA_WRITE" ` ] `
       # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@
       # example.com from DATA_READ logging.
       class AuditLogConfig
@@ -3095,6 +3095,11 @@ module Google
       class BackendServiceGroupHealth
         include Google::Apis::Core::Hashable
       
+        # Metadata defined as annotations on the network endpoint group.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
         # Health state of the backend instances or endpoints in requested instance or
         # network endpoint group, determined based on configured health checks.
         # Corresponds to the JSON property `healthStatus`
@@ -3113,6 +3118,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @health_status = args[:health_status] if args.key?(:health_status)
           @kind = args[:kind] if args.key?(:kind)
         end
@@ -3122,18 +3128,22 @@ module Google
       class BackendServiceIap
         include Google::Apis::Core::Hashable
       
-        # 
+        # Whether the serving infrastructure will authenticate and authorize all
+        # incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields
+        # must be non-empty.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # 
+        # OAuth2 client ID to use for the authentication flow.
         # Corresponds to the JSON property `oauth2ClientId`
         # @return [String]
         attr_accessor :oauth2_client_id
       
-        # 
+        # OAuth2 client secret to use for the authentication flow. For security reasons,
+        # this value cannot be retrieved via the API. Instead, the SHA-256 hash of the
+        # value is returned in the oauth2ClientSecretSha256 field.
         # Corresponds to the JSON property `oauth2ClientSecret`
         # @return [String]
         attr_accessor :oauth2_client_secret
@@ -7996,6 +8006,270 @@ module Google
         end
       end
       
+      # Represents a Health-Check as a Service resource.
+      # (== resource_for `$api_version`.regionHealthCheckServices ==)
+      class HealthCheckService
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a HealthCheckService. An up-to-date fingerprint must be provided in
+        # order to patch/update the HealthCheckService; Otherwise, the request will fail
+        # with error 412 conditionNotMet. To see the latest fingerprint, make a get()
+        # request to retrieve the HealthCheckService.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # List of URLs to the HealthCheck resources. Must have at least one HealthCheck,
+        # and not more than 10. HealthCheck resources must have portSpecification=
+        # USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be
+        # regional and in the same region. For global HealthCheckService, HealthCheck
+        # must be global. Mix of regional and global HealthChecks is not supported.
+        # Multiple regional HealthChecks must belong to the same region. Regional
+        # HealthChecks</code? must belong to the same region as zones of NEGs.
+        # Corresponds to the JSON property `healthChecks`
+        # @return [Array<String>]
+        attr_accessor :health_checks
+      
+        # Optional. Policy for how the results from multiple health checks for the same
+        # endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.
+        # - NO_AGGREGATION. An EndpointHealth message is returned for each backend in
+        # the health check service.
+        # - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the
+        # HealthState of the entire health check service. If all backend's are healthy,
+        # the HealthState of the health check service is HEALTHY. .
+        # Corresponds to the JSON property `healthStatusAggregationPolicy`
+        # @return [String]
+        attr_accessor :health_status_aggregation_policy
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output only] Type of the resource. Always compute#healthCheckServicefor
+        # health check services.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. The name must be 1-63 characters long, and comply with
+        # RFC1035. Specifically, the name must be 1-63 characters long and match the
+        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must be a
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # List of URLs to the NetworkEndpointGroup resources. Must not have more than
+        # 100. For regional HealthCheckService, NEGs must be in zones in the region of
+        # the HealthCheckService.
+        # Corresponds to the JSON property `networkEndpointGroups`
+        # @return [Array<String>]
+        attr_accessor :network_endpoint_groups
+      
+        # List of URLs to the NotificationEndpoint resources. Must not have more than 10.
+        # A list of endpoints for receiving notifications of change in health status.
+        # For regional HealthCheckService, NotificationEndpoint must be regional and in
+        # the same region. For global HealthCheckService, NotificationEndpoint must be
+        # global.
+        # Corresponds to the JSON property `notificationEndpoints`
+        # @return [Array<String>]
+        attr_accessor :notification_endpoints
+      
+        # [Output Only] URL of the region where the health check service resides. This
+        # field is not applicable to global health check services. You must specify this
+        # field as part of the HTTP request URL. It is not settable as a field in the
+        # request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @health_checks = args[:health_checks] if args.key?(:health_checks)
+          @health_status_aggregation_policy = args[:health_status_aggregation_policy] if args.key?(:health_status_aggregation_policy)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @network_endpoint_groups = args[:network_endpoint_groups] if args.key?(:network_endpoint_groups)
+          @notification_endpoints = args[:notification_endpoints] if args.key?(:notification_endpoints)
+          @region = args[:region] if args.key?(:region)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # A full or valid partial URL to a health check service. For example, the
+      # following are valid URLs:
+      # - https://www.googleapis.com/compute/beta/projects/project-id/regions/us-west1/
+      # healthCheckServices/health-check-service
+      # - projects/project-id/regions/us-west1/healthCheckServices/health-check-
+      # service
+      # - regions/us-west1/healthCheckServices/health-check-service
+      class HealthCheckServiceReference
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `healthCheckService`
+        # @return [String]
+        attr_accessor :health_check_service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_check_service = args[:health_check_service] if args.key?(:health_check_service)
+        end
+      end
+      
+      # 
+      class HealthCheckServicesList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of HealthCheckService resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::HealthCheckService>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#healthCheckServicesList for
+        # lists of HealthCheckServices.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::HealthCheckServicesList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::HealthCheckServicesList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # 
       class HealthChecksAggregatedList
         include Google::Apis::Core::Hashable
@@ -8208,6 +8482,11 @@ module Google
       class HealthStatus
         include Google::Apis::Core::Hashable
       
+        # Metadata defined as annotations for network endpoint.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
         # Health state of the instance.
         # Corresponds to the JSON property `healthState`
         # @return [String]
@@ -8235,6 +8514,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @health_state = args[:health_state] if args.key?(:health_state)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -8268,6 +8548,17 @@ module Google
         # @return [Google::Apis::ComputeV1::HealthCheckReference]
         attr_accessor :health_check
       
+        # A full or valid partial URL to a health check service. For example, the
+        # following are valid URLs:
+        # - https://www.googleapis.com/compute/beta/projects/project-id/regions/us-west1/
+        # healthCheckServices/health-check-service
+        # - projects/project-id/regions/us-west1/healthCheckServices/health-check-
+        # service
+        # - regions/us-west1/healthCheckServices/health-check-service
+        # Corresponds to the JSON property `healthCheckService`
+        # @return [Google::Apis::ComputeV1::HealthCheckServiceReference]
+        attr_accessor :health_check_service
+      
         # Health state of the network endpoint determined based on the health checks
         # configured.
         # Corresponds to the JSON property `healthState`
@@ -8283,6 +8574,7 @@ module Google
           @backend_service = args[:backend_service] if args.key?(:backend_service)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
           @health_check = args[:health_check] if args.key?(:health_check)
+          @health_check_service = args[:health_check_service] if args.key?(:health_check_service)
           @health_state = args[:health_state] if args.key?(:health_state)
         end
       end
@@ -9597,11 +9889,13 @@ module Google
         # @return [String]
         attr_accessor :source_disk_id
       
-        # URL of the source image used to create this image. This can be a full or valid
-        # partial URL. You must provide exactly one of:
-        # - this property, or
-        # - the rawDisk.source property, or
-        # - the sourceDisk property   in order to create an image.
+        # URL of the source image used to create this image.
+        # In order to create an image, you must provide the full or partial URL of one
+        # of the following:
+        # - The selfLink URL
+        # - This property
+        # - The rawDisk.source URL
+        # - The sourceDisk URL
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -9618,12 +9912,14 @@ module Google
         # @return [String]
         attr_accessor :source_image_id
       
-        # URL of the source snapshot used to create this image. This can be a full or
-        # valid partial URL. You must provide exactly one of:
-        # - this property, or
-        # - the sourceImage property, or
-        # - the rawDisk.source property, or
-        # - the sourceDisk property   in order to create an image.
+        # URL of the source snapshot used to create this image.
+        # In order to create an image, you must provide the full or partial URL of one
+        # of the following:
+        # - The selfLink URL
+        # - This property
+        # - The sourceImage URL
+        # - The rawDisk.source URL
+        # - The sourceDisk URL
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -13814,8 +14110,7 @@ module Google
       end
       
       # Describes a single physical circuit between the Customer and Google.
-      # CircuitInfo objects are created by Google, so all fields are output only. Next
-      # id: 4
+      # CircuitInfo objects are created by Google, so all fields are output only.
       class InterconnectCircuitInfo
         include Google::Apis::Core::Hashable
       
@@ -14423,7 +14718,7 @@ module Google
         end
       end
       
-      # Description of a planned outage on this Interconnect. Next id: 9
+      # Description of a planned outage on this Interconnect.
       class InterconnectOutageNotification
         include Google::Apis::Core::Hashable
       
@@ -15973,9 +16268,14 @@ module Google
         end
       end
       
-      # The network endpoint. Next ID: 7
+      # The network endpoint.
       class NetworkEndpoint
         include Google::Apis::Core::Hashable
+      
+        # Metadata defined as annotations on the network endpoint.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
       
         # Optional fully qualified domain name of network endpoint. This can only be
         # specified when NetworkEndpointGroup.network_endpoint_type is NON_GCP_FQDN_PORT.
@@ -16013,6 +16313,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @fqdn = args[:fqdn] if args.key?(:fqdn)
           @instance = args[:instance] if args.key?(:instance)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -16028,6 +16329,11 @@ module Google
       # resource_for `$api_version`.globalNetworkEndpointGroups ==)
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
+      
+        # Metadata defined as annotations on the network endpoint group.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -16106,6 +16412,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @default_port = args[:default_port] if args.key?(:default_port)
           @description = args[:description] if args.key?(:description)
@@ -16631,7 +16938,7 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::HealthStatusForNetworkEndpoint>]
         attr_accessor :healths
       
-        # The network endpoint. Next ID: 7
+        # The network endpoint.
         # Corresponds to the JSON property `networkEndpoint`
         # @return [Google::Apis::ComputeV1::NetworkEndpoint]
         attr_accessor :network_endpoint
@@ -17768,7 +18075,7 @@ module Google
       # Represent a sole-tenant Node Template resource.
       # You can use a template to define properties for nodes in a node group. For
       # more information, read Creating node groups and instances. (== resource_for `$
-      # api_version`.nodeTemplates ==) (== NextID: 19 ==)
+      # api_version`.nodeTemplates ==)
       class NodeTemplate
         include Google::Apis::Core::Hashable
       
@@ -18605,6 +18912,255 @@ module Google
           # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NodeTypesScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # Represents a notification endpoint.
+      # A notification endpoint resource defines an endpoint to receive notifications
+      # when there are status changes detected by the associated health check service.
+      # For more information, see  Health checks overview. (== resource_for `$
+      # api_version`.notificationEndpoint ==) (== resource_for `$api_version`.
+      # regionNotificationEndpoints ==)
+      class NotificationEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Represents a gRPC setting that describes one gRPC notification endpoint and
+        # the retry duration attempting to send notification to this endpoint.
+        # Corresponds to the JSON property `grpcSettings`
+        # @return [Google::Apis::ComputeV1::NotificationEndpointGrpcSettings]
+        attr_accessor :grpc_settings
+      
+        # [Output Only] A unique identifier for this resource type. The server generates
+        # this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#notificationEndpoint for
+        # notification endpoints.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] URL of the region where the notification endpoint resides. This
+        # field applies only to the regional resource. You must specify this field as
+        # part of the HTTP request URL. It is not settable as a field in the request
+        # body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @grpc_settings = args[:grpc_settings] if args.key?(:grpc_settings)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Represents a gRPC setting that describes one gRPC notification endpoint and
+      # the retry duration attempting to send notification to this endpoint.
+      class NotificationEndpointGrpcSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If specified, this field is used to set the authority header by the
+        # sender of notifications. See https://tools.ietf.org/html/rfc7540#section-8.1.2.
+        # 3
+        # Corresponds to the JSON property `authority`
+        # @return [String]
+        attr_accessor :authority
+      
+        # Endpoint to which gRPC notifications are sent. This must be a valid gRPCLB DNS
+        # name.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Optional. If specified, this field is used to populate the "name" field in
+        # gRPC requests.
+        # Corresponds to the JSON property `payloadName`
+        # @return [String]
+        attr_accessor :payload_name
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `resendInterval`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :resend_interval
+      
+        # How much time (in seconds) is spent attempting notification retries until a
+        # successful response is received. Default is 30s. Limit is 20m (1200s). Must be
+        # a positive number.
+        # Corresponds to the JSON property `retryDurationSec`
+        # @return [Fixnum]
+        attr_accessor :retry_duration_sec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authority = args[:authority] if args.key?(:authority)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @payload_name = args[:payload_name] if args.key?(:payload_name)
+          @resend_interval = args[:resend_interval] if args.key?(:resend_interval)
+          @retry_duration_sec = args[:retry_duration_sec] if args.key?(:retry_duration_sec)
+        end
+      end
+      
+      # 
+      class NotificationEndpointList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of NotificationEndpoint resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::NotificationEndpoint>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#notificationEndpoint for
+        # notification endpoints.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::NotificationEndpointList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::NotificationEndpointList::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -20024,6 +20580,8 @@ module Google
         # defaultService must not be set. Conversely if defaultService is set,
         # defaultRouteAction cannot contain any  weightedBackendServices.
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
+        # within a pathMatcher's defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeV1::HttpRouteAction]
         attr_accessor :default_route_action
@@ -20127,6 +20685,8 @@ module Google
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any  weightedBackendServices.
         # Only one of routeAction or urlRedirect must be set.
+        # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
+        # within a pathRule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeV1::HttpRouteAction]
         attr_accessor :route_action
@@ -24357,7 +24917,7 @@ module Google
         end
       end
       
-      # Status of a NAT contained in this router. Next tag: 9
+      # Status of a NAT contained in this router.
       class RouterStatusNatStatus
         include Google::Apis::Core::Hashable
       
@@ -24715,8 +25275,9 @@ module Google
         attr_accessor :on_host_maintenance
       
         # Defines whether the instance is preemptible. This can only be set during
-        # instance creation, it cannot be set or changed after the instance has been
-        # created.
+        # instance creation or while the instance is stopped and therefore, in a `
+        # TERMINATED` state. See Instance Life Cycle for more information on the
+        # possible instance states.
         # Corresponds to the JSON property `preemptible`
         # @return [Boolean]
         attr_accessor :preemptible
@@ -30131,6 +30692,8 @@ module Google
         # must not be set. Conversely if defaultService is set, defaultRouteAction
         # cannot contain any  weightedBackendServices.
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
+        # within defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeV1::HttpRouteAction]
         attr_accessor :default_route_action

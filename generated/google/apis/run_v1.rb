@@ -18,7 +18,7 @@ require 'google/apis/run_v1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Run API
+    # Cloud Run Admin API
     #
     # Deploy and manage user provided container images that scale automatically
     # based on HTTP traffic.
@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/run/
     module RunV1
       VERSION = 'V1'
-      REVISION = '20200616'
+      REVISION = '20200622'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

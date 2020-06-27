@@ -87,7 +87,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] Maximum accelerator cards allowed per instance.
+        # [Output Only] Maximum number of accelerator cards allowed per instance.
         # Corresponds to the JSON property `maximumCardsPerInstance`
         # @return [Fixnum]
         attr_accessor :maximum_cards_per_instance
@@ -97,7 +97,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] Server-defined fully-qualified URL for this resource.
+        # [Output Only] Server-defined, fully qualified URL for this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -1539,10 +1539,10 @@ module Google
       # specified in each AuditConfig are enabled, and the exempted_members in each
       # AuditLogConfig are exempted.
       # Example Policy with multiple AuditConfigs:
-      # ` "audit_configs": [ ` "service": "allServices" "audit_log_configs": [ ` "
+      # ` "audit_configs": [ ` "service": "allServices", "audit_log_configs": [ ` "
       # log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] `, ` "
-      # log_type": "DATA_WRITE", `, ` "log_type": "ADMIN_READ", ` ] `, ` "service": "
-      # sampleservice.googleapis.com" "audit_log_configs": [ ` "log_type": "DATA_READ",
+      # log_type": "DATA_WRITE" `, ` "log_type": "ADMIN_READ" ` ] `, ` "service": "
+      # sampleservice.googleapis.com", "audit_log_configs": [ ` "log_type": "DATA_READ"
       # `, ` "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com"
       # ] ` ] ` ] `
       # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
@@ -1582,7 +1582,7 @@ module Google
       
       # Provides the configuration for logging a type of permissions. Example:
       # ` "audit_log_configs": [ ` "log_type": "DATA_READ", "exempted_members": [ "
-      # user:jose@example.com" ] `, ` "log_type": "DATA_WRITE", ` ] `
+      # user:jose@example.com" ] `, ` "log_type": "DATA_WRITE" ` ] `
       # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@
       # example.com from DATA_READ logging.
       class AuditLogConfig
@@ -3488,13 +3488,15 @@ module Google
       class BackendServiceIap
         include Google::Apis::Core::Hashable
       
-        # 
+        # Whether the serving infrastructure will authenticate and authorize all
+        # incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields
+        # must be non-empty.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # 
+        # OAuth2 client ID to use for the authentication flow.
         # Corresponds to the JSON property `oauth2ClientId`
         # @return [String]
         attr_accessor :oauth2_client_id
@@ -3505,7 +3507,9 @@ module Google
         # @return [Google::Apis::ComputeAlpha::BackendServiceIapoAuth2ClientInfo]
         attr_accessor :oauth2_client_info
       
-        # 
+        # OAuth2 client secret to use for the authentication flow. For security reasons,
+        # this value cannot be retrieved via the API. Instead, the SHA-256 hash of the
+        # value is returned in the oauth2ClientSecretSha256 field.
         # Corresponds to the JSON property `oauth2ClientSecret`
         # @return [String]
         attr_accessor :oauth2_client_secret
@@ -7246,7 +7250,7 @@ module Google
       
         # Deprecated in favor of enable in LogConfig. This field denotes whether to
         # enable logging for a particular firewall rule. If logging is enabled, logs
-        # will be exported to Stackdriver.
+        # will be exported t Cloud Logging.
         # Corresponds to the JSON property `enableLogging`
         # @return [Boolean]
         attr_accessor :enable_logging
@@ -11646,11 +11650,13 @@ module Google
         # @return [String]
         attr_accessor :source_disk_id
       
-        # URL of the source image used to create this image. This can be a full or valid
-        # partial URL. You must provide exactly one of:
-        # - this property, or
-        # - the rawDisk.source property, or
-        # - the sourceDisk property   in order to create an image.
+        # URL of the source image used to create this image.
+        # In order to create an image, you must provide the full or partial URL of one
+        # of the following:
+        # - The selfLink URL
+        # - This property
+        # - The rawDisk.source URL
+        # - The sourceDisk URL
         # Corresponds to the JSON property `sourceImage`
         # @return [String]
         attr_accessor :source_image
@@ -11667,12 +11673,14 @@ module Google
         # @return [String]
         attr_accessor :source_image_id
       
-        # URL of the source snapshot used to create this image. This can be a full or
-        # valid partial URL. You must provide exactly one of:
-        # - this property, or
-        # - the sourceImage property, or
-        # - the rawDisk.source property, or
-        # - the sourceDisk property   in order to create an image.
+        # URL of the source snapshot used to create this image.
+        # In order to create an image, you must provide the full or partial URL of one
+        # of the following:
+        # - The selfLink URL
+        # - This property
+        # - The sourceImage URL
+        # - The rawDisk.source URL
+        # - The sourceDisk URL
         # Corresponds to the JSON property `sourceSnapshot`
         # @return [String]
         attr_accessor :source_snapshot
@@ -16844,8 +16852,7 @@ module Google
       end
       
       # Describes a single physical circuit between the Customer and Google.
-      # CircuitInfo objects are created by Google, so all fields are output only. Next
-      # id: 4
+      # CircuitInfo objects are created by Google, so all fields are output only.
       class InterconnectCircuitInfo
         include Google::Apis::Core::Hashable
       
@@ -17459,7 +17466,7 @@ module Google
         end
       end
       
-      # Description of a planned outage on this Interconnect. Next id: 9
+      # Description of a planned outage on this Interconnect.
       class InterconnectOutageNotification
         include Google::Apis::Core::Hashable
       
@@ -19805,7 +19812,7 @@ module Google
         end
       end
       
-      # The network endpoint. Next ID: 7
+      # The network endpoint.
       class NetworkEndpoint
         include Google::Apis::Core::Hashable
       
@@ -20504,7 +20511,7 @@ module Google
       class NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter
         include Google::Apis::Core::Hashable
       
-        # The network endpoint. Next ID: 7
+        # The network endpoint.
         # Corresponds to the JSON property `networkEndpoint`
         # @return [Google::Apis::ComputeAlpha::NetworkEndpoint]
         attr_accessor :network_endpoint
@@ -20733,7 +20740,7 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::HealthStatusForNetworkEndpoint>]
         attr_accessor :healths
       
-        # The network endpoint. Next ID: 7
+        # The network endpoint.
         # Corresponds to the JSON property `networkEndpoint`
         # @return [Google::Apis::ComputeAlpha::NetworkEndpoint]
         attr_accessor :network_endpoint
@@ -22025,7 +22032,7 @@ module Google
       # Represent a sole-tenant Node Template resource.
       # You can use a template to define properties for nodes in a node group. For
       # more information, read Creating node groups and instances. (== resource_for `$
-      # api_version`.nodeTemplates ==) (== NextID: 19 ==)
+      # api_version`.nodeTemplates ==)
       class NodeTemplate
         include Google::Apis::Core::Hashable
       
@@ -24693,6 +24700,8 @@ module Google
         # defaultService must not be set. Conversely if defaultService is set,
         # defaultRouteAction cannot contain any  weightedBackendServices.
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
+        # within a pathMatcher's defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :default_route_action
@@ -24796,6 +24805,8 @@ module Google
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any  weightedBackendServices.
         # Only one of routeAction or urlRedirect must be set.
+        # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
+        # within a pathRule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :route_action
@@ -30771,7 +30782,7 @@ module Google
         end
       end
       
-      # Status of a NAT contained in this router. Next tag: 9
+      # Status of a NAT contained in this router.
       class RouterStatusNatStatus
         include Google::Apis::Core::Hashable
       
@@ -31290,8 +31301,9 @@ module Google
         attr_accessor :on_host_maintenance
       
         # Defines whether the instance is preemptible. This can only be set during
-        # instance creation, it cannot be set or changed after the instance has been
-        # created.
+        # instance creation or while the instance is stopped and therefore, in a `
+        # TERMINATED` state. See Instance Life Cycle for more information on the
+        # possible instance states.
         # Corresponds to the JSON property `preemptible`
         # @return [Boolean]
         attr_accessor :preemptible
@@ -38544,6 +38556,8 @@ module Google
         # must not be set. Conversely if defaultService is set, defaultRouteAction
         # cannot contain any  weightedBackendServices.
         # Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
+        # within defaultRouteAction.
         # Corresponds to the JSON property `defaultRouteAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :default_route_action

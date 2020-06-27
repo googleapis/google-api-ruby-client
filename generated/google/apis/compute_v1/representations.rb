@@ -1012,6 +1012,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HealthCheckService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthCheckServiceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthCheckServicesList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HealthChecksAggregatedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2441,6 +2471,36 @@ module Google
       end
       
       class NodeTypesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotificationEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotificationEndpointGrpcSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotificationEndpointList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -5208,6 +5268,7 @@ module Google
       class BackendServiceGroupHealth
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           collection :health_status, as: 'healthStatus', class: Google::Apis::ComputeV1::HealthStatus, decorator: Google::Apis::ComputeV1::HealthStatus::Representation
       
           property :kind, as: 'kind'
@@ -6366,6 +6427,63 @@ module Google
         end
       end
       
+      class HealthCheckService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          collection :health_checks, as: 'healthChecks'
+          property :health_status_aggregation_policy, as: 'healthStatusAggregationPolicy'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :network_endpoint_groups, as: 'networkEndpointGroups'
+          collection :notification_endpoints, as: 'notificationEndpoints'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class HealthCheckServiceReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_check_service, as: 'healthCheckService'
+        end
+      end
+      
+      class HealthCheckServicesList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::HealthCheckService, decorator: Google::Apis::ComputeV1::HealthCheckService::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::HealthCheckServicesList::Warning, decorator: Google::Apis::ComputeV1::HealthCheckServicesList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::HealthCheckServicesList::Warning::Datum, decorator: Google::Apis::ComputeV1::HealthCheckServicesList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class HealthChecksAggregatedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6429,6 +6547,7 @@ module Google
       class HealthStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :health_state, as: 'healthState'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
@@ -6444,6 +6563,8 @@ module Google
           property :forwarding_rule, as: 'forwardingRule', class: Google::Apis::ComputeV1::ForwardingRuleReference, decorator: Google::Apis::ComputeV1::ForwardingRuleReference::Representation
       
           property :health_check, as: 'healthCheck', class: Google::Apis::ComputeV1::HealthCheckReference, decorator: Google::Apis::ComputeV1::HealthCheckReference::Representation
+      
+          property :health_check_service, as: 'healthCheckService', class: Google::Apis::ComputeV1::HealthCheckServiceReference, decorator: Google::Apis::ComputeV1::HealthCheckServiceReference::Representation
       
           property :health_state, as: 'healthState'
         end
@@ -8348,6 +8469,7 @@ module Google
       class NetworkEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :fqdn, as: 'fqdn'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
@@ -8358,6 +8480,7 @@ module Google
       class NetworkEndpointGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
           property :creation_timestamp, as: 'creationTimestamp'
           property :default_port, as: 'defaultPort'
           property :description, as: 'description'
@@ -9033,6 +9156,65 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeV1::NodeTypesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::NodeTypesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class NotificationEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :grpc_settings, as: 'grpcSettings', class: Google::Apis::ComputeV1::NotificationEndpointGrpcSettings, decorator: Google::Apis::ComputeV1::NotificationEndpointGrpcSettings::Representation
+      
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class NotificationEndpointGrpcSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authority, as: 'authority'
+          property :endpoint, as: 'endpoint'
+          property :payload_name, as: 'payloadName'
+          property :resend_interval, as: 'resendInterval', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
+          property :retry_duration_sec, as: 'retryDurationSec'
+        end
+      end
+      
+      class NotificationEndpointList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::NotificationEndpoint, decorator: Google::Apis::ComputeV1::NotificationEndpoint::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::NotificationEndpointList::Warning, decorator: Google::Apis::ComputeV1::NotificationEndpointList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::NotificationEndpointList::Warning::Datum, decorator: Google::Apis::ComputeV1::NotificationEndpointList::Warning::Datum::Representation
         
             property :message, as: 'message'
           end

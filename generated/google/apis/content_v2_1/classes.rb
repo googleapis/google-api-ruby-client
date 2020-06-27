@@ -11880,6 +11880,11 @@ module Google
       class TestOrder
         include Google::Apis::Core::Hashable
       
+        # Overrides the predefined delivery details if provided.
+        # Corresponds to the JSON property `deliveryDetails`
+        # @return [Google::Apis::ContentV2_1::TestOrderDeliveryDetails]
+        attr_accessor :delivery_details
+      
         # Whether the orderinvoices service should support this order.
         # Corresponds to the JSON property `enableOrderinvoices`
         # @return [Boolean]
@@ -11901,6 +11906,11 @@ module Google
         # Corresponds to the JSON property `notificationMode`
         # @return [String]
         attr_accessor :notification_mode
+      
+        # Overrides the predefined pickup details if provided.
+        # Corresponds to the JSON property `pickupDetails`
+        # @return [Google::Apis::ContentV2_1::TestOrderPickupDetails]
+        attr_accessor :pickup_details
       
         # Required. The billing address.
         # Acceptable values are:
@@ -11971,10 +11981,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @delivery_details = args[:delivery_details] if args.key?(:delivery_details)
           @enable_orderinvoices = args[:enable_orderinvoices] if args.key?(:enable_orderinvoices)
           @kind = args[:kind] if args.key?(:kind)
           @line_items = args[:line_items] if args.key?(:line_items)
           @notification_mode = args[:notification_mode] if args.key?(:notification_mode)
+          @pickup_details = args[:pickup_details] if args.key?(:pickup_details)
           @predefined_billing_address = args[:predefined_billing_address] if args.key?(:predefined_billing_address)
           @predefined_delivery_address = args[:predefined_delivery_address] if args.key?(:predefined_delivery_address)
           @predefined_email = args[:predefined_email] if args.key?(:predefined_email)
@@ -11982,6 +11994,100 @@ module Google
           @promotions = args[:promotions] if args.key?(:promotions)
           @shipping_cost = args[:shipping_cost] if args.key?(:shipping_cost)
           @shipping_option = args[:shipping_option] if args.key?(:shipping_option)
+        end
+      end
+      
+      # 
+      class TestOrderAddress
+        include Google::Apis::Core::Hashable
+      
+        # CLDR country code (e.g. "US").
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # Strings representing the lines of the printed label for mailing the order, for
+        # example:
+        # John Smith
+        # 1600 Amphitheatre Parkway
+        # Mountain View, CA, 94043
+        # United States
+        # Corresponds to the JSON property `fullAddress`
+        # @return [Array<String>]
+        attr_accessor :full_address
+      
+        # Whether the address is a post office box.
+        # Corresponds to the JSON property `isPostOfficeBox`
+        # @return [Boolean]
+        attr_accessor :is_post_office_box
+        alias_method :is_post_office_box?, :is_post_office_box
+      
+        # City, town or commune. May also include dependent localities or sublocalities (
+        # e.g. neighborhoods or suburbs).
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
+      
+        # Postal Code or ZIP (e.g. "94043").
+        # Corresponds to the JSON property `postalCode`
+        # @return [String]
+        attr_accessor :postal_code
+      
+        # Name of the recipient.
+        # Corresponds to the JSON property `recipientName`
+        # @return [String]
+        attr_accessor :recipient_name
+      
+        # Top-level administrative subdivision of the country. For example, a state like
+        # California ("CA") or a province like Quebec ("QC").
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Street-level part of the address.
+        # Corresponds to the JSON property `streetAddress`
+        # @return [Array<String>]
+        attr_accessor :street_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country = args[:country] if args.key?(:country)
+          @full_address = args[:full_address] if args.key?(:full_address)
+          @is_post_office_box = args[:is_post_office_box] if args.key?(:is_post_office_box)
+          @locality = args[:locality] if args.key?(:locality)
+          @postal_code = args[:postal_code] if args.key?(:postal_code)
+          @recipient_name = args[:recipient_name] if args.key?(:recipient_name)
+          @region = args[:region] if args.key?(:region)
+          @street_address = args[:street_address] if args.key?(:street_address)
+        end
+      end
+      
+      # 
+      class TestOrderDeliveryDetails
+        include Google::Apis::Core::Hashable
+      
+        # The delivery address
+        # Corresponds to the JSON property `address`
+        # @return [Google::Apis::ContentV2_1::TestOrderAddress]
+        attr_accessor :address
+      
+        # The phone number of the person receiving the delivery.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end
       
@@ -12117,6 +12223,72 @@ module Google
           @target_country = args[:target_country] if args.key?(:target_country)
           @title = args[:title] if args.key?(:title)
           @variant_attributes = args[:variant_attributes] if args.key?(:variant_attributes)
+        end
+      end
+      
+      # 
+      class TestOrderPickupDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. Code of the location defined by provider or merchant.
+        # Corresponds to the JSON property `locationCode`
+        # @return [String]
+        attr_accessor :location_code
+      
+        # Required. Pickup location address.
+        # Corresponds to the JSON property `pickupLocationAddress`
+        # @return [Google::Apis::ContentV2_1::TestOrderAddress]
+        attr_accessor :pickup_location_address
+      
+        # Pickup location type.
+        # Acceptable values are:
+        # - "`locker`"
+        # - "`store`"
+        # - "`curbside`"
+        # Corresponds to the JSON property `pickupLocationType`
+        # @return [String]
+        attr_accessor :pickup_location_type
+      
+        # Required. all pickup persons set by users.
+        # Corresponds to the JSON property `pickupPersons`
+        # @return [Array<Google::Apis::ContentV2_1::TestOrderPickupDetailsPickupPerson>]
+        attr_accessor :pickup_persons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location_code = args[:location_code] if args.key?(:location_code)
+          @pickup_location_address = args[:pickup_location_address] if args.key?(:pickup_location_address)
+          @pickup_location_type = args[:pickup_location_type] if args.key?(:pickup_location_type)
+          @pickup_persons = args[:pickup_persons] if args.key?(:pickup_persons)
+        end
+      end
+      
+      # 
+      class TestOrderPickupDetailsPickupPerson
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full name of the pickup person.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The phone number of the person picking up the items.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end
       

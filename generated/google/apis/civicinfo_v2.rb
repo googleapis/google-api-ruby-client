@@ -23,10 +23,10 @@ module Google
     # Provides polling places, early vote locations, contest data, election
     # officials, and government representatives for U.S. residential addresses.
     #
-    # @see https://developers.google.com/civic-information
+    # @see https://developers.google.com/civic-information/
     module CivicinfoV2
       VERSION = 'V2'
-      REVISION = '20191030'
+      REVISION = '20200624'
     end
   end
 end

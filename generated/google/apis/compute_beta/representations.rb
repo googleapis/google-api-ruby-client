@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalingPolicyScaleInControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2256,6 +2262,24 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupAppEngine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupCloudFunction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupCloudRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5238,6 +5262,7 @@ module Google
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
       
           hash :labels, as: 'labels'
+          property :multi_writer, as: 'multiWriter'
           property :on_update_action, as: 'onUpdateAction'
           collection :resource_policies, as: 'resourcePolicies'
           property :source_image, as: 'sourceImage'
@@ -5411,6 +5436,8 @@ module Google
           property :mode, as: 'mode'
           property :scale_down_control, as: 'scaleDownControl', class: Google::Apis::ComputeBeta::AutoscalingPolicyScaleDownControl, decorator: Google::Apis::ComputeBeta::AutoscalingPolicyScaleDownControl::Representation
       
+          property :scale_in_control, as: 'scaleInControl', class: Google::Apis::ComputeBeta::AutoscalingPolicyScaleInControl, decorator: Google::Apis::ComputeBeta::AutoscalingPolicyScaleInControl::Representation
+      
         end
       end
       
@@ -5443,6 +5470,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_scaled_down_replicas, as: 'maxScaledDownReplicas', class: Google::Apis::ComputeBeta::FixedOrPercent, decorator: Google::Apis::ComputeBeta::FixedOrPercent::Representation
+      
+          property :time_window_sec, as: 'timeWindowSec'
+        end
+      end
+      
+      class AutoscalingPolicyScaleInControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_scaled_in_replicas, as: 'maxScaledInReplicas', class: Google::Apis::ComputeBeta::FixedOrPercent, decorator: Google::Apis::ComputeBeta::FixedOrPercent::Representation
       
           property :time_window_sec, as: 'timeWindowSec'
         end
@@ -6033,6 +6069,7 @@ module Google
           property :last_detach_timestamp, as: 'lastDetachTimestamp'
           collection :license_codes, as: 'licenseCodes'
           collection :licenses, as: 'licenses'
+          property :multi_writer, as: 'multiWriter'
           property :name, as: 'name'
           property :options, as: 'options'
           property :physical_block_size_bytes, :numeric_string => true, as: 'physicalBlockSizeBytes'
@@ -9118,6 +9155,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :app_engine, as: 'appEngine', class: Google::Apis::ComputeBeta::NetworkEndpointGroupAppEngine, decorator: Google::Apis::ComputeBeta::NetworkEndpointGroupAppEngine::Representation
+      
+          property :cloud_function, as: 'cloudFunction', class: Google::Apis::ComputeBeta::NetworkEndpointGroupCloudFunction, decorator: Google::Apis::ComputeBeta::NetworkEndpointGroupCloudFunction::Representation
+      
+          property :cloud_run, as: 'cloudRun', class: Google::Apis::ComputeBeta::NetworkEndpointGroupCloudRun, decorator: Google::Apis::ComputeBeta::NetworkEndpointGroupCloudRun::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :default_port, as: 'defaultPort'
           property :description, as: 'description'
@@ -9128,6 +9171,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_endpoint_type, as: 'networkEndpointType'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :size, as: 'size'
           property :subnetwork, as: 'subnetwork'
@@ -9164,6 +9208,32 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NetworkEndpointGroupAppEngine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+          property :url_mask, as: 'urlMask'
+          property :version, as: 'version'
+        end
+      end
+      
+      class NetworkEndpointGroupCloudFunction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :function, as: 'function'
+          property :url_mask, as: 'urlMask'
+        end
+      end
+      
+      class NetworkEndpointGroupCloudRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+          property :tag, as: 'tag'
+          property :url_mask, as: 'urlMask'
         end
       end
       

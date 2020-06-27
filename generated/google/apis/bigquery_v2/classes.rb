@@ -324,7 +324,7 @@ module Google
       # `
       # "audit_configs": [
       # `
-      # "service": "allServices"
+      # "service": "allServices",
       # "audit_log_configs": [
       # `
       # "log_type": "DATA_READ",
@@ -333,18 +333,18 @@ module Google
       # ]
       # `,
       # `
-      # "log_type": "DATA_WRITE",
+      # "log_type": "DATA_WRITE"
       # `,
       # `
-      # "log_type": "ADMIN_READ",
+      # "log_type": "ADMIN_READ"
       # `
       # ]
       # `,
       # `
-      # "service": "sampleservice.googleapis.com"
+      # "service": "sampleservice.googleapis.com",
       # "audit_log_configs": [
       # `
-      # "log_type": "DATA_READ",
+      # "log_type": "DATA_READ"
       # `,
       # `
       # "log_type": "DATA_WRITE",
@@ -396,7 +396,7 @@ module Google
       # ]
       # `,
       # `
-      # "log_type": "DATA_WRITE",
+      # "log_type": "DATA_WRITE"
       # `
       # ]
       # `
@@ -3277,10 +3277,21 @@ module Google
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :destination_encryption_configuration
       
+        # [Optional] The time when the destination table expires. Expired tables will be
+        # deleted and their storage reclaimed.
+        # Corresponds to the JSON property `destinationExpirationTime`
+        # @return [Object]
+        attr_accessor :destination_expiration_time
+      
         # [Required] The destination table
         # Corresponds to the JSON property `destinationTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :destination_table
+      
+        # [Optional] Supported operation types in table copy job.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
       
         # [Pick one] Source table to copy.
         # Corresponds to the JSON property `sourceTable`
@@ -3312,7 +3323,9 @@ module Google
         def update!(**args)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
           @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
+          @destination_expiration_time = args[:destination_expiration_time] if args.key?(:destination_expiration_time)
           @destination_table = args[:destination_table] if args.key?(:destination_table)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
           @source_table = args[:source_table] if args.key?(:source_table)
           @source_tables = args[:source_tables] if args.key?(:source_tables)
           @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
@@ -5139,6 +5152,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. [Experimental] The determinism level of the JavaScript UDF if
+        # defined.
+        # Corresponds to the JSON property `determinismLevel`
+        # @return [String]
+        attr_accessor :determinism_level
+      
         # Output only. A hash of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -5195,6 +5214,7 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @definition_body = args[:definition_body] if args.key?(:definition_body)
           @description = args[:description] if args.key?(:description)
+          @determinism_level = args[:determinism_level] if args.key?(:determinism_level)
           @etag = args[:etag] if args.key?(:etag)
           @imported_libraries = args[:imported_libraries] if args.key?(:imported_libraries)
           @language = args[:language] if args.key?(:language)
@@ -6612,6 +6632,15 @@ module Google
         # @return [String]
         attr_accessor :optimization_strategy
       
+        # Whether to preserve the input structs in output feature names.
+        # Suppose there is a struct A with field b.
+        # When false (default), the output feature name is A_b.
+        # When true, the output feature name is A.b.
+        # Corresponds to the JSON property `preserveInputStructs`
+        # @return [Boolean]
+        attr_accessor :preserve_input_structs
+        alias_method :preserve_input_structs?, :preserve_input_structs
+      
         # Subsample fraction of the training data to grow tree to prevent
         # overfitting for boosted tree models.
         # Corresponds to the JSON property `subsample`
@@ -6669,6 +6698,7 @@ module Google
           @num_clusters = args[:num_clusters] if args.key?(:num_clusters)
           @num_factors = args[:num_factors] if args.key?(:num_factors)
           @optimization_strategy = args[:optimization_strategy] if args.key?(:optimization_strategy)
+          @preserve_input_structs = args[:preserve_input_structs] if args.key?(:preserve_input_structs)
           @subsample = args[:subsample] if args.key?(:subsample)
           @user_column = args[:user_column] if args.key?(:user_column)
           @wals_alpha = args[:wals_alpha] if args.key?(:wals_alpha)
