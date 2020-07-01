@@ -542,6 +542,12 @@ module Google
         # @return [Hash<String,Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>]
         attr_accessor :maintenance_schedules
       
+        # Maintenance settings associated with instance. Allows service producers and
+        # end users to assign settings that controls maintenance on this instance.
+        # Corresponds to the JSON property `maintenanceSettings`
+        # @return [Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings]
+        attr_accessor :maintenance_settings
+      
         # Unique name of the resource. It uses the form:
         # `projects/`project_id`/locations/`location_id`/instances/`instance_id``
         # Corresponds to the JSON property `name`
@@ -609,6 +615,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @maintenance_policy_names = args[:maintenance_policy_names] if args.key?(:maintenance_policy_names)
           @maintenance_schedules = args[:maintenance_schedules] if args.key?(:maintenance_schedules)
+          @maintenance_settings = args[:maintenance_settings] if args.key?(:maintenance_settings)
           @name = args[:name] if args.key?(:name)
           @producer_metadata = args[:producer_metadata] if args.key?(:producer_metadata)
           @provisioned_resources = args[:provisioned_resources] if args.key?(:provisioned_resources)
@@ -661,6 +668,30 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @rollout_management_policy = args[:rollout_management_policy] if args.key?(:rollout_management_policy)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Maintenance settings associated with instance. Allows service producers and
+      # end users to assign settings that controls maintenance on this instance.
+      class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Exclude instance from maintenance. When true, rollout service will
+        # not
+        # attempt maintenance on the instance. Rollout service will include the
+        # instance in reported rollout progress as not attempted.
+        # Corresponds to the JSON property `exclude`
+        # @return [Boolean]
+        attr_accessor :exclude
+        alias_method :exclude?, :exclude
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude = args[:exclude] if args.key?(:exclude)
         end
       end
       
@@ -1128,10 +1159,13 @@ module Google
       # Google groups, and domains (such as G Suite). A `role` is a named list of
       # permissions; each `role` can be an IAM predefined role or a user-created
       # custom role.
-      # Optionally, a `binding` can specify a `condition`, which is a logical
-      # expression that allows access to a resource only if the expression evaluates
-      # to `true`. A condition can add constraints based on attributes of the
-      # request, the resource, or both.
+      # For some types of Google Cloud resources, a `binding` can also specify a
+      # `condition`, which is a logical expression that allows access to a resource
+      # only if the expression evaluates to `true`. A condition can add constraints
+      # based on attributes of the request, the resource, or both. To learn which
+      # resources support conditions in their IAM policies, see the
+      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+      # policies).
       # **JSON example:**
       # `
       # "bindings": [
@@ -1146,7 +1180,9 @@ module Google
       # `,
       # `
       # "role": "roles/resourcemanager.organizationViewer",
-      # "members": ["user:eve@example.com"],
+      # "members": [
+      # "user:eve@example.com"
+      # ],
       # "condition": `
       # "title": "expirable access",
       # "description": "Does not grant access after Sep 2020",
@@ -1219,6 +1255,9 @@ module Google
         # the conditions in the version `3` policy are lost.
         # If a policy does not include any conditions, operations on that policy may
         # specify any valid version or leave the field unset.
+        # To learn which resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -1310,10 +1349,13 @@ module Google
         # Google groups, and domains (such as G Suite). A `role` is a named list of
         # permissions; each `role` can be an IAM predefined role or a user-created
         # custom role.
-        # Optionally, a `binding` can specify a `condition`, which is a logical
-        # expression that allows access to a resource only if the expression evaluates
-        # to `true`. A condition can add constraints based on attributes of the
-        # request, the resource, or both.
+        # For some types of Google Cloud resources, a `binding` can also specify a
+        # `condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # **JSON example:**
         # `
         # "bindings": [
@@ -1328,7 +1370,9 @@ module Google
         # `,
         # `
         # "role": "roles/resourcemanager.organizationViewer",
-        # "members": ["user:eve@example.com"],
+        # "members": [
+        # "user:eve@example.com"
+        # ],
         # "condition": `
         # "title": "expirable access",
         # "description": "Does not grant access after Sep 2020",

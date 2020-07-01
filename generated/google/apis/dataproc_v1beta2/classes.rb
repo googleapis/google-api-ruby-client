@@ -476,9 +476,9 @@ module Google
       
         # Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data,
         # such as Spark and MapReduce history files. If you do not specify a temp
-        # bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or
-        # EU) for your cluster's temp bucket according to the Compute Engine zone where
-        # your cluster is deployed, and then create and manage this project-level, per-
+        # bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for
+        # your cluster's temp bucket according to the Compute Engine zone where your
+        # cluster is deployed, and then create and manage this project-level, per-
         # location bucket. The default bucket has a TTL of 90 days, but you can use any
         # TTL (or none) if you specify a bucket.
         # Corresponds to the JSON property `tempBucket`
@@ -1682,7 +1682,8 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
-        # Required. The ID of the Google Cloud Platform project that the job belongs to.
+        # Optional. The ID of the Google Cloud Platform project that the job belongs to.
+        # If specified, must match the request project ID.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -3430,6 +3431,25 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::ClusterOperation]
         attr_accessor :create_cluster
       
+        # Output only. DAG end time, only set for workflows with dag_timeout when DAG
+        # ends.
+        # Corresponds to the JSON property `dagEndTime`
+        # @return [String]
+        attr_accessor :dag_end_time
+      
+        # Output only. DAG start time, only set for workflows with dag_timeout when DAG
+        # begins.
+        # Corresponds to the JSON property `dagStartTime`
+        # @return [String]
+        attr_accessor :dag_start_time
+      
+        # Output only. The timeout duration for the DAG of jobs. Minimum timeout
+        # duration is 10 minutes and maximum is 24 hours, expressed as a google.protobuf.
+        # Duration. For example, "1800" = 1800 seconds/30 minutes duration.
+        # Corresponds to the JSON property `dagTimeout`
+        # @return [String]
+        attr_accessor :dag_timeout
+      
         # The cluster operation triggered by a workflow.
         # Corresponds to the JSON property `deleteCluster`
         # @return [Google::Apis::DataprocV1beta2::ClusterOperation]
@@ -3486,6 +3506,9 @@ module Google
           @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
           @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
           @create_cluster = args[:create_cluster] if args.key?(:create_cluster)
+          @dag_end_time = args[:dag_end_time] if args.key?(:dag_end_time)
+          @dag_start_time = args[:dag_start_time] if args.key?(:dag_start_time)
+          @dag_timeout = args[:dag_timeout] if args.key?(:dag_timeout)
           @delete_cluster = args[:delete_cluster] if args.key?(:delete_cluster)
           @end_time = args[:end_time] if args.key?(:end_time)
           @graph = args[:graph] if args.key?(:graph)
@@ -3540,7 +3563,7 @@ module Google
         end
       end
       
-      # A Dataproc workflow template resource. Next ID: 11
+      # A Dataproc workflow template resource.
       class WorkflowTemplate
         include Google::Apis::Core::Hashable
       
@@ -3548,6 +3571,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. Timeout for DAG of jobs. The timer begins when the first job is
+        # submitted. Minimum duration of 10 minutes, max of 24 hours.
+        # Corresponds to the JSON property `dagTimeout`
+        # @return [String]
+        attr_accessor :dag_timeout
       
         # Required. The template id.The id must contain only letters (a-z, A-Z), numbers
         # (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore
@@ -3619,6 +3648,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @dag_timeout = args[:dag_timeout] if args.key?(:dag_timeout)
           @id = args[:id] if args.key?(:id)
           @jobs = args[:jobs] if args.key?(:jobs)
           @labels = args[:labels] if args.key?(:labels)

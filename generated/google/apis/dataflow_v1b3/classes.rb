@@ -2376,6 +2376,13 @@ module Google
         # @return [String]
         attr_accessor :job_name
       
+        # Launch options for this flex template job. This is a common set of options
+        # across languages and templates. This should not be used to pass job
+        # parameters.
+        # Corresponds to the JSON property `launchOptions`
+        # @return [Hash<String,String>]
+        attr_accessor :launch_options
+      
         # The parameters for FlexTemplate.
         # Ex. `"num_workers":"5"`
         # Corresponds to the JSON property `parameters`
@@ -2391,6 +2398,7 @@ module Google
           @container_spec = args[:container_spec] if args.key?(:container_spec)
           @container_spec_gcs_path = args[:container_spec_gcs_path] if args.key?(:container_spec_gcs_path)
           @job_name = args[:job_name] if args.key?(:job_name)
+          @launch_options = args[:launch_options] if args.key?(:launch_options)
           @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
@@ -5887,6 +5895,16 @@ module Google
       class WorkItemServiceState
         include Google::Apis::Core::Hashable
       
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `completeWorkStatus`
+        # @return [Google::Apis::DataflowV1b3::Status]
+        attr_accessor :complete_work_status
+      
         # Other data returned by the service, specific to the particular
         # worker harness.
         # Corresponds to the JSON property `harnessData`
@@ -5948,6 +5966,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @complete_work_status = args[:complete_work_status] if args.key?(:complete_work_status)
           @harness_data = args[:harness_data] if args.key?(:harness_data)
           @hot_key_detection = args[:hot_key_detection] if args.key?(:hot_key_detection)
           @lease_expire_time = args[:lease_expire_time] if args.key?(:lease_expire_time)

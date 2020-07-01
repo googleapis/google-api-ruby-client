@@ -476,6 +476,7 @@ module Google
       
           collection :roles, as: 'roles', class: Google::Apis::CloudidentityV1beta1::MembershipRole, decorator: Google::Apis::CloudidentityV1beta1::MembershipRole::Representation
       
+          property :type, as: 'type'
           property :update_time, as: 'updateTime'
         end
       end

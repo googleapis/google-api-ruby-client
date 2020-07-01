@@ -1306,6 +1306,9 @@ module Google
           property :cluster_uuid, as: 'clusterUuid'
           property :create_cluster, as: 'createCluster', class: Google::Apis::DataprocV1beta2::ClusterOperation, decorator: Google::Apis::DataprocV1beta2::ClusterOperation::Representation
       
+          property :dag_end_time, as: 'dagEndTime'
+          property :dag_start_time, as: 'dagStartTime'
+          property :dag_timeout, as: 'dagTimeout'
           property :delete_cluster, as: 'deleteCluster', class: Google::Apis::DataprocV1beta2::ClusterOperation, decorator: Google::Apis::DataprocV1beta2::ClusterOperation::Representation
       
           property :end_time, as: 'endTime'
@@ -1334,6 +1337,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :dag_timeout, as: 'dagTimeout'
           property :id, as: 'id'
           collection :jobs, as: 'jobs', class: Google::Apis::DataprocV1beta2::OrderedJob, decorator: Google::Apis::DataprocV1beta2::OrderedJob::Representation
       

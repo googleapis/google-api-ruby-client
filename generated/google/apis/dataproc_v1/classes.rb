@@ -471,9 +471,9 @@ module Google
       
         # Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data,
         # such as Spark and MapReduce history files. If you do not specify a temp
-        # bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or
-        # EU) for your cluster's temp bucket according to the Compute Engine zone where
-        # your cluster is deployed, and then create and manage this project-level, per-
+        # bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for
+        # your cluster's temp bucket according to the Compute Engine zone where your
+        # cluster is deployed, and then create and manage this project-level, per-
         # location bucket. The default bucket has a TTL of 90 days, but you can use any
         # TTL (or none) if you specify a bucket.
         # Corresponds to the JSON property `tempBucket`
@@ -1641,7 +1641,8 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
-        # Required. The ID of the Google Cloud Platform project that the job belongs to.
+        # Optional. The ID of the Google Cloud Platform project that the job belongs to.
+        # If specified, must match the request project ID.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -3444,7 +3445,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. emplate parameters whose values are substituted into the template.
+        # Optional. Template parameters whose values are substituted into the template.
         # Values for parameters must be provided when the template is instantiated.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::DataprocV1::TemplateParameter>]

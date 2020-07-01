@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -332,6 +338,8 @@ module Google
           hash :maintenance_policy_names, as: 'maintenancePolicyNames'
           hash :maintenance_schedules, as: 'maintenanceSchedules', class: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule, decorator: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule::Representation
       
+          property :maintenance_settings, as: 'maintenanceSettings', class: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings, decorator: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings::Representation
+      
           property :name, as: 'name'
           hash :producer_metadata, as: 'producerMetadata'
           collection :provisioned_resources, as: 'provisionedResources', class: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource, decorator: Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource::Representation
@@ -353,6 +361,13 @@ module Google
           property :end_time, as: 'endTime'
           property :rollout_management_policy, as: 'rolloutManagementPolicy'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude, as: 'exclude'
         end
       end
       

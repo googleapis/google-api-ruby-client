@@ -3101,7 +3101,7 @@ module Google
       # `
       # "audit_configs": [
       # `
-      # "service": "allServices"
+      # "service": "allServices",
       # "audit_log_configs": [
       # `
       # "log_type": "DATA_READ",
@@ -3110,18 +3110,18 @@ module Google
       # ]
       # `,
       # `
-      # "log_type": "DATA_WRITE",
+      # "log_type": "DATA_WRITE"
       # `,
       # `
-      # "log_type": "ADMIN_READ",
+      # "log_type": "ADMIN_READ"
       # `
       # ]
       # `,
       # `
-      # "service": "sampleservice.googleapis.com"
+      # "service": "sampleservice.googleapis.com",
       # "audit_log_configs": [
       # `
-      # "log_type": "DATA_READ",
+      # "log_type": "DATA_READ"
       # `,
       # `
       # "log_type": "DATA_WRITE",
@@ -3173,7 +3173,7 @@ module Google
       # ]
       # `,
       # `
-      # "log_type": "DATA_WRITE",
+      # "log_type": "DATA_WRITE"
       # `
       # ]
       # `

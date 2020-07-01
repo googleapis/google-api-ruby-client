@@ -1629,6 +1629,7 @@ module Google
       
           property :container_spec_gcs_path, as: 'containerSpecGcsPath'
           property :job_name, as: 'jobName'
+          hash :launch_options, as: 'launchOptions'
           hash :parameters, as: 'parameters'
         end
       end
@@ -2596,6 +2597,8 @@ module Google
       class WorkItemServiceState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_work_status, as: 'completeWorkStatus', class: Google::Apis::DataflowV1b3::Status, decorator: Google::Apis::DataflowV1b3::Status::Representation
+      
           hash :harness_data, as: 'harnessData'
           property :hot_key_detection, as: 'hotKeyDetection', class: Google::Apis::DataflowV1b3::HotKeyDetection, decorator: Google::Apis::DataflowV1b3::HotKeyDetection::Representation
       

@@ -401,7 +401,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :other_accounts
       
-        # Whether the device is owned by the company or an individual
+        # Output only. Whether the device is owned by the company or an individual
         # Corresponds to the JSON property `ownerType`
         # @return [String]
         attr_accessor :owner_type
@@ -1020,6 +1020,11 @@ module Google
         # @return [Array<Google::Apis::CloudidentityV1beta1::MembershipRole>]
         attr_accessor :roles
       
+        # Output only. The type of the membership.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # Output only. The time when the `Membership` was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1036,6 +1041,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @preferred_member_key = args[:preferred_member_key] if args.key?(:preferred_member_key)
           @roles = args[:roles] if args.key?(:roles)
+          @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end

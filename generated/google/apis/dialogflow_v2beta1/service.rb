@@ -1952,10 +1952,10 @@ module Google
         #   Required. The knowledge base to list all documents for.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of items to return in a single page. By
+        #   The maximum number of items to return in a single page. By
         #   default 10 and at most 100.
         # @param [String] page_token
-        #   Optional. The next_page_token value returned from a previous list request.
+        #   The next_page_token value returned from a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2855,10 +2855,10 @@ module Google
         #   Required. The knowledge base to list all documents for.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of items to return in a single page. By
+        #   The maximum number of items to return in a single page. By
         #   default 10 and at most 100.
         # @param [String] page_token
-        #   Optional. The next_page_token value returned from a previous list request.
+        #   The next_page_token value returned from a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3105,44 +3105,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the fulfillment.
-        # @param [String] name
-        #   Required. The unique identifier of the fulfillment.
-        #   Format: `projects/<Project ID>/agent/fulfillment`.
-        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment] google_cloud_dialogflow_v2beta1_fulfillment_object
-        # @param [String] update_mask
-        #   Required. The mask to control which fields get updated. If the mask is not
-        #   present, all fields will be updated.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def fulfillment_project_location_agent(name, google_cloud_dialogflow_v2beta1_fulfillment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2beta1/{+name}', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment::Representation
-          command.request_object = google_cloud_dialogflow_v2beta1_fulfillment_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment
-          command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Retrieves the fulfillment.
         # @param [String] name
         #   Required. The name of the fulfillment.
@@ -3335,6 +3297,44 @@ module Google
           command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the fulfillment.
+        # @param [String] name
+        #   Required. The unique identifier of the fulfillment.
+        #   Format: `projects/<Project ID>/agent/fulfillment`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment] google_cloud_dialogflow_v2beta1_fulfillment_object
+        # @param [String] update_mask
+        #   Required. The mask to control which fields get updated. If the mask is not
+        #   present, all fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_agent_fulfillment(name, google_cloud_dialogflow_v2beta1_fulfillment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2beta1/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_fulfillment_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Fulfillment
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

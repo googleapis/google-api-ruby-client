@@ -236,6 +236,12 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio]
         attr_accessor :mixed_audio
       
+        # A text or ssml response that is preferentially used for TTS output audio
+        # synthesis, as described in the comment on the ResponseMessage message.
+        # Corresponds to the JSON property `outputAudioText`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText]
+        attr_accessor :output_audio_text
+      
         # Returns a response containing a custom, platform-specific payload.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
@@ -262,6 +268,7 @@ module Google
           @human_agent_handoff = args[:human_agent_handoff] if args.key?(:human_agent_handoff)
           @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
           @mixed_audio = args[:mixed_audio] if args.key?(:mixed_audio)
+          @output_audio_text = args[:output_audio_text] if args.key?(:output_audio_text)
           @payload = args[:payload] if args.key?(:payload)
           @play_audio = args[:play_audio] if args.key?(:play_audio)
           @text = args[:text] if args.key?(:text)
@@ -430,6 +437,33 @@ module Google
           @allow_playback_interruption = args[:allow_playback_interruption] if args.key?(:allow_playback_interruption)
           @audio = args[:audio] if args.key?(:audio)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # A text or ssml response that is preferentially used for TTS output audio
+      # synthesis, as described in the comment on the ResponseMessage message.
+      class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText
+        include Google::Apis::Core::Hashable
+      
+        # The SSML text to be synthesized. For more information, see
+        # [SSML](/speech/text-to-speech/docs/ssml).
+        # Corresponds to the JSON property `ssml`
+        # @return [String]
+        attr_accessor :ssml
+      
+        # The raw text to be synthesized.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ssml = args[:ssml] if args.key?(:ssml)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -3702,8 +3736,16 @@ module Google
         # @return [String]
         attr_accessor :query_text
       
-        # The result of sentiment analysis as configured by
-        # `sentiment_analysis_request_config`.
+        # The result of sentiment analysis. Sentiment analysis inspects user input
+        # and identifies the prevailing subjective opinion, especially to determine a
+        # user's attitude as positive, negative, or neutral.
+        # For Participants.AnalyzeContent, it needs to be configured in
+        # DetectIntentRequest.query_params. For
+        # Participants.StreamingAnalyzeContent, it needs to be configured in
+        # StreamingDetectIntentRequest.query_params.
+        # And for Participants.AnalyzeContent and
+        # Participants.StreamingAnalyzeContent, it needs to be configured in
+        # ConversationProfile.human_agent_assistant_config
         # Corresponds to the JSON property `sentimentAnalysisResult`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SentimentAnalysisResult]
         attr_accessor :sentiment_analysis_result
@@ -3860,8 +3902,16 @@ module Google
         end
       end
       
-      # The result of sentiment analysis as configured by
-      # `sentiment_analysis_request_config`.
+      # The result of sentiment analysis. Sentiment analysis inspects user input
+      # and identifies the prevailing subjective opinion, especially to determine a
+      # user's attitude as positive, negative, or neutral.
+      # For Participants.AnalyzeContent, it needs to be configured in
+      # DetectIntentRequest.query_params. For
+      # Participants.StreamingAnalyzeContent, it needs to be configured in
+      # StreamingDetectIntentRequest.query_params.
+      # And for Participants.AnalyzeContent and
+      # Participants.StreamingAnalyzeContent, it needs to be configured in
+      # ConversationProfile.human_agent_assistant_config
       class GoogleCloudDialogflowV2SentimentAnalysisResult
         include Google::Apis::Core::Hashable
       
@@ -6673,8 +6723,16 @@ module Google
         # @return [String]
         attr_accessor :query_text
       
-        # The result of sentiment analysis as configured by
-        # `sentiment_analysis_request_config`.
+        # The result of sentiment analysis. Sentiment analysis inspects user input
+        # and identifies the prevailing subjective opinion, especially to determine a
+        # user's attitude as positive, negative, or neutral.
+        # For Participants.AnalyzeContent, it needs to be configured in
+        # DetectIntentRequest.query_params. For
+        # Participants.StreamingAnalyzeContent, it needs to be configured in
+        # StreamingDetectIntentRequest.query_params.
+        # And for Participants.AnalyzeContent and
+        # Participants.StreamingAnalyzeContent, it needs to be configured in
+        # ConversationProfile.human_agent_assistant_config
         # Corresponds to the JSON property `sentimentAnalysisResult`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SentimentAnalysisResult]
         attr_accessor :sentiment_analysis_result
@@ -6756,8 +6814,16 @@ module Google
         end
       end
       
-      # The result of sentiment analysis as configured by
-      # `sentiment_analysis_request_config`.
+      # The result of sentiment analysis. Sentiment analysis inspects user input
+      # and identifies the prevailing subjective opinion, especially to determine a
+      # user's attitude as positive, negative, or neutral.
+      # For Participants.AnalyzeContent, it needs to be configured in
+      # DetectIntentRequest.query_params. For
+      # Participants.StreamingAnalyzeContent, it needs to be configured in
+      # StreamingDetectIntentRequest.query_params.
+      # And for Participants.AnalyzeContent and
+      # Participants.StreamingAnalyzeContent, it needs to be configured in
+      # ConversationProfile.human_agent_assistant_config
       class GoogleCloudDialogflowV2beta1SentimentAnalysisResult
         include Google::Apis::Core::Hashable
       

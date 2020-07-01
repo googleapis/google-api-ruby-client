@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1151,6 +1157,8 @@ module Google
       
           property :mixed_audio, as: 'mixedAudio', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio::Representation
       
+          property :output_audio_text, as: 'outputAudioText', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText::Representation
+      
           hash :payload, as: 'payload'
           property :play_audio, as: 'playAudio', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio::Representation
       
@@ -1200,6 +1208,14 @@ module Google
           property :allow_playback_interruption, as: 'allowPlaybackInterruption'
           property :audio, :base64 => true, as: 'audio'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ssml, as: 'ssml'
+          property :text, as: 'text'
         end
       end
       
