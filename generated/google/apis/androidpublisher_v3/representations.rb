@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExpansionFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SystemApksListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Testers
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +353,12 @@ module Google
       end
       
       class UsesPermission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Variant
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -492,6 +510,15 @@ module Google
           property :screen_density_dpi, as: 'screenDensityDpi'
           property :screen_height_px, as: 'screenHeightPx'
           property :screen_width_px, as: 'screenWidthPx'
+        end
+      end
+      
+      class DeviceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :screen_density, as: 'screenDensity'
+          collection :supported_abis, as: 'supportedAbis'
+          collection :supported_locales, as: 'supportedLocales'
         end
       end
       
@@ -830,6 +857,14 @@ module Google
         end
       end
       
+      class SystemApksListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :variants, as: 'variants', class: Google::Apis::AndroidpublisherV3::Variant, decorator: Google::Apis::AndroidpublisherV3::Variant::Representation
+      
+        end
+      end
+      
       class Testers
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -911,6 +946,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_sdk_version, as: 'maxSdkVersion'
           property :name, as: 'name'
+        end
+      end
+      
+      class Variant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_spec, as: 'deviceSpec', class: Google::Apis::AndroidpublisherV3::DeviceSpec, decorator: Google::Apis::AndroidpublisherV3::DeviceSpec::Representation
+      
+          property :variant_id, as: 'variantId'
         end
       end
       

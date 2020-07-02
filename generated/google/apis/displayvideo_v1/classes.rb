@@ -3829,7 +3829,7 @@ module Google
         # @return [String]
         attr_accessor :audience_type
       
-        # Output only. The description of the first and third party audience.
+        # The user-provided description of the audience.
         # Only applicable to first party audiences.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -3874,8 +3874,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :display_mobile_web_audience_size
       
-        # Output only. The display name of the first and third party audience.
-        # .
+        # The display name of the first and third party audience.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3888,7 +3887,6 @@ module Google
         attr_accessor :first_and_third_party_audience_id
       
         # Output only. Whether the audience is a first or third party audience.
-        # .
         # Corresponds to the JSON property `firstAndThirdPartyAudienceType`
         # @return [String]
         attr_accessor :first_and_third_party_audience_type
@@ -3903,8 +3901,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :gmail_audience_size
       
-        # Output only. The duration in days that an entry remains in the audience after
-        # the
+        # The duration in days that an entry remains in the audience after the
         # qualifying event.
         # Only applicable to first party audiences.
         # Corresponds to the JSON property `membershipDurationDays`

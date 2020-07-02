@@ -651,8 +651,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing inventory source.
-        # Returns the updated inventory source if successful.
         # Gets a channel for a partner or advertiser.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser that owns the fetched channel.
@@ -4028,8 +4026,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing inventory source.
-        # Returns the updated inventory source if successful.
         # Gets a channel for a partner or advertiser.
         # @param [Fixnum] partner_id
         #   The ID of the partner that owns the fetched channel.

@@ -464,6 +464,39 @@ module Google
         end
       end
       
+      # The device spec used to generate a system APK.
+      class DeviceSpec
+        include Google::Apis::Core::Hashable
+      
+        # Screen dpi.
+        # Corresponds to the JSON property `screenDensity`
+        # @return [Fixnum]
+        attr_accessor :screen_density
+      
+        # Supported ABI architectures in the order of preference.
+        # The values should be the string as reported by the platform, e.g.
+        # "armeabi-v7a", "x86_64".
+        # Corresponds to the JSON property `supportedAbis`
+        # @return [Array<String>]
+        attr_accessor :supported_abis
+      
+        # All installed locales represented as BCP-47 strings, e.g. "en-US".
+        # Corresponds to the JSON property `supportedLocales`
+        # @return [Array<String>]
+        attr_accessor :supported_locales
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @screen_density = args[:screen_density] if args.key?(:screen_density)
+          @supported_abis = args[:supported_abis] if args.key?(:supported_abis)
+          @supported_locales = args[:supported_locales] if args.key?(:supported_locales)
+        end
+      end
+      
       # An expansion file. The resource for ExpansionFilesService.
       class ExpansionFile
         include Google::Apis::Core::Hashable
@@ -1805,6 +1838,25 @@ module Google
         end
       end
       
+      # Response to list previously created system APK variants.
+      class SystemApksListResponse
+        include Google::Apis::Core::Hashable
+      
+        # All system APK variants created.
+        # Corresponds to the JSON property `variants`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Variant>]
+        attr_accessor :variants
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @variants = args[:variants] if args.key?(:variants)
+        end
+      end
+      
       # The testers of an app. The resource for TestersService.
       class Testers
         include Google::Apis::Core::Hashable
@@ -2121,6 +2173,32 @@ module Google
         def update!(**args)
           @max_sdk_version = args[:max_sdk_version] if args.key?(:max_sdk_version)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # APK that is suitable for inclusion in a system image. The resource of
+      # SystemApksService.
+      class Variant
+        include Google::Apis::Core::Hashable
+      
+        # The device spec used to generate a system APK.
+        # Corresponds to the JSON property `deviceSpec`
+        # @return [Google::Apis::AndroidpublisherV3::DeviceSpec]
+        attr_accessor :device_spec
+      
+        # Output only. The ID of a previously created system APK variant.
+        # Corresponds to the JSON property `variantId`
+        # @return [Fixnum]
+        attr_accessor :variant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_spec = args[:device_spec] if args.key?(:device_spec)
+          @variant_id = args[:variant_id] if args.key?(:variant_id)
         end
       end
       

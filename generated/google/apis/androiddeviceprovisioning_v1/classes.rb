@@ -33,13 +33,13 @@ module Google
       
         # Encapsulates hardware and product IDs to identify a manufactured device.
         # To understand requirements on identifier sets, read
-        # [Identifiers](/zero-touch/guides/identifiers).
+        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
         # Metadata entries that can be attached to a `Device`. To learn more, read
-        # [Device metadata](/zero-touch/guides/metadata).
+        # [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata
@@ -113,7 +113,7 @@ module Google
       class Company
         include Google::Apis::Core::Hashable
       
-        # Optional. Input only. Email address of customer's users in the admin role.
+        # Optional. Email address of customer's users in the admin role.
         # Each email address must be associated with a Google Account.
         # Corresponds to the JSON property `adminEmails`
         # @return [Array<String>]
@@ -140,7 +140,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Input only. Email address of customer's users in the owner role. At least
+        # Required. Input only. Email address of customer's users in the owner role. At
+        # least
         # one `owner_email` is required. Each email address must be associated with a
         # Google Account. Owners share the same access as admins but can also add,
         # delete, and edit your organization's portal users.
@@ -306,7 +307,8 @@ module Google
         # device.
         # Methods that operate on devices take a `DeviceReference` as a parameter type
         # because it's more flexible for the caller. To learn more about device
-        # identifiers, read [Identifiers](/zero-touch/guides/identifiers).
+        # identifiers, read
+        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceReference]
         attr_accessor :device
@@ -424,7 +426,8 @@ module Google
         # device.
         # Methods that operate on devices take a `DeviceReference` as a parameter type
         # because it's more flexible for the caller. To learn more about device
-        # identifiers, read [Identifiers](/zero-touch/guides/identifiers).
+        # identifiers, read
+        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceReference]
         attr_accessor :device
@@ -450,7 +453,8 @@ module Google
         # device.
         # Methods that operate on devices take a `DeviceReference` as a parameter type
         # because it's more flexible for the caller. To learn more about device
-        # identifiers, read [Identifiers](/zero-touch/guides/identifiers).
+        # identifiers, read
+        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceReference]
         attr_accessor :device
@@ -492,13 +496,13 @@ module Google
       
         # Encapsulates hardware and product IDs to identify a manufactured device.
         # To understand requirements on identifier sets, read
-        # [Identifiers](/zero-touch/guides/identifiers).
+        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
         # Metadata entries that can be attached to a `Device`. To learn more, read
-        # [Device metadata](/zero-touch/guides/metadata).
+        # [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata
@@ -574,7 +578,7 @@ module Google
       
       # Encapsulates hardware and product IDs to identify a manufactured device.
       # To understand requirements on identifier sets, read
-      # [Identifiers](/zero-touch/guides/identifiers).
+      # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
       class DeviceIdentifier
         include Google::Apis::Core::Hashable
       
@@ -624,7 +628,7 @@ module Google
       end
       
       # Metadata entries that can be attached to a `Device`. To learn more, read
-      # [Device metadata](/zero-touch/guides/metadata).
+      # [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
       class DeviceMetadata
         include Google::Apis::Core::Hashable
       
@@ -650,7 +654,8 @@ module Google
       # device.
       # Methods that operate on devices take a `DeviceReference` as a parameter type
       # because it's more flexible for the caller. To learn more about device
-      # identifiers, read [Identifiers](/zero-touch/guides/identifiers).
+      # identifiers, read
+      # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
       class DeviceReference
         include Google::Apis::Core::Hashable
       
@@ -661,7 +666,7 @@ module Google
       
         # Encapsulates hardware and product IDs to identify a manufactured device.
         # To understand requirements on identifier sets, read
-        # [Identifiers](/zero-touch/guides/identifiers).
+        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -810,7 +815,7 @@ module Google
       
         # Encapsulates hardware and product IDs to identify a manufactured device.
         # To understand requirements on identifier sets, read
-        # [Identifiers](/zero-touch/guides/identifiers).
+        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -1142,13 +1147,13 @@ module Google
       
         # Encapsulates hardware and product IDs to identify a manufactured device.
         # To understand requirements on identifier sets, read
-        # [Identifiers](/zero-touch/guides/identifiers).
+        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
         # Metadata entries that can be attached to a `Device`. To learn more, read
-        # [Device metadata](/zero-touch/guides/metadata).
+        # [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata
@@ -1175,14 +1180,14 @@ module Google
       class PartnerUnclaim
         include Google::Apis::Core::Hashable
       
-        # Device ID of the device.
+        # Required. Device ID of the device.
         # Corresponds to the JSON property `deviceId`
         # @return [Fixnum]
         attr_accessor :device_id
       
         # Encapsulates hardware and product IDs to identify a manufactured device.
         # To understand requirements on identifier sets, read
-        # [Identifiers](/zero-touch/guides/identifiers).
+        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -1192,13 +1197,14 @@ module Google
         # @return [String]
         attr_accessor :section_type
       
-        # The duration of the vacation unlock starting from when the request is
+        # Optional. The duration of the vacation unlock starting from when the request
+        # is
         # processed. (1 day is treated as 24 hours)
         # Corresponds to the JSON property `vacationModeDays`
         # @return [Fixnum]
         attr_accessor :vacation_mode_days
       
-        # The expiration time of the vacation unlock.
+        # Optional. The expiration time of the vacation unlock.
         # Corresponds to the JSON property `vacationModeExpireTime`
         # @return [String]
         attr_accessor :vacation_mode_expire_time
@@ -1297,14 +1303,14 @@ module Google
       class UnclaimDeviceRequest
         include Google::Apis::Core::Hashable
       
-        # The device ID returned by `ClaimDevice`.
+        # Required. The device ID returned by `ClaimDevice`.
         # Corresponds to the JSON property `deviceId`
         # @return [Fixnum]
         attr_accessor :device_id
       
         # Encapsulates hardware and product IDs to identify a manufactured device.
         # To understand requirements on identifier sets, read
-        # [Identifiers](/zero-touch/guides/identifiers).
+        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -1382,7 +1388,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Metadata entries that can be attached to a `Device`. To learn more, read
-        # [Device metadata](/zero-touch/guides/metadata).
+        # [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata
@@ -1401,20 +1407,20 @@ module Google
       class UpdateMetadataArguments
         include Google::Apis::Core::Hashable
       
-        # Device ID of the device.
+        # Required. Device ID of the device.
         # Corresponds to the JSON property `deviceId`
         # @return [Fixnum]
         attr_accessor :device_id
       
         # Encapsulates hardware and product IDs to identify a manufactured device.
         # To understand requirements on identifier sets, read
-        # [Identifiers](/zero-touch/guides/identifiers).
+        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
         # Metadata entries that can be attached to a `Device`. To learn more, read
-        # [Device metadata](/zero-touch/guides/metadata).
+        # [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata

@@ -18,7 +18,7 @@ require 'google/apis/run_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Run Admin API
+    # Cloud Run API
     #
     # Deploy and manage user provided container images that scale automatically
     # based on HTTP traffic.
