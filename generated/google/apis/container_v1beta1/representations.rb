@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LinuxNodeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListClustersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +359,12 @@ module Google
       end
       
       class NodeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeKubeletConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1112,6 +1124,13 @@ module Google
         end
       end
       
+      class LinuxNodeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :sysctls, as: 'sysctls'
+        end
+      end
+      
       class ListClustersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1266,7 +1285,11 @@ module Google
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :image_type, as: 'imageType'
+          property :kubelet_config, as: 'kubeletConfig', class: Google::Apis::ContainerV1beta1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1beta1::NodeKubeletConfig::Representation
+      
           hash :labels, as: 'labels'
+          property :linux_node_config, as: 'linuxNodeConfig', class: Google::Apis::ContainerV1beta1::LinuxNodeConfig, decorator: Google::Apis::ContainerV1beta1::LinuxNodeConfig::Representation
+      
           property :local_ssd_count, as: 'localSsdCount'
           property :machine_type, as: 'machineType'
           hash :metadata, as: 'metadata'
@@ -1285,6 +1308,15 @@ module Google
       
           property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig::Representation
       
+        end
+      end
+      
+      class NodeKubeletConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_cfs_quota, as: 'cpuCfsQuota'
+          property :cpu_cfs_quota_period, as: 'cpuCfsQuotaPeriod'
+          property :cpu_manager_policy, as: 'cpuManagerPolicy'
         end
       end
       
@@ -1430,6 +1462,7 @@ module Google
       
           property :channel, as: 'channel'
           property :default_version, as: 'defaultVersion'
+          collection :valid_versions, as: 'validVersions'
         end
       end
       
@@ -1716,6 +1749,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_id, as: 'clusterId'
           property :image_type, as: 'imageType'
+          property :kubelet_config, as: 'kubeletConfig', class: Google::Apis::ContainerV1beta1::NodeKubeletConfig, decorator: Google::Apis::ContainerV1beta1::NodeKubeletConfig::Representation
+      
+          property :linux_node_config, as: 'linuxNodeConfig', class: Google::Apis::ContainerV1beta1::LinuxNodeConfig, decorator: Google::Apis::ContainerV1beta1::LinuxNodeConfig::Representation
+      
           collection :locations, as: 'locations'
           property :name, as: 'name'
           property :node_pool_id, as: 'nodePoolId'

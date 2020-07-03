@@ -2218,6 +2218,14 @@ module Google
           attr_accessor :can_add_children
           alias_method :can_add_children?, :can_add_children
         
+          # Whether the current user can add a folder from another drive (different shared
+          # drive or My Drive) to this folder. This is false when the item is not a folder.
+          # Only populated for items in shared drives.
+          # Corresponds to the JSON property `canAddFolderFromAnotherDrive`
+          # @return [Boolean]
+          attr_accessor :can_add_folder_from_another_drive
+          alias_method :can_add_folder_from_another_drive?, :can_add_folder_from_another_drive
+        
           # Whether the current user can add a parent for the item without removing an
           # existing parent in the same request. Not populated for shared drive files.
           # Corresponds to the JSON property `canAddMyDriveParent`
@@ -2434,6 +2442,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @can_add_children = args[:can_add_children] if args.key?(:can_add_children)
+            @can_add_folder_from_another_drive = args[:can_add_folder_from_another_drive] if args.key?(:can_add_folder_from_another_drive)
             @can_add_my_drive_parent = args[:can_add_my_drive_parent] if args.key?(:can_add_my_drive_parent)
             @can_change_copy_requires_writer_permission = args[:can_change_copy_requires_writer_permission] if args.key?(:can_change_copy_requires_writer_permission)
             @can_change_restricted_download = args[:can_change_restricted_download] if args.key?(:can_change_restricted_download)

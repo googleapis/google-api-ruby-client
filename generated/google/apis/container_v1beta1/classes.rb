@@ -269,8 +269,7 @@ module Google
         end
       end
       
-      # AvailableVersion is an additional Kubernetes versions offered
-      # to users who subscribed to the release channel.
+      # Deprecated.
       class AvailableVersion
         include Google::Apis::Core::Hashable
       
@@ -581,7 +580,7 @@ module Google
         attr_accessor :initial_cluster_version
       
         # The number of nodes to create in this cluster. You must ensure that your
-        # Compute Engine <a href="/compute/docs/resource-quotas">resource quota</a>
+        # Compute Engine [resource quota](https://cloud.google.com/compute/quotas)
         # is sufficient for this number of instances. You must also have available
         # firewall and routes quota.
         # For requests, this field should only be used in lieu of a
@@ -764,12 +763,10 @@ module Google
         attr_accessor :private_cluster_config
       
         # ReleaseChannel indicates which release channel a cluster is
-        # subscribed to. Release channels are arranged in order of risk and
-        # frequency of updates.
+        # subscribed to. Release channels are arranged in order of risk.
         # When a cluster is subscribed to a release channel, Google maintains
         # both the master version and the node version. Node auto-upgrade
-        # defaults to true and cannot be disabled. Updates to version related
-        # fields (e.g. current_master_version) return an error.
+        # defaults to true and cannot be disabled.
         # Corresponds to the JSON property `releaseChannel`
         # @return [Google::Apis::ContainerV1beta1::ReleaseChannel]
         attr_accessor :release_channel
@@ -1144,12 +1141,10 @@ module Google
         attr_accessor :desired_private_cluster_config
       
         # ReleaseChannel indicates which release channel a cluster is
-        # subscribed to. Release channels are arranged in order of risk and
-        # frequency of updates.
+        # subscribed to. Release channels are arranged in order of risk.
         # When a cluster is subscribed to a release channel, Google maintains
         # both the master version and the node version. Node auto-upgrade
-        # defaults to true and cannot be disabled. Updates to version related
-        # fields (e.g. current_master_version) return an error.
+        # defaults to true and cannot be disabled.
         # Corresponds to the JSON property `desiredReleaseChannel`
         # @return [Google::Apis::ContainerV1beta1::ReleaseChannel]
         attr_accessor :desired_release_channel
@@ -2049,6 +2044,36 @@ module Google
         end
       end
       
+      # Parameters that can be configured on Linux nodes.
+      class LinuxNodeConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Linux kernel parameters to be applied to the nodes and all pods running
+        # on the nodes.
+        # The following parameters are supported.
+        # net.core.netdev_max_backlog
+        # net.core.rmem_max
+        # net.core.wmem_default
+        # net.core.wmem_max
+        # net.core.optmem_max
+        # net.core.somaxconn
+        # net.ipv4.tcp_rmem
+        # net.ipv4.tcp_wmem
+        # net.ipv4.tcp_tw_reuse
+        # Corresponds to the JSON property `sysctls`
+        # @return [Hash<String,String>]
+        attr_accessor :sysctls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sysctls = args[:sysctls] if args.key?(:sysctls)
+        end
+      end
+      
       # ListClustersResponse is the result of ListClustersRequest.
       class ListClustersResponse
         include Google::Apis::Core::Hashable
@@ -2568,6 +2593,11 @@ module Google
         # @return [String]
         attr_accessor :image_type
       
+        # Node kubelet configs.
+        # Corresponds to the JSON property `kubeletConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodeKubeletConfig]
+        attr_accessor :kubelet_config
+      
         # The map of Kubernetes labels (key/value pairs) to be applied to each node.
         # These will added in addition to any default label(s) that
         # Kubernetes may apply to the node.
@@ -2579,6 +2609,11 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Parameters that can be configured on Linux nodes.
+        # Corresponds to the JSON property `linuxNodeConfig`
+        # @return [Google::Apis::ContainerV1beta1::LinuxNodeConfig]
+        attr_accessor :linux_node_config
       
         # The number of local SSD disks to be attached to the node.
         # The limit for this value is dependent upon the maximum number of
@@ -2724,7 +2759,9 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @image_type = args[:image_type] if args.key?(:image_type)
+          @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
           @labels = args[:labels] if args.key?(:labels)
+          @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -2738,6 +2775,55 @@ module Google
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
           @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
+        end
+      end
+      
+      # Node kubelet configs.
+      class NodeKubeletConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enable CPU CFS quota enforcement for containers that specify CPU limits.
+        # If this option is enabled, kubelet uses CFS quota
+        # (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to
+        # enforce container CPU limits. Otherwise, CPU limits will not be enforced at
+        # all.
+        # Disable this option to mitigate CPU throttling problems while still having
+        # your pods to be in Guaranteed QoS class by specifying the CPU limits.
+        # The default value is 'true' if unspecified.
+        # Corresponds to the JSON property `cpuCfsQuota`
+        # @return [Boolean]
+        attr_accessor :cpu_cfs_quota
+        alias_method :cpu_cfs_quota?, :cpu_cfs_quota
+      
+        # Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+        # The string must be a sequence of decimal numbers, each with optional
+        # fraction and a unit suffix, such as "300ms".
+        # Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
+        # The value must be a positive duration.
+        # Corresponds to the JSON property `cpuCfsQuotaPeriod`
+        # @return [String]
+        attr_accessor :cpu_cfs_quota_period
+      
+        # Control the CPU management policy on the node.
+        # See
+        # https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/
+        # The following values are allowed.
+        # - "none": the default, which represents the existing scheduling behavior.
+        # - "static": allows pods with certain resource characteristics to be
+        # granted increased CPU affinity and exclusivity on the node.
+        # Corresponds to the JSON property `cpuManagerPolicy`
+        # @return [String]
+        attr_accessor :cpu_manager_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_cfs_quota = args[:cpu_cfs_quota] if args.key?(:cpu_cfs_quota)
+          @cpu_cfs_quota_period = args[:cpu_cfs_quota_period] if args.key?(:cpu_cfs_quota_period)
+          @cpu_manager_policy = args[:cpu_manager_policy] if args.key?(:cpu_manager_policy)
         end
       end
       
@@ -2802,7 +2888,7 @@ module Google
         attr_accessor :config
       
         # The initial node count for the pool. You must ensure that your
-        # Compute Engine <a href="/compute/docs/resource-quotas">resource quota</a>
+        # Compute Engine [resource quota](https://cloud.google.com/compute/quotas)
         # is sufficient for this number of instances. You must also have available
         # firewall and routes quota.
         # Corresponds to the JSON property `initialNodeCount`
@@ -3295,12 +3381,10 @@ module Google
       end
       
       # ReleaseChannel indicates which release channel a cluster is
-      # subscribed to. Release channels are arranged in order of risk and
-      # frequency of updates.
+      # subscribed to. Release channels are arranged in order of risk.
       # When a cluster is subscribed to a release channel, Google maintains
       # both the master version and the node version. Node auto-upgrade
-      # defaults to true and cannot be disabled. Updates to version related
-      # fields (e.g. current_master_version) return an error.
+      # defaults to true and cannot be disabled.
       class ReleaseChannel
         include Google::Apis::Core::Hashable
       
@@ -3323,7 +3407,9 @@ module Google
       class ReleaseChannelConfig
         include Google::Apis::Core::Hashable
       
-        # List of available versions for the release channel.
+        # Deprecated.
+        # This field has been deprecated and replaced with the valid_versions
+        # field.
         # Corresponds to the JSON property `availableVersions`
         # @return [Array<Google::Apis::ContainerV1beta1::AvailableVersion>]
         attr_accessor :available_versions
@@ -3338,6 +3424,11 @@ module Google
         # @return [String]
         attr_accessor :default_version
       
+        # List of valid versions for the channel.
+        # Corresponds to the JSON property `validVersions`
+        # @return [Array<String>]
+        attr_accessor :valid_versions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3347,6 +3438,7 @@ module Google
           @available_versions = args[:available_versions] if args.key?(:available_versions)
           @channel = args[:channel] if args.key?(:channel)
           @default_version = args[:default_version] if args.key?(:default_version)
+          @valid_versions = args[:valid_versions] if args.key?(:valid_versions)
         end
       end
       
@@ -4566,6 +4658,16 @@ module Google
         # @return [String]
         attr_accessor :image_type
       
+        # Node kubelet configs.
+        # Corresponds to the JSON property `kubeletConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodeKubeletConfig]
+        attr_accessor :kubelet_config
+      
+        # Parameters that can be configured on Linux nodes.
+        # Corresponds to the JSON property `linuxNodeConfig`
+        # @return [Google::Apis::ContainerV1beta1::LinuxNodeConfig]
+        attr_accessor :linux_node_config
+      
         # The desired list of Google Compute Engine
         # [zones](https://cloud.google.com/compute/docs/zones#available) in which the
         # node pool's nodes should be located. Changing the locations for a node pool
@@ -4652,6 +4754,8 @@ module Google
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @image_type = args[:image_type] if args.key?(:image_type)
+          @kubelet_config = args[:kubelet_config] if args.key?(:kubelet_config)
+          @linux_node_config = args[:linux_node_config] if args.key?(:linux_node_config)
           @locations = args[:locations] if args.key?(:locations)
           @name = args[:name] if args.key?(:name)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)

@@ -566,6 +566,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :can_add_children, as: 'canAddChildren'
+            property :can_add_folder_from_another_drive, as: 'canAddFolderFromAnotherDrive'
             property :can_add_my_drive_parent, as: 'canAddMyDriveParent'
             property :can_change_copy_requires_writer_permission, as: 'canChangeCopyRequiresWriterPermission'
             property :can_change_viewers_can_copy_content, as: 'canChangeViewersCanCopyContent'

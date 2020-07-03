@@ -18,14 +18,14 @@ require 'google/apis/dns_v1beta2/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud DNS API
+    # Cloud DNS API
     #
-    # Configures and serves authoritative DNS records.
+    # 
     #
-    # @see https://developers.google.com/cloud-dns
+    # @see http://developers.google.com/cloud-dns
     module DnsV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20200515'
+      REVISION = '20200625'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

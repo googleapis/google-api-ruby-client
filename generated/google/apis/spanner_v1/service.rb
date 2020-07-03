@@ -1817,6 +1817,11 @@ module Google
         # transactions. However, it can also happen for a variety of other
         # reasons. If `Commit` returns `ABORTED`, the caller should re-attempt
         # the transaction from the beginning, re-using the same session.
+        # On very rare occasions, `Commit` might return `UNKNOWN`. This can happen,
+        # for example, if the client job experiences a 1+ hour networking failure.
+        # At that point, Cloud Spanner has lost track of the transaction outcome and
+        # we recommend that you perform another read from the database to see the
+        # state of things as they are now.
         # @param [String] session
         #   Required. The session in which the transaction to be committed is running.
         # @param [Google::Apis::SpannerV1::CommitRequest] commit_request_object

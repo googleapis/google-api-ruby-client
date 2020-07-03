@@ -346,6 +346,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReleaseChannel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReleaseChannelConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReservationAffinity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -696,6 +708,8 @@ module Google
       
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ContainerV1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1::PrivateClusterConfig::Representation
       
+          property :release_channel, as: 'releaseChannel', class: Google::Apis::ContainerV1::ReleaseChannel, decorator: Google::Apis::ContainerV1::ReleaseChannel::Representation
+      
           hash :resource_labels, as: 'resourceLabels'
           property :resource_usage_export_config, as: 'resourceUsageExportConfig', class: Google::Apis::ContainerV1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1::ResourceUsageExportConfig::Representation
       
@@ -751,6 +765,8 @@ module Google
       
           property :desired_node_pool_id, as: 'desiredNodePoolId'
           property :desired_node_version, as: 'desiredNodeVersion'
+          property :desired_release_channel, as: 'desiredReleaseChannel', class: Google::Apis::ContainerV1::ReleaseChannel, decorator: Google::Apis::ContainerV1::ReleaseChannel::Representation
+      
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1::ResourceUsageExportConfig::Representation
       
           property :desired_shielded_nodes, as: 'desiredShieldedNodes', class: Google::Apis::ContainerV1::ShieldedNodes, decorator: Google::Apis::ContainerV1::ShieldedNodes::Representation
@@ -1057,6 +1073,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::ContainerV1::AcceleratorConfig, decorator: Google::Apis::ContainerV1::AcceleratorConfig::Representation
       
+          property :boot_disk_kms_key, as: 'bootDiskKmsKey'
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :image_type, as: 'imageType'
@@ -1194,6 +1211,22 @@ module Google
         end
       end
       
+      class ReleaseChannel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
+        end
+      end
+      
+      class ReleaseChannelConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
+          property :default_version, as: 'defaultVersion'
+          collection :valid_versions, as: 'validVersions'
+        end
+      end
+      
       class ReservationAffinity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1244,6 +1277,8 @@ module Google
       class ServerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :channels, as: 'channels', class: Google::Apis::ContainerV1::ReleaseChannelConfig, decorator: Google::Apis::ContainerV1::ReleaseChannelConfig::Representation
+      
           property :default_cluster_version, as: 'defaultClusterVersion'
           property :default_image_type, as: 'defaultImageType'
           collection :valid_image_types, as: 'validImageTypes'

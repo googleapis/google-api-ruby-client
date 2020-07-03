@@ -496,7 +496,7 @@ module Google
         attr_accessor :initial_cluster_version
       
         # The number of nodes to create in this cluster. You must ensure that your
-        # Compute Engine <a href="/compute/docs/resource-quotas">resource quota</a>
+        # Compute Engine [resource quota](https://cloud.google.com/compute/quotas)
         # is sufficient for this number of instances. You must also have available
         # firewall and routes quota.
         # For requests, this field should only be used in lieu of a
@@ -648,6 +648,15 @@ module Google
         # @return [Google::Apis::ContainerV1::PrivateClusterConfig]
         attr_accessor :private_cluster_config
       
+        # ReleaseChannel indicates which release channel a cluster is
+        # subscribed to. Release channels are arranged in order of risk.
+        # When a cluster is subscribed to a release channel, Google maintains
+        # both the master version and the node version. Node auto-upgrade
+        # defaults to true and cannot be disabled.
+        # Corresponds to the JSON property `releaseChannel`
+        # @return [Google::Apis::ContainerV1::ReleaseChannel]
+        attr_accessor :release_channel
+      
         # The resource labels for the cluster to use to annotate any related
         # Google Compute Engine resources.
         # Corresponds to the JSON property `resourceLabels`
@@ -767,6 +776,7 @@ module Google
           @node_ipv4_cidr_size = args[:node_ipv4_cidr_size] if args.key?(:node_ipv4_cidr_size)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
+          @release_channel = args[:release_channel] if args.key?(:release_channel)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -952,6 +962,15 @@ module Google
         # @return [String]
         attr_accessor :desired_node_version
       
+        # ReleaseChannel indicates which release channel a cluster is
+        # subscribed to. Release channels are arranged in order of risk.
+        # When a cluster is subscribed to a release channel, Google maintains
+        # both the master version and the node version. Node auto-upgrade
+        # defaults to true and cannot be disabled.
+        # Corresponds to the JSON property `desiredReleaseChannel`
+        # @return [Google::Apis::ContainerV1::ReleaseChannel]
+        attr_accessor :desired_release_channel
+      
         # Configuration for exporting cluster resource usages.
         # Corresponds to the JSON property `desiredResourceUsageExportConfig`
         # @return [Google::Apis::ContainerV1::ResourceUsageExportConfig]
@@ -995,6 +1014,7 @@ module Google
           @desired_node_pool_autoscaling = args[:desired_node_pool_autoscaling] if args.key?(:desired_node_pool_autoscaling)
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
+          @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
           @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
@@ -2105,6 +2125,17 @@ module Google
         # @return [Array<Google::Apis::ContainerV1::AcceleratorConfig>]
         attr_accessor :accelerators
       
+        # The Customer Managed Encryption Key used to encrypt the boot disk attached
+        # to each node in the node pool. This should be of the form
+        # projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/
+        # [KEY_NAME].
+        # For more information about protecting resources with Cloud KMS Keys please
+        # see:
+        # https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        # Corresponds to the JSON property `bootDiskKmsKey`
+        # @return [String]
+        attr_accessor :boot_disk_kms_key
+      
         # Size of the disk attached to each node, specified in GB.
         # The smallest allowed disk size is 10GB.
         # If unspecified, the default disk size is 100GB.
@@ -2276,6 +2307,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @image_type = args[:image_type] if args.key?(:image_type)
@@ -2362,7 +2394,7 @@ module Google
         attr_accessor :config
       
         # The initial node count for the pool. You must ensure that your
-        # Compute Engine <a href="/compute/docs/resource-quotas">resource quota</a>
+        # Compute Engine [resource quota](https://cloud.google.com/compute/quotas)
         # is sufficient for this number of instances. You must also have available
         # firewall and routes quota.
         # Corresponds to the JSON property `initialNodeCount`
@@ -2807,6 +2839,60 @@ module Google
         end
       end
       
+      # ReleaseChannel indicates which release channel a cluster is
+      # subscribed to. Release channels are arranged in order of risk.
+      # When a cluster is subscribed to a release channel, Google maintains
+      # both the master version and the node version. Node auto-upgrade
+      # defaults to true and cannot be disabled.
+      class ReleaseChannel
+        include Google::Apis::Core::Hashable
+      
+        # channel specifies which release channel the cluster is subscribed to.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
+        end
+      end
+      
+      # ReleaseChannelConfig exposes configuration for a release channel.
+      class ReleaseChannelConfig
+        include Google::Apis::Core::Hashable
+      
+        # The release channel this configuration applies to.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        # The default version for newly created clusters on the channel.
+        # Corresponds to the JSON property `defaultVersion`
+        # @return [String]
+        attr_accessor :default_version
+      
+        # List of valid versions for the channel.
+        # Corresponds to the JSON property `validVersions`
+        # @return [Array<String>]
+        attr_accessor :valid_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
+          @default_version = args[:default_version] if args.key?(:default_version)
+          @valid_versions = args[:valid_versions] if args.key?(:valid_versions)
+        end
+      end
+      
       # [ReservationAffinity](https://cloud.google.com/compute/docs/instances/
       # reserving-zonal-resources)
       # is the configuration of desired reservation which instances could take
@@ -2985,6 +3071,11 @@ module Google
       class ServerConfig
         include Google::Apis::Core::Hashable
       
+        # List of release channel configurations.
+        # Corresponds to the JSON property `channels`
+        # @return [Array<Google::Apis::ContainerV1::ReleaseChannelConfig>]
+        attr_accessor :channels
+      
         # Version of Kubernetes the service deploys by default.
         # Corresponds to the JSON property `defaultClusterVersion`
         # @return [String]
@@ -3016,6 +3107,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @channels = args[:channels] if args.key?(:channels)
           @default_cluster_version = args[:default_cluster_version] if args.key?(:default_cluster_version)
           @default_image_type = args[:default_image_type] if args.key?(:default_image_type)
           @valid_image_types = args[:valid_image_types] if args.key?(:valid_image_types)
