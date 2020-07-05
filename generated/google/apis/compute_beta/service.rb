@@ -1811,9 +1811,7 @@ module Google
         end
         
         # Creates a BackendService resource in the specified project using the data
-        # included in the request. There are several restrictions and guidelines to keep
-        # in mind when creating a backend service. Read  Understanding backend services
-        # for more information.
+        # included in the request. For more information, see  Backend services overview.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeBeta::BackendService] backend_service_object
@@ -1934,10 +1932,9 @@ module Google
         end
         
         # Patches the specified BackendService resource with the data included in the
-        # request. There are several Understanding backend services to keep in mind when
-        # updating a backend service. Read  Understanding backend services for more
-        # information. This method supports PATCH semantics and uses the JSON merge
-        # patch format and processing rules.
+        # request. For more information, see  Backend services overview. This method
+        # supports PATCH semantics and uses the JSON merge patch format and processing
+        # rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -2080,9 +2077,7 @@ module Google
         end
         
         # Updates the specified BackendService resource with the data included in the
-        # request. There are several Understanding backend services to keep in mind when
-        # updating a backend service. Read  Understanding backend services for more
-        # information.
+        # request. For more information, see Backend services overview.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -7113,6 +7108,58 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Patches the specified image with the data included in the request. Only the
+        # following fields can be modified: family, description, deprecation status.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] image
+        #   Name of the image resource to patch.
+        # @param [Google::Apis::ComputeBeta::Image] image_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeBeta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeBeta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_image(project, image, image_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, '{project}/global/images/{image}', options)
+          command.request_representation = Google::Apis::ComputeBeta::Image::Representation
+          command.request_object = image_object
+          command.response_representation = Google::Apis::ComputeBeta::Operation::Representation
+          command.response_class = Google::Apis::ComputeBeta::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['image'] = image unless image.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] project
@@ -7813,7 +7860,7 @@ module Google
         end
         
         # Lists all errors thrown by actions on instances for a given managed instance
-        # group.
+        # group. The filter and orderBy query parameters are not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7897,7 +7944,8 @@ module Google
         # list has a currentAction, which indicates the action that the managed instance
         # group is performing on the instance. For example, if the group is still
         # creating an instance, the currentAction is CREATING. If a previous action
-        # failed, the list displays the errors for that failed action.
+        # failed, the list displays the errors for that failed action. The orderBy query
+        # parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7975,6 +8023,7 @@ module Google
         end
         
         # Lists all of the per-instance configs defined for the managed instance group.
+        # The orderBy query parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9049,7 +9098,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the instances in the specified instance group.
+        # Lists the instances in the specified instance group. The orderBy query
+        # parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -18641,9 +18691,8 @@ module Google
         end
         
         # Creates a regional BackendService resource in the specified project using the
-        # data included in the request. There are several restrictions and guidelines to
-        # keep in mind when creating a regional backend service. Read  Understanding
-        # backend services for more information.
+        # data included in the request. For more information, see  Backend services
+        # overview.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -18770,10 +18819,9 @@ module Google
         end
         
         # Updates the specified regional BackendService resource with the data included
-        # in the request. There are several Understanding backend services to keep in
-        # mind when updating a backend service. Read  Understanding backend services for
-        # more information. This method supports PATCH semantics and uses the JSON merge
-        # patch format and processing rules.
+        # in the request. For more information, see  Understanding backend services This
+        # method supports PATCH semantics and uses the JSON merge patch format and
+        # processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -18870,9 +18918,7 @@ module Google
         end
         
         # Updates the specified regional BackendService resource with the data included
-        # in the request. There are several Understanding backend services to keep in
-        # mind when updating a backend service. Read  Understanding backend services for
-        # more information.
+        # in the request. For more information, see  Backend services overview.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21060,7 +21106,7 @@ module Google
         end
         
         # Lists all errors thrown by actions on instances for a given regional managed
-        # instance group.
+        # instance group. The filter and orderBy query parameters are not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21141,7 +21187,7 @@ module Google
         
         # Lists the instances in the managed instance group and instances that are
         # scheduled to be created. The list includes any current actions that the group
-        # has scheduled for its instances.
+        # has scheduled for its instances. The orderBy query parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21219,6 +21265,7 @@ module Google
         end
         
         # Lists all of the per-instance configs defined for the managed instance group.
+        # The orderBy query parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21972,7 +22019,8 @@ module Google
         
         # Lists the instances in the specified instance group and displays information
         # about the named ports. Depending on the specified options, this method can
-        # list all instances or only the instances that are running.
+        # list all instances or only the instances that are running. The orderBy query
+        # parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -27836,9 +27884,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of all usable subnetworks in the project. The
-        # list contains all of the subnetworks in the project and the subnetworks that
-        # were shared by a Shared VPC host project.
+        # Retrieves an aggregated list of all usable subnetworks in the project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter

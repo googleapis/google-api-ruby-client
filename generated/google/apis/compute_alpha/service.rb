@@ -1962,9 +1962,7 @@ module Google
         end
         
         # Creates a BackendService resource in the specified project using the data
-        # included in the request. There are several restrictions and guidelines to keep
-        # in mind when creating a backend service. Read  Understanding backend services
-        # for more information.
+        # included in the request. For more information, see  Backend services overview.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeAlpha::BackendService] backend_service_object
@@ -2089,10 +2087,9 @@ module Google
         end
         
         # Patches the specified BackendService resource with the data included in the
-        # request. There are several Understanding backend services to keep in mind when
-        # updating a backend service. Read  Understanding backend services for more
-        # information. This method supports PATCH semantics and uses the JSON merge
-        # patch format and processing rules.
+        # request. For more information, see  Backend services overview. This method
+        # supports PATCH semantics and uses the JSON merge patch format and processing
+        # rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -2235,9 +2232,7 @@ module Google
         end
         
         # Updates the specified BackendService resource with the data included in the
-        # request. There are several Understanding backend services to keep in mind when
-        # updating a backend service. Read  Understanding backend services for more
-        # information.
+        # request. For more information, see Backend services overview.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -8406,7 +8401,7 @@ module Google
         end
         
         # Lists all errors thrown by actions on instances for a given managed instance
-        # group.
+        # group. The filter and orderBy query parameters are not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8494,7 +8489,8 @@ module Google
         # list has a currentAction, which indicates the action that the managed instance
         # group is performing on the instance. For example, if the group is still
         # creating an instance, the currentAction is CREATING. If a previous action
-        # failed, the list displays the errors for that failed action.
+        # failed, the list displays the errors for that failed action. The orderBy query
+        # parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8576,6 +8572,7 @@ module Google
         end
         
         # Lists all of the per-instance configs defined for the managed instance group.
+        # The orderBy query parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9662,7 +9659,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the instances in the specified instance group.
+        # Lists the instances in the specified instance group. The orderBy query
+        # parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -21436,9 +21434,8 @@ module Google
         end
         
         # Creates a regional BackendService resource in the specified project using the
-        # data included in the request. There are several restrictions and guidelines to
-        # keep in mind when creating a regional backend service. Read  Understanding
-        # backend services for more information.
+        # data included in the request. For more information, see  Backend services
+        # overview.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21569,10 +21566,9 @@ module Google
         end
         
         # Updates the specified regional BackendService resource with the data included
-        # in the request. There are several Understanding backend services to keep in
-        # mind when updating a backend service. Read  Understanding backend services for
-        # more information. This method supports PATCH semantics and uses the JSON merge
-        # patch format and processing rules.
+        # in the request. For more information, see  Understanding backend services This
+        # method supports PATCH semantics and uses the JSON merge patch format and
+        # processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21669,9 +21665,7 @@ module Google
         end
         
         # Updates the specified regional BackendService resource with the data included
-        # in the request. There are several Understanding backend services to keep in
-        # mind when updating a backend service. Read  Understanding backend services for
-        # more information.
+        # in the request. For more information, see  Backend services overview.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -24426,7 +24420,7 @@ module Google
         end
         
         # Lists all errors thrown by actions on instances for a given regional managed
-        # instance group.
+        # instance group. The filter and orderBy query parameters are not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -24511,7 +24505,7 @@ module Google
         
         # Lists the instances in the managed instance group and instances that are
         # scheduled to be created. The list includes any current actions that the group
-        # has scheduled for its instances.
+        # has scheduled for its instances. The orderBy query parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -24593,6 +24587,7 @@ module Google
         end
         
         # Lists all of the per-instance configs defined for the managed instance group.
+        # The orderBy query parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25354,7 +25349,8 @@ module Google
         
         # Lists the instances in the specified instance group and displays information
         # about the named ports. Depending on the specified options, this method can
-        # list all instances or only the instances that are running.
+        # list all instances or only the instances that are running. The orderBy query
+        # parameter is not supported.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -31932,9 +31928,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of all usable subnetworks in the project. The
-        # list contains all of the subnetworks in the project and the subnetworks that
-        # were shared by a Shared VPC host project.
+        # Retrieves an aggregated list of all usable subnetworks in the project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter

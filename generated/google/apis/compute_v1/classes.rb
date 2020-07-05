@@ -2223,7 +2223,9 @@ module Google
         # UTILIZATION, RATE or CONNECTION). Default value is 1, which means the group
         # will serve up to 100% of its configured capacity (depending on balancingMode).
         # A setting of 0 means the group is completely drained, offering 0% of its
-        # available Capacity. Valid range is [0.0,1.0].
+        # available capacity. Valid range is 0.0 and [0.1,1.0]. You cannot configure a
+        # setting larger than 0 and smaller than 0.1. You cannot configure a setting of
+        # 0 when there is only one backend attached to the backend service.
         # This cannot be used for internal load balancing.
         # Corresponds to the JSON property `capacityScaler`
         # @return [Float]
@@ -2603,7 +2605,7 @@ module Google
       # scoped.
       # * [Global](/compute/docs/reference/rest/`$api_version`/backendServices) * [
       # Regional](/compute/docs/reference/rest/`$api_version`/regionBackendServices)
-      # For more information, read Backend Services.
+      # For more information, see Backend Services.
       # (== resource_for `$api_version`.backendService ==)
       class BackendService
         include Google::Apis::Core::Hashable
@@ -2739,8 +2741,8 @@ module Google
         # redirected to the load balancer.
         # - MAGLEV: used as a drop in replacement for the ring hash load balancer.
         # Maglev is not as stable as ring hash but has faster table lookup build times
-        # and host selection times. For more information about Maglev, refer to https://
-        # ai.google/research/pubs/pub44824
+        # and host selection times. For more information about Maglev, see https://ai.
+        # google/research/pubs/pub44824
         # This field is applicable to either:
         # - A regional backend service with the service_protocol set to HTTP, HTTPS, or
         # HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
@@ -2842,8 +2844,8 @@ module Google
         attr_accessor :session_affinity
       
         # The backend service timeout has a different meaning depending on the type of
-        # load balancer. For more information read,  Backend service settings The
-        # default is 30 seconds.
+        # load balancer. For more information see,  Backend service settings The default
+        # is 30 seconds.
         # Corresponds to the JSON property `timeoutSec`
         # @return [Fixnum]
         attr_accessor :timeout_sec
@@ -4555,6 +4557,24 @@ module Google
         # @return [Fixnum]
         attr_accessor :size_gb
       
+        # The source disk used to create this disk. You can provide this as a partial or
+        # full URL to the resource. For example, the following are valid values:
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk
+        # - projects/project/zones/zone/disks/disk
+        # - zones/zone/disks/disk
+        # Corresponds to the JSON property `sourceDisk`
+        # @return [String]
+        attr_accessor :source_disk
+      
+        # [Output Only] The unique ID of the disk used to create this disk. This value
+        # identifies the exact disk that was used to create this persistent disk. For
+        # example, if you created the persistent disk from a disk that was later deleted
+        # and recreated under the same name, the source disk ID would identify the exact
+        # version of the disk that was used.
+        # Corresponds to the JSON property `sourceDiskId`
+        # @return [String]
+        attr_accessor :source_disk_id
+      
         # The source image used to create this disk. If the source image is deleted,
         # this field will not be set.
         # To create a disk with one of the public operating system images, specify the
@@ -4666,6 +4686,8 @@ module Google
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @source_disk = args[:source_disk] if args.key?(:source_disk)
+          @source_disk_id = args[:source_disk_id] if args.key?(:source_disk_id)
           @source_image = args[:source_image] if args.key?(:source_image)
           @source_image_encryption_key = args[:source_image_encryption_key] if args.key?(:source_image_encryption_key)
           @source_image_id = args[:source_image_id] if args.key?(:source_image_id)
@@ -7788,6 +7810,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Configuration of logging on a health check. If logging is enabled, logs will
+        # be exported to Stackdriver.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::ComputeV1::HealthCheckLogConfig]
+        attr_accessor :log_config
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -7854,6 +7882,7 @@ module Google
           @https_health_check = args[:https_health_check] if args.key?(:https_health_check)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -7979,6 +8008,28 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Configuration of logging on a health check. If logging is enabled, logs will
+      # be exported to Stackdriver.
+      class HealthCheckLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether or not to export logs. This is false by default, which means
+        # no health check logging will be done.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
         end
       end
       
@@ -12616,9 +12667,9 @@ module Google
       class InstanceProperties
         include Google::Apis::Core::Hashable
       
-        # Enables instances created based on this template to send packets with source
-        # IP addresses other than their own and receive packets with destination IP
-        # addresses other than their own. If these instances will be used as an IP
+        # Enables instances created based on these properties to send packets with
+        # source IP addresses other than their own and receive packets with destination
+        # IP addresses other than their own. If these instances will be used as an IP
         # gateway or it will be set as the next-hop in a Route resource, specify true.
         # If unsure, leave this set to false. See the Enable IP forwarding documentation
         # for more information.
@@ -12627,30 +12678,30 @@ module Google
         attr_accessor :can_ip_forward
         alias_method :can_ip_forward?, :can_ip_forward
       
-        # An optional text description for the instances that are created from this
-        # instance template.
+        # An optional text description for the instances that are created from these
+        # properties.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # An array of disks that are associated with the instances that are created from
-        # this template.
+        # these properties.
         # Corresponds to the JSON property `disks`
         # @return [Array<Google::Apis::ComputeV1::AttachedDisk>]
         attr_accessor :disks
       
         # A list of guest accelerator cards' type and count to use for instances created
-        # from the instance template.
+        # from these properties.
         # Corresponds to the JSON property `guestAccelerators`
         # @return [Array<Google::Apis::ComputeV1::AcceleratorConfig>]
         attr_accessor :guest_accelerators
       
-        # Labels to apply to instances that are created from this template.
+        # Labels to apply to instances that are created from these properties.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The machine type to use for instances that are created from this template.
+        # The machine type to use for instances that are created from these properties.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -12660,11 +12711,11 @@ module Google
         # @return [Google::Apis::ComputeV1::Metadata]
         attr_accessor :metadata
       
-        # Minimum cpu/platform to be used by this instance. The instance may be
-        # scheduled on the specified or newer cpu/platform. Applicable values are the
-        # friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or
-        # minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a
-        # Minimum CPU Platform.
+        # Minimum cpu/platform to be used by instances. The instance may be scheduled on
+        # the specified or newer cpu/platform. Applicable values are the friendly names
+        # of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "
+        # Intel Sandy Bridge". For more information, read Specifying a Minimum CPU
+        # Platform.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -12674,7 +12725,7 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # The private IPv6 google access type for the VM. If not specified, use
+        # The private IPv6 google access type for VMs. If not specified, use
         # INHERIT_FROM_SUBNETWORK as default.
         # Corresponds to the JSON property `privateIpv6GoogleAccess`
         # @return [String]
@@ -12685,8 +12736,8 @@ module Google
         # @return [Google::Apis::ComputeV1::ReservationAffinity]
         attr_accessor :reservation_affinity
       
-        # Resource policies (names, not ULRs) applied to instances created from this
-        # template.
+        # Resource policies (names, not ULRs) applied to instances created from these
+        # properties.
         # Corresponds to the JSON property `resourcePolicies`
         # @return [Array<String>]
         attr_accessor :resource_policies
@@ -12697,8 +12748,9 @@ module Google
         attr_accessor :scheduling
       
         # A list of service accounts with specified scopes. Access tokens for these
-        # service accounts are available to the instances that are created from this
-        # template. Use metadata queries to obtain the access tokens for these instances.
+        # service accounts are available to the instances that are created from these
+        # properties. Use metadata queries to obtain the access tokens for these
+        # instances.
         # Corresponds to the JSON property `serviceAccounts`
         # @return [Array<Google::Apis::ComputeV1::ServiceAccount>]
         attr_accessor :service_accounts
@@ -16177,10 +16229,12 @@ module Google
         # @return [String]
         attr_accessor :i_pv4_range
       
-        # When set to true, the VPC network is created in "auto" mode. When set to false,
-        # the VPC network is created in "custom" mode.
+        # When set to true, the VPC network is created in auto mode. When set to false,
+        # the VPC network is created in custom mode.
         # An auto mode VPC network starts with one subnet per region. Each subnet has a
         # predetermined range as described in Auto mode VPC network IP ranges.
+        # For custom mode VPC networks, you can add subnets using the subnetworks insert
+        # method.
         # Corresponds to the JSON property `autoCreateSubnetworks`
         # @return [Boolean]
         attr_accessor :auto_create_subnetworks
@@ -17441,7 +17495,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The URL of the node template to which this node group belongs.
+        # URL of the node template to create the node group from.
         # Corresponds to the JSON property `nodeTemplate`
         # @return [String]
         attr_accessor :node_template
@@ -27159,7 +27213,8 @@ module Google
         # The range of internal addresses that are owned by this subnetwork. Provide
         # this property when you create the subnetwork. For example, 10.0.0.0/8 or 192.
         # 168.0.0/16. Ranges must be unique and non-overlapping within a network. Only
-        # IPv4 is supported. This field can be set only at resource creation time.
+        # IPv4 is supported. This field is set at resource creation time. The range can
+        # be expanded after creation using expandIpCidrRange.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range

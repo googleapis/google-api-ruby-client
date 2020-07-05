@@ -8288,6 +8288,9 @@ module Google
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
+          property :last_start_timestamp, as: 'lastStartTimestamp'
+          property :last_stop_timestamp, as: 'lastStopTimestamp'
+          property :last_suspended_timestamp, as: 'lastSuspendedTimestamp'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeAlpha::Metadata, decorator: Google::Apis::ComputeAlpha::Metadata::Representation
       

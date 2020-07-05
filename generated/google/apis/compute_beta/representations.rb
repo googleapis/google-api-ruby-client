@@ -6078,6 +6078,8 @@ module Google
           collection :resource_policies, as: 'resourcePolicies'
           property :self_link, as: 'selfLink'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
+          property :source_disk, as: 'sourceDisk'
+          property :source_disk_id, as: 'sourceDiskId'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       

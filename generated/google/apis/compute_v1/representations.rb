@@ -1006,6 +1006,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HealthCheckLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HealthCheckReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5621,6 +5627,8 @@ module Google
           collection :resource_policies, as: 'resourcePolicies'
           property :self_link, as: 'selfLink'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
+          property :source_disk, as: 'sourceDisk'
+          property :source_disk_id, as: 'sourceDiskId'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
@@ -6375,6 +6383,8 @@ module Google
       
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::HealthCheckLogConfig, decorator: Google::Apis::ComputeV1::HealthCheckLogConfig::Representation
+      
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
@@ -6417,6 +6427,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class HealthCheckLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
         end
       end
       
