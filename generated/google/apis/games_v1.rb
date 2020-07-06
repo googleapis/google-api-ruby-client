@@ -18,13 +18,11 @@ require 'google/apis/games_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Play Game Services
+    # Google Play Game Services API
     #
-    # The Google Play games service allows developers to enhance games with social
-    # leaderboards,
-    # achievements, game state, sign-in with Google, and more.
+    # The API for Google Play Game Services.
     #
-    # @see https://developers.google.com/games/
+    # @see https://developers.google.com/games/services/
     module GamesV1
       VERSION = 'V1'
       REVISION = '20200625'

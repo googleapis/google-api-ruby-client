@@ -82,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AggregateStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnonymousPlayer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Application
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,6 +262,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworkDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ParticipantResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PeerChannelDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PeerSessionDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Played
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Player
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -346,7 +388,109 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PushToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PushTokenId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Ios
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckRevisionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Room
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoomAutoMatchStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoomAutoMatchingCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoomClientAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateRoomRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JoinRoomRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoomLeaveDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LeaveRoomRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoomList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoomModification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoomP2PStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoomP2PStatuses
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoomParticipant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoomStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,7 +520,73 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class StatsResponse
+      class TurnBasedAutoMatchingCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnBasedMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateTurnBasedMatchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnBasedMatchData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnBasedMatchDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnBasedMatchList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnBasedMatchModification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnBasedMatchParticipant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnBasedMatchRematch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnBasedMatchResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnBasedMatchSync
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnBasedMatchTurn
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -485,6 +695,26 @@ module Google
           property :kind, as: 'kind'
           property :newly_unlocked, as: 'newlyUnlocked'
           property :update_occurred, as: 'updateOccurred'
+        end
+      end
+      
+      class AggregateStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :kind, as: 'kind'
+          property :max, :numeric_string => true, as: 'max'
+          property :min, :numeric_string => true, as: 'min'
+          property :sum, :numeric_string => true, as: 'sum'
+        end
+      end
+      
+      class AnonymousPlayer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avatar_image_url, as: 'avatarImageUrl'
+          property :display_name, as: 'displayName'
+          property :kind, as: 'kind'
         end
       end
       
@@ -803,6 +1033,68 @@ module Google
         end
       end
       
+      class NetworkDiagnostics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_network_subtype, as: 'androidNetworkSubtype'
+          property :android_network_type, as: 'androidNetworkType'
+          property :ios_network_type, as: 'iosNetworkType'
+          property :kind, as: 'kind'
+          property :network_operator_code, as: 'networkOperatorCode'
+          property :network_operator_name, as: 'networkOperatorName'
+          property :registration_latency_millis, as: 'registrationLatencyMillis'
+        end
+      end
+      
+      class ParticipantResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :participant_id, as: 'participantId'
+          property :placing, as: 'placing'
+          property :result, as: 'result'
+        end
+      end
+      
+      class PeerChannelDiagnostics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_received, as: 'bytesReceived', class: Google::Apis::GamesV1::AggregateStats, decorator: Google::Apis::GamesV1::AggregateStats::Representation
+      
+          property :bytes_sent, as: 'bytesSent', class: Google::Apis::GamesV1::AggregateStats, decorator: Google::Apis::GamesV1::AggregateStats::Representation
+      
+          property :kind, as: 'kind'
+          property :num_messages_lost, as: 'numMessagesLost'
+          property :num_messages_received, as: 'numMessagesReceived'
+          property :num_messages_sent, as: 'numMessagesSent'
+          property :num_send_failures, as: 'numSendFailures'
+          property :roundtrip_latency_millis, as: 'roundtripLatencyMillis', class: Google::Apis::GamesV1::AggregateStats, decorator: Google::Apis::GamesV1::AggregateStats::Representation
+      
+        end
+      end
+      
+      class PeerSessionDiagnostics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connected_timestamp_millis, :numeric_string => true, as: 'connectedTimestampMillis'
+          property :kind, as: 'kind'
+          property :participant_id, as: 'participantId'
+          property :reliable_channel, as: 'reliableChannel', class: Google::Apis::GamesV1::PeerChannelDiagnostics, decorator: Google::Apis::GamesV1::PeerChannelDiagnostics::Representation
+      
+          property :unreliable_channel, as: 'unreliableChannel', class: Google::Apis::GamesV1::PeerChannelDiagnostics, decorator: Google::Apis::GamesV1::PeerChannelDiagnostics::Representation
+      
+        end
+      end
+      
+      class Played
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_matched, as: 'autoMatched'
+          property :kind, as: 'kind'
+          property :time_millis, :numeric_string => true, as: 'timeMillis'
+        end
+      end
+      
       class Player
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -814,6 +1106,8 @@ module Google
       
           property :friend_status, as: 'friendStatus'
           property :kind, as: 'kind'
+          property :last_played_with, as: 'lastPlayedWith', class: Google::Apis::GamesV1::Played, decorator: Google::Apis::GamesV1::Played::Representation
+      
           property :name, as: 'name', class: Google::Apis::GamesV1::Player::Name, decorator: Google::Apis::GamesV1::Player::Name::Representation
       
           property :original_player_id, as: 'originalPlayerId'
@@ -989,12 +1283,218 @@ module Google
         end
       end
       
+      class PushToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_revision, as: 'clientRevision'
+          property :id, as: 'id', class: Google::Apis::GamesV1::PushTokenId, decorator: Google::Apis::GamesV1::PushTokenId::Representation
+      
+          property :kind, as: 'kind'
+          property :language, as: 'language'
+        end
+      end
+      
+      class PushTokenId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ios, as: 'ios', class: Google::Apis::GamesV1::PushTokenId::Ios, decorator: Google::Apis::GamesV1::PushTokenId::Ios::Representation
+      
+          property :kind, as: 'kind'
+        end
+        
+        class Ios
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :apns_device_token, :base64 => true, as: 'apns_device_token'
+            property :apns_environment, as: 'apns_environment'
+          end
+        end
+      end
+      
       class CheckRevisionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           property :kind, as: 'kind'
           property :revision_status, as: 'revisionStatus'
+        end
+      end
+      
+      class Room
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_id, as: 'applicationId'
+          property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::RoomAutoMatchingCriteria, decorator: Google::Apis::GamesV1::RoomAutoMatchingCriteria::Representation
+      
+          property :auto_matching_status, as: 'autoMatchingStatus', class: Google::Apis::GamesV1::RoomAutoMatchStatus, decorator: Google::Apis::GamesV1::RoomAutoMatchStatus::Representation
+      
+          property :creation_details, as: 'creationDetails', class: Google::Apis::GamesV1::RoomModification, decorator: Google::Apis::GamesV1::RoomModification::Representation
+      
+          property :description, as: 'description'
+          property :inviter_id, as: 'inviterId'
+          property :kind, as: 'kind'
+          property :last_update_details, as: 'lastUpdateDetails', class: Google::Apis::GamesV1::RoomModification, decorator: Google::Apis::GamesV1::RoomModification::Representation
+      
+          collection :participants, as: 'participants', class: Google::Apis::GamesV1::RoomParticipant, decorator: Google::Apis::GamesV1::RoomParticipant::Representation
+      
+          property :room_id, as: 'roomId'
+          property :room_status_version, as: 'roomStatusVersion'
+          property :status, as: 'status'
+          property :variant, as: 'variant'
+        end
+      end
+      
+      class RoomAutoMatchStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :wait_estimate_seconds, as: 'waitEstimateSeconds'
+        end
+      end
+      
+      class RoomAutoMatchingCriteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclusive_bitmask, :numeric_string => true, as: 'exclusiveBitmask'
+          property :kind, as: 'kind'
+          property :max_auto_matching_players, as: 'maxAutoMatchingPlayers'
+          property :min_auto_matching_players, as: 'minAutoMatchingPlayers'
+        end
+      end
+      
+      class RoomClientAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :xmpp_address, as: 'xmppAddress'
+        end
+      end
+      
+      class CreateRoomRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::RoomAutoMatchingCriteria, decorator: Google::Apis::GamesV1::RoomAutoMatchingCriteria::Representation
+      
+          collection :capabilities, as: 'capabilities'
+          property :client_address, as: 'clientAddress', class: Google::Apis::GamesV1::RoomClientAddress, decorator: Google::Apis::GamesV1::RoomClientAddress::Representation
+      
+          collection :invited_player_ids, as: 'invitedPlayerIds'
+          property :kind, as: 'kind'
+          property :network_diagnostics, as: 'networkDiagnostics', class: Google::Apis::GamesV1::NetworkDiagnostics, decorator: Google::Apis::GamesV1::NetworkDiagnostics::Representation
+      
+          property :request_id, :numeric_string => true, as: 'requestId'
+          property :variant, as: 'variant'
+        end
+      end
+      
+      class JoinRoomRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :capabilities, as: 'capabilities'
+          property :client_address, as: 'clientAddress', class: Google::Apis::GamesV1::RoomClientAddress, decorator: Google::Apis::GamesV1::RoomClientAddress::Representation
+      
+          property :kind, as: 'kind'
+          property :network_diagnostics, as: 'networkDiagnostics', class: Google::Apis::GamesV1::NetworkDiagnostics, decorator: Google::Apis::GamesV1::NetworkDiagnostics::Representation
+      
+        end
+      end
+      
+      class RoomLeaveDiagnostics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_network_subtype, as: 'androidNetworkSubtype'
+          property :android_network_type, as: 'androidNetworkType'
+          property :ios_network_type, as: 'iosNetworkType'
+          property :kind, as: 'kind'
+          property :network_operator_code, as: 'networkOperatorCode'
+          property :network_operator_name, as: 'networkOperatorName'
+          collection :peer_session, as: 'peerSession', class: Google::Apis::GamesV1::PeerSessionDiagnostics, decorator: Google::Apis::GamesV1::PeerSessionDiagnostics::Representation
+      
+          property :sockets_used, as: 'socketsUsed'
+        end
+      end
+      
+      class LeaveRoomRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :leave_diagnostics, as: 'leaveDiagnostics', class: Google::Apis::GamesV1::RoomLeaveDiagnostics, decorator: Google::Apis::GamesV1::RoomLeaveDiagnostics::Representation
+      
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class RoomList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::Room, decorator: Google::Apis::GamesV1::Room::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class RoomModification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :modified_timestamp_millis, :numeric_string => true, as: 'modifiedTimestampMillis'
+          property :participant_id, as: 'participantId'
+        end
+      end
+      
+      class RoomP2PStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_setup_latency_millis, as: 'connectionSetupLatencyMillis'
+          property :error, as: 'error'
+          property :error_reason, as: 'error_reason'
+          property :kind, as: 'kind'
+          property :participant_id, as: 'participantId'
+          property :status, as: 'status'
+          property :unreliable_roundtrip_latency_millis, as: 'unreliableRoundtripLatencyMillis'
+        end
+      end
+      
+      class RoomP2PStatuses
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :updates, as: 'updates', class: Google::Apis::GamesV1::RoomP2PStatus, decorator: Google::Apis::GamesV1::RoomP2PStatus::Representation
+      
+        end
+      end
+      
+      class RoomParticipant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_matched, as: 'autoMatched'
+          property :auto_matched_player, as: 'autoMatchedPlayer', class: Google::Apis::GamesV1::AnonymousPlayer, decorator: Google::Apis::GamesV1::AnonymousPlayer::Representation
+      
+          collection :capabilities, as: 'capabilities'
+          property :client_address, as: 'clientAddress', class: Google::Apis::GamesV1::RoomClientAddress, decorator: Google::Apis::GamesV1::RoomClientAddress::Representation
+      
+          property :connected, as: 'connected'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :leave_reason, as: 'leaveReason'
+          property :player, as: 'player', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::Player::Representation
+      
+          property :status, as: 'status'
+        end
+      end
+      
+      class RoomStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_matching_status, as: 'autoMatchingStatus', class: Google::Apis::GamesV1::RoomAutoMatchStatus, decorator: Google::Apis::GamesV1::RoomAutoMatchStatus::Representation
+      
+          property :kind, as: 'kind'
+          collection :participants, as: 'participants', class: Google::Apis::GamesV1::RoomParticipant, decorator: Google::Apis::GamesV1::RoomParticipant::Representation
+      
+          property :room_id, as: 'roomId'
+          property :status, as: 'status'
+          property :status_version, as: 'statusVersion'
         end
       end
       
@@ -1048,20 +1548,155 @@ module Google
         end
       end
       
-      class StatsResponse
+      class TurnBasedAutoMatchingCriteria
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :avg_session_length_minutes, as: 'avg_session_length_minutes'
-          property :churn_probability, as: 'churn_probability'
-          property :days_since_last_played, as: 'days_since_last_played'
-          property :high_spender_probability, as: 'high_spender_probability'
+          property :exclusive_bitmask, :numeric_string => true, as: 'exclusiveBitmask'
           property :kind, as: 'kind'
-          property :num_purchases, as: 'num_purchases'
-          property :num_sessions, as: 'num_sessions'
-          property :num_sessions_percentile, as: 'num_sessions_percentile'
-          property :spend_percentile, as: 'spend_percentile'
-          property :spend_probability, as: 'spend_probability'
-          property :total_spend_next_28_days, as: 'total_spend_next_28_days'
+          property :max_auto_matching_players, as: 'maxAutoMatchingPlayers'
+          property :min_auto_matching_players, as: 'minAutoMatchingPlayers'
+        end
+      end
+      
+      class TurnBasedMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_id, as: 'applicationId'
+          property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria, decorator: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria::Representation
+      
+          property :creation_details, as: 'creationDetails', class: Google::Apis::GamesV1::TurnBasedMatchModification, decorator: Google::Apis::GamesV1::TurnBasedMatchModification::Representation
+      
+          property :data, as: 'data', class: Google::Apis::GamesV1::TurnBasedMatchData, decorator: Google::Apis::GamesV1::TurnBasedMatchData::Representation
+      
+          property :description, as: 'description'
+          property :inviter_id, as: 'inviterId'
+          property :kind, as: 'kind'
+          property :last_update_details, as: 'lastUpdateDetails', class: Google::Apis::GamesV1::TurnBasedMatchModification, decorator: Google::Apis::GamesV1::TurnBasedMatchModification::Representation
+      
+          property :match_id, as: 'matchId'
+          property :match_number, as: 'matchNumber'
+          property :match_version, as: 'matchVersion'
+          collection :participants, as: 'participants', class: Google::Apis::GamesV1::TurnBasedMatchParticipant, decorator: Google::Apis::GamesV1::TurnBasedMatchParticipant::Representation
+      
+          property :pending_participant_id, as: 'pendingParticipantId'
+          property :previous_match_data, as: 'previousMatchData', class: Google::Apis::GamesV1::TurnBasedMatchData, decorator: Google::Apis::GamesV1::TurnBasedMatchData::Representation
+      
+          property :rematch_id, as: 'rematchId'
+          collection :results, as: 'results', class: Google::Apis::GamesV1::ParticipantResult, decorator: Google::Apis::GamesV1::ParticipantResult::Representation
+      
+          property :status, as: 'status'
+          property :user_match_status, as: 'userMatchStatus'
+          property :variant, as: 'variant'
+          property :with_participant_id, as: 'withParticipantId'
+        end
+      end
+      
+      class CreateTurnBasedMatchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria, decorator: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria::Representation
+      
+          collection :invited_player_ids, as: 'invitedPlayerIds'
+          property :kind, as: 'kind'
+          property :request_id, :numeric_string => true, as: 'requestId'
+          property :variant, as: 'variant'
+        end
+      end
+      
+      class TurnBasedMatchData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :data_available, as: 'dataAvailable'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class TurnBasedMatchDataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class TurnBasedMatchList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatch::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class TurnBasedMatchModification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :modified_timestamp_millis, :numeric_string => true, as: 'modifiedTimestampMillis'
+          property :participant_id, as: 'participantId'
+        end
+      end
+      
+      class TurnBasedMatchParticipant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_matched, as: 'autoMatched'
+          property :auto_matched_player, as: 'autoMatchedPlayer', class: Google::Apis::GamesV1::AnonymousPlayer, decorator: Google::Apis::GamesV1::AnonymousPlayer::Representation
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :player, as: 'player', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::Player::Representation
+      
+          property :status, as: 'status'
+        end
+      end
+      
+      class TurnBasedMatchRematch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :previous_match, as: 'previousMatch', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatch::Representation
+      
+          property :rematch, as: 'rematch', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatch::Representation
+      
+        end
+      end
+      
+      class TurnBasedMatchResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data', class: Google::Apis::GamesV1::TurnBasedMatchDataRequest, decorator: Google::Apis::GamesV1::TurnBasedMatchDataRequest::Representation
+      
+          property :kind, as: 'kind'
+          property :match_version, as: 'matchVersion'
+          collection :results, as: 'results', class: Google::Apis::GamesV1::ParticipantResult, decorator: Google::Apis::GamesV1::ParticipantResult::Representation
+      
+        end
+      end
+      
+      class TurnBasedMatchSync
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatch::Representation
+      
+          property :kind, as: 'kind'
+          property :more_available, as: 'moreAvailable'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class TurnBasedMatchTurn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data', class: Google::Apis::GamesV1::TurnBasedMatchDataRequest, decorator: Google::Apis::GamesV1::TurnBasedMatchDataRequest::Representation
+      
+          property :kind, as: 'kind'
+          property :match_version, as: 'matchVersion'
+          property :pending_participant_id, as: 'pendingParticipantId'
+          collection :results, as: 'results', class: Google::Apis::GamesV1::ParticipantResult, decorator: Google::Apis::GamesV1::ParticipantResult::Representation
+      
         end
       end
     end
