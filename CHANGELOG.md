@@ -1,3 +1,44 @@
+# 0.41.2
+* Backwards compatible changes:
+  * Added `gameservices_v1`
+  * Added `gmailpostmastertools_v1beta1`
+  * Updated `androiddeviceprovisioning_v1`
+  * Updated `androidpublisher_v3`
+  * Updated `artifactregistry_v1beta1`
+  * Updated `bigquery_v2`
+  * Updated `bigtableadmin_v2`
+  * Updated `billingbudgets_v1beta1`
+  * Updated `cloudbuild_v1`
+  * Updated `cloudbuild_v1alpha1`
+  * Updated `cloudbuild_v1alpha2`
+  * Updated `cloudidentity_v1beta1`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `dataflow_v1b3`
+  * Updated `dataproc_v1`
+  * Updated `dataproc_v1beta2`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `displayvideo_v1`
+  * Updated `dns_v1beta2`
+  * Updated `doubleclicksearch_v2`
+  * Updated `drive_v2`
+  * Updated `drive_v3`
+  * Updated `games_v1`
+  * Updated `managedidentities_v1`
+  * Updated `managedidentities_v1alpha1`
+  * Updated `managedidentities_v1beta1`
+  * Updated `ml_v1`
+  * Updated `prod_tt_sasportal_v1alpha1`
+  * Updated `run_v1`
+  * Updated `run_v1alpha1`
+  * Updated `run_v1beta1`
+  * Updated `sasportal_v1alpha1`
+  * Updated `spanner_v1`
+
 # 0.41.1
 * Backwards compatible changes:
   * Added `playablelocations_v3`
