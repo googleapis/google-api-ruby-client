@@ -22,6 +22,62 @@ module Google
   module Apis
     module YoutubeV3
       
+      # 
+      class AbuseReport
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `abuseTypes`
+        # @return [Array<Google::Apis::YoutubeV3::AbuseType>]
+        attr_accessor :abuse_types
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # 
+        # Corresponds to the JSON property `relatedEntities`
+        # @return [Array<Google::Apis::YoutubeV3::RelatedEntity>]
+        attr_accessor :related_entities
+      
+        # 
+        # Corresponds to the JSON property `subject`
+        # @return [Google::Apis::YoutubeV3::Entity]
+        attr_accessor :subject
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abuse_types = args[:abuse_types] if args.key?(:abuse_types)
+          @description = args[:description] if args.key?(:description)
+          @related_entities = args[:related_entities] if args.key?(:related_entities)
+          @subject = args[:subject] if args.key?(:subject)
+        end
+      end
+      
+      # 
+      class AbuseType
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
       # Rights management policy for YouTube resources.
       class AccessPolicy
         include Google::Apis::Core::Hashable
@@ -1101,6 +1157,33 @@ module Google
         end
       end
       
+      # 
+      class ChannelCard
+        include Google::Apis::Core::Hashable
+      
+        # External channel ID.
+        # Required.
+        # Corresponds to the JSON property `channelId`
+        # @return [String]
+        attr_accessor :channel_id
+      
+        # Each card can have a custom message.
+        # Required.
+        # Corresponds to the JSON property `customMessage`
+        # @return [String]
+        attr_accessor :custom_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @custom_message = args[:custom_message] if args.key?(:custom_message)
+        end
+      end
+      
       # Details about the content of a channel.
       class ChannelContentDetails
         include Google::Apis::Core::Hashable
@@ -1891,6 +1974,32 @@ module Google
           @made_for_kids = args[:made_for_kids] if args.key?(:made_for_kids)
           @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
           @self_declared_made_for_kids = args[:self_declared_made_for_kids] if args.key?(:self_declared_made_for_kids)
+        end
+      end
+      
+      # Information specific to a store on a merchandising platform linked to a
+      # YouTube channel.
+      class ChannelToStoreLinkDetails
+        include Google::Apis::Core::Hashable
+      
+        # Name of the store.
+        # Corresponds to the JSON property `storeName`
+        # @return [String]
+        attr_accessor :store_name
+      
+        # Landing page of the store.
+        # Corresponds to the JSON property `storeUrl`
+        # @return [String]
+        attr_accessor :store_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @store_name = args[:store_name] if args.key?(:store_name)
+          @store_url = args[:store_url] if args.key?(:store_url)
         end
       end
       
@@ -2842,6 +2951,37 @@ module Google
         end
       end
       
+      # 
+      class Entity
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # 
+        # Corresponds to the JSON property `typeId`
+        # @return [String]
+        attr_accessor :type_id
+      
+        # 
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @type_id = args[:type_id] if args.key?(:type_id)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # Geographical coordinates of a point, in WGS84.
       class GeoPoint
         include Google::Apis::Core::Hashable
@@ -3392,6 +3532,166 @@ module Google
         end
       end
       
+      # 
+      class InfoCard
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # UUID for this infocard.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The snippet object contains basic details about the infocard.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::InfoCardSnippet]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
+        end
+      end
+      
+      # 
+      class InfoCardSnippet
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `channelInfocard`
+        # @return [Google::Apis::YoutubeV3::ChannelCard]
+        attr_accessor :channel_infocard
+      
+        # 
+        # Corresponds to the JSON property `linkInfocard`
+        # @return [Google::Apis::YoutubeV3::LinkCard]
+        attr_accessor :link_infocard
+      
+        # 
+        # Corresponds to the JSON property `playlistInfocard`
+        # @return [Google::Apis::YoutubeV3::PlaylistCard]
+        attr_accessor :playlist_infocard
+      
+        # Each card can have a teaser.
+        # Required.
+        # Corresponds to the JSON property `teaser`
+        # @return [Google::Apis::YoutubeV3::InfoCardSnippetTeaser]
+        attr_accessor :teaser
+      
+        # 
+        # Corresponds to the JSON property `videoInfocard`
+        # @return [Google::Apis::YoutubeV3::VideoCard]
+        attr_accessor :video_infocard
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_infocard = args[:channel_infocard] if args.key?(:channel_infocard)
+          @link_infocard = args[:link_infocard] if args.key?(:link_infocard)
+          @playlist_infocard = args[:playlist_infocard] if args.key?(:playlist_infocard)
+          @teaser = args[:teaser] if args.key?(:teaser)
+          @video_infocard = args[:video_infocard] if args.key?(:video_infocard)
+        end
+      end
+      
+      # 
+      class InfoCardSnippetTeaser
+        include Google::Apis::Core::Hashable
+      
+        # The offset from the video start at which the teaser should be displayed
+        # (activated), in milliseconds.
+        # Required.
+        # Corresponds to the JSON property `teaserStartOffset`
+        # @return [String]
+        attr_accessor :teaser_start_offset
+      
+        # The teaser text to show at the top of the player for the info-card.
+        # Required for channel and link type cards.
+        # Optional for video and playlist type cards.
+        # Corresponds to the JSON property `teaserText`
+        # @return [String]
+        attr_accessor :teaser_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @teaser_start_offset = args[:teaser_start_offset] if args.key?(:teaser_start_offset)
+          @teaser_text = args[:teaser_text] if args.key?(:teaser_text)
+        end
+      end
+      
+      # 
+      class InfoCards
+        include Google::Apis::Core::Hashable
+      
+        # A list of infocards.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::InfoCard>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+        end
+      end
+      
+      # 
+      class InfocardListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # A list of infocards.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::InfoCard>]
+        attr_accessor :items
+      
+        # Identifies what kind of resource this is.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
       # Describes information necessary for ingesting an RTMP or an HTTP stream.
       class IngestionInfo
         include Google::Apis::Core::Hashable
@@ -3636,6 +3936,77 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
+      # 
+      class LinkCard
+        include Google::Apis::Core::Hashable
+      
+        # Custom text to show as the website link.
+        # Required.
+        # Corresponds to the JSON property `customLinkText`
+        # @return [String]
+        attr_accessor :custom_link_text
+      
+        # URL to an externally hosted image.
+        # Corresponds to the JSON property `externalImageUrl`
+        # @return [String]
+        attr_accessor :external_image_url
+      
+        # The URL to which this card points.
+        # Required.
+        # Corresponds to the JSON property `targetUrl`
+        # @return [String]
+        attr_accessor :target_url
+      
+        # The title to show on the card.
+        # Required.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Previously uploaded image.
+        # Corresponds to the JSON property `uploadedImage`
+        # @return [Google::Apis::YoutubeV3::LinkCardUploadedImage]
+        attr_accessor :uploaded_image
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_link_text = args[:custom_link_text] if args.key?(:custom_link_text)
+          @external_image_url = args[:external_image_url] if args.key?(:external_image_url)
+          @target_url = args[:target_url] if args.key?(:target_url)
+          @title = args[:title] if args.key?(:title)
+          @uploaded_image = args[:uploaded_image] if args.key?(:uploaded_image)
+        end
+      end
+      
+      # 
+      class LinkCardUploadedImage
+        include Google::Apis::Core::Hashable
+      
+        # Image reference on the thumbnail service.
+        # Corresponds to the JSON property `imageFile`
+        # @return [String]
+        attr_accessor :image_file
+      
+        # The version in the thumbnail service.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_file = args[:image_file] if args.key?(:image_file)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -5730,6 +6101,40 @@ module Google
       end
       
       # 
+      class PlaylistCard
+        include Google::Apis::Core::Hashable
+      
+        # Each card can have a custom message.
+        # Optional.
+        # Corresponds to the JSON property `customMessage`
+        # @return [String]
+        attr_accessor :custom_message
+      
+        # External playlist ID.
+        # Required.
+        # Corresponds to the JSON property `playlistId`
+        # @return [String]
+        attr_accessor :playlist_id
+      
+        # Starting video, if not the first.
+        # Optional.
+        # Corresponds to the JSON property `startVideoId`
+        # @return [String]
+        attr_accessor :start_video_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_message = args[:custom_message] if args.key?(:custom_message)
+          @playlist_id = args[:playlist_id] if args.key?(:playlist_id)
+          @start_video_id = args[:start_video_id] if args.key?(:start_video_id)
+        end
+      end
+      
+      # 
       class PlaylistContentDetails
         include Google::Apis::Core::Hashable
       
@@ -6362,6 +6767,25 @@ module Google
         def update!(**args)
           @property = args[:property] if args.key?(:property)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class RelatedEntity
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `entity`
+        # @return [Google::Apis::YoutubeV3::Entity]
+        attr_accessor :entity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity = args[:entity] if args.key?(:entity)
         end
       end
       
@@ -7238,6 +7662,102 @@ module Google
         end
       end
       
+      # A <code><strong>third party account link</strong></code> resource represents
+      # a link between a YouTube account or a channel and an account on a
+      # third-party service.
+      class ThirdPartyLink
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifies what kind of resource this is. Value: the fixed string
+        # <code>"youtube#thirdPartyLink"</code>.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The <code>linking_token</code> identifies a YouTube account and
+        # channel with which the third party account is linked.
+        # Corresponds to the JSON property `linkingToken`
+        # @return [String]
+        attr_accessor :linking_token
+      
+        # Basic information about a third party account link, including its type and
+        # type-specific information.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::ThirdPartyLinkSnippet]
+        attr_accessor :snippet
+      
+        # The <code>third-party link status</code> object contains information about
+        # the status of the link.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::YoutubeV3::ThirdPartyLinkStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+          @linking_token = args[:linking_token] if args.key?(:linking_token)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Basic information about a third party account link, including its type and
+      # type-specific information.
+      class ThirdPartyLinkSnippet
+        include Google::Apis::Core::Hashable
+      
+        # Information specific to a store on a merchandising platform linked to a
+        # YouTube channel.
+        # Corresponds to the JSON property `channelToStoreLink`
+        # @return [Google::Apis::YoutubeV3::ChannelToStoreLinkDetails]
+        attr_accessor :channel_to_store_link
+      
+        # Type of the link named after the entities that are being linked.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_to_store_link = args[:channel_to_store_link] if args.key?(:channel_to_store_link)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The <code>third-party link status</code> object contains information about
+      # the status of the link.
+      class ThirdPartyLinkStatus
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `linkStatus`
+        # @return [String]
+        attr_accessor :link_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @link_status = args[:link_status] if args.key?(:link_status)
+        end
+      end
+      
       # A thumbnail is an image representing a YouTube resource.
       class Thumbnail
         include Google::Apis::Core::Hashable
@@ -7716,6 +8236,40 @@ module Google
           @alcohol_content = args[:alcohol_content] if args.key?(:alcohol_content)
           @restricted = args[:restricted] if args.key?(:restricted)
           @video_game_rating = args[:video_game_rating] if args.key?(:video_game_rating)
+        end
+      end
+      
+      # 
+      class VideoCard
+        include Google::Apis::Core::Hashable
+      
+        # Each card can have a custom message.
+        # Optional.
+        # Corresponds to the JSON property `customMessage`
+        # @return [String]
+        attr_accessor :custom_message
+      
+        # Playback start time offset in milliseconds.
+        # Optional.
+        # Corresponds to the JSON property `playbackStartOffset`
+        # @return [String]
+        attr_accessor :playback_start_offset
+      
+        # Encrypted Video ID.
+        # Required.
+        # Corresponds to the JSON property `videoId`
+        # @return [String]
+        attr_accessor :video_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_message = args[:custom_message] if args.key?(:custom_message)
+          @playback_start_offset = args[:playback_start_offset] if args.key?(:playback_start_offset)
+          @video_id = args[:video_id] if args.key?(:video_id)
         end
       end
       

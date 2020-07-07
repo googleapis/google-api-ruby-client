@@ -48,6 +48,41 @@ module Google
           @batch_path = 'batch/youtube'
         end
         
+        # Inserts a new resource into this collection.
+        # @param [Array<String>, String] part
+        #   The <code><strong>part</strong></code> parameter serves two purposes in
+        #   this operation. It identifies the properties that the write operation will
+        #   set as well as the properties that the API response will include.
+        # @param [Google::Apis::YoutubeV3::AbuseReport] abuse_report_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::AbuseReport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::AbuseReport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_abuse_report(part, abuse_report_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'youtube/v3/abuseReports', options)
+          command.request_representation = Google::Apis::YoutubeV3::AbuseReport::Representation
+          command.request_object = abuse_report_object
+          command.response_representation = Google::Apis::YoutubeV3::AbuseReport::Representation
+          command.response_class = Google::Apis::YoutubeV3::AbuseReport
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
         #   The <code><strong>part</strong></code> parameter specifies a
@@ -3414,6 +3449,153 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes a resource.
+        # @param [String] linking_token
+        #   Delete the partner links with the given linking token.
+        # @param [String] type
+        #   Type of the link to be deleted.
+        # @param [Array<String>, String] part
+        #   Do not use. Required for compatibility.
+        # @param [String] resource_id
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_third_party_link(linking_token, type, part: nil, resource_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'youtube/v3/thirdPartyLinks', options)
+          command.query['linkingToken'] = linking_token unless linking_token.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['resourceId'] = resource_id unless resource_id.nil?
+          command.query['type'] = type unless type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a new resource into this collection.
+        # @param [Array<String>, String] part
+        #   The <code><strong>part</strong></code> parameter specifies the
+        #   <code>thirdPartyLink</code> resource parts that the API request and
+        #   response will include. Supported values are <code>linkingToken</code>,
+        #   <code>status</code>, and <code>snippet</code>.
+        # @param [Google::Apis::YoutubeV3::ThirdPartyLink] third_party_link_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::ThirdPartyLink] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::ThirdPartyLink]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_third_party_link(part, third_party_link_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'youtube/v3/thirdPartyLinks', options)
+          command.request_representation = Google::Apis::YoutubeV3::ThirdPartyLink::Representation
+          command.request_object = third_party_link_object
+          command.response_representation = Google::Apis::YoutubeV3::ThirdPartyLink::Representation
+          command.response_class = Google::Apis::YoutubeV3::ThirdPartyLink
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of resources, possibly filtered.
+        # @param [Array<String>, String] part
+        #   The <code><strong>part</strong></code> parameter specifies the
+        #   <code>thirdPartyLink</code> resource parts that the API response will
+        #   include. Supported values are <code>linkingToken</code>,
+        #   <code>status</code>, and <code>snippet</code>.
+        # @param [String] linking_token
+        #   Get a third party link with the given linking token.
+        # @param [String] type
+        #   Get a third party link of the given type.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::ThirdPartyLink] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::ThirdPartyLink]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_third_party_links(part, linking_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'youtube/v3/thirdPartyLinks', options)
+          command.response_representation = Google::Apis::YoutubeV3::ThirdPartyLink::Representation
+          command.response_class = Google::Apis::YoutubeV3::ThirdPartyLink
+          command.query['linkingToken'] = linking_token unless linking_token.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['type'] = type unless type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing resource.
+        # @param [Array<String>, String] part
+        #   The <code><strong>part</strong></code> parameter specifies the
+        #   <code>thirdPartyLink</code> resource parts that the API request and
+        #   response will include. Supported values are <code>linkingToken</code>,
+        #   <code>status</code>, and <code>snippet</code>.
+        # @param [Google::Apis::YoutubeV3::ThirdPartyLink] third_party_link_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::ThirdPartyLink] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::ThirdPartyLink]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_third_party_link(part, third_party_link_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'youtube/v3/thirdPartyLinks', options)
+          command.request_representation = Google::Apis::YoutubeV3::ThirdPartyLink::Representation
+          command.request_object = third_party_link_object
+          command.response_representation = Google::Apis::YoutubeV3::ThirdPartyLink::Representation
+          command.response_class = Google::Apis::YoutubeV3::ThirdPartyLink
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # As this is not an insert in a strict sense (it supports uploading/setting
         # of a thumbnail for multiple videos, which doesn't result in creation of a
         # single resource), I use a custom verb here.
@@ -4054,6 +4236,85 @@ module Google
           command = make_simple_command(:post, 'youtube/v3/watermarks/unset', options)
           command.query['channelId'] = channel_id unless channel_id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates infocards for a given video.
+        # Note:
+        # * If the card id is not provided, a new card will be created.
+        # * If the card id is provided, that card will be updated.
+        # * Existing cards will be discarded if they're not included in the request.
+        # @param [Array<String>, String] part
+        #   The properties to update.
+        # @param [Google::Apis::YoutubeV3::InfoCards] info_cards_object
+        # @param [String] on_behalf_of_content_owner
+        #   Content owner of the video.
+        # @param [String] video_id
+        #   Encrypted id of the video.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::InfoCards] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::InfoCards]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def infocards_youtube_v3(part, info_cards_object = nil, on_behalf_of_content_owner: nil, video_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'youtube/v3/infocards', options)
+          command.request_representation = Google::Apis::YoutubeV3::InfoCards::Representation
+          command.request_object = info_cards_object
+          command.response_representation = Google::Apis::YoutubeV3::InfoCards::Representation
+          command.response_class = Google::Apis::YoutubeV3::InfoCards
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['videoId'] = video_id unless video_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves all infocards for a given video.
+        # @param [Array<String>, String] part
+        #   The properties to return.
+        # @param [String] on_behalf_of_content_owner
+        #   Content owner of the video.
+        # @param [String] video_id
+        #   Encrypted id of the video.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::InfocardListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::InfocardListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_youtube_v3_infocards(part, on_behalf_of_content_owner: nil, video_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'youtube/v3/infocards', options)
+          command.response_representation = Google::Apis::YoutubeV3::InfocardListResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::InfocardListResponse
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['videoId'] = video_id unless video_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

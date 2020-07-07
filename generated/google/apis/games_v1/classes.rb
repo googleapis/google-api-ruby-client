@@ -22,14 +22,11 @@ module Google
   module Apis
     module GamesV1
       
-      # This is a JSON template for an achievement definition object.
+      # An achievement definition object.
       class AchievementDefinition
         include Google::Apis::Core::Hashable
       
         # The type of the achievement.
-        # Possible values are:
-        # - "STANDARD" - Achievement is either locked or unlocked.
-        # - "INCREMENTAL" - Achievement is incremental.
         # Corresponds to the JSON property `achievementType`
         # @return [String]
         attr_accessor :achievement_type
@@ -55,30 +52,26 @@ module Google
         attr_accessor :id
       
         # The initial state of the achievement.
-        # Possible values are:
-        # - "HIDDEN" - Achievement is hidden.
-        # - "REVEALED" - Achievement is revealed.
-        # - "UNLOCKED" - Achievement is unlocked.
         # Corresponds to the JSON property `initialState`
         # @return [String]
         attr_accessor :initial_state
       
-        # Indicates whether the revealed icon image being returned is a default image,
-        # or is provided by the game.
+        # Indicates whether the revealed icon image being returned is a default
+        # image, or is provided by the game.
         # Corresponds to the JSON property `isRevealedIconUrlDefault`
         # @return [Boolean]
         attr_accessor :is_revealed_icon_url_default
         alias_method :is_revealed_icon_url_default?, :is_revealed_icon_url_default
       
-        # Indicates whether the unlocked icon image being returned is a default image,
-        # or is game-provided.
+        # Indicates whether the unlocked icon image being returned is a default
+        # image, or is game-provided.
         # Corresponds to the JSON property `isUnlockedIconUrlDefault`
         # @return [Boolean]
         attr_accessor :is_unlocked_icon_url_default
         alias_method :is_unlocked_icon_url_default?, :is_unlocked_icon_url_default
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#achievementDefinition.
+        # string `games#achievementDefinition`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -125,7 +118,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a list of achievement definition objects.
+      # A list of achievement definition objects.
       class ListAchievementDefinitionsResponse
         include Google::Apis::Core::Hashable
       
@@ -135,7 +128,7 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#achievementDefinitionsListResponse.
+        # string `games#achievementDefinitionsListResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -157,7 +150,7 @@ module Google
         end
       end
       
-      # This is a JSON template for an achievement increment response
+      # An achievement increment response
       class AchievementIncrementResponse
         include Google::Apis::Core::Hashable
       
@@ -167,76 +160,12 @@ module Google
         attr_accessor :current_steps
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#achievementIncrementResponse.
+        # string `games#achievementIncrementResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Whether the current steps for the achievement has reached the number of steps
-        # required to unlock.
-        # Corresponds to the JSON property `newlyUnlocked`
-        # @return [Boolean]
-        attr_accessor :newly_unlocked
-        alias_method :newly_unlocked?, :newly_unlocked
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @current_steps = args[:current_steps] if args.key?(:current_steps)
-          @kind = args[:kind] if args.key?(:kind)
-          @newly_unlocked = args[:newly_unlocked] if args.key?(:newly_unlocked)
-        end
-      end
-      
-      # This is a JSON template for an achievement reveal response
-      class AchievementRevealResponse
-        include Google::Apis::Core::Hashable
-      
-        # The current state of the achievement for which a reveal was attempted. This
-        # might be UNLOCKED if the achievement was already unlocked.
-        # Possible values are:
-        # - "REVEALED" - Achievement is revealed.
-        # - "UNLOCKED" - Achievement is unlocked.
-        # Corresponds to the JSON property `currentState`
-        # @return [String]
-        attr_accessor :current_state
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#achievementRevealResponse.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @current_state = args[:current_state] if args.key?(:current_state)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # This is a JSON template for an achievement set steps at least response.
-      class AchievementSetStepsAtLeastResponse
-        include Google::Apis::Core::Hashable
-      
-        # The current steps recorded for this incremental achievement.
-        # Corresponds to the JSON property `currentSteps`
-        # @return [Fixnum]
-        attr_accessor :current_steps
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#achievementSetStepsAtLeastResponse.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Whether the the current steps for the achievement has reached the number of
+        # Whether the current steps for the achievement has reached the number of
         # steps required to unlock.
         # Corresponds to the JSON property `newlyUnlocked`
         # @return [Boolean]
@@ -255,12 +184,73 @@ module Google
         end
       end
       
-      # This is a JSON template for an achievement unlock response
+      # An achievement reveal response
+      class AchievementRevealResponse
+        include Google::Apis::Core::Hashable
+      
+        # The current state of the achievement for which a reveal was attempted. This
+        # might be `UNLOCKED` if the achievement was already unlocked.
+        # Corresponds to the JSON property `currentState`
+        # @return [String]
+        attr_accessor :current_state
+      
+        # Uniquely identifies the type of this resource. Value is always the fixed
+        # string `games#achievementRevealResponse`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_state = args[:current_state] if args.key?(:current_state)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # An achievement set steps at least response.
+      class AchievementSetStepsAtLeastResponse
+        include Google::Apis::Core::Hashable
+      
+        # The current steps recorded for this incremental achievement.
+        # Corresponds to the JSON property `currentSteps`
+        # @return [Fixnum]
+        attr_accessor :current_steps
+      
+        # Uniquely identifies the type of this resource. Value is always the fixed
+        # string `games#achievementSetStepsAtLeastResponse`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Whether the current steps for the achievement has reached the number of
+        # steps required to unlock.
+        # Corresponds to the JSON property `newlyUnlocked`
+        # @return [Boolean]
+        attr_accessor :newly_unlocked
+        alias_method :newly_unlocked?, :newly_unlocked
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_steps = args[:current_steps] if args.key?(:current_steps)
+          @kind = args[:kind] if args.key?(:kind)
+          @newly_unlocked = args[:newly_unlocked] if args.key?(:newly_unlocked)
+        end
+      end
+      
+      # An achievement unlock response
       class AchievementUnlockResponse
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#achievementUnlockResponse.
+        # string `games#achievementUnlockResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -283,12 +273,12 @@ module Google
         end
       end
       
-      # This is a JSON template for a list of achievement update requests.
+      # A list of achievement update requests.
       class AchievementUpdateMultipleRequest
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#achievementUpdateMultipleRequest.
+        # string `games#achievementUpdateMultipleRequest`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -309,12 +299,12 @@ module Google
         end
       end
       
-      # This is a JSON template for an achievement unlock response.
+      # 
       class AchievementUpdateMultipleResponse
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#achievementUpdateMultipleResponse.
+        # string `games#achievementUpdateMultipleResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -335,7 +325,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a request to update an achievement.
+      # A request to update an achievement.
       class UpdateAchievementRequest
         include Google::Apis::Core::Hashable
       
@@ -344,29 +334,25 @@ module Google
         # @return [String]
         attr_accessor :achievement_id
       
-        # This is a JSON template for the payload to request to increment an achievement.
+        # The payload to request to increment an
+        # achievement.
         # Corresponds to the JSON property `incrementPayload`
         # @return [Google::Apis::GamesV1::GamesAchievementIncrement]
         attr_accessor :increment_payload
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#achievementUpdateRequest.
+        # string `games#achievementUpdateRequest`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # This is a JSON template for the payload to request to increment an achievement.
+        # The payload to request to increment an
+        # achievement.
         # Corresponds to the JSON property `setStepsAtLeastPayload`
         # @return [Google::Apis::GamesV1::GamesAchievementSetStepsAtLeast]
         attr_accessor :set_steps_at_least_payload
       
         # The type of update being applied.
-        # Possible values are:
-        # - "REVEAL" - Achievement is revealed.
-        # - "UNLOCK" - Achievement is unlocked.
-        # - "INCREMENT" - Achievement is incremented.
-        # - "SET_STEPS_AT_LEAST" - Achievement progress is set to at least the passed
-        # value.
         # Corresponds to the JSON property `updateType`
         # @return [String]
         attr_accessor :update_type
@@ -385,7 +371,7 @@ module Google
         end
       end
       
-      # This is a JSON template for an achievement update response.
+      # An updated achievement.
       class UpdateAchievementResponse
         include Google::Apis::Core::Hashable
       
@@ -395,10 +381,6 @@ module Google
         attr_accessor :achievement_id
       
         # The current state of the achievement.
-        # Possible values are:
-        # - "HIDDEN" - Achievement is hidden.
-        # - "REVEALED" - Achievement is revealed.
-        # - "UNLOCKED" - Achievement is unlocked.
         # Corresponds to the JSON property `currentState`
         # @return [String]
         attr_accessor :current_state
@@ -409,7 +391,7 @@ module Google
         attr_accessor :current_steps
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#achievementUpdateResponse.
+        # string `games#achievementUpdateResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -442,83 +424,7 @@ module Google
         end
       end
       
-      # This is a JSON template for aggregate stats.
-      class AggregateStats
-        include Google::Apis::Core::Hashable
-      
-        # The number of messages sent between a pair of peers.
-        # Corresponds to the JSON property `count`
-        # @return [Fixnum]
-        attr_accessor :count
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#aggregateStats.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The maximum amount.
-        # Corresponds to the JSON property `max`
-        # @return [Fixnum]
-        attr_accessor :max
-      
-        # The minimum amount.
-        # Corresponds to the JSON property `min`
-        # @return [Fixnum]
-        attr_accessor :min
-      
-        # The total number of bytes sent for messages between a pair of peers.
-        # Corresponds to the JSON property `sum`
-        # @return [Fixnum]
-        attr_accessor :sum
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @count = args[:count] if args.key?(:count)
-          @kind = args[:kind] if args.key?(:kind)
-          @max = args[:max] if args.key?(:max)
-          @min = args[:min] if args.key?(:min)
-          @sum = args[:sum] if args.key?(:sum)
-        end
-      end
-      
-      # This is a JSON template for an anonymous player
-      class AnonymousPlayer
-        include Google::Apis::Core::Hashable
-      
-        # The base URL for the image to display for the anonymous player.
-        # Corresponds to the JSON property `avatarImageUrl`
-        # @return [String]
-        attr_accessor :avatar_image_url
-      
-        # The name to display for the anonymous player.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#anonymousPlayer.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @avatar_image_url = args[:avatar_image_url] if args.key?(:avatar_image_url)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # This is a JSON template for the Application resource.
+      # The Application resource.
       class Application
         include Google::Apis::Core::Hashable
       
@@ -537,7 +443,7 @@ module Google
         # @return [String]
         attr_accessor :author
       
-        # This is a JSON template for an application category object.
+        # An application category object.
         # Corresponds to the JSON property `category`
         # @return [Google::Apis::GamesV1::ApplicationCategory]
         attr_accessor :category
@@ -548,8 +454,6 @@ module Google
         attr_accessor :description
       
         # A list of features that have been enabled for the application.
-        # Possible values are:
-        # - "SNAPSHOTS" - Snapshots has been enabled
         # Corresponds to the JSON property `enabledFeatures`
         # @return [Array<String>]
         attr_accessor :enabled_features
@@ -565,7 +469,7 @@ module Google
         attr_accessor :instances
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#application.
+        # string `games#application`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -613,12 +517,12 @@ module Google
         end
       end
       
-      # This is a JSON template for an application category object.
+      # An application category object.
       class ApplicationCategory
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#applicationCategory.
+        # string `games#applicationCategory`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -645,8 +549,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a third party application verification response
-      # resource.
+      # A third party application verification response resource.
       class ApplicationVerifyResponse
         include Google::Apis::Core::Hashable
       
@@ -657,7 +560,7 @@ module Google
         attr_accessor :alternate_player_id
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#applicationVerifyResponse.
+        # string `games#applicationVerifyResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -679,7 +582,7 @@ module Google
         end
       end
       
-      # This is a JSON template for data related to individual game categories.
+      # Data related to individual game categories.
       class Category
         include Google::Apis::Core::Hashable
       
@@ -694,7 +597,7 @@ module Google
         attr_accessor :experience_points
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#category.
+        # string `games#category`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -711,7 +614,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a list of category data objects.
+      # A third party list metagame categories response.
       class ListCategoryResponse
         include Google::Apis::Core::Hashable
       
@@ -721,7 +624,7 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#categoryListResponse.
+        # string `games#categoryListResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -743,33 +646,22 @@ module Google
         end
       end
       
-      # This is a JSON template for a batch update failure resource.
+      # A batch update failure resource.
       class EventBatchRecordFailure
         include Google::Apis::Core::Hashable
       
         # The cause for the update failure.
-        # Possible values are:
-        # - "TOO_LARGE": A batch request was issued with more events than are allowed in
-        # a single batch.
-        # - "TIME_PERIOD_EXPIRED": A batch was sent with data too far in the past to
-        # record.
-        # - "TIME_PERIOD_SHORT": A batch was sent with a time range that was too short.
-        # - "TIME_PERIOD_LONG": A batch was sent with a time range that was too long.
-        # - "ALREADY_UPDATED": An attempt was made to record a batch of data which was
-        # already seen.
-        # - "RECORD_RATE_HIGH": An attempt was made to record data faster than the
-        # server will apply updates.
         # Corresponds to the JSON property `failureCause`
         # @return [String]
         attr_accessor :failure_cause
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#eventBatchRecordFailure.
+        # string `games#eventBatchRecordFailure`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # This is a JSON template for an event period time range.
+        # An event period time range.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::GamesV1::EventPeriodRange]
         attr_accessor :range
@@ -786,7 +678,7 @@ module Google
         end
       end
       
-      # This is a JSON template for an event child relationship resource.
+      # An event child relationship resource.
       class EventChild
         include Google::Apis::Core::Hashable
       
@@ -796,7 +688,7 @@ module Google
         attr_accessor :child_id
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#eventChild.
+        # string `games#eventChild`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -812,7 +704,7 @@ module Google
         end
       end
       
-      # This is a JSON template for an event definition resource.
+      # An event definition resource.
       class EventDefinition
         include Google::Apis::Core::Hashable
       
@@ -841,24 +733,20 @@ module Google
         # @return [String]
         attr_accessor :image_url
       
-        # Indicates whether the icon image being returned is a default image, or is game-
-        # provided.
+        # Indicates whether the icon image being returned is a default image, or is
+        # game-provided.
         # Corresponds to the JSON property `isDefaultImageUrl`
         # @return [Boolean]
         attr_accessor :is_default_image_url
         alias_method :is_default_image_url?, :is_default_image_url
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#eventDefinition.
+        # string `games#eventDefinition`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
         # The visibility of event being tracked in this definition.
-        # Possible values are:
-        # - "REVEALED": This event should be visible to all users.
-        # - "HIDDEN": This event should only be shown to users that have recorded this
-        # event at least once.
         # Corresponds to the JSON property `visibility`
         # @return [String]
         attr_accessor :visibility
@@ -880,7 +768,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a ListDefinitions response.
+      # A ListDefinitions response.
       class ListEventDefinitionResponse
         include Google::Apis::Core::Hashable
       
@@ -890,7 +778,7 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#eventDefinitionListResponse.
+        # string `games#eventDefinitionListResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -912,23 +800,24 @@ module Google
         end
       end
       
-      # This is a JSON template for an event period time range.
+      # An event period time range.
       class EventPeriodRange
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#eventPeriodRange.
+        # string `games#eventPeriodRange`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The time when this update period ends, in millis, since 1970 UTC (Unix Epoch).
+        # The time when this update period ends, in millis, since 1970 UTC (Unix
+        # Epoch).
         # Corresponds to the JSON property `periodEndMillis`
         # @return [Fixnum]
         attr_accessor :period_end_millis
       
-        # The time when this update period begins, in millis, since 1970 UTC (Unix Epoch)
-        # .
+        # The time when this update period begins, in millis, since 1970 UTC (Unix
+        # Epoch).
         # Corresponds to the JSON property `periodStartMillis`
         # @return [Fixnum]
         attr_accessor :period_start_millis
@@ -945,17 +834,17 @@ module Google
         end
       end
       
-      # This is a JSON template for an event period update resource.
+      # An event period update resource.
       class EventPeriodUpdate
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#eventPeriodUpdate.
+        # string `games#eventPeriodUpdate`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # This is a JSON template for an event period time range.
+        # An event period time range.
         # Corresponds to the JSON property `timePeriod`
         # @return [Google::Apis::GamesV1::EventPeriodRange]
         attr_accessor :time_period
@@ -977,7 +866,7 @@ module Google
         end
       end
       
-      # This is a JSON template for an event update failure resource.
+      # An event update failure resource.
       class EventRecordFailure
         include Google::Apis::Core::Hashable
       
@@ -987,16 +876,12 @@ module Google
         attr_accessor :event_id
       
         # The cause for the update failure.
-        # Possible values are:
-        # - "NOT_FOUND" - An attempt was made to set an event that was not defined.
-        # - "INVALID_UPDATE_VALUE" - An attempt was made to increment an event by a non-
-        # positive value.
         # Corresponds to the JSON property `failureCause`
         # @return [String]
         attr_accessor :failure_cause
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#eventRecordFailure.
+        # string `games#eventRecordFailure`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1013,18 +898,18 @@ module Google
         end
       end
       
-      # This is a JSON template for an event period update resource.
+      # An event period update resource.
       class EventRecordRequest
         include Google::Apis::Core::Hashable
       
-        # The current time when this update was sent, in milliseconds, since 1970 UTC (
-        # Unix Epoch).
+        # The current time when this update was sent, in milliseconds, since 1970 UTC
+        # (Unix Epoch).
         # Corresponds to the JSON property `currentTimeMillis`
         # @return [Fixnum]
         attr_accessor :current_time_millis
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#eventRecordRequest.
+        # string `games#eventRecordRequest`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1052,7 +937,7 @@ module Google
         end
       end
       
-      # This is a JSON template for an event period update resource.
+      # An event period update resource.
       class UpdateEventRequest
         include Google::Apis::Core::Hashable
       
@@ -1062,7 +947,7 @@ module Google
         attr_accessor :definition_id
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#eventUpdateRequest.
+        # string `games#eventUpdateRequest`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1084,7 +969,7 @@ module Google
         end
       end
       
-      # This is a JSON template for an event period update resource.
+      # An event period update resource.
       class UpdateEventResponse
         include Google::Apis::Core::Hashable
       
@@ -1099,7 +984,7 @@ module Google
         attr_accessor :event_failures
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#eventUpdateResponse.
+        # string `games#eventUpdateResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1122,12 +1007,13 @@ module Google
         end
       end
       
-      # This is a JSON template for the payload to request to increment an achievement.
+      # The payload to request to increment an
+      # achievement.
       class GamesAchievementIncrement
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#GamesAchievementIncrement.
+        # string `games#GamesAchievementIncrement`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1154,12 +1040,13 @@ module Google
         end
       end
       
-      # This is a JSON template for the payload to request to increment an achievement.
+      # The payload to request to increment an
+      # achievement.
       class GamesAchievementSetStepsAtLeast
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#GamesAchievementSetStepsAtLeast.
+        # string `games#GamesAchievementSetStepsAtLeast`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1180,7 +1067,7 @@ module Google
         end
       end
       
-      # This is a JSON template for an image asset object.
+      # An image asset object.
       class ImageAsset
         include Google::Apis::Core::Hashable
       
@@ -1190,7 +1077,7 @@ module Google
         attr_accessor :height
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#imageAsset.
+        # string `games#imageAsset`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1224,7 +1111,7 @@ module Google
         end
       end
       
-      # This is a JSON template for the Instance resource.
+      # The Instance resource.
       class Instance
         include Google::Apis::Core::Hashable
       
@@ -1233,18 +1120,18 @@ module Google
         # @return [String]
         attr_accessor :acquisition_uri
       
-        # This is a JSON template for the Android instance details resource.
+        # The Android instance details resource.
         # Corresponds to the JSON property `androidInstance`
         # @return [Google::Apis::GamesV1::InstanceAndroidDetails]
         attr_accessor :android_instance
       
-        # This is a JSON template for the iOS details resource.
+        # The iOS details resource.
         # Corresponds to the JSON property `iosInstance`
         # @return [Google::Apis::GamesV1::InstanceIosDetails]
         attr_accessor :ios_instance
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#instance.
+        # string `games#instance`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1255,10 +1142,6 @@ module Google
         attr_accessor :name
       
         # The platform type.
-        # Possible values are:
-        # - "ANDROID" - Instance is for Android.
-        # - "IOS" - Instance is for iOS
-        # - "WEB_APP" - Instance is for Web App.
         # Corresponds to the JSON property `platformType`
         # @return [String]
         attr_accessor :platform_type
@@ -1275,7 +1158,7 @@ module Google
         attr_accessor :turn_based_play
         alias_method :turn_based_play?, :turn_based_play
       
-        # This is a JSON template for the Web details resource.
+        # The Web details resource.
         # Corresponds to the JSON property `webInstance`
         # @return [Google::Apis::GamesV1::InstanceWebDetails]
         attr_accessor :web_instance
@@ -1298,7 +1181,7 @@ module Google
         end
       end
       
-      # This is a JSON template for the Android instance details resource.
+      # The Android instance details resource.
       class InstanceAndroidDetails
         include Google::Apis::Core::Hashable
       
@@ -1309,7 +1192,7 @@ module Google
         alias_method :enable_piracy_check?, :enable_piracy_check
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#instanceAndroidDetails.
+        # string `games#instanceAndroidDetails`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1338,7 +1221,7 @@ module Google
         end
       end
       
-      # This is a JSON template for the iOS details resource.
+      # The iOS details resource.
       class InstanceIosDetails
         include Google::Apis::Core::Hashable
       
@@ -1353,7 +1236,7 @@ module Google
         attr_accessor :itunes_app_id
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#instanceIosDetails.
+        # string `games#instanceIosDetails`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1400,12 +1283,12 @@ module Google
         end
       end
       
-      # This is a JSON template for the Web details resource.
+      # The Web details resource.
       class InstanceWebDetails
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#instanceWebDetails.
+        # string `games#instanceWebDetails`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1433,7 +1316,7 @@ module Google
         end
       end
       
-      # This is a JSON template for the Leaderboard resource.
+      # The Leaderboard resource.
       class Leaderboard
         include Google::Apis::Core::Hashable
       
@@ -1447,15 +1330,15 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Indicates whether the icon image being returned is a default image, or is game-
-        # provided.
+        # Indicates whether the icon image being returned is a default image, or is
+        # game-provided.
         # Corresponds to the JSON property `isIconUrlDefault`
         # @return [Boolean]
         attr_accessor :is_icon_url_default
         alias_method :is_icon_url_default?, :is_icon_url_default
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#leaderboard.
+        # string `games#leaderboard`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1466,11 +1349,6 @@ module Google
         attr_accessor :name
       
         # How scores are ordered.
-        # Possible values are:
-        # - "LARGER_IS_BETTER" - Larger values are better; scores are sorted in
-        # descending order.
-        # - "SMALLER_IS_BETTER" - Smaller values are better; scores are sorted in
-        # ascending order.
         # Corresponds to the JSON property `order`
         # @return [String]
         attr_accessor :order
@@ -1490,7 +1368,7 @@ module Google
         end
       end
       
-      # This is a JSON template for the Leaderboard Entry resource.
+      # The Leaderboard Entry resource.
       class LeaderboardEntry
         include Google::Apis::Core::Hashable
       
@@ -1505,12 +1383,12 @@ module Google
         attr_accessor :formatted_score_rank
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#leaderboardEntry.
+        # string `games#leaderboardEntry`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # This is a JSON template for a Player resource.
+        # A Player resource.
         # Corresponds to the JSON property `player`
         # @return [Google::Apis::GamesV1::Player]
         attr_accessor :player
@@ -1520,8 +1398,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :score_rank
       
-        # Additional information about the score. Values must contain no more than 64
-        # URI-safe characters as defined by section 2.3 of RFC 3986.
+        # Additional information about the score.  Values must contain no more than
+        # 64 URI-safe characters as defined by section 2.3 of RFC 3986.
         # Corresponds to the JSON property `scoreTag`
         # @return [String]
         attr_accessor :score_tag
@@ -1532,10 +1410,6 @@ module Google
         attr_accessor :score_value
       
         # The time span of this high score.
-        # Possible values are:
-        # - "ALL_TIME" - The score is an all-time high score.
-        # - "WEEKLY" - The score is a weekly high score.
-        # - "DAILY" - The score is a daily high score.
         # Corresponds to the JSON property `timeSpan`
         # @return [String]
         attr_accessor :time_span
@@ -1564,7 +1438,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a list of leaderboard objects.
+      # A list of leaderboard objects.
       class ListLeaderboardResponse
         include Google::Apis::Core::Hashable
       
@@ -1574,7 +1448,7 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#leaderboardListResponse.
+        # string `games#leaderboardListResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1596,7 +1470,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a score rank in a leaderboard.
+      # A score rank in a leaderboard.
       class LeaderboardScoreRank
         include Google::Apis::Core::Hashable
       
@@ -1611,7 +1485,7 @@ module Google
         attr_accessor :formatted_rank
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#leaderboardScoreRank.
+        # string `games#leaderboardScoreRank`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1640,7 +1514,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a ListScores response.
+      # A ListScores response.
       class LeaderboardScores
         include Google::Apis::Core::Hashable
       
@@ -1650,7 +1524,7 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#leaderboardScores.
+        # string `games#leaderboardScores`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1665,7 +1539,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_scores
       
-        # This is a JSON template for the Leaderboard Entry resource.
+        # The Leaderboard Entry resource.
         # Corresponds to the JSON property `playerScore`
         # @return [Google::Apis::GamesV1::LeaderboardEntry]
         attr_accessor :player_score
@@ -1690,18 +1564,18 @@ module Google
         end
       end
       
-      # This is a JSON template for the metagame config resource
+      # The metagame config resource
       class MetagameConfig
         include Google::Apis::Core::Hashable
       
-        # Current version of the metagame configuration data. When this data is updated,
-        # the version number will be increased by one.
+        # Current version of the metagame configuration data. When this data is
+        # updated, the version number will be increased by one.
         # Corresponds to the JSON property `currentVersion`
         # @return [Fixnum]
         attr_accessor :current_version
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#metagameConfig.
+        # string `games#metagameConfig`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1723,262 +1597,7 @@ module Google
         end
       end
       
-      # This is a JSON template for network diagnostics reported for a client.
-      class NetworkDiagnostics
-        include Google::Apis::Core::Hashable
-      
-        # The Android network subtype.
-        # Corresponds to the JSON property `androidNetworkSubtype`
-        # @return [Fixnum]
-        attr_accessor :android_network_subtype
-      
-        # The Android network type.
-        # Corresponds to the JSON property `androidNetworkType`
-        # @return [Fixnum]
-        attr_accessor :android_network_type
-      
-        # iOS network type as defined in Reachability.h.
-        # Corresponds to the JSON property `iosNetworkType`
-        # @return [Fixnum]
-        attr_accessor :ios_network_type
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#networkDiagnostics.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The MCC+MNC code for the client's network connection. On Android: http://
-        # developer.android.com/reference/android/telephony/TelephonyManager.html#
-        # getNetworkOperator() On iOS, see: https://developer.apple.com/library/ios/
-        # documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html
-        # Corresponds to the JSON property `networkOperatorCode`
-        # @return [String]
-        attr_accessor :network_operator_code
-      
-        # The name of the carrier of the client's network connection. On Android: http://
-        # developer.android.com/reference/android/telephony/TelephonyManager.html#
-        # getNetworkOperatorName() On iOS: https://developer.apple.com/library/ios/
-        # documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html#/
-        # /apple_ref/occ/instp/CTCarrier/carrierName
-        # Corresponds to the JSON property `networkOperatorName`
-        # @return [String]
-        attr_accessor :network_operator_name
-      
-        # The amount of time in milliseconds it took for the client to establish a
-        # connection with the XMPP server.
-        # Corresponds to the JSON property `registrationLatencyMillis`
-        # @return [Fixnum]
-        attr_accessor :registration_latency_millis
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @android_network_subtype = args[:android_network_subtype] if args.key?(:android_network_subtype)
-          @android_network_type = args[:android_network_type] if args.key?(:android_network_type)
-          @ios_network_type = args[:ios_network_type] if args.key?(:ios_network_type)
-          @kind = args[:kind] if args.key?(:kind)
-          @network_operator_code = args[:network_operator_code] if args.key?(:network_operator_code)
-          @network_operator_name = args[:network_operator_name] if args.key?(:network_operator_name)
-          @registration_latency_millis = args[:registration_latency_millis] if args.key?(:registration_latency_millis)
-        end
-      end
-      
-      # This is a JSON template for a result for a match participant.
-      class ParticipantResult
-        include Google::Apis::Core::Hashable
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#participantResult.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The ID of the participant.
-        # Corresponds to the JSON property `participantId`
-        # @return [String]
-        attr_accessor :participant_id
-      
-        # The placement or ranking of the participant in the match results; a number
-        # from one to the number of participants in the match. Multiple participants may
-        # have the same placing value in case of a type.
-        # Corresponds to the JSON property `placing`
-        # @return [Fixnum]
-        attr_accessor :placing
-      
-        # The result of the participant for this match.
-        # Possible values are:
-        # - "MATCH_RESULT_WIN" - The participant won the match.
-        # - "MATCH_RESULT_LOSS" - The participant lost the match.
-        # - "MATCH_RESULT_TIE" - The participant tied the match.
-        # - "MATCH_RESULT_NONE" - There was no winner for the match (nobody wins or
-        # loses this kind of game.)
-        # - "MATCH_RESULT_DISCONNECT" - The participant disconnected / left during the
-        # match.
-        # - "MATCH_RESULT_DISAGREED" - Different clients reported different results for
-        # this participant.
-        # Corresponds to the JSON property `result`
-        # @return [String]
-        attr_accessor :result
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @participant_id = args[:participant_id] if args.key?(:participant_id)
-          @placing = args[:placing] if args.key?(:placing)
-          @result = args[:result] if args.key?(:result)
-        end
-      end
-      
-      # This is a JSON template for peer channel diagnostics.
-      class PeerChannelDiagnostics
-        include Google::Apis::Core::Hashable
-      
-        # This is a JSON template for aggregate stats.
-        # Corresponds to the JSON property `bytesReceived`
-        # @return [Google::Apis::GamesV1::AggregateStats]
-        attr_accessor :bytes_received
-      
-        # This is a JSON template for aggregate stats.
-        # Corresponds to the JSON property `bytesSent`
-        # @return [Google::Apis::GamesV1::AggregateStats]
-        attr_accessor :bytes_sent
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#peerChannelDiagnostics.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Number of messages lost.
-        # Corresponds to the JSON property `numMessagesLost`
-        # @return [Fixnum]
-        attr_accessor :num_messages_lost
-      
-        # Number of messages received.
-        # Corresponds to the JSON property `numMessagesReceived`
-        # @return [Fixnum]
-        attr_accessor :num_messages_received
-      
-        # Number of messages sent.
-        # Corresponds to the JSON property `numMessagesSent`
-        # @return [Fixnum]
-        attr_accessor :num_messages_sent
-      
-        # Number of send failures.
-        # Corresponds to the JSON property `numSendFailures`
-        # @return [Fixnum]
-        attr_accessor :num_send_failures
-      
-        # This is a JSON template for aggregate stats.
-        # Corresponds to the JSON property `roundtripLatencyMillis`
-        # @return [Google::Apis::GamesV1::AggregateStats]
-        attr_accessor :roundtrip_latency_millis
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bytes_received = args[:bytes_received] if args.key?(:bytes_received)
-          @bytes_sent = args[:bytes_sent] if args.key?(:bytes_sent)
-          @kind = args[:kind] if args.key?(:kind)
-          @num_messages_lost = args[:num_messages_lost] if args.key?(:num_messages_lost)
-          @num_messages_received = args[:num_messages_received] if args.key?(:num_messages_received)
-          @num_messages_sent = args[:num_messages_sent] if args.key?(:num_messages_sent)
-          @num_send_failures = args[:num_send_failures] if args.key?(:num_send_failures)
-          @roundtrip_latency_millis = args[:roundtrip_latency_millis] if args.key?(:roundtrip_latency_millis)
-        end
-      end
-      
-      # This is a JSON template for peer session diagnostics.
-      class PeerSessionDiagnostics
-        include Google::Apis::Core::Hashable
-      
-        # Connected time in milliseconds.
-        # Corresponds to the JSON property `connectedTimestampMillis`
-        # @return [Fixnum]
-        attr_accessor :connected_timestamp_millis
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#peerSessionDiagnostics.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The participant ID of the peer.
-        # Corresponds to the JSON property `participantId`
-        # @return [String]
-        attr_accessor :participant_id
-      
-        # This is a JSON template for peer channel diagnostics.
-        # Corresponds to the JSON property `reliableChannel`
-        # @return [Google::Apis::GamesV1::PeerChannelDiagnostics]
-        attr_accessor :reliable_channel
-      
-        # This is a JSON template for peer channel diagnostics.
-        # Corresponds to the JSON property `unreliableChannel`
-        # @return [Google::Apis::GamesV1::PeerChannelDiagnostics]
-        attr_accessor :unreliable_channel
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @connected_timestamp_millis = args[:connected_timestamp_millis] if args.key?(:connected_timestamp_millis)
-          @kind = args[:kind] if args.key?(:kind)
-          @participant_id = args[:participant_id] if args.key?(:participant_id)
-          @reliable_channel = args[:reliable_channel] if args.key?(:reliable_channel)
-          @unreliable_channel = args[:unreliable_channel] if args.key?(:unreliable_channel)
-        end
-      end
-      
-      # This is a JSON template for metadata about a player playing a game with the
-      # currently authenticated user.
-      class Played
-        include Google::Apis::Core::Hashable
-      
-        # True if the player was auto-matched with the currently authenticated user.
-        # Corresponds to the JSON property `autoMatched`
-        # @return [Boolean]
-        attr_accessor :auto_matched
-        alias_method :auto_matched?, :auto_matched
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#played.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The last time the player played the game in milliseconds since the epoch in
-        # UTC.
-        # Corresponds to the JSON property `timeMillis`
-        # @return [Fixnum]
-        attr_accessor :time_millis
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @auto_matched = args[:auto_matched] if args.key?(:auto_matched)
-          @kind = args[:kind] if args.key?(:kind)
-          @time_millis = args[:time_millis] if args.key?(:time_millis)
-        end
-      end
-      
-      # This is a JSON template for a Player resource.
+      # A Player resource.
       class Player
         include Google::Apis::Core::Hashable
       
@@ -2002,7 +1621,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # This is a JSON template for 1P/3P metadata about the player's experience.
+        # 1P/3P metadata about the player's experience.
         # Corresponds to the JSON property `experienceInfo`
         # @return [Google::Apis::GamesV1::PlayerExperienceInfo]
         attr_accessor :experience_info
@@ -2014,27 +1633,20 @@ module Google
         attr_accessor :friend_status
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#player.
+        # string `games#player`
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # This is a JSON template for metadata about a player playing a game with the
-        # currently authenticated user.
-        # Corresponds to the JSON property `lastPlayedWith`
-        # @return [Google::Apis::GamesV1::Played]
-        attr_accessor :last_played_with
-      
-        # An object representation of the individual components of the player's name.
-        # For some players, these fields may not be present.
+        # A representation of the individual components of the name.
         # Corresponds to the JSON property `name`
         # @return [Google::Apis::GamesV1::Player::Name]
         attr_accessor :name
       
         # The player ID that was used for this player the first time they signed into
-        # the game in question. This is only populated for calls to player.get for the
-        # requesting player, only if the player ID has subsequently changed, and only to
-        # clients that support remapping player IDs.
+        # the game in question. This is only populated for calls to player.get for
+        # the requesting player, only if the player ID has subsequently changed, and
+        # only to clients that support remapping player IDs.
         # Corresponds to the JSON property `originalPlayerId`
         # @return [String]
         attr_accessor :original_player_id
@@ -2044,7 +1656,7 @@ module Google
         # @return [String]
         attr_accessor :player_id
       
-        # This is a JSON template for profile settings
+        # Profile settings
         # Corresponds to the JSON property `profileSettings`
         # @return [Google::Apis::GamesV1::ProfileSettings]
         attr_accessor :profile_settings
@@ -2067,7 +1679,6 @@ module Google
           @experience_info = args[:experience_info] if args.key?(:experience_info)
           @friend_status = args[:friend_status] if args.key?(:friend_status)
           @kind = args[:kind] if args.key?(:kind)
-          @last_played_with = args[:last_played_with] if args.key?(:last_played_with)
           @name = args[:name] if args.key?(:name)
           @original_player_id = args[:original_player_id] if args.key?(:original_player_id)
           @player_id = args[:player_id] if args.key?(:player_id)
@@ -2075,17 +1686,18 @@ module Google
           @title = args[:title] if args.key?(:title)
         end
         
-        # An object representation of the individual components of the player's name.
-        # For some players, these fields may not be present.
+        # A representation of the individual components of the name.
         class Name
           include Google::Apis::Core::Hashable
         
-          # The family name of this player. In some places, this is known as the last name.
+          # The family name of this player. In some places, this is known as the last
+          # name.
           # Corresponds to the JSON property `familyName`
           # @return [String]
           attr_accessor :family_name
         
-          # The given name of this player. In some places, this is known as the first name.
+          # The given name of this player. In some places, this is known as the first
+          # name.
           # Corresponds to the JSON property `givenName`
           # @return [String]
           attr_accessor :given_name
@@ -2102,15 +1714,11 @@ module Google
         end
       end
       
-      # This is a JSON template for an achievement object.
+      # An achievement object.
       class PlayerAchievement
         include Google::Apis::Core::Hashable
       
         # The state of the achievement.
-        # Possible values are:
-        # - "HIDDEN" - Achievement is hidden.
-        # - "REVEALED" - Achievement is revealed.
-        # - "UNLOCKED" - Achievement is unlocked.
         # Corresponds to the JSON property `achievementState`
         # @return [String]
         attr_accessor :achievement_state
@@ -2121,8 +1729,8 @@ module Google
         attr_accessor :current_steps
       
         # Experience points earned for the achievement. This field is absent for
-        # achievements that have not yet been unlocked and 0 for achievements that have
-        # been unlocked by testers but that are unpublished.
+        # achievements that have not yet been unlocked and 0 for achievements that
+        # have been unlocked by testers but that are unpublished.
         # Corresponds to the JSON property `experiencePoints`
         # @return [Fixnum]
         attr_accessor :experience_points
@@ -2138,7 +1746,7 @@ module Google
         attr_accessor :id
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#playerAchievement.
+        # string `games#playerAchievement`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2164,7 +1772,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a list of achievement objects.
+      # A list of achievement objects.
       class ListPlayerAchievementResponse
         include Google::Apis::Core::Hashable
       
@@ -2174,7 +1782,7 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#playerAchievementListResponse.
+        # string `games#playerAchievementListResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2196,7 +1804,7 @@ module Google
         end
       end
       
-      # This is a JSON template for an event status resource.
+      # An event status resource.
       class PlayerEvent
         include Google::Apis::Core::Hashable
       
@@ -2213,7 +1821,7 @@ module Google
         attr_accessor :formatted_num_events
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#playerEvent.
+        # string `games#playerEvent`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2242,7 +1850,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a ListByPlayer response.
+      # A ListByPlayer response.
       class ListPlayerEventResponse
         include Google::Apis::Core::Hashable
       
@@ -2252,7 +1860,7 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#playerEventListResponse.
+        # string `games#playerEventListResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2274,7 +1882,7 @@ module Google
         end
       end
       
-      # This is a JSON template for 1P/3P metadata about the player's experience.
+      # 1P/3P metadata about the player's experience.
       class PlayerExperienceInfo
         include Google::Apis::Core::Hashable
       
@@ -2283,23 +1891,24 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_experience_points
       
-        # This is a JSON template for 1P/3P metadata about a user's level.
+        # 1P/3P metadata about a user's level.
         # Corresponds to the JSON property `currentLevel`
         # @return [Google::Apis::GamesV1::PlayerLevel]
         attr_accessor :current_level
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#playerExperienceInfo.
+        # string `games#playerExperienceInfo`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The timestamp when the player was leveled up, in millis since Unix epoch UTC.
+        # The timestamp when the player was leveled up, in millis since Unix epoch
+        # UTC.
         # Corresponds to the JSON property `lastLevelUpTimestampMillis`
         # @return [Fixnum]
         attr_accessor :last_level_up_timestamp_millis
       
-        # This is a JSON template for 1P/3P metadata about a user's level.
+        # 1P/3P metadata about a user's level.
         # Corresponds to the JSON property `nextLevel`
         # @return [Google::Apis::GamesV1::PlayerLevel]
         attr_accessor :next_level
@@ -2318,12 +1927,12 @@ module Google
         end
       end
       
-      # This is a JSON template for a player leaderboard score object.
+      # A player leaderboard score object.
       class PlayerLeaderboardScore
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#playerLeaderboardScore.
+        # string `games#playerLeaderboardScore`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2333,7 +1942,7 @@ module Google
         # @return [String]
         attr_accessor :leaderboard_id
       
-        # This is a JSON template for a score rank in a leaderboard.
+        # A score rank in a leaderboard.
         # Corresponds to the JSON property `publicRank`
         # @return [Google::Apis::GamesV1::LeaderboardScoreRank]
         attr_accessor :public_rank
@@ -2343,8 +1952,8 @@ module Google
         # @return [String]
         attr_accessor :score_string
       
-        # Additional information about the score. Values must contain no more than 64
-        # URI-safe characters as defined by section 2.3 of RFC 3986.
+        # Additional information about the score.  Values must contain no more than
+        # 64 URI-safe characters as defined by section 2.3 of RFC 3986.
         # Corresponds to the JSON property `scoreTag`
         # @return [String]
         attr_accessor :score_tag
@@ -2354,16 +1963,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :score_value
       
-        # This is a JSON template for a score rank in a leaderboard.
+        # A score rank in a leaderboard.
         # Corresponds to the JSON property `socialRank`
         # @return [Google::Apis::GamesV1::LeaderboardScoreRank]
         attr_accessor :social_rank
       
         # The time span of this score.
-        # Possible values are:
-        # - "ALL_TIME" - The score is an all-time score.
-        # - "WEEKLY" - The score is a weekly score.
-        # - "DAILY" - The score is a daily score.
         # Corresponds to the JSON property `timeSpan`
         # @return [String]
         attr_accessor :time_span
@@ -2392,7 +1997,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a list of player leaderboard scores.
+      # A list of player leaderboard scores.
       class ListPlayerLeaderboardScoreResponse
         include Google::Apis::Core::Hashable
       
@@ -2402,7 +2007,7 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#playerLeaderboardScoreListResponse.
+        # string `games#playerLeaderboardScoreListResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2412,7 +2017,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # This is a JSON template for a Player resource.
+        # A Player resource.
         # Corresponds to the JSON property `player`
         # @return [Google::Apis::GamesV1::Player]
         attr_accessor :player
@@ -2430,12 +2035,12 @@ module Google
         end
       end
       
-      # This is a JSON template for 1P/3P metadata about a user's level.
+      # 1P/3P metadata about a user's level.
       class PlayerLevel
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#playerLevel.
+        # string `games#playerLevel`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2468,7 +2073,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a third party player list response.
+      # A third party player list response.
       class ListPlayerResponse
         include Google::Apis::Core::Hashable
       
@@ -2478,7 +2083,7 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#playerListResponse.
+        # string `games#playerListResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2500,7 +2105,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a player score.
+      # A player score.
       class PlayerScore
         include Google::Apis::Core::Hashable
       
@@ -2510,7 +2115,7 @@ module Google
         attr_accessor :formatted_score
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#playerScore.
+        # string `games#playerScore`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2520,17 +2125,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :score
       
-        # Additional information about this score. Values will contain no more than 64
-        # URI-safe characters as defined by section 2.3 of RFC 3986.
+        # Additional information about this score.  Values will contain no more than
+        # 64 URI-safe characters as defined by section 2.3 of RFC 3986.
         # Corresponds to the JSON property `scoreTag`
         # @return [String]
         attr_accessor :score_tag
       
         # The time span for this player score.
-        # Possible values are:
-        # - "ALL_TIME" - The score is an all-time score.
-        # - "WEEKLY" - The score is a weekly score.
-        # - "DAILY" - The score is a daily score.
         # Corresponds to the JSON property `timeSpan`
         # @return [String]
         attr_accessor :time_span
@@ -2549,12 +2150,12 @@ module Google
         end
       end
       
-      # This is a JSON template for a list of score submission statuses.
+      # A list of score submission statuses.
       class ListPlayerScoreResponse
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#playerScoreListResponse.
+        # string `games#playerScoreListResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2575,16 +2176,12 @@ module Google
         end
       end
       
-      # This is a JSON template for a list of leaderboard entry resources.
+      # A list of leaderboard entry resources.
       class PlayerScoreResponse
         include Google::Apis::Core::Hashable
       
-        # The time spans where the submitted score is better than the existing score for
-        # that time span.
-        # Possible values are:
-        # - "ALL_TIME" - The score is an all-time score.
-        # - "WEEKLY" - The score is a weekly score.
-        # - "DAILY" - The score is a daily score.
+        # The time spans where the submitted score is better than the existing score
+        # for that time span.
         # Corresponds to the JSON property `beatenScoreTimeSpans`
         # @return [Array<String>]
         attr_accessor :beaten_score_time_spans
@@ -2595,7 +2192,7 @@ module Google
         attr_accessor :formatted_score
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#playerScoreResponse.
+        # string `games#playerScoreResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2605,15 +2202,16 @@ module Google
         # @return [String]
         attr_accessor :leaderboard_id
       
-        # Additional information about this score. Values will contain no more than 64
-        # URI-safe characters as defined by section 2.3 of RFC 3986.
+        # Additional information about this score.  Values will contain no more than
+        # 64 URI-safe characters as defined by section 2.3 of RFC 3986.
         # Corresponds to the JSON property `scoreTag`
         # @return [String]
         attr_accessor :score_tag
       
-        # The scores in time spans that have not been beaten. As an example, the
-        # submitted score may be better than the player's DAILY score, but not better
-        # than the player's scores for the WEEKLY or ALL_TIME time spans.
+        # The scores in time spans that have not been beaten.  As an example, the
+        # submitted score may be better than the
+        # player's `DAILY` score, but not better than the player's scores
+        # for the `WEEKLY` or `ALL_TIME` time spans.
         # Corresponds to the JSON property `unbeatenScores`
         # @return [Array<Google::Apis::GamesV1::PlayerScore>]
         attr_accessor :unbeaten_scores
@@ -2633,12 +2231,12 @@ module Google
         end
       end
       
-      # This is a JSON template for a list of score submission requests
+      # A list of score submission requests.
       class PlayerScoreSubmissionList
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#playerScoreSubmissionList.
+        # string `games#playerScoreSubmissionList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2659,22 +2257,22 @@ module Google
         end
       end
       
-      # This is a JSON template for profile settings
+      # Profile settings
       class ProfileSettings
         include Google::Apis::Core::Hashable
       
-        # Whether the player's friends list is visible to the game.
+        # 
         # Corresponds to the JSON property `friendsListVisibility`
         # @return [String]
         attr_accessor :friends_list_visibility
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#profileSettings.
+        # string `games#profileSettings`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # 
+        # Whether the player's profile is visible to the currently signed in player.
         # Corresponds to the JSON property `profileVisible`
         # @return [Boolean]
         attr_accessor :profile_visible
@@ -2692,103 +2290,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a push token resource.
-      class PushToken
-        include Google::Apis::Core::Hashable
-      
-        # The revision of the client SDK used by your application, in the same format
-        # that's used by revisions.check. Used to send backward compatible messages.
-        # Format: [PLATFORM_TYPE]:[VERSION_NUMBER]. Possible values of PLATFORM_TYPE are:
-        # 
-        # - IOS - Push token is for iOS
-        # Corresponds to the JSON property `clientRevision`
-        # @return [String]
-        attr_accessor :client_revision
-      
-        # This is a JSON template for a push token ID resource.
-        # Corresponds to the JSON property `id`
-        # @return [Google::Apis::GamesV1::PushTokenId]
-        attr_accessor :id
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#pushToken.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The preferred language for notifications that are sent using this token.
-        # Corresponds to the JSON property `language`
-        # @return [String]
-        attr_accessor :language
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @client_revision = args[:client_revision] if args.key?(:client_revision)
-          @id = args[:id] if args.key?(:id)
-          @kind = args[:kind] if args.key?(:kind)
-          @language = args[:language] if args.key?(:language)
-        end
-      end
-      
-      # This is a JSON template for a push token ID resource.
-      class PushTokenId
-        include Google::Apis::Core::Hashable
-      
-        # A push token ID for iOS devices.
-        # Corresponds to the JSON property `ios`
-        # @return [Google::Apis::GamesV1::PushTokenId::Ios]
-        attr_accessor :ios
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#pushTokenId.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ios = args[:ios] if args.key?(:ios)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-        
-        # A push token ID for iOS devices.
-        class Ios
-          include Google::Apis::Core::Hashable
-        
-          # Device token supplied by an iOS system call to register for remote
-          # notifications. Encode this field as web-safe base64.
-          # Corresponds to the JSON property `apns_device_token`
-          # NOTE: Values are automatically base64 encoded/decoded in the client library.
-          # @return [String]
-          attr_accessor :apns_device_token
-        
-          # Indicates whether this token should be used for the production or sandbox APNS
-          # server.
-          # Corresponds to the JSON property `apns_environment`
-          # @return [String]
-          attr_accessor :apns_environment
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @apns_device_token = args[:apns_device_token] if args.key?(:apns_device_token)
-            @apns_environment = args[:apns_environment] if args.key?(:apns_environment)
-          end
-        end
-      end
-      
-      # This is a JSON template for the result of checking a revision.
+      # A third party checking a revision response.
       class CheckRevisionResponse
         include Google::Apis::Core::Hashable
       
@@ -2799,17 +2301,12 @@ module Google
         attr_accessor :api_version
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#revisionCheckResponse.
+        # string `games#revisionCheckResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
         # The result of the revision check.
-        # Possible values are:
-        # - "OK" - The revision being used is current.
-        # - "DEPRECATED" - There is currently a newer version available, but the
-        # revision being used still works.
-        # - "INVALID" - The revision being used is not supported in any released version.
         # Corresponds to the JSON property `revisionStatus`
         # @return [String]
         attr_accessor :revision_status
@@ -2826,760 +2323,12 @@ module Google
         end
       end
       
-      # This is a JSON template for a room resource object.
-      class Room
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the application being played.
-        # Corresponds to the JSON property `applicationId`
-        # @return [String]
-        attr_accessor :application_id
-      
-        # This is a JSON template for a room auto-match criteria object.
-        # Corresponds to the JSON property `autoMatchingCriteria`
-        # @return [Google::Apis::GamesV1::RoomAutoMatchingCriteria]
-        attr_accessor :auto_matching_criteria
-      
-        # This is a JSON template for status of room automatching that is in progress.
-        # Corresponds to the JSON property `autoMatchingStatus`
-        # @return [Google::Apis::GamesV1::RoomAutoMatchStatus]
-        attr_accessor :auto_matching_status
-      
-        # This is a JSON template for room modification metadata.
-        # Corresponds to the JSON property `creationDetails`
-        # @return [Google::Apis::GamesV1::RoomModification]
-        attr_accessor :creation_details
-      
-        # This short description is generated by our servers and worded relative to the
-        # player requesting the room. It is intended to be displayed when the room is
-        # shown in a list (that is, an invitation to a room.)
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # The ID of the participant that invited the user to the room. Not set if the
-        # user was not invited to the room.
-        # Corresponds to the JSON property `inviterId`
-        # @return [String]
-        attr_accessor :inviter_id
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#room.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # This is a JSON template for room modification metadata.
-        # Corresponds to the JSON property `lastUpdateDetails`
-        # @return [Google::Apis::GamesV1::RoomModification]
-        attr_accessor :last_update_details
-      
-        # The participants involved in the room, along with their statuses. Includes
-        # participants who have left or declined invitations.
-        # Corresponds to the JSON property `participants`
-        # @return [Array<Google::Apis::GamesV1::RoomParticipant>]
-        attr_accessor :participants
-      
-        # Globally unique ID for a room.
-        # Corresponds to the JSON property `roomId`
-        # @return [String]
-        attr_accessor :room_id
-      
-        # The version of the room status: an increasing counter, used by the client to
-        # ignore out-of-order updates to room status.
-        # Corresponds to the JSON property `roomStatusVersion`
-        # @return [Fixnum]
-        attr_accessor :room_status_version
-      
-        # The status of the room.
-        # Possible values are:
-        # - "ROOM_INVITING" - One or more players have been invited and not responded.
-        # - "ROOM_AUTO_MATCHING" - One or more slots need to be filled by auto-matching.
-        # - "ROOM_CONNECTING" - Players have joined and are connecting to each other (
-        # either before or after auto-matching).
-        # - "ROOM_ACTIVE" - All players have joined and connected to each other.
-        # - "ROOM_DELETED" - The room should no longer be shown on the client. Returned
-        # in sync calls when a player joins a room (as a tombstone), or for rooms where
-        # all joined participants have left.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # The variant / mode of the application being played; can be any integer value,
-        # or left blank.
-        # Corresponds to the JSON property `variant`
-        # @return [Fixnum]
-        attr_accessor :variant
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @application_id = args[:application_id] if args.key?(:application_id)
-          @auto_matching_criteria = args[:auto_matching_criteria] if args.key?(:auto_matching_criteria)
-          @auto_matching_status = args[:auto_matching_status] if args.key?(:auto_matching_status)
-          @creation_details = args[:creation_details] if args.key?(:creation_details)
-          @description = args[:description] if args.key?(:description)
-          @inviter_id = args[:inviter_id] if args.key?(:inviter_id)
-          @kind = args[:kind] if args.key?(:kind)
-          @last_update_details = args[:last_update_details] if args.key?(:last_update_details)
-          @participants = args[:participants] if args.key?(:participants)
-          @room_id = args[:room_id] if args.key?(:room_id)
-          @room_status_version = args[:room_status_version] if args.key?(:room_status_version)
-          @status = args[:status] if args.key?(:status)
-          @variant = args[:variant] if args.key?(:variant)
-        end
-      end
-      
-      # This is a JSON template for status of room automatching that is in progress.
-      class RoomAutoMatchStatus
-        include Google::Apis::Core::Hashable
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#roomAutoMatchStatus.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # An estimate for the amount of time (in seconds) that auto-matching is expected
-        # to take to complete.
-        # Corresponds to the JSON property `waitEstimateSeconds`
-        # @return [Fixnum]
-        attr_accessor :wait_estimate_seconds
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @wait_estimate_seconds = args[:wait_estimate_seconds] if args.key?(:wait_estimate_seconds)
-        end
-      end
-      
-      # This is a JSON template for a room auto-match criteria object.
-      class RoomAutoMatchingCriteria
-        include Google::Apis::Core::Hashable
-      
-        # A bitmask indicating when auto-matches are valid. When ANDed with other
-        # exclusive bitmasks, the result must be zero. Can be used to support exclusive
-        # roles within a game.
-        # Corresponds to the JSON property `exclusiveBitmask`
-        # @return [Fixnum]
-        attr_accessor :exclusive_bitmask
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#roomAutoMatchingCriteria.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The maximum number of players that should be added to the room by auto-
-        # matching.
-        # Corresponds to the JSON property `maxAutoMatchingPlayers`
-        # @return [Fixnum]
-        attr_accessor :max_auto_matching_players
-      
-        # The minimum number of players that should be added to the room by auto-
-        # matching.
-        # Corresponds to the JSON property `minAutoMatchingPlayers`
-        # @return [Fixnum]
-        attr_accessor :min_auto_matching_players
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @exclusive_bitmask = args[:exclusive_bitmask] if args.key?(:exclusive_bitmask)
-          @kind = args[:kind] if args.key?(:kind)
-          @max_auto_matching_players = args[:max_auto_matching_players] if args.key?(:max_auto_matching_players)
-          @min_auto_matching_players = args[:min_auto_matching_players] if args.key?(:min_auto_matching_players)
-        end
-      end
-      
-      # This is a JSON template for the client address when setting up a room.
-      class RoomClientAddress
-        include Google::Apis::Core::Hashable
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#roomClientAddress.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The XMPP address of the client on the Google Games XMPP network.
-        # Corresponds to the JSON property `xmppAddress`
-        # @return [String]
-        attr_accessor :xmpp_address
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @xmpp_address = args[:xmpp_address] if args.key?(:xmpp_address)
-        end
-      end
-      
-      # This is a JSON template for a room creation request.
-      class CreateRoomRequest
-        include Google::Apis::Core::Hashable
-      
-        # This is a JSON template for a room auto-match criteria object.
-        # Corresponds to the JSON property `autoMatchingCriteria`
-        # @return [Google::Apis::GamesV1::RoomAutoMatchingCriteria]
-        attr_accessor :auto_matching_criteria
-      
-        # The capabilities that this client supports for realtime communication.
-        # Corresponds to the JSON property `capabilities`
-        # @return [Array<String>]
-        attr_accessor :capabilities
-      
-        # This is a JSON template for the client address when setting up a room.
-        # Corresponds to the JSON property `clientAddress`
-        # @return [Google::Apis::GamesV1::RoomClientAddress]
-        attr_accessor :client_address
-      
-        # The player IDs to invite to the room.
-        # Corresponds to the JSON property `invitedPlayerIds`
-        # @return [Array<String>]
-        attr_accessor :invited_player_ids
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#roomCreateRequest.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # This is a JSON template for network diagnostics reported for a client.
-        # Corresponds to the JSON property `networkDiagnostics`
-        # @return [Google::Apis::GamesV1::NetworkDiagnostics]
-        attr_accessor :network_diagnostics
-      
-        # A randomly generated numeric ID. This number is used at the server to ensure
-        # that the request is handled correctly across retries.
-        # Corresponds to the JSON property `requestId`
-        # @return [Fixnum]
-        attr_accessor :request_id
-      
-        # The variant / mode of the application to be played. This can be any integer
-        # value, or left blank. You should use a small number of variants to keep the
-        # auto-matching pool as large as possible.
-        # Corresponds to the JSON property `variant`
-        # @return [Fixnum]
-        attr_accessor :variant
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @auto_matching_criteria = args[:auto_matching_criteria] if args.key?(:auto_matching_criteria)
-          @capabilities = args[:capabilities] if args.key?(:capabilities)
-          @client_address = args[:client_address] if args.key?(:client_address)
-          @invited_player_ids = args[:invited_player_ids] if args.key?(:invited_player_ids)
-          @kind = args[:kind] if args.key?(:kind)
-          @network_diagnostics = args[:network_diagnostics] if args.key?(:network_diagnostics)
-          @request_id = args[:request_id] if args.key?(:request_id)
-          @variant = args[:variant] if args.key?(:variant)
-        end
-      end
-      
-      # This is a JSON template for a join room request.
-      class JoinRoomRequest
-        include Google::Apis::Core::Hashable
-      
-        # The capabilities that this client supports for realtime communication.
-        # Corresponds to the JSON property `capabilities`
-        # @return [Array<String>]
-        attr_accessor :capabilities
-      
-        # This is a JSON template for the client address when setting up a room.
-        # Corresponds to the JSON property `clientAddress`
-        # @return [Google::Apis::GamesV1::RoomClientAddress]
-        attr_accessor :client_address
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#roomJoinRequest.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # This is a JSON template for network diagnostics reported for a client.
-        # Corresponds to the JSON property `networkDiagnostics`
-        # @return [Google::Apis::GamesV1::NetworkDiagnostics]
-        attr_accessor :network_diagnostics
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @capabilities = args[:capabilities] if args.key?(:capabilities)
-          @client_address = args[:client_address] if args.key?(:client_address)
-          @kind = args[:kind] if args.key?(:kind)
-          @network_diagnostics = args[:network_diagnostics] if args.key?(:network_diagnostics)
-        end
-      end
-      
-      # This is a JSON template for room leave diagnostics.
-      class RoomLeaveDiagnostics
-        include Google::Apis::Core::Hashable
-      
-        # Android network subtype. http://developer.android.com/reference/android/net/
-        # NetworkInfo.html#getSubtype()
-        # Corresponds to the JSON property `androidNetworkSubtype`
-        # @return [Fixnum]
-        attr_accessor :android_network_subtype
-      
-        # Android network type. http://developer.android.com/reference/android/net/
-        # NetworkInfo.html#getType()
-        # Corresponds to the JSON property `androidNetworkType`
-        # @return [Fixnum]
-        attr_accessor :android_network_type
-      
-        # iOS network type as defined in Reachability.h.
-        # Corresponds to the JSON property `iosNetworkType`
-        # @return [Fixnum]
-        attr_accessor :ios_network_type
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#roomLeaveDiagnostics.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The MCC+MNC code for the client's network connection. On Android: http://
-        # developer.android.com/reference/android/telephony/TelephonyManager.html#
-        # getNetworkOperator() On iOS, see: https://developer.apple.com/library/ios/
-        # documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html
-        # Corresponds to the JSON property `networkOperatorCode`
-        # @return [String]
-        attr_accessor :network_operator_code
-      
-        # The name of the carrier of the client's network connection. On Android: http://
-        # developer.android.com/reference/android/telephony/TelephonyManager.html#
-        # getNetworkOperatorName() On iOS: https://developer.apple.com/library/ios/
-        # documentation/NetworkingInternet/Reference/CTCarrier/Reference/Reference.html#/
-        # /apple_ref/occ/instp/CTCarrier/carrierName
-        # Corresponds to the JSON property `networkOperatorName`
-        # @return [String]
-        attr_accessor :network_operator_name
-      
-        # Diagnostics about all peer sessions.
-        # Corresponds to the JSON property `peerSession`
-        # @return [Array<Google::Apis::GamesV1::PeerSessionDiagnostics>]
-        attr_accessor :peer_session
-      
-        # Whether or not sockets were used.
-        # Corresponds to the JSON property `socketsUsed`
-        # @return [Boolean]
-        attr_accessor :sockets_used
-        alias_method :sockets_used?, :sockets_used
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @android_network_subtype = args[:android_network_subtype] if args.key?(:android_network_subtype)
-          @android_network_type = args[:android_network_type] if args.key?(:android_network_type)
-          @ios_network_type = args[:ios_network_type] if args.key?(:ios_network_type)
-          @kind = args[:kind] if args.key?(:kind)
-          @network_operator_code = args[:network_operator_code] if args.key?(:network_operator_code)
-          @network_operator_name = args[:network_operator_name] if args.key?(:network_operator_name)
-          @peer_session = args[:peer_session] if args.key?(:peer_session)
-          @sockets_used = args[:sockets_used] if args.key?(:sockets_used)
-        end
-      end
-      
-      # This is a JSON template for a leave room request.
-      class LeaveRoomRequest
-        include Google::Apis::Core::Hashable
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#roomLeaveRequest.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # This is a JSON template for room leave diagnostics.
-        # Corresponds to the JSON property `leaveDiagnostics`
-        # @return [Google::Apis::GamesV1::RoomLeaveDiagnostics]
-        attr_accessor :leave_diagnostics
-      
-        # Reason for leaving the match.
-        # Possible values are:
-        # - "PLAYER_LEFT" - The player chose to leave the room..
-        # - "GAME_LEFT" - The game chose to remove the player from the room.
-        # - "REALTIME_ABANDONED" - The player switched to another application and
-        # abandoned the room.
-        # - "REALTIME_PEER_CONNECTION_FAILURE" - The client was unable to establish a
-        # connection to other peer(s).
-        # - "REALTIME_SERVER_CONNECTION_FAILURE" - The client was unable to communicate
-        # with the server.
-        # - "REALTIME_SERVER_ERROR" - The client received an error response when it
-        # tried to communicate with the server.
-        # - "REALTIME_TIMEOUT" - The client timed out while waiting for a room.
-        # - "REALTIME_CLIENT_DISCONNECTING" - The client disconnects without first
-        # calling Leave.
-        # - "REALTIME_SIGN_OUT" - The user signed out of G+ while in the room.
-        # - "REALTIME_GAME_CRASHED" - The game crashed.
-        # - "REALTIME_ROOM_SERVICE_CRASHED" - RoomAndroidService crashed.
-        # - "REALTIME_DIFFERENT_CLIENT_ROOM_OPERATION" - Another client is trying to
-        # enter a room.
-        # - "REALTIME_SAME_CLIENT_ROOM_OPERATION" - The same client is trying to enter a
-        # new room.
-        # Corresponds to the JSON property `reason`
-        # @return [String]
-        attr_accessor :reason
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @leave_diagnostics = args[:leave_diagnostics] if args.key?(:leave_diagnostics)
-          @reason = args[:reason] if args.key?(:reason)
-        end
-      end
-      
-      # This is a JSON template for a list of rooms.
-      class RoomList
-        include Google::Apis::Core::Hashable
-      
-        # The rooms.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::GamesV1::Room>]
-        attr_accessor :items
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#roomList.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The pagination token for the next page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # This is a JSON template for room modification metadata.
-      class RoomModification
-        include Google::Apis::Core::Hashable
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#roomModification.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The timestamp at which they modified the room, in milliseconds since the epoch
-        # in UTC.
-        # Corresponds to the JSON property `modifiedTimestampMillis`
-        # @return [Fixnum]
-        attr_accessor :modified_timestamp_millis
-      
-        # The ID of the participant that modified the room.
-        # Corresponds to the JSON property `participantId`
-        # @return [String]
-        attr_accessor :participant_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @modified_timestamp_millis = args[:modified_timestamp_millis] if args.key?(:modified_timestamp_millis)
-          @participant_id = args[:participant_id] if args.key?(:participant_id)
-        end
-      end
-      
-      # This is a JSON template for an update on the status of a peer in a room.
-      class RoomP2PStatus
-        include Google::Apis::Core::Hashable
-      
-        # The amount of time in milliseconds it took to establish connections with this
-        # peer.
-        # Corresponds to the JSON property `connectionSetupLatencyMillis`
-        # @return [Fixnum]
-        attr_accessor :connection_setup_latency_millis
-      
-        # The error code in event of a failure.
-        # Possible values are:
-        # - "P2P_FAILED" - The client failed to establish a P2P connection with the peer.
-        # 
-        # - "PRESENCE_FAILED" - The client failed to register to receive P2P connections.
-        # 
-        # - "RELAY_SERVER_FAILED" - The client received an error when trying to use the
-        # relay server to establish a P2P connection with the peer.
-        # Corresponds to the JSON property `error`
-        # @return [String]
-        attr_accessor :error
-      
-        # More detailed diagnostic message returned in event of a failure.
-        # Corresponds to the JSON property `error_reason`
-        # @return [String]
-        attr_accessor :error_reason
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#roomP2PStatus.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The ID of the participant.
-        # Corresponds to the JSON property `participantId`
-        # @return [String]
-        attr_accessor :participant_id
-      
-        # The status of the peer in the room.
-        # Possible values are:
-        # - "CONNECTION_ESTABLISHED" - The client established a P2P connection with the
-        # peer.
-        # - "CONNECTION_FAILED" - The client failed to establish directed presence with
-        # the peer.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # The amount of time in milliseconds it took to send packets back and forth on
-        # the unreliable channel with this peer.
-        # Corresponds to the JSON property `unreliableRoundtripLatencyMillis`
-        # @return [Fixnum]
-        attr_accessor :unreliable_roundtrip_latency_millis
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @connection_setup_latency_millis = args[:connection_setup_latency_millis] if args.key?(:connection_setup_latency_millis)
-          @error = args[:error] if args.key?(:error)
-          @error_reason = args[:error_reason] if args.key?(:error_reason)
-          @kind = args[:kind] if args.key?(:kind)
-          @participant_id = args[:participant_id] if args.key?(:participant_id)
-          @status = args[:status] if args.key?(:status)
-          @unreliable_roundtrip_latency_millis = args[:unreliable_roundtrip_latency_millis] if args.key?(:unreliable_roundtrip_latency_millis)
-        end
-      end
-      
-      # This is a JSON template for an update on the status of peers in a room.
-      class RoomP2PStatuses
-        include Google::Apis::Core::Hashable
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#roomP2PStatuses.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The updates for the peers.
-        # Corresponds to the JSON property `updates`
-        # @return [Array<Google::Apis::GamesV1::RoomP2PStatus>]
-        attr_accessor :updates
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @updates = args[:updates] if args.key?(:updates)
-        end
-      end
-      
-      # This is a JSON template for a participant in a room.
-      class RoomParticipant
-        include Google::Apis::Core::Hashable
-      
-        # True if this participant was auto-matched with the requesting player.
-        # Corresponds to the JSON property `autoMatched`
-        # @return [Boolean]
-        attr_accessor :auto_matched
-        alias_method :auto_matched?, :auto_matched
-      
-        # This is a JSON template for an anonymous player
-        # Corresponds to the JSON property `autoMatchedPlayer`
-        # @return [Google::Apis::GamesV1::AnonymousPlayer]
-        attr_accessor :auto_matched_player
-      
-        # The capabilities which can be used when communicating with this participant.
-        # Corresponds to the JSON property `capabilities`
-        # @return [Array<String>]
-        attr_accessor :capabilities
-      
-        # This is a JSON template for the client address when setting up a room.
-        # Corresponds to the JSON property `clientAddress`
-        # @return [Google::Apis::GamesV1::RoomClientAddress]
-        attr_accessor :client_address
-      
-        # True if this participant is in the fully connected set of peers in the room.
-        # Corresponds to the JSON property `connected`
-        # @return [Boolean]
-        attr_accessor :connected
-        alias_method :connected?, :connected
-      
-        # An identifier for the participant in the scope of the room. Cannot be used to
-        # identify a player across rooms or in other contexts.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#roomParticipant.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The reason the participant left the room; populated if the participant status
-        # is PARTICIPANT_LEFT.
-        # Possible values are:
-        # - "PLAYER_LEFT" - The player explicitly chose to leave the room.
-        # - "GAME_LEFT" - The game chose to remove the player from the room.
-        # - "ABANDONED" - The player switched to another application and abandoned the
-        # room.
-        # - "PEER_CONNECTION_FAILURE" - The client was unable to establish or maintain a
-        # connection to other peer(s) in the room.
-        # - "SERVER_ERROR" - The client received an error response when it tried to
-        # communicate with the server.
-        # - "TIMEOUT" - The client timed out while waiting for players to join and
-        # connect.
-        # - "PRESENCE_FAILURE" - The client's XMPP connection ended abruptly.
-        # Corresponds to the JSON property `leaveReason`
-        # @return [String]
-        attr_accessor :leave_reason
-      
-        # This is a JSON template for a Player resource.
-        # Corresponds to the JSON property `player`
-        # @return [Google::Apis::GamesV1::Player]
-        attr_accessor :player
-      
-        # The status of the participant with respect to the room.
-        # Possible values are:
-        # - "PARTICIPANT_INVITED" - The participant has been invited to join the room,
-        # but has not yet responded.
-        # - "PARTICIPANT_JOINED" - The participant has joined the room (either after
-        # creating it or accepting an invitation.)
-        # - "PARTICIPANT_DECLINED" - The participant declined an invitation to join the
-        # room.
-        # - "PARTICIPANT_LEFT" - The participant joined the room and then left it.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @auto_matched = args[:auto_matched] if args.key?(:auto_matched)
-          @auto_matched_player = args[:auto_matched_player] if args.key?(:auto_matched_player)
-          @capabilities = args[:capabilities] if args.key?(:capabilities)
-          @client_address = args[:client_address] if args.key?(:client_address)
-          @connected = args[:connected] if args.key?(:connected)
-          @id = args[:id] if args.key?(:id)
-          @kind = args[:kind] if args.key?(:kind)
-          @leave_reason = args[:leave_reason] if args.key?(:leave_reason)
-          @player = args[:player] if args.key?(:player)
-          @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # This is a JSON template for the status of a room that the player has joined.
-      class RoomStatus
-        include Google::Apis::Core::Hashable
-      
-        # This is a JSON template for status of room automatching that is in progress.
-        # Corresponds to the JSON property `autoMatchingStatus`
-        # @return [Google::Apis::GamesV1::RoomAutoMatchStatus]
-        attr_accessor :auto_matching_status
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#roomStatus.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The participants involved in the room, along with their statuses. Includes
-        # participants who have left or declined invitations.
-        # Corresponds to the JSON property `participants`
-        # @return [Array<Google::Apis::GamesV1::RoomParticipant>]
-        attr_accessor :participants
-      
-        # Globally unique ID for a room.
-        # Corresponds to the JSON property `roomId`
-        # @return [String]
-        attr_accessor :room_id
-      
-        # The status of the room.
-        # Possible values are:
-        # - "ROOM_INVITING" - One or more players have been invited and not responded.
-        # - "ROOM_AUTO_MATCHING" - One or more slots need to be filled by auto-matching.
-        # - "ROOM_CONNECTING" - Players have joined are connecting to each other (either
-        # before or after auto-matching).
-        # - "ROOM_ACTIVE" - All players have joined and connected to each other.
-        # - "ROOM_DELETED" - All joined players have left.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # The version of the status for the room: an increasing counter, used by the
-        # client to ignore out-of-order updates to room status.
-        # Corresponds to the JSON property `statusVersion`
-        # @return [Fixnum]
-        attr_accessor :status_version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @auto_matching_status = args[:auto_matching_status] if args.key?(:auto_matching_status)
-          @kind = args[:kind] if args.key?(:kind)
-          @participants = args[:participants] if args.key?(:participants)
-          @room_id = args[:room_id] if args.key?(:room_id)
-          @status = args[:status] if args.key?(:status)
-          @status_version = args[:status_version] if args.key?(:status_version)
-        end
-      end
-      
-      # This is a JSON template for a request to submit a score to leaderboards.
+      # A request to submit a score to leaderboards.
       class ScoreSubmission
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#scoreSubmission.
+        # string `games#scoreSubmission`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3594,14 +2343,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :score
       
-        # Additional information about this score. Values will contain no more than 64
-        # URI-safe characters as defined by section 2.3 of RFC 3986.
+        # Additional information about this score.  Values will contain no more than
+        # 64 URI-safe characters as defined by section 2.3 of RFC 3986.
         # Corresponds to the JSON property `scoreTag`
         # @return [String]
         attr_accessor :score_tag
       
-        # Signature Values will contain URI-safe characters as defined by section 2.3 of
-        # RFC 3986.
+        # Signature Values will contain URI-safe characters as defined by section 2.3
+        # of RFC 3986.
         # Corresponds to the JSON property `signature`
         # @return [String]
         attr_accessor :signature
@@ -3620,11 +2369,11 @@ module Google
         end
       end
       
-      # This is a JSON template for an snapshot object.
+      # An snapshot object.
       class Snapshot
         include Google::Apis::Core::Hashable
       
-        # This is a JSON template for an image of a snapshot.
+        # An image of a snapshot.
         # Corresponds to the JSON property `coverImage`
         # @return [Google::Apis::GamesV1::SnapshotImage]
         attr_accessor :cover_image
@@ -3634,8 +2383,9 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The ID of the file underlying this snapshot in the Drive API. Only present if
-        # the snapshot is a view on a Drive file and the file is owned by the caller.
+        # The ID of the file underlying this snapshot in the Drive API.  Only present
+        # if the snapshot is a view on a Drive file and the file is owned by the
+        # caller.
         # Corresponds to the JSON property `driveId`
         # @return [String]
         attr_accessor :drive_id
@@ -3651,7 +2401,7 @@ module Google
         attr_accessor :id
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#snapshot.
+        # string `games#snapshot`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3674,8 +2424,6 @@ module Google
         attr_accessor :title
       
         # The type of this snapshot.
-        # Possible values are:
-        # - "SAVE_GAME" - A snapshot representing a save game.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3705,7 +2453,7 @@ module Google
         end
       end
       
-      # This is a JSON template for an image of a snapshot.
+      # An image of a snapshot.
       class SnapshotImage
         include Google::Apis::Core::Hashable
       
@@ -3715,7 +2463,7 @@ module Google
         attr_accessor :height
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#snapshotImage.
+        # string `games#snapshotImage`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3725,8 +2473,8 @@ module Google
         # @return [String]
         attr_accessor :mime_type
       
-        # The URL of the image. This URL may be invalidated at any time and should not
-        # be cached.
+        # The URL of the image. This URL may be invalidated at any time and should
+        # not be cached.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -3750,7 +2498,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a list of snapshot objects.
+      # A third party list snapshots response.
       class ListSnapshotResponse
         include Google::Apis::Core::Hashable
       
@@ -3760,13 +2508,13 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#snapshotListResponse.
+        # string `games#snapshotListResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Token corresponding to the next page of results. If there are no more results,
-        # the token is omitted.
+        # Token corresponding to the next page of results. If there are no more
+        # results, the token is omitted.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -3783,34 +2531,83 @@ module Google
         end
       end
       
-      # This is a JSON template for an turn-based auto-match criteria object.
-      class TurnBasedAutoMatchingCriteria
+      # A third party stats resource.
+      class StatsResponse
         include Google::Apis::Core::Hashable
       
-        # A bitmask indicating when auto-matches are valid. When ANDed with other
-        # exclusive bitmasks, the result must be zero. Can be used to support exclusive
-        # roles within a game.
-        # Corresponds to the JSON property `exclusiveBitmask`
+        # Average session length in minutes of the player. E.g., 1, 30, 60, ... . Not
+        # populated if there is not enough information.
+        # Corresponds to the JSON property `avg_session_length_minutes`
+        # @return [Float]
+        attr_accessor :avg_session_length_minutes
+      
+        # The probability of the player not returning to play the game in the next
+        # day. E.g., 0, 0.1, 0.5, ..., 1.0. Not populated if there is not enough
+        # information.
+        # Corresponds to the JSON property `churn_probability`
+        # @return [Float]
+        attr_accessor :churn_probability
+      
+        # Number of days since the player last played this game. E.g., 0, 1, 5, 10,
+        # ... . Not populated if there is not enough information.
+        # Corresponds to the JSON property `days_since_last_played`
         # @return [Fixnum]
-        attr_accessor :exclusive_bitmask
+        attr_accessor :days_since_last_played
+      
+        # The probability of the player going to spend beyond a threshold amount of
+        # money. E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough
+        # information.
+        # Corresponds to the JSON property `high_spender_probability`
+        # @return [Float]
+        attr_accessor :high_spender_probability
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#turnBasedAutoMatchingCriteria.
+        # string `games#statsResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The maximum number of players that should be added to the match by auto-
-        # matching.
-        # Corresponds to the JSON property `maxAutoMatchingPlayers`
+        # Number of in-app purchases made by the player in this game. E.g., 0, 1, 5,
+        # 10, ... . Not populated if there is not enough information.
+        # Corresponds to the JSON property `num_purchases`
         # @return [Fixnum]
-        attr_accessor :max_auto_matching_players
+        attr_accessor :num_purchases
       
-        # The minimum number of players that should be added to the match by auto-
-        # matching.
-        # Corresponds to the JSON property `minAutoMatchingPlayers`
+        # The approximate number of sessions of the player within the last 28 days,
+        # where a session begins when the player is connected to Play Games Services
+        # and ends when they are disconnected. E.g., 0, 1, 5, 10, ... . Not populated
+        # if there is not enough information.
+        # Corresponds to the JSON property `num_sessions`
         # @return [Fixnum]
-        attr_accessor :min_auto_matching_players
+        attr_accessor :num_sessions
+      
+        # The approximation of the sessions percentile of the player within the last
+        # 30 days, where a session begins when the player is connected to Play Games
+        # Services and ends when they are disconnected. E.g., 0, 0.25, 0.5, 0.75. Not
+        # populated if there is not enough information.
+        # Corresponds to the JSON property `num_sessions_percentile`
+        # @return [Float]
+        attr_accessor :num_sessions_percentile
+      
+        # The approximate spend percentile of the player in this game. E.g., 0, 0.25,
+        # 0.5, 0.75. Not populated if there is not enough information.
+        # Corresponds to the JSON property `spend_percentile`
+        # @return [Float]
+        attr_accessor :spend_percentile
+      
+        # The probability of the player going to spend the game in the next seven
+        # days. E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough
+        # information.
+        # Corresponds to the JSON property `spend_probability`
+        # @return [Float]
+        attr_accessor :spend_probability
+      
+        # The predicted amount of money that the player going to spend in the next 28
+        # days. E.g., 1, 30, 60, ... . Not populated if there is not enough
+        # information.
+        # Corresponds to the JSON property `total_spend_next_28_days`
+        # @return [Float]
+        attr_accessor :total_spend_next_28_days
       
         def initialize(**args)
            update!(**args)
@@ -3818,572 +2615,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @exclusive_bitmask = args[:exclusive_bitmask] if args.key?(:exclusive_bitmask)
+          @avg_session_length_minutes = args[:avg_session_length_minutes] if args.key?(:avg_session_length_minutes)
+          @churn_probability = args[:churn_probability] if args.key?(:churn_probability)
+          @days_since_last_played = args[:days_since_last_played] if args.key?(:days_since_last_played)
+          @high_spender_probability = args[:high_spender_probability] if args.key?(:high_spender_probability)
           @kind = args[:kind] if args.key?(:kind)
-          @max_auto_matching_players = args[:max_auto_matching_players] if args.key?(:max_auto_matching_players)
-          @min_auto_matching_players = args[:min_auto_matching_players] if args.key?(:min_auto_matching_players)
-        end
-      end
-      
-      # This is a JSON template for a turn-based match resource object.
-      class TurnBasedMatch
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the application being played.
-        # Corresponds to the JSON property `applicationId`
-        # @return [String]
-        attr_accessor :application_id
-      
-        # This is a JSON template for an turn-based auto-match criteria object.
-        # Corresponds to the JSON property `autoMatchingCriteria`
-        # @return [Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria]
-        attr_accessor :auto_matching_criteria
-      
-        # This is a JSON template for turn-based match modification metadata.
-        # Corresponds to the JSON property `creationDetails`
-        # @return [Google::Apis::GamesV1::TurnBasedMatchModification]
-        attr_accessor :creation_details
-      
-        # This is a JSON template for a turn-based match data object.
-        # Corresponds to the JSON property `data`
-        # @return [Google::Apis::GamesV1::TurnBasedMatchData]
-        attr_accessor :data
-      
-        # This short description is generated by our servers based on turn state and is
-        # localized and worded relative to the player requesting the match. It is
-        # intended to be displayed when the match is shown in a list.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # The ID of the participant that invited the user to the match. Not set if the
-        # user was not invited to the match.
-        # Corresponds to the JSON property `inviterId`
-        # @return [String]
-        attr_accessor :inviter_id
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#turnBasedMatch.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # This is a JSON template for turn-based match modification metadata.
-        # Corresponds to the JSON property `lastUpdateDetails`
-        # @return [Google::Apis::GamesV1::TurnBasedMatchModification]
-        attr_accessor :last_update_details
-      
-        # Globally unique ID for a turn-based match.
-        # Corresponds to the JSON property `matchId`
-        # @return [String]
-        attr_accessor :match_id
-      
-        # The number of the match in a chain of rematches. Will be set to 1 for the
-        # first match and incremented by 1 for each rematch.
-        # Corresponds to the JSON property `matchNumber`
-        # @return [Fixnum]
-        attr_accessor :match_number
-      
-        # The version of this match: an increasing counter, used to avoid out-of-date
-        # updates to the match.
-        # Corresponds to the JSON property `matchVersion`
-        # @return [Fixnum]
-        attr_accessor :match_version
-      
-        # The participants involved in the match, along with their statuses. Includes
-        # participants who have left or declined invitations.
-        # Corresponds to the JSON property `participants`
-        # @return [Array<Google::Apis::GamesV1::TurnBasedMatchParticipant>]
-        attr_accessor :participants
-      
-        # The ID of the participant that is taking a turn.
-        # Corresponds to the JSON property `pendingParticipantId`
-        # @return [String]
-        attr_accessor :pending_participant_id
-      
-        # This is a JSON template for a turn-based match data object.
-        # Corresponds to the JSON property `previousMatchData`
-        # @return [Google::Apis::GamesV1::TurnBasedMatchData]
-        attr_accessor :previous_match_data
-      
-        # The ID of a rematch of this match. Only set for completed matches that have
-        # been rematched.
-        # Corresponds to the JSON property `rematchId`
-        # @return [String]
-        attr_accessor :rematch_id
-      
-        # The results reported for this match.
-        # Corresponds to the JSON property `results`
-        # @return [Array<Google::Apis::GamesV1::ParticipantResult>]
-        attr_accessor :results
-      
-        # The status of the match.
-        # Possible values are:
-        # - "MATCH_AUTO_MATCHING" - One or more slots need to be filled by auto-matching;
-        # the match cannot be established until they are filled.
-        # - "MATCH_ACTIVE" - The match has started.
-        # - "MATCH_COMPLETE" - The match has finished.
-        # - "MATCH_CANCELED" - The match was canceled.
-        # - "MATCH_EXPIRED" - The match expired due to inactivity.
-        # - "MATCH_DELETED" - The match should no longer be shown on the client.
-        # Returned only for tombstones for matches when sync is called.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        # The status of the current user in the match. Derived from the match type,
-        # match status, the user's participant status, and the pending participant for
-        # the match.
-        # Possible values are:
-        # - "USER_INVITED" - The user has been invited to join the match and has not
-        # responded yet.
-        # - "USER_AWAITING_TURN" - The user is waiting for their turn.
-        # - "USER_TURN" - The user has an action to take in the match.
-        # - "USER_MATCH_COMPLETED" - The match has ended (it is completed, canceled, or
-        # expired.)
-        # Corresponds to the JSON property `userMatchStatus`
-        # @return [String]
-        attr_accessor :user_match_status
-      
-        # The variant / mode of the application being played; can be any integer value,
-        # or left blank.
-        # Corresponds to the JSON property `variant`
-        # @return [Fixnum]
-        attr_accessor :variant
-      
-        # The ID of another participant in the match that can be used when describing
-        # the participants the user is playing with.
-        # Corresponds to the JSON property `withParticipantId`
-        # @return [String]
-        attr_accessor :with_participant_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @application_id = args[:application_id] if args.key?(:application_id)
-          @auto_matching_criteria = args[:auto_matching_criteria] if args.key?(:auto_matching_criteria)
-          @creation_details = args[:creation_details] if args.key?(:creation_details)
-          @data = args[:data] if args.key?(:data)
-          @description = args[:description] if args.key?(:description)
-          @inviter_id = args[:inviter_id] if args.key?(:inviter_id)
-          @kind = args[:kind] if args.key?(:kind)
-          @last_update_details = args[:last_update_details] if args.key?(:last_update_details)
-          @match_id = args[:match_id] if args.key?(:match_id)
-          @match_number = args[:match_number] if args.key?(:match_number)
-          @match_version = args[:match_version] if args.key?(:match_version)
-          @participants = args[:participants] if args.key?(:participants)
-          @pending_participant_id = args[:pending_participant_id] if args.key?(:pending_participant_id)
-          @previous_match_data = args[:previous_match_data] if args.key?(:previous_match_data)
-          @rematch_id = args[:rematch_id] if args.key?(:rematch_id)
-          @results = args[:results] if args.key?(:results)
-          @status = args[:status] if args.key?(:status)
-          @user_match_status = args[:user_match_status] if args.key?(:user_match_status)
-          @variant = args[:variant] if args.key?(:variant)
-          @with_participant_id = args[:with_participant_id] if args.key?(:with_participant_id)
-        end
-      end
-      
-      # This is a JSON template for a turn-based match creation request.
-      class CreateTurnBasedMatchRequest
-        include Google::Apis::Core::Hashable
-      
-        # This is a JSON template for an turn-based auto-match criteria object.
-        # Corresponds to the JSON property `autoMatchingCriteria`
-        # @return [Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria]
-        attr_accessor :auto_matching_criteria
-      
-        # The player ids to invite to the match.
-        # Corresponds to the JSON property `invitedPlayerIds`
-        # @return [Array<String>]
-        attr_accessor :invited_player_ids
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#turnBasedMatchCreateRequest.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # A randomly generated numeric ID. This number is used at the server to ensure
-        # that the request is handled correctly across retries.
-        # Corresponds to the JSON property `requestId`
-        # @return [Fixnum]
-        attr_accessor :request_id
-      
-        # The variant / mode of the application to be played. This can be any integer
-        # value, or left blank. You should use a small number of variants to keep the
-        # auto-matching pool as large as possible.
-        # Corresponds to the JSON property `variant`
-        # @return [Fixnum]
-        attr_accessor :variant
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @auto_matching_criteria = args[:auto_matching_criteria] if args.key?(:auto_matching_criteria)
-          @invited_player_ids = args[:invited_player_ids] if args.key?(:invited_player_ids)
-          @kind = args[:kind] if args.key?(:kind)
-          @request_id = args[:request_id] if args.key?(:request_id)
-          @variant = args[:variant] if args.key?(:variant)
-        end
-      end
-      
-      # This is a JSON template for a turn-based match data object.
-      class TurnBasedMatchData
-        include Google::Apis::Core::Hashable
-      
-        # The byte representation of the data (limited to 128 kB), as a Base64-encoded
-        # string with the URL_SAFE encoding option.
-        # Corresponds to the JSON property `data`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :data
-      
-        # True if this match has data available but it wasn't returned in a list
-        # response; fetching the match individually will retrieve this data.
-        # Corresponds to the JSON property `dataAvailable`
-        # @return [Boolean]
-        attr_accessor :data_available
-        alias_method :data_available?, :data_available
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#turnBasedMatchData.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data = args[:data] if args.key?(:data)
-          @data_available = args[:data_available] if args.key?(:data_available)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # This is a JSON template for sending a turn-based match data object.
-      class TurnBasedMatchDataRequest
-        include Google::Apis::Core::Hashable
-      
-        # The byte representation of the data (limited to 128 kB), as a Base64-encoded
-        # string with the URL_SAFE encoding option.
-        # Corresponds to the JSON property `data`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :data
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#turnBasedMatchDataRequest.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data = args[:data] if args.key?(:data)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # This is a JSON template for a list of turn-based matches.
-      class TurnBasedMatchList
-        include Google::Apis::Core::Hashable
-      
-        # The matches.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::GamesV1::TurnBasedMatch>]
-        attr_accessor :items
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#turnBasedMatchList.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The pagination token for the next page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # This is a JSON template for turn-based match modification metadata.
-      class TurnBasedMatchModification
-        include Google::Apis::Core::Hashable
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#turnBasedMatchModification.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The timestamp at which they modified the match, in milliseconds since the
-        # epoch in UTC.
-        # Corresponds to the JSON property `modifiedTimestampMillis`
-        # @return [Fixnum]
-        attr_accessor :modified_timestamp_millis
-      
-        # The ID of the participant that modified the match.
-        # Corresponds to the JSON property `participantId`
-        # @return [String]
-        attr_accessor :participant_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @modified_timestamp_millis = args[:modified_timestamp_millis] if args.key?(:modified_timestamp_millis)
-          @participant_id = args[:participant_id] if args.key?(:participant_id)
-        end
-      end
-      
-      # This is a JSON template for a participant in a turn-based match.
-      class TurnBasedMatchParticipant
-        include Google::Apis::Core::Hashable
-      
-        # True if this participant was auto-matched with the requesting player.
-        # Corresponds to the JSON property `autoMatched`
-        # @return [Boolean]
-        attr_accessor :auto_matched
-        alias_method :auto_matched?, :auto_matched
-      
-        # This is a JSON template for an anonymous player
-        # Corresponds to the JSON property `autoMatchedPlayer`
-        # @return [Google::Apis::GamesV1::AnonymousPlayer]
-        attr_accessor :auto_matched_player
-      
-        # An identifier for the participant in the scope of the match. Cannot be used to
-        # identify a player across matches or in other contexts.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#turnBasedMatchParticipant.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # This is a JSON template for a Player resource.
-        # Corresponds to the JSON property `player`
-        # @return [Google::Apis::GamesV1::Player]
-        attr_accessor :player
-      
-        # The status of the participant with respect to the match.
-        # Possible values are:
-        # - "PARTICIPANT_NOT_INVITED_YET" - The participant is slated to be invited to
-        # the match, but the invitation has not been sent; the invite will be sent when
-        # it becomes their turn.
-        # - "PARTICIPANT_INVITED" - The participant has been invited to join the match,
-        # but has not yet responded.
-        # - "PARTICIPANT_JOINED" - The participant has joined the match (either after
-        # creating it or accepting an invitation.)
-        # - "PARTICIPANT_DECLINED" - The participant declined an invitation to join the
-        # match.
-        # - "PARTICIPANT_LEFT" - The participant joined the match and then left it.
-        # - "PARTICIPANT_FINISHED" - The participant finished playing in the match.
-        # - "PARTICIPANT_UNRESPONSIVE" - The participant did not take their turn in the
-        # allotted time.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @auto_matched = args[:auto_matched] if args.key?(:auto_matched)
-          @auto_matched_player = args[:auto_matched_player] if args.key?(:auto_matched_player)
-          @id = args[:id] if args.key?(:id)
-          @kind = args[:kind] if args.key?(:kind)
-          @player = args[:player] if args.key?(:player)
-          @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # This is a JSON template for a rematch response.
-      class TurnBasedMatchRematch
-        include Google::Apis::Core::Hashable
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#turnBasedMatchRematch.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # This is a JSON template for a turn-based match resource object.
-        # Corresponds to the JSON property `previousMatch`
-        # @return [Google::Apis::GamesV1::TurnBasedMatch]
-        attr_accessor :previous_match
-      
-        # This is a JSON template for a turn-based match resource object.
-        # Corresponds to the JSON property `rematch`
-        # @return [Google::Apis::GamesV1::TurnBasedMatch]
-        attr_accessor :rematch
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @previous_match = args[:previous_match] if args.key?(:previous_match)
-          @rematch = args[:rematch] if args.key?(:rematch)
-        end
-      end
-      
-      # This is a JSON template for a turn-based match results object.
-      class TurnBasedMatchResults
-        include Google::Apis::Core::Hashable
-      
-        # This is a JSON template for sending a turn-based match data object.
-        # Corresponds to the JSON property `data`
-        # @return [Google::Apis::GamesV1::TurnBasedMatchDataRequest]
-        attr_accessor :data
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#turnBasedMatchResults.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The version of the match being updated.
-        # Corresponds to the JSON property `matchVersion`
-        # @return [Fixnum]
-        attr_accessor :match_version
-      
-        # The match results for the participants in the match.
-        # Corresponds to the JSON property `results`
-        # @return [Array<Google::Apis::GamesV1::ParticipantResult>]
-        attr_accessor :results
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data = args[:data] if args.key?(:data)
-          @kind = args[:kind] if args.key?(:kind)
-          @match_version = args[:match_version] if args.key?(:match_version)
-          @results = args[:results] if args.key?(:results)
-        end
-      end
-      
-      # This is a JSON template for a list of turn-based matches returned from a sync.
-      class TurnBasedMatchSync
-        include Google::Apis::Core::Hashable
-      
-        # The matches.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::GamesV1::TurnBasedMatch>]
-        attr_accessor :items
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#turnBasedMatchSync.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # True if there were more matches available to fetch at the time the response
-        # was generated (which were not returned due to page size limits.)
-        # Corresponds to the JSON property `moreAvailable`
-        # @return [Boolean]
-        attr_accessor :more_available
-        alias_method :more_available?, :more_available
-      
-        # The pagination token for the next page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @more_available = args[:more_available] if args.key?(:more_available)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # This is a JSON template for the object representing a turn.
-      class TurnBasedMatchTurn
-        include Google::Apis::Core::Hashable
-      
-        # This is a JSON template for sending a turn-based match data object.
-        # Corresponds to the JSON property `data`
-        # @return [Google::Apis::GamesV1::TurnBasedMatchDataRequest]
-        attr_accessor :data
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#turnBasedMatchTurn.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The version of this match: an increasing counter, used to avoid out-of-date
-        # updates to the match.
-        # Corresponds to the JSON property `matchVersion`
-        # @return [Fixnum]
-        attr_accessor :match_version
-      
-        # The ID of the participant who should take their turn next. May be set to the
-        # current player's participant ID to update match state without changing the
-        # turn. If not set, the match will wait for other player(s) to join via
-        # automatching; this is only valid if automatch criteria is set on the match
-        # with remaining slots for automatched players.
-        # Corresponds to the JSON property `pendingParticipantId`
-        # @return [String]
-        attr_accessor :pending_participant_id
-      
-        # The match results for the participants in the match.
-        # Corresponds to the JSON property `results`
-        # @return [Array<Google::Apis::GamesV1::ParticipantResult>]
-        attr_accessor :results
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data = args[:data] if args.key?(:data)
-          @kind = args[:kind] if args.key?(:kind)
-          @match_version = args[:match_version] if args.key?(:match_version)
-          @pending_participant_id = args[:pending_participant_id] if args.key?(:pending_participant_id)
-          @results = args[:results] if args.key?(:results)
+          @num_purchases = args[:num_purchases] if args.key?(:num_purchases)
+          @num_sessions = args[:num_sessions] if args.key?(:num_sessions)
+          @num_sessions_percentile = args[:num_sessions_percentile] if args.key?(:num_sessions_percentile)
+          @spend_percentile = args[:spend_percentile] if args.key?(:spend_percentile)
+          @spend_probability = args[:spend_probability] if args.key?(:spend_probability)
+          @total_spend_next_28_days = args[:total_spend_next_28_days] if args.key?(:total_spend_next_28_days)
         end
       end
     end

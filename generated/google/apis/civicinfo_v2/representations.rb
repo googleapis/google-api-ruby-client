@@ -216,6 +216,7 @@ module Google
           property :number_elected, :numeric_string => true, as: 'numberElected'
           property :number_voting_for, :numeric_string => true, as: 'numberVotingFor'
           property :office, as: 'office'
+          collection :primary_parties, as: 'primaryParties'
           property :primary_party, as: 'primaryParty'
           collection :referendum_ballot_responses, as: 'referendumBallotResponses'
           property :referendum_brief, as: 'referendumBrief'

@@ -317,7 +317,14 @@ module Google
         # @return [String]
         attr_accessor :office
       
-        # If this is a partisan election, the name of the party it is for.
+        # If this is a partisan election, the name of the party/parties it is for.
+        # Corresponds to the JSON property `primaryParties`
+        # @return [Array<String>]
+        attr_accessor :primary_parties
+      
+        # [DEPRECATED] If this is a partisan election, the name of the party it is for.
+        # This field as deprecated in favor of the array "primaryParties", as contests
+        # may contain more than one party.
         # Corresponds to the JSON property `primaryParty`
         # @return [String]
         attr_accessor :primary_party
@@ -425,6 +432,7 @@ module Google
           @number_elected = args[:number_elected] if args.key?(:number_elected)
           @number_voting_for = args[:number_voting_for] if args.key?(:number_voting_for)
           @office = args[:office] if args.key?(:office)
+          @primary_parties = args[:primary_parties] if args.key?(:primary_parties)
           @primary_party = args[:primary_party] if args.key?(:primary_party)
           @referendum_ballot_responses = args[:referendum_ballot_responses] if args.key?(:referendum_ballot_responses)
           @referendum_brief = args[:referendum_brief] if args.key?(:referendum_brief)

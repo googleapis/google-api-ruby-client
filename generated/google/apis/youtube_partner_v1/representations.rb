@@ -28,12 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AllowedAdvertisingOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Asset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Blobstore2Info
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Campaign
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -132,48 +132,12 @@ module Google
       
       class Claim
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class MatchInfo
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-          class LongestMatch
-            class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-            include Google::Apis::Core::JsonObjectSupport
-          end
-          
-          class TotalMatch
-            class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-            include Google::Apis::Core::JsonObjectSupport
-          end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-        
-        class Origin
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class ClaimEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Source
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-        
-        class TypeDetails
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -198,17 +162,11 @@ module Google
       
       class ClaimSnippet
         class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Origin
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ClaimedVideoDefaults
+      class CompositeMedia
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,13 +190,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ContentOwnerAdvertisingOption
+      class ContentOwnerListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ContentOwnerListResponse
+      class ContentTypeInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,7 +220,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DateRange
+      class DiffChecksumsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiffDownloadResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiffUploadRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiffUploadResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiffVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DownloadParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -286,7 +280,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LongestMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MatchInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MatchSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Media
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MediaRequestInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MediaResponseInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,13 +334,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Order
+      class ObjectIdProp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OrderListResponse
+      class Origin
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,12 +442,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Requirements
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RightsOwnership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -442,7 +460,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ShowDetails
+      class Segment2
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Source
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -455,12 +479,6 @@ module Google
       end
       
       class SpreadsheetTemplateListResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class StateCompleted
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -485,6 +503,18 @@ module Google
       end
       
       class TerritoryOwners
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TotalMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TypeDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -568,21 +598,17 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class YoutubePartnerApiProtoFrontendV1Origin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdBreak
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :midroll_seconds, as: 'midrollSeconds'
           property :position, as: 'position'
-        end
-      end
-      
-      class AllowedAdvertisingOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ads_on_embeds, as: 'adsOnEmbeds'
-          property :kind, as: 'kind'
-          collection :lic_ad_formats, as: 'licAdFormats'
-          collection :ugc_ad_formats, as: 'ugcAdFormats'
         end
       end
       
@@ -614,8 +640,7 @@ module Google
           property :ownership_mine, as: 'ownershipMine', class: Google::Apis::YoutubePartnerV1::RightsOwnership, decorator: Google::Apis::YoutubePartnerV1::RightsOwnership::Representation
       
           property :status, as: 'status'
-          property :time_created, as: 'timeCreated', type: DateTime
-      
+          property :time_created, as: 'timeCreated'
           property :type, as: 'type'
         end
       end
@@ -719,10 +744,20 @@ module Google
           property :isrc, as: 'isrc'
           property :iswc, as: 'iswc'
           property :kind, as: 'kind'
-          property :time_created, as: 'timeCreated', type: DateTime
-      
+          property :time_created, as: 'timeCreated'
           property :title, as: 'title'
           property :type, as: 'type'
+        end
+      end
+      
+      class Blobstore2Info
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob_generation, :numeric_string => true, as: 'blobGeneration'
+          property :blob_id, as: 'blobId'
+          property :download_read_handle, :base64 => true, as: 'downloadReadHandle'
+          property :read_token, as: 'readToken'
+          property :upload_metadata_container, :base64 => true, as: 'uploadMetadataContainer'
         end
       end
       
@@ -734,10 +769,8 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :status, as: 'status'
-          property :time_created, as: 'timeCreated', type: DateTime
-      
-          property :time_last_modified, as: 'timeLastModified', type: DateTime
-      
+          property :time_created, as: 'timeCreated'
+          property :time_last_modified, as: 'timeLastModified'
         end
       end
       
@@ -746,13 +779,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :campaign_source, as: 'campaignSource', class: Google::Apis::YoutubePartnerV1::CampaignSource, decorator: Google::Apis::YoutubePartnerV1::CampaignSource::Representation
       
-          property :expire_time, as: 'expireTime', type: DateTime
-      
+          property :expire_time, as: 'expireTime'
           property :name, as: 'name'
           collection :promoted_content, as: 'promotedContent', class: Google::Apis::YoutubePartnerV1::PromotedContent, decorator: Google::Apis::YoutubePartnerV1::PromotedContent::Representation
       
-          property :start_time, as: 'startTime', type: DateTime
-      
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -792,53 +823,15 @@ module Google
           property :id, as: 'id'
           property :is_partner_uploaded, as: 'isPartnerUploaded'
           property :kind, as: 'kind'
-          property :match_info, as: 'matchInfo', class: Google::Apis::YoutubePartnerV1::Claim::MatchInfo, decorator: Google::Apis::YoutubePartnerV1::Claim::MatchInfo::Representation
+          property :match_info, as: 'matchInfo', class: Google::Apis::YoutubePartnerV1::MatchInfo, decorator: Google::Apis::YoutubePartnerV1::MatchInfo::Representation
       
-          property :origin, as: 'origin', class: Google::Apis::YoutubePartnerV1::Claim::Origin, decorator: Google::Apis::YoutubePartnerV1::Claim::Origin::Representation
+          property :origin, as: 'origin', class: Google::Apis::YoutubePartnerV1::Origin, decorator: Google::Apis::YoutubePartnerV1::Origin::Representation
       
           property :policy, as: 'policy', class: Google::Apis::YoutubePartnerV1::Policy, decorator: Google::Apis::YoutubePartnerV1::Policy::Representation
       
           property :status, as: 'status'
-          property :time_created, as: 'timeCreated', type: DateTime
-      
+          property :time_created, as: 'timeCreated'
           property :video_id, as: 'videoId'
-        end
-        
-        class MatchInfo
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :longest_match, as: 'longestMatch', class: Google::Apis::YoutubePartnerV1::Claim::MatchInfo::LongestMatch, decorator: Google::Apis::YoutubePartnerV1::Claim::MatchInfo::LongestMatch::Representation
-        
-            collection :match_segments, as: 'matchSegments', class: Google::Apis::YoutubePartnerV1::MatchSegment, decorator: Google::Apis::YoutubePartnerV1::MatchSegment::Representation
-        
-            property :reference_id, as: 'referenceId'
-            property :total_match, as: 'totalMatch', class: Google::Apis::YoutubePartnerV1::Claim::MatchInfo::TotalMatch, decorator: Google::Apis::YoutubePartnerV1::Claim::MatchInfo::TotalMatch::Representation
-        
-          end
-          
-          class LongestMatch
-            # @private
-            class Representation < Google::Apis::Core::JsonRepresentation
-              property :duration_secs, :numeric_string => true, as: 'durationSecs'
-              property :reference_offset, :numeric_string => true, as: 'referenceOffset'
-              property :user_video_offset, :numeric_string => true, as: 'userVideoOffset'
-            end
-          end
-          
-          class TotalMatch
-            # @private
-            class Representation < Google::Apis::Core::JsonRepresentation
-              property :reference_duration_secs, :numeric_string => true, as: 'referenceDurationSecs'
-              property :user_video_duration_secs, :numeric_string => true, as: 'userVideoDurationSecs'
-            end
-          end
-        end
-        
-        class Origin
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :source, as: 'source'
-          end
         end
       end
       
@@ -847,32 +840,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :reason, as: 'reason'
-          property :source, as: 'source', class: Google::Apis::YoutubePartnerV1::ClaimEvent::Source, decorator: Google::Apis::YoutubePartnerV1::ClaimEvent::Source::Representation
+          property :source, as: 'source', class: Google::Apis::YoutubePartnerV1::Source, decorator: Google::Apis::YoutubePartnerV1::Source::Representation
       
-          property :time, as: 'time', type: DateTime
-      
+          property :time, as: 'time'
           property :type, as: 'type'
-          property :type_details, as: 'typeDetails', class: Google::Apis::YoutubePartnerV1::ClaimEvent::TypeDetails, decorator: Google::Apis::YoutubePartnerV1::ClaimEvent::TypeDetails::Representation
+          property :type_details, as: 'typeDetails', class: Google::Apis::YoutubePartnerV1::TypeDetails, decorator: Google::Apis::YoutubePartnerV1::TypeDetails::Representation
       
-        end
-        
-        class Source
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :content_owner_id, as: 'contentOwnerId'
-            property :type, as: 'type'
-            property :user_email, as: 'userEmail'
-          end
-        end
-        
-        class TypeDetails
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :appeal_explanation, as: 'appealExplanation'
-            property :dispute_notes, as: 'disputeNotes'
-            property :dispute_reason, as: 'disputeReason'
-            property :update_status, as: 'updateStatus'
-          end
         end
       end
       
@@ -921,34 +894,34 @@ module Google
           property :id, as: 'id'
           property :is_partner_uploaded, as: 'isPartnerUploaded'
           property :kind, as: 'kind'
-          property :origin, as: 'origin', class: Google::Apis::YoutubePartnerV1::ClaimSnippet::Origin, decorator: Google::Apis::YoutubePartnerV1::ClaimSnippet::Origin::Representation
+          property :origin, as: 'origin', class: Google::Apis::YoutubePartnerV1::YoutubePartnerApiProtoFrontendV1Origin, decorator: Google::Apis::YoutubePartnerV1::YoutubePartnerApiProtoFrontendV1Origin::Representation
       
           property :status, as: 'status'
           property :third_party_claim, as: 'thirdPartyClaim'
-          property :time_created, as: 'timeCreated', type: DateTime
-      
-          property :time_status_last_modified, as: 'timeStatusLastModified', type: DateTime
-      
+          property :time_created, as: 'timeCreated'
+          property :time_status_last_modified, as: 'timeStatusLastModified'
           property :video_id, as: 'videoId'
           property :video_title, as: 'videoTitle'
           property :video_views, :numeric_string => true, as: 'videoViews'
         end
-        
-        class Origin
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :source, as: 'source'
-          end
-        end
       end
       
-      class ClaimedVideoDefaults
+      class CompositeMedia
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :auto_generated_breaks, as: 'autoGeneratedBreaks'
-          property :channel_override, as: 'channelOverride'
-          property :kind, as: 'kind'
-          collection :new_video_defaults, as: 'newVideoDefaults'
+          property :blob_ref, :base64 => true, as: 'blobRef'
+          property :blobstore2_info, as: 'blobstore2Info', class: Google::Apis::YoutubePartnerV1::Blobstore2Info, decorator: Google::Apis::YoutubePartnerV1::Blobstore2Info::Representation
+      
+          property :cosmo_binary_reference, :base64 => true, as: 'cosmoBinaryReference'
+          property :crc32c_hash, as: 'crc32cHash'
+          property :inline, :base64 => true, as: 'inline'
+          property :length, :numeric_string => true, as: 'length'
+          property :md5_hash, :base64 => true, as: 'md5Hash'
+          property :object_id_prop, as: 'objectId', class: Google::Apis::YoutubePartnerV1::ObjectIdProp, decorator: Google::Apis::YoutubePartnerV1::ObjectIdProp::Representation
+      
+          property :path, as: 'path'
+          property :reference_type, as: 'referenceType'
+          property :sha1_hash, :base64 => true, as: 'sha1Hash'
         end
       end
       
@@ -990,24 +963,23 @@ module Google
         end
       end
       
-      class ContentOwnerAdvertisingOption
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :allowed_options, as: 'allowedOptions', class: Google::Apis::YoutubePartnerV1::AllowedAdvertisingOptions, decorator: Google::Apis::YoutubePartnerV1::AllowedAdvertisingOptions::Representation
-      
-          property :claimed_video_options, as: 'claimedVideoOptions', class: Google::Apis::YoutubePartnerV1::ClaimedVideoDefaults, decorator: Google::Apis::YoutubePartnerV1::ClaimedVideoDefaults::Representation
-      
-          property :id, as: 'id'
-          property :kind, as: 'kind'
-        end
-      end
-      
       class ContentOwnerListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::YoutubePartnerV1::ContentOwner, decorator: Google::Apis::YoutubePartnerV1::ContentOwner::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class ContentTypeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :best_guess, as: 'bestGuess'
+          property :from_bytes, as: 'fromBytes'
+          property :from_file_name, as: 'fromFileName'
+          property :from_header, as: 'fromHeader'
+          property :from_url_path, as: 'fromUrlPath'
         end
       end
       
@@ -1025,8 +997,7 @@ module Google
           property :cue_type, as: 'cueType'
           property :duration_secs, as: 'durationSecs'
           property :offset_time_ms, :numeric_string => true, as: 'offsetTimeMs'
-          property :walltime, as: 'walltime', type: DateTime
-      
+          property :walltime, as: 'walltime'
         end
       end
       
@@ -1039,14 +1010,66 @@ module Google
         end
       end
       
-      class DateRange
+      class DiffChecksumsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :end, as: 'end', class: Google::Apis::YoutubePartnerV1::Date, decorator: Google::Apis::YoutubePartnerV1::Date::Representation
+          property :checksums_location, as: 'checksumsLocation', class: Google::Apis::YoutubePartnerV1::CompositeMedia, decorator: Google::Apis::YoutubePartnerV1::CompositeMedia::Representation
       
-          property :kind, as: 'kind'
-          property :start, as: 'start', class: Google::Apis::YoutubePartnerV1::Date, decorator: Google::Apis::YoutubePartnerV1::Date::Representation
+          property :chunk_size_bytes, :numeric_string => true, as: 'chunkSizeBytes'
+          property :object_location, as: 'objectLocation', class: Google::Apis::YoutubePartnerV1::CompositeMedia, decorator: Google::Apis::YoutubePartnerV1::CompositeMedia::Representation
       
+          property :object_size_bytes, :numeric_string => true, as: 'objectSizeBytes'
+          property :object_version, as: 'objectVersion'
+        end
+      end
+      
+      class DiffDownloadResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_location, as: 'objectLocation', class: Google::Apis::YoutubePartnerV1::CompositeMedia, decorator: Google::Apis::YoutubePartnerV1::CompositeMedia::Representation
+      
+        end
+      end
+      
+      class DiffUploadRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :checksums_info, as: 'checksumsInfo', class: Google::Apis::YoutubePartnerV1::CompositeMedia, decorator: Google::Apis::YoutubePartnerV1::CompositeMedia::Representation
+      
+          property :object_info, as: 'objectInfo', class: Google::Apis::YoutubePartnerV1::CompositeMedia, decorator: Google::Apis::YoutubePartnerV1::CompositeMedia::Representation
+      
+          property :object_version, as: 'objectVersion'
+        end
+      end
+      
+      class DiffUploadResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_version, as: 'objectVersion'
+          property :original_object, as: 'originalObject', class: Google::Apis::YoutubePartnerV1::CompositeMedia, decorator: Google::Apis::YoutubePartnerV1::CompositeMedia::Representation
+      
+        end
+      end
+      
+      class DiffVersionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_size_bytes, :numeric_string => true, as: 'objectSizeBytes'
+          property :object_version, as: 'objectVersion'
+        end
+      end
+      
+      class DownloadParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_gzip_compression, as: 'allowGzipCompression'
+          property :ignore_range, as: 'ignoreRange'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1056,8 +1079,7 @@ module Google
           property :high, as: 'high'
           property :low, as: 'low'
           property :origin, as: 'origin'
-          property :time_created, as: 'timeCreated', type: DateTime
-      
+          property :time_created, as: 'timeCreated'
         end
       end
       
@@ -1080,16 +1102,112 @@ module Google
         end
       end
       
+      class LongestMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration_secs, :numeric_string => true, as: 'durationSecs'
+          property :reference_offset, :numeric_string => true, as: 'referenceOffset'
+          property :user_video_offset, :numeric_string => true, as: 'userVideoOffset'
+        end
+      end
+      
+      class MatchInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :longest_match, as: 'longestMatch', class: Google::Apis::YoutubePartnerV1::LongestMatch, decorator: Google::Apis::YoutubePartnerV1::LongestMatch::Representation
+      
+          collection :match_segments, as: 'matchSegments', class: Google::Apis::YoutubePartnerV1::MatchSegment, decorator: Google::Apis::YoutubePartnerV1::MatchSegment::Representation
+      
+          property :reference_id, as: 'referenceId'
+          property :total_match, as: 'totalMatch', class: Google::Apis::YoutubePartnerV1::TotalMatch, decorator: Google::Apis::YoutubePartnerV1::TotalMatch::Representation
+      
+        end
+      end
+      
       class MatchSegment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel, as: 'channel'
-          property :manual_segment, as: 'manual_segment', class: Google::Apis::YoutubePartnerV1::Segment, decorator: Google::Apis::YoutubePartnerV1::Segment::Representation
+          property :manual_segment, as: 'manual_segment', class: Google::Apis::YoutubePartnerV1::Segment2, decorator: Google::Apis::YoutubePartnerV1::Segment2::Representation
       
           property :reference_segment, as: 'reference_segment', class: Google::Apis::YoutubePartnerV1::Segment, decorator: Google::Apis::YoutubePartnerV1::Segment::Representation
       
           property :video_segment, as: 'video_segment', class: Google::Apis::YoutubePartnerV1::Segment, decorator: Google::Apis::YoutubePartnerV1::Segment::Representation
       
+        end
+      end
+      
+      class Media
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :algorithm, as: 'algorithm'
+          property :bigstore_object_ref, :base64 => true, as: 'bigstoreObjectRef'
+          property :blob_ref, :base64 => true, as: 'blobRef'
+          property :blobstore2_info, as: 'blobstore2Info', class: Google::Apis::YoutubePartnerV1::Blobstore2Info, decorator: Google::Apis::YoutubePartnerV1::Blobstore2Info::Representation
+      
+          collection :composite_media, as: 'compositeMedia', class: Google::Apis::YoutubePartnerV1::CompositeMedia, decorator: Google::Apis::YoutubePartnerV1::CompositeMedia::Representation
+      
+          property :content_type, as: 'contentType'
+          property :content_type_info, as: 'contentTypeInfo', class: Google::Apis::YoutubePartnerV1::ContentTypeInfo, decorator: Google::Apis::YoutubePartnerV1::ContentTypeInfo::Representation
+      
+          property :cosmo_binary_reference, :base64 => true, as: 'cosmoBinaryReference'
+          property :crc32c_hash, as: 'crc32cHash'
+          property :diff_checksums_response, as: 'diffChecksumsResponse', class: Google::Apis::YoutubePartnerV1::DiffChecksumsResponse, decorator: Google::Apis::YoutubePartnerV1::DiffChecksumsResponse::Representation
+      
+          property :diff_download_response, as: 'diffDownloadResponse', class: Google::Apis::YoutubePartnerV1::DiffDownloadResponse, decorator: Google::Apis::YoutubePartnerV1::DiffDownloadResponse::Representation
+      
+          property :diff_upload_request, as: 'diffUploadRequest', class: Google::Apis::YoutubePartnerV1::DiffUploadRequest, decorator: Google::Apis::YoutubePartnerV1::DiffUploadRequest::Representation
+      
+          property :diff_upload_response, as: 'diffUploadResponse', class: Google::Apis::YoutubePartnerV1::DiffUploadResponse, decorator: Google::Apis::YoutubePartnerV1::DiffUploadResponse::Representation
+      
+          property :diff_version_response, as: 'diffVersionResponse', class: Google::Apis::YoutubePartnerV1::DiffVersionResponse, decorator: Google::Apis::YoutubePartnerV1::DiffVersionResponse::Representation
+      
+          property :download_parameters, as: 'downloadParameters', class: Google::Apis::YoutubePartnerV1::DownloadParameters, decorator: Google::Apis::YoutubePartnerV1::DownloadParameters::Representation
+      
+          property :filename, as: 'filename'
+          property :hash_prop, as: 'hash'
+          property :hash_verified, as: 'hashVerified'
+          property :inline, :base64 => true, as: 'inline'
+          property :is_potential_retry, as: 'isPotentialRetry'
+          property :length, :numeric_string => true, as: 'length'
+          property :md5_hash, :base64 => true, as: 'md5Hash'
+          property :media_id, :base64 => true, as: 'mediaId'
+          property :object_id_prop, as: 'objectId', class: Google::Apis::YoutubePartnerV1::ObjectIdProp, decorator: Google::Apis::YoutubePartnerV1::ObjectIdProp::Representation
+      
+          property :path, as: 'path'
+          property :reference_type, as: 'referenceType'
+          property :sha1_hash, :base64 => true, as: 'sha1Hash'
+          property :sha256_hash, :base64 => true, as: 'sha256Hash'
+          property :timestamp, :numeric_string => true, as: 'timestamp'
+          property :token, as: 'token'
+        end
+      end
+      
+      class MediaRequestInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_bytes, :numeric_string => true, as: 'currentBytes'
+          property :custom_data, as: 'customData'
+          property :diff_object_version, as: 'diffObjectVersion'
+          property :notification_type, as: 'notificationType'
+          property :request_id, as: 'requestId'
+          property :total_bytes, :numeric_string => true, as: 'totalBytes'
+          property :total_bytes_is_estimated, as: 'totalBytesIsEstimated'
+        end
+      end
+      
+      class MediaResponseInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_data, as: 'customData'
+          property :data_storage_transform, :base64 => true, as: 'dataStorageTransform'
+          property :dynamic_drop_target, :base64 => true, as: 'dynamicDropTarget'
+          property :dynamic_dropzone, as: 'dynamicDropzone'
+          property :media_for_diff, as: 'mediaForDiff', class: Google::Apis::YoutubePartnerV1::Media, decorator: Google::Apis::YoutubePartnerV1::Media::Representation
+      
+          property :request_class, as: 'requestClass'
+          property :traffic_class_field, as: 'trafficClassField'
+          property :verify_hash_from_header, as: 'verifyHashFromHeader'
         end
       end
       
@@ -1149,8 +1267,7 @@ module Google
       
           property :origination, as: 'origination', class: Google::Apis::YoutubePartnerV1::Origination, decorator: Google::Apis::YoutubePartnerV1::Origination::Representation
       
-          property :time_provided, as: 'timeProvided', type: DateTime
-      
+          property :time_provided, as: 'timeProvided'
         end
       end
       
@@ -1163,49 +1280,19 @@ module Google
         end
       end
       
-      class Order
+      class ObjectIdProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :avail_group_id, as: 'availGroupId'
-          property :channel_id, as: 'channelId'
-          property :content_type, as: 'contentType'
-          property :country, as: 'country'
-          property :custom_id, as: 'customId'
-          property :dvd_release_date, as: 'dvdReleaseDate', class: Google::Apis::YoutubePartnerV1::Date, decorator: Google::Apis::YoutubePartnerV1::Date::Representation
-      
-          property :est_dates, as: 'estDates', class: Google::Apis::YoutubePartnerV1::DateRange, decorator: Google::Apis::YoutubePartnerV1::DateRange::Representation
-      
-          collection :events, as: 'events', class: Google::Apis::YoutubePartnerV1::StateCompleted, decorator: Google::Apis::YoutubePartnerV1::StateCompleted::Representation
-      
-          property :id, as: 'id'
-          property :kind, as: 'kind'
-          property :movie, as: 'movie'
-          property :original_release_date, as: 'originalReleaseDate', class: Google::Apis::YoutubePartnerV1::Date, decorator: Google::Apis::YoutubePartnerV1::Date::Representation
-      
-          property :priority, as: 'priority'
-          property :production_house, as: 'productionHouse'
-          property :purchase_order, as: 'purchaseOrder'
-          property :requirements, as: 'requirements', class: Google::Apis::YoutubePartnerV1::Requirements, decorator: Google::Apis::YoutubePartnerV1::Requirements::Representation
-      
-          property :show, as: 'show', class: Google::Apis::YoutubePartnerV1::ShowDetails, decorator: Google::Apis::YoutubePartnerV1::ShowDetails::Representation
-      
-          property :status, as: 'status'
-          property :video_id, as: 'videoId'
-          property :vod_dates, as: 'vodDates', class: Google::Apis::YoutubePartnerV1::DateRange, decorator: Google::Apis::YoutubePartnerV1::DateRange::Representation
-      
+          property :bucket_name, as: 'bucketName'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :object_name, as: 'objectName'
         end
       end
       
-      class OrderListResponse
+      class Origin
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::YoutubePartnerV1::Order, decorator: Google::Apis::YoutubePartnerV1::Order::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          property :page_info, as: 'pageInfo', class: Google::Apis::YoutubePartnerV1::PageInfo, decorator: Google::Apis::YoutubePartnerV1::PageInfo::Representation
-      
-          property :previous_page_token, as: 'previousPageToken'
+          property :source, as: 'source'
         end
       end
       
@@ -1253,8 +1340,7 @@ module Google
           property :status, as: 'status'
           collection :status_reports, as: 'statusReports', class: Google::Apis::YoutubePartnerV1::StatusReport, decorator: Google::Apis::YoutubePartnerV1::StatusReport::Representation
       
-          property :time_created, as: 'timeCreated', type: DateTime
-      
+          property :time_created, as: 'timeCreated'
           property :type, as: 'type'
           property :uploader_name, as: 'uploaderName'
         end
@@ -1290,8 +1376,7 @@ module Google
           property :name, as: 'name'
           collection :rules, as: 'rules', class: Google::Apis::YoutubePartnerV1::PolicyRule, decorator: Google::Apis::YoutubePartnerV1::PolicyRule::Representation
       
-          property :time_updated, as: 'timeUpdated', type: DateTime
-      
+          property :time_updated, as: 'timeUpdated'
         end
       end
       
@@ -1341,11 +1426,17 @@ module Google
           collection :excluded_intervals, as: 'excludedIntervals', class: Google::Apis::YoutubePartnerV1::ExcludedInterval, decorator: Google::Apis::YoutubePartnerV1::ExcludedInterval::Representation
       
           property :fp_direct, as: 'fpDirect'
+          property :gdata_media, as: 'gdataMedia', class: Google::Apis::YoutubePartnerV1::Media, decorator: Google::Apis::YoutubePartnerV1::Media::Representation
+      
           property :hash_code, as: 'hashCode'
           property :id, as: 'id'
           property :ignore_fp_match, as: 'ignoreFpMatch'
           property :kind, as: 'kind'
           property :length, as: 'length'
+          property :media_request_info, as: 'mediaRequestInfo', class: Google::Apis::YoutubePartnerV1::MediaRequestInfo, decorator: Google::Apis::YoutubePartnerV1::MediaRequestInfo::Representation
+      
+          property :media_response_info, as: 'mediaResponseInfo', class: Google::Apis::YoutubePartnerV1::MediaResponseInfo, decorator: Google::Apis::YoutubePartnerV1::MediaResponseInfo::Representation
+      
           property :origination, as: 'origination', class: Google::Apis::YoutubePartnerV1::Origination, decorator: Google::Apis::YoutubePartnerV1::Origination::Representation
       
           property :status, as: 'status'
@@ -1359,8 +1450,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conflicting_reference_id, as: 'conflictingReferenceId'
-          property :expiry_time, as: 'expiryTime', type: DateTime
-      
+          property :expiry_time, as: 'expiryTime'
           property :id, as: 'id'
           property :kind, as: 'kind'
           collection :matches, as: 'matches', class: Google::Apis::YoutubePartnerV1::ReferenceConflictMatch, decorator: Google::Apis::YoutubePartnerV1::ReferenceConflictMatch::Representation
@@ -1404,18 +1494,6 @@ module Google
         end
       end
       
-      class Requirements
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :caption, as: 'caption'
-          property :hd_transcode, as: 'hdTranscode'
-          property :poster_art, as: 'posterArt'
-          property :spotlight_art, as: 'spotlightArt'
-          property :spotlight_review, as: 'spotlightReview'
-          property :trailer, as: 'trailer'
-        end
-      end
-      
       class RightsOwnership
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1439,8 +1517,7 @@ module Google
       
           property :ownership, as: 'ownership', class: Google::Apis::YoutubePartnerV1::RightsOwnership, decorator: Google::Apis::YoutubePartnerV1::RightsOwnership::Representation
       
-          property :time_provided, as: 'timeProvided', type: DateTime
-      
+          property :time_provided, as: 'timeProvided'
         end
       end
       
@@ -1448,19 +1525,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration, :numeric_string => true, as: 'duration'
+          property :kind, as: 'kind'
+          property :start, :numeric_string => true, as: 'start'
+        end
+      end
+      
+      class Segment2
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :finish, as: 'finish'
           property :kind, as: 'kind'
           property :start, as: 'start'
         end
       end
       
-      class ShowDetails
+      class Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :episode_number, as: 'episodeNumber'
-          property :episode_title, as: 'episodeTitle'
-          property :season_number, as: 'seasonNumber'
-          property :title, as: 'title'
+          property :content_owner_id, as: 'contentOwnerId'
+          property :type, as: 'type'
+          property :user_email, as: 'userEmail'
         end
       end
       
@@ -1482,14 +1566,6 @@ module Google
       
           property :kind, as: 'kind'
           property :status, as: 'status'
-        end
-      end
-      
-      class StateCompleted
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :state, as: 'state'
-          property :time_completed, :numeric_string => true, as: 'timeCompleted'
         end
       end
       
@@ -1526,6 +1602,24 @@ module Google
           property :ratio, as: 'ratio'
           collection :territories, as: 'territories'
           property :type, as: 'type'
+        end
+      end
+      
+      class TotalMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reference_duration_secs, :numeric_string => true, as: 'referenceDurationSecs'
+          property :user_video_duration_secs, :numeric_string => true, as: 'userVideoDurationSecs'
+        end
+      end
+      
+      class TypeDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :appeal_explanation, as: 'appealExplanation'
+          property :dispute_notes, as: 'disputeNotes'
+          property :dispute_reason, as: 'disputeReason'
+          property :update_status, as: 'updateStatus'
         end
       end
       
@@ -1663,6 +1757,13 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           property :page_info, as: 'pageInfo', class: Google::Apis::YoutubePartnerV1::PageInfo, decorator: Google::Apis::YoutubePartnerV1::PageInfo::Representation
       
+        end
+      end
+      
+      class YoutubePartnerApiProtoFrontendV1Origin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source, as: 'source'
         end
       end
     end
