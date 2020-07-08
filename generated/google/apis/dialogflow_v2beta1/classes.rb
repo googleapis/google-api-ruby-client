@@ -3809,8 +3809,10 @@ module Google
         attr_accessor :description
       
         # Output only. The unique identifier of this agent environment.
-        # Format: `projects/<Project ID>/agent/environments/<Environment ID>`.
-        # For Environment ID, "-" is reserved for 'draft' environment.
+        # Format:
+        # - `projects/<Project Number / ID>/agent/environments/<Environment ID>`
+        # - `projects/<Project Number / ID>/locations/<Location
+        # ID>/agent/environments/<Environment ID>`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

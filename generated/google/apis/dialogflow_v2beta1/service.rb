@@ -841,7 +841,10 @@ module Google
         # Returns the list of all non-draft environments of the specified agent.
         # @param [String] parent
         #   Required. The agent to list all environments from.
-        #   Format: `projects/<Project ID>/agent`.
+        #   Format:
+        #   - `projects/<Project Number / ID>/agent`
+        #   - `projects/<Project Number / ID>/locations/<Location
+        #   ID>/agent
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and
@@ -3725,7 +3728,10 @@ module Google
         # Returns the list of all non-draft environments of the specified agent.
         # @param [String] parent
         #   Required. The agent to list all environments from.
-        #   Format: `projects/<Project ID>/agent`.
+        #   Format:
+        #   - `projects/<Project Number / ID>/agent`
+        #   - `projects/<Project Number / ID>/locations/<Location
+        #   ID>/agent
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By default
         #   100 and

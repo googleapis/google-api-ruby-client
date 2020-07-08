@@ -1528,7 +1528,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Group of packages, classes, and/or test methods to be run for
-        # each shard. The number of shard_test_targets must be >= 1 and <= 50.
+        # each shard. When any physical devices are selected,  the number of
+        # test_targets_for_shard must be >= 1 and <= 50. When no physical devices are
+        # selected, the number must be >= 1 and <= 250.
         # Corresponds to the JSON property `testTargetsForShard`
         # @return [Array<Google::Apis::TestingV1::TestTargetsForShard>]
         attr_accessor :test_targets_for_shard
@@ -1688,10 +1690,10 @@ module Google
         attr_accessor :content
       
         # Required. Where to put the content on the device. Must be an absolute,
-        # whitelisted path. If the file exists, it will be replaced.
+        # allowlisted path. If the file exists, it will be replaced.
         # The following device-side directories and any of their subdirectories are
-        # whitelisted:
-        # <p>$`EXTERNAL_STORAGE`, or /sdcard</p>
+        # allowlisted:
+        # <p>$`EXTERNAL_STORAGE`, /sdcard, or /storage</p>
         # <p>$`ANDROID_DATA`/local/tmp, or /data/local/tmp</p>
         # <p>Specifying a path outside of these directory trees is invalid.
         # <p> The paths /sdcard and /data will be made available and treated as
@@ -2190,7 +2192,7 @@ module Google
         attr_accessor :additional_apks
       
         # List of directories on the device to upload to GCS at the end of the test;
-        # they must be absolute paths under /sdcard or /data/local/tmp.
+        # they must be absolute paths under /sdcard, /storage or /data/local/tmp.
         # Path names are restricted to characters a-z A-Z 0-9 _ - . + and /
         # Note: The paths /sdcard and /data will be made available and treated as
         # implicit path substitutions. E.g. if /sdcard on a particular device does
@@ -2199,6 +2201,12 @@ module Google
         # Corresponds to the JSON property `directoriesToPull`
         # @return [Array<String>]
         attr_accessor :directories_to_pull
+      
+        # Whether to prevent all runtime permissions to be granted at app install
+        # Corresponds to the JSON property `dontAutograntPermissions`
+        # @return [Boolean]
+        attr_accessor :dont_autogrant_permissions
+        alias_method :dont_autogrant_permissions?, :dont_autogrant_permissions
       
         # Environment variables to set for the test (only applicable for
         # instrumentation tests).
@@ -2236,6 +2244,7 @@ module Google
           @account = args[:account] if args.key?(:account)
           @additional_apks = args[:additional_apks] if args.key?(:additional_apks)
           @directories_to_pull = args[:directories_to_pull] if args.key?(:directories_to_pull)
+          @dont_autogrant_permissions = args[:dont_autogrant_permissions] if args.key?(:dont_autogrant_permissions)
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
           @files_to_push = args[:files_to_push] if args.key?(:files_to_push)
           @network_profile = args[:network_profile] if args.key?(:network_profile)
@@ -2504,7 +2513,9 @@ module Google
       class UniformSharding
         include Google::Apis::Core::Hashable
       
-        # Required. Total number of shards. The number must be >= 1 and <= 50.
+        # Required. Total number of shards. When any physical devices are selected,
+        # the number must be >= 1 and <= 50. When no physical devices are selected,
+        # the number must be >= 1 and <= 250.
         # Corresponds to the JSON property `numShards`
         # @return [Fixnum]
         attr_accessor :num_shards

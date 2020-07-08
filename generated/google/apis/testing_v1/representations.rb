@@ -1044,6 +1044,7 @@ module Google
           collection :additional_apks, as: 'additionalApks', class: Google::Apis::TestingV1::Apk, decorator: Google::Apis::TestingV1::Apk::Representation
       
           collection :directories_to_pull, as: 'directoriesToPull'
+          property :dont_autogrant_permissions, as: 'dontAutograntPermissions'
           collection :environment_variables, as: 'environmentVariables', class: Google::Apis::TestingV1::EnvironmentVariable, decorator: Google::Apis::TestingV1::EnvironmentVariable::Representation
       
           collection :files_to_push, as: 'filesToPush', class: Google::Apis::TestingV1::DeviceFile, decorator: Google::Apis::TestingV1::DeviceFile::Representation

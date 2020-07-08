@@ -1568,7 +1568,20 @@ module Google
         # @return [String]
         attr_accessor :environment
       
-        # Status reported by runtime pods.
+        # Errors reported for this deployment. Populated only when state == ERROR.
+        # This field is not populated in List APIs.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleRpcStatus>]
+        attr_accessor :errors
+      
+        # Status reported by each runtime instance.
+        # This field is not populated in List APIs.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatus>]
+        attr_accessor :instances
+      
+        # Status reported by runtime pods. This field is not populated for List
+        # APIs.
         # Corresponds to the JSON property `pods`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1PodStatus>]
         attr_accessor :pods
@@ -1577,6 +1590,22 @@ module Google
         # Corresponds to the JSON property `revision`
         # @return [String]
         attr_accessor :revision
+      
+        # Conflicts in the desired state routing configuration. The presence of
+        # conflicts does not cause the state to be ERROR, but it will mean that
+        # some of the deployments basepaths are not routed to its environment. If
+        # the conflicts change, the state will transition to PROGRESSING until the
+        # latest configuration is rolled out to all instances.
+        # This field is not populated in List APIs.
+        # Corresponds to the JSON property `routeConflicts`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>]
+        attr_accessor :route_conflicts
+      
+        # Current state of the deployment.
+        # This field is not populated in List APIs.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
       
         def initialize(**args)
            update!(**args)
@@ -1588,7 +1617,176 @@ module Google
           @base_path = args[:base_path] if args.key?(:base_path)
           @deploy_start_time = args[:deploy_start_time] if args.key?(:deploy_start_time)
           @environment = args[:environment] if args.key?(:environment)
+          @errors = args[:errors] if args.key?(:errors)
+          @instances = args[:instances] if args.key?(:instances)
           @pods = args[:pods] if args.key?(:pods)
+          @revision = args[:revision] if args.key?(:revision)
+          @route_conflicts = args[:route_conflicts] if args.key?(:route_conflicts)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Response for
+      # GenerateDeployChangeReport
+      # and
+      # GenerateUndeployChangeReport.
+      # This report contains any validation failures that would cause the deployment
+      # to be rejected, as well changes and conflicts in routing that may occur due
+      # to the new deployment.
+      # The existence of a routing warning does not necessarily imply that the
+      # deployment request is bad, if the desired state of the deployment request is
+      # to effect a routing change. The primary purposes of the routing messages are:
+      # 1) To inform users of routing changes that may have an effect on traffic
+      # currently being routed to other existing deployments.
+      # 2) To warn users if some basepath in the proxy will not receive traffic due
+      # to an existing deployment having already claimed that basepath.
+      # The presence of routing conflicts/changes will not cause non-dry-run
+      # DeployApiProxy/UndeployApiProxy requests to be rejected.
+      class GoogleCloudApigeeV1DeploymentChangeReport
+        include Google::Apis::Core::Hashable
+      
+        # All routing changes that may result from a deployment request.
+        # Corresponds to the JSON property `routingChanges`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>]
+        attr_accessor :routing_changes
+      
+        # All basepath conflicts detected for a deployment request.
+        # Corresponds to the JSON property `routingConflicts`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>]
+        attr_accessor :routing_conflicts
+      
+        # Describes what preconditions have failed.
+        # For example, if an RPC failed because it required the Terms of Service to be
+        # acknowledged, it could list the terms of service violation in the
+        # PreconditionFailure message.
+        # Corresponds to the JSON property `validationErrors`
+        # @return [Google::Apis::ApigeeV1::GoogleRpcPreconditionFailure]
+        attr_accessor :validation_errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @routing_changes = args[:routing_changes] if args.key?(:routing_changes)
+          @routing_conflicts = args[:routing_conflicts] if args.key?(:routing_conflicts)
+          @validation_errors = args[:validation_errors] if args.key?(:validation_errors)
+        end
+      end
+      
+      # Describes a potential routing change that may occur as a result
+      # of some deployment operation.
+      class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange
+        include Google::Apis::Core::Hashable
+      
+        # A human-readable description of this routing change.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The name of the environment group affected by this routing change.
+        # Corresponds to the JSON property `environmentGroup`
+        # @return [String]
+        attr_accessor :environment_group
+      
+        # A tuple representing a basepath and the deployment containing it.
+        # Corresponds to the JSON property `fromDeployment`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment]
+        attr_accessor :from_deployment
+      
+        # True if using sequenced rollout would make this routing change safer.
+        # Note: this does not necessarily imply that automated sequenced rollout
+        # mode is supported for the operation.
+        # Corresponds to the JSON property `shouldSequenceRollout`
+        # @return [Boolean]
+        attr_accessor :should_sequence_rollout
+        alias_method :should_sequence_rollout?, :should_sequence_rollout
+      
+        # A tuple representing a basepath and the deployment containing it.
+        # Corresponds to the JSON property `toDeployment`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment]
+        attr_accessor :to_deployment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @environment_group = args[:environment_group] if args.key?(:environment_group)
+          @from_deployment = args[:from_deployment] if args.key?(:from_deployment)
+          @should_sequence_rollout = args[:should_sequence_rollout] if args.key?(:should_sequence_rollout)
+          @to_deployment = args[:to_deployment] if args.key?(:to_deployment)
+        end
+      end
+      
+      # Describes a routing conflict that may cause a deployment not to receive
+      # traffic at some basepath.
+      class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
+        include Google::Apis::Core::Hashable
+      
+        # A tuple representing a basepath and the deployment containing it.
+        # Corresponds to the JSON property `conflictingDeployment`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment]
+        attr_accessor :conflicting_deployment
+      
+        # A human-readable description of this conflict.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The name of the environment group in which this conflict exists.
+        # Corresponds to the JSON property `environmentGroup`
+        # @return [String]
+        attr_accessor :environment_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conflicting_deployment = args[:conflicting_deployment] if args.key?(:conflicting_deployment)
+          @description = args[:description] if args.key?(:description)
+          @environment_group = args[:environment_group] if args.key?(:environment_group)
+        end
+      end
+      
+      # A tuple representing a basepath and the deployment containing it.
+      class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
+        include Google::Apis::Core::Hashable
+      
+        # The name of the deployed proxy revision containing the basepath.
+        # Corresponds to the JSON property `apiProxy`
+        # @return [String]
+        attr_accessor :api_proxy
+      
+        # The basepath receiving traffic.
+        # Corresponds to the JSON property `basepath`
+        # @return [String]
+        attr_accessor :basepath
+      
+        # The name of the environment in which the proxy is deployed.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # The name of the deployed proxy revision containing the basepath.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_proxy = args[:api_proxy] if args.key?(:api_proxy)
+          @basepath = args[:basepath] if args.key?(:basepath)
+          @environment = args[:environment] if args.key?(:environment)
           @revision = args[:revision] if args.key?(:revision)
         end
       end
@@ -2139,6 +2337,130 @@ module Google
         end
       end
       
+      # EnvironmentGroup configuration. An environment group is used to group one or
+      # more Apigee environments under a single host name.
+      class GoogleCloudApigeeV1EnvironmentGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the environment group was created as
+        # milliseconds since
+        # epoch.
+        # Corresponds to the JSON property `createdAt`
+        # @return [Fixnum]
+        attr_accessor :created_at
+      
+        # Required. Host names for this environment group.
+        # Corresponds to the JSON property `hostnames`
+        # @return [Array<String>]
+        attr_accessor :hostnames
+      
+        # Output only. The time at which the environment group was last updated as
+        # milliseconds
+        # since epoch.
+        # Corresponds to the JSON property `lastModifiedAt`
+        # @return [Fixnum]
+        attr_accessor :last_modified_at
+      
+        # ID of the environment group.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_at = args[:created_at] if args.key?(:created_at)
+          @hostnames = args[:hostnames] if args.key?(:hostnames)
+          @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # EnvironmentGroupAttachment is a resource which defines an attachment of an
+      # environment to an environment group.
+      class GoogleCloudApigeeV1EnvironmentGroupAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the environment group attachment was created as
+        # milliseconds since epoch.
+        # Corresponds to the JSON property `createdAt`
+        # @return [Fixnum]
+        attr_accessor :created_at
+      
+        # Required. ID of the attached environment.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # ID of the environment group attachment.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_at = args[:created_at] if args.key?(:created_at)
+          @environment = args[:environment] if args.key?(:environment)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # EnvironmentGroupConfig is a revisioned snapshot of an EnvironmentGroup and
+      # its associated routing rules.
+      class GoogleCloudApigeeV1EnvironmentGroupConfig
+        include Google::Apis::Core::Hashable
+      
+        # Host names for the environment group.
+        # Corresponds to the JSON property `hostnames`
+        # @return [Array<String>]
+        attr_accessor :hostnames
+      
+        # Name of the environment group in the following format:
+        # `organizations/`org`/envgroups/`envgroup``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Revision id that defines the ordering of the EnvironmentGroupConfig
+        # resource. The higher the revision, the more recently the
+        # configuration was deployed.
+        # Corresponds to the JSON property `revisionId`
+        # @return [Fixnum]
+        attr_accessor :revision_id
+      
+        # Ordered list of routing rules defining how traffic to this environment
+        # group's hostnames should be routed to different environments.
+        # Corresponds to the JSON property `routingRules`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1RoutingRule>]
+        attr_accessor :routing_rules
+      
+        # A unique id for the environment group config that will only change if
+        # the environment group is deleted and recreated.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hostnames = args[:hostnames] if args.key?(:hostnames)
+          @name = args[:name] if args.key?(:name)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @routing_rules = args[:routing_rules] if args.key?(:routing_rules)
+          @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1FlowHook
         include Google::Apis::Core::Hashable
@@ -2232,6 +2554,257 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class GoogleCloudApigeeV1IngressConfig
+        include Google::Apis::Core::Hashable
+      
+        # Time at which the IngressConfig was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # List of environment groups in the organization.
+        # Corresponds to the JSON property `environmentGroups`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupConfig>]
+        attr_accessor :environment_groups
+      
+        # Name of the resource in the following format:
+        # `organizations/`org`/deployedIngressConfig`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Revision id that defines the ordering on IngressConfig resources.
+        # The higher the revision, the more recently the configuration
+        # was deployed.
+        # Corresponds to the JSON property `revisionId`
+        # @return [Fixnum]
+        attr_accessor :revision_id
+      
+        # DEPRECATED: Use revision_id
+        # Corresponds to the JSON property `sequenceNumber`
+        # @return [Fixnum]
+        attr_accessor :sequence_number
+      
+        # A unique id for the ingress config that will only change if the
+        # organization is deleted and recreated.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @environment_groups = args[:environment_groups] if args.key?(:environment_groups)
+          @name = args[:name] if args.key?(:name)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @sequence_number = args[:sequence_number] if args.key?(:sequence_number)
+          @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # Apigee runtime instance.
+      class GoogleCloudApigeeV1Instance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time the instance was created in milliseconds since epoch.
+        # Corresponds to the JSON property `createdAt`
+        # @return [Fixnum]
+        attr_accessor :created_at
+      
+        # Optional. Description of the instance.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Customer Managed Encryption Key (CMEK) used for disk & volume
+        # encryption.
+        # Corresponds to the JSON property `diskEncryptionKeyName`
+        # @return [String]
+        attr_accessor :disk_encryption_key_name
+      
+        # Optional. Display name for the instance.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Hostname or IP address of the exposed Apigee endpoint used by
+        # clients to
+        # connect to the service.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Output only. Time the instance was last modified in milliseconds since epoch.
+        # Corresponds to the JSON property `lastModifiedAt`
+        # @return [Fixnum]
+        attr_accessor :last_modified_at
+      
+        # Required. Resource ID of the instance. Values must match the
+        # regular expression `^a-z`0,30`[a-z\d]$`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Port number of the exposed Apigee endpoint.
+        # Corresponds to the JSON property `port`
+        # @return [String]
+        attr_accessor :port
+      
+        # Required. Region where the instance resides.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_at = args[:created_at] if args.key?(:created_at)
+          @description = args[:description] if args.key?(:description)
+          @disk_encryption_key_name = args[:disk_encryption_key_name] if args.key?(:disk_encryption_key_name)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @host = args[:host] if args.key?(:host)
+          @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
+          @name = args[:name] if args.key?(:name)
+          @port = args[:port] if args.key?(:port)
+          @region = args[:region] if args.key?(:region)
+        end
+      end
+      
+      # InstanceAttachment represents the installation of an environment onto an
+      # instance.
+      class GoogleCloudApigeeV1InstanceAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time the attachment was created in milliseconds since epoch.
+        # Corresponds to the JSON property `createdAt`
+        # @return [Fixnum]
+        attr_accessor :created_at
+      
+        # ID of the attached environment.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # Output only. ID of the attachment.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_at = args[:created_at] if args.key?(:created_at)
+          @environment = args[:environment] if args.key?(:environment)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # The status of a deployment as reported by a single instance.
+      class GoogleCloudApigeeV1InstanceDeploymentStatus
+        include Google::Apis::Core::Hashable
+      
+        # Revisions currently deployed in MPs.
+        # Corresponds to the JSON property `deployedRevisions`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>]
+        attr_accessor :deployed_revisions
+      
+        # The current routes deployed in the ingress routing table. A route which is
+        # missing will be shown with no destination environment.
+        # Corresponds to the JSON property `deployedRoutes`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>]
+        attr_accessor :deployed_routes
+      
+        # ID of the instance reporting the status.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployed_revisions = args[:deployed_revisions] if args.key?(:deployed_revisions)
+          @deployed_routes = args[:deployed_routes] if args.key?(:deployed_routes)
+          @instance = args[:instance] if args.key?(:instance)
+        end
+      end
+      
+      # Revisions deployed in the MPs.
+      class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
+        include Google::Apis::Core::Hashable
+      
+        # The percentage of MP replicas reporting this revision
+        # Corresponds to the JSON property `percentage`
+        # @return [Fixnum]
+        attr_accessor :percentage
+      
+        # The proxy revision reported as deployed.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentage = args[:percentage] if args.key?(:percentage)
+          @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
+      # A route deployed in the ingress routing table.
+      class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute
+        include Google::Apis::Core::Hashable
+      
+        # The basepath in the routing table.
+        # Corresponds to the JSON property `basepath`
+        # @return [String]
+        attr_accessor :basepath
+      
+        # The envgroup where this route is installed.
+        # Corresponds to the JSON property `envgroup`
+        # @return [String]
+        attr_accessor :envgroup
+      
+        # The destination environment. This will be empty if the route is not yet
+        # reported.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # The percentage of ingress replicas reporting this route.
+        # Corresponds to the JSON property `percentage`
+        # @return [Fixnum]
+        attr_accessor :percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @basepath = args[:basepath] if args.key?(:basepath)
+          @envgroup = args[:envgroup] if args.key?(:envgroup)
+          @environment = args[:environment] if args.key?(:environment)
+          @percentage = args[:percentage] if args.key?(:percentage)
         end
       end
       
@@ -2501,6 +3074,60 @@ module Google
       end
       
       # Response for
+      # ListEnvironmentGroupAttachments.
+      class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # EnvironmentGroupAttachments for the specified environment group.
+        # Corresponds to the JSON property `environmentGroupAttachments`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupAttachment>]
+        attr_accessor :environment_group_attachments
+      
+        # Page token that you can include in a ListEnvironmentGroupAttachments
+        # request to retrieve the next page. If omitted, no subsequent pages exist.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment_group_attachments = args[:environment_group_attachments] if args.key?(:environment_group_attachments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for
+      # ListEnvironmentGroups.
+      class GoogleCloudApigeeV1ListEnvironmentGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # EnvironmentGroups in the specified organization.
+        # Corresponds to the JSON property `environmentGroups`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroup>]
+        attr_accessor :environment_groups
+      
+        # Page token that you can include in a ListEnvironmentGroups request to
+        # retrieve the next page. If omitted, no subsequent pages exist.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment_groups = args[:environment_groups] if args.key?(:environment_groups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for
       # ListEnvironmentResources
       class GoogleCloudApigeeV1ListEnvironmentResourcesResponse
         include Google::Apis::Core::Hashable
@@ -2536,6 +3163,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @issuers = args[:issuers] if args.key?(:issuers)
+        end
+      end
+      
+      # Response for
+      # ListInstanceAttachments.
+      class GoogleCloudApigeeV1ListInstanceAttachmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Attachments for the instance.
+        # Corresponds to the JSON property `attachments`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceAttachment>]
+        attr_accessor :attachments
+      
+        # Page token that you can include in a ListInstanceAttachments request to
+        # retrieve the next page of content. If omitted, no subsequent pages exist.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for ListInstances.
+      class GoogleCloudApigeeV1ListInstancesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Instances in the specified organization.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Instance>]
+        attr_accessor :instances
+      
+        # Page token that you can include in a ListInstance request to retrieve
+        # the next page of content. If omitted, no subsequent pages exist.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2859,6 +3539,26 @@ module Google
         # @return [Array<String>]
         attr_accessor :attributes
       
+        # Compute Engine network used for ServiceNetworking to
+        # be peered with Apigee runtime instances. See
+        # [Getting started with the Service Networking
+        # API](https://cloud.google.com/service-infrastructure/docs/service-networking/
+        # getting-started).
+        # Valid only when [RuntimeType] is set to CLOUD. The value can be updated
+        # only when there are no runtime instances.
+        # For example: "default".
+        # **Note:** Not supported for Apigee hybrid.
+        # Corresponds to the JSON property `authorizedNetwork`
+        # @return [String]
+        attr_accessor :authorized_network
+      
+        # Output only. Base64-encoded public certificate for the root CA of the Apigee
+        # organization. Valid only when [RuntimeType] is CLOUD.
+        # Corresponds to the JSON property `caCertificate`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :ca_certificate
+      
         # Output only. Time that the Apigee organization was created in milliseconds
         # since epoch.
         # Corresponds to the JSON property `createdAt`
@@ -2937,6 +3637,8 @@ module Google
         def update!(**args)
           @analytics_region = args[:analytics_region] if args.key?(:analytics_region)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
+          @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
           @created_at = args[:created_at] if args.key?(:created_at)
           @customer_name = args[:customer_name] if args.key?(:customer_name)
           @description = args[:description] if args.key?(:description)
@@ -3421,6 +4123,53 @@ module Google
         end
       end
       
+      # Request for ReportInstanceStatus.
+      class GoogleCloudApigeeV1ReportInstanceStatusRequest
+        include Google::Apis::Core::Hashable
+      
+        # A unique ID for the instance which is guaranteed to be unique in case the
+        # user installs multiple hybrid runtimes with the same instance ID.
+        # Corresponds to the JSON property `instanceUid`
+        # @return [String]
+        attr_accessor :instance_uid
+      
+        # The time the report was generated in the runtime. Used to prevent an old
+        # status from overwriting a newer one. An instance should space out it's
+        # status reports so that clock skew does not play a factor.
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        # Status for config resources
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ResourceStatus>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_uid = args[:instance_uid] if args.key?(:instance_uid)
+          @report_time = args[:report_time] if args.key?(:report_time)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # Placeholder for future enhancements to status reporting protocol
+      class GoogleCloudApigeeV1ReportInstanceStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1ReportProperty
         include Google::Apis::Core::Hashable
@@ -3515,6 +4264,48 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_file = args[:resource_file] if args.key?(:resource_file)
+        end
+      end
+      
+      # The status of a resource loaded in the runtime.
+      class GoogleCloudApigeeV1ResourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # The resource name. Currently only two resources are supported:
+        # EnvironmentGroup - organizations/`org`/envgroups/`envgroup`
+        # EnvironmentConfig -
+        # organizations/`org`/environments/`environment`/deployedConfig
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # Revisions of the resource currently deployed in the instance.
+        # Corresponds to the JSON property `revisions`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1RevisionStatus>]
+        attr_accessor :revisions
+      
+        # The total number of replicas that should have this resource.
+        # Corresponds to the JSON property `totalReplicas`
+        # @return [Fixnum]
+        attr_accessor :total_replicas
+      
+        # The uid of the resource. In the unexpected case that the instance has
+        # multiple uids for the same name, they should be reported under separate
+        # ResourceStatuses.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource = args[:resource] if args.key?(:resource)
+          @revisions = args[:revisions] if args.key?(:revisions)
+          @total_replicas = args[:total_replicas] if args.key?(:total_replicas)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       
@@ -3617,6 +4408,71 @@ module Google
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @u_ri = args[:u_ri] if args.key?(:u_ri)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # The status of a specific resource revision.
+      class GoogleCloudApigeeV1RevisionStatus
+        include Google::Apis::Core::Hashable
+      
+        # Errors reported when attempting to load this revision.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1UpdateError>]
+        attr_accessor :errors
+      
+        # The json content of the resource revision.
+        # Corresponds to the JSON property `jsonSpec`
+        # @return [String]
+        attr_accessor :json_spec
+      
+        # The number of replicas that have successfully loaded this revision.
+        # Corresponds to the JSON property `replicas`
+        # @return [Fixnum]
+        attr_accessor :replicas
+      
+        # The revision of the resource.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @json_spec = args[:json_spec] if args.key?(:json_spec)
+          @replicas = args[:replicas] if args.key?(:replicas)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+        end
+      end
+      
+      # 
+      class GoogleCloudApigeeV1RoutingRule
+        include Google::Apis::Core::Hashable
+      
+        # URI path prefix used to route to the specified environment. May contain
+        # one or more wildcards. For example, path segments consisting of a single
+        # `*` character will match any string.
+        # Corresponds to the JSON property `basepath`
+        # @return [String]
+        attr_accessor :basepath
+      
+        # Name of an environment bound to the environment group in the following
+        # format: `organizations/`org`/environments/`env``.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @basepath = args[:basepath] if args.key?(:basepath)
+          @environment = args[:environment] if args.key?(:environment)
         end
       end
       
@@ -4353,6 +5209,45 @@ module Google
         end
       end
       
+      # Details on why a resource update failed in the runtime.
+      class GoogleCloudApigeeV1UpdateError
+        include Google::Apis::Core::Hashable
+      
+        # Status code.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # User-friendly error message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # The sub resource specific to this error (e.g. a proxy deployed within the
+        # EnvironmentConfig). If empty the error refers to the top level resource.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # A string that uniquely identifies the type of error. This provides a
+        # more reliable means to deduplicate errors across revisions and instances.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+          @resource = args[:resource] if args.key?(:resource)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Specifies the audit configuration for a service.
       # The configuration determines which permission types are logged, and what
       # identities, if any, are exempted from logging.
@@ -4915,6 +5810,65 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Describes what preconditions have failed.
+      # For example, if an RPC failed because it required the Terms of Service to be
+      # acknowledged, it could list the terms of service violation in the
+      # PreconditionFailure message.
+      class GoogleRpcPreconditionFailure
+        include Google::Apis::Core::Hashable
+      
+        # Describes all precondition violations.
+        # Corresponds to the JSON property `violations`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleRpcPreconditionFailureViolation>]
+        attr_accessor :violations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @violations = args[:violations] if args.key?(:violations)
+        end
+      end
+      
+      # A message type used to describe a single precondition failure.
+      class GoogleRpcPreconditionFailureViolation
+        include Google::Apis::Core::Hashable
+      
+        # A description of how the precondition failed. Developers can use this
+        # description to understand how to fix the failure.
+        # For example: "Terms of service not accepted".
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The subject, relative to the type, that failed.
+        # For example, "google.com/cloud" relative to the "TOS" type would indicate
+        # which terms of service is being referenced.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        # The type of PreconditionFailure. We recommend using a service-specific
+        # enum type to define the supported precondition violation subjects. For
+        # example, "TOS" for "Terms of Service violation".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @subject = args[:subject] if args.key?(:subject)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

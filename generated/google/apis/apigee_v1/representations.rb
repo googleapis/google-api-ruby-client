@@ -196,6 +196,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1DeploymentChangeReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1DeploymentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +268,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1EnvironmentGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1EnvironmentGroupAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1EnvironmentGroupConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1FlowHook
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +299,42 @@ module Google
       end
       
       class GoogleCloudApigeeV1GetSyncAuthorizationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1IngressConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1InstanceAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1InstanceDeploymentStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -334,6 +412,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListEnvironmentGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListEnvironmentResourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +431,18 @@ module Google
       end
       
       class GoogleCloudApigeeV1ListHybridIssuersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListInstanceAttachmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -466,6 +568,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ReportInstanceStatusRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ReportInstanceStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ReportProperty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -490,7 +604,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Result
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1RevisionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1RoutingRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -592,6 +724,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1UpdateError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIamV1AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -647,6 +785,18 @@ module Google
       end
       
       class GoogleProtobufEmpty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleRpcPreconditionFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleRpcPreconditionFailureViolation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1018,8 +1168,60 @@ module Google
           property :base_path, as: 'basePath'
           property :deploy_start_time, :numeric_string => true, as: 'deployStartTime'
           property :environment, as: 'environment'
+          collection :errors, as: 'errors', class: Google::Apis::ApigeeV1::GoogleRpcStatus, decorator: Google::Apis::ApigeeV1::GoogleRpcStatus::Representation
+      
+          collection :instances, as: 'instances', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatus, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatus::Representation
+      
           collection :pods, as: 'pods', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PodStatus, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PodStatus::Representation
       
+          property :revision, as: 'revision'
+          collection :route_conflicts, as: 'routeConflicts', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudApigeeV1DeploymentChangeReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :routing_changes, as: 'routingChanges', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingChange, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingChange::Representation
+      
+          collection :routing_conflicts, as: 'routingConflicts', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict::Representation
+      
+          property :validation_errors, as: 'validationErrors', class: Google::Apis::ApigeeV1::GoogleRpcPreconditionFailure, decorator: Google::Apis::ApigeeV1::GoogleRpcPreconditionFailure::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :environment_group, as: 'environmentGroup'
+          property :from_deployment, as: 'fromDeployment', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment::Representation
+      
+          property :should_sequence_rollout, as: 'shouldSequenceRollout'
+          property :to_deployment, as: 'toDeployment', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conflicting_deployment, as: 'conflictingDeployment', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment::Representation
+      
+          property :description, as: 'description'
+          property :environment_group, as: 'environmentGroup'
+        end
+      end
+      
+      class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_proxy, as: 'apiProxy'
+          property :basepath, as: 'basepath'
+          property :environment, as: 'environment'
           property :revision, as: 'revision'
         end
       end
@@ -1154,6 +1356,37 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1EnvironmentGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_at, :numeric_string => true, as: 'createdAt'
+          collection :hostnames, as: 'hostnames'
+          property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudApigeeV1EnvironmentGroupAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_at, :numeric_string => true, as: 'createdAt'
+          property :environment, as: 'environment'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudApigeeV1EnvironmentGroupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :hostnames, as: 'hostnames'
+          property :name, as: 'name'
+          property :revision_id, :numeric_string => true, as: 'revisionId'
+          collection :routing_rules, as: 'routingRules', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RoutingRule, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RoutingRule::Representation
+      
+          property :uid, as: 'uid'
+        end
+      end
+      
       class GoogleCloudApigeeV1FlowHook
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1176,6 +1409,72 @@ module Google
       class GoogleCloudApigeeV1GetSyncAuthorizationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApigeeV1IngressConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          collection :environment_groups, as: 'environmentGroups', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupConfig::Representation
+      
+          property :name, as: 'name'
+          property :revision_id, :numeric_string => true, as: 'revisionId'
+          property :sequence_number, :numeric_string => true, as: 'sequenceNumber'
+          property :uid, as: 'uid'
+        end
+      end
+      
+      class GoogleCloudApigeeV1Instance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_at, :numeric_string => true, as: 'createdAt'
+          property :description, as: 'description'
+          property :disk_encryption_key_name, as: 'diskEncryptionKeyName'
+          property :display_name, as: 'displayName'
+          property :host, as: 'host'
+          property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :name, as: 'name'
+          property :port, as: 'port'
+          property :region, as: 'region'
+        end
+      end
+      
+      class GoogleCloudApigeeV1InstanceAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created_at, :numeric_string => true, as: 'createdAt'
+          property :environment, as: 'environment'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudApigeeV1InstanceDeploymentStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployed_revisions, as: 'deployedRevisions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision::Representation
+      
+          collection :deployed_routes, as: 'deployedRoutes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute::Representation
+      
+          property :instance, as: 'instance'
+        end
+      end
+      
+      class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentage, as: 'percentage'
+          property :revision, as: 'revision'
+        end
+      end
+      
+      class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :basepath, as: 'basepath'
+          property :envgroup, as: 'envgroup'
+          property :environment, as: 'environment'
+          property :percentage, as: 'percentage'
         end
       end
       
@@ -1277,6 +1576,24 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :environment_group_attachments, as: 'environmentGroupAttachments', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupAttachment, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupAttachment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListEnvironmentGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :environment_groups, as: 'environmentGroups', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudApigeeV1ListEnvironmentResourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1290,6 +1607,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :issuers, as: 'issuers', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ServiceIssuersMapping, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ServiceIssuersMapping::Representation
       
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListInstanceAttachmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attachments, as: 'attachments', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceAttachment, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceAttachment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListInstancesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Instance, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Instance::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -1374,6 +1709,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analytics_region, as: 'analyticsRegion'
           collection :attributes, as: 'attributes'
+          property :authorized_network, as: 'authorizedNetwork'
+          property :ca_certificate, :base64 => true, as: 'caCertificate'
           property :created_at, :numeric_string => true, as: 'createdAt'
           property :customer_name, as: 'customerName'
           property :description, as: 'description'
@@ -1496,6 +1833,22 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ReportInstanceStatusRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_uid, as: 'instanceUid'
+          property :report_time, as: 'reportTime'
+          collection :resources, as: 'resources', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ResourceStatus, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ResourceStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1ReportInstanceStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudApigeeV1ReportProperty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1529,6 +1882,17 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ResourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource'
+          collection :revisions, as: 'revisions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RevisionStatus, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RevisionStatus::Representation
+      
+          property :total_replicas, as: 'totalReplicas'
+          property :uid, as: 'uid'
+        end
+      end
+      
       class GoogleCloudApigeeV1Result
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1545,6 +1909,25 @@ module Google
           property :timestamp, as: 'timestamp'
           property :u_ri, as: 'uRI'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudApigeeV1RevisionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1UpdateError, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1UpdateError::Representation
+      
+          property :json_spec, as: 'jsonSpec'
+          property :replicas, as: 'replicas'
+          property :revision_id, as: 'revisionId'
+        end
+      end
+      
+      class GoogleCloudApigeeV1RoutingRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :basepath, as: 'basepath'
+          property :environment, as: 'environment'
         end
       end
       
@@ -1727,6 +2110,16 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1UpdateError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
+          property :resource, as: 'resource'
+          property :type, as: 'type'
+        end
+      end
+      
       class GoogleIamV1AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1813,6 +2206,23 @@ module Google
       class GoogleProtobufEmpty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleRpcPreconditionFailure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :violations, as: 'violations', class: Google::Apis::ApigeeV1::GoogleRpcPreconditionFailureViolation, decorator: Google::Apis::ApigeeV1::GoogleRpcPreconditionFailureViolation::Representation
+      
+        end
+      end
+      
+      class GoogleRpcPreconditionFailureViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :subject, as: 'subject'
+          property :type, as: 'type'
         end
       end
       
