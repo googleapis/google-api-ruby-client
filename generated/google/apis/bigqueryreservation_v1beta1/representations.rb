@@ -135,6 +135,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :commitment_end_time, as: 'commitmentEndTime'
+          property :commitment_start_time, as: 'commitmentStartTime'
           property :failure_status, as: 'failureStatus', class: Google::Apis::BigqueryreservationV1beta1::Status, decorator: Google::Apis::BigqueryreservationV1beta1::Status::Representation
       
           property :name, as: 'name'

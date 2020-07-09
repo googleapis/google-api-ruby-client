@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchAllAssignmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchAssignmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -147,6 +153,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :commitment_end_time, as: 'commitmentEndTime'
+          property :commitment_start_time, as: 'commitmentStartTime'
           property :failure_status, as: 'failureStatus', class: Google::Apis::BigqueryreservationV1::Status, decorator: Google::Apis::BigqueryreservationV1::Status::Representation
       
           property :name, as: 'name'
@@ -238,6 +245,15 @@ module Google
           property :ignore_idle_slots, as: 'ignoreIdleSlots'
           property :name, as: 'name'
           property :slot_capacity, :numeric_string => true, as: 'slotCapacity'
+        end
+      end
+      
+      class SearchAllAssignmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assignments, as: 'assignments', class: Google::Apis::BigqueryreservationV1::Assignment, decorator: Google::Apis::BigqueryreservationV1::Assignment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

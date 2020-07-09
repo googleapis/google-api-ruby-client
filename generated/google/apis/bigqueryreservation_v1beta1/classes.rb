@@ -113,6 +113,13 @@ module Google
         # @return [String]
         attr_accessor :commitment_end_time
       
+        # Output only. The start of the current commitment period. It is applicable only
+        # for
+        # ACTIVE capacity commitments.
+        # Corresponds to the JSON property `commitmentStartTime`
+        # @return [String]
+        attr_accessor :commitment_start_time
+      
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
         # used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -158,6 +165,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @commitment_end_time = args[:commitment_end_time] if args.key?(:commitment_end_time)
+          @commitment_start_time = args[:commitment_start_time] if args.key?(:commitment_start_time)
           @failure_status = args[:failure_status] if args.key?(:failure_status)
           @name = args[:name] if args.key?(:name)
           @plan = args[:plan] if args.key?(:plan)

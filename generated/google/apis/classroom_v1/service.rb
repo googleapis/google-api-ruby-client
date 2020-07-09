@@ -1626,7 +1626,7 @@ module Google
         #   This identifier can be either the Classroom-assigned identifier or an
         #   alias.
         # @param [Fixnum] page_size
-        #   Maximum number of items to return. Zero means no maximum.
+        #   Maximum number of items to return. The default is 30 if unspecified or `0`.
         #   The server may return fewer than the specified number of results.
         # @param [String] page_token
         #   nextPageToken
@@ -1811,7 +1811,7 @@ module Google
         #   This identifier can be either the Classroom-assigned identifier or an
         #   alias.
         # @param [Fixnum] page_size
-        #   Maximum number of items to return. Zero means no maximum.
+        #   Maximum number of items to return. The default is 30 if unspecified or `0`.
         #   The server may return fewer than the specified number of results.
         # @param [String] page_token
         #   nextPageToken
@@ -2231,7 +2231,8 @@ module Google
         #   Restricts returned invitations to those for a course with the specified
         #   identifier.
         # @param [Fixnum] page_size
-        #   Maximum number of items to return. Zero means no maximum.
+        #   Maximum number of items to return. The default is 500 if unspecified or
+        #   `0`.
         #   The server may return fewer than the specified number of results.
         # @param [String] page_token
         #   nextPageToken

@@ -113,6 +113,13 @@ module Google
         # @return [String]
         attr_accessor :commitment_end_time
       
+        # Output only. The start of the current commitment period. It is applicable only
+        # for
+        # ACTIVE capacity commitments.
+        # Corresponds to the JSON property `commitmentStartTime`
+        # @return [String]
+        attr_accessor :commitment_start_time
+      
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
         # used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -158,6 +165,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @commitment_end_time = args[:commitment_end_time] if args.key?(:commitment_end_time)
+          @commitment_start_time = args[:commitment_start_time] if args.key?(:commitment_start_time)
           @failure_status = args[:failure_status] if args.key?(:failure_status)
           @name = args[:name] if args.key?(:name)
           @plan = args[:plan] if args.key?(:plan)
@@ -462,6 +470,32 @@ module Google
           @ignore_idle_slots = args[:ignore_idle_slots] if args.key?(:ignore_idle_slots)
           @name = args[:name] if args.key?(:name)
           @slot_capacity = args[:slot_capacity] if args.key?(:slot_capacity)
+        end
+      end
+      
+      # The response for ReservationService.SearchAllAssignments.
+      class SearchAllAssignmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of assignments visible to the user.
+        # Corresponds to the JSON property `assignments`
+        # @return [Array<Google::Apis::BigqueryreservationV1::Assignment>]
+        attr_accessor :assignments
+      
+        # Token to retrieve the next page of results, or empty if there are no
+        # more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assignments = args[:assignments] if args.key?(:assignments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       

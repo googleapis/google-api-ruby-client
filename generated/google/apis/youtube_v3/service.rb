@@ -3456,7 +3456,6 @@ module Google
         #   Type of the link to be deleted.
         # @param [Array<String>, String] part
         #   Do not use. Required for compatibility.
-        # @param [String] resource_id
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3474,11 +3473,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_third_party_link(linking_token, type, part: nil, resource_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_third_party_link(linking_token, type, part: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'youtube/v3/thirdPartyLinks', options)
           command.query['linkingToken'] = linking_token unless linking_token.nil?
           command.query['part'] = part unless part.nil?
-          command.query['resourceId'] = resource_id unless resource_id.nil?
           command.query['type'] = type unless type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

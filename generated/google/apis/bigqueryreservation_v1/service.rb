@@ -173,6 +173,66 @@ module Google
         # 2. Hierarchy lookup (project->folder->organization) happens in this API.
         # 3. Parent here is `projects/*/locations/*`, instead of
         # `projects/*/locations/*reservations/*`.
+        # @param [String] parent
+        #   Required. The resource name with location (project name could be the wildcard '
+        #   -'),
+        #   e.g.:
+        #   `projects/-/locations/US`.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return per page.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous List request, if any.
+        # @param [String] query
+        #   Please specify resource name as assignee in the query.
+        #   Examples:
+        #   * `assignee=projects/myproject`
+        #   * `assignee=folders/123`
+        #   * `assignee=organizations/456`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryreservationV1::SearchAllAssignmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryreservationV1::SearchAllAssignmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_all_assignments(parent, page_size: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}:searchAllAssignments', options)
+          command.response_representation = Google::Apis::BigqueryreservationV1::SearchAllAssignmentsResponse::Representation
+          command.response_class = Google::Apis::BigqueryreservationV1::SearchAllAssignmentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['query'] = query unless query.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Looks up assignments for a specified resource for a particular region.
+        # If the request is about a project:
+        # 1. Assignments created on the project will be returned if they exist.
+        # 2. Otherwise assignments created on the closest ancestor will be
+        # returned.
+        # 3. Assignments for different JobTypes will all be returned.
+        # The same logic applies if the request is about a folder.
+        # If the request is about an organization, then assignments created on the
+        # organization will be returned (organization doesn't have ancestors).
+        # Comparing to ListAssignments, there are some behavior
+        # differences:
+        # 1. permission on the assignee will be verified in this API.
+        # 2. Hierarchy lookup (project->folder->organization) happens in this API.
+        # 3. Parent here is `projects/*/locations/*`, instead of
+        # `projects/*/locations/*reservations/*`.
         # **Note** "-" cannot be used for projects
         # nor locations.
         # @param [String] parent
