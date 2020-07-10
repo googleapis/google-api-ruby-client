@@ -1676,14 +1676,17 @@ module Google
         #   - `identifier_case`
         #   - `app_engine.module_id`
         #   - `cloud_endpoints.service`
-        #   - `cluster_istio.location`
-        #   - `cluster_istio.cluster_name`
-        #   - `cluster_istio.service_namespace`
-        #   - `cluster_istio.service_name`
+        #   - `mesh_istio.mesh_uid`
+        #   - `mesh_istio.service_namespace`
+        #   - `mesh_istio.service_name`
+        #   - `cluster_istio.location` (deprecated)
+        #   - `cluster_istio.cluster_name` (deprecated)
+        #   - `cluster_istio.service_namespace` (deprecated)
+        #   - `cluster_istio.service_name` (deprecated)
         #   identifier_case refers to which option in the identifier oneof is populated.
         #   For example, the filter identifier_case = "CUSTOM" would match all services
         #   with a value for the custom field. Valid options are "CUSTOM", "APP_ENGINE", "
-        #   CLOUD_ENDPOINTS", and "CLUSTER_ISTIO".
+        #   CLOUD_ENDPOINTS", "MESH_ISTIO", and "CLUSTER_ISTIO" (deprecated),
         # @param [Fixnum] page_size
         #   A non-negative number that is the maximum number of results to return. When 0,
         #   use default page size.

@@ -282,6 +282,7 @@ module Google
         #   <li>PENDING: Only pending requests.</li>
         #   <li>ACTIVE: Only active (i.e. currently approved) requests.</li>
         #   <li>DISMISSED: Only dismissed (including expired) requests.</li>
+        #   <li>HISTORY: Active and dismissed (including expired) requests.</li>
         #   </ol>
         # @param [Fixnum] page_size
         #   Requested page size.
@@ -552,6 +553,7 @@ module Google
         #   <li>PENDING: Only pending requests.</li>
         #   <li>ACTIVE: Only active (i.e. currently approved) requests.</li>
         #   <li>DISMISSED: Only dismissed (including expired) requests.</li>
+        #   <li>HISTORY: Active and dismissed (including expired) requests.</li>
         #   </ol>
         # @param [Fixnum] page_size
         #   Requested page size.
@@ -822,6 +824,7 @@ module Google
         #   <li>PENDING: Only pending requests.</li>
         #   <li>ACTIVE: Only active (i.e. currently approved) requests.</li>
         #   <li>DISMISSED: Only dismissed (including expired) requests.</li>
+        #   <li>HISTORY: Active and dismissed (including expired) requests.</li>
         #   </ol>
         # @param [Fixnum] page_size
         #   Requested page size.

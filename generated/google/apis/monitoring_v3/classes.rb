@@ -1903,6 +1903,12 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::NotificationChannel>]
         attr_accessor :notification_channels
       
+        # The total number of notification channels in all pages. This number is only an
+        # estimate, and may change in subsequent pages. https://aip.dev/158
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1911,6 +1917,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @notification_channels = args[:notification_channels] if args.key?(:notification_channels)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       
@@ -2877,8 +2884,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The type of notification channel, such as "email", "sms", etc. Notification
-        # channel types are globally unique.
+        # The type of notification channel, such as "email" and "sms". To view the full
+        # list of channels, see Channel descriptors (https://cloud.google.com/monitoring/
+        # alerts/using-channels-api#ncd). Notification channel types are globally unique.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

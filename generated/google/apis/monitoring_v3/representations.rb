@@ -1060,6 +1060,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :notification_channels, as: 'notificationChannels', class: Google::Apis::MonitoringV3::NotificationChannel, decorator: Google::Apis::MonitoringV3::NotificationChannel::Representation
       
+          property :total_size, as: 'totalSize'
         end
       end
       

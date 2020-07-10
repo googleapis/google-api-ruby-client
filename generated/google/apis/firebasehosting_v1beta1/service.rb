@@ -650,6 +650,7 @@ module Google
         end
         
         # Adds content files to a version.
+        # Each file must be under 2 GB.
         # @param [String] parent
         #   Required. The version to add files to, in the format:
         #   <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
@@ -1293,6 +1294,7 @@ module Google
         end
         
         # Adds content files to a version.
+        # Each file must be under 2 GB.
         # @param [String] parent
         #   Required. The version to add files to, in the format:
         #   <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
