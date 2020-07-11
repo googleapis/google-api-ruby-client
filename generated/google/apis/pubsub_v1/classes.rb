@@ -733,11 +733,11 @@ module Google
       # A message that is published by publishers and consumed by subscribers. The
       # message must contain either a non-empty data field or at least one attribute.
       # Note that client libraries represent this object differently
-      # depending on the language. See the corresponding
-      # <a href="https://cloud.google.com/pubsub/docs/reference/libraries">client
-      # library documentation</a> for more information. See
-      # <a href="https://cloud.google.com/pubsub/quotas">Quotas and limits</a>
-      # for more information about message limits.
+      # depending on the language. See the corresponding [client library
+      # documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for
+      # more information. See [quotas and limits]
+      # (https://cloud.google.com/pubsub/quotas) for more information about message
+      # limits.
       class Message
         include Google::Apis::Core::Hashable
       
@@ -917,11 +917,11 @@ module Google
         # A message that is published by publishers and consumed by subscribers. The
         # message must contain either a non-empty data field or at least one attribute.
         # Note that client libraries represent this object differently
-        # depending on the language. See the corresponding
-        # <a href="https://cloud.google.com/pubsub/docs/reference/libraries">client
-        # library documentation</a> for more information. See
-        # <a href="https://cloud.google.com/pubsub/quotas">Quotas and limits</a>
-        # for more information about message limits.
+        # depending on the language. See the corresponding [client library
+        # documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for
+        # more information. See [quotas and limits]
+        # (https://cloud.google.com/pubsub/quotas) for more information about message
+        # limits.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::PubsubV1::Message]
         attr_accessor :message
@@ -1102,11 +1102,10 @@ module Google
       end
       
       # A snapshot resource. Snapshots are used in
-      # <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-      # operations, which allow
-      # you to manage message acknowledgments in bulk. That is, you can set the
-      # acknowledgment state of messages in an existing subscription to the state
-      # captured by a snapshot.
+      # [Seek](https://cloud.google.com/pubsub/docs/replay-overview)
+      # operations, which allow you to manage message acknowledgments in bulk. That
+      # is, you can set the acknowledgment state of messages in an existing
+      # subscription to the state captured by a snapshot.
       class Snapshot
         include Google::Apis::Core::Hashable
       
@@ -1124,8 +1123,8 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
-        # managing labels</a>.
+        # See [Creating and managing labels]
+        # (https://cloud.google.com/pubsub/docs/labels).
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1235,10 +1234,8 @@ module Google
         # Indicates whether to retain acknowledged messages. If true, then
         # messages are not expunged from the subscription's backlog, even if they are
         # acknowledged, until they fall out of the `message_retention_duration`
-        # window. This must be true if you would like to
-        # <a
-        # href="https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time">
-        # Seek to a timestamp</a>.
+        # window. This must be true if you would like to [Seek to a timestamp]
+        # (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time).
         # Corresponds to the JSON property `retainAckedMessages`
         # @return [Boolean]
         attr_accessor :retain_acked_messages
@@ -1338,8 +1335,8 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
-        # See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
-        # managing labels</a>.
+        # See [Creating and managing labels]
+        # (https://cloud.google.com/pubsub/docs/labels).
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1377,11 +1374,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A snapshot resource. Snapshots are used in
-        # <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-        # operations, which allow
-        # you to manage message acknowledgments in bulk. That is, you can set the
-        # acknowledgment state of messages in an existing subscription to the state
-        # captured by a snapshot.
+        # [Seek](https://cloud.google.com/pubsub/docs/replay-overview)
+        # operations, which allow you to manage message acknowledgments in bulk. That
+        # is, you can set the acknowledgment state of messages in an existing
+        # subscription to the state captured by a snapshot.
         # Corresponds to the JSON property `snapshot`
         # @return [Google::Apis::PubsubV1::Snapshot]
         attr_accessor :snapshot
