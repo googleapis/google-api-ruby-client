@@ -635,6 +635,12 @@ module Google
       class OperationMetadataV1
         include Google::Apis::Core::Hashable
       
+        # The Cloud Build ID of the function created or updated by an API call.
+        # This field is only populated for Create and Update operations.
+        # Corresponds to the JSON property `buildId`
+        # @return [String]
+        attr_accessor :build_id
+      
         # The original request that started the operation.
         # Corresponds to the JSON property `request`
         # @return [Hash<String,Object>]
@@ -668,6 +674,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @build_id = args[:build_id] if args.key?(:build_id)
           @request = args[:request] if args.key?(:request)
           @target = args[:target] if args.key?(:target)
           @type = args[:type] if args.key?(:type)

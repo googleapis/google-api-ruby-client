@@ -166,6 +166,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1Datastore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1DatastoreConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1DateRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1DebugMask
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +304,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1Export
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ExportRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1FlowHook
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -394,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListDatastoresResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListDebugSessionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -425,6 +461,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1ListEnvironmentResourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListExportsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -701,6 +743,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1TargetServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1TestDatastoreResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1118,6 +1166,39 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1Datastore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, :numeric_string => true, as: 'createTime'
+          property :datastore_config, as: 'datastoreConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DatastoreConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DatastoreConfig::Representation
+      
+          property :display_name, as: 'displayName'
+          property :last_update_time, :numeric_string => true, as: 'lastUpdateTime'
+          property :org, as: 'org'
+          property :self, as: 'self'
+          property :target_type, as: 'targetType'
+        end
+      end
+      
+      class GoogleCloudApigeeV1DatastoreConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_name, as: 'bucketName'
+          property :dataset_name, as: 'datasetName'
+          property :path, as: 'path'
+          property :project_id, as: 'projectId'
+          property :table_prefix, as: 'tablePrefix'
+        end
+      end
+      
+      class GoogleCloudApigeeV1DateRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end'
+          property :start, as: 'start'
+        end
+      end
+      
       class GoogleCloudApigeeV1DebugMask
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1387,6 +1468,34 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1Export
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created, as: 'created'
+          property :datastore_name, as: 'datastoreName'
+          property :description, as: 'description'
+          property :error, as: 'error'
+          property :execution_time, as: 'executionTime'
+          property :name, as: 'name'
+          property :self, as: 'self'
+          property :state, as: 'state'
+          property :updated, as: 'updated'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ExportRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :csv_delimiter, as: 'csvDelimiter'
+          property :datastore_name, as: 'datastoreName'
+          property :date_range, as: 'dateRange', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DateRange, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DateRange::Representation
+      
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :output_format, as: 'outputFormat'
+        end
+      end
+      
       class GoogleCloudApigeeV1FlowHook
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1434,9 +1543,9 @@ module Google
           property :display_name, as: 'displayName'
           property :host, as: 'host'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :location, as: 'location'
           property :name, as: 'name'
           property :port, as: 'port'
-          property :region, as: 'region'
         end
       end
       
@@ -1551,6 +1660,14 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListDatastoresResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :datastores, as: 'datastores', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore::Representation
+      
+        end
+      end
+      
       class GoogleCloudApigeeV1ListDebugSessionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1598,6 +1715,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :resource_file, as: 'resourceFile', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ResourceFile, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ResourceFile::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListExportsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exports, as: 'exports', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Export, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Export::Representation
       
         end
       end
@@ -2066,6 +2191,14 @@ module Google
           property :port, as: 'port'
           property :tls_info, as: 'tlsInfo', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TlsInfoConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TlsInfoConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudApigeeV1TestDatastoreResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error'
+          property :state, as: 'state'
         end
       end
       

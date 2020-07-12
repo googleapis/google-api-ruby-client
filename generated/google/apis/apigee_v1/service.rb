@@ -352,6 +352,206 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a Datastore for an org
+        # @param [String] parent
+        #   Required. The parent organization name.
+        #   Must be of the form `organizations/`org``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore] google_cloud_apigee_v1_datastore_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_analytic_datastore(parent, google_cloud_apigee_v1_datastore_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/analytics/datastores', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore::Representation
+          command.request_object = google_cloud_apigee_v1_datastore_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a Datastore from an org.
+        # @param [String] name
+        #   Required. Resource name of the Datastore to be deleted. Must be of the
+        #   form `organizations/`org`/analytics/datastores/`datastoreId``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_analytic_datastore(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a Datastore
+        # @param [String] name
+        #   Required. Resource name of the Datastore to be get. Must be of the
+        #   form `organizations/`org`/analytics/datastores/`datastoreId``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_analytic_datastore(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List Datastores
+        # @param [String] parent
+        #   Required. The parent organization name.
+        #   Must be of the form `organizations/`org``.
+        # @param [String] target_type
+        #   Optional. TargetType is used to fetch all Datastores that match the type
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDatastoresResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDatastoresResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_analytic_datastores(parent, target_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/analytics/datastores', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDatastoresResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDatastoresResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['targetType'] = target_type unless target_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Test if Datastore configuration is correct. This includes checking
+        # if credentials provided by customer have required permissions in target
+        # destination storage
+        # @param [String] parent
+        #   Required. The parent organization name
+        #   Must be of the form `organizations/`org``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore] google_cloud_apigee_v1_datastore_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TestDatastoreResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TestDatastoreResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_organization_analytic_datastore(parent, google_cloud_apigee_v1_datastore_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/analytics/datastores:test', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore::Representation
+          command.request_object = google_cloud_apigee_v1_datastore_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TestDatastoreResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1TestDatastoreResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a Datastore
+        # @param [String] name
+        #   Required. The resource name of datastore to be updated. Must be of the
+        #   form `organizations/`org`/analytics/datastores/`datastoreId``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore] google_cloud_apigee_v1_datastore_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_analytic_datastore(name, google_cloud_apigee_v1_datastore_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore::Representation
+          command.request_object = google_cloud_apigee_v1_datastore_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates or creates API product attributes. This API **replaces** the
         # current list of attributes with the attributes specified in the request
         # body. In this way, you can update existing attributes, add new attributes,
@@ -2601,7 +2801,8 @@ module Google
         
         # Creates a new environment group.
         # @param [String] parent
-        #   Name of the organization in which to create the environment group in the
+        #   Required. Name of the organization in which to create the environment group in
+        #   the
         #   following format: `organizations/`org``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroup] google_cloud_apigee_v1_environment_group_object
         # @param [String] name
@@ -2639,7 +2840,7 @@ module Google
         
         # Deletes an environment group.
         # @param [String] name
-        #   Name of the environment group in the following format:
+        #   Required. Name of the environment group in the following format:
         #   `organizations/`org`/envgroups/`envgroup``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2670,7 +2871,7 @@ module Google
         
         # Gets an environment group.
         # @param [String] name
-        #   Name of the environment group in the following format:
+        #   Required. Name of the environment group in the following format:
         #   `organizations/`org`/envgroups/`envgroup``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2701,7 +2902,7 @@ module Google
         
         # Lists all environment groups.
         # @param [String] parent
-        #   Name of the organization for which to list environment groups in the
+        #   Required. Name of the organization for which to list environment groups in the
         #   following format: `organizations/`org``.
         # @param [Fixnum] page_size
         #   Maximum number of environment groups to return. The page size defaults
@@ -2740,7 +2941,7 @@ module Google
         
         # Updates an environment group.
         # @param [String] name
-        #   Name of the environment group to update in the format:
+        #   Required. Name of the environment group to update in the format:
         #   `organizations/`org`/envgroups/`envgroup`.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroup] google_cloud_apigee_v1_environment_group_object
         # @param [String] update_mask
@@ -2777,7 +2978,8 @@ module Google
         
         # Creates a new attachment of an environment to an environment group.
         # @param [String] parent
-        #   EnvironmentGroup under which to create the attachment in the following
+        #   Required. EnvironmentGroup under which to create the attachment in the
+        #   following
         #   format: `organizations/`org`/envgroups/`envgroup``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupAttachment] google_cloud_apigee_v1_environment_group_attachment_object
         # @param [String] fields
@@ -2811,7 +3013,8 @@ module Google
         
         # Deletes an environment group attachment.
         # @param [String] name
-        #   Name of the environment group attachment to delete in the following format:
+        #   Required. Name of the environment group attachment to delete in the following
+        #   format:
         #   `organizations/`org`/envgroups/`envgroup`/attachments/`attachment``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2842,7 +3045,7 @@ module Google
         
         # Gets an environment group attachment.
         # @param [String] name
-        #   Name of the environment group attachment in the following format:
+        #   Required. Name of the environment group attachment in the following format:
         #   `organizations/`org`/envgroups/`envgroup`/attachments/`attachment``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2873,7 +3076,8 @@ module Google
         
         # Lists all attachments of an environment group.
         # @param [String] parent
-        #   Name of the organization in the following format: `organizations/`org``.
+        #   Required. Name of the organization in the following format: `organizations/`
+        #   org``.
         # @param [Fixnum] page_size
         #   Maximum number of environment group attachments to return. The page size
         #   defaults to 25.
@@ -3415,6 +3619,109 @@ module Google
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Schema
           command.params['name'] = name unless name.nil?
           command.query['type'] = type unless type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Submit a data export job to be processed in the background.
+        # If the request is successful, the API returns a 201 status, a URI that can
+        # be used to retrieve the status of the export job, and the `state` value of
+        # "enqueued".
+        # @param [String] parent
+        #   Required. Names of the parent organization and environment.
+        #   Must be of the form `organizations/`org`/environments/`env``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ExportRequest] google_cloud_apigee_v1_export_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Export] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Export]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_environment_analytic_export(parent, google_cloud_apigee_v1_export_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/analytics/exports', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ExportRequest::Representation
+          command.request_object = google_cloud_apigee_v1_export_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Export::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Export
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the details and status of an analytics export job.
+        # If the export job is still in progress, its `state` is set to "running".
+        # After the export job has completed successfully, its `state` is set to
+        # "completed".
+        # If the export job fails, its `state` is set to `failed`.
+        # @param [String] name
+        #   Required. Resource name of the export to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Export] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Export]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_environment_analytic_export(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Export::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Export
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the details and status of all analytics export jobs belonging to the
+        # parent organization and environment.
+        # @param [String] parent
+        #   Required. Names of the parent organization and environment.
+        #   Must be of the form `organizations/`org`/environments/`env``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListExportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListExportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_environment_analytic_exports(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/analytics/exports', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListExportsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListExportsResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

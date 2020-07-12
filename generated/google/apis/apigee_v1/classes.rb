@@ -1365,6 +1365,143 @@ module Google
         end
       end
       
+      # The data store defines the connection to export data repository
+      # (Cloud Storage, BigQuery), including the credentials used to access the data
+      # repository.
+      class GoogleCloudApigeeV1Datastore
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Datastore create time, in milliseconds since the epoch
+        # of 1970-01-01T00:00:00Z
+        # Corresponds to the JSON property `createTime`
+        # @return [Fixnum]
+        attr_accessor :create_time
+      
+        # Configuration detail for datastore
+        # Corresponds to the JSON property `datastoreConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DatastoreConfig]
+        attr_accessor :datastore_config
+      
+        # Required. Display name in UI
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Datastore last update time, in milliseconds since the epoch
+        # of 1970-01-01T00:00:00Z
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [Fixnum]
+        attr_accessor :last_update_time
+      
+        # Output only. Organization that the datastore belongs to
+        # Corresponds to the JSON property `org`
+        # @return [String]
+        attr_accessor :org
+      
+        # Output only. Resource link of Datastore.
+        # Example: `/organizations/`org`/analytics/datastores/`uuid``
+        # Corresponds to the JSON property `self`
+        # @return [String]
+        attr_accessor :self
+      
+        # Destination storage type.
+        # Supported types `gcs` or `bigquery`.
+        # Corresponds to the JSON property `targetType`
+        # @return [String]
+        attr_accessor :target_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @datastore_config = args[:datastore_config] if args.key?(:datastore_config)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @org = args[:org] if args.key?(:org)
+          @self = args[:self] if args.key?(:self)
+          @target_type = args[:target_type] if args.key?(:target_type)
+        end
+      end
+      
+      # Configuration detail for datastore
+      class GoogleCloudApigeeV1DatastoreConfig
+        include Google::Apis::Core::Hashable
+      
+        # Name of the Cloud Storage bucket.
+        # Required for `gcs` target_type.
+        # Corresponds to the JSON property `bucketName`
+        # @return [String]
+        attr_accessor :bucket_name
+      
+        # BigQuery dataset name
+        # Required for `bigquery` target_type.
+        # Corresponds to the JSON property `datasetName`
+        # @return [String]
+        attr_accessor :dataset_name
+      
+        # Path of Cloud Storage bucket
+        # Required for `gcs` target_type.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Required. GCP project in which the datastore exists
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # Prefix of BigQuery table
+        # Required for `bigquery` target_type.
+        # Corresponds to the JSON property `tablePrefix`
+        # @return [String]
+        attr_accessor :table_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
+          @dataset_name = args[:dataset_name] if args.key?(:dataset_name)
+          @path = args[:path] if args.key?(:path)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @table_prefix = args[:table_prefix] if args.key?(:table_prefix)
+        end
+      end
+      
+      # Date range of the data to export.
+      class GoogleCloudApigeeV1DateRange
+        include Google::Apis::Core::Hashable
+      
+        # Required. End date (exclusive) of the data to export in the format `yyyy-mm-dd`
+        # .
+        # The date range ends at 00:00:00 UTC on the end date- which will not be in
+        # the output.
+        # Corresponds to the JSON property `end`
+        # @return [String]
+        attr_accessor :end
+      
+        # Required. Start date of the data to export in the format `yyyy-mm-dd`.
+        # The date range begins at 00:00:00 UTC on the start date.
+        # Corresponds to the JSON property `start`
+        # @return [String]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @start = args[:start] if args.key?(:start)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1DebugMask
         include Google::Apis::Core::Hashable
@@ -2461,6 +2598,136 @@ module Google
         end
       end
       
+      # Details of an export job.
+      class GoogleCloudApigeeV1Export
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time the export job was created.
+        # Corresponds to the JSON property `created`
+        # @return [String]
+        attr_accessor :created
+      
+        # Name of the datastore that is the destination of the export job [datastore]
+        # Corresponds to the JSON property `datastoreName`
+        # @return [String]
+        attr_accessor :datastore_name
+      
+        # Description of the export job.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Error is set when export fails
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Output only. Execution time for this export job.
+        # If the job is still in progress, it will be set to the amount of time that
+        # has elapsed since`created`, in seconds.
+        # Else, it will set to (`updated` - `created`), in seconds.
+        # Corresponds to the JSON property `executionTime`
+        # @return [String]
+        attr_accessor :execution_time
+      
+        # Display name of the export job.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Self link of the export job.
+        # A URI that can be used to retrieve the status of an export job.
+        # Example:
+        # `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-
+        # ae6f-318d0cb961bd`
+        # Corresponds to the JSON property `self`
+        # @return [String]
+        attr_accessor :self
+      
+        # Output only. Status of the export job.
+        # Valid values include `enqueued`, `running`, `completed`, and `failed`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Time the export job was last updated.
+        # Corresponds to the JSON property `updated`
+        # @return [String]
+        attr_accessor :updated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created = args[:created] if args.key?(:created)
+          @datastore_name = args[:datastore_name] if args.key?(:datastore_name)
+          @description = args[:description] if args.key?(:description)
+          @error = args[:error] if args.key?(:error)
+          @execution_time = args[:execution_time] if args.key?(:execution_time)
+          @name = args[:name] if args.key?(:name)
+          @self = args[:self] if args.key?(:self)
+          @state = args[:state] if args.key?(:state)
+          @updated = args[:updated] if args.key?(:updated)
+        end
+      end
+      
+      # Request body for [CreateExportRequest]
+      class GoogleCloudApigeeV1ExportRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Delimiter used in the CSV file, if `outputFormat` is set
+        # to `csv`. Defaults to the `,` (comma) character.
+        # Supported delimiter characters include comma (`,`), pipe (`|`),
+        # and tab (`\t`).
+        # Corresponds to the JSON property `csvDelimiter`
+        # @return [String]
+        attr_accessor :csv_delimiter
+      
+        # Required. Name of the preconfigured datastore.
+        # Corresponds to the JSON property `datastoreName`
+        # @return [String]
+        attr_accessor :datastore_name
+      
+        # Date range of the data to export.
+        # Corresponds to the JSON property `dateRange`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DateRange]
+        attr_accessor :date_range
+      
+        # Optional. Description of the export job.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Display name of the export job.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Output format of the export.
+        # Valid values include: `csv` or `json`. Defaults to `json`.
+        # Note: Configure the delimiter for CSV output using the `csvDelimiter`
+        # property.
+        # Corresponds to the JSON property `outputFormat`
+        # @return [String]
+        attr_accessor :output_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @csv_delimiter = args[:csv_delimiter] if args.key?(:csv_delimiter)
+          @datastore_name = args[:datastore_name] if args.key?(:datastore_name)
+          @date_range = args[:date_range] if args.key?(:date_range)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @output_format = args[:output_format] if args.key?(:output_format)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1FlowHook
         include Google::Apis::Core::Hashable
@@ -2647,6 +2914,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_at
       
+        # Required. Compute Engine location where the instance resides.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # Required. Resource ID of the instance. Values must match the
         # regular expression `^a-z`0,30`[a-z\d]$`.
         # Corresponds to the JSON property `name`
@@ -2657,11 +2929,6 @@ module Google
         # Corresponds to the JSON property `port`
         # @return [String]
         attr_accessor :port
-      
-        # Required. Region where the instance resides.
-        # Corresponds to the JSON property `region`
-        # @return [String]
-        attr_accessor :region
       
         def initialize(**args)
            update!(**args)
@@ -2675,9 +2942,9 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @host = args[:host] if args.key?(:host)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
+          @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @port = args[:port] if args.key?(:port)
-          @region = args[:region] if args.key?(:region)
         end
       end
       
@@ -3008,6 +3275,25 @@ module Google
         end
       end
       
+      # The response for ListDatastores
+      class GoogleCloudApigeeV1ListDatastoresResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of datastores
+        # Corresponds to the JSON property `datastores`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore>]
+        attr_accessor :datastores
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @datastores = args[:datastores] if args.key?(:datastores)
+        end
+      end
+      
       # 
       class GoogleCloudApigeeV1ListDebugSessionsResponse
         include Google::Apis::Core::Hashable
@@ -3144,6 +3430,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_file = args[:resource_file] if args.key?(:resource_file)
+        end
+      end
+      
+      # The response for ListExports
+      class GoogleCloudApigeeV1ListExportsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Details of the export jobs.
+        # Corresponds to the JSON property `exports`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Export>]
+        attr_accessor :exports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exports = args[:exports] if args.key?(:exports)
         end
       end
       
@@ -5022,6 +5327,31 @@ module Google
           @name = args[:name] if args.key?(:name)
           @port = args[:port] if args.key?(:port)
           @tls_info = args[:tls_info] if args.key?(:tls_info)
+        end
+      end
+      
+      # The response for TestDatastore
+      class GoogleCloudApigeeV1TestDatastoreResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Error message of test connection failure
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Output only. It could be `completed` or `failed`
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

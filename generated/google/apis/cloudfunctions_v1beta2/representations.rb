@@ -295,6 +295,7 @@ module Google
       class OperationMetadataV1
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_id, as: 'buildId'
           hash :request, as: 'request'
           property :target, as: 'target'
           property :type, as: 'type'

@@ -284,6 +284,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :available_memory_mb
       
+        # Output only. The Cloud Build ID of the latest successful deployment of the
+        # function.
+        # Corresponds to the JSON property `buildId`
+        # @return [String]
+        attr_accessor :build_id
+      
         # User-provided description of a function.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -436,6 +442,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @available_memory_mb = args[:available_memory_mb] if args.key?(:available_memory_mb)
+          @build_id = args[:build_id] if args.key?(:build_id)
           @description = args[:description] if args.key?(:description)
           @entry_point = args[:entry_point] if args.key?(:entry_point)
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
@@ -907,6 +914,12 @@ module Google
       class OperationMetadataV1
         include Google::Apis::Core::Hashable
       
+        # The Cloud Build ID of the function created or updated by an API call.
+        # This field is only populated for Create and Update operations.
+        # Corresponds to the JSON property `buildId`
+        # @return [String]
+        attr_accessor :build_id
+      
         # The original request that started the operation.
         # Corresponds to the JSON property `request`
         # @return [Hash<String,Object>]
@@ -940,6 +953,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @build_id = args[:build_id] if args.key?(:build_id)
           @request = args[:request] if args.key?(:request)
           @target = args[:target] if args.key?(:target)
           @type = args[:type] if args.key?(:type)

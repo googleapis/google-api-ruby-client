@@ -237,6 +237,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :available_memory_mb, as: 'availableMemoryMb'
+          property :build_id, as: 'buildId'
           property :description, as: 'description'
           property :entry_point, as: 'entryPoint'
           hash :environment_variables, as: 'environmentVariables'
@@ -381,6 +382,7 @@ module Google
       class OperationMetadataV1
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_id, as: 'buildId'
           hash :request, as: 'request'
           property :target, as: 'target'
           property :type, as: 'type'
