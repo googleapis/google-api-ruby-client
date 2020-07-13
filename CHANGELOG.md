@@ -1,3 +1,39 @@
+# 0.42.0
+* Breaking changes:
+  * Deleted `androidpublisher_v1_1`
+  * Deleted `androidpublisher_v2`
+* Backwards compatible changes:
+  * Updated `accessapproval_v1`
+  * Updated `accessapproval_v1beta1`
+  * Updated `admob_v1`
+  * Updated `androidenterprise_v1`
+  * Updated `apigee_v1`
+  * Updated `appsmarket_v2`
+  * Updated `bigqueryreservation_v1`
+  * Updated `bigqueryreservation_v1beta1`
+  * Updated `civicinfo_v2`
+  * Updated `classroom_v1`
+  * Updated `cloudfunctions_v1`
+  * Updated `cloudfunctions_v1beta2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `displayvideo_v1`
+  * Updated `dns_v1`
+  * Updated `file_v1`
+  * Updated `file_v1beta1`
+  * Updated `firebasehosting_v1beta1`
+  * Updated `games_v1`
+  * Updated `gameservices_v1beta`
+  * Updated `groupssettings_v1`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `pubsub_v1`
+  * Updated `recommender_v1`
+  * Updated `redis_v1`
+  * Updated `redis_v1beta1`
+  * Updated `testing_v1`
+  * Updated `youtube_partner_v1`
+  * Updated `youtube_v3`
+
 # 0.41.2
 * Backwards compatible changes:
   * Added `gameservices_v1`
