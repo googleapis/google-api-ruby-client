@@ -56,8 +56,6 @@ module Google
         # in the existing trace and its spans are overwritten by the provided values,
         # and any new fields provided are merged with the existing trace data. If the
         # ID does not match, a new trace is created.
-        # In this case, writing traces is not considered an active developer
-        # method since traces are machine generated.
         # @param [String] project_id
         #   Required. ID of the Cloud project where the trace data is stored.
         # @param [Google::Apis::CloudtraceV1::Traces] traces_object
@@ -91,8 +89,6 @@ module Google
         end
         
         # Gets a single trace by its ID.
-        # In this case, getting for traces is considered an active developer method,
-        # even though it is technically a read-only method.
         # @param [String] project_id
         #   Required. ID of the Cloud project where the trace data is stored.
         # @param [String] trace_id
@@ -126,8 +122,6 @@ module Google
         end
         
         # Returns of a list of traces that match the specified filter conditions.
-        # In this case, listing for traces is considered an active developer method,
-        # even though it is technically a read-only method.
         # @param [String] project_id
         #   Required. ID of the Cloud project where the trace data is stored.
         # @param [String] end_time

@@ -480,7 +480,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -578,7 +578,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -1744,7 +1744,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -3891,7 +3891,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -3927,7 +3927,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -4053,7 +4053,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -4114,7 +4114,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -4458,7 +4458,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -4594,7 +4594,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -5521,7 +5521,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -5607,7 +5607,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -5925,7 +5925,7 @@ module Google
       
       # A range on a sheet.
       # All indexes are zero-based.
-      # Indexes are half open, e.g the start index is inclusive
+      # Indexes are half open, i.e. the start index is inclusive
       # and the end index is exclusive -- [start_index, end_index).
       # Missing indexes indicate the range is unbounded on that side.
       # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -6296,7 +6296,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -6705,7 +6705,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -6795,7 +6795,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -7625,7 +7625,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -7761,7 +7761,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -7835,7 +7835,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -7897,7 +7897,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -8669,7 +8669,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -9158,7 +9158,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -9228,7 +9228,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -9547,7 +9547,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -9999,7 +9999,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -10761,7 +10761,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -10820,7 +10820,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -10915,7 +10915,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:
@@ -10979,7 +10979,7 @@ module Google
       
         # A range on a sheet.
         # All indexes are zero-based.
-        # Indexes are half open, e.g the start index is inclusive
+        # Indexes are half open, i.e. the start index is inclusive
         # and the end index is exclusive -- [start_index, end_index).
         # Missing indexes indicate the range is unbounded on that side.
         # For example, if `"Sheet1"` is sheet ID 0, then:

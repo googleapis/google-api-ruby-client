@@ -952,6 +952,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GrpcHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlobalNetworkEndpointGroupsAttachEndpointsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4102,6 +4108,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetGrpcProxy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetGrpcProxyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetHttpProxiesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -6713,6 +6743,16 @@ module Google
         end
       end
       
+      class GrpcHealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :grpc_service_name, as: 'grpcServiceName'
+          property :port, as: 'port'
+          property :port_name, as: 'portName'
+          property :port_specification, as: 'portSpecification'
+        end
+      end
+      
       class GlobalNetworkEndpointGroupsAttachEndpointsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6830,6 +6870,8 @@ module Google
           property :check_interval_sec, as: 'checkIntervalSec'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :grpc_health_check, as: 'grpcHealthCheck', class: Google::Apis::ComputeBeta::GrpcHealthCheck, decorator: Google::Apis::ComputeBeta::GrpcHealthCheck::Representation
+      
           property :healthy_threshold, as: 'healthyThreshold'
           property :http2_health_check, as: 'http2HealthCheck', class: Google::Apis::ComputeBeta::Http2HealthCheck, decorator: Google::Apis::ComputeBeta::Http2HealthCheck::Representation
       
@@ -12474,6 +12516,54 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :items, as: 'items'
+        end
+      end
+      
+      class TargetGrpcProxy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :url_map, as: 'urlMap'
+          property :validate_for_proxyless, as: 'validateForProxyless'
+        end
+      end
+      
+      class TargetGrpcProxyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::TargetGrpcProxy, decorator: Google::Apis::ComputeBeta::TargetGrpcProxy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::TargetGrpcProxyList::Warning, decorator: Google::Apis::ComputeBeta::TargetGrpcProxyList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::TargetGrpcProxyList::Warning::Datum, decorator: Google::Apis::ComputeBeta::TargetGrpcProxyList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       

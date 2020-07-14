@@ -9365,7 +9365,7 @@ module Google
         # @return [String]
         attr_accessor :brand
       
-        # Link to the canonical version of the landing page.
+        # URL for the canonical version of your item's landing page.
         # Corresponds to the JSON property `canonicalLink`
         # @return [String]
         attr_accessor :canonical_link
@@ -9619,7 +9619,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_handling_time
       
-        # Link to a mobile-optimized version of the landing page.
+        # URL for the mobile-optimized version of your item's landing page.
         # Corresponds to the JSON property `mobileLink`
         # @return [String]
         attr_accessor :mobile_link

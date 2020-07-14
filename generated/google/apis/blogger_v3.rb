@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/blogger/docs/3.0/getting_started
     module BloggerV3
       VERSION = 'V3'
-      REVISION = '20200409'
+      REVISION = '20200711'
 
       # Manage your Blogger account
       AUTH_BLOGGER = 'https://www.googleapis.com/auth/blogger'

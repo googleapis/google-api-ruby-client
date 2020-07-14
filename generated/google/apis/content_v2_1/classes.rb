@@ -8577,7 +8577,7 @@ module Google
         # @return [String]
         attr_accessor :brand
       
-        # Link to the canonical version of the landing page.
+        # URL for the canonical version of your item's landing page.
         # Corresponds to the JSON property `canonicalLink`
         # @return [String]
         attr_accessor :canonical_link
@@ -8794,7 +8794,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_handling_time
       
-        # Link to a mobile-optimized version of the landing page.
+        # URL for the mobile-optimized version of your item's landing page.
         # Corresponds to the JSON property `mobileLink`
         # @return [String]
         attr_accessor :mobile_link
@@ -8829,12 +8829,12 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :price
       
-        # Technical specification or additional product details
+        # Technical specification or additional product details.
         # Corresponds to the JSON property `productDetails`
         # @return [Array<Google::Apis::ContentV2_1::ProductProductDetail>]
         attr_accessor :product_details
       
-        # List of important bullet points describing the product
+        # Bullet points describing the most relevant highlights of a product.
         # Corresponds to the JSON property `productHighlights`
         # @return [Array<String>]
         attr_accessor :product_highlights

@@ -1594,14 +1594,16 @@ module Google
         #   created as head revision, and previous unpinned revisions are preserved for a
         #   short period of time. Pinned revisions are stored indefinitely, using
         #   additional storage quota, up to a maximum of 200 revisions. For details on how
-        #   revisions are retained, see the Drive Help Center.
+        #   revisions are retained, see the Drive Help Center. Note that this field is
+        #   ignored if there is no payload in the request.
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
         #   If ocr is true, hints at the language to use. Valid values are BCP 47 codes.
         # @param [Boolean] pinned
         #   Whether to pin the new revision. A file can have a maximum of 200 pinned
-        #   revisions.
+        #   revisions. Note that this field is ignored if there is no payload in the
+        #   request.
         # @param [String] remove_parents
         #   Comma-separated list of parent IDs to remove.
         # @param [Boolean] set_modified_date
@@ -1811,14 +1813,16 @@ module Google
         #   created as head revision, and previous unpinned revisions are preserved for a
         #   short period of time. Pinned revisions are stored indefinitely, using
         #   additional storage quota, up to a maximum of 200 revisions. For details on how
-        #   revisions are retained, see the Drive Help Center.
+        #   revisions are retained, see the Drive Help Center. Note that this field is
+        #   ignored if there is no payload in the request.
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
         #   If ocr is true, hints at the language to use. Valid values are BCP 47 codes.
         # @param [Boolean] pinned
         #   Whether to pin the new revision. A file can have a maximum of 200 pinned
-        #   revisions.
+        #   revisions. Note that this field is ignored if there is no payload in the
+        #   request.
         # @param [String] remove_parents
         #   Comma-separated list of parent IDs to remove.
         # @param [Boolean] set_modified_date

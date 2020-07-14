@@ -7282,6 +7282,60 @@ module Google
       end
       
       # 
+      class GrpcHealthCheck
+        include Google::Apis::Core::Hashable
+      
+        # The gRPC service name for the health check. This field is optional. The value
+        # of grpc_service_name has the following meanings by convention:
+        # - Empty service_name means the overall status of all services at the backend.
+        # - Non-empty service_name means the health of that gRPC service, as defined by
+        # the owner of the service.
+        # The grpc_service_name can only be ASCII.
+        # Corresponds to the JSON property `grpcServiceName`
+        # @return [String]
+        attr_accessor :grpc_service_name
+      
+        # The port number for the health check request. Must be specified if port_name
+        # and port_specification are not set or if port_specification is USE_FIXED_PORT.
+        # Valid values are 1 through 65535.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Port name as defined in InstanceGroup#NamedPort#name. If both port and
+        # port_name are defined, port takes precedence. The port_name should conform to
+        # RFC1035.
+        # Corresponds to the JSON property `portName`
+        # @return [String]
+        attr_accessor :port_name
+      
+        # Specifies how port is selected for health checking, can be one of following
+        # values:
+        # USE_FIXED_PORT: The port number in port is used for health checking.
+        # USE_NAMED_PORT: The portName is used for health checking.
+        # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+        # network endpoint is used for health checking. For other backends, the port or
+        # named port specified in the Backend Service is used for health checking.
+        # If not specified, gRPC health check follows behavior specified in port and
+        # portName fields.
+        # Corresponds to the JSON property `portSpecification`
+        # @return [String]
+        attr_accessor :port_specification
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grpc_service_name = args[:grpc_service_name] if args.key?(:grpc_service_name)
+          @port = args[:port] if args.key?(:port)
+          @port_name = args[:port_name] if args.key?(:port_name)
+          @port_specification = args[:port_specification] if args.key?(:port_specification)
+        end
+      end
+      
+      # 
       class GlobalNetworkEndpointGroupsAttachEndpointsRequest
         include Google::Apis::Core::Hashable
       
@@ -7778,6 +7832,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # 
+        # Corresponds to the JSON property `grpcHealthCheck`
+        # @return [Google::Apis::ComputeV1::GrpcHealthCheck]
+        attr_accessor :grpc_health_check
+      
         # A so-far unhealthy instance will be marked healthy after this many consecutive
         # successes. The default value is 2.
         # Corresponds to the JSON property `healthyThreshold`
@@ -7876,6 +7935,7 @@ module Google
           @check_interval_sec = args[:check_interval_sec] if args.key?(:check_interval_sec)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @grpc_health_check = args[:grpc_health_check] if args.key?(:grpc_health_check)
           @healthy_threshold = args[:healthy_threshold] if args.key?(:healthy_threshold)
           @http2_health_check = args[:http2_health_check] if args.key?(:http2_health_check)
           @http_health_check = args[:http_health_check] if args.key?(:http_health_check)
@@ -27902,6 +27962,225 @@ module Google
         def update!(**args)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @items = args[:items] if args.key?(:items)
+        end
+      end
+      
+      # Represents a Target gRPC Proxy resource.
+      # A target gRPC proxy is a component of load balancers intended for load
+      # balancing gRPC traffic. Global forwarding rules reference a target gRPC proxy.
+      # The Target gRPC Proxy references a URL map which specifies how traffic routes
+      # to gRPC backend services.
+      class TargetGrpcProxy
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in
+        # order to patch/update the TargetGrpcProxy; otherwise, the request will fail
+        # with error 412 conditionNotMet. To see the latest fingerprint, make a get()
+        # request to retrieve the TargetGrpcProxy.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # [Output Only] The unique identifier for the resource type. The server
+        # generates this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#targetGrpcProxy for target
+        # grpc proxies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL with id for the resource.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # URL to the UrlMap resource that defines the mapping from URL to the
+        # BackendService. The protocol field in the BackendService must be set to GRPC.
+        # Corresponds to the JSON property `urlMap`
+        # @return [String]
+        attr_accessor :url_map
+      
+        # If true, indicates that the BackendServices referenced by the urlMap may be
+        # accessed by gRPC applications without using a sidecar proxy. This will enable
+        # configuration checks on urlMap and its referenced BackendServices to not allow
+        # unsupported features. A gRPC application must use "xds-experimental:///"
+        # scheme in the target URI of the service it is connecting to. If false,
+        # indicates that the BackendServices referenced by the urlMap will be accessed
+        # by gRPC applications via a sidecar proxy. In this case, a gRPC application
+        # must not use "xds-experimental:///" scheme in the target URI of the service it
+        # is connecting to
+        # Corresponds to the JSON property `validateForProxyless`
+        # @return [Boolean]
+        attr_accessor :validate_for_proxyless
+        alias_method :validate_for_proxyless?, :validate_for_proxyless
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @url_map = args[:url_map] if args.key?(:url_map)
+          @validate_for_proxyless = args[:validate_for_proxyless] if args.key?(:validate_for_proxyless)
+        end
+      end
+      
+      # 
+      class TargetGrpcProxyList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of TargetGrpcProxy resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::TargetGrpcProxy>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#targetGrpcProxy for target
+        # grpc proxies.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::TargetGrpcProxyList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::TargetGrpcProxyList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       

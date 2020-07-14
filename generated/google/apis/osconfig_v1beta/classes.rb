@@ -1096,7 +1096,7 @@ module Google
         attr_accessor :recurring_schedule
       
         # Output only. Time the patch deployment was last updated. Timestamp is in
-        # [RFC3339]("https://www.ietf.org/rfc/rfc3339.txt) text format.
+        # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1148,7 +1148,7 @@ module Google
         attr_accessor :instance_name_prefixes
       
         # Targets any of the VM instances specified. Instances are specified by their
-        # URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME],
+        # URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`,
         # `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or
         # `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/
         # instances/[INSTANCE_NAME]`

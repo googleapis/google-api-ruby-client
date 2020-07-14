@@ -322,7 +322,7 @@ module Google
         # @return [Google::Apis::CloudtraceV2::Links]
         attr_accessor :links
       
-        # The resource name of the span in the following format:
+        # Required. The resource name of the span in the following format:
         # projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
         # identifier for a trace within a project;
         # it is a 32-character hexadecimal encoding of a 16-byte array.
@@ -352,7 +352,8 @@ module Google
         # @return [String]
         attr_accessor :span_id
       
-        # Distinguishes between spans generated in a particular context. For example,
+        # Optional. Distinguishes between spans generated in a particular context. For
+        # example,
         # two spans with the same name may be distinguished using `CLIENT` (caller)
         # and `SERVER` (callee) to identify an RPC call.
         # Corresponds to the JSON property `spanKind`
