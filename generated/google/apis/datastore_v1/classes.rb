@@ -689,7 +689,7 @@ module Google
         end
       end
       
-      # A minimal index definition.
+      # Datastore composite index definition.
       class GoogleDatastoreAdminV1Index
         include Google::Apis::Core::Hashable
       

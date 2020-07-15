@@ -22,11 +22,23 @@ module Google
   module Apis
     module BillingbudgetsV1beta1
       
-      # AllUpdatesRule defines notifications that are sent on every update to the
-      # billing account's spend, regardless of the thresholds defined using
-      # threshold rules.
+      # AllUpdatesRule defines notifications that are sent based on budget spend
+      # and thresholds.
       class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule
         include Google::Apis::Core::Hashable
+      
+        # Optional. Targets to send notifications to when a threshold is exceeded. This
+        # is in
+        # addition to default recipients who have billing account roles.
+        # The value is the full REST resource name of a monitoring notification
+        # channel with the form
+        # `projects/`project_id`/notificationChannels/`channel_id``. A maximum of 5
+        # channels are allowed. See
+        # https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients
+        # for more details.
+        # Corresponds to the JSON property `monitoringNotificationChannels`
+        # @return [Array<String>]
+        attr_accessor :monitoring_notification_channels
       
         # Required. The name of the Cloud Pub/Sub topic where budget related messages
         # will be
@@ -38,15 +50,17 @@ module Google
         # Caller is expected to have
         # `pubsub.topics.setIamPolicy` permission on the topic when it's set for a
         # budget, otherwise, the API call will fail with PERMISSION_DENIED. See
-        # https://cloud.google.com/pubsub/docs/access-control for more details on
-        # Pub/Sub roles and permissions.
+        # https://cloud.google.com/billing/docs/how-to/budgets-programmatic-
+        # notifications
+        # for more details on Pub/Sub roles and permissions.
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
       
-        # Required. The schema version of the notification.
+        # Required. The schema version of the notification sent to `pubsub_topic`.
         # Only "1.0" is accepted. It represents the JSON schema as defined in
-        # https://cloud.google.com/billing/docs/how-to/budgets#notification_format
+        # https://cloud.google.com/billing/docs/how-to/budgets-programmatic-
+        # notifications#notification_format
         # Corresponds to the JSON property `schemaVersion`
         # @return [String]
         attr_accessor :schema_version
@@ -57,6 +71,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @monitoring_notification_channels = args[:monitoring_notification_channels] if args.key?(:monitoring_notification_channels)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @schema_version = args[:schema_version] if args.key?(:schema_version)
         end
@@ -70,9 +85,8 @@ module Google
       class GoogleCloudBillingBudgetsV1beta1Budget
         include Google::Apis::Core::Hashable
       
-        # AllUpdatesRule defines notifications that are sent on every update to the
-        # billing account's spend, regardless of the thresholds defined using
-        # threshold rules.
+        # AllUpdatesRule defines notifications that are sent based on budget spend
+        # and thresholds.
         # Corresponds to the JSON property `allUpdatesRule`
         # @return [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1AllUpdatesRule]
         attr_accessor :all_updates_rule
@@ -221,9 +235,10 @@ module Google
         # Optional. A set of subaccounts of the form `billingAccounts/`account_id``,
         # specifying
         # that usage from only this set of subaccounts should be included in the
-        # budget. If a subaccount is set to the name of the resller account, usage
-        # from the reseller account will be included. If omitted, the report will
-        # include usage from the reseller account and all subaccounts, if they exist.
+        # budget. If a subaccount is set to the name of the parent account,
+        # usage from the parent account will be included. If omitted, the
+        # report will include usage from the parent account and all
+        # subaccounts, if they exist.
         # Corresponds to the JSON property `subaccounts`
         # @return [Array<String>]
         attr_accessor :subaccounts

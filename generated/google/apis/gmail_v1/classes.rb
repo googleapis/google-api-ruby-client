@@ -246,16 +246,16 @@ module Google
       
         # Only return messages not matching the specified query. Supports the same
         # query format as the Gmail search box. For example,
-        # <code>"from:someuser@example.com rfc822msgid:<somemsgid@example.com>
-        # is:unread"</code>.
+        # `"from:someuser@example.com rfc822msgid:<somemsgid@example.com>
+        # is:unread"`.
         # Corresponds to the JSON property `negatedQuery`
         # @return [String]
         attr_accessor :negated_query
       
         # Only return messages matching the specified query. Supports the same
         # query format as the Gmail search box. For example,
-        # <code>"from:someuser@example.com rfc822msgid:<somemsgid@example.com>
-        # is:unread"</code>.
+        # `"from:someuser@example.com rfc822msgid:<somemsgid@example.com>
+        # is:unread"`.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -350,7 +350,7 @@ module Google
         attr_accessor :labels_removed
       
         # List of messages changed in this history record.  The fields for specific
-        # change types, such as <code>messagesAdded</code> may duplicate messages in
+        # change types, such as `messagesAdded` may duplicate messages in
         # this field.  We recommend using the specific change-type fields instead
         # of this.
         # Corresponds to the JSON property `messages`
@@ -520,7 +520,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The color to assign to the label. Color is only available for labels that
-        # have their <code>type</code> set to <code>user</code>.
+        # have their `type` set to `user`.
         # @mutable gmail.users.labels.create gmail.users.labels.update
         # Corresponds to the JSON property `color`
         # @return [Google::Apis::GmailV1::LabelColor]
@@ -576,9 +576,9 @@ module Google
         # added, modified, or deleted. System labels may be able to be applied to or
         # removed from messages and threads under some circumstances but this is
         # not guaranteed. For example, users can apply and remove the
-        # <code>INBOX</code> and <code>UNREAD</code> labels from messages and
-        # threads, but cannot apply or remove the <code>DRAFTS</code> or
-        # <code>SENT</code> labels from messages or threads.
+        # `INBOX` and `UNREAD` labels from messages and
+        # threads, but cannot apply or remove the `DRAFTS` or
+        # `SENT` labels from messages or threads.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -669,8 +669,8 @@ module Google
       
         # The language to display Gmail in, formatted as an
         # <a href="https://www.w3.org/International/articles/language-tags/">RFC 3066
-        # Language Tag</a> (for example <code>en-GB</code>, <code>fr</code> or
-        # <code>ja</code> for British English, French, or Japanese respectively).
+        # Language Tag</a> (for example `en-GB`, `fr` or
+        # `ja` for British English, French, or Japanese respectively).
         # The set of languages supported by Gmail evolves over time, so please refer
         # to the "Language" dropdown in the
         # <a href="https://mail.google.com/mail/u/0/#settings/general">Gmail settings
@@ -720,9 +720,9 @@ module Google
       class ListDraftsResponse
         include Google::Apis::Core::Hashable
       
-        # List of drafts. Note that the <code>Message</code> property in each
-        # <code>Draft</code> resource only contains an <code>id</code> and a
-        # <code>threadId</code>. The
+        # List of drafts. Note that the `Message` property in each
+        # `Draft` resource only contains an `id` and a
+        # `threadId`. The
         # <a href="/gmail/api/v1/reference/users/messages/get">messages.get</a>
         # method can fetch additional message details.
         # Corresponds to the JSON property `drafts`
@@ -793,9 +793,9 @@ module Google
       class ListHistoryResponse
         include Google::Apis::Core::Hashable
       
-        # List of history records.  Any <code>messages</code> contained in the
-        # response will typically only have <code>id</code> and
-        # <code>threadId</code> fields populated.
+        # List of history records.  Any `messages` contained in the
+        # response will typically only have `id` and
+        # `threadId` fields populated.
         # Corresponds to the JSON property `history`
         # @return [Array<Google::Apis::GmailV1::History>]
         attr_accessor :history
@@ -827,8 +827,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # List of labels. Note that each label resource only contains an
-        # <code>id</code>, <code>name</code>, <code>messageListVisibility</code>,
-        # <code>labelListVisibility</code>, and <code>type</code>. The
+        # `id`, `name`, `messageListVisibility`,
+        # `labelListVisibility`, and `type`. The
         # <a href="/gmail/api/v1/reference/users/labels/get">labels.get</a> method
         # can fetch additional label details.
         # Corresponds to the JSON property `labels`
@@ -850,7 +850,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # List of messages. Note that each message resource contains only an
-        # <code>id</code> and a <code>threadId</code>. Additional message details can
+        # `id` and a `threadId`. Additional message details can
         # be fetched using the
         # <a href="/gmail/api/v1/reference/users/messages/get">messages.get</a>
         # method.
@@ -933,7 +933,7 @@ module Google
         attr_accessor :result_size_estimate
       
         # List of threads. Note that each thread resource does not contain a list of
-        # <code>messages</code>. The list of <code>messages</code> for a given thread
+        # `messages`. The list of `messages` for a given thread
         # can be fetched using the
         # <a href="/gmail/api/v1/reference/users/threads/get">threads.get</a> method.
         # Corresponds to the JSON property `threads`
@@ -969,8 +969,8 @@ module Google
         # The internal message creation timestamp (epoch ms), which determines
         # ordering in the inbox.  For normal SMTP-received email, this represents the
         # time the message was originally accepted by Google, which is more reliable
-        # than the <code>Date</code> header. However, for API-migrated mail, it can
-        # be configured by client to be based on the <code>Date</code> header.
+        # than the `Date` header. However, for API-migrated mail, it can
+        # be configured by client to be based on the `Date` header.
         # Corresponds to the JSON property `internalDate`
         # @return [Fixnum]
         attr_accessor :internal_date
@@ -987,8 +987,8 @@ module Google
         attr_accessor :payload
       
         # The entire email message in an RFC 2822 formatted and base64url
-        # encoded string. Returned in <code>messages.get</code> and
-        # <code>drafts.get</code> responses when the <code>format=RAW</code>
+        # encoded string. Returned in `messages.get` and
+        # `drafts.get` responses when the `format=RAW`
         # parameter is supplied.
         # @mutable gmail.users.messages.insert gmail.users.messages.send
         # @mutable gmail.users.drafts.create gmail.users.drafts.update
@@ -1009,13 +1009,13 @@ module Google
       
         # The ID of the thread the message belongs to. To add a message or draft to
         # a thread, the following criteria must be met:
-        # <ol><li>The requested <code>threadId</code> must be specified on the
-        # <code>Message</code> or <code>Draft.Message</code> you supply with your
+        # <ol><li>The requested `threadId` must be specified on the
+        # `Message` or `Draft.Message` you supply with your
         # request.</li>
-        # <li>The <code>References</code> and <code>In-Reply-To</code> headers must
+        # <li>The `References` and `In-Reply-To` headers must
         # be set in compliance with the
         # <a href="https://tools.ietf.org/html/rfc2822">RFC 2822</a> standard.</li>
-        # <li>The <code>Subject</code> headers must match.
+        # <li>The `Subject` headers must match.
         # @mutable gmail.users.messages.insert gmail.users.messages.send
         # @mutable gmail.users.drafts.create gmail.users.drafts.update
         # Corresponds to the JSON property `threadId`
@@ -1057,8 +1057,8 @@ module Google
       
         # List of headers on this message part. For the top-level message part,
         # representing the entire message payload, it will contain the standard
-        # RFC 2822 email headers such as <code>To</code>, <code>From</code>, and
-        # <code>Subject</code>.
+        # RFC 2822 email headers such as `To`, `From`, and
+        # `Subject`.
         # Corresponds to the JSON property `headers`
         # @return [Array<Google::Apis::GmailV1::MessagePartHeader>]
         attr_accessor :headers
@@ -1074,8 +1074,8 @@ module Google
         attr_accessor :part_id
       
         # The child MIME message parts of this part. This only applies to container
-        # MIME message parts, for example <code>multipart/*</code>. For non-
-        # container MIME message part types, such as <code>text/plain</code>, this
+        # MIME message parts, for example `multipart/*`. For non-
+        # container MIME message part types, such as `text/plain`, this
         # field is empty. For more information, see
         # <a href="http://www.ietf.org/rfc/rfc1521.txt">RFC 1521</a>.
         # Corresponds to the JSON property `parts`
@@ -1102,7 +1102,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # When present, contains the ID of an external attachment that can be
-        # retrieved in a separate <code>messages.attachments.get</code> request.
+        # retrieved in a separate `messages.attachments.get` request.
         # When not present, the entire content of the message part body is
         # contained in the data field.
         # Corresponds to the JSON property `attachmentId`
@@ -1140,14 +1140,14 @@ module Google
       class MessagePartHeader
         include Google::Apis::Core::Hashable
       
-        # The name of the header before the <code>:</code> separator. For
-        # example, <code>To</code>.
+        # The name of the header before the `:` separator. For
+        # example, `To`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The value of the header after the <code>:</code> separator. For example,
-        # <code>someuser@example.com</code>.
+        # The value of the header after the `:` separator. For example,
+        # `someuser@example.com`.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -1299,9 +1299,9 @@ module Google
         # situations such as composing a new message or sending a vacation
         # auto-reply.  Every Gmail account has exactly one default send-as address,
         # so the only legal value that clients may write to this field is
-        # <code>true</code>.  Changing this from <code>false</code> to
-        # <code>true</code> for an address will result in this field becoming
-        # <code>false</code> for the other previous default address.
+        # `true`.  Changing this from `false` to
+        # `true` for an address will result in this field becoming
+        # `false` for the other previous default address.
         # Corresponds to the JSON property `isDefault`
         # @return [Boolean]
         attr_accessor :is_default
@@ -1533,24 +1533,24 @@ module Google
       
         # An optional end time for sending auto-replies (epoch ms).
         # When this is specified, Gmail will automatically reply only to messages
-        # that it receives before the end time.  If both <code>startTime</code> and
-        # <code>endTime</code> are specified, <code>startTime</code> must precede
-        # <code>endTime</code>.
+        # that it receives before the end time.  If both `startTime` and
+        # `endTime` are specified, `startTime` must precede
+        # `endTime`.
         # Corresponds to the JSON property `endTime`
         # @return [Fixnum]
         attr_accessor :end_time
       
         # Response body in HTML format.  Gmail will sanitize the HTML before
-        # storing it. If both <code>response_body_plain_text</code> and
-        # <code>response_body_html</code> are specified,
-        # <code>response_body_html</code> will be used.
+        # storing it. If both `response_body_plain_text` and
+        # `response_body_html` are specified,
+        # `response_body_html` will be used.
         # Corresponds to the JSON property `responseBodyHtml`
         # @return [String]
         attr_accessor :response_body_html
       
         # Response body in plain text format. If both
-        # <code>response_body_plain_text</code> and <code>response_body_html</code>
-        # are specified, <code>response_body_html</code> will be used.
+        # `response_body_plain_text` and `response_body_html`
+        # are specified, `response_body_html` will be used.
         # Corresponds to the JSON property `responseBodyPlainText`
         # @return [String]
         attr_accessor :response_body_plain_text
@@ -1579,9 +1579,9 @@ module Google
       
         # An optional start time for sending auto-replies (epoch ms).
         # When this is specified, Gmail will automatically reply only to messages
-        # that it receives after the start time.  If both <code>startTime</code> and
-        # <code>endTime</code> are specified, <code>startTime</code> must precede
-        # <code>endTime</code>.
+        # that it receives after the start time.  If both `startTime` and
+        # `endTime` are specified, `startTime` must precede
+        # `endTime`.
         # Corresponds to the JSON property `startTime`
         # @return [Fixnum]
         attr_accessor :start_time
@@ -1648,7 +1648,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # When Gmail will stop sending notifications for mailbox updates
-        # (epoch millis). Call <code>watch</code> again before this time to renew
+        # (epoch millis). Call `watch` again before this time to renew
         # the watch.
         # Corresponds to the JSON property `expiration`
         # @return [Fixnum]

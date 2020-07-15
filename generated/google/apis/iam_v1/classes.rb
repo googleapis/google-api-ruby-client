@@ -1546,11 +1546,15 @@ module Google
         end
       end
       
+      # Deprecated. [Migrate to Service Account Credentials
+      # API](https://cloud.google.com/iam/help/credentials/migrate-api).
       # The service account sign blob request.
       class SignBlobRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The bytes to sign.
+        # Required. Deprecated. [Migrate to Service Account Credentials
+        # API](https://cloud.google.com/iam/help/credentials/migrate-api).
+        # The bytes to sign.
         # Corresponds to the JSON property `bytesToSign`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1566,15 +1570,21 @@ module Google
         end
       end
       
+      # Deprecated. [Migrate to Service Account Credentials
+      # API](https://cloud.google.com/iam/help/credentials/migrate-api).
       # The service account sign blob response.
       class SignBlobResponse
         include Google::Apis::Core::Hashable
       
+        # Deprecated. [Migrate to Service Account Credentials
+        # API](https://cloud.google.com/iam/help/credentials/migrate-api).
         # The id of the key used to sign the blob.
         # Corresponds to the JSON property `keyId`
         # @return [String]
         attr_accessor :key_id
       
+        # Deprecated. [Migrate to Service Account Credentials
+        # API](https://cloud.google.com/iam/help/credentials/migrate-api).
         # The signed blob.
         # Corresponds to the JSON property `signature`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -1592,12 +1602,15 @@ module Google
         end
       end
       
+      # Deprecated. [Migrate to Service Account Credentials
+      # API](https://cloud.google.com/iam/help/credentials/migrate-api).
       # The service account sign JWT request.
       class SignJwtRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The JWT payload to sign. Must be a serialized JSON object that
-        # contains a
+        # Required. Deprecated. [Migrate to Service Account Credentials
+        # API](https://cloud.google.com/iam/help/credentials/migrate-api).
+        # The JWT payload to sign. Must be a serialized JSON object that contains a
         # JWT Claims Set. For example: ``"sub": "user@example.com", "iat": 313435``
         # If the JWT Claims Set contains an expiration time (`exp`) claim, it must be
         # an integer timestamp that is not in the past and no more than 1 hour in the
@@ -1619,15 +1632,21 @@ module Google
         end
       end
       
+      # Deprecated. [Migrate to Service Account Credentials
+      # API](https://cloud.google.com/iam/help/credentials/migrate-api).
       # The service account sign JWT response.
       class SignJwtResponse
         include Google::Apis::Core::Hashable
       
+        # Deprecated. [Migrate to Service Account Credentials
+        # API](https://cloud.google.com/iam/help/credentials/migrate-api).
         # The id of the key used to sign the JWT.
         # Corresponds to the JSON property `keyId`
         # @return [String]
         attr_accessor :key_id
       
+        # Deprecated. [Migrate to Service Account Credentials
+        # API](https://cloud.google.com/iam/help/credentials/migrate-api).
         # The signed JWT.
         # Corresponds to the JSON property `signedJwt`
         # @return [String]

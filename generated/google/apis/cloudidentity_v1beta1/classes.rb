@@ -630,6 +630,25 @@ module Google
         end
       end
       
+      # The `MembershipRole` expiry details.
+      class ExpiryDetail
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the `MembershipRole` will expire.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+        end
+      end
+      
       # The response message for MembershipsService.GetMembershipGraph.
       class GetMembershipGraphResponse
         include Google::Apis::Core::Hashable
@@ -1076,6 +1095,11 @@ module Google
       class MembershipRole
         include Google::Apis::Core::Hashable
       
+        # The `MembershipRole` expiry details.
+        # Corresponds to the JSON property `expiryDetail`
+        # @return [Google::Apis::CloudidentityV1beta1::ExpiryDetail]
+        attr_accessor :expiry_detail
+      
         # The name of the `MembershipRole`.
         # Must be one of `OWNER`, `MANAGER`, `MEMBER`.
         # Corresponds to the JSON property `name`
@@ -1088,6 +1112,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @expiry_detail = args[:expiry_detail] if args.key?(:expiry_detail)
           @name = args[:name] if args.key?(:name)
         end
       end

@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchWriteRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchWriteResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BeginTransactionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +292,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PartitionQueryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitionQueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Precondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -423,6 +447,25 @@ module Google
           property :missing, as: 'missing'
           property :read_time, as: 'readTime'
           property :transaction, :base64 => true, as: 'transaction'
+        end
+      end
+      
+      class BatchWriteRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          collection :writes, as: 'writes', class: Google::Apis::FirestoreV1beta1::Write, decorator: Google::Apis::FirestoreV1beta1::Write::Representation
+      
+        end
+      end
+      
+      class BatchWriteResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :status, as: 'status', class: Google::Apis::FirestoreV1beta1::Status, decorator: Google::Apis::FirestoreV1beta1::Status::Representation
+      
+          collection :write_results, as: 'writeResults', class: Google::Apis::FirestoreV1beta1::WriteResult, decorator: Google::Apis::FirestoreV1beta1::WriteResult::Representation
+      
         end
       end
       
@@ -801,6 +844,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :direction, as: 'direction'
           property :field, as: 'field', class: Google::Apis::FirestoreV1beta1::FieldReference, decorator: Google::Apis::FirestoreV1beta1::FieldReference::Representation
+      
+        end
+      end
+      
+      class PartitionQueryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :partition_count, :numeric_string => true, as: 'partitionCount'
+          property :structured_query, as: 'structuredQuery', class: Google::Apis::FirestoreV1beta1::StructuredQuery, decorator: Google::Apis::FirestoreV1beta1::StructuredQuery::Representation
+      
+        end
+      end
+      
+      class PartitionQueryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :partitions, as: 'partitions', class: Google::Apis::FirestoreV1beta1::Cursor, decorator: Google::Apis::FirestoreV1beta1::Cursor::Representation
       
         end
       end

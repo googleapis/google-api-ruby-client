@@ -163,6 +163,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Applies a batch of write operations.
+        # The BatchWrite method does not apply the write operations atomically
+        # and can apply them out of order. Method does not allow more than one write
+        # per document. Each write succeeds or fails independently. See the
+        # BatchWriteResponse for the success status of each write.
+        # If you require an atomically applied set of writes, use
+        # Commit instead.
+        # @param [String] database
+        #   Required. The database name. In the format:
+        #   `projects/`project_id`/databases/`database_id``.
+        # @param [Google::Apis::FirestoreV1beta1::BatchWriteRequest] batch_write_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1beta1::BatchWriteResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1beta1::BatchWriteResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_document_write(database, batch_write_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+database}/documents:batchWrite', options)
+          command.request_representation = Google::Apis::FirestoreV1beta1::BatchWriteRequest::Representation
+          command.request_object = batch_write_request_object
+          command.response_representation = Google::Apis::FirestoreV1beta1::BatchWriteResponse::Representation
+          command.response_class = Google::Apis::FirestoreV1beta1::BatchWriteResponse
+          command.params['database'] = database unless database.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts a new transaction.
         # @param [String] database
         #   Required. The database name. In the format:
@@ -493,6 +533,44 @@ module Google
           command.response_representation = Google::Apis::FirestoreV1beta1::ListenResponse::Representation
           command.response_class = Google::Apis::FirestoreV1beta1::ListenResponse
           command.params['database'] = database unless database.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Partitions a query by returning partition cursors that can be used to run
+        # the query in parallel. The returned partition cursors are split points that
+        # can be used by RunQuery as starting/end points for the query results.
+        # @param [String] parent
+        #   Required. The parent resource name. In the format:
+        #   `projects/`project_id`/databases/`database_id`/documents`.
+        #   Document resource names are not supported; only database resource names
+        #   can be specified.
+        # @param [Google::Apis::FirestoreV1beta1::PartitionQueryRequest] partition_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1beta1::PartitionQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1beta1::PartitionQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def partition_document_query(parent, partition_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}:partitionQuery', options)
+          command.request_representation = Google::Apis::FirestoreV1beta1::PartitionQueryRequest::Representation
+          command.request_object = partition_query_request_object
+          command.response_representation = Google::Apis::FirestoreV1beta1::PartitionQueryResponse::Representation
+          command.response_class = Google::Apis::FirestoreV1beta1::PartitionQueryResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

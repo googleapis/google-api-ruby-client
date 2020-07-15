@@ -91,6 +91,7 @@ module Google
       class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :monitoring_notification_channels, as: 'monitoringNotificationChannels'
           property :pubsub_topic, as: 'pubsubTopic'
           property :schema_version, as: 'schemaVersion'
         end

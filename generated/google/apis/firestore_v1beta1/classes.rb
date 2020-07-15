@@ -138,6 +138,63 @@ module Google
         end
       end
       
+      # The request for Firestore.BatchWrite.
+      class BatchWriteRequest
+        include Google::Apis::Core::Hashable
+      
+        # Labels associated with this batch write.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The writes to apply.
+        # Method does not apply writes atomically and does not guarantee ordering.
+        # Each write succeeds or fails independently. You cannot write to the same
+        # document more than once per request.
+        # Corresponds to the JSON property `writes`
+        # @return [Array<Google::Apis::FirestoreV1beta1::Write>]
+        attr_accessor :writes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @writes = args[:writes] if args.key?(:writes)
+        end
+      end
+      
+      # The response from Firestore.BatchWrite.
+      class BatchWriteResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of applying the writes.
+        # This i-th write status corresponds to the i-th write in the
+        # request.
+        # Corresponds to the JSON property `status`
+        # @return [Array<Google::Apis::FirestoreV1beta1::Status>]
+        attr_accessor :status
+      
+        # The result of applying the writes.
+        # This i-th write result corresponds to the i-th write in the
+        # request.
+        # Corresponds to the JSON property `writeResults`
+        # @return [Array<Google::Apis::FirestoreV1beta1::WriteResult>]
+        attr_accessor :write_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+          @write_results = args[:write_results] if args.key?(:write_results)
+        end
+      end
+      
       # The request for Firestore.BeginTransaction.
       class BeginTransactionRequest
         include Google::Apis::Core::Hashable
@@ -1427,6 +1484,101 @@ module Google
         def update!(**args)
           @direction = args[:direction] if args.key?(:direction)
           @field = args[:field] if args.key?(:field)
+        end
+      end
+      
+      # The request for Firestore.PartitionQuery.
+      class PartitionQueryRequest
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of partitions to return in this call, subject to
+        # `partition_count`.
+        # For example, if `partition_count` = 10 and `page_size` = 8, the first call
+        # to PartitionQuery will return up to 8 partitions and a `next_page_token`
+        # if more results exist. A second call to PartitionQuery will return up to
+        # 2 partitions, to complete the total of 10 specified in `partition_count`.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # The `next_page_token` value returned from a previous call to
+        # PartitionQuery that may be used to get an additional set of results.
+        # There are no ordering guarantees between sets of results. Thus, using
+        # multiple sets of results will require merging the different result sets.
+        # For example, two subsequent calls using a page_token may return:
+        # * cursor B, cursor M, cursor Q
+        # * cursor A, cursor U, cursor W
+        # To obtain a complete result set ordered with respect to the results of the
+        # query supplied to PartitionQuery, the results sets should be merged:
+        # cursor A, cursor B, cursor M, cursor Q, cursor U, cursor W
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # The desired maximum number of partition points.
+        # The partitions may be returned across multiple pages of results.
+        # The number must be strictly positive. The actual number of partitions
+        # returned may be fewer.
+        # For example, this may be set to one fewer than the number of parallel
+        # queries to be run, or in running a data pipeline job, one fewer than the
+        # number of workers or compute instances available.
+        # Corresponds to the JSON property `partitionCount`
+        # @return [Fixnum]
+        attr_accessor :partition_count
+      
+        # A Firestore query.
+        # Corresponds to the JSON property `structuredQuery`
+        # @return [Google::Apis::FirestoreV1beta1::StructuredQuery]
+        attr_accessor :structured_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @partition_count = args[:partition_count] if args.key?(:partition_count)
+          @structured_query = args[:structured_query] if args.key?(:structured_query)
+        end
+      end
+      
+      # The response for Firestore.PartitionQuery.
+      class PartitionQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # A page token that may be used to request an additional set of results, up
+        # to the number specified by `partition_count` in the PartitionQuery request.
+        # If blank, there are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Partition results.
+        # Each partition is a split point that can be used by RunQuery as a starting
+        # or end point for the query results. The RunQuery requests must be made with
+        # the same query supplied to this PartitionQuery request. The partition
+        # cursors will be ordered according to same ordering as the results of the
+        # query supplied to PartitionQuery.
+        # For example, if a PartitionQuery request returns partition cursors A and B,
+        # running the following three queries will return the entire result set of
+        # the original query:
+        # * query, end_at A
+        # * query, start_at A, end_at B
+        # * query, start_at B
+        # Corresponds to the JSON property `partitions`
+        # @return [Array<Google::Apis::FirestoreV1beta1::Cursor>]
+        attr_accessor :partitions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @partitions = args[:partitions] if args.key?(:partitions)
         end
       end
       

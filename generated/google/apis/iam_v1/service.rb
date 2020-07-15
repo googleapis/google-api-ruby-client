@@ -1224,13 +1224,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # **Note:** We are in the process of deprecating this method. Use the
+        # **Note:** This method is deprecated and will stop working on July 1, 2021.
+        # Use the
         # [`signBlob`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.
         # serviceAccounts/signBlob)
-        # method in the IAM Service Account Credentials API instead.
+        # method in the IAM Service Account Credentials API instead. If you currently
+        # use this method, see the [migration
+        # guide](https://cloud.google.com/iam/help/credentials/migrate-api) for
+        # instructions.
         # Signs a blob using the system-managed private key for a ServiceAccount.
         # @param [String] name
-        #   Required. The resource name of the service account in the following format:
+        #   Required. Deprecated. [Migrate to Service Account Credentials
+        #   API](https://cloud.google.com/iam/help/credentials/migrate-api).
+        #   The resource name of the service account in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
         #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
         #   the account. The `ACCOUNT` value can be the `email` address or the
@@ -1265,14 +1271,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # **Note:** We are in the process of deprecating this method. Use the
+        # **Note:** This method is deprecated and will stop working on July 1, 2021.
+        # Use the
         # [`signJwt`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.
         # serviceAccounts/signJwt)
-        # method in the IAM Service Account Credentials API instead.
+        # method in the IAM Service Account Credentials API instead. If you currently
+        # use this method, see the [migration
+        # guide](https://cloud.google.com/iam/help/credentials/migrate-api) for
+        # instructions.
         # Signs a JSON Web Token (JWT) using the system-managed private key for a
         # ServiceAccount.
         # @param [String] name
-        #   Required. The resource name of the service account in the following format:
+        #   Required. Deprecated. [Migrate to Service Account Credentials
+        #   API](https://cloud.google.com/iam/help/credentials/migrate-api).
+        #   The resource name of the service account in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
         #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
         #   the account. The `ACCOUNT` value can be the `email` address or the

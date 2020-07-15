@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Attachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AttachmentDataRef
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Button
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +77,12 @@ module Google
       end
       
       class DeprecatedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DriveDataRef
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -211,6 +229,29 @@ module Google
         end
       end
       
+      class Attachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_data_ref, as: 'attachmentDataRef', class: Google::Apis::ChatV1::AttachmentDataRef, decorator: Google::Apis::ChatV1::AttachmentDataRef::Representation
+      
+          property :content_name, as: 'contentName'
+          property :content_type, as: 'contentType'
+          property :download_uri, as: 'downloadUri'
+          property :drive_data_ref, as: 'driveDataRef', class: Google::Apis::ChatV1::DriveDataRef, decorator: Google::Apis::ChatV1::DriveDataRef::Representation
+      
+          property :name, as: 'name'
+          property :source, as: 'source'
+          property :thumbnail_uri, as: 'thumbnailUri'
+        end
+      end
+      
+      class AttachmentDataRef
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
       class Button
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -269,6 +310,13 @@ module Google
           property :type, as: 'type'
           property :user, as: 'user', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
       
+        end
+      end
+      
+      class DriveDataRef
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :drive_file_id, as: 'driveFileId'
         end
       end
       
@@ -361,6 +409,8 @@ module Google
           collection :annotations, as: 'annotations', class: Google::Apis::ChatV1::Annotation, decorator: Google::Apis::ChatV1::Annotation::Representation
       
           property :argument_text, as: 'argumentText'
+          collection :attachment, as: 'attachment', class: Google::Apis::ChatV1::Attachment, decorator: Google::Apis::ChatV1::Attachment::Representation
+      
           collection :cards, as: 'cards', class: Google::Apis::ChatV1::Card, decorator: Google::Apis::ChatV1::Card::Representation
       
           property :create_time, as: 'createTime'

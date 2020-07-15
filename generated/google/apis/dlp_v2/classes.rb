@@ -1480,6 +1480,9 @@ module Google
         # Number of characters must be in the range [2, 95].
         # This must be encoded as ASCII.
         # The order of characters does not matter.
+        # The full list of allowed characters is:
+        # <code>0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+        # ~`!@#$%^&*()_-+=`[`]|\:;"'<,>.?/</code>
         # Corresponds to the JSON property `customAlphabet`
         # @return [String]
         attr_accessor :custom_alphabet
@@ -3048,8 +3051,8 @@ module Google
         # Name of the information type. Either a name of your choosing when
         # creating a CustomInfoType, or one of the names listed
         # at https://cloud.google.com/dlp/docs/infotypes-reference when specifying
-        # a built-in type. InfoType names should conform to the pattern
-        # `[a-zA-Z0-9_]`1,64``.
+        # a built-in type.  When sending Cloud DLP results to Data Catalog, infoType
+        # names should conform to the pattern `[A-Za-z0-9$-_]`1,64``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

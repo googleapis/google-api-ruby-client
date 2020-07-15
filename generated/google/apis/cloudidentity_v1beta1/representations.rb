@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExpiryDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetMembershipGraphResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -361,6 +367,13 @@ module Google
         end
       end
       
+      class ExpiryDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+        end
+      end
+      
       class GetMembershipGraphResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -493,6 +506,8 @@ module Google
       class MembershipRole
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiry_detail, as: 'expiryDetail', class: Google::Apis::CloudidentityV1beta1::ExpiryDetail, decorator: Google::Apis::CloudidentityV1beta1::ExpiryDetail::Representation
+      
           property :name, as: 'name'
         end
       end

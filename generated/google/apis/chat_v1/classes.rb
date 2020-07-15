@@ -135,6 +135,92 @@ module Google
         end
       end
       
+      # An attachment in Hangouts Chat.
+      class Attachment
+        include Google::Apis::Core::Hashable
+      
+        # A reference to the data of an attachment.
+        # Corresponds to the JSON property `attachmentDataRef`
+        # @return [Google::Apis::ChatV1::AttachmentDataRef]
+        attr_accessor :attachment_data_ref
+      
+        # The original file name for the content, not the full path.
+        # Corresponds to the JSON property `contentName`
+        # @return [String]
+        attr_accessor :content_name
+      
+        # The content type (MIME type) of the file.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # Output only. The download URL which should be used to allow a human user to
+        # download the attachment. Bots should not use this URL to download
+        # attachment content.
+        # Corresponds to the JSON property `downloadUri`
+        # @return [String]
+        attr_accessor :download_uri
+      
+        # A reference to the data of a drive attachment.
+        # Corresponds to the JSON property `driveDataRef`
+        # @return [Google::Apis::ChatV1::DriveDataRef]
+        attr_accessor :drive_data_ref
+      
+        # Resource name of the attachment, in the form
+        # "spaces/*/messages/*/attachments/*".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The source of the attachment.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Output only. The thumbnail URL which should be used to preview the
+        # attachment to a human user. Bots should not use this URL to download
+        # attachment content.
+        # Corresponds to the JSON property `thumbnailUri`
+        # @return [String]
+        attr_accessor :thumbnail_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment_data_ref = args[:attachment_data_ref] if args.key?(:attachment_data_ref)
+          @content_name = args[:content_name] if args.key?(:content_name)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @download_uri = args[:download_uri] if args.key?(:download_uri)
+          @drive_data_ref = args[:drive_data_ref] if args.key?(:drive_data_ref)
+          @name = args[:name] if args.key?(:name)
+          @source = args[:source] if args.key?(:source)
+          @thumbnail_uri = args[:thumbnail_uri] if args.key?(:thumbnail_uri)
+        end
+      end
+      
+      # A reference to the data of an attachment.
+      class AttachmentDataRef
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the attachment data. This is used with the media API
+        # to download the attachment data.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
       # A button. Can be a text button or an image button.
       class Button
         include Google::Apis::Core::Hashable
@@ -337,6 +423,25 @@ module Google
           @token = args[:token] if args.key?(:token)
           @type = args[:type] if args.key?(:type)
           @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # A reference to the data of a drive attachment.
+      class DriveDataRef
+        include Google::Apis::Core::Hashable
+      
+        # The id for the drive file, for use with the Drive API.
+        # Corresponds to the JSON property `driveFileId`
+        # @return [String]
+        attr_accessor :drive_file_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @drive_file_id = args[:drive_file_id] if args.key?(:drive_file_id)
         end
       end
       
@@ -636,6 +741,11 @@ module Google
         # @return [String]
         attr_accessor :argument_text
       
+        # User uploaded attachment.
+        # Corresponds to the JSON property `attachment`
+        # @return [Array<Google::Apis::ChatV1::Attachment>]
+        attr_accessor :attachment
+      
         # Rich, formatted and interactive cards that can be used to display UI
         # elements such as: formatted texts, buttons, clickable images. Cards are
         # normally displayed below the plain-text body of the message.
@@ -697,6 +807,7 @@ module Google
           @action_response = args[:action_response] if args.key?(:action_response)
           @annotations = args[:annotations] if args.key?(:annotations)
           @argument_text = args[:argument_text] if args.key?(:argument_text)
+          @attachment = args[:attachment] if args.key?(:attachment)
           @cards = args[:cards] if args.key?(:cards)
           @create_time = args[:create_time] if args.key?(:create_time)
           @fallback_text = args[:fallback_text] if args.key?(:fallback_text)
