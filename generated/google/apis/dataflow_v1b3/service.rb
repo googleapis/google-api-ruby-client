@@ -528,7 +528,7 @@ module Google
         
         # List the jobs of a project.
         # To list the jobs of a project in a region, we recommend using
-        # `projects.locations.jobs.get` with a [regional endpoint]
+        # `projects.locations.jobs.list` with a [regional endpoint]
         # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To
         # list the all jobs across all regions, use `projects.jobs.aggregated`. Using
         # `projects.jobs.list` is not recommended, as you can only get the list of
@@ -1092,7 +1092,7 @@ module Google
         
         # List the jobs of a project.
         # To list the jobs of a project in a region, we recommend using
-        # `projects.locations.jobs.get` with a [regional endpoint]
+        # `projects.locations.jobs.list` with a [regional endpoint]
         # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To
         # list the all jobs across all regions, use `projects.jobs.aggregated`. Using
         # `projects.jobs.list` is not recommended, as you can only get the list of

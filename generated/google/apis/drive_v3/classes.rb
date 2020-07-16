@@ -577,6 +577,53 @@ module Google
         end
       end
       
+      # A restriction for accessing the content of the file.
+      class ContentRestriction
+        include Google::Apis::Core::Hashable
+      
+        # Whether the content of the file is read-only.
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
+        # Reason for why the content of the file is restricted. This is only mutable on
+        # requests that also set readOnly=true.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Information about a Drive user.
+        # Corresponds to the JSON property `restrictingUser`
+        # @return [Google::Apis::DriveV3::User]
+        attr_accessor :restricting_user
+      
+        # The time at which the content restriction was set (formatted RFC 3339
+        # timestamp). Only populated if readOnly is true.
+        # Corresponds to the JSON property `restrictionTime`
+        # @return [DateTime]
+        attr_accessor :restriction_time
+      
+        # The type of the content restriction. Currently the only possible value is
+        # globalContentRestriction.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @read_only = args[:read_only] if args.key?(:read_only)
+          @reason = args[:reason] if args.key?(:reason)
+          @restricting_user = args[:restricting_user] if args.key?(:restricting_user)
+          @restriction_time = args[:restriction_time] if args.key?(:restriction_time)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Representation of a shared drive.
       class Drive
         include Google::Apis::Core::Hashable
@@ -972,6 +1019,12 @@ module Google
         # @return [Google::Apis::DriveV3::File::ContentHints]
         attr_accessor :content_hints
       
+        # Restrictions for accessing the content of the file. Only populated if such a
+        # restriction exists.
+        # Corresponds to the JSON property `contentRestrictions`
+        # @return [Array<Google::Apis::DriveV3::ContentRestriction>]
+        attr_accessor :content_restrictions
+      
         # Whether the options to copy, print, or download this file, should be disabled
         # for readers and commenters.
         # Corresponds to the JSON property `copyRequiresWriterPermission`
@@ -1234,8 +1287,10 @@ module Google
         attr_accessor :thumbnail_version
       
         # Whether the file has been trashed, either explicitly or from a trashed parent
-        # folder. Only the owner may trash a file, and other users cannot see files in
-        # the owner's trash.
+        # folder. Only the owner may trash a file. The trashed item is excluded from all
+        # files.list responses returned for any user who does not own the file. However,
+        # all users with access to the file can see the trashed item metadata in an API
+        # response. All users with access can copy, download, export, and share the file.
         # Corresponds to the JSON property `trashed`
         # @return [Boolean]
         attr_accessor :trashed
@@ -1308,6 +1363,7 @@ module Google
           @app_properties = args[:app_properties] if args.key?(:app_properties)
           @capabilities = args[:capabilities] if args.key?(:capabilities)
           @content_hints = args[:content_hints] if args.key?(:content_hints)
+          @content_restrictions = args[:content_restrictions] if args.key?(:content_restrictions)
           @copy_requires_writer_permission = args[:copy_requires_writer_permission] if args.key?(:copy_requires_writer_permission)
           @created_time = args[:created_time] if args.key?(:created_time)
           @description = args[:description] if args.key?(:description)
@@ -1456,6 +1512,12 @@ module Google
           # @return [Boolean]
           attr_accessor :can_modify_content
           alias_method :can_modify_content?, :can_modify_content
+        
+          # Whether the current user can modify restrictions on content of this file.
+          # Corresponds to the JSON property `canModifyContentRestriction`
+          # @return [Boolean]
+          attr_accessor :can_modify_content_restriction
+          alias_method :can_modify_content_restriction?, :can_modify_content_restriction
         
           # Whether the current user can move children of this folder outside of the
           # shared drive. This is false when the item is not a folder. Only populated for
@@ -1611,6 +1673,7 @@ module Google
             @can_edit = args[:can_edit] if args.key?(:can_edit)
             @can_list_children = args[:can_list_children] if args.key?(:can_list_children)
             @can_modify_content = args[:can_modify_content] if args.key?(:can_modify_content)
+            @can_modify_content_restriction = args[:can_modify_content_restriction] if args.key?(:can_modify_content_restriction)
             @can_move_children_out_of_drive = args[:can_move_children_out_of_drive] if args.key?(:can_move_children_out_of_drive)
             @can_move_children_out_of_team_drive = args[:can_move_children_out_of_team_drive] if args.key?(:can_move_children_out_of_team_drive)
             @can_move_children_within_drive = args[:can_move_children_within_drive] if args.key?(:can_move_children_within_drive)

@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContentRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Drive
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -410,6 +416,19 @@ module Google
         end
       end
       
+      class ContentRestriction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :read_only, as: 'readOnly'
+          property :reason, as: 'reason'
+          property :restricting_user, as: 'restrictingUser', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
+      
+          property :restriction_time, as: 'restrictionTime', type: DateTime
+      
+          property :type, as: 'type'
+        end
+      end
+      
       class Drive
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -492,6 +511,8 @@ module Google
           property :capabilities, as: 'capabilities', class: Google::Apis::DriveV3::File::Capabilities, decorator: Google::Apis::DriveV3::File::Capabilities::Representation
       
           property :content_hints, as: 'contentHints', class: Google::Apis::DriveV3::File::ContentHints, decorator: Google::Apis::DriveV3::File::ContentHints::Representation
+      
+          collection :content_restrictions, as: 'contentRestrictions', class: Google::Apis::DriveV3::ContentRestriction, decorator: Google::Apis::DriveV3::ContentRestriction::Representation
       
           property :copy_requires_writer_permission, as: 'copyRequiresWriterPermission'
           property :created_time, as: 'createdTime', type: DateTime
@@ -578,6 +599,7 @@ module Google
             property :can_edit, as: 'canEdit'
             property :can_list_children, as: 'canListChildren'
             property :can_modify_content, as: 'canModifyContent'
+            property :can_modify_content_restriction, as: 'canModifyContentRestriction'
             property :can_move_children_out_of_drive, as: 'canMoveChildrenOutOfDrive'
             property :can_move_children_out_of_team_drive, as: 'canMoveChildrenOutOfTeamDrive'
             property :can_move_children_within_drive, as: 'canMoveChildrenWithinDrive'

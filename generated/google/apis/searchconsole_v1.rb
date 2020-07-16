@@ -18,14 +18,15 @@ require 'google/apis/searchconsole_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Search Console URL Testing Tools API
+    # Google Search Console API
     #
-    # Provides tools for running validation tests against single URLs
+    # The Search Console API provides access to both Search Console data (verified
+    # users only) and to public information on an URL basis (anyone)
     #
     # @see https://developers.google.com/webmaster-tools/search-console-api/
     module SearchconsoleV1
       VERSION = 'V1'
-      REVISION = '20200208'
+      REVISION = '20200714'
     end
   end
 end

@@ -20,9 +20,10 @@ require 'google/apis/errors'
 module Google
   module Apis
     module SearchconsoleV1
-      # Google Search Console URL Testing Tools API
+      # Google Search Console API
       #
-      # Provides tools for running validation tests against single URLs
+      # The Search Console API provides access to both Search Console data (verified
+      #  users only) and to public information on an URL basis (anyone)
       #
       # @example
       #    require 'google/apis/searchconsole_v1'

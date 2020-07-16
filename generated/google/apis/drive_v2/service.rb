@@ -1131,7 +1131,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a copy of the specified file.
+        # Creates a copy of the specified file. Folders cannot be copied.
         # @param [String] file_id
         #   The ID of the file to copy.
         # @param [Google::Apis::DriveV2::File] file_object
@@ -1489,9 +1489,12 @@ module Google
         
         # Lists the user's files.
         # @param [String] corpora
-        #   Bodies of items (files/documents) to which the query applies. Supported bodies
-        #   are 'default', 'domain', 'drive' and 'allDrives'. Prefer 'default' or 'drive'
-        #   to 'allDrives' for efficiency.
+        #   Groupings of files to which the query applies. Supported groupings are: 'user'
+        #   (files created by, opened by, or shared directly with the user), 'drive' (
+        #   files in the specified shared drive as indicated by the 'driveId'), 'domain' (
+        #   files shared to the user's domain), and 'allDrives' (A combination of 'user'
+        #   and 'drive' for all drives where the user is a member). When able, use 'user'
+        #   or 'drive', instead of 'allDrives', for efficiency.
         # @param [String] corpus
         #   The body of items (files/documents) to which the query applies. Deprecated:
         #   use 'corpora' instead.
@@ -1711,7 +1714,11 @@ module Google
         end
         
         # Moves a file to the trash. The currently authenticated user must own the file
-        # or be at least a fileOrganizer on the parent for shared drive files.
+        # or be at least a fileOrganizer on the parent for shared drive files. Only the
+        # owner may trash a file. The trashed item is excluded from all files.list
+        # responses returned for any user who does not own the file. However, all users
+        # with access to the file can see the trashed item metadata in an API response.
+        # All users with access can copy, download, export, and share the file.
         # @param [String] file_id
         #   The ID of the file to trash.
         # @param [Boolean] supports_all_drives
@@ -1750,7 +1757,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Restores a file from the trash.
+        # Restores a file from the trash. The currently authenticated user must own the
+        # file or be at least a fileOrganizer on the parent for shared drive files. Only
+        # the owner may untrash a file.
         # @param [String] file_id
         #   The ID of the file to untrash.
         # @param [Boolean] supports_all_drives

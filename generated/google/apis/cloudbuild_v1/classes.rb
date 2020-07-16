@@ -625,7 +625,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # If true, the trigger will never result in a build.
+        # If true, the trigger will never automatically execute a build.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled

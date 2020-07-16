@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module RunV1alpha1
-      # Cloud Run API
+      # Cloud Run Admin API
       #
       # Deploy and manage user provided container images that scale automatically
       #  based on HTTP traffic.

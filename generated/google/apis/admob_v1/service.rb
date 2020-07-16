@@ -49,7 +49,7 @@ module Google
         
         # Gets information about the specified AdMob publisher account.
         # @param [String] name
-        #   Required. Resource name of the publisher account to retrieve.
+        #   Resource name of the publisher account to retrieve.
         #   Example: accounts/pub-9876543210987654
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

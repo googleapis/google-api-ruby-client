@@ -3925,6 +3925,8 @@ module Google
         # Image content, represented as a stream of bytes.
         # Note: As with all `bytes` fields, protobuffers use a pure binary
         # representation, whereas JSON representations use base64.
+        # Currently, this field only works for BatchAnnotateImages requests. It does
+        # not work for AsyncBatchAnnotateImages requests.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]

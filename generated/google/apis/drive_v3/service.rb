@@ -771,7 +771,7 @@ module Google
         end
         
         # Creates a copy of a file and applies any requested updates with patch
-        # semantics.
+        # semantics. Folders cannot be copied.
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::File] file_object
@@ -1104,9 +1104,12 @@ module Google
         
         # Lists or searches files.
         # @param [String] corpora
-        #   Bodies of items (files/documents) to which the query applies. Supported bodies
-        #   are 'user', 'domain', 'drive' and 'allDrives'. Prefer 'user' or 'drive' to '
-        #   allDrives' for efficiency.
+        #   Groupings of files to which the query applies. Supported groupings are: 'user'
+        #   (files created by, opened by, or shared directly with the user), 'drive' (
+        #   files in the specified shared drive as indicated by the 'driveId'), 'domain' (
+        #   files shared to the user's domain), and 'allDrives' (A combination of 'user'
+        #   and 'drive' for all drives where the user is a member). When able, use 'user'
+        #   or 'drive', instead of 'allDrives', for efficiency.
         # @param [String] corpus
         #   The source of files to list. Deprecated: use 'corpora' instead.
         # @param [String] drive_id
@@ -1183,7 +1186,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a file's metadata and/or content with patch semantics.
+        # Updates a file's metadata and/or content. This method supports patch semantics.
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::File] file_object
