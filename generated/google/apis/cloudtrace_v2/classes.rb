@@ -327,7 +327,8 @@ module Google
         # identifier for a trace within a project;
         # it is a 32-character hexadecimal encoding of a 16-byte array.
         # [SPAN_ID] is a unique identifier for a span within a trace; it
-        # is a 16-character hexadecimal encoding of an 8-byte array.
+        # is a 16-character hexadecimal encoding of an 8-byte array. It should not
+        # be zero.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -340,8 +341,7 @@ module Google
       
         # Optional. Set this parameter to indicate whether this span is in
         # the same process as its parent. If you do not set this parameter,
-        # Stackdriver Trace is unable to take advantage of this helpful
-        # information.
+        # Trace is unable to take advantage of this helpful information.
         # Corresponds to the JSON property `sameProcessAsParentSpan`
         # @return [Boolean]
         attr_accessor :same_process_as_parent_span

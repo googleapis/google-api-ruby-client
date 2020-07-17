@@ -7977,7 +7977,7 @@ module Google
         attr_accessor :statistics
       
         # Basic details about a video category, such as its localized title.
-        # Next Id: 16
+        # Next Id: 17
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::YoutubeV3::VideoStatus]
         attr_accessor :status
@@ -9332,7 +9332,7 @@ module Google
       end
       
       # Basic details about a video category, such as its localized title.
-      # Next Id: 16
+      # Next Id: 17
       class VideoStatus
         include Google::Apis::Core::Hashable
       

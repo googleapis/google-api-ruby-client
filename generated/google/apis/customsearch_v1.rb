@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/custom-search/v1/introduction
     module CustomsearchV1
       VERSION = 'V1'
-      REVISION = '20200707'
+      REVISION = '20200715'
     end
   end
 end

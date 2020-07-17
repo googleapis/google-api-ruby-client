@@ -583,9 +583,9 @@ module Google
         # display names of the values in this set must not be empty and the display
         # names of the values must be case-insensitively unique within this set.
         # The order of items in this list is preserved. This field can be used to
-        # create, remove and reorder enum values. In order to rename enum value use
-        # RenameTagTemplateFieldEnumValue method. Can have up to 500 allowed
-        # values.
+        # create, remove and reorder enum values. To rename enum values, use the
+        # RenameTagTemplateFieldEnumValue method. This list can include up to 500
+        # allowed values.
         # Corresponds to the JSON property `allowedValues`
         # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>]
         attr_accessor :allowed_values

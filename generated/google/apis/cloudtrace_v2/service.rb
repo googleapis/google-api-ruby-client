@@ -93,7 +93,8 @@ module Google
         #   identifier for a trace within a project;
         #   it is a 32-character hexadecimal encoding of a 16-byte array.
         #   [SPAN_ID] is a unique identifier for a span within a trace; it
-        #   is a 16-character hexadecimal encoding of an 8-byte array.
+        #   is a 16-character hexadecimal encoding of an 8-byte array. It should not
+        #   be zero.
         # @param [Google::Apis::CloudtraceV2::Span] span_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

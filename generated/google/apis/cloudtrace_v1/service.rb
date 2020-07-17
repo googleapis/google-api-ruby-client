@@ -51,7 +51,7 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Sends new traces to Stackdriver Trace or updates existing traces. If the ID
+        # Sends new traces to Cloud Trace or updates existing traces. If the ID
         # of a trace that you send matches that of an existing trace, any fields
         # in the existing trace and its spans are overwritten by the provided values,
         # and any new fields provided are merged with the existing trace data. If the

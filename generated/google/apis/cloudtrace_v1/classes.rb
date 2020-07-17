@@ -86,7 +86,7 @@ module Google
       
         # Globally unique identifier for the trace. This identifier is a 128-bit
         # numeric value formatted as a 32-byte hex string. For example,
-        # `382d4f4c6b7bb2f4a972559d9085001d`.
+        # `382d4f4c6b7bb2f4a972559d9085001d`. The numeric value should not be zero.
         # Corresponds to the JSON property `traceId`
         # @return [String]
         attr_accessor :trace_id
@@ -159,8 +159,7 @@ module Google
         attr_accessor :labels
       
         # Name of the span. Must be less than 128 bytes. The span name is sanitized
-        # and displayed in the Stackdriver Trace tool in the
-        # Google Cloud Platform Console.
+        # and displayed in the Trace tool in the Google Cloud Platform Console.
         # The name may be a method name or some other per-call site name.
         # For the same executable and the same call point, a best practice is
         # to use a consistent name, which makes it easier to correlate

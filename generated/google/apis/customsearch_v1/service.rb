@@ -256,7 +256,12 @@ module Google
         #   * `"e"`: exclude
         #   * `"i"`: include
         # @param [String] sort
-        #   The sort expression to apply to the results.
+        #   The sort expression to apply to the results. The sort parameter specifies
+        #   that the results be sorted according to the specified expression i.e. sort
+        #   by date.
+        #   [Example:
+        #   sort=date](https://developers.google.com/custom-search/docs/structured_search#
+        #   sort-by-attribute).
         # @param [Fixnum] start
         #   The index of the first result to return. The default number of results per
         #   page is 10, so `&start=11` would start at the top of the second page of
@@ -531,7 +536,12 @@ module Google
         #   * `"e"`: exclude
         #   * `"i"`: include
         # @param [String] sort
-        #   The sort expression to apply to the results.
+        #   The sort expression to apply to the results. The sort parameter specifies
+        #   that the results be sorted according to the specified expression i.e. sort
+        #   by date.
+        #   [Example:
+        #   sort=date](https://developers.google.com/custom-search/docs/structured_search#
+        #   sort-by-attribute).
         # @param [Fixnum] start
         #   The index of the first result to return. The default number of results per
         #   page is 10, so `&start=11` would start at the top of the second page of

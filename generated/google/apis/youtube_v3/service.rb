@@ -1519,6 +1519,7 @@ module Google
         
         # Delete a given broadcast.
         # @param [String] id
+        #   Broadcast to delete.
         # @param [String] on_behalf_of_content_owner
         #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
         #   content partners.<br><br>The
