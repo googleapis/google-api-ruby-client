@@ -1082,6 +1082,7 @@ module Google
           property :machine_type, as: 'machineType'
           hash :metadata, as: 'metadata'
           property :min_cpu_platform, as: 'minCpuPlatform'
+          property :node_group, as: 'nodeGroup'
           collection :oauth_scopes, as: 'oauthScopes'
           property :preemptible, as: 'preemptible'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ContainerV1::ReservationAffinity, decorator: Google::Apis::ContainerV1::ReservationAffinity::Representation

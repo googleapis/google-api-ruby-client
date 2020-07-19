@@ -213,8 +213,8 @@ module Google
         # The name of the service method or operation.
         # For API calls, this should be the name of the API method.
         # For example,
-        # "google.datastore.v1.Datastore.RunQuery"
-        # "google.logging.v1.LoggingService.DeleteLog"
+        # "google.cloud.bigquery.v2.TableService.InsertTable"
+        # "google.logging.v2.ConfigServiceV2.CreateSink"
         # Corresponds to the JSON property `methodName`
         # @return [String]
         attr_accessor :method_name
@@ -248,8 +248,8 @@ module Google
         # The resource or collection that is the target of the operation.
         # The name is a scheme-less URI, not including the API service name.
         # For example:
-        # "shelves/SHELF_ID/books"
-        # "shelves/SHELF_ID/books/BOOK_ID"
+        # "projects/PROJECT_ID/zones/us-central1-a/instances"
+        # "projects/PROJECT_ID/datasets/DATASET_ID"
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -275,7 +275,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :response
       
-        # Deprecated, use `metadata` field instead.
+        # Deprecated. Use the `metadata` field instead.
         # Other service-specific data about the request, response, and other
         # activities.
         # Corresponds to the JSON property `serviceData`
@@ -283,7 +283,7 @@ module Google
         attr_accessor :service_data
       
         # The name of the API service performing the operation. For example,
-        # `"datastore.googleapis.com"`.
+        # `"compute.googleapis.com"`.
         # Corresponds to the JSON property `serviceName`
         # @return [String]
         attr_accessor :service_name

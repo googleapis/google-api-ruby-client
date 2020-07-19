@@ -1294,6 +1294,7 @@ module Google
           property :machine_type, as: 'machineType'
           hash :metadata, as: 'metadata'
           property :min_cpu_platform, as: 'minCpuPlatform'
+          property :node_group, as: 'nodeGroup'
           collection :oauth_scopes, as: 'oauthScopes'
           property :preemptible, as: 'preemptible'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ContainerV1beta1::ReservationAffinity, decorator: Google::Apis::ContainerV1beta1::ReservationAffinity::Representation
@@ -1806,6 +1807,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :identity_namespace, as: 'identityNamespace'
+          property :identity_provider, as: 'identityProvider'
           property :workload_pool, as: 'workloadPool'
         end
       end

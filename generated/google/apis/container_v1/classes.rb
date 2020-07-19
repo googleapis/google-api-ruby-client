@@ -2230,6 +2230,14 @@ module Google
         # @return [String]
         attr_accessor :min_cpu_platform
       
+        # Setting this field will assign instances of this
+        # pool to run on the specified node group. This is useful for running
+        # workloads on [sole tenant
+        # nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+        # Corresponds to the JSON property `nodeGroup`
+        # @return [String]
+        attr_accessor :node_group
+      
         # The set of Google API scopes to be made available on all of the
         # node VMs under the "default" service account.
         # The following scopes are recommended, but not required, and by default are
@@ -2316,6 +2324,7 @@ module Google
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
+          @node_group = args[:node_group] if args.key?(:node_group)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)

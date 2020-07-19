@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/memorystore/
     module MemcacheV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20200608'
+      REVISION = '20200714'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -27,7 +27,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A customer's physical address. An address can be composed of one to three
-        # lines. The addressline2 and addressLine3 are optional.
+        # lines. The <code>addressline2</code> and <code>addressLine3</code> are
+        # optional.
         # Corresponds to the JSON property `addressLine1`
         # @return [String]
         attr_accessor :address_line1
@@ -47,19 +48,23 @@ module Google
         # @return [String]
         attr_accessor :contact_name
       
-        # For countryCode information, see the ISO 3166 country code elements. Verify
-        # that country is approved for resale of Google products. This property is
-        # required when creating a new customer.
+        # For <code>countryCode</code> information, see the <a
+        # href="http://www.iso.org/iso/country_codes.htm">ISO 3166 country code
+        # elements</a>. Verify that country is <a
+        # href="https://www.cloudconnect.goog/docs/DOC-29141">approved</a> for resale
+        # of Google products. This property is required when creating a new customer.
         # Corresponds to the JSON property `countryCode`
         # @return [String]
         attr_accessor :country_code
       
-        # Identifies the resource as a customer address. Value: customers#address
+        # Identifies the resource as a customer address. Value:
+        # <code>customers#address</code>
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # An example of a locality value is the city of San Francisco.
+        # An example of a <code>locality</code> value is the city of <code>San
+        # Francisco</code>.
         # Corresponds to the JSON property `locality`
         # @return [String]
         attr_accessor :locality
@@ -69,13 +74,14 @@ module Google
         # @return [String]
         attr_accessor :organization_name
       
-        # A postalCode example is a postal zip code such as 94043. This property is
-        # required when creating a new customer.
+        # A <code>postalCode</code> example is a postal zip code such as
+        # <code>94043</code>. This property is required when creating a new customer.
         # Corresponds to the JSON property `postalCode`
         # @return [String]
         attr_accessor :postal_code
       
-        # An example of a region value is CA for the state of California.
+        # An example of a <code>region</code> value is <code>CA</code> for the state
+        # of California.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -103,41 +109,44 @@ module Google
       class ChangePlanRequest
         include Google::Apis::Core::Hashable
       
-        # Google-issued code (100 char max) for discounted pricing on subscription plans.
-        # Deal code must be included in changePlan request in order to receive
-        # discounted rate. This property is optional. If a deal code has already been
-        # added to a subscription, this property may be left empty and the existing
-        # discounted rate will still apply (if not empty, only provide the deal code
-        # that is already present on the subscription). If a deal code has never been
-        # added to a subscription and this property is left blank, regular pricing will
-        # apply.
+        # Google-issued code (100 char max) for discounted pricing on subscription
+        # plans. Deal code must be included in <code>changePlan</code> request in
+        # order to receive discounted rate. This property is optional. If a deal code
+        # has already been added to a subscription, this property may be left empty
+        # and the existing discounted rate will still apply (if not empty, only
+        # provide the deal code that is already present on the subscription). If a
+        # deal code has never been added to a subscription and this property is left
+        # blank, regular pricing will apply.
         # Corresponds to the JSON property `dealCode`
         # @return [String]
         attr_accessor :deal_code
       
         # Identifies the resource as a subscription change plan request. Value:
-        # subscriptions#changePlanRequest
+        # <code>subscriptions#changePlanRequest</code>
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The planName property is required. This is the name of the subscription's
-        # payment plan. For more information about the Google payment plans, see API
-        # concepts.
-        # Possible values are:
-        # - ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments
-        # Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.
-        # - ANNUAL_YEARLY_PAY - The annual commitment plan with yearly payments
-        # - FLEXIBLE - The flexible plan
-        # - TRIAL - The 30-day free trial plan
+        # The <code>planName</code> property is required. This is the name of the
+        # subscription's payment plan. For more information about the Google payment
+        # plans, see <a href="/admin-sdk/reseller/v1/how-tos/concepts.html">API
+        # concepts</a>. <br><br>Possible values are: <ul> <li>
+        # <code>ANNUAL_MONTHLY_PAY</code> - The annual commitment plan with monthly
+        # payments <aside class="caution"> <strong>Caution:
+        # </strong><code>ANNUAL_MONTHLY_PAY</code> is returned as <code>ANNUAL</code>
+        # in all API responses.</aside> </li> <li> <code>ANNUAL_YEARLY_PAY</code> -
+        # The annual commitment plan with yearly payments </li> <li>
+        # <code>FLEXIBLE</code> - The flexible plan </li> <li> <code>TRIAL</code> -
+        # The 30-day free trial plan </li> </ul>
         # Corresponds to the JSON property `planName`
         # @return [String]
         attr_accessor :plan_name
       
         # This is an optional property. This purchase order (PO) information is for
-        # resellers to use for their company tracking usage. If a purchaseOrderId value
-        # is given it appears in the API responses and shows up in the invoice. The
-        # property accepts up to 80 plain text characters.
+        # resellers to use for their company tracking usage. If a
+        # <code>purchaseOrderId</code> value is given it appears in the API responses
+        # and shows up in the invoice. The property accepts up to 80 plain text
+        # characters.
         # Corresponds to the JSON property `purchaseOrderId`
         # @return [String]
         attr_accessor :purchase_order_id
@@ -165,17 +174,18 @@ module Google
       class Customer
         include Google::Apis::Core::Hashable
       
-        # Like the "Customer email" in the reseller tools, this email is the secondary
-        # contact used if something happens to the customer's service such as service
-        # outage or a security issue. This property is required when creating a new
-        # customer and should not use the same domain as customerDomain.
+        # Like the &quot;Customer email&quot; in the reseller tools, this email is
+        # the secondary contact used if something happens to the
+        # customer's service such as service outage or a security issue. This
+        # property is required when creating a new customer and should not use the
+        # same domain as <code>customerDomain</code>.
         # Corresponds to the JSON property `alternateEmail`
         # @return [String]
         attr_accessor :alternate_email
       
-        # The customer's primary domain name string. customerDomain is required when
-        # creating a new customer. Do not include the www prefix in the domain when
-        # adding a customer.
+        # The customer's primary domain name string. <code>customerDomain</code> is
+        # required when creating a new customer. Do not include the <code>www</code>
+        # prefix in the domain when adding a customer.
         # Corresponds to the JSON property `customerDomain`
         # @return [String]
         attr_accessor :customer_domain
@@ -186,21 +196,25 @@ module Google
         attr_accessor :customer_domain_verified
         alias_method :customer_domain_verified?, :customer_domain_verified
       
-        # This property will always be returned in a response as the unique identifier
-        # generated by Google. In a request, this property can be either the primary
-        # domain or the unique identifier generated by Google.
+        # This property will always be returned in a response as the unique
+        # identifier generated by Google. In a request, this property can be either
+        # the primary domain or the unique identifier generated by Google.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
       
-        # Identifies the resource as a customer. Value: reseller#customer
+        # Identifies the resource as a customer. Value:
+        # <code>reseller#customer</code>
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
         # Customer contact phone number. Must start with "+" followed by the country
         # code. The rest of the number can be contiguous numbers or respect the phone
-        # local format conventions, but it must be a real phone number and not, for
+        # <a
+        # href="http://wikipedia.org/wiki/
+        # Local_conventions_for_writing_telephone_numbers">local
+        # format conventions</a>, but it must be a real phone number and not, for
         # example, "123". This field is silently ignored if invalid.
         # Corresponds to the JSON property `phoneNumber`
         # @return [String]
@@ -211,9 +225,9 @@ module Google
         # @return [Google::Apis::ResellerV1::Address]
         attr_accessor :postal_address
       
-        # URL to customer's Admin console dashboard. The read-only URL is generated by
-        # the API service. This is used if your client application requires the customer
-        # to complete a task in the Admin console.
+        # URL to customer&#39;s Admin console dashboard. The read-only URL is
+        # generated by the API service. This is used if your client application
+        # requires the customer to complete a task in the Admin console.
         # Corresponds to the JSON property `resourceUiUrl`
         # @return [String]
         attr_accessor :resource_ui_url
@@ -240,14 +254,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Identifies the resource as a subscription renewal setting. Value:
-        # subscriptions#renewalSettings
+        # <code>subscriptions#renewalSettings</code>
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Renewal settings for the annual commitment plan. For more detailed information,
-        # see renewal options in the administrator help center. When renewing a
-        # subscription, the renewalType is a required property.
+        # Renewal settings for the annual commitment plan. For more detailed
+        # information, see renewal options in the <a
+        # href="//support.google.com/a/bin/answer.py?topic=1247359&amp;ctx=topic&amp;
+        # answer=2500693">administrator
+        # help center</a>. When renewing a subscription, the <code>renewalType</code>
+        # is a required property.
         # Corresponds to the JSON property `renewalType`
         # @return [String]
         attr_accessor :renewal_type
@@ -311,37 +328,42 @@ module Google
       class Seats
         include Google::Apis::Core::Hashable
       
-        # Identifies the resource as a subscription seat setting. Value: subscriptions#
-        # seats
+        # Identifies the resource as a subscription seat setting. Value:
+        # <code>subscriptions#seats</code>
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
         # Read-only field containing the current number of users that are assigned a
-        # license for the product defined in skuId. This field's value is equivalent to
-        # the numerical count of users returned by the Enterprise License Manager API
-        # method: listForProductAndSku
+        # license for the product defined in <code>skuId</code>. This
+        # field's value is equivalent to the numerical count of users returned by the
+        # Enterprise License Manager API method: <code><a
+        # href="//developers.google.com/admin-sdk/licensing/v1/reference/
+        # licenseAssignments/listForProductAndSku">listForProductAndSku</a></code>
         # Corresponds to the JSON property `licensedNumberOfSeats`
         # @return [Fixnum]
         attr_accessor :licensed_number_of_seats
       
-        # This is a required property and is exclusive to subscriptions with FLEXIBLE or
-        # TRIAL plans. This property sets the maximum number of licensed users allowed
-        # on a subscription. This quantity can be increased up to the maximum limit
-        # defined in the reseller's contract. The minimum quantity is the current number
-        # of users in the customer account. Note: G Suite subscriptions automatically
-        # assign a license to every user.
+        # This is a required property and is exclusive to subscriptions with
+        # <code>FLEXIBLE</code> or <code>TRIAL</code> plans. This property sets the
+        # maximum number of licensed users allowed on a subscription. This quantity
+        # can be increased up to the maximum limit defined in the
+        # reseller's contract. The minimum quantity is the current number of users in
+        # the customer account. <aside class="note"><strong>Note: </strong>G Suite
+        # subscriptions automatically assign a license to every user.</aside>
         # Corresponds to the JSON property `maximumNumberOfSeats`
         # @return [Fixnum]
         attr_accessor :maximum_number_of_seats
       
         # This is a required property and is exclusive to subscriptions with
-        # ANNUAL_MONTHLY_PAY and ANNUAL_YEARLY_PAY plans. This property sets the maximum
-        # number of licenses assignable to users on a subscription. The reseller can add
-        # more licenses, but once set, the numberOfSeats cannot be reduced until renewal.
-        # The reseller is invoiced based on the numberOfSeats value regardless of how
-        # many of these user licenses are assigned. Note: G Suite subscriptions
-        # automatically assign a license to every user.
+        # <code>ANNUAL_MONTHLY_PAY</code> and <code>ANNUAL_YEARLY_PAY</code> plans.
+        # This property sets the maximum number of licenses assignable to users on a
+        # subscription. The reseller can add more licenses, but once set, the
+        # <code>numberOfSeats</code> cannot be reduced until renewal. The reseller is
+        # invoiced based on the <code>numberOfSeats</code> value regardless of how
+        # many of these user licenses are assigned. <aside class="note"><strong>Note:
+        # </strong>G Suite subscriptions automatically assign a license to every
+        # user.</aside>
         # Corresponds to the JSON property `numberOfSeats`
         # @return [Fixnum]
         attr_accessor :number_of_seats
@@ -368,8 +390,9 @@ module Google
         # @return [String]
         attr_accessor :billing_method
       
-        # The creationTime property is the date when subscription was created. It is in
-        # milliseconds using the Epoch format. See an example Epoch converter.
+        # The <code>creationTime</code> property is the date when subscription was
+        # created. It is in milliseconds using the Epoch format. See an example <a
+        # href="http://www.epochconverter.com/">Epoch converter</a>.
         # Corresponds to the JSON property `creationTime`
         # @return [Fixnum]
         attr_accessor :creation_time
@@ -379,36 +402,41 @@ module Google
         # @return [String]
         attr_accessor :customer_domain
       
-        # This property will always be returned in a response as the unique identifier
-        # generated by Google. In a request, this property can be either the primary
-        # domain or the unique identifier generated by Google.
+        # This property will always be returned in a response as the unique
+        # identifier generated by Google. In a request, this property can be either
+        # the primary domain or the unique identifier generated by Google.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
       
-        # Google-issued code (100 char max) for discounted pricing on subscription plans.
-        # Deal code must be included in insert requests in order to receive discounted
-        # rate. This property is optional, regular pricing applies if left empty.
+        # Google-issued code (100 char max) for discounted pricing on subscription
+        # plans. Deal code must be included in <code>insert</code> requests in order
+        # to receive discounted rate. This property is optional, regular pricing
+        # applies if left empty.
         # Corresponds to the JSON property `dealCode`
         # @return [String]
         attr_accessor :deal_code
       
-        # Identifies the resource as a Subscription. Value: reseller#subscription
+        # Identifies the resource as a Subscription. Value:
+        # <code>reseller#subscription</code>
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The plan property is required. In this version of the API, the G Suite plans
-        # are the flexible plan, annual commitment plan, and the 30-day free trial plan.
-        # For more information about the API"s payment plans, see the API concepts.
+        # The <code>plan</code> property is required. In this version of the API, the
+        # G Suite plans are the flexible plan, annual commitment plan, and the 30-day
+        # free trial plan. For more information about the API&quot;s payment plans,
+        # see the <a href="/admin-sdk/reseller/v1/how-tos/concepts#plans">API
+        # concepts</a>.
         # Corresponds to the JSON property `plan`
         # @return [Google::Apis::ResellerV1::Subscription::Plan]
         attr_accessor :plan
       
         # This is an optional property. This purchase order (PO) information is for
-        # resellers to use for their company tracking usage. If a purchaseOrderId value
-        # is given it appears in the API responses and shows up in the invoice. The
-        # property accepts up to 80 plain text characters.
+        # resellers to use for their company tracking usage. If a
+        # <code>purchaseOrderId</code> value is given it appears in the API responses
+        # and shows up in the invoice. The property accepts up to 80 plain text
+        # characters.
         # Corresponds to the JSON property `purchaseOrderId`
         # @return [String]
         attr_accessor :purchase_order_id
@@ -418,10 +446,10 @@ module Google
         # @return [Google::Apis::ResellerV1::RenewalSettings]
         attr_accessor :renewal_settings
       
-        # URL to customer's Subscriptions page in the Admin console. The read-only URL
-        # is generated by the API service. This is used if your client application
-        # requires the customer to complete a task using the Subscriptions page in the
-        # Admin console.
+        # URL to customer&#39;s Subscriptions page in the Admin console. The
+        # read-only URL is generated by the API service. This is used if your client
+        # application requires the customer to complete a task using the
+        # Subscriptions page in the Admin console.
         # Corresponds to the JSON property `resourceUiUrl`
         # @return [String]
         attr_accessor :resource_ui_url
@@ -431,17 +459,20 @@ module Google
         # @return [Google::Apis::ResellerV1::Seats]
         attr_accessor :seats
       
-        # A required property. The skuId is a unique system identifier for a product's
-        # SKU assigned to a customer in the subscription. For products and SKUs
-        # available in this version of the API, see  Product and SKU IDs.
+        # A required property. The <code>skuId</code> is a unique system identifier
+        # for a product&#39;s SKU assigned to a customer in the subscription. For
+        # products and SKUs available in this version of the API, see <a
+        # href="/admin-sdk/reseller/v1/how-tos/products.html"> Product and SKU
+        # IDs</a>.
         # Corresponds to the JSON property `skuId`
         # @return [String]
         attr_accessor :sku_id
       
-        # Read-only external display name for a product's SKU assigned to a customer in
-        # the subscription. SKU names are subject to change at Google's discretion. For
-        # products and SKUs available in this version of the API, see  Product and SKU
-        # IDs.
+        # Read-only external display name for a product&#39;s SKU assigned to a
+        # customer in the subscription. SKU names are subject to change at
+        # Google&#39;s discretion. For products and SKUs available in this version of
+        # the API, see <a href="/admin-sdk/reseller/v1/how-tos/products.html">
+        # Product and SKU IDs</a>.
         # Corresponds to the JSON property `skuName`
         # @return [String]
         attr_accessor :sku_name
@@ -451,40 +482,48 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # The subscriptionId is the subscription identifier and is unique for each
-        # customer. This is a required property. Since a subscriptionId changes when a
-        # subscription is updated, we recommend not using this ID as a key for
-        # persistent data. Use the subscriptionId as described in retrieve all reseller
-        # subscriptions.
+        # The <code>subscriptionId</code> is the subscription identifier and is
+        # unique for each customer. This is a required property. Since a
+        # <code>subscriptionId</code> changes when a subscription is updated, we
+        # recommend not using this ID as a key for persistent data. Use the
+        # <code>subscriptionId</code> as described in <a
+        # href="/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
+        # get_all_subscriptions">retrieve
+        # all reseller subscriptions</a>.
         # Corresponds to the JSON property `subscriptionId`
         # @return [String]
         attr_accessor :subscription_id
       
-        # Read-only field containing an enumerable of all the current suspension reasons
-        # for a subscription. It is possible for a subscription to have many concurrent,
-        # overlapping suspension reasons. A subscription's STATUS is SUSPENDED until all
-        # pending suspensions are removed.
-        # Possible options include:
-        # - PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the G
-        # Suite Resold Terms of Services.
-        # - RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their service
-        # was cancelled at the end of their term.
-        # - RESELLER_INITIATED - A manual suspension invoked by a Reseller.
-        # - TRIAL_ENDED - The customer's trial expired without a plan selected.
-        # - OTHER - The customer is suspended for an internal Google reason (e.g. abuse
-        # or otherwise).
+        # Read-only field containing an enumerable of all the current suspension
+        # reasons for a subscription. It is possible for a subscription to have many
+        # concurrent, overlapping suspension reasons. A
+        # subscription's <code>STATUS</code> is <code>SUSPENDED</code> until all
+        # pending suspensions are removed. <br/><br/>Possible options include: <ul>
+        # <li> <code>PENDING_TOS_ACCEPTANCE</code> - The customer has not logged in
+        # and accepted the G Suite Resold Terms of Services. </li> <li>
+        # <code>RENEWAL_WITH_TYPE_CANCEL</code> - The customer's commitment ended and
+        # their service was cancelled at the end of their term.
+        # </li> <li> <code>RESELLER_INITIATED</code> - A manual suspension invoked by
+        # a Reseller. </li> <li> <code>TRIAL_ENDED</code> - The
+        # customer's trial expired without a plan selected. </li> <li>
+        # <code>OTHER</code> - The customer is suspended for an internal Google
+        # reason (e.g. abuse or otherwise). </li> </ul>
         # Corresponds to the JSON property `suspensionReasons`
         # @return [Array<String>]
         attr_accessor :suspension_reasons
       
         # Read-only transfer related information for the subscription. For more
-        # information, see retrieve transferable subscriptions for a customer.
+        # information, see <a
+        # href="/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
+        # get_transferable_subscriptions">retrieve
+        # transferable subscriptions for a customer</a>.
         # Corresponds to the JSON property `transferInfo`
         # @return [Google::Apis::ResellerV1::Subscription::TransferInfo]
         attr_accessor :transfer_info
       
         # The G Suite annual commitment and flexible payment plans can be in a 30-day
-        # free trial. For more information, see the API concepts.
+        # free trial. For more information, see the <a
+        # href="/admin-sdk/reseller/v1/how-tos/concepts#plans">API concepts</a>.
         # Corresponds to the JSON property `trialSettings`
         # @return [Google::Apis::ResellerV1::Subscription::TrialSettings]
         attr_accessor :trial_settings
@@ -515,42 +554,52 @@ module Google
           @trial_settings = args[:trial_settings] if args.key?(:trial_settings)
         end
         
-        # The plan property is required. In this version of the API, the G Suite plans
-        # are the flexible plan, annual commitment plan, and the 30-day free trial plan.
-        # For more information about the API"s payment plans, see the API concepts.
+        # The <code>plan</code> property is required. In this version of the API, the
+        # G Suite plans are the flexible plan, annual commitment plan, and the 30-day
+        # free trial plan. For more information about the API&quot;s payment plans,
+        # see the <a href="/admin-sdk/reseller/v1/how-tos/concepts#plans">API
+        # concepts</a>.
         class Plan
           include Google::Apis::Core::Hashable
         
-          # In this version of the API, annual commitment plan's interval is one year.
-          # Note: When billingMethod value is OFFLINE, the subscription property object
-          # plan.commitmentInterval is omitted in all API responses.
+          # In this version of the API, annual commitment plan's interval is one
+          # year. <aside class="caution"> <strong>Note: </strong>When
+          # <code>billingMethod</code> value is <code>OFFLINE</code>, the
+          # subscription property object <code>plan.commitmentInterval</code> is
+          # omitted in all API responses. </aside>
           # Corresponds to the JSON property `commitmentInterval`
           # @return [Google::Apis::ResellerV1::Subscription::Plan::CommitmentInterval]
           attr_accessor :commitment_interval
         
-          # The isCommitmentPlan property's boolean value identifies the plan as an annual
-          # commitment plan:
-          # - true — The subscription's plan is an annual commitment plan.
-          # - false — The plan is not an annual commitment plan.
+          # The <code>isCommitmentPlan</code> property&#39;s boolean value identifies
+          # the plan as an annual commitment plan:<ul><li><code>true</code> &mdash;
+          # The subscription&#39;s plan is an annual commitment
+          # plan.</li><li><code>false</code> &mdash; The plan is not an annual
+          # commitment plan.</li></ul>
           # Corresponds to the JSON property `isCommitmentPlan`
           # @return [Boolean]
           attr_accessor :is_commitment_plan
           alias_method :is_commitment_plan?, :is_commitment_plan
         
-          # The planName property is required. This is the name of the subscription's plan.
-          # For more information about the Google payment plans, see the API concepts.
-          # Possible values are:
-          # - ANNUAL_MONTHLY_PAY — The annual commitment plan with monthly payments.
-          # Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.
-          # - ANNUAL_YEARLY_PAY — The annual commitment plan with yearly payments
-          # - FLEXIBLE — The flexible plan
-          # - TRIAL — The 30-day free trial plan. A subscription in trial will be
-          # suspended after the 30th free day if no payment plan is assigned. Calling
-          # changePlan will assign a payment plan to a trial but will not activate the
-          # plan. A trial will automatically begin its assigned payment plan after its
-          # 30th free day or immediately after calling startPaidService.
-          # - FREE — The free plan is exclusive to the Cloud Identity SKU and does not
-          # incur any billing.
+          # The <code>planName</code> property is required. This is the name of the
+          # subscription&#39;s plan. For more information about the Google payment
+          # plans, see the <a
+          # href="/admin-sdk/reseller/v1/how-tos/concepts#plans">API concepts</a>.
+          # <br/><br/>Possible values are: <ul> <li> <code>ANNUAL_MONTHLY_PAY</code>
+          # &mdash; The annual commitment plan with monthly payments. <aside
+          # class="caution"> <strong>Caution:
+          # </strong><code>ANNUAL_MONTHLY_PAY</code> is returned as
+          # <code>ANNUAL</code> in all API responses.</aside> </li> <li>
+          # <code>ANNUAL_YEARLY_PAY</code> &mdash; The annual commitment plan with
+          # yearly payments </li> <li> <code>FLEXIBLE</code> &mdash; The flexible
+          # plan </li> <li> <code>TRIAL</code> &mdash; The 30-day free trial plan. A
+          # subscription in trial will be suspended after the 30th free day if no
+          # payment plan is assigned. Calling <code>changePlan</code> will assign a
+          # payment plan to a trial but will not activate the plan. A trial will
+          # automatically begin its assigned payment plan after its 30th free day or
+          # immediately after calling <code>startPaidService</code>. </li> <li>
+          # <code>FREE</code> &mdash; The free plan is exclusive to the Cloud
+          # Identity SKU and does not incur any billing. </li> </ul>
           # Corresponds to the JSON property `planName`
           # @return [String]
           attr_accessor :plan_name
@@ -566,20 +615,24 @@ module Google
             @plan_name = args[:plan_name] if args.key?(:plan_name)
           end
           
-          # In this version of the API, annual commitment plan's interval is one year.
-          # Note: When billingMethod value is OFFLINE, the subscription property object
-          # plan.commitmentInterval is omitted in all API responses.
+          # In this version of the API, annual commitment plan's interval is one
+          # year. <aside class="caution"> <strong>Note: </strong>When
+          # <code>billingMethod</code> value is <code>OFFLINE</code>, the
+          # subscription property object <code>plan.commitmentInterval</code> is
+          # omitted in all API responses. </aside>
           class CommitmentInterval
             include Google::Apis::Core::Hashable
           
-            # An annual commitment plan's interval's endTime in milliseconds using the UNIX
-            # Epoch format. See an example Epoch converter.
+            # An annual commitment plan&#39;s interval&#39;s <code>endTime</code> in
+            # milliseconds using the UNIX Epoch format. See an example <a
+            # href="http://www.epochconverter.com/">Epoch converter</a>.
             # Corresponds to the JSON property `endTime`
             # @return [Fixnum]
             attr_accessor :end_time
           
-            # An annual commitment plan's interval's startTime in milliseconds using UNIX
-            # Epoch format. See an example Epoch converter.
+            # An annual commitment plan's interval's <code>startTime</code> in
+            # milliseconds using UNIX Epoch format. See an example <a
+            # href="http://www.epochconverter.com/">Epoch converter</a>.
             # Corresponds to the JSON property `startTime`
             # @return [Fixnum]
             attr_accessor :start_time
@@ -597,20 +650,23 @@ module Google
         end
         
         # Read-only transfer related information for the subscription. For more
-        # information, see retrieve transferable subscriptions for a customer.
+        # information, see <a
+        # href="/admin-sdk/reseller/v1/how-tos/manage_subscriptions#
+        # get_transferable_subscriptions">retrieve
+        # transferable subscriptions for a customer</a>.
         class TransferInfo
           include Google::Apis::Core::Hashable
         
-          # When inserting a subscription, this is the minimum number of seats listed in
-          # the transfer order for this product. For example, if the customer has 20 users,
-          # the reseller cannot place a transfer order of 15 seats. The minimum is 20
-          # seats.
+          # When inserting a subscription, this is the minimum number of seats listed
+          # in the transfer order for this product. For example, if the customer has
+          # 20 users, the reseller cannot place a transfer order of 15 seats. The
+          # minimum is 20 seats.
           # Corresponds to the JSON property `minimumTransferableSeats`
           # @return [Fixnum]
           attr_accessor :minimum_transferable_seats
         
-          # The time when transfer token or intent to transfer will expire. The time is in
-          # milliseconds using UNIX Epoch format.
+          # The time when transfer token or intent to transfer will expire. The time
+          # is in milliseconds using UNIX Epoch format.
           # Corresponds to the JSON property `transferabilityExpirationTime`
           # @return [Fixnum]
           attr_accessor :transferability_expiration_time
@@ -627,20 +683,23 @@ module Google
         end
         
         # The G Suite annual commitment and flexible payment plans can be in a 30-day
-        # free trial. For more information, see the API concepts.
+        # free trial. For more information, see the <a
+        # href="/admin-sdk/reseller/v1/how-tos/concepts#plans">API concepts</a>.
         class TrialSettings
           include Google::Apis::Core::Hashable
         
-          # Determines if a subscription's plan is in a 30-day free trial or not:
-          # - true — The plan is in trial.
-          # - false — The plan is not in trial.
+          # Determines if a subscription&#39;s plan is in a 30-day free trial or
+          # not:<ul><li><code>true</code> &mdash; The plan is in
+          # trial.</li><li><code>false</code> &mdash; The plan is not in
+          # trial.</li></ul>
           # Corresponds to the JSON property `isInTrial`
           # @return [Boolean]
           attr_accessor :is_in_trial
           alias_method :is_in_trial?, :is_in_trial
         
-          # Date when the trial ends. The value is in milliseconds using the UNIX Epoch
-          # format. See an example Epoch converter.
+          # Date when the trial ends. The value is in milliseconds using the UNIX
+          # Epoch format. See an example <a
+          # href="http://www.epochconverter.com/">Epoch converter</a>.
           # Corresponds to the JSON property `trialEndTime`
           # @return [Fixnum]
           attr_accessor :trial_end_time
@@ -661,14 +720,14 @@ module Google
       class Subscriptions
         include Google::Apis::Core::Hashable
       
-        # Identifies the resource as a collection of subscriptions. Value: reseller#
-        # subscriptions
+        # Identifies the resource as a collection of subscriptions. Value:
+        # reseller#subscriptions
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The continuation token, used to page through large result sets. Provide this
-        # value in a subsequent request to return the next page of results.
+        # The continuation token, used to page through large result sets. Provide
+        # this value in a subsequent request to return the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

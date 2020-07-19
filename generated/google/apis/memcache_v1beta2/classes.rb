@@ -826,7 +826,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The full name of the Google Compute Engine
-        # [network](/compute/docs/networks-and-firewalls#networks) to which the
+        # [network](https://cloud.google.com/vpc/docs/vpc) to which the
         # instance is connected. If left unspecified, the `default` network
         # will be used.
         # Corresponds to the JSON property `authorizedNetwork`
