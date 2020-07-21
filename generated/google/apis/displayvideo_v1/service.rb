@@ -48,10 +48,10 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Bulk edits targeting options under a single advertiser.
-        # The operation will delete the assigned targeting options provided in
-        # BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and
-        # then create the assigned targeting options provided in
+        # Bulk edits targeting options under a single advertiser. The operation will
+        # delete the assigned targeting options provided in
+        # BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and then
+        # create the assigned targeting options provided in
         # BulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests .
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser.
@@ -89,37 +89,27 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the line item belongs to.
         # @param [String] filter
-        #   Allows filtering by assigned targeting option properties.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by the logical operator `OR`..
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)`.
-        #   * Supported fields:
-        #   - `targetingType`
-        #   Examples:
-        #   * targetingType with value TARGETING_TYPE_CHANNEL
-        #   `targetingType="TARGETING_TYPE_CHANNEL"`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by the logical operator `OR`.. * A restriction has the form of ``
+        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
+        #   fields: - `targetingType` Examples: * targetingType with value
+        #   TARGETING_TYPE_CHANNEL `targetingType="TARGETING_TYPE_CHANNEL"` The length of
+        #   this field should be no more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `targetingType` (default)
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. Example:
-        #   `targetingType desc`.
+        #   Field by which to sort the list. Acceptable values are: * `targetingType` (
+        #   default) The default sorting order is ascending. To specify descending order
+        #   for a field, a suffix "desc" should be added to the field name. Example: `
+        #   targetingType desc`.
         # @param [Fixnum] page_size
-        #   Requested page size.
-        #   The size must be an integer between `1` and `5000`. If unspecified,
-        #   the default is '5000'. Returns error code `INVALID_ARGUMENT` if an invalid
-        #   value is specified.
+        #   Requested page size. The size must be an integer between `1` and `5000`. If
+        #   unspecified, the default is '5000'. Returns error code `INVALID_ARGUMENT` if
+        #   an invalid value is specified.
         # @param [String] page_token
-        #   A token that lets the client fetch the next page of results.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to
-        #   `BulkListAdvertiserAssignedTargetingOptions` method.
-        #   If not specified, the first page of results will be returned.
+        #   A token that lets the client fetch the next page of results. Typically, this
+        #   is the value of next_page_token returned from the previous call to `
+        #   BulkListAdvertiserAssignedTargetingOptions` method. If not specified, the
+        #   first page of results will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -151,8 +141,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new advertiser.
-        # Returns the newly created advertiser if successful.
+        # Creates a new advertiser. Returns the newly created advertiser if successful.
         # This method can take up to 180 seconds to complete.
         # @param [Google::Apis::DisplayvideoV1::Advertiser] advertiser_object
         # @param [String] fields
@@ -183,10 +172,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an advertiser.
-        # Deleting an advertiser will delete all of its child resources, for example,
-        # campaigns, insertion orders and line items.
-        # A deleted advertiser cannot be recovered.
+        # Deletes an advertiser. Deleting an advertiser will delete all of its child
+        # resources, for example, campaigns, insertion orders and line items. A deleted
+        # advertiser cannot be recovered.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser we need to delete.
         # @param [String] fields
@@ -246,46 +234,34 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists advertisers that are accessible to the current user.
-        # The order is defined by the order_by
-        # parameter.
-        # A single partner_id is required.
-        # Cross-partner listing is not supported.
+        # Lists advertisers that are accessible to the current user. The order is
+        # defined by the order_by parameter. A single partner_id is required. Cross-
+        # partner listing is not supported.
         # @param [String] filter
-        #   Allows filtering by advertiser properties.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by `AND` or `OR` logical operators. A
-        #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)`.
-        #   * Supported fields:
-        #   - `entityStatus`
-        #   Examples:
-        #   * All active advertisers under a partner:
-        #   `entityStatus="ENTITY_STATUS_ACTIVE"`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by advertiser properties. Supported syntax: * Filter
+        #   expressions are made up of one or more restrictions. * Restrictions can be
+        #   combined by `AND` or `OR` logical operators. A sequence of restrictions
+        #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
+        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
+        #   entityStatus` Examples: * All active advertisers under a partner: `
+        #   entityStatus="ENTITY_STATUS_ACTIVE"` The length of this field should be no
+        #   more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `displayName` (default)
-        #   * `entityStatus`
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. For example,
-        #   `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * `displayName` (
+        #   default) * `entityStatus` The default sorting order is ascending. To specify
+        #   descending order for a field, a suffix "desc" should be added to the field
+        #   name. For example, `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
         #   default to `100`.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListAdvertisers` method.
-        #   If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListAdvertisers` method. If not specified, the first page of results will be
+        #   returned.
         # @param [Fixnum] partner_id
         #   Required. The ID of the partner that the fetched advertisers should all belong
-        #   to.
-        #   The system only supports listing advertisers for one partner at a time.
+        #   to. The system only supports listing advertisers for one partner at a time.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -317,8 +293,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing advertiser.
-        # Returns the updated advertiser if successful.
+        # Updates an existing advertiser. Returns the updated advertiser if successful.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser. Assigned by the system.
         # @param [Google::Apis::DisplayvideoV1::Advertiser] advertiser_object
@@ -354,10 +329,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads an asset.
-        # Returns the ID of the newly uploaded asset if successful.
-        # The asset file size should be no more than 10 MB for images, 200 MB for
-        # ZIP files, and 1 GB for videos.
+        # Uploads an asset. Returns the ID of the newly uploaded asset if successful.
+        # The asset file size should be no more than 10 MB for images, 200 MB for ZIP
+        # files, and 1 GB for videos.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this asset belongs to.
         # @param [Google::Apis::DisplayvideoV1::CreateAssetRequest] create_asset_request_object
@@ -400,8 +374,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new campaign.
-        # Returns the newly created campaign if successful.
+        # Creates a new campaign. Returns the newly created campaign if successful.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the campaign belongs to.
         # @param [Google::Apis::DisplayvideoV1::Campaign] campaign_object
@@ -434,10 +407,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Permanently deletes a campaign. A deleted campaign cannot be recovered.
-        # The campaign should be archived first, i.e. set
-        # entity_status to `ENTITY_STATUS_ARCHIVED`, to be
-        # able to delete it.
+        # Permanently deletes a campaign. A deleted campaign cannot be recovered. The
+        # campaign should be archived first, i.e. set entity_status to `
+        # ENTITY_STATUS_ARCHIVED`, to be able to delete it.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser this campaign belongs to.
         # @param [Fixnum] campaign_id
@@ -503,47 +475,34 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists campaigns in an advertiser.
-        # The order is defined by the order_by
-        # parameter.
-        # If a filter by
-        # entity_status is not specified, campaigns with
-        # `ENTITY_STATUS_ARCHIVED` will not be included in the results.
+        # Lists campaigns in an advertiser. The order is defined by the order_by
+        # parameter. If a filter by entity_status is not specified, campaigns with `
+        # ENTITY_STATUS_ARCHIVED` will not be included in the results.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser to list campaigns for.
         # @param [String] filter
-        #   Allows filtering by campaign properties.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by `AND` or `OR` logical operators. A
-        #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)`.
-        #   * Supported fields:
-        #   - `entityStatus`
-        #   Examples:
-        #   * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` campaigns under an
-        #   advertiser:
-        #   `(entityStatus="ENTITY_STATUS_ACTIVE" OR
-        #   entityStatus="ENTITY_STATUS_PAUSED")`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by campaign properties. Supported syntax: * Filter
+        #   expressions are made up of one or more restrictions. * Restrictions can be
+        #   combined by `AND` or `OR` logical operators. A sequence of restrictions
+        #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
+        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
+        #   entityStatus` Examples: * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
+        #   campaigns under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
+        #   entityStatus="ENTITY_STATUS_PAUSED")` The length of this field should be no
+        #   more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `displayName` (default)
-        #   * `entityStatus`
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. Example:
-        #   `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * `displayName` (
+        #   default) * `entityStatus` The default sorting order is ascending. To specify
+        #   descending order for a field, a suffix "desc" should be added to the field
+        #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
         #   default to `100`.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token returned from the
-        #   previous call to `ListCampaigns` method. If not specified, the first page
-        #   of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListCampaigns` method. If not specified, the first page of results will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -575,8 +534,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing campaign.
-        # Returns the updated campaign if successful.
+        # Updates an existing campaign. Returns the updated campaign if successful.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the campaign belongs to.
         # @param [Fixnum] campaign_id
@@ -691,36 +649,26 @@ module Google
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser that owns the channels.
         # @param [String] filter
-        #   Allows filtering by channel fields.
-        #   Supported syntax:
-        #   * Filter expressions for channel currently can only contain at most one
-        #   * restriction.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `CONTAINS (:)`.
-        #   * Supported fields:
-        #   - `displayName`
-        #   Examples:
-        #   * All channels for which the display name contains "google":
-        #   `displayName : "google"`.
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by channel fields. Supported syntax: * Filter expressions for
+        #   channel currently can only contain at most one * restriction. * A restriction
+        #   has the form of ``field` `operator` `value``. * The operator must be `CONTAINS
+        #   (:)`. * Supported fields: - `displayName` Examples: * All channels for which
+        #   the display name contains "google": `displayName : "google"`. The length of
+        #   this field should be no more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `displayName` (default)
-        #   * `channelId`
-        #   The default sorting order is ascending. To specify descending order for a
-        #   field, a suffix " desc" should be added to the field name. Example:
-        #   `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * `displayName` (
+        #   default) * `channelId` The default sorting order is ascending. To specify
+        #   descending order for a field, a suffix " desc" should be added to the field
+        #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token returned from the
-        #   previous call to `ListChannels` method. If not specified, the first page
-        #   of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListChannels` method. If not specified, the first page of results will be
+        #   returned.
         # @param [Fixnum] partner_id
         #   The ID of the partner that owns the channels.
         # @param [String] fields
@@ -797,9 +745,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Bulk edits sites under a single channel.
-        # The operation will delete the sites provided in
-        # BulkEditSitesRequest.deleted_sites and then create the sites
+        # Bulk edits sites under a single channel. The operation will delete the sites
+        # provided in BulkEditSitesRequest.deleted_sites and then create the sites
         # provided in BulkEditSitesRequest.created_sites.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser that owns the parent channel.
@@ -920,34 +867,25 @@ module Google
         # @param [Fixnum] channel_id
         #   Required. The ID of the parent channel to which the requested sites belong.
         # @param [String] filter
-        #   Allows filtering by site fields.
-        #   Supported syntax:
-        #   * Filter expressions for site currently can only contain at most one
-        #   * restriction.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `CONTAINS (:)`.
-        #   * Supported fields:
-        #   - `urlOrAppId`
-        #   Examples:
-        #   * All sites for which the URL or app ID contains "google":
-        #   `urlOrAppId : "google"`
+        #   Allows filtering by site fields. Supported syntax: * Filter expressions for
+        #   site currently can only contain at most one * restriction. * A restriction has
+        #   the form of ``field` `operator` `value``. * The operator must be `CONTAINS (:)`
+        #   . * Supported fields: - `urlOrAppId` Examples: * All sites for which the URL
+        #   or app ID contains "google": `urlOrAppId : "google"`
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `urlOrAppId` (default)
-        #   The default sorting order is ascending. To specify descending order for a
-        #   field, a suffix " desc" should be added to the field name. Example:
-        #   `urlOrAppId desc`.
+        #   Field by which to sort the list. Acceptable values are: * `urlOrAppId` (
+        #   default) The default sorting order is ascending. To specify descending order
+        #   for a field, a suffix " desc" should be added to the field name. Example: `
+        #   urlOrAppId desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token returned from the
-        #   previous call to `ListSites` method. If not specified, the first page
-        #   of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListSites` method. If not specified, the first page of results will be
+        #   returned.
         # @param [Fixnum] partner_id
         #   The ID of the partner that owns the parent channel.
         # @param [String] fields
@@ -983,8 +921,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new creative.
-        # Returns the newly created creative if successful.
+        # Creates a new creative. Returns the newly created creative if successful.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the creative belongs to.
         # @param [Google::Apis::DisplayvideoV1::Creative] creative_object
@@ -1017,11 +954,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a creative.
-        # Returns error code `NOT_FOUND` if the creative does not exist.
-        # The creative should be archived first, i.e. set
-        # entity_status to `ENTITY_STATUS_ARCHIVED`, before
-        # it can be deleted.
+        # Deletes a creative. Returns error code `NOT_FOUND` if the creative does not
+        # exist. The creative should be archived first, i.e. set entity_status to `
+        # ENTITY_STATUS_ARCHIVED`, before it can be deleted.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser this creative belongs to.
         # @param [Fixnum] creative_id
@@ -1087,81 +1022,55 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists creatives in an advertiser.
-        # The order is defined by the order_by
-        # parameter.
-        # If a filter by
-        # entity_status is not specified, creatives with
-        # `ENTITY_STATUS_ARCHIVED` will not be included in the results.
+        # Lists creatives in an advertiser. The order is defined by the order_by
+        # parameter. If a filter by entity_status is not specified, creatives with `
+        # ENTITY_STATUS_ARCHIVED` will not be included in the results.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to list creatives for.
         # @param [String] filter
-        #   Allows filtering by creative properties.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restriction for the same field must be combined by `OR`.
-        #   * Restriction for different fields must be combined by `AND`.
-        #   * Between `(` and `)` there can only be restrictions combined by `OR`
-        #   for the same field.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)` for the following fields:
-        #   - `entityStatus`
-        #   - `creativeType`.
-        #   - `dimensions`
-        #   - `minDuration`
-        #   - `maxDuration`
-        #   - `approvalStatus`
-        #   - `exchangeReviewStatus`
-        #   - `dynamic`
-        #   - `creativeId`
-        #   * The operator must be `HAS (:)` for the following fields:
-        #   - `lineItemIds`
-        #   * For `entityStatus`, `minDuration`, `maxDuration`, and `dynamic` there may
-        #   be at most one restriction.
-        #   * For `dimensions`, the value is in the form of `"`width`x`height`"`.
-        #   * For `exchangeReviewStatus`, the value is in the form of
-        #   ``exchange`-`reviewStatus``.
-        #   * For `minDuration` and `maxDuration`, the value is in the form of
-        #   `"`duration`s"`. Only seconds are supported with millisecond granularity.
-        #   * There may be multiple `lineItemIds` restrictions in order to search
-        #   against multiple possible line item IDs.
-        #   * There may be multiple `creativeId` restrictions in order to search
-        #   against multiple possible creative IDs.
-        #   Examples:
-        #   * All native creatives: `creativeType="CREATIVE_TYPE_NATIVE"`
-        #   * All active creatives with 300x400 or 50x100 dimensions:
-        #   `entityStatus="ENTITY_STATUS_ACTIVE" AND (dimensions="300x400"
-        #   OR dimensions="50x100")`
-        #   * All dynamic creatives that are approved by AdX or
-        #   AppNexus, with a minimum duration of 5 seconds and 200ms.
-        #   `dynamic="true" AND minDuration="5.2s" AND
-        #   (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED"
-        #   OR exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")`
-        #   * All video creatives that are associated with line item ID 1 or 2:
-        #   `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR lineItemIds:2)`
-        #   * Find creatives by multiple creative IDs:
-        #   `creativeId=1 OR creativeId=2`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by creative properties. Supported syntax: * Filter
+        #   expressions are made up of one or more restrictions. * Restriction for the
+        #   same field must be combined by `OR`. * Restriction for different fields must
+        #   be combined by `AND`. * Between `(` and `)` there can only be restrictions
+        #   combined by `OR` for the same field. * A restriction has the form of ``field` `
+        #   operator` `value``. * The operator must be `EQUALS (=)` for the following
+        #   fields: - `entityStatus` - `creativeType`. - `dimensions` - `minDuration` - `
+        #   maxDuration` - `approvalStatus` - `exchangeReviewStatus` - `dynamic` - `
+        #   creativeId` * The operator must be `HAS (:)` for the following fields: - `
+        #   lineItemIds` * For `entityStatus`, `minDuration`, `maxDuration`, and `dynamic`
+        #   there may be at most one restriction. * For `dimensions`, the value is in the
+        #   form of `"`width`x`height`"`. * For `exchangeReviewStatus`, the value is in
+        #   the form of ``exchange`-`reviewStatus``. * For `minDuration` and `maxDuration`,
+        #   the value is in the form of `"`duration`s"`. Only seconds are supported with
+        #   millisecond granularity. * There may be multiple `lineItemIds` restrictions in
+        #   order to search against multiple possible line item IDs. * There may be
+        #   multiple `creativeId` restrictions in order to search against multiple
+        #   possible creative IDs. Examples: * All native creatives: `creativeType="
+        #   CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400 or 50x100
+        #   dimensions: `entityStatus="ENTITY_STATUS_ACTIVE" AND (dimensions="300x400" OR
+        #   dimensions="50x100")` * All dynamic creatives that are approved by AdX or
+        #   AppNexus, with a minimum duration of 5 seconds and 200ms. `dynamic="true" AND
+        #   minDuration="5.2s" AND (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-
+        #   REVIEW_STATUS_APPROVED" OR exchangeReviewStatus="EXCHANGE_APPNEXUS-
+        #   REVIEW_STATUS_APPROVED")` * All video creatives that are associated with line
+        #   item ID 1 or 2: `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR
+        #   lineItemIds:2)` * Find creatives by multiple creative IDs: `creativeId=1 OR
+        #   creativeId=2` The length of this field should be no more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `creativeId` (default)
-        #   * `createTime`
-        #   * `mediaDuration`
-        #   * `dimensions` (sorts by width first, then by height)
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name.
-        #   Example: `createTime desc`.
+        #   Field by which to sort the list. Acceptable values are: * `creativeId` (
+        #   default) * `createTime` * `mediaDuration` * `dimensions` (sorts by width first,
+        #   then by height) The default sorting order is ascending. To specify descending
+        #   order for a field, a suffix "desc" should be added to the field name. Example:
+        #   `createTime desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListCreatives` method.
-        #   If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListCreatives` method. If not specified, the first page of results will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1193,8 +1102,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing creative.
-        # Returns the updated creative if successful.
+        # Updates an existing creative. Returns the updated creative if successful.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the creative belongs to.
         # @param [Fixnum] creative_id
@@ -1233,8 +1141,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new insertion order.
-        # Returns the newly created insertion order if successful.
+        # Creates a new insertion order. Returns the newly created insertion order if
+        # successful.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the insertion order belongs to.
         # @param [Google::Apis::DisplayvideoV1::InsertionOrder] insertion_order_object
@@ -1267,11 +1175,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an insertion order.
-        # Returns error code `NOT_FOUND` if the insertion order does not exist.
-        # The insertion order should be archived first, i.e. set
-        # entity_status to `ENTITY_STATUS_ARCHIVED`,
-        # to be able to delete it.
+        # Deletes an insertion order. Returns error code `NOT_FOUND` if the insertion
+        # order does not exist. The insertion order should be archived first, i.e. set
+        # entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser this insertion order belongs to.
         # @param [Fixnum] insertion_order_id
@@ -1304,8 +1210,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an insertion order.
-        # Returns error code `NOT_FOUND` if the insertion order does not exist.
+        # Gets an insertion order. Returns error code `NOT_FOUND` if the insertion order
+        # does not exist.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this insertion order belongs to.
         # @param [Fixnum] insertion_order_id
@@ -1338,50 +1244,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists insertion orders in an advertiser.
-        # The order is defined by the order_by
-        # parameter.
-        # If a filter by
-        # entity_status is not specified, insertion
-        # orders with `ENTITY_STATUS_ARCHIVED` will not be included in the results.
+        # Lists insertion orders in an advertiser. The order is defined by the order_by
+        # parameter. If a filter by entity_status is not specified, insertion orders
+        # with `ENTITY_STATUS_ARCHIVED` will not be included in the results.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to list insertion orders for.
         # @param [String] filter
-        #   Allows filtering by insertion order properties.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by `AND` or `OR` logical operators. A
-        #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)`.
-        #   * Supported fields:
-        #   - `campaignId`
-        #   - `entityStatus`
-        #   Examples:
-        #   * All insertion orders under a campaign: `campaignId="1234"`
-        #   * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders
-        #   under an advertiser:
-        #   `(entityStatus="ENTITY_STATUS_ACTIVE" OR
-        #   entityStatus="ENTITY_STATUS_PAUSED")`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by insertion order properties. Supported syntax: * Filter
+        #   expressions are made up of one or more restrictions. * Restrictions can be
+        #   combined by `AND` or `OR` logical operators. A sequence of restrictions
+        #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
+        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
+        #   campaignId` - `entityStatus` Examples: * All insertion orders under a campaign:
+        #   `campaignId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
+        #   insertion orders under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
+        #   entityStatus="ENTITY_STATUS_PAUSED")` The length of this field should be no
+        #   more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * "displayName" (default)
-        #   * "entityStatus"
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. Example:
-        #   `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * "displayName" (
+        #   default) * "entityStatus" The default sorting order is ascending. To specify
+        #   descending order for a field, a suffix "desc" should be added to the field
+        #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token returned
-        #   from the previous call to `ListInsertionOrders` method. If not specified,
-        #   the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListInsertionOrders` method. If not specified, the first page of results will
+        #   be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1413,8 +1305,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing insertion order.
-        # Returns the updated insertion order if successful.
+        # Updates an existing insertion order. Returns the updated insertion order if
+        # successful.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the insertion order belongs to.
         # @param [Fixnum] insertion_order_id
@@ -1453,10 +1345,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Bulk edits targeting options under a single line item.
-        # The operation will delete the assigned targeting options provided in
-        # BulkEditLineItemAssignedTargetingOptionsRequest.delete_requests and
-        # then create the assigned targeting options provided in
+        # Bulk edits targeting options under a single line item. The operation will
+        # delete the assigned targeting options provided in
+        # BulkEditLineItemAssignedTargetingOptionsRequest.delete_requests and then
+        # create the assigned targeting options provided in
         # BulkEditLineItemAssignedTargetingOptionsRequest.create_requests .
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the line item belongs to.
@@ -1499,44 +1391,32 @@ module Google
         # @param [Fixnum] line_item_id
         #   Required. The ID of the line item to list assigned targeting options for.
         # @param [String] filter
-        #   Allows filtering by assigned targeting option properties.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by the logical operator `OR` on the same
-        #   field.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)`.
-        #   * Supported fields:
-        #   - `targetingType`
-        #   - `inheritance`
-        #   Examples:
-        #   * AssignedTargetingOptions of targeting type
-        #   TARGETING_TYPE_PROXIMITY_LOCATION_LIST or TARGETING_TYPE_CHANNEL
-        #   `targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR
-        #   targetingType="TARGETING_TYPE_CHANNEL"`
-        #   * AssignedTargetingOptions with inheritance status of NOT_INHERITED or
-        #   INHERITED_FROM_PARTNER
-        #   `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by the logical operator `OR` on the same field. * A restriction
+        #   has the form of ``field` `operator` `value``. * The operator must be `EQUALS (=
+        #   )`. * Supported fields: - `targetingType` - `inheritance` Examples: *
+        #   AssignedTargetingOptions of targeting type
+        #   TARGETING_TYPE_PROXIMITY_LOCATION_LIST or TARGETING_TYPE_CHANNEL `
+        #   targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR targetingType="
+        #   TARGETING_TYPE_CHANNEL"` * AssignedTargetingOptions with inheritance status of
+        #   NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance="NOT_INHERITED" OR
+        #   inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no
+        #   more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `targetingType` (default)
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. Example:
-        #   `targetingType desc`.
+        #   Field by which to sort the list. Acceptable values are: * `targetingType` (
+        #   default) The default sorting order is ascending. To specify descending order
+        #   for a field, a suffix "desc" should be added to the field name. Example: `
+        #   targetingType desc`.
         # @param [Fixnum] page_size
-        #   Requested page size.
-        #   The size must be an integer between `1` and `5000`. If unspecified,
-        #   the default is '5000'. Returns error code `INVALID_ARGUMENT` if an invalid
-        #   value is specified.
+        #   Requested page size. The size must be an integer between `1` and `5000`. If
+        #   unspecified, the default is '5000'. Returns error code `INVALID_ARGUMENT` if
+        #   an invalid value is specified.
         # @param [String] page_token
-        #   A token that lets the client fetch the next page of results.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to
-        #   `BulkListLineItemAssignedTargetingOptions` method.
-        #   If not specified, the first page of results will be returned.
+        #   A token that lets the client fetch the next page of results. Typically, this
+        #   is the value of next_page_token returned from the previous call to `
+        #   BulkListLineItemAssignedTargetingOptions` method. If not specified, the first
+        #   page of results will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1569,8 +1449,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new line item.
-        # Returns the newly created line item if successful.
+        # Creates a new line item. Returns the newly created line item if successful.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the line item belongs to.
         # @param [Google::Apis::DisplayvideoV1::LineItem] line_item_object
@@ -1603,11 +1482,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a line item.
-        # Returns error code `NOT_FOUND` if the line item does not exist.
-        # The line item should be archived first, i.e. set
-        # entity_status to `ENTITY_STATUS_ARCHIVED`, to be
-        # able to delete it.
+        # Deletes a line item. Returns error code `NOT_FOUND` if the line item does not
+        # exist. The line item should be archived first, i.e. set entity_status to `
+        # ENTITY_STATUS_ARCHIVED`, to be able to delete it.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser this line item belongs to.
         # @param [Fixnum] line_item_id
@@ -1673,54 +1550,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists line items in an advertiser.
-        # The order is defined by the order_by
-        # parameter.
-        # If a filter by
-        # entity_status is not specified, line items with
-        # `ENTITY_STATUS_ARCHIVED` will not be included in the results.
+        # Lists line items in an advertiser. The order is defined by the order_by
+        # parameter. If a filter by entity_status is not specified, line items with `
+        # ENTITY_STATUS_ARCHIVED` will not be included in the results.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to list line items for.
         # @param [String] filter
-        #   Allows filtering by line item properties.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by `AND` or `OR` logical operators. A
-        #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)`.
-        #   * Supported fields:
-        #   - `campaignId`
-        #   - `insertionOrderId`
-        #   - `entityStatus`
-        #   - `lineItemType`
-        #   Examples:
-        #   * All line items under an insertion order: `insertionOrderId="1234"`
-        #   * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
-        #   and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser:
-        #   `(entityStatus="ENTITY_STATUS_ACTIVE" OR
-        #   entityStatus="ENTITY_STATUS_PAUSED") AND
-        #   lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by line item properties. Supported syntax: * Filter
+        #   expressions are made up of one or more restrictions. * Restrictions can be
+        #   combined by `AND` or `OR` logical operators. A sequence of restrictions
+        #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
+        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
+        #   campaignId` - `insertionOrderId` - `entityStatus` - `lineItemType` Examples: *
+        #   All line items under an insertion order: `insertionOrderId="1234"` * All `
+        #   ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `
+        #   LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus=
+        #   "ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND
+        #   lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` The length of this field should
+        #   be no more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * "displayName" (default)
-        #   * "entityStatus"
-        #   * “flight.dateRange.endDate”
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. Example:
-        #   `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * "displayName" (
+        #   default) * "entityStatus" * “flight.dateRange.endDate” The default sorting
+        #   order is ascending. To specify descending order for a field, a suffix "desc"
+        #   should be added to the field name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListLineItems` method.
-        #   If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListLineItems` method. If not specified, the first page of results will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1752,8 +1613,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing line item.
-        # Returns the updated line item if successful.
+        # Updates an existing line item. Returns the updated line item if successful.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the line item belongs to.
         # @param [Fixnum] line_item_id
@@ -1792,8 +1652,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Assigns a targeting option to a line item.
-        # Returns the assigned targeting option if successful.
+        # Assigns a targeting option to a line item. Returns the assigned targeting
+        # option if successful.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the line item belongs to.
         # @param [Fixnum] line_item_id
@@ -1919,39 +1779,30 @@ module Google
         # @param [String] targeting_type
         #   Required. Identifies the type of assigned targeting options to list.
         # @param [String] filter
-        #   Allows filtering by assigned targeting option properties.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by the logical operator `OR`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)`.
-        #   * Supported fields:
-        #   - `assignedTargetingOptionId`
-        #   - `inheritance`
-        #   Examples:
-        #   * AssignedTargetingOptions with ID 1 or 2
-        #   `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"`
-        #   * AssignedTargetingOptions with inheritance status of NOT_INHERITED or
-        #   INHERITED_FROM_PARTNER
-        #   `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by the logical operator `OR`. * A restriction has the form of ``
+        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
+        #   fields: - `assignedTargetingOptionId` - `inheritance` Examples: *
+        #   AssignedTargetingOptions with ID 1 or 2 `assignedTargetingOptionId="1" OR
+        #   assignedTargetingOptionId="2"` * AssignedTargetingOptions with inheritance
+        #   status of NOT_INHERITED or INHERITED_FROM_PARTNER `inheritance="NOT_INHERITED"
+        #   OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no
+        #   more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `assignedTargetingOptionId` (default)
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. Example:
-        #   `assignedTargetingOptionId desc`.
+        #   Field by which to sort the list. Acceptable values are: * `
+        #   assignedTargetingOptionId` (default) The default sorting order is ascending.
+        #   To specify descending order for a field, a suffix "desc" should be added to
+        #   the field name. Example: `assignedTargetingOptionId desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListLineItemAssignedTargetingOptions`
-        #   method. If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListLineItemAssignedTargetingOptions` method. If not specified, the first page
+        #   of results will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2058,38 +1909,27 @@ module Google
         #   Required. The ID of the DV360 advertiser to which the fetched location lists
         #   belong.
         # @param [String] filter
-        #   Allows filtering by location list fields.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by `AND` or `OR` logical operators. A
-        #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)`.
-        #   * Supported fields:
-        #   - `locationType`
-        #   Examples:
-        #   * All regional location list:
-        #   `locationType="TARGETING_LOCATION_TYPE_REGIONAL"`
-        #   * All proximity location list:
-        #   `locationType="TARGETING_LOCATION_TYPE_PROXIMITY"`
+        #   Allows filtering by location list fields. Supported syntax: * Filter
+        #   expressions are made up of one or more restrictions. * Restrictions can be
+        #   combined by `AND` or `OR` logical operators. A sequence of restrictions
+        #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
+        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
+        #   locationType` Examples: * All regional location list: `locationType="
+        #   TARGETING_LOCATION_TYPE_REGIONAL"` * All proximity location list: `
+        #   locationType="TARGETING_LOCATION_TYPE_PROXIMITY"`
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `locationListId` (default)
-        #   * `displayName`
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. Example:
-        #   `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * `locationListId` (
+        #   default) * `displayName` The default sorting order is ascending. To specify
+        #   descending order for a field, a suffix "desc" should be added to the field
+        #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`.
-        #   Defaults to `100` if not set. Returns error code `INVALID_ARGUMENT` if an
-        #   invalid value is specified.
+        #   Requested page size. Must be between `1` and `100`. Defaults to `100` if not
+        #   set. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListLocationLists` method.
-        #   If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListLocationLists` method. If not specified, the first page of results will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2160,12 +2000,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Bulk edits multiple assignments between locations and a single location
-        # list.
+        # Bulk edits multiple assignments between locations and a single location list.
         # The operation will delete the assigned locations provided in
-        # BulkEditAssignedLocationsRequest.deleted_assigned_locations and then
-        # create the assigned locations provided in
-        # BulkEditAssignedLocationsRequest.created_assigned_locations.
+        # BulkEditAssignedLocationsRequest.deleted_assigned_locations and then create
+        # the assigned locations provided in BulkEditAssignedLocationsRequest.
+        # created_assigned_locations.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the DV360 advertiser to which the location list belongs.
         # @param [Fixnum] location_list_id
@@ -2279,32 +2118,26 @@ module Google
         # @param [Fixnum] location_list_id
         #   Required. The ID of the location list to which these assignments are assigned.
         # @param [String] filter
-        #   Allows filtering by location list assignment fields.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by the logical operator `OR`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)`.
-        #   * Supported fields:
-        #   - `assignedLocationId`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by location list assignment fields. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by the logical operator `OR`. * A restriction has the form of ``
+        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
+        #   fields: - `assignedLocationId` The length of this field should be no more than
+        #   500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `assignedLocationId` (default)
-        #   The default sorting order is ascending. To specify descending order for a
-        #   field, a suffix " desc" should be added to the field name. Example:
-        #   `assignedLocationId desc`.
+        #   Field by which to sort the list. Acceptable values are: * `assignedLocationId`
+        #   (default) The default sorting order is ascending. To specify descending order
+        #   for a field, a suffix " desc" should be added to the field name. Example: `
+        #   assignedLocationId desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListAssignedLocations`
-        #   method. If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListAssignedLocations` method. If not specified, the first page of results
+        #   will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2341,8 +2174,7 @@ module Google
         # keyword list if successful.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the DV360 advertiser to which the negative keyword list
-        #   will
-        #   belong.
+        #   will belong.
         # @param [Google::Apis::DisplayvideoV1::NegativeKeywordList] negative_keyword_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2373,8 +2205,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a negative keyword list given an advertiser ID and a negative
-        # keyword list ID.
+        # Deletes a negative keyword list given an advertiser ID and a negative keyword
+        # list ID.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the DV360 advertiser to which the negative keyword list
         #   belongs.
@@ -2412,8 +2244,7 @@ module Google
         # list ID.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the DV360 advertiser to which the fetched negative keyword
-        #   list
-        #   belongs.
+        #   list belongs.
         # @param [Fixnum] negative_keyword_list_id
         #   Required. The ID of the negative keyword list to fetch.
         # @param [String] fields
@@ -2447,18 +2278,15 @@ module Google
         # Lists negative keyword lists based on a given advertiser id.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the DV360 advertiser to which the fetched negative keyword
-        #   lists
-        #   belong.
+        #   lists belong.
         # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `100`.
-        #   Defaults to `100` if not set. Returns error code `INVALID_ARGUMENT` if an
-        #   invalid value is specified.
+        #   Requested page size. Must be between `1` and `100`. Defaults to `100` if not
+        #   set. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListNegativeKeywordLists` method.
-        #   If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListNegativeKeywordLists` method. If not specified, the first page of results
+        #   will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2488,8 +2316,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a negative keyword list. Returns the updated negative keyword list
-        # if successful.
+        # Updates a negative keyword list. Returns the updated negative keyword list if
+        # successful.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the DV360 advertiser to which the negative keyword list
         #   belongs.
@@ -2530,21 +2358,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Bulk edits negative keywords in a single negative keyword list.
-        # The operation will delete the negative keywords provided in
-        # BulkEditNegativeKeywordsRequest.deleted_negative_keywords and then
-        # create the negative keywords provided in
-        # BulkEditNegativeKeywordsRequest.created_negative_keywords.
-        # This operation is guaranteed to be atomic and will never result in a
-        # partial success or partial failure.
+        # Bulk edits negative keywords in a single negative keyword list. The operation
+        # will delete the negative keywords provided in BulkEditNegativeKeywordsRequest.
+        # deleted_negative_keywords and then create the negative keywords provided in
+        # BulkEditNegativeKeywordsRequest.created_negative_keywords. This operation is
+        # guaranteed to be atomic and will never result in a partial success or partial
+        # failure.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the DV360 advertiser to which the parent negative keyword
-        #   list
-        #   belongs.
+        #   list belongs.
         # @param [Fixnum] negative_keyword_list_id
         #   Required. The ID of the parent negative keyword list to which the negative
-        #   keywords
-        #   belong.
+        #   keywords belong.
         # @param [Google::Apis::DisplayvideoV1::BulkEditNegativeKeywordsRequest] bulk_edit_negative_keywords_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2579,12 +2404,10 @@ module Google
         # Creates a negative keyword in a negative keyword list.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the DV360 advertiser to which the parent negative keyword
-        #   list
-        #   belongs.
+        #   list belongs.
         # @param [Fixnum] negative_keyword_list_id
         #   Required. The ID of the parent negative keyword list in which the negative
-        #   keyword
-        #   will be created.
+        #   keyword will be created.
         # @param [Google::Apis::DisplayvideoV1::NegativeKeyword] negative_keyword_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2619,12 +2442,10 @@ module Google
         # Deletes a negative keyword from a negative keyword list.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the DV360 advertiser to which the parent negative keyword
-        #   list
-        #   belongs.
+        #   list belongs.
         # @param [Fixnum] negative_keyword_list_id
         #   Required. The ID of the parent negative keyword list to which the negative
-        #   keyword
-        #   belongs.
+        #   keyword belongs.
         # @param [String] keyword_value
         #   Required. The keyword value of the negative keyword to delete.
         # @param [String] fields
@@ -2659,42 +2480,31 @@ module Google
         # Lists negative keywords in a negative keyword list.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the DV360 advertiser to which the parent negative keyword
-        #   list
-        #   belongs.
+        #   list belongs.
         # @param [Fixnum] negative_keyword_list_id
         #   Required. The ID of the parent negative keyword list to which the requested
-        #   negative
-        #   keywords belong.
+        #   negative keywords belong.
         # @param [String] filter
-        #   Allows filtering by negative keyword fields.
-        #   Supported syntax:
-        #   * Filter expressions for negative keyword currently can only contain at
-        #   most one
-        #   * restriction.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `CONTAINS (:)`.
-        #   * Supported fields:
-        #   - `keywordValue`
-        #   Examples:
-        #   * All negative keywords for which the keyword value contains "google":
-        #   `keywordValue : "google"`
+        #   Allows filtering by negative keyword fields. Supported syntax: * Filter
+        #   expressions for negative keyword currently can only contain at most one *
+        #   restriction. * A restriction has the form of ``field` `operator` `value``. *
+        #   The operator must be `CONTAINS (:)`. * Supported fields: - `keywordValue`
+        #   Examples: * All negative keywords for which the keyword value contains "google"
+        #   : `keywordValue : "google"`
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `keywordValue` (default)
-        #   The default sorting order is ascending. To specify descending order for a
-        #   field, a suffix " desc" should be added to the field name. Example:
-        #   `keywordValue desc`.
+        #   Field by which to sort the list. Acceptable values are: * `keywordValue` (
+        #   default) The default sorting order is ascending. To specify descending order
+        #   for a field, a suffix " desc" should be added to the field name. Example: `
+        #   keywordValue desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token returned
-        #   from the previous call to `ListNegativeKeywords` method. If not specified,
-        #   the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListNegativeKeywords` method. If not specified, the first page of results will
+        #   be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2727,8 +2537,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Assigns a targeting option to an advertiser.
-        # Returns the assigned targeting option if successful.
+        # Assigns a targeting option to an advertiser. Returns the assigned targeting
+        # option if successful.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser.
         # @param [String] targeting_type
@@ -2843,35 +2653,27 @@ module Google
         # @param [String] targeting_type
         #   Required. Identifies the type of assigned targeting options to list.
         # @param [String] filter
-        #   Allows filtering by assigned targeting option properties.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by the logical operator `OR`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)`.
-        #   * Supported fields:
-        #   - `assignedTargetingOptionId`
-        #   Examples:
-        #   * AssignedTargetingOption with ID 123456
-        #   `assignedTargetingOptionId="123456"`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by the logical operator `OR`. * A restriction has the form of ``
+        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
+        #   fields: - `assignedTargetingOptionId` Examples: * AssignedTargetingOption with
+        #   ID 123456 `assignedTargetingOptionId="123456"` The length of this field should
+        #   be no more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `assignedTargetingOptionId` (default)
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. Example:
-        #   `assignedTargetingOptionId desc`.
+        #   Field by which to sort the list. Acceptable values are: * `
+        #   assignedTargetingOptionId` (default) The default sorting order is ascending.
+        #   To specify descending order for a field, a suffix "desc" should be added to
+        #   the field name. Example: `assignedTargetingOptionId desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListAdvertiserAssignedTargetingOptions`
-        #   method. If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListAdvertiserAssignedTargetingOptions` method. If not specified, the first
+        #   page of results will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2908,8 +2710,7 @@ module Google
         # @param [Fixnum] combined_audience_id
         #   Required. The ID of the combined audience to fetch.
         # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that has access to the fetched combined
-        #   audience.
+        #   The ID of the advertiser that has access to the fetched combined audience.
         # @param [Fixnum] partner_id
         #   The ID of the partner that has access to the fetched combined audience.
         # @param [String] fields
@@ -2941,43 +2742,31 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists combined audiences.
-        # The order is defined by the
-        # order_by parameter.
+        # Lists combined audiences. The order is defined by the order_by parameter.
         # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that has access to the fetched combined
-        #   audiences.
+        #   The ID of the advertiser that has access to the fetched combined audiences.
         # @param [String] filter
-        #   Allows filtering by combined audience fields.
-        #   Supported syntax:
-        #   * Filter expressions for combined audiences currently can only contain at
-        #   most one restriction.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `CONTAINS (:)`.
-        #   * Supported fields:
-        #   - `displayName`
-        #   Examples:
-        #   * All combined audiences for which the display name contains "Google":
-        #   `displayName : "Google"`.
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by combined audience fields. Supported syntax: * Filter
+        #   expressions for combined audiences currently can only contain at most one
+        #   restriction. * A restriction has the form of ``field` `operator` `value``. *
+        #   The operator must be `CONTAINS (:)`. * Supported fields: - `displayName`
+        #   Examples: * All combined audiences for which the display name contains "Google"
+        #   : `displayName : "Google"`. The length of this field should be no more than
+        #   500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `combinedAudienceId` (default)
-        #   * `displayName`
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. Example:
-        #   `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * `combinedAudienceId`
+        #   (default) * `displayName` The default sorting order is ascending. To specify
+        #   descending order for a field, a suffix "desc" should be added to the field
+        #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListCombinedAudiences` method.
-        #   If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListCombinedAudiences` method. If not specified, the first page of results
+        #   will be returned.
         # @param [Fixnum] partner_id
         #   The ID of the partner that has access to the fetched combined audiences.
         # @param [String] fields
@@ -3016,8 +2805,7 @@ module Google
         # @param [Fixnum] custom_list_id
         #   Required. The ID of the custom list to fetch.
         # @param [Fixnum] advertiser_id
-        #   The ID of the DV360 advertiser that has access to the fetched custom
-        #   lists.
+        #   The ID of the DV360 advertiser that has access to the fetched custom lists.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3046,43 +2834,30 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists custom lists.
-        # The order is defined by the order_by
-        # parameter.
+        # Lists custom lists. The order is defined by the order_by parameter.
         # @param [Fixnum] advertiser_id
-        #   The ID of the DV360 advertiser that has access to the fetched custom
-        #   lists.
+        #   The ID of the DV360 advertiser that has access to the fetched custom lists.
         # @param [String] filter
-        #   Allows filtering by custom list fields.
-        #   Supported syntax:
-        #   * Filter expressions for custom lists currently can only contain at
-        #   most one restriction.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `CONTAINS (:)`.
-        #   * Supported fields:
-        #   - `displayName`
-        #   Examples:
-        #   * All custom lists for which the display name contains "Google":
-        #   `displayName : "Google"`.
+        #   Allows filtering by custom list fields. Supported syntax: * Filter expressions
+        #   for custom lists currently can only contain at most one restriction. * A
+        #   restriction has the form of ``field` `operator` `value``. * The operator must
+        #   be `CONTAINS (:)`. * Supported fields: - `displayName` Examples: * All custom
+        #   lists for which the display name contains "Google": `displayName : "Google"`.
         #   The length of this field should be no more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `customListId` (default)
-        #   * `displayName`
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. Example:
-        #   `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * `customListId` (
+        #   default) * `displayName` The default sorting order is ascending. To specify
+        #   descending order for a field, a suffix "desc" should be added to the field
+        #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListCustomLists` method.
-        #   If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListCustomLists` method. If not specified, the first page of results will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3118,11 +2893,11 @@ module Google
         # @param [Fixnum] first_and_third_party_audience_id
         #   Required. The ID of the first and third party audience to fetch.
         # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that has access to the fetched first and
-        #   third party audience.
+        #   The ID of the advertiser that has access to the fetched first and third party
+        #   audience.
         # @param [Fixnum] partner_id
-        #   The ID of the partner that has access to the fetched first and
-        #   third party audience.
+        #   The ID of the partner that has access to the fetched first and third party
+        #   audience.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3152,46 +2927,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists first and third party audiences.
-        # The order is defined by the
-        # order_by parameter.
+        # Lists first and third party audiences. The order is defined by the order_by
+        # parameter.
         # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that has access to the fetched first and
-        #   third party audiences.
+        #   The ID of the advertiser that has access to the fetched first and third party
+        #   audiences.
         # @param [String] filter
-        #   Allows filtering by first and third party audience fields.
-        #   Supported syntax:
-        #   * Filter expressions for first and third party audiences currently can
-        #   only contain at most one restriction.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `CONTAINS (:)`.
-        #   * Supported fields:
-        #   - `displayName`
-        #   Examples:
-        #   * All first and third party audiences for which the display name contains
-        #   "Google": `displayName : "Google"`.
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by first and third party audience fields. Supported syntax: *
+        #   Filter expressions for first and third party audiences currently can only
+        #   contain at most one restriction. * A restriction has the form of ``field` `
+        #   operator` `value``. * The operator must be `CONTAINS (:)`. * Supported fields:
+        #   - `displayName` Examples: * All first and third party audiences for which the
+        #   display name contains "Google": `displayName : "Google"`. The length of this
+        #   field should be no more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `firstAndThirdPartyAudienceId` (default)
-        #   * `displayName`
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. Example:
-        #   `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * `
+        #   firstAndThirdPartyAudienceId` (default) * `displayName` The default sorting
+        #   order is ascending. To specify descending order for a field, a suffix "desc"
+        #   should be added to the field name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListFirstAndThirdPartyAudiences`
-        #   method. If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListFirstAndThirdPartyAudiences` method. If not specified, the first page of
+        #   results will be returned.
         # @param [Fixnum] partner_id
-        #   The ID of the partner that has access to the fetched first and
-        #   third party audiences.
+        #   The ID of the partner that has access to the fetched first and third party
+        #   audiences.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3257,8 +3022,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing Floodlight group.
-        # Returns the updated Floodlight group if successful.
+        # Updates an existing Floodlight group. Returns the updated Floodlight group if
+        # successful.
         # @param [Fixnum] floodlight_group_id
         #   Output only. The unique ID of the Floodlight group. Assigned by the system.
         # @param [Google::Apis::DisplayvideoV1::FloodlightGroup] floodlight_group_object
@@ -3333,42 +3098,31 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Google audiences.
-        # The order is defined by the order_by
-        # parameter.
+        # Lists Google audiences. The order is defined by the order_by parameter.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser that has access to the fetched Google audiences.
         # @param [String] filter
-        #   Allows filtering by Google audience fields.
-        #   Supported syntax:
-        #   * Filter expressions for Google audiences currently can only contain at
-        #   most one restriction.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `CONTAINS (:)`.
-        #   * Supported fields:
-        #   - `displayName`
-        #   Examples:
-        #   * All Google audiences for which the display name contains "Google":
-        #   `displayName : "Google"`.
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by Google audience fields. Supported syntax: * Filter
+        #   expressions for Google audiences currently can only contain at most one
+        #   restriction. * A restriction has the form of ``field` `operator` `value``. *
+        #   The operator must be `CONTAINS (:)`. * Supported fields: - `displayName`
+        #   Examples: * All Google audiences for which the display name contains "Google":
+        #   `displayName : "Google"`. The length of this field should be no more than 500
+        #   characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `googleAudienceId` (default)
-        #   * `displayName`
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. Example:
-        #   `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * `googleAudienceId` (
+        #   default) * `displayName` The default sorting order is ascending. To specify
+        #   descending order for a field, a suffix "desc" should be added to the field
+        #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListGoogleAudiences` method.
-        #   If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListGoogleAudiences` method. If not specified, the first page of results will
+        #   be returned.
         # @param [Fixnum] partner_id
         #   The ID of the partner that has access to the fetched Google audiences.
         # @param [String] fields
@@ -3407,13 +3161,12 @@ module Google
         # source group if successful.
         # @param [Google::Apis::DisplayvideoV1::InventorySourceGroup] inventory_source_group_object
         # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that owns the inventory source group.
-        #   The parent partner will not have access to this group.
+        #   The ID of the advertiser that owns the inventory source group. The parent
+        #   partner will not have access to this group.
         # @param [Fixnum] partner_id
-        #   The ID of the partner that owns the inventory source group.
-        #   Only this partner will have write access to this group. Only advertisers
-        #   to which this group is explicitly shared will have read access to this
-        #   group.
+        #   The ID of the partner that owns the inventory source group. Only this partner
+        #   will have write access to this group. Only advertisers to which this group is
+        #   explicitly shared will have read access to this group.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3448,11 +3201,11 @@ module Google
         # @param [Fixnum] inventory_source_group_id
         #   Required. The ID of the inventory source group to delete.
         # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that owns the inventory source group.
-        #   The parent partner does not have access to this group.
+        #   The ID of the advertiser that owns the inventory source group. The parent
+        #   partner does not have access to this group.
         # @param [Fixnum] partner_id
-        #   The ID of the partner that owns the inventory source group.
-        #   Only this partner has write access to this group.
+        #   The ID of the partner that owns the inventory source group. Only this partner
+        #   has write access to this group.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3486,12 +3239,12 @@ module Google
         # @param [Fixnum] inventory_source_group_id
         #   Required. The ID of the inventory source group to fetch.
         # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that has access to the inventory source group.
-        #   If an inventory source group is partner-owned, only advertisers to which
-        #   the group is explicitly shared can access the group.
+        #   The ID of the advertiser that has access to the inventory source group. If an
+        #   inventory source group is partner-owned, only advertisers to which the group
+        #   is explicitly shared can access the group.
         # @param [Fixnum] partner_id
-        #   The ID of the partner that has access to the inventory source group.
-        #   A partner cannot access an advertiser-owned inventory source group.
+        #   The ID of the partner that has access to the inventory source group. A partner
+        #   cannot access an advertiser-owned inventory source group.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3521,43 +3274,35 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists inventory source groups that are accessible to the current user.
-        # The order is defined by the
-        # order_by parameter.
+        # Lists inventory source groups that are accessible to the current user. The
+        # order is defined by the order_by parameter.
         # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that has access to the inventory source group.
-        #   If an inventory source group is partner-owned, only advertisers to which
-        #   the group is explicitly shared can access the group.
+        #   The ID of the advertiser that has access to the inventory source group. If an
+        #   inventory source group is partner-owned, only advertisers to which the group
+        #   is explicitly shared can access the group.
         # @param [String] filter
-        #   Allows filtering by inventory source group properties.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by the logical operator `OR`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)`.
-        #   * Supported fields:
-        #   - `inventorySourceGroupId`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by inventory source group properties. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by the logical operator `OR`. * A restriction has the form of ``
+        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
+        #   fields: - `inventorySourceGroupId` The length of this field should be no more
+        #   than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `displayName` (default)
-        #   * `inventorySourceGroupId`
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. For example,
-        #   `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * `displayName` (
+        #   default) * `inventorySourceGroupId` The default sorting order is ascending. To
+        #   specify descending order for a field, a suffix "desc" should be added to the
+        #   field name. For example, `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
         #   default to `100`.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListInventorySources` method.
-        #   If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListInventorySources` method. If not specified, the first page of results will
+        #   be returned.
         # @param [Fixnum] partner_id
-        #   The ID of the partner that has access to the inventory source group.
-        #   A partner cannot access advertiser-owned inventory source groups.
+        #   The ID of the partner that has access to the inventory source group. A partner
+        #   cannot access advertiser-owned inventory source groups.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3590,18 +3335,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an inventory source group. Returns the updated inventory source
-        # group if successful.
+        # Updates an inventory source group. Returns the updated inventory source group
+        # if successful.
         # @param [Fixnum] inventory_source_group_id
         #   Output only. The unique ID of the inventory source group. Assigned by the
         #   system.
         # @param [Google::Apis::DisplayvideoV1::InventorySourceGroup] inventory_source_group_object
         # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that owns the inventory source group.
-        #   The parent partner does not have access to this group.
+        #   The ID of the advertiser that owns the inventory source group. The parent
+        #   partner does not have access to this group.
         # @param [Fixnum] partner_id
-        #   The ID of the partner that owns the inventory source group.
-        #   Only this partner has write access to this group.
+        #   The ID of the partner that owns the inventory source group. Only this partner
+        #   has write access to this group.
         # @param [String] update_mask
         #   Required. The mask to control which fields to update.
         # @param [String] fields
@@ -3637,11 +3382,11 @@ module Google
         end
         
         # Bulk edits multiple assignments between inventory sources and a single
-        # inventory source group.
-        # The operation will delete the assigned inventory sources provided in
-        # BulkEditAssignedInventorySourcesRequest.deleted_assigned_inventory_sources
-        # and then create the assigned inventory sources provided in
-        # BulkEditAssignedInventorySourcesRequest.created_assigned_inventory_sources.
+        # inventory source group. The operation will delete the assigned inventory
+        # sources provided in BulkEditAssignedInventorySourcesRequest.
+        # deleted_assigned_inventory_sources and then create the assigned inventory
+        # sources provided in BulkEditAssignedInventorySourcesRequest.
+        # created_assigned_inventory_sources.
         # @param [Fixnum] inventory_source_group_id
         #   Required. The ID of the inventory source group to which the assignments are
         #   assigned.
@@ -3682,13 +3427,11 @@ module Google
         #   assigned.
         # @param [Google::Apis::DisplayvideoV1::AssignedInventorySource] assigned_inventory_source_object
         # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that owns the parent inventory source group.
-        #   The parent partner will not have access to this assigned inventory
-        #   source.
+        #   The ID of the advertiser that owns the parent inventory source group. The
+        #   parent partner will not have access to this assigned inventory source.
         # @param [Fixnum] partner_id
-        #   The ID of the partner that owns the parent inventory source group.
-        #   Only this partner will have write access to this assigned inventory
-        #   source.
+        #   The ID of the partner that owns the parent inventory source group. Only this
+        #   partner will have write access to this assigned inventory source.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3728,12 +3471,11 @@ module Google
         # @param [Fixnum] assigned_inventory_source_id
         #   Required. The ID of the assigned inventory source to delete.
         # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that owns the parent inventory source group.
-        #   The parent partner does not have access to this assigned inventory
-        #   source.
+        #   The ID of the advertiser that owns the parent inventory source group. The
+        #   parent partner does not have access to this assigned inventory source.
         # @param [Fixnum] partner_id
-        #   The ID of the partner that owns the parent inventory source group.
-        #   Only this partner has write access to this assigned inventory source.
+        #   The ID of the partner that owns the parent inventory source group. Only this
+        #   partner has write access to this assigned inventory source.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3769,41 +3511,34 @@ module Google
         #   Required. The ID of the inventory source group to which these assignments are
         #   assigned.
         # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that has access to the assignment.
-        #   If the parent inventory source group is partner-owned, only advertisers
-        #   to which the parent group is explicitly shared can access the assigned
-        #   inventory source.
+        #   The ID of the advertiser that has access to the assignment. If the parent
+        #   inventory source group is partner-owned, only advertisers to which the parent
+        #   group is explicitly shared can access the assigned inventory source.
         # @param [String] filter
-        #   Allows filtering by assigned inventory source fields.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by the logical operator `OR`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)`.
-        #   * Supported fields:
-        #   - `assignedInventorySourceId`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by assigned inventory source fields. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by the logical operator `OR`. * A restriction has the form of ``
+        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
+        #   fields: - `assignedInventorySourceId` The length of this field should be no
+        #   more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `assignedInventorySourceId` (default)
-        #   The default sorting order is ascending. To specify descending order for a
-        #   field, a suffix " desc" should be added to the field name. Example:
-        #   `assignedInventorySourceId desc`.
+        #   Field by which to sort the list. Acceptable values are: * `
+        #   assignedInventorySourceId` (default) The default sorting order is ascending.
+        #   To specify descending order for a field, a suffix " desc" should be added to
+        #   the field name. Example: `assignedInventorySourceId desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListAssignedInventorySources`
-        #   method. If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListAssignedInventorySources` method. If not specified, the first page of
+        #   results will be returned.
         # @param [Fixnum] partner_id
-        #   The ID of the partner that has access to the assignment.
-        #   If the parent inventory source group is advertiser-owned, the assignment
-        #   cannot be accessed via a partner.
+        #   The ID of the partner that has access to the assignment. If the parent
+        #   inventory source group is advertiser-owned, the assignment cannot be accessed
+        #   via a partner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3841,8 +3576,8 @@ module Google
         # @param [Fixnum] inventory_source_id
         #   Required. The ID of the inventory source to fetch.
         # @param [Fixnum] partner_id
-        #   Required. The ID of the DV360 partner to which the fetched inventory source
-        #   is permissioned.
+        #   Required. The ID of the DV360 partner to which the fetched inventory source is
+        #   permissioned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3871,51 +3606,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists inventory sources that are accessible to the current user.
-        # The order is defined by the
-        # order_by parameter.
-        # If a filter by
-        # entity_status is not
-        # specified, inventory sources with entity status `ENTITY_STATUS_ARCHIVED`
-        # will not be included in the results.
+        # Lists inventory sources that are accessible to the current user. The order is
+        # defined by the order_by parameter. If a filter by entity_status is not
+        # specified, inventory sources with entity status `ENTITY_STATUS_ARCHIVED` will
+        # not be included in the results.
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser that has access to the inventory source.
         # @param [String] filter
-        #   Allows filtering by inventory source properties.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by `AND` or `OR` logical operators. A
-        #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `EQUALS (=)`.
-        #   * Supported fields:
-        #   - `status.entityStatus`
-        #   - `commitment`
-        #   - `deliveryMethod`
-        #   - `rateDetails.rateType`
-        #   - `exchange`
-        #   Examples:
-        #   * All active inventory sources:
-        #   `status.entityStatus="ENTITY_STATUS_ACTIVE"`
-        #   * Inventory sources belonging to Google Ad Manager or Rubicon exchanges:
-        #   `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="EXCHANGE_RUBICON"`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by inventory source properties. Supported syntax: * Filter
+        #   expressions are made up of one or more restrictions. * Restrictions can be
+        #   combined by `AND` or `OR` logical operators. A sequence of restrictions
+        #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
+        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `status.
+        #   entityStatus` - `commitment` - `deliveryMethod` - `rateDetails.rateType` - `
+        #   exchange` Examples: * All active inventory sources: `status.entityStatus="
+        #   ENTITY_STATUS_ACTIVE"` * Inventory sources belonging to Google Ad Manager or
+        #   Rubicon exchanges: `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="
+        #   EXCHANGE_RUBICON"` The length of this field should be no more than 500
+        #   characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `displayName` (default)
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name. For example,
-        #   `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * `displayName` (
+        #   default) The default sorting order is ascending. To specify descending order
+        #   for a field, a suffix "desc" should be added to the field name. For example, `
+        #   displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
         #   default to `100`.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListInventorySources` method.
-        #   If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListInventorySources` method. If not specified, the first page of results will
+        #   be returned.
         # @param [Fixnum] partner_id
         #   The ID of the partner that has access to the inventory source.
         # @param [String] fields
@@ -3951,12 +3672,10 @@ module Google
         end
         
         # Downloads media. Download is supported on the URI `/download/`resource_name=**`
-        # ?alt=media.`
-        # **Note**: Download requests will not be successful without including `alt=
-        # media` query string.
+        # ?alt=media.` **Note**: Download requests will not be successful without
+        # including `alt=media` query string.
         # @param [String] resource_name
-        #   Name of the media that is being downloaded.  See
-        #   ReadRequest.resource_name.
+        #   Name of the media that is being downloaded. See ReadRequest.resource_name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4069,36 +3788,26 @@ module Google
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser that owns the channels.
         # @param [String] filter
-        #   Allows filtering by channel fields.
-        #   Supported syntax:
-        #   * Filter expressions for channel currently can only contain at most one
-        #   * restriction.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `CONTAINS (:)`.
-        #   * Supported fields:
-        #   - `displayName`
-        #   Examples:
-        #   * All channels for which the display name contains "google":
-        #   `displayName : "google"`.
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by channel fields. Supported syntax: * Filter expressions for
+        #   channel currently can only contain at most one * restriction. * A restriction
+        #   has the form of ``field` `operator` `value``. * The operator must be `CONTAINS
+        #   (:)`. * Supported fields: - `displayName` Examples: * All channels for which
+        #   the display name contains "google": `displayName : "google"`. The length of
+        #   this field should be no more than 500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `displayName` (default)
-        #   * `channelId`
-        #   The default sorting order is ascending. To specify descending order for a
-        #   field, a suffix " desc" should be added to the field name. Example:
-        #   `displayName desc`.
+        #   Field by which to sort the list. Acceptable values are: * `displayName` (
+        #   default) * `channelId` The default sorting order is ascending. To specify
+        #   descending order for a field, a suffix " desc" should be added to the field
+        #   name. Example: `displayName desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token returned from the
-        #   previous call to `ListChannels` method. If not specified, the first page
-        #   of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListChannels` method. If not specified, the first page of results will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4173,9 +3882,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Bulk edits sites under a single channel.
-        # The operation will delete the sites provided in
-        # BulkEditSitesRequest.deleted_sites and then create the sites
+        # Bulk edits sites under a single channel. The operation will delete the sites
+        # provided in BulkEditSitesRequest.deleted_sites and then create the sites
         # provided in BulkEditSitesRequest.created_sites.
         # @param [Fixnum] partner_id
         #   The ID of the partner that owns the parent channel.
@@ -4298,34 +4006,25 @@ module Google
         # @param [Fixnum] advertiser_id
         #   The ID of the advertiser that owns the parent channel.
         # @param [String] filter
-        #   Allows filtering by site fields.
-        #   Supported syntax:
-        #   * Filter expressions for site currently can only contain at most one
-        #   * restriction.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be `CONTAINS (:)`.
-        #   * Supported fields:
-        #   - `urlOrAppId`
-        #   Examples:
-        #   * All sites for which the URL or app ID contains "google":
-        #   `urlOrAppId : "google"`
+        #   Allows filtering by site fields. Supported syntax: * Filter expressions for
+        #   site currently can only contain at most one * restriction. * A restriction has
+        #   the form of ``field` `operator` `value``. * The operator must be `CONTAINS (:)`
+        #   . * Supported fields: - `urlOrAppId` Examples: * All sites for which the URL
+        #   or app ID contains "google": `urlOrAppId : "google"`
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `urlOrAppId` (default)
-        #   The default sorting order is ascending. To specify descending order for a
-        #   field, a suffix " desc" should be added to the field name. Example:
-        #   `urlOrAppId desc`.
+        #   Field by which to sort the list. Acceptable values are: * `urlOrAppId` (
+        #   default) The default sorting order is ascending. To specify descending order
+        #   for a field, a suffix " desc" should be added to the field name. Example: `
+        #   urlOrAppId desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token returned from the
-        #   previous call to `ListSites` method. If not specified, the first page
-        #   of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListSites` method. If not specified, the first page of results will be
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4359,21 +4058,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an SDF Download Task. Returns an
-        # Operation.
-        # An SDF Download Task is a long-running, asynchronous operation. The
-        # metadata type of this operation is
-        # SdfDownloadTaskMetadata. If the request is successful, the
-        # response type of the operation is
-        # SdfDownloadTask. The response will not include the download files,
-        # which must be retrieved with
-        # media.download. The state of
-        # operation can be retrieved with
-        # sdfdownloadtask.operations.get.
-        # Any errors can be found in the
-        # error.message. Note
-        # that error.details is expected to be
-        # empty.
+        # Creates an SDF Download Task. Returns an Operation. An SDF Download Task is a
+        # long-running, asynchronous operation. The metadata type of this operation is
+        # SdfDownloadTaskMetadata. If the request is successful, the response type of
+        # the operation is SdfDownloadTask. The response will not include the download
+        # files, which must be retrieved with media.download. The state of operation can
+        # be retrieved with sdfdownloadtask.operations.get. Any errors can be found in
+        # the error.message. Note that error.details is expected to be empty.
         # @param [Google::Apis::DisplayvideoV1::CreateSdfDownloadTaskRequest] create_sdf_download_task_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4476,32 +4167,26 @@ module Google
         # @param [Fixnum] advertiser_id
         #   Required. The Advertiser this request is being made in the context of.
         # @param [String] filter
-        #   Allows filtering by targeting option properties.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by `OR` logical operators.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * The operator must be "=" (equal sign).
-        #   * Supported fields:
-        #   - `targetingOptionId`
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering by targeting option properties. Supported syntax: * Filter
+        #   expressions are made up of one or more restrictions. * Restrictions can be
+        #   combined by `OR` logical operators. * A restriction has the form of ``field` `
+        #   operator` `value``. * The operator must be "=" (equal sign). * Supported
+        #   fields: - `targetingOptionId` The length of this field should be no more than
+        #   500 characters.
         # @param [String] order_by
-        #   Field by which to sort the list.
-        #   Acceptable values are:
-        #   * `targetingOptionId` (default)
-        #   The default sorting order is ascending. To specify descending order for
-        #   a field, a suffix "desc" should be added to the field name.
-        #   Example: `targetingOptionId desc`.
+        #   Field by which to sort the list. Acceptable values are: * `targetingOptionId` (
+        #   default) The default sorting order is ascending. To specify descending order
+        #   for a field, a suffix "desc" should be added to the field name. Example: `
+        #   targetingOptionId desc`.
         # @param [Fixnum] page_size
         #   Requested page size. Must be between `1` and `100`. If unspecified will
-        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
-        #   is specified.
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   next_page_token
-        #   returned from the previous call to `ListTargetingOptions` method.
-        #   If not specified, the first page of results will be returned.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListTargetingOptions` method. If not specified, the first page of results will
+        #   be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

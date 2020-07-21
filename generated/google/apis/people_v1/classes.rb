@@ -54,8 +54,8 @@ module Google
         # @return [String]
         attr_accessor :formatted_type
       
-        # The unstructured value of the address. If this is not set by the user it
-        # will be automatically constructed from structured values.
+        # The unstructured value of the address. If this is not set by the user it will
+        # be automatically constructed from structured values.
         # Corresponds to the JSON property `formattedValue`
         # @return [String]
         attr_accessor :formatted_value
@@ -86,10 +86,7 @@ module Google
         attr_accessor :street_address
       
         # The type of the address. The type can be custom or one of these predefined
-        # values:
-        # * `home`
-        # * `work`
-        # * `other`
+        # values: * `home` * `work` * `other`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -191,19 +188,19 @@ module Google
       end
       
       # A person's birthday. At least one of the `date` and `text` fields are
-      # specified. The `date` and `text` fields typically represent the same
-      # date, but are not guaranteed to.
+      # specified. The `date` and `text` fields typically represent the same date, but
+      # are not guaranteed to.
       class Birthday
         include Google::Apis::Core::Hashable
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `date`
         # @return [Google::Apis::PeopleV1::Date]
         attr_accessor :date
@@ -230,8 +227,7 @@ module Google
         end
       end
       
-      # **DEPRECATED**: No data will be returned
-      # A person's bragging rights.
+      # **DEPRECATED**: No data will be returned A person's bragging rights.
       class BraggingRights
         include Google::Apis::Core::Hashable
       
@@ -260,15 +256,15 @@ module Google
       class ContactGroup
         include Google::Apis::Core::Hashable
       
-        # The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
-        # resource. Used for web cache validation.
+        # The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the resource.
+        # Used for web cache validation.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
         # Output only. The name translated and formatted in the viewer's account locale
-        # or the `Accept-Language` HTTP header locale for system groups names.
-        # Group names set by the owner are the same as name.
+        # or the `Accept-Language` HTTP header locale for system groups names. Group
+        # names set by the owner are the same as name.
         # Corresponds to the JSON property `formattedName`
         # @return [String]
         attr_accessor :formatted_name
@@ -279,17 +275,15 @@ module Google
         attr_accessor :group_type
       
         # Output only. The total number of contacts in the group irrespective of max
-        # members in
-        # specified in the request.
+        # members in specified in the request.
         # Corresponds to the JSON property `memberCount`
         # @return [Fixnum]
         attr_accessor :member_count
       
         # Output only. The list of contact person resource names that are members of the
-        # contact
-        # group. The field is not populated for LIST requests and can only be updated
-        # through the
-        # [ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify).
+        # contact group. The field is not populated for LIST requests and can only be
+        # updated through the [ModifyContactGroupMembers](/people/api/rest/v1/
+        # contactgroups/members/modify).
         # Corresponds to the JSON property `memberResourceNames`
         # @return [Array<String>]
         attr_accessor :member_resource_names
@@ -299,8 +293,8 @@ module Google
         # @return [Google::Apis::PeopleV1::ContactGroupMetadata]
         attr_accessor :metadata
       
-        # The contact group name set by the group owner or a system provided name
-        # for system groups.
+        # The contact group name set by the group owner or a system provided name for
+        # system groups.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -338,11 +332,11 @@ module Google
         attr_accessor :contact_group_id
       
         # The resource name for the contact group, assigned by the server. An ASCII
-        # string, in the form of `contactGroups/`contact_group_id``.
-        # Only contact_group_resource_name can be used for modifying memberships.
-        # Any contact group membership can be removed, but only user group or
-        # "myContacts" or "starred" system groups memberships can be added. A
-        # contact must always have at least one contact group membership.
+        # string, in the form of `contactGroups/`contact_group_id``. Only
+        # contact_group_resource_name can be used for modifying memberships. Any contact
+        # group membership can be removed, but only user group or "myContacts" or "
+        # starred" system groups memberships can be added. A contact must always have at
+        # least one contact group membership.
         # Corresponds to the JSON property `contactGroupResourceName`
         # @return [String]
         attr_accessor :contact_group_resource_name
@@ -363,9 +357,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. True if the contact group resource has been deleted. Populated
-        # only for
-        # [`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests
-        # that include a sync token.
+        # only for [`ListContactGroups`](/people/api/rest/v1/contactgroups/list)
+        # requests that include a sync token.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
@@ -401,12 +394,12 @@ module Google
         # @return [String]
         attr_accessor :requested_resource_name
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::PeopleV1::Status]
         attr_accessor :status
@@ -428,52 +421,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. A field mask to restrict which fields are copied into the new
-        # contact.
-        # Valid values are:
-        # * emailAddresses
-        # * names
-        # * phoneNumbers
+        # contact. Valid values are: * emailAddresses * names * phoneNumbers
         # Corresponds to the JSON property `copyMask`
         # @return [String]
         attr_accessor :copy_mask
       
         # Optional. A field mask to restrict which fields on the person are returned.
-        # Multiple
-        # fields can be specified by separating them with commas. Defaults to the
-        # copy mask with metadata and membership fields if not set. Valid values are:
-        # * addresses
-        # * ageRanges
-        # * biographies
-        # * birthdays
-        # * coverPhotos
-        # * emailAddresses
-        # * events
-        # * genders
-        # * imClients
-        # * interests
-        # * locales
-        # * memberships
-        # * metadata
-        # * names
-        # * nicknames
-        # * occupations
-        # * organizations
-        # * phoneNumbers
-        # * photos
-        # * relations
-        # * residences
-        # * sipAddresses
-        # * skills
-        # * urls
-        # * userDefined
+        # Multiple fields can be specified by separating them with commas. Defaults to
+        # the copy mask with metadata and membership fields if not set. Valid values are:
+        # * addresses * ageRanges * biographies * birthdays * coverPhotos *
+        # emailAddresses * events * genders * imClients * interests * locales *
+        # memberships * metadata * names * nicknames * occupations * organizations *
+        # phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
+        # userDefined
         # Corresponds to the JSON property `readMask`
         # @return [String]
         attr_accessor :read_mask
       
-        # Optional. A mask of what source types to return. Defaults to
-        # ReadSourceType.CONTACT and
-        # ReadSourceType.PROFILE if not
-        # set.
+        # Optional. A mask of what source types to return. Defaults to ReadSourceType.
+        # CONTACT and ReadSourceType.PROFILE if not set.
         # Corresponds to the JSON property `sources`
         # @return [Array<String>]
         attr_accessor :sources
@@ -490,13 +456,13 @@ module Google
         end
       end
       
-      # A person's cover photo. A large image shown on the person's
-      # profile page that represents who they are or what they care about.
+      # A person's cover photo. A large image shown on the person's profile page that
+      # represents who they are or what they care about.
       class CoverPhoto
         include Google::Apis::Core::Hashable
       
-        # True if the cover photo is the default cover photo;
-        # false if the cover photo is a user-provided cover photo.
+        # True if the cover photo is the default cover photo; false if the cover photo
+        # is a user-provided cover photo.
         # Corresponds to the JSON property `default`
         # @return [Boolean]
         attr_accessor :default
@@ -545,30 +511,29 @@ module Google
       
       # Represents a whole or partial calendar date, e.g. a birthday. The time of day
       # and time zone are either specified elsewhere or are not significant. The date
-      # is relative to the Proleptic Gregorian Calendar. This can represent:
-      # * A full date, with non-zero year, month and day values
-      # * A month and day value, with a zero year, e.g. an anniversary
-      # * A year on its own, with zero month and day values
-      # * A year and month value, with a zero day, e.g. a credit card expiration date
-      # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+      # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+      # date, with non-zero year, month and day values * A month and day value, with a
+      # zero year, e.g. an anniversary * A year on its own, with zero month and day
+      # values * A year and month value, with a zero day, e.g. a credit card
+      # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+      # Timestamp`.
       class Date
         include Google::Apis::Core::Hashable
       
-        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        # if specifying a year by itself or a year and month where the day is not
+        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+        # specifying a year by itself or a year and month where the day is not
         # significant.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a
-        # month and day.
+        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        # and day.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
       
-        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-        # a year.
+        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
         # Corresponds to the JSON property `year`
         # @return [Fixnum]
         attr_accessor :year
@@ -590,10 +555,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Information about a person merged from various data sources such as the
-        # authenticated user's contacts and profile data.
-        # Most fields can have multiple items. The items in a field have no guaranteed
-        # order, but each non-empty field is guaranteed to have exactly one field with
-        # `metadata.primary` set to true.
+        # authenticated user's contacts and profile data. Most fields can have multiple
+        # items. The items in a field have no guaranteed order, but each non-empty field
+        # is guaranteed to have exactly one field with `metadata.primary` set to true.
         # Corresponds to the JSON property `person`
         # @return [Google::Apis::PeopleV1::Person]
         attr_accessor :person
@@ -649,10 +613,7 @@ module Google
         attr_accessor :metadata
       
         # The type of the email address. The type can be custom or one of these
-        # predefined values:
-        # * `home`
-        # * `work`
-        # * `other`
+        # predefined values: * `home` * `work` * `other`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -676,13 +637,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -701,18 +660,18 @@ module Google
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `date`
         # @return [Google::Apis::PeopleV1::Date]
         attr_accessor :date
       
-        # Output only. The type of the event translated and formatted in the
-        # viewer's account locale or the `Accept-Language` HTTP header locale.
+        # Output only. The type of the event translated and formatted in the viewer's
+        # account locale or the `Accept-Language` HTTP header locale.
         # Corresponds to the JSON property `formattedType`
         # @return [String]
         attr_accessor :formatted_type
@@ -723,9 +682,7 @@ module Google
         attr_accessor :metadata
       
         # The type of the event. The type can be custom or one of these predefined
-        # values:
-        # * `anniversary`
-        # * `other`
+        # values: * `anniversary` * `other`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -760,9 +717,8 @@ module Google
         attr_accessor :source
       
         # Output only. True if the field is verified; false if the field is unverified.
-        # A
-        # verified field is typically a name, email address, phone number, or
-        # website that has been confirmed to be owned by the person.
+        # A verified field is typically a name, email address, phone number, or website
+        # that has been confirmed to be owned by the person.
         # Corresponds to the JSON property `verified`
         # @return [Boolean]
         attr_accessor :verified
@@ -809,19 +765,15 @@ module Google
       class Gender
         include Google::Apis::Core::Hashable
       
-        # The type of pronouns that should be used to address the person. The value
-        # can be custom or one of these predefined values:
-        # * `male`
-        # * `female`
-        # * `other`
+        # The type of pronouns that should be used to address the person. The value can
+        # be custom or one of these predefined values: * `male` * `female` * `other`
         # Corresponds to the JSON property `addressMeAs`
         # @return [String]
         attr_accessor :address_me_as
       
         # Output only. The value of the gender translated and formatted in the viewer's
-        # account
-        # locale or the `Accept-Language` HTTP header locale. Unspecified or custom
-        # value are not localized.
+        # account locale or the `Accept-Language` HTTP header locale. Unspecified or
+        # custom value are not localized.
         # Corresponds to the JSON property `formattedValue`
         # @return [String]
         attr_accessor :formatted_value
@@ -831,11 +783,8 @@ module Google
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
       
-        # The gender for the person. The gender can be custom or one of these
-        # predefined values:
-        # * `male`
-        # * `female`
-        # * `unspecified`
+        # The gender for the person. The gender can be custom or one of these predefined
+        # values: * `male` * `female` * `unspecified`
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -882,8 +831,8 @@ module Google
         # @return [String]
         attr_accessor :formatted_protocol
       
-        # Output only. The type of the IM client translated and formatted in the
-        # viewer's account locale or the `Accept-Language` HTTP header locale.
+        # Output only. The type of the IM client translated and formatted in the viewer'
+        # s account locale or the `Accept-Language` HTTP header locale.
         # Corresponds to the JSON property `formattedType`
         # @return [String]
         attr_accessor :formatted_type
@@ -894,25 +843,14 @@ module Google
         attr_accessor :metadata
       
         # The protocol of the IM client. The protocol can be custom or one of these
-        # predefined values:
-        # * `aim`
-        # * `msn`
-        # * `yahoo`
-        # * `skype`
-        # * `qq`
-        # * `googleTalk`
-        # * `icq`
-        # * `jabber`
-        # * `netMeeting`
+        # predefined values: * `aim` * `msn` * `yahoo` * `skype` * `qq` * `googleTalk` *
+        # `icq` * `jabber` * `netMeeting`
         # Corresponds to the JSON property `protocol`
         # @return [String]
         attr_accessor :protocol
       
-        # The type of the IM client. The type can be custom or one of these
-        # predefined values:
-        # * `home`
-        # * `work`
-        # * `other`
+        # The type of the IM client. The type can be custom or one of these predefined
+        # values: * `home` * `work` * `other`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -971,15 +909,14 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Person>]
         attr_accessor :connections
       
-        # A token, which can be sent as `page_token` to retrieve the next page.
-        # If this field is omitted, there are no subsequent pages.
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # A token, which can be sent as `sync_token` to retrieve changes since the
-        # last request. Request must set `request_sync_token` to return the sync
-        # token.
+        # A token, which can be sent as `sync_token` to retrieve changes since the last
+        # request. Request must set `request_sync_token` to return the sync token.
         # Corresponds to the JSON property `nextSyncToken`
         # @return [String]
         attr_accessor :next_sync_token
@@ -989,8 +926,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_items
       
-        # **DEPRECATED** (Please use totalItems)
-        # The total number of people in the list without pagination.
+        # **DEPRECATED** (Please use totalItems) The total number of people in the list
+        # without pagination.
         # Corresponds to the JSON property `totalPeople`
         # @return [Fixnum]
         attr_accessor :total_people
@@ -1013,8 +950,7 @@ module Google
       class ListContactGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of contact groups. Members of the contact groups are not
-        # populated.
+        # The list of contact groups. Members of the contact groups are not populated.
         # Corresponds to the JSON property `contactGroups`
         # @return [Array<Google::Apis::PeopleV1::ContactGroup>]
         attr_accessor :contact_groups
@@ -1051,15 +987,14 @@ module Google
       class ListDirectoryPeopleResponse
         include Google::Apis::Core::Hashable
       
-        # A token, which can be sent as `page_token` to retrieve the next page.
-        # If this field is omitted, there are no subsequent pages.
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # A token, which can be sent as `sync_token` to retrieve changes since the
-        # last request. Request must set `request_sync_token` to return the sync
-        # token.
+        # A token, which can be sent as `sync_token` to retrieve changes since the last
+        # request. Request must set `request_sync_token` to return the sync token.
         # Corresponds to the JSON property `nextSyncToken`
         # @return [String]
         attr_accessor :next_sync_token
@@ -1085,22 +1020,21 @@ module Google
       class ListOtherContactsResponse
         include Google::Apis::Core::Hashable
       
-        # A token, which can be sent as `page_token` to retrieve the next page.
-        # If this field is omitted, there are no subsequent pages.
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # A token, which can be sent as `sync_token` to retrieve changes since the
-        # last request. Request must set `request_sync_token` to return the sync
-        # token.
+        # A token, which can be sent as `sync_token` to retrieve changes since the last
+        # request. Request must set `request_sync_token` to return the sync token.
         # Corresponds to the JSON property `nextSyncToken`
         # @return [String]
         attr_accessor :next_sync_token
       
         # The list of "Other contacts" returned as Person resources. "Other contacts"
-        # support a limited subset of fields. See
-        # ListOtherContactsRequest.request_mask for more detailed information.
+        # support a limited subset of fields. See ListOtherContactsRequest.request_mask
+        # for more detailed information.
         # Corresponds to the JSON property `otherContacts`
         # @return [Array<Google::Apis::PeopleV1::Person>]
         attr_accessor :other_contacts
@@ -1126,8 +1060,8 @@ module Google
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
       
-        # The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47)
-        # language tag representing the locale.
+        # The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47) language tag
+        # representing the locale.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -1176,19 +1110,19 @@ module Google
       end
       
       # A request to modify an existing contact group's members. Contacts can be
-      # removed from any group but they can only be added to a user group or
-      # "myContacts" or "starred" system groups.
+      # removed from any group but they can only be added to a user group or "
+      # myContacts" or "starred" system groups.
       class ModifyContactGroupMembersRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. The resource names of the contact people to add in the form of
-        # `people/`person_id``.
+        # Optional. The resource names of the contact people to add in the form of `
+        # people/`person_id``.
         # Corresponds to the JSON property `resourceNamesToAdd`
         # @return [Array<String>]
         attr_accessor :resource_names_to_add
       
-        # Optional. The resource names of the contact people to remove in the form of
-        # `people/`person_id``.
+        # Optional. The resource names of the contact people to remove in the form of `
+        # people/`person_id``.
         # Corresponds to the JSON property `resourceNamesToRemove`
         # @return [Array<String>]
         attr_accessor :resource_names_to_remove
@@ -1208,8 +1142,8 @@ module Google
       class ModifyContactGroupMembersResponse
         include Google::Apis::Core::Hashable
       
-        # The contact people resource names that cannot be removed from their
-        # last contact group.
+        # The contact people resource names that cannot be removed from their last
+        # contact group.
         # Corresponds to the JSON property `canNotRemoveLastContactGroupResourceNames`
         # @return [Array<String>]
         attr_accessor :can_not_remove_last_contact_group_resource_names
@@ -1241,8 +1175,8 @@ module Google
         attr_accessor :display_name
       
         # Output only. The display name with the last name first formatted according to
-        # the locale specified by the viewer's account or the
-        # `Accept-Language` HTTP header.
+        # the locale specified by the viewer's account or the `Accept-Language` HTTP
+        # header.
         # Corresponds to the JSON property `displayNameLastFirst`
         # @return [String]
         attr_accessor :display_name_last_first
@@ -1392,13 +1326,12 @@ module Google
         end
       end
       
-      # A person's past or current organization. Overlapping date ranges are
-      # permitted.
+      # A person's past or current organization. Overlapping date ranges are permitted.
       class Organization
         include Google::Apis::Core::Hashable
       
-        # True if the organization is the person's current organization;
-        # false if the organization is a past organization.
+        # True if the organization is the person's current organization; false if the
+        # organization is a past organization.
         # Corresponds to the JSON property `current`
         # @return [Boolean]
         attr_accessor :current
@@ -1409,20 +1342,19 @@ module Google
         # @return [String]
         attr_accessor :department
       
-        # The domain name associated with the organization; for example,
-        # `google.com`.
+        # The domain name associated with the organization; for example, `google.com`.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::PeopleV1::Date]
         attr_accessor :end_date
@@ -1460,12 +1392,12 @@ module Google
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::PeopleV1::Date]
         attr_accessor :start_date
@@ -1481,10 +1413,8 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # The type of the organization. The type can be custom or  one of these
-        # predefined values:
-        # * `work`
-        # * `school`
+        # The type of the organization. The type can be custom or one of these
+        # predefined values: * `work` * `school`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1513,10 +1443,9 @@ module Google
       end
       
       # Information about a person merged from various data sources such as the
-      # authenticated user's contacts and profile data.
-      # Most fields can have multiple items. The items in a field have no guaranteed
-      # order, but each non-empty field is guaranteed to have exactly one field with
-      # `metadata.primary` set to true.
+      # authenticated user's contacts and profile data. Most fields can have multiple
+      # items. The items in a field have no guaranteed order, but each non-empty field
+      # is guaranteed to have exactly one field with `metadata.primary` set to true.
       class Person
         include Google::Apis::Core::Hashable
       
@@ -1525,8 +1454,8 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Address>]
         attr_accessor :addresses
       
-        # Output only. **DEPRECATED** (Please use `person.ageRanges` instead)
-        # The person's age range.
+        # Output only. **DEPRECATED** (Please use `person.ageRanges` instead) The person'
+        # s age range.
         # Corresponds to the JSON property `ageRange`
         # @return [String]
         attr_accessor :age_range
@@ -1546,8 +1475,7 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Birthday>]
         attr_accessor :birthdays
       
-        # **DEPRECATED**: No data will be returned
-        # The person's bragging rights.
+        # **DEPRECATED**: No data will be returned The person's bragging rights.
         # Corresponds to the JSON property `braggingRights`
         # @return [Array<Google::Apis::PeopleV1::BraggingRights>]
         attr_accessor :bragging_rights
@@ -1562,8 +1490,8 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::EmailAddress>]
         attr_accessor :email_addresses
       
-        # The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
-        # resource. Used for web cache validation.
+        # The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the resource.
+        # Used for web cache validation.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1643,14 +1571,14 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Relation>]
         attr_accessor :relations
       
-        # Output only. **DEPRECATED**: No data will be returned
-        # The person's relationship interests.
+        # Output only. **DEPRECATED**: No data will be returned The person's
+        # relationship interests.
         # Corresponds to the JSON property `relationshipInterests`
         # @return [Array<Google::Apis::PeopleV1::RelationshipInterest>]
         attr_accessor :relationship_interests
       
-        # Output only. **DEPRECATED**: No data will be returned
-        # The person's relationship statuses.
+        # Output only. **DEPRECATED**: No data will be returned The person's
+        # relationship statuses.
         # Corresponds to the JSON property `relationshipStatuses`
         # @return [Array<Google::Apis::PeopleV1::RelationshipStatus>]
         attr_accessor :relationship_statuses
@@ -1660,9 +1588,8 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Residence>]
         attr_accessor :residences
       
-        # The resource name for the person, assigned by the server. An ASCII string
-        # with a max length of 27 characters, in the form of
-        # `people/`person_id``.
+        # The resource name for the person, assigned by the server. An ASCII string with
+        # a max length of 27 characters, in the form of `people/`person_id``.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -1677,8 +1604,7 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Skill>]
         attr_accessor :skills
       
-        # Output only. **DEPRECATED**: No data will be returned
-        # The person's taglines.
+        # Output only. **DEPRECATED**: No data will be returned The person's taglines.
         # Corresponds to the JSON property `taglines`
         # @return [Array<Google::Apis::PeopleV1::Tagline>]
         attr_accessor :taglines
@@ -1739,9 +1665,9 @@ module Google
       class PersonMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only. True if the person resource has been deleted. Populated only for
-        # [`connections.list`](/people/api/rest/v1/people.connections/list) requests
-        # that include a sync token.
+        # Output only. True if the person resource has been deleted. Populated only for [
+        # `connections.list`](/people/api/rest/v1/people.connections/list) requests that
+        # include a sync token.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
@@ -1752,19 +1678,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :linked_people_resource_names
       
-        # Output only. **DEPRECATED** (Please use
-        # `person.metadata.sources.profileMetadata.objectType` instead)
-        # The type of the person object.
+        # Output only. **DEPRECATED** (Please use `person.metadata.sources.
+        # profileMetadata.objectType` instead) The type of the person object.
         # Corresponds to the JSON property `objectType`
         # @return [String]
         attr_accessor :object_type
       
         # Output only. Any former resource names this person has had. Populated only for
         # [`connections.list`](/people/api/rest/v1/people.connections/list) requests
-        # that include a sync token.
-        # The resource name may change when adding or removing fields that link a
-        # contact and profile such as a verified email, verified phone number, or
-        # profile URL.
+        # that include a sync token. The resource name may change when adding or
+        # removing fields that link a contact and profile such as a verified email,
+        # verified phone number, or profile URL.
         # Corresponds to the JSON property `previousResourceNames`
         # @return [Array<String>]
         attr_accessor :previous_resource_names
@@ -1792,37 +1716,34 @@ module Google
       class PersonResponse
         include Google::Apis::Core::Hashable
       
-        # **DEPRECATED** (Please use status instead)
-        # [HTTP 1.1 status code]
-        # (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+        # **DEPRECATED** (Please use status instead) [HTTP 1.1 status code] (http://www.
+        # w3.org/Protocols/rfc2616/rfc2616-sec10.html).
         # Corresponds to the JSON property `httpStatusCode`
         # @return [Fixnum]
         attr_accessor :http_status_code
       
         # Information about a person merged from various data sources such as the
-        # authenticated user's contacts and profile data.
-        # Most fields can have multiple items. The items in a field have no guaranteed
-        # order, but each non-empty field is guaranteed to have exactly one field with
-        # `metadata.primary` set to true.
+        # authenticated user's contacts and profile data. Most fields can have multiple
+        # items. The items in a field have no guaranteed order, but each non-empty field
+        # is guaranteed to have exactly one field with `metadata.primary` set to true.
         # Corresponds to the JSON property `person`
         # @return [Google::Apis::PeopleV1::Person]
         attr_accessor :person
       
-        # The original requested resource name. May be different than the resource
-        # name on the returned person.
-        # The resource name can change when adding or removing fields that link a
-        # contact and profile such as a verified email, verified phone number, or a
-        # profile URL.
+        # The original requested resource name. May be different than the resource name
+        # on the returned person. The resource name can change when adding or removing
+        # fields that link a contact and profile such as a verified email, verified
+        # phone number, or a profile URL.
         # Corresponds to the JSON property `requestedResourceName`
         # @return [String]
         attr_accessor :requested_resource_name
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::PeopleV1::Status]
         attr_accessor :status
@@ -1844,9 +1765,8 @@ module Google
       class PhoneNumber
         include Google::Apis::Core::Hashable
       
-        # Output only. The canonicalized [ITU-T
-        # E.164](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf)
-        # form of the phone number.
+        # Output only. The canonicalized [ITU-T E.164](https://law.resource.org/pub/us/
+        # cfr/ibr/004/itu-t.E.164.1.2008.pdf) form of the phone number.
         # Corresponds to the JSON property `canonicalForm`
         # @return [String]
         attr_accessor :canonical_form
@@ -1863,19 +1783,9 @@ module Google
         attr_accessor :metadata
       
         # The type of the phone number. The type can be custom or one of these
-        # predefined values:
-        # * `home`
-        # * `work`
-        # * `mobile`
-        # * `homeFax`
-        # * `workFax`
-        # * `otherFax`
-        # * `pager`
-        # * `workMobile`
-        # * `workPager`
-        # * `main`
-        # * `googleVoice`
-        # * `other`
+        # predefined values: * `home` * `work` * `mobile` * `homeFax` * `workFax` * `
+        # otherFax` * `pager` * `workMobile` * `workPager` * `main` * `googleVoice` * `
+        # other`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1899,13 +1809,13 @@ module Google
         end
       end
       
-      # A person's photo. A picture shown next to the person's name to
-      # help others recognize the person.
+      # A person's photo. A picture shown next to the person's name to help others
+      # recognize the person.
       class Photo
         include Google::Apis::Core::Hashable
       
-        # True if the photo is a default photo;
-        # false if the photo is a user-provided photo.
+        # True if the photo is a default photo; false if the photo is a user-provided
+        # photo.
         # Corresponds to the JSON property `default`
         # @return [Boolean]
         attr_accessor :default
@@ -1918,9 +1828,8 @@ module Google
       
         # The URL of the photo. You can change the desired size by appending a query
         # parameter `sz=`size`` at the end of the url, where `size` is the size in
-        # pixels. Example:
-        # https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/
-        # 00gzXvDBYqw/s100/photo.jpg?sz=50
+        # pixels. Example: https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/
+        # AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -1983,21 +1892,9 @@ module Google
         attr_accessor :person
       
         # The person's relation to the other person. The type can be custom or one of
-        # these predefined values:
-        # * `spouse`
-        # * `child`
-        # * `mother`
-        # * `father`
-        # * `parent`
-        # * `brother`
-        # * `sister`
-        # * `friend`
-        # * `relative`
-        # * `domesticPartner`
-        # * `manager`
-        # * `assistant`
-        # * `referredBy`
-        # * `partner`
+        # these predefined values: * `spouse` * `child` * `mother` * `father` * `parent`
+        # * `brother` * `sister` * `friend` * `relative` * `domesticPartner` * `manager`
+        # * `assistant` * `referredBy` * `partner`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2015,14 +1912,13 @@ module Google
         end
       end
       
-      # **DEPRECATED**: No data will be returned
-      # A person's relationship interest .
+      # **DEPRECATED**: No data will be returned A person's relationship interest .
       class RelationshipInterest
         include Google::Apis::Core::Hashable
       
         # Output only. The value of the relationship interest translated and formatted
-        # in the viewer's account locale or the locale specified in the
-        # Accept-Language HTTP header.
+        # in the viewer's account locale or the locale specified in the Accept-Language
+        # HTTP header.
         # Corresponds to the JSON property `formattedValue`
         # @return [String]
         attr_accessor :formatted_value
@@ -2032,12 +1928,9 @@ module Google
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
       
-        # The kind of relationship the person is looking for. The value can be custom
-        # or one of these predefined values:
-        # * `friend`
-        # * `date`
-        # * `relationship`
-        # * `networking`
+        # The kind of relationship the person is looking for. The value can be custom or
+        # one of these predefined values: * `friend` * `date` * `relationship` * `
+        # networking`
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -2054,8 +1947,7 @@ module Google
         end
       end
       
-      # **DEPRECATED**: No data will be returned
-      # A person's relationship status.
+      # **DEPRECATED**: No data will be returned A person's relationship status.
       class RelationshipStatus
         include Google::Apis::Core::Hashable
       
@@ -2070,17 +1962,10 @@ module Google
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
       
-        # The relationship status. The value can be custom or one of these
-        # predefined values:
-        # * `single`
-        # * `inARelationship`
-        # * `engaged`
-        # * `married`
-        # * `itsComplicated`
-        # * `openRelationship`
-        # * `widowed`
-        # * `inDomesticPartnership`
-        # * `inCivilUnion`
+        # The relationship status. The value can be custom or one of these predefined
+        # values: * `single` * `inARelationship` * `engaged` * `married` * `
+        # itsComplicated` * `openRelationship` * `widowed` * `inDomesticPartnership` * `
+        # inCivilUnion`
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -2101,8 +1986,8 @@ module Google
       class Residence
         include Google::Apis::Core::Hashable
       
-        # True if the residence is the person's current residence;
-        # false if the residence is a past residence.
+        # True if the residence is the person's current residence; false if the
+        # residence is a past residence.
         # Corresponds to the JSON property `current`
         # @return [Boolean]
         attr_accessor :current
@@ -2135,8 +2020,8 @@ module Google
       class SearchDirectoryPeopleResponse
         include Google::Apis::Core::Hashable
       
-        # A token, which can be sent as `page_token` to retrieve the next page.
-        # If this field is omitted, there are no subsequent pages.
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2180,18 +2065,13 @@ module Google
         attr_accessor :metadata
       
         # The type of the SIP address. The type can be custom or or one of these
-        # predefined values:
-        # * `home`
-        # * `work`
-        # * `mobile`
-        # * `other`
+        # predefined values: * `home` * `work` * `mobile` * `other`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # The SIP address in the
-        # [RFC 3261 19.1](https://tools.ietf.org/html/rfc3261#section-19.1) SIP URI
-        # format.
+        # The SIP address in the [RFC 3261 19.1](https://tools.ietf.org/html/rfc3261#
+        # section-19.1) SIP URI format.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -2238,9 +2118,8 @@ module Google
       class Source
         include Google::Apis::Core::Hashable
       
-        # **Only populated in `person.metadata.sources`.**
-        # The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
-        # source. Used for web cache validation.
+        # **Only populated in `person.metadata.sources`.** The [HTTP entity tag](https://
+        # en.wikipedia.org/wiki/HTTP_ETag) of the source. Used for web cache validation.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -2260,8 +2139,8 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Output only. **Only populated in `person.metadata.sources`.**
-        # Last update timestamp of this source.
+        # Output only. **Only populated in `person.metadata.sources`.** Last update
+        # timestamp of this source.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -2280,12 +2159,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -2294,15 +2173,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -2319,8 +2198,8 @@ module Google
         end
       end
       
-      # **DEPRECATED**: No data will be returned
-      # A brief one-line description of the person.
+      # **DEPRECATED**: No data will be returned A brief one-line description of the
+      # person.
       class Tagline
         include Google::Apis::Core::Hashable
       
@@ -2345,8 +2224,8 @@ module Google
         end
       end
       
-      # A request to update an existing user contact group. All updated fields will
-      # be replaced.
+      # A request to update an existing user contact group. All updated fields will be
+      # replaced.
       class UpdateContactGroupRequest
         include Google::Apis::Core::Hashable
       
@@ -2365,40 +2244,18 @@ module Google
         end
       end
       
-      # A request to update an existing contact's photo.
-      # All requests must have a valid photo format: JPEG or PNG.
+      # A request to update an existing contact's photo. All requests must have a
+      # valid photo format: JPEG or PNG.
       class UpdateContactPhotoRequest
         include Google::Apis::Core::Hashable
       
         # Optional. A field mask to restrict which fields on the person are returned.
-        # Multiple
-        # fields can be specified by separating them with commas. Defaults to empty
-        # if not set, which will skip the post mutate get. Valid values are:
-        # * addresses
-        # * ageRanges
-        # * biographies
-        # * birthdays
-        # * coverPhotos
-        # * emailAddresses
-        # * events
-        # * genders
-        # * imClients
-        # * interests
-        # * locales
-        # * memberships
-        # * metadata
-        # * names
-        # * nicknames
-        # * occupations
-        # * organizations
-        # * phoneNumbers
-        # * photos
-        # * relations
-        # * residences
-        # * sipAddresses
-        # * skills
-        # * urls
-        # * userDefined
+        # Multiple fields can be specified by separating them with commas. Defaults to
+        # empty if not set, which will skip the post mutate get. Valid values are: *
+        # addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses
+        # * events * genders * imClients * interests * locales * memberships * metadata *
+        # names * nicknames * occupations * organizations * phoneNumbers * photos *
+        # relations * residences * sipAddresses * skills * urls * userDefined
         # Corresponds to the JSON property `personFields`
         # @return [String]
         attr_accessor :person_fields
@@ -2409,10 +2266,8 @@ module Google
         # @return [String]
         attr_accessor :photo_bytes
       
-        # Optional. A mask of what source types to return. Defaults to
-        # ReadSourceType.CONTACT and
-        # ReadSourceType.PROFILE if not
-        # set.
+        # Optional. A mask of what source types to return. Defaults to ReadSourceType.
+        # CONTACT and ReadSourceType.PROFILE if not set.
         # Corresponds to the JSON property `sources`
         # @return [Array<String>]
         attr_accessor :sources
@@ -2434,10 +2289,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Information about a person merged from various data sources such as the
-        # authenticated user's contacts and profile data.
-        # Most fields can have multiple items. The items in a field have no guaranteed
-        # order, but each non-empty field is guaranteed to have exactly one field with
-        # `metadata.primary` set to true.
+        # authenticated user's contacts and profile data. Most fields can have multiple
+        # items. The items in a field have no guaranteed order, but each non-empty field
+        # is guaranteed to have exactly one field with `metadata.primary` set to true.
         # Corresponds to the JSON property `person`
         # @return [Google::Apis::PeopleV1::Person]
         attr_accessor :person
@@ -2467,17 +2321,9 @@ module Google
         # @return [Google::Apis::PeopleV1::FieldMetadata]
         attr_accessor :metadata
       
-        # The type of the URL. The type can be custom or one of these predefined
-        # values:
-        # * `home`
-        # * `work`
-        # * `blog`
-        # * `profile`
-        # * `homePage`
-        # * `ftp`
-        # * `reservations`
-        # * `appInstallPage`: website for a Google+ application.
-        # * `other`
+        # The type of the URL. The type can be custom or one of these predefined values:
+        # * `home` * `work` * `blog` * `profile` * `homePage` * `ftp` * `reservations` *
+        # `appInstallPage`: website for a Google+ application. * `other`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

@@ -32,37 +32,29 @@ module Google
         attr_accessor :display_name
       
         # The minimum visible video duration required (in seconds) in order for an
-        # impression to be recorded.
-        # You must specify
-        # minimum_duration,
-        # minimum_quartile
+        # impression to be recorded. You must specify minimum_duration, minimum_quartile
         # or both. If both are specified, an impression meets the metric criteria if
         # either requirement is met (whichever happens first).
         # Corresponds to the JSON property `minimumDuration`
         # @return [String]
         attr_accessor :minimum_duration
       
-        # The minimum visible video duration required, based on the video quartiles,
-        # in order for an impression to be recorded.
-        # You must specify
-        # minimum_duration,
-        # minimum_quartile
-        # or both. If both are specified, an impression meets the metric criteria if
-        # either requirement is met (whichever happens first).
+        # The minimum visible video duration required, based on the video quartiles, in
+        # order for an impression to be recorded. You must specify minimum_duration,
+        # minimum_quartile or both. If both are specified, an impression meets the
+        # metric criteria if either requirement is met (whichever happens first).
         # Corresponds to the JSON property `minimumQuartile`
         # @return [String]
         attr_accessor :minimum_quartile
       
         # Required. The minimum percentage of the video ad's pixels visible on the
-        # screen in
-        # order for an impression to be recorded.
+        # screen in order for an impression to be recorded.
         # Corresponds to the JSON property `minimumViewability`
         # @return [String]
         attr_accessor :minimum_viewability
       
         # Required. The minimum percentage of the video ad's volume required in order
-        # for an
-        # impression to be recorded.
+        # for an impression to be recorded.
         # Corresponds to the JSON property `minimumVolume`
         # @return [String]
         attr_accessor :minimum_volume
@@ -124,19 +116,17 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::AdvertiserDataAccessConfig]
         attr_accessor :data_access_config
       
-        # Required. The display name of the advertiser.
-        # Must be UTF-8 encoded with a maximum size of 240 bytes.
+        # Required. The display name of the advertiser. Must be UTF-8 encoded with a
+        # maximum size of 240 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
         # Required. Controls whether or not insertion orders and line items of the
-        # advertiser can spend their budgets and bid on inventory.
-        # * Accepted values are `ENTITY_STATUS_ACTIVE` and
-        # `ENTITY_STATUS_SCHEDULED_FOR_DELETION`.
-        # * If set to
-        # `ENTITY_STATUS_SCHEDULED_FOR_DELETION`, the advertiser will be deleted 30
-        # days from when it was first scheduled for deletion.
+        # advertiser can spend their budgets and bid on inventory. * Accepted values are
+        # `ENTITY_STATUS_ACTIVE` and `ENTITY_STATUS_SCHEDULED_FOR_DELETION`. * If set to
+        # `ENTITY_STATUS_SCHEDULED_FOR_DELETION`, the advertiser will be deleted 30 days
+        # from when it was first scheduled for deletion.
         # Corresponds to the JSON property `entityStatus`
         # @return [String]
         attr_accessor :entity_status
@@ -230,30 +220,27 @@ module Google
         attr_accessor :dynamic_creative_enabled
         alias_method :dynamic_creative_enabled?, :dynamic_creative_enabled
       
-        # An ID for configuring campaign monitoring provided by Integral Ad Service
-        # (IAS). The DV360 system will append an IAS "Campaign Monitor" tag
-        # containing this ID to the creative tag.
+        # An ID for configuring campaign monitoring provided by Integral Ad Service (IAS)
+        # . The DV360 system will append an IAS "Campaign Monitor" tag containing this
+        # ID to the creative tag.
         # Corresponds to the JSON property `iasClientId`
         # @return [Fixnum]
         attr_accessor :ias_client_id
       
-        # Whether or not to use DV360's Online Behavioral Advertising (OBA)
-        # compliance.
-        # Warning: Changing OBA settings may cause the audit status of your creatives
-        # to be reset by some ad exchanges, making them ineligible to serve until
-        # they are re-approved.
+        # Whether or not to use DV360's Online Behavioral Advertising (OBA) compliance.
+        # Warning: Changing OBA settings may cause the audit status of your creatives to
+        # be reset by some ad exchanges, making them ineligible to serve until they are
+        # re-approved.
         # Corresponds to the JSON property `obaComplianceDisabled`
         # @return [Boolean]
         attr_accessor :oba_compliance_disabled
         alias_method :oba_compliance_disabled?, :oba_compliance_disabled
       
-        # By setting this field to `true`, you, on behalf of your company,
-        # authorize Google to use video creatives associated with this Display &
-        # Video 360 advertiser to provide reporting and features related to the
-        # advertiser's television campaigns.
-        # Applicable only when the advertiser has a
-        # CM hybrid ad server
-        # configuration.
+        # By setting this field to `true`, you, on behalf of your company, authorize
+        # Google to use video creatives associated with this Display & Video 360
+        # advertiser to provide reporting and features related to the advertiser's
+        # television campaigns. Applicable only when the advertiser has a CM hybrid ad
+        # server configuration.
         # Corresponds to the JSON property `videoCreativeDataSharingAuthorized`
         # @return [Boolean]
         attr_accessor :video_creative_data_sharing_authorized
@@ -295,64 +282,36 @@ module Google
       class AdvertiserGeneralConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Immutable. Advertiser's currency in ISO 4217 format.
-        # Accepted codes and the currencies they represent are:
-        # Currency Code : Currency Name
-        # * `ARS` : Argentine Peso
-        # * `AUD` : Australian Dollar
-        # * `BRL` : Brazilian Real
-        # * `CAD` : Canadian Dollar
-        # * `CHF` : Swiss Franc
-        # * `CLP` : Chilean Peso
-        # * `CNY` : Chinese Yuan
-        # * `COP` : Colombian Peso
-        # * `CZK` : Czech Koruna
-        # * `DKK` : Danish Krone
-        # * `EGP` : Egyption Pound
-        # * `EUR` : Euro
-        # * `GBP` : British Pound
-        # * `HKD` : Hong Kong Dollar
-        # * `HUF` : Hungarian Forint
-        # * `IDR` : Indonesian Rupiah
-        # * `ILS` : Israeli Shekel
-        # * `INR` : Indian Rupee
-        # * `JPY` : Japanese Yen
-        # * `KRW` : South Korean Won
-        # * `MXN` : Mexican Pesos
-        # * `MYR` : Malaysian Ringgit
-        # * `NGN` : Nigerian Naira
-        # * `NOK` : Norwegian Krone
-        # * `NZD` : New Zealand Dollar
-        # * `PEN` : Peruvian Nuevo Sol
-        # * `PLN` : Polish Zloty
-        # * `RON` : New Romanian Leu
-        # * `RUB` : Russian Ruble
-        # * `SEK` : Swedish Krona
-        # * `TRY` : Turkish Lira
-        # * `TWD` : New Taiwan Dollar
-        # * `USD` : US Dollar
-        # * `ZAR` : South African Rand
+        # Required. Immutable. Advertiser's currency in ISO 4217 format. Accepted codes
+        # and the currencies they represent are: Currency Code : Currency Name * `ARS` :
+        # Argentine Peso * `AUD` : Australian Dollar * `BRL` : Brazilian Real * `CAD` :
+        # Canadian Dollar * `CHF` : Swiss Franc * `CLP` : Chilean Peso * `CNY` : Chinese
+        # Yuan * `COP` : Colombian Peso * `CZK` : Czech Koruna * `DKK` : Danish Krone * `
+        # EGP` : Egyption Pound * `EUR` : Euro * `GBP` : British Pound * `HKD` : Hong
+        # Kong Dollar * `HUF` : Hungarian Forint * `IDR` : Indonesian Rupiah * `ILS` :
+        # Israeli Shekel * `INR` : Indian Rupee * `JPY` : Japanese Yen * `KRW` : South
+        # Korean Won * `MXN` : Mexican Pesos * `MYR` : Malaysian Ringgit * `NGN` :
+        # Nigerian Naira * `NOK` : Norwegian Krone * `NZD` : New Zealand Dollar * `PEN` :
+        # Peruvian Nuevo Sol * `PLN` : Polish Zloty * `RON` : New Romanian Leu * `RUB` :
+        # Russian Ruble * `SEK` : Swedish Krona * `TRY` : Turkish Lira * `TWD` : New
+        # Taiwan Dollar * `USD` : US Dollar * `ZAR` : South African Rand
         # Corresponds to the JSON property `currencyCode`
         # @return [String]
         attr_accessor :currency_code
       
-        # Required. The domain URL of the advertiser's primary website.
-        # The system will send this information to publishers that require website
-        # URL to associate a campaign with an advertiser.
-        # Provide a URL with no path or query string, beginning with `http:` or
-        # `https:`.
-        # For example, http://www.example.com
+        # Required. The domain URL of the advertiser's primary website. The system will
+        # send this information to publishers that require website URL to associate a
+        # campaign with an advertiser. Provide a URL with no path or query string,
+        # beginning with `http:` or `https:`. For example, http://www.example.com
         # Corresponds to the JSON property `domainUrl`
         # @return [String]
         attr_accessor :domain_url
       
-        # Output only. The standard TZ database name of the advertiser's time zone.
-        # For example, `America/New_York`.
-        # See more at:
-        # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-        # For CM hybrid advertisers, the time zone is the same as that of the
-        # associated CM account; for third-party only advertisers, the time zone is
-        # the same as that of the parent partner.
+        # Output only. The standard TZ database name of the advertiser's time zone. For
+        # example, `America/New_York`. See more at: https://en.wikipedia.org/wiki/
+        # List_of_tz_database_time_zones For CM hybrid advertisers, the time zone is the
+        # same as that of the associated CM account; for third-party only advertisers,
+        # the time zone is the same as that of the parent partner.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -373,12 +332,10 @@ module Google
       class AdvertiserSdfConfig
         include Google::Apis::Core::Hashable
       
-        # Whether or not this advertiser overrides the SDF configuration of its
-        # parent partner.
-        # By default, an advertiser inherits the SDF configuration from the parent
-        # partner. To override the partner configuration, set this field to `true`
-        # and provide the new configuration in
-        # sdfConfig.
+        # Whether or not this advertiser overrides the SDF configuration of its parent
+        # partner. By default, an advertiser inherits the SDF configuration from the
+        # parent partner. To override the partner configuration, set this field to `true`
+        # and provide the new configuration in sdfConfig.
         # Corresponds to the JSON property `overridePartnerSdfConfig`
         # @return [Boolean]
         attr_accessor :override_partner_sdf_config
@@ -404,8 +361,8 @@ module Google
       class AdvertiserTargetingConfig
         include Google::Apis::Core::Hashable
       
-        # Whether or not connected TV devices are exempt from viewability targeting
-        # for all video line items under the advertiser.
+        # Whether or not connected TV devices are exempt from viewability targeting for
+        # all video line items under the advertiser.
         # Corresponds to the JSON property `exemptTvFromViewabilityTargeting`
         # @return [Boolean]
         attr_accessor :exempt_tv_from_viewability_targeting
@@ -421,25 +378,23 @@ module Google
         end
       end
       
-      # Represents a targetable age range. This will be populated in the details
-      # field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_AGE_RANGE`.
+      # Represents a targetable age range. This will be populated in the details field
+      # of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_AGE_RANGE`
+      # .
       class AgeRangeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
         # Output only. The age range of an audience. We only support targeting a
-        # continuous age
-        # range of an audience. Thus, the age range represented in this field can be
-        # 1) targeted solely, or, 2) part of a larger continuous age range. The reach
-        # of a continuous age range targeting can be expanded by also targeting an
-        # audience of an unknown age.
+        # continuous age range of an audience. Thus, the age range represented in this
+        # field can be 1) targeted solely, or, 2) part of a larger continuous age range.
+        # The reach of a continuous age range targeting can be expanded by also
+        # targeting an audience of an unknown age.
         # Corresponds to the JSON property `ageRange`
         # @return [String]
         attr_accessor :age_range
       
-        # Required. The targeting_option_id of a
-        # TargetingOption of type `TARGETING_TYPE_AGE_RANGE`.
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_AGE_RANGE`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -456,9 +411,7 @@ module Google
       end
       
       # Represents a targetable age range. This will be populated in the
-      # age_range_details field when
-      # targeting_type is
-      # `TARGETING_TYPE_AGE_RANGE`.
+      # age_range_details field when targeting_type is `TARGETING_TYPE_AGE_RANGE`.
       class AgeRangeTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -478,16 +431,14 @@ module Google
       end
       
       # Details for assigned app targeting option. This will be populated in the
-      # details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_APP`.
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_APP`.
       class AppAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Required. The ID of the app.
-        # Android's Play store app uses bundle ID, for example
-        # `com.google.android.gm`. Apple's App store app ID uses 9 digit string, for
-        # example `422689480`.
+        # Required. The ID of the app. Android's Play store app uses bundle ID, for
+        # example `com.google.android.gm`. Apple's App store app ID uses 9 digit string,
+        # for example `422689480`.
         # Corresponds to the JSON property `appId`
         # @return [String]
         attr_accessor :app_id
@@ -515,12 +466,9 @@ module Google
         end
       end
       
-      # Details for assigned app category targeting option. This will be
-      # populated in the
-      # app_category_details field of
-      # an AssignedTargetingOption when
-      # targeting_type
-      # is `TARGETING_TYPE_APP_CATEGORY`.
+      # Details for assigned app category targeting option. This will be populated in
+      # the app_category_details field of an AssignedTargetingOption when
+      # targeting_type is `TARGETING_TYPE_APP_CATEGORY`.
       class AppCategoryAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -535,9 +483,8 @@ module Google
         attr_accessor :negative
         alias_method :negative?, :negative
       
-        # Required. The targeting_option_id field when
-        # targeting_type is
-        # `TARGETING_TYPE_APP_CATEGORY`.
+        # Required. The targeting_option_id field when targeting_type is `
+        # TARGETING_TYPE_APP_CATEGORY`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -557,9 +504,8 @@ module Google
       # Represents a targetable collection of apps. A collection lets you target
       # dynamic groups of related apps that are maintained by the platform, for
       # example `All Apps/Google Play/Games`. This will be populated in the
-      # app_category_details field when
-      # targeting_type is
-      # `TARGETING_TYPE_APP_CATEGORY`.
+      # app_category_details field when targeting_type is `TARGETING_TYPE_APP_CATEGORY`
+      # .
       class AppCategoryTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -582,16 +528,14 @@ module Google
       class Asset
         include Google::Apis::Core::Hashable
       
-        # The asset content.
-        # For uploaded assets, the content is the serving path.
+        # The asset content. For uploaded assets, the content is the serving path.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
       
         # Media ID of the uploaded asset. This is a unique identifier for the asset.
-        # This ID can be passed to other API calls, e.g.
-        # CreateCreative to associate
-        # the asset with a creative.
+        # This ID can be passed to other API calls, e.g. CreateCreative to associate the
+        # asset with a creative.
         # Corresponds to the JSON property `mediaId`
         # @return [Fixnum]
         attr_accessor :media_id
@@ -673,8 +617,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The unique ID of the assigned location. The ID is only unique
-        # within a
-        # location list. It may be reused in other contexts.
+        # within a location list. It may be reused in other contexts.
         # Corresponds to the JSON property `assignedLocationId`
         # @return [Fixnum]
         attr_accessor :assigned_location_id
@@ -685,8 +628,7 @@ module Google
         attr_accessor :name
       
         # Required. The ID of the targeting option assigned to the location list. Must
-        # be of
-        # type TARGETING_TYPE_GEO_REGION.
+        # be of type TARGETING_TYPE_GEO_REGION.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -708,182 +650,151 @@ module Google
       class AssignedTargetingOption
         include Google::Apis::Core::Hashable
       
-        # Represents a targetable age range. This will be populated in the details
-        # field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_AGE_RANGE`.
+        # Represents a targetable age range. This will be populated in the details field
+        # of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_AGE_RANGE`
+        # .
         # Corresponds to the JSON property `ageRangeDetails`
         # @return [Google::Apis::DisplayvideoV1::AgeRangeAssignedTargetingOptionDetails]
         attr_accessor :age_range_details
       
-        # Details for assigned app category targeting option. This will be
-        # populated in the
-        # app_category_details field of
-        # an AssignedTargetingOption when
-        # targeting_type
-        # is `TARGETING_TYPE_APP_CATEGORY`.
+        # Details for assigned app category targeting option. This will be populated in
+        # the app_category_details field of an AssignedTargetingOption when
+        # targeting_type is `TARGETING_TYPE_APP_CATEGORY`.
         # Corresponds to the JSON property `appCategoryDetails`
         # @return [Google::Apis::DisplayvideoV1::AppCategoryAssignedTargetingOptionDetails]
         attr_accessor :app_category_details
       
         # Details for assigned app targeting option. This will be populated in the
-        # details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_APP`.
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_APP`.
         # Corresponds to the JSON property `appDetails`
         # @return [Google::Apis::DisplayvideoV1::AppAssignedTargetingOptionDetails]
         attr_accessor :app_details
       
         # Output only. The unique ID of the assigned targeting option. The ID is only
-        # unique
-        # within a given line item and targeting type. It may be reused in other
+        # unique within a given line item and targeting type. It may be reused in other
         # contexts.
         # Corresponds to the JSON property `assignedTargetingOptionId`
         # @return [String]
         attr_accessor :assigned_targeting_option_id
       
         # Assigned audience group targeting option details. This will be populated in
-        # the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_AUDIENCE_GROUP`.
-        # The relation between each group is UNION, except for
-        # excluded_first_and_third_party_audience_group and
+        # the details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION,
+        # except for excluded_first_and_third_party_audience_group and
         # excluded_google_audience_group, of which COMPLEMENT is UNION'ed with other
         # groups.
         # Corresponds to the JSON property `audienceGroupDetails`
         # @return [Google::Apis::DisplayvideoV1::AudienceGroupAssignedTargetingOptionDetails]
         attr_accessor :audience_group_details
       
-        # Represents an assigned authorized seller status. This will be populated in
-        # the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
+        # Represents an assigned authorized seller status. This will be populated in the
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
         # Corresponds to the JSON property `authorizedSellerStatusDetails`
         # @return [Google::Apis::DisplayvideoV1::AuthorizedSellerStatusAssignedTargetingOptionDetails]
         attr_accessor :authorized_seller_status_details
       
-        # Details for assigned browser targeting option. This will be populated in
-        # the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_BROWSER`.
+        # Details for assigned browser targeting option. This will be populated in the
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_BROWSER`.
         # Corresponds to the JSON property `browserDetails`
         # @return [Google::Apis::DisplayvideoV1::BrowserAssignedTargetingOptionDetails]
         attr_accessor :browser_details
       
         # Details for assigned carrier and ISP targeting option. This will be populated
-        # in the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_CARRIER_AND_ISP`.
+        # in the details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_CARRIER_AND_ISP`.
         # Corresponds to the JSON property `carrierAndIspDetails`
         # @return [Google::Apis::DisplayvideoV1::CarrierAndIspAssignedTargetingOptionDetails]
         attr_accessor :carrier_and_isp_details
       
         # Assigned category targeting option details. This will be populated in the
-        # category_details field when
-        # targeting_type is
-        # `TARGETING_TYPE_CATEGORY`.
+        # category_details field when targeting_type is `TARGETING_TYPE_CATEGORY`.
         # Corresponds to the JSON property `categoryDetails`
         # @return [Google::Apis::DisplayvideoV1::CategoryAssignedTargetingOptionDetails]
         attr_accessor :category_details
       
-        # Details for assigned channel targeting option. This will be populated in
-        # the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_CHANNEL`.
+        # Details for assigned channel targeting option. This will be populated in the
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_CHANNEL`.
         # Corresponds to the JSON property `channelDetails`
         # @return [Google::Apis::DisplayvideoV1::ChannelAssignedTargetingOptionDetails]
         attr_accessor :channel_details
       
         # Assigned content instream position targeting option details. This will be
-        # populated in the
-        # content_instream_position_details
-        # field when
-        # targeting_type is
-        # `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
+        # populated in the content_instream_position_details field when targeting_type
+        # is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
         # Corresponds to the JSON property `contentInstreamPositionDetails`
         # @return [Google::Apis::DisplayvideoV1::ContentInstreamPositionAssignedTargetingOptionDetails]
         attr_accessor :content_instream_position_details
       
         # Assigned content outstream position targeting option details. This will be
-        # populated in the
-        # content_outstream_position_details
-        # field when
-        # targeting_type is
-        # `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
+        # populated in the content_outstream_position_details field when targeting_type
+        # is `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
         # Corresponds to the JSON property `contentOutstreamPositionDetails`
         # @return [Google::Apis::DisplayvideoV1::ContentOutstreamPositionAssignedTargetingOptionDetails]
         attr_accessor :content_outstream_position_details
       
         # Representation of a segment of time defined on a specific day of the week and
-        # with a start and end time.
-        # The time represented by `start_hour` must be before the time represented by
-        # `end_hour`.
+        # with a start and end time. The time represented by `start_hour` must be before
+        # the time represented by `end_hour`.
         # Corresponds to the JSON property `dayAndTimeDetails`
         # @return [Google::Apis::DisplayvideoV1::DayAndTimeAssignedTargetingOptionDetails]
         attr_accessor :day_and_time_details
       
         # Assigned device make and model targeting option details. This will be
-        # populated in the
-        # device_make_model_details
-        # field when
-        # targeting_type is
-        # `TARGETING_TYPE_DEVICE_MAKE_MODEL`.
+        # populated in the device_make_model_details field when targeting_type is `
+        # TARGETING_TYPE_DEVICE_MAKE_MODEL`.
         # Corresponds to the JSON property `deviceMakeModelDetails`
         # @return [Google::Apis::DisplayvideoV1::DeviceMakeModelAssignedTargetingOptionDetails]
         attr_accessor :device_make_model_details
       
-        # Targeting details for device type. This will be
-        # populated in the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_DEVICE_TYPE`.
+        # Targeting details for device type. This will be populated in the details field
+        # of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_DEVICE_TYPE`.
         # Corresponds to the JSON property `deviceTypeDetails`
         # @return [Google::Apis::DisplayvideoV1::DeviceTypeAssignedTargetingOptionDetails]
         attr_accessor :device_type_details
       
-        # Targeting details for digital content label. This will be
-        # populated in the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`.
+        # Targeting details for digital content label. This will be populated in the
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`.
         # Corresponds to the JSON property `digitalContentLabelExclusionDetails`
         # @return [Google::Apis::DisplayvideoV1::DigitalContentLabelAssignedTargetingOptionDetails]
         attr_accessor :digital_content_label_exclusion_details
       
-        # Assigned environment targeting option details. This will be populated
-        # in the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_ENVIRONMENT`.
+        # Assigned environment targeting option details. This will be populated in the
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_ENVIRONMENT`.
         # Corresponds to the JSON property `environmentDetails`
         # @return [Google::Apis::DisplayvideoV1::EnvironmentAssignedTargetingOptionDetails]
         attr_accessor :environment_details
       
-        # Details for assigned exchange targeting option. This will be populated in
-        # the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_EXCHANGE`.
+        # Details for assigned exchange targeting option. This will be populated in the
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_EXCHANGE`.
         # Corresponds to the JSON property `exchangeDetails`
         # @return [Google::Apis::DisplayvideoV1::ExchangeAssignedTargetingOptionDetails]
         attr_accessor :exchange_details
       
-        # Details for assigned gender targeting option. This will be populated in
-        # the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARTGETING_TYPE_GENDER`.
+        # Details for assigned gender targeting option. This will be populated in the
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARTGETING_TYPE_GENDER`.
         # Corresponds to the JSON property `genderDetails`
         # @return [Google::Apis::DisplayvideoV1::GenderAssignedTargetingOptionDetails]
         attr_accessor :gender_details
       
         # Details for assigned geographic region targeting option. This will be
         # populated in the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_GEO_REGION`.
+        # targeting_type is `TARGETING_TYPE_GEO_REGION`.
         # Corresponds to the JSON property `geoRegionDetails`
         # @return [Google::Apis::DisplayvideoV1::GeoRegionAssignedTargetingOptionDetails]
         attr_accessor :geo_region_details
       
-        # Details for assigned household income targeting option. This will be
-        # populated in the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_HOUSEHOLD_INCOME`.
+        # Details for assigned household income targeting option. This will be populated
+        # in the details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_HOUSEHOLD_INCOME`.
         # Corresponds to the JSON property `householdIncomeDetails`
         # @return [Google::Apis::DisplayvideoV1::HouseholdIncomeAssignedTargetingOptionDetails]
         attr_accessor :household_income_details
@@ -893,34 +804,30 @@ module Google
         # @return [String]
         attr_accessor :inheritance
       
-        # Targeting details for inventory source. This will be
-        # populated in the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_INVENTORY_SOURCE`.
+        # Targeting details for inventory source. This will be populated in the details
+        # field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_INVENTORY_SOURCE`.
         # Corresponds to the JSON property `inventorySourceDetails`
         # @return [Google::Apis::DisplayvideoV1::InventorySourceAssignedTargetingOptionDetails]
         attr_accessor :inventory_source_details
       
-        # Targeting details for inventory source group. This will be
-        # populated in the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_INVENTORY_SOURCE_GROUP`.
+        # Targeting details for inventory source group. This will be populated in the
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_INVENTORY_SOURCE_GROUP`.
         # Corresponds to the JSON property `inventorySourceGroupDetails`
         # @return [Google::Apis::DisplayvideoV1::InventorySourceGroupAssignedTargetingOptionDetails]
         attr_accessor :inventory_source_group_details
       
         # Details for assigned keyword targeting option. This will be populated in the
-        # details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_KEYWORD`.
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_KEYWORD`.
         # Corresponds to the JSON property `keywordDetails`
         # @return [Google::Apis::DisplayvideoV1::KeywordAssignedTargetingOptionDetails]
         attr_accessor :keyword_details
       
         # Details for assigned language targeting option. This will be populated in the
-        # details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_LANGUAGE`.
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_LANGUAGE`.
         # Corresponds to the JSON property `languageDetails`
         # @return [Google::Apis::DisplayvideoV1::LanguageAssignedTargetingOptionDetails]
         attr_accessor :language_details
@@ -931,69 +838,57 @@ module Google
         attr_accessor :name
       
         # Targeting details for negative keyword list. This will be populated in the
-        # details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`.
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`.
         # Corresponds to the JSON property `negativeKeywordListDetails`
         # @return [Google::Apis::DisplayvideoV1::NegativeKeywordListAssignedTargetingOptionDetails]
         attr_accessor :negative_keyword_list_details
       
-        # On screen position targeting option details. This will be
-        # populated in the
-        # on_screen_position_details
-        # field when
-        # targeting_type is
-        # `TARGETING_TYPE_ON_SCREEN_POSITION`.
+        # On screen position targeting option details. This will be populated in the
+        # on_screen_position_details field when targeting_type is `
+        # TARGETING_TYPE_ON_SCREEN_POSITION`.
         # Corresponds to the JSON property `onScreenPositionDetails`
         # @return [Google::Apis::DisplayvideoV1::OnScreenPositionAssignedTargetingOptionDetails]
         attr_accessor :on_screen_position_details
       
-        # Assigned operating system targeting option details. This will be
-        # populated in the
-        # operating_system_details
-        # field when
-        # targeting_type is
-        # `TARGETING_TYPE_OPERATING_SYSTEM`.
+        # Assigned operating system targeting option details. This will be populated in
+        # the operating_system_details field when targeting_type is `
+        # TARGETING_TYPE_OPERATING_SYSTEM`.
         # Corresponds to the JSON property `operatingSystemDetails`
         # @return [Google::Apis::DisplayvideoV1::OperatingSystemAssignedTargetingOptionDetails]
         attr_accessor :operating_system_details
       
-        # Details for assigned parental status targeting option. This will be
-        # populated in the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARTGETING_TYPE_PARENTAL_STATUS`.
+        # Details for assigned parental status targeting option. This will be populated
+        # in the details field of an AssignedTargetingOption when targeting_type is `
+        # TARTGETING_TYPE_PARENTAL_STATUS`.
         # Corresponds to the JSON property `parentalStatusDetails`
         # @return [Google::Apis::DisplayvideoV1::ParentalStatusAssignedTargetingOptionDetails]
         attr_accessor :parental_status_details
       
-        # Targeting details for proximity location list. This will be
-        # populated in the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
+        # Targeting details for proximity location list. This will be populated in the
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
         # Corresponds to the JSON property `proximityLocationListDetails`
         # @return [Google::Apis::DisplayvideoV1::ProximityLocationListAssignedTargetingOptionDetails]
         attr_accessor :proximity_location_list_details
       
-        # Targeting details for regional location list. This will be
-        # populated in the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_REGIONAL_LOCATION_LIST`.
+        # Targeting details for regional location list. This will be populated in the
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_REGIONAL_LOCATION_LIST`.
         # Corresponds to the JSON property `regionalLocationListDetails`
         # @return [Google::Apis::DisplayvideoV1::RegionalLocationListAssignedTargetingOptionDetails]
         attr_accessor :regional_location_list_details
       
         # Targeting details for sensitive category. This will be populated in the
-        # details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`.
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`.
         # Corresponds to the JSON property `sensitiveCategoryExclusionDetails`
         # @return [Google::Apis::DisplayvideoV1::SensitiveCategoryAssignedTargetingOptionDetails]
         attr_accessor :sensitive_category_exclusion_details
       
         # Details for assigned sub-exchange targeting option. This will be populated in
-        # the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_SUB_EXCHANGE`.
+        # the details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_SUB_EXCHANGE`.
         # Corresponds to the JSON property `subExchangeDetails`
         # @return [Google::Apis::DisplayvideoV1::SubExchangeAssignedTargetingOptionDetails]
         attr_accessor :sub_exchange_details
@@ -1003,46 +898,38 @@ module Google
         # @return [String]
         attr_accessor :targeting_type
       
-        # Assigned third party verifier targeting option details. This will be
-        # populated in the details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_THIRD_PARTY_VERIFIER`.
+        # Assigned third party verifier targeting option details. This will be populated
+        # in the details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_THIRD_PARTY_VERIFIER`.
         # Corresponds to the JSON property `thirdPartyVerifierDetails`
         # @return [Google::Apis::DisplayvideoV1::ThirdPartyVerifierAssignedTargetingOptionDetails]
         attr_accessor :third_party_verifier_details
       
         # Details for assigned URL targeting option. This will be populated in the
-        # details field of an AssignedTargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_URL`.
+        # details field of an AssignedTargetingOption when targeting_type is `
+        # TARGETING_TYPE_URL`.
         # Corresponds to the JSON property `urlDetails`
         # @return [Google::Apis::DisplayvideoV1::UrlAssignedTargetingOptionDetails]
         attr_accessor :url_details
       
-        # User rewarded content targeting option details. This will be populated in
-        # the
-        # user_rewarded_content_details
-        # field when
-        # targeting_type is
-        # `TARGETING_TYPE_USER_REWARDED_CONTENT`.
+        # User rewarded content targeting option details. This will be populated in the
+        # user_rewarded_content_details field when targeting_type is `
+        # TARGETING_TYPE_USER_REWARDED_CONTENT`.
         # Corresponds to the JSON property `userRewardedContentDetails`
         # @return [Google::Apis::DisplayvideoV1::UserRewardedContentAssignedTargetingOptionDetails]
         attr_accessor :user_rewarded_content_details
       
         # Video player size targeting option details. This will be populated in the
-        # video_player_size_details
-        # field when targeting_type is
-        # `TARGETING_TYPE_VIDEO_PLAYER_SIZE`.
-        # Explicitly targeting all options is not supported. Remove all video player
-        # size targeting options to achieve this effect.
+        # video_player_size_details field when targeting_type is `
+        # TARGETING_TYPE_VIDEO_PLAYER_SIZE`. Explicitly targeting all options is not
+        # supported. Remove all video player size targeting options to achieve this
+        # effect.
         # Corresponds to the JSON property `videoPlayerSizeDetails`
         # @return [Google::Apis::DisplayvideoV1::VideoPlayerSizeAssignedTargetingOptionDetails]
         attr_accessor :video_player_size_details
       
         # Assigned viewability targeting option details. This will be populated in the
-        # viewability_details field of
-        # an AssignedTargetingOption when
-        # targeting_type is
+        # viewability_details field of an AssignedTargetingOption when targeting_type is
         # `TARGETING_TYPE_VIEWABILITY`.
         # Corresponds to the JSON property `viewabilityDetails`
         # @return [Google::Apis::DisplayvideoV1::ViewabilityAssignedTargetingOptionDetails]
@@ -1099,53 +986,50 @@ module Google
       end
       
       # Assigned audience group targeting option details. This will be populated in
-      # the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_AUDIENCE_GROUP`.
-      # The relation between each group is UNION, except for
-      # excluded_first_and_third_party_audience_group and
+      # the details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION,
+      # except for excluded_first_and_third_party_audience_group and
       # excluded_google_audience_group, of which COMPLEMENT is UNION'ed with other
       # groups.
       class AudienceGroupAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Details of first and third party audience group.
-        # All first and third party audience targeting settings are logically ‘OR’ of
-        # each other.
+        # Details of first and third party audience group. All first and third party
+        # audience targeting settings are logically ‘OR’ of each other.
         # Corresponds to the JSON property `excludedFirstAndThirdPartyAudienceGroup`
         # @return [Google::Apis::DisplayvideoV1::FirstAndThirdPartyAudienceGroup]
         attr_accessor :excluded_first_and_third_party_audience_group
       
-        # Details of Google audience group.
-        # All Google audience targeting settings are logically ‘OR’ of each other.
+        # Details of Google audience group. All Google audience targeting settings are
+        # logically ‘OR’ of each other.
         # Corresponds to the JSON property `excludedGoogleAudienceGroup`
         # @return [Google::Apis::DisplayvideoV1::GoogleAudienceGroup]
         attr_accessor :excluded_google_audience_group
       
-        # Details of combined audience group.
-        # All combined audience targeting settings are logically ‘OR’ of each other.
+        # Details of combined audience group. All combined audience targeting settings
+        # are logically ‘OR’ of each other.
         # Corresponds to the JSON property `includedCombinedAudienceGroup`
         # @return [Google::Apis::DisplayvideoV1::CombinedAudienceGroup]
         attr_accessor :included_combined_audience_group
       
-        # Details of custom list group.
-        # All custom list targeting settings are logically ‘OR’ of each other.
+        # Details of custom list group. All custom list targeting settings are logically
+        # ‘OR’ of each other.
         # Corresponds to the JSON property `includedCustomListGroup`
         # @return [Google::Apis::DisplayvideoV1::CustomListGroup]
         attr_accessor :included_custom_list_group
       
-        # The first and third party audience ids and recencies of included first
-        # and third party audience groups. Each first and third party audience group
-        # contains first and third party audience ids only.
-        # The relation between each first and third party audience group is
-        # INTERSECTION, and the result is UNION'ed with other audience groups.
-        # Repeated groups with same settings will be ignored.
+        # The first and third party audience ids and recencies of included first and
+        # third party audience groups. Each first and third party audience group
+        # contains first and third party audience ids only. The relation between each
+        # first and third party audience group is INTERSECTION, and the result is UNION'
+        # ed with other audience groups. Repeated groups with same settings will be
+        # ignored.
         # Corresponds to the JSON property `includedFirstAndThirdPartyAudienceGroups`
         # @return [Array<Google::Apis::DisplayvideoV1::FirstAndThirdPartyAudienceGroup>]
         attr_accessor :included_first_and_third_party_audience_groups
       
-        # Details of Google audience group.
-        # All Google audience targeting settings are logically ‘OR’ of each other.
+        # Details of Google audience group. All Google audience targeting settings are
+        # logically ‘OR’ of each other.
         # Corresponds to the JSON property `includedGoogleAudienceGroup`
         # @return [Google::Apis::DisplayvideoV1::GoogleAudienceGroup]
         attr_accessor :included_google_audience_group
@@ -1190,10 +1074,9 @@ module Google
         end
       end
       
-      # Represents an assigned authorized seller status. This will be populated in
-      # the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
+      # Represents an assigned authorized seller status. This will be populated in the
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
       class AuthorizedSellerStatusAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -1202,8 +1085,8 @@ module Google
         # @return [String]
         attr_accessor :authorized_seller_status
       
-        # Required. The targeting_option_id of a
-        # TargetingOption of type `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -1220,10 +1103,8 @@ module Google
       end
       
       # Represents a targetable authorized seller status. This will be populated in
-      # the
-      # authorized_seller_status_details
-      # field when targeting_type is
-      # `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
+      # the authorized_seller_status_details field when targeting_type is `
+      # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
       class AuthorizedSellerStatusTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -1242,8 +1123,7 @@ module Google
         end
       end
       
-      # Settings that control the bid strategy.
-      # Bid strategy determines the bid price.
+      # Settings that control the bid strategy. Bid strategy determines the bid price.
       class BiddingStrategy
         include Google::Apis::Core::Hashable
       
@@ -1276,10 +1156,9 @@ module Google
         end
       end
       
-      # Details for assigned browser targeting option. This will be populated in
-      # the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_BROWSER`.
+      # Details for assigned browser targeting option. This will be populated in the
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_BROWSER`.
       class BrowserAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -1296,8 +1175,8 @@ module Google
         attr_accessor :negative
         alias_method :negative?, :negative
       
-        # Required. The targeting_option_id of a
-        # TargetingOption of type `TARGETING_TYPE_BROWSER`.
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_BROWSER`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -1314,10 +1193,8 @@ module Google
         end
       end
       
-      # Represents a targetable browser. This will be populated in the
-      # browser_details field when
-      # targeting_type is
-      # `TARGETING_TYPE_BROWSER`.
+      # Represents a targetable browser. This will be populated in the browser_details
+      # field when targeting_type is `TARGETING_TYPE_BROWSER`.
       class BrowserTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -1336,19 +1213,18 @@ module Google
         end
       end
       
-      # Request message for
-      # BulkEditAdvertiserAssignedTargetingOptions.
+      # Request message for BulkEditAdvertiserAssignedTargetingOptions.
       class BulkEditAdvertiserAssignedTargetingOptionsRequest
         include Google::Apis::Core::Hashable
       
-        # The assigned targeting options to create in batch, specified as a list of
-        # `CreateAssignedTargetingOptionsRequest`.
+        # The assigned targeting options to create in batch, specified as a list of `
+        # CreateAssignedTargetingOptionsRequest`.
         # Corresponds to the JSON property `createRequests`
         # @return [Array<Google::Apis::DisplayvideoV1::CreateAssignedTargetingOptionsRequest>]
         attr_accessor :create_requests
       
-        # The assigned targeting options to delete in batch, specified as a list of
-        # `DeleteAssignedTargetingOptionsRequest`.
+        # The assigned targeting options to delete in batch, specified as a list of `
+        # DeleteAssignedTargetingOptionsRequest`.
         # Corresponds to the JSON property `deleteRequests`
         # @return [Array<Google::Apis::DisplayvideoV1::DeleteAssignedTargetingOptionsRequest>]
         attr_accessor :delete_requests
@@ -1388,9 +1264,8 @@ module Google
       class BulkEditAssignedInventorySourcesRequest
         include Google::Apis::Core::Hashable
       
-        # The ID of the advertiser that owns the parent inventory source group.
-        # The parent partner does not have access to these assigned inventory
-        # sources.
+        # The ID of the advertiser that owns the parent inventory source group. The
+        # parent partner does not have access to these assigned inventory sources.
         # Corresponds to the JSON property `advertiserId`
         # @return [Fixnum]
         attr_accessor :advertiser_id
@@ -1402,14 +1277,13 @@ module Google
         attr_accessor :created_assigned_inventory_sources
       
         # The IDs of the assigned inventory sources to delete in bulk, specified as a
-        # list of
-        # assigned_inventory_source_ids.
+        # list of assigned_inventory_source_ids.
         # Corresponds to the JSON property `deletedAssignedInventorySources`
         # @return [Array<Fixnum>]
         attr_accessor :deleted_assigned_inventory_sources
       
-        # The ID of the partner that owns the inventory source group.
-        # Only this partner has write access to these assigned inventory sources.
+        # The ID of the partner that owns the inventory source group. Only this partner
+        # has write access to these assigned inventory sources.
         # Corresponds to the JSON property `partnerId`
         # @return [Fixnum]
         attr_accessor :partner_id
@@ -1478,8 +1352,8 @@ module Google
       class BulkEditAssignedLocationsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of assigned locations that have been successfully created.
-        # This list will be absent if empty.
+        # The list of assigned locations that have been successfully created. This list
+        # will be absent if empty.
         # Corresponds to the JSON property `assignedLocations`
         # @return [Array<Google::Apis::DisplayvideoV1::AssignedLocation>]
         attr_accessor :assigned_locations
@@ -1494,19 +1368,18 @@ module Google
         end
       end
       
-      # Request message for
-      # BulkEditLineItemAssignedTargetingOptions.
+      # Request message for BulkEditLineItemAssignedTargetingOptions.
       class BulkEditLineItemAssignedTargetingOptionsRequest
         include Google::Apis::Core::Hashable
       
-        # The assigned targeting options to create in batch, specified as a list of
-        # `CreateAssignedTargetingOptionsRequest`.
+        # The assigned targeting options to create in batch, specified as a list of `
+        # CreateAssignedTargetingOptionsRequest`.
         # Corresponds to the JSON property `createRequests`
         # @return [Array<Google::Apis::DisplayvideoV1::CreateAssignedTargetingOptionsRequest>]
         attr_accessor :create_requests
       
-        # The assigned targeting options to delete in batch, specified as a list of
-        # `DeleteAssignedTargetingOptionsRequest`.
+        # The assigned targeting options to delete in batch, specified as a list of `
+        # DeleteAssignedTargetingOptionsRequest`.
         # Corresponds to the JSON property `deleteRequests`
         # @return [Array<Google::Apis::DisplayvideoV1::DeleteAssignedTargetingOptionsRequest>]
         attr_accessor :delete_requests
@@ -1573,8 +1446,8 @@ module Google
       class BulkEditNegativeKeywordsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of negative keywords that have been successfully created.
-        # This list will be absent if empty.
+        # The list of negative keywords that have been successfully created. This list
+        # will be absent if empty.
         # Corresponds to the JSON property `negativeKeywords`
         # @return [Array<Google::Apis::DisplayvideoV1::NegativeKeyword>]
         attr_accessor :negative_keywords
@@ -1603,8 +1476,7 @@ module Google
         # @return [Array<Google::Apis::DisplayvideoV1::Site>]
         attr_accessor :created_sites
       
-        # The sites to delete in batch, specified as a list of site
-        # url_or_app_ids.
+        # The sites to delete in batch, specified as a list of site url_or_app_ids.
         # Corresponds to the JSON property `deletedSites`
         # @return [Array<String>]
         attr_accessor :deleted_sites
@@ -1631,8 +1503,8 @@ module Google
       class BulkEditSitesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of sites that have been successfully created.
-        # This list will be absent if empty.
+        # The list of sites that have been successfully created. This list will be
+        # absent if empty.
         # Corresponds to the JSON property `sites`
         # @return [Array<Google::Apis::DisplayvideoV1::Site>]
         attr_accessor :sites
@@ -1651,20 +1523,16 @@ module Google
       class BulkListAdvertiserAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of assigned targeting options.
-        # This list will be absent if empty.
+        # The list of assigned targeting options. This list will be absent if empty.
         # Corresponds to the JSON property `assignedTargetingOptions`
         # @return [Array<Google::Apis::DisplayvideoV1::AssignedTargetingOption>]
         attr_accessor :assigned_targeting_options
       
-        # A token identifying the next page of results. This value should be
-        # specified as the
-        # pageToken
-        # in a subsequent BulkListAdvertiserAssignedTargetingOptionsRequest to
-        # fetch the next page of results. This token will be absent if there are no
-        # more
-        # assigned_targeting_options
-        # to return.
+        # A token identifying the next page of results. This value should be specified
+        # as the pageToken in a subsequent
+        # BulkListAdvertiserAssignedTargetingOptionsRequest to fetch the next page of
+        # results. This token will be absent if there are no more
+        # assigned_targeting_options to return.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1684,19 +1552,16 @@ module Google
       class BulkListLineItemAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of assigned targeting options.
-        # This list will be absent if empty.
+        # The list of assigned targeting options. This list will be absent if empty.
         # Corresponds to the JSON property `assignedTargetingOptions`
         # @return [Array<Google::Apis::DisplayvideoV1::AssignedTargetingOption>]
         attr_accessor :assigned_targeting_options
       
-        # A token identifying the next page of results. This value should be
-        # specified as the
-        # pageToken in
-        # a subsequent BulkListLineItemAssignedTargetingOptionsRequest to fetch
-        # the next page of results. This token will be absent if there are no more
-        # assigned_targeting_options
-        # to return.
+        # A token identifying the next page of results. This value should be specified
+        # as the pageToken in a subsequent
+        # BulkListLineItemAssignedTargetingOptionsRequest to fetch the next page of
+        # results. This token will be absent if there are no more
+        # assigned_targeting_options to return.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1736,25 +1601,22 @@ module Google
         # @return [Fixnum]
         attr_accessor :campaign_id
       
-        # Required. The display name of the campaign.
-        # Must be UTF-8 encoded with a maximum size of 240 bytes.
+        # Required. The display name of the campaign. Must be UTF-8 encoded with a
+        # maximum size of 240 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Required. Controls whether or not the insertion orders under this campaign
-        # can spend their budgets and bid on inventory.
-        # * Accepted values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`, and
-        # `ENTITY_STATUS_PAUSED`.
-        # * For
-        # CreateCampaign method,
-        # `ENTITY_STATUS_ARCHIVED` is not allowed.
+        # Required. Controls whether or not the insertion orders under this campaign can
+        # spend their budgets and bid on inventory. * Accepted values are `
+        # ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`, and `ENTITY_STATUS_PAUSED`. *
+        # For CreateCampaign method, `ENTITY_STATUS_ARCHIVED` is not allowed.
         # Corresponds to the JSON property `entityStatus`
         # @return [String]
         attr_accessor :entity_status
       
-        # Settings that control the number of times a user may be shown with the same
-        # ad during a given time period.
+        # Settings that control the number of times a user may be shown with the same ad
+        # during a given time period.
         # Corresponds to the JSON property `frequencyCap`
         # @return [Google::Apis::DisplayvideoV1::FrequencyCap]
         attr_accessor :frequency_cap
@@ -1797,9 +1659,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::DateRange]
         attr_accessor :planned_dates
       
-        # The amount the campaign is expected to spend for its given
-        # planned_dates. This will not limit serving,
-        # but will be used for tracking spend in the DV360 UI.
+        # The amount the campaign is expected to spend for its given planned_dates. This
+        # will not limit serving, but will be used for tracking spend in the DV360 UI.
         # The amount is in micros. Must be greater than or equal to 0. For example,
         # 500000000 represents 500 standard units of the currency.
         # Corresponds to the JSON property `plannedSpendAmountMicros`
@@ -1843,9 +1704,8 @@ module Google
       end
       
       # Details for assigned carrier and ISP targeting option. This will be populated
-      # in the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_CARRIER_AND_ISP`.
+      # in the details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_CARRIER_AND_ISP`.
       class CarrierAndIspAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -1855,15 +1715,15 @@ module Google
         attr_accessor :display_name
       
         # Indicates if this option is being negatively targeted. All assigned carrier
-        # and ISP targeting options on the same line item must have the same value
-        # for this field.
+        # and ISP targeting options on the same line item must have the same value for
+        # this field.
         # Corresponds to the JSON property `negative`
         # @return [Boolean]
         attr_accessor :negative
         alias_method :negative?, :negative
       
-        # Required. The targeting_option_id of a
-        # TargetingOption of type `TARGETING_TYPE_CARRIER_AND_ISP`.
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_CARRIER_AND_ISP`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -1881,10 +1741,8 @@ module Google
       end
       
       # Represents a targetable carrier or ISP. This will be populated in the
-      # carrier_and_isp_details field of
-      # a TargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_CARRIER_AND_ISP`.
+      # carrier_and_isp_details field of a TargetingOption when targeting_type is `
+      # TARGETING_TYPE_CARRIER_AND_ISP`.
       class CarrierAndIspTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -1910,9 +1768,7 @@ module Google
       end
       
       # Assigned category targeting option details. This will be populated in the
-      # category_details field when
-      # targeting_type is
-      # `TARGETING_TYPE_CATEGORY`.
+      # category_details field when targeting_type is `TARGETING_TYPE_CATEGORY`.
       class CategoryAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -1927,9 +1783,8 @@ module Google
         attr_accessor :negative
         alias_method :negative?, :negative
       
-        # Required. The targeting_option_id field when
-        # targeting_type is
-        # `TARGETING_TYPE_CATEGORY`.
+        # Required. The targeting_option_id field when targeting_type is `
+        # TARGETING_TYPE_CATEGORY`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -1947,9 +1802,8 @@ module Google
       end
       
       # Represents a targetable category. This will be populated in the
-      # category_details field of a
-      # TargetingOption when targeting_type is
-      # `TARGETING_TYPE_CATEGORY`.
+      # category_details field of a TargetingOption when targeting_type is `
+      # TARGETING_TYPE_CATEGORY`.
       class CategoryTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -1982,8 +1836,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :channel_id
       
-        # Required. The display name of the channel.
-        # Must be UTF-8 encoded with a maximum length of 240 bytes.
+        # Required. The display name of the channel. Must be UTF-8 encoded with a
+        # maximum length of 240 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2012,24 +1866,22 @@ module Google
         end
       end
       
-      # Details for assigned channel targeting option. This will be populated in
-      # the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_CHANNEL`.
+      # Details for assigned channel targeting option. This will be populated in the
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_CHANNEL`.
       class ChannelAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Required. ID of the channel. Should refer to the channel ID
-        # field on a
-        # [Partner-owned channel](partners.channels#Channel.FIELDS.channel_id) or
-        # [advertiser-owned channel](advertisers.channels#Channel.FIELDS.channel_id)
+        # Required. ID of the channel. Should refer to the channel ID field on a [
+        # Partner-owned channel](partners.channels#Channel.FIELDS.channel_id) or [
+        # advertiser-owned channel](advertisers.channels#Channel.FIELDS.channel_id)
         # resource.
         # Corresponds to the JSON property `channelId`
         # @return [Fixnum]
         attr_accessor :channel_id
       
-        # Indicates if this option is being negatively targeted. For advertiser
-        # level assigned targeting option, this field must be true.
+        # Indicates if this option is being negatively targeted. For advertiser level
+        # assigned targeting option, this field must be true.
         # Corresponds to the JSON property `negative`
         # @return [Boolean]
         attr_accessor :negative
@@ -2052,8 +1904,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Immutable. Account ID of the CM Floodlight configuration linked with
-        # the DV360
-        # advertiser.
+        # the DV360 advertiser.
         # Corresponds to the JSON property `cmAccountId`
         # @return [Fixnum]
         attr_accessor :cm_account_id
@@ -2065,20 +1916,17 @@ module Google
         attr_accessor :cm_floodlight_config_id
       
         # Required. Immutable. By setting this field to `true`, you, on behalf of your
-        # company,
-        # authorize the sharing of information from the given Floodlight
+        # company, authorize the sharing of information from the given Floodlight
         # configuration to this Display & Video 360 advertiser.
         # Corresponds to the JSON property `cmFloodlightLinkingAuthorized`
         # @return [Boolean]
         attr_accessor :cm_floodlight_linking_authorized
         alias_method :cm_floodlight_linking_authorized?, :cm_floodlight_linking_authorized
       
-        # A list of CM sites whose placements will be synced to DV360 as creatives.
-        # If absent or empty in
-        # CreateAdvertiser method, the system
-        # will automatically create a CM site.
-        # Removing sites from this list may cause DV360 creatives synced from CM to
-        # be deleted. At least one site must be specified.
+        # A list of CM sites whose placements will be synced to DV360 as creatives. If
+        # absent or empty in CreateAdvertiser method, the system will automatically
+        # create a CM site. Removing sites from this list may cause DV360 creatives
+        # synced from CM to be deleted. At least one site must be specified.
         # Corresponds to the JSON property `cmSyncableSiteIds`
         # @return [Array<Fixnum>]
         attr_accessor :cm_syncable_site_ids
@@ -2150,8 +1998,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :combined_audience_id
       
-        # Output only. The display name of the combined audience.
-        # .
+        # Output only. The display name of the combined audience. .
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2173,15 +2020,14 @@ module Google
         end
       end
       
-      # Details of combined audience group.
-      # All combined audience targeting settings are logically ‘OR’ of each other.
+      # Details of combined audience group. All combined audience targeting settings
+      # are logically ‘OR’ of each other.
       class CombinedAudienceGroup
         include Google::Apis::Core::Hashable
       
         # Required. All combined audience targeting settings in combined audience group.
-        # Repeated settings with same id will be ignored.
-        # The number of combined audience settings should be no more than five, error
-        # will be thrown otherwise.
+        # Repeated settings with same id will be ignored. The number of combined
+        # audience settings should be no more than five, error will be thrown otherwise.
         # Corresponds to the JSON property `settings`
         # @return [Array<Google::Apis::DisplayvideoV1::CombinedAudienceTargetingSetting>]
         attr_accessor :settings
@@ -2200,8 +2046,8 @@ module Google
       class CombinedAudienceTargetingSetting
         include Google::Apis::Core::Hashable
       
-        # Required. Combined audience id of combined audience targeting setting.
-        # This id is combined_audience_id.
+        # Required. Combined audience id of combined audience targeting setting. This id
+        # is combined_audience_id.
         # Corresponds to the JSON property `combinedAudienceId`
         # @return [Fixnum]
         attr_accessor :combined_audience_id
@@ -2217,11 +2063,8 @@ module Google
       end
       
       # Assigned content instream position targeting option details. This will be
-      # populated in the
-      # content_instream_position_details
-      # field when
-      # targeting_type is
-      # `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
+      # populated in the content_instream_position_details field when targeting_type
+      # is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
       class ContentInstreamPositionAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -2230,9 +2073,8 @@ module Google
         # @return [String]
         attr_accessor :content_instream_position
       
-        # Required. The targeting_option_id field when
-        # targeting_type is
-        # `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
+        # Required. The targeting_option_id field when targeting_type is `
+        # TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -2250,9 +2092,8 @@ module Google
       
       # Represents a targetable content instream position, which could be used by
       # video and audio ads. This will be populated in the
-      # content_instream_position_details
-      # field when targeting_type is
-      # `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
+      # content_instream_position_details field when targeting_type is `
+      # TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
       class ContentInstreamPositionTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -2272,11 +2113,8 @@ module Google
       end
       
       # Assigned content outstream position targeting option details. This will be
-      # populated in the
-      # content_outstream_position_details
-      # field when
-      # targeting_type is
-      # `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
+      # populated in the content_outstream_position_details field when targeting_type
+      # is `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
       class ContentOutstreamPositionAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -2285,9 +2123,8 @@ module Google
         # @return [String]
         attr_accessor :content_outstream_position
       
-        # Required. The targeting_option_id field when
-        # targeting_type is
-        # `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
+        # Required. The targeting_option_id field when targeting_type is `
+        # TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -2305,9 +2142,8 @@ module Google
       
       # Represents a targetable content outstream position, which could be used by
       # display and video ads. This will be populated in the
-      # content_outstream_position_details
-      # field when targeting_type is
-      # `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
+      # content_outstream_position_details field when targeting_type is `
+      # TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
       class ContentOutstreamPositionTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -2326,23 +2162,22 @@ module Google
         end
       end
       
-      # Settings that control how conversions are counted.
-      # All post-click conversions will be counted. A percentage value can be set
-      # for post-view conversions counting.
+      # Settings that control how conversions are counted. All post-click conversions
+      # will be counted. A percentage value can be set for post-view conversions
+      # counting.
       class ConversionCountingConfig
         include Google::Apis::Core::Hashable
       
-        # The Floodlight activity configs used to track conversions.
-        # The number of conversions counted is the sum of all of the conversions
-        # counted by all of the Floodlight activity IDs specified in this field.
+        # The Floodlight activity configs used to track conversions. The number of
+        # conversions counted is the sum of all of the conversions counted by all of the
+        # Floodlight activity IDs specified in this field.
         # Corresponds to the JSON property `floodlightActivityConfigs`
         # @return [Array<Google::Apis::DisplayvideoV1::TrackingFloodlightActivityConfig>]
         attr_accessor :floodlight_activity_configs
       
         # The percentage of post-view conversions to count, in millis (1/1000 of a
-        # percent). Must be between 0 and 100000 inclusive.
-        # For example, to track 50% of the post-click conversions, set a value of
-        # 50000.
+        # percent). Must be between 0 and 100000 inclusive. For example, to track 50% of
+        # the post-click conversions, set a value of 50000.
         # Corresponds to the JSON property `postViewCountPercentageMillis`
         # @return [Fixnum]
         attr_accessor :post_view_count_percentage_millis
@@ -2387,8 +2222,8 @@ module Google
       class CreateAssetRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The filename of the asset, including the file extension.
-        # The filename must be UTF-8 encoded with a maximum size of 240 bytes.
+        # Required. The filename of the asset, including the file extension. The
+        # filename must be UTF-8 encoded with a maximum size of 240 bytes.
         # Corresponds to the JSON property `filename`
         # @return [String]
         attr_accessor :filename
@@ -2478,10 +2313,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :partner_id
       
-        # Required. The SDF version of the downloaded file. If set to
-        # `SDF_VERSION_UNSPECIFIED`, this will default to the version specified by
-        # the advertiser or partner identified by `root_id`. An advertiser inherits
-        # its SDF version from its partner unless configured otherwise.
+        # Required. The SDF version of the downloaded file. If set to `
+        # SDF_VERSION_UNSPECIFIED`, this will default to the version specified by the
+        # advertiser or partner identified by `root_id`. An advertiser inherits its SDF
+        # version from its partner unless configured otherwise.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -2505,20 +2340,13 @@ module Google
       class Creative
         include Google::Apis::Core::Hashable
       
-        # Additional dimensions.
-        # Applicable when creative_type is one of:
-        # * `CREATIVE_TYPE_STANDARD`
-        # * `CREATIVE_TYPE_EXPANDABLE`
-        # * `CREATIVE_TYPE_NATIVE`
-        # * `CREATIVE_TYPE_TEMPLATED_APP_INSTALL`
-        # * `CREATIVE_TYPE_NATIVE_SITE_SQUARE`
-        # * `CREATIVE_TYPE_LIGHTBOX`
-        # * `CREATIVE_TYPE_NATIVE_APP_INSTALL`
-        # * `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE`
-        # * `CREATIVE_TYPE_PUBLISHER_HOSTED`
-        # If this field is specified, width_pixels and
-        # height_pixels are both required and must be
-        # greater than or equal to 0.
+        # Additional dimensions. Applicable when creative_type is one of: * `
+        # CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` * `CREATIVE_TYPE_NATIVE` *
+        # `CREATIVE_TYPE_TEMPLATED_APP_INSTALL` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `
+        # CREATIVE_TYPE_LIGHTBOX` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `
+        # CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_PUBLISHER_HOSTED` If
+        # this field is specified, width_pixels and height_pixels are both required and
+        # must be greater than or equal to 0.
         # Corresponds to the JSON property `additionalDimensions`
         # @return [Array<Google::Apis::DisplayvideoV1::Dimensions>]
         attr_accessor :additional_dimensions
@@ -2533,21 +2361,16 @@ module Google
         # @return [String]
         attr_accessor :appended_tag
       
-        # Required. Assets associated to this creative.
-        # Assets can be associated to the creative in one of following roles:
-        # * `ASSET_ROLE_UNSPECIFIED`
-        # * `ASSET_ROLE_MAIN`
-        # * `ASSET_ROLE_BACKUP`
-        # * `ASSET_ROLE_POLITE_LOAD`
+        # Required. Assets associated to this creative. Assets can be associated to the
+        # creative in one of following roles: * `ASSET_ROLE_UNSPECIFIED` * `
+        # ASSET_ROLE_MAIN` * `ASSET_ROLE_BACKUP` * `ASSET_ROLE_POLITE_LOAD`
         # Corresponds to the JSON property `assets`
         # @return [Array<Google::Apis::DisplayvideoV1::AssetAssociation>]
         attr_accessor :assets
       
         # Output only. The unique ID of the Campaign Manager placement associated with
-        # the
-        # creative.
-        # This field is only applicable for creatives that are synced from Campaign
-        # Manager.
+        # the creative. This field is only applicable for creatives that are synced from
+        # Campaign Manager.
         # Corresponds to the JSON property `cmPlacementId`
         # @return [Fixnum]
         attr_accessor :cm_placement_id
@@ -2557,34 +2380,28 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::CmTrackingAd]
         attr_accessor :cm_tracking_ad
       
-        # The IDs of companion creatives for a video creative.
-        # You can assign existing display creatives (with image or HTML5 assets)
-        # to serve surrounding the publisher's video player. Companions display
-        # around the video player while the video is playing and remain after the
-        # video has completed.
-        # Creatives contain additional dimensions
-        # can not be companion creatives.
-        # This field is only supported for following
-        # creative_type:
-        # * `CREATIVE_TYPE_AUDIO`
-        # * `CREATIVE_TYPE_VIDEO`
+        # The IDs of companion creatives for a video creative. You can assign existing
+        # display creatives (with image or HTML5 assets) to serve surrounding the
+        # publisher's video player. Companions display around the video player while the
+        # video is playing and remain after the video has completed. Creatives contain
+        # additional dimensions can not be companion creatives. This field is only
+        # supported for following creative_type: * `CREATIVE_TYPE_AUDIO` * `
+        # CREATIVE_TYPE_VIDEO`
         # Corresponds to the JSON property `companionCreativeIds`
         # @return [Array<Fixnum>]
         attr_accessor :companion_creative_ids
       
-        # Counter events for a rich media creative.
-        # Counters track the number of times that a user interacts with any part of a
-        # rich media creative in a specified way (mouse-overs, mouse-outs, clicks,
-        # taps, data loading, keyboard entries, etc.).
-        # Any event that can be captured in the creative can be recorded as a
-        # counter.
-        # Leave it empty or unset for creatives containing image assets only.
+        # Counter events for a rich media creative. Counters track the number of times
+        # that a user interacts with any part of a rich media creative in a specified
+        # way (mouse-overs, mouse-outs, clicks, taps, data loading, keyboard entries,
+        # etc.). Any event that can be captured in the creative can be recorded as a
+        # counter. Leave it empty or unset for creatives containing image assets only.
         # Corresponds to the JSON property `counterEvents`
         # @return [Array<Google::Apis::DisplayvideoV1::CounterEvent>]
         attr_accessor :counter_events
       
-        # Output only. The timestamp when the creative was created. Assigned by
-        # the system.
+        # Output only. The timestamp when the creative was created. Assigned by the
+        # system.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -2610,8 +2427,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::Dimensions]
         attr_accessor :dimensions
       
-        # Required. The display name of the creative.
-        # Must be UTF-8 encoded with a maximum size of 240 bytes.
+        # Required. The display name of the creative. Must be UTF-8 encoded with a
+        # maximum size of 240 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2622,46 +2439,36 @@ module Google
         attr_accessor :dynamic
         alias_method :dynamic?, :dynamic
       
-        # Required. Controls whether or not the creative can serve.
-        # Accepted values are:
-        # * `ENTITY_STATUS_ACTIVE`
-        # * `ENTITY_STATUS_ARCHIVED`
-        # * `ENTITY_STATUS_PAUSED`
+        # Required. Controls whether or not the creative can serve. Accepted values are:
+        # * `ENTITY_STATUS_ACTIVE` * `ENTITY_STATUS_ARCHIVED` * `ENTITY_STATUS_PAUSED`
         # Corresponds to the JSON property `entityStatus`
         # @return [String]
         attr_accessor :entity_status
       
-        # Required. Exit events for this creative.
-        # An exit (also known as a click tag) is any area in your creative that
-        # someone can click or tap to open an advertiser's landing page.
-        # Every creative must include at least one exit.
-        # You can add an exit to your creative in any of the following ways:
-        # * Use Google Web Designer's tap area.
-        # * Define a JavaScript variable called "clickTag".
-        # * Use the Enabler (Enabler.exit()) to track exits in rich media formats.
+        # Required. Exit events for this creative. An exit (also known as a click tag)
+        # is any area in your creative that someone can click or tap to open an
+        # advertiser's landing page. Every creative must include at least one exit. You
+        # can add an exit to your creative in any of the following ways: * Use Google
+        # Web Designer's tap area. * Define a JavaScript variable called "clickTag". *
+        # Use the Enabler (Enabler.exit()) to track exits in rich media formats.
         # Corresponds to the JSON property `exitEvents`
         # @return [Array<Google::Apis::DisplayvideoV1::ExitEvent>]
         attr_accessor :exit_events
       
-        # Optional. Indicates the creative will automatically expand on hover.
-        # Optional and only valid for third-party expandable creatives.
-        # Third-party expandable creatives are creatives with following hosting
-        # source:
-        # * `HOSTING_SOURCE_THIRD_PARTY`
-        # combined with following creative_type:
-        # * `CREATIVE_TYPE_EXPANDABLE`
+        # Optional. Indicates the creative will automatically expand on hover. Optional
+        # and only valid for third-party expandable creatives. Third-party expandable
+        # creatives are creatives with following hosting source: * `
+        # HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `
+        # CREATIVE_TYPE_EXPANDABLE`
         # Corresponds to the JSON property `expandOnHover`
         # @return [Boolean]
         attr_accessor :expand_on_hover
         alias_method :expand_on_hover?, :expand_on_hover
       
-        # Optional. Specifies the expanding direction of the creative.
-        # Required and only valid for third-party expandable creatives.
-        # Third-party expandable creatives are creatives with following hosting
-        # source:
-        # * `HOSTING_SOURCE_THIRD_PARTY`
-        # combined with following creative_type:
-        # * `CREATIVE_TYPE_EXPANDABLE`
+        # Optional. Specifies the expanding direction of the creative. Required and only
+        # valid for third-party expandable creatives. Third-party expandable creatives
+        # are creatives with following hosting source: * `HOSTING_SOURCE_THIRD_PARTY`
+        # combined with following creative_type: * `CREATIVE_TYPE_EXPANDABLE`
         # Corresponds to the JSON property `expandingDirection`
         # @return [String]
         attr_accessor :expanding_direction
@@ -2672,61 +2479,47 @@ module Google
         attr_accessor :hosting_source
       
         # Output only. Indicates the third-party VAST tag creative requires HTML5 Video
-        # support.
-        # Output only and only valid for third-party VAST tag creatives.
-        # Third-party VAST tag creatives are creatives with following
-        # hosting_source:
-        # * `HOSTING_SOURCE_THIRD_PARTY`
-        # combined with following creative_type:
-        # * `CREATIVE_TYPE_VIDEO`
+        # support. Output only and only valid for third-party VAST tag creatives. Third-
+        # party VAST tag creatives are creatives with following hosting_source: * `
+        # HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `
+        # CREATIVE_TYPE_VIDEO`
         # Corresponds to the JSON property `html5Video`
         # @return [Boolean]
         attr_accessor :html5_video
         alias_method :html5_video?, :html5_video
       
-        # Indicates whether Integral Ad Science (IAS) campaign monitoring is enabled.
-        # To enable this for the creative, make sure the
-        # Advertiser.creative_config.ias_client_id
-        # has been set to your IAS client ID.
+        # Indicates whether Integral Ad Science (IAS) campaign monitoring is enabled. To
+        # enable this for the creative, make sure the Advertiser.creative_config.
+        # ias_client_id has been set to your IAS client ID.
         # Corresponds to the JSON property `iasCampaignMonitoring`
         # @return [Boolean]
         attr_accessor :ias_campaign_monitoring
         alias_method :ias_campaign_monitoring?, :ias_campaign_monitoring
       
-        # ID information used to link this creative to an external system.
-        # Must be UTF-8 encoded with a length of no more than 10,000 characters.
+        # ID information used to link this creative to an external system. Must be UTF-8
+        # encoded with a length of no more than 10,000 characters.
         # Corresponds to the JSON property `integrationCode`
         # @return [String]
         attr_accessor :integration_code
       
-        # JavaScript measurement URL from supported third-party verification
-        # providers (ComScore, DoubleVerify, IAS, Moat). HTML script tags are not
-        # supported.
-        # This field is only supported in following
-        # creative_type:
-        # * `CREATIVE_TYPE_NATIVE`
-        # * `CREATIVE_TYPE_NATIVE_SITE_SQUARE`
-        # * `CREATIVE_TYPE_NATIVE_APP_INSTALL`
-        # * `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE`
-        # * `CREATIVE_TYPE_NATIVE_VIDEO`
+        # JavaScript measurement URL from supported third-party verification providers (
+        # ComScore, DoubleVerify, IAS, Moat). HTML script tags are not supported. This
+        # field is only supported in following creative_type: * `CREATIVE_TYPE_NATIVE` *
+        # `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `
+        # CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
         # Corresponds to the JSON property `jsTrackerUrl`
         # @return [String]
         attr_accessor :js_tracker_url
       
-        # Output only. The IDs of the line items this creative is associated with.
-        # To associate a creative to a line item, use
-        # LineItem.creative_ids instead.
+        # Output only. The IDs of the line items this creative is associated with. To
+        # associate a creative to a line item, use LineItem.creative_ids instead.
         # Corresponds to the JSON property `lineItemIds`
         # @return [Array<Fixnum>]
         attr_accessor :line_item_ids
       
-        # Output only. Media duration of the creative.
-        # Applicable when creative_type
-        # is one of:
-        # * `CREATIVE_TYPE_VIDEO`
-        # * `CREATIVE_TYPE_AUDIO`
-        # * `CREATIVE_TYPE_NATIVE_VIDEO`
-        # * `CREATIVE_TYPE_PUBLISHER_HOSTED`
+        # Output only. Media duration of the creative. Applicable when creative_type is
+        # one of: * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_AUDIO` * `
+        # CREATIVE_TYPE_NATIVE_VIDEO` * `CREATIVE_TYPE_PUBLISHER_HOSTED`
         # Corresponds to the JSON property `mediaDuration`
         # @return [String]
         attr_accessor :media_duration
@@ -2736,8 +2529,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # User notes for this creative.
-        # Must be UTF-8 encoded with a length of no more than 20,000 characters.
+        # User notes for this creative. Must be UTF-8 encoded with a length of no more
+        # than 20,000 characters.
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
@@ -2753,52 +2546,37 @@ module Google
         attr_accessor :progress_offset
       
         # Optional. Indicates that the creative relies on HTML5 to render properly.
-        # Optional and only valid for third-party tag creatives.
-        # Third-party tag creatives are creatives with following
-        # hosting_source:
-        # * `HOSTING_SOURCE_THIRD_PARTY`
-        # combined with following creative_type:
-        # * `CREATIVE_TYPE_STANDARD`
-        # * `CREATIVE_TYPE_EXPANDABLE`
+        # Optional and only valid for third-party tag creatives. Third-party tag
+        # creatives are creatives with following hosting_source: * `
+        # HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `
+        # CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE`
         # Corresponds to the JSON property `requireHtml5`
         # @return [Boolean]
         attr_accessor :require_html5
         alias_method :require_html5?, :require_html5
       
         # Optional. Indicates that the creative requires MRAID (Mobile Rich Media Ad
-        # Interface
-        # Definitions system).
-        # Set this if the creative relies on mobile gestures for interactivity, such
-        # as swiping or tapping.
-        # Optional and only valid for third-party tag creatives.
-        # Third-party tag creatives are creatives with following
-        # hosting_source:
-        # * `HOSTING_SOURCE_THIRD_PARTY`
-        # combined with following creative_type:
-        # * `CREATIVE_TYPE_STANDARD`
-        # * `CREATIVE_TYPE_EXPANDABLE`
+        # Interface Definitions system). Set this if the creative relies on mobile
+        # gestures for interactivity, such as swiping or tapping. Optional and only
+        # valid for third-party tag creatives. Third-party tag creatives are creatives
+        # with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with
+        # following creative_type: * `CREATIVE_TYPE_STANDARD` * `
+        # CREATIVE_TYPE_EXPANDABLE`
         # Corresponds to the JSON property `requireMraid`
         # @return [Boolean]
         attr_accessor :require_mraid
         alias_method :require_mraid?, :require_mraid
       
         # Optional. Indicates that the creative will wait for a return ping for
-        # attribution.
-        # Only valid when using a Campaign Manager tracking ad with a third-party ad
-        # server parameter and the $`DC_DBM_TOKEN` macro.
-        # Optional and only valid for third-party tag creatives or third-party VAST
-        # tag creatives.
-        # Third-party tag creatives are creatives with following
-        # hosting_source:
-        # * `HOSTING_SOURCE_THIRD_PARTY`
-        # combined with following creative_type:
-        # * `CREATIVE_TYPE_STANDARD`
-        # * `CREATIVE_TYPE_EXPANDABLE`
-        # Third-party VAST tag creatives are creatives with following
-        # hosting_source:
-        # * `HOSTING_SOURCE_THIRD_PARTY`
-        # combined with following creative_type:
-        # * `CREATIVE_TYPE_VIDEO`
+        # attribution. Only valid when using a Campaign Manager tracking ad with a third-
+        # party ad server parameter and the $`DC_DBM_TOKEN` macro. Optional and only
+        # valid for third-party tag creatives or third-party VAST tag creatives. Third-
+        # party tag creatives are creatives with following hosting_source: * `
+        # HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `
+        # CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` Third-party VAST tag
+        # creatives are creatives with following hosting_source: * `
+        # HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `
+        # CREATIVE_TYPE_VIDEO`
         # Corresponds to the JSON property `requirePingForAttribution`
         # @return [Boolean]
         attr_accessor :require_ping_for_attribution
@@ -2814,77 +2592,57 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::AudioVideoOffset]
         attr_accessor :skip_offset
       
-        # Whether the user can choose to skip a video creative.
-        # This field is only supported for the following
-        # creative_type:
-        # * `CREATIVE_TYPE_VIDEO`
+        # Whether the user can choose to skip a video creative. This field is only
+        # supported for the following creative_type: * `CREATIVE_TYPE_VIDEO`
         # Corresponds to the JSON property `skippable`
         # @return [Boolean]
         attr_accessor :skippable
         alias_method :skippable?, :skippable
       
-        # Optional. The original third-party tag used for the creative.
-        # Required and only valid for third-party tag creatives.
-        # Third-party tag creatives are creatives with following
-        # hosting_source:
-        # * `HOSTING_SOURCE_THIRD_PARTY`
-        # combined with following creative_type:
-        # * `CREATIVE_TYPE_STANDARD`
-        # * `CREATIVE_TYPE_EXPANDABLE`
+        # Optional. The original third-party tag used for the creative. Required and
+        # only valid for third-party tag creatives. Third-party tag creatives are
+        # creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY`
+        # combined with following creative_type: * `CREATIVE_TYPE_STANDARD` * `
+        # CREATIVE_TYPE_EXPANDABLE`
         # Corresponds to the JSON property `thirdPartyTag`
         # @return [String]
         attr_accessor :third_party_tag
       
-        # Tracking URLs from third parties to track interactions with a video
-        # creative.
-        # This field is only supported for the following
-        # creative_type:
-        # * `CREATIVE_TYPE_AUDIO`
-        # * `CREATIVE_TYPE_VIDEO`
-        # * `CREATIVE_TYPE_NATIVE_VIDEO`
+        # Tracking URLs from third parties to track interactions with a video creative.
+        # This field is only supported for the following creative_type: * `
+        # CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO`
         # Corresponds to the JSON property `thirdPartyUrls`
         # @return [Array<Google::Apis::DisplayvideoV1::ThirdPartyUrl>]
         attr_accessor :third_party_urls
       
-        # Timer custom events for a rich media creative.
-        # Timers track the time during which a user views and interacts with a
-        # specified part of a rich media creative.
-        # A creative can have multiple timer events, each timed independently.
+        # Timer custom events for a rich media creative. Timers track the time during
+        # which a user views and interacts with a specified part of a rich media
+        # creative. A creative can have multiple timer events, each timed independently.
         # Leave it empty or unset for creatives containing image assets only.
         # Corresponds to the JSON property `timerEvents`
         # @return [Array<Google::Apis::DisplayvideoV1::TimerEvent>]
         attr_accessor :timer_events
       
         # Tracking URLs for analytics providers or third-party ad technology vendors.
-        # The URLs must start with https (except on inventory that doesn't require
-        # SSL compliance).
-        # If using macros in your URL, use only macros supported by Display & Video
-        # 360.
-        # Standard URLs only, no IMG or SCRIPT tags.
-        # This field is only supported in following
-        # creative_type:
-        # * `CREATIVE_TYPE_NATIVE`
-        # * `CREATIVE_TYPE_NATIVE_SITE_SQUARE`
-        # * `CREATIVE_TYPE_NATIVE_APP_INSTALL`
-        # * `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE`
-        # * `CREATIVE_TYPE_NATIVE_VIDEO`
+        # The URLs must start with https (except on inventory that doesn't require SSL
+        # compliance). If using macros in your URL, use only macros supported by Display
+        # & Video 360. Standard URLs only, no IMG or SCRIPT tags. This field is only
+        # supported in following creative_type: * `CREATIVE_TYPE_NATIVE` * `
+        # CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `
+        # CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO`
         # Corresponds to the JSON property `trackerUrls`
         # @return [Array<String>]
         attr_accessor :tracker_urls
       
-        # Output only. Audio/Video transcodes.
-        # Display & Video 360 transcodes the main asset into a number of alternative
-        # versions that use different file formats or have different properties
-        # (resolution, audio bit rate, and video bit rate), each designed for
-        # specific video players or bandwidths.
-        # These transcodes give a publisher's system more options to choose from for
-        # each impression on your video and ensures that the appropriate file serves
-        # based on the viewer’s connection and screen size.
-        # This field is only supported in following
-        # creative_type:
-        # * `CREATIVE_TYPE_VIDEO`
-        # * `CREATIVE_TYPE_NATIVE_VIDEO`
-        # * `CREATIVE_TYPE_AUDIO`
+        # Output only. Audio/Video transcodes. Display & Video 360 transcodes the main
+        # asset into a number of alternative versions that use different file formats or
+        # have different properties (resolution, audio bit rate, and video bit rate),
+        # each designed for specific video players or bandwidths. These transcodes give
+        # a publisher's system more options to choose from for each impression on your
+        # video and ensures that the appropriate file serves based on the viewer’s
+        # connection and screen size. This field is only supported in following
+        # creative_type: * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO` * `
+        # CREATIVE_TYPE_AUDIO`
         # Corresponds to the JSON property `transcodes`
         # @return [Array<Google::Apis::DisplayvideoV1::Transcode>]
         attr_accessor :transcodes
@@ -2895,32 +2653,26 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::UniversalAdId]
         attr_accessor :universal_ad_id
       
-        # Output only. The timestamp when the creative was last updated. Assigned by
-        # the system.
+        # Output only. The timestamp when the creative was last updated. Assigned by the
+        # system.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
         # Optional. The URL of the VAST tag for a third-party VAST tag creative.
-        # Required and only valid for third-party VAST tag creatives.
-        # Third-party VAST tag creatives are creatives with following
-        # hosting_source:
-        # * `HOSTING_SOURCE_THIRD_PARTY`
-        # combined with following creative_type:
-        # * `CREATIVE_TYPE_VIDEO`
+        # Required and only valid for third-party VAST tag creatives. Third-party VAST
+        # tag creatives are creatives with following hosting_source: * `
+        # HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `
+        # CREATIVE_TYPE_VIDEO`
         # Corresponds to the JSON property `vastTagUrl`
         # @return [String]
         attr_accessor :vast_tag_url
       
         # Output only. Indicates the third-party VAST tag creative requires VPAID (
-        # Digital Video
-        # Player-Ad Interface).
-        # Output only and only valid for third-party VAST tag creatives.
-        # Third-party VAST tag creatives are creatives with following
-        # hosting_source:
-        # * `HOSTING_SOURCE_THIRD_PARTY`
-        # combined with following creative_type:
-        # * `CREATIVE_TYPE_VIDEO`
+        # Digital Video Player-Ad Interface). Output only and only valid for third-party
+        # VAST tag creatives. Third-party VAST tag creatives are creatives with
+        # following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with
+        # following creative_type: * `CREATIVE_TYPE_VIDEO`
         # Corresponds to the JSON property `vpaid`
         # @return [Boolean]
         attr_accessor :vpaid
@@ -3021,8 +2773,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :custom_list_id
       
-        # Output only. The display name of the custom list.
-        # .
+        # Output only. The display name of the custom list. .
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3044,13 +2795,13 @@ module Google
         end
       end
       
-      # Details of custom list group.
-      # All custom list targeting settings are logically ‘OR’ of each other.
+      # Details of custom list group. All custom list targeting settings are logically
+      # ‘OR’ of each other.
       class CustomListGroup
         include Google::Apis::Core::Hashable
       
-        # Required. All custom list targeting settings in custom list group.
-        # Repeated settings with same id will be ignored.
+        # Required. All custom list targeting settings in custom list group. Repeated
+        # settings with same id will be ignored.
         # Corresponds to the JSON property `settings`
         # @return [Array<Google::Apis::DisplayvideoV1::CustomListTargetingSetting>]
         attr_accessor :settings
@@ -3069,8 +2820,8 @@ module Google
       class CustomListTargetingSetting
         include Google::Apis::Core::Hashable
       
-        # Required. Custom id of custom list targeting setting.
-        # This id is custom_list_id.
+        # Required. Custom id of custom list targeting setting. This id is
+        # custom_list_id.
         # Corresponds to the JSON property `customListId`
         # @return [Fixnum]
         attr_accessor :custom_list_id
@@ -3087,30 +2838,29 @@ module Google
       
       # Represents a whole or partial calendar date, e.g. a birthday. The time of day
       # and time zone are either specified elsewhere or are not significant. The date
-      # is relative to the Proleptic Gregorian Calendar. This can represent:
-      # * A full date, with non-zero year, month and day values
-      # * A month and day value, with a zero year, e.g. an anniversary
-      # * A year on its own, with zero month and day values
-      # * A year and month value, with a zero day, e.g. a credit card expiration date
-      # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+      # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+      # date, with non-zero year, month and day values * A month and day value, with a
+      # zero year, e.g. an anniversary * A year on its own, with zero month and day
+      # values * A year and month value, with a zero day, e.g. a credit card
+      # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+      # Timestamp`.
       class Date
         include Google::Apis::Core::Hashable
       
-        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        # if specifying a year by itself or a year and month where the day is not
+        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+        # specifying a year by itself or a year and month where the day is not
         # significant.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a
-        # month and day.
+        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        # and day.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
       
-        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-        # a year.
+        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
         # Corresponds to the JSON property `year`
         # @return [Fixnum]
         attr_accessor :year
@@ -3133,24 +2883,24 @@ module Google
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::DisplayvideoV1::Date]
         attr_accessor :end_date
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::DisplayvideoV1::Date]
         attr_accessor :start_date
@@ -3167,9 +2917,8 @@ module Google
       end
       
       # Representation of a segment of time defined on a specific day of the week and
-      # with a start and end time.
-      # The time represented by `start_hour` must be before the time represented by
-      # `end_hour`.
+      # with a start and end time. The time represented by `start_hour` must be before
+      # the time represented by `end_hour`.
       class DayAndTimeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -3179,22 +2928,19 @@ module Google
         attr_accessor :day_of_week
       
         # Required. The end hour for day and time targeting. Must be between 1 (1 hour
-        # after
-        # start of day) and 24 (end of day).
+        # after start of day) and 24 (end of day).
         # Corresponds to the JSON property `endHour`
         # @return [Fixnum]
         attr_accessor :end_hour
       
         # Required. The start hour for day and time targeting. Must be between 0 (start
-        # of day)
-        # and 23 (1 hour before end of day).
+        # of day) and 23 (1 hour before end of day).
         # Corresponds to the JSON property `startHour`
         # @return [Fixnum]
         attr_accessor :start_hour
       
         # Required. The mechanism used to determine which timezone to use for this day
-        # and time
-        # targeting setting.
+        # and time targeting setting.
         # Corresponds to the JSON property `timeZoneResolution`
         # @return [String]
         attr_accessor :time_zone_resolution
@@ -3239,11 +2985,8 @@ module Google
       end
       
       # Assigned device make and model targeting option details. This will be
-      # populated in the
-      # device_make_model_details
-      # field when
-      # targeting_type is
-      # `TARGETING_TYPE_DEVICE_MAKE_MODEL`.
+      # populated in the device_make_model_details field when targeting_type is `
+      # TARGETING_TYPE_DEVICE_MAKE_MODEL`.
       class DeviceMakeModelAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -3258,9 +3001,8 @@ module Google
         attr_accessor :negative
         alias_method :negative?, :negative
       
-        # Required. The targeting_option_id field when
-        # targeting_type is
-        # `TARGETING_TYPE_DEVICE_MAKE_MODEL`.
+        # Required. The targeting_option_id field when targeting_type is `
+        # TARGETING_TYPE_DEVICE_MAKE_MODEL`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -3278,10 +3020,8 @@ module Google
       end
       
       # Represents a targetable device make and model. This will be populated in the
-      # device_make_model_details
-      # field of a TargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_DEVICE_MAKE_MODEL`.
+      # device_make_model_details field of a TargetingOption when targeting_type is `
+      # TARGETING_TYPE_DEVICE_MAKE_MODEL`.
       class DeviceMakeModelTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -3300,10 +3040,9 @@ module Google
         end
       end
       
-      # Targeting details for device type. This will be
-      # populated in the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_DEVICE_TYPE`.
+      # Targeting details for device type. This will be populated in the details field
+      # of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_DEVICE_TYPE`.
       class DeviceTypeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -3329,9 +3068,8 @@ module Google
       end
       
       # Represents a targetable device type. This will be populated in the
-      # device_type_details field of a
-      # TargetingOption when targeting_type is
-      # `TARGETING_TYPE_DEVICE_TYPE`.
+      # device_type_details field of a TargetingOption when targeting_type is `
+      # TARGETING_TYPE_DEVICE_TYPE`.
       class DeviceTypeTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -3350,10 +3088,9 @@ module Google
         end
       end
       
-      # Targeting details for digital content label. This will be
-      # populated in the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`.
+      # Targeting details for digital content label. This will be populated in the
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`.
       class DigitalContentLabelAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -3379,11 +3116,8 @@ module Google
       end
       
       # Represents a targetable digital content label rating tier. This will be
-      # populated in the
-      # digital_content_label_details
-      # field of the TargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`.
+      # populated in the digital_content_label_details field of the TargetingOption
+      # when targeting_type is `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`.
       class DigitalContentLabelTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -3589,8 +3323,7 @@ module Google
       class DoubleVerifyVideoViewability
         include Google::Apis::Core::Hashable
       
-        # Target inventory to maximize impressions with 400x300 or greater player
-        # size.
+        # Target inventory to maximize impressions with 400x300 or greater player size.
         # Corresponds to the JSON property `playerImpressionRate`
         # @return [String]
         attr_accessor :player_impression_rate
@@ -3617,13 +3350,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -3636,10 +3367,9 @@ module Google
         end
       end
       
-      # Assigned environment targeting option details. This will be populated
-      # in the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_ENVIRONMENT`.
+      # Assigned environment targeting option details. This will be populated in the
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_ENVIRONMENT`.
       class EnvironmentAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -3648,9 +3378,9 @@ module Google
         # @return [String]
         attr_accessor :environment
       
-        # Required. The targeting_option_id of a
-        # TargetingOption of type `TARGETING_TYPE_ENVIRONMENT` (e.g., "508010"
-        # for targeting the `ENVIRONMENT_WEB_OPTIMIZED` option).
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_ENVIRONMENT` (e.g., "508010" for targeting the `
+        # ENVIRONMENT_WEB_OPTIMIZED` option).
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -3667,9 +3397,8 @@ module Google
       end
       
       # Represents a targetable environment. This will be populated in the
-      # environment_details field of a
-      # TargetingOption when targeting_type is
-      # `TARGETING_TYPE_ENVIRONMENT`.
+      # environment_details field of a TargetingOption when targeting_type is `
+      # TARGETING_TYPE_ENVIRONMENT`.
       class EnvironmentTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -3688,15 +3417,14 @@ module Google
         end
       end
       
-      # Details for assigned exchange targeting option. This will be populated in
-      # the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_EXCHANGE`.
+      # Details for assigned exchange targeting option. This will be populated in the
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_EXCHANGE`.
       class ExchangeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Required. The targeting_option_id of a
-        # TargetingOption of type `TARGETING_TYPE_EXCHANGE`.
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_EXCHANGE`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -3737,10 +3465,8 @@ module Google
       end
       
       # Represents a targetable exchange. This will be populated in the
-      # exchange_details field
-      # of a TargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_EXCHANGE`.
+      # exchange_details field of a TargetingOption when targeting_type is `
+      # TARGETING_TYPE_EXCHANGE`.
       class ExchangeTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -3763,15 +3489,15 @@ module Google
       class ExitEvent
         include Google::Apis::Core::Hashable
       
-        # The name of the click tag of the exit event.
-        # The name must be unique within one creative.
-        # Leave it empty or unset for creatives containing image assets only.
+        # The name of the click tag of the exit event. The name must be unique within
+        # one creative. Leave it empty or unset for creatives containing image assets
+        # only.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The name used to identify this event in reports.
-        # Leave it empty or unset for creatives containing image assets only.
+        # The name used to identify this event in reports. Leave it empty or unset for
+        # creatives containing image assets only.
         # Corresponds to the JSON property `reportingName`
         # @return [String]
         attr_accessor :reporting_name
@@ -3781,10 +3507,8 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Required. The click through URL of the exit event.
-        # This is required when type is:
-        # * `EXIT_EVENT_TYPE_DEFAULT`
-        # * `EXIT_EVENT_TYPE_BACKUP`
+        # Required. The click through URL of the exit event. This is required when type
+        # is: * `EXIT_EVENT_TYPE_DEFAULT` * `EXIT_EVENT_TYPE_BACKUP`
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -3802,19 +3526,16 @@ module Google
         end
       end
       
-      # Describes a first or third party audience list used for targeting.
-      # First party audiences are created via usage of client data.
-      # Third party audiences are provided by Third Party data providers and can only
-      # be licensed to customers.
+      # Describes a first or third party audience list used for targeting. First party
+      # audiences are created via usage of client data. Third party audiences are
+      # provided by Third Party data providers and can only be licensed to customers.
       class FirstAndThirdPartyAudience
         include Google::Apis::Core::Hashable
       
         # Output only. The estimated audience size for the Display network in the past
-        # month.
-        # If the size is less than 1000, the number will be hidden and 0 will be
-        # returned due to privacy reasons. Otherwise, the number will be rounded off
-        # to two significant digits.
-        # Only returned in GET request.
+        # month. If the size is less than 1000, the number will be hidden and 0 will be
+        # returned due to privacy reasons. Otherwise, the number will be rounded off to
+        # two significant digits. Only returned in GET request.
         # Corresponds to the JSON property `activeDisplayAudienceSize`
         # @return [Fixnum]
         attr_accessor :active_display_audience_size
@@ -3829,47 +3550,43 @@ module Google
         # @return [String]
         attr_accessor :audience_type
       
-        # The user-provided description of the audience.
-        # Only applicable to first party audiences.
+        # The user-provided description of the audience. Only applicable to first party
+        # audiences.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Output only. The estimated audience size for the Display network.
-        # If the size is less than 1000, the number will be hidden and 0 will be
-        # returned due to privacy reasons. Otherwise, the number will be rounded off
-        # to two significant digits.
-        # Only returned in GET request.
+        # Output only. The estimated audience size for the Display network. If the size
+        # is less than 1000, the number will be hidden and 0 will be returned due to
+        # privacy reasons. Otherwise, the number will be rounded off to two significant
+        # digits. Only returned in GET request.
         # Corresponds to the JSON property `displayAudienceSize`
         # @return [Fixnum]
         attr_accessor :display_audience_size
       
-        # Output only. The estimated desktop audience size in Display network.
-        # If the size is less than 1000, the number will be hidden and 0 will be
-        # returned due to privacy reasons. Otherwise, the number will be rounded off
-        # to two significant digits.
-        # Only applicable to first party audiences.
-        # Only returned in GET request.
+        # Output only. The estimated desktop audience size in Display network. If the
+        # size is less than 1000, the number will be hidden and 0 will be returned due
+        # to privacy reasons. Otherwise, the number will be rounded off to two
+        # significant digits. Only applicable to first party audiences. Only returned in
+        # GET request.
         # Corresponds to the JSON property `displayDesktopAudienceSize`
         # @return [Fixnum]
         attr_accessor :display_desktop_audience_size
       
-        # Output only. The estimated mobile app audience size in Display network.
-        # If the size is less than 1000, the number will be hidden and 0 will be
-        # returned due to privacy reasons. Otherwise, the number will be rounded off
-        # to two significant digits.
-        # Only applicable to first party audiences.
-        # Only returned in GET request.
+        # Output only. The estimated mobile app audience size in Display network. If the
+        # size is less than 1000, the number will be hidden and 0 will be returned due
+        # to privacy reasons. Otherwise, the number will be rounded off to two
+        # significant digits. Only applicable to first party audiences. Only returned in
+        # GET request.
         # Corresponds to the JSON property `displayMobileAppAudienceSize`
         # @return [Fixnum]
         attr_accessor :display_mobile_app_audience_size
       
-        # Output only. The estimated mobile web audience size in Display network.
-        # If the size is less than 1000, the number will be hidden and 0 will be
-        # returned due to privacy reasons. Otherwise, the number will be rounded off
-        # to two significant digits.
-        # Only applicable to first party audiences.
-        # Only returned in GET request.
+        # Output only. The estimated mobile web audience size in Display network. If the
+        # size is less than 1000, the number will be hidden and 0 will be returned due
+        # to privacy reasons. Otherwise, the number will be rounded off to two
+        # significant digits. Only applicable to first party audiences. Only returned in
+        # GET request.
         # Corresponds to the JSON property `displayMobileWebAudienceSize`
         # @return [Fixnum]
         attr_accessor :display_mobile_web_audience_size
@@ -3880,8 +3597,7 @@ module Google
         attr_accessor :display_name
       
         # Output only. The unique ID of the first and third party audience. Assigned by
-        # the
-        # system.
+        # the system.
         # Corresponds to the JSON property `firstAndThirdPartyAudienceId`
         # @return [Fixnum]
         attr_accessor :first_and_third_party_audience_id
@@ -3891,19 +3607,16 @@ module Google
         # @return [String]
         attr_accessor :first_and_third_party_audience_type
       
-        # Output only. The estimated audience size for Gmail network.
-        # If the size is less than 1000, the number will be hidden and 0 will be
-        # returned due to privacy reasons. Otherwise, the number will be rounded off
-        # to two significant digits.
-        # Only applicable to first party audiences.
-        # Only returned in GET request.
+        # Output only. The estimated audience size for Gmail network. If the size is
+        # less than 1000, the number will be hidden and 0 will be returned due to
+        # privacy reasons. Otherwise, the number will be rounded off to two significant
+        # digits. Only applicable to first party audiences. Only returned in GET request.
         # Corresponds to the JSON property `gmailAudienceSize`
         # @return [Fixnum]
         attr_accessor :gmail_audience_size
       
         # The duration in days that an entry remains in the audience after the
-        # qualifying event.
-        # Only applicable to first party audiences.
+        # qualifying event. Only applicable to first party audiences.
         # Corresponds to the JSON property `membershipDurationDays`
         # @return [Fixnum]
         attr_accessor :membership_duration_days
@@ -3913,12 +3626,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The estimated audience size for YouTube network.
-        # If the size is less than 1000, the number will be hidden and 0 will be
-        # returned due to privacy reasons. Otherwise, the number will be rounded off
-        # to two significant digits.
-        # Only applicable to first party audiences.
-        # Only returned in GET request.
+        # Output only. The estimated audience size for YouTube network. If the size is
+        # less than 1000, the number will be hidden and 0 will be returned due to
+        # privacy reasons. Otherwise, the number will be rounded off to two significant
+        # digits. Only applicable to first party audiences. Only returned in GET request.
         # Corresponds to the JSON property `youtubeAudienceSize`
         # @return [Fixnum]
         attr_accessor :youtube_audience_size
@@ -3947,15 +3658,13 @@ module Google
         end
       end
       
-      # Details of first and third party audience group.
-      # All first and third party audience targeting settings are logically ‘OR’ of
-      # each other.
+      # Details of first and third party audience group. All first and third party
+      # audience targeting settings are logically ‘OR’ of each other.
       class FirstAndThirdPartyAudienceGroup
         include Google::Apis::Core::Hashable
       
         # Required. All first and third party audience targeting settings in first and
-        # third party audience group.
-        # Repeated settings with same id are not allowed.
+        # third party audience group. Repeated settings with same id are not allowed.
         # Corresponds to the JSON property `settings`
         # @return [Array<Google::Apis::DisplayvideoV1::FirstAndThirdPartyAudienceTargetingSetting>]
         attr_accessor :settings
@@ -3975,18 +3684,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. First and third party audience id of the first and third party
-        # audience
-        # targeting setting. This id is
-        # first_and_third_party_audience_id.
+        # audience targeting setting. This id is first_and_third_party_audience_id.
         # Corresponds to the JSON property `firstAndThirdPartyAudienceId`
         # @return [Fixnum]
         attr_accessor :first_and_third_party_audience_id
       
-        # The recency of the first and third party audience targeting setting.
-        # Only applicable to first party audiences, otherwise
-        # will be ignored. For more info, refer to
-        # https://support.google.com/displayvideo/answer/2949947#recency
-        # When unspecified, no recency limit will be used.
+        # The recency of the first and third party audience targeting setting. Only
+        # applicable to first party audiences, otherwise will be ignored. For more info,
+        # refer to https://support.google.com/displayvideo/answer/2949947#recency When
+        # unspecified, no recency limit will be used.
         # Corresponds to the JSON property `recency`
         # @return [String]
         attr_accessor :recency
@@ -4006,14 +3712,11 @@ module Google
       class FixedBidStrategy
         include Google::Apis::Core::Hashable
       
-        # The fixed bid amount, in micros of the advertiser's currency.
-        # For insertion order entity,
-        # bid_amount_micros should be set as 0.
-        # For line item entity,
-        # bid_amount_micros must be greater
-        # than or equal to billable unit of the given currency and smaller than or
-        # equal to the upper limit 1000000000.
-        # For example, 1500000 represents 1.5 standard units of the currency.
+        # The fixed bid amount, in micros of the advertiser's currency. For insertion
+        # order entity, bid_amount_micros should be set as 0. For line item entity,
+        # bid_amount_micros must be greater than or equal to billable unit of the given
+        # currency and smaller than or equal to the upper limit 1000000000. For example,
+        # 1500000 represents 1.5 standard units of the currency.
         # Corresponds to the JSON property `bidAmountMicros`
         # @return [Fixnum]
         attr_accessor :bid_amount_micros
@@ -4037,26 +3740,19 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::ActiveViewVideoViewabilityMetricConfig]
         attr_accessor :active_view_config
       
-        # User-defined custom variables owned by the Floodlight group.
-        # Use custom Floodlight variables to create reporting data that is tailored
-        # to your unique business needs. Custom Floodlight variables use the keys
-        # `U1=`, `U2=`, and so on, and can take any values that you choose to pass to
-        # them. You can use them to track virtually any type of data that you collect
-        # about your customers, such as the genre of movie that a customer purchases,
-        # the country to which the item is shipped, and so on.
-        # Custom Floodlight variables may not be used to pass any data that could be
-        # used or recognized as personally identifiable information (PII).
-        # Example:
-        # `custom_variables `
-        # fields `
-        # "U1": value ` number_value: 123.4 `,
-        # "U2": value ` string_value: "MyVariable2" `,
-        # "U3": value ` string_value: "MyVariable3" `
-        # `
-        # ``
-        # Acceptable values for keys are "U1" through "U100", inclusive. String
-        # values must be less than 64 characters long, and cannot contain the
-        # following characters: `"<>`.
+        # User-defined custom variables owned by the Floodlight group. Use custom
+        # Floodlight variables to create reporting data that is tailored to your unique
+        # business needs. Custom Floodlight variables use the keys `U1=`, `U2=`, and so
+        # on, and can take any values that you choose to pass to them. You can use them
+        # to track virtually any type of data that you collect about your customers,
+        # such as the genre of movie that a customer purchases, the country to which the
+        # item is shipped, and so on. Custom Floodlight variables may not be used to
+        # pass any data that could be used or recognized as personally identifiable
+        # information (PII). Example: `custom_variables ` fields ` "U1": value `
+        # number_value: 123.4 `, "U2": value ` string_value: "MyVariable2" `, "U3":
+        # value ` string_value: "MyVariable3" ` ` `` Acceptable values for keys are "U1"
+        # through "U100", inclusive. String values must be less than 64 characters long,
+        # and cannot contain the following characters: `"<>`.
         # Corresponds to the JSON property `customVariables`
         # @return [Hash<String,Object>]
         attr_accessor :custom_variables
@@ -4103,42 +3799,36 @@ module Google
         end
       end
       
-      # Settings that control the number of times a user may be shown with the same
-      # ad during a given time period.
+      # Settings that control the number of times a user may be shown with the same ad
+      # during a given time period.
       class FrequencyCap
         include Google::Apis::Core::Hashable
       
-        # The maximum number of times a user may be shown with the same ad
-        # during this period. Must be greater than 0.
-        # Applicable when unlimited is `false`.
+        # The maximum number of times a user may be shown with the same ad during this
+        # period. Must be greater than 0. Applicable when unlimited is `false`.
         # Corresponds to the JSON property `maxImpressions`
         # @return [Fixnum]
         attr_accessor :max_impressions
       
-        # The time unit in which the frequency cap will be applied.
-        # Applicable when unlimited is `false`.
+        # The time unit in which the frequency cap will be applied. Applicable when
+        # unlimited is `false`.
         # Corresponds to the JSON property `timeUnit`
         # @return [String]
         attr_accessor :time_unit
       
-        # The number of time_unit the frequency cap will
-        # last.
-        # Applicable when unlimited is `false`.
-        # The following restrictions apply based on the value of
-        # time_unit:
-        # * `TIME_UNIT_LIFETIME` - this field is output only and will
-        # default to 1
-        # * `TIME_UNIT_MONTHS` - must be between 1 and 2
-        # * `TIME_UNIT_WEEKS` - must be between 1 and 4
-        # * `TIME_UNIT_DAYS` - must be between 1 and 6
-        # * `TIME_UNIT_HOURS` - must be between 1 and 23
-        # * `TIME_UNIT_MINUTES` - must be between 1 and 59
+        # The number of time_unit the frequency cap will last. Applicable when unlimited
+        # is `false`. The following restrictions apply based on the value of time_unit: *
+        # `TIME_UNIT_LIFETIME` - this field is output only and will default to 1 * `
+        # TIME_UNIT_MONTHS` - must be between 1 and 2 * `TIME_UNIT_WEEKS` - must be
+        # between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `
+        # TIME_UNIT_HOURS` - must be between 1 and 23 * `TIME_UNIT_MINUTES` - must be
+        # between 1 and 59
         # Corresponds to the JSON property `timeUnitCount`
         # @return [Fixnum]
         attr_accessor :time_unit_count
       
-        # Whether unlimited frequency capping is applied. When this field is set to
-        # `true`, the remaining frequency cap fields are not applicable.
+        # Whether unlimited frequency capping is applied. When this field is set to `
+        # true`, the remaining frequency cap fields are not applicable.
         # Corresponds to the JSON property `unlimited`
         # @return [Boolean]
         attr_accessor :unlimited
@@ -4157,10 +3847,9 @@ module Google
         end
       end
       
-      # Details for assigned gender targeting option. This will be populated in
-      # the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARTGETING_TYPE_GENDER`.
+      # Details for assigned gender targeting option. This will be populated in the
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARTGETING_TYPE_GENDER`.
       class GenderAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -4169,8 +3858,8 @@ module Google
         # @return [String]
         attr_accessor :gender
       
-        # Required. The targeting_option_id of a
-        # TargetingOption of type `TARGETING_TYPE_GENDER`.
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_GENDER`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -4186,10 +3875,8 @@ module Google
         end
       end
       
-      # Represents a targetable gender. This will be populated in the
-      # gender_details field of a TargetingOption
-      # when targeting_type is
-      # `TARGETING_TYPE_GENDER`.
+      # Represents a targetable gender. This will be populated in the gender_details
+      # field of a TargetingOption when targeting_type is `TARGETING_TYPE_GENDER`.
       class GenderTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -4210,8 +3897,7 @@ module Google
       
       # Details for assigned geographic region targeting option. This will be
       # populated in the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_GEO_REGION`.
+      # targeting_type is `TARGETING_TYPE_GEO_REGION`.
       class GeoRegionAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -4232,8 +3918,8 @@ module Google
         attr_accessor :negative
         alias_method :negative?, :negative
       
-        # Required. The targeting_option_id of a
-        # TargetingOption of type `TARGETING_TYPE_GEO_REGION`.
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_GEO_REGION`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -4252,9 +3938,7 @@ module Google
       end
       
       # Represents a targetable geographic region. This will be populated in the
-      # geo_region_details field when
-      # targeting_type is
-      # `TARGETING_TYPE_GEO_REGION`.
+      # geo_region_details field when targeting_type is `TARGETING_TYPE_GEO_REGION`.
       class GeoRegionTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -4280,13 +3964,11 @@ module Google
         end
       end
       
-      # Describes a Google audience resource.
-      # Includes Google audience lists.
+      # Describes a Google audience resource. Includes Google audience lists.
       class GoogleAudience
         include Google::Apis::Core::Hashable
       
-        # Output only. The display name of the Google audience.
-        # .
+        # Output only. The display name of the Google audience. .
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -4296,8 +3978,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :google_audience_id
       
-        # Output only. The type of Google audience.
-        # .
+        # Output only. The type of Google audience. .
         # Corresponds to the JSON property `googleAudienceType`
         # @return [String]
         attr_accessor :google_audience_type
@@ -4320,8 +4001,8 @@ module Google
         end
       end
       
-      # Details of Google audience group.
-      # All Google audience targeting settings are logically ‘OR’ of each other.
+      # Details of Google audience group. All Google audience targeting settings are
+      # logically ‘OR’ of each other.
       class GoogleAudienceGroup
         include Google::Apis::Core::Hashable
       
@@ -4345,8 +4026,8 @@ module Google
       class GoogleAudienceTargetingSetting
         include Google::Apis::Core::Hashable
       
-        # Required. Google audience id of the Google audience targeting setting.
-        # This id is google_audience_id.
+        # Required. Google audience id of the Google audience targeting setting. This id
+        # is google_audience_id.
         # Corresponds to the JSON property `googleAudienceId`
         # @return [Fixnum]
         attr_accessor :google_audience_id
@@ -4380,10 +4061,9 @@ module Google
         end
       end
       
-      # Details for assigned household income targeting option. This will be
-      # populated in the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_HOUSEHOLD_INCOME`.
+      # Details for assigned household income targeting option. This will be populated
+      # in the details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_HOUSEHOLD_INCOME`.
       class HouseholdIncomeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -4392,8 +4072,8 @@ module Google
         # @return [String]
         attr_accessor :household_income
       
-        # Required. The targeting_option_id of a
-        # TargetingOption of type `TARGETING_TYPE_HOUSEHOLD_INCOME`.
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_HOUSEHOLD_INCOME`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -4410,9 +4090,8 @@ module Google
       end
       
       # Represents a targetable household income. This will be populated in the
-      # household_income_details field of
-      # a TargetingOption when targeting_type is
-      # `TARGETING_TYPE_HOUSEHOLD_INCOME`.
+      # household_income_details field of a TargetingOption when targeting_type is `
+      # TARGETING_TYPE_HOUSEHOLD_INCOME`.
       class HouseholdIncomeTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -4435,50 +4114,38 @@ module Google
       class IdFilter
         include Google::Apis::Core::Hashable
       
-        # TrueView Ads to download by ID. All IDs must belong to the same
-        # Advertiser or
-        # Partner specified in
-        # CreateSdfDownloadTaskRequest.
+        # YouTube Ads to download by ID. All IDs must belong to the same Advertiser or
+        # Partner specified in CreateSdfDownloadTaskRequest.
         # Corresponds to the JSON property `adGroupAdIds`
         # @return [Array<Fixnum>]
         attr_accessor :ad_group_ad_ids
       
-        # TrueView Ad Groups to download by ID. All IDs must belong to the same
-        # Advertiser or
-        # Partner specified in
-        # CreateSdfDownloadTaskRequest.
+        # YouTube Ad Groups to download by ID. All IDs must belong to the same
+        # Advertiser or Partner specified in CreateSdfDownloadTaskRequest.
         # Corresponds to the JSON property `adGroupIds`
         # @return [Array<Fixnum>]
         attr_accessor :ad_group_ids
       
-        # Campaigns to download by ID. All IDs must belong to the same
-        # Advertiser or
-        # Partner specified in
-        # CreateSdfDownloadTaskRequest.
+        # Campaigns to download by ID. All IDs must belong to the same Advertiser or
+        # Partner specified in CreateSdfDownloadTaskRequest.
         # Corresponds to the JSON property `campaignIds`
         # @return [Array<Fixnum>]
         attr_accessor :campaign_ids
       
-        # Insertion Orders to download by ID. All IDs must belong to the same
-        # Advertiser or
-        # Partner specified in
-        # CreateSdfDownloadTaskRequest.
+        # Insertion Orders to download by ID. All IDs must belong to the same Advertiser
+        # or Partner specified in CreateSdfDownloadTaskRequest.
         # Corresponds to the JSON property `insertionOrderIds`
         # @return [Array<Fixnum>]
         attr_accessor :insertion_order_ids
       
-        # Line Items to download by ID. All IDs must belong to the same
-        # Advertiser or
-        # Partner specified in
-        # CreateSdfDownloadTaskRequest.
+        # Line Items to download by ID. All IDs must belong to the same Advertiser or
+        # Partner specified in CreateSdfDownloadTaskRequest.
         # Corresponds to the JSON property `lineItemIds`
         # @return [Array<Fixnum>]
         attr_accessor :line_item_ids
       
-        # Media Products to download by ID. All IDs must belong to the same
-        # Advertiser or
-        # Partner specified in
-        # CreateSdfDownloadTaskRequest.
+        # Media Products to download by ID. All IDs must belong to the same Advertiser
+        # or Partner specified in CreateSdfDownloadTaskRequest.
         # Corresponds to the JSON property `mediaProductIds`
         # @return [Array<Fixnum>]
         attr_accessor :media_product_ids
@@ -4507,8 +4174,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertiser_id
       
-        # Settings that control the bid strategy.
-        # Bid strategy determines the bid price.
+        # Settings that control the bid strategy. Bid strategy determines the bid price.
         # Corresponds to the JSON property `bidStrategy`
         # @return [Google::Apis::DisplayvideoV1::BiddingStrategy]
         attr_accessor :bid_strategy
@@ -4524,29 +4190,25 @@ module Google
         # @return [Fixnum]
         attr_accessor :campaign_id
       
-        # Required. The display name of the insertion order.
-        # Must be UTF-8 encoded with a maximum size of 240 bytes.
+        # Required. The display name of the insertion order. Must be UTF-8 encoded with
+        # a maximum size of 240 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Required. Controls whether or not the insertion order can spend its budget
-        # and bid on inventory.
-        # * For
-        # CreateInsertionOrder method,
-        # only `ENTITY_STATUS_DRAFT` is allowed. To activate an insertion order, use
-        # UpdateInsertionOrder method
-        # and update the status to `ENTITY_STATUS_ACTIVE` after creation.
-        # * An insertion order cannot be changed back to `ENTITY_STATUS_DRAFT` status
-        # from any other status.
-        # * An insertion order cannot be set to `ENTITY_STATUS_ACTIVE` if its parent
-        # campaign is not active.
+        # Required. Controls whether or not the insertion order can spend its budget and
+        # bid on inventory. * For CreateInsertionOrder method, only `ENTITY_STATUS_DRAFT`
+        # is allowed. To activate an insertion order, use UpdateInsertionOrder method
+        # and update the status to `ENTITY_STATUS_ACTIVE` after creation. * An insertion
+        # order cannot be changed back to `ENTITY_STATUS_DRAFT` status from any other
+        # status. * An insertion order cannot be set to `ENTITY_STATUS_ACTIVE` if its
+        # parent campaign is not active.
         # Corresponds to the JSON property `entityStatus`
         # @return [String]
         attr_accessor :entity_status
       
-        # Settings that control the number of times a user may be shown with the same
-        # ad during a given time period.
+        # Settings that control the number of times a user may be shown with the same ad
+        # during a given time period.
         # Corresponds to the JSON property `frequencyCap`
         # @return [Google::Apis::DisplayvideoV1::FrequencyCap]
         attr_accessor :frequency_cap
@@ -4571,11 +4233,9 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::Pacing]
         attr_accessor :pacing
       
-        # The partner costs associated with the insertion order.
-        # If absent or empty in
-        # CreateInsertionOrder
-        # method, the newly created insertion order will inherit partner costs from
-        # the partner settings.
+        # The partner costs associated with the insertion order. If absent or empty in
+        # CreateInsertionOrder method, the newly created insertion order will inherit
+        # partner costs from the partner settings.
         # Corresponds to the JSON property `partnerCosts`
         # @return [Array<Google::Apis::DisplayvideoV1::PartnerCost>]
         attr_accessor :partner_costs
@@ -4585,8 +4245,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::PerformanceGoal]
         attr_accessor :performance_goal
       
-        # Output only. The timestamp when the insertion order was last updated.
-        # Assigned by the system.
+        # Output only. The timestamp when the insertion order was last updated. Assigned
+        # by the system.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -4618,23 +4278,21 @@ module Google
       class InsertionOrderBudget
         include Google::Apis::Core::Hashable
       
-        # The type of automation used to manage bid and budget for
-        # the insertion order.
-        # If this field is unspecified in creation, the value defaults to
-        # `INSERTION_ORDER_AUTOMATION_TYPE_NONE`.
+        # The type of automation used to manage bid and budget for the insertion order.
+        # If this field is unspecified in creation, the value defaults to `
+        # INSERTION_ORDER_AUTOMATION_TYPE_NONE`.
         # Corresponds to the JSON property `automationType`
         # @return [String]
         attr_accessor :automation_type
       
-        # Required. The list of budget segments. Use a budget segment to specify
-        # a specific budget for a given period of time an insertion order is running.
+        # Required. The list of budget segments. Use a budget segment to specify a
+        # specific budget for a given period of time an insertion order is running.
         # Corresponds to the JSON property `budgetSegments`
         # @return [Array<Google::Apis::DisplayvideoV1::InsertionOrderBudgetSegment>]
         attr_accessor :budget_segments
       
         # Required. Immutable. The budget unit specifies whether the budget is currency
-        # based or
-        # impression based.
+        # based or impression based.
         # Corresponds to the JSON property `budgetUnit`
         # @return [String]
         attr_accessor :budget_unit
@@ -4656,15 +4314,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The budget amount the insertion order will spend for the given
-        # date_range.
-        # The amount is in micros. Must be greater than 0. For example, 500000000
-        # represents 500 standard units of the currency.
+        # date_range. The amount is in micros. Must be greater than 0. For example,
+        # 500000000 represents 500 standard units of the currency.
         # Corresponds to the JSON property `budgetAmountMicros`
         # @return [Fixnum]
         attr_accessor :budget_amount_micros
       
-        # The ID of the campaign budget linked to this insertion order budget
-        # segment.
+        # The ID of the campaign budget linked to this insertion order budget segment.
         # Corresponds to the JSON property `campaignBudgetId`
         # @return [Fixnum]
         attr_accessor :campaign_budget_id
@@ -4675,9 +4331,8 @@ module Google
         attr_accessor :date_range
       
         # The budget segment description. It can be used to enter Purchase Order
-        # information for each budget segment and have that information printed on
-        # the invoices.
-        # Must be UTF-8 encoded with a length of no more than 80 characters.
+        # information for each budget segment and have that information printed on the
+        # invoices. Must be UTF-8 encoded with a length of no more than 80 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -4791,16 +4446,15 @@ module Google
       class IntegrationDetails
         include Google::Apis::Core::Hashable
       
-        # Additional details of the entry in string format.
-        # Must be UTF-8 encoded with a length of no more than 1000 characters.
+        # Additional details of the entry in string format. Must be UTF-8 encoded with a
+        # length of no more than 1000 characters.
         # Corresponds to the JSON property `details`
         # @return [String]
         attr_accessor :details
       
-        # An external identifier to be associated with the entry.
-        # The integration code will show up together with the entry in many
-        # places in the system, for example, reporting.
-        # Must be UTF-8 encoded with a length of no more than 500 characters.
+        # An external identifier to be associated with the entry. The integration code
+        # will show up together with the entry in many places in the system, for example,
+        # reporting. Must be UTF-8 encoded with a length of no more than 500 characters.
         # Corresponds to the JSON property `integrationCode`
         # @return [String]
         attr_accessor :integration_code
@@ -4825,31 +4479,30 @@ module Google
         # @return [String]
         attr_accessor :commitment
       
-        # The creative requirements of the inventory source.
-        # Not applicable for auction packages.
+        # The creative requirements of the inventory source. Not applicable for auction
+        # packages.
         # Corresponds to the JSON property `creativeConfigs`
         # @return [Array<Google::Apis::DisplayvideoV1::CreativeConfig>]
         attr_accessor :creative_configs
       
         # The ID in the exchange space that uniquely identifies the inventory source.
-        # Must be unique across buyers within each exchange but not necessarily
-        # unique across exchanges.
+        # Must be unique across buyers within each exchange but not necessarily unique
+        # across exchanges.
         # Corresponds to the JSON property `dealId`
         # @return [String]
         attr_accessor :deal_id
       
-        # The delivery method of the inventory source.
-        # * For non-guaranteed inventory sources, the only acceptable value is
-        # `INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`.
-        # * For guaranteed inventory sources, acceptable values are
-        # `INVENTORY_SOURCE_DELIVERY_METHOD_TAG` and
-        # `INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`.
+        # The delivery method of the inventory source. * For non-guaranteed inventory
+        # sources, the only acceptable value is `
+        # INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`. * For guaranteed inventory
+        # sources, acceptable values are `INVENTORY_SOURCE_DELIVERY_METHOD_TAG` and `
+        # INVENTORY_SOURCE_DELIVERY_METHOD_PROGRAMMATIC`.
         # Corresponds to the JSON property `deliveryMethod`
         # @return [String]
         attr_accessor :delivery_method
       
-        # The display name of the inventory source.
-        # Must be UTF-8 encoded with a maximum size of 240 bytes.
+        # The display name of the inventory source. Must be UTF-8 encoded with a maximum
+        # size of 240 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -4895,8 +4548,7 @@ module Google
         attr_accessor :time_range
       
         # Output only. The timestamp when the inventory source was last updated.
-        # Assigned by the
-        # system.
+        # Assigned by the system.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -4924,16 +4576,14 @@ module Google
         end
       end
       
-      # Targeting details for inventory source. This will be
-      # populated in the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_INVENTORY_SOURCE`.
+      # Targeting details for inventory source. This will be populated in the details
+      # field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_INVENTORY_SOURCE`.
       class InventorySourceAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Required. ID of the inventory source. Should refer to the
-        # inventory_source_id field of an
-        # InventorySource resource.
+        # Required. ID of the inventory source. Should refer to the inventory_source_id
+        # field of an InventorySource resource.
         # Corresponds to the JSON property `inventorySourceId`
         # @return [Fixnum]
         attr_accessor :inventory_source_id
@@ -4972,10 +4622,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Inventory Sources to download by ID. All IDs must belong to the same
-        # Advertiser or
-        # Partner specified in
-        # CreateSdfDownloadTaskRequest. Leave empty to download all Inventory
-        # Sources for the selected Advertiser or Partner.
+        # Advertiser or Partner specified in CreateSdfDownloadTaskRequest. Leave empty
+        # to download all Inventory Sources for the selected Advertiser or Partner.
         # Corresponds to the JSON property `inventorySourceIds`
         # @return [Array<Fixnum>]
         attr_accessor :inventory_source_ids
@@ -4994,8 +4642,8 @@ module Google
       class InventorySourceGroup
         include Google::Apis::Core::Hashable
       
-        # Required. The display name of the inventory source group.
-        # Must be UTF-8 encoded with a maximum size of 240 bytes.
+        # Required. The display name of the inventory source group. Must be UTF-8
+        # encoded with a maximum size of 240 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -5023,16 +4671,14 @@ module Google
         end
       end
       
-      # Targeting details for inventory source group. This will be
-      # populated in the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_INVENTORY_SOURCE_GROUP`.
+      # Targeting details for inventory source group. This will be populated in the
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_INVENTORY_SOURCE_GROUP`.
       class InventorySourceGroupAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
         # Required. ID of the inventory source group. Should refer to the
-        # inventory_source_group_id
-        # field of an InventorySourceGroup resource.
+        # inventory_source_group_id field of an InventorySourceGroup resource.
         # Corresponds to the JSON property `inventorySourceGroupId`
         # @return [Fixnum]
         attr_accessor :inventory_source_group_id
@@ -5051,43 +4697,39 @@ module Google
       class InventorySourceStatus
         include Google::Apis::Core::Hashable
       
-        # Output only. The configuration status of the inventory source.
-        # Only applicable for guaranteed inventory sources.
-        # Acceptable values are `INVENTORY_SOURCE_CONFIG_STATUS_PENDING` and
-        # `INVENTORY_SOURCE_CONFIG_STATUS_COMPLETED`.
-        # An inventory source must be configured (fill in the required fields, choose
-        # creatives, and select a default campaign) before it can serve.
+        # Output only. The configuration status of the inventory source. Only applicable
+        # for guaranteed inventory sources. Acceptable values are `
+        # INVENTORY_SOURCE_CONFIG_STATUS_PENDING` and `
+        # INVENTORY_SOURCE_CONFIG_STATUS_COMPLETED`. An inventory source must be
+        # configured (fill in the required fields, choose creatives, and select a
+        # default campaign) before it can serve.
         # Corresponds to the JSON property `configStatus`
         # @return [String]
         attr_accessor :config_status
       
-        # The user-provided reason for pausing this inventory source.
-        # Must not exceed 100 characters.
-        # Only applicable when entity_status
-        # is set to `ENTITY_STATUS_PAUSED`.
+        # The user-provided reason for pausing this inventory source. Must not exceed
+        # 100 characters. Only applicable when entity_status is set to `
+        # ENTITY_STATUS_PAUSED`.
         # Corresponds to the JSON property `entityPauseReason`
         # @return [String]
         attr_accessor :entity_pause_reason
       
-        # Whether or not the inventory source is servable.
-        # Acceptable values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`, and
-        # `ENTITY_STATUS_PAUSED`.
+        # Whether or not the inventory source is servable. Acceptable values are `
+        # ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`, and `ENTITY_STATUS_PAUSED`.
         # Default value is `ENTITY_STATUS_ACTIVE`.
         # Corresponds to the JSON property `entityStatus`
         # @return [String]
         attr_accessor :entity_status
       
         # Output only. The seller-provided reason for pausing this inventory source.
-        # Only applicable for inventory sources synced directly from the
-        # publishers and when seller_status
-        # is set to `ENTITY_STATUS_PAUSED`.
+        # Only applicable for inventory sources synced directly from the publishers and
+        # when seller_status is set to `ENTITY_STATUS_PAUSED`.
         # Corresponds to the JSON property `sellerPauseReason`
         # @return [String]
         attr_accessor :seller_pause_reason
       
-        # Output only. The status set by the seller for the inventory source.
-        # Only applicable for inventory sources synced directly from the
-        # publishers.
+        # Output only. The status set by the seller for the inventory source. Only
+        # applicable for inventory sources synced directly from the publishers.
         # Acceptable values are `ENTITY_STATUS_ACTIVE` and `ENTITY_STATUS_PAUSED`.
         # Corresponds to the JSON property `sellerStatus`
         # @return [String]
@@ -5111,8 +4753,8 @@ module Google
       class InventorySourceVideoCreativeConfig
         include Google::Apis::Core::Hashable
       
-        # The duration requirements for the video creatives that can be assigned to
-        # the inventory source.
+        # The duration requirements for the video creatives that can be assigned to the
+        # inventory source.
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
@@ -5128,16 +4770,14 @@ module Google
       end
       
       # Details for assigned keyword targeting option. This will be populated in the
-      # details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_KEYWORD`.
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_KEYWORD`.
       class KeywordAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Required. The keyword, for example `car insurance`.
-        # Positive keyword cannot be offensive word.
-        # Must be UTF-8 encoded with a maximum size of 255 bytes. Maximum number
-        # of characters is 80. Maximum number of words is 10.
+        # Required. The keyword, for example `car insurance`. Positive keyword cannot be
+        # offensive word. Must be UTF-8 encoded with a maximum size of 255 bytes.
+        # Maximum number of characters is 80. Maximum number of words is 10.
         # Corresponds to the JSON property `keyword`
         # @return [String]
         attr_accessor :keyword
@@ -5160,9 +4800,8 @@ module Google
       end
       
       # Details for assigned language targeting option. This will be populated in the
-      # details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_LANGUAGE`.
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_LANGUAGE`.
       class LanguageAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -5171,16 +4810,16 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Indicates if this option is being negatively targeted. All assigned
-        # language targeting options on the same line item must have the same value
-        # for this field.
+        # Indicates if this option is being negatively targeted. All assigned language
+        # targeting options on the same line item must have the same value for this
+        # field.
         # Corresponds to the JSON property `negative`
         # @return [Boolean]
         attr_accessor :negative
         alias_method :negative?, :negative
       
-        # Required. The targeting_option_id of a
-        # TargetingOption of type `TARGETING_TYPE_LANGUAGE`.
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_LANGUAGE`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -5198,9 +4837,7 @@ module Google
       end
       
       # Represents a targetable language. This will be populated in the
-      # language_details field when
-      # targeting_type is
-      # `TARGETING_TYPE_LANGUAGE`.
+      # language_details field when targeting_type is `TARGETING_TYPE_LANGUAGE`.
       class LanguageTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -5228,8 +4865,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertiser_id
       
-        # Settings that control the bid strategy.
-        # Bid strategy determines the bid price.
+        # Settings that control the bid strategy. Bid strategy determines the bid price.
         # Corresponds to the JSON property `bidStrategy`
         # @return [Google::Apis::DisplayvideoV1::BiddingStrategy]
         attr_accessor :bid_strategy
@@ -5244,9 +4880,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :campaign_id
       
-        # Settings that control how conversions are counted.
-        # All post-click conversions will be counted. A percentage value can be set
-        # for post-view conversions counting.
+        # Settings that control how conversions are counted. All post-click conversions
+        # will be counted. A percentage value can be set for post-view conversions
+        # counting.
         # Corresponds to the JSON property `conversionCounting`
         # @return [Google::Apis::DisplayvideoV1::ConversionCountingConfig]
         attr_accessor :conversion_counting
@@ -5256,22 +4892,19 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :creative_ids
       
-        # Required. The display name of the line item.
-        # Must be UTF-8 encoded with a maximum size of 240 bytes.
+        # Required. The display name of the line item. Must be UTF-8 encoded with a
+        # maximum size of 240 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Required. Controls whether or not the line item can spend its budget and
-        # bid on inventory.
-        # * For CreateLineItem method, only
-        # `ENTITY_STATUS_DRAFT` is allowed. To activate a line item, use
-        # UpdateLineItem method and update the
-        # status to `ENTITY_STATUS_ACTIVE` after creation.
-        # * A line item cannot be changed back to `ENTITY_STATUS_DRAFT` status from
-        # any other status.
-        # * If the line item's parent insertion order is not active, the line item
-        # can't spend its budget even if its own status is `ENTITY_STATUS_ACTIVE`.
+        # Required. Controls whether or not the line item can spend its budget and bid
+        # on inventory. * For CreateLineItem method, only `ENTITY_STATUS_DRAFT` is
+        # allowed. To activate a line item, use UpdateLineItem method and update the
+        # status to `ENTITY_STATUS_ACTIVE` after creation. * A line item cannot be
+        # changed back to `ENTITY_STATUS_DRAFT` status from any other status. * If the
+        # line item's parent insertion order is not active, the line item can't spend
+        # its budget even if its own status is `ENTITY_STATUS_ACTIVE`.
         # Corresponds to the JSON property `entityStatus`
         # @return [String]
         attr_accessor :entity_status
@@ -5281,8 +4914,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::LineItemFlight]
         attr_accessor :flight
       
-        # Settings that control the number of times a user may be shown with the same
-        # ad during a given time period.
+        # Settings that control the number of times a user may be shown with the same ad
+        # during a given time period.
         # Corresponds to the JSON property `frequencyCap`
         # @return [Google::Apis::DisplayvideoV1::FrequencyCap]
         attr_accessor :frequency_cap
@@ -5323,10 +4956,9 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::Pacing]
         attr_accessor :pacing
       
-        # The partner costs associated with the line item.
-        # If absent or empty in CreateLineItem
-        # method, the newly created line item will inherit partner costs from its
-        # parent insertion order.
+        # The partner costs associated with the line item. If absent or empty in
+        # CreateLineItem method, the newly created line item will inherit partner costs
+        # from its parent insertion order.
         # Corresponds to the JSON property `partnerCosts`
         # @return [Array<Google::Apis::DisplayvideoV1::PartnerCost>]
         attr_accessor :partner_costs
@@ -5375,33 +5007,29 @@ module Google
       class LineItemBudget
         include Google::Apis::Core::Hashable
       
-        # Required. The type of the budget allocation.
-        # `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable when
-        # automatic budget allocation is enabled for the parent insertion order.
+        # Required. The type of the budget allocation. `
+        # LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable when automatic
+        # budget allocation is enabled for the parent insertion order.
         # Corresponds to the JSON property `budgetAllocationType`
         # @return [String]
         attr_accessor :budget_allocation_type
       
-        # Output only. The budget unit specifies whether the budget is currency based
-        # or impression based. This value is inherited from the parent insertion
-        # order.
+        # Output only. The budget unit specifies whether the budget is currency based or
+        # impression based. This value is inherited from the parent insertion order.
         # Corresponds to the JSON property `budgetUnit`
         # @return [String]
         attr_accessor :budget_unit
       
         # The maximum budget amount the line item will spend. Must be greater than 0.
-        # When budget_allocation_type is:
-        # * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC`, this field is immutable
-        # and is set by the system.
-        # * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`, if
-        # budget_unit is:
-        # - `BUDGET_UNIT_CURRENCY`, this field represents maximum budget amount
-        # to spend, in micros of the advertiser's currency. For example, 1500000
-        # represents 1.5 standard units of the currency.
-        # - `BUDGET_UNIT_IMPRESSIONS`, this field represents the maximum number
-        # of impressions to serve.
-        # * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED`, this field is not
-        # applicable and will be ignored by the system.
+        # When budget_allocation_type is: * `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC`,
+        # this field is immutable and is set by the system. * `
+        # LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED`, if budget_unit is: - `
+        # BUDGET_UNIT_CURRENCY`, this field represents maximum budget amount to spend,
+        # in micros of the advertiser's currency. For example, 1500000 represents 1.5
+        # standard units of the currency. - `BUDGET_UNIT_IMPRESSIONS`, this field
+        # represents the maximum number of impressions to serve. * `
+        # LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED`, this field is not applicable and
+        # will be ignored by the system.
         # Corresponds to the JSON property `maxAmount`
         # @return [Fixnum]
         attr_accessor :max_amount
@@ -5443,24 +5071,19 @@ module Google
         end
       end
       
-      # Response message for
-      # ListAdvertiserAssignedTargetingOptions.
+      # Response message for ListAdvertiserAssignedTargetingOptions.
       class ListAdvertiserAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of assigned targeting options.
-        # This list will be absent if empty.
+        # The list of assigned targeting options. This list will be absent if empty.
         # Corresponds to the JSON property `assignedTargetingOptions`
         # @return [Array<Google::Apis::DisplayvideoV1::AssignedTargetingOption>]
         attr_accessor :assigned_targeting_options
       
-        # A token identifying the next page of results. This value should be
-        # specified as the
-        # pageToken in a
-        # subsequent ListAdvertiserAssignedTargetingOptionsRequest to fetch the
-        # next page of results. This token will be absent if there are no more
-        # assigned_targeting_options
-        # to return.
+        # A token identifying the next page of results. This value should be specified
+        # as the pageToken in a subsequent ListAdvertiserAssignedTargetingOptionsRequest
+        # to fetch the next page of results. This token will be absent if there are no
+        # more assigned_targeting_options to return.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5480,17 +5103,14 @@ module Google
       class ListAdvertisersResponse
         include Google::Apis::Core::Hashable
       
-        # The list of advertisers.
-        # This list will be absent if empty.
+        # The list of advertisers. This list will be absent if empty.
         # Corresponds to the JSON property `advertisers`
         # @return [Array<Google::Apis::DisplayvideoV1::Advertiser>]
         attr_accessor :advertisers
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # page_token
-        # field in the subsequent call to `ListAdvertisers` method to retrieve the
-        # next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListAdvertisers` method to
+        # retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5506,22 +5126,19 @@ module Google
         end
       end
       
-      # Response message for
-      # AssignedInventorySourceService.ListAssignedInventorySources.
+      # Response message for AssignedInventorySourceService.
+      # ListAssignedInventorySources.
       class ListAssignedInventorySourcesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of assigned inventory sources.
-        # This list will be absent if empty.
+        # The list of assigned inventory sources. This list will be absent if empty.
         # Corresponds to the JSON property `assignedInventorySources`
         # @return [Array<Google::Apis::DisplayvideoV1::AssignedInventorySource>]
         attr_accessor :assigned_inventory_sources
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # page_token field
-        # in the subsequent call to `ListAssignedInventorySources` method to
-        # retrieve the next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListAssignedInventorySources`
+        # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5537,21 +5154,17 @@ module Google
         end
       end
       
-      # Response message for
-      # AssignedLocationService.ListAssignedLocations.
+      # Response message for AssignedLocationService.ListAssignedLocations.
       class ListAssignedLocationsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of assigned locations.
-        # This list will be absent if empty.
+        # The list of assigned locations. This list will be absent if empty.
         # Corresponds to the JSON property `assignedLocations`
         # @return [Array<Google::Apis::DisplayvideoV1::AssignedLocation>]
         attr_accessor :assigned_locations
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # page_token field
-        # in the subsequent call to `ListAssignedLocations` method to
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListAssignedLocations` method to
         # retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
@@ -5572,16 +5185,14 @@ module Google
       class ListCampaignsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of campaigns.
-        # This list will be absent if empty.
+        # The list of campaigns. This list will be absent if empty.
         # Corresponds to the JSON property `campaigns`
         # @return [Array<Google::Apis::DisplayvideoV1::Campaign>]
         attr_accessor :campaigns
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the page_token field
-        # in the subsequent call to `ListCampaigns` method to retrieve the next page
-        # of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListCampaigns` method to retrieve
+        # the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5601,16 +5212,14 @@ module Google
       class ListChannelsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of channels.
-        # This list will be absent if empty.
+        # The list of channels. This list will be absent if empty.
         # Corresponds to the JSON property `channels`
         # @return [Array<Google::Apis::DisplayvideoV1::Channel>]
         attr_accessor :channels
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the page_token field
-        # in the subsequent call to `ListChannels` method to retrieve the next page
-        # of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListChannels` method to retrieve
+        # the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5630,17 +5239,14 @@ module Google
       class ListCombinedAudiencesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of combined audiences.
-        # This list will be absent if empty.
+        # The list of combined audiences. This list will be absent if empty.
         # Corresponds to the JSON property `combinedAudiences`
         # @return [Array<Google::Apis::DisplayvideoV1::CombinedAudience>]
         attr_accessor :combined_audiences
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # page_token
-        # field in the subsequent call to `ListCombinedAudiences` method to retrieve
-        # the next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListCombinedAudiences` method to
+        # retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5660,17 +5266,15 @@ module Google
       class ListCreativesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of creatives.
-        # This list will be absent if empty.
+        # The list of creatives. This list will be absent if empty.
         # Corresponds to the JSON property `creatives`
         # @return [Array<Google::Apis::DisplayvideoV1::Creative>]
         attr_accessor :creatives
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the page_token field
-        # in the subsequent call to `ListCreativesRequest` method to retrieve the
-        # next page of results.
-        # If this field is null, it means this is the last page.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListCreativesRequest` method to
+        # retrieve the next page of results. If this field is null, it means this is the
+        # last page.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5690,17 +5294,14 @@ module Google
       class ListCustomListsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of custom lists.
-        # This list will be absent if empty.
+        # The list of custom lists. This list will be absent if empty.
         # Corresponds to the JSON property `customLists`
         # @return [Array<Google::Apis::DisplayvideoV1::CustomList>]
         attr_accessor :custom_lists
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # page_token
-        # field in the subsequent call to `ListCustomLists` method to retrieve the
-        # next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListCustomLists` method to
+        # retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5720,18 +5321,15 @@ module Google
       class ListFirstAndThirdPartyAudiencesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of first and third party audiences. Audience size properties will
-        # not be included.
-        # This list will be absent if empty.
+        # The list of first and third party audiences. Audience size properties will not
+        # be included. This list will be absent if empty.
         # Corresponds to the JSON property `firstAndThirdPartyAudiences`
         # @return [Array<Google::Apis::DisplayvideoV1::FirstAndThirdPartyAudience>]
         attr_accessor :first_and_third_party_audiences
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # page_token
-        # field in the subsequent call to `ListFirstAndThirdPartyAudiences` method to
-        # retrieve the next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListFirstAndThirdPartyAudiences`
+        # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5751,17 +5349,14 @@ module Google
       class ListGoogleAudiencesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Google audiences.
-        # This list will be absent if empty.
+        # The list of Google audiences. This list will be absent if empty.
         # Corresponds to the JSON property `googleAudiences`
         # @return [Array<Google::Apis::DisplayvideoV1::GoogleAudience>]
         attr_accessor :google_audiences
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # page_token
-        # field in the subsequent call to `ListGoogleAudiences` method to retrieve
-        # the next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListGoogleAudiences` method to
+        # retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5781,16 +5376,14 @@ module Google
       class ListInsertionOrdersResponse
         include Google::Apis::Core::Hashable
       
-        # The list of insertion orders.
-        # This list will be absent if empty.
+        # The list of insertion orders. This list will be absent if empty.
         # Corresponds to the JSON property `insertionOrders`
         # @return [Array<Google::Apis::DisplayvideoV1::InsertionOrder>]
         attr_accessor :insertion_orders
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the page_token
-        # field in the subsequent call to `ListInsertionOrders` method to retrieve
-        # the next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListInsertionOrders` method to
+        # retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5810,17 +5403,14 @@ module Google
       class ListInventorySourceGroupsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of inventory source groups.
-        # This list will be absent if empty.
+        # The list of inventory source groups. This list will be absent if empty.
         # Corresponds to the JSON property `inventorySourceGroups`
         # @return [Array<Google::Apis::DisplayvideoV1::InventorySourceGroup>]
         attr_accessor :inventory_source_groups
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # page_token
-        # field in the subsequent call to `ListInventorySourceGroups` method to
-        # retrieve the next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListInventorySourceGroups` method
+        # to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5840,17 +5430,14 @@ module Google
       class ListInventorySourcesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of inventory sources.
-        # This list will be absent if empty.
+        # The list of inventory sources. This list will be absent if empty.
         # Corresponds to the JSON property `inventorySources`
         # @return [Array<Google::Apis::DisplayvideoV1::InventorySource>]
         attr_accessor :inventory_sources
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # page_token
-        # field in the subsequent call to `ListInventorySources` method to retrieve
-        # the next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListInventorySources` method to
+        # retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5866,24 +5453,19 @@ module Google
         end
       end
       
-      # Response message for
-      # ListLineItemAssignedTargetingOptions.
+      # Response message for ListLineItemAssignedTargetingOptions.
       class ListLineItemAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of assigned targeting options.
-        # This list will be absent if empty.
+        # The list of assigned targeting options. This list will be absent if empty.
         # Corresponds to the JSON property `assignedTargetingOptions`
         # @return [Array<Google::Apis::DisplayvideoV1::AssignedTargetingOption>]
         attr_accessor :assigned_targeting_options
       
-        # A token identifying the next page of results. This value should be
-        # specified as the
-        # pageToken in a
-        # subsequent ListLineItemAssignedTargetingOptionsRequest to fetch the
-        # next page of results. This token will be absent if there are no more
-        # assigned_targeting_options
-        # to return.
+        # A token identifying the next page of results. This value should be specified
+        # as the pageToken in a subsequent ListLineItemAssignedTargetingOptionsRequest
+        # to fetch the next page of results. This token will be absent if there are no
+        # more assigned_targeting_options to return.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5903,17 +5485,14 @@ module Google
       class ListLineItemsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of line items.
-        # This list will be absent if empty.
+        # The list of line items. This list will be absent if empty.
         # Corresponds to the JSON property `lineItems`
         # @return [Array<Google::Apis::DisplayvideoV1::LineItem>]
         attr_accessor :line_items
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # page_token
-        # field in the subsequent call to `ListLineItems` method to retrieve the
-        # next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListLineItems` method to retrieve
+        # the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5933,17 +5512,14 @@ module Google
       class ListLocationListsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of location lists.
-        # This list will be absent if empty.
+        # The list of location lists. This list will be absent if empty.
         # Corresponds to the JSON property `locationLists`
         # @return [Array<Google::Apis::DisplayvideoV1::LocationList>]
         attr_accessor :location_lists
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # page_token
-        # field in the subsequent call to `ListLocationLists` method to retrieve the
-        # next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListLocationLists` method to
+        # retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5963,17 +5539,14 @@ module Google
       class ListNegativeKeywordListsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of negative keyword lists.
-        # This list will be absent if empty.
+        # The list of negative keyword lists. This list will be absent if empty.
         # Corresponds to the JSON property `negativeKeywordLists`
         # @return [Array<Google::Apis::DisplayvideoV1::NegativeKeywordList>]
         attr_accessor :negative_keyword_lists
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # page_token
-        # field in the subsequent call to `ListNegativeKeywordLists` method to
-        # retrieve the next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListNegativeKeywordLists` method
+        # to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5993,16 +5566,14 @@ module Google
       class ListNegativeKeywordsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of negative keywords.
-        # This list will be absent if empty.
+        # The list of negative keywords. This list will be absent if empty.
         # Corresponds to the JSON property `negativeKeywords`
         # @return [Array<Google::Apis::DisplayvideoV1::NegativeKeyword>]
         attr_accessor :negative_keywords
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the page_token
-        # field in the subsequent call to `ListNegativeKeywords` method to retrieve
-        # the next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListNegativeKeywords` method to
+        # retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6022,16 +5593,14 @@ module Google
       class ListSitesResponse
         include Google::Apis::Core::Hashable
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the page_token field
-        # in the subsequent call to `ListSites` method to retrieve the next page
-        # of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListSites` method to retrieve the
+        # next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of sites.
-        # This list will be absent if empty.
+        # The list of sites. This list will be absent if empty.
         # Corresponds to the JSON property `sites`
         # @return [Array<Google::Apis::DisplayvideoV1::Site>]
         attr_accessor :sites
@@ -6047,22 +5616,18 @@ module Google
         end
       end
       
-      # Response message for
-      # ListTargetingOptions.
+      # Response message for ListTargetingOptions.
       class ListTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # page_token
-        # field in the subsequent call to `ListTargetingOptions` method to retrieve
-        # the next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListTargetingOptions` method to
+        # retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of targeting options.
-        # This list will be absent if empty.
+        # The list of targeting options. This list will be absent if empty.
         # Corresponds to the JSON property `targetingOptions`
         # @return [Array<Google::Apis::DisplayvideoV1::TargetingOption>]
         attr_accessor :targeting_options
@@ -6088,8 +5653,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertiser_id
       
-        # Required. The display name of the location list.
-        # Must be UTF-8 encoded with a maximum size of 240 bytes.
+        # Required. The display name of the location list. Must be UTF-8 encoded with a
+        # maximum size of 240 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -6135,8 +5700,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :click_days
       
-        # Lookback window, in days, from the last time a given user viewed one of
-        # your ads.
+        # Lookback window, in days, from the last time a given user viewed one of your
+        # ads.
         # Corresponds to the JSON property `impressionDays`
         # @return [Fixnum]
         attr_accessor :impression_days
@@ -6159,16 +5724,15 @@ module Google
       
         # The maximum average CPM that may be bid, in micros of the advertiser's
         # currency. Must be greater than or equal to a billable unit of the given
-        # currency.
-        # For example, 1500000 represents 1.5 standard units of the currency.
+        # currency. For example, 1500000 represents 1.5 standard units of the currency.
         # Corresponds to the JSON property `maxAverageCpmBidAmountMicros`
         # @return [Fixnum]
         attr_accessor :max_average_cpm_bid_amount_micros
       
-        # Required. The type of the performance goal that the bidding strategy
-        # tries to minimize while spending the full budget.
-        # `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` is not supported for
-        # this strategy.
+        # Required. The type of the performance goal that the bidding strategy tries to
+        # minimize while spending the full budget. `
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` is not supported for this
+        # strategy.
         # Corresponds to the JSON property `performanceGoalType`
         # @return [String]
         attr_accessor :performance_goal_type
@@ -6193,18 +5757,17 @@ module Google
         # @return [String]
         attr_accessor :currency_code
       
-        # Number of nano (10^-9) units of the amount.
-        # The value must be between -999,999,999 and +999,999,999 inclusive.
-        # If `units` is positive, `nanos` must be positive or zero.
-        # If `units` is zero, `nanos` can be positive, zero, or negative.
-        # If `units` is negative, `nanos` must be negative or zero.
-        # For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # Number of nano (10^-9) units of the amount. The value must be between -999,999,
+        # 999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be
+        # positive or zero. If `units` is zero, `nanos` can be positive, zero, or
+        # negative. If `units` is negative, `nanos` must be negative or zero. For
+        # example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # The whole units of the amount.
-        # For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        # The whole units of the amount. For example if `currencyCode` is `"USD"`, then
+        # 1 unit is one US dollar.
         # Corresponds to the JSON property `units`
         # @return [Fixnum]
         attr_accessor :units
@@ -6226,12 +5789,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Immutable. The negatively targeted keyword, for example `car
-        # insurance`.
-        # Must be UTF-8 encoded with a maximum size of 255 bytes. Maximum number
-        # of characters is 80. Maximum number of words is 10.
-        # Valid characters are restricted to ASCII characters only. The only
-        # URL-escaping permitted is for representing whitespace between words.
-        # Leading or trailing whitespace is ignored.
+        # insurance`. Must be UTF-8 encoded with a maximum size of 255 bytes. Maximum
+        # number of characters is 80. Maximum number of words is 10. Valid characters
+        # are restricted to ASCII characters only. The only URL-escaping permitted is
+        # for representing whitespace between words. Leading or trailing whitespace is
+        # ignored.
         # Corresponds to the JSON property `keywordValue`
         # @return [String]
         attr_accessor :keyword_value
@@ -6262,8 +5824,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertiser_id
       
-        # Required. The display name of the negative keyword list.
-        # Must be UTF-8 encoded with a maximum size of 255 bytes.
+        # Required. The display name of the negative keyword list. Must be UTF-8 encoded
+        # with a maximum size of 255 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -6293,15 +5855,13 @@ module Google
       end
       
       # Targeting details for negative keyword list. This will be populated in the
-      # details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`.
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`.
       class NegativeKeywordListAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
         # Required. ID of the negative keyword list. Should refer to the
-        # negative_keyword_list_id
-        # field of a NegativeKeywordList resource.
+        # negative_keyword_list_id field of a NegativeKeywordList resource.
         # Corresponds to the JSON property `negativeKeywordListId`
         # @return [Fixnum]
         attr_accessor :negative_keyword_list_id
@@ -6320,10 +5880,8 @@ module Google
       class ObaIcon
         include Google::Apis::Core::Hashable
       
-        # Required. The click tracking URL of the OBA icon.
-        # Only URLs of the following domains are allowed:
-        # * https://info.evidon.com
-        # * https://l.betrad.com
+        # Required. The click tracking URL of the OBA icon. Only URLs of the following
+        # domains are allowed: * https://info.evidon.com * https://l.betrad.com
         # Corresponds to the JSON property `clickTrackingUrl`
         # @return [String]
         attr_accessor :click_tracking_url
@@ -6333,10 +5891,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::Dimensions]
         attr_accessor :dimensions
       
-        # Required. The landing page URL of the OBA icon.
-        # Only URLs of the following domains are allowed:
-        # * https://info.evidon.com
-        # * https://l.betrad.com
+        # Required. The landing page URL of the OBA icon. Only URLs of the following
+        # domains are allowed: * https://info.evidon.com * https://l.betrad.com
         # Corresponds to the JSON property `landingPageUrl`
         # @return [String]
         attr_accessor :landing_page_url
@@ -6361,10 +5917,8 @@ module Google
         # @return [String]
         attr_accessor :resource_url
       
-        # Required. The view tracking URL of the OBA icon.
-        # Only URLs of the following domains are allowed:
-        # * https://info.evidon.com
-        # * https://l.betrad.com
+        # Required. The view tracking URL of the OBA icon. Only URLs of the following
+        # domains are allowed: * https://info.evidon.com * https://l.betrad.com
         # Corresponds to the JSON property `viewTrackingUrl`
         # @return [String]
         attr_accessor :view_tracking_url
@@ -6386,12 +5940,9 @@ module Google
         end
       end
       
-      # On screen position targeting option details. This will be
-      # populated in the
-      # on_screen_position_details
-      # field when
-      # targeting_type is
-      # `TARGETING_TYPE_ON_SCREEN_POSITION`.
+      # On screen position targeting option details. This will be populated in the
+      # on_screen_position_details field when targeting_type is `
+      # TARGETING_TYPE_ON_SCREEN_POSITION`.
       class OnScreenPositionAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -6400,9 +5951,8 @@ module Google
         # @return [String]
         attr_accessor :on_screen_position
       
-        # Required. The targeting_option_id field when
-        # targeting_type is
-        # `TARGETING_TYPE_ON_SCREEN_POSITION`.
+        # Required. The targeting_option_id field when targeting_type is `
+        # TARGETING_TYPE_ON_SCREEN_POSITION`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -6418,12 +5968,9 @@ module Google
         end
       end
       
-      # Represents a targetable on screen position, which could be used by display
-      # and video ads. This will be populated in the
-      # on_screen_position_details
-      # field when
-      # targeting_type is
-      # `TARGETING_TYPE_ON_SCREEN_POSITION`.
+      # Represents a targetable on screen position, which could be used by display and
+      # video ads. This will be populated in the on_screen_position_details field when
+      # targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`.
       class OnScreenPositionTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -6442,12 +5989,9 @@ module Google
         end
       end
       
-      # Assigned operating system targeting option details. This will be
-      # populated in the
-      # operating_system_details
-      # field when
-      # targeting_type is
-      # `TARGETING_TYPE_OPERATING_SYSTEM`.
+      # Assigned operating system targeting option details. This will be populated in
+      # the operating_system_details field when targeting_type is `
+      # TARGETING_TYPE_OPERATING_SYSTEM`.
       class OperatingSystemAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -6462,10 +6006,8 @@ module Google
         attr_accessor :negative
         alias_method :negative?, :negative
       
-        # Required. The targeting option ID populated in
-        # targeting_option_id field when
-        # targeting_type is
-        # `TARGETING_TYPE_OPERATING_SYSTEM`.
+        # Required. The targeting option ID populated in targeting_option_id field when
+        # targeting_type is `TARGETING_TYPE_OPERATING_SYSTEM`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -6483,10 +6025,8 @@ module Google
       end
       
       # Represents a targetable operating system. This will be populated in the
-      # operating_system_details field
-      # of a TargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_OPERATING_SYSTEM`.
+      # operating_system_details field of a TargetingOption when targeting_type is `
+      # TARGETING_TYPE_OPERATING_SYSTEM`.
       class OperatingSystemTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -6510,47 +6050,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::DisplayvideoV1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -6573,39 +6111,36 @@ module Google
       class Pacing
         include Google::Apis::Core::Hashable
       
-        # Maximum number of impressions to serve every day.
-        # Applicable when the budget is impression based. Must be greater than 0.
+        # Maximum number of impressions to serve every day. Applicable when the budget
+        # is impression based. Must be greater than 0.
         # Corresponds to the JSON property `dailyMaxImpressions`
         # @return [Fixnum]
         attr_accessor :daily_max_impressions
       
-        # Maximum currency amount to spend every day in micros of
-        # advertiser's currency.
-        # Applicable when the budget is currency based. Must be greater than 0.
-        # For example, for 1.5 standard unit of the currency, set this field to
-        # 1500000.
-        # The value assigned will be rounded to whole billable units for the
-        # relevant currency by the following rules: any positive value less than a
-        # single billable unit will be rounded up to one billable unit and any
-        # value larger than a single billable unit will be rounded down to the
-        # nearest billable value. For example, if the currency's billable unit is
-        # 0.01, and this field is set to 10257770, it will round down to 10250000,
-        # a value of 10.25. If set to 505, it will round up to 10000, a value of
-        # 0.01.
+        # Maximum currency amount to spend every day in micros of advertiser's currency.
+        # Applicable when the budget is currency based. Must be greater than 0. For
+        # example, for 1.5 standard unit of the currency, set this field to 1500000. The
+        # value assigned will be rounded to whole billable units for the relevant
+        # currency by the following rules: any positive value less than a single
+        # billable unit will be rounded up to one billable unit and any value larger
+        # than a single billable unit will be rounded down to the nearest billable value.
+        # For example, if the currency's billable unit is 0.01, and this field is set
+        # to 10257770, it will round down to 10250000, a value of 10.25. If set to 505,
+        # it will round up to 10000, a value of 0.01.
         # Corresponds to the JSON property `dailyMaxMicros`
         # @return [Fixnum]
         attr_accessor :daily_max_micros
       
-        # Required. The time period in which the pacing budget will be spent.
-        # When automatic budget allocation is enabled at the insertion order via
-        # auto_budget_allocation, this
-        # field is output only and defaults to `PACING_PERIOD_FLIGHT`.
+        # Required. The time period in which the pacing budget will be spent. When
+        # automatic budget allocation is enabled at the insertion order via
+        # auto_budget_allocation, this field is output only and defaults to `
+        # PACING_PERIOD_FLIGHT`.
         # Corresponds to the JSON property `pacingPeriod`
         # @return [String]
         attr_accessor :pacing_period
       
-        # Required. The type of pacing that defines how the budget amount will be
-        # spent across the pacing_period.
+        # Required. The type of pacing that defines how the budget amount will be spent
+        # across the pacing_period.
         # Corresponds to the JSON property `pacingType`
         # @return [String]
         attr_accessor :pacing_type
@@ -6633,9 +6168,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :file_type
       
-        # The IDs of the specified filter type. This is used to filter entities to
-        # fetch. If filter type is not `FILTER_TYPE_NONE`, at least one ID must be
-        # specified.
+        # The IDs of the specified filter type. This is used to filter entities to fetch.
+        # If filter type is not `FILTER_TYPE_NONE`, at least one ID must be specified.
         # Corresponds to the JSON property `filterIds`
         # @return [Array<Fixnum>]
         attr_accessor :filter_ids
@@ -6657,10 +6191,9 @@ module Google
         end
       end
       
-      # Details for assigned parental status targeting option. This will be
-      # populated in the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARTGETING_TYPE_PARENTAL_STATUS`.
+      # Details for assigned parental status targeting option. This will be populated
+      # in the details field of an AssignedTargetingOption when targeting_type is `
+      # TARTGETING_TYPE_PARENTAL_STATUS`.
       class ParentalStatusAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -6669,8 +6202,8 @@ module Google
         # @return [String]
         attr_accessor :parental_status
       
-        # Required. The targeting_option_id of a
-        # TargetingOption of type `TARGETING_TYPE_PARENTAL_STATUS`.
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_PARENTAL_STATUS`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -6687,9 +6220,8 @@ module Google
       end
       
       # Represents a targetable parental status. This will be populated in the
-      # parental_status_details field of a
-      # TargetingOption when targeting_type is
-      # `TARGETING_TYPE_PARENTAL_STATUS`.
+      # parental_status_details field of a TargetingOption when targeting_type is `
+      # TARGETING_TYPE_PARENTAL_STATUS`.
       class ParentalStatusTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -6708,12 +6240,11 @@ module Google
         end
       end
       
-      # Settings that control a partner cost.
-      # A partner cost is any type of expense involved in running a campaign, other
-      # than the costs of purchasing impressions (which is called the media cost)
-      # and using third-party audience segment data (data fee). Some examples of
-      # partner costs include the fees for using DV360, a third-party ad server,
-      # or a third-party ad serving verification service.
+      # Settings that control a partner cost. A partner cost is any type of expense
+      # involved in running a campaign, other than the costs of purchasing impressions
+      # (which is called the media cost) and using third-party audience segment data (
+      # data fee). Some examples of partner costs include the fees for using DV360, a
+      # third-party ad server, or a third-party ad serving verification service.
       class PartnerCost
         include Google::Apis::Core::Hashable
       
@@ -6722,18 +6253,16 @@ module Google
         # @return [String]
         attr_accessor :cost_type
       
-        # The CPM fee amount in micros of advertiser's currency.
-        # Applicable when the fee_type is
-        # `PARTNER_FEE_TYPE_CPM_FEE`. Must be greater than or equal to 0.
-        # For example, for 1.5 standard unit of the advertiser's currency, set
-        # this field to 1500000.
+        # The CPM fee amount in micros of advertiser's currency. Applicable when the
+        # fee_type is `PARTNER_FEE_TYPE_CPM_FEE`. Must be greater than or equal to 0.
+        # For example, for 1.5 standard unit of the advertiser's currency, set this
+        # field to 1500000.
         # Corresponds to the JSON property `feeAmount`
         # @return [Fixnum]
         attr_accessor :fee_amount
       
-        # The media fee percentage in millis (1/1000 of a percent).
-        # Applicable when the fee_type is
-        # `PARTNER_FEE_TYPE_MEDIA_FEE`. Must be greater than or equal to 0.
+        # The media fee percentage in millis (1/1000 of a percent). Applicable when the
+        # fee_type is `PARTNER_FEE_TYPE_MEDIA_FEE`. Must be greater than or equal to 0.
         # For example: 100 represents 0.1%.
         # Corresponds to the JSON property `feePercentageMillis`
         # @return [Fixnum]
@@ -6744,12 +6273,9 @@ module Google
         # @return [String]
         attr_accessor :fee_type
       
-        # The invoice type for this partner cost.
-        # * Required when cost_type is one of:
-        # - `PARTNER_COST_TYPE_ADLOOX`
-        # - `PARTNER_COST_TYPE_DOUBLE_VERIFY`
-        # - `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE`.
-        # * Output only for other types.
+        # The invoice type for this partner cost. * Required when cost_type is one of: -
+        # `PARTNER_COST_TYPE_ADLOOX` - `PARTNER_COST_TYPE_DOUBLE_VERIFY` - `
+        # PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE`. * Output only for other types.
         # Corresponds to the JSON property `invoiceType`
         # @return [String]
         attr_accessor :invoice_type
@@ -6772,20 +6298,17 @@ module Google
       class PartnerRevenueModel
         include Google::Apis::Core::Hashable
       
-        # Required. The markup amount of the partner revenue model.
-        # Must be greater than or equal to 0.
-        # * When the markup_type is set to be
-        # `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`, this field represents the CPM
-        # markup in micros of advertiser's currency. For example, 1500000
-        # represents 1.5 standard units of the currency.
-        # * When the markup_type is set to be
-        # `PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP`, this field
-        # represents the media cost percent markup in millis. For example,
-        # 100 represents 0.1% (decimal 0.001).
-        # * When the markup_type is set to be
-        # `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP`, this field
-        # represents the total media cost percent markup in millis. For example,
-        # 100 represents 0.1% (decimal 0.001).
+        # Required. The markup amount of the partner revenue model. Must be greater than
+        # or equal to 0. * When the markup_type is set to be `
+        # PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`, this field represents the CPM markup
+        # in micros of advertiser's currency. For example, 1500000 represents 1.5
+        # standard units of the currency. * When the markup_type is set to be `
+        # PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP`, this field represents
+        # the media cost percent markup in millis. For example, 100 represents 0.1% (
+        # decimal 0.001). * When the markup_type is set to be `
+        # PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP`, this field
+        # represents the total media cost percent markup in millis. For example, 100
+        # represents 0.1% (decimal 0.001).
         # Corresponds to the JSON property `markupAmount`
         # @return [Fixnum]
         attr_accessor :markup_amount
@@ -6810,33 +6333,26 @@ module Google
       class PerformanceGoal
         include Google::Apis::Core::Hashable
       
-        # The goal amount, in micros of the advertiser's currency.
-        # Applicable when
-        # performance_goal_type is one of:
-        # * `PERFORMANCE_GOAL_TYPE_CPM`
-        # * `PERFORMANCE_GOAL_TYPE_CPC`
-        # * `PERFORMANCE_GOAL_TYPE_CPA`
-        # * `PERFORMANCE_GOAL_TYPE_CPIAVC`
-        # For example 1500000 represents 1.5 standard units of the currency.
+        # The goal amount, in micros of the advertiser's currency. Applicable when
+        # performance_goal_type is one of: * `PERFORMANCE_GOAL_TYPE_CPM` * `
+        # PERFORMANCE_GOAL_TYPE_CPC` * `PERFORMANCE_GOAL_TYPE_CPA` * `
+        # PERFORMANCE_GOAL_TYPE_CPIAVC` For example 1500000 represents 1.5 standard
+        # units of the currency.
         # Corresponds to the JSON property `performanceGoalAmountMicros`
         # @return [Fixnum]
         attr_accessor :performance_goal_amount_micros
       
-        # The decimal representation of the goal percentage in micros.
-        # Applicable when
-        # performance_goal_type is one of:
-        # * `PERFORMANCE_GOAL_TYPE_CTR`
-        # * `PERFORMANCE_GOAL_TYPE_VIEWABILITY`
-        # For example, 70000 represents 7% (decimal 0.07).
+        # The decimal representation of the goal percentage in micros. Applicable when
+        # performance_goal_type is one of: * `PERFORMANCE_GOAL_TYPE_CTR` * `
+        # PERFORMANCE_GOAL_TYPE_VIEWABILITY` For example, 70000 represents 7% (decimal 0.
+        # 07).
         # Corresponds to the JSON property `performanceGoalPercentageMicros`
         # @return [Fixnum]
         attr_accessor :performance_goal_percentage_micros
       
-        # A key performance indicator (KPI) string, which can be empty.
-        # Must be UTF-8 encoded with a length of no more than 100 characters.
-        # Applicable when
-        # performance_goal_type is set to
-        # `PERFORMANCE_GOAL_TYPE_OTHER`.
+        # A key performance indicator (KPI) string, which can be empty. Must be UTF-8
+        # encoded with a length of no more than 100 characters. Applicable when
+        # performance_goal_type is set to `PERFORMANCE_GOAL_TYPE_OTHER`.
         # Corresponds to the JSON property `performanceGoalString`
         # @return [String]
         attr_accessor :performance_goal_string
@@ -6866,55 +6382,41 @@ module Google
       
         # The maximum average CPM that may be bid, in micros of the advertiser's
         # currency. Must be greater than or equal to a billable unit of the given
-        # currency. Not applicable when
-        # performance_goal_type
-        # is set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`.
-        # For example, 1500000 represents 1.5 standard units of the currency.
+        # currency. Not applicable when performance_goal_type is set to `
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`. For example, 1500000
+        # represents 1.5 standard units of the currency.
         # Corresponds to the JSON property `maxAverageCpmBidAmountMicros`
         # @return [Fixnum]
         attr_accessor :max_average_cpm_bid_amount_micros
       
-        # Required. The performance goal the bidding strategy will attempt to
-        # meet or beat, in micros of the advertiser's currency or in micro of the
-        # ROAS (Return On Advertising Spend) value which is also based on
-        # advertiser's currency. Must be greater than or equal to a billable unit of
-        # the given currency and smaller or equal to upper bounds. Each
-        # performance_goal_type
-        # has its upper bound:
-        # * when
-        # performance_goal_type
-        # is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`,
-        # upper bound is 10000.00 USD.
-        # * when
-        # performance_goal_type
-        # is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`,
-        # upper bound is 1000.00 USD.
-        # * when
-        # performance_goal_type
-        # is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, upper bound is
-        # 1000.00 USD.
-        # * when
-        # performance_goal_type
-        # is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`, upper bound is
-        # 1000.00 and lower bound is 0.01.
-        # Example: If set to
-        # `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, the bid price will
-        # be based on the probability that each available impression will be
-        # viewable. For example, if viewable CPM target is $2 and an impression is
-        # 40% likely to be viewable, the bid price will be $0.80 CPM (40% of $2).
-        # For example, 1500000 represents 1.5 standard units of the currency or ROAS
-        # value.
+        # Required. The performance goal the bidding strategy will attempt to meet or
+        # beat, in micros of the advertiser's currency or in micro of the ROAS (Return
+        # On Advertising Spend) value which is also based on advertiser's currency. Must
+        # be greater than or equal to a billable unit of the given currency and smaller
+        # or equal to upper bounds. Each performance_goal_type has its upper bound: *
+        # when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`,
+        # upper bound is 10000.00 USD. * when performance_goal_type is `
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, upper bound is 1000.00 USD. *
+        # when performance_goal_type is `
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, upper bound is 1000.00
+        # USD. * when performance_goal_type is `
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`, upper bound is 1000.00
+        # and lower bound is 0.01. Example: If set to `
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, the bid price will be
+        # based on the probability that each available impression will be viewable. For
+        # example, if viewable CPM target is $2 and an impression is 40% likely to be
+        # viewable, the bid price will be $0.80 CPM (40% of $2). For example, 1500000
+        # represents 1.5 standard units of the currency or ROAS value.
         # Corresponds to the JSON property `performanceGoalAmountMicros`
         # @return [Fixnum]
         attr_accessor :performance_goal_amount_micros
       
-        # Required. The type of the performance goal that the bidding strategy
-        # will try to meet or beat.
-        # For line item level usage, the value must be one of:
-        # * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`
-        # * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`
-        # * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`
-        # * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.
+        # Required. The type of the performance goal that the bidding strategy will try
+        # to meet or beat. For line item level usage, the value must be one of: * `
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` * `
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` * `
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` * `
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.
         # Corresponds to the JSON property `performanceGoalType`
         # @return [String]
         attr_accessor :performance_goal_type
@@ -6931,28 +6433,24 @@ module Google
         end
       end
       
-      # Targeting details for proximity location list. This will be
-      # populated in the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
+      # Targeting details for proximity location list. This will be populated in the
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
       class ProximityLocationListAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
         # Required. ID of the proximity location list. Should refer to the
-        # location_list_id field of a
-        # LocationList resource whose type is
-        # `TARGETING_LOCATION_TYPE_PROXIMITY`.
+        # location_list_id field of a LocationList resource whose type is `
+        # TARGETING_LOCATION_TYPE_PROXIMITY`.
         # Corresponds to the JSON property `proximityLocationListId`
         # @return [Fixnum]
         attr_accessor :proximity_location_list_id
       
-        # Required. Radius range for proximity location list.
-        # This represents the size of the area around a chosen location that will be
-        # targeted.
-        # `All` proximity location targeting under a single line item must have the
-        # same radius range value. Set this value to match any existing targeting.
-        # If updated, this field will change the radius range for all proximity
-        # targeting under the line item.
+        # Required. Radius range for proximity location list. This represents the size
+        # of the area around a chosen location that will be targeted. `All` proximity
+        # location targeting under a single line item must have the same radius range
+        # value. Set this value to match any existing targeting. If updated, this field
+        # will change the radius range for all proximity targeting under the line item.
         # Corresponds to the JSON property `proximityRadiusRange`
         # @return [String]
         attr_accessor :proximity_radius_range
@@ -6997,10 +6495,8 @@ module Google
       class RateDetails
         include Google::Apis::Core::Hashable
       
-        # The rate type.
-        # Acceptable values are `INVENTORY_SOURCE_RATE_TYPE_CPM_FIXED`,
-        # `INVENTORY_SOURCE_RATE_TYPE_CPM_FLOOR`, and
-        # `INVENTORY_SOURCE_RATE_TYPE_CPD`.
+        # The rate type. Acceptable values are `INVENTORY_SOURCE_RATE_TYPE_CPM_FIXED`, `
+        # INVENTORY_SOURCE_RATE_TYPE_CPM_FLOOR`, and `INVENTORY_SOURCE_RATE_TYPE_CPD`.
         # Corresponds to the JSON property `inventorySourceRateType`
         # @return [String]
         attr_accessor :inventory_source_rate_type
@@ -7015,8 +6511,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV1::Money]
         attr_accessor :rate
       
-        # Required for guaranteed inventory sources.
-        # The number of impressions guaranteed by the seller.
+        # Required for guaranteed inventory sources. The number of impressions
+        # guaranteed by the seller.
         # Corresponds to the JSON property `unitsPurchased`
         # @return [Fixnum]
         attr_accessor :units_purchased
@@ -7034,10 +6530,9 @@ module Google
         end
       end
       
-      # Targeting details for regional location list. This will be
-      # populated in the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_REGIONAL_LOCATION_LIST`.
+      # Targeting details for regional location list. This will be populated in the
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_REGIONAL_LOCATION_LIST`.
       class RegionalLocationListAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -7048,8 +6543,8 @@ module Google
         alias_method :negative?, :negative
       
         # Required. ID of the regional location list. Should refer to the
-        # location_list_id field of a
-        # LocationList resource whose type is `TARGETING_LOCATION_TYPE_REGIONAL`.
+        # location_list_id field of a LocationList resource whose type is `
+        # TARGETING_LOCATION_TYPE_REGIONAL`.
         # Corresponds to the JSON property `regionalLocationListId`
         # @return [Fixnum]
         attr_accessor :regional_location_list_id
@@ -7069,10 +6564,8 @@ module Google
       class ReviewStatusInfo
         include Google::Apis::Core::Hashable
       
-        # Represents the basic approval needed for a creative to begin serving.
-        # Summary of
-        # creative_and_landing_page_review_status
-        # and
+        # Represents the basic approval needed for a creative to begin serving. Summary
+        # of creative_and_landing_page_review_status and
         # content_and_policy_review_status.
         # Corresponds to the JSON property `approvalStatus`
         # @return [String]
@@ -7116,8 +6609,8 @@ module Google
       class SdfConfig
         include Google::Apis::Core::Hashable
       
-        # An administrator email address to which the SDF processing status reports
-        # will be sent.
+        # An administrator email address to which the SDF processing status reports will
+        # be sent.
         # Corresponds to the JSON property `adminEmail`
         # @return [String]
         attr_accessor :admin_email
@@ -7138,17 +6631,15 @@ module Google
         end
       end
       
-      # Type for the response returned
-      # by [SdfDownloadTaskService.CreateSdfDownloadTask].
+      # Type for the response returned by [SdfDownloadTaskService.
+      # CreateSdfDownloadTask].
       class SdfDownloadTask
         include Google::Apis::Core::Hashable
       
-        # A resource name to be used in
-        # media.download to Download the prepared
-        # files. Resource names have the format
-        # `download/sdfdownloadtasks/media/`media_id``. `media_id` will be made
-        # available by the long running operation service once the task status is
-        # done.
+        # A resource name to be used in media.download to Download the prepared files.
+        # Resource names have the format `download/sdfdownloadtasks/media/`media_id``. `
+        # media_id` will be made available by the long running operation service once
+        # the task status is done.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -7163,8 +6654,8 @@ module Google
         end
       end
       
-      # Type for the metadata returned
-      # by [SdfDownloadTaskService.CreateSdfDownloadTask].
+      # Type for the metadata returned by [SdfDownloadTaskService.
+      # CreateSdfDownloadTask].
       class SdfDownloadTaskMetadata
         include Google::Apis::Core::Hashable
       
@@ -7196,9 +6687,8 @@ module Google
       end
       
       # Targeting details for sensitive category. This will be populated in the
-      # details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`.
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`.
       class SensitiveCategoryAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -7223,11 +6713,8 @@ module Google
         end
       end
       
-      # Represents a targetable sensitive category. This will be
-      # populated in the
-      # sensitive_category_details
-      # field of the TargetingOption when
-      # targeting_type is
+      # Represents a targetable sensitive category. This will be populated in the
+      # sensitive_category_details field of the TargetingOption when targeting_type is
       # `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`.
       class SensitiveCategoryTargetingOptionDetails
         include Google::Apis::Core::Hashable
@@ -7256,8 +6743,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The URL or app ID of the site.
-        # Must be UTF-8 encoded with a maximum length of 240 bytes.
+        # Required. The URL or app ID of the site. Must be UTF-8 encoded with a maximum
+        # length of 240 bytes.
         # Corresponds to the JSON property `urlOrAppId`
         # @return [String]
         attr_accessor :url_or_app_id
@@ -7273,12 +6760,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -7287,15 +6774,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -7313,14 +6800,13 @@ module Google
       end
       
       # Details for assigned sub-exchange targeting option. This will be populated in
-      # the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_SUB_EXCHANGE`.
+      # the details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_SUB_EXCHANGE`.
       class SubExchangeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Required. The targeting_option_id of a
-        # TargetingOption of type `TARGETING_TYPE_SUB_EXCHANGE`.
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_SUB_EXCHANGE`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -7336,10 +6822,8 @@ module Google
       end
       
       # Represents a targetable sub-exchange. This will be populated in the
-      # sub_exchange_details field
-      # of a TargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_SUB_EXCHANGE`.
+      # sub_exchange_details field of a TargetingOption when targeting_type is `
+      # TARGETING_TYPE_SUB_EXCHANGE`.
       class SubExchangeTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -7358,15 +6842,12 @@ module Google
         end
       end
       
-      # Represents a single targeting option, which is a targetable concept in
-      # DV360.
+      # Represents a single targeting option, which is a targetable concept in DV360.
       class TargetingOption
         include Google::Apis::Core::Hashable
       
         # Represents a targetable age range. This will be populated in the
-        # age_range_details field when
-        # targeting_type is
-        # `TARGETING_TYPE_AGE_RANGE`.
+        # age_range_details field when targeting_type is `TARGETING_TYPE_AGE_RANGE`.
         # Corresponds to the JSON property `ageRangeDetails`
         # @return [Google::Apis::DisplayvideoV1::AgeRangeTargetingOptionDetails]
         attr_accessor :age_range_details
@@ -7374,137 +6855,111 @@ module Google
         # Represents a targetable collection of apps. A collection lets you target
         # dynamic groups of related apps that are maintained by the platform, for
         # example `All Apps/Google Play/Games`. This will be populated in the
-        # app_category_details field when
-        # targeting_type is
-        # `TARGETING_TYPE_APP_CATEGORY`.
+        # app_category_details field when targeting_type is `TARGETING_TYPE_APP_CATEGORY`
+        # .
         # Corresponds to the JSON property `appCategoryDetails`
         # @return [Google::Apis::DisplayvideoV1::AppCategoryTargetingOptionDetails]
         attr_accessor :app_category_details
       
         # Represents a targetable authorized seller status. This will be populated in
-        # the
-        # authorized_seller_status_details
-        # field when targeting_type is
-        # `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
+        # the authorized_seller_status_details field when targeting_type is `
+        # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`.
         # Corresponds to the JSON property `authorizedSellerStatusDetails`
         # @return [Google::Apis::DisplayvideoV1::AuthorizedSellerStatusTargetingOptionDetails]
         attr_accessor :authorized_seller_status_details
       
-        # Represents a targetable browser. This will be populated in the
-        # browser_details field when
-        # targeting_type is
-        # `TARGETING_TYPE_BROWSER`.
+        # Represents a targetable browser. This will be populated in the browser_details
+        # field when targeting_type is `TARGETING_TYPE_BROWSER`.
         # Corresponds to the JSON property `browserDetails`
         # @return [Google::Apis::DisplayvideoV1::BrowserTargetingOptionDetails]
         attr_accessor :browser_details
       
         # Represents a targetable carrier or ISP. This will be populated in the
-        # carrier_and_isp_details field of
-        # a TargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_CARRIER_AND_ISP`.
+        # carrier_and_isp_details field of a TargetingOption when targeting_type is `
+        # TARGETING_TYPE_CARRIER_AND_ISP`.
         # Corresponds to the JSON property `carrierAndIspDetails`
         # @return [Google::Apis::DisplayvideoV1::CarrierAndIspTargetingOptionDetails]
         attr_accessor :carrier_and_isp_details
       
         # Represents a targetable category. This will be populated in the
-        # category_details field of a
-        # TargetingOption when targeting_type is
-        # `TARGETING_TYPE_CATEGORY`.
+        # category_details field of a TargetingOption when targeting_type is `
+        # TARGETING_TYPE_CATEGORY`.
         # Corresponds to the JSON property `categoryDetails`
         # @return [Google::Apis::DisplayvideoV1::CategoryTargetingOptionDetails]
         attr_accessor :category_details
       
         # Represents a targetable content instream position, which could be used by
         # video and audio ads. This will be populated in the
-        # content_instream_position_details
-        # field when targeting_type is
-        # `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
+        # content_instream_position_details field when targeting_type is `
+        # TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
         # Corresponds to the JSON property `contentInstreamPositionDetails`
         # @return [Google::Apis::DisplayvideoV1::ContentInstreamPositionTargetingOptionDetails]
         attr_accessor :content_instream_position_details
       
         # Represents a targetable content outstream position, which could be used by
         # display and video ads. This will be populated in the
-        # content_outstream_position_details
-        # field when targeting_type is
-        # `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
+        # content_outstream_position_details field when targeting_type is `
+        # TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
         # Corresponds to the JSON property `contentOutstreamPositionDetails`
         # @return [Google::Apis::DisplayvideoV1::ContentOutstreamPositionTargetingOptionDetails]
         attr_accessor :content_outstream_position_details
       
         # Represents a targetable device make and model. This will be populated in the
-        # device_make_model_details
-        # field of a TargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_DEVICE_MAKE_MODEL`.
+        # device_make_model_details field of a TargetingOption when targeting_type is `
+        # TARGETING_TYPE_DEVICE_MAKE_MODEL`.
         # Corresponds to the JSON property `deviceMakeModelDetails`
         # @return [Google::Apis::DisplayvideoV1::DeviceMakeModelTargetingOptionDetails]
         attr_accessor :device_make_model_details
       
         # Represents a targetable device type. This will be populated in the
-        # device_type_details field of a
-        # TargetingOption when targeting_type is
-        # `TARGETING_TYPE_DEVICE_TYPE`.
+        # device_type_details field of a TargetingOption when targeting_type is `
+        # TARGETING_TYPE_DEVICE_TYPE`.
         # Corresponds to the JSON property `deviceTypeDetails`
         # @return [Google::Apis::DisplayvideoV1::DeviceTypeTargetingOptionDetails]
         attr_accessor :device_type_details
       
         # Represents a targetable digital content label rating tier. This will be
-        # populated in the
-        # digital_content_label_details
-        # field of the TargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`.
+        # populated in the digital_content_label_details field of the TargetingOption
+        # when targeting_type is `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`.
         # Corresponds to the JSON property `digitalContentLabelDetails`
         # @return [Google::Apis::DisplayvideoV1::DigitalContentLabelTargetingOptionDetails]
         attr_accessor :digital_content_label_details
       
         # Represents a targetable environment. This will be populated in the
-        # environment_details field of a
-        # TargetingOption when targeting_type is
-        # `TARGETING_TYPE_ENVIRONMENT`.
+        # environment_details field of a TargetingOption when targeting_type is `
+        # TARGETING_TYPE_ENVIRONMENT`.
         # Corresponds to the JSON property `environmentDetails`
         # @return [Google::Apis::DisplayvideoV1::EnvironmentTargetingOptionDetails]
         attr_accessor :environment_details
       
         # Represents a targetable exchange. This will be populated in the
-        # exchange_details field
-        # of a TargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_EXCHANGE`.
+        # exchange_details field of a TargetingOption when targeting_type is `
+        # TARGETING_TYPE_EXCHANGE`.
         # Corresponds to the JSON property `exchangeDetails`
         # @return [Google::Apis::DisplayvideoV1::ExchangeTargetingOptionDetails]
         attr_accessor :exchange_details
       
-        # Represents a targetable gender. This will be populated in the
-        # gender_details field of a TargetingOption
-        # when targeting_type is
-        # `TARGETING_TYPE_GENDER`.
+        # Represents a targetable gender. This will be populated in the gender_details
+        # field of a TargetingOption when targeting_type is `TARGETING_TYPE_GENDER`.
         # Corresponds to the JSON property `genderDetails`
         # @return [Google::Apis::DisplayvideoV1::GenderTargetingOptionDetails]
         attr_accessor :gender_details
       
         # Represents a targetable geographic region. This will be populated in the
-        # geo_region_details field when
-        # targeting_type is
-        # `TARGETING_TYPE_GEO_REGION`.
+        # geo_region_details field when targeting_type is `TARGETING_TYPE_GEO_REGION`.
         # Corresponds to the JSON property `geoRegionDetails`
         # @return [Google::Apis::DisplayvideoV1::GeoRegionTargetingOptionDetails]
         attr_accessor :geo_region_details
       
         # Represents a targetable household income. This will be populated in the
-        # household_income_details field of
-        # a TargetingOption when targeting_type is
-        # `TARGETING_TYPE_HOUSEHOLD_INCOME`.
+        # household_income_details field of a TargetingOption when targeting_type is `
+        # TARGETING_TYPE_HOUSEHOLD_INCOME`.
         # Corresponds to the JSON property `householdIncomeDetails`
         # @return [Google::Apis::DisplayvideoV1::HouseholdIncomeTargetingOptionDetails]
         attr_accessor :household_income_details
       
         # Represents a targetable language. This will be populated in the
-        # language_details field when
-        # targeting_type is
-        # `TARGETING_TYPE_LANGUAGE`.
+        # language_details field when targeting_type is `TARGETING_TYPE_LANGUAGE`.
         # Corresponds to the JSON property `languageDetails`
         # @return [Google::Apis::DisplayvideoV1::LanguageTargetingOptionDetails]
         attr_accessor :language_details
@@ -7514,54 +6969,43 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Represents a targetable on screen position, which could be used by display
-        # and video ads. This will be populated in the
-        # on_screen_position_details
-        # field when
-        # targeting_type is
-        # `TARGETING_TYPE_ON_SCREEN_POSITION`.
+        # Represents a targetable on screen position, which could be used by display and
+        # video ads. This will be populated in the on_screen_position_details field when
+        # targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`.
         # Corresponds to the JSON property `onScreenPositionDetails`
         # @return [Google::Apis::DisplayvideoV1::OnScreenPositionTargetingOptionDetails]
         attr_accessor :on_screen_position_details
       
         # Represents a targetable operating system. This will be populated in the
-        # operating_system_details field
-        # of a TargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_OPERATING_SYSTEM`.
+        # operating_system_details field of a TargetingOption when targeting_type is `
+        # TARGETING_TYPE_OPERATING_SYSTEM`.
         # Corresponds to the JSON property `operatingSystemDetails`
         # @return [Google::Apis::DisplayvideoV1::OperatingSystemTargetingOptionDetails]
         attr_accessor :operating_system_details
       
         # Represents a targetable parental status. This will be populated in the
-        # parental_status_details field of a
-        # TargetingOption when targeting_type is
-        # `TARGETING_TYPE_PARENTAL_STATUS`.
+        # parental_status_details field of a TargetingOption when targeting_type is `
+        # TARGETING_TYPE_PARENTAL_STATUS`.
         # Corresponds to the JSON property `parentalStatusDetails`
         # @return [Google::Apis::DisplayvideoV1::ParentalStatusTargetingOptionDetails]
         attr_accessor :parental_status_details
       
-        # Represents a targetable sensitive category. This will be
-        # populated in the
-        # sensitive_category_details
-        # field of the TargetingOption when
-        # targeting_type is
+        # Represents a targetable sensitive category. This will be populated in the
+        # sensitive_category_details field of the TargetingOption when targeting_type is
         # `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`.
         # Corresponds to the JSON property `sensitiveCategoryDetails`
         # @return [Google::Apis::DisplayvideoV1::SensitiveCategoryTargetingOptionDetails]
         attr_accessor :sensitive_category_details
       
         # Represents a targetable sub-exchange. This will be populated in the
-        # sub_exchange_details field
-        # of a TargetingOption when
-        # targeting_type is
-        # `TARGETING_TYPE_SUB_EXCHANGE`.
+        # sub_exchange_details field of a TargetingOption when targeting_type is `
+        # TARGETING_TYPE_SUB_EXCHANGE`.
         # Corresponds to the JSON property `subExchangeDetails`
         # @return [Google::Apis::DisplayvideoV1::SubExchangeTargetingOptionDetails]
         attr_accessor :sub_exchange_details
       
-        # Output only. A unique identifier for this targeting option. The tuple
-        # ``targeting_type`, `targeting_option_id`` will be unique.
+        # Output only. A unique identifier for this targeting option. The tuple ``
+        # targeting_type`, `targeting_option_id`` will be unique.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -7572,27 +7016,22 @@ module Google
         attr_accessor :targeting_type
       
         # Represents a targetable user rewarded content status for video ads only. This
-        # will be populated in the
-        # user_rewarded_content_details
-        # field when
-        # targeting_type is
-        # `TARGETING_TYPE_USER_REWARDED_CONTENT`.
+        # will be populated in the user_rewarded_content_details field when
+        # targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`.
         # Corresponds to the JSON property `userRewardedContentDetails`
         # @return [Google::Apis::DisplayvideoV1::UserRewardedContentTargetingOptionDetails]
         attr_accessor :user_rewarded_content_details
       
         # Represents a targetable video player size. This will be populated in the
-        # video_player_size_details
-        # field when targeting_type is
-        # `TARGETING_TYPE_VIDEO_PLAYER_SIZE`.
+        # video_player_size_details field when targeting_type is `
+        # TARGETING_TYPE_VIDEO_PLAYER_SIZE`.
         # Corresponds to the JSON property `videoPlayerSizeDetails`
         # @return [Google::Apis::DisplayvideoV1::VideoPlayerSizeTargetingOptionDetails]
         attr_accessor :video_player_size_details
       
         # Represents a targetable viewability. This will be populated in the
-        # viewability_details field of a
-        # TargetingOption when targeting_type is
-        # `TARGETING_TYPE_VIEWABILITY`.
+        # viewability_details field of a TargetingOption when targeting_type is `
+        # TARGETING_TYPE_VIEWABILITY`.
         # Corresponds to the JSON property `viewabilityDetails`
         # @return [Google::Apis::DisplayvideoV1::ViewabilityTargetingOptionDetails]
         attr_accessor :viewability_details
@@ -7638,8 +7077,8 @@ module Google
       class ThirdPartyOnlyConfig
         include Google::Apis::Core::Hashable
       
-        # Whether or not order ID reporting for pixels is enabled.
-        # This value cannot be changed once set to `true`.
+        # Whether or not order ID reporting for pixels is enabled. This value cannot be
+        # changed once set to `true`.
         # Corresponds to the JSON property `pixelOrderIdReportingEnabled`
         # @return [Boolean]
         attr_accessor :pixel_order_id_reporting_enabled
@@ -7665,9 +7104,9 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Tracking URL used to track the interaction.
-        # Provide a URL with optional path or query string, beginning with `https:`.
-        # For example, https://www.example.com/path
+        # Tracking URL used to track the interaction. Provide a URL with optional path
+        # or query string, beginning with `https:`. For example, https://www.example.com/
+        # path
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -7683,10 +7122,9 @@ module Google
         end
       end
       
-      # Assigned third party verifier targeting option details. This will be
-      # populated in the details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_THIRD_PARTY_VERIFIER`.
+      # Assigned third party verifier targeting option details. This will be populated
+      # in the details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_THIRD_PARTY_VERIFIER`.
       class ThirdPartyVerifierAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -7777,15 +7215,13 @@ module Google
         attr_accessor :floodlight_activity_id
       
         # Required. The number of days after an ad has been clicked in which a
-        # conversion may be counted.
-        # Must be between 0 and 90 inclusive.
+        # conversion may be counted. Must be between 0 and 90 inclusive.
         # Corresponds to the JSON property `postClickLookbackWindowDays`
         # @return [Fixnum]
         attr_accessor :post_click_lookback_window_days
       
-        # Required. The number of days after an ad has been viewed in which a
-        # conversion may be counted.
-        # Must be between 0 and 90 inclusive.
+        # Required. The number of days after an ad has been viewed in which a conversion
+        # may be counted. Must be between 0 and 90 inclusive.
         # Corresponds to the JSON property `postViewLookbackWindowDays`
         # @return [Fixnum]
         attr_accessor :post_view_lookback_window_days
@@ -7806,8 +7242,8 @@ module Google
       class Transcode
         include Google::Apis::Core::Hashable
       
-        # The bit rate for the audio stream of the transcoded video, or the bit rate
-        # for the transcoded audio, in kilobits per second.
+        # The bit rate for the audio stream of the transcoded video, or the bit rate for
+        # the transcoded audio, in kilobits per second.
         # Corresponds to the JSON property `audioBitRateKbps`
         # @return [Fixnum]
         attr_accessor :audio_bit_rate_kbps
@@ -7899,9 +7335,8 @@ module Google
       end
       
       # Details for assigned URL targeting option. This will be populated in the
-      # details field of an AssignedTargetingOption when
-      # targeting_type is
-      # `TARGETING_TYPE_URL`.
+      # details field of an AssignedTargetingOption when targeting_type is `
+      # TARGETING_TYPE_URL`.
       class UrlAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -7911,10 +7346,10 @@ module Google
         attr_accessor :negative
         alias_method :negative?, :negative
       
-        # Required. The URL, for example `example.com`.
-        # DV360 supports two levels of subdirectory targeting, for example
-        # `www.example.com/one-subdirectory-level/second-level`, and five levels of
-        # subdomain targeting, for example `five.four.three.two.one.example.com`.
+        # Required. The URL, for example `example.com`. DV360 supports two levels of
+        # subdirectory targeting, for example `www.example.com/one-subdirectory-level/
+        # second-level`, and five levels of subdomain targeting, for example `five.four.
+        # three.two.one.example.com`.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -7930,18 +7365,14 @@ module Google
         end
       end
       
-      # User rewarded content targeting option details. This will be populated in
-      # the
-      # user_rewarded_content_details
-      # field when
-      # targeting_type is
-      # `TARGETING_TYPE_USER_REWARDED_CONTENT`.
+      # User rewarded content targeting option details. This will be populated in the
+      # user_rewarded_content_details field when targeting_type is `
+      # TARGETING_TYPE_USER_REWARDED_CONTENT`.
       class UserRewardedContentAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Required. The targeting_option_id field when
-        # targeting_type is
-        # `TARGETING_TYPE_USER_REWARDED_CONTENT`.
+        # Required. The targeting_option_id field when targeting_type is `
+        # TARGETING_TYPE_USER_REWARDED_CONTENT`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -7963,11 +7394,8 @@ module Google
       end
       
       # Represents a targetable user rewarded content status for video ads only. This
-      # will be populated in the
-      # user_rewarded_content_details
-      # field when
-      # targeting_type is
-      # `TARGETING_TYPE_USER_REWARDED_CONTENT`.
+      # will be populated in the user_rewarded_content_details field when
+      # targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`.
       class UserRewardedContentTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -7987,17 +7415,15 @@ module Google
       end
       
       # Video player size targeting option details. This will be populated in the
-      # video_player_size_details
-      # field when targeting_type is
-      # `TARGETING_TYPE_VIDEO_PLAYER_SIZE`.
-      # Explicitly targeting all options is not supported. Remove all video player
-      # size targeting options to achieve this effect.
+      # video_player_size_details field when targeting_type is `
+      # TARGETING_TYPE_VIDEO_PLAYER_SIZE`. Explicitly targeting all options is not
+      # supported. Remove all video player size targeting options to achieve this
+      # effect.
       class VideoPlayerSizeAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Required. The targeting_option_id field when
-        # targeting_type is
-        # `TARGETING_TYPE_VIDEO_PLAYER_SIZE`.
+        # Required. The targeting_option_id field when targeting_type is `
+        # TARGETING_TYPE_VIDEO_PLAYER_SIZE`.
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -8019,9 +7445,8 @@ module Google
       end
       
       # Represents a targetable video player size. This will be populated in the
-      # video_player_size_details
-      # field when targeting_type is
-      # `TARGETING_TYPE_VIDEO_PLAYER_SIZE`.
+      # video_player_size_details field when targeting_type is `
+      # TARGETING_TYPE_VIDEO_PLAYER_SIZE`.
       class VideoPlayerSizeTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -8041,16 +7466,14 @@ module Google
       end
       
       # Assigned viewability targeting option details. This will be populated in the
-      # viewability_details field of
-      # an AssignedTargetingOption when
-      # targeting_type is
+      # viewability_details field of an AssignedTargetingOption when targeting_type is
       # `TARGETING_TYPE_VIEWABILITY`.
       class ViewabilityAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Required. The targeting_option_id of a
-        # TargetingOption of type `TARGETING_TYPE_VIEWABILITY` (e.g., "509010"
-        # for targeting the `VIEWABILITY_10_PERCENT_OR_MORE` option).
+        # Required. The targeting_option_id of a TargetingOption of type `
+        # TARGETING_TYPE_VIEWABILITY` (e.g., "509010" for targeting the `
+        # VIEWABILITY_10_PERCENT_OR_MORE` option).
         # Corresponds to the JSON property `targetingOptionId`
         # @return [String]
         attr_accessor :targeting_option_id
@@ -8072,9 +7495,8 @@ module Google
       end
       
       # Represents a targetable viewability. This will be populated in the
-      # viewability_details field of a
-      # TargetingOption when targeting_type is
-      # `TARGETING_TYPE_VIEWABILITY`.
+      # viewability_details field of a TargetingOption when targeting_type is `
+      # TARGETING_TYPE_VIEWABILITY`.
       class ViewabilityTargetingOptionDetails
         include Google::Apis::Core::Hashable
       

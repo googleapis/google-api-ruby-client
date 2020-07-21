@@ -26,8 +26,8 @@ module Google
       class AdBreak
         include Google::Apis::Core::Hashable
       
-        # The time of the ad break specified as the number of seconds after the start
-        # of the video when the break occurs.
+        # The time of the ad break specified as the number of seconds after the start of
+        # the video when the break occurs.
         # Corresponds to the JSON property `midrollSeconds`
         # @return [Fixnum]
         attr_accessor :midroll_seconds
@@ -52,11 +52,10 @@ module Google
       class Asset
         include Google::Apis::Core::Hashable
       
-        # A list of asset IDs that can be used to refer to the asset. The list
-        # contains values if the asset represents multiple constituent assets that
-        # have been merged. In that case, any of the asset IDs originally assigned to
-        # the constituent assets could be used to update the master, or synthesized,
-        # asset.
+        # A list of asset IDs that can be used to refer to the asset. The list contains
+        # values if the asset represents multiple constituent assets that have been
+        # merged. In that case, any of the asset IDs originally assigned to the
+        # constituent assets could be used to update the master, or synthesized, asset.
         # Corresponds to the JSON property `aliasId`
         # @return [Array<String>]
         attr_accessor :alias_id
@@ -66,8 +65,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The type of the API resource. For <code>asset</code> resources, the value
-        # is <code>youtubePartner#asset</code>.
+        # The type of the API resource. For asset resources, the value is youtubePartner#
+        # asset.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -77,9 +76,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :label
       
-        # The <code>matchPolicy</code> object contains information about the asset's
-        # match policy, which YouTube applies to user-uploaded videos that match the
-        # asset.
+        # The matchPolicy object contains information about the asset's match policy,
+        # which YouTube applies to user-uploaded videos that match the asset.
         # Corresponds to the JSON property `matchPolicy`
         # @return [Google::Apis::YoutubePartnerV1::AssetMatchPolicy]
         attr_accessor :match_policy
@@ -94,9 +92,9 @@ module Google
         # @return [Google::Apis::YoutubePartnerV1::AssetMatchPolicy]
         attr_accessor :match_policy_mine
       
-        # The <code>metadata</code> object contains information that identifies and
-        # describes the asset. This information could be used to search for the asset
-        # or to eliminate duplication within YouTube's database.
+        # The metadata object contains information that identifies and describes the
+        # asset. This information could be used to search for the asset or to eliminate
+        # duplication within YouTube's database.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::YoutubePartnerV1::Metadata]
         attr_accessor :metadata
@@ -111,15 +109,15 @@ module Google
         # @return [Google::Apis::YoutubePartnerV1::Metadata]
         attr_accessor :metadata_mine
       
-        # The <code>ownership</code> object identifies an asset's owners and provides
-        # additional details about their ownership, such as the territories where
-        # they own the asset.
+        # The ownership object identifies an asset's owners and provides additional
+        # details about their ownership, such as the territories where they own the
+        # asset.
         # Corresponds to the JSON property `ownership`
         # @return [Google::Apis::YoutubePartnerV1::RightsOwnership]
         attr_accessor :ownership
       
-        # The <code>ownershipConflicts</code> object contains information about the
-        # asset's ownership conflicts.
+        # The ownershipConflicts object contains information about the asset's ownership
+        # conflicts.
         # Corresponds to the JSON property `ownershipConflicts`
         # @return [Google::Apis::YoutubePartnerV1::OwnershipConflicts]
         attr_accessor :ownership_conflicts
@@ -139,16 +137,15 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # The date and time the asset was created. The value is specified in <a
-        # href="https://www.ietf.org/rfc/rfc3339.txt">RFC 3339</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.000Z</code>) format.
+        # The date and time the asset was created. The value is specified in RFC 3339 (
+        # YYYY-MM-DDThh:mm:ss.000Z) format.
         # Corresponds to the JSON property `timeCreated`
         # @return [String]
         attr_accessor :time_created
       
-        # The asset's type. This value determines the metadata fields that you can
-        # set for the asset. In addition, certain API functions may only be supported
-        # for specific types of assets. For example, composition assets may have more
+        # The asset's type. This value determines the metadata fields that you can set
+        # for the asset. In addition, certain API functions may only be supported for
+        # specific types of assets. For example, composition assets may have more
         # complex ownership data than other types of assets.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -184,8 +181,8 @@ module Google
       class AssetLabel
         include Google::Apis::Core::Hashable
       
-        # The type of the API resource. For <code>assetLabel</code> resources, this
-        # value is <code>youtubePartner#assetLabel</code>.
+        # The type of the API resource. For assetLabel resources, this value is
+        # youtubePartner#assetLabel.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -210,14 +207,13 @@ module Google
       class AssetLabelListResponse
         include Google::Apis::Core::Hashable
       
-        # A list of <code>assetLabel</code> resources that match the request
-        # criteria.
+        # A list of assetLabel resources that match the request criteria.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::YoutubePartnerV1::AssetLabel>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#assetLabelList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # assetLabelList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -237,13 +233,13 @@ module Google
       class AssetListResponse
         include Google::Apis::Core::Hashable
       
-        # A list of <code>asset</code> resources that match the request criteria.
+        # A list of asset resources that match the request criteria.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::YoutubePartnerV1::Asset>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#assetList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # assetList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -263,22 +259,21 @@ module Google
       class AssetMatchPolicy
         include Google::Apis::Core::Hashable
       
-        # The type of the API resource. Value:
-        # <code>youtubePartner#assetMatchPolicy</code>.
+        # The type of the API resource. Value: youtubePartner#assetMatchPolicy.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # A value that uniquely identifies the <code>Policy</code> resource that
-        # YouTube applies to user-uploaded videos that match the asset.
+        # A value that uniquely identifies the Policy resource that YouTube applies to
+        # user-uploaded videos that match the asset.
         # Corresponds to the JSON property `policyId`
         # @return [String]
         attr_accessor :policy_id
       
         # A list of rules that collectively define the policy that the content owner
         # wants to apply to user-uploaded videos that match the asset. Each rule
-        # specifies the action that YouTube should take and may optionally specify
-        # the conditions under which that action is enforced.
+        # specifies the action that YouTube should take and may optionally specify the
+        # conditions under which that action is enforced.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::YoutubePartnerV1::PolicyRule>]
         attr_accessor :rules
@@ -310,8 +305,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The type of the API resource. For this resource, the value is
-        # <code>youtubePartner#assetRelationship</code>.
+        # The type of the API resource. For this resource, the value is youtubePartner#
+        # assetRelationship.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -338,26 +333,24 @@ module Google
       class AssetRelationshipListResponse
         include Google::Apis::Core::Hashable
       
-        # A list of <code>assetRelationship</code> resources that match the request
-        # criteria.
+        # A list of assetRelationship resources that match the request criteria.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::YoutubePartnerV1::AssetRelationship>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#assetRelationshipList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # assetRelationshipList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page of results.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The <code>pageInfo</code> object encapsulates paging information for the
-        # result set.
+        # The pageInfo object encapsulates paging information for the result set.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubePartnerV1::PageInfo]
         attr_accessor :page_info
@@ -384,20 +377,19 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::AssetSnippet>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#assetSnippetList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # assetSnippetList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page of results.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The <code>pageInfo</code> object encapsulates paging information for the
-        # result set.
+        # The pageInfo object encapsulates paging information for the result set.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubePartnerV1::PageInfo]
         attr_accessor :page_info
@@ -419,8 +411,8 @@ module Google
       class AssetShare
         include Google::Apis::Core::Hashable
       
-        # The type of the API resource. For this resource, the value is
-        # <code>youtubePartner#assetShare</code>.
+        # The type of the API resource. For this resource, the value is youtubePartner#
+        # assetShare.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -451,25 +443,24 @@ module Google
       class AssetShareListResponse
         include Google::Apis::Core::Hashable
       
-        # An <code>assetShare</code> resource that matches the request criteria.
+        # An assetShare resource that matches the request criteria.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::YoutubePartnerV1::AssetShare>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#assetShareList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # assetShareList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page of results.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The <code>pageInfo</code> object encapsulates paging information for the
-        # result set.
+        # The pageInfo object encapsulates paging information for the result set.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubePartnerV1::PageInfo]
         attr_accessor :page_info
@@ -511,15 +502,14 @@ module Google
         # @return [String]
         attr_accessor :iswc
       
-        # The type of the API resource. For this operation, the value is
-        # <code>youtubePartner#assetSnippet</code>.
+        # The type of the API resource. For this operation, the value is youtubePartner#
+        # assetSnippet.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The date and time the asset was created. The value is specified in <a
-        # href="https://www.ietf.org/rfc/rfc3339.txt">RFC 3339</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.000Z</code>) format.
+        # The date and time the asset was created. The value is specified in RFC 3339 (
+        # YYYY-MM-DDThh:mm:ss.000Z) format.
         # Corresponds to the JSON property `timeCreated`
         # @return [String]
         attr_accessor :time_created
@@ -530,7 +520,7 @@ module Google
         attr_accessor :title
       
         # The asset's type. This value determines which metadata fields might be
-        # included in the <code>metadata</code> object.
+        # included in the metadata object.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -566,25 +556,23 @@ module Google
         # @return [String]
         attr_accessor :blob_id
       
-        # Read handle passed from Bigstore -> Scotty for a GCS download.
-        # This is a signed, serialized blobstore2.ReadHandle proto which must never
-        # be set outside of Bigstore, and is not applicable to non-GCS media
-        # downloads.
+        # Read handle passed from Bigstore -> Scotty for a GCS download. This is a
+        # signed, serialized blobstore2.ReadHandle proto which must never be set outside
+        # of Bigstore, and is not applicable to non-GCS media downloads.
         # Corresponds to the JSON property `downloadReadHandle`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :download_read_handle
       
-        # The blob read token. Needed to read blobs that have not been
-        # replicated. Might not be available until the final call.
+        # The blob read token. Needed to read blobs that have not been replicated. Might
+        # not be available until the final call.
         # Corresponds to the JSON property `readToken`
         # @return [String]
         attr_accessor :read_token
       
-        # Metadata passed from Blobstore -> Scotty for a new GCS upload.
-        # This is a signed, serialized blobstore2.BlobMetadataContainer proto which
-        # must never be consumed outside of Bigstore, and is not applicable to
-        # non-GCS media uploads.
+        # Metadata passed from Blobstore -> Scotty for a new GCS upload. This is a
+        # signed, serialized blobstore2.BlobMetadataContainer proto which must never be
+        # consumed outside of Bigstore, and is not applicable to non-GCS media uploads.
         # Corresponds to the JSON property `uploadMetadataContainer`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -608,8 +596,8 @@ module Google
       class Campaign
         include Google::Apis::Core::Hashable
       
-        # The <code>campaignData</code> object contains details like the campaign's
-        # start and end dates, target and source.
+        # The campaignData object contains details like the campaign's start and end
+        # dates, target and source.
         # Corresponds to the JSON property `campaignData`
         # @return [Google::Apis::YoutubePartnerV1::CampaignData]
         attr_accessor :campaign_data
@@ -619,8 +607,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The type of the API resource. For <code>campaign</code> resources, this
-        # value is <code>youtubePartner#campaign</code>.
+        # The type of the API resource. For campaign resources, this value is
+        # youtubePartner#campaign.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -659,8 +647,8 @@ module Google
       class CampaignData
         include Google::Apis::Core::Hashable
       
-        # The <code>campaignSource</code> object contains information about the
-        # assets for which the campaign will generate links.
+        # The campaignSource object contains information about the assets for which the
+        # campaign will generate links.
         # Corresponds to the JSON property `campaignSource`
         # @return [Google::Apis::YoutubePartnerV1::CampaignSource]
         attr_accessor :campaign_source
@@ -676,8 +664,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A list of videos or channels that will be linked to from claimed videos
-        # that are included in the campaign.
+        # A list of videos or channels that will be linked to from claimed videos that
+        # are included in the campaign.
         # Corresponds to the JSON property `promotedContent`
         # @return [Array<Google::Apis::YoutubePartnerV1::PromotedContent>]
         attr_accessor :promoted_content
@@ -711,8 +699,8 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::Campaign>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#campaignList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # campaignList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -782,9 +770,9 @@ module Google
       class Claim
         include Google::Apis::Core::Hashable
       
-        # The applied policy for the viewing owner on the claim. This might not be
-        # the same as the final claim policy on the video as it does not consider
-        # other partners' policy of the same claim.
+        # The applied policy for the viewing owner on the claim. This might not be the
+        # same as the final claim policy on the video as it does not consider other
+        # partners' policy of the same claim.
         # Corresponds to the JSON property `appliedPolicy`
         # @return [Google::Apis::YoutubePartnerV1::Policy]
         attr_accessor :applied_policy
@@ -802,8 +790,8 @@ module Google
         attr_accessor :block_outside_ownership
         alias_method :block_outside_ownership?, :block_outside_ownership
       
-        # This value indicates whether the claim covers the audio, video, or
-        # audiovisual portion of the claimed content.
+        # This value indicates whether the claim covers the audio, video, or audiovisual
+        # portion of the claimed content.
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
@@ -819,14 +807,14 @@ module Google
         attr_accessor :is_partner_uploaded
         alias_method :is_partner_uploaded?, :is_partner_uploaded
       
-        # The type of the API resource. For <code>claim</code> resources, this value
-        # is <code>youtubePartner#claim</code>.
+        # The type of the API resource. For claim resources, this value is
+        # youtubePartner#claim.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # If this claim was auto-generated based on a provided reference, this
-        # section will provide details of the match that generated the claim.
+        # If this claim was auto-generated based on a provided reference, this section
+        # will provide details of the match that generated the claim.
         # Corresponds to the JSON property `matchInfo`
         # @return [Google::Apis::YoutubePartnerV1::MatchInfo]
         attr_accessor :match_info
@@ -842,8 +830,8 @@ module Google
         attr_accessor :policy
       
         # The claim's status. When updating a claim, you can update its status from
-        # <code>active</code> to <code>inactive</code> to effectively release the
-        # claim, but the API does not support other updates to a claim's status.
+        # active to inactive to effectively release the claim, but the API does not
+        # support other updates to a claim's status.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -885,8 +873,8 @@ module Google
       class ClaimEvent
         include Google::Apis::Core::Hashable
       
-        # The type of the API resource. For <code>claimEvent</code> resources, this
-        # value is <code>youtubePartner#claimEvent</code>.
+        # The type of the API resource. For claimEvent resources, this value is
+        # youtubePartner#claimEvent.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -945,8 +933,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The type of the API resource. For <code>claimHistory</code> resources, this
-        # value is <code>youtubePartner#claimHistory</code>.
+        # The type of the API resource. For claimHistory resources, this value is
+        # youtubePartner#claimHistory.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -978,26 +966,25 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::Claim>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#claimList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # claimList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The <code>pageInfo</code> object encapsulates paging information for the
-        # result set.
+        # The pageInfo object encapsulates paging information for the result set.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubePartnerV1::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `previousPageToken`
         # @return [String]
         attr_accessor :previous_page_token
@@ -1025,26 +1012,25 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::ClaimSnippet>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#claimSnippetList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # claimSnippetList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The <code>pageInfo</code> object encapsulates paging information for the
-        # result set.
+        # The pageInfo object encapsulates paging information for the result set.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubePartnerV1::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `previousPageToken`
         # @return [String]
         attr_accessor :previous_page_token
@@ -1073,8 +1059,8 @@ module Google
         # @return [String]
         attr_accessor :asset_id
       
-        # This value indicates whether the claim covers the audio, video, or
-        # audiovisual portion of the claimed content.
+        # This value indicates whether the claim covers the audio, video, or audiovisual
+        # portion of the claimed content.
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
@@ -1090,8 +1076,8 @@ module Google
         attr_accessor :is_partner_uploaded
         alias_method :is_partner_uploaded?, :is_partner_uploaded
       
-        # The type of the API resource. For this operation, the value is
-        # <code>youtubePartner#claimSnippet</code>.
+        # The type of the API resource. For this operation, the value is youtubePartner#
+        # claimSnippet.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1160,17 +1146,16 @@ module Google
         end
       end
       
-      # A sequence of media data references representing composite data.
-      # Introduced to support Bigstore composite objects. For details, visit
-      # http://go/bigstore-composites.
+      # A sequence of media data references representing composite data. Introduced to
+      # support Bigstore composite objects. For details, visit http://go/bigstore-
+      # composites.
       class CompositeMedia
         include Google::Apis::Core::Hashable
       
-        # Blobstore v1 reference, set if reference_type is BLOBSTORE_REF
-        # This should be the byte representation of a blobstore.BlobRef.
-        # Since Blobstore is deprecating v1, use blobstore2_info instead.
-        # For now, any v2 blob will also be represented in this field as
-        # v1 BlobRef.
+        # Blobstore v1 reference, set if reference_type is BLOBSTORE_REF This should be
+        # the byte representation of a blobstore.BlobRef. Since Blobstore is deprecating
+        # v1, use blobstore2_info instead. For now, any v2 blob will also be represented
+        # in this field as v1 BlobRef.
         # Corresponds to the JSON property `blobRef`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1181,12 +1166,12 @@ module Google
         # @return [Google::Apis::YoutubePartnerV1::Blobstore2Info]
         attr_accessor :blobstore2_info
       
-        # A binary data reference for a media download. Serves as a
-        # technology-agnostic binary reference in some Google infrastructure.
-        # This value is a serialized storage_cosmo.BinaryReference proto. Storing
-        # it as bytes is a hack to get around the fact that the cosmo proto
-        # (as well as others it includes) doesn't support JavaScript. This
-        # prevents us from including the actual type of this field.
+        # A binary data reference for a media download. Serves as a technology-agnostic
+        # binary reference in some Google infrastructure. This value is a serialized
+        # storage_cosmo.BinaryReference proto. Storing it as bytes is a hack to get
+        # around the fact that the cosmo proto (as well as others it includes) doesn't
+        # support JavaScript. This prevents us from including the actual type of this
+        # field.
         # Corresponds to the JSON property `cosmoBinaryReference`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1214,9 +1199,9 @@ module Google
         # @return [String]
         attr_accessor :md5_hash
       
-        # This is a copy of the tech.blob.ObjectId proto, which could not
-        # be used directly here due to transitive closure issues with
-        # JavaScript support; see http://b/8801763.
+        # This is a copy of the tech.blob.ObjectId proto, which could not be used
+        # directly here due to transitive closure issues with JavaScript support; see
+        # http://b/8801763.
         # Corresponds to the JSON property `objectId`
         # @return [Google::Apis::YoutubePartnerV1::ObjectIdProp]
         attr_accessor :object_id_prop
@@ -1261,9 +1246,9 @@ module Google
       class Conditions
         include Google::Apis::Core::Hashable
       
-        # This match condition specifies whether the user- or partner-uploaded
-        # content needs to match the audio, video or audiovisual content of a
-        # reference file for the rule to apply.
+        # This match condition specifies whether the user- or partner-uploaded content
+        # needs to match the audio, video or audiovisual content of a reference file for
+        # the rule to apply.
         # Corresponds to the JSON property `contentMatchType`
         # @return [Array<String>]
         attr_accessor :content_match_type
@@ -1274,29 +1259,27 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::IntervalCondition>]
         attr_accessor :match_duration
       
-        # This match condition specifies a percentage of the user- or
-        # partner-uploaded content that needs to match a reference file for the rule
-        # to apply.
+        # This match condition specifies a percentage of the user- or partner-uploaded
+        # content that needs to match a reference file for the rule to apply.
         # Corresponds to the JSON property `matchPercent`
         # @return [Array<Google::Apis::YoutubePartnerV1::IntervalCondition>]
         attr_accessor :match_percent
       
-        # This match condition indicates that the reference must be a certain
-        # duration for the rule to apply.
+        # This match condition indicates that the reference must be a certain duration
+        # for the rule to apply.
         # Corresponds to the JSON property `referenceDuration`
         # @return [Array<Google::Apis::YoutubePartnerV1::IntervalCondition>]
         attr_accessor :reference_duration
       
         # This match condition indicates that the specified percentage of a reference
-        # file must match the user- or partner-uploaded content for the rule to
-        # apply.
+        # file must match the user- or partner-uploaded content for the rule to apply.
         # Corresponds to the JSON property `referencePercent`
         # @return [Array<Google::Apis::YoutubePartnerV1::IntervalCondition>]
         attr_accessor :reference_percent
       
-        # This watch condition specifies where users are (or or not) allowed to watch
-        # (or listen to) an asset. YouTube determines whether the condition is
-        # satisfied based on the user's location.
+        # This watch condition specifies where users are (or or not) allowed to watch (
+        # or listen to) an asset. YouTube determines whether the condition is satisfied
+        # based on the user's location.
         # Corresponds to the JSON property `requiredTerritories`
         # @return [Google::Apis::YoutubePartnerV1::TerritoryCondition]
         attr_accessor :required_territories
@@ -1356,8 +1339,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The email address(es) to which YouTube sends claim dispute notifications
-        # and possible claim notifications.
+        # The email address(es) to which YouTube sends claim dispute notifications and
+        # possible claim notifications.
         # Corresponds to the JSON property `disputeNotificationEmails`
         # @return [Array<String>]
         attr_accessor :dispute_notification_emails
@@ -1373,7 +1356,7 @@ module Google
         attr_accessor :id
       
         # The type of the API resource. For content owner resources, the value is
-        # <code>youtubePartner#contentOwner</code>.
+        # youtubePartner#contentOwner.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1409,8 +1392,8 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::ContentOwner>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#contentOwnerList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # contentOwnerList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1428,9 +1411,9 @@ module Google
       
       # Detailed Content-Type information from Scotty. The Content-Type of the media
       # will typically be filled in by the header or Scotty's best_guess, but this
-      # extended information provides the backend with more information so that it
-      # can make a better decision if needed. This is only used on media upload
-      # requests from Scotty.
+      # extended information provides the backend with more information so that it can
+      # make a better decision if needed. This is only used on media upload requests
+      # from Scotty.
       class ContentTypeInfo
         include Google::Apis::Core::Hashable
       
@@ -1439,27 +1422,27 @@ module Google
         # @return [String]
         attr_accessor :best_guess
       
-        # The content type of the file derived by looking at specific
-        # bytes (i.e. "magic bytes") of the actual file.
+        # The content type of the file derived by looking at specific bytes (i.e. "magic
+        # bytes") of the actual file.
         # Corresponds to the JSON property `fromBytes`
         # @return [String]
         attr_accessor :from_bytes
       
-        # The content type of the file derived from the file extension of
-        # the original file name used by the client.
+        # The content type of the file derived from the file extension of the original
+        # file name used by the client.
         # Corresponds to the JSON property `fromFileName`
         # @return [String]
         attr_accessor :from_file_name
       
-        # The content type of the file as specified in the request headers,
-        # multipart headers, or RUPIO start request.
+        # The content type of the file as specified in the request headers, multipart
+        # headers, or RUPIO start request.
         # Corresponds to the JSON property `fromHeader`
         # @return [String]
         attr_accessor :from_header
       
-        # The content type of the file derived from the file extension of the
-        # URL path.  The URL path is assumed to represent a file name (which
-        # is typically only true for agents that are providing a REST API).
+        # The content type of the file derived from the file extension of the URL path.
+        # The URL path is assumed to represent a file name (which is typically only true
+        # for agents that are providing a REST API).
         # Corresponds to the JSON property `fromUrlPath`
         # @return [String]
         attr_accessor :from_url_path
@@ -1487,11 +1470,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :ad_formats
       
-        # A list of <a
-        # href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/
-        # country_names_and_code_elements.htm">ISO
-        # 3166-1 alpha-2 country codes</a> that identify the countries where ads are
-        # enabled.
+        # A list of ISO 3166-1 alpha-2 country codes that identify the countries where
+        # ads are enabled.
         # Corresponds to the JSON property `territories`
         # @return [Array<String>]
         attr_accessor :territories
@@ -1511,50 +1491,38 @@ module Google
       class CuepointSettings
         include Google::Apis::Core::Hashable
       
-        # The cuepoint's type. See the <a
-        # href="/youtube/v3/live/getting-started#Inserting_Cuepoints">Getting
-        # started</a> guide for an explanation of the different types of cuepoints.
-        # Also see the <a
-        # href="/youtube/v3/live/life-of-a-broadcast#Insert_Cuepoints">Life of a
-        # broadcast</a> document for best practices about inserting cuepoints during
-        # your broadcast.
+        # The cuepoint's type. See the Getting started guide for an explanation of the
+        # different types of cuepoints. Also see the Life of a broadcast document for
+        # best practices about inserting cuepoints during your broadcast.
         # Corresponds to the JSON property `cueType`
         # @return [String]
         attr_accessor :cue_type
       
         # The cuepoint's duration, in seconds. This value must be specified if the
-        # <code><a href="#cueType">cueType</a></code> is <code>ad</code> and is
-        # ignored otherwise.
+        # cueType is ad and is ignored otherwise.
         # Corresponds to the JSON property `durationSecs`
         # @return [Fixnum]
         attr_accessor :duration_secs
       
-        # This value specifies a point in time in the video when viewers should see
-        # an ad or <a
-        # href="/youtube/v3/live/getting-started#Displaying_Slates">in-stream
-        # slate</a>. The property value identifies a time offset, in milliseconds,
-        # from the beginning of the monitor stream. Though measured in milliseconds,
-        # the value is actually an approximation, and YouTube will insert the
-        # cuepoint as closely as possible to that time. You should not specify a
-        # value for this parameter if your broadcast does not have a monitor
-        # stream.<br><br>  This
-        # property's default value is <code>0</code>, which indicates that the
-        # cuepoint should be inserted as soon as possible. If your broadcast stream
-        # is not delayed, then <code>0</code> is also the only valid value. However,
-        # if your broadcast stream is delayed, then the property value can specify
-        # the time when the cuepoint should be inserted. See the <a
-        # href="/youtube/v3/live/getting-started#Setting_Time_Offsets">Getting
-        # started</a> guide for more details.<br><br>  <strong>Note:</strong> If your
-        # broadcast had a testing phase, the offset is measured from the time that
-        # the testing phase began.
+        # This value specifies a point in time in the video when viewers should see an
+        # ad or in-stream slate. The property value identifies a time offset, in
+        # milliseconds, from the beginning of the monitor stream. Though measured in
+        # milliseconds, the value is actually an approximation, and YouTube will insert
+        # the cuepoint as closely as possible to that time. You should not specify a
+        # value for this parameter if your broadcast does not have a monitor stream.
+        # This property's default value is 0, which indicates that the cuepoint should
+        # be inserted as soon as possible. If your broadcast stream is not delayed, then
+        # 0 is also the only valid value. However, if your broadcast stream is delayed,
+        # then the property value can specify the time when the cuepoint should be
+        # inserted. See the Getting started guide for more details. *Note:* If your
+        # broadcast had a testing phase, the offset is measured from the time that the
+        # testing phase began.
         # Corresponds to the JSON property `offsetTimeMs`
         # @return [Fixnum]
         attr_accessor :offset_time_ms
       
         # This value specifies the wall clock time at which the cuepoint should be
-        # inserted. The value is specified in <a
-        # href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sssZ</code>) format.
+        # inserted. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format.
         # Corresponds to the JSON property `walltime`
         # @return [String]
         attr_accessor :walltime
@@ -1576,14 +1544,13 @@ module Google
       class Date
         include Google::Apis::Core::Hashable
       
-        # The date's day. The value should be an integer between <code>1</code> and
-        # <code>31</code>. Note that some day-month combinations are not valid.
+        # The date's day. The value should be an integer between 1 and 31. Note that
+        # some day-month combinations are not valid.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # The date's month. The value should be an integer between <code>1</code> and
-        # <code>12</code>.
+        # The date's month. The value should be an integer between 1 and 12.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
@@ -1605,27 +1572,26 @@ module Google
         end
       end
       
-      # Backend response for a Diff get checksums response.
-      # For details on the Scotty Diff protocol,
-      # visit http://go/scotty-diff-protocol.
+      # Backend response for a Diff get checksums response. For details on the Scotty
+      # Diff protocol, visit http://go/scotty-diff-protocol.
       class DiffChecksumsResponse
         include Google::Apis::Core::Hashable
       
-        # A sequence of media data references representing composite data.
-        # Introduced to support Bigstore composite objects. For details, visit
-        # http://go/bigstore-composites.
+        # A sequence of media data references representing composite data. Introduced to
+        # support Bigstore composite objects. For details, visit http://go/bigstore-
+        # composites.
         # Corresponds to the JSON property `checksumsLocation`
         # @return [Google::Apis::YoutubePartnerV1::CompositeMedia]
         attr_accessor :checksums_location
       
-        # The chunk size of checksums.  Must be a multiple of 256KB.
+        # The chunk size of checksums. Must be a multiple of 256KB.
         # Corresponds to the JSON property `chunkSizeBytes`
         # @return [Fixnum]
         attr_accessor :chunk_size_bytes
       
-        # A sequence of media data references representing composite data.
-        # Introduced to support Bigstore composite objects. For details, visit
-        # http://go/bigstore-composites.
+        # A sequence of media data references representing composite data. Introduced to
+        # support Bigstore composite objects. For details, visit http://go/bigstore-
+        # composites.
         # Corresponds to the JSON property `objectLocation`
         # @return [Google::Apis::YoutubePartnerV1::CompositeMedia]
         attr_accessor :object_location
@@ -1654,15 +1620,14 @@ module Google
         end
       end
       
-      # Backend response for a Diff download response.
-      # For details on the Scotty Diff protocol,
-      # visit http://go/scotty-diff-protocol.
+      # Backend response for a Diff download response. For details on the Scotty Diff
+      # protocol, visit http://go/scotty-diff-protocol.
       class DiffDownloadResponse
         include Google::Apis::Core::Hashable
       
-        # A sequence of media data references representing composite data.
-        # Introduced to support Bigstore composite objects. For details, visit
-        # http://go/bigstore-composites.
+        # A sequence of media data references representing composite data. Introduced to
+        # support Bigstore composite objects. For details, visit http://go/bigstore-
+        # composites.
         # Corresponds to the JSON property `objectLocation`
         # @return [Google::Apis::YoutubePartnerV1::CompositeMedia]
         attr_accessor :object_location
@@ -1677,29 +1642,27 @@ module Google
         end
       end
       
-      # A Diff upload request.
-      # For details on the Scotty Diff protocol,
-      # visit http://go/scotty-diff-protocol.
+      # A Diff upload request. For details on the Scotty Diff protocol, visit http://
+      # go/scotty-diff-protocol.
       class DiffUploadRequest
         include Google::Apis::Core::Hashable
       
-        # A sequence of media data references representing composite data.
-        # Introduced to support Bigstore composite objects. For details, visit
-        # http://go/bigstore-composites.
+        # A sequence of media data references representing composite data. Introduced to
+        # support Bigstore composite objects. For details, visit http://go/bigstore-
+        # composites.
         # Corresponds to the JSON property `checksumsInfo`
         # @return [Google::Apis::YoutubePartnerV1::CompositeMedia]
         attr_accessor :checksums_info
       
-        # A sequence of media data references representing composite data.
-        # Introduced to support Bigstore composite objects. For details, visit
-        # http://go/bigstore-composites.
+        # A sequence of media data references representing composite data. Introduced to
+        # support Bigstore composite objects. For details, visit http://go/bigstore-
+        # composites.
         # Corresponds to the JSON property `objectInfo`
         # @return [Google::Apis::YoutubePartnerV1::CompositeMedia]
         attr_accessor :object_info
       
-        # The object version of the object that is the base version the incoming
-        # diff script will be applied to.
-        # This field will always be filled in.
+        # The object version of the object that is the base version the incoming diff
+        # script will be applied to. This field will always be filled in.
         # Corresponds to the JSON property `objectVersion`
         # @return [String]
         attr_accessor :object_version
@@ -1716,23 +1679,22 @@ module Google
         end
       end
       
-      # Backend response for a Diff upload request.
-      # For details on the Scotty Diff protocol,
-      # visit http://go/scotty-diff-protocol.
+      # Backend response for a Diff upload request. For details on the Scotty Diff
+      # protocol, visit http://go/scotty-diff-protocol.
       class DiffUploadResponse
         include Google::Apis::Core::Hashable
       
-        # The object version of the object at the server. Must be included in the
-        # end notification response.
-        # The version in the end notification response must correspond to the new
-        # version of the object that is now stored at the server, after the upload.
+        # The object version of the object at the server. Must be included in the end
+        # notification response. The version in the end notification response must
+        # correspond to the new version of the object that is now stored at the server,
+        # after the upload.
         # Corresponds to the JSON property `objectVersion`
         # @return [String]
         attr_accessor :object_version
       
-        # A sequence of media data references representing composite data.
-        # Introduced to support Bigstore composite objects. For details, visit
-        # http://go/bigstore-composites.
+        # A sequence of media data references representing composite data. Introduced to
+        # support Bigstore composite objects. For details, visit http://go/bigstore-
+        # composites.
         # Corresponds to the JSON property `originalObject`
         # @return [Google::Apis::YoutubePartnerV1::CompositeMedia]
         attr_accessor :original_object
@@ -1748,9 +1710,8 @@ module Google
         end
       end
       
-      # Backend response for a Diff get version response.
-      # For details on the Scotty Diff protocol,
-      # visit http://go/scotty-diff-protocol.
+      # Backend response for a Diff get version response. For details on the Scotty
+      # Diff protocol, visit http://go/scotty-diff-protocol.
       class DiffVersionResponse
         include Google::Apis::Core::Hashable
       
@@ -1780,16 +1741,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A boolean to be returned in the response to Scotty. Allows/disallows gzip
-        # encoding of the payload content when the server thinks it's
-        # advantageous (hence, does not guarantee compression) which allows
-        # Scotty to GZip the response to the client.
+        # encoding of the payload content when the server thinks it's advantageous (
+        # hence, does not guarantee compression) which allows Scotty to GZip the
+        # response to the client.
         # Corresponds to the JSON property `allowGzipCompression`
         # @return [Boolean]
         attr_accessor :allow_gzip_compression
         alias_method :allow_gzip_compression?, :allow_gzip_compression
       
-        # Determining whether or not Apiary should skip the inclusion
-        # of any Content-Range header on its response to Scotty.
+        # Determining whether or not Apiary should skip the inclusion of any Content-
+        # Range header on its response to Scotty.
         # Corresponds to the JSON property `ignoreRange`
         # @return [Boolean]
         attr_accessor :ignore_range
@@ -1806,13 +1767,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -1829,18 +1788,16 @@ module Google
       class ExcludedInterval
         include Google::Apis::Core::Hashable
       
-        # The end (inclusive) time in seconds of the time window. The value can be
-        # any value greater than <code>low</code>. If <code>high</code> is greater
-        # than the length of the reference, the interval between <code>low</code> and
-        # the end of the reference will be excluded. Every interval must specify a
-        # value for this field.
+        # The end (inclusive) time in seconds of the time window. The value can be any
+        # value greater than low. If high is greater than the length of the reference,
+        # the interval between low and the end of the reference will be excluded. Every
+        # interval must specify a value for this field.
         # Corresponds to the JSON property `high`
         # @return [Float]
         attr_accessor :high
       
-        # The start (inclusive) time in seconds of the time window. The value can be
-        # any value between <code>0</code> and <code>high</code>. Every interval must
-        # specify a value for this field.
+        # The start (inclusive) time in seconds of the time window. The value can be any
+        # value between 0 and high. Every interval must specify a value for this field.
         # Corresponds to the JSON property `low`
         # @return [Float]
         attr_accessor :low
@@ -1851,8 +1808,7 @@ module Google
         attr_accessor :origin
       
         # The date and time that the exclusion was created. The value is specified in
-        # <a href="https://www.ietf.org/rfc/rfc3339.txt">RFC 3339</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.000Z</code>) format.
+        # RFC 3339 (YYYY-MM-DDThh:mm:ss.000Z) format.
         # Corresponds to the JSON property `timeCreated`
         # @return [String]
         attr_accessor :time_created
@@ -1874,14 +1830,14 @@ module Google
       class IntervalCondition
         include Google::Apis::Core::Hashable
       
-        # The maximum (inclusive) allowed value for the condition to be satisfied.
-        # The default value is <code>&infin;</code>.
+        # The maximum (inclusive) allowed value for the condition to be satisfied. The
+        # default value is ∞.
         # Corresponds to the JSON property `high`
         # @return [Float]
         attr_accessor :high
       
-        # The minimum (inclusive) allowed value for the condition to be satisfied.
-        # The default value is <code>-&infin;</code>.
+        # The minimum (inclusive) allowed value for the condition to be satisfied. The
+        # default value is -∞.
         # Corresponds to the JSON property `low`
         # @return [Float]
         attr_accessor :low
@@ -1901,8 +1857,8 @@ module Google
       class LiveCuepoint
         include Google::Apis::Core::Hashable
       
-        # The ID that YouTube assigns to uniquely identify the broadcast into which
-        # the cuepoint is being inserted.
+        # The ID that YouTube assigns to uniquely identify the broadcast into which the
+        # cuepoint is being inserted.
         # Corresponds to the JSON property `broadcastId`
         # @return [String]
         attr_accessor :broadcast_id
@@ -1912,14 +1868,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The type of the API resource. For <code>liveCuepoint</code> resources, the
-        # value is <code>youtubePartner#liveCuepoint</code>.
+        # The type of the API resource. For liveCuepoint resources, the value is
+        # youtubePartner#liveCuepoint.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code><strong>settings</strong></code> object defines the cuepoint's
-        # settings.
+        # The *settings* object defines the cuepoint's settings.
         # Corresponds to the JSON property `settings`
         # @return [Google::Apis::YoutubePartnerV1::CuepointSettings]
         attr_accessor :settings
@@ -1941,20 +1896,17 @@ module Google
       class LongestMatch
         include Google::Apis::Core::Hashable
       
-        # The duration of the longest match between the reference and the user
-        # video.
+        # The duration of the longest match between the reference and the user video.
         # Corresponds to the JSON property `durationSecs`
         # @return [Fixnum]
         attr_accessor :duration_secs
       
-        # The offset in seconds into the reference at which the longest match
-        # began.
+        # The offset in seconds into the reference at which the longest match began.
         # Corresponds to the JSON property `referenceOffset`
         # @return [Fixnum]
         attr_accessor :reference_offset
       
-        # The offset in seconds into the user video at which the longest match
-        # began.
+        # The offset in seconds into the user video at which the longest match began.
         # Corresponds to the JSON property `userVideoOffset`
         # @return [Fixnum]
         attr_accessor :user_video_offset
@@ -1980,25 +1932,24 @@ module Google
         # @return [Google::Apis::YoutubePartnerV1::LongestMatch]
         attr_accessor :longest_match
       
-        # Details about each match segment. Each item in the list contains
-        # information about one match segment associated with the claim. It is
-        # possible to have multiple match segments. For example, if the audio and
-        # video content of an uploaded video match that of a reference video, there
-        # would be two match segments. One segment would describe the audio match
-        # and the other would describe the video match.
+        # Details about each match segment. Each item in the list contains information
+        # about one match segment associated with the claim. It is possible to have
+        # multiple match segments. For example, if the audio and video content of an
+        # uploaded video match that of a reference video, there would be two match
+        # segments. One segment would describe the audio match and the other would
+        # describe the video match.
         # Corresponds to the JSON property `matchSegments`
         # @return [Array<Google::Apis::YoutubePartnerV1::MatchSegment>]
         attr_accessor :match_segments
       
-        # The  <a href="/youtube/partner/docs/v1/reference">reference</a> ID that
-        # generated this match.
+        # The reference ID that generated this match.
         # Corresponds to the JSON property `referenceId`
         # @return [String]
         attr_accessor :reference_id
       
-        # Details of the total amount of reference and user video content which
-        # matched each other. Note these two values may differ if either the
-        # reference or the user video contains a loop.
+        # Details of the total amount of reference and user video content which matched
+        # each other. Note these two values may differ if either the reference or the
+        # user video contains a loop.
         # Corresponds to the JSON property `totalMatch`
         # @return [Google::Apis::YoutubePartnerV1::TotalMatch]
         attr_accessor :total_match
@@ -2020,27 +1971,26 @@ module Google
       class MatchSegment
         include Google::Apis::Core::Hashable
       
-        # Identifies the manner in which the claimed video matches the reference
-        # video.
+        # Identifies the manner in which the claimed video matches the reference video.
         # Corresponds to the JSON property `channel`
         # @return [String]
         attr_accessor :channel
       
-        # On insert operation of manual claims, the <code>manual_segment</code>
-        # object contains information about the specific portion of the video that is
-        # claimed to be matching.
+        # On insert operation of manual claims, the manual_segment object contains
+        # information about the specific portion of the video that is claimed to be
+        # matching.
         # Corresponds to the JSON property `manual_segment`
         # @return [Google::Apis::YoutubePartnerV1::Segment2]
         attr_accessor :manual_segment
       
-        # The <code>reference_segment</code> object contains information about the
-        # matched portion of the reference content.
+        # The reference_segment object contains information about the matched portion of
+        # the reference content.
         # Corresponds to the JSON property `reference_segment`
         # @return [Google::Apis::YoutubePartnerV1::Segment]
         attr_accessor :reference_segment
       
-        # The <code>video_segment</code> object contains information about the
-        # matched portion of the claimed video.
+        # The video_segment object contains information about the matched portion of the
+        # claimed video.
         # Corresponds to the JSON property `video_segment`
         # @return [Google::Apis::YoutubePartnerV1::Segment]
         attr_accessor :video_segment
@@ -2062,10 +2012,9 @@ module Google
       class Media
         include Google::Apis::Core::Hashable
       
-        # Deprecated, use one of explicit hash type fields instead.
-        # Algorithm used for calculating the hash.
-        # As of 2011/01/21, "MD5" is the only possible value for this field.
-        # New values may be added at any time.
+        # Deprecated, use one of explicit hash type fields instead. Algorithm used for
+        # calculating the hash. As of 2011/01/21, "MD5" is the only possible value for
+        # this field. New values may be added at any time.
         # Corresponds to the JSON property `algorithm`
         # @return [String]
         attr_accessor :algorithm
@@ -2076,11 +2025,10 @@ module Google
         # @return [String]
         attr_accessor :bigstore_object_ref
       
-        # Blobstore v1 reference, set if reference_type is BLOBSTORE_REF
-        # This should be the byte representation of a blobstore.BlobRef.
-        # Since Blobstore is deprecating v1, use blobstore2_info instead.
-        # For now, any v2 blob will also be represented in this field as
-        # v1 BlobRef.
+        # Blobstore v1 reference, set if reference_type is BLOBSTORE_REF This should be
+        # the byte representation of a blobstore.BlobRef. Since Blobstore is deprecating
+        # v1, use blobstore2_info instead. For now, any v2 blob will also be represented
+        # in this field as v1 BlobRef.
         # Corresponds to the JSON property `blobRef`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2091,10 +2039,10 @@ module Google
         # @return [Google::Apis::YoutubePartnerV1::Blobstore2Info]
         attr_accessor :blobstore2_info
       
-        # A composite media composed of one or more media objects, set if
-        # reference_type is COMPOSITE_MEDIA. The media length field must be set
-        # to the sum of the lengths of all composite media objects.
-        # Note: All composite media must have length specified.
+        # A composite media composed of one or more media objects, set if reference_type
+        # is COMPOSITE_MEDIA. The media length field must be set to the sum of the
+        # lengths of all composite media objects. Note: All composite media must have
+        # length specified.
         # Corresponds to the JSON property `compositeMedia`
         # @return [Array<Google::Apis::YoutubePartnerV1::CompositeMedia>]
         attr_accessor :composite_media
@@ -2106,66 +2054,59 @@ module Google
       
         # Detailed Content-Type information from Scotty. The Content-Type of the media
         # will typically be filled in by the header or Scotty's best_guess, but this
-        # extended information provides the backend with more information so that it
-        # can make a better decision if needed. This is only used on media upload
-        # requests from Scotty.
+        # extended information provides the backend with more information so that it can
+        # make a better decision if needed. This is only used on media upload requests
+        # from Scotty.
         # Corresponds to the JSON property `contentTypeInfo`
         # @return [Google::Apis::YoutubePartnerV1::ContentTypeInfo]
         attr_accessor :content_type_info
       
-        # A binary data reference for a media download. Serves as a
-        # technology-agnostic binary reference in some Google infrastructure.
-        # This value is a serialized storage_cosmo.BinaryReference proto. Storing
-        # it as bytes is a hack to get around the fact that the cosmo proto
-        # (as well as others it includes) doesn't support JavaScript. This
-        # prevents us from including the actual type of this field.
+        # A binary data reference for a media download. Serves as a technology-agnostic
+        # binary reference in some Google infrastructure. This value is a serialized
+        # storage_cosmo.BinaryReference proto. Storing it as bytes is a hack to get
+        # around the fact that the cosmo proto (as well as others it includes) doesn't
+        # support JavaScript. This prevents us from including the actual type of this
+        # field.
         # Corresponds to the JSON property `cosmoBinaryReference`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :cosmo_binary_reference
       
-        # For Scotty Uploads:
-        # Scotty-provided hashes for uploads
-        # For Scotty Downloads:
-        # (WARNING: DO NOT USE WITHOUT PERMISSION FROM THE SCOTTY TEAM.)
-        # A Hash provided by the agent to be used to verify the data being
-        # downloaded. Currently only supported for inline payloads.
-        # Further, only crc32c_hash is currently supported.
+        # For Scotty Uploads: Scotty-provided hashes for uploads For Scotty Downloads: (
+        # WARNING: DO NOT USE WITHOUT PERMISSION FROM THE SCOTTY TEAM.) A Hash provided
+        # by the agent to be used to verify the data being downloaded. Currently only
+        # supported for inline payloads. Further, only crc32c_hash is currently
+        # supported.
         # Corresponds to the JSON property `crc32cHash`
         # @return [Fixnum]
         attr_accessor :crc32c_hash
       
-        # Backend response for a Diff get checksums response.
-        # For details on the Scotty Diff protocol,
-        # visit http://go/scotty-diff-protocol.
+        # Backend response for a Diff get checksums response. For details on the Scotty
+        # Diff protocol, visit http://go/scotty-diff-protocol.
         # Corresponds to the JSON property `diffChecksumsResponse`
         # @return [Google::Apis::YoutubePartnerV1::DiffChecksumsResponse]
         attr_accessor :diff_checksums_response
       
-        # Backend response for a Diff download response.
-        # For details on the Scotty Diff protocol,
-        # visit http://go/scotty-diff-protocol.
+        # Backend response for a Diff download response. For details on the Scotty Diff
+        # protocol, visit http://go/scotty-diff-protocol.
         # Corresponds to the JSON property `diffDownloadResponse`
         # @return [Google::Apis::YoutubePartnerV1::DiffDownloadResponse]
         attr_accessor :diff_download_response
       
-        # A Diff upload request.
-        # For details on the Scotty Diff protocol,
-        # visit http://go/scotty-diff-protocol.
+        # A Diff upload request. For details on the Scotty Diff protocol, visit http://
+        # go/scotty-diff-protocol.
         # Corresponds to the JSON property `diffUploadRequest`
         # @return [Google::Apis::YoutubePartnerV1::DiffUploadRequest]
         attr_accessor :diff_upload_request
       
-        # Backend response for a Diff upload request.
-        # For details on the Scotty Diff protocol,
-        # visit http://go/scotty-diff-protocol.
+        # Backend response for a Diff upload request. For details on the Scotty Diff
+        # protocol, visit http://go/scotty-diff-protocol.
         # Corresponds to the JSON property `diffUploadResponse`
         # @return [Google::Apis::YoutubePartnerV1::DiffUploadResponse]
         attr_accessor :diff_upload_response
       
-        # Backend response for a Diff get version response.
-        # For details on the Scotty Diff protocol,
-        # visit http://go/scotty-diff-protocol.
+        # Backend response for a Diff get version response. For details on the Scotty
+        # Diff protocol, visit http://go/scotty-diff-protocol.
         # Corresponds to the JSON property `diffVersionResponse`
         # @return [Google::Apis::YoutubePartnerV1::DiffVersionResponse]
         attr_accessor :diff_version_response
@@ -2180,21 +2121,19 @@ module Google
         # @return [String]
         attr_accessor :filename
       
-        # Deprecated, use one of explicit hash type fields instead.
-        # These two hash related fields will only be populated on Scotty based media
-        # uploads and will contain the content of the hash group in the
-        # NotificationRequest:
-        # http://cs/#google3/uploader/service/proto/upload_listener.proto&q=class:Hash
-        # Hex encoded hash value of the uploaded media.
+        # Deprecated, use one of explicit hash type fields instead. These two hash
+        # related fields will only be populated on Scotty based media uploads and will
+        # contain the content of the hash group in the NotificationRequest: http://cs/#
+        # google3/uploader/service/proto/upload_listener.proto&q=class:Hash Hex encoded
+        # hash value of the uploaded media.
         # Corresponds to the JSON property `hash`
         # @return [String]
         attr_accessor :hash_prop
       
         # For Scotty uploads only. If a user sends a hash code and the backend has
-        # requested that Scotty verify the upload against the client hash,
-        # Scotty will perform the check on behalf of the backend and will reject it
-        # if the hashes don't match. This is set to true if Scotty performed
-        # this verification.
+        # requested that Scotty verify the upload against the client hash, Scotty will
+        # perform the check on behalf of the backend and will reject it if the hashes
+        # don't match. This is set to true if Scotty performed this verification.
         # Corresponds to the JSON property `hashVerified`
         # @return [Boolean]
         attr_accessor :hash_verified
@@ -2206,11 +2145,11 @@ module Google
         # @return [String]
         attr_accessor :inline
       
-        # |is_potential_retry| is set false only when Scotty is
-        # certain that it has not sent the request before. When a client resumes
-        # an upload, this field must be set true in agent calls, because Scotty
-        # cannot be certain that it has never sent the request before due
-        # to potential failure in the session state persistence.
+        # |is_potential_retry| is set false only when Scotty is certain that it has not
+        # sent the request before. When a client resumes an upload, this field must be
+        # set true in agent calls, because Scotty cannot be certain that it has never
+        # sent the request before due to potential failure in the session state
+        # persistence.
         # Corresponds to the JSON property `isPotentialRetry`
         # @return [Boolean]
         attr_accessor :is_potential_retry
@@ -2227,16 +2166,16 @@ module Google
         # @return [String]
         attr_accessor :md5_hash
       
-        # Media id to forward to the operation GetMedia.
-        # Can be set if reference_type is GET_MEDIA.
+        # Media id to forward to the operation GetMedia. Can be set if reference_type is
+        # GET_MEDIA.
         # Corresponds to the JSON property `mediaId`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :media_id
       
-        # This is a copy of the tech.blob.ObjectId proto, which could not
-        # be used directly here due to transitive closure issues with
-        # JavaScript support; see http://b/8801763.
+        # This is a copy of the tech.blob.ObjectId proto, which could not be used
+        # directly here due to transitive closure issues with JavaScript support; see
+        # http://b/8801763.
         # Corresponds to the JSON property `objectId`
         # @return [Google::Apis::YoutubePartnerV1::ObjectIdProp]
         attr_accessor :object_id_prop
@@ -2263,8 +2202,8 @@ module Google
         # @return [String]
         attr_accessor :sha256_hash
       
-        # Time at which the media data was last updated,
-        # in milliseconds since UNIX epoch
+        # Time at which the media data was last updated, in milliseconds since UNIX
+        # epoch
         # Corresponds to the JSON property `timestamp`
         # @return [Fixnum]
         attr_accessor :timestamp
@@ -2329,12 +2268,11 @@ module Google
         # @return [String]
         attr_accessor :custom_data
       
-        # Set if the http request info is diff encoded. The value of
-        # this field is the version number of the base revision.
-        # This is corresponding to Apiary's mediaDiffObjectVersion
-        # (//depot/google3/java/com/google/api/server/media/variable/
-        # DiffObjectVersionVariable.java).
-        # See go/esf-scotty-diff-upload for more information.
+        # Set if the http request info is diff encoded. The value of this field is the
+        # version number of the base revision. This is corresponding to Apiary's
+        # mediaDiffObjectVersion (//depot/google3/java/com/google/api/server/media/
+        # variable/DiffObjectVersionVariable.java). See go/esf-scotty-diff-upload for
+        # more information.
         # Corresponds to the JSON property `diffObjectVersion`
         # @return [String]
         attr_accessor :diff_object_version
@@ -2376,30 +2314,27 @@ module Google
         end
       end
       
-      # This message is for backends to pass their scotty media specific fields to
-      # ESF. Backend will include this in their response message to ESF.
-      # Example:
-      # ExportFile is an rpc defined for upload using scotty from ESF.
-      # rpc ExportFile(ExportFileRequest) returns (ExportFileResponse)
-      # Message ExportFileResponse will include apiserving.MediaResponseInfo to tell
-      # ESF about data like dynamic_dropzone it needs to pass to Scotty.
-      # message ExportFileResponse `
-      # optional gdata.Media blob = 1;
-      # optional apiserving.MediaResponseInfo media_response_info = 2
-      # `
+      # This message is for backends to pass their scotty media specific fields to ESF.
+      # Backend will include this in their response message to ESF. Example:
+      # ExportFile is an rpc defined for upload using scotty from ESF. rpc ExportFile(
+      # ExportFileRequest) returns (ExportFileResponse) Message ExportFileResponse
+      # will include apiserving.MediaResponseInfo to tell ESF about data like
+      # dynamic_dropzone it needs to pass to Scotty. message ExportFileResponse `
+      # optional gdata.Media blob = 1; optional apiserving.MediaResponseInfo
+      # media_response_info = 2 `
       class MediaResponseInfo
         include Google::Apis::Core::Hashable
       
-        # Data to copy from backend response to the next backend requests. Custom
-        # data is returned to Scotty in the agent_state field, which Scotty will then
-        # provide in subsequent upload notifications.
+        # Data to copy from backend response to the next backend requests. Custom data
+        # is returned to Scotty in the agent_state field, which Scotty will then provide
+        # in subsequent upload notifications.
         # Corresponds to the JSON property `customData`
         # @return [String]
         attr_accessor :custom_data
       
         # Specifies any transformation to be applied to data before persisting it or
-        # retrieving from storage. E.g., encryption options for blobstore2.
-        # This should be of the form uploader_service.DataStorageTransform.
+        # retrieving from storage. E.g., encryption options for blobstore2. This should
+        # be of the form uploader_service.DataStorageTransform.
         # Corresponds to the JSON property `dataStorageTransform`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2408,13 +2343,13 @@ module Google
         # Specifies the Scotty Drop Target to use for uploads. If present in a media
         # response, Scotty does not upload to a standard drop zone. Instead, Scotty
         # saves the upload directly to the location specified in this drop target.
-        # Unlike drop zones, the drop target is the final storage location for an
-        # upload. So, the agent does not need to clone the blob at the end of the
-        # upload. The agent is responsible for garbage collecting any orphaned blobs
-        # that may occur due to aborted uploads. For more information, see the drop
-        # target design doc here: http://goto/ScottyDropTarget This field will be
-        # preferred to dynamicDropzone. If provided, the identified field in the
-        # response must be of the type uploader.agent.DropTarget.
+        # Unlike drop zones, the drop target is the final storage location for an upload.
+        # So, the agent does not need to clone the blob at the end of the upload. The
+        # agent is responsible for garbage collecting any orphaned blobs that may occur
+        # due to aborted uploads. For more information, see the drop target design doc
+        # here: http://goto/ScottyDropTarget This field will be preferred to
+        # dynamicDropzone. If provided, the identified field in the response must be of
+        # the type uploader.agent.DropTarget.
         # Corresponds to the JSON property `dynamicDropTarget`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2438,15 +2373,14 @@ module Google
         # Specifies the TrafficClass that Scotty should use for any RPCs to fetch the
         # response bytes. Will override the traffic class GTOS of the incoming http
         # request. This is a temporary field to facilitate whitelisting and
-        # experimentation by the bigstore agent only. For instance, this does not
-        # apply to RTMP reads.
-        # WARNING: DO NOT USE WITHOUT PERMISSION FROM THE SCOTTY TEAM.
+        # experimentation by the bigstore agent only. For instance, this does not apply
+        # to RTMP reads. WARNING: DO NOT USE WITHOUT PERMISSION FROM THE SCOTTY TEAM.
         # Corresponds to the JSON property `trafficClassField`
         # @return [String]
         attr_accessor :traffic_class_field
       
-        # Tells Scotty to verify hashes on the agent's behalf by parsing out the
-        # X-Goog-Hash header.
+        # Tells Scotty to verify hashes on the agent's behalf by parsing out the X-Goog-
+        # Hash header.
         # Corresponds to the JSON property `verifyHashFromHeader`
         # @return [Boolean]
         attr_accessor :verify_hash_from_header
@@ -2473,8 +2407,8 @@ module Google
       class Metadata
         include Google::Apis::Core::Hashable
       
-        # A list that identifies actors associated with the asset. You can specify up
-        # to 50 actors for an asset.
+        # A list that identifies actors associated with the asset. You can specify up to
+        # 50 actors for an asset.
         # Corresponds to the JSON property `actor`
         # @return [Array<String>]
         attr_accessor :actor
@@ -2485,18 +2419,18 @@ module Google
         # @return [String]
         attr_accessor :album
       
-        # The artist associated with a music video or sound recording asset. This
-        # field is only valid for music video and sound recording assets. It is
-        # required for sound recordings included in the AudioSwap program.
+        # The artist associated with a music video or sound recording asset. This field
+        # is only valid for music video and sound recording assets. It is required for
+        # sound recordings included in the AudioSwap program.
         # Corresponds to the JSON property `artist`
         # @return [Array<String>]
         attr_accessor :artist
       
-        # Identifies the network or channel that originally broadcast a show or a
-        # season of a show. This field should only be included for an asset if the
-        # broadcaster associated with the asset is different from the partner
-        # uploading the asset to YouTube. Note that a show may have multiple
-        # broadcasters; for example, a show may switch networks between seasons.
+        # Identifies the network or channel that originally broadcast a show or a season
+        # of a show. This field should only be included for an asset if the broadcaster
+        # associated with the asset is different from the partner uploading the asset to
+        # YouTube. Note that a show may have multiple broadcasters; for example, a show
+        # may switch networks between seasons.
         # Corresponds to the JSON property `broadcaster`
         # @return [Array<String>]
         attr_accessor :broadcaster
@@ -2506,12 +2440,10 @@ module Google
         # @return [String]
         attr_accessor :category
       
-        # The type of video content that the asset represents. This field is only
-        # valid for movie and episode assets, and is required for the following types
-        # of those assets: <ul> <li>Episode assets that are linked to a show</li>
-        # <li>Movie assets that appear in
-        # YouTube's <a href="http://www.youtube.com/movies">Movies</a> category</li>
-        # </ul>
+        # The type of video content that the asset represents. This field is only valid
+        # for movie and episode assets, and is required for the following types of those
+        # assets: - Episode assets that are linked to a show - Movie assets that appear
+        # in YouTube's Movies category
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
@@ -2521,116 +2453,110 @@ module Google
         # @return [Google::Apis::YoutubePartnerV1::Date]
         attr_accessor :copyright_date
       
-        # A unique value that you, the metadata provider, use to identify an asset.
-        # The value could be a unique ID that you created for the asset or a standard
+        # A unique value that you, the metadata provider, use to identify an asset. The
+        # value could be a unique ID that you created for the asset or a standard
         # identifier, such as an ISRC. The value has a maximum length of 64 bytes and
-        # may contain alphanumeric characters, hyphens (<code>-</code>), underscores
-        # (<code>_</code>), periods (<code>.</code>), "at" symbols (<code>@</code>),
-        # or forward slashes (<code>/</code>).
+        # may contain alphanumeric characters, hyphens (-), underscores (_), periods ( .)
+        # , "at" symbols (@), or forward slashes (/).
         # Corresponds to the JSON property `customId`
         # @return [String]
         attr_accessor :custom_id
       
-        # A description of the asset. The description may be displayed on YouTube or
-        # in CMS. This field has a maximum length of 5,000 bytes.
+        # A description of the asset. The description may be displayed on YouTube or in
+        # CMS. This field has a maximum length of 5,000 bytes.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # A list that identifies directors associated with the asset. You can specify
-        # up to 50 directors for an asset.
+        # A list that identifies directors associated with the asset. You can specify up
+        # to 50 directors for an asset.
         # Corresponds to the JSON property `director`
         # @return [Array<String>]
         attr_accessor :director
       
-        # The Entertainment Identifier Registry (EIDR) assigned to an asset. This
-        # value is only used for episode and movie assets and is optional in both
-        # cases. The value contains a standard prefix for EIDR registry, followed by
-        # a forward slash, a 20-character hexadecimal string, and an alphanumeric
-        # (0-9A-Z) check character.
+        # The Entertainment Identifier Registry (EIDR) assigned to an asset. This value
+        # is only used for episode and movie assets and is optional in both cases. The
+        # value contains a standard prefix for EIDR registry, followed by a forward
+        # slash, a 20-character hexadecimal string, and an alphanumeric (0-9A-Z) check
+        # character.
         # Corresponds to the JSON property `eidr`
         # @return [String]
         attr_accessor :eidr
       
-        # The last year that a television show aired. This value is only used for
-        # show assets, for which it is optional. Do not specify a value if new show
-        # episodes are still being created.
+        # The last year that a television show aired. This value is only used for show
+        # assets, for which it is optional. Do not specify a value if new show episodes
+        # are still being created.
         # Corresponds to the JSON property `endYear`
         # @return [Fixnum]
         attr_accessor :end_year
       
         # The episode number associated with an episode asset. This field is required
-        # for and only used for episode assets that are linked to show assets. It has
-        # a maximum length of 5 bytes.
+        # for and only used for episode assets that are linked to show assets. It has a
+        # maximum length of 5 bytes.
         # Corresponds to the JSON property `episodeNumber`
         # @return [String]
         attr_accessor :episode_number
       
-        # This value indicates that the episodes associated with a particular show
-        # asset or a particular season asset are untitled. An untitled show (or
-        # season) has episodes which are identified by their episode number or date.
-        # If this field is set to <code>true</code>, then YouTube will optimize the
-        # title displayed for associated episodes.
+        # This value indicates that the episodes associated with a particular show asset
+        # or a particular season asset are untitled. An untitled show (or season) has
+        # episodes which are identified by their episode number or date. If this field
+        # is set to true, then YouTube will optimize the title displayed for associated
+        # episodes.
         # Corresponds to the JSON property `episodesAreUntitled`
         # @return [Boolean]
         attr_accessor :episodes_are_untitled
         alias_method :episodes_are_untitled?, :episodes_are_untitled
       
-        # This field specifies a genre that can be used to categorize an asset.
-        # Assets may be categorized in more than one genre, and YouTube uses
-        # different sets of genres to categorize different types of assets. For
-        # example, <code>Soaps</code> might be a valid genre for a show but not for a
-        # movie or sound recording. <ul> <li>Show assets</li> <li>Movie assets that
-        # appear in
-        # YouTube's <a href="http://www.youtube.com/movies">Movies</a> category</li>
-        # <li>Sound recordings included in the AudioSwap program</li> </ul>
+        # This field specifies a genre that can be used to categorize an asset. Assets
+        # may be categorized in more than one genre, and YouTube uses different sets of
+        # genres to categorize different types of assets. For example, Soaps might be a
+        # valid genre for a show but not for a movie or sound recording. - Show assets -
+        # Movie assets that appear in YouTube's Movies category - Sound recordings
+        # included in the AudioSwap program
         # Corresponds to the JSON property `genre`
         # @return [Array<String>]
         attr_accessor :genre
       
-        # The GRID (Global Release Identifier) of a music video or sound recording.
-        # This field's value must contain exactly 18 alphanumeric characters.
+        # The GRID (Global Release Identifier) of a music video or sound recording. This
+        # field's value must contain exactly 18 alphanumeric characters.
         # Corresponds to the JSON property `grid`
         # @return [String]
         attr_accessor :grid
       
-        # The six-character Harry Fox Agency (HFA) song code issued to uniquely
-        # identify a composition. This value is only valid for composition assets.
+        # The six-character Harry Fox Agency (HFA) song code issued to uniquely identify
+        # a composition. This value is only valid for composition assets.
         # Corresponds to the JSON property `hfa`
         # @return [String]
         attr_accessor :hfa
       
-        # An official URL associated with the asset. This field has a maximum length
-        # of 1536 bytes. Please do not submit a 1537-byte URL. Your efforts would be
-        # futile.
+        # An official URL associated with the asset. This field has a maximum length of
+        # 1536 bytes. Please do not submit a 1537-byte URL. Your efforts would be futile.
         # Corresponds to the JSON property `infoUrl`
         # @return [String]
         attr_accessor :info_url
       
-        # The ISAN (International Standard Audiovisual Number) for the asset. This
-        # value is only used for episode and movie assets and is optional in both
-        # cases. The value contains 26 characters, which includes the 24 hexadecimal
-        # characters of the ISAN as well as two check characters, in the following
-        # format: <ul> <li>The first 16 characters in the tag value contain
-        # hexadecimal characters specifying the 'root' and 'episode' components of
-        # the ISAN.</li> <li>The seventeenth character is a check character (a letter
-        # from A-Z).</li> <li>Characters 18 to 25 are the remaining eight characters
-        # of the ISAN, which specify the 'version' component of the ISAN.</li>
-        # <li>The twenty-sixth character is another check character (A-Z).</li> </ul>
+        # The ISAN (International Standard Audiovisual Number) for the asset. This value
+        # is only used for episode and movie assets and is optional in both cases. The
+        # value contains 26 characters, which includes the 24 hexadecimal characters of
+        # the ISAN as well as two check characters, in the following format: - The first
+        # 16 characters in the tag value contain hexadecimal characters specifying the '
+        # root' and 'episode' components of the ISAN. - The seventeenth character is a
+        # check character (a letter from A-Z). - Characters 18 to 25 are the remaining
+        # eight characters of the ISAN, which specify the 'version' component of the
+        # ISAN. - The twenty-sixth character is another check character (A-Z).
         # Corresponds to the JSON property `isan`
         # @return [String]
         attr_accessor :isan
       
         # The ISRC (International Standard Recording Code) of a music video or sound
-        # recording asset. This
-        # field's value must contain exactly 12 alphanumeric characters.
+        # recording asset. This field's value must contain exactly 12 alphanumeric
+        # characters.
         # Corresponds to the JSON property `isrc`
         # @return [String]
         attr_accessor :isrc
       
-        # The ISWC (International Standard Musical Work Code) for a composition
-        # asset. The
-        # field's value must contain exactly 11 characters in the format of a letter
+        # The ISWC (International Standard Musical Work Code) for a composition asset.
+        # The field's value must contain exactly 11 characters in the format of a letter
         # (T) followed by 10 digits.
         # Corresponds to the JSON property `iswc`
         # @return [String]
@@ -2648,18 +2574,16 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # Additional information that does not map directly to one of the other
-        # metadata fields. This field has a maximum length of 255 bytes.
+        # Additional information that does not map directly to one of the other metadata
+        # fields. This field has a maximum length of 255 bytes.
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
       
         # The method by which people first had the opportunity to see a video asset.
-        # This value is only used for episode and movie assets. It is required for
-        # the assets listed below and otherwise optional: <ul> <li>Episode assets
-        # that are linked to a show</li> <li>Movie assets that appear in
-        # YouTube's <a href="http://www.youtube.com/movies">Movies</a> category</li>
-        # </ul>
+        # This value is only used for episode and movie assets. It is required for the
+        # assets listed below and otherwise optional: - Episode assets that are linked
+        # to a show - Movie assets that appear in YouTube's Movies category
         # Corresponds to the JSON property `originalReleaseMedium`
         # @return [String]
         attr_accessor :original_release_medium
@@ -2670,55 +2594,49 @@ module Google
         # @return [Array<String>]
         attr_accessor :producer
       
-        # A list of ratings that an asset received. The rating must be valid under
-        # the specified rating system.
+        # A list of ratings that an asset received. The rating must be valid under the
+        # specified rating system.
         # Corresponds to the JSON property `ratings`
         # @return [Array<Google::Apis::YoutubePartnerV1::Rating>]
         attr_accessor :ratings
       
         # The date that an asset was publicly released. For season assets, this value
-        # specifies the first date that the season aired. Dates prior to the year
-        # 1902 are not supported. This value is valid for episode, season, movie,
-        # music video, and sound recording assets. It is required for the assets
-        # listed below and otherwise optional: <ul> <li>Episode assets that are
-        # linked to a show</li> <li>Movie assets that appear in
-        # YouTube's <a href="http://www.youtube.com/movies">Movies</a> category</li>
-        # </ul>
+        # specifies the first date that the season aired. Dates prior to the year 1902
+        # are not supported. This value is valid for episode, season, movie, music video,
+        # and sound recording assets. It is required for the assets listed below and
+        # otherwise optional: - Episode assets that are linked to a show - Movie assets
+        # that appear in YouTube's Movies category
         # Corresponds to the JSON property `releaseDate`
         # @return [Google::Apis::YoutubePartnerV1::Date]
         attr_accessor :release_date
       
-        # The season number that identifies a season asset, or the season number that
-        # is associated with an episode asset. This field has a maximum length of 5
-        # bytes.
+        # The season number that identifies a season asset, or the season number that is
+        # associated with an episode asset. This field has a maximum length of 5 bytes.
         # Corresponds to the JSON property `seasonNumber`
         # @return [String]
         attr_accessor :season_number
       
-        # The <code>customId</code> of the show asset that a season or episode asset
-        # is associated with. It is required for season and episode assets that
-        # appear in the <a href="http://www.youtube.com/shows">Shows</a> category on
-        # YouTube, and it is not valid for other types of assets. This field has a
-        # maximum length of 64 bytes and may contain alphanumeric characters, hyphens
-        # (<code>-</code>), underscores (<code>_</code>), periods (<code>.</code>),
-        # "at" symbols (<code>@</code>), or forward slashes (<code>/</code>).
+        # The customId of the show asset that a season or episode asset is associated
+        # with. It is required for season and episode assets that appear in the Shows
+        # category on YouTube, and it is not valid for other types of assets. This field
+        # has a maximum length of 64 bytes and may contain alphanumeric characters,
+        # hyphens (-), underscores (_), periods (.), "at" symbols (@), or forward
+        # slashes (/).
         # Corresponds to the JSON property `showCustomId`
         # @return [String]
         attr_accessor :show_custom_id
       
-        # The name of the show that an episode asset is associated with.
-        # <strong>Note:</strong> This tag is only used for and valid for episodes
-        # that are not associated with show assets and enables those assets to still
-        # display a show title in the asset metadata section of CMS. This field has a
-        # maximum length of 120 bytes.
+        # The name of the show that an episode asset is associated with. *Note:* This
+        # tag is only used for and valid for episodes that are not associated with show
+        # assets and enables those assets to still display a show title in the asset
+        # metadata section of CMS. This field has a maximum length of 120 bytes.
         # Corresponds to the JSON property `showTitle`
         # @return [String]
         attr_accessor :show_title
       
-        # The video's primary spoken language. The value can be any <a
-        # href="http://www.loc.gov/standards/iso639-2/php/code_list.php">ISO 639-1
-        # two-letter language code</a>. This value is only used for episode and movie
-        # assets and is not valid for other types of assets.
+        # The video's primary spoken language. The value can be any ISO 639-1 two-letter
+        # language code. This value is only used for episode and movie assets and is not
+        # valid for other types of assets.
         # Corresponds to the JSON property `spokenLanguage`
         # @return [String]
         attr_accessor :spoken_language
@@ -2729,22 +2647,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :start_year
       
-        # A list of languages for which the video has either a separate caption track
-        # or burnt-in captions that are part of the video. Each value in the list
-        # should be an <a
-        # href="http://www.loc.gov/standards/iso639-2/php/code_list.php">ISO 639-1
-        # two-letter language code</a>. This value is only used for episode and movie
-        # assets and is not valid for other types of assets.
+        # A list of languages for which the video has either a separate caption track or
+        # burnt-in captions that are part of the video. Each value in the list should be
+        # an ISO 639-1 two-letter language code. This value is only used for episode and
+        # movie assets and is not valid for other types of assets.
         # Corresponds to the JSON property `subtitledLanguage`
         # @return [Array<String>]
         attr_accessor :subtitled_language
       
-        # The asset's title or name. The value has a maximum length of 255 bytes.
-        # This value is required for the assets listed below and optional for all
-        # other assets: <ul> <li>Show assets</li> <li>Episode assets that are linked
-        # to a show</li> <li>Movie assets that appear in
-        # YouTube's <a href="http://www.youtube.com/movies">Movies</a> category</li>
-        # <li>Sound recordings included in the AudioSwap program</li> </ul>
+        # The asset's title or name. The value has a maximum length of 255 bytes. This
+        # value is required for the assets listed below and optional for all other
+        # assets: - Show assets - Episode assets that are linked to a show - Movie
+        # assets that appear in YouTube's Movies category - Sound recordings included in
+        # the AudioSwap program
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -2754,8 +2669,8 @@ module Google
         # @return [String]
         attr_accessor :tms_id
       
-        # Specifies the total number of full-length episodes in the season. This
-        # value is used only for season assets.
+        # Specifies the total number of full-length episodes in the season. This value
+        # is used only for season assets.
         # Corresponds to the JSON property `totalEpisodesExpected`
         # @return [Fixnum]
         attr_accessor :total_episodes_expected
@@ -2765,8 +2680,8 @@ module Google
         # @return [String]
         attr_accessor :upc
       
-        # A list that identifies writers associated with the asset. You can specify
-        # up to 50 writers for an asset.
+        # A list that identifies writers associated with the asset. You can specify up
+        # to 50 writers for an asset.
         # Corresponds to the JSON property `writer`
         # @return [Array<String>]
         attr_accessor :writer
@@ -2824,20 +2739,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The type of the API resource. For metadata history resources, the value is
-        # <code>youtubePartner#metadataHistory</code>.
+        # youtubePartner#metadataHistory.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>metadata</code> object contains the metadata provided by the
-        # specified source (<code>origination</code>) at the specified time
-        # (<code>timeProvided</code>).
+        # The metadata object contains the metadata provided by the specified source (
+        # origination) at the specified time (timeProvided).
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::YoutubePartnerV1::Metadata]
         attr_accessor :metadata
       
-        # The <code>origination</code> object contains information that describes the
-        # metadata source.
+        # The origination object contains information that describes the metadata source.
         # Corresponds to the JSON property `origination`
         # @return [Google::Apis::YoutubePartnerV1::Origination]
         attr_accessor :origination
@@ -2864,14 +2777,14 @@ module Google
       class MetadataHistoryListResponse
         include Google::Apis::Core::Hashable
       
-        # A list of metadata history (<code>youtubePartner#metadataHistory</code>)
-        # resources that match the request criteria.
+        # A list of metadata history (youtubePartner#metadataHistory) resources that
+        # match the request criteria.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::YoutubePartnerV1::MetadataHistory>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#metadataHistoryList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # metadataHistoryList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2887,9 +2800,9 @@ module Google
         end
       end
       
-      # This is a copy of the tech.blob.ObjectId proto, which could not
-      # be used directly here due to transitive closure issues with
-      # JavaScript support; see http://b/8801763.
+      # This is a copy of the tech.blob.ObjectId proto, which could not be used
+      # directly here due to transitive closure issues with JavaScript support; see
+      # http://b/8801763.
       class ObjectIdProp
         include Google::Apis::Core::Hashable
       
@@ -2898,11 +2811,10 @@ module Google
         # @return [String]
         attr_accessor :bucket_name
       
-        # Generation of the object. Generations are monotonically increasing
-        # across writes, allowing them to be be compared to determine which
-        # generation is newer. If this is omitted in a request, then you are
-        # requesting the live object.
-        # See http://go/bigstore-versions
+        # Generation of the object. Generations are monotonically increasing across
+        # writes, allowing them to be be compared to determine which generation is newer.
+        # If this is omitted in a request, then you are requesting the live object. See
+        # http://go/bigstore-versions
         # Corresponds to the JSON property `generation`
         # @return [Fixnum]
         attr_accessor :generation
@@ -2979,29 +2891,26 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::TerritoryConflicts>]
         attr_accessor :general
       
-        # The type of the API resource. For <code>ownershipConflicts</code>
-        # resources, the value is <code>youtubePartner#ownershipConflicts</code>.
+        # The type of the API resource. For ownershipConflicts resources, the value is
+        # youtubePartner#ownershipConflicts.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
         # A list that identifies ownership conflicts of the mechanical rights for a
-        # composition asset and the territories where conflicting ownership is
-        # inserted.
+        # composition asset and the territories where conflicting ownership is inserted.
         # Corresponds to the JSON property `mechanical`
         # @return [Array<Google::Apis::YoutubePartnerV1::TerritoryConflicts>]
         attr_accessor :mechanical
       
         # A list that identifies ownership conflicts of the performance rights for a
-        # composition asset and the territories where conflicting ownership is
-        # inserted.
+        # composition asset and the territories where conflicting ownership is inserted.
         # Corresponds to the JSON property `performance`
         # @return [Array<Google::Apis::YoutubePartnerV1::TerritoryConflicts>]
         attr_accessor :performance
       
-        # A list that identifies ownership conflicts of the synchronization rights
-        # for a composition asset and the territories where conflicting ownership is
-        # inserted.
+        # A list that identifies ownership conflicts of the synchronization rights for a
+        # composition asset and the territories where conflicting ownership is inserted.
         # Corresponds to the JSON property `synchronization`
         # @return [Array<Google::Apis::YoutubePartnerV1::TerritoryConflicts>]
         attr_accessor :synchronization
@@ -3024,14 +2933,14 @@ module Google
       class OwnershipHistoryListResponse
         include Google::Apis::Core::Hashable
       
-        # A list of ownership history (<code>youtubePartner#ownershipHistory</code>)
-        # resources that match the request criteria.
+        # A list of ownership history (youtubePartner#ownershipHistory) resources that
+        # match the request criteria.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::YoutubePartnerV1::RightsOwnershipHistory>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#ownershipHistoryList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # ownershipHistoryList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3066,16 +2975,15 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The type of the API resource. For <code>package</code> resources, this
-        # value is <code>youtubePartner#package</code>.
+        # The type of the API resource. For package resources, this value is
+        # youtubePartner#package.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The desired locale of the error messages as defined in BCP 47
-        # (http:
-        # //tools.ietf.org/html/bcp47). For example, "en-US" or "de". If not
-        # // specified we will return the error messages in English ("en").
+        # The desired locale of the error messages as defined in BCP 47 (http: //tools.
+        # ietf.org/html/bcp47). For example, "en-US" or "de". If not // specified we
+        # will return the error messages in English ("en").
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
@@ -3095,9 +3003,8 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::StatusReport>]
         attr_accessor :status_reports
       
-        # The package creation time. The value is specified in <a
-        # href="https://www.ietf.org/rfc/rfc3339.txt">RFC 3339</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.000Z</code>) format.
+        # The package creation time. The value is specified in RFC 3339 ( YYYY-MM-DDThh:
+        # mm:ss.000Z) format.
         # Corresponds to the JSON property `timeCreated`
         # @return [String]
         attr_accessor :time_created
@@ -3141,23 +3048,22 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::ValidateError>]
         attr_accessor :errors
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#packageInsert</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # packageInsert.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>package</code> resource.
+        # The package resource.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::YoutubePartnerV1::Package]
         attr_accessor :resource
       
         # The package insert status. Indicates whether the insert operation completed
-        # successfully or identifies the general cause of failure. For most cases
-        # where the insert operation failed, the errors are described in the API
-        # response's <code>errors</code> object. However, if the operation failed
-        # because the package contained non-metadata files, the <code>errors</code>
-        # object is not included in the response.
+        # successfully or identifies the general cause of failure. For most cases where
+        # the insert operation failed, the errors are described in the API response's
+        # errors object. However, if the operation failed because the package contained
+        # non-metadata files, the errors object is not included in the response.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -3220,7 +3126,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies this as a policy. Value: "<code>youtubePartner#policy</code>"
+        # Identifies this as a policy. Value: "youtubePartner#policy"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3265,8 +3171,8 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::Policy>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#policyList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # policyList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3286,20 +3192,20 @@ module Google
       class PolicyRule
         include Google::Apis::Core::Hashable
       
-        # The policy that YouTube should enforce if the rule's conditions are all
-        # valid for an asset or for an attempt to view that asset on YouTube.
+        # The policy that YouTube should enforce if the rule's conditions are all valid
+        # for an asset or for an attempt to view that asset on YouTube.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
       
-        # A set of conditions that must be met for the rule's action (and subactions)
-        # to be enforced. For a rule to be valid, all of its conditions must be met.
+        # A set of conditions that must be met for the rule's action (and subactions) to
+        # be enforced. For a rule to be valid, all of its conditions must be met.
         # Corresponds to the JSON property `conditions`
         # @return [Google::Apis::YoutubePartnerV1::Conditions]
         attr_accessor :conditions
       
-        # A list of additional actions that YouTube should take if the conditions in
-        # the rule are met.
+        # A list of additional actions that YouTube should take if the conditions in the
+        # rule are met.
         # Corresponds to the JSON property `subaction`
         # @return [Array<String>]
         attr_accessor :subaction
@@ -3320,11 +3226,9 @@ module Google
       class PromotedContent
         include Google::Apis::Core::Hashable
       
-        # A list of link targets that will be used to generate the annotation link
-        # that appears on videos included in the <a
-        # href="https://support.google.com/youtube/answer/6078374?ref_topic=4515467">
-        # campaign</a>. If more than one link is specified, the link that is
-        # displayed to viewers will be randomly selected from the list.
+        # A list of link targets that will be used to generate the annotation link that
+        # appears on videos included in the campaign. If more than one link is specified,
+        # the link that is displayed to viewers will be randomly selected from the list.
         # Corresponds to the JSON property `link`
         # @return [Array<Google::Apis::YoutubePartnerV1::CampaignTargetLink>]
         attr_accessor :link
@@ -3374,18 +3278,17 @@ module Google
         # @return [String]
         attr_accessor :asset_id
       
-        # Set this field's value to <code>true</code> to indicate that the reference
-        # content should be included in YouTube's AudioSwap program.
+        # Set this field's value to true to indicate that the reference content should
+        # be included in YouTube's AudioSwap program.
         # Corresponds to the JSON property `audioswapEnabled`
         # @return [Boolean]
         attr_accessor :audioswap_enabled
         alias_method :audioswap_enabled?, :audioswap_enabled
       
         # This field is present if the reference was created by associating an asset
-        # with an existing YouTube video that was uploaded to a YouTube channel
-        # linked to your CMS account. In that case, this field contains the ID of the
-        # claim representing the resulting association between the asset and the
-        # video.
+        # with an existing YouTube video that was uploaded to a YouTube channel linked
+        # to your CMS account. In that case, this field contains the ID of the claim
+        # representing the resulting association between the asset and the video.
         # Corresponds to the JSON property `claimId`
         # @return [String]
         attr_accessor :claim_id
@@ -3395,22 +3298,21 @@ module Google
         # @return [String]
         attr_accessor :content_type
       
-        # The ID that uniquely identifies the reference that this reference
-        # duplicates. This field is only present if the
-        # reference's status is <code>inactive</code> with reason
-        # <code>REASON_DUPLICATE_FOR_OWNERS</code>.
+        # The ID that uniquely identifies the reference that this reference duplicates.
+        # This field is only present if the reference's status is inactive with reason
+        # REASON_DUPLICATE_FOR_OWNERS.
         # Corresponds to the JSON property `duplicateLeader`
         # @return [String]
         attr_accessor :duplicate_leader
       
-        # The list of time intervals from this reference that will be ignored during
-        # the match process.
+        # The list of time intervals from this reference that will be ignored during the
+        # match process.
         # Corresponds to the JSON property `excludedIntervals`
         # @return [Array<Google::Apis::YoutubePartnerV1::ExcludedInterval>]
         attr_accessor :excluded_intervals
       
-        # When uploading a reference, set this value to <code>true</code> to indicate
-        # that the reference is a pre-generated fingerprint.
+        # When uploading a reference, set this value to true to indicate that the
+        # reference is a pre-generated fingerprint.
         # Corresponds to the JSON property `fpDirect`
         # @return [Boolean]
         attr_accessor :fp_direct
@@ -3421,7 +3323,7 @@ module Google
         # @return [Google::Apis::YoutubePartnerV1::Media]
         attr_accessor :gdata_media
       
-        # The MD5 hashcode of the reference content.  Deprecated! This is no longer
+        # The MD5 hashcode of the reference content. Deprecated! This is no longer
         # populated.
         # Corresponds to the JSON property `hashCode`
         # @return [String]
@@ -3432,16 +3334,15 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Set this value to <code>true</code> to indicate that the reference should
-        # not be used to generate claims. This field is only used on AudioSwap
-        # references.
+        # Set this value to true to indicate that the reference should not be used to
+        # generate claims. This field is only used on AudioSwap references.
         # Corresponds to the JSON property `ignoreFpMatch`
         # @return [Boolean]
         attr_accessor :ignore_fp_match
         alias_method :ignore_fp_match?, :ignore_fp_match
       
-        # The type of the API resource. For <code>reference</code> resources, the
-        # value is <code>youtubePartner#reference</code>.
+        # The type of the API resource. For reference resources, the value is
+        # youtubePartner#reference.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3456,23 +3357,20 @@ module Google
         # @return [Google::Apis::YoutubePartnerV1::MediaRequestInfo]
         attr_accessor :media_request_info
       
-        # This message is for backends to pass their scotty media specific fields to
-        # ESF. Backend will include this in their response message to ESF.
-        # Example:
-        # ExportFile is an rpc defined for upload using scotty from ESF.
-        # rpc ExportFile(ExportFileRequest) returns (ExportFileResponse)
-        # Message ExportFileResponse will include apiserving.MediaResponseInfo to tell
-        # ESF about data like dynamic_dropzone it needs to pass to Scotty.
-        # message ExportFileResponse `
-        # optional gdata.Media blob = 1;
-        # optional apiserving.MediaResponseInfo media_response_info = 2
-        # `
+        # This message is for backends to pass their scotty media specific fields to ESF.
+        # Backend will include this in their response message to ESF. Example:
+        # ExportFile is an rpc defined for upload using scotty from ESF. rpc ExportFile(
+        # ExportFileRequest) returns (ExportFileResponse) Message ExportFileResponse
+        # will include apiserving.MediaResponseInfo to tell ESF about data like
+        # dynamic_dropzone it needs to pass to Scotty. message ExportFileResponse `
+        # optional gdata.Media blob = 1; optional apiserving.MediaResponseInfo
+        # media_response_info = 2 `
         # Corresponds to the JSON property `mediaResponseInfo`
         # @return [Google::Apis::YoutubePartnerV1::MediaResponseInfo]
         attr_accessor :media_response_info
       
-        # The <code>origination</code> object contains information that describes the
-        # reference source.
+        # The origination object contains information that describes the reference
+        # source.
         # Corresponds to the JSON property `origination`
         # @return [Google::Apis::YoutubePartnerV1::Origination]
         attr_accessor :origination
@@ -3483,29 +3381,27 @@ module Google
         attr_accessor :status
       
         # An explanation of how a reference entered its current state. This value is
-        # only present if the
-        # reference's status is either <code>inactive</code> or <code>deleted</code>.
+        # only present if the reference's status is either inactive or deleted.
         # Corresponds to the JSON property `statusReason`
         # @return [String]
         attr_accessor :status_reason
       
-        # Set this value to <code>true</code> to indicate that YouTube should
-        # prioritize Content ID processing for a video file. YouTube processes urgent
-        # video files before other files that are not marked as urgent. This setting
-        # is primarily used for videos of live events or other videos that require
-        # time-sensitive processing. The sooner YouTube completes Content ID
-        # processing for a video, the sooner YouTube can match user-uploaded videos
-        # to that video.<br/><br/>Note that marking all of your files as urgent could
-        # delay processing for those files.
+        # Set this value to true to indicate that YouTube should prioritize Content ID
+        # processing for a video file. YouTube processes urgent video files before other
+        # files that are not marked as urgent. This setting is primarily used for videos
+        # of live events or other videos that require time-sensitive processing. The
+        # sooner YouTube completes Content ID processing for a video, the sooner YouTube
+        # can match user-uploaded videos to that video. Note that marking all of your
+        # files as urgent could delay processing for those files.
         # Corresponds to the JSON property `urgent`
         # @return [Boolean]
         attr_accessor :urgent
         alias_method :urgent?, :urgent
       
         # This field is present if the reference was created by associating an asset
-        # with an existing YouTube video that was uploaded to a YouTube channel
-        # linked to your CMS account. In that case, this field contains the ID of the
-        # source video.
+        # with an existing YouTube video that was uploaded to a YouTube channel linked
+        # to your CMS account. In that case, this field contains the ID of the source
+        # video.
         # Corresponds to the JSON property `videoId`
         # @return [String]
         attr_accessor :video_id
@@ -3559,14 +3455,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The type of the API resource. For <code>referenceConflict</code> resources,
-        # the value is <code>youtubePartner#referenceConflict</code>.
+        # The type of the API resource. For referenceConflict resources, the value is
+        # youtubePartner#referenceConflict.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The list of matches between conflicting and original references at the time
-        # of conflict creation.
+        # The list of matches between conflicting and original references at the time of
+        # conflict creation.
         # Corresponds to the JSON property `matches`
         # @return [Array<Google::Apis::YoutubePartnerV1::ReferenceConflictMatch>]
         attr_accessor :matches
@@ -3606,20 +3502,19 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::ReferenceConflict>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#referenceConflictList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # referenceConflictList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The <code>pageInfo</code> object encapsulates paging information for the
-        # result set.
+        # The pageInfo object encapsulates paging information for the result set.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubePartnerV1::PageInfo]
         attr_accessor :page_info
@@ -3683,20 +3578,19 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::Reference>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#referenceList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # referenceList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The <code>pageInfo</code> object encapsulates paging information for the
-        # result set.
+        # The pageInfo object encapsulates paging information for the result set.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubePartnerV1::PageInfo]
         attr_accessor :page_info
@@ -3718,24 +3612,22 @@ module Google
       class RightsOwnership
         include Google::Apis::Core::Hashable
       
-        # A list that identifies the owners of an asset and the territories where
-        # each owner has ownership. General asset ownership is used for all types of
-        # assets and is the only type of ownership data that can be provided for
-        # assets that are not compositions.<br/><br/> <strong>Note:</strong> You
-        # cannot specify general ownership rights and also specify either mechanical,
-        # performance, or synchronization rights.
+        # A list that identifies the owners of an asset and the territories where each
+        # owner has ownership. General asset ownership is used for all types of assets
+        # and is the only type of ownership data that can be provided for assets that
+        # are not compositions. *Note:* You cannot specify general ownership rights and
+        # also specify either mechanical, performance, or synchronization rights.
         # Corresponds to the JSON property `general`
         # @return [Array<Google::Apis::YoutubePartnerV1::TerritoryOwners>]
         attr_accessor :general
       
-        # The type of the API resource. For <code>rightsOwnership</code> resources,
-        # the value is <code>youtubePartner#rightsOwnership</code>.
+        # The type of the API resource. For rightsOwnership resources, the value is
+        # youtubePartner#rightsOwnership.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # A list that identifies owners of the mechanical rights for a composition
-        # asset.
+        # A list that identifies owners of the mechanical rights for a composition asset.
         # Corresponds to the JSON property `mechanical`
         # @return [Array<Google::Apis::YoutubePartnerV1::TerritoryOwners>]
         attr_accessor :mechanical
@@ -3746,8 +3638,8 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::TerritoryOwners>]
         attr_accessor :performance
       
-        # A list that identifies owners of the synchronization rights for a
-        # composition asset.
+        # A list that identifies owners of the synchronization rights for a composition
+        # asset.
         # Corresponds to the JSON property `synchronization`
         # @return [Array<Google::Apis::YoutubePartnerV1::TerritoryOwners>]
         attr_accessor :synchronization
@@ -3771,20 +3663,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The type of the API resource. For ownership history resources, the value is
-        # <code>youtubePartner#rightsOwnershipHistory</code>.
+        # youtubePartner#rightsOwnershipHistory.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>origination</code> object contains information that describes the
-        # metadata source.
+        # The origination object contains information that describes the metadata source.
         # Corresponds to the JSON property `origination`
         # @return [Google::Apis::YoutubePartnerV1::Origination]
         attr_accessor :origination
       
-        # The <code>ownership</code> object contains the ownership data provided by
-        # the specified source (<code>origination</code>) at the specified time
-        # (<code>timeProvided</code>).
+        # The ownership object contains the ownership data provided by the specified
+        # source (origination) at the specified time (timeProvided).
         # Corresponds to the JSON property `ownership`
         # @return [Google::Apis::YoutubePartnerV1::RightsOwnership]
         attr_accessor :ownership
@@ -3817,7 +3707,7 @@ module Google
         attr_accessor :duration
       
         # The type of the API resource. For segment resources, the value is
-        # <code>youtubePartner#segment</code>.
+        # youtubePartner#segment.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3843,14 +3733,13 @@ module Google
       class Segment2
         include Google::Apis::Core::Hashable
       
-        # The finish time of the segment, measured in milliseconds from the
-        # beginning.
+        # The finish time of the segment, measured in milliseconds from the beginning.
         # Corresponds to the JSON property `finish`
         # @return [String]
         attr_accessor :finish
       
         # The type of the API resource. For segment resources, the value is
-        # <code>youtubePartner#segment</code>.
+        # youtubePartner#segment.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3907,8 +3796,8 @@ module Google
       class SpreadsheetTemplate
         include Google::Apis::Core::Hashable
       
-        # The type of the API resource. For spreadsheet template resources, the value
-        # is <code>youtubePartner#spreadsheetTemplate</code>.
+        # The type of the API resource. For spreadsheet template resources, the value is
+        # youtubePartner#spreadsheetTemplate.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3951,15 +3840,14 @@ module Google
       class SpreadsheetTemplateListResponse
         include Google::Apis::Core::Hashable
       
-        # A list of spreadsheet templates
-        # (<code>youtubePartner#spreadsheetTemplate</code>) resources that match the
-        # request criteria.
+        # A list of spreadsheet templates (youtubePartner#spreadsheetTemplate) resources
+        # that match the request criteria.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::YoutubePartnerV1::SpreadsheetTemplate>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#spreadsheetTemplateList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # spreadsheetTemplateList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4010,16 +3898,13 @@ module Google
       class TerritoryCondition
         include Google::Apis::Core::Hashable
       
-        # A list of territories. Each territory is an <a
-        # href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/
-        # country_names_and_code_elements.htm">ISO
-        # 3166 two-letter country code.</a>.
+        # A list of territories. Each territory is an ISO 3166 two-letter country code..
         # Corresponds to the JSON property `territories`
         # @return [Array<String>]
         attr_accessor :territories
       
-        # This field indicates whether the associated policy rule is or is not valid
-        # in the specified territories.
+        # This field indicates whether the associated policy rule is or is not valid in
+        # the specified territories.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4044,10 +3929,8 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::ConflictingOwnership>]
         attr_accessor :conflicting_ownership
       
-        # A territories where the ownership conflict is present. Territory is an <a
-        # href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/
-        # country_names_and_code_elements.htm">ISO
-        # 3166 two-letter country code.</a>.
+        # A territories where the ownership conflict is present. Territory is an ISO
+        # 3166 two-letter country code..
         # Corresponds to the JSON property `territory`
         # @return [String]
         attr_accessor :territory
@@ -4080,26 +3963,23 @@ module Google
         attr_accessor :publisher
       
         # The percentage of the asset that the owner controls or administers. For
-        # composition assets, the value can be any value between <code>0</code> and
-        # <code>100</code> inclusive. For all other assets, the only valid values are
-        # <code>100</code>, which indicates that the owner completely owns the asset
-        # in the specified territories, and <code>0</code>, which indicates that you
-        # are removing ownership of the asset in the specified territories.
+        # composition assets, the value can be any value between 0 and 100 inclusive.
+        # For all other assets, the only valid values are 100, which indicates that the
+        # owner completely owns the asset in the specified territories, and 0, which
+        # indicates that you are removing ownership of the asset in the specified
+        # territories.
         # Corresponds to the JSON property `ratio`
         # @return [Float]
         attr_accessor :ratio
       
-        # A list of territories where the owner owns (or does not own) the asset.
-        # Each territory is an <a
-        # href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/
-        # country_names_and_code_elements.htm">ISO
-        # 3166 two-letter country code.</a>.
+        # A list of territories where the owner owns (or does not own) the asset. Each
+        # territory is an ISO 3166 two-letter country code..
         # Corresponds to the JSON property `territories`
         # @return [Array<String>]
         attr_accessor :territories
       
-        # This field indicates whether the ownership data applies or does not apply
-        # in the specified territories.
+        # This field indicates whether the ownership data applies or does not apply in
+        # the specified territories.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4122,14 +4002,14 @@ module Google
       class TotalMatch
         include Google::Apis::Core::Hashable
       
-        # The total amount of content in the reference which matched the user
-        # video in seconds.
+        # The total amount of content in the reference which matched the user video in
+        # seconds.
         # Corresponds to the JSON property `referenceDurationSecs`
         # @return [Fixnum]
         attr_accessor :reference_duration_secs
       
-        # The total amount of content in the user video which matched the
-        # reference in seconds.
+        # The total amount of content in the user video which matched the reference in
+        # seconds.
         # Corresponds to the JSON property `userVideoDurationSecs`
         # @return [Fixnum]
         attr_accessor :user_video_duration_secs
@@ -4149,23 +4029,22 @@ module Google
       class TypeDetails
         include Google::Apis::Core::Hashable
       
-        # Appeal explanations for <code>dispute_appeal</code> event.
+        # Appeal explanations for dispute_appeal event.
         # Corresponds to the JSON property `appealExplanation`
         # @return [String]
         attr_accessor :appeal_explanation
       
-        # Dispute notes for <code>dispute_create</code> events.
+        # Dispute notes for dispute_create events.
         # Corresponds to the JSON property `disputeNotes`
         # @return [String]
         attr_accessor :dispute_notes
       
-        # Dispute reason for <code>dispute_create</code> and
-        # <code>dispute_appeal</code> events.
+        # Dispute reason for dispute_create and dispute_appeal events.
         # Corresponds to the JSON property `disputeReason`
         # @return [String]
         attr_accessor :dispute_reason
       
-        # Status that was a result of update for <code>claim_update</code> event.
+        # Status that was a result of update for claim_update event.
         # Corresponds to the JSON property `updateStatus`
         # @return [String]
         attr_accessor :update_status
@@ -4188,7 +4067,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The type of the API resource. For uploader resources, the value is
-        # <code>youtubePartner#uploader</code>.
+        # youtubePartner#uploader.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4213,14 +4092,14 @@ module Google
       class UploaderListResponse
         include Google::Apis::Core::Hashable
       
-        # A list of uploader (<code>youtubePartner#uploader</code>) resources that
-        # match the request criteria.
+        # A list of uploader (youtubePartner#uploader) resources that match the request
+        # criteria.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::YoutubePartnerV1::Uploader>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#uploaderList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # uploaderList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4245,8 +4124,8 @@ module Google
         # @return [String]
         attr_accessor :content
       
-        # The type of the API resource. For this operation, the value is
-        # <code>youtubePartner#validateAsyncRequest</code>.
+        # The type of the API resource. For this operation, the value is youtubePartner#
+        # validateAsyncRequest.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4272,8 +4151,8 @@ module Google
       class ValidateAsyncResponse
         include Google::Apis::Core::Hashable
       
-        # The type of the API resource. For this operation, the value is
-        # <code>youtubePartner#validateAsyncResponse</code>.
+        # The type of the API resource. For this operation, the value is youtubePartner#
+        # validateAsyncResponse.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4358,16 +4237,15 @@ module Google
         # @return [String]
         attr_accessor :content
       
-        # The type of the API resource. For this operation, the value is
-        # <code>youtubePartner#validateRequest</code>.
+        # The type of the API resource. For this operation, the value is youtubePartner#
+        # validateRequest.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The desired locale of the error messages as defined in BCP 47
-        # (http:
-        # //tools.ietf.org/html/bcp47). For example, "en-US" or "de". If not
-        # // specified we will return the error messages in English ("en").
+        # The desired locale of the error messages as defined in BCP 47 (http: //tools.
+        # ietf.org/html/bcp47). For example, "en-US" or "de". If not // specified we
+        # will return the error messages in English ("en").
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
@@ -4399,8 +4277,8 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::ValidateError>]
         attr_accessor :errors
       
-        # The type of the API resource. For this operation, the value is
-        # <code>youtubePartner#validateResponse</code>.
+        # The type of the API resource. For this operation, the value is youtubePartner#
+        # validateResponse.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4426,16 +4304,15 @@ module Google
       class ValidateStatusRequest
         include Google::Apis::Core::Hashable
       
-        # The type of the API resource. For this operation, the value is
-        # <code>youtubePartner#validateStatusRequest</code>.
+        # The type of the API resource. For this operation, the value is youtubePartner#
+        # validateStatusRequest.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The desired locale of the error messages as defined in BCP 47
-        # (http:
-        # //tools.ietf.org/html/bcp47). For example, "en-US" or "de". If not
-        # // specified we will return the error messages in English ("en").
+        # The desired locale of the error messages as defined in BCP 47 (http: //tools.
+        # ietf.org/html/bcp47). For example, "en-US" or "de". If not // specified we
+        # will return the error messages in English ("en").
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
@@ -4472,8 +4349,8 @@ module Google
         attr_accessor :is_metadata_only
         alias_method :is_metadata_only?, :is_metadata_only
       
-        # The type of the API resource. For this operation, the value is
-        # <code>youtubePartner#validateStatusResponse</code>.
+        # The type of the API resource. For this operation, the value is youtubePartner#
+        # validateStatusResponse.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4528,8 +4405,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The type of the API resource. For this resource, the value is
-        # <code>youtubePartner#videoAdvertisingOption</code>.
+        # The type of the API resource. For this resource, the value is youtubePartner#
+        # videoAdvertisingOption.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4539,14 +4416,14 @@ module Google
         # @return [String]
         attr_accessor :tp_ad_server_video_id
       
-        # The base URL for a third-party ad server from which YouTube can retrieve
-        # in-stream ads for the video.
+        # The base URL for a third-party ad server from which YouTube can retrieve in-
+        # stream ads for the video.
         # Corresponds to the JSON property `tpTargetingUrl`
         # @return [String]
         attr_accessor :tp_targeting_url
       
-        # A parameter string to append to the end of the request to the third-party
-        # ad server.
+        # A parameter string to append to the end of the request to the third-party ad
+        # server.
         # Corresponds to the JSON property `tpUrlParameters`
         # @return [String]
         attr_accessor :tp_url_parameters
@@ -4578,8 +4455,8 @@ module Google
         # @return [Array<Google::Apis::YoutubePartnerV1::AdBreak>]
         attr_accessor :ad_breaks
       
-        # This field indicates whether YouTube can show ads when the video is played
-        # in an embedded player.
+        # This field indicates whether YouTube can show ads when the video is played in
+        # an embedded player.
         # Corresponds to the JSON property `adsOnEmbeds`
         # @return [Boolean]
         attr_accessor :ads_on_embeds
@@ -4596,8 +4473,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The type of the API resource. For this resource, the value is
-        # <code>youtubePartner#videoAdvertisingOptionGetEnabledAds</code>.
+        # The type of the API resource. For this resource, the value is youtubePartner#
+        # videoAdvertisingOptionGetEnabledAds.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4625,8 +4502,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The type of the API resource. For <code>whitelist</code> resources, this
-        # value is <code>youtubePartner#whitelist</code>.
+        # The type of the API resource. For whitelist resources, this value is
+        # youtubePartner#whitelist.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4652,25 +4529,24 @@ module Google
       class WhitelistListResponse
         include Google::Apis::Core::Hashable
       
-        # A list of <code>whitelist</code> resources that match the request criteria.
+        # A list of whitelist resources that match the request criteria.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::YoutubePartnerV1::Whitelist>]
         attr_accessor :items
       
-        # The type of the API response. For this operation, the value is
-        # <code>youtubePartner#whitelistList</code>.
+        # The type of the API response. For this operation, the value is youtubePartner#
+        # whitelistList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page of results.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The <code>pageInfo</code> object encapsulates paging information for the
-        # result set.
+        # The pageInfo object encapsulates paging information for the result set.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubePartnerV1::PageInfo]
         attr_accessor :page_info

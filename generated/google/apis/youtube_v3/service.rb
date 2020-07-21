@@ -3450,6 +3450,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # POST method.
+        # @param [Array<String>, String] part
+        # @param [Google::Apis::YoutubeV3::TestItem] test_item_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::TestItem] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::TestItem]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_test(part, test_item_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'youtube/v3/tests', options)
+          command.request_representation = Google::Apis::YoutubeV3::TestItem::Representation
+          command.request_object = test_item_object
+          command.response_representation = Google::Apis::YoutubeV3::TestItem::Representation
+          command.response_class = Google::Apis::YoutubeV3::TestItem
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a resource.
         # @param [String] linking_token
         #   Delete the partner links with the given linking token.
@@ -4314,38 +4346,6 @@ module Google
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['part'] = part unless part.nil?
           command.query['videoId'] = video_id unless video_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # POST method.
-        # @param [Google::Apis::YoutubeV3::TestItem] test_item_object
-        # @param [Array<String>, String] part
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::TestItem] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::YoutubeV3::TestItem]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_youtube_v3_test(test_item_object = nil, part: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'youtube/v3/tests', options)
-          command.request_representation = Google::Apis::YoutubeV3::TestItem::Representation
-          command.request_object = test_item_object
-          command.response_representation = Google::Apis::YoutubeV3::TestItem::Representation
-          command.response_class = Google::Apis::YoutubeV3::TestItem
-          command.query['part'] = part unless part.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

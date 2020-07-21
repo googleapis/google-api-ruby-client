@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Backup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +83,12 @@ module Google
       end
       
       class ColumnFamily
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateBackupMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBackupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListClustersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +256,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OptimizeRestoredTableMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PartialUpdateInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +275,24 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestoreInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestoreTableMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestoreTableRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -346,6 +400,29 @@ module Google
         end
       end
       
+      class Backup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :expire_time, as: 'expireTime'
+          property :name, as: 'name'
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+          property :source_table, as: 'sourceTable'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
+      class BackupInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+          property :end_time, as: 'endTime'
+          property :source_table, as: 'sourceTable'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -393,6 +470,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gc_rule, as: 'gcRule', class: Google::Apis::BigtableadminV2::GcRule, decorator: Google::Apis::BigtableadminV2::GcRule::Representation
       
+        end
+      end
+      
+      class CreateBackupMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :source_table, as: 'sourceTable'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -544,6 +631,15 @@ module Google
         end
       end
       
+      class ListBackupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backups, as: 'backups', class: Google::Apis::BigtableadminV2::Backup, decorator: Google::Apis::BigtableadminV2::Backup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListClustersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -640,6 +736,24 @@ module Google
         end
       end
       
+      class OperationProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :progress_percent, as: 'progressPercent'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class OptimizeRestoredTableMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :progress, as: 'progress', class: Google::Apis::BigtableadminV2::OperationProgress, decorator: Google::Apis::BigtableadminV2::OperationProgress::Representation
+      
+        end
+      end
+      
       class PartialUpdateInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -658,6 +772,36 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class RestoreInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_info, as: 'backupInfo', class: Google::Apis::BigtableadminV2::BackupInfo, decorator: Google::Apis::BigtableadminV2::BackupInfo::Representation
+      
+          property :source_type, as: 'sourceType'
+        end
+      end
+      
+      class RestoreTableMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_info, as: 'backupInfo', class: Google::Apis::BigtableadminV2::BackupInfo, decorator: Google::Apis::BigtableadminV2::BackupInfo::Representation
+      
+          property :name, as: 'name'
+          property :optimize_table_operation_name, as: 'optimizeTableOperationName'
+          property :progress, as: 'progress', class: Google::Apis::BigtableadminV2::OperationProgress, decorator: Google::Apis::BigtableadminV2::OperationProgress::Representation
+      
+          property :source_type, as: 'sourceType'
+        end
+      end
+      
+      class RestoreTableRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+          property :table_id, as: 'tableId'
         end
       end
       
@@ -703,6 +847,8 @@ module Google
       
           property :granularity, as: 'granularity'
           property :name, as: 'name'
+          property :restore_info, as: 'restoreInfo', class: Google::Apis::BigtableadminV2::RestoreInfo, decorator: Google::Apis::BigtableadminV2::RestoreInfo::Representation
+      
         end
       end
       

@@ -51,10 +51,9 @@ module Google
         # Insert an asset label for an owner.
         # @param [Google::Apis::YoutubePartnerV1::AssetLabel] asset_label_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -86,17 +85,14 @@ module Google
         
         # Retrieves a list of all asset labels for an owner.
         # @param [String] label_prefix
-        #   The <code><strong>labelPrefix</strong></code> parameter identifies the
-        #   prefix of asset labels to retrieve.
+        #   The *labelPrefix* parameter identifies the prefix of asset labels to retrieve.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] q
-        #   The <code><strong>q</strong></code> parameter specifies the query string to
-        #   use to filter search results. YouTube searches for the query string in the
-        #   <code><strong>labelName</strong></code> field of asset labels.
+        #   The *q* parameter specifies the query string to use to filter search results.
+        #   YouTube searches for the query string in the *labelName* field of asset labels.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -130,13 +126,12 @@ module Google
         # owner associated with the authenticated user. This information is only
         # accessible to an owner of the asset.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the YouTube
-        #   asset ID of the asset for which you are retrieving the match policy.
+        #   The *assetId* parameter specifies the YouTube asset ID of the asset for which
+        #   you are retrieving the match policy.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -165,19 +160,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches the asset's match policy. If an asset has multiple owners, each
-        # owner may set its own match policy for the asset. YouTube then computes the
-        # match policy that is actually applied for the asset based on the
-        # territories where each owner owns the asset.
+        # Patches the asset's match policy. If an asset has multiple owners, each owner
+        # may set its own match policy for the asset. YouTube then computes the match
+        # policy that is actually applied for the asset based on the territories where
+        # each owner owns the asset.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the YouTube
-        #   asset ID of the asset for which you are retrieving the match policy.
+        #   The *assetId* parameter specifies the YouTube asset ID of the asset for which
+        #   you are retrieving the match policy.
         # @param [Google::Apis::YoutubePartnerV1::AssetMatchPolicy] asset_match_policy_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -208,19 +202,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the asset's match policy. If an asset has multiple owners, each
-        # owner may set its own match policy for the asset. YouTube then computes the
-        # match policy that is actually applied for the asset based on the
-        # territories where each owner owns the asset.
+        # Updates the asset's match policy. If an asset has multiple owners, each owner
+        # may set its own match policy for the asset. YouTube then computes the match
+        # policy that is actually applied for the asset based on the territories where
+        # each owner owns the asset.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the YouTube
-        #   asset ID of the asset for which you are retrieving the match policy.
+        #   The *assetId* parameter specifies the YouTube asset ID of the asset for which
+        #   you are retrieving the match policy.
         # @param [Google::Apis::YoutubePartnerV1::AssetMatchPolicy] asset_match_policy_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -253,13 +246,12 @@ module Google
         
         # Deletes a relationship between two assets.
         # @param [String] asset_relationship_id
-        #   The <code><strong>assetRelationshipId</strong></code> parameter specifies a
-        #   value that uniquely identifies the relationship you are deleting.
+        #   The *assetRelationshipId* parameter specifies a value that uniquely identifies
+        #   the relationship you are deleting.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -291,10 +283,9 @@ module Google
         # Creates a relationship that links two assets.
         # @param [Google::Apis::YoutubePartnerV1::AssetRelationship] asset_relationship_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -328,18 +319,17 @@ module Google
         # relationships where the specified asset is either the parent (embedding) or
         # child (embedded) asset in the relationship.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the asset ID
-        #   of the asset for which you are retrieving relationships.
+        #   The *assetId* parameter specifies the asset ID of the asset for which you are
+        #   retrieving relationships.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter specifies a token
-        #   that identifies a particular page of results to return. Set this parameter
-        #   to the value of the <code>nextPageToken</code> value from the previous API
-        #   response to retrieve the next page of search results.
+        #   The *pageToken* parameter specifies a token that identifies a particular page
+        #   of results to return. Set this parameter to the value of the nextPageToken
+        #   value from the previous API response to retrieve the next page of search
+        #   results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -371,72 +361,60 @@ module Google
         
         # Searches for assets based on asset metadata. The method can retrieve all
         # assets or only assets owned by the content owner. This method mimics the
-        # functionality of the advanced search feature on the <a
-        # href="https://cms.youtube.com/assets">Assets</a> page in CMS.
+        # functionality of the advanced search feature on the Assets page in CMS.
         # @param [String] created_after
-        #   The <code><strong>createdAfter</strong></code> parameter restricts the set
-        #   of returned assets to ones originally created on or after the specified
-        #   datetime. For example: <code>2015-01-29T23:00:00Z</code>
+        #   The *createdAfter* parameter restricts the set of returned assets to ones
+        #   originally created on or after the specified datetime. For example: 2015-01-
+        #   29T23:00:00Z
         # @param [String] created_before
-        #   The <code><strong>createdBefore</strong></code> parameter restricts the set
-        #   of returned assets to ones originally created on or before the specified
-        #   datetime. For example: <code>2015-01-29T23:00:00Z</code>
+        #   The *createdBefore* parameter restricts the set of returned assets to ones
+        #   originally created on or before the specified datetime. For example: 2015-01-
+        #   29T23:00:00Z
         # @param [Boolean] has_conflicts
-        #   The <code><strong>hasConflicts</strong></code> parameter enables you to
-        #   only retrieve assets that have ownership conflicts. The only valid value is
-        #   <code>true</code>. Setting the parameter value to <code>false</code> does
-        #   not affect the results.
+        #   The *hasConflicts* parameter enables you to only retrieve assets that have
+        #   ownership conflicts. The only valid value is true. Setting the parameter value
+        #   to false does not affect the results.
         # @param [Boolean] include_any_providedlabel
-        #   If <code><strong>includeAnyProvidedlabel</strong></code> parameter is set
-        #   to true, will search for assets that contain any of the provided labels;
-        #   else will search for assets that contain all the provided labels.
+        #   If *includeAnyProvidedlabel* parameter is set to true, will search for assets
+        #   that contain any of the provided labels; else will search for assets that
+        #   contain all the provided labels.
         # @param [String] isrcs
         #   A comma-separated list of up to 50 ISRCs. If you specify a value for this
-        #   parameter, the API server ignores any values set for the following
-        #   parameters: <code>q</code>, <code>includeAnyProvidedLabel</code>,
-        #   <code>hasConflicts</code>, <code>labels</code>,
-        #   <code>metadataSearchFields</code>, <code>sort</code>, and
-        #   <code>type</code>.
+        #   parameter, the API server ignores any values set for the following parameters:
+        #   q, includeAnyProvidedLabel, hasConflicts, labels, metadataSearchFields, sort,
+        #   and type.
         # @param [String] labels
-        #   The <code><strong>labels</strong></code> parameter specifies the assets
-        #   with certain asset labels that you want to retrieve. The parameter value is
-        #   a comma-separated list of asset labels.
+        #   The *labels* parameter specifies the assets with certain asset labels that you
+        #   want to retrieve. The parameter value is a comma-separated list of asset
+        #   labels.
         # @param [String] metadata_search_fields
-        #   The <code><strong>metadataSearchField</strong></code> parameter specifies
-        #   which metadata fields to search by. It is a comma-separated list of
-        #   metadata field and value pairs connected by colon(:). For example:
-        #   customId:my_custom_id,artist:Dandexx
+        #   The *metadataSearchField* parameter specifies which metadata fields to search
+        #   by. It is a comma-separated list of metadata field and value pairs connected
+        #   by colon(:). For example: customId:my_custom_id,artist:Dandexx
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] ownership_restriction
-        #   The <code><strong>ownershipRestriction</strong></code> parameter specifies
-        #   the ownership filtering option for the search. By default the search is
-        #   performed in the assets owned by currently authenticated user only.
+        #   The *ownershipRestriction* parameter specifies the ownership filtering option
+        #   for the search. By default the search is performed in the assets owned by
+        #   currently authenticated user only.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter specifies a token
-        #   that identifies a particular page of results to return. Set this parameter
-        #   to the value of the <code>nextPageToken</code> value from the previous API
-        #   response to retrieve the next page of search results.
+        #   The *pageToken* parameter specifies a token that identifies a particular page
+        #   of results to return. Set this parameter to the value of the nextPageToken
+        #   value from the previous API response to retrieve the next page of search
+        #   results.
         # @param [String] q
-        #   YouTube searches within the <code><strong>id</strong></code>,
-        #   <code><strong>type</strong></code>, and
-        #   <code><strong>customId</strong></code> fields for all assets as well as in
-        #   numerous other metadata fields &ndash; such as
-        #   <code><strong>actor</strong></code>, <code><strong>album</strong></code>,
-        #   <code><strong>director</strong></code>, <code><strong>isrc</strong></code>,
-        #   and <code><strong>tmsId</strong></code> &ndash; that vary for different
-        #   types of assets (movies, music videos, etc.).
+        #   YouTube searches within the *id*, *type*, and *customId* fields for all assets
+        #   as well as in numerous other metadata fields – such as *actor*, *album*, *
+        #   director*, *isrc*, and *tmsId* – that vary for different types of assets (
+        #   movies, music videos, etc.).
         # @param [String] sort
-        #   The <code><strong>sort</strong></code> parameter specifies how the search
-        #   results should be sorted. Note that results are always sorted in descending
-        #   order.
+        #   The *sort* parameter specifies how the search results should be sorted. Note
+        #   that results are always sorted in descending order.
         # @param [String] type
-        #   The <code><strong>type</strong></code> parameter specifies the types of
-        #   assets that you want to retrieve. The parameter value is a comma-separated
-        #   list of asset types.
+        #   The *type* parameter specifies the types of assets that you want to retrieve.
+        #   The parameter value is a comma-separated list of asset types.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -476,27 +454,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # This method either retrieves a list of asset shares the partner owns and
-        # that map to a specified asset view ID  <i>or</i> it retrieves a list of
-        # asset views associated with a specified asset share ID owned by the
-        # partner.
+        # This method either retrieves a list of asset shares the partner owns and that
+        # map to a specified asset view ID *or* it retrieves a list of asset views
+        # associated with a specified asset share ID owned by the partner.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the asset ID
-        #   for which you are retrieving data. The parameter can be an asset view ID or
-        #   an asset share ID. <ul><li>If the value is an asset view ID, the API
-        #   response identifies any asset share ids mapped to the asset
-        #   view.</li><li>If the value is an asset share ID, the API response
-        #   identifies any asset view ids that maps to that asset share.</li></ul>
+        #   The *assetId* parameter specifies the asset ID for which you are retrieving
+        #   data. The parameter can be an asset view ID or an asset share ID. - If the
+        #   value is an asset view ID, the API response identifies any asset share ids
+        #   mapped to the asset view. - If the value is an asset share ID, the API
+        #   response identifies any asset view ids that maps to that asset share.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter specifies a token
-        #   that identifies a particular page of results to return. Set this parameter
-        #   to the value of the <code>nextPageToken</code> value from the previous API
-        #   response to retrieve the next page of search results.
+        #   The *pageToken* parameter specifies a token that identifies a particular page
+        #   of results to return. Set this parameter to the value of the nextPageToken
+        #   value from the previous API response to retrieve the next page of search
+        #   results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -531,32 +506,27 @@ module Google
         # YouTube identified the requested asset as a duplicate, then the request
         # retrieves the merged, or synthesized, asset.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the YouTube
-        #   asset ID of the asset being retrieved.
+        #   The *assetId* parameter specifies the YouTube asset ID of the asset being
+        #   retrieved.
         # @param [String] fetch_match_policy
-        #   The <code><strong>fetchMatchPolicy</strong></code> parameter specifies the
-        #   version of the
-        #   asset's match policy that should be returned in the API response.
+        #   The *fetchMatchPolicy* parameter specifies the version of the asset's match
+        #   policy that should be returned in the API response.
         # @param [String] fetch_metadata
-        #   The <code><strong>fetchMetadata</strong></code> parameter specifies the
-        #   version of the
-        #   asset's metadata that should be returned in the API response. In some
-        #   cases, YouTube receives metadata for an asset from multiple sources, such
-        #   as when different partners own the asset in different territories.
+        #   The *fetchMetadata* parameter specifies the version of the asset's metadata
+        #   that should be returned in the API response. In some cases, YouTube receives
+        #   metadata for an asset from multiple sources, such as when different partners
+        #   own the asset in different territories.
         # @param [String] fetch_ownership
-        #   The <code><strong>fetchOwnership</strong></code> parameter specifies the
-        #   version of the
-        #   asset's ownership data that should be returned in the API response. As with
-        #   asset metadata, YouTube can receive asset ownership data from multiple
-        #   sources.
+        #   The *fetchOwnership* parameter specifies the version of the asset's ownership
+        #   data that should be returned in the API response. As with asset metadata,
+        #   YouTube can receive asset ownership data from multiple sources.
         # @param [Boolean] fetch_ownership_conflicts
-        #   The <code><strong>fetchOwnershipConflicts</strong></code> parameter allows
-        #   you to retrieve information about ownership conflicts.
+        #   The *fetchOwnershipConflicts* parameter allows you to retrieve information
+        #   about ownership conflicts.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -590,15 +560,12 @@ module Google
         end
         
         # Inserts an asset with the specified metadata. After inserting an asset, you
-        # can set its <a href="/youtube/partner/docs/v1/ownership/update">ownership
-        # data</a> and <a
-        # href="/youtube/partner/docs/v1/assetMatchPolicy/update">match policy</a>.
+        # can set its ownership data and match policy.
         # @param [Google::Apis::YoutubePartnerV1::Asset] asset_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -629,46 +596,39 @@ module Google
         end
         
         # Retrieves a list of assets based on asset metadata. The method can retrieve
-        # all assets or only assets owned by the content owner.<br/><br/>Note that in
-        # cases where duplicate assets have been merged, the API response only
-        # contains the synthesized asset. (It does not contain the constituent assets
-        # that were merged into the synthesized asset.)
+        # all assets or only assets owned by the content owner. Note that in cases where
+        # duplicate assets have been merged, the API response only contains the
+        # synthesized asset. (It does not contain the constituent assets that were
+        # merged into the synthesized asset.)
         # @param [String] fetch_match_policy
-        #   The <code><strong>fetchMatchPolicy</strong></code> parameter specifies the
-        #   version of the
-        #   asset's match policy that should be returned in the API response.
+        #   The *fetchMatchPolicy* parameter specifies the version of the asset's match
+        #   policy that should be returned in the API response.
         # @param [String] fetch_metadata
-        #   The <code><strong>fetchMetadata</strong></code> parameter specifies the
-        #   version of the
-        #   asset's metadata that should be returned in the API response. In some
-        #   cases, YouTube receives metadata for an asset from multiple sources, such
-        #   as when different partners own the asset in different territories.
+        #   The *fetchMetadata* parameter specifies the version of the asset's metadata
+        #   that should be returned in the API response. In some cases, YouTube receives
+        #   metadata for an asset from multiple sources, such as when different partners
+        #   own the asset in different territories.
         # @param [String] fetch_ownership
-        #   The <code><strong>fetchOwnership</strong></code> parameter specifies the
-        #   version of the
-        #   asset's ownership data that should be returned in the API response. As with
-        #   asset metadata, YouTube can receive asset ownership data from multiple
-        #   sources.
+        #   The *fetchOwnership* parameter specifies the version of the asset's ownership
+        #   data that should be returned in the API response. As with asset metadata,
+        #   YouTube can receive asset ownership data from multiple sources.
         # @param [Boolean] fetch_ownership_conflicts
-        #   The <code><strong>fetchOwnershipConflicts</strong></code> parameter allows
-        #   you to retrieve information about ownership conflicts.
+        #   The *fetchOwnershipConflicts* parameter allows you to retrieve information
+        #   about ownership conflicts.
         # @param [String] id
-        #   The <code><strong>id</strong></code> parameter specifies a comma-separated
-        #   list of YouTube Asset IDs that identify the assets you want to retrieve. As
-        #   noted in the method description, if you try to retrieve an asset that
-        #   YouTube identified as a duplicate and merged with another asset, the API
-        #   response only returns the synthesized asset. In that case, the
-        #   <code>aliasId</code> property in the <code>asset</code> resource specifies
-        #   a list of other asset IDs that can be used to identify that
-        #   asset.<br/><br/>Also note that the API response does not contain
-        #   duplicates. As such, if your request identifies three asset IDs, and all of
-        #   those have been merged into a single asset, then the API response
-        #   identifies one matching asset.
+        #   The *id* parameter specifies a comma-separated list of YouTube Asset IDs that
+        #   identify the assets you want to retrieve. As noted in the method description,
+        #   if you try to retrieve an asset that YouTube identified as a duplicate and
+        #   merged with another asset, the API response only returns the synthesized asset.
+        #   In that case, the aliasId property in the asset resource specifies a list of
+        #   other asset IDs that can be used to identify that asset. Also note that the
+        #   API response does not contain duplicates. As such, if your request identifies
+        #   three asset IDs, and all of those have been merged into a single asset, then
+        #   the API response identifies one matching asset.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -703,14 +663,13 @@ module Google
         
         # Patches the metadata for the specified asset.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the YouTube
-        #   asset ID of the asset being patched.
+        #   The *assetId* parameter specifies the YouTube asset ID of the asset being
+        #   patched.
         # @param [Google::Apis::YoutubePartnerV1::Asset] asset_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -743,14 +702,13 @@ module Google
         
         # Updates the metadata for the specified asset.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the YouTube
-        #   asset ID of the asset being updated.
+        #   The *assetId* parameter specifies the YouTube asset ID of the asset being
+        #   updated.
         # @param [Google::Apis::YoutubePartnerV1::Asset] asset_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -783,13 +741,12 @@ module Google
         
         # Deletes a specified campaign for an owner.
         # @param [String] campaign_id
-        #   The <code><strong>campaignId</strong></code> parameter specifies the
-        #   YouTube campaign ID of the campaign being deleted.
+        #   The *campaignId* parameter specifies the YouTube campaign ID of the campaign
+        #   being deleted.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -820,13 +777,12 @@ module Google
         
         # Retrieves a particular campaign for an owner.
         # @param [String] campaign_id
-        #   The <code><strong>campaignId</strong></code> parameter specifies the
-        #   YouTube campaign ID of the campaign being retrieved.
+        #   The *campaignId* parameter specifies the YouTube campaign ID of the campaign
+        #   being retrieved.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -858,10 +814,9 @@ module Google
         # Insert a new campaign for an owner using the specified campaign data.
         # @param [Google::Apis::YoutubePartnerV1::Campaign] campaign_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -893,15 +848,14 @@ module Google
         
         # Retrieves a list of campaigns for an owner.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter specifies a token
-        #   that identifies a particular page of results to return. For example, set
-        #   this parameter to the value of the <code>nextPageToken</code> value from
-        #   the previous API response to retrieve the next page of search results.
+        #   The *pageToken* parameter specifies a token that identifies a particular page
+        #   of results to return. For example, set this parameter to the value of the
+        #   nextPageToken value from the previous API response to retrieve the next page
+        #   of search results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -932,14 +886,13 @@ module Google
         
         # Patch the data for a specific campaign.
         # @param [String] campaign_id
-        #   The <code><strong>campaignId</strong></code> parameter specifies the
-        #   YouTube campaign ID of the campaign being retrieved.
+        #   The *campaignId* parameter specifies the YouTube campaign ID of the campaign
+        #   being retrieved.
         # @param [Google::Apis::YoutubePartnerV1::Campaign] campaign_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -972,14 +925,13 @@ module Google
         
         # Update the data for a specific campaign.
         # @param [String] campaign_id
-        #   The <code><strong>campaignId</strong></code> parameter specifies the
-        #   YouTube campaign ID of the campaign being retrieved.
+        #   The *campaignId* parameter specifies the YouTube campaign ID of the campaign
+        #   being retrieved.
         # @param [Google::Apis::YoutubePartnerV1::Campaign] campaign_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1012,13 +964,12 @@ module Google
         
         # Retrieves the claim history for a specified claim.
         # @param [String] claim_id
-        #   The <code><strong>claimId</strong></code> parameter specifies the YouTube
-        #   claim ID of the claim for which you are retrieving the claim history.
+        #   The *claimId* parameter specifies the YouTube claim ID of the claim for which
+        #   you are retrieving the claim history.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1047,87 +998,72 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of claims that match the search criteria. You can search
-        # for claims that are associated with a specific asset or video or that match
-        # a specified query string.
+        # Retrieves a list of claims that match the search criteria. You can search for
+        # claims that are associated with a specific asset or video or that match a
+        # specified query string.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the YouTube
-        #   asset ID of the asset for which you are retrieving claims.
+        #   The *assetId* parameter specifies the YouTube asset ID of the asset for which
+        #   you are retrieving claims.
         # @param [String] content_type
-        #   The <code><strong>contentType</strong></code> parameter specifies the
-        #   content type of claims that you want to retrieve.
+        #   The *contentType* parameter specifies the content type of claims that you want
+        #   to retrieve.
         # @param [String] created_after
-        #   The <code><strong>createdAfter</strong></code> parameter allows you to
-        #   restrict the set of returned claims to ones created on or after the
-        #   specified date (inclusive).
+        #   The *createdAfter* parameter allows you to restrict the set of returned claims
+        #   to ones created on or after the specified date (inclusive).
         # @param [String] created_before
-        #   The <code><strong>createdBefore</strong></code> parameter allows you to
-        #   restrict the set of returned claims to ones created before the specified
-        #   date (exclusive).
+        #   The *createdBefore* parameter allows you to restrict the set of returned
+        #   claims to ones created before the specified date (exclusive).
         # @param [String] inactive_reasons
-        #   The <code><strong>inactiveReasons</strong></code> parameter allows you to
-        #   specify what kind of inactive claims you want to find based on the reasons
-        #   why the claims became inactive.
+        #   The *inactiveReasons* parameter allows you to specify what kind of inactive
+        #   claims you want to find based on the reasons why the claims became inactive.
         # @param [Boolean] include_third_party_claims
-        #   Used along with the <code><strong>videoId</strong></code> parameter this
-        #   parameter determines whether or not to include third party claims in the
-        #   search results.
+        #   Used along with the *videoId* parameter this parameter determines whether or
+        #   not to include third party claims in the search results.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] origin
-        #   The <code><strong>origin</strong></code> parameter specifies the origins
-        #   you want to find claims for. It is a comma-separated list of origin values.
+        #   The *origin* parameter specifies the origins you want to find claims for. It
+        #   is a comma-separated list of origin values.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter specifies a token
-        #   that identifies a particular page of results to return. For example, set
-        #   this parameter to the value of the <code>nextPageToken</code> value from
-        #   the previous API response to retrieve the next page of search results.
+        #   The *pageToken* parameter specifies a token that identifies a particular page
+        #   of results to return. For example, set this parameter to the value of the
+        #   nextPageToken value from the previous API response to retrieve the next page
+        #   of search results.
         # @param [Boolean] partner_uploaded
-        #   The <code><strong>partnerUploaded</strong></code> parameter specifies
-        #   whether you want to filter your search results to only partner uploaded or
-        #   non partner uploaded claims.
+        #   The *partnerUploaded* parameter specifies whether you want to filter your
+        #   search results to only partner uploaded or non partner uploaded claims.
         # @param [String] q
-        #   The <code><strong>q</strong></code> parameter specifies the query string to
-        #   use to filter search results. YouTube searches for the query string in the
-        #   following claim fields: <code><strong>video_title</strong></code>,
-        #   <code><strong>video_keywords</strong></code>,
-        #   <code><strong>user_name</strong></code>,
-        #   <code><strong>isrc</strong></code>, <code><strong>iswc</strong></code>,
-        #   <code><strong>grid</strong></code>,
-        #   <code><strong>custom_id</strong></code>, and in the content
-        #   owner's email address.
+        #   The *q* parameter specifies the query string to use to filter search results.
+        #   YouTube searches for the query string in the following claim fields: *
+        #   video_title*, *video_keywords*, *user_name*, *isrc*, *iswc*, *grid*, *
+        #   custom_id*, and in the content owner's email address.
         # @param [String] reference_id
-        #   The <code><strong>referenceId</strong></code> parameter specifies the
-        #   YouTube reference ID of the reference for which you are retrieving claims.
+        #   The *referenceId* parameter specifies the YouTube reference ID of the
+        #   reference for which you are retrieving claims.
         # @param [String] sort
-        #   The <code><strong>sort</strong></code> parameter specifies the method that
-        #   will be used to order resources in the API response. The default value is
-        #   <code>date</code>. However, if the <code>status</code> parameter value is
-        #   either <code>appealed</code>, <code>disputed</code>, <code>pending</code>,
-        #   <code>potential</code>, or <code>routedForReview</code>, then results will
-        #   be sorted by the time that the claim review period expires.
+        #   The *sort* parameter specifies the method that will be used to order resources
+        #   in the API response. The default value is date. However, if the status
+        #   parameter value is either appealed, disputed, pending, potential, or
+        #   routedForReview, then results will be sorted by the time that the claim review
+        #   period expires.
         # @param [String] status
-        #   The <code><strong>status</strong></code> parameter restricts your results
-        #   to only claims in the specified status.
+        #   The *status* parameter restricts your results to only claims in the specified
+        #   status.
         # @param [String] status_modified_after
-        #   The <code><strong>statusModifiedAfter</strong></code> parameter allows you
-        #   to restrict the result set to only include claims that have had their
-        #   status modified on or after the specified date (inclusive). The date
-        #   specified must be on or after June 30, 2016 (2016-06-30). The parameter
-        #   value's format is <code>YYYY-MM-DD</code>.
+        #   The *statusModifiedAfter* parameter allows you to restrict the result set to
+        #   only include claims that have had their status modified on or after the
+        #   specified date (inclusive). The date specified must be on or after June 30,
+        #   2016 (2016-06-30). The parameter value's format is YYYY-MM-DD.
         # @param [String] status_modified_before
-        #   The <code><strong>statusModifiedBefore</strong></code> parameter allows you
-        #   to restrict the result set to only include claims that have had their
-        #   status modified before the specified date (exclusive). The date specified
-        #   must be on or after July 1, 2016 (2016-07-01).  The parameter
-        #   value's format is <code>YYYY-MM-DD</code>.
+        #   The *statusModifiedBefore* parameter allows you to restrict the result set to
+        #   only include claims that have had their status modified before the specified
+        #   date (exclusive). The date specified must be on or after July 1, 2016 (2016-07-
+        #   01). The parameter value's format is YYYY-MM-DD.
         # @param [String] video_id
-        #   The <code><strong>videoId</strong></code> parameter specifies
-        #   comma-separated list of YouTube video IDs for which you are retrieving
-        #   claims.
+        #   The *videoId* parameter specifies comma-separated list of YouTube video IDs
+        #   for which you are retrieving claims.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1173,13 +1109,11 @@ module Google
         
         # Retrieves a specific claim by ID.
         # @param [String] claim_id
-        #   The <code><strong>claimId</strong></code> parameter specifies the claim ID
-        #   of the claim being retrieved.
+        #   The *claimId* parameter specifies the claim ID of the claim being retrieved.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1208,22 +1142,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a claim. The video being claimed must have been uploaded to a
-        # channel associated with the same content owner as the API user sending the
-        # request. You can set the
-        # claim's policy in any of the following ways:<ul><li>Use the
-        # <code>claim</code> resource's <code>policy</code> property to identify a
-        # saved policy by its unique ID.</li><li>Use the <code>claim</code>
-        # resource's <code>policy</code> property to specify a custom set of
-        # rules.</li></ul>
+        # Creates a claim. The video being claimed must have been uploaded to a channel
+        # associated with the same content owner as the API user sending the request.
+        # You can set the claim's policy in any of the following ways: - Use the claim
+        # resource's policy property to identify a saved policy by its unique ID. - Use
+        # the claim resource's policy property to specify a custom set of rules.
         # @param [Google::Apis::YoutubePartnerV1::Claim] claim_object
         # @param [Boolean] is_manual_claim
         #   restricted
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1254,44 +1184,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of claims administered by the content owner associated
-        # with the currently authenticated user. Results are sorted in descending
-        # order of creation time.
+        # Retrieves a list of claims administered by the content owner associated with
+        # the currently authenticated user. Results are sorted in descending order of
+        # creation time.
         # @param [String] asset_id
-        #   Use the <code>claimSearch.list</code> method's <code><a
-        #   href="/youtube/partner/docs/v1/claimSearch/list#assetId">assetId</a></code>
-        #   parameter to search for claim snippets by asset ID. You can then retrieve
-        #   the <code>claim</code> resources for those claims by using this
-        #   method's <code><strong>id</strong></code> parameter to specify a
-        #   comma-separated list of claim IDs.
+        #   Use the claimSearch.list method's assetId parameter to search for claim
+        #   snippets by asset ID. You can then retrieve the claim resources for those
+        #   claims by using this method's *id* parameter to specify a comma-separated list
+        #   of claim IDs.
         # @param [String] id
-        #   The <code><strong>id</strong></code> parameter specifies a list of
-        #   comma-separated YouTube claim IDs to retrieve.
+        #   The *id* parameter specifies a list of comma-separated YouTube claim IDs to
+        #   retrieve.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter specifies a token
-        #   that identifies a particular page of results to return. For example, set
-        #   this parameter to the value of the <code>nextPageToken</code> value from
-        #   the previous API response to retrieve the next page of search results.
+        #   The *pageToken* parameter specifies a token that identifies a particular page
+        #   of results to return. For example, set this parameter to the value of the
+        #   nextPageToken value from the previous API response to retrieve the next page
+        #   of search results.
         # @param [String] q
-        #   Use the <code>claimSearch.list</code> method's <code><a
-        #   href="/youtube/partner/docs/v1/claimSearch/list#q">q</a></code> parameter
-        #   to search for claim snippets that match a particular query string. You can
-        #   then retrieve the <code>claim</code> resources for those claims by using
-        #   this
-        #   method's <code><strong>id</strong></code> parameter to specify a
+        #   Use the claimSearch.list method's q parameter to search for claim snippets
+        #   that match a particular query string. You can then retrieve the claim
+        #   resources for those claims by using this method's *id* parameter to specify a
         #   comma-separated list of claim IDs.
         # @param [String] video_id
-        #   Use the <code>claimSearch.list</code> method's <code><a
-        #   href="/youtube/partner/docs/v1/claimSearch/list#videoId">videoId</a></code>
-        #   parameter to search for claim snippets by video ID. You can then retrieve
-        #   the <code>claim</code> resources for those claims by using this
-        #   method's <code><strong>id</strong></code> parameter to specify a
-        #   comma-separated list of claim IDs.
+        #   Use the claimSearch.list method's videoId parameter to search for claim
+        #   snippets by video ID. You can then retrieve the claim resources for those
+        #   claims by using this method's *id* parameter to specify a comma-separated list
+        #   of claim IDs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1324,19 +1246,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches an existing claim by either changing its policy or its status. You
-        # can update a
-        # claim's status from <code>active</code> to <code>inactive</code> to
-        # effectively release the claim.
+        # Patches an existing claim by either changing its policy or its status. You can
+        # update a claim's status from active to inactive to effectively release the
+        # claim.
         # @param [String] claim_id
-        #   The <code><strong>claimId</strong></code> parameter specifies the claim ID
-        #   of the claim being updated.
+        #   The *claimId* parameter specifies the claim ID of the claim being updated.
         # @param [Google::Apis::YoutubePartnerV1::Claim] claim_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1367,19 +1286,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing claim by either changing its policy or its status. You
-        # can update a
-        # claim's status from <code>active</code> to <code>inactive</code> to
-        # effectively release the claim.
+        # Updates an existing claim by either changing its policy or its status. You can
+        # update a claim's status from active to inactive to effectively release the
+        # claim.
         # @param [String] claim_id
-        #   The <code><strong>claimId</strong></code> parameter specifies the claim ID
-        #   of the claim being updated.
+        #   The *claimId* parameter specifies the claim ID of the claim being updated.
         # @param [Google::Apis::YoutubePartnerV1::Claim] claim_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1412,13 +1328,12 @@ module Google
         
         # Retrieves information about the specified content owner.
         # @param [String] content_owner_id
-        #   The <code><strong>contentOwnerId</strong></code> parameter specifies a
-        #   value that uniquely identifies the content owner.
+        #   The *contentOwnerId* parameter specifies a value that uniquely identifies the
+        #   content owner.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1447,20 +1362,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of <a
-        # href="/youtube/partner/docs/v1/contentOwners#resource">content owners</a>
-        # that match the request criteria.
+        # Retrieves a list of content owners that match the request criteria.
         # @param [Boolean] fetch_mine
-        #   The <code><strong>fetchMine</strong></code> parameter restricts the result
-        #   set to content owners associated with the currently authenticated API user.
+        #   The *fetchMine* parameter restricts the result set to content owners
+        #   associated with the currently authenticated API user.
         # @param [String] id
-        #   The <code><strong>id</strong></code> parameter specifies a comma-separated
-        #   list of YouTube content owner IDs to retrieve.
+        #   The *id* parameter specifies a comma-separated list of YouTube content owner
+        #   IDs to retrieve.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1493,18 +1405,14 @@ module Google
         # Inserts a cuepoint into a live broadcast.
         # @param [Google::Apis::YoutubePartnerV1::LiveCuepoint] live_cuepoint_object
         # @param [String] channel_id
-        #   The <code><strong>channelId</strong></code> parameter identifies the
-        #   channel that owns the broadcast into which the cuepoint is being inserted.
+        #   The *channelId* parameter identifies the channel that owns the broadcast into
+        #   which the cuepoint is being inserted.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners. You can obtain the content owner ID that will serve as the
-        #   parameter value by calling the YouTube Content ID
-        #   API's <code><a
-        #   href="/youtube/partner/docs/v1/contentOwners/list">contentOwners.list</a></
-        #   code>
-        #   method.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners. You can obtain the content owner ID
+        #   that will serve as the parameter value by calling the YouTube Content ID API's
+        #   contentOwners.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1538,13 +1446,12 @@ module Google
         # Retrieves a list of all metadata provided for an asset, regardless of which
         # content owner provided the data.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the YouTube
-        #   asset ID of the asset for which you are retrieving a metadata history.
+        #   The *assetId* parameter specifies the YouTube asset ID of the asset for which
+        #   you are retrieving a metadata history.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1573,16 +1480,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the ownership data provided for the specified asset by the
-        # content owner associated with the authenticated user.
+        # Retrieves the ownership data provided for the specified asset by the content
+        # owner associated with the authenticated user.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the YouTube
-        #   asset ID for which you are retrieving ownership data.
+        #   The *assetId* parameter specifies the YouTube asset ID for which you are
+        #   retrieving ownership data.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1611,22 +1517,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Provides new ownership information for the specified asset. Note that
-        # YouTube may receive ownership information from multiple sources. For
-        # example, if an asset has multiple owners, each owner might send ownership
-        # data for the asset. YouTube algorithmically combines the ownership data
-        # received from all of those sources to generate the
-        # asset's canonical ownership data, which should provide the most
-        # comprehensive and accurate representation of the asset's ownership.
+        # Provides new ownership information for the specified asset. Note that YouTube
+        # may receive ownership information from multiple sources. For example, if an
+        # asset has multiple owners, each owner might send ownership data for the asset.
+        # YouTube algorithmically combines the ownership data received from all of those
+        # sources to generate the asset's canonical ownership data, which should provide
+        # the most comprehensive and accurate representation of the asset's ownership.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the YouTube
-        #   asset ID of the asset being updated.
+        #   The *assetId* parameter specifies the YouTube asset ID of the asset being
+        #   updated.
         # @param [Google::Apis::YoutubePartnerV1::RightsOwnership] rights_ownership_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1657,22 +1561,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Provides new ownership information for the specified asset. Note that
-        # YouTube may receive ownership information from multiple sources. For
-        # example, if an asset has multiple owners, each owner might send ownership
-        # data for the asset. YouTube algorithmically combines the ownership data
-        # received from all of those sources to generate the
-        # asset's canonical ownership data, which should provide the most
-        # comprehensive and accurate representation of the asset's ownership.
+        # Provides new ownership information for the specified asset. Note that YouTube
+        # may receive ownership information from multiple sources. For example, if an
+        # asset has multiple owners, each owner might send ownership data for the asset.
+        # YouTube algorithmically combines the ownership data received from all of those
+        # sources to generate the asset's canonical ownership data, which should provide
+        # the most comprehensive and accurate representation of the asset's ownership.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the YouTube
-        #   asset ID of the asset being updated.
+        #   The *assetId* parameter specifies the YouTube asset ID of the asset being
+        #   updated.
         # @param [Google::Apis::YoutubePartnerV1::RightsOwnership] rights_ownership_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1707,17 +1609,15 @@ module Google
         # content owner provided the data. The list only includes the most recent
         # ownership data for each content owner. However, if the content owner has
         # submitted ownership data through multiple data sources (API, content feeds,
-        # etc.), the list will contain the most recent data for each content owner
-        # and data source.
+        # etc.), the list will contain the most recent data for each content owner and
+        # data source.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the YouTube
-        #   asset ID of the asset for which you are retrieving an ownership data
-        #   history.
+        #   The *assetId* parameter specifies the YouTube asset ID of the asset for which
+        #   you are retrieving an ownership data history.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1748,13 +1648,12 @@ module Google
         
         # Retrieves information for the specified package.
         # @param [String] package_id
-        #   The <code><strong>packageId</strong></code> parameter specifies the Content
-        #   Delivery package ID of the package being retrieved.
+        #   The *packageId* parameter specifies the Content Delivery package ID of the
+        #   package being retrieved.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1786,10 +1685,9 @@ module Google
         # Inserts a metadata-only package.
         # @param [Google::Apis::YoutubePartnerV1::Package] package_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1821,13 +1719,12 @@ module Google
         
         # Retrieves the specified saved policy.
         # @param [String] policy_id
-        #   The <code><strong>policyId</strong></code> parameter specifies a value that
-        #   uniquely identifies the policy being retrieved.
+        #   The *policyId* parameter specifies a value that uniquely identifies the policy
+        #   being retrieved.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1859,10 +1756,9 @@ module Google
         # Creates a saved policy.
         # @param [Google::Apis::YoutubePartnerV1::Policy] policy_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1894,17 +1790,15 @@ module Google
         
         # Retrieves a list of the content owner's saved policies.
         # @param [String] id
-        #   The <code><strong>id</strong></code> parameter specifies a comma-separated
-        #   list of saved policy IDs to retrieve. Only policies belonging to the
-        #   currently authenticated content owner will be available.
+        #   The *id* parameter specifies a comma-separated list of saved policy IDs to
+        #   retrieve. Only policies belonging to the currently authenticated content owner
+        #   will be available.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] sort
-        #   The <code><strong>sort</strong></code> parameter specifies how the search
-        #   results should be sorted.
+        #   The *sort* parameter specifies how the search results should be sorted.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1936,14 +1830,13 @@ module Google
         
         # Patches the specified saved policy.
         # @param [String] policy_id
-        #   The <code><strong>policyId</strong></code> parameter specifies a value that
-        #   uniquely identifies the policy being updated.
+        #   The *policyId* parameter specifies a value that uniquely identifies the policy
+        #   being updated.
         # @param [Google::Apis::YoutubePartnerV1::Policy] policy_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1976,14 +1869,13 @@ module Google
         
         # Updates the specified saved policy.
         # @param [String] policy_id
-        #   The <code><strong>policyId</strong></code> parameter specifies a value that
-        #   uniquely identifies the policy being updated.
+        #   The *policyId* parameter specifies a value that uniquely identifies the policy
+        #   being updated.
         # @param [Google::Apis::YoutubePartnerV1::Policy] policy_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2016,14 +1908,12 @@ module Google
         
         # Retrieves information about the specified reference conflict.
         # @param [String] reference_conflict_id
-        #   The <code><strong>referenceConflictId</strong></code> parameter specifies
-        #   the YouTube reference conflict ID of the reference conflict being
-        #   retrieved.
+        #   The *referenceConflictId* parameter specifies the YouTube reference conflict
+        #   ID of the reference conflict being retrieved.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2054,15 +1944,14 @@ module Google
         
         # Retrieves a list of unresolved reference conflicts.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter specifies a token
-        #   that identifies a particular page of results to return. Set this parameter
-        #   to the value of the <code>nextPageToken</code> value from the previous API
-        #   response to retrieve the next page of search results.
+        #   The *pageToken* parameter specifies a token that identifies a particular page
+        #   of results to return. Set this parameter to the value of the nextPageToken
+        #   value from the previous API response to retrieve the next page of search
+        #   results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2093,13 +1982,12 @@ module Google
         
         # Retrieves information about the specified reference.
         # @param [String] reference_id
-        #   The <code><strong>referenceId</strong></code> parameter specifies the
-        #   YouTube reference ID of the reference being retrieved.
+        #   The *referenceId* parameter specifies the YouTube reference ID of the
+        #   reference being retrieved.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2128,30 +2016,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a reference in one of the following ways:<ul><li>If your request is
+        # Creates a reference in one of the following ways: - If your request is
         # uploading a reference file, YouTube creates the reference from the provided
         # content. You can provide either a video/audio file or a pre-generated
         # fingerprint. If you are providing a pre-generated fingerprint, set the
-        # <code>reference</code>
-        # resource's <code><a
-        # href="/youtube/partner/docs/v1/references#fpDirect">fpDirect</a></code>
-        # property to <code>true</code> in the request body. In this flow, you can
-        # use either the <a
-        # href="/youtube/partner/guides/upload#multipart">multipart</a> or <a
-        # href="/youtube/partner/guides/upload#resumable">resumable</a> upload flows
-        # to provide the reference content.</li><li>If you want to create a reference
-        # using a claimed video as the reference content, use the
-        # <code>claimId</code> parameter to identify the claim.</li></ul>
+        # reference resource's fpDirect property to true in the request body. In this
+        # flow, you can use either the multipart or resumable upload flows to provide
+        # the reference content. - If you want to create a reference using a claimed
+        # video as the reference content, use the claimId parameter to identify the
+        # claim.
         # @param [Google::Apis::YoutubePartnerV1::Reference] reference_object
         # @param [String] claim_id
-        #   The <code><strong>claimId</strong></code> parameter specifies the YouTube
-        #   claim ID of an existing claim from which a reference should be created.
-        #   (The claimed video is used as the reference content.)
+        #   The *claimId* parameter specifies the YouTube claim ID of an existing claim
+        #   from which a reference should be created. (The claimed video is used as the
+        #   reference content.)
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2195,21 +2077,20 @@ module Google
         # Retrieves a list of references by ID or the list of references for the
         # specified asset.
         # @param [String] asset_id
-        #   The <code><strong>assetId</strong></code> parameter specifies the YouTube
-        #   asset ID of the asset for which you are retrieving references.
+        #   The *assetId* parameter specifies the YouTube asset ID of the asset for which
+        #   you are retrieving references.
         # @param [String] id
-        #   The <code><strong>id</strong></code> parameter specifies a comma-separated
-        #   list of YouTube reference IDs to retrieve.
+        #   The *id* parameter specifies a comma-separated list of YouTube reference IDs
+        #   to retrieve.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter specifies a token
-        #   that identifies a particular page of results to return. Set this parameter
-        #   to the value of the <code>nextPageToken</code> value from the previous API
-        #   response to retrieve the next page of search results.
+        #   The *pageToken* parameter specifies a token that identifies a particular page
+        #   of results to return. Set this parameter to the value of the nextPageToken
+        #   value from the previous API response to retrieve the next page of search
+        #   results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2242,21 +2123,18 @@ module Google
         
         # Patches a reference.
         # @param [String] reference_id
-        #   The <code><strong>referenceId</strong></code> parameter specifies the
-        #   YouTube reference ID of the reference being updated.
+        #   The *referenceId* parameter specifies the YouTube reference ID of the
+        #   reference being updated.
         # @param [Google::Apis::YoutubePartnerV1::Reference] reference_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [Boolean] release_claims
-        #   The <code><strong>releaseClaims</strong></code> parameter indicates that
-        #   you want to release all match claims associated with this reference. This
-        #   parameter only works when the
-        #   claim's status is being updated to 'inactive' - you can then set the
-        #   parameter's value to <code>true</code> to release all match claims produced
-        #   by this reference.
+        #   The *releaseClaims* parameter indicates that you want to release all match
+        #   claims associated with this reference. This parameter only works when the
+        #   claim's status is being updated to 'inactive' - you can then set the parameter'
+        #   s value to true to release all match claims produced by this reference.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2290,21 +2168,18 @@ module Google
         
         # Updates a reference.
         # @param [String] reference_id
-        #   The <code><strong>referenceId</strong></code> parameter specifies the
-        #   YouTube reference ID of the reference being updated.
+        #   The *referenceId* parameter specifies the YouTube reference ID of the
+        #   reference being updated.
         # @param [Google::Apis::YoutubePartnerV1::Reference] reference_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [Boolean] release_claims
-        #   The <code><strong>releaseClaims</strong></code> parameter indicates that
-        #   you want to release all match claims associated with this reference. This
-        #   parameter only works when the
-        #   claim's status is being updated to 'inactive' - you can then set the
-        #   parameter's value to <code>true</code> to release all match claims produced
-        #   by this reference.
+        #   The *releaseClaims* parameter indicates that you want to release all match
+        #   claims associated with this reference. This parameter only works when the
+        #   claim's status is being updated to 'inactive' - you can then set the parameter'
+        #   s value to true to release all match claims produced by this reference.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2338,14 +2213,13 @@ module Google
         
         # Retrieves a list of spreadsheet templates for a content owner.
         # @param [String] locale
-        #   The <code><strong>locale</strong></code> parameter identifies the desired
-        #   language for templates in the API response. The value is a string that
-        #   contains a BCP-47 language code. The default value is <code>en</code>.
+        #   The *locale* parameter identifies the desired language for templates in the
+        #   API response. The value is a string that contains a BCP-47 language code. The
+        #   default value is en.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2376,10 +2250,9 @@ module Google
         
         # Retrieves a list of uploaders for a content owner.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2410,10 +2283,9 @@ module Google
         # Validate a metadata file.
         # @param [Google::Apis::YoutubePartnerV1::ValidateRequest] validate_request_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2446,10 +2318,9 @@ module Google
         # Validate a metadata file asynchronously.
         # @param [Google::Apis::YoutubePartnerV1::ValidateAsyncRequest] validate_async_request_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2482,10 +2353,9 @@ module Google
         # Get the asynchronous validation status.
         # @param [Google::Apis::YoutubePartnerV1::ValidateStatusRequest] validate_status_request_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2517,13 +2387,12 @@ module Google
         
         # Retrieves advertising settings for the specified video.
         # @param [String] video_id
-        #   The <code><strong>videoId</strong></code> parameter specifies the YouTube
-        #   video ID of the video for which you are retrieving advertising settings.
+        #   The *videoId* parameter specifies the YouTube video ID of the video for which
+        #   you are retrieving advertising settings.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2552,16 +2421,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves details about the types of allowed ads for a specified partner-
-        # or user-uploaded video.
+        # Retrieves details about the types of allowed ads for a specified partner- or
+        # user-uploaded video.
         # @param [String] video_id
-        #   The <code><strong>videoId</strong></code> parameter specifies the YouTube
-        #   video ID of the video for which you are retrieving advertising options.
+        #   The *videoId* parameter specifies the YouTube video ID of the video for which
+        #   you are retrieving advertising options.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2592,14 +2460,13 @@ module Google
         
         # Patches the advertising settings for the specified video.
         # @param [String] video_id
-        #   The <code><strong>videoId</strong></code> parameter specifies the YouTube
-        #   video ID of the video for which you are updating advertising settings.
+        #   The *videoId* parameter specifies the YouTube video ID of the video for which
+        #   you are updating advertising settings.
         # @param [Google::Apis::YoutubePartnerV1::VideoAdvertisingOption] video_advertising_option_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2632,14 +2499,13 @@ module Google
         
         # Updates the advertising settings for the specified video.
         # @param [String] video_id
-        #   The <code><strong>videoId</strong></code> parameter specifies the YouTube
-        #   video ID of the video for which you are updating advertising settings.
+        #   The *videoId* parameter specifies the YouTube video ID of the video for which
+        #   you are updating advertising settings.
         # @param [Google::Apis::YoutubePartnerV1::VideoAdvertisingOption] video_advertising_option_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2672,13 +2538,12 @@ module Google
         
         # Removes a whitelisted channel for a content owner.
         # @param [String] id
-        #   The <code><strong>id</strong></code> parameter specifies the YouTube
-        #   channel ID of the channel being removed from whitelist.
+        #   The *id* parameter specifies the YouTube channel ID of the channel being
+        #   removed from whitelist.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2709,13 +2574,12 @@ module Google
         
         # Retrieves a specific whitelisted channel by ID.
         # @param [String] id
-        #   The <code><strong>id</strong></code> parameter specifies the YouTube
-        #   channel ID of the whitelisted channel being retrieved.
+        #   The *id* parameter specifies the YouTube channel ID of the whitelisted channel
+        #   being retrieved.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2744,16 +2608,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Whitelist a YouTube channel for your content owner. Whitelisted channels
-        # are channels that are not owned or managed by you, but you would like to
-        # whitelist so that no claims from your assets are placed on videos uploaded
-        # to these channels.
+        # Whitelist a YouTube channel for your content owner. Whitelisted channels are
+        # channels that are not owned or managed by you, but you would like to whitelist
+        # so that no claims from your assets are placed on videos uploaded to these
+        # channels.
         # @param [Google::Apis::YoutubePartnerV1::Whitelist] whitelist_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2785,19 +2648,16 @@ module Google
         
         # Retrieves a list of whitelisted channels for a content owner.
         # @param [String] id
-        #   The <code><strong>id</strong></code> parameter specifies a comma-separated
-        #   list of YouTube channel IDs that identify the whitelisted channels you want
-        #   to retrieve.
+        #   The *id* parameter specifies a comma-separated list of YouTube channel IDs
+        #   that identify the whitelisted channels you want to retrieve.
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   identifies the content owner that the user is acting on behalf of. This
-        #   parameter supports users whose accounts are associated with multiple
-        #   content owners.
+        #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
+        #   user is acting on behalf of. This parameter supports users whose accounts are
+        #   associated with multiple content owners.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter specifies a token
-        #   that identifies a particular page of results to return. Set this parameter
-        #   to the value of the <code>nextPageToken</code> value from the previous API
-        #   response to retrieve the next page of results.
+        #   The *pageToken* parameter specifies a token that identifies a particular page
+        #   of results to return. Set this parameter to the value of the nextPageToken
+        #   value from the previous API response to retrieve the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -27,7 +27,7 @@ module Google
     # @see https://developers.google.com/fonts/docs/developer_api
     module WebfontsV1
       VERSION = 'V1'
-      REVISION = '20200622'
+      REVISION = '20200720'
     end
   end
 end

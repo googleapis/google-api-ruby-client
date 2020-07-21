@@ -1320,7 +1320,9 @@ module Google
         # services.versions#StandardSchedulerSettings)basic scaling or manual scaling in
         # the standard environment:
         # serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/
-        # rest/v1beta/apps.services.versions#Version.FIELDS.serving_status)Flexible
+        # rest/v1beta/apps.services.versions#Version.FIELDS.serving_status)
+        # manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/
+        # reference/rest/v1beta/apps.services.versions#manualscaling)Flexible
         # environment
         # serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/
         # rest/v1beta/apps.services.versions#Version.FIELDS.serving_status)automatic
@@ -1336,7 +1338,9 @@ module Google
         # automatic_scaling)
         # automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/
         # appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.
-        # FIELDS.automatic_scaling)
+        # FIELDS.automatic_scaling)manual scaling in the flexible environment:
+        # manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/
+        # reference/rest/v1beta/apps.services.versions#manualscaling)
         # @param [String] apps_id
         #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
         #   default/versions/1.

@@ -22,6 +22,119 @@ module Google
   module Apis
     module BigtableadminV1
       
+      # A backup of a Cloud Bigtable table.
+      class Backup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. `end_time` is the time that the backup was finished. The row
+        # data in the backup will be no newer than this timestamp.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Required. The expiration time of the backup, with microseconds
+        # granularity that must be at least 6 hours and at most 30 days
+        # from the time the request is received. Once the `expire_time`
+        # has passed, Cloud Bigtable will delete the backup and free the
+        # resources used by the backup.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # A globally unique identifier for the backup which cannot be
+        # changed. Values are of the form
+        # `projects/`project`/instances/`instance`/clusters/`cluster`/
+        # backups/_a-zA-Z0-9*`
+        # The final segment of the name must be between 1 and 50 characters
+        # in length.
+        # The backup is stored in the cluster identified by the prefix of the backup
+        # name of the form
+        # `projects/`project`/instances/`instance`/clusters/`cluster``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Size of the backup in bytes.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        # Required. Immutable. Name of the table from which this backup was created.
+        # This needs
+        # to be in the same instance as the backup. Values are of the form
+        # `projects/`project`/instances/`instance`/tables/`source_table``.
+        # Corresponds to the JSON property `sourceTable`
+        # @return [String]
+        attr_accessor :source_table
+      
+        # Output only. `start_time` is the time that the backup was started
+        # (i.e. approximately the time the
+        # CreateBackup request is received).  The
+        # row data in this backup will be no older than this timestamp.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The current state of the backup.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @name = args[:name] if args.key?(:name)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+          @source_table = args[:source_table] if args.key?(:source_table)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Information about a backup.
+      class BackupInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the backup.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        # Output only. This time that the backup was finished. Row data in the
+        # backup will be no newer than this timestamp.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Name of the table the backup was created from.
+        # Corresponds to the JSON property `sourceTable`
+        # @return [String]
+        attr_accessor :source_table
+      
+        # Output only. The time that the backup was started. Row data in the backup
+        # will be no older than this timestamp.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @source_table = args[:source_table] if args.key?(:source_table)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # A resizable group of nodes in a particular cloud location, capable
       # of serving all Tables in the parent
       # Instance.
@@ -72,6 +185,44 @@ module Google
           @name = args[:name] if args.key?(:name)
           @serve_nodes = args[:serve_nodes] if args.key?(:serve_nodes)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Metadata type for the operation returned by
+      # CreateBackup.
+      class CreateBackupMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation finished or was cancelled.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The name of the backup being created.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The name of the table the backup is created from.
+        # Corresponds to the JSON property `sourceTable`
+        # @return [String]
+        attr_accessor :source_table
+      
+        # The time at which this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @source_table = args[:source_table] if args.key?(:source_table)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -293,6 +444,69 @@ module Google
         end
       end
       
+      # Encapsulates progress related information for a Cloud Bigtable long
+      # running operation.
+      class OperationProgress
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation failed or was completed
+        # successfully.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Percent completion of the operation.
+        # Values are between 0 and 100 inclusive.
+        # Corresponds to the JSON property `progressPercent`
+        # @return [Fixnum]
+        attr_accessor :progress_percent
+      
+        # Time the request was received.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Metadata type for the long-running operation used to track the progress
+      # of optimizations performed on a newly restored table. This long-running
+      # operation is automatically created by the system after the successful
+      # completion of a table restore, and cannot be cancelled.
+      class OptimizeRestoredTableMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Name of the restored table being optimized.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Encapsulates progress related information for a Cloud Bigtable long
+        # running operation.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::BigtableadminV1::OperationProgress]
+        attr_accessor :progress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @progress = args[:progress] if args.key?(:progress)
+        end
+      end
+      
       # Request message for BigtableInstanceAdmin.PartialUpdateInstance.
       class PartialUpdateInstanceRequest
         include Google::Apis::Core::Hashable
@@ -319,6 +533,59 @@ module Google
         def update!(**args)
           @instance = args[:instance] if args.key?(:instance)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Metadata type for the long-running operation returned by
+      # RestoreTable.
+      class RestoreTableMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Information about a backup.
+        # Corresponds to the JSON property `backupInfo`
+        # @return [Google::Apis::BigtableadminV1::BackupInfo]
+        attr_accessor :backup_info
+      
+        # Name of the table being created and restored to.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # If exists, the name of the long-running operation that will be used to
+        # track the post-restore optimization process to optimize the performance of
+        # the restored table. The metadata type of the long-running operation is
+        # OptimizeRestoreTableMetadata. The response type is
+        # Empty. This long-running operation may be
+        # automatically created by the system if applicable after the
+        # RestoreTable long-running operation completes successfully. This operation
+        # may not be created if the table is already optimized or the restore was
+        # not successful.
+        # Corresponds to the JSON property `optimizeTableOperationName`
+        # @return [String]
+        attr_accessor :optimize_table_operation_name
+      
+        # Encapsulates progress related information for a Cloud Bigtable long
+        # running operation.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::BigtableadminV1::OperationProgress]
+        attr_accessor :progress
+      
+        # The type of the restore source.
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_info = args[:backup_info] if args.key?(:backup_info)
+          @name = args[:name] if args.key?(:name)
+          @optimize_table_operation_name = args[:optimize_table_operation_name] if args.key?(:optimize_table_operation_name)
+          @progress = args[:progress] if args.key?(:progress)
+          @source_type = args[:source_type] if args.key?(:source_type)
         end
       end
       

@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/spanner/
     module SpannerV1
       VERSION = 'V1'
-      REVISION = '20200623'
+      REVISION = '20200709'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

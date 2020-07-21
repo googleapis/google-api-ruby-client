@@ -879,6 +879,121 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Starts creating a new Cloud Bigtable Backup.  The returned backup
+        # long-running operation can be used to
+        # track creation of the backup. The
+        # metadata field type is
+        # CreateBackupMetadata. The
+        # response field type is
+        # Backup, if successful. Cancelling the returned operation will stop the
+        # creation and delete the backup.
+        # @param [String] parent
+        #   Required. This must be one of the clusters in the instance in which this
+        #   table is located. The backup will be stored in this cluster. Values are
+        #   of the form `projects/`project`/instances/`instance`/clusters/`cluster``.
+        # @param [Google::Apis::BigtableadminV2::Backup] backup_object
+        # @param [String] backup_id
+        #   Required. The id of the backup to be created. The `backup_id` along with
+        #   the parent `parent` are combined as `parent`/backups/`backup_id` to create
+        #   the full backup name, of the form:
+        #   `projects/`project`/instances/`instance`/clusters/`cluster`/backups/`backup_id`
+        #   `.
+        #   This string must be between 1 and 50 characters in length and match the
+        #   regex _a-zA-Z0-9*.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_instance_cluster_backup(parent, backup_object = nil, backup_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/backups', options)
+          command.request_representation = Google::Apis::BigtableadminV2::Backup::Representation
+          command.request_object = backup_object
+          command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
+          command.response_class = Google::Apis::BigtableadminV2::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['backupId'] = backup_id unless backup_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a pending or completed Cloud Bigtable backup.
+        # @param [String] name
+        #   Required. Name of the backup to delete.
+        #   Values are of the form
+        #   `projects/`project`/instances/`instance`/clusters/`cluster`/backups/`backup``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_instance_cluster_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::BigtableadminV2::Empty::Representation
+          command.response_class = Google::Apis::BigtableadminV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets metadata on a pending or completed Cloud Bigtable Backup.
+        # @param [String] name
+        #   Required. Name of the backup.
+        #   Values are of the form
+        #   `projects/`project`/instances/`instance`/clusters/`cluster`/backups/`backup``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::Backup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::Backup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_instance_cluster_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::BigtableadminV2::Backup::Representation
+          command.response_class = Google::Apis::BigtableadminV2::Backup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a Table resource.
         # Returns an empty policy if the resource exists but does not have a policy
         # set.
@@ -910,6 +1025,147 @@ module Google
           command.response_representation = Google::Apis::BigtableadminV2::Policy::Representation
           command.response_class = Google::Apis::BigtableadminV2::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Cloud Bigtable backups. Returns both completed and pending
+        # backups.
+        # @param [String] parent
+        #   Required. The cluster to list backups from.  Values are of the
+        #   form `projects/`project`/instances/`instance`/clusters/`cluster``.
+        #   Use ``cluster` = '-'` to list backups for all clusters in an instance,
+        #   e.g., `projects/`project`/instances/`instance`/clusters/-`.
+        # @param [String] filter
+        #   A filter expression that filters backups listed in the response.
+        #   The expression must specify the field name, a comparison operator,
+        #   and the value that you want to use for filtering. The value must be a
+        #   string, a number, or a boolean. The comparison operator must be
+        #   <, >, <=, >=, !=, =, or :. Colon ‘:’ represents a HAS operator which is
+        #   roughly synonymous with equality. Filter rules are case insensitive.
+        #   The fields eligible for filtering are:
+        #   * `name`
+        #   * `source_table`
+        #   * `state`
+        #   * `start_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ)
+        #   * `end_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ)
+        #   * `expire_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ)
+        #   * `size_bytes`
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. By default, each expression is an AND expression. However,
+        #   you can include AND, OR, and NOT expressions explicitly.
+        #   Some examples of using filters are:
+        #   * `name:"exact"` --> The backup's name is the string "exact".
+        #   * `name:howl` --> The backup's name contains the string "howl".
+        #   * `source_table:prod`
+        #   --> The source_table's name contains the string "prod".
+        #   * `state:CREATING` --> The backup is pending creation.
+        #   * `state:READY` --> The backup is fully created and ready for use.
+        #   * `(name:howl) AND (start_time < \"2018-03-28T14:50:00Z\")`
+        #   --> The backup name contains the string "howl" and start_time
+        #   of the backup is before 2018-03-28T14:50:00Z.
+        #   * `size_bytes > 10000000000` --> The backup's size is greater than 10GB
+        # @param [String] order_by
+        #   An expression for specifying the sort order of the results of the request.
+        #   The string value should specify one or more fields in Backup. The full
+        #   syntax is described at https://aip.dev/132#ordering.
+        #   Fields supported are:
+        #   * name
+        #   * source_table
+        #   * expire_time
+        #   * start_time
+        #   * end_time
+        #   * size_bytes
+        #   * state
+        #   For example, "start_time". The default sorting order is ascending.
+        #   To specify descending order for the field, a suffix " desc" should
+        #   be appended to the field name. For example, "start_time desc".
+        #   Redundant space characters in the syntax are insigificant.
+        #   If order_by is empty, results will be sorted by `start_time` in descending
+        #   order starting from the most recently created backup.
+        # @param [Fixnum] page_size
+        #   Number of backups to be returned in the response. If 0 or
+        #   less, defaults to the server's maximum allowed page size.
+        # @param [String] page_token
+        #   If non-empty, `page_token` should contain a
+        #   next_page_token from a
+        #   previous ListBackupsResponse to the same `parent` and with the same
+        #   `filter`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::ListBackupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::ListBackupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_instance_cluster_backups(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/backups', options)
+          command.response_representation = Google::Apis::BigtableadminV2::ListBackupsResponse::Representation
+          command.response_class = Google::Apis::BigtableadminV2::ListBackupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a pending or completed Cloud Bigtable Backup.
+        # @param [String] name
+        #   A globally unique identifier for the backup which cannot be
+        #   changed. Values are of the form
+        #   `projects/`project`/instances/`instance`/clusters/`cluster`/
+        #   backups/_a-zA-Z0-9*`
+        #   The final segment of the name must be between 1 and 50 characters
+        #   in length.
+        #   The backup is stored in the cluster identified by the prefix of the backup
+        #   name of the form
+        #   `projects/`project`/instances/`instance`/clusters/`cluster``.
+        # @param [Google::Apis::BigtableadminV2::Backup] backup_object
+        # @param [String] update_mask
+        #   Required. A mask specifying which fields (e.g. `expire_time`) in the
+        #   Backup resource should be updated. This mask is relative to the Backup
+        #   resource, not to the request message. The field mask must always be
+        #   specified; this prevents any future fields from being erased accidentally
+        #   by clients that do not know about them.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::Backup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::Backup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_instance_cluster_backup(name, backup_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::BigtableadminV2::Backup::Representation
+          command.request_object = backup_object
+          command.response_representation = Google::Apis::BigtableadminV2::Backup::Representation
+          command.response_class = Google::Apis::BigtableadminV2::Backup
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1317,6 +1573,48 @@ module Google
           command.response_representation = Google::Apis::BigtableadminV2::Table::Representation
           command.response_class = Google::Apis::BigtableadminV2::Table
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a new table by restoring from a completed backup. The new table
+        # must be in the same instance as the instance containing the backup.  The
+        # returned table long-running operation can
+        # be used to track the progress of the operation, and to cancel it.  The
+        # metadata field type is
+        # RestoreTableMetadata.  The
+        # response type is
+        # Table, if successful.
+        # @param [String] parent
+        #   Required. The name of the instance in which to create the restored
+        #   table. This instance must be the parent of the source backup. Values are
+        #   of the form `projects/<project>/instances/<instance>`.
+        # @param [Google::Apis::BigtableadminV2::RestoreTableRequest] restore_table_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_table(parent, restore_table_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/tables:restore', options)
+          command.request_representation = Google::Apis::BigtableadminV2::RestoreTableRequest::Representation
+          command.request_object = restore_table_request_object
+          command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
+          command.response_class = Google::Apis::BigtableadminV2::Operation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
