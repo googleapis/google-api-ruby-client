@@ -887,6 +887,63 @@ module Google
         end
       end
       
+      # A single device IP block
+      class DeviceIpBlock
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. This can represent:
+        # * A full date, with non-zero year, month and day values
+        # * A month and day value, with a zero year, e.g. an anniversary
+        # * A year on its own, with zero month and day values
+        # * A year and month value, with a zero day, e.g. a credit card expiration date
+        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `addedDate`
+        # @return [Google::Apis::TestingV1::Date]
+        attr_accessor :added_date
+      
+        # An IP address block in CIDR notation eg: 34.68.194.64/29
+        # Corresponds to the JSON property `block`
+        # @return [String]
+        attr_accessor :block
+      
+        # Whether this block is used by physical or virtual devices
+        # Corresponds to the JSON property `form`
+        # @return [String]
+        attr_accessor :form
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @added_date = args[:added_date] if args.key?(:added_date)
+          @block = args[:block] if args.key?(:block)
+          @form = args[:form] if args.key?(:form)
+        end
+      end
+      
+      # List of IP blocks used by the Firebase Test Lab
+      class DeviceIpBlockCatalog
+        include Google::Apis::Core::Hashable
+      
+        # The device IP blocks used by Firebase Test Lab
+        # Corresponds to the JSON property `ipBlocks`
+        # @return [Array<Google::Apis::TestingV1::DeviceIpBlock>]
+        attr_accessor :ip_blocks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_blocks = args[:ip_blocks] if args.key?(:ip_blocks)
+        end
+      end
+      
       # Data about the relative number of devices running a
       # given configuration of the Android platform.
       class Distribution
@@ -1980,6 +2037,11 @@ module Google
         # @return [Google::Apis::TestingV1::AndroidDeviceCatalog]
         attr_accessor :android_device_catalog
       
+        # List of IP blocks used by the Firebase Test Lab
+        # Corresponds to the JSON property `deviceIpBlockCatalog`
+        # @return [Google::Apis::TestingV1::DeviceIpBlockCatalog]
+        attr_accessor :device_ip_block_catalog
+      
         # The currently supported iOS devices.
         # Corresponds to the JSON property `iosDeviceCatalog`
         # @return [Google::Apis::TestingV1::IosDeviceCatalog]
@@ -2002,6 +2064,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @android_device_catalog = args[:android_device_catalog] if args.key?(:android_device_catalog)
+          @device_ip_block_catalog = args[:device_ip_block_catalog] if args.key?(:device_ip_block_catalog)
           @ios_device_catalog = args[:ios_device_catalog] if args.key?(:ios_device_catalog)
           @network_configuration_catalog = args[:network_configuration_catalog] if args.key?(:network_configuration_catalog)
           @software_catalog = args[:software_catalog] if args.key?(:software_catalog)

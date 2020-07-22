@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1AutoApproveSmartMessagingEntriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1940,6 +1946,15 @@ module Google
           property :example_count, :numeric_string => true, as: 'exampleCount'
           property :name, as: 'name'
           property :question_type_name, as: 'questionTypeName'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1AutoApproveSmartMessagingEntriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled_count, as: 'disabledCount'
+          property :enabled_count, as: 'enabledCount'
+          property :unreviewed_count, as: 'unreviewedCount'
         end
       end
       

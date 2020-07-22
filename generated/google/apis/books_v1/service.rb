@@ -357,8 +357,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Initiates revoking content that has already been shared with the user's
-        # family. Empty response indicates success.
+        # Initiates revoking content that has already been shared with the user's family.
+        # Empty response indicates success.
         # @param [String] doc_id
         #   The docid to unshare.
         # @param [String] source
@@ -490,8 +490,8 @@ module Google
         #   The requested pixel height for any images. If height is provided width must
         #   also be provided.
         # @param [String] locale
-        #   The locale information for the data. ISO-639-1 language and ISO-3166-1
-        #   country code. Ex: 'en_US'.
+        #   The locale information for the data. ISO-639-1 language and ISO-3166-1 country
+        #   code. Ex: 'en_US'.
         # @param [Fixnum] scale
         #   The requested scale for the image.
         # @param [String] source
@@ -541,16 +541,16 @@ module Google
         # @param [String] layer_id
         #   The ID for the layer to get the annotation data.
         # @param [Array<String>, String] annotation_data_id
-        #   The list of Annotation Data Ids to retrieve. Pagination is ignored if this
-        #   is set.
+        #   The list of Annotation Data Ids to retrieve. Pagination is ignored if this is
+        #   set.
         # @param [String] content_version
         #   The content version for the requested volume.
         # @param [Fixnum] h
         #   The requested pixel height for any images. If height is provided width must
         #   also be provided.
         # @param [String] locale
-        #   The locale information for the data. ISO-639-1 language and ISO-3166-1
-        #   country code. Ex: 'en_US'.
+        #   The locale information for the data. ISO-639-1 language and ISO-3166-1 country
+        #   code. Ex: 'en_US'.
         # @param [Fixnum] max_results
         #   Maximum number of results to return
         # @param [String] page_token
@@ -560,11 +560,11 @@ module Google
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] updated_max
-        #   RFC 3339 timestamp to restrict to items updated prior to this timestamp
-        #   (exclusive).
+        #   RFC 3339 timestamp to restrict to items updated prior to this timestamp (
+        #   exclusive).
         # @param [String] updated_min
-        #   RFC 3339 timestamp to restrict to items updated since this timestamp
-        #   (inclusive).
+        #   RFC 3339 timestamp to restrict to items updated since this timestamp (
+        #   inclusive).
         # @param [Fixnum] w
         #   The requested pixel width for any images. If width is provided height must
         #   also be provided.
@@ -615,8 +615,8 @@ module Google
         # @param [String] annotation_id
         #   The ID of the volume annotation to retrieve.
         # @param [String] locale
-        #   The locale information for the data. ISO-639-1 language and ISO-3166-1
-        #   country code. Ex: 'en_US'.
+        #   The locale information for the data. ISO-639-1 language and ISO-3166-1 country
+        #   code. Ex: 'en_US'.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields
@@ -662,15 +662,15 @@ module Google
         # @param [String] end_position
         #   The end position to end retrieving data from.
         # @param [String] locale
-        #   The locale information for the data. ISO-639-1 language and ISO-3166-1
-        #   country code. Ex: 'en_US'.
+        #   The locale information for the data. ISO-639-1 language and ISO-3166-1 country
+        #   code. Ex: 'en_US'.
         # @param [Fixnum] max_results
         #   Maximum number of results to return
         # @param [String] page_token
         #   The value of the nextToken from the previous page.
         # @param [Boolean] show_deleted
-        #   Set to true to return deleted annotations. updatedMin must be in the
-        #   request to use this. Defaults to false.
+        #   Set to true to return deleted annotations. updatedMin must be in the request
+        #   to use this. Defaults to false.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] start_offset
@@ -678,11 +678,11 @@ module Google
         # @param [String] start_position
         #   The start position to start retrieving data from.
         # @param [String] updated_max
-        #   RFC 3339 timestamp to restrict to items updated prior to this timestamp
-        #   (exclusive).
+        #   RFC 3339 timestamp to restrict to items updated prior to this timestamp (
+        #   exclusive).
         # @param [String] updated_min
-        #   RFC 3339 timestamp to restrict to items updated since this timestamp
-        #   (inclusive).
+        #   RFC 3339 timestamp to restrict to items updated since this timestamp (
+        #   inclusive).
         # @param [String] volume_annotations_version
         #   The version of the volume annotations that you are requesting.
         # @param [String] fields
@@ -799,8 +799,7 @@ module Google
         # @param [String] cpksver
         #   The device/version ID from which to request the restrictions.
         # @param [String] license_types
-        #   The type of access license to request. If not specified, the default is
-        #   BOTH.
+        #   The type of access license to request. If not specified, the default is BOTH.
         # @param [String] locale
         #   ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
         # @param [String] nonce
@@ -841,8 +840,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Request downloaded content access for specified volumes on the My eBooks
-        # shelf.
+        # Request downloaded content access for specified volumes on the My eBooks shelf.
         # @param [String] cpksver
         #   The device/version ID from which to release the restriction.
         # @param [Array<String>, String] features
@@ -894,8 +892,8 @@ module Google
         end
         
         # Sets the settings for the user. If a sub-object is specified, it will
-        # overwrite the existing sub-object stored in the server. Unspecified
-        # sub-objects will retain the existing value.
+        # overwrite the existing sub-object stored in the server. Unspecified sub-
+        # objects will retain the existing value.
         # @param [Google::Apis::BooksV1::UserSettings] user_settings_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1013,16 +1011,16 @@ module Google
         # @param [String] page_token
         #   The value of the nextToken from the previous page.
         # @param [Boolean] show_deleted
-        #   Set to true to return deleted annotations. updatedMin must be in the
-        #   request to use this. Defaults to false.
+        #   Set to true to return deleted annotations. updatedMin must be in the request
+        #   to use this. Defaults to false.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] updated_max
-        #   RFC 3339 timestamp to restrict to items updated prior to this timestamp
-        #   (exclusive).
+        #   RFC 3339 timestamp to restrict to items updated prior to this timestamp (
+        #   exclusive).
         # @param [String] updated_min
-        #   RFC 3339 timestamp to restrict to items updated since this timestamp
-        #   (inclusive).
+        #   RFC 3339 timestamp to restrict to items updated since this timestamp (
+        #   inclusive).
         # @param [String] volume_id
         #   The volume to restrict annotations to.
         # @param [String] fields
@@ -1274,8 +1272,8 @@ module Google
         # @param [String] volume_id
         #   ID of volume to move.
         # @param [Fixnum] volume_position
-        #   Position on shelf to move the item (0 puts the item before the current
-        #   first item, 1 puts it between the first and the second and so on.)
+        #   Position on shelf to move the item (0 puts the item before the current first
+        #   item, 1 puts it between the first and the second and so on.)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1553,8 +1551,8 @@ module Google
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Default is en-US if unset.
         # @param [String] max_allowed_maturity_rating
-        #   The maximum allowed maturity rating of returned volumes. Books with a
-        #   higher maturity rating are filtered out.
+        #   The maximum allowed maturity rating of returned volumes. Books with a higher
+        #   maturity rating are filtered out.
         # @param [Fixnum] page_size
         #   Number of maximum results per page to be included in the response.
         # @param [String] page_token
@@ -1595,8 +1593,8 @@ module Google
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
         #   generating recommendations.
         # @param [String] max_allowed_maturity_rating
-        #   The maximum allowed maturity rating of returned recommendations. Books with
-        #   a higher maturity rating are filtered out.
+        #   The maximum allowed maturity rating of returned recommendations. Books with a
+        #   higher maturity rating are filtered out.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields
@@ -1849,7 +1847,7 @@ module Google
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
         # @param [String] source
-        #   string  to identify the originator of this request.
+        #   string to identify the originator of this request.
         # @param [Boolean] user_library_consistent_read
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1894,8 +1892,8 @@ module Google
         # @param [String] library_restrict
         #   Restrict search to this user's library.
         # @param [String] max_allowed_maturity_rating
-        #   The maximum allowed maturity rating of returned recommendations. Books with
-        #   a higher maturity rating are filtered out.
+        #   The maximum allowed maturity rating of returned recommendations. Books with a
+        #   higher maturity rating are filtered out.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] order_by
@@ -1963,8 +1961,8 @@ module Google
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
         #   generating recommendations.
         # @param [String] max_allowed_maturity_rating
-        #   The maximum allowed maturity rating of returned recommendations. Books with
-        #   a higher maturity rating are filtered out.
+        #   The maximum allowed maturity rating of returned recommendations. Books with a
+        #   higher maturity rating are filtered out.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields
@@ -2009,8 +2007,8 @@ module Google
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [Array<String>, String] processing_state
-        #   The processing state of the user uploaded volumes to be returned.
-        #   Applicable only if the UPLOADED is specified in the acquireMethod.
+        #   The processing state of the user uploaded volumes to be returned. Applicable
+        #   only if the UPLOADED is specified in the acquireMethod.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [Fixnum] start_index
@@ -2053,8 +2051,8 @@ module Google
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
         #   generating recommendations.
         # @param [String] max_allowed_maturity_rating
-        #   The maximum allowed maturity rating of returned recommendations. Books with
-        #   a higher maturity rating are filtered out.
+        #   The maximum allowed maturity rating of returned recommendations. Books with a
+        #   higher maturity rating are filtered out.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields

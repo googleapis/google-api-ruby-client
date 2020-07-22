@@ -142,6 +142,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceIpBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceIpBlockCatalog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Distribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -651,6 +663,24 @@ module Google
         end
       end
       
+      class DeviceIpBlock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :added_date, as: 'addedDate', class: Google::Apis::TestingV1::Date, decorator: Google::Apis::TestingV1::Date::Representation
+      
+          property :block, as: 'block'
+          property :form, as: 'form'
+        end
+      end
+      
+      class DeviceIpBlockCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ip_blocks, as: 'ipBlocks', class: Google::Apis::TestingV1::DeviceIpBlock, decorator: Google::Apis::TestingV1::DeviceIpBlock::Representation
+      
+        end
+      end
+      
       class Distribution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -982,6 +1012,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_device_catalog, as: 'androidDeviceCatalog', class: Google::Apis::TestingV1::AndroidDeviceCatalog, decorator: Google::Apis::TestingV1::AndroidDeviceCatalog::Representation
+      
+          property :device_ip_block_catalog, as: 'deviceIpBlockCatalog', class: Google::Apis::TestingV1::DeviceIpBlockCatalog, decorator: Google::Apis::TestingV1::DeviceIpBlockCatalog::Representation
       
           property :ios_device_catalog, as: 'iosDeviceCatalog', class: Google::Apis::TestingV1::IosDeviceCatalog, decorator: Google::Apis::TestingV1::IosDeviceCatalog::Representation
       

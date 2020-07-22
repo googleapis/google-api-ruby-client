@@ -1524,12 +1524,11 @@ module Google
       class GoogleCloudApigeeV1IngressConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
           collection :environment_groups, as: 'environmentGroups', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupConfig::Representation
       
           property :name, as: 'name'
+          property :revision_create_time, as: 'revisionCreateTime'
           property :revision_id, :numeric_string => true, as: 'revisionId'
-          property :sequence_number, :numeric_string => true, as: 'sequenceNumber'
           property :uid, as: 'uid'
         end
       end

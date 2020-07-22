@@ -66,6 +66,16 @@ module Google
       class Key
         include Google::Apis::Core::Hashable
       
+        # The effective connection type is the general connection class that all
+        # users experienced for this record. This field uses the values ["offline",
+        # "slow-2G", "2G", "3G", "4G"] as specified in:
+        # https://wicg.github.io/netinfo/#effective-connection-types
+        # If the effective connection type is unspecified, then aggregated data
+        # over all effective connection types will be returned.
+        # Corresponds to the JSON property `effectiveConnectionType`
+        # @return [String]
+        attr_accessor :effective_connection_type
+      
         # The form factor is the device class that all users used to access the
         # site for this record.
         # If the form factor is unspecified, then aggregated data over all form
@@ -94,6 +104,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @effective_connection_type = args[:effective_connection_type] if args.key?(:effective_connection_type)
           @form_factor = args[:form_factor] if args.key?(:form_factor)
           @origin = args[:origin] if args.key?(:origin)
           @url = args[:url] if args.key?(:url)
@@ -157,6 +168,16 @@ module Google
       class QueryRequest
         include Google::Apis::Core::Hashable
       
+        # The effective connection type is a query dimension that specifies the
+        # effective network class that the record's data should belong to. This field
+        # uses the values ["offline", "slow-2G", "2G", "3G", "4G"] as specified in:
+        # https://wicg.github.io/netinfo/#effective-connection-types
+        # Note: If no effective connection type is specified, then a special record
+        # with aggregated data over all effective connection types will be returned.
+        # Corresponds to the JSON property `effectiveConnectionType`
+        # @return [String]
+        attr_accessor :effective_connection_type
+      
         # The form factor is a query dimension that specifies the device class that
         # the record's data should belong to.
         # Note: If no form factor is specified, then a special record with
@@ -194,6 +215,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @effective_connection_type = args[:effective_connection_type] if args.key?(:effective_connection_type)
           @form_factor = args[:form_factor] if args.key?(:form_factor)
           @metrics = args[:metrics] if args.key?(:metrics)
           @origin = args[:origin] if args.key?(:origin)

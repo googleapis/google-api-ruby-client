@@ -161,7 +161,8 @@ module Google
         
         # Gets the deployed ingress configuration for an organization.
         # @param [String] name
-        #   Name of the deployed configuration for the organization in the following
+        #   Required. Name of the deployed configuration for the organization in the
+        #   following
         #   format: 'organizations/`org`/deployedIngressConfig'.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3766,6 +3767,16 @@ module Google
         # @param [String] name
         #   Required. Name of the API proxy revision deployment in the following format:
         #   `organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
+        # @param [Boolean] sequenced_rollout
+        #   If true, a best-effort attempt will be made to remove the environment group
+        #   routing rules corresponding to this deployment before removing the
+        #   deployment from the runtime. This is likely to be a rare use case; it is
+        #   only needed when the intended effect of undeploying this proxy is to cause
+        #   the traffic it currently handles to be rerouted to some other existing
+        #   proxy in the environment group. The GenerateUndeployChangeReport API may be
+        #   used to examine routing changes before issuing the undeployment request,
+        #   and its response will indicate if a sequenced rollout is recommended for
+        #   the undeployment.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3783,11 +3794,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deployments_organization_environment_api_revision(name, fields: nil, quota_user: nil, options: nil, &block)
+        def deployments_organization_environment_api_revision(name, sequenced_rollout: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}/deployments', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
+          command.query['sequencedRollout'] = sequenced_rollout unless sequenced_rollout.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5688,7 +5700,7 @@ module Google
         # requests and the runtime data is deleted.
         # **Note:** Not supported for Apigee hybrid.
         # @param [String] name
-        #   Name of the instance. Use the following structure in your request:
+        #   Required. Name of the instance. Use the following structure in your request:
         #   `organizations/`org`/instance/`instance``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5720,7 +5732,7 @@ module Google
         # Gets the details for an Apigee runtime instance.
         # **Note:** Not supported for Apigee hybrid.
         # @param [String] name
-        #   Name of the instance. Use the following structure in your request:
+        #   Required. Name of the instance. Use the following structure in your request:
         #   `organizations/`org`/instances/`instance``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5752,7 +5764,8 @@ module Google
         # Lists all Apigee runtime instances for the organization.
         # **Note:** Not supported for Apigee hybrid.
         # @param [String] parent
-        #   Name of the organization. Use the following structure in your request:
+        #   Required. Name of the organization. Use the following structure in your
+        #   request:
         #   `organizations/`org``.
         # @param [Fixnum] page_size
         #   Maximum number of instances to return. Defaults to 25.

@@ -2828,11 +2828,6 @@ module Google
       class GoogleCloudApigeeV1IngressConfig
         include Google::Apis::Core::Hashable
       
-        # Time at which the IngressConfig was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
         # List of environment groups in the organization.
         # Corresponds to the JSON property `environmentGroups`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupConfig>]
@@ -2844,17 +2839,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Time at which the IngressConfig revision was created.
+        # Corresponds to the JSON property `revisionCreateTime`
+        # @return [String]
+        attr_accessor :revision_create_time
+      
         # Revision id that defines the ordering on IngressConfig resources.
         # The higher the revision, the more recently the configuration
         # was deployed.
         # Corresponds to the JSON property `revisionId`
         # @return [Fixnum]
         attr_accessor :revision_id
-      
-        # DEPRECATED: Use revision_id
-        # Corresponds to the JSON property `sequenceNumber`
-        # @return [Fixnum]
-        attr_accessor :sequence_number
       
         # A unique id for the ingress config that will only change if the
         # organization is deleted and recreated.
@@ -2868,11 +2863,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
           @environment_groups = args[:environment_groups] if args.key?(:environment_groups)
           @name = args[:name] if args.key?(:name)
+          @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
-          @sequence_number = args[:sequence_number] if args.key?(:sequence_number)
           @uid = args[:uid] if args.key?(:uid)
         end
       end

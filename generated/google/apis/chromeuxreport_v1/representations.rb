@@ -82,6 +82,7 @@ module Google
       class Key
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_connection_type, as: 'effectiveConnectionType'
           property :form_factor, as: 'formFactor'
           property :origin, as: 'origin'
           property :url, as: 'url'
@@ -108,6 +109,7 @@ module Google
       class QueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_connection_type, as: 'effectiveConnectionType'
           property :form_factor, as: 'formFactor'
           collection :metrics, as: 'metrics'
           property :origin, as: 'origin'

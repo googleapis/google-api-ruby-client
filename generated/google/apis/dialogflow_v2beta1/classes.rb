@@ -854,7 +854,19 @@ module Google
         end
       end
       
-      # Represents a context.
+      # Dialogflow contexts are similar to natural language context. If a person says
+      # to you "they are orange", you need context in order to understand what "they"
+      # is referring to. Similarly, for Dialogflow to handle an end-user expression
+      # like that, it needs to be provided with context in order to correctly match
+      # an intent.
+      # Using contexts, you can control the flow of a conversation. You can configure
+      # contexts for an intent by setting input and output contexts, which are
+      # identified by string names. When an intent is matched, any configured output
+      # contexts for that intent become active. While any contexts are active,
+      # Dialogflow is more likely to match intents that are configured with input
+      # contexts that correspond to the currently active contexts.
+      # For more information about context, see the
+      # [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
       class GoogleCloudDialogflowV2Context
         include Google::Apis::Core::Hashable
       
@@ -912,7 +924,7 @@ module Google
         end
       end
       
-      # Represents a notification sent to Cloud Pub/Sub subscribers for conversation
+      # Represents a notification sent to Pub/Sub subscribers for conversation
       # lifecycle events.
       class GoogleCloudDialogflowV2ConversationEvent
         include Google::Apis::Core::Hashable
@@ -957,9 +969,16 @@ module Google
         end
       end
       
-      # Represents an entity type.
-      # Entity types serve as a tool for extracting parameter values from natural
-      # language queries.
+      # Each intent parameter has a type, called the entity type, which dictates
+      # exactly how data from an end-user expression is extracted.
+      # Dialogflow provides predefined system entities that can match many common
+      # types of data. For example, there are system entities for matching dates,
+      # times, colors, email addresses, and so on. You can also create your own
+      # custom entities for matching custom data. For example, you could define a
+      # vegetable entity that can match the types of vegetables available for
+      # purchase with a grocery store agent.
+      # For more information, see the
+      # [Entity guide](https://cloud.google.com/dialogflow/docs/entities-overview).
       class GoogleCloudDialogflowV2EntityType
         include Google::Apis::Core::Hashable
       
@@ -1126,9 +1145,14 @@ module Google
         end
       end
       
-      # Represents an intent.
-      # Intents convert a number of user expressions or patterns into an action. An
-      # action is an extraction of a user command or sentence semantics.
+      # An intent categorizes an end-user's intention for one conversation turn. For
+      # each agent, you define many intents, where your combined intents can handle a
+      # complete conversation. When an end-user writes or says something, referred to
+      # as an end-user expression or end-user input, Dialogflow matches the end-user
+      # input to the best intent in your agent. Matching an intent is also known as
+      # intent classification.
+      # For more information, see the [intent
+      # guide](https://cloud.google.com/dialogflow/docs/intents-overview).
       class GoogleCloudDialogflowV2Intent
         include Google::Apis::Core::Hashable
       
@@ -2554,9 +2578,14 @@ module Google
         # @return [String]
         attr_accessor :fulfillment_text
       
-        # Represents an intent.
-        # Intents convert a number of user expressions or patterns into an action. An
-        # action is an extraction of a user command or sentence semantics.
+        # An intent categorizes an end-user's intention for one conversation turn. For
+        # each agent, you define many intents, where your combined intents can handle a
+        # complete conversation. When an end-user writes or says something, referred to
+        # as an end-user expression or end-user input, Dialogflow matches the end-user
+        # input to the best intent in your agent. Matching an intent is also known as
+        # intent classification.
+        # For more information, see the [intent
+        # guide](https://cloud.google.com/dialogflow/docs/intents-overview).
         # Corresponds to the JSON property `intent`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Intent]
         attr_accessor :intent
@@ -2737,11 +2766,13 @@ module Google
         end
       end
       
-      # Represents a session entity type.
-      # Extends or replaces a custom entity type at the user session level (we
-      # refer to the entity types defined at the agent level as "custom entity
-      # types").
-      # Note: session entity types apply to all queries, regardless of the language.
+      # A session represents a conversation between a Dialogflow agent and an
+      # end-user. You can create special entities, called session entities, during a
+      # session. Session entities can extend or replace custom entity types and only
+      # exist during the session that they were created for. All session data,
+      # including session entities, is stored by Dialogflow for 20 minutes.
+      # For more information, see the [session entity
+      # guide](https://cloud.google.com/dialogflow/docs/entities-session).
       class GoogleCloudDialogflowV2SessionEntityType
         include Google::Apis::Core::Hashable
       
@@ -2919,7 +2950,14 @@ module Google
         end
       end
       
-      # Represents a conversational agent.
+      # A Dialogflow agent is a virtual agent that handles conversations with your
+      # end-users. It is a natural language understanding module that understands the
+      # nuances of human language. Dialogflow translates end-user text or audio
+      # during a conversation to structured data that your apps and services can
+      # understand. You design and build a Dialogflow agent to handle the types of
+      # conversations required for your system.
+      # For more information about agents, see the
+      # [Agent guide](https://cloud.google.com/dialogflow/docs/agents-overview).
       class GoogleCloudDialogflowV2beta1Agent
         include Google::Apis::Core::Hashable
       
@@ -3091,6 +3129,37 @@ module Google
           @example_count = args[:example_count] if args.key?(:example_count)
           @name = args[:name] if args.key?(:name)
           @question_type_name = args[:question_type_name] if args.key?(:question_type_name)
+        end
+      end
+      
+      # Response message for [Documents.AutoApproveSmartMessagingEntries].
+      class GoogleCloudDialogflowV2beta1AutoApproveSmartMessagingEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of smart messaging entries disabled.
+        # Corresponds to the JSON property `disabledCount`
+        # @return [Fixnum]
+        attr_accessor :disabled_count
+      
+        # Number of smart messaging entries enabled.
+        # Corresponds to the JSON property `enabledCount`
+        # @return [Fixnum]
+        attr_accessor :enabled_count
+      
+        # Number of smart messaging entries unreviewed.
+        # Corresponds to the JSON property `unreviewedCount`
+        # @return [Fixnum]
+        attr_accessor :unreviewed_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled_count = args[:disabled_count] if args.key?(:disabled_count)
+          @enabled_count = args[:enabled_count] if args.key?(:enabled_count)
+          @unreviewed_count = args[:unreviewed_count] if args.key?(:unreviewed_count)
         end
       end
       
@@ -3365,7 +3434,19 @@ module Google
         end
       end
       
-      # Represents a context.
+      # Dialogflow contexts are similar to natural language context. If a person says
+      # to you "they are orange", you need context in order to understand what "they"
+      # is referring to. Similarly, for Dialogflow to handle an end-user expression
+      # like that, it needs to be provided with context in order to correctly match
+      # an intent.
+      # Using contexts, you can control the flow of a conversation. You can configure
+      # contexts for an intent by setting input and output contexts, which are
+      # identified by string names. When an intent is matched, any configured output
+      # contexts for that intent become active. While any contexts are active,
+      # Dialogflow is more likely to match intents that are configured with input
+      # contexts that correspond to the currently active contexts.
+      # For more information about context, see the
+      # [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
       class GoogleCloudDialogflowV2beta1Context
         include Google::Apis::Core::Hashable
       
@@ -3552,7 +3633,9 @@ module Google
         end
       end
       
-      # A document resource.
+      # A knowledge document to be used by a KnowledgeBase.
+      # For more information, see the [knowledge base
+      # guide](https://cloud.google.com/dialogflow/docs/how/knowledge-bases).
       # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
       # only use `projects.knowledgeBases.documents`.
       class GoogleCloudDialogflowV2beta1Document
@@ -3681,9 +3764,16 @@ module Google
         end
       end
       
-      # Represents an entity type.
-      # Entity types serve as a tool for extracting parameter values from natural
-      # language queries.
+      # Each intent parameter has a type, called the entity type, which dictates
+      # exactly how data from an end-user expression is extracted.
+      # Dialogflow provides predefined system entities that can match many common
+      # types of data. For example, there are system entities for matching dates,
+      # times, colors, email addresses, and so on. You can also create your own
+      # custom entities for matching custom data. For example, you could define a
+      # vegetable entity that can match the types of vegetables available for
+      # purchase with a grocery store agent.
+      # For more information, see the
+      # [Entity guide](https://cloud.google.com/dialogflow/docs/entities-overview).
       class GoogleCloudDialogflowV2beta1EntityType
         include Google::Apis::Core::Hashable
       
@@ -3792,7 +3882,20 @@ module Google
         end
       end
       
-      # Represents an agent environment.
+      # You can create multiple versions of your agent and publish them to separate
+      # environments.
+      # When you edit an agent, you are editing the draft agent. At any point, you
+      # can save the draft agent as an agent version, which is an immutable snapshot
+      # of your agent.
+      # When you save the draft agent, it is published to the default environment.
+      # When you create agent versions, you can publish them to custom environments.
+      # You can create a variety of custom environments for:
+      # - testing
+      # - development
+      # - production
+      # - etc.
+      # For more information, see the [versions and environments
+      # guide](https://cloud.google.com/dialogflow/docs/agents-versions).
       class GoogleCloudDialogflowV2beta1Environment
         include Google::Apis::Core::Hashable
       
@@ -3945,7 +4048,15 @@ module Google
         end
       end
       
-      # Represents a fulfillment.
+      # By default, your agent responds to a matched intent with a static response.
+      # As an alternative, you can provide a more dynamic response by using
+      # fulfillment. When you enable fulfillment for an intent, Dialogflow responds
+      # to that intent by calling a service that you define. For example, if an
+      # end-user wants to schedule a haircut on Friday, your service can check your
+      # database and respond to the end-user with availability information for
+      # Friday.
+      # For more information, see the [fulfillment
+      # guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
       class GoogleCloudDialogflowV2beta1Fulfillment
         include Google::Apis::Core::Hashable
       
@@ -4227,9 +4338,14 @@ module Google
         end
       end
       
-      # Represents an intent.
-      # Intents convert a number of user expressions or patterns into an action. An
-      # action is an extraction of a user command or sentence semantics.
+      # An intent categorizes an end-user's intention for one conversation turn. For
+      # each agent, you define many intents, where your combined intents can handle a
+      # complete conversation. When an end-user writes or says something, referred to
+      # as an end-user expression or end-user input, Dialogflow matches the end-user
+      # input to the best intent in your agent. Matching an intent is also known as
+      # intent classification.
+      # For more information, see the [intent
+      # guide](https://cloud.google.com/dialogflow/docs/intents-overview).
       class GoogleCloudDialogflowV2beta1Intent
         include Google::Apis::Core::Hashable
       
@@ -6093,7 +6209,12 @@ module Google
         end
       end
       
-      # Represents knowledge base resource.
+      # A knowledge base represents a collection of knowledge documents that you
+      # provide to Dialogflow. Your knowledge documents contain information that may
+      # be useful during conversations with end-users. Some Dialogflow features use
+      # knowledge bases when looking for a response to an end-user input.
+      # For more information, see the [knowledge base
+      # guide](https://cloud.google.com/dialogflow/docs/how/knowledge-bases).
       # Note: The `projects.agent.knowledgeBases` resource is deprecated;
       # only use `projects.knowledgeBases`.
       class GoogleCloudDialogflowV2beta1KnowledgeBase
@@ -6624,9 +6745,14 @@ module Google
         # @return [String]
         attr_accessor :fulfillment_text
       
-        # Represents an intent.
-        # Intents convert a number of user expressions or patterns into an action. An
-        # action is an extraction of a user command or sentence semantics.
+        # An intent categorizes an end-user's intention for one conversation turn. For
+        # each agent, you define many intents, where your combined intents can handle a
+        # complete conversation. When an end-user writes or says something, referred to
+        # as an end-user expression or end-user input, Dialogflow matches the end-user
+        # input to the best intent in your agent. Matching an intent is also known as
+        # intent classification.
+        # For more information, see the [intent
+        # guide](https://cloud.google.com/dialogflow/docs/intents-overview).
         # Corresponds to the JSON property `intent`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Intent]
         attr_accessor :intent
@@ -6908,11 +7034,13 @@ module Google
         end
       end
       
-      # Represents a session entity type.
-      # Extends or replaces a custom entity type at the user session level (we
-      # refer to the entity types defined at the agent level as "custom entity
-      # types").
-      # Note: session entity types apply to all queries, regardless of the language.
+      # A session represents a conversation between a Dialogflow agent and an
+      # end-user. You can create special entities, called session entities, during a
+      # session. Session entities can extend or replace custom entity types and only
+      # exist during the session that they were created for. All session data,
+      # including session entities, is stored by Dialogflow for 20 minutes.
+      # For more information, see the [session entity
+      # guide](https://cloud.google.com/dialogflow/docs/entities-session).
       class GoogleCloudDialogflowV2beta1SessionEntityType
         include Google::Apis::Core::Hashable
       

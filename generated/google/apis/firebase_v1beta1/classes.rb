@@ -1106,16 +1106,13 @@ module Google
         # with an encoded message of that type.  Its use is similar to
         # MessageSet, except it represents a single (type, encoded message)
         # instead of a set.
-        # To fill for known protocol type:
-        # MyProtocolMsg proto;
+        # To embed "proto" inside "typed_msg":
+        # MyProtoMessage proto;
         # TypedMessage typed_msg;
-        # typed_msg.set_type_id(MyProtocolMsg::MESSAGE_TYPE_ID);
+        # typed_msg.set_type_id(proto2::bridge::GetTypeId(proto));
         # proto.AppendToCord(typed_msg.mutable_message());
-        # To fill for unknown protocol type:
-        # ProtocolMessage proto;
-        # TypedMessage typed_msg;
-        # typed_msg.set_type_id(proto.GetMapper()->type_id());
-        # proto.AppendToCord(typed_msg.mutable_message());
+        # Error handling is omitted from the sample code above. GetTypeId() will return
+        # 0 for messages that don't have a TypeId specified.
         # Corresponds to the JSON property `payload`
         # @return [Google::Apis::FirebaseV1beta1::TypedMessage]
         attr_accessor :payload
@@ -1195,16 +1192,13 @@ module Google
       # with an encoded message of that type.  Its use is similar to
       # MessageSet, except it represents a single (type, encoded message)
       # instead of a set.
-      # To fill for known protocol type:
-      # MyProtocolMsg proto;
+      # To embed "proto" inside "typed_msg":
+      # MyProtoMessage proto;
       # TypedMessage typed_msg;
-      # typed_msg.set_type_id(MyProtocolMsg::MESSAGE_TYPE_ID);
+      # typed_msg.set_type_id(proto2::bridge::GetTypeId(proto));
       # proto.AppendToCord(typed_msg.mutable_message());
-      # To fill for unknown protocol type:
-      # ProtocolMessage proto;
-      # TypedMessage typed_msg;
-      # typed_msg.set_type_id(proto.GetMapper()->type_id());
-      # proto.AppendToCord(typed_msg.mutable_message());
+      # Error handling is omitted from the sample code above. GetTypeId() will return
+      # 0 for messages that don't have a TypeId specified.
       class TypedMessage
         include Google::Apis::Core::Hashable
       

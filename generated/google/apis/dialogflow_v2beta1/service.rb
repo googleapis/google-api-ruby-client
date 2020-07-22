@@ -928,6 +928,8 @@ module Google
         #   `User Id`. They can be a random number or some type of user and session
         #   identifiers (preferably hashed). The length of the `Session ID` and
         #   `User ID` must not exceed 36 characters.
+        #   For more information, see the [API interactions
+        #   guide](https://cloud.google.com/dialogflow/docs/api-overview).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2119,6 +2121,8 @@ module Google
         #   `User Id`. They can be a random number or some type of user and session
         #   identifiers (preferably hashed). The length of the `Session ID` and
         #   `User ID` must not exceed 36 characters.
+        #   For more information, see the [API interactions
+        #   guide](https://cloud.google.com/dialogflow/docs/api-overview).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3815,6 +3819,8 @@ module Google
         #   `User Id`. They can be a random number or some type of user and session
         #   identifiers (preferably hashed). The length of the `Session ID` and
         #   `User ID` must not exceed 36 characters.
+        #   For more information, see the [API interactions
+        #   guide](https://cloud.google.com/dialogflow/docs/api-overview).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4591,6 +4597,8 @@ module Google
         #   `User Id`. They can be a random number or some type of user and session
         #   identifiers (preferably hashed). The length of the `Session ID` and
         #   `User ID` must not exceed 36 characters.
+        #   For more information, see the [API interactions
+        #   guide](https://cloud.google.com/dialogflow/docs/api-overview).
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DetectIntentRequest] google_cloud_dialogflow_v2beta1_detect_intent_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
