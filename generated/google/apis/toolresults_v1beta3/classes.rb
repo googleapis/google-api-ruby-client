@@ -908,6 +908,14 @@ module Google
         attr_accessor :crashed
         alias_method :crashed?, :crashed
       
+        # If the Roboscript failed to complete successfully, e.g., because a
+        # Roboscript action or assertion failed or a Roboscript action could not be
+        # matched during the entire crawl.
+        # Corresponds to the JSON property `failedRoboscript`
+        # @return [Boolean]
+        attr_accessor :failed_roboscript
+        alias_method :failed_roboscript?, :failed_roboscript
+      
         # If an app is not installed and thus no test can be run with the app.
         # This might be caused by trying to run a test on an unsupported platform.
         # Corresponds to the JSON property `notInstalled`
@@ -941,6 +949,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @crashed = args[:crashed] if args.key?(:crashed)
+          @failed_roboscript = args[:failed_roboscript] if args.key?(:failed_roboscript)
           @not_installed = args[:not_installed] if args.key?(:not_installed)
           @other_native_crash = args[:other_native_crash] if args.key?(:other_native_crash)
           @timed_out = args[:timed_out] if args.key?(:timed_out)

@@ -537,8 +537,8 @@ module Google
         # @return [String]
         attr_accessor :label_list_visibility
       
-        # The visibility of the label in the message list in the
-        # Gmail web interface.
+        # The visibility of messages with this label in the message list
+        # in the Gmail web interface.
         # @mutable gmail.users.labels.create gmail.users.labels.update
         # Corresponds to the JSON property `messageListVisibility`
         # @return [String]

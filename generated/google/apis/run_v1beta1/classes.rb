@@ -26,18 +26,15 @@ module Google
       class CustomResourceColumnDefinition
         include Google::Apis::Core::Hashable
       
-        # description is a human readable description of this column.
-        # +optional
+        # description is a human readable description of this column. +optional
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # format is an optional OpenAPI type definition for this column. The 'name'
         # format is applied to the primary identifier column to assist in clients
-        # identifying column is the resource name. See
-        # https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-
-        # types
-        # for more. +optional
+        # identifying column is the resource name. See https://github.com/OAI/OpenAPI-
+        # Specification/blob/master/versions/2.0.md#data-types for more. +optional
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
@@ -53,18 +50,15 @@ module Google
         attr_accessor :name
       
         # priority is an integer defining the relative importance of this column
-        # compared to others. Lower numbers are considered higher priority. Columns
-        # that may be omitted in limited space scenarios should be given a higher
-        # priority. +optional
+        # compared to others. Lower numbers are considered higher priority. Columns that
+        # may be omitted in limited space scenarios should be given a higher priority. +
+        # optional
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
       
-        # type is an OpenAPI type definition for this column.
-        # See
-        # https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-
-        # types
-        # for more.
+        # type is an OpenAPI type definition for this column. See https://github.com/OAI/
+        # OpenAPI-Specification/blob/master/versions/2.0.md#data-types for more.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -85,8 +79,7 @@ module Google
       end
       
       # CustomResourceDefinition represents a resource that should be exposed on the
-      # API server.  Its name MUST be in the format
-      # <.spec.name>.<.spec.group>.
+      # API server. Its name MUST be in the format <.spec.name>.<.spec.group>.
       class CustomResourceDefinition
         include Google::Apis::Core::Hashable
       
@@ -100,8 +93,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
-        # persisted resources must have, which includes all objects users must create.
+        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
+        # resources must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::RunV1beta1::ObjectMeta]
         attr_accessor :metadata
@@ -130,39 +123,39 @@ module Google
       class CustomResourceDefinitionNames
         include Google::Apis::Core::Hashable
       
-        # Categories is a list of grouped resources custom resources belong to (e.g.
-        # 'all') +optional
+        # Categories is a list of grouped resources custom resources belong to (e.g. '
+        # all') +optional
         # Corresponds to the JSON property `categories`
         # @return [Array<String>]
         attr_accessor :categories
       
-        # Kind is the serialized kind of the resource.  It is normally CamelCase and
+        # Kind is the serialized kind of the resource. It is normally CamelCase and
         # singular.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # ListKind is the serialized kind of the list for this resource.  Defaults to
-        # <kind>List. +optional
+        # ListKind is the serialized kind of the list for this resource. Defaults to
+        # List. +optional
         # Corresponds to the JSON property `listKind`
         # @return [String]
         attr_accessor :list_kind
       
-        # Plural is the plural name of the resource to serve.  It must match the name
-        # of the CustomResourceDefinition-registration too: plural.group and it must
-        # be all lowercase.
+        # Plural is the plural name of the resource to serve. It must match the name of
+        # the CustomResourceDefinition-registration too: plural.group and it must be all
+        # lowercase.
         # Corresponds to the JSON property `plural`
         # @return [String]
         attr_accessor :plural
       
-        # ShortNames are short names for the resource.  It must be all lowercase.
-        # +optional
+        # ShortNames are short names for the resource. It must be all lowercase. +
+        # optional
         # Corresponds to the JSON property `shortNames`
         # @return [Array<String>]
         attr_accessor :short_names
       
-        # Singular is the singular name of the resource.  It must be all lowercase
-        # Defaults to lowercased <kind> +optional
+        # Singular is the singular name of the resource. It must be all lowercase
+        # Defaults to lowercased +optional
         # Corresponds to the JSON property `singular`
         # @return [String]
         attr_accessor :singular
@@ -187,8 +180,8 @@ module Google
       class CustomResourceDefinitionSpec
         include Google::Apis::Core::Hashable
       
-        # AdditionalPrinterColumns are additional columns shown e.g. in kubectl next
-        # to the name. Defaults to a created-at column. +optional
+        # AdditionalPrinterColumns are additional columns shown e.g. in kubectl next to
+        # the name. Defaults to a created-at column. +optional
         # Corresponds to the JSON property `additionalPrinterColumns`
         # @return [Array<Google::Apis::RunV1beta1::CustomResourceColumnDefinition>]
         attr_accessor :additional_printer_columns
@@ -204,8 +197,8 @@ module Google
         # @return [Google::Apis::RunV1beta1::CustomResourceDefinitionNames]
         attr_accessor :names
       
-        # Scope indicates whether this resource is cluster or namespace scoped.
-        # Default is namespaced
+        # Scope indicates whether this resource is cluster or namespace scoped. Default
+        # is namespaced
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
@@ -221,28 +214,25 @@ module Google
         # @return [Google::Apis::RunV1beta1::CustomResourceValidation]
         attr_accessor :validation
       
-        # Version is the version this resource belongs in
-        # Should be always first item in Versions field if provided.
-        # Optional, but at least one of Version or Versions must be set.
-        # Deprecated: Please use `Versions`.
-        # +optional
+        # Version is the version this resource belongs in Should be always first item in
+        # Versions field if provided. Optional, but at least one of Version or Versions
+        # must be set. Deprecated: Please use `Versions`. +optional
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
       
-        # Versions is the list of all supported versions for this resource.
-        # If Version field is provided, this field is optional.
-        # Validation: All versions must use the same validation schema for now. i.e.,
-        # top level Validation field is applied to all of these versions. Order: The
-        # version name will be used to compute the order. If the version string is
-        # "kube-like", it will sort above non "kube-like" version strings, which are
-        # ordered lexicographically. "Kube-like" versions start with a "v", then are
-        # followed by a number (the major version), then optionally the string
-        # "alpha" or "beta" and another number (the minor version). These are sorted
-        # first by GA > beta > alpha (where GA is a version with no suffix such as
-        # beta or alpha), and then by comparing major version, then minor version. An
-        # example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1,
-        # v12alpha1, v11alpha2, foo1, foo10. +optional
+        # Versions is the list of all supported versions for this resource. If Version
+        # field is provided, this field is optional. Validation: All versions must use
+        # the same validation schema for now. i.e., top level Validation field is
+        # applied to all of these versions. Order: The version name will be used to
+        # compute the order. If the version string is "kube-like", it will sort above
+        # non "kube-like" version strings, which are ordered lexicographically. "Kube-
+        # like" versions start with a "v", then are followed by a number (the major
+        # version), then optionally the string "alpha" or "beta" and another number (the
+        # minor version). These are sorted first by GA > beta > alpha (where GA is a
+        # version with no suffix such as beta or alpha), and then by comparing major
+        # version, then minor version. An example sorted list of versions: v10, v2, v1,
+        # v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10. +optional
         # Corresponds to the JSON property `versions`
         # @return [Array<Google::Apis::RunV1beta1::CustomResourceDefinitionVersion>]
         attr_accessor :versions
@@ -306,28 +296,28 @@ module Google
       
         # LabelSelectorPath defines the JSON path inside of a CustomResource that
         # corresponds to Scale.Status.Selector. Only JSON paths without the array
-        # notation are allowed. Must be a JSON Path under .status. Must be set to
-        # work with HPA. If there is no value under the given path in the
-        # CustomResource, the status label selector value in the /scale subresource
-        # will default to the empty string. +optional
+        # notation are allowed. Must be a JSON Path under .status. Must be set to work
+        # with HPA. If there is no value under the given path in the CustomResource, the
+        # status label selector value in the /scale subresource will default to the
+        # empty string. +optional
         # Corresponds to the JSON property `labelSelectorPath`
         # @return [String]
         attr_accessor :label_selector_path
       
         # SpecReplicasPath defines the JSON path inside of a CustomResource that
-        # corresponds to Scale.Spec.Replicas. Only JSON paths without the array
-        # notation are allowed. Must be a JSON Path under .spec. If there is no value
-        # under the given path in the CustomResource, the /scale subresource will
-        # return an error on GET.
+        # corresponds to Scale.Spec.Replicas. Only JSON paths without the array notation
+        # are allowed. Must be a JSON Path under .spec. If there is no value under the
+        # given path in the CustomResource, the /scale subresource will return an error
+        # on GET.
         # Corresponds to the JSON property `specReplicasPath`
         # @return [String]
         attr_accessor :spec_replicas_path
       
         # StatusReplicasPath defines the JSON path inside of a CustomResource that
         # corresponds to Scale.Status.Replicas. Only JSON paths without the array
-        # notation are allowed. Must be a JSON Path under .status. If there is no
-        # value under the given path in the CustomResource, the status replica value
-        # in the /scale subresource will default to 0.
+        # notation are allowed. Must be a JSON Path under .status. If there is no value
+        # under the given path in the CustomResource, the status replica value in the /
+        # scale subresource will default to 0.
         # Corresponds to the JSON property `statusReplicasPath`
         # @return [String]
         attr_accessor :status_replicas_path
@@ -346,12 +336,10 @@ module Google
       
       # CustomResourceSubresourceStatus defines how to serve the status subresource
       # for CustomResources. Status is represented by the `.status` JSON path inside
-      # of a CustomResource. When set,
-      # * exposes a /status subresource for the custom resource
-      # * PUT requests to the /status subresource take a custom resource object, and
-      # ignore changes to anything except the status stanza
-      # * PUT/POST/PATCH requests to the custom resource ignore changes to the status
-      # stanza
+      # of a CustomResource. When set, * exposes a /status subresource for the custom
+      # resource * PUT requests to the /status subresource take a custom resource
+      # object, and ignore changes to anything except the status stanza * PUT/POST/
+      # PATCH requests to the custom resource ignore changes to the status stanza
       class CustomResourceSubresourceStatus
         include Google::Apis::Core::Hashable
       
@@ -377,12 +365,10 @@ module Google
       
         # CustomResourceSubresourceStatus defines how to serve the status subresource
         # for CustomResources. Status is represented by the `.status` JSON path inside
-        # of a CustomResource. When set,
-        # * exposes a /status subresource for the custom resource
-        # * PUT requests to the /status subresource take a custom resource object, and
-        # ignore changes to anything except the status stanza
-        # * PUT/POST/PATCH requests to the custom resource ignore changes to the status
-        # stanza
+        # of a CustomResource. When set, * exposes a /status subresource for the custom
+        # resource * PUT requests to the /status subresource take a custom resource
+        # object, and ignore changes to anything except the status stanza * PUT/POST/
+        # PATCH requests to the custom resource ignore changes to the status stanza
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::RunV1beta1::CustomResourceSubresourceStatus]
         attr_accessor :status
@@ -402,8 +388,8 @@ module Google
       class CustomResourceValidation
         include Google::Apis::Core::Hashable
       
-        # JSONSchemaProps is a JSON-Schema following Specification Draft 4
-        # (http://json-schema.org/).
+        # JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-
+        # schema.org/).
         # Corresponds to the JSON property `openAPIV3Schema`
         # @return [Google::Apis::RunV1beta1::JsonSchemaProps]
         attr_accessor :open_apiv3_schema
@@ -444,9 +430,8 @@ module Google
         end
       end
       
-      # JSON represents any valid JSON value.
-      # These types are supported: bool, int64, float64, string, []interface``,
-      # map[string]interface`` and nil.
+      # JSON represents any valid JSON value. These types are supported: bool, int64,
+      # float64, string, []interface``, map[string]interface`` and nil.
       class Json
         include Google::Apis::Core::Hashable
       
@@ -466,19 +451,19 @@ module Google
         end
       end
       
-      # JSONSchemaProps is a JSON-Schema following Specification Draft 4
-      # (http://json-schema.org/).
+      # JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-
+      # schema.org/).
       class JsonSchemaProps
         include Google::Apis::Core::Hashable
       
-        # JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value.
-        # Defaults to true for the boolean property.
+        # JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value. Defaults
+        # to true for the boolean property.
         # Corresponds to the JSON property `additionalItems`
         # @return [Google::Apis::RunV1beta1::JsonSchemaPropsOrBool]
         attr_accessor :additional_items
       
-        # JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value.
-        # Defaults to true for the boolean property.
+        # JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value. Defaults
+        # to true for the boolean property.
         # Corresponds to the JSON property `additionalProperties`
         # @return [Google::Apis::RunV1beta1::JsonSchemaPropsOrBool]
         attr_accessor :additional_properties
@@ -493,9 +478,8 @@ module Google
         # @return [Array<Google::Apis::RunV1beta1::JsonSchemaProps>]
         attr_accessor :any_of
       
-        # JSON represents any valid JSON value.
-        # These types are supported: bool, int64, float64, string, []interface``,
-        # map[string]interface`` and nil.
+        # JSON represents any valid JSON value. These types are supported: bool, int64,
+        # float64, string, []interface``, map[string]interface`` and nil.
         # Corresponds to the JSON property `default`
         # @return [Google::Apis::RunV1beta1::Json]
         attr_accessor :default
@@ -520,9 +504,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :enum
       
-        # JSON represents any valid JSON value.
-        # These types are supported: bool, int64, float64, string, []interface``,
-        # map[string]interface`` and nil.
+        # JSON represents any valid JSON value. These types are supported: bool, int64,
+        # float64, string, []interface``, map[string]interface`` and nil.
         # Corresponds to the JSON property `example`
         # @return [Google::Apis::RunV1beta1::Json]
         attr_accessor :example
@@ -555,9 +538,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # JSONSchemaPropsOrArray represents a value that can either be a
-        # JSONSchemaProps or an array of JSONSchemaProps. Mainly here for serialization
-        # purposes.
+        # JSONSchemaPropsOrArray represents a value that can either be a JSONSchemaProps
+        # or an array of JSONSchemaProps. Mainly here for serialization purposes.
         # Corresponds to the JSON property `items`
         # @return [Google::Apis::RunV1beta1::JsonSchemaPropsOrArray]
         attr_accessor :items
@@ -607,8 +589,8 @@ module Google
         # @return [Float]
         attr_accessor :multiple_of
       
-        # JSONSchemaProps is a JSON-Schema following Specification Draft 4
-        # (http://json-schema.org/).
+        # JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-
+        # schema.org/).
         # Corresponds to the JSON property `not`
         # @return [Google::Apis::RunV1beta1::JsonSchemaProps]
         attr_accessor :not
@@ -709,9 +691,8 @@ module Google
         end
       end
       
-      # JSONSchemaPropsOrArray represents a value that can either be a
-      # JSONSchemaProps or an array of JSONSchemaProps. Mainly here for serialization
-      # purposes.
+      # JSONSchemaPropsOrArray represents a value that can either be a JSONSchemaProps
+      # or an array of JSONSchemaProps. Mainly here for serialization purposes.
       class JsonSchemaPropsOrArray
         include Google::Apis::Core::Hashable
       
@@ -720,8 +701,8 @@ module Google
         # @return [Array<Google::Apis::RunV1beta1::JsonSchemaProps>]
         attr_accessor :json_schemas
       
-        # JSONSchemaProps is a JSON-Schema following Specification Draft 4
-        # (http://json-schema.org/).
+        # JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-
+        # schema.org/).
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::RunV1beta1::JsonSchemaProps]
         attr_accessor :schema
@@ -737,8 +718,8 @@ module Google
         end
       end
       
-      # JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value.
-      # Defaults to true for the boolean property.
+      # JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value. Defaults
+      # to true for the boolean property.
       class JsonSchemaPropsOrBool
         include Google::Apis::Core::Hashable
       
@@ -748,8 +729,8 @@ module Google
         attr_accessor :allows
         alias_method :allows?, :allows
       
-        # JSONSchemaProps is a JSON-Schema following Specification Draft 4
-        # (http://json-schema.org/).
+        # JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-
+        # schema.org/).
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::RunV1beta1::JsonSchemaProps]
         attr_accessor :schema
@@ -774,8 +755,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :property
       
-        # JSONSchemaProps is a JSON-Schema following Specification Draft 4
-        # (http://json-schema.org/).
+        # JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-
+        # schema.org/).
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::RunV1beta1::JsonSchemaProps]
         attr_accessor :schema
@@ -811,8 +792,8 @@ module Google
         attr_accessor :kind
       
         # ListMeta describes metadata that synthetic resources must have, including
-        # lists and various status objects. A resource may have only one of
-        # `ObjectMeta, ListMeta`.
+        # lists and various status objects. A resource may have only one of `ObjectMeta,
+        # ListMeta`.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::RunV1beta1::ListMeta]
         attr_accessor :metadata
@@ -837,39 +818,33 @@ module Google
       end
       
       # ListMeta describes metadata that synthetic resources must have, including
-      # lists and various status objects. A resource may have only one of
-      # `ObjectMeta, ListMeta`.
+      # lists and various status objects. A resource may have only one of `ObjectMeta,
+      # ListMeta`.
       class ListMeta
         include Google::Apis::Core::Hashable
       
-        # continue may be set if the user set a limit on the number of items
-        # returned, and indicates that the server has more data available. The value
-        # is opaque and may be used to issue another request to the endpoint that
-        # served this list to retrieve the next set of available objects. Continuing
-        # a list may not be possible if the server configuration has changed or more
-        # than a few minutes have passed. The resourceVersion field returned when
-        # using this continue value will be identical to the value in the first
-        # response.
+        # continue may be set if the user set a limit on the number of items returned,
+        # and indicates that the server has more data available. The value is opaque and
+        # may be used to issue another request to the endpoint that served this list to
+        # retrieve the next set of available objects. Continuing a list may not be
+        # possible if the server configuration has changed or more than a few minutes
+        # have passed. The resourceVersion field returned when using this continue value
+        # will be identical to the value in the first response.
         # Corresponds to the JSON property `continue`
         # @return [String]
         attr_accessor :continue
       
-        # String that identifies the server's internal version of this object that
-        # can be used by clients to determine when objects have changed. Value must
-        # be treated as opaque by clients and passed unmodified back to the server.
-        # Populated by the system.
-        # Read-only.
-        # More info:
-        # https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-
-        # control-and-consistency
-        # +optional
+        # String that identifies the server's internal version of this object that can
+        # be used by clients to determine when objects have changed. Value must be
+        # treated as opaque by clients and passed unmodified back to the server.
+        # Populated by the system. Read-only. More info: https://git.k8s.io/community/
+        # contributors/devel/api-conventions.md#concurrency-control-and-consistency +
+        # optional
         # Corresponds to the JSON property `resourceVersion`
         # @return [String]
         attr_accessor :resource_version
       
-        # SelfLink is a URL representing this object.
-        # Populated by the system.
-        # Read-only.
+        # SelfLink is a URL representing this object. Populated by the system. Read-only.
         # +optional
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -887,193 +862,155 @@ module Google
         end
       end
       
-      # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
-      # persisted resources must have, which includes all objects users must create.
+      # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted
+      # resources must have, which includes all objects users must create.
       class ObjectMeta
         include Google::Apis::Core::Hashable
       
-        # (Optional)
-        # Annotations is an unstructured key value map stored with a resource that
-        # may be set by external tools to store and retrieve arbitrary metadata. They
-        # are not queryable and should be preserved when modifying objects. More
+        # (Optional) Annotations is an unstructured key value map stored with a resource
+        # that may be set by external tools to store and retrieve arbitrary metadata.
+        # They are not queryable and should be preserved when modifying objects. More
         # info: http://kubernetes.io/docs/user-guide/annotations
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # (Optional)
-        # Cloud Run fully managed: not supported
-        # Cloud Run for Anthos: supported
-        # The name of the cluster which the object belongs to.
-        # This is used to distinguish resources with same name and namespace in
-        # different clusters. This field is not set anywhere right now and apiserver
-        # is going to ignore it if set in create or update request.
+        # (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
+        # supported The name of the cluster which the object belongs to. This is used to
+        # distinguish resources with same name and namespace in different clusters. This
+        # field is not set anywhere right now and apiserver is going to ignore it if set
+        # in create or update request.
         # Corresponds to the JSON property `clusterName`
         # @return [String]
         attr_accessor :cluster_name
       
-        # (Optional)
-        # CreationTimestamp is a timestamp representing the server time when this
-        # object was created. It is not guaranteed to be set in happens-before order
-        # across separate operations. Clients may not set this value. It is
-        # represented in RFC3339 form and is in UTC.
-        # Populated by the system.
-        # Read-only.
-        # Null for lists.
-        # More info:
-        # https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        # (Optional) CreationTimestamp is a timestamp representing the server time when
+        # this object was created. It is not guaranteed to be set in happens-before
+        # order across separate operations. Clients may not set this value. It is
+        # represented in RFC3339 form and is in UTC. Populated by the system. Read-only.
+        # Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-
+        # conventions.md#metadata
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # (Optional)
-        # Cloud Run fully managed: not supported
-        # Cloud Run for Anthos: supported
-        # Number of seconds allowed for this object to gracefully terminate before
-        # it will be removed from the system. Only set when deletionTimestamp is also
-        # set. May only be shortened. Read-only.
+        # (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
+        # supported Number of seconds allowed for this object to gracefully terminate
+        # before it will be removed from the system. Only set when deletionTimestamp is
+        # also set. May only be shortened. Read-only.
         # Corresponds to the JSON property `deletionGracePeriodSeconds`
         # @return [Fixnum]
         attr_accessor :deletion_grace_period_seconds
       
-        # (Optional)
-        # Cloud Run fully managed: not supported
-        # Cloud Run for Anthos: supported
-        # DeletionTimestamp is RFC 3339 date and time at which this resource will be
-        # deleted. This field is set by the server when a graceful deletion is
-        # requested by the user, and is not directly settable by a client. The
-        # resource is expected to be deleted (no longer visible from resource lists,
-        # and not reachable by name) after the time in this field, once the
-        # finalizers list is empty. As long as the finalizers list contains items,
-        # deletion is blocked. Once the deletionTimestamp is set, this value may not
-        # be unset or be set further into the future, although it may be shortened or
-        # the resource may be deleted prior to this time. For example, a user may
-        # request that a pod is deleted in 30 seconds. The Kubelet will react by
-        # sending a graceful termination signal to the containers in the pod. After
-        # that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL)
-        # to the container and after cleanup, remove the pod from the API. In the
-        # presence of network partitions, this object may still exist after this
-        # timestamp, until an administrator or automated process can determine the
-        # resource is fully terminated.
-        # If not set, graceful deletion of the object has not been requested.
-        # Populated by the system when a graceful deletion is requested.
-        # Read-only.
-        # More info:
-        # https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        # (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
+        # supported DeletionTimestamp is RFC 3339 date and time at which this resource
+        # will be deleted. This field is set by the server when a graceful deletion is
+        # requested by the user, and is not directly settable by a client. The resource
+        # is expected to be deleted (no longer visible from resource lists, and not
+        # reachable by name) after the time in this field, once the finalizers list is
+        # empty. As long as the finalizers list contains items, deletion is blocked.
+        # Once the deletionTimestamp is set, this value may not be unset or be set
+        # further into the future, although it may be shortened or the resource may be
+        # deleted prior to this time. For example, a user may request that a pod is
+        # deleted in 30 seconds. The Kubelet will react by sending a graceful
+        # termination signal to the containers in the pod. After that 30 seconds, the
+        # Kubelet will send a hard termination signal (SIGKILL) to the container and
+        # after cleanup, remove the pod from the API. In the presence of network
+        # partitions, this object may still exist after this timestamp, until an
+        # administrator or automated process can determine the resource is fully
+        # terminated. If not set, graceful deletion of the object has not been requested.
+        # Populated by the system when a graceful deletion is requested. Read-only.
+        # More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#
+        # metadata
         # Corresponds to the JSON property `deletionTimestamp`
         # @return [String]
         attr_accessor :deletion_timestamp
       
-        # (Optional)
-        # Cloud Run fully managed: not supported
-        # Cloud Run for Anthos: supported
-        # Must be empty before the object is deleted from the registry. Each entry
-        # is an identifier for the responsible component that will remove the entry
-        # from the list. If the deletionTimestamp of the object is non-nil, entries
-        # in this list can only be removed.
-        # +patchStrategy=merge
+        # (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
+        # supported Must be empty before the object is deleted from the registry. Each
+        # entry is an identifier for the responsible component that will remove the
+        # entry from the list. If the deletionTimestamp of the object is non-nil,
+        # entries in this list can only be removed. +patchStrategy=merge
         # Corresponds to the JSON property `finalizers`
         # @return [Array<String>]
         attr_accessor :finalizers
       
-        # (Optional)
-        # Cloud Run fully managed: not supported
-        # Cloud Run for Anthos: supported
-        # GenerateName is an optional prefix, used by the server, to generate a
-        # unique name ONLY IF the Name field has not been provided. If this field is
-        # used, the name returned to the client will be different than the name
-        # passed. This value will also be combined with a unique suffix. The provided
-        # value has the same validation rules as the Name field, and may be truncated
-        # by the length of the suffix required to make the value unique on the
-        # server.
-        # If this field is specified and the generated name exists, the server will
-        # NOT return a 409 - instead, it will either return 201 Created or 500 with
-        # Reason ServerTimeout indicating a unique name could not be found in the
-        # time allotted, and the client should retry (optionally after the time
-        # indicated in the Retry-After header).
-        # Applied only if Name is not specified.
-        # More info:
-        # https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency
-        # string generateName = 2;
+        # (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
+        # supported GenerateName is an optional prefix, used by the server, to generate
+        # a unique name ONLY IF the Name field has not been provided. If this field is
+        # used, the name returned to the client will be different than the name passed.
+        # This value will also be combined with a unique suffix. The provided value has
+        # the same validation rules as the Name field, and may be truncated by the
+        # length of the suffix required to make the value unique on the server. If this
+        # field is specified and the generated name exists, the server will NOT return a
+        # 409 - instead, it will either return 201 Created or 500 with Reason
+        # ServerTimeout indicating a unique name could not be found in the time allotted,
+        # and the client should retry (optionally after the time indicated in the Retry-
+        # After header). Applied only if Name is not specified. More info: https://git.
+        # k8s.io/community/contributors/devel/api-conventions.md#idempotency string
+        # generateName = 2;
         # Corresponds to the JSON property `generateName`
         # @return [String]
         attr_accessor :generate_name
       
-        # (Optional)
-        # A sequence number representing a specific generation of the desired state.
-        # Populated by the system. Read-only.
+        # (Optional) A sequence number representing a specific generation of the desired
+        # state. Populated by the system. Read-only.
         # Corresponds to the JSON property `generation`
         # @return [Fixnum]
         attr_accessor :generation
       
-        # (Optional)
-        # Map of string keys and values that can be used to organize and categorize
-        # (scope and select) objects. May match selectors of replication controllers
-        # and routes.
-        # More info: http://kubernetes.io/docs/user-guide/labels
+        # (Optional) Map of string keys and values that can be used to organize and
+        # categorize (scope and select) objects. May match selectors of replication
+        # controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Name must be unique within a namespace, within a Cloud Run region.
-        # Is required when creating
-        # resources, although some resources may allow a client to request the
-        # generation of an appropriate name automatically. Name is primarily intended
-        # for creation idempotence and configuration definition. Cannot be updated.
-        # More info: http://kubernetes.io/docs/user-guide/identifiers#names
-        # +optional
+        # Name must be unique within a namespace, within a Cloud Run region. Is required
+        # when creating resources, although some resources may allow a client to request
+        # the generation of an appropriate name automatically. Name is primarily
+        # intended for creation idempotence and configuration definition. Cannot be
+        # updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +
+        # optional
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Namespace defines the space within each name must be unique, within a
-        # Cloud Run region. In Cloud Run the namespace must be equal to either the
-        # project ID or project number.
+        # Namespace defines the space within each name must be unique, within a Cloud
+        # Run region. In Cloud Run the namespace must be equal to either the project ID
+        # or project number.
         # Corresponds to the JSON property `namespace`
         # @return [String]
         attr_accessor :namespace
       
-        # (Optional)
-        # Cloud Run fully managed: not supported
-        # Cloud Run for Anthos: supported
-        # List of objects that own this object. If ALL objects in the list have
-        # been deleted, this object will be garbage collected.
+        # (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos:
+        # supported List of objects that own this object. If ALL objects in the list
+        # have been deleted, this object will be garbage collected.
         # Corresponds to the JSON property `ownerReferences`
         # @return [Array<Google::Apis::RunV1beta1::OwnerReference>]
         attr_accessor :owner_references
       
-        # (Optional)
-        # An opaque value that represents the internal version of this object that
-        # can be used by clients to determine when objects have changed. May be used
-        # for optimistic concurrency, change detection, and the watch operation on a
-        # resource or set of resources. Clients must treat these values as opaque and
-        # passed unmodified back to the server. They may only be valid for a
-        # particular resource or set of resources.
-        # Populated by the system.
-        # Read-only.
-        # Value must be treated as opaque by clients and .
-        # More info:
-        # https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-
-        # control-and-consistency
+        # (Optional) An opaque value that represents the internal version of this object
+        # that can be used by clients to determine when objects have changed. May be
+        # used for optimistic concurrency, change detection, and the watch operation on
+        # a resource or set of resources. Clients must treat these values as opaque and
+        # passed unmodified back to the server. They may only be valid for a particular
+        # resource or set of resources. Populated by the system. Read-only. Value must
+        # be treated as opaque by clients and . More info: https://git.k8s.io/community/
+        # contributors/devel/api-conventions.md#concurrency-control-and-consistency
         # Corresponds to the JSON property `resourceVersion`
         # @return [String]
         attr_accessor :resource_version
       
-        # (Optional)
-        # SelfLink is a URL representing this object.
-        # Populated by the system.
-        # Read-only.
-        # string selfLink = 4;
+        # (Optional) SelfLink is a URL representing this object. Populated by the system.
+        # Read-only. string selfLink = 4;
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
       
-        # (Optional)
-        # UID is the unique in time and space value for this object. It is typically
-        # generated by the server on successful creation of a resource and is not
-        # allowed to change on PUT operations.
-        # Populated by the system.
-        # Read-only.
+        # (Optional) UID is the unique in time and space value for this object. It is
+        # typically generated by the server on successful creation of a resource and is
+        # not allowed to change on PUT operations. Populated by the system. Read-only.
         # More info: http://kubernetes.io/docs/user-guide/identifiers#uids
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -1104,8 +1041,8 @@ module Google
       end
       
       # OwnerReference contains enough information to let you identify an owning
-      # object. Currently, an owning object must be in the same namespace, so there
-      # is no namespace field.
+      # object. Currently, an owning object must be in the same namespace, so there is
+      # no namespace field.
       class OwnerReference
         include Google::Apis::Core::Hashable
       
@@ -1114,40 +1051,36 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # If true, AND if the owner has the "foregroundDeletion" finalizer, then
-        # the owner cannot be deleted from the key-value store until this
-        # reference is removed.
-        # Defaults to false.
-        # To set this field, a user needs "delete" permission of the owner,
-        # otherwise 422 (Unprocessable Entity) will be returned.
+        # If true, AND if the owner has the "foregroundDeletion" finalizer, then the
+        # owner cannot be deleted from the key-value store until this reference is
+        # removed. Defaults to false. To set this field, a user needs "delete"
+        # permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
         # +optional
         # Corresponds to the JSON property `blockOwnerDeletion`
         # @return [Boolean]
         attr_accessor :block_owner_deletion
         alias_method :block_owner_deletion?, :block_owner_deletion
       
-        # If true, this reference points to the managing controller.
-        # +optional
+        # If true, this reference points to the managing controller. +optional
         # Corresponds to the JSON property `controller`
         # @return [Boolean]
         attr_accessor :controller
         alias_method :controller?, :controller
       
-        # Kind of the referent.
-        # More info:
-        # https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        # Kind of the referent. More info: https://git.k8s.io/community/contributors/
+        # devel/api-conventions.md#types-kinds
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Name of the referent.
-        # More info: http://kubernetes.io/docs/user-guide/identifiers#names
+        # Name of the referent. More info: http://kubernetes.io/docs/user-guide/
+        # identifiers#names
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # UID of the referent.
-        # More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+        # UID of the referent. More info: http://kubernetes.io/docs/user-guide/
+        # identifiers#uids
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid

@@ -86,8 +86,8 @@ module Google
         
         # Creates a new cloudauditlogssource.
         # @param [String] parent
-        #   The project ID or project number in which this cloudauditlogssource should
-        #   be created.
+        #   The project ID or project number in which this cloudauditlogssource should be
+        #   created.
         # @param [Google::Apis::RunV1alpha1::CloudAuditLogsSource] cloud_audit_logs_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -120,17 +120,16 @@ module Google
         
         # Rpc to delete a cloudauditlogssource.
         # @param [String] name
-        #   The name of the cloudauditlogssource being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the cloudauditlogssource being deleted. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -163,8 +162,8 @@ module Google
         
         # Rpc to get information about a cloudauditlogssource.
         # @param [String] name
-        #   The name of the cloudauditlogssource being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the cloudauditlogssource being retrieved. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -194,19 +193,19 @@ module Google
         
         # Rpc to list cloudauditlogssources.
         # @param [String] parent
-        #   The project ID or project number from which the cloudauditlogssources
-        #   should be listed.
+        #   The project ID or project number from which the cloudauditlogssources should
+        #   be listed.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -251,8 +250,8 @@ module Google
         
         # Creates a new cloudpubsubsource.
         # @param [String] parent
-        #   The project ID or project number in which this cloudpubsubsource should
-        #   be created.
+        #   The project ID or project number in which this cloudpubsubsource should be
+        #   created.
         # @param [Google::Apis::RunV1alpha1::CloudPubSubSource] cloud_pub_sub_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -285,17 +284,16 @@ module Google
         
         # Rpc to delete a cloudpubsubsource.
         # @param [String] name
-        #   The name of the cloudpubsubsource being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the cloudpubsubsource being deleted. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -328,8 +326,8 @@ module Google
         
         # Rpc to get information about a cloudpubsubsource.
         # @param [String] name
-        #   The name of the cloudpubsubsource being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the cloudpubsubsource being retrieved. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -359,19 +357,19 @@ module Google
         
         # Rpc to list cloudpubsubsources.
         # @param [String] parent
-        #   The project ID or project number from which the cloudpubsubsources should
-        #   be listed.
+        #   The project ID or project number from which the cloudpubsubsources should be
+        #   listed.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -417,8 +415,7 @@ module Google
         # Creates a new cloudschedulersource.
         # @param [String] parent
         #   Required. The project ID or project number in which this cloudschedulersource
-        #   should
-        #   be created.
+        #   should be created.
         # @param [Google::Apis::RunV1alpha1::CloudSchedulerSource] cloud_scheduler_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -452,17 +449,15 @@ module Google
         # Rpc to delete a cloudschedulersource.
         # @param [String] name
         #   Required. The name of the cloudschedulersource being deleted. If needed,
-        #   replace
-        #   `namespace_id` with the project ID.
+        #   replace `namespace_id` with the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -496,8 +491,7 @@ module Google
         # Rpc to get information about a cloudschedulersource.
         # @param [String] name
         #   Required. The name of the cloudschedulersource being retrieved. If needed,
-        #   replace
-        #   `namespace_id` with the project ID.
+        #   replace `namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -528,19 +522,18 @@ module Google
         # Rpc to list cloudschedulersources.
         # @param [String] parent
         #   Required. The project ID or project number from which the
-        #   cloudschedulersources
-        #   should be listed.
+        #   cloudschedulersources should be listed.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -583,16 +576,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to replace a cloudschedulersource.
-        # Only the spec and metadata labels and annotations are modifiable. After
-        # the Update request, Cloud Run will work to make the 'status'
-        # match the requested 'spec'.
-        # May provide metadata.resourceVersion to enforce update from last read for
-        # optimistic concurrency control.
+        # Rpc to replace a cloudschedulersource. Only the spec and metadata labels and
+        # annotations are modifiable. After the Update request, Cloud Run will work to
+        # make the 'status' match the requested 'spec'. May provide metadata.
+        # resourceVersion to enforce update from last read for optimistic concurrency
+        # control.
         # @param [String] name
         #   Required. The name of the cloudschedulersource being retrieved. If needed,
-        #   replace
-        #   `namespace_id` with the project ID.
+        #   replace `namespace_id` with the project ID.
         # @param [Google::Apis::RunV1alpha1::CloudSchedulerSource] cloud_scheduler_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -626,8 +617,7 @@ module Google
         # Creates a new cloudstoragesource.
         # @param [String] parent
         #   Required. The project ID or project number in which this cloudstoragesource
-        #   should
-        #   be created.
+        #   should be created.
         # @param [Google::Apis::RunV1alpha1::CloudStorageSource] cloud_storage_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -667,10 +657,9 @@ module Google
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -704,8 +693,7 @@ module Google
         # Rpc to get information about a cloudstoragesource.
         # @param [String] name
         #   Required. The name of the cloudstoragesource being retrieved. If needed,
-        #   replace
-        #   `namespace_id` with the project ID.
+        #   replace `namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -736,19 +724,18 @@ module Google
         # Rpc to list cloudstoragesources.
         # @param [String] parent
         #   Required. The project ID or project number from which the cloudstoragesources
-        #   should
-        #   be listed.
+        #   should be listed.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -791,16 +778,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to replace a cloudstoragesource.
-        # Only the spec and metadata labels and annotations are modifiable. After
-        # the Update request, Cloud Run will work to make the 'status'
-        # match the requested 'spec'.
-        # May provide metadata.resourceVersion to enforce update from last read for
-        # optimistic concurrency control.
+        # Rpc to replace a cloudstoragesource. Only the spec and metadata labels and
+        # annotations are modifiable. After the Update request, Cloud Run will work to
+        # make the 'status' match the requested 'spec'. May provide metadata.
+        # resourceVersion to enforce update from last read for optimistic concurrency
+        # control.
         # @param [String] name
         #   Required. The name of the cloudstoragesource being retrieved. If needed,
-        #   replace
-        #   `namespace_id` with the project ID.
+        #   replace `namespace_id` with the project ID.
         # @param [Google::Apis::RunV1alpha1::CloudStorageSource] cloud_storage_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -833,8 +818,8 @@ module Google
         
         # Rpc to get information about a configuration.
         # @param [String] name
-        #   The name of the configuration being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the configuration being retrieved. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -869,14 +854,14 @@ module Google
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -955,23 +940,21 @@ module Google
         
         # Rpc to delete a domain mapping.
         # @param [String] name
-        #   The name of the domain mapping being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the domain mapping being deleted. If needed, replace `namespace_id`
+        #   with the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [Boolean] orphan_dependents
-        #   Deprecated.
-        #   Specifies the cascade behavior on delete.
-        #   Cloud Run only supports cascading behavior, so this must be false.
-        #   This attribute is deprecated, and is now replaced with PropagationPolicy
-        #   See https://github.com/kubernetes/kubernetes/issues/46659 for more info.
+        #   Deprecated. Specifies the cascade behavior on delete. Cloud Run only supports
+        #   cascading behavior, so this must be false. This attribute is deprecated, and
+        #   is now replaced with PropagationPolicy See https://github.com/kubernetes/
+        #   kubernetes/issues/46659 for more info.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1005,8 +988,8 @@ module Google
         
         # Rpc to get information about a domain mapping.
         # @param [String] name
-        #   The name of the domain mapping being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the domain mapping being retrieved. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1041,14 +1024,14 @@ module Google
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -1093,23 +1076,21 @@ module Google
         
         # Rpc to delete a revision.
         # @param [String] name
-        #   The name of the revision being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the revision being deleted. If needed, replace `namespace_id` with
+        #   the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [Boolean] orphan_dependents
-        #   Deprecated.
-        #   Specifies the cascade behavior on delete.
-        #   Cloud Run only supports cascading behavior, so this must be false.
-        #   This attribute is deprecated, and is now replaced with PropagationPolicy
-        #   See https://github.com/kubernetes/kubernetes/issues/46659 for more info.
+        #   Deprecated. Specifies the cascade behavior on delete. Cloud Run only supports
+        #   cascading behavior, so this must be false. This attribute is deprecated, and
+        #   is now replaced with PropagationPolicy See https://github.com/kubernetes/
+        #   kubernetes/issues/46659 for more info.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1143,8 +1124,8 @@ module Google
         
         # Rpc to get information about a revision.
         # @param [String] name
-        #   The name of the revision being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the revision being retrieved. If needed, replace `namespace_id`
+        #   with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1178,14 +1159,14 @@ module Google
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -1230,8 +1211,8 @@ module Google
         
         # Rpc to get information about a route.
         # @param [String] name
-        #   The name of the route being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the route being retrieved. If needed, replace `namespace_id` with
+        #   the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1265,14 +1246,14 @@ module Google
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -1348,27 +1329,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to delete a service.
-        # This will cause the Service to stop serving traffic and will delete the
-        # child entities like Routes, Configurations and Revisions.
+        # Rpc to delete a service. This will cause the Service to stop serving traffic
+        # and will delete the child entities like Routes, Configurations and Revisions.
         # @param [String] name
-        #   The name of the service being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the service being deleted. If needed, replace `namespace_id` with
+        #   the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [Boolean] orphan_dependents
-        #   Deprecated.
-        #   Specifies the cascade behavior on delete.
-        #   Cloud Run only supports cascading behavior, so this must be false.
-        #   This attribute is deprecated, and is now replaced with PropagationPolicy
-        #   See https://github.com/kubernetes/kubernetes/issues/46659 for more info.
+        #   Deprecated. Specifies the cascade behavior on delete. Cloud Run only supports
+        #   cascading behavior, so this must be false. This attribute is deprecated, and
+        #   is now replaced with PropagationPolicy See https://github.com/kubernetes/
+        #   kubernetes/issues/46659 for more info.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1402,8 +1380,8 @@ module Google
         
         # Rpc to get information about a service.
         # @param [String] name
-        #   The name of the service being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the service being retrieved. If needed, replace `namespace_id`
+        #   with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1437,14 +1415,14 @@ module Google
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -1487,15 +1465,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to replace a service.
-        # Only the spec and metadata labels and annotations are modifiable. After
-        # the Update request, Cloud Run will work to make the 'status'
-        # match the requested 'spec'.
-        # May provide metadata.resourceVersion to enforce update from last read for
-        # optimistic concurrency control.
+        # Rpc to replace a service. Only the spec and metadata labels and annotations
+        # are modifiable. After the Update request, Cloud Run will work to make the '
+        # status' match the requested 'spec'. May provide metadata.resourceVersion to
+        # enforce update from last read for optimistic concurrency control.
         # @param [String] name
-        #   The name of the service being replaced. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the service being replaced. If needed, replace `namespace_id` with
+        #   the project ID.
         # @param [Google::Apis::RunV1alpha1::Service] service_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1528,8 +1504,7 @@ module Google
         
         # Creates a new trigger.
         # @param [String] parent
-        #   The project ID or project number in which this trigger should
-        #   be created.
+        #   The project ID or project number in which this trigger should be created.
         # @param [Google::Apis::RunV1alpha1::Trigger] trigger_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1562,17 +1537,16 @@ module Google
         
         # Rpc to delete a trigger.
         # @param [String] name
-        #   The name of the trigger being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the trigger being deleted. If needed, replace `namespace_id` with
+        #   the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1605,8 +1579,8 @@ module Google
         
         # Rpc to get information about a trigger.
         # @param [String] name
-        #   The name of the trigger being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the trigger being retrieved. If needed, replace `namespace_id`
+        #   with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1636,19 +1610,18 @@ module Google
         
         # Rpc to list triggers.
         # @param [String] parent
-        #   The project ID or project number from which the triggers should
-        #   be listed.
+        #   The project ID or project number from which the triggers should be listed.
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -1768,8 +1741,8 @@ module Google
         
         # Creates a new cloudauditlogssource.
         # @param [String] parent
-        #   The project ID or project number in which this cloudauditlogssource should
-        #   be created.
+        #   The project ID or project number in which this cloudauditlogssource should be
+        #   created.
         # @param [Google::Apis::RunV1alpha1::CloudAuditLogsSource] cloud_audit_logs_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1802,17 +1775,16 @@ module Google
         
         # Rpc to delete a cloudauditlogssource.
         # @param [String] name
-        #   The name of the cloudauditlogssource being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the cloudauditlogssource being deleted. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1845,8 +1817,8 @@ module Google
         
         # Rpc to get information about a cloudauditlogssource.
         # @param [String] name
-        #   The name of the cloudauditlogssource being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the cloudauditlogssource being retrieved. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1876,19 +1848,19 @@ module Google
         
         # Rpc to list cloudauditlogssources.
         # @param [String] parent
-        #   The project ID or project number from which the cloudauditlogssources
-        #   should be listed.
+        #   The project ID or project number from which the cloudauditlogssources should
+        #   be listed.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -1933,8 +1905,8 @@ module Google
         
         # Creates a new cloudpubsubsource.
         # @param [String] parent
-        #   The project ID or project number in which this cloudpubsubsource should
-        #   be created.
+        #   The project ID or project number in which this cloudpubsubsource should be
+        #   created.
         # @param [Google::Apis::RunV1alpha1::CloudPubSubSource] cloud_pub_sub_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1967,17 +1939,16 @@ module Google
         
         # Rpc to delete a cloudpubsubsource.
         # @param [String] name
-        #   The name of the cloudpubsubsource being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the cloudpubsubsource being deleted. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2010,8 +1981,8 @@ module Google
         
         # Rpc to get information about a cloudpubsubsource.
         # @param [String] name
-        #   The name of the cloudpubsubsource being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the cloudpubsubsource being retrieved. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2041,19 +2012,19 @@ module Google
         
         # Rpc to list cloudpubsubsources.
         # @param [String] parent
-        #   The project ID or project number from which the cloudpubsubsources should
-        #   be listed.
+        #   The project ID or project number from which the cloudpubsubsources should be
+        #   listed.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -2099,8 +2070,7 @@ module Google
         # Creates a new cloudschedulersource.
         # @param [String] parent
         #   Required. The project ID or project number in which this cloudschedulersource
-        #   should
-        #   be created.
+        #   should be created.
         # @param [Google::Apis::RunV1alpha1::CloudSchedulerSource] cloud_scheduler_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2134,17 +2104,15 @@ module Google
         # Rpc to delete a cloudschedulersource.
         # @param [String] name
         #   Required. The name of the cloudschedulersource being deleted. If needed,
-        #   replace
-        #   `namespace_id` with the project ID.
+        #   replace `namespace_id` with the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2178,8 +2146,7 @@ module Google
         # Rpc to get information about a cloudschedulersource.
         # @param [String] name
         #   Required. The name of the cloudschedulersource being retrieved. If needed,
-        #   replace
-        #   `namespace_id` with the project ID.
+        #   replace `namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2210,19 +2177,18 @@ module Google
         # Rpc to list cloudschedulersources.
         # @param [String] parent
         #   Required. The project ID or project number from which the
-        #   cloudschedulersources
-        #   should be listed.
+        #   cloudschedulersources should be listed.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -2265,16 +2231,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to replace a cloudschedulersource.
-        # Only the spec and metadata labels and annotations are modifiable. After
-        # the Update request, Cloud Run will work to make the 'status'
-        # match the requested 'spec'.
-        # May provide metadata.resourceVersion to enforce update from last read for
-        # optimistic concurrency control.
+        # Rpc to replace a cloudschedulersource. Only the spec and metadata labels and
+        # annotations are modifiable. After the Update request, Cloud Run will work to
+        # make the 'status' match the requested 'spec'. May provide metadata.
+        # resourceVersion to enforce update from last read for optimistic concurrency
+        # control.
         # @param [String] name
         #   Required. The name of the cloudschedulersource being retrieved. If needed,
-        #   replace
-        #   `namespace_id` with the project ID.
+        #   replace `namespace_id` with the project ID.
         # @param [Google::Apis::RunV1alpha1::CloudSchedulerSource] cloud_scheduler_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2308,8 +2272,7 @@ module Google
         # Creates a new cloudstoragesource.
         # @param [String] parent
         #   Required. The project ID or project number in which this cloudstoragesource
-        #   should
-        #   be created.
+        #   should be created.
         # @param [Google::Apis::RunV1alpha1::CloudStorageSource] cloud_storage_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2349,10 +2312,9 @@ module Google
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2386,8 +2348,7 @@ module Google
         # Rpc to get information about a cloudstoragesource.
         # @param [String] name
         #   Required. The name of the cloudstoragesource being retrieved. If needed,
-        #   replace
-        #   `namespace_id` with the project ID.
+        #   replace `namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2418,19 +2379,18 @@ module Google
         # Rpc to list cloudstoragesources.
         # @param [String] parent
         #   Required. The project ID or project number from which the cloudstoragesources
-        #   should
-        #   be listed.
+        #   should be listed.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -2473,16 +2433,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to replace a cloudstoragesource.
-        # Only the spec and metadata labels and annotations are modifiable. After
-        # the Update request, Cloud Run will work to make the 'status'
-        # match the requested 'spec'.
-        # May provide metadata.resourceVersion to enforce update from last read for
-        # optimistic concurrency control.
+        # Rpc to replace a cloudstoragesource. Only the spec and metadata labels and
+        # annotations are modifiable. After the Update request, Cloud Run will work to
+        # make the 'status' match the requested 'spec'. May provide metadata.
+        # resourceVersion to enforce update from last read for optimistic concurrency
+        # control.
         # @param [String] name
         #   Required. The name of the cloudstoragesource being retrieved. If needed,
-        #   replace
-        #   `namespace_id` with the project ID.
+        #   replace `namespace_id` with the project ID.
         # @param [Google::Apis::RunV1alpha1::CloudStorageSource] cloud_storage_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2515,8 +2473,8 @@ module Google
         
         # Rpc to get information about a configuration.
         # @param [String] name
-        #   The name of the configuration being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the configuration being retrieved. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2551,14 +2509,14 @@ module Google
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -2637,23 +2595,21 @@ module Google
         
         # Rpc to delete a domain mapping.
         # @param [String] name
-        #   The name of the domain mapping being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the domain mapping being deleted. If needed, replace `namespace_id`
+        #   with the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [Boolean] orphan_dependents
-        #   Deprecated.
-        #   Specifies the cascade behavior on delete.
-        #   Cloud Run only supports cascading behavior, so this must be false.
-        #   This attribute is deprecated, and is now replaced with PropagationPolicy
-        #   See https://github.com/kubernetes/kubernetes/issues/46659 for more info.
+        #   Deprecated. Specifies the cascade behavior on delete. Cloud Run only supports
+        #   cascading behavior, so this must be false. This attribute is deprecated, and
+        #   is now replaced with PropagationPolicy See https://github.com/kubernetes/
+        #   kubernetes/issues/46659 for more info.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2687,8 +2643,8 @@ module Google
         
         # Rpc to get information about a domain mapping.
         # @param [String] name
-        #   The name of the domain mapping being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the domain mapping being retrieved. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2723,14 +2679,14 @@ module Google
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -2775,23 +2731,21 @@ module Google
         
         # Rpc to delete a revision.
         # @param [String] name
-        #   The name of the revision being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the revision being deleted. If needed, replace `namespace_id` with
+        #   the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [Boolean] orphan_dependents
-        #   Deprecated.
-        #   Specifies the cascade behavior on delete.
-        #   Cloud Run only supports cascading behavior, so this must be false.
-        #   This attribute is deprecated, and is now replaced with PropagationPolicy
-        #   See https://github.com/kubernetes/kubernetes/issues/46659 for more info.
+        #   Deprecated. Specifies the cascade behavior on delete. Cloud Run only supports
+        #   cascading behavior, so this must be false. This attribute is deprecated, and
+        #   is now replaced with PropagationPolicy See https://github.com/kubernetes/
+        #   kubernetes/issues/46659 for more info.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2825,8 +2779,8 @@ module Google
         
         # Rpc to get information about a revision.
         # @param [String] name
-        #   The name of the revision being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the revision being retrieved. If needed, replace `namespace_id`
+        #   with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2860,14 +2814,14 @@ module Google
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -2912,8 +2866,8 @@ module Google
         
         # Rpc to get information about a route.
         # @param [String] name
-        #   The name of the route being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the route being retrieved. If needed, replace `namespace_id` with
+        #   the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2947,14 +2901,14 @@ module Google
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -3030,27 +2984,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to delete a service.
-        # This will cause the Service to stop serving traffic and will delete the
-        # child entities like Routes, Configurations and Revisions.
+        # Rpc to delete a service. This will cause the Service to stop serving traffic
+        # and will delete the child entities like Routes, Configurations and Revisions.
         # @param [String] name
-        #   The name of the service being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the service being deleted. If needed, replace `namespace_id` with
+        #   the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [Boolean] orphan_dependents
-        #   Deprecated.
-        #   Specifies the cascade behavior on delete.
-        #   Cloud Run only supports cascading behavior, so this must be false.
-        #   This attribute is deprecated, and is now replaced with PropagationPolicy
-        #   See https://github.com/kubernetes/kubernetes/issues/46659 for more info.
+        #   Deprecated. Specifies the cascade behavior on delete. Cloud Run only supports
+        #   cascading behavior, so this must be false. This attribute is deprecated, and
+        #   is now replaced with PropagationPolicy See https://github.com/kubernetes/
+        #   kubernetes/issues/46659 for more info.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3084,8 +3035,8 @@ module Google
         
         # Rpc to get information about a service.
         # @param [String] name
-        #   The name of the service being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the service being retrieved. If needed, replace `namespace_id`
+        #   with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3113,21 +3064,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the IAM Access Control policy currently in effect for the given
-        # Cloud Run service. This result does not include any inherited policies.
+        # Get the IAM Access Control policy currently in effect for the given Cloud Run
+        # service. This result does not include any inherited policies.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3162,14 +3111,14 @@ module Google
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version
@@ -3212,15 +3161,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to replace a service.
-        # Only the spec and metadata labels and annotations are modifiable. After
-        # the Update request, Cloud Run will work to make the 'status'
-        # match the requested 'spec'.
-        # May provide metadata.resourceVersion to enforce update from last read for
-        # optimistic concurrency control.
+        # Rpc to replace a service. Only the spec and metadata labels and annotations
+        # are modifiable. After the Update request, Cloud Run will work to make the '
+        # status' match the requested 'spec'. May provide metadata.resourceVersion to
+        # enforce update from last read for optimistic concurrency control.
         # @param [String] name
-        #   The name of the service being replaced. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the service being replaced. If needed, replace `namespace_id` with
+        #   the project ID.
         # @param [Google::Apis::RunV1alpha1::Service] service_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3251,11 +3198,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the IAM Access control policy for the specified Service. Overwrites
-        # any existing policy.
+        # Sets the IAM Access control policy for the specified Service. Overwrites any
+        # existing policy.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::RunV1alpha1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3286,11 +3233,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified Project.
-        # There are no permissions required for making this API call.
+        # Returns permissions that a caller has on the specified Project. There are no
+        # permissions required for making this API call.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::RunV1alpha1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3323,8 +3270,7 @@ module Google
         
         # Creates a new trigger.
         # @param [String] parent
-        #   The project ID or project number in which this trigger should
-        #   be created.
+        #   The project ID or project number in which this trigger should be created.
         # @param [Google::Apis::RunV1alpha1::Trigger] trigger_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3357,17 +3303,16 @@ module Google
         
         # Rpc to delete a trigger.
         # @param [String] name
-        #   The name of the trigger being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the trigger being deleted. If needed, replace `namespace_id` with
+        #   the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
         #   Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores this
+        #   setting, and deletes in the background. Please see kubernetes.io/docs/concepts/
+        #   workloads/controllers/garbage-collection/ for more information.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3400,8 +3345,8 @@ module Google
         
         # Rpc to get information about a trigger.
         # @param [String] name
-        #   The name of the trigger being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the trigger being retrieved. If needed, replace `namespace_id`
+        #   with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3431,19 +3376,18 @@ module Google
         
         # Rpc to list triggers.
         # @param [String] parent
-        #   The project ID or project number from which the triggers should
-        #   be listed.
+        #   The project ID or project number from which the triggers should be listed.
         # @param [String] continue
         #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         #   The maximum number of records that should be returned.
         # @param [String] resource_version

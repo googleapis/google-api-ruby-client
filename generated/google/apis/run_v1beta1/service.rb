@@ -52,18 +52,17 @@ module Google
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         # @param [String] parent
-        #   The project ID or project number from which the storages should
-        #   be listed.
+        #   The project ID or project number from which the storages should be listed.
         # @param [String] resource_version
         #   The baseline resource version from which the list or watch operation should
         #   start. Not currently used by Cloud Run.
@@ -106,8 +105,8 @@ module Google
         
         # Rpc to get information about a CustomResourceDefinition.
         # @param [String] name
-        #   The name of the CustomResourceDefinition being retrieved. If needed,
-        #   replace `namespace_id` with the project ID.
+        #   The name of the CustomResourceDefinition being retrieved. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -137,8 +136,8 @@ module Google
         
         # Rpc to get information about a CustomResourceDefinition.
         # @param [String] name
-        #   The name of the CustomResourceDefinition being retrieved. If needed,
-        #   replace `namespace_id` with the project ID.
+        #   The name of the CustomResourceDefinition being retrieved. If needed, replace `
+        #   namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -168,19 +167,18 @@ module Google
         
         # Rpc to list custom resource definitions.
         # @param [String] parent
-        #   The project ID or project number from which the storages should
-        #   be listed.
+        #   The project ID or project number from which the storages should be listed.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
+        #   Allows to filter resources based on a specific value for a field name. Send
+        #   this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently
+        #   used by Cloud Run.
         # @param [Boolean] include_uninitialized
         #   Not currently used by Cloud Run.
         # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
+        #   Allows to filter resources based on a label. Supported operations are =, !=,
+        #   exists, in, and notIn.
         # @param [Fixnum] limit
         # @param [String] resource_version
         #   The baseline resource version from which the list or watch operation should

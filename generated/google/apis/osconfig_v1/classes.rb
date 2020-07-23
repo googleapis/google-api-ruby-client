@@ -199,6 +199,12 @@ module Google
         # @return [Google::Apis::OsconfigV1::PatchConfig]
         attr_accessor :patch_config
       
+        # Patch rollout configuration specifications. Contains details on the
+        # concurrency control when applying patch(es) to all targeted VMs.
+        # Corresponds to the JSON property `rollout`
+        # @return [Google::Apis::OsconfigV1::PatchRollout]
+        attr_accessor :rollout
+      
         def initialize(**args)
            update!(**args)
         end
@@ -211,6 +217,34 @@ module Google
           @duration = args[:duration] if args.key?(:duration)
           @instance_filter = args[:instance_filter] if args.key?(:instance_filter)
           @patch_config = args[:patch_config] if args.key?(:patch_config)
+          @rollout = args[:rollout] if args.key?(:rollout)
+        end
+      end
+      
+      # Message encapsulating a value that can be either absolute ("fixed") or
+      # relative ("percent") to a value.
+      class FixedOrPercent
+        include Google::Apis::Core::Hashable
+      
+        # Specifies a fixed value.
+        # Corresponds to the JSON property `fixed`
+        # @return [Fixnum]
+        attr_accessor :fixed
+      
+        # Specifies the relative value defined as a percentage, which will be
+        # multiplied by a reference value.
+        # Corresponds to the JSON property `percent`
+        # @return [Fixnum]
+        attr_accessor :percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fixed = args[:fixed] if args.key?(:fixed)
+          @percent = args[:percent] if args.key?(:percent)
         end
       end
       
@@ -517,6 +551,12 @@ module Google
         # @return [Google::Apis::OsconfigV1::RecurringSchedule]
         attr_accessor :recurring_schedule
       
+        # Patch rollout configuration specifications. Contains details on the
+        # concurrency control when applying patch(es) to all targeted VMs.
+        # Corresponds to the JSON property `rollout`
+        # @return [Google::Apis::OsconfigV1::PatchRollout]
+        attr_accessor :rollout
+      
         # Output only. Time the patch deployment was last updated. Timestamp is in
         # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `updateTime`
@@ -538,6 +578,7 @@ module Google
           @one_time_schedule = args[:one_time_schedule] if args.key?(:one_time_schedule)
           @patch_config = args[:patch_config] if args.key?(:patch_config)
           @recurring_schedule = args[:recurring_schedule] if args.key?(:recurring_schedule)
+          @rollout = args[:rollout] if args.key?(:rollout)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -709,6 +750,12 @@ module Google
         # @return [Float]
         attr_accessor :percent_complete
       
+        # Patch rollout configuration specifications. Contains details on the
+        # concurrency control when applying patch(es) to all targeted VMs.
+        # Corresponds to the JSON property `rollout`
+        # @return [Google::Apis::OsconfigV1::PatchRollout]
+        attr_accessor :rollout
+      
         # The current state of the PatchJob.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -737,6 +784,7 @@ module Google
           @patch_config = args[:patch_config] if args.key?(:patch_config)
           @patch_deployment = args[:patch_deployment] if args.key?(:patch_deployment)
           @percent_complete = args[:percent_complete] if args.key?(:percent_complete)
+          @rollout = args[:rollout] if args.key?(:rollout)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -895,6 +943,33 @@ module Google
           @succeeded_instance_count = args[:succeeded_instance_count] if args.key?(:succeeded_instance_count)
           @succeeded_reboot_required_instance_count = args[:succeeded_reboot_required_instance_count] if args.key?(:succeeded_reboot_required_instance_count)
           @timed_out_instance_count = args[:timed_out_instance_count] if args.key?(:timed_out_instance_count)
+        end
+      end
+      
+      # Patch rollout configuration specifications. Contains details on the
+      # concurrency control when applying patch(es) to all targeted VMs.
+      class PatchRollout
+        include Google::Apis::Core::Hashable
+      
+        # Message encapsulating a value that can be either absolute ("fixed") or
+        # relative ("percent") to a value.
+        # Corresponds to the JSON property `disruptionBudget`
+        # @return [Google::Apis::OsconfigV1::FixedOrPercent]
+        attr_accessor :disruption_budget
+      
+        # Mode of the patch rollout.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disruption_budget = args[:disruption_budget] if args.key?(:disruption_budget)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       

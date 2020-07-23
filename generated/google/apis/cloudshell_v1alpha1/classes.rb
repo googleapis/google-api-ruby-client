@@ -22,7 +22,8 @@ module Google
   module Apis
     module CloudshellV1alpha1
       
-      # Request message for AuthorizeEnvironment.
+      # Request message for
+      # AuthorizeEnvironment.
       class AuthorizeEnvironmentRequest
         include Google::Apis::Core::Hashable
       
@@ -54,7 +55,8 @@ module Google
         end
       end
       
-      # Request message for CreatePublicKey.
+      # Request message for
+      # CreatePublicKey.
       class CreatePublicKeyRequest
         include Google::Apis::Core::Hashable
       
@@ -319,7 +321,8 @@ module Google
         end
       end
       
-      # Request message for StartEnvironment.
+      # Request message for
+      # StartEnvironment.
       class StartEnvironmentRequest
         include Google::Apis::Core::Hashable
       
@@ -348,8 +351,8 @@ module Google
       end
       
       # Message included in the response field of operations returned from
-      # StartEnvironment once the
-      # operation is complete.
+      # StartEnvironment
+      # once the operation is complete.
       class StartEnvironmentResponse
         include Google::Apis::Core::Hashable
       

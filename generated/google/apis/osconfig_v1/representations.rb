@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FixedOrPercent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcsObject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,12 @@ module Google
       end
       
       class PatchJobInstanceDetailsSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PatchRollout
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -243,6 +255,16 @@ module Google
       
           property :patch_config, as: 'patchConfig', class: Google::Apis::OsconfigV1::PatchConfig, decorator: Google::Apis::OsconfigV1::PatchConfig::Representation
       
+          property :rollout, as: 'rollout', class: Google::Apis::OsconfigV1::PatchRollout, decorator: Google::Apis::OsconfigV1::PatchRollout::Representation
+      
+        end
+      end
+      
+      class FixedOrPercent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fixed, as: 'fixed'
+          property :percent, as: 'percent'
         end
       end
       
@@ -341,6 +363,8 @@ module Google
       
           property :recurring_schedule, as: 'recurringSchedule', class: Google::Apis::OsconfigV1::RecurringSchedule, decorator: Google::Apis::OsconfigV1::RecurringSchedule::Representation
       
+          property :rollout, as: 'rollout', class: Google::Apis::OsconfigV1::PatchRollout, decorator: Google::Apis::OsconfigV1::PatchRollout::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -382,6 +406,8 @@ module Google
       
           property :patch_deployment, as: 'patchDeployment'
           property :percent_complete, as: 'percentComplete'
+          property :rollout, as: 'rollout', class: Google::Apis::OsconfigV1::PatchRollout, decorator: Google::Apis::OsconfigV1::PatchRollout::Representation
+      
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -416,6 +442,15 @@ module Google
           property :succeeded_instance_count, :numeric_string => true, as: 'succeededInstanceCount'
           property :succeeded_reboot_required_instance_count, :numeric_string => true, as: 'succeededRebootRequiredInstanceCount'
           property :timed_out_instance_count, :numeric_string => true, as: 'timedOutInstanceCount'
+        end
+      end
+      
+      class PatchRollout
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disruption_budget, as: 'disruptionBudget', class: Google::Apis::OsconfigV1::FixedOrPercent, decorator: Google::Apis::OsconfigV1::FixedOrPercent::Representation
+      
+          property :mode, as: 'mode'
         end
       end
       

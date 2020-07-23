@@ -767,7 +767,8 @@ module Google
         # @param [String] format
         #   The format to return the message in.
         # @param [Array<String>, String] metadata_headers
-        #   When given and format is METADATA, only include headers specified.
+        #   When given and format is `METADATA`, only include headers
+        #   specified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

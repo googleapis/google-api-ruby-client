@@ -1745,7 +1745,7 @@ module Google
       # existing data unusable.
       # The following are specific rules for service defined Monitoring metric
       # descriptors:
-      # * `type`, `metric_kind`, `value_type`, `description`, and `display_name`
+      # * `type`, `metric_kind`, `value_type` and `description`
       # fields are all required. The `unit` field must be specified
       # if the `value_type` is any of DOUBLE, INT64, DISTRIBUTION.
       # * Maximum of default 500 metric descriptors per service is allowed.
