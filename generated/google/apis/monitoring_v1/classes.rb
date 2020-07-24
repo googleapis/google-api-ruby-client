@@ -52,7 +52,8 @@ module Google
         # value must be at least 60 seconds. If a per-series aligner other than
         # ALIGN_NONE is specified, this field is required or an error is returned. If no
         # per-series aligner is specified, or the aligner ALIGN_NONE is specified, then
-        # this field is ignored.
+        # this field is ignored.The maximum value of the alignment_period is 2 years, or
+        # 104 weeks.
         # Corresponds to the JSON property `alignmentPeriod`
         # @return [String]
         attr_accessor :alignment_period

@@ -146,6 +146,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_tflite_uri, as: 'gcsTfliteUri'
+          property :managed_upload, as: 'managedUpload'
           property :size_bytes, as: 'sizeBytes'
         end
       end

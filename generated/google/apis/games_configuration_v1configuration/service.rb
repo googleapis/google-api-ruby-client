@@ -44,8 +44,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/games/v1configuration'
+          super('https://gamesconfiguration.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Delete the achievement configuration with the given ID.

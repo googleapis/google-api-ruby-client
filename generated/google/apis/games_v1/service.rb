@@ -45,8 +45,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/games/v1'
+          super('https://games.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Lists all the achievement definitions for your application.

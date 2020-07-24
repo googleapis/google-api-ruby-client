@@ -26,69 +26,57 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # Represents a textual expression in the Common Expression Language (CEL)
-        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-        # are documented at https://github.com/google/cel-spec.
-        # Example (Comparison):
-        # title: "Summary size limit"
-        # description: "Determines if a summary is less than 100 chars"
-        # expression: "document.summary.size() < 100"
-        # Example (Equality):
-        # title: "Requestor is owner"
-        # description: "Determines if requestor is the document owner"
-        # expression: "document.owner == request.auth.claims.email"
-        # Example (Logic):
-        # title: "Public documents"
-        # description: "Determine whether the document should be publicly visible"
-        # expression: "document.type != 'private' && document.type != 'internal'"
-        # Example (Data Manipulation):
-        # title: "Notification string"
-        # description: "Create a notification string with a timestamp."
-        # expression: "'New message received at ' + string(document.create_time)"
-        # The exact variables and functions that may be referenced within an expression
-        # are determined by the service that evaluates it. See the service
-        # documentation for additional information.
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::DatacatalogV1beta1::Expr]
         attr_accessor :condition
       
-        # Specifies the identities requesting access for a Cloud Platform resource.
-        # `members` can have the following values:
-        # * `allUsers`: A special identifier that represents anyone who is
-        # on the internet; with or without a Google account.
-        # * `allAuthenticatedUsers`: A special identifier that represents anyone
-        # who is authenticated with a Google account or a service account.
-        # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@example.com` .
-        # * `serviceAccount:`emailid``: An email address that represents a service
-        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
-        # * `group:`emailid``: An email address that represents a Google group.
-        # For example, `admins@example.com`.
-        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For
-        # example, `alice@example.com?uid=123456789012345678901`. If the user is
-        # recovered, this value reverts to `user:`emailid`` and the recovered user
-        # retains the role in the binding.
-        # * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus
-        # unique identifier) representing a service account that has been recently
-        # deleted. For example,
-        # `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to
-        # `serviceAccount:`emailid`` and the undeleted service account retains the
-        # role in the binding.
-        # * `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently
-        # deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-        # the group is recovered, this value reverts to `group:`emailid`` and the
-        # recovered group retains the role in the binding.
-        # * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`.
+        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # members` can have the following values: * `allUsers`: A special identifier
+        # that represents anyone who is on the internet; with or without a Google
+        # account. * `allAuthenticatedUsers`: A special identifier that represents
+        # anyone who is authenticated with a Google account or a service account. * `
+        # user:`emailid``: An email address that represents a specific Google account.
+        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
+        # address that represents a service account. For example, `my-other-app@appspot.
+        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
+        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
+        # `uniqueid``: An email address (plus unique identifier) representing a user
+        # that has been recently deleted. For example, `alice@example.com?uid=
+        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
+        # emailid`` and the recovered user retains the role in the binding. * `deleted:
+        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a service account that has been recently deleted. For
+        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+        # If the service account is undeleted, this value reverts to `serviceAccount:`
+        # emailid`` and the undeleted service account retains the role in the binding. *
+        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a Google group that has been recently deleted. For
+        # example, `admins@example.com?uid=123456789012345678901`. If the group is
+        # recovered, this value reverts to `group:`emailid`` and the recovered group
+        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
+        # primary) that represents all the users of that domain. For example, `google.
+        # com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
       
-        # Role that is assigned to `members`.
-        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
+        # , or `roles/owner`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -105,13 +93,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -124,52 +110,43 @@ module Google
         end
       end
       
-      # Represents a textual expression in the Common Expression Language (CEL)
-      # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-      # are documented at https://github.com/google/cel-spec.
-      # Example (Comparison):
-      # title: "Summary size limit"
-      # description: "Determines if a summary is less than 100 chars"
-      # expression: "document.summary.size() < 100"
-      # Example (Equality):
-      # title: "Requestor is owner"
-      # description: "Determines if requestor is the document owner"
-      # expression: "document.owner == request.auth.claims.email"
-      # Example (Logic):
-      # title: "Public documents"
-      # description: "Determine whether the document should be publicly visible"
-      # expression: "document.type != 'private' && document.type != 'internal'"
-      # Example (Data Manipulation):
-      # title: "Notification string"
-      # description: "Create a notification string with a timestamp."
-      # expression: "'New message received at ' + string(document.create_time)"
-      # The exact variables and functions that may be referenced within an expression
-      # are determined by the service that evaluates it. See the service
-      # documentation for additional information.
+      # Represents a textual expression in the Common Expression Language (CEL) syntax.
+      # CEL is a C-like expression language. The syntax and semantics of CEL are
+      # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+      # "Summary size limit" description: "Determines if a summary is less than 100
+      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+      # Requestor is owner" description: "Determines if requestor is the document
+      # owner" expression: "document.owner == request.auth.claims.email" Example (
+      # Logic): title: "Public documents" description: "Determine whether the document
+      # should be publicly visible" expression: "document.type != 'private' &&
+      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+      # string" description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)" The
+      # exact variables and functions that may be referenced within an expression are
+      # determined by the service that evaluates it. See the service documentation for
+      # additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
-        # Optional. Description of the expression. This is a longer text which
-        # describes the expression, e.g. when hovered over it in a UI.
+        # Optional. Description of the expression. This is a longer text which describes
+        # the expression, e.g. when hovered over it in a UI.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Textual representation of an expression in Common Expression Language
-        # syntax.
+        # Textual representation of an expression in Common Expression Language syntax.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # Optional. String indicating the location of the expression for error
-        # reporting, e.g. a file name and a position in the file.
+        # Optional. String indicating the location of the expression for error reporting,
+        # e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # Optional. Title for the expression, i.e. a short string describing
-        # its purpose. This can be used e.g. in UIs which allow to enter the
-        # expression.
+        # Optional. Title for the expression, i.e. a short string describing its purpose.
+        # This can be used e.g. in UIs which allow to enter the expression.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -210,15 +187,13 @@ module Google
       class GetPolicyOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. The policy format version to be returned.
-        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        # rejected.
-        # Requests for policies with any conditional bindings must specify version 3.
-        # Policies without any conditional bindings may specify any valid value or
-        # leave the field unset.
-        # To learn which resources support conditions in their IAM policies, see the
-        # [IAM
-        # documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        # Optional. The policy format version to be returned. Valid values are 0, 1, and
+        # 3. Requests specifying an invalid value will be rejected. Requests for
+        # policies with any conditional bindings must specify version 3. Policies
+        # without any conditional bindings may specify any valid value or leave the
+        # field unset. To learn which resources support conditions in their IAM policies,
+        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        # resource-policies).
         # Corresponds to the JSON property `requestedPolicyVersion`
         # @return [Fixnum]
         attr_accessor :requested_policy_version
@@ -234,17 +209,14 @@ module Google
       end
       
       # Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`.
-      # Context:
-      # https://cloud.google.com/bigquery/docs/partitioned-tables#
+      # Context: https://cloud.google.com/bigquery/docs/partitioned-tables#
       # partitioning_versus_sharding
       class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec
         include Google::Apis::Core::Hashable
       
         # Output only. The Data Catalog resource name of the dataset entry the current
-        # table
-        # belongs to, for example,
-        # `projects/`project_id`/locations/`location`/entrygroups/`entry_group_id`/
-        # entries/`entry_id``.
+        # table belongs to, for example, `projects/`project_id`/locations/`location`/
+        # entrygroups/`entry_group_id`/entries/`entry_id``.
         # Corresponds to the JSON property `dataset`
         # @return [String]
         attr_accessor :dataset
@@ -255,9 +227,8 @@ module Google
         attr_accessor :shard_count
       
         # Output only. The table name prefix of the shards. The name of any given shard
-        # is
-        # `[table_prefix]YYYYMMDD`, for example, for shard `MyTable20180101`, the
-        # `table_prefix` is `MyTable`.
+        # is `[table_prefix]YYYYMMDD`, for example, for shard `MyTable20180101`, the `
+        # table_prefix` is `MyTable`.
         # Corresponds to the JSON property `tablePrefix`
         # @return [String]
         attr_accessor :table_prefix
@@ -321,9 +292,8 @@ module Google
         attr_accessor :description
       
         # Optional. A column's mode indicates whether the values in this column are
-        # required,
-        # nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported.
-        # Default mode is `NULLABLE`.
+        # required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are
+        # supported. Default mode is `NULLABLE`.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -352,21 +322,17 @@ module Google
         end
       end
       
-      # Entry Metadata.
-      # A Data Catalog Entry resource represents another resource in Google
-      # Cloud Platform (such as a BigQuery dataset or a Pub/Sub topic), or
+      # Entry Metadata. A Data Catalog Entry resource represents another resource in
+      # Google Cloud Platform (such as a BigQuery dataset or a Pub/Sub topic), or
       # outside of Google Cloud Platform. Clients can use the `linked_resource` field
       # in the Entry resource to refer to the original resource ID of the source
-      # system.
-      # An Entry resource contains resource details, such as its schema. An Entry can
-      # also be used to attach flexible metadata, such as a
-      # Tag.
+      # system. An Entry resource contains resource details, such as its schema. An
+      # Entry can also be used to attach flexible metadata, such as a Tag.
       class GoogleCloudDatacatalogV1beta1Entry
         include Google::Apis::Core::Hashable
       
         # Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`.
-        # Context:
-        # https://cloud.google.com/bigquery/docs/partitioned-tables#
+        # Context: https://cloud.google.com/bigquery/docs/partitioned-tables#
         # partitioning_versus_sharding
         # Corresponds to the JSON property `bigqueryDateShardedSpec`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec]
@@ -377,15 +343,15 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1BigQueryTableSpec]
         attr_accessor :bigquery_table_spec
       
-        # Entry description, which can consist of several sentences or paragraphs
-        # that describe entry contents. Default value is an empty string.
+        # Entry description, which can consist of several sentences or paragraphs that
+        # describe entry contents. Default value is an empty string.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # Display information such as title and description. A short name to identify
-        # the entry, for example, "Analytics Data - Jan 2011". Default value is an
-        # empty string.
+        # the entry, for example, "Analytics Data - Jan 2011". Default value is an empty
+        # string.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -401,26 +367,21 @@ module Google
         # @return [String]
         attr_accessor :integrated_system
       
-        # The resource this metadata entry refers to.
-        # For Google Cloud Platform resources, `linked_resource` is the [full name of
-        # the
-        # resource](https://cloud.google.com/apis/design/resource_names#
-        # full_resource_name).
-        # For example, the `linked_resource` for a table resource from BigQuery is:
-        # * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/
-        # tableId
-        # Output only when Entry is of type in the EntryType enum. For entries with
-        # user_specified_type, this field is optional and defaults to an empty
-        # string.
+        # The resource this metadata entry refers to. For Google Cloud Platform
+        # resources, `linked_resource` is the [full name of the resource](https://cloud.
+        # google.com/apis/design/resource_names#full_resource_name). For example, the `
+        # linked_resource` for a table resource from BigQuery is: * //bigquery.
+        # googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output
+        # only when Entry is of type in the EntryType enum. For entries with
+        # user_specified_type, this field is optional and defaults to an empty string.
         # Corresponds to the JSON property `linkedResource`
         # @return [String]
         attr_accessor :linked_resource
       
-        # The Data Catalog resource name of the entry in URL format. Example:
-        # * projects/`project_id`/locations/`location`/entryGroups/`entry_group_id`/
-        # entries/`entry_id`
-        # Note that this Entry and its child resources may not actually be stored in
-        # the location in this name.
+        # The Data Catalog resource name of the entry in URL format. Example: * projects/
+        # `project_id`/locations/`location`/entryGroups/`entry_group_id`/entries/`
+        # entry_id` Note that this Entry and its child resources may not actually be
+        # stored in the location in this name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -435,30 +396,27 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SystemTimestamps]
         attr_accessor :source_system_timestamps
       
-        # The type of the entry.
-        # Only used for Entries with types in the EntryType enum.
+        # The type of the entry. Only used for Entries with types in the EntryType enum.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
         # This field indicates the entry's source system that Data Catalog does not
-        # integrate with. `user_specified_system` strings must begin with a letter
-        # or underscore and can only contain letters, numbers, and underscores; are
-        # case insensitive; must be at least 1 character and at most 64 characters
-        # long.
+        # integrate with. `user_specified_system` strings must begin with a letter or
+        # underscore and can only contain letters, numbers, and underscores; are case
+        # insensitive; must be at least 1 character and at most 64 characters long.
         # Corresponds to the JSON property `userSpecifiedSystem`
         # @return [String]
         attr_accessor :user_specified_system
       
-        # Entry type if it does not fit any of the input-allowed values listed in
-        # `EntryType` enum above. When creating an entry, users should check the
-        # enum values first, if nothing matches the entry to be created, then
-        # provide a custom value, for example "my_special_type".
-        # `user_specified_type` strings must begin with a letter or underscore and
-        # can only contain letters, numbers, and underscores; are case insensitive;
-        # must be at least 1 character and at most 64 characters long.
-        # Currently, only FILESET enum value is allowed. All other entries created
-        # through Data Catalog must use `user_specified_type`.
+        # Entry type if it does not fit any of the input-allowed values listed in `
+        # EntryType` enum above. When creating an entry, users should check the enum
+        # values first, if nothing matches the entry to be created, then provide a
+        # custom value, for example "my_special_type". `user_specified_type` strings
+        # must begin with a letter or underscore and can only contain letters, numbers,
+        # and underscores; are case insensitive; must be at least 1 character and at
+        # most 64 characters long. Currently, only FILESET enum value is allowed. All
+        # other entries created through Data Catalog must use `user_specified_type`.
         # Corresponds to the JSON property `userSpecifiedType`
         # @return [String]
         attr_accessor :user_specified_type
@@ -485,9 +443,8 @@ module Google
         end
       end
       
-      # EntryGroup Metadata.
-      # An EntryGroup resource represents a logical grouping of zero or more
-      # Data Catalog Entry resources.
+      # EntryGroup Metadata. An EntryGroup resource represents a logical grouping of
+      # zero or more Data Catalog Entry resources.
       class GoogleCloudDatacatalogV1beta1EntryGroup
         include Google::Apis::Core::Hashable
       
@@ -496,23 +453,22 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SystemTimestamps]
         attr_accessor :data_catalog_timestamps
       
-        # Entry group description, which can consist of several sentences or
-        # paragraphs that describe entry group contents. Default value is an empty
-        # string.
+        # Entry group description, which can consist of several sentences or paragraphs
+        # that describe entry group contents. Default value is an empty string.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # A short name to identify the entry group, for example,
-        # "analytics data - jan 2011". Default value is an empty string.
+        # A short name to identify the entry group, for example, "analytics data - jan
+        # 2011". Default value is an empty string.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the entry group in URL format. Example:
-        # * projects/`project_id`/locations/`location`/entryGroups/`entry_group_id`
-        # Note that this EntryGroup and its child resources may not actually be
-        # stored in the location in this name.
+        # The resource name of the entry group in URL format. Example: * projects/`
+        # project_id`/locations/`location`/entryGroups/`entry_group_id` Note that this
+        # EntryGroup and its child resources may not actually be stored in the location
+        # in this name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -530,8 +486,7 @@ module Google
         end
       end
       
-      # Response message for
-      # ExportTaxonomies.
+      # Response message for ExportTaxonomies.
       class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse
         include Google::Apis::Core::Hashable
       
@@ -581,11 +536,14 @@ module Google
       
         # The set of allowed values for this enum. This set must not be empty, the
         # display names of the values in this set must not be empty and the display
-        # names of the values must be case-insensitively unique within this set.
-        # The order of items in this list is preserved. This field can be used to
-        # create, remove and reorder enum values. To rename enum values, use the
-        # RenameTagTemplateFieldEnumValue method. This list can include up to 500
-        # allowed values.
+        # names of the values must be case-insensitively unique within this set. The
+        # order of items in this list is preserved. This field can be used to Required
+        # on create; optional on update. The set of allowed values for this enum. This
+        # set must not be empty, the display names of the values in this set must not be
+        # empty and the display names of the values must be case-insensitively unique
+        # within this set. Currently, enum values can only be added to the list of
+        # allowed values. Deletion and renaming of enum values are not supported. Can
+        # have up to 500 allowed values.
         # Corresponds to the JSON property `allowedValues`
         # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>]
         attr_accessor :allowed_values
@@ -654,38 +612,28 @@ module Google
       class GoogleCloudDatacatalogV1beta1GcsFilesetSpec
         include Google::Apis::Core::Hashable
       
-        # Required. Patterns to identify a set of files in Google Cloud Storage.
-        # See [Cloud Storage
-        # documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/
-        # WildcardNames)
-        # for more information. Note that bucket wildcards are currently not
-        # supported.
-        # Examples of valid file_patterns:
-        # * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir`
-        # directory.
-        # * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir`
-        # spanning all subdirectories.
-        # * `gs://bucket_name/file*`: matches files prefixed by `file` in
-        # `bucket_name`
-        # * `gs://bucket_name/??.txt`: matches files with two characters followed by
-        # `.txt` in `bucket_name`
-        # * `gs://bucket_name/[aeiou].txt`: matches files that contain a single
-        # vowel character followed by `.txt` in
-        # `bucket_name`
-        # * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ...
-        # or `m` followed by `.txt` in `bucket_name`
-        # * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match
-        # `a/*/b` pattern, such as `a/c/b`, `a/d/b`
-        # * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
-        # You can combine wildcards to provide more powerful matches, for example:
-        # * `gs://bucket_name/[a-m]??.j*g`
+        # Required. Patterns to identify a set of files in Google Cloud Storage. See [
+        # Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/
+        # addlhelp/WildcardNames) for more information. Note that bucket wildcards are
+        # currently not supported. Examples of valid file_patterns: * `gs://bucket_name/
+        # dir/*`: matches all files within `bucket_name/dir` directory. * `gs://
+        # bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all
+        # subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file`
+        # in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two
+        # characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`
+        # : matches files that contain a single vowel character followed by `.txt` in `
+        # bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `
+        # b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`:
+        # matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`,
+        # `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
+        # You can combine wildcards to provide more powerful matches, for example: * `gs:
+        # //bucket_name/[a-m]??.j*g`
         # Corresponds to the JSON property `filePatterns`
         # @return [Array<String>]
         attr_accessor :file_patterns
       
         # Output only. Sample files contained in this fileset, not all files contained
-        # in this
-        # fileset are represented here.
+        # in this fileset are represented here.
         # Corresponds to the JSON property `sampleGcsFileSpecs`
         # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1GcsFileSpec>]
         attr_accessor :sample_gcs_file_specs
@@ -701,8 +649,7 @@ module Google
         end
       end
       
-      # Request message for
-      # ImportTaxonomies.
+      # Request message for ImportTaxonomies.
       class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest
         include Google::Apis::Core::Hashable
       
@@ -721,8 +668,7 @@ module Google
         end
       end
       
-      # Response message for
-      # ImportTaxonomies.
+      # Response message for ImportTaxonomies.
       class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse
         include Google::Apis::Core::Hashable
       
@@ -760,8 +706,7 @@ module Google
         end
       end
       
-      # Response message for
-      # ListEntries.
+      # Response message for ListEntries.
       class GoogleCloudDatacatalogV1beta1ListEntriesResponse
         include Google::Apis::Core::Hashable
       
@@ -787,8 +732,7 @@ module Google
         end
       end
       
-      # Response message for
-      # ListEntryGroups.
+      # Response message for ListEntryGroups.
       class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse
         include Google::Apis::Core::Hashable
       
@@ -814,13 +758,12 @@ module Google
         end
       end
       
-      # Response message for
-      # ListPolicyTags.
+      # Response message for ListPolicyTags.
       class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
         include Google::Apis::Core::Hashable
       
-        # Token used to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token used to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -841,8 +784,7 @@ module Google
         end
       end
       
-      # Response message for
-      # ListTags.
+      # Response message for ListTags.
       class GoogleCloudDatacatalogV1beta1ListTagsResponse
         include Google::Apis::Core::Hashable
       
@@ -868,13 +810,12 @@ module Google
         end
       end
       
-      # Response message for
-      # ListTaxonomies.
+      # Response message for ListTaxonomies.
       class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse
         include Google::Apis::Core::Hashable
       
-        # Token used to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token used to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -895,10 +836,10 @@ module Google
         end
       end
       
-      # Denotes one policy tag in a taxonomy (e.g. ssn). Policy Tags can be defined
-      # in a hierarchy. For example, consider the following hierarchy:
-      # Geolocation -&gt; (LatLong, City, ZipCode). PolicyTag "Geolocation"
-      # contains three child policy tags: "LatLong", "City", and "ZipCode".
+      # Denotes one policy tag in a taxonomy (e.g. ssn). Policy Tags can be defined in
+      # a hierarchy. For example, consider the following hierarchy: Geolocation -> (
+      # LatLong, City, ZipCode). PolicyTag "Geolocation" contains three child policy
+      # tags: "LatLong", "City", and "ZipCode".
       class GoogleCloudDatacatalogV1beta1PolicyTag
         include Google::Apis::Core::Hashable
       
@@ -907,36 +848,34 @@ module Google
         # @return [Array<String>]
         attr_accessor :child_policy_tags
       
-        # Description of this policy tag. It must: contain only unicode characters,
-        # tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
-        # long when encoded in UTF-8. If not set, defaults to an empty description.
-        # If not set, defaults to an empty description.
+        # Description of this policy tag. It must: contain only unicode characters, tabs,
+        # newlines, carriage returns and page breaks; and be at most 2000 bytes long
+        # when encoded in UTF-8. If not set, defaults to an empty description. If not
+        # set, defaults to an empty description.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # Required. User defined name of this policy tag. It must: be unique within the
-        # parent
-        # taxonomy; contain only unicode letters, numbers, underscores, dashes and
-        # spaces; not start or end with spaces; and be at most 200 bytes long when
+        # parent taxonomy; contain only unicode letters, numbers, underscores, dashes
+        # and spaces; not start or end with spaces; and be at most 200 bytes long when
         # encoded in UTF-8.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Resource name of this policy tag, whose format is:
-        # "projects/`project_number`/locations/`location_id`/taxonomies/`taxonomy_id`/
-        # policyTags/`id`".
+        # Output only. Resource name of this policy tag, whose format is: "projects/`
+        # project_number`/locations/`location_id`/taxonomies/`taxonomy_id`/policyTags/`
+        # id`".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Resource name of this policy tag's parent policy tag (e.g. for the
-        # "LatLong" policy tag in the example above, this field contains the
-        # resource name of the "Geolocation" policy tag). If empty, it means this
-        # policy tag is a top level policy tag (e.g. this field is empty for the
-        # "Geolocation" policy tag in the example above). If not set, defaults to an
-        # empty string.
+        # Resource name of this policy tag's parent policy tag (e.g. for the "LatLong"
+        # policy tag in the example above, this field contains the resource name of the "
+        # Geolocation" policy tag). If empty, it means this policy tag is a top level
+        # policy tag (e.g. this field is empty for the "Geolocation" policy tag in the
+        # example above). If not set, defaults to an empty string.
         # Corresponds to the JSON property `parentPolicyTag`
         # @return [String]
         attr_accessor :parent_policy_tag
@@ -955,8 +894,7 @@ module Google
         end
       end
       
-      # Request message for
-      # RenameTagTemplateFieldEnumValue.
+      # Request message for RenameTagTemplateFieldEnumValue.
       class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest
         include Google::Apis::Core::Hashable
       
@@ -976,8 +914,7 @@ module Google
         end
       end
       
-      # Request message for
-      # RenameTagTemplateField.
+      # Request message for RenameTagTemplateField.
       class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest
         include Google::Apis::Core::Hashable
       
@@ -1001,8 +938,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Schema of columns. A maximum of 10,000 columns and sub-columns can
-        # be
-        # specified.
+        # be specified.
         # Corresponds to the JSON property `columns`
         # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ColumnSchema>]
         attr_accessor :columns
@@ -1017,17 +953,14 @@ module Google
         end
       end
       
-      # Request message for
-      # SearchCatalog.
+      # Request message for SearchCatalog.
       class GoogleCloudDatacatalogV1beta1SearchCatalogRequest
         include Google::Apis::Core::Hashable
       
-        # Specifies the ordering of results, currently supported case-sensitive
-        # choices are:
-        # * `relevance`, only supports descending
-        # * `last_modified_timestamp [asc|desc]`, defaults to descending if not
-        # specified
-        # If not specified, defaults to `relevance` descending.
+        # Specifies the ordering of results, currently supported case-sensitive choices
+        # are: * `relevance`, only supports descending * `last_modified_timestamp [asc|
+        # desc]`, defaults to descending if not specified If not specified, defaults to `
+        # relevance` descending.
         # Corresponds to the JSON property `orderBy`
         # @return [String]
         attr_accessor :order_by
@@ -1038,25 +971,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # Optional. Pagination token returned in an earlier
-        # SearchCatalogResponse.next_page_token, which
-        # indicates that this is a continuation of a prior
-        # SearchCatalogRequest
-        # call, and that the system should return the next page of data. If empty,
-        # the first page is returned.
+        # Optional. Pagination token returned in an earlier SearchCatalogResponse.
+        # next_page_token, which indicates that this is a continuation of a prior
+        # SearchCatalogRequest call, and that the system should return the next page of
+        # data. If empty, the first page is returned.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
       
         # Required. The query string in search query syntax. The query must be non-empty.
-        # Query strings can be simple as "x" or more qualified as:
-        # * name:x
-        # * column:x
-        # * description:y
-        # Note: Query tokens need to have a minimum of 3 characters for substring
-        # matching to work correctly. See [Data Catalog Search
-        # Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)
-        # for more information.
+        # Query strings can be simple as "x" or more qualified as: * name:x * column:x *
+        # description:y Note: Query tokens need to have a minimum of 3 characters for
+        # substring matching to work correctly. See [Data Catalog Search Syntax](https://
+        # cloud.google.com/data-catalog/docs/how-to/search-reference) for more
+        # information.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -1084,63 +1012,40 @@ module Google
       class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope
         include Google::Apis::Core::Hashable
       
-        # If `true`, include Google Cloud Platform (GCP) public datasets in the
-        # search results. Info on GCP public datasets is available at
-        # https://cloud.google.com/public-datasets/. By default, GCP public
-        # datasets are excluded.
+        # If `true`, include Google Cloud Platform (GCP) public datasets in the search
+        # results. Info on GCP public datasets is available at https://cloud.google.com/
+        # public-datasets/. By default, GCP public datasets are excluded.
         # Corresponds to the JSON property `includeGcpPublicDatasets`
         # @return [Boolean]
         attr_accessor :include_gcp_public_datasets
         alias_method :include_gcp_public_datasets?, :include_gcp_public_datasets
       
-        # The list of organization IDs to search within. To find your organization
-        # ID, follow instructions in
-        # https://cloud.google.com/resource-manager/docs/creating-managing-organization.
+        # The list of organization IDs to search within. To find your organization ID,
+        # follow instructions in https://cloud.google.com/resource-manager/docs/creating-
+        # managing-organization.
         # Corresponds to the JSON property `includeOrgIds`
         # @return [Array<String>]
         attr_accessor :include_org_ids
       
-        # The list of project IDs to search within. To learn more about the
-        # distinction between project names/IDs/numbers, go to
-        # https://cloud.google.com/docs/overview/#projects.
+        # The list of project IDs to search within. To learn more about the distinction
+        # between project names/IDs/numbers, go to https://cloud.google.com/docs/
+        # overview/#projects.
         # Corresponds to the JSON property `includeProjectIds`
         # @return [Array<String>]
         attr_accessor :include_project_ids
       
-        # Optional. The list of locations to search within.
-        # 1. If empty, search will be performed in all locations;
-        # 2. If any of the locations are NOT in the valid locations list, error
-        # will be returned;
-        # 3. Otherwise, search only the given locations for matching results.
-        # Typical usage is to leave this field empty. When a location is
-        # unreachable as returned in the `SearchCatalogResponse.unreachable` field,
-        # users can repeat the search request with this parameter set to get
-        # additional information on the error.
-        # Valid locations:
-        # * asia-east1
-        # * asia-east2
-        # * asia-northeast1
-        # * asia-northeast2
-        # * asia-northeast3
-        # * asia-south1
-        # * asia-southeast1
-        # * australia-southeast1
-        # * eu
-        # * europe-north1
-        # * europe-west1
-        # * europe-west2
-        # * europe-west3
-        # * europe-west4
-        # * europe-west6
-        # * global
-        # * northamerica-northeast1
-        # * southamerica-east1
-        # * us
-        # * us-central1
-        # * us-east1
-        # * us-east4
-        # * us-west1
-        # * us-west2
+        # Optional. The list of locations to search within. 1. If empty, search will be
+        # performed in all locations; 2. If any of the locations are NOT in the valid
+        # locations list, error will be returned; 3. Otherwise, search only the given
+        # locations for matching results. Typical usage is to leave this field empty.
+        # When a location is unreachable as returned in the `SearchCatalogResponse.
+        # unreachable` field, users can repeat the search request with this parameter
+        # set to get additional information on the error. Valid locations: * asia-east1 *
+        # asia-east2 * asia-northeast1 * asia-northeast2 * asia-northeast3 * asia-
+        # south1 * asia-southeast1 * australia-southeast1 * eu * europe-north1 * europe-
+        # west1 * europe-west2 * europe-west3 * europe-west4 * europe-west6 * global *
+        # northamerica-northeast1 * southamerica-east1 * us * us-central1 * us-east1 *
+        # us-east4 * us-west1 * us-west2
         # Corresponds to the JSON property `restrictedLocations`
         # @return [Array<String>]
         attr_accessor :restricted_locations
@@ -1158,8 +1063,7 @@ module Google
         end
       end
       
-      # Response message for
-      # SearchCatalog.
+      # Response message for SearchCatalog.
       class GoogleCloudDatacatalogV1beta1SearchCatalogResponse
         include Google::Apis::Core::Hashable
       
@@ -1174,9 +1078,9 @@ module Google
         attr_accessor :results
       
         # Unreachable locations. Search result does not include data from those
-        # locations. Users can get additional information on the error by repeating
-        # the search request with a more restrictive parameter -- setting the value
-        # for `SearchDataCatalogRequest.scope.include_locations`.
+        # locations. Users can get additional information on the error by repeating the
+        # search request with a more restrictive parameter -- setting the value for `
+        # SearchDataCatalogRequest.scope.include_locations`.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1198,28 +1102,24 @@ module Google
       class GoogleCloudDatacatalogV1beta1SearchCatalogResult
         include Google::Apis::Core::Hashable
       
-        # The full name of the cloud resource the entry belongs to. See:
-        # https://cloud.google.com/apis/design/resource_names#full_resource_name.
-        # Example:
-        # * `//bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/
-        # tableId`
+        # The full name of the cloud resource the entry belongs to. See: https://cloud.
+        # google.com/apis/design/resource_names#full_resource_name. Example: * `//
+        # bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId`
         # Corresponds to the JSON property `linkedResource`
         # @return [String]
         attr_accessor :linked_resource
       
-        # The relative resource name of the resource in URL format.
-        # Examples:
-        # * `projects/`project_id`/locations/`location_id`/entryGroups/`entry_group_id`/
-        # entries/`entry_id``
-        # * `projects/`project_id`/tagTemplates/`tag_template_id``
+        # The relative resource name of the resource in URL format. Examples: * `
+        # projects/`project_id`/locations/`location_id`/entryGroups/`entry_group_id`/
+        # entries/`entry_id`` * `projects/`project_id`/tagTemplates/`tag_template_id``
         # Corresponds to the JSON property `relativeResourceName`
         # @return [String]
         attr_accessor :relative_resource_name
       
         # Sub-type of the search result. This is a dot-delimited description of the
         # resource's full type, and is the same as the value callers would provide in
-        # the "type" search facet.  Examples: `entry.table`, `entry.dataStream`,
-        # `tagTemplate`.
+        # the "type" search facet. Examples: `entry.table`, `entry.dataStream`, `
+        # tagTemplate`.
         # Corresponds to the JSON property `searchResultSubtype`
         # @return [String]
         attr_accessor :search_result_subtype
@@ -1252,9 +1152,9 @@ module Google
         # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedPolicyTag>]
         attr_accessor :child_policy_tags
       
-        # Description of the serialized policy tag. The length of the
-        # description is limited to 2000 bytes when encoded in UTF-8. If not set,
-        # defaults to an empty description.
+        # Description of the serialized policy tag. The length of the description is
+        # limited to 2000 bytes when encoded in UTF-8. If not set, defaults to an empty
+        # description.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1264,8 +1164,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name of the policy tag.
-        # This field will be ignored when calling ImportTaxonomies.
+        # Resource name of the policy tag. This field will be ignored when calling
+        # ImportTaxonomies.
         # Corresponds to the JSON property `policyTag`
         # @return [String]
         attr_accessor :policy_tag
@@ -1288,9 +1188,9 @@ module Google
       class GoogleCloudDatacatalogV1beta1SerializedTaxonomy
         include Google::Apis::Core::Hashable
       
-        # Description of the serialized taxonomy. The length of the
-        # description is limited to 2000 bytes when encoded in UTF-8. If not set,
-        # defaults to an empty description.
+        # Description of the serialized taxonomy. The length of the description is
+        # limited to 2000 bytes when encoded in UTF-8. If not set, defaults to an empty
+        # description.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1354,12 +1254,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. If the table is a dated shard, i.e., with name pattern `[prefix]
-        # YYYYMMDD`,
-        # `grouped_entry` is the Data Catalog resource name of the date sharded
-        # grouped entry, for example,
-        # `projects/`project_id`/locations/`location`/entrygroups/`entry_group_id`/
-        # entries/`entry_id``.
-        # Otherwise, `grouped_entry` is empty.
+        # YYYYMMDD`, `grouped_entry` is the Data Catalog resource name of the date
+        # sharded grouped entry, for example, `projects/`project_id`/locations/`location`
+        # /entrygroups/`entry_group_id`/entries/`entry_id``. Otherwise, `grouped_entry`
+        # is empty.
         # Corresponds to the JSON property `groupedEntry`
         # @return [String]
         attr_accessor :grouped_entry
@@ -1375,42 +1273,38 @@ module Google
       end
       
       # Tags are used to attach custom metadata to Data Catalog resources. Tags
-      # conform to the specifications within their tag template.
-      # See [Data Catalog
-      # IAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for information
-      # on the permissions needed to create or view tags.
+      # conform to the specifications within their tag template. See [Data Catalog IAM]
+      # (https://cloud.google.com/data-catalog/docs/concepts/iam) for information on
+      # the permissions needed to create or view tags.
       class GoogleCloudDatacatalogV1beta1Tag
         include Google::Apis::Core::Hashable
       
-        # Resources like Entry can have schemas associated with them. This scope
-        # allows users to attach tags to an individual column based on that schema.
-        # For attaching a tag to a nested column, use `.` to separate the column
-        # names. Example:
-        # * `outer_column.inner_column`
+        # Resources like Entry can have schemas associated with them. This scope allows
+        # users to attach tags to an individual column based on that schema. For
+        # attaching a tag to a nested column, use `.` to separate the column names.
+        # Example: * `outer_column.inner_column`
         # Corresponds to the JSON property `column`
         # @return [String]
         attr_accessor :column
       
         # Required. This maps the ID of a tag field to the value of and additional
-        # information
-        # about that field. Valid field IDs are defined by the tag's template. A tag
-        # must have at least 1 field and at most 500 fields.
+        # information about that field. Valid field IDs are defined by the tag's
+        # template. A tag must have at least 1 field and at most 500 fields.
         # Corresponds to the JSON property `fields`
         # @return [Hash<String,Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TagField>]
         attr_accessor :fields
       
-        # The resource name of the tag in URL format. Example:
-        # * projects/`project_id`/locations/`location`/entrygroups/`entry_group_id`/
-        # entries/`entry_id`/tags/`tag_id`
-        # where `tag_id` is a system-generated identifier.
-        # Note that this Tag may not actually be stored in the location in this name.
+        # The resource name of the tag in URL format. Example: * projects/`project_id`/
+        # locations/`location`/entrygroups/`entry_group_id`/entries/`entry_id`/tags/`
+        # tag_id` where `tag_id` is a system-generated identifier. Note that this Tag
+        # may not actually be stored in the location in this name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. The resource name of the tag template that this tag uses. Example:
-        # * projects/`project_id`/locations/`location`/tagTemplates/`tag_template_id`
-        # This field cannot be modified after creation.
+        # Required. The resource name of the tag template that this tag uses. Example: *
+        # projects/`project_id`/locations/`location`/tagTemplates/`tag_template_id` This
+        # field cannot be modified after creation.
         # Corresponds to the JSON property `template`
         # @return [String]
         attr_accessor :template
@@ -1434,8 +1328,7 @@ module Google
         end
       end
       
-      # Contains the value and supporting information for a field within
-      # a Tag.
+      # Contains the value and supporting information for a field within a Tag.
       class GoogleCloudDatacatalogV1beta1TagField
         include Google::Apis::Core::Hashable
       
@@ -1461,11 +1354,9 @@ module Google
         attr_accessor :enum_value
       
         # Output only. The order of this field with respect to other fields in this tag.
-        # It can be
-        # set in Tag. For
-        # example, a higher value can indicate a more important field. The value can
-        # be negative. Multiple fields can have the same order, and field orders
-        # within a tag do not have to be sequential.
+        # It can be set in Tag. For example, a higher value can indicate a more
+        # important field. The value can be negative. Multiple fields can have the same
+        # order, and field orders within a tag do not have to be sequential.
         # Corresponds to the JSON property `order`
         # @return [Fixnum]
         attr_accessor :order
@@ -1515,15 +1406,13 @@ module Google
         end
       end
       
-      # A tag template defines a tag, which can have one or more typed fields.
-      # The template is used to create and attach the tag to GCP resources.
-      # [Tag template
+      # A tag template defines a tag, which can have one or more typed fields. The
+      # template is used to create and attach the tag to GCP resources. [Tag template
       # roles](https://cloud.google.com/iam/docs/understanding-roles#data-catalog-
-      # roles)
-      # provide permissions to create, edit, and use the template. See, for example,
-      # the [TagTemplate
-      # User](https://cloud.google.com/data-catalog/docs/how-to/template-user) role,
-      # which includes permission to use the tag template to tag resources.
+      # roles) provide permissions to create, edit, and use the template. See, for
+      # example, the [TagTemplate User](https://cloud.google.com/data-catalog/docs/how-
+      # to/template-user) role, which includes permission to use the tag template to
+      # tag resources.
       class GoogleCloudDatacatalogV1beta1TagTemplate
         include Google::Apis::Core::Hashable
       
@@ -1532,21 +1421,21 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Required. Map of tag template field IDs to the settings for the field.
-        # This map is an exhaustive list of the allowed fields. This map must contain
-        # at least one field and at most 500 fields.
-        # The keys to this map are tag template field IDs. Field IDs can contain
-        # letters (both uppercase and lowercase), numbers (0-9) and underscores (_).
-        # Field IDs must be at least 1 character long and at most
-        # 64 characters long. Field IDs must start with a letter or underscore.
+        # Required. Map of tag template field IDs to the settings for the field. This
+        # map is an exhaustive list of the allowed fields. This map must contain at
+        # least one field and at most 500 fields. The keys to this map are tag template
+        # field IDs. Field IDs can contain letters (both uppercase and lowercase),
+        # numbers (0-9) and underscores (_). Field IDs must be at least 1 character long
+        # and at most 64 characters long. Field IDs must start with a letter or
+        # underscore.
         # Corresponds to the JSON property `fields`
         # @return [Hash<String,Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TagTemplateField>]
         attr_accessor :fields
       
-        # The resource name of the tag template in URL format. Example:
-        # * projects/`project_id`/locations/`location`/tagTemplates/`tag_template_id`
-        # Note that this TagTemplate and its child resources may not actually be
-        # stored in the location in this name.
+        # The resource name of the tag template in URL format. Example: * projects/`
+        # project_id`/locations/`location`/tagTemplates/`tag_template_id` Note that this
+        # TagTemplate and its child resources may not actually be stored in the location
+        # in this name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1579,19 +1468,17 @@ module Google
         alias_method :is_required?, :is_required
       
         # Output only. The resource name of the tag template field in URL format.
-        # Example:
-        # * projects/`project_id`/locations/`location`/tagTemplates/`tag_template`/
-        # fields/`field`
-        # Note that this TagTemplateField may not actually be stored in the location
-        # in this name.
+        # Example: * projects/`project_id`/locations/`location`/tagTemplates/`
+        # tag_template`/fields/`field` Note that this TagTemplateField may not actually
+        # be stored in the location in this name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The order of this field with respect to other fields in this tag
-        # template.  A higher value indicates a more important field. The value can
-        # be negative. Multiple fields can have the same order, and field orders
-        # within a tag do not have to be sequential.
+        # The order of this field with respect to other fields in this tag template. A
+        # higher value indicates a more important field. The value can be negative.
+        # Multiple fields can have the same order, and field orders within a tag do not
+        # have to be sequential.
         # Corresponds to the JSON property `order`
         # @return [Fixnum]
         attr_accessor :order
@@ -1624,30 +1511,28 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. A list of policy types that are activated for this taxonomy. If not
-        # set,
-        # defaults to an empty list.
+        # set, defaults to an empty list.
         # Corresponds to the JSON property `activatedPolicyTypes`
         # @return [Array<String>]
         attr_accessor :activated_policy_types
       
         # Optional. Description of this taxonomy. It must: contain only unicode
-        # characters,
-        # tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
-        # long when encoded in UTF-8. If not set, defaults to an empty description.
+        # characters, tabs, newlines, carriage returns and page breaks; and be at most
+        # 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty
+        # description.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # Required. User defined name of this taxonomy. It must: contain only unicode
-        # letters,
-        # numbers, underscores, dashes and spaces; not start or end with spaces; and
-        # be at most 200 bytes long when encoded in UTF-8.
+        # letters, numbers, underscores, dashes and spaces; not start or end with spaces;
+        # and be at most 200 bytes long when encoded in UTF-8.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Resource name of this taxonomy, whose format is:
-        # "projects/`project_number`/locations/`location_id`/taxonomies/`id`".
+        # Output only. Resource name of this taxonomy, whose format is: "projects/`
+        # project_number`/locations/`location_id`/taxonomies/`id`".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1685,111 +1570,73 @@ module Google
       end
       
       # An Identity and Access Management (IAM) policy, which specifies access
-      # controls for Google Cloud resources.
-      # A `Policy` is a collection of `bindings`. A `binding` binds one or more
-      # `members` to a single `role`. Members can be user accounts, service accounts,
-      # Google groups, and domains (such as G Suite). A `role` is a named list of
-      # permissions; each `role` can be an IAM predefined role or a user-created
-      # custom role.
-      # For some types of Google Cloud resources, a `binding` can also specify a
-      # `condition`, which is a logical expression that allows access to a resource
-      # only if the expression evaluates to `true`. A condition can add constraints
-      # based on attributes of the request, the resource, or both. To learn which
-      # resources support conditions in their IAM policies, see the
-      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-      # policies).
-      # **JSON example:**
-      # `
-      # "bindings": [
-      # `
-      # "role": "roles/resourcemanager.organizationAdmin",
-      # "members": [
-      # "user:mike@example.com",
-      # "group:admins@example.com",
-      # "domain:google.com",
-      # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-      # ]
-      # `,
-      # `
-      # "role": "roles/resourcemanager.organizationViewer",
-      # "members": [
-      # "user:eve@example.com"
-      # ],
-      # "condition": `
-      # "title": "expirable access",
-      # "description": "Does not grant access after Sep 2020",
-      # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
-      # ",
-      # `
-      # `
-      # ],
-      # "etag": "BwWWja0YfJA=",
-      # "version": 3
-      # `
-      # **YAML example:**
-      # bindings:
-      # - members:
-      # - user:mike@example.com
-      # - group:admins@example.com
-      # - domain:google.com
-      # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin
-      # - members:
-      # - user:eve@example.com
-      # role: roles/resourcemanager.organizationViewer
-      # condition:
-      # title: expirable access
-      # description: Does not grant access after Sep 2020
-      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-      # - etag: BwWWja0YfJA=
-      # - version: 3
-      # For a description of IAM and its features, see the
-      # [IAM documentation](https://cloud.google.com/iam/docs/).
+      # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+      # A `binding` binds one or more `members` to a single `role`. Members can be
+      # user accounts, service accounts, Google groups, and domains (such as G Suite).
+      # A `role` is a named list of permissions; each `role` can be an IAM predefined
+      # role or a user-created custom role. For some types of Google Cloud resources,
+      # a `binding` can also specify a `condition`, which is a logical expression that
+      # allows access to a resource only if the expression evaluates to `true`. A
+      # condition can add constraints based on attributes of the request, the resource,
+      # or both. To learn which resources support conditions in their IAM policies,
+      # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+      # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+      # title": "expirable access", "description": "Does not grant access after Sep
+      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+      # members: - user:mike@example.com - group:admins@example.com - domain:google.
+      # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+      # roles/resourcemanager.organizationViewer condition: title: expirable access
+      # description: Does not grant access after Sep 2020 expression: request.time <
+      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # description of IAM and its features, see the [IAM documentation](https://cloud.
+      # google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Associates a list of `members` to a `role`. Optionally, may specify a
-        # `condition` that determines how and when the `bindings` are applied. Each
-        # of the `bindings` must contain at least one member.
+        # Associates a list of `members` to a `role`. Optionally, may specify a `
+        # condition` that determines how and when the `bindings` are applied. Each of
+        # the `bindings` must contain at least one member.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::DatacatalogV1beta1::Binding>]
         attr_accessor :bindings
       
-        # `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of a policy from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform policy updates in order to avoid race
-        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
-        # systems are expected to put that etag in the request to `setIamPolicy` to
-        # ensure that their change will be applied to the same version of the policy.
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-        # you to overwrite a version `3` policy with a version `1` policy, and all of
-        # the conditions in the version `3` policy are lost.
+        # `etag` is used for optimistic concurrency control as a way to help prevent
+        # simultaneous updates of a policy from overwriting each other. It is strongly
+        # suggested that systems make use of the `etag` in the read-modify-write cycle
+        # to perform policy updates in order to avoid race conditions: An `etag` is
+        # returned in the response to `getIamPolicy`, and systems are expected to put
+        # that etag in the request to `setIamPolicy` to ensure that their change will be
+        # applied to the same version of the policy. **Important:** If you use IAM
+        # Conditions, you must include the `etag` field whenever you call `setIamPolicy`.
+        # If you omit this field, then IAM allows you to overwrite a version `3` policy
+        # with a version `1` policy, and all of the conditions in the version `3` policy
+        # are lost.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
-        # Specifies the format of the policy.
-        # Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-        # are rejected.
-        # Any operation that affects conditional role bindings must specify version
-        # `3`. This requirement applies to the following operations:
-        # * Getting a policy that includes a conditional role binding
-        # * Adding a conditional role binding to a policy
-        # * Changing a conditional role binding in a policy
-        # * Removing any role binding, with or without a condition, from a policy
-        # that includes conditions
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-        # you to overwrite a version `3` policy with a version `1` policy, and all of
-        # the conditions in the version `3` policy are lost.
-        # If a policy does not include any conditions, operations on that policy may
-        # specify any valid version or leave the field unset.
-        # To learn which resources support conditions in their IAM policies, see the
-        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-        # policies).
+        # Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+        # Requests that specify an invalid value are rejected. Any operation that
+        # affects conditional role bindings must specify version `3`. This requirement
+        # applies to the following operations: * Getting a policy that includes a
+        # conditional role binding * Adding a conditional role binding to a policy *
+        # Changing a conditional role binding in a policy * Removing any role binding,
+        # with or without a condition, from a policy that includes conditions **
+        # Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows you
+        # to overwrite a version `3` policy with a version `1` policy, and all of the
+        # conditions in the version `3` policy are lost. If a policy does not include
+        # any conditions, operations on that policy may specify any valid version or
+        # leave the field unset. To learn which resources support conditions in their
+        # IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/
+        # conditions/resource-policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -1811,66 +1658,32 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An Identity and Access Management (IAM) policy, which specifies access
-        # controls for Google Cloud resources.
-        # A `Policy` is a collection of `bindings`. A `binding` binds one or more
-        # `members` to a single `role`. Members can be user accounts, service accounts,
-        # Google groups, and domains (such as G Suite). A `role` is a named list of
-        # permissions; each `role` can be an IAM predefined role or a user-created
-        # custom role.
-        # For some types of Google Cloud resources, a `binding` can also specify a
-        # `condition`, which is a logical expression that allows access to a resource
-        # only if the expression evaluates to `true`. A condition can add constraints
-        # based on attributes of the request, the resource, or both. To learn which
-        # resources support conditions in their IAM policies, see the
-        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-        # policies).
-        # **JSON example:**
-        # `
-        # "bindings": [
-        # `
-        # "role": "roles/resourcemanager.organizationAdmin",
-        # "members": [
-        # "user:mike@example.com",
-        # "group:admins@example.com",
-        # "domain:google.com",
-        # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-        # ]
-        # `,
-        # `
-        # "role": "roles/resourcemanager.organizationViewer",
-        # "members": [
-        # "user:eve@example.com"
-        # ],
-        # "condition": `
-        # "title": "expirable access",
-        # "description": "Does not grant access after Sep 2020",
-        # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
-        # ",
-        # `
-        # `
-        # ],
-        # "etag": "BwWWja0YfJA=",
-        # "version": 3
-        # `
-        # **YAML example:**
-        # bindings:
-        # - members:
-        # - user:mike@example.com
-        # - group:admins@example.com
-        # - domain:google.com
-        # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin
-        # - members:
-        # - user:eve@example.com
-        # role: roles/resourcemanager.organizationViewer
-        # condition:
-        # title: expirable access
-        # description: Does not grant access after Sep 2020
-        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-        # - etag: BwWWja0YfJA=
-        # - version: 3
-        # For a description of IAM and its features, see the
-        # [IAM documentation](https://cloud.google.com/iam/docs/).
+        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+        # A `binding` binds one or more `members` to a single `role`. Members can be
+        # user accounts, service accounts, Google groups, and domains (such as G Suite).
+        # A `role` is a named list of permissions; each `role` can be an IAM predefined
+        # role or a user-created custom role. For some types of Google Cloud resources,
+        # a `binding` can also specify a `condition`, which is a logical expression that
+        # allows access to a resource only if the expression evaluates to `true`. A
+        # condition can add constraints based on attributes of the request, the resource,
+        # or both. To learn which resources support conditions in their IAM policies,
+        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+        # title": "expirable access", "description": "Does not grant access after Sep
+        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+        # members: - user:mike@example.com - group:admins@example.com - domain:google.
+        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+        # roles/resourcemanager.organizationViewer condition: title: expirable access
+        # description: Does not grant access after Sep 2020 expression: request.time <
+        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # description of IAM and its features, see the [IAM documentation](https://cloud.
+        # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::DatacatalogV1beta1::Policy]
         attr_accessor :policy
@@ -1889,10 +1702,9 @@ module Google
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
       
-        # The set of permissions to check for the `resource`. Permissions with
-        # wildcards (such as '*' or 'storage.*') are not allowed. For more
-        # information see
-        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        # The set of permissions to check for the `resource`. Permissions with wildcards
+        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -1911,8 +1723,7 @@ module Google
       class TestIamPermissionsResponse
         include Google::Apis::Core::Hashable
       
-        # A subset of `TestPermissionsRequest.permissions` that the caller is
-        # allowed.
+        # A subset of `TestPermissionsRequest.permissions` that the caller is allowed.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions

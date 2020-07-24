@@ -60,8 +60,7 @@ module Google
         # @param [Fixnum] row_count
         #   The number of conversions to return per call.
         # @param [Fixnum] start_date
-        #   First date (inclusive) on which to retrieve conversions. Format is
-        #   yyyymmdd.
+        #   First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
         # @param [Fixnum] start_row
         #   The 0-based starting index for retrieving conversions results.
         # @param [Fixnum] ad_group_id
@@ -169,8 +168,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the availabilities of a batch of floodlight activities in
-        # DoubleClick Search.
+        # Updates the availabilities of a batch of floodlight activities in DoubleClick
+        # Search.
         # @param [Google::Apis::DoubleclicksearchV2::UpdateAvailabilityRequest] update_availability_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

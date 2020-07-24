@@ -7629,6 +7629,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `gaia`
+        # @return [Fixnum]
+        attr_accessor :gaia
+      
+        # 
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -7644,6 +7649,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @gaia = args[:gaia] if args.key?(:gaia)
           @id = args[:id] if args.key?(:id)
           @snippet = args[:snippet] if args.key?(:snippet)
         end

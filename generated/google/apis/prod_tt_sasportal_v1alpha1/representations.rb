@@ -52,12 +52,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SasPortalDeployment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SasPortalDevice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,12 +131,6 @@ module Google
       end
       
       class SasPortalListCustomersResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SasPortalListDeploymentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -272,17 +260,6 @@ module Google
       class SasPortalCustomer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          property :name, as: 'name'
-          collection :sas_user_ids, as: 'sasUserIds'
-        end
-      end
-      
-      class SasPortalDeployment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :allowed_billing_modes, as: 'allowedBillingModes'
-          property :default_billing_mode, as: 'defaultBillingMode'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           collection :sas_user_ids, as: 'sasUserIds'
@@ -434,15 +411,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :customers, as: 'customers', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalCustomer, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalCustomer::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class SasPortalListDeploymentsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :deployments, as: 'deployments', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeployment, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeployment::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end

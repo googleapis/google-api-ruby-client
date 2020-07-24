@@ -1886,6 +1886,7 @@ module Google
           property :account_id, :numeric_string => true, as: 'accountId'
           property :batch_id, as: 'batchId'
           property :force, as: 'force'
+          collection :label_ids, as: 'labelIds'
           property :link_request, as: 'linkRequest', class: Google::Apis::ContentV2::AccountsCustomBatchRequestEntryLinkRequest, decorator: Google::Apis::ContentV2::AccountsCustomBatchRequestEntryLinkRequest::Representation
       
           property :merchant_id, :numeric_string => true, as: 'merchantId'

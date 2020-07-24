@@ -43,8 +43,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://sqladmin.googleapis.com/', '')
-          @batch_path = 'batch'
+          super('https://www.googleapis.com/', '')
+          @batch_path = 'batch/sql'
         end
         
         # Deletes the backup taken by a backup run.

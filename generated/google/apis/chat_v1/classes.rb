@@ -683,6 +683,25 @@ module Google
         end
       end
       
+      # Media resource.
+      class Media
+        include Google::Apis::Core::Hashable
+      
+        # Name of the media resource.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
       # Represents a membership relation in Hangouts Chat.
       class Membership
         include Google::Apis::Core::Hashable

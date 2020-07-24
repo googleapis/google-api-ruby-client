@@ -307,8 +307,8 @@ module Google
       end
       
       # Message included in the response field of operations returned from
-      # StartEnvironment once the
-      # operation is complete.
+      # StartEnvironment
+      # once the operation is complete.
       class StartEnvironmentResponse
         include Google::Apis::Core::Hashable
       

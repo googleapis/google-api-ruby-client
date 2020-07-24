@@ -299,7 +299,7 @@ module Google
         end
       end
       
-      # 
+      # Response message for UpdateMultipleAchievements rpc.
       class AchievementUpdateMultipleResponse
         include Google::Apis::Core::Hashable
       

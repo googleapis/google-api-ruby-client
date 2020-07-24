@@ -717,6 +717,16 @@ module Google
         # @return [String]
         attr_accessor :message_id
       
+        # If non-empty, identifies related messages for which publish order should be
+        # respected. If a `Subscription` has `enable_message_ordering` set to `true`,
+        # messages published with the same non-empty `ordering_key` value will be
+        # delivered to subscribers in the order in which they are received by the
+        # Pub/Sub system. All `PubsubMessage`s published in a given `PublishRequest`
+        # must specify the same `ordering_key` value.
+        # Corresponds to the JSON property `orderingKey`
+        # @return [String]
+        attr_accessor :ordering_key
+      
         # The time at which the message was published, populated by the server when
         # it receives the `Publish` call. It must not be populated by the
         # publisher in a `Publish` call.
@@ -733,6 +743,7 @@ module Google
           @attributes = args[:attributes] if args.key?(:attributes)
           @data = args[:data] if args.key?(:data)
           @message_id = args[:message_id] if args.key?(:message_id)
+          @ordering_key = args[:ordering_key] if args.key?(:ordering_key)
           @publish_time = args[:publish_time] if args.key?(:publish_time)
         end
       end

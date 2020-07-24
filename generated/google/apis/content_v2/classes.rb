@@ -958,6 +958,11 @@ module Google
         attr_accessor :force
         alias_method :force?, :force
       
+        # Label IDs for the 'updatelabels' request.
+        # Corresponds to the JSON property `labelIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :label_ids
+      
         # Details about the `link` request.
         # Corresponds to the JSON property `linkRequest`
         # @return [Google::Apis::ContentV2::AccountsCustomBatchRequestEntryLinkRequest]
@@ -997,6 +1002,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
           @force = args[:force] if args.key?(:force)
+          @label_ids = args[:label_ids] if args.key?(:label_ids)
           @link_request = args[:link_request] if args.key?(:link_request)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @request_method = args[:request_method] if args.key?(:request_method)

@@ -27,7 +27,7 @@ module Google
     # @see https://developers.google.com/games/
     module GamesManagementV1management
       VERSION = 'V1management'
-      REVISION = '20200514'
+      REVISION = '20200720'
 
       # Create, edit, and delete your Google Play Games activity
       AUTH_GAMES = 'https://www.googleapis.com/auth/games'

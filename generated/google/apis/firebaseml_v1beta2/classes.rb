@@ -324,6 +324,14 @@ module Google
         # @return [String]
         attr_accessor :gcs_tflite_uri
       
+        # Output only. A boolean indicating that this model was uploaded from the
+        # console.
+        # Read only
+        # Corresponds to the JSON property `managedUpload`
+        # @return [Boolean]
+        attr_accessor :managed_upload
+        alias_method :managed_upload?, :managed_upload
+      
         # Output only. The size of the TFLite model
         # Corresponds to the JSON property `sizeBytes`
         # @return [String]
@@ -336,6 +344,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_tflite_uri = args[:gcs_tflite_uri] if args.key?(:gcs_tflite_uri)
+          @managed_upload = args[:managed_upload] if args.key?(:managed_upload)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
         end
       end

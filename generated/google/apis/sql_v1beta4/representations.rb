@@ -476,6 +476,7 @@ module Google
       class BackupRun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_kind, as: 'backupKind'
           property :description, as: 'description'
           property :disk_encryption_configuration, as: 'diskEncryptionConfiguration', class: Google::Apis::SqlV1beta4::DiskEncryptionConfiguration, decorator: Google::Apis::SqlV1beta4::DiskEncryptionConfiguration::Representation
       
@@ -669,7 +670,6 @@ module Google
           collection :databases, as: 'databases'
           property :file_type, as: 'fileType'
           property :kind, as: 'kind'
-          property :offload, as: 'offload'
           property :sql_export_options, as: 'sqlExportOptions', class: Google::Apis::SqlV1beta4::ExportContext::SqlExportOptions, decorator: Google::Apis::SqlV1beta4::ExportContext::SqlExportOptions::Representation
       
           property :uri, as: 'uri'
@@ -1025,6 +1025,7 @@ module Google
           property :availability_type, as: 'availabilityType'
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::SqlV1beta4::BackupConfiguration, decorator: Google::Apis::SqlV1beta4::BackupConfiguration::Representation
       
+          property :collation, as: 'collation'
           property :crash_safe_replication_enabled, as: 'crashSafeReplicationEnabled'
           property :data_disk_size_gb, :numeric_string => true, as: 'dataDiskSizeGb'
           property :data_disk_type, as: 'dataDiskType'

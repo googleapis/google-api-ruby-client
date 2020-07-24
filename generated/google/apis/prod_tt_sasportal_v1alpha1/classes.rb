@@ -150,50 +150,6 @@ module Google
         end
       end
       
-      # The Deployment.
-      class SasPortalDeployment
-        include Google::Apis::Core::Hashable
-      
-        # The allowed billing modes under this deployment.
-        # Corresponds to the JSON property `allowedBillingModes`
-        # @return [Array<String>]
-        attr_accessor :allowed_billing_modes
-      
-        # Default billing mode for the deployment and devices under it.
-        # Corresponds to the JSON property `defaultBillingMode`
-        # @return [String]
-        attr_accessor :default_billing_mode
-      
-        # The deployment's display name.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Output only. Resource name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # User id used by the devices belonging to this deployment. Each deployment
-        # should be associated with one unique user_id.
-        # Corresponds to the JSON property `sasUserIds`
-        # @return [Array<String>]
-        attr_accessor :sas_user_ids
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @allowed_billing_modes = args[:allowed_billing_modes] if args.key?(:allowed_billing_modes)
-          @default_billing_mode = args[:default_billing_mode] if args.key?(:default_billing_mode)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @name = args[:name] if args.key?(:name)
-          @sas_user_ids = args[:sas_user_ids] if args.key?(:sas_user_ids)
-        end
-      end
-      
       # 
       class SasPortalDevice
         include Google::Apis::Core::Hashable
@@ -761,35 +717,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customers = args[:customers] if args.key?(:customers)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Response for ListDeployments method.
-      class SasPortalListDeploymentsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The deployments that match the
-        # request.
-        # Corresponds to the JSON property `deployments`
-        # @return [Array<Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeployment>]
-        attr_accessor :deployments
-      
-        # A pagination token returned from a previous call to
-        # ListDeployments method that indicates
-        # from where listing should continue. If the field is missing or empty, it
-        # means there is no more deployments.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @deployments = args[:deployments] if args.key?(:deployments)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end

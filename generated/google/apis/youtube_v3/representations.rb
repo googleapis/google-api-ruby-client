@@ -3176,6 +3176,7 @@ module Google
       class TestItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gaia, :numeric_string => true, as: 'gaia'
           property :id, as: 'id'
           property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::TestItemTestItemSnippet, decorator: Google::Apis::YoutubeV3::TestItemTestItemSnippet::Representation
       
