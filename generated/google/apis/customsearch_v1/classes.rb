@@ -464,9 +464,10 @@ module Google
             # @return [String]
             attr_accessor :cr
           
-            # The identifier of a custom search engine created using the Custom Search
-            # [Control Panel](https://cse.google.com/). This is a custom property not
-            # defined in the OpenSearch spec. This parameter is **required**.
+            # The identifier of an engine created using the Programmable Search Engine
+            # [Control Panel](https://programmablesearchengine.google.com/). This is a
+            # custom property not defined in the OpenSearch spec. This parameter is
+            # **required**.
             # Corresponds to the JSON property `cx`
             # @return [String]
             attr_accessor :cx
@@ -821,9 +822,10 @@ module Google
             # @return [String]
             attr_accessor :cr
           
-            # The identifier of a custom search engine created using the Custom Search
-            # [Control Panel](https://cse.google.com/). This is a custom property not
-            # defined in the OpenSearch spec. This parameter is **required**.
+            # The identifier of an engine created using the Programmable Search Engine
+            # [Control Panel](https://programmablesearchengine.google.com/). This is a
+            # custom property not defined in the OpenSearch spec. This parameter is
+            # **required**.
             # Corresponds to the JSON property `cx`
             # @return [String]
             attr_accessor :cx
@@ -1178,9 +1180,10 @@ module Google
             # @return [String]
             attr_accessor :cr
           
-            # The identifier of a custom search engine created using the Custom Search
-            # [Control Panel](https://cse.google.com/). This is a custom property not
-            # defined in the OpenSearch spec. This parameter is **required**.
+            # The identifier of an engine created using the Programmable Search Engine
+            # [Control Panel](https://programmablesearchengine.google.com/). This is a
+            # custom property not defined in the OpenSearch spec. This parameter is
+            # **required**.
             # Corresponds to the JSON property `cx`
             # @return [String]
             attr_accessor :cx
@@ -1585,7 +1588,8 @@ module Google
           # @return [String]
           attr_accessor :template
         
-          # The MIME type of the OpenSearch URL template for the Custom Search API.
+          # The MIME type of the OpenSearch URL template for the Custom Search JSON
+          # API.
           # Corresponds to the JSON property `type`
           # @return [String]
           attr_accessor :type

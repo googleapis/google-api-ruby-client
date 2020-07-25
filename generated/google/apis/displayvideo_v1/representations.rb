@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssignedUserRole
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AudienceGroupAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +149,12 @@ module Google
       end
       
       class AudioVideoOffset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditAdvertiserResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -214,6 +226,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkEditAssignedUserRolesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkEditAssignedUserRolesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BulkEditLineItemAssignedTargetingOptionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +257,18 @@ module Google
       end
       
       class BulkEditNegativeKeywordsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkEditPartnerAssignedTargetingOptionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkEditPartnerAssignedTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -557,6 +593,18 @@ module Google
       end
       
       class ExchangeAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExchangeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExchangeConfigEnabledExchange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -910,6 +958,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPartnerAssignedTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListPartnersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSitesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -917,6 +977,12 @@ module Google
       end
       
       class ListTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -935,6 +1001,12 @@ module Google
       end
       
       class MaximizeSpendBidStrategy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MeasurementConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1024,7 +1096,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Partner
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartnerAdServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PartnerCost
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartnerDataAccessConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartnerGeneralConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1187,6 +1283,12 @@ module Google
       end
       
       class UrlAssignedTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class User
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1482,6 +1584,16 @@ module Google
         end
       end
       
+      class AssignedUserRole
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :assigned_user_role_id, as: 'assignedUserRoleId'
+          property :partner_id, :numeric_string => true, as: 'partnerId'
+          property :user_role, as: 'userRole'
+        end
+      end
+      
       class AudienceGroupAssignedTargetingOptionDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1505,6 +1617,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :percentage, :numeric_string => true, as: 'percentage'
           property :seconds, :numeric_string => true, as: 'seconds'
+        end
+      end
+      
+      class AuditAdvertiserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :used_campaigns_count, :numeric_string => true, as: 'usedCampaignsCount'
+          property :used_insertion_orders_count, :numeric_string => true, as: 'usedInsertionOrdersCount'
+          property :used_line_items_count, :numeric_string => true, as: 'usedLineItemsCount'
         end
       end
       
@@ -1605,6 +1726,23 @@ module Google
         end
       end
       
+      class BulkEditAssignedUserRolesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :created_assigned_user_roles, as: 'createdAssignedUserRoles', class: Google::Apis::DisplayvideoV1::AssignedUserRole, decorator: Google::Apis::DisplayvideoV1::AssignedUserRole::Representation
+      
+          collection :deleted_assigned_user_roles, as: 'deletedAssignedUserRoles'
+        end
+      end
+      
+      class BulkEditAssignedUserRolesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :created_assigned_user_roles, as: 'createdAssignedUserRoles', class: Google::Apis::DisplayvideoV1::AssignedUserRole, decorator: Google::Apis::DisplayvideoV1::AssignedUserRole::Representation
+      
+        end
+      end
+      
       class BulkEditLineItemAssignedTargetingOptionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1636,6 +1774,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :negative_keywords, as: 'negativeKeywords', class: Google::Apis::DisplayvideoV1::NegativeKeyword, decorator: Google::Apis::DisplayvideoV1::NegativeKeyword::Representation
+      
+        end
+      end
+      
+      class BulkEditPartnerAssignedTargetingOptionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :create_requests, as: 'createRequests', class: Google::Apis::DisplayvideoV1::CreateAssignedTargetingOptionsRequest, decorator: Google::Apis::DisplayvideoV1::CreateAssignedTargetingOptionsRequest::Representation
+      
+          collection :delete_requests, as: 'deleteRequests', class: Google::Apis::DisplayvideoV1::DeleteAssignedTargetingOptionsRequest, decorator: Google::Apis::DisplayvideoV1::DeleteAssignedTargetingOptionsRequest::Representation
+      
+        end
+      end
+      
+      class BulkEditPartnerAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :created_assigned_targeting_options, as: 'createdAssignedTargetingOptions', class: Google::Apis::DisplayvideoV1::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
       
         end
       end
@@ -2171,6 +2327,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :targeting_option_id, as: 'targetingOptionId'
+        end
+      end
+      
+      class ExchangeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enabled_exchanges, as: 'enabledExchanges', class: Google::Apis::DisplayvideoV1::ExchangeConfigEnabledExchange, decorator: Google::Apis::DisplayvideoV1::ExchangeConfigEnabledExchange::Representation
+      
+        end
+      end
+      
+      class ExchangeConfigEnabledExchange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exchange, as: 'exchange'
+          property :google_ad_manager_agency_id, as: 'googleAdManagerAgencyId'
+          property :google_ad_manager_buyer_network_id, as: 'googleAdManagerBuyerNetworkId'
+          property :seat_id, as: 'seatId'
         end
       end
       
@@ -2763,6 +2937,24 @@ module Google
         end
       end
       
+      class ListPartnerAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV1::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListPartnersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :partners, as: 'partners', class: Google::Apis::DisplayvideoV1::Partner, decorator: Google::Apis::DisplayvideoV1::Partner::Representation
+      
+        end
+      end
+      
       class ListSitesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2777,6 +2969,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :targeting_options, as: 'targetingOptions', class: Google::Apis::DisplayvideoV1::TargetingOption, decorator: Google::Apis::DisplayvideoV1::TargetingOption::Representation
+      
+        end
+      end
+      
+      class ListUsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :users, as: 'users', class: Google::Apis::DisplayvideoV1::User, decorator: Google::Apis::DisplayvideoV1::User::Representation
       
         end
       end
@@ -2805,6 +3006,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_average_cpm_bid_amount_micros, :numeric_string => true, as: 'maxAverageCpmBidAmountMicros'
           property :performance_goal_type, as: 'performanceGoalType'
+        end
+      end
+      
+      class MeasurementConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dv360_to_cm_cost_reporting_enabled, as: 'dv360ToCmCostReportingEnabled'
+          property :dv360_to_cm_data_sharing_enabled, as: 'dv360ToCmDataSharingEnabled'
         end
       end
       
@@ -2934,6 +3143,33 @@ module Google
         end
       end
       
+      class Partner
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_server_config, as: 'adServerConfig', class: Google::Apis::DisplayvideoV1::PartnerAdServerConfig, decorator: Google::Apis::DisplayvideoV1::PartnerAdServerConfig::Representation
+      
+          property :data_access_config, as: 'dataAccessConfig', class: Google::Apis::DisplayvideoV1::PartnerDataAccessConfig, decorator: Google::Apis::DisplayvideoV1::PartnerDataAccessConfig::Representation
+      
+          property :display_name, as: 'displayName'
+          property :entity_status, as: 'entityStatus'
+          property :exchange_config, as: 'exchangeConfig', class: Google::Apis::DisplayvideoV1::ExchangeConfig, decorator: Google::Apis::DisplayvideoV1::ExchangeConfig::Representation
+      
+          property :general_config, as: 'generalConfig', class: Google::Apis::DisplayvideoV1::PartnerGeneralConfig, decorator: Google::Apis::DisplayvideoV1::PartnerGeneralConfig::Representation
+      
+          property :name, as: 'name'
+          property :partner_id, :numeric_string => true, as: 'partnerId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class PartnerAdServerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :measurement_config, as: 'measurementConfig', class: Google::Apis::DisplayvideoV1::MeasurementConfig, decorator: Google::Apis::DisplayvideoV1::MeasurementConfig::Representation
+      
+        end
+      end
+      
       class PartnerCost
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2942,6 +3178,22 @@ module Google
           property :fee_percentage_millis, :numeric_string => true, as: 'feePercentageMillis'
           property :fee_type, as: 'feeType'
           property :invoice_type, as: 'invoiceType'
+        end
+      end
+      
+      class PartnerDataAccessConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sdf_config, as: 'sdfConfig', class: Google::Apis::DisplayvideoV1::SdfConfig, decorator: Google::Apis::DisplayvideoV1::SdfConfig::Representation
+      
+        end
+      end
+      
+      class PartnerGeneralConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+          property :time_zone, as: 'timeZone'
         end
       end
       
@@ -3231,6 +3483,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :negative, as: 'negative'
           property :url, as: 'url'
+        end
+      end
+      
+      class User
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_user_roles, as: 'assignedUserRoles', class: Google::Apis::DisplayvideoV1::AssignedUserRole, decorator: Google::Apis::DisplayvideoV1::AssignedUserRole::Representation
+      
+          property :display_name, as: 'displayName'
+          property :email, as: 'email'
+          property :name, as: 'name'
+          property :user_id, :numeric_string => true, as: 'userId'
         end
       end
       

@@ -2038,7 +2038,8 @@ module Google
         attr_accessor :start_time
       
         # Exactly one of step or steps_location should be specified.
-        # The top-level steps that constitute the entire job.
+        # The top-level steps that constitute the entire job. Only retrieved with
+        # JOB_VIEW_ALL.
         # Corresponds to the JSON property `steps`
         # @return [Array<Google::Apis::DataflowV1b3::Step>]
         attr_accessor :steps

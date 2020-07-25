@@ -48,6 +48,43 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Audits an advertiser. Returns the counts of used entities per resource type
+        # under the advertiser provided. Used entities count towards their [respective
+        # resource limit]: (https://support.google.com/displayvideo/answer/6071450?hl=en)
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser to audit.
+        # @param [String] read_mask
+        #   Optional. The specific fields to return. If no mask is specified, all fields
+        #   in the response proto will be filled. Valid values are: * usedLineItemsCount *
+        #   usedInsertionOrdersCount * usedCampaignsCount
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::AuditAdvertiserResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::AuditAdvertiserResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def audit_advertiser(advertiser_id, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{+advertiserId}:audit', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::AuditAdvertiserResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::AuditAdvertiserResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Bulk edits targeting options under a single advertiser. The operation will
         # delete the assigned targeting options provided in
         # BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and then
@@ -1560,14 +1597,17 @@ module Google
         #   expressions are made up of one or more restrictions. * Restrictions can be
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
-        #   campaignId` - `insertionOrderId` - `entityStatus` - `lineItemType` Examples: *
-        #   All line items under an insertion order: `insertionOrderId="1234"` * All `
+        #   value``. * The operator used on `flight.dateRange.endDate` must be LESS THAN (<
+        #   ). * The operators used on all other fields must be `EQUALS (=)`. * Supported
+        #   fields: - `campaignId` - `insertionOrderId` - `entityStatus` - `lineItemType` -
+        #   `flight.dateRange.endDate` (input formatted as YYYY-MM-DD) Examples: * All
+        #   line items under an insertion order: `insertionOrderId="1234"` * All `
         #   ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `
         #   LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus=
         #   "ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND
-        #   lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` The length of this field should
-        #   be no more than 500 characters.
+        #   lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose flight
+        #   dates end before March 28, 2019: `flight.dateRange.endDate<"2019-03-28"` The
+        #   length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * "displayName" (
         #   default) * "entityStatus" * “flight.dateRange.endDate” The default sorting
@@ -3710,6 +3750,126 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Bulk edits targeting options under a single partner. The operation will delete
+        # the assigned targeting options provided in
+        # BulkEditPartnerAssignedTargetingOptionsRequest.delete_requests and then create
+        # the assigned targeting options provided in
+        # BulkEditPartnerAssignedTargetingOptionsRequest.create_requests .
+        # @param [Fixnum] partner_id
+        #   Required. The ID of the partner.
+        # @param [Google::Apis::DisplayvideoV1::BulkEditPartnerAssignedTargetingOptionsRequest] bulk_edit_partner_assigned_targeting_options_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::BulkEditPartnerAssignedTargetingOptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::BulkEditPartnerAssignedTargetingOptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_edit_partner_assigned_targeting_options(partner_id, bulk_edit_partner_assigned_targeting_options_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/partners/{+partnerId}:bulkEditPartnerAssignedTargetingOptions', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::BulkEditPartnerAssignedTargetingOptionsRequest::Representation
+          command.request_object = bulk_edit_partner_assigned_targeting_options_request_object
+          command.response_representation = Google::Apis::DisplayvideoV1::BulkEditPartnerAssignedTargetingOptionsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::BulkEditPartnerAssignedTargetingOptionsResponse
+          command.params['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a partner.
+        # @param [Fixnum] partner_id
+        #   Required. The ID of the partner to fetch.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Partner] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Partner]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_partner(partner_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/partners/{+partnerId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::Partner::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Partner
+          command.params['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists partners that are accessible to the current user. The order is defined
+        # by the order_by parameter.
+        # @param [String] filter
+        #   Allows filtering by partner properties. Supported syntax: * Filter expressions
+        #   are made up of one or more restrictions. * Restrictions can be combined by `
+        #   AND` or `OR` logical operators. A sequence of restrictions implicitly uses `
+        #   AND`. * A restriction has the form of ``field` `operator` `value``. * The
+        #   operator must be `EQUALS (=)`. * Supported fields: - `entityStatus` Examples: *
+        #   All active partners: `entityStatus="ENTITY_STATUS_ACTIVE"` The length of this
+        #   field should be no more than 500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list. Acceptable values are: * `displayName` The
+        #   default sorting order is ascending. To specify descending order for a field, a
+        #   suffix "desc" should be added to the field name. For example, `displayName
+        #   desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListPartners` method. If not specified, the first page of results will be
+        #   returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ListPartnersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ListPartnersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_partners(filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/partners', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ListPartnersResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ListPartnersResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new channel. Returns the newly created channel if successful.
         # @param [Fixnum] partner_id
         #   The ID of the partner that owns the created channel.
@@ -4058,6 +4218,179 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Assigns a targeting option to a partner. Returns the assigned targeting option
+        # if successful.
+        # @param [Fixnum] partner_id
+        #   Required. The ID of the partner.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of this assigned targeting option. Supported
+        #   targeting types: * `TARGETING_TYPE_CHANNEL`
+        # @param [Google::Apis::DisplayvideoV1::AssignedTargetingOption] assigned_targeting_option_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::AssignedTargetingOption] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::AssignedTargetingOption]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_partner_targeting_type_assigned_targeting_option(partner_id, targeting_type, assigned_targeting_option_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+          command.request_object = assigned_targeting_option_object
+          command.response_representation = Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::AssignedTargetingOption
+          command.params['partnerId'] = partner_id unless partner_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an assigned targeting option from a partner.
+        # @param [Fixnum] partner_id
+        #   Required. The ID of the partner.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of this assigned targeting option. Supported
+        #   targeting types: * `TARGETING_TYPE_CHANNEL`
+        # @param [String] assigned_targeting_option_id
+        #   Required. The ID of the assigned targeting option to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_partner_targeting_type_assigned_targeting_option(partner_id, targeting_type, assigned_targeting_option_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::Empty::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Empty
+          command.params['partnerId'] = partner_id unless partner_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.params['assignedTargetingOptionId'] = assigned_targeting_option_id unless assigned_targeting_option_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a single targeting option assigned to a partner.
+        # @param [Fixnum] partner_id
+        #   Required. The ID of the partner.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of this assigned targeting option. Supported
+        #   targeting types: * `TARGETING_TYPE_CHANNEL`
+        # @param [String] assigned_targeting_option_id
+        #   Required. An identifier unique to the targeting type in this partner that
+        #   identifies the assigned targeting option being requested.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::AssignedTargetingOption] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::AssignedTargetingOption]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_partner_targeting_type_assigned_targeting_option(partner_id, targeting_type, assigned_targeting_option_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::AssignedTargetingOption
+          command.params['partnerId'] = partner_id unless partner_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.params['assignedTargetingOptionId'] = assigned_targeting_option_id unless assigned_targeting_option_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the targeting options assigned to a partner.
+        # @param [Fixnum] partner_id
+        #   Required. The ID of the partner.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of assigned targeting options to list. Supported
+        #   targeting types: * `TARGETING_TYPE_CHANNEL`
+        # @param [String] filter
+        #   Allows filtering by assigned targeting option properties. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by the logical operator `OR`. * A restriction has the form of ``
+        #   field` `operator` `value``. * The operator must be `EQUALS (=)`. * Supported
+        #   fields: - `assignedTargetingOptionId` Examples: * AssignedTargetingOption with
+        #   ID 123456 `assignedTargetingOptionId="123456"` The length of this field should
+        #   be no more than 500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list. Acceptable values are: * `
+        #   assignedTargetingOptionId` (default) The default sorting order is ascending.
+        #   To specify descending order for a field, a suffix "desc" should be added to
+        #   the field name. Example: `assignedTargetingOptionId desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListPartnerAssignedTargetingOptions` method. If not specified, the first page
+        #   of results will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ListPartnerAssignedTargetingOptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ListPartnerAssignedTargetingOptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_partner_targeting_type_assigned_targeting_options(partner_id, targeting_type, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ListPartnerAssignedTargetingOptionsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ListPartnerAssignedTargetingOptionsResponse
+          command.params['partnerId'] = partner_id unless partner_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates an SDF Download Task. Returns an Operation. An SDF Download Task is a
         # long-running, asynchronous operation. The metadata type of this operation is
         # SdfDownloadTaskMetadata. If the request is successful, the response type of
@@ -4214,6 +4547,235 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Bulk edits user roles for a user. The operation will delete the assigned user
+        # roles provided in BulkEditAssignedUserRolesRequest.deleted_assigned_user_roles
+        # and then assign the user roles provided in BulkEditAssignedUserRolesRequest.
+        # created_assigned_user_roles.
+        # @param [Fixnum] user_id
+        #   Required. The ID of the user to which the assigned user roles belong.
+        # @param [Google::Apis::DisplayvideoV1::BulkEditAssignedUserRolesRequest] bulk_edit_assigned_user_roles_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::BulkEditAssignedUserRolesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::BulkEditAssignedUserRolesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_edit_assigned_user_roles(user_id, bulk_edit_assigned_user_roles_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/users/{+userId}:bulkEditAssignedUserRoles', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::BulkEditAssignedUserRolesRequest::Representation
+          command.request_object = bulk_edit_assigned_user_roles_request_object
+          command.response_representation = Google::Apis::DisplayvideoV1::BulkEditAssignedUserRolesResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::BulkEditAssignedUserRolesResponse
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new user. Returns the newly created user if successful.
+        # @param [Google::Apis::DisplayvideoV1::User] user_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::User] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::User]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_user(user_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/users', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::User::Representation
+          command.request_object = user_object
+          command.response_representation = Google::Apis::DisplayvideoV1::User::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::User
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a user.
+        # @param [Fixnum] user_id
+        #   Required. The ID of the user to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_user(user_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/users/{+userId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::Empty::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Empty
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a user.
+        # @param [Fixnum] user_id
+        #   Required. The ID of the user to fetch.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::User] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::User]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user(user_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/users/{+userId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::User::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::User
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists users that are accessible to the current user. If two users have user
+        # roles on the same partner or advertiser, they can access each other.
+        # @param [String] filter
+        #   Allows filtering by user properties. Supported syntax: * Filter expressions
+        #   are made up of one or more restrictions. * Restrictions can be combined by the
+        #   logical operator `AND`. * A restriction has the form of ``field` `operator` `
+        #   value``. * The operator must be `CONTAINS (:)` or `EQUALS (=)`. * The operator
+        #   must be `CONTAINS (:)` for the following fields: - `displayName` - `email` *
+        #   The operator must be `EQUALS (=)` for the following fields: - `
+        #   assignedUserRole.userRole` - `assignedUserRole.partnerId` - `assignedUserRole.
+        #   advertiserId` - `assignedUserRole.entityType`: A synthetic field of
+        #   AssignedUserRole used for filtering. Identifies the type of entity to which
+        #   the user role is assigned. Valid values are `Partner` and `Advertiser`. - `
+        #   assignedUserRole.parentPartnerId`: A synthetic field of AssignedUserRole used
+        #   for filtering. Identifies the parent partner of the entity to which the user
+        #   role is assigned." Examples: * The user with displayName containing `foo`: `
+        #   displayName:"foo"` * The user with email containing `bar`: `email:"bar"` * All
+        #   users with standard user roles: `assignedUserRole.userRole="STANDARD"` * All
+        #   users with user roles for partner 123: `assignedUserRole.partnerId="123"` *
+        #   All users with user roles for advertiser 123: `assignedUserRole.advertiserId="
+        #   123"` * All users with partner level user roles: `entityType="PARTNER"` * All
+        #   users with user roles for partner 123 and advertisers under partner 123: `
+        #   parentPartnerId="123"` The length of this field should be no more than 500
+        #   characters.
+        # @param [String] order_by
+        #   Field by which to sort the list. Acceptable values are: * `displayName` (
+        #   default) The default sorting order is ascending. To specify descending order
+        #   for a field, a suffix "desc" should be added to the field name. For example, `
+        #   displayName desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListUsers` method. If not specified, the first page of results will be
+        #   returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ListUsersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ListUsersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_users(filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/users', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ListUsersResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ListUsersResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing user. Returns the updated user if successful.
+        # @param [Fixnum] user_id
+        #   Output only. The unique ID of the user. Assigned by the system.
+        # @param [Google::Apis::DisplayvideoV1::User] user_object
+        # @param [String] update_mask
+        #   Required. The mask to control which fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::User] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::User]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_user(user_id, user_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/users/{+userId}', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::User::Representation
+          command.request_object = user_object
+          command.response_representation = Google::Apis::DisplayvideoV1::User::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::User
+          command.params['userId'] = user_id unless user_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

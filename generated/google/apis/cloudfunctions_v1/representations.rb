@@ -142,12 +142,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OperationMetadataV1Beta2
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -383,17 +377,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :build_id, as: 'buildId'
-          hash :request, as: 'request'
-          property :target, as: 'target'
-          property :type, as: 'type'
-          property :update_time, as: 'updateTime'
-          property :version_id, :numeric_string => true, as: 'versionId'
-        end
-      end
-      
-      class OperationMetadataV1Beta2
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
           hash :request, as: 'request'
           property :target, as: 'target'
           property :type, as: 'type'

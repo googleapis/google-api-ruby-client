@@ -985,6 +985,44 @@ module Google
         end
       end
       
+      # A single assigned user role, which defines a user's authorized interaction
+      # with a specified partner or advertiser.
+      class AssignedUserRole
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the advertiser that the assigend user role applies to.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [Fixnum]
+        attr_accessor :advertiser_id
+      
+        # Output only. The ID of the assigned user role.
+        # Corresponds to the JSON property `assignedUserRoleId`
+        # @return [String]
+        attr_accessor :assigned_user_role_id
+      
+        # The ID of the partner that the assigned user role applies to.
+        # Corresponds to the JSON property `partnerId`
+        # @return [Fixnum]
+        attr_accessor :partner_id
+      
+        # Required. The user role to assign to a user for the entity.
+        # Corresponds to the JSON property `userRole`
+        # @return [String]
+        attr_accessor :user_role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @assigned_user_role_id = args[:assigned_user_role_id] if args.key?(:assigned_user_role_id)
+          @partner_id = args[:partner_id] if args.key?(:partner_id)
+          @user_role = args[:user_role] if args.key?(:user_role)
+        end
+      end
+      
       # Assigned audience group targeting option details. This will be populated in
       # the details field of an AssignedTargetingOption when targeting_type is `
       # TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION,
@@ -1071,6 +1109,41 @@ module Google
         def update!(**args)
           @percentage = args[:percentage] if args.key?(:percentage)
           @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
+      # Response message for AdvertiserService.AuditAdvertiser.
+      class AuditAdvertiserResponse
+        include Google::Apis::Core::Hashable
+      
+        # The number of ACTIVE and PAUSED campaigns under this advertiser. These
+        # campaigns count towards the limit of 9,999 campaigns per advertiser.
+        # Corresponds to the JSON property `usedCampaignsCount`
+        # @return [Fixnum]
+        attr_accessor :used_campaigns_count
+      
+        # The number of ACTIVE, PAUSED and DRAFT insertion orders under this advertiser.
+        # These insertion orders count towards the limit of 9,999 insertion orders per
+        # advertiser.
+        # Corresponds to the JSON property `usedInsertionOrdersCount`
+        # @return [Fixnum]
+        attr_accessor :used_insertion_orders_count
+      
+        # The number of ACTIVE, PAUSED, and DRAFT line items under this advertiser.
+        # These line items count towards the limit of 9,999 line items per advertiser.
+        # Corresponds to the JSON property `usedLineItemsCount`
+        # @return [Fixnum]
+        attr_accessor :used_line_items_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @used_campaigns_count = args[:used_campaigns_count] if args.key?(:used_campaigns_count)
+          @used_insertion_orders_count = args[:used_insertion_orders_count] if args.key?(:used_insertion_orders_count)
+          @used_line_items_count = args[:used_line_items_count] if args.key?(:used_line_items_count)
         end
       end
       
@@ -1368,6 +1441,54 @@ module Google
         end
       end
       
+      # Request message for BulkEditAssignedUserRoles.
+      class BulkEditAssignedUserRolesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The assigned user roles to create in batch, specified as a list of
+        # AssignedUserRoles.
+        # Corresponds to the JSON property `createdAssignedUserRoles`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedUserRole>]
+        attr_accessor :created_assigned_user_roles
+      
+        # The assigned user roles to delete in batch, specified as a list of
+        # assigned_user_role_ids. The format of assigned_user_role_id is `entityType-
+        # entityid`, for example `partner-123`.
+        # Corresponds to the JSON property `deletedAssignedUserRoles`
+        # @return [Array<String>]
+        attr_accessor :deleted_assigned_user_roles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_assigned_user_roles = args[:created_assigned_user_roles] if args.key?(:created_assigned_user_roles)
+          @deleted_assigned_user_roles = args[:deleted_assigned_user_roles] if args.key?(:deleted_assigned_user_roles)
+        end
+      end
+      
+      # Response message for BulkEditAssignedUserRoles.
+      class BulkEditAssignedUserRolesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned user roles that have been successfully created. This list
+        # will be absent if empty.
+        # Corresponds to the JSON property `createdAssignedUserRoles`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedUserRole>]
+        attr_accessor :created_assigned_user_roles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_assigned_user_roles = args[:created_assigned_user_roles] if args.key?(:created_assigned_user_roles)
+        end
+      end
+      
       # Request message for BulkEditLineItemAssignedTargetingOptions.
       class BulkEditLineItemAssignedTargetingOptionsRequest
         include Google::Apis::Core::Hashable
@@ -1459,6 +1580,55 @@ module Google
         # Update properties of this object
         def update!(**args)
           @negative_keywords = args[:negative_keywords] if args.key?(:negative_keywords)
+        end
+      end
+      
+      # Request message for BulkEditPartnerAssignedTargetingOptions.
+      class BulkEditPartnerAssignedTargetingOptionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The assigned targeting options to create in batch, specified as a list of `
+        # CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `
+        # TARGETING_TYPE_CHANNEL`
+        # Corresponds to the JSON property `createRequests`
+        # @return [Array<Google::Apis::DisplayvideoV1::CreateAssignedTargetingOptionsRequest>]
+        attr_accessor :create_requests
+      
+        # The assigned targeting options to delete in batch, specified as a list of `
+        # DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `
+        # TARGETING_TYPE_CHANNEL`
+        # Corresponds to the JSON property `deleteRequests`
+        # @return [Array<Google::Apis::DisplayvideoV1::DeleteAssignedTargetingOptionsRequest>]
+        attr_accessor :delete_requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_requests = args[:create_requests] if args.key?(:create_requests)
+          @delete_requests = args[:delete_requests] if args.key?(:delete_requests)
+        end
+      end
+      
+      # 
+      class BulkEditPartnerAssignedTargetingOptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned targeting options that have been successfully created.
+        # This list will be absent if empty.
+        # Corresponds to the JSON property `createdAssignedTargetingOptions`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedTargetingOption>]
+        attr_accessor :created_assigned_targeting_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_assigned_targeting_options = args[:created_assigned_targeting_options] if args.key?(:created_assigned_targeting_options)
         end
       end
       
@@ -3436,6 +3606,65 @@ module Google
         # Update properties of this object
         def update!(**args)
           @targeting_option_id = args[:targeting_option_id] if args.key?(:targeting_option_id)
+        end
+      end
+      
+      # Settings that control which exchanges are enabled for a partner.
+      class ExchangeConfig
+        include Google::Apis::Core::Hashable
+      
+        # All enabled exchanges in the partner. Duplicate enabled exchanges will be
+        # ignored.
+        # Corresponds to the JSON property `enabledExchanges`
+        # @return [Array<Google::Apis::DisplayvideoV1::ExchangeConfigEnabledExchange>]
+        attr_accessor :enabled_exchanges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled_exchanges = args[:enabled_exchanges] if args.key?(:enabled_exchanges)
+        end
+      end
+      
+      # An enabled exchange in the partner.
+      class ExchangeConfigEnabledExchange
+        include Google::Apis::Core::Hashable
+      
+        # The enabled exchange.
+        # Corresponds to the JSON property `exchange`
+        # @return [String]
+        attr_accessor :exchange
+      
+        # Output only. Agency ID of Google Ad Manager. The field is only relevant when
+        # Google Ad Manager is the enabled exchange.
+        # Corresponds to the JSON property `googleAdManagerAgencyId`
+        # @return [String]
+        attr_accessor :google_ad_manager_agency_id
+      
+        # Output only. Network ID of Google Ad Manager. The field is only relevant when
+        # Google Ad Manager is the enabled exchange.
+        # Corresponds to the JSON property `googleAdManagerBuyerNetworkId`
+        # @return [String]
+        attr_accessor :google_ad_manager_buyer_network_id
+      
+        # Output only. Seat ID of the enabled exchange.
+        # Corresponds to the JSON property `seatId`
+        # @return [String]
+        attr_accessor :seat_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exchange = args[:exchange] if args.key?(:exchange)
+          @google_ad_manager_agency_id = args[:google_ad_manager_agency_id] if args.key?(:google_ad_manager_agency_id)
+          @google_ad_manager_buyer_network_id = args[:google_ad_manager_buyer_network_id] if args.key?(:google_ad_manager_buyer_network_id)
+          @seat_id = args[:seat_id] if args.key?(:seat_id)
         end
       end
       
@@ -5589,6 +5818,61 @@ module Google
         end
       end
       
+      # Response message for ListPartnerAssignedTargetingOptions.
+      class ListPartnerAssignedTargetingOptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned targeting options. This list will be absent if empty.
+        # Corresponds to the JSON property `assignedTargetingOptions`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedTargetingOption>]
+        attr_accessor :assigned_targeting_options
+      
+        # A token identifying the next page of results. This value should be specified
+        # as the pageToken in a subsequent ListPartnerAssignedTargetingOptionsRequest to
+        # fetch the next page of results. This token will be absent if there are no more
+        # assigned_targeting_options to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListPartners.
+      class ListPartnersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListPartners` method to retrieve
+        # the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of partners. This list will be absent if empty.
+        # Corresponds to the JSON property `partners`
+        # @return [Array<Google::Apis::DisplayvideoV1::Partner>]
+        attr_accessor :partners
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @partners = args[:partners] if args.key?(:partners)
+        end
+      end
+      
       # Response message for SiteService.ListSites.
       class ListSitesResponse
         include Google::Apis::Core::Hashable
@@ -5640,6 +5924,34 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @targeting_options = args[:targeting_options] if args.key?(:targeting_options)
+        end
+      end
+      
+      # Response message for ListUsers.
+      class ListUsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListUsers` method to retrieve the
+        # next page of results. This token will be absent if there are no more results
+        # to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of users. This list will be absent if empty.
+        # Corresponds to the JSON property `users`
+        # @return [Array<Google::Apis::DisplayvideoV1::User>]
+        attr_accessor :users
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @users = args[:users] if args.key?(:users)
         end
       end
       
@@ -5745,6 +6057,33 @@ module Google
         def update!(**args)
           @max_average_cpm_bid_amount_micros = args[:max_average_cpm_bid_amount_micros] if args.key?(:max_average_cpm_bid_amount_micros)
           @performance_goal_type = args[:performance_goal_type] if args.key?(:performance_goal_type)
+        end
+      end
+      
+      # Measurement settings of a partner.
+      class MeasurementConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether or not to report DV360 cost to CM.
+        # Corresponds to the JSON property `dv360ToCmCostReportingEnabled`
+        # @return [Boolean]
+        attr_accessor :dv360_to_cm_cost_reporting_enabled
+        alias_method :dv360_to_cm_cost_reporting_enabled?, :dv360_to_cm_cost_reporting_enabled
+      
+        # Whether or not to include DV360 data in CM data transfer reports.
+        # Corresponds to the JSON property `dv360ToCmDataSharingEnabled`
+        # @return [Boolean]
+        attr_accessor :dv360_to_cm_data_sharing_enabled
+        alias_method :dv360_to_cm_data_sharing_enabled?, :dv360_to_cm_data_sharing_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dv360_to_cm_cost_reporting_enabled = args[:dv360_to_cm_cost_reporting_enabled] if args.key?(:dv360_to_cm_cost_reporting_enabled)
+          @dv360_to_cm_data_sharing_enabled = args[:dv360_to_cm_data_sharing_enabled] if args.key?(:dv360_to_cm_data_sharing_enabled)
         end
       end
       
@@ -6240,6 +6579,94 @@ module Google
         end
       end
       
+      # A single partner in Display & Video 360 (DV360).
+      class Partner
+        include Google::Apis::Core::Hashable
+      
+        # Ad server related settings of a partner.
+        # Corresponds to the JSON property `adServerConfig`
+        # @return [Google::Apis::DisplayvideoV1::PartnerAdServerConfig]
+        attr_accessor :ad_server_config
+      
+        # Settings that control how partner related data may be accessed.
+        # Corresponds to the JSON property `dataAccessConfig`
+        # @return [Google::Apis::DisplayvideoV1::PartnerDataAccessConfig]
+        attr_accessor :data_access_config
+      
+        # The display name of the partner. Must be UTF-8 encoded with a maximum size of
+        # 240 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The status of the partner.
+        # Corresponds to the JSON property `entityStatus`
+        # @return [String]
+        attr_accessor :entity_status
+      
+        # Settings that control which exchanges are enabled for a partner.
+        # Corresponds to the JSON property `exchangeConfig`
+        # @return [Google::Apis::DisplayvideoV1::ExchangeConfig]
+        attr_accessor :exchange_config
+      
+        # General settings of a partner.
+        # Corresponds to the JSON property `generalConfig`
+        # @return [Google::Apis::DisplayvideoV1::PartnerGeneralConfig]
+        attr_accessor :general_config
+      
+        # Output only. The resource name of the partner.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The unique ID of the partner. Assigned by the system.
+        # Corresponds to the JSON property `partnerId`
+        # @return [Fixnum]
+        attr_accessor :partner_id
+      
+        # Output only. The timestamp when the partner was last updated. Assigned by the
+        # system.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_server_config = args[:ad_server_config] if args.key?(:ad_server_config)
+          @data_access_config = args[:data_access_config] if args.key?(:data_access_config)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_status = args[:entity_status] if args.key?(:entity_status)
+          @exchange_config = args[:exchange_config] if args.key?(:exchange_config)
+          @general_config = args[:general_config] if args.key?(:general_config)
+          @name = args[:name] if args.key?(:name)
+          @partner_id = args[:partner_id] if args.key?(:partner_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Ad server related settings of a partner.
+      class PartnerAdServerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Measurement settings of a partner.
+        # Corresponds to the JSON property `measurementConfig`
+        # @return [Google::Apis::DisplayvideoV1::MeasurementConfig]
+        attr_accessor :measurement_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @measurement_config = args[:measurement_config] if args.key?(:measurement_config)
+        end
+      end
+      
       # Settings that control a partner cost. A partner cost is any type of expense
       # involved in running a campaign, other than the costs of purchasing impressions
       # (which is called the media cost) and using third-party audience segment data (
@@ -6291,6 +6718,52 @@ module Google
           @fee_percentage_millis = args[:fee_percentage_millis] if args.key?(:fee_percentage_millis)
           @fee_type = args[:fee_type] if args.key?(:fee_type)
           @invoice_type = args[:invoice_type] if args.key?(:invoice_type)
+        end
+      end
+      
+      # Settings that control how partner related data may be accessed.
+      class PartnerDataAccessConfig
+        include Google::Apis::Core::Hashable
+      
+        # Structured Data File (SDF) related settings.
+        # Corresponds to the JSON property `sdfConfig`
+        # @return [Google::Apis::DisplayvideoV1::SdfConfig]
+        attr_accessor :sdf_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sdf_config = args[:sdf_config] if args.key?(:sdf_config)
+        end
+      end
+      
+      # General settings of a partner.
+      class PartnerGeneralConfig
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Partner's currency in ISO 4217 format.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Immutable. The standard TZ database name of the partner's time zone. For
+        # example, `America/New_York`. See more at: https://en.wikipedia.org/wiki/
+        # List_of_tz_database_time_zones
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
@@ -7362,6 +7835,51 @@ module Google
         def update!(**args)
           @negative = args[:negative] if args.key?(:negative)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # A single user in Display & Video 360.
+      class User
+        include Google::Apis::Core::Hashable
+      
+        # The assigned user roles. Required in CreateUser. Output only in UpdateUser.
+        # Can only be updated through BulkEditAssignedUserRoles.
+        # Corresponds to the JSON property `assignedUserRoles`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedUserRole>]
+        attr_accessor :assigned_user_roles
+      
+        # Required. The display name of the user. Must be UTF-8 encoded with a maximum
+        # size of 240 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. Immutable. The email address used to identify the user.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Output only. The resource name of the user.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The unique ID of the user. Assigned by the system.
+        # Corresponds to the JSON property `userId`
+        # @return [Fixnum]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_user_roles = args[:assigned_user_roles] if args.key?(:assigned_user_roles)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
+          @name = args[:name] if args.key?(:name)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       

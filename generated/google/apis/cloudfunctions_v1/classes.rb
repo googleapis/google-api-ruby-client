@@ -962,51 +962,6 @@ module Google
         end
       end
       
-      # Metadata describing an Operation
-      class OperationMetadataV1Beta2
-        include Google::Apis::Core::Hashable
-      
-        # The original request that started the operation.
-        # Corresponds to the JSON property `request`
-        # @return [Hash<String,Object>]
-        attr_accessor :request
-      
-        # Target of the operation - for example
-        # projects/project-1/locations/region-1/functions/function-1
-        # Corresponds to the JSON property `target`
-        # @return [String]
-        attr_accessor :target
-      
-        # Type of operation.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        # The last update timestamp of the operation.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        # Version id of the function created or updated by an API call.
-        # This field is only populated for Create and Update operations.
-        # Corresponds to the JSON property `versionId`
-        # @return [Fixnum]
-        attr_accessor :version_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @request = args[:request] if args.key?(:request)
-          @target = args[:target] if args.key?(:target)
-          @type = args[:type] if args.key?(:type)
-          @update_time = args[:update_time] if args.key?(:update_time)
-          @version_id = args[:version_id] if args.key?(:version_id)
-        end
-      end
-      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources.
       # A `Policy` is a collection of `bindings`. A `binding` binds one or more

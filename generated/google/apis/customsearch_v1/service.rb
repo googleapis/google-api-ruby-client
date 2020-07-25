@@ -47,8 +47,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Returns metadata about the search performed, metadata about the custom
-        # search engine used for the search, and the search results.
+        # Returns metadata about the search performed, metadata about the
+        # engine used for the search, and the search results.
         # @param [String] c2coff
         #   Enables or disables [Simplified and Traditional Chinese
         #   Search](https://developers.google.com/custom-search/docs/xml_results#
@@ -71,7 +71,7 @@ module Google
         #   xml_results_appendices#countryCollections)
         #   page for a list of valid values for this parameter.
         # @param [String] cx
-        #   The custom search engine ID to use for this request.
+        #   The Programmable Search Engine ID to use for this request.
         # @param [String] date_restrict
         #   Restricts results to URLs based on date. Supported values include:
         #   * `d[number]`: requests results from the specified number of past days.
@@ -326,8 +326,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns metadata about the search performed, metadata about the custom
-        # search engine used for the search, and the search results. Uses a small set
+        # Returns metadata about the search performed, metadata about the
+        # engine used for the search, and the search results. Uses a small set
         # of url patterns.
         # @param [String] c2coff
         #   Enables or disables [Simplified and Traditional Chinese
@@ -351,7 +351,7 @@ module Google
         #   xml_results_appendices#countryCollections)
         #   page for a list of valid values for this parameter.
         # @param [String] cx
-        #   The custom search engine ID to use for this request.
+        #   The Programmable Search Engine ID to use for this request.
         # @param [String] date_restrict
         #   Restricts results to URLs based on date. Supported values include:
         #   * `d[number]`: requests results from the specified number of past days.
