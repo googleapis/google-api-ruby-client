@@ -411,6 +411,7 @@ module Google
           hash :attributes, as: 'attributes'
           property :data, :base64 => true, as: 'data'
           property :message_id, as: 'messageId'
+          property :ordering_key, as: 'orderingKey'
           property :publish_time, as: 'publishTime'
         end
       end
@@ -497,6 +498,7 @@ module Google
           property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
           property :dead_letter_policy, as: 'deadLetterPolicy', class: Google::Apis::PubsubV1::DeadLetterPolicy, decorator: Google::Apis::PubsubV1::DeadLetterPolicy::Representation
       
+          property :enable_message_ordering, as: 'enableMessageOrdering'
           property :expiration_policy, as: 'expirationPolicy', class: Google::Apis::PubsubV1::ExpirationPolicy, decorator: Google::Apis::PubsubV1::ExpirationPolicy::Representation
       
           property :filter, as: 'filter'

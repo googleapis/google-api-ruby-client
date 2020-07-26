@@ -201,6 +201,58 @@ module Google
         end
       end
       
+      # Model evaluation metrics for ARIMA forecasting models.
+      class ArimaForecastingMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Arima model fitting metrics.
+        # Corresponds to the JSON property `arimaFittingMetrics`
+        # @return [Array<Google::Apis::BigqueryV2::ArimaFittingMetrics>]
+        attr_accessor :arima_fitting_metrics
+      
+        # Repeated as there can be many metric sets (one for each model) in
+        # auto-arima and the large-scale case.
+        # Corresponds to the JSON property `arimaSingleModelForecastingMetrics`
+        # @return [Array<Google::Apis::BigqueryV2::ArimaSingleModelForecastingMetrics>]
+        attr_accessor :arima_single_model_forecasting_metrics
+      
+        # Whether Arima model fitted with drift or not. It is always false when d
+        # is not 1.
+        # Corresponds to the JSON property `hasDrift`
+        # @return [Array<Boolean>]
+        attr_accessor :has_drift
+      
+        # Non-seasonal order.
+        # Corresponds to the JSON property `nonSeasonalOrder`
+        # @return [Array<Google::Apis::BigqueryV2::ArimaOrder>]
+        attr_accessor :non_seasonal_order
+      
+        # Seasonal periods. Repeated because multiple periods are supported for one
+        # time series.
+        # Corresponds to the JSON property `seasonalPeriods`
+        # @return [Array<String>]
+        attr_accessor :seasonal_periods
+      
+        # Id to differentiate different time series for the large-scale case.
+        # Corresponds to the JSON property `timeSeriesId`
+        # @return [Array<String>]
+        attr_accessor :time_series_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arima_fitting_metrics = args[:arima_fitting_metrics] if args.key?(:arima_fitting_metrics)
+          @arima_single_model_forecasting_metrics = args[:arima_single_model_forecasting_metrics] if args.key?(:arima_single_model_forecasting_metrics)
+          @has_drift = args[:has_drift] if args.key?(:has_drift)
+          @non_seasonal_order = args[:non_seasonal_order] if args.key?(:non_seasonal_order)
+          @seasonal_periods = args[:seasonal_periods] if args.key?(:seasonal_periods)
+          @time_series_id = args[:time_series_id] if args.key?(:time_series_id)
+        end
+      end
+      
       # Arima model information.
       class ArimaModelInfo
         include Google::Apis::Core::Hashable
@@ -309,6 +361,52 @@ module Google
         def update!(**args)
           @arima_model_info = args[:arima_model_info] if args.key?(:arima_model_info)
           @seasonal_periods = args[:seasonal_periods] if args.key?(:seasonal_periods)
+        end
+      end
+      
+      # Model evaluation metrics for a single ARIMA forecasting model.
+      class ArimaSingleModelForecastingMetrics
+        include Google::Apis::Core::Hashable
+      
+        # ARIMA model fitting metrics.
+        # Corresponds to the JSON property `arimaFittingMetrics`
+        # @return [Google::Apis::BigqueryV2::ArimaFittingMetrics]
+        attr_accessor :arima_fitting_metrics
+      
+        # Is arima model fitted with drift or not. It is always false when d
+        # is not 1.
+        # Corresponds to the JSON property `hasDrift`
+        # @return [Boolean]
+        attr_accessor :has_drift
+        alias_method :has_drift?, :has_drift
+      
+        # Arima order, can be used for both non-seasonal and seasonal parts.
+        # Corresponds to the JSON property `nonSeasonalOrder`
+        # @return [Google::Apis::BigqueryV2::ArimaOrder]
+        attr_accessor :non_seasonal_order
+      
+        # Seasonal periods. Repeated because multiple periods are supported
+        # for one time series.
+        # Corresponds to the JSON property `seasonalPeriods`
+        # @return [Array<String>]
+        attr_accessor :seasonal_periods
+      
+        # The id to indicate different time series.
+        # Corresponds to the JSON property `timeSeriesId`
+        # @return [String]
+        attr_accessor :time_series_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arima_fitting_metrics = args[:arima_fitting_metrics] if args.key?(:arima_fitting_metrics)
+          @has_drift = args[:has_drift] if args.key?(:has_drift)
+          @non_seasonal_order = args[:non_seasonal_order] if args.key?(:non_seasonal_order)
+          @seasonal_periods = args[:seasonal_periods] if args.key?(:seasonal_periods)
+          @time_series_id = args[:time_series_id] if args.key?(:time_series_id)
         end
       end
       
@@ -1771,6 +1869,11 @@ module Google
       class EvaluationMetrics
         include Google::Apis::Core::Hashable
       
+        # Model evaluation metrics for ARIMA forecasting models.
+        # Corresponds to the JSON property `arimaForecastingMetrics`
+        # @return [Google::Apis::BigqueryV2::ArimaForecastingMetrics]
+        attr_accessor :arima_forecasting_metrics
+      
         # Evaluation metrics for binary classification/classifier models.
         # Corresponds to the JSON property `binaryClassificationMetrics`
         # @return [Google::Apis::BigqueryV2::BinaryClassificationMetrics]
@@ -1804,6 +1907,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @arima_forecasting_metrics = args[:arima_forecasting_metrics] if args.key?(:arima_forecasting_metrics)
           @binary_classification_metrics = args[:binary_classification_metrics] if args.key?(:binary_classification_metrics)
           @clustering_metrics = args[:clustering_metrics] if args.key?(:clustering_metrics)
           @multi_class_classification_metrics = args[:multi_class_classification_metrics] if args.key?(:multi_class_classification_metrics)
@@ -5506,6 +5610,31 @@ module Google
         end
       end
       
+      # 
+      class SnapshotDefinition
+        include Google::Apis::Core::Hashable
+      
+        # [Required] Reference describing the ID of the table that is snapshotted.
+        # Corresponds to the JSON property `baseTableReference`
+        # @return [Google::Apis::BigqueryV2::TableReference]
+        attr_accessor :base_table_reference
+      
+        # [Required] The time at which the base table was snapshot.
+        # Corresponds to the JSON property `snapshotTime`
+        # @return [DateTime]
+        attr_accessor :snapshot_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_table_reference = args[:base_table_reference] if args.key?(:base_table_reference)
+          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
+        end
+      end
+      
       # The type of a variable, e.g., a function argument.
       # Examples:
       # INT64: `type_kind="INT64"`
@@ -5790,6 +5919,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output-only] Snapshot definition.
+        # Corresponds to the JSON property `snapshotDefinition`
+        # @return [Google::Apis::BigqueryV2::SnapshotDefinition]
+        attr_accessor :snapshot_definition
+      
         # [Output-only] Contains information regarding this table's streaming buffer, if
         # one is present. This field will be absent if the table is not being streamed
         # to or if there is no data in the streaming buffer.
@@ -5810,9 +5944,10 @@ module Google
       
         # [Output-only] Describes the table type. The following values are supported:
         # TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. [
-        # TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted.
-        # EXTERNAL: A table that references data stored in an external storage system,
-        # such as Google Cloud Storage. The default value is TABLE.
+        # TrustedTester] SNAPSHOT: An immutable, read-only table that is a copy of
+        # another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is
+        # persisted. EXTERNAL: A table that references data stored in an external
+        # storage system, such as Google Cloud Storage. The default value is TABLE.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -5851,6 +5986,7 @@ module Google
           @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
           @schema = args[:schema] if args.key?(:schema)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @snapshot_definition = args[:snapshot_definition] if args.key?(:snapshot_definition)
           @streaming_buffer = args[:streaming_buffer] if args.key?(:streaming_buffer)
           @table_reference = args[:table_reference] if args.key?(:table_reference)
           @time_partitioning = args[:time_partitioning] if args.key?(:time_partitioning)
@@ -6468,10 +6604,21 @@ module Google
       class TrainingOptions
         include Google::Apis::Core::Hashable
       
+        # Whether to enable auto ARIMA or not.
+        # Corresponds to the JSON property `autoArima`
+        # @return [Boolean]
+        attr_accessor :auto_arima
+        alias_method :auto_arima?, :auto_arima
+      
         # Batch size for dnn models.
         # Corresponds to the JSON property `batchSize`
         # @return [Fixnum]
         attr_accessor :batch_size
+      
+        # The data frequency of a time series.
+        # Corresponds to the JSON property `dataFrequency`
+        # @return [String]
+        attr_accessor :data_frequency
       
         # The column to split data with. This column won't be used as a
         # feature.
@@ -6529,6 +6676,24 @@ module Google
         # Corresponds to the JSON property `hiddenUnits`
         # @return [Array<Fixnum>]
         attr_accessor :hidden_units
+      
+        # The geographical region based on which the holidays are considered in
+        # time series modeling. If a valid value is specified, then holiday
+        # effects modeling is enabled.
+        # Corresponds to the JSON property `holidayRegion`
+        # @return [String]
+        attr_accessor :holiday_region
+      
+        # The number of periods ahead that need to be forecasted.
+        # Corresponds to the JSON property `horizon`
+        # @return [Fixnum]
+        attr_accessor :horizon
+      
+        # Include drift when fitting an ARIMA model.
+        # Corresponds to the JSON property `includeDrift`
+        # @return [Boolean]
+        attr_accessor :include_drift
+        alias_method :include_drift?, :include_drift
       
         # Specifies the initial learning rate for the line search learn rate
         # strategy.
@@ -6617,6 +6782,11 @@ module Google
         # @return [String]
         attr_accessor :model_uri
       
+        # Arima order, can be used for both non-seasonal and seasonal parts.
+        # Corresponds to the JSON property `nonSeasonalOrder`
+        # @return [Google::Apis::BigqueryV2::ArimaOrder]
+        attr_accessor :non_seasonal_order
+      
         # Number of clusters for clustering models.
         # Corresponds to the JSON property `numClusters`
         # @return [Fixnum]
@@ -6647,6 +6817,22 @@ module Google
         # @return [Float]
         attr_accessor :subsample
       
+        # Column to be designated as time series data for ARIMA model.
+        # Corresponds to the JSON property `timeSeriesDataColumn`
+        # @return [String]
+        attr_accessor :time_series_data_column
+      
+        # The id column that will be used to indicate different time series to
+        # forecast in parallel.
+        # Corresponds to the JSON property `timeSeriesIdColumn`
+        # @return [String]
+        attr_accessor :time_series_id_column
+      
+        # Column to be designated as time series timestamp for ARIMA model.
+        # Corresponds to the JSON property `timeSeriesTimestampColumn`
+        # @return [String]
+        attr_accessor :time_series_timestamp_column
+      
         # User column specified for matrix factorization models.
         # Corresponds to the JSON property `userColumn`
         # @return [String]
@@ -6670,7 +6856,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_arima = args[:auto_arima] if args.key?(:auto_arima)
           @batch_size = args[:batch_size] if args.key?(:batch_size)
+          @data_frequency = args[:data_frequency] if args.key?(:data_frequency)
           @data_split_column = args[:data_split_column] if args.key?(:data_split_column)
           @data_split_eval_fraction = args[:data_split_eval_fraction] if args.key?(:data_split_eval_fraction)
           @data_split_method = args[:data_split_method] if args.key?(:data_split_method)
@@ -6679,6 +6867,9 @@ module Google
           @early_stop = args[:early_stop] if args.key?(:early_stop)
           @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
           @hidden_units = args[:hidden_units] if args.key?(:hidden_units)
+          @holiday_region = args[:holiday_region] if args.key?(:holiday_region)
+          @horizon = args[:horizon] if args.key?(:horizon)
+          @include_drift = args[:include_drift] if args.key?(:include_drift)
           @initial_learn_rate = args[:initial_learn_rate] if args.key?(:initial_learn_rate)
           @input_label_columns = args[:input_label_columns] if args.key?(:input_label_columns)
           @item_column = args[:item_column] if args.key?(:item_column)
@@ -6695,11 +6886,15 @@ module Google
           @min_relative_progress = args[:min_relative_progress] if args.key?(:min_relative_progress)
           @min_split_loss = args[:min_split_loss] if args.key?(:min_split_loss)
           @model_uri = args[:model_uri] if args.key?(:model_uri)
+          @non_seasonal_order = args[:non_seasonal_order] if args.key?(:non_seasonal_order)
           @num_clusters = args[:num_clusters] if args.key?(:num_clusters)
           @num_factors = args[:num_factors] if args.key?(:num_factors)
           @optimization_strategy = args[:optimization_strategy] if args.key?(:optimization_strategy)
           @preserve_input_structs = args[:preserve_input_structs] if args.key?(:preserve_input_structs)
           @subsample = args[:subsample] if args.key?(:subsample)
+          @time_series_data_column = args[:time_series_data_column] if args.key?(:time_series_data_column)
+          @time_series_id_column = args[:time_series_id_column] if args.key?(:time_series_id_column)
+          @time_series_timestamp_column = args[:time_series_timestamp_column] if args.key?(:time_series_timestamp_column)
           @user_column = args[:user_column] if args.key?(:user_column)
           @wals_alpha = args[:wals_alpha] if args.key?(:wals_alpha)
           @warm_start = args[:warm_start] if args.key?(:warm_start)

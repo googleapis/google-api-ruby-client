@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArimaForecastingMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ArimaModelInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,12 @@ module Google
       end
       
       class ArimaResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArimaSingleModelForecastingMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -622,6 +634,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SnapshotDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StandardSqlDataType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -826,6 +844,21 @@ module Google
         end
       end
       
+      class ArimaForecastingMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :arima_fitting_metrics, as: 'arimaFittingMetrics', class: Google::Apis::BigqueryV2::ArimaFittingMetrics, decorator: Google::Apis::BigqueryV2::ArimaFittingMetrics::Representation
+      
+          collection :arima_single_model_forecasting_metrics, as: 'arimaSingleModelForecastingMetrics', class: Google::Apis::BigqueryV2::ArimaSingleModelForecastingMetrics, decorator: Google::Apis::BigqueryV2::ArimaSingleModelForecastingMetrics::Representation
+      
+          collection :has_drift, as: 'hasDrift'
+          collection :non_seasonal_order, as: 'nonSeasonalOrder', class: Google::Apis::BigqueryV2::ArimaOrder, decorator: Google::Apis::BigqueryV2::ArimaOrder::Representation
+      
+          collection :seasonal_periods, as: 'seasonalPeriods'
+          collection :time_series_id, as: 'timeSeriesId'
+        end
+      end
+      
       class ArimaModelInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -856,6 +889,19 @@ module Google
           collection :arima_model_info, as: 'arimaModelInfo', class: Google::Apis::BigqueryV2::ArimaModelInfo, decorator: Google::Apis::BigqueryV2::ArimaModelInfo::Representation
       
           collection :seasonal_periods, as: 'seasonalPeriods'
+        end
+      end
+      
+      class ArimaSingleModelForecastingMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :arima_fitting_metrics, as: 'arimaFittingMetrics', class: Google::Apis::BigqueryV2::ArimaFittingMetrics, decorator: Google::Apis::BigqueryV2::ArimaFittingMetrics::Representation
+      
+          property :has_drift, as: 'hasDrift'
+          property :non_seasonal_order, as: 'nonSeasonalOrder', class: Google::Apis::BigqueryV2::ArimaOrder, decorator: Google::Apis::BigqueryV2::ArimaOrder::Representation
+      
+          collection :seasonal_periods, as: 'seasonalPeriods'
+          property :time_series_id, as: 'timeSeriesId'
         end
       end
       
@@ -1192,6 +1238,8 @@ module Google
       class EvaluationMetrics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :arima_forecasting_metrics, as: 'arimaForecastingMetrics', class: Google::Apis::BigqueryV2::ArimaForecastingMetrics, decorator: Google::Apis::BigqueryV2::ArimaForecastingMetrics::Representation
+      
           property :binary_classification_metrics, as: 'binaryClassificationMetrics', class: Google::Apis::BigqueryV2::BinaryClassificationMetrics, decorator: Google::Apis::BigqueryV2::BinaryClassificationMetrics::Representation
       
           property :clustering_metrics, as: 'clusteringMetrics', class: Google::Apis::BigqueryV2::ClusteringMetrics, decorator: Google::Apis::BigqueryV2::ClusteringMetrics::Representation
@@ -2052,6 +2100,16 @@ module Google
         end
       end
       
+      class SnapshotDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_table_reference, as: 'baseTableReference', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
+      
+          property :snapshot_time, as: 'snapshotTime', type: DateTime
+      
+        end
+      end
+      
       class StandardSqlDataType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2122,6 +2180,8 @@ module Google
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :self_link, as: 'selfLink'
+          property :snapshot_definition, as: 'snapshotDefinition', class: Google::Apis::BigqueryV2::SnapshotDefinition, decorator: Google::Apis::BigqueryV2::SnapshotDefinition::Representation
+      
           property :streaming_buffer, as: 'streamingBuffer', class: Google::Apis::BigqueryV2::Streamingbuffer, decorator: Google::Apis::BigqueryV2::Streamingbuffer::Representation
       
           property :table_reference, as: 'tableReference', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
@@ -2315,7 +2375,9 @@ module Google
       class TrainingOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_arima, as: 'autoArima'
           property :batch_size, :numeric_string => true, as: 'batchSize'
+          property :data_frequency, as: 'dataFrequency'
           property :data_split_column, as: 'dataSplitColumn'
           property :data_split_eval_fraction, as: 'dataSplitEvalFraction'
           property :data_split_method, as: 'dataSplitMethod'
@@ -2324,6 +2386,9 @@ module Google
           property :early_stop, as: 'earlyStop'
           property :feedback_type, as: 'feedbackType'
           collection :hidden_units, as: 'hiddenUnits'
+          property :holiday_region, as: 'holidayRegion'
+          property :horizon, :numeric_string => true, as: 'horizon'
+          property :include_drift, as: 'includeDrift'
           property :initial_learn_rate, as: 'initialLearnRate'
           collection :input_label_columns, as: 'inputLabelColumns'
           property :item_column, as: 'itemColumn'
@@ -2340,11 +2405,16 @@ module Google
           property :min_relative_progress, as: 'minRelativeProgress'
           property :min_split_loss, as: 'minSplitLoss'
           property :model_uri, as: 'modelUri'
+          property :non_seasonal_order, as: 'nonSeasonalOrder', class: Google::Apis::BigqueryV2::ArimaOrder, decorator: Google::Apis::BigqueryV2::ArimaOrder::Representation
+      
           property :num_clusters, :numeric_string => true, as: 'numClusters'
           property :num_factors, :numeric_string => true, as: 'numFactors'
           property :optimization_strategy, as: 'optimizationStrategy'
           property :preserve_input_structs, as: 'preserveInputStructs'
           property :subsample, as: 'subsample'
+          property :time_series_data_column, as: 'timeSeriesDataColumn'
+          property :time_series_id_column, as: 'timeSeriesIdColumn'
+          property :time_series_timestamp_column, as: 'timeSeriesTimestampColumn'
           property :user_column, as: 'userColumn'
           property :wals_alpha, as: 'walsAlpha'
           property :warm_start, as: 'warmStart'

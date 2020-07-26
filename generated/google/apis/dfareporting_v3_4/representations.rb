@@ -202,6 +202,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChannelGrouping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChannelGroupingRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CitiesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -616,6 +628,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisjunctiveMatchStatement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DynamicTargetingKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -629,6 +647,12 @@ module Google
       end
       
       class EncryptionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -958,6 +982,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PathFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PathReportCompatibleFields
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PathReportDimensionValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PathToConversionReportCompatibleFields
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1149,6 +1191,18 @@ module Google
           
             include Google::Apis::Core::JsonObjectSupport
           end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class PathAttributionCriteria
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
+        class PathCriteria
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -1904,6 +1958,27 @@ module Google
         end
       end
       
+      class ChannelGrouping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fallback_name, as: 'fallbackName'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::DfareportingV3_4::ChannelGroupingRule, decorator: Google::Apis::DfareportingV3_4::ChannelGroupingRule::Representation
+      
+        end
+      end
+      
+      class ChannelGroupingRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disjunctive_match_statements, as: 'disjunctiveMatchStatements', class: Google::Apis::DfareportingV3_4::DisjunctiveMatchStatement, decorator: Google::Apis::DfareportingV3_4::DisjunctiveMatchStatement::Representation
+      
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+        end
+      end
+      
       class CitiesListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1984,6 +2059,10 @@ module Google
           property :floodlight_report_compatible_fields, as: 'floodlightReportCompatibleFields', class: Google::Apis::DfareportingV3_4::FloodlightReportCompatibleFields, decorator: Google::Apis::DfareportingV3_4::FloodlightReportCompatibleFields::Representation
       
           property :kind, as: 'kind'
+          property :path_attribution_report_compatible_fields, as: 'pathAttributionReportCompatibleFields', class: Google::Apis::DfareportingV3_4::PathReportCompatibleFields, decorator: Google::Apis::DfareportingV3_4::PathReportCompatibleFields::Representation
+      
+          property :path_report_compatible_fields, as: 'pathReportCompatibleFields', class: Google::Apis::DfareportingV3_4::PathReportCompatibleFields, decorator: Google::Apis::DfareportingV3_4::PathReportCompatibleFields::Representation
+      
           property :path_to_conversion_report_compatible_fields, as: 'pathToConversionReportCompatibleFields', class: Google::Apis::DfareportingV3_4::PathToConversionReportCompatibleFields, decorator: Google::Apis::DfareportingV3_4::PathToConversionReportCompatibleFields::Representation
       
           property :reach_report_compatible_fields, as: 'reachReportCompatibleFields', class: Google::Apis::DfareportingV3_4::ReachReportCompatibleFields, decorator: Google::Apis::DfareportingV3_4::ReachReportCompatibleFields::Representation
@@ -2818,6 +2897,15 @@ module Google
         end
       end
       
+      class DisjunctiveMatchStatement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_filters, as: 'eventFilters', class: Google::Apis::DfareportingV3_4::EventFilter, decorator: Google::Apis::DfareportingV3_4::EventFilter::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
       class DynamicTargetingKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2843,6 +2931,15 @@ module Google
           property :encryption_entity_id, :numeric_string => true, as: 'encryptionEntityId'
           property :encryption_entity_type, as: 'encryptionEntityType'
           property :encryption_source, as: 'encryptionSource'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class EventFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension_filter, as: 'dimensionFilter', class: Google::Apis::DfareportingV3_4::PathReportDimensionValue, decorator: Google::Apis::DfareportingV3_4::PathReportDimensionValue::Representation
+      
           property :kind, as: 'kind'
         end
       end
@@ -2965,6 +3062,7 @@ module Google
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV3_4::DimensionValue, decorator: Google::Apis::DfareportingV3_4::DimensionValue::Representation
       
+          property :attribution_enabled, as: 'attributionEnabled'
           property :cache_busting_type, as: 'cacheBustingType'
           property :counting_method, as: 'countingMethod'
           collection :default_tags, as: 'defaultTags', class: Google::Apis::DfareportingV3_4::FloodlightActivityDynamicTag, decorator: Google::Apis::DfareportingV3_4::FloodlightActivityDynamicTag::Representation
@@ -3530,6 +3628,42 @@ module Google
         end
       end
       
+      class PathFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_filters, as: 'eventFilters', class: Google::Apis::DfareportingV3_4::EventFilter, decorator: Google::Apis::DfareportingV3_4::EventFilter::Representation
+      
+          property :kind, as: 'kind'
+          property :path_match_position, as: 'pathMatchPosition'
+        end
+      end
+      
+      class PathReportCompatibleFields
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :channel_groupings, as: 'channelGroupings', class: Google::Apis::DfareportingV3_4::Dimension, decorator: Google::Apis::DfareportingV3_4::Dimension::Representation
+      
+          collection :dimensions, as: 'dimensions', class: Google::Apis::DfareportingV3_4::Dimension, decorator: Google::Apis::DfareportingV3_4::Dimension::Representation
+      
+          property :kind, as: 'kind'
+          collection :metrics, as: 'metrics', class: Google::Apis::DfareportingV3_4::Metric, decorator: Google::Apis::DfareportingV3_4::Metric::Representation
+      
+          collection :path_filters, as: 'pathFilters', class: Google::Apis::DfareportingV3_4::Dimension, decorator: Google::Apis::DfareportingV3_4::Dimension::Representation
+      
+        end
+      end
+      
+      class PathReportDimensionValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension_name, as: 'dimensionName'
+          collection :ids, as: 'ids'
+          property :kind, as: 'kind'
+          property :match_type, as: 'matchType'
+          collection :values, as: 'values'
+        end
+      end
+      
       class PathToConversionReportCompatibleFields
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3967,6 +4101,10 @@ module Google
           property :last_modified_time, :numeric_string => true, as: 'lastModifiedTime'
           property :name, as: 'name'
           property :owner_profile_id, :numeric_string => true, as: 'ownerProfileId'
+          property :path_attribution_criteria, as: 'pathAttributionCriteria', class: Google::Apis::DfareportingV3_4::Report::PathAttributionCriteria, decorator: Google::Apis::DfareportingV3_4::Report::PathAttributionCriteria::Representation
+      
+          property :path_criteria, as: 'pathCriteria', class: Google::Apis::DfareportingV3_4::Report::PathCriteria, decorator: Google::Apis::DfareportingV3_4::Report::PathCriteria::Representation
+      
           property :path_to_conversion_criteria, as: 'pathToConversionCriteria', class: Google::Apis::DfareportingV3_4::Report::PathToConversionCriteria, decorator: Google::Apis::DfareportingV3_4::Report::PathToConversionCriteria::Representation
       
           property :reach_criteria, as: 'reachCriteria', class: Google::Apis::DfareportingV3_4::Report::ReachCriteria, decorator: Google::Apis::DfareportingV3_4::Report::ReachCriteria::Representation
@@ -4046,6 +4184,44 @@ module Google
               property :include_unattributed_cookie_conversions, as: 'includeUnattributedCookieConversions'
               property :include_unattributed_ip_conversions, as: 'includeUnattributedIPConversions'
             end
+          end
+        end
+        
+        class PathAttributionCriteria
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :activity_filters, as: 'activityFilters', class: Google::Apis::DfareportingV3_4::DimensionValue, decorator: Google::Apis::DfareportingV3_4::DimensionValue::Representation
+        
+            property :custom_channel_grouping, as: 'customChannelGrouping', class: Google::Apis::DfareportingV3_4::ChannelGrouping, decorator: Google::Apis::DfareportingV3_4::ChannelGrouping::Representation
+        
+            property :date_range, as: 'dateRange', class: Google::Apis::DfareportingV3_4::DateRange, decorator: Google::Apis::DfareportingV3_4::DateRange::Representation
+        
+            collection :dimensions, as: 'dimensions', class: Google::Apis::DfareportingV3_4::SortedDimension, decorator: Google::Apis::DfareportingV3_4::SortedDimension::Representation
+        
+            property :floodlight_config_id, as: 'floodlightConfigId', class: Google::Apis::DfareportingV3_4::DimensionValue, decorator: Google::Apis::DfareportingV3_4::DimensionValue::Representation
+        
+            collection :metric_names, as: 'metricNames'
+            collection :path_filters, as: 'pathFilters', class: Google::Apis::DfareportingV3_4::PathFilter, decorator: Google::Apis::DfareportingV3_4::PathFilter::Representation
+        
+          end
+        end
+        
+        class PathCriteria
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :activity_filters, as: 'activityFilters', class: Google::Apis::DfareportingV3_4::DimensionValue, decorator: Google::Apis::DfareportingV3_4::DimensionValue::Representation
+        
+            property :custom_channel_grouping, as: 'customChannelGrouping', class: Google::Apis::DfareportingV3_4::ChannelGrouping, decorator: Google::Apis::DfareportingV3_4::ChannelGrouping::Representation
+        
+            property :date_range, as: 'dateRange', class: Google::Apis::DfareportingV3_4::DateRange, decorator: Google::Apis::DfareportingV3_4::DateRange::Representation
+        
+            collection :dimensions, as: 'dimensions', class: Google::Apis::DfareportingV3_4::SortedDimension, decorator: Google::Apis::DfareportingV3_4::SortedDimension::Representation
+        
+            property :floodlight_config_id, as: 'floodlightConfigId', class: Google::Apis::DfareportingV3_4::DimensionValue, decorator: Google::Apis::DfareportingV3_4::DimensionValue::Representation
+        
+            collection :metric_names, as: 'metricNames'
+            collection :path_filters, as: 'pathFilters', class: Google::Apis::DfareportingV3_4::PathFilter, decorator: Google::Apis::DfareportingV3_4::PathFilter::Representation
+        
           end
         end
         
@@ -4265,6 +4441,9 @@ module Google
           property :companion_settings, as: 'companionSettings', class: Google::Apis::DfareportingV3_4::SiteCompanionSetting, decorator: Google::Apis::DfareportingV3_4::SiteCompanionSetting::Representation
       
           property :kind, as: 'kind'
+          property :oba_enabled, as: 'obaEnabled'
+          property :oba_settings, as: 'obaSettings', class: Google::Apis::DfareportingV3_4::ObaIcon, decorator: Google::Apis::DfareportingV3_4::ObaIcon::Representation
+      
           property :orientation, as: 'orientation'
           property :skippable_settings, as: 'skippableSettings', class: Google::Apis::DfareportingV3_4::SiteSkippableSetting, decorator: Google::Apis::DfareportingV3_4::SiteSkippableSetting::Representation
       
@@ -4628,6 +4807,9 @@ module Google
           property :companion_settings, as: 'companionSettings', class: Google::Apis::DfareportingV3_4::CompanionSetting, decorator: Google::Apis::DfareportingV3_4::CompanionSetting::Representation
       
           property :kind, as: 'kind'
+          property :oba_enabled, as: 'obaEnabled'
+          property :oba_settings, as: 'obaSettings', class: Google::Apis::DfareportingV3_4::ObaIcon, decorator: Google::Apis::DfareportingV3_4::ObaIcon::Representation
+      
           property :orientation, as: 'orientation'
           property :skippable_settings, as: 'skippableSettings', class: Google::Apis::DfareportingV3_4::SkippableSetting, decorator: Google::Apis::DfareportingV3_4::SkippableSetting::Representation
       

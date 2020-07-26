@@ -248,6 +248,7 @@ module Google
           hash :attributes, as: 'attributes'
           property :data, :base64 => true, as: 'data'
           property :message_id, as: 'messageId'
+          property :ordering_key, as: 'orderingKey'
           property :publish_time, as: 'publishTime'
         end
       end
