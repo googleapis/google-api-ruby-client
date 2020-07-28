@@ -347,7 +347,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_asset_relationships(asset_id: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_asset_relationships(asset_id, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'youtube/partner/v1/assetRelationships', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetRelationshipListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetRelationshipListResponse
@@ -489,7 +489,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_asset_shares(asset_id: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_asset_shares(asset_id, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'youtube/partner/v1/assetShares', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetShareListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetShareListResponse
@@ -600,6 +600,16 @@ module Google
         # duplicate assets have been merged, the API response only contains the
         # synthesized asset. (It does not contain the constituent assets that were
         # merged into the synthesized asset.)
+        # @param [String] id
+        #   The *id* parameter specifies a comma-separated list of YouTube Asset IDs that
+        #   identify the assets you want to retrieve. As noted in the method description,
+        #   if you try to retrieve an asset that YouTube identified as a duplicate and
+        #   merged with another asset, the API response only returns the synthesized asset.
+        #   In that case, the aliasId property in the asset resource specifies a list of
+        #   other asset IDs that can be used to identify that asset. Also note that the
+        #   API response does not contain duplicates. As such, if your request identifies
+        #   three asset IDs, and all of those have been merged into a single asset, then
+        #   the API response identifies one matching asset.
         # @param [String] fetch_match_policy
         #   The *fetchMatchPolicy* parameter specifies the version of the asset's match
         #   policy that should be returned in the API response.
@@ -615,16 +625,6 @@ module Google
         # @param [Boolean] fetch_ownership_conflicts
         #   The *fetchOwnershipConflicts* parameter allows you to retrieve information
         #   about ownership conflicts.
-        # @param [String] id
-        #   The *id* parameter specifies a comma-separated list of YouTube Asset IDs that
-        #   identify the assets you want to retrieve. As noted in the method description,
-        #   if you try to retrieve an asset that YouTube identified as a duplicate and
-        #   merged with another asset, the API response only returns the synthesized asset.
-        #   In that case, the aliasId property in the asset resource specifies a list of
-        #   other asset IDs that can be used to identify that asset. Also note that the
-        #   API response does not contain duplicates. As such, if your request identifies
-        #   three asset IDs, and all of those have been merged into a single asset, then
-        #   the API response identifies one matching asset.
         # @param [String] on_behalf_of_content_owner
         #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
         #   user is acting on behalf of. This parameter supports users whose accounts are
@@ -646,7 +646,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_assets(fetch_match_policy: nil, fetch_metadata: nil, fetch_ownership: nil, fetch_ownership_conflicts: nil, id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_assets(id, fetch_match_policy: nil, fetch_metadata: nil, fetch_ownership: nil, fetch_ownership_conflicts: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'youtube/partner/v1/assets', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::AssetListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::AssetListResponse
@@ -1403,10 +1403,10 @@ module Google
         end
         
         # Inserts a cuepoint into a live broadcast.
-        # @param [Google::Apis::YoutubePartnerV1::LiveCuepoint] live_cuepoint_object
         # @param [String] channel_id
         #   The *channelId* parameter identifies the channel that owns the broadcast into
         #   which the cuepoint is being inserted.
+        # @param [Google::Apis::YoutubePartnerV1::LiveCuepoint] live_cuepoint_object
         # @param [String] on_behalf_of_content_owner
         #   The *onBehalfOfContentOwner* parameter identifies the content owner that the
         #   user is acting on behalf of. This parameter supports users whose accounts are
@@ -1430,7 +1430,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_live_cuepoint(live_cuepoint_object = nil, channel_id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_live_cuepoint(channel_id, live_cuepoint_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'youtube/partner/v1/liveCuepoints', options)
           command.request_representation = Google::Apis::YoutubePartnerV1::LiveCuepoint::Representation
           command.request_object = live_cuepoint_object
@@ -1469,7 +1469,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_metadata_histories(asset_id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_metadata_histories(asset_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'youtube/partner/v1/metadataHistory', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::MetadataHistoryListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::MetadataHistoryListResponse
@@ -1635,7 +1635,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_ownership_histories(asset_id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_ownership_histories(asset_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'youtube/partner/v1/ownershipHistory', options)
           command.response_representation = Google::Apis::YoutubePartnerV1::OwnershipHistoryListResponse::Representation
           command.response_class = Google::Apis::YoutubePartnerV1::OwnershipHistoryListResponse
