@@ -2111,21 +2111,23 @@ module Google
         end
       end
       
-      # A result of Resource Search, containing information of a cloud resoure.
+      # A result of Resource Search, containing information of a cloud resource.
       class ResourceSearchResult
         include Google::Apis::Core::Hashable
       
-        # The additional attributes of this resource. The attributes may vary from
-        # one resource type to another. Examples: `projectId` for Project,
+        # The additional searchable attributes of this resource. The attributes may
+        # vary from one resource type to another. Examples: `projectId` for Project,
         # `dnsName` for DNS ManagedZone. This field contains a subset of the resource
         # metadata fields that are returned by the List or Get APIs provided by the
-        # corresponding GCP service (e.g., Compute Engine). see [API
-        # references](https://cloud.google.com/asset-inventory/docs/supported-asset-
-        # types#supported_resource_types)
-        # of CAIS supported resource types. You can search values of these fields
-        # through free text search. However, you should not consume the field
-        # programically as the field names and values may change as the GCP service
-        # (e.g., Compute Engine) updates to a new incompatible API version.
+        # corresponding GCP service (e.g., Compute Engine). see [API references and
+        # supported searchable
+        # attributes](https://cloud.google.com/asset-inventory/docs/supported-asset-
+        # types#searchable_asset_types)
+        # for more information.
+        # You can search values of these fields through free text search. However,
+        # you should not consume the field programically as the field names and
+        # values may change as the GCP service updates to a new incompatible API
+        # version.
         # To search against the `additional_attributes`:
         # * use a free text query to match the attributes values. Example: to search
         # `additional_attributes = ` dnsName: "foobar" ``, you can issue a query

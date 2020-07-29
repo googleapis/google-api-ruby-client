@@ -303,40 +303,6 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # The worker uses this method to upload SOS reports for unexpected errors.
-        # @param [String] id
-        #   The VM identity token for authenticating the VM instance.
-        #   https://cloud.google.com/compute/docs/instances/verifying-instance-identity
-        # @param [Google::Apis::GenomicsV2alpha1::HttpBody] http_body_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV2alpha1::UploadSosReportResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GenomicsV2alpha1::UploadSosReportResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_worker_project_worker_sos_report(id, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2alpha1/workers/{+id}:uploadSosReport', options)
-          command.request_representation = Google::Apis::GenomicsV2alpha1::HttpBody::Representation
-          command.request_object = http_body_object
-          command.response_representation = Google::Apis::GenomicsV2alpha1::UploadSosReportResponse::Representation
-          command.response_class = Google::Apis::GenomicsV2alpha1::UploadSosReportResponse
-          command.params['id'] = id unless id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
 
         protected
 

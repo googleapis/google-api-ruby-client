@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CalendarUrl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContactGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,12 @@ module Google
       end
       
       class Event
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -436,6 +448,17 @@ module Google
         end
       end
       
+      class CalendarUrl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :formatted_type, as: 'formattedType'
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
+      
+          property :type, as: 'type'
+          property :url, as: 'url'
+        end
+      end
+      
       class ContactGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -556,6 +579,17 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class ExternalId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :formatted_type, as: 'formattedType'
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
+      
+          property :type, as: 'type'
+          property :value, as: 'value'
         end
       end
       
@@ -777,12 +811,16 @@ module Google
       
           collection :bragging_rights, as: 'braggingRights', class: Google::Apis::PeopleV1::BraggingRights, decorator: Google::Apis::PeopleV1::BraggingRights::Representation
       
+          collection :calendar_urls, as: 'calendarUrls', class: Google::Apis::PeopleV1::CalendarUrl, decorator: Google::Apis::PeopleV1::CalendarUrl::Representation
+      
           collection :cover_photos, as: 'coverPhotos', class: Google::Apis::PeopleV1::CoverPhoto, decorator: Google::Apis::PeopleV1::CoverPhoto::Representation
       
           collection :email_addresses, as: 'emailAddresses', class: Google::Apis::PeopleV1::EmailAddress, decorator: Google::Apis::PeopleV1::EmailAddress::Representation
       
           property :etag, as: 'etag'
           collection :events, as: 'events', class: Google::Apis::PeopleV1::Event, decorator: Google::Apis::PeopleV1::Event::Representation
+      
+          collection :external_ids, as: 'externalIds', class: Google::Apis::PeopleV1::ExternalId, decorator: Google::Apis::PeopleV1::ExternalId::Representation
       
           collection :file_ases, as: 'fileAses', class: Google::Apis::PeopleV1::FileAs, decorator: Google::Apis::PeopleV1::FileAs::Representation
       

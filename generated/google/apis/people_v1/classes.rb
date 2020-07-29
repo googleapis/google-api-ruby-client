@@ -252,6 +252,45 @@ module Google
         end
       end
       
+      # A person's calendar URL.
+      class CalendarUrl
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The type of the calendar URL translated and formatted in the
+        # viewer's account locale or the `Accept-Language` HTTP header locale.
+        # Corresponds to the JSON property `formattedType`
+        # @return [String]
+        attr_accessor :formatted_type
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The type of the calendar URL. The type can be custom or one of these
+        # predefined values: * `home` * `freeBusy` * `work`
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The calendar URL.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @type = args[:type] if args.key?(:type)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # A contact group.
       class ContactGroup
         include Google::Apis::Core::Hashable
@@ -429,11 +468,11 @@ module Google
         # Optional. A field mask to restrict which fields on the person are returned.
         # Multiple fields can be specified by separating them with commas. Defaults to
         # the copy mask with metadata and membership fields if not set. Valid values are:
-        # * addresses * ageRanges * biographies * birthdays * coverPhotos *
-        # emailAddresses * events * genders * imClients * interests * locales *
-        # memberships * metadata * names * nicknames * occupations * organizations *
-        # phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
-        # userDefined
+        # * addresses * ageRanges * biographies * birthdays * calendarUrls *
+        # coverPhotos * emailAddresses * events * externalIds * genders * imClients *
+        # interests * locales * memberships * metadata * names * nicknames * occupations
+        # * organizations * phoneNumbers * photos * relations * residences *
+        # sipAddresses * skills * urls * userDefined
         # Corresponds to the JSON property `readMask`
         # @return [String]
         attr_accessor :read_mask
@@ -697,6 +736,45 @@ module Google
           @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # An identifier from an external entity related to the person.
+      class ExternalId
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The type of the event translated and formatted in the viewer's
+        # account locale or the `Accept-Language` HTTP header locale.
+        # Corresponds to the JSON property `formattedType`
+        # @return [String]
+        attr_accessor :formatted_type
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The type of the external ID. The type can be custom or one of these predefined
+        # values: * `account` * `customer` * `loginId` * `network` * `organization`
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The value of the external ID.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1465,12 +1543,12 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::AgeRangeType>]
         attr_accessor :age_ranges
       
-        # The person's biographies.
+        # The person's biographies. This field is a singleton for contact sources.
         # Corresponds to the JSON property `biographies`
         # @return [Array<Google::Apis::PeopleV1::Biography>]
         attr_accessor :biographies
       
-        # The person's birthdays.
+        # The person's birthdays. This field is a singleton for contact sources.
         # Corresponds to the JSON property `birthdays`
         # @return [Array<Google::Apis::PeopleV1::Birthday>]
         attr_accessor :birthdays
@@ -1479,6 +1557,11 @@ module Google
         # Corresponds to the JSON property `braggingRights`
         # @return [Array<Google::Apis::PeopleV1::BraggingRights>]
         attr_accessor :bragging_rights
+      
+        # The person's calendar URLs.
+        # Corresponds to the JSON property `calendarUrls`
+        # @return [Array<Google::Apis::PeopleV1::CalendarUrl>]
+        attr_accessor :calendar_urls
       
         # Output only. The person's cover photos.
         # Corresponds to the JSON property `coverPhotos`
@@ -1501,12 +1584,17 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Event>]
         attr_accessor :events
       
+        # The person's external IDs.
+        # Corresponds to the JSON property `externalIds`
+        # @return [Array<Google::Apis::PeopleV1::ExternalId>]
+        attr_accessor :external_ids
+      
         # The person's file-ases.
         # Corresponds to the JSON property `fileAses`
         # @return [Array<Google::Apis::PeopleV1::FileAs>]
         attr_accessor :file_ases
       
-        # The person's genders.
+        # The person's genders. This field is a singleton for contact sources.
         # Corresponds to the JSON property `genders`
         # @return [Array<Google::Apis::PeopleV1::Gender>]
         attr_accessor :genders
@@ -1536,7 +1624,7 @@ module Google
         # @return [Google::Apis::PeopleV1::PersonMetadata]
         attr_accessor :metadata
       
-        # The person's names.
+        # The person's names. This field is a singleton for contact sources.
         # Corresponds to the JSON property `names`
         # @return [Array<Google::Apis::PeopleV1::Name>]
         attr_accessor :names
@@ -1631,10 +1719,12 @@ module Google
           @biographies = args[:biographies] if args.key?(:biographies)
           @birthdays = args[:birthdays] if args.key?(:birthdays)
           @bragging_rights = args[:bragging_rights] if args.key?(:bragging_rights)
+          @calendar_urls = args[:calendar_urls] if args.key?(:calendar_urls)
           @cover_photos = args[:cover_photos] if args.key?(:cover_photos)
           @email_addresses = args[:email_addresses] if args.key?(:email_addresses)
           @etag = args[:etag] if args.key?(:etag)
           @events = args[:events] if args.key?(:events)
+          @external_ids = args[:external_ids] if args.key?(:external_ids)
           @file_ases = args[:file_ases] if args.key?(:file_ases)
           @genders = args[:genders] if args.key?(:genders)
           @im_clients = args[:im_clients] if args.key?(:im_clients)
@@ -2252,10 +2342,11 @@ module Google
         # Optional. A field mask to restrict which fields on the person are returned.
         # Multiple fields can be specified by separating them with commas. Defaults to
         # empty if not set, which will skip the post mutate get. Valid values are: *
-        # addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses
-        # * events * genders * imClients * interests * locales * memberships * metadata *
-        # names * nicknames * occupations * organizations * phoneNumbers * photos *
-        # relations * residences * sipAddresses * skills * urls * userDefined
+        # addresses * ageRanges * biographies * birthdays * calendarUrls * coverPhotos *
+        # emailAddresses * events * externalIds * genders * imClients * interests *
+        # locales * memberships * metadata * names * nicknames * occupations *
+        # organizations * phoneNumbers * photos * relations * residences * sipAddresses *
+        # skills * urls * userDefined
         # Corresponds to the JSON property `personFields`
         # @return [String]
         attr_accessor :person_fields

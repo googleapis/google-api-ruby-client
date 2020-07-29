@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigConnectorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConsumptionMeteringConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +569,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_run_config, as: 'cloudRunConfig', class: Google::Apis::ContainerV1::CloudRunConfig, decorator: Google::Apis::ContainerV1::CloudRunConfig::Representation
       
+          property :config_connector_config, as: 'configConnectorConfig', class: Google::Apis::ContainerV1::ConfigConnectorConfig, decorator: Google::Apis::ContainerV1::ConfigConnectorConfig::Representation
+      
           property :dns_cache_config, as: 'dnsCacheConfig', class: Google::Apis::ContainerV1::DnsCacheConfig, decorator: Google::Apis::ContainerV1::DnsCacheConfig::Representation
       
           property :horizontal_pod_autoscaling, as: 'horizontalPodAutoscaling', class: Google::Apis::ContainerV1::HorizontalPodAutoscaling, decorator: Google::Apis::ContainerV1::HorizontalPodAutoscaling::Representation
@@ -785,6 +793,13 @@ module Google
           property :name, as: 'name'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class ConfigConnectorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       

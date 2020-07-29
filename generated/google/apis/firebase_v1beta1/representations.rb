@@ -332,6 +332,7 @@ module Google
           property :project_number, :numeric_string => true, as: 'projectNumber'
           property :resources, as: 'resources', class: Google::Apis::FirebaseV1beta1::DefaultResources, decorator: Google::Apis::FirebaseV1beta1::DefaultResources::Representation
       
+          property :state, as: 'state'
         end
       end
       

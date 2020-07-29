@@ -112,12 +112,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class HttpBody
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,12 +221,6 @@ module Google
       end
       
       class UnexpectedExitStatusEvent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UploadSosReportResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -400,15 +388,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cause, as: 'cause'
           property :code, as: 'code'
-        end
-      end
-      
-      class HttpBody
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :content_type, as: 'contentType'
-          property :data, :base64 => true, as: 'data'
-          collection :extensions, as: 'extensions'
         end
       end
       
@@ -588,12 +567,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action_id, as: 'actionId'
           property :exit_status, as: 'exitStatus'
-        end
-      end
-      
-      class UploadSosReportResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

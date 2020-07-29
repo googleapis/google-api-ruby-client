@@ -58,6 +58,11 @@ module Google
         # @return [Google::Apis::ContainerV1::CloudRunConfig]
         attr_accessor :cloud_run_config
       
+        # Configuration options for the Config Connector add-on.
+        # Corresponds to the JSON property `configConnectorConfig`
+        # @return [Google::Apis::ContainerV1::ConfigConnectorConfig]
+        attr_accessor :config_connector_config
+      
         # Configuration for NodeLocal DNSCache
         # Corresponds to the JSON property `dnsCacheConfig`
         # @return [Google::Apis::ContainerV1::DnsCacheConfig]
@@ -95,6 +100,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cloud_run_config = args[:cloud_run_config] if args.key?(:cloud_run_config)
+          @config_connector_config = args[:config_connector_config] if args.key?(:config_connector_config)
           @dns_cache_config = args[:dns_cache_config] if args.key?(:dns_cache_config)
           @horizontal_pod_autoscaling = args[:horizontal_pod_autoscaling] if args.key?(:horizontal_pod_autoscaling)
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
@@ -1063,6 +1069,26 @@ module Google
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Configuration options for the Config Connector add-on.
+      class ConfigConnectorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether Cloud Connector is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       

@@ -382,16 +382,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new contact and return the person resource for that contact.
+        # Create a new contact and return the person resource for that contact. The
+        # request throws a 400 error if more than one field is specified on a field that
+        # is a singleton for contact sources: * biographies * birthdays * genders *
+        # names
         # @param [Google::Apis::PeopleV1::Person] person_object
         # @param [String] person_fields
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Defaults to
         #   all fields if not set. Valid values are: * addresses * ageRanges * biographies
-        #   * birthdays * coverPhotos * emailAddresses * events * genders * imClients *
-        #   interests * locales * memberships * metadata * names * nicknames * occupations
-        #   * organizations * phoneNumbers * photos * relations * residences *
-        #   sipAddresses * skills * urls * userDefined
+        #   * birthdays * calendarUrls * coverPhotos * emailAddresses * events *
+        #   externalIds * genders * imClients * interests * locales * memberships *
+        #   metadata * names * nicknames * occupations * organizations * phoneNumbers *
+        #   photos * relations * residences * sipAddresses * skills * urls * userDefined
         # @param [Array<String>, String] sources
         #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
         #   CONTACT and ReadSourceType.PROFILE if not set.
@@ -462,10 +465,11 @@ module Google
         #   Optional. A field mask to restrict which fields on the person are returned.
         #   Multiple fields can be specified by separating them with commas. Defaults to
         #   empty if not set, which will skip the post mutate get. Valid values are: *
-        #   addresses * ageRanges * biographies * birthdays * coverPhotos * emailAddresses
-        #   * events * genders * imClients * interests * locales * memberships * metadata *
-        #   names * nicknames * occupations * organizations * phoneNumbers * photos *
-        #   relations * residences * sipAddresses * skills * urls * userDefined
+        #   addresses * ageRanges * biographies * birthdays * calendarUrls * coverPhotos *
+        #   emailAddresses * events * externalIds * genders * imClients * interests *
+        #   locales * memberships * metadata * names * nicknames * occupations *
+        #   organizations * phoneNumbers * photos * relations * residences * sipAddresses *
+        #   skills * urls * userDefined
         # @param [Array<String>, String] sources
         #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
         #   CONTACT and ReadSourceType.PROFILE if not set.
@@ -511,11 +515,11 @@ module Google
         # @param [String] person_fields
         #   Required. A field mask to restrict which fields on the person are returned.
         #   Multiple fields can be specified by separating them with commas. Valid values
-        #   are: * addresses * ageRanges * biographies * birthdays * coverPhotos *
-        #   emailAddresses * events * genders * imClients * interests * locales *
-        #   memberships * metadata * names * nicknames * occupations * organizations *
-        #   phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
-        #   userDefined
+        #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
+        #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
+        #   interests * locales * memberships * metadata * names * nicknames * occupations
+        #   * organizations * phoneNumbers * photos * relations * residences *
+        #   sipAddresses * skills * urls * userDefined
         # @param [String] request_mask_include_field
         #   Required. Comma-separated list of person fields to be included in the response.
         #   Each path should start with `person.`: for example, `person.names` or `person.
@@ -559,11 +563,11 @@ module Google
         # @param [String] person_fields
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Valid values
-        #   are: * addresses * ageRanges * biographies * birthdays * coverPhotos *
-        #   emailAddresses * events * genders * imClients * interests * locales *
-        #   memberships * metadata * names * nicknames * occupations * organizations *
-        #   phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
-        #   userDefined
+        #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
+        #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
+        #   interests * locales * memberships * metadata * names * nicknames * occupations
+        #   * organizations * phoneNumbers * photos * relations * residences *
+        #   sipAddresses * skills * urls * userDefined
         # @param [String] request_mask_include_field
         #   Required. Comma-separated list of person fields to be included in the response.
         #   Each path should start with `person.`: for example, `person.names` or `person.
@@ -624,11 +628,11 @@ module Google
         # @param [String] read_mask
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Valid values
-        #   are: * addresses * ageRanges * biographies * birthdays * coverPhotos *
-        #   emailAddresses * events * genders * imClients * interests * locales *
-        #   memberships * metadata * names * nicknames * occupations * organizations *
-        #   phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
-        #   userDefined
+        #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
+        #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
+        #   interests * locales * memberships * metadata * names * nicknames * occupations
+        #   * organizations * phoneNumbers * photos * relations * residences *
+        #   sipAddresses * skills * urls * userDefined
         # @param [Boolean] request_sync_token
         #   Optional. Whether the response should include `next_sync_token`, which can be
         #   used to get all changes since the last request. For subsequent sync requests
@@ -692,11 +696,11 @@ module Google
         # @param [String] read_mask
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Valid values
-        #   are: * addresses * ageRanges * biographies * birthdays * coverPhotos *
-        #   emailAddresses * events * genders * imClients * interests * locales *
-        #   memberships * metadata * names * nicknames * occupations * organizations *
-        #   phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
-        #   userDefined
+        #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
+        #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
+        #   interests * locales * memberships * metadata * names * nicknames * occupations
+        #   * organizations * phoneNumbers * photos * relations * residences *
+        #   sipAddresses * skills * urls * userDefined
         # @param [Array<String>, String] sources
         #   Required. Directory sources to return.
         # @param [String] fields
@@ -732,13 +736,18 @@ module Google
         end
         
         # Update contact data for an existing contact person. Any non-contact data will
-        # not be modified. The request throws a 400 error if `updatePersonFields` is not
-        # specified. The request throws a 400 error if `person.metadata.sources` is not
-        # specified for the contact to be updated. The request throws a 400 error with
-        # an error with reason `"failedPrecondition"` if `person.metadata.sources.etag`
-        # is different than the contact's etag, which indicates the contact has changed
-        # since its data was read. Clients should get the latest person and re-apply
-        # their updates to the latest person.
+        # not be modified. Any non-contact data in the person to update will be ignored.
+        # All fields specified in the `update_mask` will be replaced. The server returns
+        # a 400 error if `person.metadata.sources` is not specified for the contact to
+        # be updated or if there is no contact source. The server returns a 400 error
+        # with reason `"failedPrecondition"` if `person.metadata.sources.etag` is
+        # different than the contact's etag, which indicates the contact has changed
+        # since its data was read. Clients should get the latest person and merge their
+        # updates into the latest person. The server returns a 400 error if `memberships`
+        # are being updated and there are no contact group memberships specified on the
+        # person. The server returns a 400 error if more than one field is specified on
+        # a field that is a singleton for contact sources: * biographies * birthdays *
+        # genders * names
         # @param [String] resource_name
         #   The resource name for the person, assigned by the server. An ASCII string with
         #   a max length of 27 characters, in the form of `people/`person_id``.
@@ -747,10 +756,10 @@ module Google
         #   Optional. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Defaults to
         #   all fields if not set. Valid values are: * addresses * ageRanges * biographies
-        #   * birthdays * coverPhotos * emailAddresses * events * genders * imClients *
-        #   interests * locales * memberships * metadata * names * nicknames * occupations
-        #   * organizations * phoneNumbers * photos * relations * residences *
-        #   sipAddresses * skills * urls * userDefined
+        #   * birthdays * calendarUrls * coverPhotos * emailAddresses * events *
+        #   externalIds * genders * imClients * interests * locales * memberships *
+        #   metadata * names * nicknames * occupations * organizations * phoneNumbers *
+        #   photos * relations * residences * sipAddresses * skills * urls * userDefined
         # @param [Array<String>, String] sources
         #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
         #   CONTACT and ReadSourceType.PROFILE if not set.
@@ -758,9 +767,10 @@ module Google
         #   Required. A field mask to restrict which fields on the person are updated.
         #   Multiple fields can be specified by separating them with commas. All updated
         #   fields will be replaced. Valid values are: * addresses * biographies *
-        #   birthdays * emailAddresses * events * genders * imClients * interests *
-        #   locales * memberships * names * nicknames * occupations * organizations *
-        #   phoneNumbers * relations * residences * sipAddresses * urls * userDefined
+        #   birthdays * calendarUrls * emailAddresses * events * externalIds * genders *
+        #   imClients * interests * locales * memberships * names * nicknames *
+        #   occupations * organizations * phoneNumbers * relations * residences *
+        #   sipAddresses * urls * userDefined
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -842,11 +852,11 @@ module Google
         # @param [String] person_fields
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Valid values
-        #   are: * addresses * ageRanges * biographies * birthdays * coverPhotos *
-        #   emailAddresses * events * genders * imClients * interests * locales *
-        #   memberships * metadata * names * nicknames * occupations * organizations *
-        #   phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
-        #   userDefined
+        #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
+        #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
+        #   interests * locales * memberships * metadata * names * nicknames * occupations
+        #   * organizations * phoneNumbers * photos * relations * residences *
+        #   sipAddresses * skills * urls * userDefined
         # @param [String] request_mask_include_field
         #   Required. Comma-separated list of person fields to be included in the response.
         #   Each path should start with `person.`: for example, `person.names` or `person.

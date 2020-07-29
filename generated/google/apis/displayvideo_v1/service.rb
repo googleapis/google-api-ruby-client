@@ -2841,6 +2841,110 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets a custom bidding algorithm.
+        # @param [Fixnum] custom_bidding_algorithm_id
+        #   Required. The ID of the custom bidding algorithm to fetch.
+        # @param [Fixnum] advertiser_id
+        #   The ID of the DV3 partner that has access to the custom bidding algorithm.
+        # @param [Fixnum] partner_id
+        #   The ID of the DV3 partner that has access to the custom bidding algorithm.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_custom_bidding_algorithm(custom_bidding_algorithm_id, advertiser_id: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm
+          command.params['customBiddingAlgorithmId'] = custom_bidding_algorithm_id unless custom_bidding_algorithm_id.nil?
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists custom bidding algorithms that are accessible to the current user and
+        # can be used in bidding stratgies. The order is defined by the order_by
+        # parameter.
+        # @param [Fixnum] advertiser_id
+        #   The ID of the DV3 advertiser that has access to the custom bidding algorithm.
+        # @param [String] filter
+        #   Allows filtering by custom bidding algorithm fields. Supported syntax: *
+        #   Filter expressions are made up of one or more restrictions. * Restrictions can
+        #   be combined by `AND`. A sequence of restrictions * implicitly uses `AND`. * A
+        #   restriction has the form of ``field` `operator` `value``. * The operator must
+        #   be `CONTAINS (:)` or `EQUALS (=)`. * The operator must be `CONTAINS (:)` for
+        #   the following field: - `displayName` * The operator must be `EQUALS (=)` for
+        #   the following field: - `customBiddingAlgorithmType` * For `displayName`, the
+        #   value is a string. We return all custom bidding algorithms whose display_name
+        #   contains such string. * For `customBiddingAlgorithmType`, the value is a
+        #   string. We return all algorithms whose custom_bidding_algorithm_type is equal
+        #   to the given type. Examples: * All custom bidding algorithms for which the
+        #   display name contains "politics": `displayName:politics`. * All custom bidding
+        #   algorithms for which the type is "SCRIPT_BASED": `customBiddingAlgorithmType=
+        #   SCRIPT_BASED` The length of this field should be no more than 500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list. Acceptable values are: * `displayName` (
+        #   default) The default sorting order is ascending. To specify descending order
+        #   for a field, a suffix "desc" should be added to the field name. Example: `
+        #   displayName desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is
+        #   specified.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of next_page_token returned from the previous call to `
+        #   ListCustomBiddingAlgorithms` method. If not specified, the first page of
+        #   results will be returned.
+        # @param [Fixnum] partner_id
+        #   The ID of the DV3 partner that has access to the custom bidding algorithm.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ListCustomBiddingAlgorithmsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ListCustomBiddingAlgorithmsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_custom_bidding_algorithms(advertiser_id: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/customBiddingAlgorithms', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ListCustomBiddingAlgorithmsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ListCustomBiddingAlgorithmsResponse
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a custom list.
         # @param [Fixnum] custom_list_id
         #   Required. The ID of the custom list to fetch.

@@ -454,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomBiddingAlgorithm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -887,6 +893,12 @@ module Google
       end
       
       class ListCreativesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCustomBiddingAlgorithmsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2128,6 +2140,19 @@ module Google
         end
       end
       
+      class CustomBiddingAlgorithm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          property :custom_bidding_algorithm_id, :numeric_string => true, as: 'customBiddingAlgorithmId'
+          property :custom_bidding_algorithm_type, as: 'customBiddingAlgorithmType'
+          property :display_name, as: 'displayName'
+          property :entity_status, as: 'entityStatus'
+          property :name, as: 'name'
+          property :partner_id, :numeric_string => true, as: 'partnerId'
+        end
+      end
+      
       class CustomList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2838,6 +2863,15 @@ module Google
         end
       end
       
+      class ListCustomBiddingAlgorithmsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_bidding_algorithms, as: 'customBiddingAlgorithms', class: Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm, decorator: Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListCustomListsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3004,6 +3038,7 @@ module Google
       class MaximizeSpendBidStrategy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_bidding_algorithm_id, :numeric_string => true, as: 'customBiddingAlgorithmId'
           property :max_average_cpm_bid_amount_micros, :numeric_string => true, as: 'maxAverageCpmBidAmountMicros'
           property :performance_goal_type, as: 'performanceGoalType'
         end
@@ -3218,6 +3253,7 @@ module Google
       class PerformanceGoalBidStrategy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_bidding_algorithm_id, :numeric_string => true, as: 'customBiddingAlgorithmId'
           property :max_average_cpm_bid_amount_micros, :numeric_string => true, as: 'maxAverageCpmBidAmountMicros'
           property :performance_goal_amount_micros, :numeric_string => true, as: 'performanceGoalAmountMicros'
           property :performance_goal_type, as: 'performanceGoalType'

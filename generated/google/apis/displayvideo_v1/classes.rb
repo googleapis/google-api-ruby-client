@@ -2933,6 +2933,66 @@ module Google
         end
       end
       
+      # A single custom bidding algorithm.
+      class CustomBiddingAlgorithm
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The unique ID of the advertiser that owns the custom bidding
+        # algorithm.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [Fixnum]
+        attr_accessor :advertiser_id
+      
+        # Output only. The unique ID of the custom bidding algorithm. Assigned by the
+        # system.
+        # Corresponds to the JSON property `customBiddingAlgorithmId`
+        # @return [Fixnum]
+        attr_accessor :custom_bidding_algorithm_id
+      
+        # Required. Immutable. The type of custom bidding algorithm.
+        # Corresponds to the JSON property `customBiddingAlgorithmType`
+        # @return [String]
+        attr_accessor :custom_bidding_algorithm_type
+      
+        # Required. The display name of the custom bidding algorithm. Must be UTF-8
+        # encoded with a maximum size of 240 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Controls whether or not the custom bidding algorithm can be used as a bidding
+        # strategy. Accepted values are: * `ENTITY_STATUS_ACTIVE` * `
+        # ENTITY_STATUS_ARCHIVED`
+        # Corresponds to the JSON property `entityStatus`
+        # @return [String]
+        attr_accessor :entity_status
+      
+        # Output only. The resource name of the custom bidding algorithm.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The unique ID of the partner that owns the custom bidding algorithm.
+        # Corresponds to the JSON property `partnerId`
+        # @return [Fixnum]
+        attr_accessor :partner_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @custom_bidding_algorithm_id = args[:custom_bidding_algorithm_id] if args.key?(:custom_bidding_algorithm_id)
+          @custom_bidding_algorithm_type = args[:custom_bidding_algorithm_type] if args.key?(:custom_bidding_algorithm_type)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_status = args[:entity_status] if args.key?(:entity_status)
+          @name = args[:name] if args.key?(:name)
+          @partner_id = args[:partner_id] if args.key?(:partner_id)
+        end
+      end
+      
       # Describes a custom list entity, such as a custom affinity or custom intent
       # audience list.
       class CustomList
@@ -5519,6 +5579,34 @@ module Google
         end
       end
       
+      # Response message for CustomBiddingAlgorithmService.ListCustomBiddingAlgorithms.
+      class ListCustomBiddingAlgorithmsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of custom bidding algorithms. This list will be absent if empty.
+        # Corresponds to the JSON property `customBiddingAlgorithms`
+        # @return [Array<Google::Apis::DisplayvideoV1::CustomBiddingAlgorithm>]
+        attr_accessor :custom_bidding_algorithms
+      
+        # A token to retrieve the next page of results. Pass this value in the
+        # page_token field in the subsequent call to `ListCustomBiddingAlgorithmsRequest`
+        # method to retrieve the next page of results. If this field is null, it means
+        # this is the last page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_bidding_algorithms = args[:custom_bidding_algorithms] if args.key?(:custom_bidding_algorithms)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # 
       class ListCustomListsResponse
         include Google::Apis::Core::Hashable
@@ -6034,6 +6122,13 @@ module Google
       class MaximizeSpendBidStrategy
         include Google::Apis::Core::Hashable
       
+        # The ID of the Custom Bidding Algorithm used by this strategy. Only applicable
+        # when performance_goal_type is set to `
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.
+        # Corresponds to the JSON property `customBiddingAlgorithmId`
+        # @return [Fixnum]
+        attr_accessor :custom_bidding_algorithm_id
+      
         # The maximum average CPM that may be bid, in micros of the advertiser's
         # currency. Must be greater than or equal to a billable unit of the given
         # currency. For example, 1500000 represents 1.5 standard units of the currency.
@@ -6055,6 +6150,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_bidding_algorithm_id = args[:custom_bidding_algorithm_id] if args.key?(:custom_bidding_algorithm_id)
           @max_average_cpm_bid_amount_micros = args[:max_average_cpm_bid_amount_micros] if args.key?(:max_average_cpm_bid_amount_micros)
           @performance_goal_type = args[:performance_goal_type] if args.key?(:performance_goal_type)
         end
@@ -6853,6 +6949,13 @@ module Google
       class PerformanceGoalBidStrategy
         include Google::Apis::Core::Hashable
       
+        # The ID of the Custom Bidding Algorithm used by this strategy. Only applicable
+        # when performance_goal_type is set to `
+        # BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`.
+        # Corresponds to the JSON property `customBiddingAlgorithmId`
+        # @return [Fixnum]
+        attr_accessor :custom_bidding_algorithm_id
+      
         # The maximum average CPM that may be bid, in micros of the advertiser's
         # currency. Must be greater than or equal to a billable unit of the given
         # currency. Not applicable when performance_goal_type is set to `
@@ -6900,6 +7003,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_bidding_algorithm_id = args[:custom_bidding_algorithm_id] if args.key?(:custom_bidding_algorithm_id)
           @max_average_cpm_bid_amount_micros = args[:max_average_cpm_bid_amount_micros] if args.key?(:max_average_cpm_bid_amount_micros)
           @performance_goal_amount_micros = args[:performance_goal_amount_micros] if args.key?(:performance_goal_amount_micros)
           @performance_goal_type = args[:performance_goal_type] if args.key?(:performance_goal_type)

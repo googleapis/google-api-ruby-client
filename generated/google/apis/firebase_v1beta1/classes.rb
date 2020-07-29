@@ -507,6 +507,14 @@ module Google
         # @return [Google::Apis::FirebaseV1beta1::DefaultResources]
         attr_accessor :resources
       
+        # Output only. The lifecycle state of the Project.
+        # Updates to the state must be performed via
+        # com.google.cloudresourcemanager.v1.Projects.DeleteProject and
+        # com.google.cloudresourcemanager.v1.Projects.UndeleteProject
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -518,6 +526,7 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @project_number = args[:project_number] if args.key?(:project_number)
           @resources = args[:resources] if args.key?(:resources)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
