@@ -4117,8 +4117,7 @@ module Google
         # The raw query string.
         # See supported search operators in the [Cloud search
         # Cheat
-        # Sheet](https://gsuite.google.com/learning-center/products/cloudsearch/cheat-
-        # sheet/)
+        # Sheet](https://support.google.com/a/users/answer/9299929)
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query

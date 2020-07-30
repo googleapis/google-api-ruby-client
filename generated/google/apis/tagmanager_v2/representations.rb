@@ -405,6 +405,7 @@ module Google
           property :name, as: 'name'
           collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
       
+          property :parent_folder_id, as: 'parentFolderId'
           property :path, as: 'path'
           property :priority, as: 'priority'
           property :tag_manager_url, as: 'tagManagerUrl'

@@ -195,6 +195,11 @@ module Google
         # @return [Array<Google::Apis::TagmanagerV2::Parameter>]
         attr_accessor :parameter
       
+        # Parent folder id.
+        # Corresponds to the JSON property `parentFolderId`
+        # @return [String]
+        attr_accessor :parent_folder_id
+      
         # GTM client's API relative path.
         # Corresponds to the JSON property `path`
         # @return [String]
@@ -236,6 +241,7 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @name = args[:name] if args.key?(:name)
           @parameter = args[:parameter] if args.key?(:parameter)
+          @parent_folder_id = args[:parent_folder_id] if args.key?(:parent_folder_id)
           @path = args[:path] if args.key?(:path)
           @priority = args[:priority] if args.key?(:priority)
           @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)

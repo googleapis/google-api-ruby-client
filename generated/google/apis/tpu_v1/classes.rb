@@ -47,13 +47,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -213,14 +211,14 @@ module Google
       class Location
         include Google::Apis::Core::Hashable
       
-        # The friendly name for this location, typically a nearby city name.
-        # For example, "Tokyo".
+        # The friendly name for this location, typically a nearby city name. For example,
+        # "Tokyo".
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Cross-service attributes for the location. For example
-        # `"cloud.googleapis.com/region": "us-east1"`
+        # Cross-service attributes for the location. For example `"cloud.googleapis.com/
+        # region": "us-east1"`
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -236,8 +234,8 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # Resource name for the location, which may vary between implementations.
-        # For example: `"projects/example-project/locations/us-east1"`
+        # Resource name for the location, which may vary between implementations. For
+        # example: `"projects/example-project/locations/us-east1"`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -285,20 +283,18 @@ module Google
       class Node
         include Google::Apis::Core::Hashable
       
-        # The type of hardware accelerators associated with this node.
-        # Required.
+        # The type of hardware accelerators associated with this node. Required.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
       
-        # The CIDR block that the TPU node will use when selecting an IP address.
-        # This CIDR block must be a /29 block; the Compute Engine networks API
-        # forbids a smaller block, and using a larger block would be wasteful (a
-        # node can only consume one IP address). Errors will occur if the CIDR block
-        # has already been used for a currently existing TPU node, the CIDR block
-        # conflicts with any subnetworks in the user's provided network, or the
-        # provided network is peered with another network that is using that CIDR
-        # block.
+        # The CIDR block that the TPU node will use when selecting an IP address. This
+        # CIDR block must be a /29 block; the Compute Engine networks API forbids a
+        # smaller block, and using a larger block would be wasteful (a node can only
+        # consume one IP address). Errors will occur if the CIDR block has already been
+        # used for a currently existing TPU node, the CIDR block conflicts with any
+        # subnetworks in the user's provided network, or the provided network is peered
+        # with another network that is using that CIDR block.
         # Corresponds to the JSON property `cidrBlock`
         # @return [String]
         attr_accessor :cidr_block
@@ -319,15 +315,13 @@ module Google
         attr_accessor :health
       
         # Output only. If this field is populated, it contains a description of why the
-        # TPU Node
-        # is unhealthy.
+        # TPU Node is unhealthy.
         # Corresponds to the JSON property `healthDescription`
         # @return [String]
         attr_accessor :health_description
       
-        # Output only. DEPRECATED! Use network_endpoints instead.
-        # The network address for the TPU Node as visible to Compute Engine
-        # instances.
+        # Output only. DEPRECATED! Use network_endpoints instead. The network address
+        # for the TPU Node as visible to Compute Engine instances.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -343,21 +337,21 @@ module Google
         attr_accessor :name
       
         # The name of a network they wish to peer the TPU node to. It must be a
-        # preexisting Compute Engine network inside of the project on which this API
-        # has been activated. If none is provided, "default" will be used.
+        # preexisting Compute Engine network inside of the project on which this API has
+        # been activated. If none is provided, "default" will be used.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Output only. The network endpoints where TPU workers can be accessed and
-        # sent work. It is recommended that Tensorflow clients of the node reach out
-        # to the 0th entry in this map first.
+        # Output only. The network endpoints where TPU workers can be accessed and sent
+        # work. It is recommended that Tensorflow clients of the node reach out to the
+        # 0th entry in this map first.
         # Corresponds to the JSON property `networkEndpoints`
         # @return [Array<Google::Apis::TpuV1::NetworkEndpoint>]
         attr_accessor :network_endpoints
       
-        # Output only. DEPRECATED! Use network_endpoints instead.
-        # The network port for the TPU Node as visible to Compute Engine instances.
+        # Output only. DEPRECATED! Use network_endpoints instead. The network port for
+        # the TPU Node as visible to Compute Engine instances.
         # Corresponds to the JSON property `port`
         # @return [String]
         attr_accessor :port
@@ -368,10 +362,9 @@ module Google
         attr_accessor :scheduling_config
       
         # Output only. The service account used to run the tensor flow services within
-        # the node.
-        # To share resources, including Google Cloud Storage data, with the
-        # Tensorflow job running in the Node, this account must have permissions to
-        # that data.
+        # the node. To share resources, including Google Cloud Storage data, with the
+        # Tensorflow job running in the Node, this account must have permissions to that
+        # data.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -381,8 +374,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # The version of Tensorflow running in the Node.
-        # Required.
+        # The version of Tensorflow running in the Node. Required.
         # Corresponds to the JSON property `tensorflowVersion`
         # @return [String]
         attr_accessor :tensorflow_version
@@ -417,47 +409,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::TpuV1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -485,10 +475,10 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # [Output only] Identifies whether the user has requested cancellation
-        # of the operation. Operations that have successfully been cancelled
-        # have Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # [Output only] Identifies whether the user has requested cancellation of the
+        # operation. Operations that have successfully been cancelled have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
@@ -594,12 +584,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -608,15 +598,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
