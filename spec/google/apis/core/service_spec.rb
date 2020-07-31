@@ -21,6 +21,7 @@ RSpec.describe Google::Apis::Core::BaseService do
   include TestHelpers
 
   let(:service) { Google::Apis::Core::BaseService.new('https://www.googleapis.com/', '') }
+  let(:service_with_base_path) { Google::Apis::Core::BaseService.new('https://www.googleapis.com/', 'my_service/v1/') }
   let(:x_goog_api_client_value) { "gl-ruby/#{RUBY_VERSION} gdcl/#{Google::Apis::VERSION}" }
 
   before do
@@ -131,6 +132,20 @@ RSpec.describe Google::Apis::Core::BaseService do
     end
 
     include_examples 'with options'
+  end
+
+  context 'when making simple commands with a base path' do
+    it 'should return the correct URL for a relative path' do
+      command = service_with_base_path.send(:make_simple_command, :get, 'zoo/animals', authorization: 'foo')
+      url = command.url.expand({}).to_s
+      expect(url).to eql 'https://www.googleapis.com/my_service/v1/zoo/animals'
+    end
+
+    it 'should return the correct URL for an absolute path' do
+      command = service_with_base_path.send(:make_simple_command, :get, '/zoo/animals', authorization: 'foo')
+      url = command.url.expand({}).to_s
+      expect(url).to eql 'https://www.googleapis.com/zoo/animals'
+    end
   end
 
   context 'when making download commands' do
