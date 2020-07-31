@@ -148,6 +148,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Error group's resolution status.
+        # An unspecified resolution status will be interpreted as OPEN
+        # Corresponds to the JSON property `resolutionStatus`
+        # @return [String]
+        attr_accessor :resolution_status
+      
         # Associated tracking issues.
         # Corresponds to the JSON property `trackingIssues`
         # @return [Array<Google::Apis::ClouderrorreportingV1beta1::TrackingIssue>]
@@ -161,6 +167,7 @@ module Google
         def update!(**args)
           @group_id = args[:group_id] if args.key?(:group_id)
           @name = args[:name] if args.key?(:name)
+          @resolution_status = args[:resolution_status] if args.key?(:resolution_status)
           @tracking_issues = args[:tracking_issues] if args.key?(:tracking_issues)
         end
       end

@@ -123,8 +123,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Read only. Full path to the `AuthorizedDomain` resource in the API. Example: `
-        # apps/myapp/authorizedDomains/example.com`.
+        # Deprecated Read only. Full path to the `AuthorizedDomain` resource in the API.
+        # Example: `projects/myproject/authorizedDomains/example.com`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

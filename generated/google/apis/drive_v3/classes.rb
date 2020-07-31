@@ -581,7 +581,9 @@ module Google
       class ContentRestriction
         include Google::Apis::Core::Hashable
       
-        # Whether the content of the file is read-only.
+        # Whether the content of the file is read-only. If a file is read-only, a new
+        # revision of the file may not be added, comments may not be added or modified,
+        # and the title of the file may not be modified.
         # Corresponds to the JSON property `readOnly`
         # @return [Boolean]
         attr_accessor :read_only
@@ -2491,6 +2493,11 @@ module Google
         attr_accessor :published
         alias_method :published?, :published
       
+        # A link to the published revision.
+        # Corresponds to the JSON property `publishedLink`
+        # @return [String]
+        attr_accessor :published_link
+      
         # Whether this revision is published outside the domain. This is only applicable
         # to Google Docs.
         # Corresponds to the JSON property `publishedOutsideDomain`
@@ -2521,6 +2528,7 @@ module Google
           @original_filename = args[:original_filename] if args.key?(:original_filename)
           @publish_auto = args[:publish_auto] if args.key?(:publish_auto)
           @published = args[:published] if args.key?(:published)
+          @published_link = args[:published_link] if args.key?(:published_link)
           @published_outside_domain = args[:published_outside_domain] if args.key?(:published_outside_domain)
           @size = args[:size] if args.key?(:size)
         end

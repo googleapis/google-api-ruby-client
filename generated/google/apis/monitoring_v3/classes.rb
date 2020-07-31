@@ -1016,17 +1016,18 @@ module Google
         end
       end
       
-      # A set of (label, value) pairs which were dropped during aggregation, attached
-      # to google.api.Distribution.Exemplars in google.api.Distribution values during
-      # aggregation.These values are used in combination with the label values that
-      # remain on the aggregated Distribution timeseries to construct the full label
-      # set for the exemplar values. The resulting full label set may be used to
-      # identify the specific task/job/instance (for example) which may be
-      # contributing to a long-tail, while allowing the storage savings of only
-      # storing aggregated distribution values for a large group.Note that there are
-      # no guarantees on ordering of the labels from exemplar-to-exemplar and from
-      # distribution-to-distribution in the same stream, and there may be duplicates.
-      # It is up to clients to resolve any ambiguities.
+      # A set of (label, value) pairs that were removed from a Distribution time
+      # series during aggregation and then added as an attachment to a Distribution.
+      # Exemplar.The full label set for the exemplars is constructed by using the
+      # dropped pairs in combination with the label values that remain on the
+      # aggregated Distribution time series. The constructed full label set can be
+      # used to identify the specific entity, such as the instance or job, which might
+      # be contributing to a long-tail. However, with dropped labels, the storage
+      # requirements are reduced because only the aggregated distribution values for a
+      # large group of time series are stored.Note that there are no guarantees on
+      # ordering of the labels from exemplar-to-exemplar and from distribution-to-
+      # distribution in the same stream, and there may be duplicates. It is up to
+      # clients to resolve any ambiguities.
       class DroppedLabels
         include Google::Apis::Core::Hashable
       
@@ -2210,9 +2211,9 @@ module Google
       # deleting or altering it stops data collection and makes the metric type's
       # existing data unusable.The following are specific rules for service defined
       # Monitoring metric descriptors:
-      # type, metric_kind, value_type, description, and display_name  fields are all
-      # required. The unit field must be specified  if the value_type is any of DOUBLE,
-      # INT64, DISTRIBUTION.
+      # type, metric_kind, value_type and description  fields are all required. The
+      # unit field must be specified  if the value_type is any of DOUBLE, INT64,
+      # DISTRIBUTION.
       # Maximum of default 500 metric descriptors per service is allowed.
       # Maximum of default 10 labels per metric descriptor is allowed.The default
       # maximum limit can be overridden. Please follow https://cloud.google.com/
@@ -3672,6 +3673,13 @@ module Google
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :resource
       
+        # The units in which the metric value is reported. It is only applicable if the
+        # value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the
+        # representation of the stored metric values.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
         # The value type of the time series. When listing time series, this value type
         # might be different from the value type of the associated metric if this time
         # series is an alignment or reduction of other time series.When creating a time
@@ -3692,6 +3700,7 @@ module Google
           @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
           @points = args[:points] if args.key?(:points)
           @resource = args[:resource] if args.key?(:resource)
+          @unit = args[:unit] if args.key?(:unit)
           @value_type = args[:value_type] if args.key?(:value_type)
         end
       end
@@ -4101,6 +4110,13 @@ module Google
         # @return [String]
         attr_accessor :metric_kind
       
+        # The unit in which time_series point values are reported. unit follows the UCUM
+        # format for units as seen in https://unitsofmeasure.org/ucum.html. unit is only
+        # valid if value_type is INTEGER, DOUBLE, DISTRIBUTION.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
         # The value type.
         # Corresponds to the JSON property `valueType`
         # @return [String]
@@ -4114,6 +4130,7 @@ module Google
         def update!(**args)
           @key = args[:key] if args.key?(:key)
           @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
+          @unit = args[:unit] if args.key?(:unit)
           @value_type = args[:value_type] if args.key?(:value_type)
         end
       end

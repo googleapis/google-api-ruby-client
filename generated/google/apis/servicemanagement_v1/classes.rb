@@ -2566,7 +2566,7 @@ module Google
       # existing data unusable.
       # The following are specific rules for service defined Monitoring metric
       # descriptors:
-      # * `type`, `metric_kind`, `value_type`, `description`, and `display_name`
+      # * `type`, `metric_kind`, `value_type` and `description`
       # fields are all required. The `unit` field must be specified
       # if the `value_type` is any of DOUBLE, INT64, DISTRIBUTION.
       # * Maximum of default 500 metric descriptors per service is allowed.
@@ -3649,6 +3649,54 @@ module Google
           @name = args[:name] if args.key?(:name)
           @unit = args[:unit] if args.key?(:unit)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Defines a proto annotation that describes a string field that refers to
+      # an API resource.
+      class ResourceReference
+        include Google::Apis::Core::Hashable
+      
+        # The resource type of a child collection that the annotated field
+        # references. This is useful for annotating the `parent` field that
+        # doesn't have a fixed resource type.
+        # Example:
+        # message ListLogEntriesRequest `
+        # string parent = 1 [(google.api.resource_reference) = `
+        # child_type: "logging.googleapis.com/LogEntry"
+        # `;
+        # `
+        # Corresponds to the JSON property `childType`
+        # @return [String]
+        attr_accessor :child_type
+      
+        # The resource type that the annotated field references.
+        # Example:
+        # message Subscription `
+        # string topic = 2 [(google.api.resource_reference) = `
+        # type: "pubsub.googleapis.com/Topic"
+        # `];
+        # `
+        # Occasionally, a field may reference an arbitrary resource. In this case,
+        # APIs use the special value * in their resource reference.
+        # Example:
+        # message GetIamPolicyRequest `
+        # string resource = 2 [(google.api.resource_reference) = `
+        # type: "*"
+        # `];
+        # `
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @child_type = args[:child_type] if args.key?(:child_type)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

@@ -1344,7 +1344,9 @@ module Google
       class ContentRestriction
         include Google::Apis::Core::Hashable
       
-        # Whether the content of the file is read-only.
+        # Whether the content of the file is read-only. If a file is read-only, a new
+        # revision of the file may not be added, comments may not be added or modified,
+        # and the title of the file may not be modified.
         # Corresponds to the JSON property `readOnly`
         # @return [Boolean]
         attr_accessor :read_only

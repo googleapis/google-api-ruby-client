@@ -300,6 +300,14 @@ module Google
         # @return [String]
         attr_accessor :dismiss_time
       
+        # This field will be true if the ApprovalRequest was implcitly dismissed due
+        # to inaction by the access approval approvers (the request is not acted
+        # on by the approvers before the exiration time).
+        # Corresponds to the JSON property `implicit`
+        # @return [Boolean]
+        attr_accessor :implicit
+        alias_method :implicit?, :implicit
+      
         def initialize(**args)
            update!(**args)
         end
@@ -307,6 +315,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dismiss_time = args[:dismiss_time] if args.key?(:dismiss_time)
+          @implicit = args[:implicit] if args.key?(:implicit)
         end
       end
       

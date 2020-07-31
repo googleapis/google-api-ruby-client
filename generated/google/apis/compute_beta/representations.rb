@@ -7827,6 +7827,7 @@ module Google
       class InstanceGroupManagersApplyUpdatesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances, as: 'allInstances'
           collection :instances, as: 'instances'
           property :minimal_action, as: 'minimalAction'
           property :most_disruptive_allowed_action, as: 'mostDisruptiveAllowedAction'
@@ -10760,6 +10761,7 @@ module Google
       class RegionInstanceGroupManagersApplyUpdatesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_instances, as: 'allInstances'
           collection :instances, as: 'instances'
           property :minimal_action, as: 'minimalAction'
           property :most_disruptive_allowed_action, as: 'mostDisruptiveAllowedAction'

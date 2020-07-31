@@ -22,6 +22,18 @@ module Google
   module Apis
     module DoubleclickbidmanagerV1_1
       
+      class ChannelGrouping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisjunctiveMatchStatement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DownloadLineItemsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +53,12 @@ module Google
       end
       
       class DownloadResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -71,6 +89,24 @@ module Google
       end
       
       class Parameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PathFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PathQueryOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PathQueryOptionsFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Rule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RunQueryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -152,6 +194,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChannelGrouping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fallback_name, as: 'fallbackName'
+          property :name, as: 'name'
+          collection :rules, as: 'rules', class: Google::Apis::DoubleclickbidmanagerV1_1::Rule, decorator: Google::Apis::DoubleclickbidmanagerV1_1::Rule::Representation
+      
+        end
+      end
+      
+      class DisjunctiveMatchStatement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_filters, as: 'eventFilters', class: Google::Apis::DoubleclickbidmanagerV1_1::EventFilter, decorator: Google::Apis::DoubleclickbidmanagerV1_1::EventFilter::Representation
+      
+        end
       end
       
       class DownloadLineItemsRequest
@@ -193,6 +253,14 @@ module Google
         end
       end
       
+      class EventFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension_filter, as: 'dimensionFilter', class: Google::Apis::DoubleclickbidmanagerV1_1::PathQueryOptionsFilter, decorator: Google::Apis::DoubleclickbidmanagerV1_1::PathQueryOptionsFilter::Representation
+      
+        end
+      end
+      
       class FilterPair
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -225,6 +293,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :include_only_targeted_user_lists, as: 'includeOnlyTargetedUserLists'
+          property :path_query_options, as: 'pathQueryOptions', class: Google::Apis::DoubleclickbidmanagerV1_1::PathQueryOptions, decorator: Google::Apis::DoubleclickbidmanagerV1_1::PathQueryOptions::Representation
+      
         end
       end
       
@@ -239,6 +309,34 @@ module Google
           property :options, as: 'options', class: Google::Apis::DoubleclickbidmanagerV1_1::Options, decorator: Google::Apis::DoubleclickbidmanagerV1_1::Options::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class PathFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_filters, as: 'eventFilters', class: Google::Apis::DoubleclickbidmanagerV1_1::EventFilter, decorator: Google::Apis::DoubleclickbidmanagerV1_1::EventFilter::Representation
+      
+          property :path_match_position, as: 'pathMatchPosition'
+        end
+      end
+      
+      class PathQueryOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_grouping, as: 'channelGrouping', class: Google::Apis::DoubleclickbidmanagerV1_1::ChannelGrouping, decorator: Google::Apis::DoubleclickbidmanagerV1_1::ChannelGrouping::Representation
+      
+          collection :path_filters, as: 'pathFilters', class: Google::Apis::DoubleclickbidmanagerV1_1::PathFilter, decorator: Google::Apis::DoubleclickbidmanagerV1_1::PathFilter::Representation
+      
+        end
+      end
+      
+      class PathQueryOptionsFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :match, as: 'match'
+          collection :values, as: 'values'
         end
       end
       
@@ -345,6 +443,15 @@ module Google
           collection :errors, as: 'errors'
           property :persisted, as: 'persisted'
           property :row_number, as: 'rowNumber'
+        end
+      end
+      
+      class Rule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disjunctive_match_statements, as: 'disjunctiveMatchStatements', class: Google::Apis::DoubleclickbidmanagerV1_1::DisjunctiveMatchStatement, decorator: Google::Apis::DoubleclickbidmanagerV1_1::DisjunctiveMatchStatement::Representation
+      
+          property :name, as: 'name'
         end
       end
       

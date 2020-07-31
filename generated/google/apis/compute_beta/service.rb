@@ -9868,8 +9868,8 @@ module Google
         #   The instance name for this request.
         # @param [Google::Apis::ComputeBeta::AttachedDisk] attached_disk_object
         # @param [Boolean] force_attach
-        #   Whether to force attach the disk even if it's currently attached to another
-        #   instance.
+        #   Whether to force attach the regional disk even if it's currently attached to
+        #   another instance.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -10296,14 +10296,22 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] instance
-        #   Name of the instance scoping this request.
+        #   Name of the instance for this request.
         # @param [Fixnum] port
         #   Specifies which COM or serial port to retrieve data from.
         # @param [Fixnum] start
-        #   Returns output starting from a specific byte position. Use this to page
-        #   through output when the output is too large to return in a single request. For
-        #   the initial request, leave this field unspecified. For subsequent calls, this
-        #   field should be set to the next value returned in the previous call.
+        #   Specifies the starting byte position of the output to return. To start with
+        #   the first byte of output to the specified port, omit this field or set it to `
+        #   0`.
+        #   If the output for that byte position is available, this field matches the `
+        #   start` parameter sent with the request. If the amount of serial console output
+        #   exceeds the size of the buffer (1 MB), the oldest output is discarded and is
+        #   no longer available. If the requested start position refers to discarded
+        #   output, the start position is adjusted to the oldest output still available,
+        #   and the adjusted start position is returned as the `start` property value.
+        #   You can also provide a negative start position, which translates to the most
+        #   recent number of bytes written to the serial port. For example, -3 is
+        #   interpreted as the most recent 3 bytes written to the serial console.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

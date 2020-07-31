@@ -35,14 +35,14 @@ module Google
       
         # Full URL, partial URI, or short name of the accelerator type resource to
         # expose to this instance. See Compute Engine AcceleratorTypes (https://cloud.
-        # google.com/compute/docs/reference/beta/acceleratorTypes).Examples:
-        # https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/
-        # acceleratorTypes/nvidia-tesla-k80
-        # projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
-        # nvidia-tesla-k80Auto Zone Exception: If you are using the Dataproc Auto Zone
-        # Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-
-        # clusters/auto-zone#using_auto_zone_placement) feature, you must use the short
-        # name of the accelerator type resource, for example, nvidia-tesla-k80.
+        # google.com/compute/docs/reference/beta/acceleratorTypes).Examples: https://www.
+        # googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/
+        # acceleratorTypes/nvidia-tesla-k80 projects/[project_id]/zones/us-east1-a/
+        # acceleratorTypes/nvidia-tesla-k80 nvidia-tesla-k80Auto Zone Exception: If you
+        # are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/
+        # docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
+        # feature, you must use the short name of the accelerator type resource, for
+        # example, nvidia-tesla-k80.
         # Corresponds to the JSON property `acceleratorTypeUri`
         # @return [String]
         attr_accessor :accelerator_type_uri
@@ -63,11 +63,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The autoscaling policy used by the cluster.Only resource names
-        # including projectid and location (region) are valid. Examples:
-        # https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[
-        # dataproc_region]/autoscalingPolicies/[policy_id]
-        # projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[
-        # policy_id]Note that the policy must be in the same project and Dataproc region.
+        # including projectid and location (region) are valid. Examples: https://www.
+        # googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/
+        # autoscalingPolicies/[policy_id] projects/[project_id]/locations/[
+        # dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be
+        # in the same project and Dataproc region.
         # Corresponds to the JSON property `policyUri`
         # @return [String]
         attr_accessor :policy_uri
@@ -99,12 +99,11 @@ module Google
         attr_accessor :id
       
         # Output only. The "resource name" of the autoscaling policy, as described in
-        # https://cloud.google.com/apis/design/resource_names.
-        # For projects.regions.autoscalingPolicies, the resource name of the  policy has
-        # the following format:  projects/`project_id`/regions/`region`/
-        # autoscalingPolicies/`policy_id`
-        # For projects.locations.autoscalingPolicies, the resource name of the  policy
-        # has the following format:  projects/`project_id`/locations/`location`/
+        # https://cloud.google.com/apis/design/resource_names. For projects.regions.
+        # autoscalingPolicies, the resource name of the policy has the following format:
+        # projects/`project_id`/regions/`region`/autoscalingPolicies/`policy_id` For
+        # projects.locations.autoscalingPolicies, the resource name of the policy has
+        # the following format: projects/`project_id`/locations/`location`/
         # autoscalingPolicies/`policy_id`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -233,59 +232,48 @@ module Google
       
         # Represents a textual expression in the Common Expression Language (CEL) syntax.
         # CEL is a C-like expression language. The syntax and semantics of CEL are
-        # documented at https://github.com/google/cel-spec.Example (Comparison):
-        # title: "Summary size limit"
-        # description: "Determines if a summary is less than 100 chars"
-        # expression: "document.summary.size() < 100"
-        # Example (Equality):
-        # title: "Requestor is owner"
-        # description: "Determines if requestor is the document owner"
-        # expression: "document.owner == request.auth.claims.email"
-        # Example (Logic):
-        # title: "Public documents"
-        # description: "Determine whether the document should be publicly visible"
-        # expression: "document.type != 'private' && document.type != 'internal'"
-        # Example (Data Manipulation):
-        # title: "Notification string"
-        # description: "Create a notification string with a timestamp."
-        # expression: "'New message received at ' + string(document.create_time)"
-        # The exact variables and functions that may be referenced within an expression
-        # are determined by the service that evaluates it. See the service documentation
-        # for additional information.
+        # documented at https://github.com/google/cel-spec.Example (Comparison): title: "
+        # Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::DataprocV1::Expr]
         attr_accessor :condition
       
         # Specifies the identities requesting access for a Cloud Platform resource.
-        # members can have the following values:
-        # allUsers: A special identifier that represents anyone who is  on the internet;
-        # with or without a Google account.
-        # allAuthenticatedUsers: A special identifier that represents anyone  who is
-        # authenticated with a Google account or a service account.
-        # user:`emailid`: An email address that represents a specific Google  account.
-        # For example, alice@example.com .
-        # serviceAccount:`emailid`: An email address that represents a service  account.
-        # For example, my-other-app@appspot.gserviceaccount.com.
-        # group:`emailid`: An email address that represents a Google group.  For example,
-        # admins@example.com.
-        # deleted:user:`emailid`?uid=`uniqueid`: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For  example,
-        # alice@example.com?uid=123456789012345678901. If the user is  recovered, this
-        # value reverts to user:`emailid` and the recovered user  retains the role in
-        # the binding.
-        # deleted:serviceAccount:`emailid`?uid=`uniqueid`: An email address (plus
-        # unique identifier) representing a service account that has been recently
-        # deleted. For example,  my-other-app@appspot.gserviceaccount.com?uid=
-        # 123456789012345678901.  If the service account is undeleted, this value
-        # reverts to  serviceAccount:`emailid` and the undeleted service account retains
-        # the  role in the binding.
-        # deleted:group:`emailid`?uid=`uniqueid`: An email address (plus unique
-        # identifier) representing a Google group that has been recently  deleted. For
-        # example, admins@example.com?uid=123456789012345678901. If  the group is
-        # recovered, this value reverts to group:`emailid` and the  recovered group
-        # retains the role in the binding.
-        # domain:`domain`: The G Suite domain (primary) that represents all the  users
-        # of that domain. For example, google.com or example.com.
+        # members can have the following values: allUsers: A special identifier that
+        # represents anyone who is on the internet; with or without a Google account.
+        # allAuthenticatedUsers: A special identifier that represents anyone who is
+        # authenticated with a Google account or a service account. user:`emailid`: An
+        # email address that represents a specific Google account. For example, alice@
+        # example.com . serviceAccount:`emailid`: An email address that represents a
+        # service account. For example, my-other-app@appspot.gserviceaccount.com. group:`
+        # emailid`: An email address that represents a Google group. For example, admins@
+        # example.com. deleted:user:`emailid`?uid=`uniqueid`: An email address (plus
+        # unique identifier) representing a user that has been recently deleted. For
+        # example, alice@example.com?uid=123456789012345678901. If the user is recovered,
+        # this value reverts to user:`emailid` and the recovered user retains the role
+        # in the binding. deleted:serviceAccount:`emailid`?uid=`uniqueid`: An email
+        # address (plus unique identifier) representing a service account that has been
+        # recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901. If the service account is undeleted, this value reverts
+        # to serviceAccount:`emailid` and the undeleted service account retains the role
+        # in the binding. deleted:group:`emailid`?uid=`uniqueid`: An email address (plus
+        # unique identifier) representing a Google group that has been recently deleted.
+        # For example, admins@example.com?uid=123456789012345678901. If the group is
+        # recovered, this value reverts to group:`emailid` and the recovered group
+        # retains the role in the binding. domain:`domain`: The G Suite domain (primary)
+        # that represents all the users of that domain. For example, google.com or
+        # example.com.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -430,14 +418,10 @@ module Google
         # Optional. Commands to execute on each node after config is completed. By
         # default, executables are run on master and all worker nodes. You can test a
         # node's role metadata to run an executable on a master or worker node, as shown
-        # below using curl (you can also use wget):
-        # ROLE=$(curl -H Metadata-Flavor:Google
-        # http://metadata/computeMetadata/v1/instance/attributes/dataproc-role)
-        # if [[ "$`ROLE`" == 'Master' ]]; then
-        # ... master specific actions ...
-        # else
-        # ... worker specific actions ...
-        # fi
+        # below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:
+        # Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role)
+        # if [[ "$`ROLE`" == 'Master' ]]; then ... master specific actions ... else ...
+        # worker specific actions ... fi
         # Corresponds to the JSON property `initializationActions`
         # @return [Array<Google::Apis::DataprocV1::NodeInitializationAction>]
         attr_accessor :initialization_actions
@@ -803,11 +787,9 @@ module Google
       
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for Empty is empty JSON object ``.
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # Empty is empty JSON object ``.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -870,25 +852,19 @@ module Google
       
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
-      # documented at https://github.com/google/cel-spec.Example (Comparison):
-      # title: "Summary size limit"
-      # description: "Determines if a summary is less than 100 chars"
-      # expression: "document.summary.size() < 100"
-      # Example (Equality):
-      # title: "Requestor is owner"
-      # description: "Determines if requestor is the document owner"
-      # expression: "document.owner == request.auth.claims.email"
-      # Example (Logic):
-      # title: "Public documents"
-      # description: "Determine whether the document should be publicly visible"
-      # expression: "document.type != 'private' && document.type != 'internal'"
-      # Example (Data Manipulation):
-      # title: "Notification string"
-      # description: "Create a notification string with a timestamp."
-      # expression: "'New message received at ' + string(document.create_time)"
-      # The exact variables and functions that may be referenced within an expression
-      # are determined by the service that evaluates it. See the service documentation
-      # for additional information.
+      # documented at https://github.com/google/cel-spec.Example (Comparison): title: "
+      # Summary size limit" description: "Determines if a summary is less than 100
+      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+      # Requestor is owner" description: "Determines if requestor is the document
+      # owner" expression: "document.owner == request.auth.claims.email" Example (
+      # Logic): title: "Public documents" description: "Determine whether the document
+      # should be publicly visible" expression: "document.type != 'private' &&
+      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+      # string" description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)" The
+      # exact variables and functions that may be referenced within an expression are
+      # determined by the service that evaluates it. See the service documentation for
+      # additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
@@ -956,11 +932,9 @@ module Google
         # subnetwork_uri is specified, the "default" network of the project is used, if
         # it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://
         # cloud.google.com/compute/docs/subnetworks) for more information).A full URL,
-        # partial URI, or short name are valid. Examples:
-        # https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/
-        # default
-        # projects/[project_id]/regions/global/default
-        # default
+        # partial URI, or short name are valid. Examples: https://www.googleapis.com/
+        # compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/
+        # regions/global/default default
         # Corresponds to the JSON property `networkUri`
         # @return [String]
         attr_accessor :network_uri
@@ -983,26 +957,22 @@ module Google
         attr_accessor :service_account
       
         # Optional. The URIs of service account scopes to be included in Compute Engine
-        # instances. The following base set of scopes is always included:
-        # https://www.googleapis.com/auth/cloud.useraccounts.readonly
-        # https://www.googleapis.com/auth/devstorage.read_write
-        # https://www.googleapis.com/auth/logging.writeIf no scopes are specified, the
-        # following defaults are also provided:
-        # https://www.googleapis.com/auth/bigquery
-        # https://www.googleapis.com/auth/bigtable.admin.table
-        # https://www.googleapis.com/auth/bigtable.data
-        # https://www.googleapis.com/auth/devstorage.full_control
+        # instances. The following base set of scopes is always included: https://www.
+        # googleapis.com/auth/cloud.useraccounts.readonly https://www.googleapis.com/
+        # auth/devstorage.read_write https://www.googleapis.com/auth/logging.writeIf no
+        # scopes are specified, the following defaults are also provided: https://www.
+        # googleapis.com/auth/bigquery https://www.googleapis.com/auth/bigtable.admin.
+        # table https://www.googleapis.com/auth/bigtable.data https://www.googleapis.com/
+        # auth/devstorage.full_control
         # Corresponds to the JSON property `serviceAccountScopes`
         # @return [Array<String>]
         attr_accessor :service_account_scopes
       
         # Optional. The Compute Engine subnetwork to be used for machine communications.
         # Cannot be specified with network_uri.A full URL, partial URI, or short name
-        # are valid. Examples:
-        # https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/
-        # subnetworks/sub0
-        # projects/[project_id]/regions/us-east1/subnetworks/sub0
-        # sub0
+        # are valid. Examples: https://www.googleapis.com/compute/v1/projects/[
+        # project_id]/regions/us-east1/subnetworks/sub0 projects/[project_id]/regions/us-
+        # east1/subnetworks/sub0 sub0
         # Corresponds to the JSON property `subnetworkUri`
         # @return [String]
         attr_accessor :subnetwork_uri
@@ -1017,10 +987,9 @@ module Google
         # create request, it is required in the "global" region. If omitted in a non-
         # global Dataproc region, the service will pick a zone in the corresponding
         # Compute Engine region. On a get request, zone will always be present.A full
-        # URL, partial URI, or short name are valid. Examples:
-        # https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]
-        # projects/[project_id]/zones/[zone]
-        # us-central1-f
+        # URL, partial URI, or short name are valid. Examples: https://www.googleapis.
+        # com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[
+        # zone] us-central1-f
         # Corresponds to the JSON property `zoneUri`
         # @return [String]
         attr_accessor :zone_uri
@@ -1131,9 +1100,9 @@ module Google
         # @return [String]
         attr_accessor :main_class
       
-        # The HCFS URI of the jar file containing the main class. Examples:  'gs://foo-
-        # bucket/analytics-binaries/extract-useful-metrics-mr.jar'  'hdfs:/tmp/test-
-        # samples/custom-wordcount.jar'  'file:///home/usr/lib/hadoop-mapreduce/hadoop-
+        # The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-
+        # bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-
+        # samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-
         # mapreduce-examples.jar'
         # Corresponds to the JSON property `mainJarFileUri`
         # @return [String]
@@ -1289,17 +1258,14 @@ module Google
         attr_accessor :disk_config
       
         # Optional. The Compute Engine image resource used for cluster instances.The URI
-        # can represent an image or image family.Image examples:
-        # https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[
-        # image-id]
-        # projects/[project_id]/global/images/[image-id]
-        # image-idImage family examples. Dataproc will use the most recent image from
-        # the family:
-        # https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/
-        # family/[custom-image-family-name]
-        # projects/[project_id]/global/images/family/[custom-image-family-name]If the
-        # URI is unspecified, it will be inferred from SoftwareConfig.image_version or
-        # the system default.
+        # can represent an image or image family.Image examples: https://www.googleapis.
+        # com/compute/beta/projects/[project_id]/global/images/[image-id] projects/[
+        # project_id]/global/images/[image-id] image-idImage family examples. Dataproc
+        # will use the most recent image from the family: https://www.googleapis.com/
+        # compute/beta/projects/[project_id]/global/images/family/[custom-image-family-
+        # name] projects/[project_id]/global/images/family/[custom-image-family-name]If
+        # the URI is unspecified, it will be inferred from SoftwareConfig.image_version
+        # or the system default.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
@@ -1317,11 +1283,10 @@ module Google
         alias_method :is_preemptible?, :is_preemptible
       
         # Optional. The Compute Engine machine type used for cluster instances.A full
-        # URL, partial URI, or short name are valid. Examples:
-        # https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/
-        # machineTypes/n1-standard-2
-        # projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
-        # n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone
+        # URL, partial URI, or short name are valid. Examples: https://www.googleapis.
+        # com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-
+        # 2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-
+        # standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone
         # Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-
         # clusters/auto-zone#using_auto_zone_placement) feature, you must use the short
         # name of the machine type resource, for example, n1-standard-2.
@@ -1335,7 +1300,7 @@ module Google
         attr_accessor :managed_group_config
       
         # Optional. Specifies the minimum cpu platform for the Instance Group. See
-        # Dataproc -&gt; Minimum CPU Platform (https://cloud.google.com/dataproc/docs/
+        # Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/
         # concepts/compute/dataproc-min-cpu).
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
@@ -1685,7 +1650,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Output only. Job state details, such as an error description if the
-        # state is <code>ERROR</code>.
+        # state is ERROR.
         # Corresponds to the JSON property `details`
         # @return [String]
         attr_accessor :details
@@ -1952,7 +1917,7 @@ module Google
       
         # Optional. This token is included in the response if there are more results to
         # fetch. To fetch additional results, provide this value as the page_token in a
-        # subsequent <code>ListJobsRequest</code>.
+        # subsequent ListJobsRequest.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1999,7 +1964,7 @@ module Google
       
         # Output only. This token is included in the response if there are more results
         # to fetch. To fetch additional results, provide this value as the page_token in
-        # a subsequent <code>ListWorkflowTemplatesRequest</code>.
+        # a subsequent ListWorkflowTemplatesRequest.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2025,7 +1990,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The per-package log levels for the driver. This may include "root" package
-        # name to configure rootLogger. Examples:  'com.google = FATAL', 'root = INFO', '
+        # name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', '
         # org.apache = DEBUG'
         # Corresponds to the JSON property `driverLogLevels`
         # @return [Hash<String,String>]
@@ -2405,52 +2370,22 @@ module Google
       # condition can add constraints based on attributes of the request, the resource,
       # or both. To learn which resources support conditions in their IAM policies,
       # see the IAM documentation (https://cloud.google.com/iam/help/conditions/
-      # resource-policies).JSON example:
-      # `
-      # "bindings": [
-      # `
-      # "role": "roles/resourcemanager.organizationAdmin",
-      # "members": [
-      # "user:mike@example.com",
-      # "group:admins@example.com",
-      # "domain:google.com",
-      # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-      # ]
-      # `,
-      # `
-      # "role": "roles/resourcemanager.organizationViewer",
-      # "members": [
-      # "user:eve@example.com"
-      # ],
-      # "condition": `
-      # "title": "expirable access",
-      # "description": "Does not grant access after Sep 2020",
-      # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
-      # `
-      # `
-      # ],
-      # "etag": "BwWWja0YfJA=",
-      # "version": 3
-      # `
-      # YAML example:
-      # bindings:
-      # - members:
-      # - user:mike@example.com
-      # - group:admins@example.com
-      # - domain:google.com
-      # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin
-      # - members:
-      # - user:eve@example.com
-      # role: roles/resourcemanager.organizationViewer
-      # condition:
-      # title: expirable access
-      # description: Does not grant access after Sep 2020
-      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-      # - etag: BwWWja0YfJA=
-      # - version: 3
-      # For a description of IAM and its features, see the IAM documentation (https://
-      # cloud.google.com/iam/docs/).
+      # resource-policies).JSON example: ` "bindings": [ ` "role": "roles/
+      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+      # title": "expirable access", "description": "Does not grant access after Sep
+      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` YAML example: bindings: - members:
+      # - user:mike@example.com - group:admins@example.com - domain:google.com -
+      # serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+      # roles/resourcemanager.organizationViewer condition: title: expirable access
+      # description: Does not grant access after Sep 2020 expression: request.time <
+      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # description of IAM and its features, see the IAM documentation (https://cloud.
+      # google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -2479,19 +2414,17 @@ module Google
         # Specifies the format of the policy.Valid values are 0, 1, and 3. Requests that
         # specify an invalid value are rejected.Any operation that affects conditional
         # role bindings must specify version 3. This requirement applies to the
-        # following operations:
-        # Getting a policy that includes a conditional role binding
-        # Adding a conditional role binding to a policy
-        # Changing a conditional role binding in a policy
-        # Removing any role binding, with or without a condition, from a policy  that
-        # includes conditionsImportant: If you use IAM Conditions, you must include the
-        # etag field whenever you call setIamPolicy. If you omit this field, then IAM
-        # allows you to overwrite a version 3 policy with a version 1 policy, and all of
-        # the conditions in the version 3 policy are lost.If a policy does not include
-        # any conditions, operations on that policy may specify any valid version or
-        # leave the field unset.To learn which resources support conditions in their IAM
-        # policies, see the IAM documentation (https://cloud.google.com/iam/help/
-        # conditions/resource-policies).
+        # following operations: Getting a policy that includes a conditional role
+        # binding Adding a conditional role binding to a policy Changing a conditional
+        # role binding in a policy Removing any role binding, with or without a
+        # condition, from a policy that includes conditionsImportant: If you use IAM
+        # Conditions, you must include the etag field whenever you call setIamPolicy. If
+        # you omit this field, then IAM allows you to overwrite a version 3 policy with
+        # a version 1 policy, and all of the conditions in the version 3 policy are lost.
+        # If a policy does not include any conditions, operations on that policy may
+        # specify any valid version or leave the field unset.To learn which resources
+        # support conditions in their IAM policies, see the IAM documentation (https://
+        # cloud.google.com/iam/help/conditions/resource-policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -2651,16 +2584,8 @@ module Google
         # Required. The queries to execute. You do not need to terminate a query with a
         # semicolon. Multiple queries can be specified in one string by separating each
         # with a semicolon. Here is an example of an Cloud Dataproc API snippet that
-        # uses a QueryList to specify a HiveJob:
-        # "hiveJob": `
-        # "queryList": `
-        # "queries": [
-        # "query1",
-        # "query2",
-        # "query3;query4",
-        # ]
-        # `
-        # `
+        # uses a QueryList to specify a HiveJob: "hiveJob": ` "queryList": ` "queries": [
+        # "query1", "query2", "query3;query4", ] ` `
         # Corresponds to the JSON property `queries`
         # @return [Array<String>]
         attr_accessor :queries
@@ -2761,52 +2686,22 @@ module Google
         # condition can add constraints based on attributes of the request, the resource,
         # or both. To learn which resources support conditions in their IAM policies,
         # see the IAM documentation (https://cloud.google.com/iam/help/conditions/
-        # resource-policies).JSON example:
-        # `
-        # "bindings": [
-        # `
-        # "role": "roles/resourcemanager.organizationAdmin",
-        # "members": [
-        # "user:mike@example.com",
-        # "group:admins@example.com",
-        # "domain:google.com",
-        # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-        # ]
-        # `,
-        # `
-        # "role": "roles/resourcemanager.organizationViewer",
-        # "members": [
-        # "user:eve@example.com"
-        # ],
-        # "condition": `
-        # "title": "expirable access",
-        # "description": "Does not grant access after Sep 2020",
-        # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
-        # `
-        # `
-        # ],
-        # "etag": "BwWWja0YfJA=",
-        # "version": 3
-        # `
-        # YAML example:
-        # bindings:
-        # - members:
-        # - user:mike@example.com
-        # - group:admins@example.com
-        # - domain:google.com
-        # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin
-        # - members:
-        # - user:eve@example.com
-        # role: roles/resourcemanager.organizationViewer
-        # condition:
-        # title: expirable access
-        # description: Does not grant access after Sep 2020
-        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-        # - etag: BwWWja0YfJA=
-        # - version: 3
-        # For a description of IAM and its features, see the IAM documentation (https://
-        # cloud.google.com/iam/docs/).
+        # resource-policies).JSON example: ` "bindings": [ ` "role": "roles/
+        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+        # title": "expirable access", "description": "Does not grant access after Sep
+        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` YAML example: bindings: - members:
+        # - user:mike@example.com - group:admins@example.com - domain:google.com -
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+        # roles/resourcemanager.organizationViewer condition: title: expirable access
+        # description: Does not grant access after Sep 2020 expression: request.time <
+        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # description of IAM and its features, see the IAM documentation (https://cloud.
+        # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::DataprocV1::Policy]
         attr_accessor :policy
@@ -2842,17 +2737,12 @@ module Google
       
         # Optional. The properties to set on daemon config files.Property keys are
         # specified in prefix:property format, for example core:hadoop.tmp.dir. The
-        # following are supported prefixes and their mappings:
-        # capacity-scheduler: capacity-scheduler.xml
-        # core: core-site.xml
-        # distcp: distcp-default.xml
-        # hdfs: hdfs-site.xml
-        # hive: hive-site.xml
-        # mapred: mapred-site.xml
-        # pig: pig.properties
-        # spark: spark-defaults.conf
-        # yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.
-        # google.com/dataproc/docs/concepts/cluster-properties).
+        # following are supported prefixes and their mappings: capacity-scheduler:
+        # capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs:
+        # hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties
+        # spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see
+        # Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-
+        # properties).
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,String>]
         attr_accessor :properties
@@ -3138,34 +3028,22 @@ module Google
         # similar in syntax to a google.protobuf.FieldMask. For example, a field path
         # that references the zone field of a workflow template's cluster selector would
         # be specified as placement.clusterSelector.zone.Also, field paths can reference
-        # fields using the following syntax:
-        # Values in maps can be referenced by key:
-        # labels'key'
-        # placement.clusterSelector.clusterLabels'key'
-        # placement.managedCluster.labels'key'
-        # placement.clusterSelector.clusterLabels'key'
-        # jobs'step-id'.labels'key'
-        # Jobs in the jobs list can be referenced by step-id:
-        # jobs'step-id'.hadoopJob.mainJarFileUri
-        # jobs'step-id'.hiveJob.queryFileUri
-        # jobs'step-id'.pySparkJob.mainPythonFileUri
-        # jobs'step-id'.hadoopJob.jarFileUris0
-        # jobs'step-id'.hadoopJob.archiveUris0
-        # jobs'step-id'.hadoopJob.fileUris0
-        # jobs'step-id'.pySparkJob.pythonFileUris0
-        # Items in repeated fields can be referenced by a zero-based index:
-        # jobs'step-id'.sparkJob.args0
-        # Other examples:
-        # jobs'step-id'.hadoopJob.properties'key'
-        # jobs'step-id'.hadoopJob.args0
-        # jobs'step-id'.hiveJob.scriptVariables'key'
-        # jobs'step-id'.hadoopJob.mainJarFileUri
-        # placement.clusterSelector.zoneIt may not be possible to parameterize maps and
-        # repeated fields in their entirety since only individual map values and
-        # individual items in repeated fields can be referenced. For example, the
-        # following field paths are invalid:
-        # placement.clusterSelector.clusterLabels
-        # jobs'step-id'.sparkJob.args
+        # fields using the following syntax: Values in maps can be referenced by key:
+        # labels'key' placement.clusterSelector.clusterLabels'key' placement.
+        # managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'
+        # step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'
+        # step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-
+        # id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'
+        # step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'
+        # .pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a
+        # zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.
+        # hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.
+        # scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.
+        # clusterSelector.zoneIt may not be possible to parameterize maps and repeated
+        # fields in their entirety since only individual map values and individual items
+        # in repeated fields can be referenced. For example, the following field paths
+        # are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.
+        # args
         # Corresponds to the JSON property `fields`
         # @return [Array<String>]
         attr_accessor :fields
@@ -3325,12 +3203,11 @@ module Google
         attr_accessor :state
       
         # Output only. The resource name of the workflow template as described in https:/
-        # /cloud.google.com/apis/design/resource_names.
-        # For projects.regions.workflowTemplates, the resource name of the  template has
-        # the following format:  projects/`project_id`/regions/`region`/
-        # workflowTemplates/`template_id`
-        # For projects.locations.workflowTemplates, the resource name of the  template
-        # has the following format:  projects/`project_id`/locations/`location`/
+        # /cloud.google.com/apis/design/resource_names. For projects.regions.
+        # workflowTemplates, the resource name of the template has the following format:
+        # projects/`project_id`/regions/`region`/workflowTemplates/`template_id` For
+        # projects.locations.workflowTemplates, the resource name of the template has
+        # the following format: projects/`project_id`/locations/`location`/
         # workflowTemplates/`template_id`
         # Corresponds to the JSON property `template`
         # @return [String]
@@ -3434,12 +3311,11 @@ module Google
         attr_accessor :labels
       
         # Output only. The resource name of the workflow template, as described in https:
-        # //cloud.google.com/apis/design/resource_names.
-        # For projects.regions.workflowTemplates, the resource name of the  template has
-        # the following format:  projects/`project_id`/regions/`region`/
-        # workflowTemplates/`template_id`
-        # For projects.locations.workflowTemplates, the resource name of the  template
-        # has the following format:  projects/`project_id`/locations/`location`/
+        # //cloud.google.com/apis/design/resource_names. For projects.regions.
+        # workflowTemplates, the resource name of the template has the following format:
+        # projects/`project_id`/regions/`region`/workflowTemplates/`template_id` For
+        # projects.locations.workflowTemplates, the resource name of the template has
+        # the following format: projects/`project_id`/locations/`location`/
         # workflowTemplates/`template_id`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3518,10 +3394,10 @@ module Google
         end
       end
       
-      # A YARN application created by a job. Application information is a subset of <
-      # code>org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto</code>.
-      # Beta Feature: This report is available for testing purposes only. It may be
-      # changed before final release.
+      # A YARN application created by a job. Application information is a subset of
+      # org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.Beta Feature:
+      # This report is available for testing purposes only. It may be changed before
+      # final release.
       class YarnApplication
         include Google::Apis::Core::Hashable
       

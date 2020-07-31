@@ -166,6 +166,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dismiss_time, as: 'dismissTime'
+          property :implicit, as: 'implicit'
         end
       end
       

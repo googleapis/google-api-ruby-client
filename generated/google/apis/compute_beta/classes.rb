@@ -4155,7 +4155,8 @@ module Google
       
         # The type of commitment, which affects the discount rate and the eligible
         # resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply
-        # to memory optimized machines.
+        # to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a
+        # commitment that will only apply to accelerator optimized machines.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -8339,9 +8340,10 @@ module Google
       # Google Compute Engine has two Health Check resources:
       # * [Global](/compute/docs/reference/rest/`$api_version`/healthChecks) * [
       # Regional](/compute/docs/reference/rest/`$api_version`/regionHealthChecks)
-      # Internal HTTP(S) load balancers use regional health checks. All other types of
-      # GCP load balancers and managed instance group auto-healing use global health
-      # checks. For more information, read Health Check Concepts.
+      # Internal HTTP(S) load balancers must use regional health checks. Internal TCP/
+      # UDP load balancers can use either regional or global health checks. All other
+      # types of GCP load balancers and managed instance group auto-healing must use
+      # global health checks. For more information, read Health Check Concepts.
       # To perform health checks on network load balancers, you must use either
       # httpHealthChecks or httpsHealthChecks.
       class HealthCheck
@@ -12492,6 +12494,13 @@ module Google
       class InstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
+        # Flag to update all instances instead of specified list of ?instances?. If the
+        # flag is set to true then the instances may not be specified in the request.
+        # Corresponds to the JSON property `allInstances`
+        # @return [Boolean]
+        attr_accessor :all_instances
+        alias_method :all_instances?, :all_instances
+      
         # The list of URLs of one or more instances for which you want to apply updates.
         # Each URL can be a full URL or a partial URL, such as zones/[ZONE]/instances/[
         # INSTANCE_NAME].
@@ -12529,6 +12538,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances = args[:all_instances] if args.key?(:all_instances)
           @instances = args[:instances] if args.key?(:instances)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
           @most_disruptive_allowed_action = args[:most_disruptive_allowed_action] if args.key?(:most_disruptive_allowed_action)
@@ -17614,6 +17624,7 @@ module Google
         # @return [String]
         attr_accessor :i_pv4_range
       
+        # Must be set to create a VPC network. If not set, a legacy network is created.
         # When set to true, the VPC network is created in auto mode. When set to false,
         # the VPC network is created in custom mode.
         # An auto mode VPC network starts with one subnet per region. Each subnet has a
@@ -17765,7 +17776,8 @@ module Google
       # reached, whether they are reachable, and where they are located. For more
       # information about using NEGs, see  Setting up internet NEGs or  Setting up
       # zonal NEGs. (== resource_for `$api_version`.networkEndpointGroups ==) (==
-      # resource_for `$api_version`.globalNetworkEndpointGroups ==)
+      # resource_for `$api_version`.globalNetworkEndpointGroups ==) (== resource_for `$
+      # api_version`.regionNetworkEndpointGroups ==)
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -23784,6 +23796,13 @@ module Google
       class RegionInstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
+        # Flag to update all instances instead of specified list of ?instances?. If the
+        # flag is set to true then the instances may not be specified in the request.
+        # Corresponds to the JSON property `allInstances`
+        # @return [Boolean]
+        attr_accessor :all_instances
+        alias_method :all_instances?, :all_instances
+      
         # The list of URLs of one or more instances for which you want to apply updates.
         # Each URL can be a full URL or a partial URL, such as zones/[ZONE]/instances/[
         # INSTANCE_NAME].
@@ -23821,6 +23840,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @all_instances = args[:all_instances] if args.key?(:all_instances)
           @instances = args[:instances] if args.key?(:instances)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
           @most_disruptive_allowed_action = args[:most_disruptive_allowed_action] if args.key?(:most_disruptive_allowed_action)
@@ -28319,8 +28339,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] The position of the next byte of content from the serial console
-        # output. Use this value in the next request as the start parameter.
+        # [Output Only] The position of the next byte of content, regardless of whether
+        # the content exists, following the output returned in the `contents` property.
+        # Use this value in the next request as the start parameter.
         # Corresponds to the JSON property `next`
         # @return [Fixnum]
         attr_accessor :next
@@ -28332,8 +28353,10 @@ module Google
       
         # The starting byte position of the output that was returned. This should match
         # the start parameter sent with the request. If the serial console output
-        # exceeds the size of the buffer, older output will be overwritten by newer
-        # content and the start values will be mismatched.
+        # exceeds the size of the buffer (1 MB), older output is overwritten by newer
+        # content. The output start value will indicate the byte position of the output
+        # that was returned, which might be different than the `start` value that was
+        # specified in the request.
         # Corresponds to the JSON property `start`
         # @return [Fixnum]
         attr_accessor :start
@@ -30082,10 +30105,11 @@ module Google
         attr_accessor :id
       
         # The range of internal addresses that are owned by this subnetwork. Provide
-        # this property when you create the subnetwork. For example, 10.0.0.0/8 or 192.
-        # 168.0.0/16. Ranges must be unique and non-overlapping within a network. Only
-        # IPv4 is supported. This field is set at resource creation time. The range can
-        # be expanded after creation using expandIpCidrRange.
+        # this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.
+        # 64.0.0/10. Ranges must be unique and non-overlapping within a network. Only
+        # IPv4 is supported. This field is set at resource creation time. This may be a
+        # RFC 1918 IP range, or a privately routed, non-RFC 1918 IP range, not belonging
+        # to Google. The range can be expanded after creation using expandIpCidrRange.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -30537,7 +30561,8 @@ module Google
         # The range of IP addresses belonging to this subnetwork secondary range.
         # Provide this property when you create the subnetwork. Ranges must be unique
         # and non-overlapping with all primary and secondary IP ranges within a network.
-        # Only IPv4 is supported.
+        # Only IPv4 is supported. This may be a RFC 1918 IP range, or a privately, non-
+        # RFC 1918 IP range, not belonging to Google.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range

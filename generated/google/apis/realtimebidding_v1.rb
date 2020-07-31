@@ -28,10 +28,7 @@ module Google
     # @see https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/
     module RealtimebiddingV1
       VERSION = 'V1'
-      REVISION = '20200720'
-
-      # Manage your Ad Exchange buyer account configuration
-      AUTH_ADEXCHANGE_BUYER = 'https://www.googleapis.com/auth/adexchange.buyer'
+      REVISION = '20200730'
 
       # See, create, edit, and delete your Authorized Buyers and Open Bidding account entities
       AUTH_REALTIME_BIDDING = 'https://www.googleapis.com/auth/realtime-bidding'

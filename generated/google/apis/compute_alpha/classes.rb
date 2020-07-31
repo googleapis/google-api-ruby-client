@@ -1072,6 +1072,30 @@ module Google
         end
       end
       
+      # Specifies options for controlling advanced machine features. Options that
+      # would traditionally be configured in a BIOS belong here. Features that require
+      # operating system support may have corresponding entries in the GuestOsFeatures
+      # of an Image (e.g., whether or not the OS in the Image supports nested
+      # virtualization being enabled or disabled).
+      class AdvancedMachineFeatures
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable nested virtualization or not (default is false).
+        # Corresponds to the JSON property `enableNestedVirtualization`
+        # @return [Boolean]
+        attr_accessor :enable_nested_virtualization
+        alias_method :enable_nested_virtualization?, :enable_nested_virtualization
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
+        end
+      end
+      
       # An alias IP range attached to an instance's network interface.
       class AliasIpRange
         include Google::Apis::Core::Hashable
@@ -1453,6 +1477,11 @@ module Google
         # @return [String]
         attr_accessor :on_update_action
       
+        # Indicates how many IOPS must be provisioned for the disk.
+        # Corresponds to the JSON property `provisionedIops`
+        # @return [Fixnum]
+        attr_accessor :provisioned_iops
+      
         # URLs of the zones where the disk should be replicated to. Only applicable for
         # regional resources.
         # Corresponds to the JSON property `replicaZones`
@@ -1522,6 +1551,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @multi_writer = args[:multi_writer] if args.key?(:multi_writer)
           @on_update_action = args[:on_update_action] if args.key?(:on_update_action)
+          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @source_image = args[:source_image] if args.key?(:source_image)
@@ -1775,6 +1805,11 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # [Output Only] Status information of existing scaling schedules.
+        # Corresponds to the JSON property `scalingScheduleStatus`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::ScalingScheduleStatus>]
+        attr_accessor :scaling_schedule_status
+      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -1829,6 +1864,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @recommended_size = args[:recommended_size] if args.key?(:recommended_size)
           @region = args[:region] if args.key?(:region)
+          @scaling_schedule_status = args[:scaling_schedule_status] if args.key?(:scaling_schedule_status)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @status = args[:status] if args.key?(:status)
@@ -2298,6 +2334,14 @@ module Google
         # @return [Google::Apis::ComputeAlpha::AutoscalingPolicyScaleInControl]
         attr_accessor :scale_in_control
       
+        # Scaling schedules defined for an autoscaler. Multiple schedules can be set on
+        # an autoscaler and they can overlap. During overlapping periods the greatest
+        # min_required_replicas of all scaling schedules will be applied. Up to 128
+        # scaling schedules are allowed.
+        # Corresponds to the JSON property `scalingSchedules`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::AutoscalingPolicyScalingSchedule>]
+        attr_accessor :scaling_schedules
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2313,6 +2357,7 @@ module Google
           @mode = args[:mode] if args.key?(:mode)
           @scale_down_control = args[:scale_down_control] if args.key?(:scale_down_control)
           @scale_in_control = args[:scale_in_control] if args.key?(:scale_in_control)
+          @scaling_schedules = args[:scaling_schedules] if args.key?(:scaling_schedules)
         end
       end
       
@@ -2515,6 +2560,71 @@ module Google
         def update!(**args)
           @max_scaled_in_replicas = args[:max_scaled_in_replicas] if args.key?(:max_scaled_in_replicas)
           @time_window_sec = args[:time_window_sec] if args.key?(:time_window_sec)
+        end
+      end
+      
+      # Scaling based on user-defined schedule. The message describes a single scaling
+      # schedule. A scaling schedule changes the minimum number of VM instances an
+      # autoscaler can recommend, which can trigger scaling out.
+      class AutoscalingPolicyScalingSchedule
+        include Google::Apis::Core::Hashable
+      
+        # A description of a scaling schedule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A boolean value that specifies if a scaling schedule can influence autoscaler
+        # recommendations. If set to true, then a scaling schedule has no effect. This
+        # field is optional and its value is false by default.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # The duration of time intervals (in seconds) for which this scaling schedule
+        # will be running. The minimum allowed value is 300. This field is required.
+        # Corresponds to the JSON property `durationSec`
+        # @return [Fixnum]
+        attr_accessor :duration_sec
+      
+        # Minimum number of VM instances that autoscaler will recommend in time
+        # intervals starting according to schedule. This field is required.
+        # Corresponds to the JSON property `minRequiredReplicas`
+        # @return [Fixnum]
+        attr_accessor :min_required_replicas
+      
+        # The start timestamps of time intervals when this scaling schedule should
+        # provide a scaling signal. This field uses the extended cron format (with an
+        # optional year field). The expression may describe a single timestamp if the
+        # optional year is set, in which case a scaling schedule will run once. schedule
+        # is interpreted with respect to time_zone. This field is required. NOTE: these
+        # timestamps only describe when autoscaler will start providing the scaling
+        # signal. The VMs will need additional time to become serving.
+        # Corresponds to the JSON property `schedule`
+        # @return [String]
+        attr_accessor :schedule
+      
+        # The time zone to be used when interpreting the schedule. The value of this
+        # field must be a time zone name from the tz database: http://en.wikipedia.org/
+        # wiki/Tz_database. This field will be assigned a default value of ?UTC? if left
+        # empty.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @duration_sec = args[:duration_sec] if args.key?(:duration_sec)
+          @min_required_replicas = args[:min_required_replicas] if args.key?(:min_required_replicas)
+          @schedule = args[:schedule] if args.key?(:schedule)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
@@ -2792,6 +2902,13 @@ module Google
       class BackendBucketCdnPolicy
         include Google::Apis::Core::Hashable
       
+        # If true then Cloud CDN will combine multiple concurrent cache fill requests
+        # into a small number of requests to the origin.
+        # Corresponds to the JSON property `requestCoalescing`
+        # @return [Boolean]
+        attr_accessor :request_coalescing
+        alias_method :request_coalescing?, :request_coalescing
+      
         # Maximum number of seconds the response to a signed URL request will be
         # considered fresh. After this time period, the response will be revalidated
         # before being served. Defaults to 1hr (3600s). When serving responses to signed
@@ -2814,6 +2931,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @request_coalescing = args[:request_coalescing] if args.key?(:request_coalescing)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
         end
@@ -3376,6 +3494,13 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CacheKeyPolicy]
         attr_accessor :cache_key_policy
       
+        # If true then Cloud CDN will combine multiple concurrent cache fill requests
+        # into a small number of requests to the origin.
+        # Corresponds to the JSON property `requestCoalescing`
+        # @return [Boolean]
+        attr_accessor :request_coalescing
+        alias_method :request_coalescing?, :request_coalescing
+      
         # Maximum number of seconds the response to a signed URL request will be
         # considered fresh. After this time period, the response will be revalidated
         # before being served. Defaults to 1hr (3600s). When serving responses to signed
@@ -3399,6 +3524,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
+          @request_coalescing = args[:request_coalescing] if args.key?(:request_coalescing)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
         end
@@ -4198,6 +4324,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Instance]
         attr_accessor :instance
       
+        # 
+        # Corresponds to the JSON property `instanceProperties`
+        # @return [Google::Apis::ComputeAlpha::InstanceProperties]
+        attr_accessor :instance_properties
+      
         # The minimum number of instances to create. If no min_count is specified then
         # count is used as the default value. If min_count instances cannot be created,
         # then no instances will be created.
@@ -4210,13 +4341,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :predefined_names
       
-        # Specifies the instance template from which to create the instance. This field
-        # is optional. This field is optional. It can be a full or partial URL. For
-        # example, the following are all valid URLs to an instance template:
+        # Specifies the instance template from which to create instances. You may
+        # combine sourceInstanceTemplate with instanceProperties to override specific
+        # values from an existing instance template. Bulk API follows the semantics of
+        # JSON Merge Patch described by RFC 7396.
+        # It can be a full or partial URL. For example, the following are all valid URLs
+        # to an instance template:
         # - https://www.googleapis.com/compute/v1/projects/project/global/
         # instanceTemplates/instanceTemplate
         # - projects/project/global/instanceTemplates/instanceTemplate
         # - global/instanceTemplates/instanceTemplate
+        # This field is optional.
         # Corresponds to the JSON property `sourceInstanceTemplate`
         # @return [String]
         attr_accessor :source_instance_template
@@ -4229,6 +4364,7 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @instance = args[:instance] if args.key?(:instance)
+          @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
           @min_count = args[:min_count] if args.key?(:min_count)
           @predefined_names = args[:predefined_names] if args.key?(:predefined_names)
           @source_instance_template = args[:source_instance_template] if args.key?(:source_instance_template)
@@ -4597,7 +4733,8 @@ module Google
       
         # The type of commitment, which affects the discount rate and the eligible
         # resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply
-        # to memory optimized machines.
+        # to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a
+        # commitment that will only apply to accelerator optimized machines.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -5458,6 +5595,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :physical_block_size_bytes
       
+        # Indicates how many IOPS must be provisioned for the disk.
+        # Corresponds to the JSON property `provisionedIops`
+        # @return [Fixnum]
+        attr_accessor :provisioned_iops
+      
         # [Output Only] URL of the region where the disk resides. Only applicable for
         # regional resources. You must specify this field as part of the HTTP request
         # URL. It is not settable as a field in the request body.
@@ -5657,6 +5799,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
           @physical_block_size_bytes = args[:physical_block_size_bytes] if args.key?(:physical_block_size_bytes)
+          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
           @region = args[:region] if args.key?(:region)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
@@ -7979,7 +8122,8 @@ module Google
       class FirewallPolicyRuleMatcher
         include Google::Apis::Core::Hashable
       
-        # CIDR IP address range.
+        # CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is
+        # 256.
         # Corresponds to the JSON property `destIpRanges`
         # @return [Array<String>]
         attr_accessor :dest_ip_ranges
@@ -7989,7 +8133,7 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyRuleMatcherLayer4Config>]
         attr_accessor :layer4_configs
       
-        # CIDR IP address range.
+        # CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
         # Corresponds to the JSON property `srcIpRanges`
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
@@ -9350,9 +9494,10 @@ module Google
       # Google Compute Engine has two Health Check resources:
       # * [Global](/compute/docs/reference/rest/`$api_version`/healthChecks) * [
       # Regional](/compute/docs/reference/rest/`$api_version`/regionHealthChecks)
-      # Internal HTTP(S) load balancers use regional health checks. All other types of
-      # GCP load balancers and managed instance group auto-healing use global health
-      # checks. For more information, read Health Check Concepts.
+      # Internal HTTP(S) load balancers must use regional health checks. Internal TCP/
+      # UDP load balancers can use either regional or global health checks. All other
+      # types of GCP load balancers and managed instance group auto-healing must use
+      # global health checks. For more information, read Health Check Concepts.
       # To perform health checks on network load balancers, you must use either
       # httpHealthChecks or httpsHealthChecks.
       class HealthCheck
@@ -12217,6 +12362,15 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
+        # Specifies options for controlling advanced machine features. Options that
+        # would traditionally be configured in a BIOS belong here. Features that require
+        # operating system support may have corresponding entries in the GuestOsFeatures
+        # of an Image (e.g., whether or not the OS in the Image supports nested
+        # virtualization being enabled or disabled).
+        # Corresponds to the JSON property `advancedMachineFeatures`
+        # @return [Google::Apis::ComputeAlpha::AdvancedMachineFeatures]
+        attr_accessor :advanced_machine_features
+      
         # Allows this instance to send and receive packets with non-matching destination
         # or source IPs. This is required if you plan to use this instance to forward
         # routes. For more information, see Enabling IP Forwarding.
@@ -12513,6 +12667,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @cpu_platform = args[:cpu_platform] if args.key?(:cpu_platform)
@@ -15165,6 +15320,15 @@ module Google
       class InstanceProperties
         include Google::Apis::Core::Hashable
       
+        # Specifies options for controlling advanced machine features. Options that
+        # would traditionally be configured in a BIOS belong here. Features that require
+        # operating system support may have corresponding entries in the GuestOsFeatures
+        # of an Image (e.g., whether or not the OS in the Image supports nested
+        # virtualization being enabled or disabled).
+        # Corresponds to the JSON property `advancedMachineFeatures`
+        # @return [Google::Apis::ComputeAlpha::AdvancedMachineFeatures]
+        attr_accessor :advanced_machine_features
+      
         # Enables instances created based on these properties to send packets with
         # source IP addresses other than their own and receive packets with destination
         # IP addresses other than their own. If these instances will be used as an IP
@@ -15289,6 +15453,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advanced_machine_features = args[:advanced_machine_features] if args.key?(:advanced_machine_features)
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @description = args[:description] if args.key?(:description)
@@ -19723,6 +19888,7 @@ module Google
         # @return [String]
         attr_accessor :i_pv4_range
       
+        # Must be set to create a VPC network. If not set, a legacy network is created.
         # When set to true, the VPC network is created in auto mode. When set to false,
         # the VPC network is created in custom mode.
         # An auto mode VPC network starts with one subnet per region. Each subnet has a
@@ -19893,7 +20059,8 @@ module Google
       # reached, whether they are reachable, and where they are located. For more
       # information about using NEGs, see  Setting up internet NEGs or  Setting up
       # zonal NEGs. (== resource_for `$api_version`.networkEndpointGroups ==) (==
-      # resource_for `$api_version`.globalNetworkEndpointGroups ==)
+      # resource_for `$api_version`.globalNetworkEndpointGroups ==) (== resource_for `$
+      # api_version`.regionNetworkEndpointGroups ==)
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -24350,6 +24517,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :cidr_ranges
       
+        # Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default
+        # is BOTH.
+        # Corresponds to the JSON property `direction`
+        # @return [String]
+        attr_accessor :direction
+      
         def initialize(**args)
            update!(**args)
         end
@@ -24358,6 +24531,7 @@ module Google
         def update!(**args)
           @ip_protocols = args[:ip_protocols] if args.key?(:ip_protocols)
           @cidr_ranges = args[:cidr_ranges] if args.key?(:cidr_ranges)
+          @direction = args[:direction] if args.key?(:direction)
         end
       end
       
@@ -28864,6 +29038,11 @@ module Google
         # @return [String]
         attr_accessor :locality
       
+        # Scope specifies the availability domain to which the VMs should be spread.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
         # Specifies instances to hosts placement relationship
         # Corresponds to the JSON property `style`
         # @return [String]
@@ -28883,6 +29062,7 @@ module Google
           @availability_domain_count = args[:availability_domain_count] if args.key?(:availability_domain_count)
           @collocation = args[:collocation] if args.key?(:collocation)
           @locality = args[:locality] if args.key?(:locality)
+          @scope = args[:scope] if args.key?(:scope)
           @style = args[:style] if args.key?(:style)
           @vm_count = args[:vm_count] if args.key?(:vm_count)
         end
@@ -30843,6 +31023,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_vm_endpoints_with_nat_mappings
       
+        # Status of rules in this NAT.
+        # Corresponds to the JSON property `ruleStatus`
+        # @return [Array<Google::Apis::ComputeAlpha::RouterStatusNatStatusNatRuleStatus>]
+        attr_accessor :rule_status
+      
         # A list of fully qualified URLs of reserved IP address resources.
         # Corresponds to the JSON property `userAllocatedNatIpResources`
         # @return [Array<String>]
@@ -30866,8 +31051,55 @@ module Google
           @min_extra_nat_ips_needed = args[:min_extra_nat_ips_needed] if args.key?(:min_extra_nat_ips_needed)
           @name = args[:name] if args.key?(:name)
           @num_vm_endpoints_with_nat_mappings = args[:num_vm_endpoints_with_nat_mappings] if args.key?(:num_vm_endpoints_with_nat_mappings)
+          @rule_status = args[:rule_status] if args.key?(:rule_status)
           @user_allocated_nat_ip_resources = args[:user_allocated_nat_ip_resources] if args.key?(:user_allocated_nat_ip_resources)
           @user_allocated_nat_ips = args[:user_allocated_nat_ips] if args.key?(:user_allocated_nat_ips)
+        end
+      end
+      
+      # Status of a NAT Rule contained in this NAT.
+      class RouterStatusNatStatusNatRuleStatus
+        include Google::Apis::Core::Hashable
+      
+        # A list of active IPs for NAT. Example: ["1.1.1.1", "179.12.26.133"].
+        # Corresponds to the JSON property `activeNatIps`
+        # @return [Array<String>]
+        attr_accessor :active_nat_ips
+      
+        # A list of IPs for NAT that are in drain mode. Example: ["1.1.1.1", "179.12.26.
+        # 133"].
+        # Corresponds to the JSON property `drainNatIps`
+        # @return [Array<String>]
+        attr_accessor :drain_nat_ips
+      
+        # The number of extra IPs to allocate. This will be greater than 0 only if the
+        # existing IPs in this NAT Rule are NOT enough to allow all configured VMs to
+        # use NAT.
+        # Corresponds to the JSON property `minExtraIpsNeeded`
+        # @return [Fixnum]
+        attr_accessor :min_extra_ips_needed
+      
+        # Number of VM endpoints (i.e., NICs) that have NAT Mappings from this NAT Rule.
+        # Corresponds to the JSON property `numVmEndpointsWithNatMappings`
+        # @return [Fixnum]
+        attr_accessor :num_vm_endpoints_with_nat_mappings
+      
+        # Priority of the rule.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_nat_ips = args[:active_nat_ips] if args.key?(:active_nat_ips)
+          @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
+          @min_extra_ips_needed = args[:min_extra_ips_needed] if args.key?(:min_extra_ips_needed)
+          @num_vm_endpoints_with_nat_mappings = args[:num_vm_endpoints_with_nat_mappings] if args.key?(:num_vm_endpoints_with_nat_mappings)
+          @priority = args[:priority] if args.key?(:priority)
         end
       end
       
@@ -31253,6 +31485,42 @@ module Google
           @storage_bytes = args[:storage_bytes] if args.key?(:storage_bytes)
           @storage_bytes_status = args[:storage_bytes_status] if args.key?(:storage_bytes_status)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class ScalingScheduleStatus
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The last time the scaling schedule became active. Note: this is
+        # a timestamp when a schedule actually became active, not when it was planned to
+        # do so. The timestamp is an RFC3339 string in RFC3339 text format.
+        # Corresponds to the JSON property `lastStartTime`
+        # @return [String]
+        attr_accessor :last_start_time
+      
+        # [Output Only] The next time the scaling schedule will become active. Note:
+        # this is a timestamp when a schedule is planned to run, but the actual time
+        # might be slightly different. The timestamp is an RFC3339 string in RFC3339
+        # text format.
+        # Corresponds to the JSON property `nextStartTime`
+        # @return [String]
+        attr_accessor :next_start_time
+      
+        # [Output Only] The current state of a scaling schedule.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_start_time = args[:last_start_time] if args.key?(:last_start_time)
+          @next_start_time = args[:next_start_time] if args.key?(:next_start_time)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -32209,8 +32477,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] The position of the next byte of content from the serial console
-        # output. Use this value in the next request as the start parameter.
+        # [Output Only] The position of the next byte of content, regardless of whether
+        # the content exists, following the output returned in the `contents` property.
+        # Use this value in the next request as the start parameter.
         # Corresponds to the JSON property `next`
         # @return [Fixnum]
         attr_accessor :next
@@ -32222,8 +32491,10 @@ module Google
       
         # The starting byte position of the output that was returned. This should match
         # the start parameter sent with the request. If the serial console output
-        # exceeds the size of the buffer, older output will be overwritten by newer
-        # content and the start values will be mismatched.
+        # exceeds the size of the buffer (1 MB), older output is overwritten by newer
+        # content. The output start value will indicate the byte position of the output
+        # that was returned, which might be different than the `start` value that was
+        # specified in the request.
         # Corresponds to the JSON property `start`
         # @return [Fixnum]
         attr_accessor :start
@@ -34315,10 +34586,11 @@ module Google
         attr_accessor :id
       
         # The range of internal addresses that are owned by this subnetwork. Provide
-        # this property when you create the subnetwork. For example, 10.0.0.0/8 or 192.
-        # 168.0.0/16. Ranges must be unique and non-overlapping within a network. Only
-        # IPv4 is supported. This field is set at resource creation time. The range can
-        # be expanded after creation using expandIpCidrRange.
+        # this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.
+        # 64.0.0/10. Ranges must be unique and non-overlapping within a network. Only
+        # IPv4 is supported. This field is set at resource creation time. This may be a
+        # RFC 1918 IP range, or a privately routed, non-RFC 1918 IP range, not belonging
+        # to Google. The range can be expanded after creation using expandIpCidrRange.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -34342,7 +34614,8 @@ module Google
       
         # Can only be specified if VPC flow logging for this subnetwork is enabled.
         # Configures whether metadata fields should be added to the reported VPC flow
-        # logs. Default is INCLUDE_ALL_METADATA.
+        # logs. Options are INCLUDE_ALL_METADATA, EXCLUDE_ALL_METADATA, and
+        # CUSTOM_METADATA. Default is INCLUDE_ALL_METADATA.
         # Corresponds to the JSON property `metadata`
         # @return [String]
         attr_accessor :metadata
@@ -34793,7 +35066,8 @@ module Google
         # The range of IP addresses belonging to this subnetwork secondary range.
         # Provide this property when you create the subnetwork. Ranges must be unique
         # and non-overlapping with all primary and secondary IP ranges within a network.
-        # Only IPv4 is supported.
+        # Only IPv4 is supported. This may be a RFC 1918 IP range, or a privately, non-
+        # RFC 1918 IP range, not belonging to Google.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -39496,6 +39770,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_total_nat_ports
       
+        # Information about mappings provided by rules in this NAT.
+        # Corresponds to the JSON property `ruleMappings`
+        # @return [Array<Google::Apis::ComputeAlpha::VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings>]
+        attr_accessor :rule_mappings
+      
         # Alias IP range for this interface endpoint. It will be a private (RFC 1918) IP
         # range. Examples: "10.33.4.55/32", or "192.168.5.0/24".
         # Corresponds to the JSON property `sourceAliasIpRange`
@@ -39517,8 +39796,59 @@ module Google
           @nat_ip_port_ranges = args[:nat_ip_port_ranges] if args.key?(:nat_ip_port_ranges)
           @num_total_drain_nat_ports = args[:num_total_drain_nat_ports] if args.key?(:num_total_drain_nat_ports)
           @num_total_nat_ports = args[:num_total_nat_ports] if args.key?(:num_total_nat_ports)
+          @rule_mappings = args[:rule_mappings] if args.key?(:rule_mappings)
           @source_alias_ip_range = args[:source_alias_ip_range] if args.key?(:source_alias_ip_range)
           @source_virtual_ip = args[:source_virtual_ip] if args.key?(:source_virtual_ip)
+        end
+      end
+      
+      # Contains information of NAT Mappings provided by a NAT Rule.
+      class VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings
+        include Google::Apis::Core::Hashable
+      
+        # List of all drain IP:port-range mappings assigned to this interface by this
+        # rule. These ranges are inclusive, that is, both the first and the last ports
+        # can be used for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
+        # Corresponds to the JSON property `drainNatIpPortRanges`
+        # @return [Array<String>]
+        attr_accessor :drain_nat_ip_port_ranges
+      
+        # A list of all IP:port-range mappings assigned to this interface by this rule.
+        # These ranges are inclusive, that is, both the first and the last ports can be
+        # used for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
+        # Corresponds to the JSON property `natIpPortRanges`
+        # @return [Array<String>]
+        attr_accessor :nat_ip_port_ranges
+      
+        # Total number of drain ports across all NAT IPs allocated to this interface by
+        # this rule. It equals the aggregated port number in the field
+        # drain_nat_ip_port_ranges.
+        # Corresponds to the JSON property `numTotalDrainNatPorts`
+        # @return [Fixnum]
+        attr_accessor :num_total_drain_nat_ports
+      
+        # Total number of ports across all NAT IPs allocated to this interface by this
+        # rule. It equals the aggregated port number in the field nat_ip_port_ranges.
+        # Corresponds to the JSON property `numTotalNatPorts`
+        # @return [Fixnum]
+        attr_accessor :num_total_nat_ports
+      
+        # Priority of the NAT Rule.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @drain_nat_ip_port_ranges = args[:drain_nat_ip_port_ranges] if args.key?(:drain_nat_ip_port_ranges)
+          @nat_ip_port_ranges = args[:nat_ip_port_ranges] if args.key?(:nat_ip_port_ranges)
+          @num_total_drain_nat_ports = args[:num_total_drain_nat_ports] if args.key?(:num_total_drain_nat_ports)
+          @num_total_nat_ports = args[:num_total_nat_ports] if args.key?(:num_total_nat_ports)
+          @priority = args[:priority] if args.key?(:priority)
         end
       end
       

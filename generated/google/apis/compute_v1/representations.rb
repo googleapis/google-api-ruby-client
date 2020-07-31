@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalingPolicyScaleInControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1008,12 +1014,6 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class HealthCheckLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5105,6 +5105,8 @@ module Google
           property :max_num_replicas, as: 'maxNumReplicas'
           property :min_num_replicas, as: 'minNumReplicas'
           property :mode, as: 'mode'
+          property :scale_in_control, as: 'scaleInControl', class: Google::Apis::ComputeV1::AutoscalingPolicyScaleInControl, decorator: Google::Apis::ComputeV1::AutoscalingPolicyScaleInControl::Representation
+      
         end
       end
       
@@ -5128,6 +5130,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :utilization_target, as: 'utilizationTarget'
+        end
+      end
+      
+      class AutoscalingPolicyScaleInControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_scaled_in_replicas, as: 'maxScaledInReplicas', class: Google::Apis::ComputeV1::FixedOrPercent, decorator: Google::Apis::ComputeV1::FixedOrPercent::Representation
+      
+          property :time_window_sec, as: 'timeWindowSec'
         end
       end
       
@@ -6144,6 +6155,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
+          property :metadata, as: 'metadata'
         end
       end
       
@@ -6425,8 +6437,6 @@ module Google
       
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
-          property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::HealthCheckLogConfig, decorator: Google::Apis::ComputeV1::HealthCheckLogConfig::Representation
-      
           property :name, as: 'name'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
@@ -6469,13 +6479,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class HealthCheckLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :enable, as: 'enable'
         end
       end
       

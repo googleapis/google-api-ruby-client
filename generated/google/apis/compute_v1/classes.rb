@@ -2079,6 +2079,13 @@ module Google
         # @return [String]
         attr_accessor :mode
       
+        # Configuration that allows for slower scale in so that even if Autoscaler
+        # recommends an abrupt scale in of a MIG, it will be throttled as specified by
+        # the parameters below.
+        # Corresponds to the JSON property `scaleInControl`
+        # @return [Google::Apis::ComputeV1::AutoscalingPolicyScaleInControl]
+        attr_accessor :scale_in_control
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2092,6 +2099,7 @@ module Google
           @max_num_replicas = args[:max_num_replicas] if args.key?(:max_num_replicas)
           @min_num_replicas = args[:min_num_replicas] if args.key?(:min_num_replicas)
           @mode = args[:mode] if args.key?(:mode)
+          @scale_in_control = args[:scale_in_control] if args.key?(:scale_in_control)
         end
       end
       
@@ -2179,6 +2187,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @utilization_target = args[:utilization_target] if args.key?(:utilization_target)
+        end
+      end
+      
+      # Configuration that allows for slower scale in so that even if Autoscaler
+      # recommends an abrupt scale in of a MIG, it will be throttled as specified by
+      # the parameters below.
+      class AutoscalingPolicyScaleInControl
+        include Google::Apis::Core::Hashable
+      
+        # Encapsulates numeric value that can be either absolute or relative.
+        # Corresponds to the JSON property `maxScaledInReplicas`
+        # @return [Google::Apis::ComputeV1::FixedOrPercent]
+        attr_accessor :max_scaled_in_replicas
+      
+        # How long back autoscaling should look when computing recommendations to
+        # include directives regarding slower scale in, as described above.
+        # Corresponds to the JSON property `timeWindowSec`
+        # @return [Fixnum]
+        attr_accessor :time_window_sec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_scaled_in_replicas = args[:max_scaled_in_replicas] if args.key?(:max_scaled_in_replicas)
+          @time_window_sec = args[:time_window_sec] if args.key?(:time_window_sec)
         end
       end
       
@@ -6572,6 +6608,13 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
+        # This field can only be specified for a particular firewall rule if logging is
+        # enabled for that rule. This field denotes whether to include or exclude
+        # metadata for firewall logs.
+        # Corresponds to the JSON property `metadata`
+        # @return [String]
+        attr_accessor :metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6579,6 +6622,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable = args[:enable] if args.key?(:enable)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -7808,9 +7852,10 @@ module Google
       # Google Compute Engine has two Health Check resources:
       # * [Global](/compute/docs/reference/rest/`$api_version`/healthChecks) * [
       # Regional](/compute/docs/reference/rest/`$api_version`/regionHealthChecks)
-      # Internal HTTP(S) load balancers use regional health checks. All other types of
-      # GCP load balancers and managed instance group auto-healing use global health
-      # checks. For more information, read Health Check Concepts.
+      # Internal HTTP(S) load balancers must use regional health checks. Internal TCP/
+      # UDP load balancers can use either regional or global health checks. All other
+      # types of GCP load balancers and managed instance group auto-healing must use
+      # global health checks. For more information, read Health Check Concepts.
       # To perform health checks on network load balancers, you must use either
       # httpHealthChecks or httpsHealthChecks.
       class HealthCheck
@@ -7868,12 +7913,6 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
-        # Configuration of logging on a health check. If logging is enabled, logs will
-        # be exported to Stackdriver.
-        # Corresponds to the JSON property `logConfig`
-        # @return [Google::Apis::ComputeV1::HealthCheckLogConfig]
-        attr_accessor :log_config
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -7942,7 +7981,6 @@ module Google
           @https_health_check = args[:https_health_check] if args.key?(:https_health_check)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
-          @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -8068,28 +8106,6 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
-        end
-      end
-      
-      # Configuration of logging on a health check. If logging is enabled, logs will
-      # be exported to Stackdriver.
-      class HealthCheckLogConfig
-        include Google::Apis::Core::Hashable
-      
-        # Indicates whether or not to export logs. This is false by default, which means
-        # no health check logging will be done.
-        # Corresponds to the JSON property `enable`
-        # @return [Boolean]
-        attr_accessor :enable
-        alias_method :enable?, :enable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enable = args[:enable] if args.key?(:enable)
         end
       end
       
@@ -16289,6 +16305,7 @@ module Google
         # @return [String]
         attr_accessor :i_pv4_range
       
+        # Must be set to create a VPC network. If not set, a legacy network is created.
         # When set to true, the VPC network is created in auto mode. When set to false,
         # the VPC network is created in custom mode.
         # An auto mode VPC network starts with one subnet per region. Each subnet has a
@@ -16440,7 +16457,8 @@ module Google
       # reached, whether they are reachable, and where they are located. For more
       # information about using NEGs, see  Setting up internet NEGs or  Setting up
       # zonal NEGs. (== resource_for `$api_version`.networkEndpointGroups ==) (==
-      # resource_for `$api_version`.globalNetworkEndpointGroups ==)
+      # resource_for `$api_version`.globalNetworkEndpointGroups ==) (== resource_for `$
+      # api_version`.regionNetworkEndpointGroups ==)
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -25843,8 +25861,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] The position of the next byte of content from the serial console
-        # output. Use this value in the next request as the start parameter.
+        # [Output Only] The position of the next byte of content, regardless of whether
+        # the content exists, following the output returned in the `contents` property.
+        # Use this value in the next request as the start parameter.
         # Corresponds to the JSON property `next`
         # @return [Fixnum]
         attr_accessor :next
@@ -25856,8 +25875,10 @@ module Google
       
         # The starting byte position of the output that was returned. This should match
         # the start parameter sent with the request. If the serial console output
-        # exceeds the size of the buffer, older output will be overwritten by newer
-        # content and the start values will be mismatched.
+        # exceeds the size of the buffer (1 MB), older output is overwritten by newer
+        # content. The output start value will indicate the byte position of the output
+        # that was returned, which might be different than the `start` value that was
+        # specified in the request.
         # Corresponds to the JSON property `start`
         # @return [Fixnum]
         attr_accessor :start
@@ -27271,10 +27292,11 @@ module Google
         attr_accessor :id
       
         # The range of internal addresses that are owned by this subnetwork. Provide
-        # this property when you create the subnetwork. For example, 10.0.0.0/8 or 192.
-        # 168.0.0/16. Ranges must be unique and non-overlapping within a network. Only
-        # IPv4 is supported. This field is set at resource creation time. The range can
-        # be expanded after creation using expandIpCidrRange.
+        # this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.
+        # 64.0.0/10. Ranges must be unique and non-overlapping within a network. Only
+        # IPv4 is supported. This field is set at resource creation time. This may be a
+        # RFC 1918 IP range, or a privately routed, non-RFC 1918 IP range, not belonging
+        # to Google. The range can be expanded after creation using expandIpCidrRange.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -27714,7 +27736,8 @@ module Google
         # The range of IP addresses belonging to this subnetwork secondary range.
         # Provide this property when you create the subnetwork. Ranges must be unique
         # and non-overlapping with all primary and secondary IP ranges within a network.
-        # Only IPv4 is supported.
+        # Only IPv4 is supported. This may be a RFC 1918 IP range, or a privately, non-
+        # RFC 1918 IP range, not belonging to Google.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range

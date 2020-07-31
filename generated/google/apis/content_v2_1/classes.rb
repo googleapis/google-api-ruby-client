@@ -5497,6 +5497,15 @@ module Google
         # - "`ptt`" (PTT Turkish Post)
         # - "`eub`" (ePacket)
         # - "`chukou1`" (Chukou1 Logistics)
+        # - "`bestex`" (Best Express)
+        # - "`canada post`" (Canada Post)
+        # - "`purolator`" (Purolator)
+        # - "`canpar`" (Canpar)
+        # - "`india post`" (India Post)
+        # - "`blue dart`" (Blue Dart)
+        # - "`delhivery`" (Delhivery)
+        # - "`dtdc`" (DTDC)
+        # - "`tpc india`" (TPC India)
         # Supported carriers for FR are:
         # - "`la poste`" (La Poste) automatic status updates
         # - "`colissimo`" (Colissimo by La Poste) automatic status updates

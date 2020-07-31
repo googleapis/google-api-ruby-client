@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdvancedMachineFeatures
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AliasIpRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +323,12 @@ module Google
       end
       
       class AutoscalingPolicyScaleInControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoscalingPolicyScalingSchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4024,6 +4036,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterStatusNatStatusNatRuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterStatusResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4067,6 +4085,12 @@ module Google
       end
       
       class SavedAttachedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScalingScheduleStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5236,6 +5260,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmEndpointNatMappingsList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -5740,6 +5770,13 @@ module Google
         end
       end
       
+      class AdvancedMachineFeatures
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+        end
+      end
+      
       class AliasIpRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5820,6 +5857,7 @@ module Google
           hash :labels, as: 'labels'
           property :multi_writer, as: 'multiWriter'
           property :on_update_action, as: 'onUpdateAction'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
           property :source_image, as: 'sourceImage'
@@ -5890,6 +5928,8 @@ module Google
           property :name, as: 'name'
           property :recommended_size, as: 'recommendedSize'
           property :region, as: 'region'
+          hash :scaling_schedule_status, as: 'scalingScheduleStatus', class: Google::Apis::ComputeAlpha::ScalingScheduleStatus, decorator: Google::Apis::ComputeAlpha::ScalingScheduleStatus::Representation
+      
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
@@ -6018,6 +6058,8 @@ module Google
       
           property :scale_in_control, as: 'scaleInControl', class: Google::Apis::ComputeAlpha::AutoscalingPolicyScaleInControl, decorator: Google::Apis::ComputeAlpha::AutoscalingPolicyScaleInControl::Representation
       
+          hash :scaling_schedules, as: 'scalingSchedules', class: Google::Apis::ComputeAlpha::AutoscalingPolicyScalingSchedule, decorator: Google::Apis::ComputeAlpha::AutoscalingPolicyScalingSchedule::Representation
+      
         end
       end
       
@@ -6065,6 +6107,18 @@ module Google
         end
       end
       
+      class AutoscalingPolicyScalingSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :duration_sec, as: 'durationSec'
+          property :min_required_replicas, as: 'minRequiredReplicas'
+          property :schedule, as: 'schedule'
+          property :time_zone, as: 'timeZone'
+        end
+      end
+      
       class Backend
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6103,6 +6157,7 @@ module Google
       class BackendBucketCdnPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_coalescing, as: 'requestCoalescing'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
         end
@@ -6226,6 +6281,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeAlpha::CacheKeyPolicy, decorator: Google::Apis::ComputeAlpha::CacheKeyPolicy::Representation
       
+          property :request_coalescing, as: 'requestCoalescing'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
         end
@@ -6419,6 +6475,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, :numeric_string => true, as: 'count'
           property :instance, as: 'instance', class: Google::Apis::ComputeAlpha::Instance, decorator: Google::Apis::ComputeAlpha::Instance::Representation
+      
+          property :instance_properties, as: 'instanceProperties', class: Google::Apis::ComputeAlpha::InstanceProperties, decorator: Google::Apis::ComputeAlpha::InstanceProperties::Representation
       
           property :min_count, :numeric_string => true, as: 'minCount'
           collection :predefined_names, as: 'predefinedNames'
@@ -6720,6 +6778,7 @@ module Google
           property :name, as: 'name'
           property :options, as: 'options'
           property :physical_block_size_bytes, :numeric_string => true, as: 'physicalBlockSizeBytes'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
@@ -8266,6 +8325,8 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_machine_features, as: 'advancedMachineFeatures', class: Google::Apis::ComputeAlpha::AdvancedMachineFeatures, decorator: Google::Apis::ComputeAlpha::AdvancedMachineFeatures::Representation
+      
           property :can_ip_forward, as: 'canIpForward'
           property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::ComputeAlpha::ConfidentialInstanceConfig, decorator: Google::Apis::ComputeAlpha::ConfidentialInstanceConfig::Representation
       
@@ -9019,6 +9080,8 @@ module Google
       class InstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advanced_machine_features, as: 'advancedMachineFeatures', class: Google::Apis::ComputeAlpha::AdvancedMachineFeatures, decorator: Google::Apis::ComputeAlpha::AdvancedMachineFeatures::Representation
+      
           property :can_ip_forward, as: 'canIpForward'
           property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::ComputeAlpha::ConfidentialInstanceConfig, decorator: Google::Apis::ComputeAlpha::ConfidentialInstanceConfig::Representation
       
@@ -11328,6 +11391,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ip_protocols, as: 'IPProtocols'
           collection :cidr_ranges, as: 'cidrRanges'
+          property :direction, as: 'direction'
         end
       end
       
@@ -12527,6 +12591,7 @@ module Google
           property :availability_domain_count, as: 'availabilityDomainCount'
           property :collocation, as: 'collocation'
           property :locality, as: 'locality'
+          property :scope, as: 'scope'
           property :style, as: 'style'
           property :vm_count, as: 'vmCount'
         end
@@ -13009,8 +13074,21 @@ module Google
           property :min_extra_nat_ips_needed, as: 'minExtraNatIpsNeeded'
           property :name, as: 'name'
           property :num_vm_endpoints_with_nat_mappings, as: 'numVmEndpointsWithNatMappings'
+          collection :rule_status, as: 'ruleStatus', class: Google::Apis::ComputeAlpha::RouterStatusNatStatusNatRuleStatus, decorator: Google::Apis::ComputeAlpha::RouterStatusNatStatusNatRuleStatus::Representation
+      
           collection :user_allocated_nat_ip_resources, as: 'userAllocatedNatIpResources'
           collection :user_allocated_nat_ips, as: 'userAllocatedNatIps'
+        end
+      end
+      
+      class RouterStatusNatStatusNatRuleStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :active_nat_ips, as: 'activeNatIps'
+          collection :drain_nat_ips, as: 'drainNatIps'
+          property :min_extra_ips_needed, as: 'minExtraIpsNeeded'
+          property :num_vm_endpoints_with_nat_mappings, as: 'numVmEndpointsWithNatMappings'
+          property :priority, as: 'priority'
         end
       end
       
@@ -13107,6 +13185,15 @@ module Google
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           property :storage_bytes_status, as: 'storageBytesStatus'
           property :type, as: 'type'
+        end
+      end
+      
+      class ScalingScheduleStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_start_time, as: 'lastStartTime'
+          property :next_start_time, as: 'nextStartTime'
+          property :state, as: 'state'
         end
       end
       
@@ -15183,8 +15270,21 @@ module Google
           collection :nat_ip_port_ranges, as: 'natIpPortRanges'
           property :num_total_drain_nat_ports, as: 'numTotalDrainNatPorts'
           property :num_total_nat_ports, as: 'numTotalNatPorts'
+          collection :rule_mappings, as: 'ruleMappings', class: Google::Apis::ComputeAlpha::VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings, decorator: Google::Apis::ComputeAlpha::VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings::Representation
+      
           property :source_alias_ip_range, as: 'sourceAliasIpRange'
           property :source_virtual_ip, as: 'sourceVirtualIp'
+        end
+      end
+      
+      class VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :drain_nat_ip_port_ranges, as: 'drainNatIpPortRanges'
+          collection :nat_ip_port_ranges, as: 'natIpPortRanges'
+          property :num_total_drain_nat_ports, as: 'numTotalDrainNatPorts'
+          property :num_total_nat_ports, as: 'numTotalNatPorts'
+          property :priority, as: 'priority'
         end
       end
       

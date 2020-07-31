@@ -811,6 +811,7 @@ module Google
           property :original_filename, as: 'originalFilename'
           property :publish_auto, as: 'publishAuto'
           property :published, as: 'published'
+          property :published_link, as: 'publishedLink'
           property :published_outside_domain, as: 'publishedOutsideDomain'
           property :size, :numeric_string => true, as: 'size'
         end

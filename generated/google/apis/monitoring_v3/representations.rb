@@ -1455,6 +1455,7 @@ module Google
       
           property :resource, as: 'resource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
       
+          property :unit, as: 'unit'
           property :value_type, as: 'valueType'
         end
       end
@@ -1561,6 +1562,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key'
           property :metric_kind, as: 'metricKind'
+          property :unit, as: 'unit'
           property :value_type, as: 'valueType'
         end
       end

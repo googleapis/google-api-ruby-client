@@ -148,6 +148,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :group_id, as: 'groupId'
           property :name, as: 'name'
+          property :resolution_status, as: 'resolutionStatus'
           collection :tracking_issues, as: 'trackingIssues', class: Google::Apis::ClouderrorreportingV1beta1::TrackingIssue, decorator: Google::Apis::ClouderrorreportingV1beta1::TrackingIssue::Representation
       
         end

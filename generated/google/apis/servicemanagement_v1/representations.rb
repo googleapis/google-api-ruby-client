@@ -442,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Rollout
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1250,6 +1256,14 @@ module Google
           property :name, as: 'name'
           property :unit, as: 'unit'
           hash :values, as: 'values'
+        end
+      end
+      
+      class ResourceReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :child_type, as: 'childType'
+          property :type, as: 'type'
         end
       end
       

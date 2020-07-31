@@ -22,6 +22,60 @@ module Google
   module Apis
     module DoubleclickbidmanagerV1_1
       
+      # A channel grouping defines a set of rules that can be used to categorize
+      # events in a path report.
+      class ChannelGrouping
+        include Google::Apis::Core::Hashable
+      
+        # The name to apply to an event that does not match any of the rules in the
+        # channel grouping.
+        # Corresponds to the JSON property `fallbackName`
+        # @return [String]
+        attr_accessor :fallback_name
+      
+        # Channel Grouping name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Rules within Channel Grouping. There is a limit of 100 rules that can be set
+        # per channel grouping.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::DoubleclickbidmanagerV1_1::Rule>]
+        attr_accessor :rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fallback_name = args[:fallback_name] if args.key?(:fallback_name)
+          @name = args[:name] if args.key?(:name)
+          @rules = args[:rules] if args.key?(:rules)
+        end
+      end
+      
+      # DisjunctiveMatchStatement that OR's all contained filters.
+      class DisjunctiveMatchStatement
+        include Google::Apis::Core::Hashable
+      
+        # Filters. There is a limit of 100 filters that can be set per disjunctive match
+        # statement.
+        # Corresponds to the JSON property `eventFilters`
+        # @return [Array<Google::Apis::DoubleclickbidmanagerV1_1::EventFilter>]
+        attr_accessor :event_filters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_filters = args[:event_filters] if args.key?(:event_filters)
+        end
+      end
+      
       # Request to fetch stored line items.
       class DownloadLineItemsRequest
         include Google::Apis::Core::Hashable
@@ -82,7 +136,7 @@ module Google
       end
       
       # Request to fetch stored inventory sources, campaigns, insertion orders, line
-      # items, TrueView ad groups and ads.
+      # items, YouTube ad groups and ads.
       class DownloadRequest
         include Google::Apis::Core::Hashable
       
@@ -176,6 +230,26 @@ module Google
           @insertion_orders = args[:insertion_orders] if args.key?(:insertion_orders)
           @inventory_sources = args[:inventory_sources] if args.key?(:inventory_sources)
           @line_items = args[:line_items] if args.key?(:line_items)
+        end
+      end
+      
+      # Defines the type of filter to be applied to the path, a DV360 event dimension
+      # filter.
+      class EventFilter
+        include Google::Apis::Core::Hashable
+      
+        # Dimension Filter for a Path Filter.
+        # Corresponds to the JSON property `dimensionFilter`
+        # @return [Google::Apis::DoubleclickbidmanagerV1_1::PathQueryOptionsFilter]
+        attr_accessor :dimension_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension_filter = args[:dimension_filter] if args.key?(:dimension_filter)
         end
       end
       
@@ -280,6 +354,11 @@ module Google
         attr_accessor :include_only_targeted_user_lists
         alias_method :include_only_targeted_user_lists?, :include_only_targeted_user_lists
       
+        # Path Query Options for Report Options.
+        # Corresponds to the JSON property `pathQueryOptions`
+        # @return [Google::Apis::DoubleclickbidmanagerV1_1::PathQueryOptions]
+        attr_accessor :path_query_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -287,6 +366,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @include_only_targeted_user_lists = args[:include_only_targeted_user_lists] if args.key?(:include_only_targeted_user_lists)
+          @path_query_options = args[:path_query_options] if args.key?(:path_query_options)
         end
       end
       
@@ -337,6 +417,94 @@ module Google
           @metrics = args[:metrics] if args.key?(:metrics)
           @options = args[:options] if args.key?(:options)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Path filters specify which paths to include in a report. A path is the result
+      # of combining DV360 events based on User ID to create a workflow of users'
+      # actions.
+      # When a path filter is set, the resulting report will only include paths that
+      # match the specified event at the specified position. All other paths will be
+      # excluded.
+      class PathFilter
+        include Google::Apis::Core::Hashable
+      
+        # Filter on an event to be applied to some part of the path.
+        # Corresponds to the JSON property `eventFilters`
+        # @return [Array<Google::Apis::DoubleclickbidmanagerV1_1::EventFilter>]
+        attr_accessor :event_filters
+      
+        # Indicates the position of the path the filter should match to (first, last, or
+        # any event in path).
+        # Corresponds to the JSON property `pathMatchPosition`
+        # @return [String]
+        attr_accessor :path_match_position
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_filters = args[:event_filters] if args.key?(:event_filters)
+          @path_match_position = args[:path_match_position] if args.key?(:path_match_position)
+        end
+      end
+      
+      # Path Query Options for Report Options.
+      class PathQueryOptions
+        include Google::Apis::Core::Hashable
+      
+        # A channel grouping defines a set of rules that can be used to categorize
+        # events in a path report.
+        # Corresponds to the JSON property `channelGrouping`
+        # @return [Google::Apis::DoubleclickbidmanagerV1_1::ChannelGrouping]
+        attr_accessor :channel_grouping
+      
+        # Path Filters. There is a limit of 100 path filters that can be set per report.
+        # Corresponds to the JSON property `pathFilters`
+        # @return [Array<Google::Apis::DoubleclickbidmanagerV1_1::PathFilter>]
+        attr_accessor :path_filters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_grouping = args[:channel_grouping] if args.key?(:channel_grouping)
+          @path_filters = args[:path_filters] if args.key?(:path_filters)
+        end
+      end
+      
+      # Dimension Filter for a Path Filter.
+      class PathQueryOptionsFilter
+        include Google::Apis::Core::Hashable
+      
+        # Dimension the filter is applied to.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Indicates how the filter should be matched to the value.
+        # Corresponds to the JSON property `match`
+        # @return [String]
+        attr_accessor :match
+      
+        # Value to filter on.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @match = args[:match] if args.key?(:match)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -735,6 +903,33 @@ module Google
           @errors = args[:errors] if args.key?(:errors)
           @persisted = args[:persisted] if args.key?(:persisted)
           @row_number = args[:row_number] if args.key?(:row_number)
+        end
+      end
+      
+      # A Rule defines a name, and a boolean expression in [conjunctive normal form](
+      # http://mathworld.wolfram.com/ConjunctiveNormalForm.html)`.external` that can
+      # be applied to a path event to determine if that name should be applied.
+      class Rule
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `disjunctiveMatchStatements`
+        # @return [Array<Google::Apis::DoubleclickbidmanagerV1_1::DisjunctiveMatchStatement>]
+        attr_accessor :disjunctive_match_statements
+      
+        # Rule name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disjunctive_match_statements = args[:disjunctive_match_statements] if args.key?(:disjunctive_match_statements)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

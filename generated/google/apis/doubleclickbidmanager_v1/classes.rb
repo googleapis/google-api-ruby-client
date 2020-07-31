@@ -82,7 +82,7 @@ module Google
       end
       
       # Request to fetch stored inventory sources, campaigns, insertion orders, line
-      # items, TrueView ad groups and ads.
+      # items, YouTube ad groups and ads.
       class DownloadRequest
         include Google::Apis::Core::Hashable
       
