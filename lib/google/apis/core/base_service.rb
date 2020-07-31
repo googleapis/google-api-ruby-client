@@ -334,7 +334,13 @@ module Google
         #  Request-specific options
         # @return [Google::Apis::Core::DownloadCommand]
         def make_simple_command(method, path, options)
-          template = Addressable::Template.new(root_url + base_path + path)
+          full_path =
+            if path.start_with? "/"
+              path[1..-1]
+            else
+              base_path + path
+            end
+          template = Addressable::Template.new(root_url + full_path)
           command = ApiCommand.new(method, template)
           command.options = request_options.merge(options)
           apply_command_defaults(command)
