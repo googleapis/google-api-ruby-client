@@ -22,19 +22,7 @@ module Google
   module Apis
     module MemcacheV1
       
-      class AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Binding
+      class ApplyParametersRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -52,7 +40,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Expr
+      class GoogleCloudMemcacheV1OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,6 +94,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInstancesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -130,6 +136,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MemcacheParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Node
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,31 +166,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Policy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SetIamPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TestIamPermissionsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestIamPermissionsResponse
+      class UpdateParametersRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,30 +184,11 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuditConfig
+      class ApplyParametersRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::MemcacheV1::AuditLogConfig, decorator: Google::Apis::MemcacheV1::AuditLogConfig::Representation
-      
-          property :service, as: 'service'
-        end
-      end
-      
-      class AuditLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exempted_members, as: 'exemptedMembers'
-          property :log_type, as: 'logType'
-        end
-      end
-      
-      class Binding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :condition, as: 'condition', class: Google::Apis::MemcacheV1::Expr, decorator: Google::Apis::MemcacheV1::Expr::Representation
-      
-          collection :members, as: 'members'
-          property :role, as: 'role'
+          property :apply_all, as: 'applyAll'
+          collection :node_ids, as: 'nodeIds'
         end
       end
       
@@ -217,13 +204,16 @@ module Google
         end
       end
       
-      class Expr
+      class GoogleCloudMemcacheV1OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :expression, as: 'expression'
-          property :location, as: 'location'
-          property :title, as: 'title'
+          property :api_version, as: 'apiVersion'
+          property :cancel_requested, as: 'cancelRequested'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :status_detail, as: 'statusDetail'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       
@@ -318,6 +308,50 @@ module Google
         end
       end
       
+      class Instance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorized_network, as: 'authorizedNetwork'
+          property :create_time, as: 'createTime'
+          property :discovery_endpoint, as: 'discoveryEndpoint'
+          property :display_name, as: 'displayName'
+          collection :instance_messages, as: 'instanceMessages', class: Google::Apis::MemcacheV1::InstanceMessage, decorator: Google::Apis::MemcacheV1::InstanceMessage::Representation
+      
+          hash :labels, as: 'labels'
+          property :memcache_full_version, as: 'memcacheFullVersion'
+          collection :memcache_nodes, as: 'memcacheNodes', class: Google::Apis::MemcacheV1::Node, decorator: Google::Apis::MemcacheV1::Node::Representation
+      
+          property :memcache_version, as: 'memcacheVersion'
+          property :name, as: 'name'
+          property :node_config, as: 'nodeConfig', class: Google::Apis::MemcacheV1::NodeConfig, decorator: Google::Apis::MemcacheV1::NodeConfig::Representation
+      
+          property :node_count, as: 'nodeCount'
+          property :parameters, as: 'parameters', class: Google::Apis::MemcacheV1::MemcacheParameters, decorator: Google::Apis::MemcacheV1::MemcacheParameters::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+          collection :zones, as: 'zones'
+        end
+      end
+      
+      class InstanceMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
+        end
+      end
+      
+      class ListInstancesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::MemcacheV1::Instance, decorator: Google::Apis::MemcacheV1::Instance::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -355,6 +389,35 @@ module Google
         end
       end
       
+      class MemcacheParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :params, as: 'params'
+        end
+      end
+      
+      class Node
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :node_id, as: 'nodeId'
+          property :parameters, as: 'parameters', class: Google::Apis::MemcacheV1::MemcacheParameters, decorator: Google::Apis::MemcacheV1::MemcacheParameters::Representation
+      
+          property :port, as: 'port'
+          property :state, as: 'state'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class NodeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_count, as: 'cpuCount'
+          property :memory_size_mb, as: 'memorySizeMb'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -380,27 +443,6 @@ module Google
         end
       end
       
-      class Policy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::MemcacheV1::AuditConfig, decorator: Google::Apis::MemcacheV1::AuditConfig::Representation
-      
-          collection :bindings, as: 'bindings', class: Google::Apis::MemcacheV1::Binding, decorator: Google::Apis::MemcacheV1::Binding::Representation
-      
-          property :etag, :base64 => true, as: 'etag'
-          property :version, as: 'version'
-        end
-      end
-      
-      class SetIamPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :policy, as: 'policy', class: Google::Apis::MemcacheV1::Policy, decorator: Google::Apis::MemcacheV1::Policy::Representation
-      
-          property :update_mask, as: 'updateMask'
-        end
-      end
-      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -410,17 +452,12 @@ module Google
         end
       end
       
-      class TestIamPermissionsRequest
+      class UpdateParametersRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
-        end
-      end
+          property :parameters, as: 'parameters', class: Google::Apis::MemcacheV1::MemcacheParameters, decorator: Google::Apis::MemcacheV1::MemcacheParameters::Representation
       
-      class TestIamPermissionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :permissions, as: 'permissions'
+          property :update_mask, as: 'updateMask'
         end
       end
       

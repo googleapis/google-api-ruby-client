@@ -24,10 +24,10 @@ module Google
     # recommendation systems without requiring a high level of expertise in machine
     # learning, recommendation system, or Google Cloud.
     #
-    # @see https://cloud.google.com/recommendations/docs/
+    # @see https://cloud.google.com/recommendations-ai/docs
     module RecommendationengineV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20200706'
+      REVISION = '20200728'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

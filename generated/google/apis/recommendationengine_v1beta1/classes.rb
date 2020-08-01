@@ -174,8 +174,10 @@ module Google
         # @return [String]
         attr_accessor :dataset_id
       
-        # Required. Intermediate gcs dir used for the import.
-        # .
+        # Optional. Intermediate Cloud Storage directory used for the import. Can be
+        # specified
+        # if one wants to have the BigQuery export to a specific Cloud Storage
+        # directory.
         # Corresponds to the JSON property `gcsStagingDir`
         # @return [String]
         attr_accessor :gcs_staging_dir
@@ -1056,9 +1058,9 @@ module Google
         # * tag=("Red" OR "Blue") tag="New-Arrival" tag=(NOT "promotional")
         # * filterOutOfStockItems  tag=(-"promotional")
         # * filterOutOfStockItems
-        # If your filter blocks all prediction results, generic (unfiltered) popular
-        # items are returned. This behavior can be overridden by setting
-        # `strictFiltering` to true in `PredictRequest.params`.
+        # If your filter blocks all prediction results, nothing will be returned. If
+        # you want generic (unfiltered) popular items to be returned instead, set
+        # `strictFiltering` to false in `PredictRequest.params`.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1097,9 +1099,9 @@ module Google
         # field in the prediction response. The given 'score' indicates the
         # probability of an item being clicked/purchased given the user's context
         # and history.
-        # * `strictFiltering`: Boolean. If set to true, the service will return empty
-        # instead of generic (unfiltered) popular items if your filter blocks all
-        # prediction results.
+        # * `strictFiltering`: Boolean. True by default. If set to false, the service
+        # will return generic (unfiltered) popular items instead of empty if your
+        # filter blocks all prediction results.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
         attr_accessor :params

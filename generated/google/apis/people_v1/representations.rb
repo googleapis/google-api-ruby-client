@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MiscKeyword
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ModifyContactGroupMembersRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -717,6 +723,17 @@ module Google
         end
       end
       
+      class MiscKeyword
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :formatted_type, as: 'formattedType'
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
+      
+          property :type, as: 'type'
+          property :value, as: 'value'
+        end
+      end
+      
       class ModifyContactGroupMembersRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -835,6 +852,8 @@ module Google
           collection :memberships, as: 'memberships', class: Google::Apis::PeopleV1::Membership, decorator: Google::Apis::PeopleV1::Membership::Representation
       
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::PersonMetadata, decorator: Google::Apis::PeopleV1::PersonMetadata::Representation
+      
+          collection :misc_keywords, as: 'miscKeywords', class: Google::Apis::PeopleV1::MiscKeyword, decorator: Google::Apis::PeopleV1::MiscKeyword::Representation
       
           collection :names, as: 'names', class: Google::Apis::PeopleV1::Name, decorator: Google::Apis::PeopleV1::Name::Representation
       

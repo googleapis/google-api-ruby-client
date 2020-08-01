@@ -547,7 +547,8 @@ module Google
         # Errors are logged to Cloud Logging
         # (see [Viewing logs](/healthcare/docs/how-tos/logging)).
         # @param [String] eval_store
-        #   The Annotation store to compare against `golden_store`, in the format of
+        #   The Annotation store to compare against `golden_store`, in the
+        #   format of
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   annotationStores/`annotation_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::EvaluateAnnotationStoreRequest] evaluate_annotation_store_request_object
@@ -720,8 +721,8 @@ module Google
         # Errors are also logged to Cloud Logging
         # (see [Viewing logs](/healthcare/docs/how-tos/logging)).
         # @param [String] annotation_store
-        #   The name of the Annotation store to which the server imports annotations,
-        #   in the format
+        #   The name of the Annotation store to which the server imports
+        #   annotations, in the format
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   annotationStores/`annotation_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::ImportAnnotationsRequest] import_annotations_request_object
@@ -3013,14 +3014,14 @@ module Google
         #   Maximum number of resources in a page. Defaults to 100.
         # @param [String] _page_token
         #   Used to retrieve the next or previous page of results
-        #   when using pagination. Value should be set to the value of `page_token` set
-        #   in next or previous page links' URLs. Next and previous page are returned
+        #   when using pagination. Set `_page_token` to the value of _page_token set
+        #   in next or previous page links' url. Next and previous page are returned
         #   in the response bundle's links field, where `link.relation` is "previous"
         #   or "next".
-        #   Omit `page_token` if no previous request has been made.
+        #   Omit `_page_token` if no previous request has been made.
         # @param [String] _since
         #   If provided, only resources updated after this time are
-        #   exported. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz.
+        #   returned. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz.
         #   For example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`.
         #   The time must be specified to the second and include a time zone.
         # @param [String] _type
@@ -4014,6 +4015,70 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Import messages to the HL7v2 store by loading data from the specified
+        # sources. This method is optimized to load large quantities of data using
+        # import semantics that ignore some HL7v2 store configuration options and are
+        # not suitable for all use cases. It is primarily intended to load data into
+        # an empty HL7v2 store that is not being used by other clients.
+        # An existing message will be overwritten if a duplicate message is imported.
+        # A duplicate message is a message with the same raw bytes as a message that
+        # already exists in this HL7v2 store. When a message is overwritten, its
+        # labels will also be overwritten.
+        # The import operation is idempotent unless the input data contains multiple
+        # valid messages with the same raw bytes but different labels. In that case,
+        # after the import completes, the store contains exactly one message
+        # with those raw bytes but there is no ordering guarantee on which version
+        # of the labels it has. The operation result counters do not count
+        # duplicated raw bytes as an error and count one success for each message in
+        # the input, which might result in a success count larger than the number
+        # of messages in the HL7v2 store.
+        # If some messages fail to import, for example due to parsing errors,
+        # successfully imported messages are not rolled back.
+        # This method returns an Operation that can
+        # be used to track the status of the import by calling
+        # GetOperation.
+        # Immediate fatal errors appear in the
+        # error field, errors are also logged
+        # to Cloud Logging (see [Viewing
+        # logs](/healthcare/docs/how-tos/logging)). Otherwise, when the operation
+        # finishes, a response of type ImportMessagesResponse is returned in the
+        # response field.
+        # The metadata field type for this
+        # operation is OperationMetadata.
+        # @param [String] name
+        #   The name of the target HL7v2 store, in the format
+        #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   hl7v2Stores/`hl7v2_store_id``
+        # @param [Google::Apis::HealthcareV1beta1::ImportMessagesRequest] import_messages_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_hl7_v2_store_messages(name, import_messages_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:import', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::ImportMessagesRequest::Representation
+          command.request_object = import_messages_request_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the HL7v2 stores in the given dataset.
         # @param [String] parent
         #   Name of the dataset.
@@ -4171,12 +4236,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a message and sends a notification to the Cloud Pub/Sub topic. If
-        # configured, the MLLP adapter listens to messages created by this method and
-        # sends those back to the hospital. A successful response indicates the
-        # message has been persisted to storage and a Cloud Pub/Sub notification has
-        # been sent. Sending to the hospital by the MLLP adapter happens
-        # asynchronously.
+        # Parses and stores an HL7v2 message. This method triggers an asynchronous
+        # notification to any Cloud Pub/Sub topic configured in
+        # projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the
+        # filtering matches the message. If an MLLP adapter is configured to listen
+        # to a Cloud Pub/Sub topic, the adapter transmits the message when a
+        # notification is received.
         # @param [String] parent
         #   The name of the dataset this message belongs to.
         # @param [Google::Apis::HealthcareV1beta1::CreateMessageRequest] create_message_request_object
@@ -4273,9 +4338,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Ingests a new HL7v2 message from the hospital and sends a notification to
-        # the Cloud Pub/Sub topic. Return is an HL7v2 ACK message if the message was
-        # successfully stored. Otherwise an error is returned.
+        # Parses and stores an HL7v2 message. This method triggers an asynchronous
+        # notification to any Cloud Pub/Sub topic configured in
+        # projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the
+        # filtering matches the message. If an MLLP adapter is configured to listen
+        # to a Cloud Pub/Sub topic, the adapter transmits the message when a
+        # notification is received. This method also generates a response
+        # containing an HL7v2 acknowledgement (`ACK`) message when successful or a
+        # negative acknowledgement (`NACK`) message in case of error, suitable for
+        # replying to HL7v2 interface systems that expect these acknowledgements.
         # @param [String] parent
         #   The name of the HL7v2 store this message belongs to.
         # @param [Google::Apis::HealthcareV1beta1::IngestMessageRequest] ingest_message_request_object

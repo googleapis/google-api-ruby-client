@@ -470,9 +470,9 @@ module Google
         # the copy mask with metadata and membership fields if not set. Valid values are:
         # * addresses * ageRanges * biographies * birthdays * calendarUrls *
         # coverPhotos * emailAddresses * events * externalIds * genders * imClients *
-        # interests * locales * memberships * metadata * names * nicknames * occupations
-        # * organizations * phoneNumbers * photos * relations * residences *
-        # sipAddresses * skills * urls * userDefined
+        # interests * locales * memberships * metadata * miscKeywords * names *
+        # nicknames * occupations * organizations * phoneNumbers * photos * relations *
+        # residences * sipAddresses * skills * urls * userDefined
         # Corresponds to the JSON property `readMask`
         # @return [String]
         attr_accessor :read_mask
@@ -1187,6 +1187,44 @@ module Google
         end
       end
       
+      # A person's miscellaneous keyword.
+      class MiscKeyword
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The type of the miscellaneous keyword translated and formatted in
+        # the viewer's account locale or the `Accept-Language` HTTP header locale.
+        # Corresponds to the JSON property `formattedType`
+        # @return [String]
+        attr_accessor :formatted_type
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The miscellaneous keyword type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The value of the miscellaneous keyword.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @formatted_type = args[:formatted_type] if args.key?(:formatted_type)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A request to modify an existing contact group's members. Contacts can be
       # removed from any group but they can only be added to a user group or "
       # myContacts" or "starred" system groups.
@@ -1624,6 +1662,11 @@ module Google
         # @return [Google::Apis::PeopleV1::PersonMetadata]
         attr_accessor :metadata
       
+        # The person's miscellaneous keywords.
+        # Corresponds to the JSON property `miscKeywords`
+        # @return [Array<Google::Apis::PeopleV1::MiscKeyword>]
+        attr_accessor :misc_keywords
+      
         # The person's names. This field is a singleton for contact sources.
         # Corresponds to the JSON property `names`
         # @return [Array<Google::Apis::PeopleV1::Name>]
@@ -1732,6 +1775,7 @@ module Google
           @locales = args[:locales] if args.key?(:locales)
           @memberships = args[:memberships] if args.key?(:memberships)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @misc_keywords = args[:misc_keywords] if args.key?(:misc_keywords)
           @names = args[:names] if args.key?(:names)
           @nicknames = args[:nicknames] if args.key?(:nicknames)
           @occupations = args[:occupations] if args.key?(:occupations)
@@ -2344,9 +2388,9 @@ module Google
         # empty if not set, which will skip the post mutate get. Valid values are: *
         # addresses * ageRanges * biographies * birthdays * calendarUrls * coverPhotos *
         # emailAddresses * events * externalIds * genders * imClients * interests *
-        # locales * memberships * metadata * names * nicknames * occupations *
-        # organizations * phoneNumbers * photos * relations * residences * sipAddresses *
-        # skills * urls * userDefined
+        # locales * memberships * metadata * miscKeywords * names * nicknames *
+        # occupations * organizations * phoneNumbers * photos * relations * residences *
+        # sipAddresses * skills * urls * userDefined
         # Corresponds to the JSON property `personFields`
         # @return [String]
         attr_accessor :person_fields

@@ -32,7 +32,7 @@ module Google
       #    Recommendationengine = Google::Apis::RecommendationengineV1beta1 # Alias the module
       #    service = Recommendationengine::RecommendationsAIService.new
       #
-      # @see https://cloud.google.com/recommendations/docs/
+      # @see https://cloud.google.com/recommendations-ai/docs
       class RecommendationsAIService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

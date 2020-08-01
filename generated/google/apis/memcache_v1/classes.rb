@@ -22,110 +22,22 @@ module Google
   module Apis
     module MemcacheV1
       
-      # Specifies the audit configuration for a service.
-      # The configuration determines which permission types are logged, and what
-      # identities, if any, are exempted from logging.
-      # An AuditConfig must have one or more AuditLogConfigs.
-      # If there are AuditConfigs for both `allServices` and a specific service,
-      # the union of the two AuditConfigs is used for that service: the log_types
-      # specified in each AuditConfig are enabled, and the exempted_members in each
-      # AuditLogConfig are exempted.
-      # Example Policy with multiple AuditConfigs:
-      # `
-      # "audit_configs": [
-      # `
-      # "service": "allServices",
-      # "audit_log_configs": [
-      # `
-      # "log_type": "DATA_READ",
-      # "exempted_members": [
-      # "user:jose@example.com"
-      # ]
-      # `,
-      # `
-      # "log_type": "DATA_WRITE"
-      # `,
-      # `
-      # "log_type": "ADMIN_READ"
-      # `
-      # ]
-      # `,
-      # `
-      # "service": "sampleservice.googleapis.com",
-      # "audit_log_configs": [
-      # `
-      # "log_type": "DATA_READ"
-      # `,
-      # `
-      # "log_type": "DATA_WRITE",
-      # "exempted_members": [
-      # "user:aliya@example.com"
-      # ]
-      # `
-      # ]
-      # `
-      # ]
-      # `
-      # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-      # logging. It also exempts jose@example.com from DATA_READ logging, and
-      # aliya@example.com from DATA_WRITE logging.
-      class AuditConfig
+      # Request for ApplyParameters.
+      class ApplyParametersRequest
         include Google::Apis::Core::Hashable
       
-        # The configuration for logging of each type of permission.
-        # Corresponds to the JSON property `auditLogConfigs`
-        # @return [Array<Google::Apis::MemcacheV1::AuditLogConfig>]
-        attr_accessor :audit_log_configs
+        # Whether to apply instance-level parameter group to all nodes. If set to
+        # true, will explicitly restrict users from specifying any nodes, and apply
+        # parameter group updates to all nodes within the instance.
+        # Corresponds to the JSON property `applyAll`
+        # @return [Boolean]
+        attr_accessor :apply_all
+        alias_method :apply_all?, :apply_all
       
-        # Specifies a service that will be enabled for audit logging.
-        # For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-        # `allServices` is a special value that covers all services.
-        # Corresponds to the JSON property `service`
-        # @return [String]
-        attr_accessor :service
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
-          @service = args[:service] if args.key?(:service)
-        end
-      end
-      
-      # Provides the configuration for logging a type of permissions.
-      # Example:
-      # `
-      # "audit_log_configs": [
-      # `
-      # "log_type": "DATA_READ",
-      # "exempted_members": [
-      # "user:jose@example.com"
-      # ]
-      # `,
-      # `
-      # "log_type": "DATA_WRITE"
-      # `
-      # ]
-      # `
-      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-      # jose@example.com from DATA_READ logging.
-      class AuditLogConfig
-        include Google::Apis::Core::Hashable
-      
-        # Specifies the identities that do not cause logging for this type of
-        # permission.
-        # Follows the same format of Binding.members.
-        # Corresponds to the JSON property `exemptedMembers`
+        # Nodes to which we should apply the instance-level parameter group.
+        # Corresponds to the JSON property `nodeIds`
         # @return [Array<String>]
-        attr_accessor :exempted_members
-      
-        # The log type that this config enables.
-        # Corresponds to the JSON property `logType`
-        # @return [String]
-        attr_accessor :log_type
+        attr_accessor :node_ids
       
         def initialize(**args)
            update!(**args)
@@ -133,91 +45,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
-          @log_type = args[:log_type] if args.key?(:log_type)
-        end
-      end
-      
-      # Associates `members` with a `role`.
-      class Binding
-        include Google::Apis::Core::Hashable
-      
-        # Represents a textual expression in the Common Expression Language (CEL)
-        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-        # are documented at https://github.com/google/cel-spec.
-        # Example (Comparison):
-        # title: "Summary size limit"
-        # description: "Determines if a summary is less than 100 chars"
-        # expression: "document.summary.size() < 100"
-        # Example (Equality):
-        # title: "Requestor is owner"
-        # description: "Determines if requestor is the document owner"
-        # expression: "document.owner == request.auth.claims.email"
-        # Example (Logic):
-        # title: "Public documents"
-        # description: "Determine whether the document should be publicly visible"
-        # expression: "document.type != 'private' && document.type != 'internal'"
-        # Example (Data Manipulation):
-        # title: "Notification string"
-        # description: "Create a notification string with a timestamp."
-        # expression: "'New message received at ' + string(document.create_time)"
-        # The exact variables and functions that may be referenced within an expression
-        # are determined by the service that evaluates it. See the service
-        # documentation for additional information.
-        # Corresponds to the JSON property `condition`
-        # @return [Google::Apis::MemcacheV1::Expr]
-        attr_accessor :condition
-      
-        # Specifies the identities requesting access for a Cloud Platform resource.
-        # `members` can have the following values:
-        # * `allUsers`: A special identifier that represents anyone who is
-        # on the internet; with or without a Google account.
-        # * `allAuthenticatedUsers`: A special identifier that represents anyone
-        # who is authenticated with a Google account or a service account.
-        # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@example.com` .
-        # * `serviceAccount:`emailid``: An email address that represents a service
-        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
-        # * `group:`emailid``: An email address that represents a Google group.
-        # For example, `admins@example.com`.
-        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For
-        # example, `alice@example.com?uid=123456789012345678901`. If the user is
-        # recovered, this value reverts to `user:`emailid`` and the recovered user
-        # retains the role in the binding.
-        # * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus
-        # unique identifier) representing a service account that has been recently
-        # deleted. For example,
-        # `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to
-        # `serviceAccount:`emailid`` and the undeleted service account retains the
-        # role in the binding.
-        # * `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently
-        # deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-        # the group is recovered, this value reverts to `group:`emailid`` and the
-        # recovered group retains the role in the binding.
-        # * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`.
-        # Corresponds to the JSON property `members`
-        # @return [Array<String>]
-        attr_accessor :members
-      
-        # Role that is assigned to `members`.
-        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-        # Corresponds to the JSON property `role`
-        # @return [String]
-        attr_accessor :role
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @condition = args[:condition] if args.key?(:condition)
-          @members = args[:members] if args.key?(:members)
-          @role = args[:role] if args.key?(:role)
+          @apply_all = args[:apply_all] if args.key?(:apply_all)
+          @node_ids = args[:node_ids] if args.key?(:node_ids)
         end
       end
       
@@ -253,55 +82,48 @@ module Google
         end
       end
       
-      # Represents a textual expression in the Common Expression Language (CEL)
-      # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-      # are documented at https://github.com/google/cel-spec.
-      # Example (Comparison):
-      # title: "Summary size limit"
-      # description: "Determines if a summary is less than 100 chars"
-      # expression: "document.summary.size() < 100"
-      # Example (Equality):
-      # title: "Requestor is owner"
-      # description: "Determines if requestor is the document owner"
-      # expression: "document.owner == request.auth.claims.email"
-      # Example (Logic):
-      # title: "Public documents"
-      # description: "Determine whether the document should be publicly visible"
-      # expression: "document.type != 'private' && document.type != 'internal'"
-      # Example (Data Manipulation):
-      # title: "Notification string"
-      # description: "Create a notification string with a timestamp."
-      # expression: "'New message received at ' + string(document.create_time)"
-      # The exact variables and functions that may be referenced within an expression
-      # are determined by the service that evaluates it. See the service
-      # documentation for additional information.
-      class Expr
+      # Represents the metadata of a long-running operation.
+      class GoogleCloudMemcacheV1OperationMetadata
         include Google::Apis::Core::Hashable
       
-        # Optional. Description of the expression. This is a longer text which
-        # describes the expression, e.g. when hovered over it in a UI.
-        # Corresponds to the JSON property `description`
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
         # @return [String]
-        attr_accessor :description
+        attr_accessor :api_version
       
-        # Textual representation of an expression in Common Expression Language
-        # syntax.
-        # Corresponds to the JSON property `expression`
-        # @return [String]
-        attr_accessor :expression
+        # Output only. Identifies whether the user has requested cancellation
+        # of the operation. Operations that have successfully been cancelled
+        # have Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to `Code.CANCELLED`.
+        # Corresponds to the JSON property `cancelRequested`
+        # @return [Boolean]
+        attr_accessor :cancel_requested
+        alias_method :cancel_requested?, :cancel_requested
       
-        # Optional. String indicating the location of the expression for error
-        # reporting, e.g. a file name and a position in the file.
-        # Corresponds to the JSON property `location`
+        # Output only. Time when the operation was created.
+        # Corresponds to the JSON property `createTime`
         # @return [String]
-        attr_accessor :location
+        attr_accessor :create_time
       
-        # Optional. Title for the expression, i.e. a short string describing
-        # its purpose. This can be used e.g. in UIs which allow to enter the
-        # expression.
-        # Corresponds to the JSON property `title`
+        # Output only. Time when the operation finished running.
+        # Corresponds to the JSON property `endTime`
         # @return [String]
-        attr_accessor :title
+        attr_accessor :end_time
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusDetail`
+        # @return [String]
+        attr_accessor :status_detail
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
       
         def initialize(**args)
            update!(**args)
@@ -309,10 +131,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @expression = args[:expression] if args.key?(:expression)
-          @location = args[:location] if args.key?(:location)
-          @title = args[:title] if args.key?(:title)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @status_detail = args[:status_detail] if args.key?(:status_detail)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
         end
       end
       
@@ -713,6 +538,199 @@ module Google
         end
       end
       
+      # 
+      class Instance
+        include Google::Apis::Core::Hashable
+      
+        # The full name of the Google Compute Engine
+        # [network](/compute/docs/networks-and-firewalls#networks) to which the
+        # instance is connected. If left unspecified, the `default` network
+        # will be used.
+        # Corresponds to the JSON property `authorizedNetwork`
+        # @return [String]
+        attr_accessor :authorized_network
+      
+        # Output only. The time the instance was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Endpoint for Discovery API
+        # Corresponds to the JSON property `discoveryEndpoint`
+        # @return [String]
+        attr_accessor :discovery_endpoint
+      
+        # User provided name for the instance only used for display
+        # purposes. Cannot be more than 80 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # List of messages that describe current statuses of memcached instance.
+        # Corresponds to the JSON property `instanceMessages`
+        # @return [Array<Google::Apis::MemcacheV1::InstanceMessage>]
+        attr_accessor :instance_messages
+      
+        # Resource labels to represent user-provided metadata.
+        # Refer to cloud documentation on labels for more details.
+        # https://cloud.google.com/compute/docs/labeling-resources
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The full version of memcached server running on this instance.
+        # System automatically determines the full memcached version for an instance
+        # based on the input MemcacheVersion.
+        # The full version format will be "memcached-1.5.16".
+        # Corresponds to the JSON property `memcacheFullVersion`
+        # @return [String]
+        attr_accessor :memcache_full_version
+      
+        # Output only. List of Memcached nodes.
+        # Refer to [Node] message for more details.
+        # Corresponds to the JSON property `memcacheNodes`
+        # @return [Array<Google::Apis::MemcacheV1::Node>]
+        attr_accessor :memcache_nodes
+      
+        # The major version of Memcached software.
+        # If not provided, latest supported version will be used. Currently the
+        # latest supported major version is MEMCACHE_1_5.
+        # The minor version will be automatically determined by our system based on
+        # the latest supported minor version.
+        # Corresponds to the JSON property `memcacheVersion`
+        # @return [String]
+        attr_accessor :memcache_version
+      
+        # Required. Unique name of the resource in this scope including project and
+        # location using the form:
+        # `projects/`project_id`/locations/`location_id`/instances/`instance_id``
+        # Note: Memcached instances are managed and addressed at regional level so
+        # location_id here refers to a GCP region; however, users may choose which
+        # zones Memcached nodes within an instances should be provisioned in.
+        # Refer to [zones] field for more details.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for a Memcached Node.
+        # Corresponds to the JSON property `nodeConfig`
+        # @return [Google::Apis::MemcacheV1::NodeConfig]
+        attr_accessor :node_config
+      
+        # Required. Number of nodes in the Memcached instance.
+        # Corresponds to the JSON property `nodeCount`
+        # @return [Fixnum]
+        attr_accessor :node_count
+      
+        # Optional: User defined parameters to apply to the memcached process
+        # on each node.
+        # Corresponds to the JSON property `parameters`
+        # @return [Google::Apis::MemcacheV1::MemcacheParameters]
+        attr_accessor :parameters
+      
+        # Output only. The state of this Memcached instance.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time the instance was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Zones where Memcached nodes should be provisioned in.
+        # Memcached nodes will be equally distributed across these zones. If not
+        # provided, the service will by default create nodes in all zones in the
+        # region for the instance.
+        # Corresponds to the JSON property `zones`
+        # @return [Array<String>]
+        attr_accessor :zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @discovery_endpoint = args[:discovery_endpoint] if args.key?(:discovery_endpoint)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @instance_messages = args[:instance_messages] if args.key?(:instance_messages)
+          @labels = args[:labels] if args.key?(:labels)
+          @memcache_full_version = args[:memcache_full_version] if args.key?(:memcache_full_version)
+          @memcache_nodes = args[:memcache_nodes] if args.key?(:memcache_nodes)
+          @memcache_version = args[:memcache_version] if args.key?(:memcache_version)
+          @name = args[:name] if args.key?(:name)
+          @node_config = args[:node_config] if args.key?(:node_config)
+          @node_count = args[:node_count] if args.key?(:node_count)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @zones = args[:zones] if args.key?(:zones)
+        end
+      end
+      
+      # 
+      class InstanceMessage
+        include Google::Apis::Core::Hashable
+      
+        # A code that correspond to one type of user-facing message.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Message on memcached instance which will be exposed to users.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Response for ListInstances.
+      class ListInstancesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of Memcached instances in the project in the specified location,
+        # or across all locations.
+        # If the `location_id` in the parent field of the request is "-", all regions
+        # available to the project are queried, and the results aggregated.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::MemcacheV1::Instance>]
+        attr_accessor :resources
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -828,6 +846,110 @@ module Google
         # Update properties of this object
         def update!(**args)
           @available_zones = args[:available_zones] if args.key?(:available_zones)
+        end
+      end
+      
+      # 
+      class MemcacheParameters
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The unique ID associated with this set of parameters. Users
+        # can use this id to determine if the parameters associated with the instance
+        # differ from the parameters associated with the nodes and any action needs
+        # to be taken to apply parameters on nodes.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # User defined set of parameters to use in the memcached process.
+        # Corresponds to the JSON property `params`
+        # @return [Hash<String,String>]
+        attr_accessor :params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @params = args[:params] if args.key?(:params)
+        end
+      end
+      
+      # 
+      class Node
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Hostname or IP address of the Memcached node used by the
+        # clients to connect to the Memcached server on this node.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Output only. Identifier of the Memcached node. The node id does not
+        # include project or location like the Memcached instance name.
+        # Corresponds to the JSON property `nodeId`
+        # @return [String]
+        attr_accessor :node_id
+      
+        # User defined parameters currently applied to the node.
+        # Corresponds to the JSON property `parameters`
+        # @return [Google::Apis::MemcacheV1::MemcacheParameters]
+        attr_accessor :parameters
+      
+        # Output only. The port number of the Memcached server on this node.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        # Output only. Current state of the Memcached node.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Location (GCP Zone) for the Memcached node.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @node_id = args[:node_id] if args.key?(:node_id)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @port = args[:port] if args.key?(:port)
+          @state = args[:state] if args.key?(:state)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Configuration for a Memcached Node.
+      class NodeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Number of cpus per Memcached node.
+        # Corresponds to the JSON property `cpuCount`
+        # @return [Fixnum]
+        attr_accessor :cpu_count
+      
+        # Required. Memory size in MiB for each Memcached node.
+        # Corresponds to the JSON property `memorySizeMb`
+        # @return [Fixnum]
+        attr_accessor :memory_size_mb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
+          @memory_size_mb = args[:memory_size_mb] if args.key?(:memory_size_mb)
         end
       end
       
@@ -954,222 +1076,6 @@ module Google
         end
       end
       
-      # An Identity and Access Management (IAM) policy, which specifies access
-      # controls for Google Cloud resources.
-      # A `Policy` is a collection of `bindings`. A `binding` binds one or more
-      # `members` to a single `role`. Members can be user accounts, service accounts,
-      # Google groups, and domains (such as G Suite). A `role` is a named list of
-      # permissions; each `role` can be an IAM predefined role or a user-created
-      # custom role.
-      # For some types of Google Cloud resources, a `binding` can also specify a
-      # `condition`, which is a logical expression that allows access to a resource
-      # only if the expression evaluates to `true`. A condition can add constraints
-      # based on attributes of the request, the resource, or both. To learn which
-      # resources support conditions in their IAM policies, see the
-      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-      # policies).
-      # **JSON example:**
-      # `
-      # "bindings": [
-      # `
-      # "role": "roles/resourcemanager.organizationAdmin",
-      # "members": [
-      # "user:mike@example.com",
-      # "group:admins@example.com",
-      # "domain:google.com",
-      # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-      # ]
-      # `,
-      # `
-      # "role": "roles/resourcemanager.organizationViewer",
-      # "members": [
-      # "user:eve@example.com"
-      # ],
-      # "condition": `
-      # "title": "expirable access",
-      # "description": "Does not grant access after Sep 2020",
-      # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
-      # ",
-      # `
-      # `
-      # ],
-      # "etag": "BwWWja0YfJA=",
-      # "version": 3
-      # `
-      # **YAML example:**
-      # bindings:
-      # - members:
-      # - user:mike@example.com
-      # - group:admins@example.com
-      # - domain:google.com
-      # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin
-      # - members:
-      # - user:eve@example.com
-      # role: roles/resourcemanager.organizationViewer
-      # condition:
-      # title: expirable access
-      # description: Does not grant access after Sep 2020
-      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-      # - etag: BwWWja0YfJA=
-      # - version: 3
-      # For a description of IAM and its features, see the
-      # [IAM documentation](https://cloud.google.com/iam/docs/).
-      class Policy
-        include Google::Apis::Core::Hashable
-      
-        # Specifies cloud audit logging configuration for this policy.
-        # Corresponds to the JSON property `auditConfigs`
-        # @return [Array<Google::Apis::MemcacheV1::AuditConfig>]
-        attr_accessor :audit_configs
-      
-        # Associates a list of `members` to a `role`. Optionally, may specify a
-        # `condition` that determines how and when the `bindings` are applied. Each
-        # of the `bindings` must contain at least one member.
-        # Corresponds to the JSON property `bindings`
-        # @return [Array<Google::Apis::MemcacheV1::Binding>]
-        attr_accessor :bindings
-      
-        # `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of a policy from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform policy updates in order to avoid race
-        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
-        # systems are expected to put that etag in the request to `setIamPolicy` to
-        # ensure that their change will be applied to the same version of the policy.
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-        # you to overwrite a version `3` policy with a version `1` policy, and all of
-        # the conditions in the version `3` policy are lost.
-        # Corresponds to the JSON property `etag`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :etag
-      
-        # Specifies the format of the policy.
-        # Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-        # are rejected.
-        # Any operation that affects conditional role bindings must specify version
-        # `3`. This requirement applies to the following operations:
-        # * Getting a policy that includes a conditional role binding
-        # * Adding a conditional role binding to a policy
-        # * Changing a conditional role binding in a policy
-        # * Removing any role binding, with or without a condition, from a policy
-        # that includes conditions
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-        # you to overwrite a version `3` policy with a version `1` policy, and all of
-        # the conditions in the version `3` policy are lost.
-        # If a policy does not include any conditions, operations on that policy may
-        # specify any valid version or leave the field unset.
-        # To learn which resources support conditions in their IAM policies, see the
-        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-        # policies).
-        # Corresponds to the JSON property `version`
-        # @return [Fixnum]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
-          @bindings = args[:bindings] if args.key?(:bindings)
-          @etag = args[:etag] if args.key?(:etag)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # Request message for `SetIamPolicy` method.
-      class SetIamPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # An Identity and Access Management (IAM) policy, which specifies access
-        # controls for Google Cloud resources.
-        # A `Policy` is a collection of `bindings`. A `binding` binds one or more
-        # `members` to a single `role`. Members can be user accounts, service accounts,
-        # Google groups, and domains (such as G Suite). A `role` is a named list of
-        # permissions; each `role` can be an IAM predefined role or a user-created
-        # custom role.
-        # For some types of Google Cloud resources, a `binding` can also specify a
-        # `condition`, which is a logical expression that allows access to a resource
-        # only if the expression evaluates to `true`. A condition can add constraints
-        # based on attributes of the request, the resource, or both. To learn which
-        # resources support conditions in their IAM policies, see the
-        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-        # policies).
-        # **JSON example:**
-        # `
-        # "bindings": [
-        # `
-        # "role": "roles/resourcemanager.organizationAdmin",
-        # "members": [
-        # "user:mike@example.com",
-        # "group:admins@example.com",
-        # "domain:google.com",
-        # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-        # ]
-        # `,
-        # `
-        # "role": "roles/resourcemanager.organizationViewer",
-        # "members": [
-        # "user:eve@example.com"
-        # ],
-        # "condition": `
-        # "title": "expirable access",
-        # "description": "Does not grant access after Sep 2020",
-        # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
-        # ",
-        # `
-        # `
-        # ],
-        # "etag": "BwWWja0YfJA=",
-        # "version": 3
-        # `
-        # **YAML example:**
-        # bindings:
-        # - members:
-        # - user:mike@example.com
-        # - group:admins@example.com
-        # - domain:google.com
-        # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin
-        # - members:
-        # - user:eve@example.com
-        # role: roles/resourcemanager.organizationViewer
-        # condition:
-        # title: expirable access
-        # description: Does not grant access after Sep 2020
-        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-        # - etag: BwWWja0YfJA=
-        # - version: 3
-        # For a description of IAM and its features, see the
-        # [IAM documentation](https://cloud.google.com/iam/docs/).
-        # Corresponds to the JSON property `policy`
-        # @return [Google::Apis::MemcacheV1::Policy]
-        attr_accessor :policy
-      
-        # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
-        # the fields in the mask will be modified. If no mask is provided, the
-        # following default mask is used:
-        # `paths: "bindings, etag"`
-        # Corresponds to the JSON property `updateMask`
-        # @return [String]
-        attr_accessor :update_mask
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @policy = args[:policy] if args.key?(:policy)
-          @update_mask = args[:update_mask] if args.key?(:update_mask)
-        end
-      end
-      
       # The `Status` type defines a logical error model that is suitable for
       # different programming environments, including REST APIs and RPC APIs. It is
       # used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -1209,17 +1115,19 @@ module Google
         end
       end
       
-      # Request message for `TestIamPermissions` method.
-      class TestIamPermissionsRequest
+      # Request for UpdateParameters.
+      class UpdateParametersRequest
         include Google::Apis::Core::Hashable
       
-        # The set of permissions to check for the `resource`. Permissions with
-        # wildcards (such as '*' or 'storage.*') are not allowed. For more
-        # information see
-        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
+        # The parameters to apply to the instance.
+        # Corresponds to the JSON property `parameters`
+        # @return [Google::Apis::MemcacheV1::MemcacheParameters]
+        attr_accessor :parameters
+      
+        # Required. Mask of fields to update.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
       
         def initialize(**args)
            update!(**args)
@@ -1227,27 +1135,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
-      # Response message for `TestIamPermissions` method.
-      class TestIamPermissionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A subset of `TestPermissionsRequest.permissions` that the caller is
-        # allowed.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permissions = args[:permissions] if args.key?(:permissions)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       

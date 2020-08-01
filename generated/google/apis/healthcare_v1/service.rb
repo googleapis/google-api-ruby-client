@@ -990,6 +990,9 @@ module Google
         # are equivalent to the GET requests specified in the Retrieve transaction.
         # The method returns an Operation which
         # will be marked successful when the deletion is complete.
+        # Warning: Inserting instances into a study while a delete operation is
+        # running for that study could result in the new instances not appearing in
+        # search results until the deletion operation finishes.
         # @param [String] parent
         # @param [String] dicom_web_path
         #   The path of the DeleteStudy request. For example, `studies/`study_uid``.
@@ -1227,6 +1230,9 @@ module Google
         # Retrieve transaction.
         # The method returns an Operation which
         # will be marked successful when the deletion is complete.
+        # Warning: Inserting instances into a series while a delete operation is
+        # running for that series could result in the new instances not appearing in
+        # search results until the deletion operation finishes.
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -2146,19 +2152,19 @@ module Google
         #   Maximum number of resources in a page. Defaults to 100.
         # @param [String] _page_token
         #   Used to retrieve the next or previous page of results
-        #   when using pagination. Value should be set to the value of page_token set
-        #   in next or previous page links' urls. Next and previous page are returned
+        #   when using pagination. Set `_page_token` to the value of _page_token set
+        #   in next or previous page links' url. Next and previous page are returned
         #   in the response bundle's links field, where `link.relation` is "previous"
         #   or "next".
-        #   Omit `page_token` if no previous request has been made.
+        #   Omit `_page_token` if no previous request has been made.
         # @param [String] _since
         #   If provided, only resources updated after this time are
-        #   exported. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz.
+        #   returned. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz.
         #   For example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`.
         #   The time must be specified to the second and include a time zone.
         # @param [String] _type
         #   String of comma-delimited FHIR resource types. If provided, only resources
-        #   of the specified resource type(s) will be returned.
+        #   of the specified resource type(s) are returned.
         # @param [String] end_
         #   The response includes records prior to the end date. If no end date is
         #   provided, all records subsequent to the start date are in scope.
@@ -3097,12 +3103,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a message and sends a notification to the Cloud Pub/Sub topic. If
-        # configured, the MLLP adapter listens to messages created by this method and
-        # sends those back to the hospital. A successful response indicates the
-        # message has been persisted to storage and a Cloud Pub/Sub notification has
-        # been sent. Sending to the hospital by the MLLP adapter happens
-        # asynchronously.
+        # Parses and stores an HL7v2 message. This method triggers an asynchronous
+        # notification to any Cloud Pub/Sub topic configured in
+        # projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the
+        # filtering matches the message. If an MLLP adapter is configured to listen
+        # to a Cloud Pub/Sub topic, the adapter transmits the message when a
+        # notification is received.
         # @param [String] parent
         #   The name of the dataset this message belongs to.
         # @param [Google::Apis::HealthcareV1::CreateMessageRequest] create_message_request_object
@@ -3199,9 +3205,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Ingests a new HL7v2 message from the hospital and sends a notification to
-        # the Cloud Pub/Sub topic. Return is an HL7v2 ACK message if the message was
-        # successfully stored. Otherwise an error is returned.
+        # Parses and stores an HL7v2 message. This method triggers an asynchronous
+        # notification to any Cloud Pub/Sub topic configured in
+        # projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the
+        # filtering matches the message. If an MLLP adapter is configured to listen
+        # to a Cloud Pub/Sub topic, the adapter transmits the message when a
+        # notification is received. This method also generates a response
+        # containing an HL7v2 acknowledgement (`ACK`) message when successful or a
+        # negative acknowledgement (`NACK`) message in case of error, suitable for
+        # replying to HL7v2 interface systems that expect these acknowledgements.
         # @param [String] parent
         #   The name of the HL7v2 store this message belongs to.
         # @param [Google::Apis::HealthcareV1::IngestMessageRequest] ingest_message_request_object

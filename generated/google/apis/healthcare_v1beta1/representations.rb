@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,6 +455,18 @@ module Google
       end
       
       class ImportDicomDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportMessagesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportMessagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1129,6 +1147,13 @@ module Google
         end
       end
       
+      class GcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
       class GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1370,6 +1395,20 @@ module Google
       end
       
       class ImportDicomDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ImportMessagesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::HealthcareV1beta1::GcsSource, decorator: Google::Apis::HealthcareV1beta1::GcsSource::Representation
+      
+        end
+      end
+      
+      class ImportMessagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end

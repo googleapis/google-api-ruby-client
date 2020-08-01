@@ -1075,8 +1075,8 @@ module Google
         end
       end
       
-      # Response for failed annotation export operations. This structure is
-      # included in error
+      # Response for failed annotation export operations. This structure
+      # is included in error
       # details upon operation completion.
       class ExportAnnotationsErrorDetails
         include Google::Apis::Core::Hashable
@@ -1144,7 +1144,8 @@ module Google
       class ExportAnnotationsResponse
         include Google::Apis::Core::Hashable
       
-        # The annotation_store used for the export operation, in the format of
+        # The annotation_store used for the export operation,
+        # in the format of
         # `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         # annotationStores/`annotation_store_id``.
         # Corresponds to the JSON property `annotationStore`
@@ -1176,7 +1177,7 @@ module Google
       class ExportDicomDataRequest
         include Google::Apis::Core::Hashable
       
-        # The BigQuery table where the server writes the output.
+        # The BigQuery table where the server writes output.
         # Corresponds to the JSON property `bigqueryDestination`
         # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomBigQueryDestination]
         attr_accessor :bigquery_destination
@@ -1611,6 +1612,39 @@ module Google
         end
       end
       
+      # Specifies the configuration for importing data from Cloud Storage.
+      class GcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Points to a Cloud Storage URI containing file(s) to import.
+        # The URI must be in the following format: `gs://`bucket_id`/`object_id``.
+        # The URI can include wildcards in `object_id` and thus identify multiple
+        # files. Supported wildcards:
+        # *  `*` to match 0 or more non-separator characters
+        # *  `**` to match 0 or more characters (including separators). Must be used
+        # at the end of a path and with no other wildcards in the
+        # path. Can also be used with a file extension (such as .ndjson), which
+        # imports all files with the extension in the specified directory and
+        # its sub-directories. For example, `gs://my-bucket/my-directory/**.ndjson`
+        # imports all files with `.ndjson` extensions in `my-directory/` and its
+        # sub-directories.
+        # *  `?` to match 1 character
+        # Files matching the wildcard are expected to contain content only, no
+        # metadata.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # The BigQuery table for export.
       class GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination
         include Google::Apis::Core::Hashable
@@ -1750,14 +1784,13 @@ module Google
         end
       end
       
-      # The BigQuery table where the server writes the output.
+      # The BigQuery table where the server writes output.
       class GoogleCloudHealthcareV1beta1DicomBigQueryDestination
         include Google::Apis::Core::Hashable
       
-        # If the destination table already exists and this flag is `TRUE`, the table
-        # is overwritten by the contents of the DICOM store. If the flag is not
-        # set and the destination table already exists, the export call returns an
-        # error.
+        # This flag is being replaced by write_disposition which provides additional
+        # options. force=false is equivalent to WRITE_EMPTY and force=true is
+        # equivalent to WRITE_TRUNCATE.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
@@ -1885,9 +1918,9 @@ module Google
         # @return [String]
         attr_accessor :dataset_uri
       
-        # If this flag is `TRUE`, all tables will be deleted from the dataset before
-        # the new exported tables are written. If the flag is not set and the
-        # destination dataset contains tables, the export call returns an error.
+        # This flag is being replaced by write_disposition which provides additional
+        # options. force=false is equivalent to WRITE_EMPTY and force=true is
+        # equivalent to WRITE_TRUNCATE.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
@@ -2510,16 +2543,16 @@ module Google
       class ImportAnnotationsResponse
         include Google::Apis::Core::Hashable
       
-        # The annotation_store that the annotations were imported to. The name
-        # is in the format
+        # The annotation_store that the annotations were imported to,
+        # in the format
         # `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         # annotationStores/`annotation_store_id``.
         # Corresponds to the JSON property `annotationStore`
         # @return [String]
         attr_accessor :annotation_store
       
-        # The number of the input annotations. All input have been imported
-        # successfully.
+        # The number of the input annotations. All input have been
+        # imported successfully.
         # Corresponds to the JSON property `successCount`
         # @return [Fixnum]
         attr_accessor :success_count
@@ -2580,6 +2613,41 @@ module Google
       
       # Returns additional information in regards to a completed DICOM store import.
       class ImportDicomDataResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request to import messages.
+      class ImportMessagesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the configuration for importing data from Cloud Storage.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::HealthcareV1beta1::GcsSource]
+        attr_accessor :gcs_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+        end
+      end
+      
+      # Final response of importing messages.
+      # This structure is included in the
+      # response to describe the detailed
+      # outcome. It is only included when the operation finishes successfully.
+      class ImportMessagesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -3722,7 +3790,7 @@ module Google
         # @return [Array<Google::Apis::HealthcareV1beta1::Hl7SchemaConfig>]
         attr_accessor :schemas
       
-        # Determines how messages that don't parse successfully are handled.
+        # Determines how messages that fail to parse are handled.
         # Corresponds to the JSON property `schematizedParsingType`
         # @return [String]
         attr_accessor :schematized_parsing_type

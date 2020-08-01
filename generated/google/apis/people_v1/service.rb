@@ -393,8 +393,9 @@ module Google
         #   all fields if not set. Valid values are: * addresses * ageRanges * biographies
         #   * birthdays * calendarUrls * coverPhotos * emailAddresses * events *
         #   externalIds * genders * imClients * interests * locales * memberships *
-        #   metadata * names * nicknames * occupations * organizations * phoneNumbers *
-        #   photos * relations * residences * sipAddresses * skills * urls * userDefined
+        #   metadata * miscKeywords * names * nicknames * occupations * organizations *
+        #   phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
+        #   userDefined
         # @param [Array<String>, String] sources
         #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
         #   CONTACT and ReadSourceType.PROFILE if not set.
@@ -467,9 +468,9 @@ module Google
         #   empty if not set, which will skip the post mutate get. Valid values are: *
         #   addresses * ageRanges * biographies * birthdays * calendarUrls * coverPhotos *
         #   emailAddresses * events * externalIds * genders * imClients * interests *
-        #   locales * memberships * metadata * names * nicknames * occupations *
-        #   organizations * phoneNumbers * photos * relations * residences * sipAddresses *
-        #   skills * urls * userDefined
+        #   locales * memberships * metadata * miscKeywords * names * nicknames *
+        #   occupations * organizations * phoneNumbers * photos * relations * residences *
+        #   sipAddresses * skills * urls * userDefined
         # @param [Array<String>, String] sources
         #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
         #   CONTACT and ReadSourceType.PROFILE if not set.
@@ -517,9 +518,9 @@ module Google
         #   Multiple fields can be specified by separating them with commas. Valid values
         #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
         #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
-        #   interests * locales * memberships * metadata * names * nicknames * occupations
-        #   * organizations * phoneNumbers * photos * relations * residences *
-        #   sipAddresses * skills * urls * userDefined
+        #   interests * locales * memberships * metadata * miscKeywords * names *
+        #   nicknames * occupations * organizations * phoneNumbers * photos * relations *
+        #   residences * sipAddresses * skills * urls * userDefined
         # @param [String] request_mask_include_field
         #   Required. Comma-separated list of person fields to be included in the response.
         #   Each path should start with `person.`: for example, `person.names` or `person.
@@ -565,9 +566,9 @@ module Google
         #   Multiple fields can be specified by separating them with commas. Valid values
         #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
         #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
-        #   interests * locales * memberships * metadata * names * nicknames * occupations
-        #   * organizations * phoneNumbers * photos * relations * residences *
-        #   sipAddresses * skills * urls * userDefined
+        #   interests * locales * memberships * metadata * miscKeywords * names *
+        #   nicknames * occupations * organizations * phoneNumbers * photos * relations *
+        #   residences * sipAddresses * skills * urls * userDefined
         # @param [String] request_mask_include_field
         #   Required. Comma-separated list of person fields to be included in the response.
         #   Each path should start with `person.`: for example, `person.names` or `person.
@@ -630,9 +631,9 @@ module Google
         #   Multiple fields can be specified by separating them with commas. Valid values
         #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
         #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
-        #   interests * locales * memberships * metadata * names * nicknames * occupations
-        #   * organizations * phoneNumbers * photos * relations * residences *
-        #   sipAddresses * skills * urls * userDefined
+        #   interests * locales * memberships * metadata * miscKeywords * names *
+        #   nicknames * occupations * organizations * phoneNumbers * photos * relations *
+        #   residences * sipAddresses * skills * urls * userDefined
         # @param [Boolean] request_sync_token
         #   Optional. Whether the response should include `next_sync_token`, which can be
         #   used to get all changes since the last request. For subsequent sync requests
@@ -698,9 +699,9 @@ module Google
         #   Multiple fields can be specified by separating them with commas. Valid values
         #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
         #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
-        #   interests * locales * memberships * metadata * names * nicknames * occupations
-        #   * organizations * phoneNumbers * photos * relations * residences *
-        #   sipAddresses * skills * urls * userDefined
+        #   interests * locales * memberships * metadata * miscKeywords * names *
+        #   nicknames * occupations * organizations * phoneNumbers * photos * relations *
+        #   residences * sipAddresses * skills * urls * userDefined
         # @param [Array<String>, String] sources
         #   Required. Directory sources to return.
         # @param [String] fields
@@ -758,8 +759,9 @@ module Google
         #   all fields if not set. Valid values are: * addresses * ageRanges * biographies
         #   * birthdays * calendarUrls * coverPhotos * emailAddresses * events *
         #   externalIds * genders * imClients * interests * locales * memberships *
-        #   metadata * names * nicknames * occupations * organizations * phoneNumbers *
-        #   photos * relations * residences * sipAddresses * skills * urls * userDefined
+        #   metadata * miscKeywords * names * nicknames * occupations * organizations *
+        #   phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
+        #   userDefined
         # @param [Array<String>, String] sources
         #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
         #   CONTACT and ReadSourceType.PROFILE if not set.
@@ -768,9 +770,9 @@ module Google
         #   Multiple fields can be specified by separating them with commas. All updated
         #   fields will be replaced. Valid values are: * addresses * biographies *
         #   birthdays * calendarUrls * emailAddresses * events * externalIds * genders *
-        #   imClients * interests * locales * memberships * names * nicknames *
-        #   occupations * organizations * phoneNumbers * relations * residences *
-        #   sipAddresses * urls * userDefined
+        #   imClients * interests * locales * memberships * miscKeywords * names *
+        #   nicknames * occupations * organizations * phoneNumbers * relations *
+        #   residences * sipAddresses * urls * userDefined
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -854,9 +856,9 @@ module Google
         #   Multiple fields can be specified by separating them with commas. Valid values
         #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
         #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
-        #   interests * locales * memberships * metadata * names * nicknames * occupations
-        #   * organizations * phoneNumbers * photos * relations * residences *
-        #   sipAddresses * skills * urls * userDefined
+        #   interests * locales * memberships * metadata * miscKeywords * names *
+        #   nicknames * occupations * organizations * phoneNumbers * photos * relations *
+        #   residences * sipAddresses * skills * urls * userDefined
         # @param [String] request_mask_include_field
         #   Required. Comma-separated list of person fields to be included in the response.
         #   Each path should start with `person.`: for example, `person.names` or `person.
