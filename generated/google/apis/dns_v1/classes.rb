@@ -65,7 +65,7 @@ module Google
         attr_accessor :start_time
       
         # Status of the operation (output only). A status of "done" means that the
-        # request to update the authoritative servers has been sent, but the
+        # request to update the authoritative servers has been sent but the
         # servers might not be updated yet.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -532,11 +532,11 @@ module Google
       class ManagedZoneForwardingConfigNameServerTarget
         include Google::Apis::Core::Hashable
       
-        # Forwarding path for this NameServerTarget, if unset or set to DEFAULT,
+        # Forwarding path for this NameServerTarget. If unset or set to DEFAULT,
         # Cloud DNS will make forwarding decision based on address ranges,
-        # i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go to the
+        # i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the
         # Internet. When set to PRIVATE, Cloud DNS will always send queries
-        # through VPC for this target
+        # through VPC for this target.
         # Corresponds to the JSON property `forwardingPath`
         # @return [String]
         attr_accessor :forwarding_path
@@ -1118,11 +1118,11 @@ module Google
       class PolicyAlternativeNameServerConfigTargetNameServer
         include Google::Apis::Core::Hashable
       
-        # Forwarding path for this TargetNameServer, if unset or set to DEFAULT,
+        # Forwarding path for this TargetNameServer. If unset or set to DEFAULT,
         # Cloud DNS will make forwarding decision based on address ranges,
-        # i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go to the
+        # i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the
         # Internet. When set to PRIVATE, Cloud DNS will always send queries
-        # through VPC for this target
+        # through VPC for this target.
         # Corresponds to the JSON property `forwardingPath`
         # @return [String]
         attr_accessor :forwarding_path
