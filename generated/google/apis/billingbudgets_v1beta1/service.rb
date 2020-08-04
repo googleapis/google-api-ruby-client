@@ -48,12 +48,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a new budget. See
-        # <a href="https://cloud.google.com/billing/quotas">Quotas and limits</a>
-        # for more information on the limits of the number of budgets you can create.
+        # Creates a new budget. See Quotas and limits for more information on the limits
+        # of the number of budgets you can create.
         # @param [String] parent
-        #   Required. The name of the billing account to create the budget in. Values
-        #   are of the form `billingAccounts/`billingAccountId``.
+        #   Required. The name of the billing account to create the budget in. Values are
+        #   of the form `billingAccounts/`billingAccountId``.
         # @param [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest] google_cloud_billing_budgets_v1beta1_create_budget_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -86,8 +85,8 @@ module Google
         
         # Deletes a budget. Returns successfully if already deleted.
         # @param [String] name
-        #   Required. Name of the budget to delete. Values are of the form
-        #   `billingAccounts/`billingAccountId`/budgets/`budgetId``.
+        #   Required. Name of the budget to delete. Values are of the form `
+        #   billingAccounts/`billingAccountId`/budgets/`budgetId``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -115,14 +114,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a budget.
-        # WARNING: There are some fields exposed on the Google Cloud Console that
-        # aren't available on this API. When reading from the API, you will not
-        # see these fields in the return value, though they may have been set
-        # in the Cloud Console.
+        # Returns a budget. WARNING: There are some fields exposed on the Google Cloud
+        # Console that aren't available on this API. When reading from the API, you will
+        # not see these fields in the return value, though they may have been set in the
+        # Cloud Console.
         # @param [String] name
-        #   Required. Name of budget to get. Values are of the form
-        #   `billingAccounts/`billingAccountId`/budgets/`budgetId``.
+        #   Required. Name of budget to get. Values are of the form `billingAccounts/`
+        #   billingAccountId`/budgets/`budgetId``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -150,21 +148,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of budgets for a billing account.
-        # WARNING: There are some fields exposed on the Google Cloud Console that
-        # aren't available on this API. When reading from the API, you will not
-        # see these fields in the return value, though they may have been set
-        # in the Cloud Console.
+        # Returns a list of budgets for a billing account. WARNING: There are some
+        # fields exposed on the Google Cloud Console that aren't available on this API.
+        # When reading from the API, you will not see these fields in the return value,
+        # though they may have been set in the Cloud Console.
         # @param [String] parent
-        #   Required. Name of billing account to list budgets under. Values
-        #   are of the form `billingAccounts/`billingAccountId``.
+        #   Required. Name of billing account to list budgets under. Values are of the
+        #   form `billingAccounts/`billingAccountId``.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of budgets to return per page.
-        #   The default and maximum value are 100.
+        #   Optional. The maximum number of budgets to return per page. The default and
+        #   maximum value are 100.
         # @param [String] page_token
-        #   Optional. The value returned by the last `ListBudgetsResponse` which
-        #   indicates that this is a continuation of a prior `ListBudgets` call,
-        #   and that the system should return the next page of data.
+        #   Optional. The value returned by the last `ListBudgetsResponse` which indicates
+        #   that this is a continuation of a prior `ListBudgets` call, and that the system
+        #   should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -194,14 +191,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a budget and returns the updated budget.
-        # WARNING: There are some fields exposed on the Google Cloud Console that
-        # aren't available on this API. Budget fields that are not exposed in
-        # this API will not be changed by this method.
+        # Updates a budget and returns the updated budget. WARNING: There are some
+        # fields exposed on the Google Cloud Console that aren't available on this API.
+        # Budget fields that are not exposed in this API will not be changed by this
+        # method.
         # @param [String] name
-        #   Output only. Resource name of the budget.
-        #   The resource name implies the scope of a budget. Values are of the form
-        #   `billingAccounts/`billingAccountId`/budgets/`budgetId``.
+        #   Output only. Resource name of the budget. The resource name implies the scope
+        #   of a budget. Values are of the form `billingAccounts/`billingAccountId`/
+        #   budgets/`budgetId``.
         # @param [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest] google_cloud_billing_budgets_v1beta1_update_budget_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

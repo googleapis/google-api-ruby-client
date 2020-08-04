@@ -50,23 +50,22 @@ module Google
         # Search through fact-checked claims.
         # @param [String] language_code
         #   The BCP-47 language code, such as "en-US" or "sr-Latn". Can be used to
-        #   restrict results by language, though we do not currently consider the
-        #   region.
+        #   restrict results by language, though we do not currently consider the region.
         # @param [Fixnum] max_age_days
-        #   The maximum age of the returned search results, in days.
-        #   Age is determined by either claim date or review date, whichever is newer.
+        #   The maximum age of the returned search results, in days. Age is determined by
+        #   either claim date or review date, whichever is newer.
         # @param [Fixnum] offset
         #   An integer that specifies the current offset (that is, starting result
-        #   location) in search results. This field is only considered if `page_token`
-        #   is unset. For example, 0 means to return results starting from the first
-        #   matching result, and 10 means to return from the 11th result.
+        #   location) in search results. This field is only considered if `page_token` is
+        #   unset. For example, 0 means to return results starting from the first matching
+        #   result, and 10 means to return from the 11th result.
         # @param [Fixnum] page_size
-        #   The pagination size. We will return up to that many results. Defaults to
-        #   10 if not set.
+        #   The pagination size. We will return up to that many results. Defaults to 10 if
+        #   not set.
         # @param [String] page_token
         #   The pagination token. You may provide the `next_page_token` returned from a
-        #   previous List request, if any, in order to get the next page. All other
-        #   fields must have the same values as in the previous request.
+        #   previous List request, if any, in order to get the next page. All other fields
+        #   must have the same values as in the previous request.
         # @param [String] query
         #   Textual query string. Required unless `review_publisher_site_filter` is
         #   specified.
@@ -195,29 +194,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the `ClaimReview` markup pages for a specific URL or for an
-        # organization.
+        # List the `ClaimReview` markup pages for a specific URL or for an organization.
         # @param [Fixnum] offset
         #   An integer that specifies the current offset (that is, starting result
-        #   location) in search results. This field is only considered if `page_token`
-        #   is unset, and if the request is not for a specific URL. For example, 0
-        #   means to return results starting from the first matching result, and 10
-        #   means to return from the 11th result.
+        #   location) in search results. This field is only considered if `page_token` is
+        #   unset, and if the request is not for a specific URL. For example, 0 means to
+        #   return results starting from the first matching result, and 10 means to return
+        #   from the 11th result.
         # @param [String] organization
-        #   The organization for which we want to fetch markups for. For instance,
-        #   "site.com". Cannot be specified along with an URL.
+        #   The organization for which we want to fetch markups for. For instance, "site.
+        #   com". Cannot be specified along with an URL.
         # @param [Fixnum] page_size
-        #   The pagination size. We will return up to that many results. Defaults to
-        #   10 if not set. Has no effect if a URL is requested.
+        #   The pagination size. We will return up to that many results. Defaults to 10 if
+        #   not set. Has no effect if a URL is requested.
         # @param [String] page_token
         #   The pagination token. You may provide the `next_page_token` returned from a
-        #   previous List request, if any, in order to get the next page. All other
-        #   fields must have the same values as in the previous request.
+        #   previous List request, if any, in order to get the next page. All other fields
+        #   must have the same values as in the previous request.
         # @param [String] url
         #   The URL from which to get `ClaimReview` markup. There will be at most one
         #   result. If markup is associated with a more canonical version of the URL
-        #   provided, we will return that URL instead. Cannot be specified along with
-        #   an organization.
+        #   provided, we will return that URL instead. Cannot be specified along with an
+        #   organization.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -249,15 +247,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update for all `ClaimReview` markup on a page
-        # Note that this is a full update. To retain the existing `ClaimReview`
-        # markup on a page, first perform a Get operation, then modify the returned
-        # markup, and finally call Update with the entire `ClaimReview` markup as the
-        # body.
+        # Update for all `ClaimReview` markup on a page Note that this is a full update.
+        # To retain the existing `ClaimReview` markup on a page, first perform a Get
+        # operation, then modify the returned markup, and finally call Update with the
+        # entire `ClaimReview` markup as the body.
         # @param [String] name
-        #   The name of this `ClaimReview` markup page resource, in the form of
-        #   `pages/`page_id``. Except for update requests, this field is output-only
-        #   and should not be set by the user.
+        #   The name of this `ClaimReview` markup page resource, in the form of `pages/`
+        #   page_id``. Except for update requests, this field is output-only and should
+        #   not be set by the user.
         # @param [Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage] google_factchecking_factchecktools_v1alpha1_claim_review_markup_page_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

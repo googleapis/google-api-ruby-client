@@ -49,12 +49,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets a specific domain registered by the client.
-        # Returns NOT_FOUND if the domain does not exist.
+        # Gets a specific domain registered by the client. Returns NOT_FOUND if the
+        # domain does not exist.
         # @param [String] name
-        #   The resource name of the domain. It should have the form
-        #   `domains/`domain_name``, where domain_name is the fully qualified
-        #   domain name.
+        #   The resource name of the domain. It should have the form `domains/`domain_name`
+        #   `, where domain_name is the fully qualified domain name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -86,13 +85,12 @@ module Google
         # domains in the response is unspecified and non-deterministic. Newly created
         # domains will not necessarily be added to the end of this list.
         # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer domains than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   Requested page size. Server may return fewer domains than requested. If
+        #   unspecified, server will pick an appropriate default.
         # @param [String] page_token
-        #   The next_page_token value returned from a previous List request, if any.
-        #   This is the value of
-        #   ListDomainsResponse.next_page_token
-        #   returned from the previous call to `ListDomains` method.
+        #   The next_page_token value returned from a previous List request, if any. This
+        #   is the value of ListDomainsResponse.next_page_token returned from the previous
+        #   call to `ListDomains` method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -121,12 +119,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get traffic statistics for a domain on a specific date.
-        # Returns PERMISSION_DENIED if user does not have permission to access
-        # TrafficStats for the domain.
+        # Get traffic statistics for a domain on a specific date. Returns
+        # PERMISSION_DENIED if user does not have permission to access TrafficStats for
+        # the domain.
         # @param [String] name
-        #   The resource name of the traffic statistics to get.
-        #   E.g., domains/mymail.mydomain.com/trafficStats/20160807.
+        #   The resource name of the traffic statistics to get. E.g., domains/mymail.
+        #   mydomain.com/trafficStats/20160807.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -154,41 +152,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List traffic statistics for all available days.
-        # Returns PERMISSION_DENIED if user does not have permission to access
-        # TrafficStats for the domain.
+        # List traffic statistics for all available days. Returns PERMISSION_DENIED if
+        # user does not have permission to access TrafficStats for the domain.
         # @param [String] parent
-        #   The resource name of the domain whose traffic statistics we'd like to list.
-        #   It should have the form `domains/`domain_name``, where domain_name is
-        #   the fully qualified domain name.
+        #   The resource name of the domain whose traffic statistics we'd like to list. It
+        #   should have the form `domains/`domain_name``, where domain_name is the fully
+        #   qualified domain name.
         # @param [Fixnum] end_date_day
-        #   Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        #   if specifying a year by itself or a year and month where the day is not
+        #   Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+        #   specifying a year by itself or a year and month where the day is not
         #   significant.
         # @param [Fixnum] end_date_month
-        #   Month of year. Must be from 1 to 12, or 0 if specifying a year without a
-        #   month and day.
+        #   Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        #   and day.
         # @param [Fixnum] end_date_year
-        #   Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-        #   a year.
+        #   Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
         # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer TrafficStats than
-        #   requested. If unspecified, server will pick an appropriate default.
+        #   Requested page size. Server may return fewer TrafficStats than requested. If
+        #   unspecified, server will pick an appropriate default.
         # @param [String] page_token
-        #   The next_page_token value returned from a previous List request, if any.
-        #   This is the value of
-        #   ListTrafficStatsResponse.next_page_token
-        #   returned from the previous call to `ListTrafficStats` method.
+        #   The next_page_token value returned from a previous List request, if any. This
+        #   is the value of ListTrafficStatsResponse.next_page_token returned from the
+        #   previous call to `ListTrafficStats` method.
         # @param [Fixnum] start_date_day
-        #   Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        #   if specifying a year by itself or a year and month where the day is not
+        #   Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+        #   specifying a year by itself or a year and month where the day is not
         #   significant.
         # @param [Fixnum] start_date_month
-        #   Month of year. Must be from 1 to 12, or 0 if specifying a year without a
-        #   month and day.
+        #   Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        #   and day.
         # @param [Fixnum] start_date_year
-        #   Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-        #   a year.
+        #   Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

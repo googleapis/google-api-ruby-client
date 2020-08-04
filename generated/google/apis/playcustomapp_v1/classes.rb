@@ -31,8 +31,8 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # Output only. Package name of the created Android app.
-        # Only present in the API response.
+        # Output only. Package name of the created Android app. Only present in the API
+        # response.
         # Corresponds to the JSON property `packageName`
         # @return [String]
         attr_accessor :package_name

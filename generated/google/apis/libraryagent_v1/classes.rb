@@ -31,9 +31,8 @@ module Google
         # @return [String]
         attr_accessor :author
       
-        # The resource name of the book.
-        # Book names have the form `shelves/`shelf_id`/books/`book_id``.
-        # The name is ignored when creating a book.
+        # The resource name of the book. Book names have the form `shelves/`shelf_id`/
+        # books/`book_id``. The name is ignored when creating a book.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -71,11 +70,9 @@ module Google
         # @return [Array<Google::Apis::LibraryagentV1::GoogleExampleLibraryagentV1Book>]
         attr_accessor :books
       
-        # A token to retrieve next page of results.
-        # Pass this value in the
-        # ListBooksRequest.page_token
-        # field in the subsequent call to `ListBooks` method to retrieve the next
-        # page of results.
+        # A token to retrieve next page of results. Pass this value in the
+        # ListBooksRequest.page_token field in the subsequent call to `ListBooks` method
+        # to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -95,11 +92,9 @@ module Google
       class GoogleExampleLibraryagentV1ListShelvesResponse
         include Google::Apis::Core::Hashable
       
-        # A token to retrieve next page of results.
-        # Pass this value in the
-        # ListShelvesRequest.page_token
-        # field in the subsequent call to `ListShelves` method to retrieve the next
-        # page of results.
+        # A token to retrieve next page of results. Pass this value in the
+        # ListShelvesRequest.page_token field in the subsequent call to `ListShelves`
+        # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -124,9 +119,8 @@ module Google
       class GoogleExampleLibraryagentV1Shelf
         include Google::Apis::Core::Hashable
       
-        # Output only. The resource name of the shelf.
-        # Shelf names have the form `shelves/`shelf_id``.
-        # The name is ignored when creating a shelf.
+        # Output only. The resource name of the shelf. Shelf names have the form `
+        # shelves/`shelf_id``. The name is ignored when creating a shelf.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

@@ -49,9 +49,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -83,8 +82,8 @@ module Google
         
         # Gets the Hosting metadata for a specific site.
         # @param [String] name
-        #   Required. The site for which to get the SiteConfig, in the format:
-        #   <code>sites/<var>site-name</var>/config</code>
+        #   Required. The site for which to get the SiteConfig, in the format: sites/ site-
+        #   name/config
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -114,15 +113,14 @@ module Google
         
         # Sets the Hosting metadata for a specific site.
         # @param [String] name
-        #   Required. The site for which to update the SiteConfig, in the format:
-        #   <code>sites/<var>site-name</var>/config</code>
+        #   Required. The site for which to update the SiteConfig, in the format: sites/
+        #   site-name/config
         # @param [Google::Apis::FirebasehostingV1beta1::SiteConfig] site_config_object
         # @param [String] update_mask
-        #   A set of field names from your [site configuration](../sites.SiteConfig)
-        #   that you want to update.
-        #   <br>A field will be overwritten if, and only if, it's in the mask.
-        #   <br>If a mask is not provided then a default mask of only
-        #   [`max_versions`](../sites.SiteConfig.max_versions) will be used.
+        #   A set of field names from your [site configuration](../sites.SiteConfig) that
+        #   you want to update. A field will be overwritten if, and only if, it's in the
+        #   mask. If a mask is not provided then a default mask of only [`max_versions`](..
+        #   /sites.SiteConfig.max_versions) will be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -156,17 +154,14 @@ module Google
         # Creates a new release which makes the content of the specified version
         # actively display on the appropriate URL(s).
         # @param [String] parent
-        #   Required. The site that the release belongs to, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The site that the release belongs to, in the format: sites/ site-
+        #   name
         # @param [Google::Apis::FirebasehostingV1beta1::Release] release_object
         # @param [String] version_name
-        #   The unique identifier for a version, in the format:
-        #   <code>/sites/<var>site-name</var>/versions/<var>versionID</var></code>
-        #   The <var>site-name</var> in this version identifier must match the
-        #   <var>site-name</var> in the `parent` parameter.
-        #   <br>
-        #   <br>This query parameter must be empty if the `type` field in the
-        #   request body is `SITE_DISABLE`.
+        #   The unique identifier for a version, in the format: /sites/site-name /versions/
+        #   versionID The site-name in this version identifier must match the site-name in
+        #   the `parent` parameter. This query parameter must be empty if the `type` field
+        #   in the request body is `SITE_DISABLE`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -199,8 +194,7 @@ module Google
         
         # Lists the releases that have been created on the specified site.
         # @param [String] parent
-        #   Required. The parent for which to list files, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The parent for which to list files, in the format: sites/site-name
         # @param [Fixnum] page_size
         #   The page size to return. Defaults to 100.
         # @param [String] page_token
@@ -237,7 +231,7 @@ module Google
         # Creates a domain mapping on the specified site.
         # @param [String] parent
         #   Required. The parent to create the domain association for, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   sites/site-name
         # @param [Google::Apis::FirebasehostingV1beta1::Domain] domain_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -330,8 +324,8 @@ module Google
         
         # Lists the domains for the specified site.
         # @param [String] parent
-        #   Required. The parent for which to list domains, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The parent for which to list domains, in the format: sites/ site-
+        #   name
         # @param [Fixnum] page_size
         #   The page size to return. Defaults to 50.
         # @param [String] page_token
@@ -365,8 +359,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified domain mapping, creating the mapping as if it does
-        # not exist.
+        # Updates the specified domain mapping, creating the mapping as if it does not
+        # exist.
         # @param [String] name
         #   Required. The name of the domain association to update or create, if an
         #   association doesn't already exist.
@@ -403,17 +397,14 @@ module Google
         # Creates a new release which makes the content of the specified version
         # actively display on the appropriate URL(s).
         # @param [String] parent
-        #   Required. The site that the release belongs to, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The site that the release belongs to, in the format: sites/ site-
+        #   name
         # @param [Google::Apis::FirebasehostingV1beta1::Release] release_object
         # @param [String] version_name
-        #   The unique identifier for a version, in the format:
-        #   <code>/sites/<var>site-name</var>/versions/<var>versionID</var></code>
-        #   The <var>site-name</var> in this version identifier must match the
-        #   <var>site-name</var> in the `parent` parameter.
-        #   <br>
-        #   <br>This query parameter must be empty if the `type` field in the
-        #   request body is `SITE_DISABLE`.
+        #   The unique identifier for a version, in the format: /sites/site-name /versions/
+        #   versionID The site-name in this version identifier must match the site-name in
+        #   the `parent` parameter. This query parameter must be empty if the `type` field
+        #   in the request body is `SITE_DISABLE`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -446,8 +437,7 @@ module Google
         
         # Lists the releases that have been created on the specified site.
         # @param [String] parent
-        #   Required. The parent for which to list files, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The parent for which to list files, in the format: sites/site-name
         # @param [Fixnum] page_size
         #   The page size to return. Defaults to 100.
         # @param [String] page_token
@@ -483,8 +473,8 @@ module Google
         
         # Creates a new version for a site.
         # @param [String] parent
-        #   Required. The parent to create the version for, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The parent to create the version for, in the format: sites/ site-
+        #   name
         # @param [Google::Apis::FirebasehostingV1beta1::Version] version_object
         # @param [Fixnum] size_bytes
         #   The self-reported size of the version. This value is used for a pre-emptive
@@ -525,8 +515,8 @@ module Google
         
         # Deletes the specified version.
         # @param [String] name
-        #   Required. The name of the version to be deleted, in the format:
-        #   <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+        #   Required. The name of the version to be deleted, in the format: sites/ site-
+        #   name/versions/versionID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -554,21 +544,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the versions that have been created on the specified site.
-        # Will include filtering in the future.
+        # Lists the versions that have been created on the specified site. Will include
+        # filtering in the future.
         # @param [String] parent
-        #   Required. The parent for which to list files, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The parent for which to list files, in the format: sites/site-name
         # @param [String] filter
         #   The filter string used to return a subset of versions in the response.
-        #   Currently supported fields for filtering are: name, status,
-        #   and create_time. Filter processing will be implemented in accordance
-        #   with go/filtering.
+        #   Currently supported fields for filtering are: name, status, and create_time.
+        #   Filter processing will be implemented in accordance with go/filtering.
         # @param [Fixnum] page_size
         #   The maximum number of versions to return. The service may return fewer than
-        #   this value.
-        #   If unspecified, at most 25 versions will be returned.
-        #   The maximum value is 100; values above 100 will be coerced to 100
+        #   this value. If unspecified, at most 25 versions will be returned. The maximum
+        #   value is 100; values above 100 will be coerced to 100
         # @param [String] page_token
         #   The next_page_token from a previous request, if provided.
         # @param [String] fields
@@ -601,24 +588,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified metadata for a version. Note that this method will
-        # fail with `FAILED_PRECONDITION` in the event of an invalid state
-        # transition. The only valid transition for a version is currently from a
-        # `CREATED` status to a `FINALIZED` status.
-        # Use [`DeleteVersion`](../sites.versions/delete) to set the status of a
-        # version to `DELETED`.
+        # Updates the specified metadata for a version. Note that this method will fail
+        # with `FAILED_PRECONDITION` in the event of an invalid state transition. The
+        # only valid transition for a version is currently from a `CREATED` status to a `
+        # FINALIZED` status. Use [`DeleteVersion`](../sites.versions/delete) to set the
+        # status of a version to `DELETED`.
         # @param [String] name
-        #   The unique identifier for a version, in the format:
-        #   <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
-        #   This name is provided in the response body when you call the
-        #   [`CreateVersion`](../sites.versions/create) endpoint.
+        #   The unique identifier for a version, in the format: sites/site-name /versions/
+        #   versionID This name is provided in the response body when you call the [`
+        #   CreateVersion`](../sites.versions/create) endpoint.
         # @param [Google::Apis::FirebasehostingV1beta1::Version] version_object
         # @param [String] update_mask
-        #   A set of field names from your [version](../sites.versions) that you want
-        #   to update.
-        #   <br>A field will be overwritten if, and only if, it's in the mask.
-        #   <br>If a mask is not provided then a default mask of only
-        #   [`status`](../sites.versions#Version.FIELDS.status) will be used.
+        #   A set of field names from your [version](../sites.versions) that you want to
+        #   update. A field will be overwritten if, and only if, it's in the mask. If a
+        #   mask is not provided then a default mask of only [`status`](../sites.versions#
+        #   Version.FIELDS.status) will be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -649,11 +633,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds content files to a version.
-        # Each file must be under 2 GB.
+        # Adds content files to a version. Each file must be under 2 GB.
         # @param [String] parent
-        #   Required. The version to add files to, in the format:
-        #   <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+        #   Required. The version to add files to, in the format: sites/site-name /
+        #   versions/versionID
         # @param [Google::Apis::FirebasehostingV1beta1::PopulateVersionFilesRequest] populate_version_files_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -686,8 +669,8 @@ module Google
         
         # Lists the remaining files to be uploaded for the specified version.
         # @param [String] parent
-        #   Required. The parent to list files for, in the format:
-        #   <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+        #   Required. The parent to list files for, in the format: sites/site-name /
+        #   versions/versionID
         # @param [Fixnum] page_size
         #   The page size to return. Defaults to 1000.
         # @param [String] page_token
@@ -727,8 +710,8 @@ module Google
         
         # Gets the Hosting metadata for a specific site.
         # @param [String] name
-        #   Required. The site for which to get the SiteConfig, in the format:
-        #   <code>sites/<var>site-name</var>/config</code>
+        #   Required. The site for which to get the SiteConfig, in the format: sites/ site-
+        #   name/config
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -758,15 +741,14 @@ module Google
         
         # Sets the Hosting metadata for a specific site.
         # @param [String] name
-        #   Required. The site for which to update the SiteConfig, in the format:
-        #   <code>sites/<var>site-name</var>/config</code>
+        #   Required. The site for which to update the SiteConfig, in the format: sites/
+        #   site-name/config
         # @param [Google::Apis::FirebasehostingV1beta1::SiteConfig] site_config_object
         # @param [String] update_mask
-        #   A set of field names from your [site configuration](../sites.SiteConfig)
-        #   that you want to update.
-        #   <br>A field will be overwritten if, and only if, it's in the mask.
-        #   <br>If a mask is not provided then a default mask of only
-        #   [`max_versions`](../sites.SiteConfig.max_versions) will be used.
+        #   A set of field names from your [site configuration](../sites.SiteConfig) that
+        #   you want to update. A field will be overwritten if, and only if, it's in the
+        #   mask. If a mask is not provided then a default mask of only [`max_versions`](..
+        #   /sites.SiteConfig.max_versions) will be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -800,17 +782,14 @@ module Google
         # Creates a new release which makes the content of the specified version
         # actively display on the appropriate URL(s).
         # @param [String] parent
-        #   Required. The site that the release belongs to, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The site that the release belongs to, in the format: sites/ site-
+        #   name
         # @param [Google::Apis::FirebasehostingV1beta1::Release] release_object
         # @param [String] version_name
-        #   The unique identifier for a version, in the format:
-        #   <code>/sites/<var>site-name</var>/versions/<var>versionID</var></code>
-        #   The <var>site-name</var> in this version identifier must match the
-        #   <var>site-name</var> in the `parent` parameter.
-        #   <br>
-        #   <br>This query parameter must be empty if the `type` field in the
-        #   request body is `SITE_DISABLE`.
+        #   The unique identifier for a version, in the format: /sites/site-name /versions/
+        #   versionID The site-name in this version identifier must match the site-name in
+        #   the `parent` parameter. This query parameter must be empty if the `type` field
+        #   in the request body is `SITE_DISABLE`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -843,8 +822,7 @@ module Google
         
         # Lists the releases that have been created on the specified site.
         # @param [String] parent
-        #   Required. The parent for which to list files, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The parent for which to list files, in the format: sites/site-name
         # @param [Fixnum] page_size
         #   The page size to return. Defaults to 100.
         # @param [String] page_token
@@ -881,7 +859,7 @@ module Google
         # Creates a domain mapping on the specified site.
         # @param [String] parent
         #   Required. The parent to create the domain association for, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   sites/site-name
         # @param [Google::Apis::FirebasehostingV1beta1::Domain] domain_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -974,8 +952,8 @@ module Google
         
         # Lists the domains for the specified site.
         # @param [String] parent
-        #   Required. The parent for which to list domains, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The parent for which to list domains, in the format: sites/ site-
+        #   name
         # @param [Fixnum] page_size
         #   The page size to return. Defaults to 50.
         # @param [String] page_token
@@ -1009,8 +987,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified domain mapping, creating the mapping as if it does
-        # not exist.
+        # Updates the specified domain mapping, creating the mapping as if it does not
+        # exist.
         # @param [String] name
         #   Required. The name of the domain association to update or create, if an
         #   association doesn't already exist.
@@ -1047,17 +1025,14 @@ module Google
         # Creates a new release which makes the content of the specified version
         # actively display on the appropriate URL(s).
         # @param [String] parent
-        #   Required. The site that the release belongs to, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The site that the release belongs to, in the format: sites/ site-
+        #   name
         # @param [Google::Apis::FirebasehostingV1beta1::Release] release_object
         # @param [String] version_name
-        #   The unique identifier for a version, in the format:
-        #   <code>/sites/<var>site-name</var>/versions/<var>versionID</var></code>
-        #   The <var>site-name</var> in this version identifier must match the
-        #   <var>site-name</var> in the `parent` parameter.
-        #   <br>
-        #   <br>This query parameter must be empty if the `type` field in the
-        #   request body is `SITE_DISABLE`.
+        #   The unique identifier for a version, in the format: /sites/site-name /versions/
+        #   versionID The site-name in this version identifier must match the site-name in
+        #   the `parent` parameter. This query parameter must be empty if the `type` field
+        #   in the request body is `SITE_DISABLE`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1090,8 +1065,7 @@ module Google
         
         # Lists the releases that have been created on the specified site.
         # @param [String] parent
-        #   Required. The parent for which to list files, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The parent for which to list files, in the format: sites/site-name
         # @param [Fixnum] page_size
         #   The page size to return. Defaults to 100.
         # @param [String] page_token
@@ -1127,8 +1101,8 @@ module Google
         
         # Creates a new version for a site.
         # @param [String] parent
-        #   Required. The parent to create the version for, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The parent to create the version for, in the format: sites/ site-
+        #   name
         # @param [Google::Apis::FirebasehostingV1beta1::Version] version_object
         # @param [Fixnum] size_bytes
         #   The self-reported size of the version. This value is used for a pre-emptive
@@ -1169,8 +1143,8 @@ module Google
         
         # Deletes the specified version.
         # @param [String] name
-        #   Required. The name of the version to be deleted, in the format:
-        #   <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+        #   Required. The name of the version to be deleted, in the format: sites/ site-
+        #   name/versions/versionID
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1198,21 +1172,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the versions that have been created on the specified site.
-        # Will include filtering in the future.
+        # Lists the versions that have been created on the specified site. Will include
+        # filtering in the future.
         # @param [String] parent
-        #   Required. The parent for which to list files, in the format:
-        #   <code>sites/<var>site-name</var></code>
+        #   Required. The parent for which to list files, in the format: sites/site-name
         # @param [String] filter
         #   The filter string used to return a subset of versions in the response.
-        #   Currently supported fields for filtering are: name, status,
-        #   and create_time. Filter processing will be implemented in accordance
-        #   with go/filtering.
+        #   Currently supported fields for filtering are: name, status, and create_time.
+        #   Filter processing will be implemented in accordance with go/filtering.
         # @param [Fixnum] page_size
         #   The maximum number of versions to return. The service may return fewer than
-        #   this value.
-        #   If unspecified, at most 25 versions will be returned.
-        #   The maximum value is 100; values above 100 will be coerced to 100
+        #   this value. If unspecified, at most 25 versions will be returned. The maximum
+        #   value is 100; values above 100 will be coerced to 100
         # @param [String] page_token
         #   The next_page_token from a previous request, if provided.
         # @param [String] fields
@@ -1245,24 +1216,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified metadata for a version. Note that this method will
-        # fail with `FAILED_PRECONDITION` in the event of an invalid state
-        # transition. The only valid transition for a version is currently from a
-        # `CREATED` status to a `FINALIZED` status.
-        # Use [`DeleteVersion`](../sites.versions/delete) to set the status of a
-        # version to `DELETED`.
+        # Updates the specified metadata for a version. Note that this method will fail
+        # with `FAILED_PRECONDITION` in the event of an invalid state transition. The
+        # only valid transition for a version is currently from a `CREATED` status to a `
+        # FINALIZED` status. Use [`DeleteVersion`](../sites.versions/delete) to set the
+        # status of a version to `DELETED`.
         # @param [String] name
-        #   The unique identifier for a version, in the format:
-        #   <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
-        #   This name is provided in the response body when you call the
-        #   [`CreateVersion`](../sites.versions/create) endpoint.
+        #   The unique identifier for a version, in the format: sites/site-name /versions/
+        #   versionID This name is provided in the response body when you call the [`
+        #   CreateVersion`](../sites.versions/create) endpoint.
         # @param [Google::Apis::FirebasehostingV1beta1::Version] version_object
         # @param [String] update_mask
-        #   A set of field names from your [version](../sites.versions) that you want
-        #   to update.
-        #   <br>A field will be overwritten if, and only if, it's in the mask.
-        #   <br>If a mask is not provided then a default mask of only
-        #   [`status`](../sites.versions#Version.FIELDS.status) will be used.
+        #   A set of field names from your [version](../sites.versions) that you want to
+        #   update. A field will be overwritten if, and only if, it's in the mask. If a
+        #   mask is not provided then a default mask of only [`status`](../sites.versions#
+        #   Version.FIELDS.status) will be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1293,11 +1261,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds content files to a version.
-        # Each file must be under 2 GB.
+        # Adds content files to a version. Each file must be under 2 GB.
         # @param [String] parent
-        #   Required. The version to add files to, in the format:
-        #   <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+        #   Required. The version to add files to, in the format: sites/site-name /
+        #   versions/versionID
         # @param [Google::Apis::FirebasehostingV1beta1::PopulateVersionFilesRequest] populate_version_files_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1330,8 +1297,8 @@ module Google
         
         # Lists the remaining files to be uploaded for the specified version.
         # @param [String] parent
-        #   Required. The parent to list files for, in the format:
-        #   <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+        #   Required. The parent to list files for, in the format: sites/site-name /
+        #   versions/versionID
         # @param [Fixnum] page_size
         #   The page size to return. Defaults to 1000.
         # @param [String] page_token

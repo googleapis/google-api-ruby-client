@@ -82,15 +82,15 @@ module Google
       class AccessPolicy
         include Google::Apis::Core::Hashable
       
-        # The value of <code>allowed</code> indicates whether the access to the
-        # policy is allowed or denied by default.
+        # The value of allowed indicates whether the access to the policy is allowed or
+        # denied by default.
         # Corresponds to the JSON property `allowed`
         # @return [Boolean]
         attr_accessor :allowed
         alias_method :allowed?, :allowed
       
-        # A list of region codes that identify countries where the default policy do
-        # not apply.
+        # A list of region codes that identify countries where the default policy do not
+        # apply.
         # Corresponds to the JSON property `exception`
         # @return [Array<String>]
         attr_accessor :exception
@@ -106,14 +106,13 @@ module Google
         end
       end
       
-      # An <code><strong>activity</strong></code> resource contains
-      # information about an action that a particular channel, or user, has
-      # taken on YouTube.The actions reported in activity feeds include rating
-      # a video, sharing a video, marking a video as a favorite, commenting on
-      # a video, uploading a video, and so forth. Each <code>activity</code>
-      # resource identifies the type of action, the channel associated with
-      # the action, and the resource(s) associated with the action, such as
-      # the video that was rated or uploaded.
+      # An *activity* resource contains information about an action that a particular
+      # channel, or user, has taken on YouTube.The actions reported in activity feeds
+      # include rating a video, sharing a video, marking a video as a favorite,
+      # commenting on a video, uploading a video, and so forth. Each activity resource
+      # identifies the type of action, the channel associated with the action, and the
+      # resource(s) associated with the action, such as the video that was rated or
+      # uploaded.
       class Activity
         include Google::Apis::Core::Hashable
       
@@ -133,15 +132,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#activity"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # activity".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
         # Basic details about an activity, including title, description, thumbnails,
-        # activity type and group.
-        # Next ID: 12
+        # activity type and group. Next ID: 12
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::ActivitySnippet]
         attr_accessor :snippet
@@ -375,8 +373,8 @@ module Google
         # @return [String]
         attr_accessor :ad_tag
       
-        # The URL the client should ping to indicate that the user clicked through
-        # on this promoted item.
+        # The URL the client should ping to indicate that the user clicked through on
+        # this promoted item.
         # Corresponds to the JSON property `clickTrackingUrl`
         # @return [String]
         attr_accessor :click_tracking_url
@@ -387,14 +385,14 @@ module Google
         # @return [String]
         attr_accessor :creative_view_url
       
-        # The type of call-to-action, a message to the user indicating action that
-        # can be taken.
+        # The type of call-to-action, a message to the user indicating action that can
+        # be taken.
         # Corresponds to the JSON property `ctaType`
         # @return [String]
         attr_accessor :cta_type
       
-        # The custom call-to-action button text. If specified, it will override
-        # the default button text for the cta_type.
+        # The custom call-to-action button text. If specified, it will override the
+        # default button text for the cta_type.
         # Corresponds to the JSON property `customCtaButtonText`
         # @return [String]
         attr_accessor :custom_cta_button_text
@@ -404,15 +402,15 @@ module Google
         # @return [String]
         attr_accessor :description_text
       
-        # The URL the client should direct the user to, if the user chooses to
-        # visit the advertiser's website.
+        # The URL the client should direct the user to, if the user chooses to visit the
+        # advertiser's website.
         # Corresponds to the JSON property `destinationUrl`
         # @return [String]
         attr_accessor :destination_url
       
-        # The list of forecasting URLs. The client should ping all of these URLs
-        # when a promoted item is not available, to indicate that a promoted item
-        # could have been shown.
+        # The list of forecasting URLs. The client should ping all of these URLs when a
+        # promoted item is not available, to indicate that a promoted item could have
+        # been shown.
         # Corresponds to the JSON property `forecastingUrl`
         # @return [Array<String>]
         attr_accessor :forecasting_url
@@ -578,14 +576,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::Activity>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#activityListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # activityListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -596,8 +594,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `prevPageToken`
         # @return [String]
         attr_accessor :prev_page_token
@@ -607,7 +605,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -631,13 +629,12 @@ module Google
       end
       
       # Basic details about an activity, including title, description, thumbnails,
-      # activity type and group.
-      # Next ID: 12
+      # activity type and group. Next ID: 12
       class ActivitySnippet
         include Google::Apis::Core::Hashable
       
-        # The ID that YouTube uses to uniquely identify the channel associated
-        # with the activity.
+        # The ID that YouTube uses to uniquely identify the channel associated with the
+        # activity.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
@@ -647,25 +644,24 @@ module Google
         # @return [String]
         attr_accessor :channel_title
       
-        # The description of the resource primarily associated with the activity.
-        # @mutable youtube.activities.insert
+        # The description of the resource primarily associated with the activity. @
+        # mutable youtube.activities.insert
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The group ID associated with the activity. A group ID identifies user
-        # events that are associated with the same user and resource. For example,
-        # if a user rates a video and marks the same video as a favorite, the
-        # entries for those events would have the same group ID in the user's
-        # activity feed. In your user interface, you can avoid repetition by
-        # grouping events with the same <code>groupId</code> value.
+        # The group ID associated with the activity. A group ID identifies user events
+        # that are associated with the same user and resource. For example, if a user
+        # rates a video and marks the same video as a favorite, the entries for those
+        # events would have the same group ID in the user's activity feed. In your user
+        # interface, you can avoid repetition by grouping events with the same groupId
+        # value.
         # Corresponds to the JSON property `groupId`
         # @return [String]
         attr_accessor :group_id
       
-        # The date and time that the video was uploaded. The value is specified
-        # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # The date and time that the video was uploaded. The value is specified in ISO
+        # 8601 format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -702,9 +698,8 @@ module Google
         end
       end
       
-      # A <code><strong>caption</strong></code> resource represents a YouTube
-      # caption track. A caption track is associated with exactly one YouTube
-      # video.
+      # A *caption* resource represents a YouTube caption track. A caption track is
+      # associated with exactly one YouTube video.
       class Caption
         include Google::Apis::Core::Hashable
       
@@ -718,8 +713,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#caption"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # caption".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -761,13 +756,13 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::Caption>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#captionListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # captionListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -795,74 +790,66 @@ module Google
         # @return [String]
         attr_accessor :audio_track_type
       
-        # The reason that YouTube failed to process the caption track. This
-        # property is only present if the <code><a href="#state">state</a></code>
-        # property's value is <code>failed</code>.
+        # The reason that YouTube failed to process the caption track. This property is
+        # only present if the state property's value is failed.
         # Corresponds to the JSON property `failureReason`
         # @return [String]
         attr_accessor :failure_reason
       
-        # Indicates whether YouTube synchronized the caption track to the audio
-        # track in the video. The value will be <code>true</code> if a sync was
-        # explicitly requested when the caption track was uploaded. For example,
-        # when calling the <code>captions.insert</code> or
-        # <code>captions.update</code> methods, you can set the <code>sync</code>
-        # parameter to <code>true</code> to instruct YouTube to sync the uploaded
-        # track to the video. If the value is <code>false</code>, YouTube uses
-        # the time codes in the uploaded caption track to determine when to display
-        # captions.
+        # Indicates whether YouTube synchronized the caption track to the audio track in
+        # the video. The value will be true if a sync was explicitly requested when the
+        # caption track was uploaded. For example, when calling the captions.insert or
+        # captions.update methods, you can set the sync parameter to true to instruct
+        # YouTube to sync the uploaded track to the video. If the value is false,
+        # YouTube uses the time codes in the uploaded caption track to determine when to
+        # display captions.
         # Corresponds to the JSON property `isAutoSynced`
         # @return [Boolean]
         attr_accessor :is_auto_synced
         alias_method :is_auto_synced?, :is_auto_synced
       
-        # Indicates whether the track contains closed captions for the deaf
-        # and hard of hearing. The default value is <code>false</code>.
+        # Indicates whether the track contains closed captions for the deaf and hard of
+        # hearing. The default value is false.
         # Corresponds to the JSON property `isCC`
         # @return [Boolean]
         attr_accessor :is_cc
         alias_method :is_cc?, :is_cc
       
-        # Indicates whether the caption track is a draft. If the value is
-        # <code>true</code>, then the track is not publicly visible.
-        # The default value is <code>false</code>.
-        # @mutable youtube.captions.insert youtube.captions.update
+        # Indicates whether the caption track is a draft. If the value is true, then the
+        # track is not publicly visible. The default value is false. @mutable youtube.
+        # captions.insert youtube.captions.update
         # Corresponds to the JSON property `isDraft`
         # @return [Boolean]
         attr_accessor :is_draft
         alias_method :is_draft?, :is_draft
       
-        # Indicates whether caption track is formatted for "easy reader,"
-        # meaning it is at a third-grade level for language learners.
-        # The default value is <code>false</code>.
+        # Indicates whether caption track is formatted for "easy reader," meaning it is
+        # at a third-grade level for language learners. The default value is false.
         # Corresponds to the JSON property `isEasyReader`
         # @return [Boolean]
         attr_accessor :is_easy_reader
         alias_method :is_easy_reader?, :is_easy_reader
       
-        # Indicates whether the caption track uses large text for the
-        # vision-impaired. The default value is <code>false</code>.
+        # Indicates whether the caption track uses large text for the vision-impaired.
+        # The default value is false.
         # Corresponds to the JSON property `isLarge`
         # @return [Boolean]
         attr_accessor :is_large
         alias_method :is_large?, :is_large
       
-        # The language of the caption track. The property value is a
-        # <a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP-47</a>
-        # language tag.
+        # The language of the caption track. The property value is a BCP-47 language tag.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
       
         # The date and time when the caption track was last updated. The value is
-        # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # specified in ISO 8601 format.
         # Corresponds to the JSON property `lastUpdated`
         # @return [String]
         attr_accessor :last_updated
       
-        # The name of the caption track. The name is intended to be visible
-        # to the user as an option during playback.
+        # The name of the caption track. The name is intended to be visible to the user
+        # as an option during playback.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -877,9 +864,8 @@ module Google
         # @return [String]
         attr_accessor :track_kind
       
-        # The ID that YouTube uses to uniquely identify the video associated
-        # with the caption track.
-        # @mutable youtube.captions.insert
+        # The ID that YouTube uses to uniquely identify the video associated with the
+        # caption track. @mutable youtube.captions.insert
         # Corresponds to the JSON property `videoId`
         # @return [String]
         attr_accessor :video_id
@@ -910,7 +896,7 @@ module Google
       class CdnSettings
         include Google::Apis::Core::Hashable
       
-        # The format of the video stream that you are sending to Youtube. <br><br>
+        # The format of the video stream that you are sending to Youtube.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
@@ -949,13 +935,12 @@ module Google
         end
       end
       
-      # A <code><strong>channel</strong></code> resource contains
-      # information about a YouTube channel.
+      # A *channel* resource contains information about a YouTube channel.
       class Channel
         include Google::Apis::Core::Hashable
       
-        # The <code>auditDetails</code> object encapsulates channel data that is
-        # relevant for YouTube Partners during the audit process.
+        # The auditDetails object encapsulates channel data that is relevant for YouTube
+        # Partners during the audit process.
         # Corresponds to the JSON property `auditDetails`
         # @return [Google::Apis::YoutubeV3::ChannelAuditDetails]
         attr_accessor :audit_details
@@ -970,14 +955,14 @@ module Google
         # @return [Google::Apis::YoutubeV3::ChannelContentDetails]
         attr_accessor :content_details
       
-        # The <code>contentOwnerDetails</code> object encapsulates channel data that
-        # is relevant for YouTube Partners linked with the channel.
+        # The contentOwnerDetails object encapsulates channel data that is relevant for
+        # YouTube Partners linked with the channel.
         # Corresponds to the JSON property `contentOwnerDetails`
         # @return [Google::Apis::YoutubeV3::ChannelContentOwnerDetails]
         attr_accessor :content_owner_details
       
-        # The <code>conversionPings</code> object encapsulates information about
-        # conversion pings that need to be respected by the channel.
+        # The conversionPings object encapsulates information about conversion pings
+        # that need to be respected by the channel.
         # Corresponds to the JSON property `conversionPings`
         # @return [Google::Apis::YoutubeV3::ChannelConversionPings]
         attr_accessor :conversion_pings
@@ -992,14 +977,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Describes an invideo promotion campaign consisting of multiple promoted
-        # items. A campaign belongs to a single channel_id.
+        # Describes an invideo promotion campaign consisting of multiple promoted items.
+        # A campaign belongs to a single channel_id.
         # Corresponds to the JSON property `invideoPromotion`
         # @return [Google::Apis::YoutubeV3::InvideoPromotion]
         attr_accessor :invideo_promotion
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#channel"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # channel".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1053,8 +1038,8 @@ module Google
         end
       end
       
-      # The <code>auditDetails</code> object encapsulates channel data that is
-      # relevant for YouTube Partners during the audit process.
+      # The auditDetails object encapsulates channel data that is relevant for YouTube
+      # Partners during the audit process.
       class ChannelAuditDetails
         include Google::Apis::Core::Hashable
       
@@ -1097,8 +1082,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#channelBannerResource"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # channelBannerResource".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1161,14 +1146,12 @@ module Google
       class ChannelCard
         include Google::Apis::Core::Hashable
       
-        # External channel ID.
-        # Required.
+        # External channel ID. Required.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
       
-        # Each card can have a custom message.
-        # Required.
+        # Each card can have a custom message. Required.
         # Corresponds to the JSON property `customMessage`
         # @return [String]
         attr_accessor :custom_message
@@ -1206,51 +1189,37 @@ module Google
         class RelatedPlaylists
           include Google::Apis::Core::Hashable
         
-          # The ID of the playlist that contains the channel"s favorite videos. Use
-          # the <code> <a
-          # href="/youtube/v3/docs/playlistItems/insert">playlistItems.insert</a></code>
-          # and <code> <a
-          # href="/youtube/v3/docs/playlistItems/delete">playlistItems.delete</a></code>
-          # to add or remove items from that list.
+          # The ID of the playlist that contains the channel"s favorite videos. Use the
+          # playlistItems.insert and playlistItems.delete to add or remove items from that
+          # list.
           # Corresponds to the JSON property `favorites`
           # @return [String]
           attr_accessor :favorites
         
           # The ID of the playlist that contains the channel"s liked videos. Use the
-          # <code> <a href="/youtube/v3/docs/playlistItems/insert">
-          # playlistItems.insert</a></code> and <code> <a
-          # href="/youtube/v3/docs/playlistItems/delete">playlistItems.delete</a></code>
-          # to add or remove items from that list.
+          # playlistItems.insert and playlistItems.delete to add or remove items from that
+          # list.
           # Corresponds to the JSON property `likes`
           # @return [String]
           attr_accessor :likes
         
-          # The ID of the playlist that contains the channel"s uploaded videos. Use
-          # the <code> <a
-          # href="/youtube/v3/docs/videos/insert">videos.insert</a></code> method to
-          # upload new videos and the <code><a
-          # href="/youtube/v3/docs/videos/delete">videos.delete</a></code> method to
+          # The ID of the playlist that contains the channel"s uploaded videos. Use the
+          # videos.insert method to upload new videos and the videos.delete method to
           # delete previously uploaded videos.
           # Corresponds to the JSON property `uploads`
           # @return [String]
           attr_accessor :uploads
         
           # The ID of the playlist that contains the channel"s watch history. Use the
-          # <code> <a
-          # href="/youtube/v3/docs/playlistItems/insert">playlistItems.insert</a></code>
-          # and <code> <a
-          # href="/youtube/v3/docs/playlistItems/delete">playlistItems.delete</a></code>
-          # to add or remove items from that list.
+          # playlistItems.insert and playlistItems.delete to add or remove items from that
+          # list.
           # Corresponds to the JSON property `watchHistory`
           # @return [String]
           attr_accessor :watch_history
         
-          # The ID of the playlist that contains the channel"s watch later playlist.
-          # Use the <code><a
-          # href="/youtube/v3/docs/playlistItems/insert">playlistItems.insert</a></code>
-          # and <code> <a
-          # href="/youtube/v3/docs/playlistItems/delete">playlistItems.delete</a></code>
-          # to add or remove items from that list.
+          # The ID of the playlist that contains the channel"s watch later playlist. Use
+          # the playlistItems.insert and playlistItems.delete to add or remove items from
+          # that list.
           # Corresponds to the JSON property `watchLater`
           # @return [String]
           attr_accessor :watch_later
@@ -1270,8 +1239,8 @@ module Google
         end
       end
       
-      # The <code>contentOwnerDetails</code> object encapsulates channel data that
-      # is relevant for YouTube Partners linked with the channel.
+      # The contentOwnerDetails object encapsulates channel data that is relevant for
+      # YouTube Partners linked with the channel.
       class ChannelContentOwnerDetails
         include Google::Apis::Core::Hashable
       
@@ -1280,10 +1249,8 @@ module Google
         # @return [String]
         attr_accessor :content_owner
       
-        # The date and time of when the channel was linked to the content owner.
-        # The value is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO
-        # 8601</a>
-        # format.
+        # The date and time of when the channel was linked to the content owner. The
+        # value is specified in ISO 8601 format.
         # Corresponds to the JSON property `timeLinked`
         # @return [String]
         attr_accessor :time_linked
@@ -1310,13 +1277,12 @@ module Google
         # @return [String]
         attr_accessor :context
       
-        # The url (without the schema) that the player shall send the ping to.
-        # It's at caller's descretion to decide which schema to use (http vs https)
-        # Example of a returned url: //googleads.g.doubleclick.net/pagead/
-        # viewthroughconversion/962985656/?data=path%3DtHe_path%3Btype%3D
-        # cview%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA&labe=default
-        # The caller must append biscotti authentication (ms param in case of
-        # mobile, for example) to this ping.
+        # The url (without the schema) that the player shall send the ping to. It's at
+        # caller's descretion to decide which schema to use (http vs https) Example of a
+        # returned url: //googleads.g.doubleclick.net/pagead/ viewthroughconversion/
+        # 962985656/?data=path%3DtHe_path%3Btype%3D cview%3Butuid%
+        # 3DGISQtTNGYqaYl4sKxoVvKA&labe=default The caller must append biscotti
+        # authentication (ms param in case of mobile, for example) to this ping.
         # Corresponds to the JSON property `conversionUrl`
         # @return [String]
         attr_accessor :conversion_url
@@ -1332,14 +1298,14 @@ module Google
         end
       end
       
-      # The <code>conversionPings</code> object encapsulates information about
-      # conversion pings that need to be respected by the channel.
+      # The conversionPings object encapsulates information about conversion pings
+      # that need to be respected by the channel.
       class ChannelConversionPings
         include Google::Apis::Core::Hashable
       
         # Pings that the app shall fire (authenticated by biscotti cookie). Each ping
-        # has a context, in which the app must fire the ping, and a url identifying
-        # the ping.
+        # has a context, in which the app must fire the ping, and a url identifying the
+        # ping.
         # Corresponds to the JSON property `pings`
         # @return [Array<Google::Apis::YoutubeV3::ChannelConversionPing>]
         attr_accessor :pings
@@ -1373,14 +1339,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::Channel>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#channelListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # channelListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1391,8 +1357,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `prevPageToken`
         # @return [String]
         attr_accessor :prev_page_token
@@ -1402,7 +1368,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -1506,8 +1472,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#channelSection"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # channelSection".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1588,13 +1554,13 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::ChannelSection>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#channelSectionListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # channelSectionListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -1636,8 +1602,8 @@ module Google
       class ChannelSectionSnippet
         include Google::Apis::Core::Hashable
       
-        # The ID that YouTube uses to uniquely identify the channel that published
-        # the channel section.
+        # The ID that YouTube uses to uniquely identify the channel that published the
+        # channel section.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
@@ -1758,8 +1724,8 @@ module Google
         # @return [String]
         attr_accessor :keywords
       
-        # Whether user-submitted comments left on the channel page need to be
-        # approved by the channel owner to be publicly visible.
+        # Whether user-submitted comments left on the channel page need to be approved
+        # by the channel owner to be publicly visible.
         # Corresponds to the JSON property `moderateComments`
         # @return [Boolean]
         attr_accessor :moderate_comments
@@ -1850,9 +1816,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::ChannelLocalization]
         attr_accessor :localized
       
-        # The date and time that the channel was created. The value is specified in
-        # < a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # The date and time that the channel was created. The value is specified in < a
+        # href="//www.w3.org/TR/NOTE-datetime">ISO 8601 format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -1933,15 +1898,15 @@ module Google
       class ChannelStatus
         include Google::Apis::Core::Hashable
       
-        # If true, then the user is linked to either a YouTube username or G+
-        # account. Otherwise, the user doesn't have a public YouTube identity.
+        # If true, then the user is linked to either a YouTube username or G+ account.
+        # Otherwise, the user doesn't have a public YouTube identity.
         # Corresponds to the JSON property `isLinked`
         # @return [Boolean]
         attr_accessor :is_linked
         alias_method :is_linked?, :is_linked
       
-        # The long uploads status of this channel. See
-        # https://support.google.com/youtube/answer/71673 for more information.
+        # The long uploads status of this channel. See https://support.google.com/
+        # youtube/answer/71673 for more information.
         # Corresponds to the JSON property `longUploadsStatus`
         # @return [String]
         attr_accessor :long_uploads_status
@@ -2013,8 +1978,7 @@ module Google
         attr_accessor :topic_categories
       
         # A list of Freebase topic IDs associated with the channel. You can retrieve
-        # information about each topic using the <a
-        # href="http://wiki.freebase.com/wiki/Topic_API">Freebase Topic API</a>.
+        # information about each topic using the Freebase Topic API.
         # Corresponds to the JSON property `topicIds`
         # @return [Array<String>]
         attr_accessor :topic_ids
@@ -2030,7 +1994,7 @@ module Google
         end
       end
       
-      # A <code><strong>comment</strong></code> represents a single YouTube comment.
+      # A *comment* represents a single YouTube comment.
       class Comment
         include Google::Apis::Core::Hashable
       
@@ -2044,8 +2008,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#comment"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # comment".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2087,14 +2051,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::Comment>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#commentListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # commentListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2110,7 +2074,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -2162,9 +2126,9 @@ module Google
         attr_accessor :can_rate
         alias_method :can_rate?, :can_rate
       
-        # The id of the corresponding YouTube channel. In case of a channel comment
-        # this is the channel the comment refers to. In case of a video comment
-        # it's the video's channel.
+        # The id of the corresponding YouTube channel. In case of a channel comment this
+        # is the channel the comment refers to. In case of a video comment it's the
+        # video's channel.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
@@ -2186,29 +2150,27 @@ module Google
         attr_accessor :parent_id
       
         # The date and time when the comment was orignally published. The value is
-        # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # specified in ISO 8601 format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
       
-        # The comment's text. The format is either plain text or HTML dependent on
-        # what has been requested. Even the plain text representation may differ
-        # from the text originally posted in that it may replace video links with
-        # video titles etc.
+        # The comment's text. The format is either plain text or HTML dependent on what
+        # has been requested. Even the plain text representation may differ from the
+        # text originally posted in that it may replace video links with video titles
+        # etc.
         # Corresponds to the JSON property `textDisplay`
         # @return [String]
         attr_accessor :text_display
       
         # The comment's original raw text as initially posted or last updated. The
-        # original text will only be returned if it is accessible to the viewer,
-        # which is only guaranteed if the viewer is the comment's author.
+        # original text will only be returned if it is accessible to the viewer, which
+        # is only guaranteed if the viewer is the comment's author.
         # Corresponds to the JSON property `textOriginal`
         # @return [String]
         attr_accessor :text_original
       
-        # The date and time when was last updated . The value is
-        # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
+        # The date and time when was last updated . The value is specified in ISO 8601
         # format.
         # Corresponds to the JSON property `updatedAt`
         # @return [String]
@@ -2219,9 +2181,9 @@ module Google
         # @return [String]
         attr_accessor :video_id
       
-        # The rating the viewer has given to this comment. For the time being this
-        # will never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE.
-        # This may change in the future.
+        # The rating the viewer has given to this comment. For the time being this will
+        # never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE. This may
+        # change in the future.
         # Corresponds to the JSON property `viewerRating`
         # @return [String]
         attr_accessor :viewer_rating
@@ -2269,9 +2231,9 @@ module Google
         end
       end
       
-      # A <code><strong>comment thread</strong></code> represents information that
-      # applies to a top level comment and all its replies. It can also include the
-      # top level comment itself and some of the replies.
+      # A *comment thread* represents information that applies to a top level comment
+      # and all its replies. It can also include the top level comment itself and some
+      # of the replies.
       class CommentThread
         include Google::Apis::Core::Hashable
       
@@ -2285,8 +2247,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#commentThread"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # commentThread".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2334,14 +2296,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::CommentThread>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#commentThreadListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # commentThreadListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2357,7 +2319,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -2384,8 +2346,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A limited number of replies. Unless the number of replies returned equals
-        # total_reply_count in the snippet the returned replies are only a subset
-        # of the total number of replies.
+        # total_reply_count in the snippet the returned replies are only a subset of the
+        # total number of replies.
         # Corresponds to the JSON property `comments`
         # @return [Array<Google::Apis::YoutubeV3::Comment>]
         attr_accessor :comments
@@ -2411,21 +2373,21 @@ module Google
         attr_accessor :can_reply
         alias_method :can_reply?, :can_reply
       
-        # The YouTube channel the comments in the thread refer to or the channel
-        # with the video the comments refer to. If video_id isn't set the comments
-        # refer to the channel itself.
+        # The YouTube channel the comments in the thread refer to or the channel with
+        # the video the comments refer to. If video_id isn't set the comments refer to
+        # the channel itself.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
       
-        # Whether the thread (and therefore all its comments) is visible to all
-        # YouTube users.
+        # Whether the thread (and therefore all its comments) is visible to all YouTube
+        # users.
         # Corresponds to the JSON property `isPublic`
         # @return [Boolean]
         attr_accessor :is_public
         alias_method :is_public?, :is_public
       
-        # A <code><strong>comment</strong></code> represents a single YouTube comment.
+        # A *comment* represents a single YouTube comment.
         # Corresponds to the JSON property `topLevelComment`
         # @return [Google::Apis::YoutubeV3::Comment]
         attr_accessor :top_level_comment
@@ -2456,27 +2418,26 @@ module Google
         end
       end
       
-      # Ratings schemes. The country-specific ratings are mostly for
-      # movies and shows.
+      # Ratings schemes. The country-specific ratings are mostly for movies and shows.
       # LINT.IfChange
       class ContentRating
         include Google::Apis::Core::Hashable
       
-        # The video's Australian Classification Board (ACB) or Australian
-        # Communications and Media Authority (ACMA) rating. ACMA ratings are used
-        # to classify children's television programming.
+        # The video's Australian Classification Board (ACB) or Australian Communications
+        # and Media Authority (ACMA) rating. ACMA ratings are used to classify children'
+        # s television programming.
         # Corresponds to the JSON property `acbRating`
         # @return [String]
         attr_accessor :acb_rating
       
-        # The video's rating from Italy's Autorit&agrave; per le Garanzie nelle
-        # Comunicazioni (AGCOM).
+        # The video's rating from Italy's Autorità per le Garanzie nelle Comunicazioni (
+        # AGCOM).
         # Corresponds to the JSON property `agcomRating`
         # @return [String]
         attr_accessor :agcom_rating
       
-        # The video's Anatel (Asociaci&oacute;n Nacional de Televisi&oacute;n)
-        # rating for Chilean television.
+        # The video's Anatel (Asociación Nacional de Televisión) rating for Chilean
+        # television.
         # Corresponds to the JSON property `anatelRating`
         # @return [String]
         attr_accessor :anatel_rating
@@ -2491,27 +2452,23 @@ module Google
         # @return [String]
         attr_accessor :bfvc_rating
       
-        # The video's rating from the Austrian Board of Media Classification
-        # (Bundesministerium f&uuml;r Unterricht, Kunst und Kultur).
+        # The video's rating from the Austrian Board of Media Classification (
+        # Bundesministerium für Unterricht, Kunst und Kultur).
         # Corresponds to the JSON property `bmukkRating`
         # @return [String]
         attr_accessor :bmukk_rating
       
-        # Rating system for Canadian TV - Canadian TV Classification System
-        # The video's rating from the Canadian Radio-Television and
-        # Telecommunications Commission (CRTC) for Canadian English-language
-        # broadcasts. For more information, see the
-        # <a href="http://www.cbsc.ca/english/agvot/englishsystem.php">Canadian
-        # Broadcast Standards Council</a> website.
+        # Rating system for Canadian TV - Canadian TV Classification System The video's
+        # rating from the Canadian Radio-Television and Telecommunications Commission (
+        # CRTC) for Canadian English-language broadcasts. For more information, see the
+        # Canadian Broadcast Standards Council website.
         # Corresponds to the JSON property `catvRating`
         # @return [String]
         attr_accessor :catv_rating
       
-        # The video's rating from the Canadian Radio-Television and
-        # Telecommunications Commission (CRTC) for Canadian French-language
-        # broadcasts. For more information, see the
-        # <a href="http://www.cbsc.ca/english/agvot/frenchsystem.php">Canadian
-        # Broadcast Standards Council</a> website.
+        # The video's rating from the Canadian Radio-Television and Telecommunications
+        # Commission (CRTC) for Canadian French-language broadcasts. For more
+        # information, see the Canadian Broadcast Standards Council website.
         # Corresponds to the JSON property `catvfrRating`
         # @return [String]
         attr_accessor :catvfr_rating
@@ -2521,14 +2478,12 @@ module Google
         # @return [String]
         attr_accessor :cbfc_rating
       
-        # The video's Consejo de Calificaci&oacute;n Cinematogr&aacute;fica (Chile)
-        # rating.
+        # The video's Consejo de Calificación Cinematográfica (Chile) rating.
         # Corresponds to the JSON property `cccRating`
         # @return [String]
         attr_accessor :ccc_rating
       
-        # The video's rating from Portugal's Comiss&atilde;o de
-        # Classifica&ccedil;&atilde;o de Espect&acute;culos.
+        # The video's rating from Portugal's Comissão de Classificação de Espect´culos.
         # Corresponds to the JSON property `cceRating`
         # @return [String]
         attr_accessor :cce_rating
@@ -2543,14 +2498,12 @@ module Google
         # @return [String]
         attr_accessor :chvrs_rating
       
-        # The video's rating from the Commission de Contr&ocirc;le des Films
-        # (Belgium).
+        # The video's rating from the Commission de Contrôle des Films (Belgium).
         # Corresponds to the JSON property `cicfRating`
         # @return [String]
         attr_accessor :cicf_rating
       
-        # The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI
-        # (CNA).
+        # The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI (CNA).
         # Corresponds to the JSON property `cnaRating`
         # @return [String]
         attr_accessor :cna_rating
@@ -2560,14 +2513,14 @@ module Google
         # @return [String]
         attr_accessor :cnc_rating
       
-        # The video's rating from France's Conseil sup&eacute;rieur de
-        # l’audiovisuel, which rates broadcast content.
+        # The video's rating from France's Conseil supérieur de l’audiovisuel, which
+        # rates broadcast content.
         # Corresponds to the JSON property `csaRating`
         # @return [String]
         attr_accessor :csa_rating
       
-        # The video's rating from Luxembourg's Commission de surveillance
-        # de la classification des films (CSCF).
+        # The video's rating from Luxembourg's Commission de surveillance de la
+        # classification des films (CSCF).
         # Corresponds to the JSON property `cscfRating`
         # @return [String]
         attr_accessor :cscf_rating
@@ -2577,8 +2530,8 @@ module Google
         # @return [String]
         attr_accessor :czfilm_rating
       
-        # The video's Departamento de Justi&ccedil;a, Classifica&ccedil;&atilde;o,
-        # Qualifica&ccedil;&atilde;o e T&iacute;tulos (DJCQT - Brazil) rating.
+        # The video's Departamento de Justiça, Classificação, Qualificação e Títulos (
+        # DJCQT - Brazil) rating.
         # Corresponds to the JSON property `djctqRating`
         # @return [String]
         attr_accessor :djctq_rating
@@ -2588,8 +2541,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :djctq_rating_reasons
       
-        # Rating system in Turkey - Evaluation and Classification Board of the
-        # Ministry of Culture and Tourism
+        # Rating system in Turkey - Evaluation and Classification Board of the Ministry
+        # of Culture and Tourism
         # Corresponds to the JSON property `ecbmctRating`
         # @return [String]
         attr_accessor :ecbmct_rating
@@ -2604,8 +2557,7 @@ module Google
         # @return [String]
         attr_accessor :egfilm_rating
       
-        # The video's Eirin (&#26144;&#20523;) rating.
-        # Eirin is the Japanese rating system.
+        # The video's Eirin (映倫) rating. Eirin is the Japanese rating system.
         # Corresponds to the JSON property `eirinRating`
         # @return [String]
         attr_accessor :eirin_rating
@@ -2615,17 +2567,14 @@ module Google
         # @return [String]
         attr_accessor :fcbm_rating
       
-        # The video's rating from Hong Kong's Office for Film, Newspaper
-        # and Article Administration.
+        # The video's rating from Hong Kong's Office for Film, Newspaper and Article
+        # Administration.
         # Corresponds to the JSON property `fcoRating`
         # @return [String]
         attr_accessor :fco_rating
       
-        # <span class="deprecated">This property has been deprecated. Use the
-        # <code><a
-        # href="#contentDetails.contentRating.cncRating">contentDetails.contentRating.
-        # cncRating</a></code>
-        # instead.</span>
+        # This property has been deprecated. Use the contentDetails.contentRating.
+        # cncRating instead.
         # Corresponds to the JSON property `fmocRating`
         # @return [String]
         attr_accessor :fmoc_rating
@@ -2640,8 +2589,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :fpb_rating_reasons
       
-        # The video's Freiwillige Selbstkontrolle der Filmwirtschaft
-        # (FSK - Germany) rating.
+        # The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany)
+        # rating.
         # Corresponds to the JSON property `fskRating`
         # @return [String]
         attr_accessor :fsk_rating
@@ -2651,16 +2600,14 @@ module Google
         # @return [String]
         attr_accessor :grfilm_rating
       
-        # The video's Instituto de la Cinematograf&iacute;a y de las Artes
-        # Audiovisuales (ICAA - Spain) rating.
+        # The video's Instituto de la Cinematografía y de las Artes Audiovisuales (ICAA -
+        # Spain) rating.
         # Corresponds to the JSON property `icaaRating`
         # @return [String]
         attr_accessor :icaa_rating
       
-        # The video's Irish Film Classification Office (IFCO - Ireland) rating.
-        # See the <a
-        # href="http://www.ifco.ie/website/ifco/ifcoweb.nsf/web/classcatintro">IFCO</a>
-        # website for more information.
+        # The video's Irish Film Classification Office (IFCO - Ireland) rating. See the
+        # IFCO website for more information.
         # Corresponds to the JSON property `ifcoRating`
         # @return [String]
         attr_accessor :ifco_rating
@@ -2681,15 +2628,14 @@ module Google
         # @return [String]
         attr_accessor :kfcb_rating
       
-        # The video's NICAM/Kijkwijzer rating from the Nederlands Instituut
-        # voor de Classificatie van Audiovisuele Media (Netherlands).
+        # The video's NICAM/Kijkwijzer rating from the Nederlands Instituut voor de
+        # Classificatie van Audiovisuele Media (Netherlands).
         # Corresponds to the JSON property `kijkwijzerRating`
         # @return [String]
         attr_accessor :kijkwijzer_rating
       
-        # The video's Korea Media Rating Board
-        # (&#50689;&#49345;&#47932;&#46321;&#44553;&#50948;&#50896;&#54924;) rating.
-        # The KMRB rates videos in South Korea.
+        # The video's Korea Media Rating Board (영상물등급위원회) rating. The KMRB rates videos
+        # in South Korea.
         # Corresponds to the JSON property `kmrbRating`
         # @return [String]
         attr_accessor :kmrb_rating
@@ -2704,8 +2650,8 @@ module Google
         # @return [String]
         attr_accessor :mccaa_rating
       
-        # The video's rating from the Danish Film Institute's (Det Danske
-        # Filminstitut) Media Council for Children and Young People.
+        # The video's rating from the Danish Film Institute's (Det Danske Filminstitut)
+        # Media Council for Children and Young People.
         # Corresponds to the JSON property `mccypRating`
         # @return [String]
         attr_accessor :mccyp_rating
@@ -2726,21 +2672,21 @@ module Google
         # @return [String]
         attr_accessor :medietilsynet_rating
       
-        # The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti
-        # (National Audiovisual Institute).
+        # The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti (
+        # National Audiovisual Institute).
         # Corresponds to the JSON property `mekuRating`
         # @return [String]
         attr_accessor :meku_rating
       
-        # The rating system for MENA countries, a clone of MPAA. It is needed to
-        # prevent titles go live w/o additional QC check, since some of them can be
+        # The rating system for MENA countries, a clone of MPAA. It is needed to prevent
+        # titles go live w/o additional QC check, since some of them can be
         # inappropriate for the countries at all. See b/33408548 for more details.
         # Corresponds to the JSON property `menaMpaaRating`
         # @return [String]
         attr_accessor :mena_mpaa_rating
       
-        # The video's rating from the Ministero dei Beni e delle Attivit&agrave;
-        # Culturali e del Turismo (Italy).
+        # The video's rating from the Ministero dei Beni e delle Attività Culturali e
+        # del Turismo (Italy).
         # Corresponds to the JSON property `mibacRating`
         # @return [String]
         attr_accessor :mibac_rating
@@ -2750,8 +2696,7 @@ module Google
         # @return [String]
         attr_accessor :moc_rating
       
-        # The video's rating from Taiwan's Ministry of Culture
-        # (&#25991;&#21270;&#37096;).
+        # The video's rating from Taiwan's Ministry of Culture (文化部).
         # Corresponds to the JSON property `moctwRating`
         # @return [String]
         attr_accessor :moctw_rating
@@ -2761,14 +2706,14 @@ module Google
         # @return [String]
         attr_accessor :mpaa_rating
       
-        # The rating system for trailer, DVD, and Ad in the US.  See
-        # http://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html.
+        # The rating system for trailer, DVD, and Ad in the US. See http://movielabs.com/
+        # md/ratings/v2.3/html/US_MPAAT_Ratings.html.
         # Corresponds to the JSON property `mpaatRating`
         # @return [String]
         attr_accessor :mpaat_rating
       
-        # The video's rating from the Movie and Television Review and
-        # Classification Board (Philippines).
+        # The video's rating from the Movie and Television Review and Classification
+        # Board (Philippines).
         # Corresponds to the JSON property `mtrcbRating`
         # @return [String]
         attr_accessor :mtrcb_rating
@@ -2783,8 +2728,7 @@ module Google
         # @return [String]
         attr_accessor :nbcpl_rating
       
-        # The video's rating from the <a href="http://www.nfc.bg/">Bulgarian
-        # National Film Center</a>.
+        # The video's rating from the Bulgarian National Film Center.
         # Corresponds to the JSON property `nfrcRating`
         # @return [String]
         attr_accessor :nfrc_rating
@@ -2794,8 +2738,8 @@ module Google
         # @return [String]
         attr_accessor :nfvcb_rating
       
-        # The video's rating from the Nacion&atilde;lais Kino centrs (National Film
-        # Centre of Latvia).
+        # The video's rating from the Nacionãlais Kino centrs (National Film Centre of
+        # Latvia).
         # Corresponds to the JSON property `nkclvRating`
         # @return [String]
         attr_accessor :nkclv_rating
@@ -2805,8 +2749,8 @@ module Google
         # @return [String]
         attr_accessor :nmc_rating
       
-        # The video's Office of Film and Literature Classification
-        # (OFLC - New Zealand) rating.
+        # The video's Office of Film and Literature Classification (OFLC - New Zealand)
+        # rating.
         # Corresponds to the JSON property `oflcRating`
         # @return [String]
         attr_accessor :oflc_rating
@@ -2816,8 +2760,8 @@ module Google
         # @return [String]
         attr_accessor :pefilm_rating
       
-        # The video's rating from the Hungarian Nemzeti Filmiroda, the Rating
-        # Committee of the National Office of Film.
+        # The video's rating from the Hungarian Nemzeti Filmiroda, the Rating Committee
+        # of the National Office of Film.
         # Corresponds to the JSON property `rcnofRating`
         # @return [String]
         attr_accessor :rcnof_rating
@@ -2827,20 +2771,19 @@ module Google
         # @return [String]
         attr_accessor :resorteviolencia_rating
       
-        # The video's General Directorate of Radio, Television and Cinematography
-        # (Mexico) rating.
+        # The video's General Directorate of Radio, Television and Cinematography (
+        # Mexico) rating.
         # Corresponds to the JSON property `rtcRating`
         # @return [String]
         attr_accessor :rtc_rating
       
-        # The video's rating from Ireland's Raidi&oacute; Teilif&iacute;s
-        # &Eacute;ireann.
+        # The video's rating from Ireland's Raidió Teilifís Éireann.
         # Corresponds to the JSON property `rteRating`
         # @return [String]
         attr_accessor :rte_rating
       
-        # The video's National Film Registry of the Russian Federation
-        # (MKRF - Russia) rating.
+        # The video's National Film Registry of the Russian Federation (MKRF - Russia)
+        # rating.
         # Corresponds to the JSON property `russiaRating`
         # @return [String]
         attr_accessor :russia_rating
@@ -2855,8 +2798,7 @@ module Google
         # @return [String]
         attr_accessor :smais_rating
       
-        # The video's rating from Statens medier&aring;d (Sweden's National Media
-        # Council).
+        # The video's rating from Statens medieråd (Sweden's National Media Council).
         # Corresponds to the JSON property `smsaRating`
         # @return [String]
         attr_accessor :smsa_rating
@@ -3013,13 +2955,11 @@ module Google
         end
       end
       
-      # A <code><strong>guideCategory</strong></code> resource identifies a category
-      # that YouTube algorithmically assigns based on a
-      # channel's content or other indicators, such as the channel's popularity. The
-      # list is similar to <a
-      # href=\"/youtube/v3/docs/videocategory.html\">video categories</a>, with the
-      # difference being that a video's uploader can assign a video category but only
-      # YouTube can assign a channel category.
+      # A *guideCategory* resource identifies a category that YouTube algorithmically
+      # assigns based on a channel's content or other indicators, such as the channel'
+      # s popularity. The list is similar to video categories, with the difference
+      # being that a video's uploader can assign a video category but only YouTube can
+      # assign a channel category.
       class GuideCategory
         include Google::Apis::Core::Hashable
       
@@ -3033,8 +2973,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#guideCategory"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # guideCategory".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3071,21 +3011,21 @@ module Google
         # @return [String]
         attr_accessor :event_id
       
-        # A list of categories that can be associated with YouTube channels. In this
-        # map, the category ID is the map key, and its value is the corresponding
-        # <code>guideCategory</code> resource.
+        # A list of categories that can be associated with YouTube channels. In this map,
+        # the category ID is the map key, and its value is the corresponding
+        # guideCategory resource.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::YoutubeV3::GuideCategory>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#guideCategoryListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # guideCategoryListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -3096,8 +3036,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `prevPageToken`
         # @return [String]
         attr_accessor :prev_page_token
@@ -3107,7 +3047,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -3155,8 +3095,8 @@ module Google
         end
       end
       
-      # An <code><strong>i18nLanguage</strong></code> resource identifies a UI
-      # language currently supported by YouTube.
+      # An *i18nLanguage* resource identifies a UI language currently supported by
+      # YouTube.
       class I18nLanguage
         include Google::Apis::Core::Hashable
       
@@ -3170,14 +3110,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#i18nLanguage"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # i18nLanguage".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Basic details about an i18n language, such as language code and
-        # human-readable name.
+        # Basic details about an i18n language, such as language code and human-readable
+        # name.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::I18nLanguageSnippet]
         attr_accessor :snippet
@@ -3209,20 +3149,19 @@ module Google
         # @return [String]
         attr_accessor :event_id
       
-        # A list of supported i18n languages. In this map, the i18n language ID is
-        # the map key, and its value is the corresponding <code>i18nLanguage</code>
-        # resource.
+        # A list of supported i18n languages. In this map, the i18n language ID is the
+        # map key, and its value is the corresponding i18nLanguage resource.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::YoutubeV3::I18nLanguage>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#i18nLanguageListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # i18nLanguageListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -3241,8 +3180,8 @@ module Google
         end
       end
       
-      # Basic details about an i18n language, such as language code and
-      # human-readable name.
+      # Basic details about an i18n language, such as language code and human-readable
+      # name.
       class I18nLanguageSnippet
         include Google::Apis::Core::Hashable
       
@@ -3267,8 +3206,7 @@ module Google
         end
       end
       
-      # A <code><strong>i18nRegion</strong></code> resource identifies a region where
-      # YouTube is available.
+      # A *i18nRegion* resource identifies a region where YouTube is available.
       class I18nRegion
         include Google::Apis::Core::Hashable
       
@@ -3282,8 +3220,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#i18nRegion"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # i18nRegion".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3321,20 +3259,19 @@ module Google
         # @return [String]
         attr_accessor :event_id
       
-        # A list of regions where YouTube is available. In this map, the i18n region
-        # ID is the map key, and its value is the corresponding
-        # <code>i18nRegion</code> resource.
+        # A list of regions where YouTube is available. In this map, the i18n region ID
+        # is the map key, and its value is the corresponding i18nRegion resource.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::YoutubeV3::I18nRegion>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#i18nRegionListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # i18nRegionListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -3389,8 +3326,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::LocalizedProperty]
         attr_accessor :background_image_url
       
-        # This is used only in update requests; if it's set, we use this URL to
-        # generate all of the above banner URLs.
+        # This is used only in update requests; if it's set, we use this URL to generate
+        # all of the above banner URLs.
         # Corresponds to the JSON property `bannerExternalUrl`
         # @return [String]
         attr_accessor :banner_external_url
@@ -3470,8 +3407,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::LocalizedProperty]
         attr_accessor :large_branded_banner_image_imap_script
       
-        # The URL for the 854px by 70px image that appears below the video player in
-        # the expanded video view of the video watch page.
+        # The URL for the 854px by 70px image that appears below the video player in the
+        # expanded video view of the video watch page.
         # Corresponds to the JSON property `largeBrandedBannerImageUrl`
         # @return [Google::Apis::YoutubeV3::LocalizedProperty]
         attr_accessor :large_branded_banner_image_url
@@ -3481,17 +3418,16 @@ module Google
         # @return [Google::Apis::YoutubeV3::LocalizedProperty]
         attr_accessor :small_branded_banner_image_imap_script
       
-        # The URL for the 640px by 70px banner image that appears below the video
-        # player in the default view of the video watch page.
-        # The URL for the image that appears above the top-left corner of the video
-        # player. This is a 25-pixel-high image with a flexible width that cannot
-        # exceed 170 pixels.
+        # The URL for the 640px by 70px banner image that appears below the video player
+        # in the default view of the video watch page. The URL for the image that
+        # appears above the top-left corner of the video player. This is a 25-pixel-high
+        # image with a flexible width that cannot exceed 170 pixels.
         # Corresponds to the JSON property `smallBrandedBannerImageUrl`
         # @return [Google::Apis::YoutubeV3::LocalizedProperty]
         attr_accessor :small_branded_banner_image_url
       
-        # The URL for a 1px by 1px tracking pixel that can be used to collect
-        # statistics for views of the channel or video pages.
+        # The URL for a 1px by 1px tracking pixel that can be used to collect statistics
+        # for views of the channel or video pages.
         # Corresponds to the JSON property `trackingImageUrl`
         # @return [String]
         attr_accessor :tracking_image_url
@@ -3588,8 +3524,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::PlaylistCard]
         attr_accessor :playlist_infocard
       
-        # Each card can have a teaser.
-        # Required.
+        # Each card can have a teaser. Required.
         # Corresponds to the JSON property `teaser`
         # @return [Google::Apis::YoutubeV3::InfoCardSnippetTeaser]
         attr_accessor :teaser
@@ -3617,16 +3552,14 @@ module Google
       class InfoCardSnippetTeaser
         include Google::Apis::Core::Hashable
       
-        # The offset from the video start at which the teaser should be displayed
-        # (activated), in milliseconds.
-        # Required.
+        # The offset from the video start at which the teaser should be displayed (
+        # activated), in milliseconds. Required.
         # Corresponds to the JSON property `teaserStartOffset`
         # @return [String]
         attr_accessor :teaser_start_offset
       
-        # The teaser text to show at the top of the player for the info-card.
-        # Required for channel and link type cards.
-        # Optional for video and playlist type cards.
+        # The teaser text to show at the top of the player for the info-card. Required
+        # for channel and link type cards. Optional for video and playlist type cards.
         # Corresponds to the JSON property `teaserText`
         # @return [String]
         attr_accessor :teaser_text
@@ -3696,33 +3629,30 @@ module Google
       class IngestionInfo
         include Google::Apis::Core::Hashable
       
-        # The backup ingestion URL that you should use to stream video to
-        # YouTube. You have the option of simultaneously streaming the content
-        # that you are sending to the <code>ingestionAddress</code> to this URL.
+        # The backup ingestion URL that you should use to stream video to YouTube. You
+        # have the option of simultaneously streaming the content that you are sending
+        # to the ingestionAddress to this URL.
         # Corresponds to the JSON property `backupIngestionAddress`
         # @return [String]
         attr_accessor :backup_ingestion_address
       
-        # The primary ingestion URL that you should use to stream video to
-        # YouTube. You must stream video to this URL.<br><br>
-        # Depending on which application or tool you use to encode
-        # your video stream, you may need to enter the stream URL and stream
-        # name separately or you may need to concatenate them in the following
-        # format:<br><pre><strong>STREAM_URL/STREAM_NAME</strong></pre>
+        # The primary ingestion URL that you should use to stream video to YouTube. You
+        # must stream video to this URL. Depending on which application or tool you use
+        # to encode your video stream, you may need to enter the stream URL and stream
+        # name separately or you may need to concatenate them in the following format: *
+        # STREAM_URL/STREAM_NAME*
         # Corresponds to the JSON property `ingestionAddress`
         # @return [String]
         attr_accessor :ingestion_address
       
-        # This ingestion url may be used instead of
-        # <code>backupIngestionAddress</code> in order to stream via RTMPS. Not
-        # applicable to non-RTMP streams.
+        # This ingestion url may be used instead of backupIngestionAddress in order to
+        # stream via RTMPS. Not applicable to non-RTMP streams.
         # Corresponds to the JSON property `rtmpsBackupIngestionAddress`
         # @return [String]
         attr_accessor :rtmps_backup_ingestion_address
       
-        # This ingestion url may be used instead of
-        # <code>ingestionAddress</code> in order to stream via RTMPS. Not applicable
-        # to non-RTMP streams.
+        # This ingestion url may be used instead of ingestionAddress in order to stream
+        # via RTMPS. Not applicable to non-RTMP streams.
         # Corresponds to the JSON property `rtmpsIngestionAddress`
         # @return [String]
         attr_accessor :rtmps_ingestion_address
@@ -3746,8 +3676,7 @@ module Google
         end
       end
       
-      # LINT.IfChange
-      # Describes an invideo branding.
+      # LINT.IfChange Describes an invideo branding.
       class InvideoBranding
         include Google::Apis::Core::Hashable
       
@@ -3768,8 +3697,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::InvideoPosition]
         attr_accessor :position
       
-        # The channel to which this branding links. If not present it defaults to
-        # the current channel.
+        # The channel to which this branding links. If not present it defaults to the
+        # current channel.
         # Corresponds to the JSON property `targetChannelId`
         # @return [String]
         attr_accessor :target_channel_id
@@ -3819,8 +3748,8 @@ module Google
         end
       end
       
-      # Describes an invideo promotion campaign consisting of multiple promoted
-      # items. A campaign belongs to a single channel_id.
+      # Describes an invideo promotion campaign consisting of multiple promoted items.
+      # A campaign belongs to a single channel_id.
       class InvideoPromotion
         include Google::Apis::Core::Hashable
       
@@ -3840,11 +3769,10 @@ module Google
         # @return [Google::Apis::YoutubeV3::InvideoPosition]
         attr_accessor :position
       
-        # Indicates whether the channel's promotional campaign uses "smart timing."
-        # This feature attempts to show promotions at a point in the video when they
-        # are more likely to be clicked and less likely to disrupt the viewing
-        # experience. This feature also picks up a single promotion to show on each
-        # video.
+        # Indicates whether the channel's promotional campaign uses "smart timing." This
+        # feature attempts to show promotions at a point in the video when they are more
+        # likely to be clicked and less likely to disrupt the viewing experience. This
+        # feature also picks up a single promotion to show on each video.
         # Corresponds to the JSON property `useSmartTiming`
         # @return [Boolean]
         attr_accessor :use_smart_timing
@@ -3873,18 +3801,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :duration_ms
       
-        # Defines the time at which the promotion will appear. Depending on the value
-        # of <code>type</code> the value of the <code>offsetMs</code> field will
-        # represent a time offset from the start or from the end of the video,
-        # expressed in milliseconds.
+        # Defines the time at which the promotion will appear. Depending on the value of
+        # type the value of the offsetMs field will represent a time offset from the
+        # start or from the end of the video, expressed in milliseconds.
         # Corresponds to the JSON property `offsetMs`
         # @return [Fixnum]
         attr_accessor :offset_ms
       
-        # Describes a timing type. If the value is <code>offsetFromStart</code>, then
-        # the <code>offsetMs</code> field represents an offset from the start of the
-        # video. If the value is <code>offsetFromEnd</code>, then the
-        # <code>offsetMs</code> field represents an offset from the end of the video.
+        # Describes a timing type. If the value is offsetFromStart, then the offsetMs
+        # field represents an offset from the start of the video. If the value is
+        # offsetFromEnd, then the offsetMs field represents an offset from the end of
+        # the video.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3943,8 +3870,7 @@ module Google
       class LinkCard
         include Google::Apis::Core::Hashable
       
-        # Custom text to show as the website link.
-        # Required.
+        # Custom text to show as the website link. Required.
         # Corresponds to the JSON property `customLinkText`
         # @return [String]
         attr_accessor :custom_link_text
@@ -3954,14 +3880,12 @@ module Google
         # @return [String]
         attr_accessor :external_image_url
       
-        # The URL to which this card points.
-        # Required.
+        # The URL to which this card points. Required.
         # Corresponds to the JSON property `targetUrl`
         # @return [String]
         attr_accessor :target_url
       
-        # The title to show on the card.
-        # Required.
+        # The title to show on the card. Required.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -4010,8 +3934,8 @@ module Google
         end
       end
       
-      # A <code><strong>liveBroadcast</strong></code> resource represents an event
-      # that will be streamed, via live video, on YouTube.
+      # A *liveBroadcast* resource represents an event that will be streamed, via live
+      # video, on YouTube.
       class LiveBroadcast
         include Google::Apis::Core::Hashable
       
@@ -4030,8 +3954,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#liveBroadcast"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # liveBroadcast".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4072,15 +3996,13 @@ module Google
       class LiveBroadcastContentDetails
         include Google::Apis::Core::Hashable
       
-        # This value uniquely identifies the
-        # <code><a href="/youtube/v3/live/docs/liveStreams">live stream</a></code>
-        # bound to the broadcast.
+        # This value uniquely identifies the live stream bound to the broadcast.
         # Corresponds to the JSON property `boundStreamId`
         # @return [String]
         attr_accessor :bound_stream_id
       
-        # The date and time that the live stream referenced by
-        # <code>boundStreamId</code> was last updated.
+        # The date and time that the live stream referenced by boundStreamId was last
+        # updated.
         # Corresponds to the JSON property `boundStreamLastUpdateTimeMs`
         # @return [String]
         attr_accessor :bound_stream_last_update_time_ms
@@ -4090,56 +4012,53 @@ module Google
         # @return [String]
         attr_accessor :closed_captions_type
       
-        # This setting indicates whether auto start is enabled for this broadcast.
-        # The default value for this property is <code>false</code>.<br><br>
-        # This setting can only be used by Events.
+        # This setting indicates whether auto start is enabled for this broadcast. The
+        # default value for this property is false. This setting can only be used by
+        # Events.
         # Corresponds to the JSON property `enableAutoStart`
         # @return [Boolean]
         attr_accessor :enable_auto_start
         alias_method :enable_auto_start?, :enable_auto_start
       
-        # This setting indicates whether auto stop is enabled for this broadcast.
-        # The default value for this property is <code>false</code>.<br><br>
-        # This setting can only be used by Events.
+        # This setting indicates whether auto stop is enabled for this broadcast. The
+        # default value for this property is false. This setting can only be used by
+        # Events.
         # Corresponds to the JSON property `enableAutoStop`
         # @return [Boolean]
         attr_accessor :enable_auto_stop
         alias_method :enable_auto_stop?, :enable_auto_stop
       
-        # This setting indicates whether HTTP POST closed captioning is enabled for
-        # this broadcast. The ingestion URL of the closed captions is returned
-        # through the liveStreams API.  This is mutually exclusive with using the
-        # <code>closed_captions_type</code> property, and is equivalent to setting
-        # <code>closed_captions_type</code> to CLOSED_CAPTIONS_HTTP_POST.
+        # This setting indicates whether HTTP POST closed captioning is enabled for this
+        # broadcast. The ingestion URL of the closed captions is returned through the
+        # liveStreams API. This is mutually exclusive with using the
+        # closed_captions_type property, and is equivalent to setting
+        # closed_captions_type to CLOSED_CAPTIONS_HTTP_POST.
         # Corresponds to the JSON property `enableClosedCaptions`
         # @return [Boolean]
         attr_accessor :enable_closed_captions
         alias_method :enable_closed_captions?, :enable_closed_captions
       
-        # This setting indicates whether YouTube should enable content encryption
-        # for the broadcast.
+        # This setting indicates whether YouTube should enable content encryption for
+        # the broadcast.
         # Corresponds to the JSON property `enableContentEncryption`
         # @return [Boolean]
         attr_accessor :enable_content_encryption
         alias_method :enable_content_encryption?, :enable_content_encryption
       
-        # This setting determines whether viewers can access DVR controls while
-        # watching the video. DVR controls enable the viewer to control the video
-        # playback experience by pausing, rewinding, or fast forwarding content.
-        # The default value for this property is <code>true</code>.<br><br>
-        # <strong>Important:</strong> You must set the value to <code>true</code>
-        # and also set the <code>enableArchive</code> property's value to
-        # <code>true</code> if you want to make playback available immediately
-        # after the broadcast ends.
+        # This setting determines whether viewers can access DVR controls while watching
+        # the video. DVR controls enable the viewer to control the video playback
+        # experience by pausing, rewinding, or fast forwarding content. The default
+        # value for this property is true. *Important:* You must set the value to true
+        # and also set the enableArchive property's value to true if you want to make
+        # playback available immediately after the broadcast ends.
         # Corresponds to the JSON property `enableDvr`
         # @return [Boolean]
         attr_accessor :enable_dvr
         alias_method :enable_dvr?, :enable_dvr
       
         # This setting indicates whether the broadcast video can be played in an
-        # embedded player. If you choose to archive the video (using the
-        # <code>enableArchive</code> property), this setting will also apply to
-        # the archived video.
+        # embedded player. If you choose to archive the video (using the enableArchive
+        # property), this setting will also apply to the archived video.
         # Corresponds to the JSON property `enableEmbed`
         # @return [Boolean]
         attr_accessor :enable_embed
@@ -4151,20 +4070,17 @@ module Google
         attr_accessor :enable_low_latency
         alias_method :enable_low_latency?, :enable_low_latency
       
-        # If both this and enable_low_latency are set, they must match.
-        # LATENCY_NORMAL should match enable_low_latency=false
-        # LATENCY_LOW should match enable_low_latency=true
-        # LATENCY_ULTRA_LOW should have enable_low_latency omitted.
+        # If both this and enable_low_latency are set, they must match. LATENCY_NORMAL
+        # should match enable_low_latency=false LATENCY_LOW should match
+        # enable_low_latency=true LATENCY_ULTRA_LOW should have enable_low_latency
+        # omitted.
         # Corresponds to the JSON property `latencyPreference`
         # @return [String]
         attr_accessor :latency_preference
       
-        # The mesh for projecting the video if <code>projection</code> is
-        # <code>mesh</code>. The mesh value must be a UTF-8 string containing the
-        # base-64 encoding of 3D mesh data that follows the <a
-        # href="https://github.com/google/spatial-media/blob/master/docs/spherical-video-
-        # v2-rfc.md">
-        # Spherical Video V2 RFC specification</a> for an mshp box, excluding the box
+        # The mesh for projecting the video if projection is mesh. The mesh value must
+        # be a UTF-8 string containing the base-64 encoding of 3D mesh data that follows
+        # the Spherical Video V2 RFC specification for an mshp box, excluding the box
         # size and type but including the following four reserved zero bytes for the
         # version and flags.
         # Corresponds to the JSON property `mesh`
@@ -4177,37 +4093,27 @@ module Google
         # @return [Google::Apis::YoutubeV3::MonitorStreamInfo]
         attr_accessor :monitor_stream
       
-        # The projection format of this broadcast. This defaults to
-        # <code>rectangular</code>.
+        # The projection format of this broadcast. This defaults to rectangular.
         # Corresponds to the JSON property `projection`
         # @return [String]
         attr_accessor :projection
       
-        # Automatically start recording after the event goes live.
-        # The default value for this property is <code>true</code>.<br><br>
-        # <strong>Important:</strong> You must also set the <code>enableDvr</code>
-        # property's value to
-        # <code>true</code> if you want the playback to be available immediately
-        # after the broadcast ends. If you set this property's value to
-        # <code>true</code> but do not also set the <code>enableDvr</code> property
-        # to <code>true</code>, there may be a delay of around one day before the
-        # archived video will be available for playback.
+        # Automatically start recording after the event goes live. The default value for
+        # this property is true. *Important:* You must also set the enableDvr property's
+        # value to true if you want the playback to be available immediately after the
+        # broadcast ends. If you set this property's value to true but do not also set
+        # the enableDvr property to true, there may be a delay of around one day before
+        # the archived video will be available for playback.
         # Corresponds to the JSON property `recordFromStart`
         # @return [Boolean]
         attr_accessor :record_from_start
         alias_method :record_from_start?, :record_from_start
       
-        # This setting indicates whether the broadcast should automatically begin
-        # with an <a
-        # href="/youtube/v3/live/getting-started#Displaying_Slates">in-stream
-        # slate</a> when you update the broadcast's status to <code>live</code>.
-        # After updating the status, you then need to send a
-        # <code><a
-        # href="/youtube/v3/live/docs/liveCuepoints/insert">liveCuepoints.insert</a></
-        # code>
-        # request that sets the cuepoint's <code>eventState</code> to
-        # <code>end</code> to remove the in-stream slate and make your broadcast
-        # stream visible to viewers.
+        # This setting indicates whether the broadcast should automatically begin with
+        # an in-stream slate when you update the broadcast's status to live. After
+        # updating the status, you then need to send a liveCuepoints.insert request that
+        # sets the cuepoint's eventState to end to remove the in-stream slate and make
+        # your broadcast stream visible to viewers.
         # Corresponds to the JSON property `startWithSlate`
         # @return [Boolean]
         attr_accessor :start_with_slate
@@ -4257,14 +4163,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::LiveBroadcast>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#liveBroadcastListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # liveBroadcastListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -4275,8 +4181,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `prevPageToken`
         # @return [String]
         attr_accessor :prev_page_token
@@ -4286,7 +4192,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -4313,39 +4219,34 @@ module Google
       class LiveBroadcastSnippet
         include Google::Apis::Core::Hashable
       
-        # The date and time that the broadcast actually ended. This information is
-        # only available once the broadcast's state is <code>complete</code>. The
-        # value is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # The date and time that the broadcast actually ended. This information is only
+        # available once the broadcast's state is complete. The value is specified in
+        # ISO 8601 format.
         # Corresponds to the JSON property `actualEndTime`
         # @return [String]
         attr_accessor :actual_end_time
       
         # The date and time that the broadcast actually started. This information is
-        # only available once the broadcast's state is <code>live</code>. The
-        # value is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # only available once the broadcast's state is live. The value is specified in
+        # ISO 8601 format.
         # Corresponds to the JSON property `actualStartTime`
         # @return [String]
         attr_accessor :actual_start_time
       
-        # The ID that YouTube uses to uniquely identify the channel that
-        # is publishing the broadcast.
+        # The ID that YouTube uses to uniquely identify the channel that is publishing
+        # the broadcast.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
       
-        # The broadcast's description. As with the <code>title</code>, you can set
-        # this field by modifying the broadcast resource or by setting the
-        # <code><a
-        # href="/youtube/v3/docs/videos#snippet.description">description</a></code>
-        # field of the corresponding video resource.
+        # The broadcast's description. As with the title, you can set this field by
+        # modifying the broadcast resource or by setting the description field of the
+        # corresponding video resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Indicates whether this broadcast is the default broadcast.
-        # Internal only.
+        # Indicates whether this broadcast is the default broadcast. Internal only.
         # Corresponds to the JSON property `isDefaultBroadcast`
         # @return [Boolean]
         attr_accessor :is_default_broadcast
@@ -4357,23 +4258,19 @@ module Google
         attr_accessor :live_chat_id
       
         # The date and time that the broadcast was added to YouTube's live broadcast
-        # schedule. The value is specified in
-        # <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # schedule. The value is specified in ISO 8601 format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
       
-        # The date and time that the broadcast is scheduled to end. The value
-        # is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # The date and time that the broadcast is scheduled to end. The value is
+        # specified in ISO 8601 format.
         # Corresponds to the JSON property `scheduledEndTime`
         # @return [String]
         attr_accessor :scheduled_end_time
       
-        # The date and time that the broadcast is scheduled to start. The value
-        # is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # The date and time that the broadcast is scheduled to start. The value is
+        # specified in ISO 8601 format.
         # Corresponds to the JSON property `scheduledStartTime`
         # @return [String]
         attr_accessor :scheduled_start_time
@@ -4383,11 +4280,9 @@ module Google
         # @return [Google::Apis::YoutubeV3::ThumbnailDetails]
         attr_accessor :thumbnails
       
-        # The broadcast's title. Note that the broadcast represents exactly one
-        # YouTube video. You can set this field by modifying the broadcast resource
-        # or by setting the
-        # <code><a href="/youtube/v3/docs/videos#snippet.title">title</a></code>
-        # field of the corresponding video resource.
+        # The broadcast's title. Note that the broadcast represents exactly one YouTube
+        # video. You can set this field by modifying the broadcast resource or by
+        # setting the title field of the corresponding video resource.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -4418,11 +4313,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The total number of live chat messages currently on the broadcast. The
-        # property and its value will be present if the broadcast is public, has
-        # the live chat feature enabled, and has at least one message. Note that
-        # this field will not be filled after the broadcast ends. So this property
-        # would not identify the number of chat messages for an archived video of a
-        # completed live broadcast.
+        # property and its value will be present if the broadcast is public, has the
+        # live chat feature enabled, and has at least one message. Note that this field
+        # will not be filled after the broadcast ends. So this property would not
+        # identify the number of chat messages for an archived video of a completed live
+        # broadcast.
         # Corresponds to the JSON property `totalChatCount`
         # @return [Fixnum]
         attr_accessor :total_chat_count
@@ -4442,9 +4337,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The broadcast's status. The status can be updated using the API's
-        # <code><a
-        # href="/youtube/v3/live/docs/liveBroadcasts/transition"
-        # >liveBroadcasts.transition</a></code> method.
+        # liveBroadcasts.transition method.
         # Corresponds to the JSON property `lifeCycleStatus`
         # @return [String]
         attr_accessor :life_cycle_status
@@ -4454,21 +4347,18 @@ module Google
         # @return [String]
         attr_accessor :live_broadcast_priority
       
-        # Whether the broadcast is made for kids or not, decided by YouTube instead
-        # of the creator. This field is read only.
+        # Whether the broadcast is made for kids or not, decided by YouTube instead of
+        # the creator. This field is read only.
         # Corresponds to the JSON property `madeForKids`
         # @return [Boolean]
         attr_accessor :made_for_kids
         alias_method :made_for_kids?, :made_for_kids
       
-        # The broadcast's privacy status. Note that the broadcast represents
-        # exactly one YouTube video, so the privacy settings are identical to
-        # those supported for videos. In addition, you can set this field by
-        # modifying the broadcast resource or by setting the
-        # <code><a
-        # href="/youtube/v3/docs/videos#status.privacyStatus"
-        # >privacyStatus</a></code>
-        # field of the corresponding video resource.
+        # The broadcast's privacy status. Note that the broadcast represents exactly one
+        # YouTube video, so the privacy settings are identical to those supported for
+        # videos. In addition, you can set this field by modifying the broadcast
+        # resource or by setting the privacyStatus field of the corresponding video
+        # resource.
         # Corresponds to the JSON property `privacyStatus`
         # @return [String]
         attr_accessor :privacy_status
@@ -4514,8 +4404,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # `"youtube#liveChatBan"`.
+        # Identifies what kind of resource this is. Value: the fixed string `"youtube#
+        # liveChatBan"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4612,13 +4502,12 @@ module Google
         end
       end
       
-      # A <code><strong>liveChatMessage</strong></code> resource represents a chat
-      # message in a YouTube Live Chat.
+      # A *liveChatMessage* resource represents a chat message in a YouTube Live Chat.
       class LiveChatMessage
         include Google::Apis::Core::Hashable
       
-        # The <code>authorDetails</code> object contains basic details about the
-        # user that posted this message.
+        # The authorDetails object contains basic details about the user that posted
+        # this message.
         # Corresponds to the JSON property `authorDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatMessageAuthorDetails]
         attr_accessor :author_details
@@ -4633,13 +4522,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#liveChatMessage"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # liveChatMessage".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>snippet</code> object contains basic details about the message.
+        # The snippet object contains basic details about the message.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::LiveChatMessageSnippet]
         attr_accessor :snippet
@@ -4761,8 +4650,8 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::LiveChatMessage>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#liveChatMessageListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # liveChatMessageListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4773,8 +4662,7 @@ module Google
         attr_accessor :next_page_token
       
         # The date and time when the underlying stream went offline. The value is
-        # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # specified in ISO 8601 format.
         # Corresponds to the JSON property `offlineAt`
         # @return [String]
         attr_accessor :offline_at
@@ -4795,7 +4683,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -4842,28 +4730,26 @@ module Google
       class LiveChatMessageSnippet
         include Google::Apis::Core::Hashable
       
-        # The ID of the user that authored this message, this field is not always
-        # filled.
-        # textMessageEvent - the user that wrote the message
-        # fanFundingEvent - the user that funded the broadcast
-        # newSponsorEvent - the user that just became a sponsor
-        # messageDeletedEvent - the moderator that took the action
+        # The ID of the user that authored this message, this field is not always filled.
+        # textMessageEvent - the user that wrote the message fanFundingEvent - the user
+        # that funded the broadcast newSponsorEvent - the user that just became a
+        # sponsor messageDeletedEvent - the moderator that took the action
         # messageRetractedEvent - the author that retracted their message
-        # userBannedEvent - the moderator that took the action
-        # superChatEvent - the user that made the purchase
+        # userBannedEvent - the moderator that took the action superChatEvent - the user
+        # that made the purchase
         # Corresponds to the JSON property `authorChannelId`
         # @return [String]
         attr_accessor :author_channel_id
       
-        # Contains a string that can be displayed to the user.
-        # If this field is not present the message is silent, at the moment only
-        # messages of type TOMBSTONE and CHAT_ENDED_EVENT are silent.
+        # Contains a string that can be displayed to the user. If this field is not
+        # present the message is silent, at the moment only messages of type TOMBSTONE
+        # and CHAT_ENDED_EVENT are silent.
         # Corresponds to the JSON property `displayMessage`
         # @return [String]
         attr_accessor :display_message
       
-        # Details about the funding event, this is only set if the type is
-        # 'fanFundingEvent'.
+        # Details about the funding event, this is only set if the type is '
+        # fanFundingEvent'.
         # Corresponds to the JSON property `fanFundingEventDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails]
         attr_accessor :fan_funding_event_details
@@ -4890,32 +4776,31 @@ module Google
         attr_accessor :message_retracted_details
       
         # The date and time when the message was orignally published. The value is
-        # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # specified in ISO 8601 format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
       
-        # Details about the Super Chat event, this is only set if the type is
-        # 'superChatEvent'.
+        # Details about the Super Chat event, this is only set if the type is '
+        # superChatEvent'.
         # Corresponds to the JSON property `superChatDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatSuperChatDetails]
         attr_accessor :super_chat_details
       
-        # Details about the Super Sticker event, this is only set if the type is
-        # 'superStickerEvent'.
+        # Details about the Super Sticker event, this is only set if the type is '
+        # superStickerEvent'.
         # Corresponds to the JSON property `superStickerDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatSuperStickerDetails]
         attr_accessor :super_sticker_details
       
-        # Details about the text message, this is only set if the type is
-        # 'textMessageEvent'.
+        # Details about the text message, this is only set if the type is '
+        # textMessageEvent'.
         # Corresponds to the JSON property `textMessageDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatTextMessageDetails]
         attr_accessor :text_message_details
       
-        # The type of message, this will always be present, it determines the
-        # contents of the message as well as which fields will be present.
+        # The type of message, this will always be present, it determines the contents
+        # of the message as well as which fields will be present.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4947,9 +4832,9 @@ module Google
         end
       end
       
-      # A <code><strong>liveChatModerator</strong></code> resource represents a
-      # moderator for a YouTube live chat. A chat moderator has the ability to
-      # ban/unban users from a chat, remove message, etc.
+      # A *liveChatModerator* resource represents a moderator for a YouTube live chat.
+      # A chat moderator has the ability to ban/unban users from a chat, remove
+      # message, etc.
       class LiveChatModerator
         include Google::Apis::Core::Hashable
       
@@ -4963,14 +4848,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#liveChatModerator"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # liveChatModerator".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>snippet</code> object contains basic details about the
-        # moderator.
+        # The snippet object contains basic details about the moderator.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::LiveChatModeratorSnippet]
         attr_accessor :snippet
@@ -5007,14 +4891,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::LiveChatModerator>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#liveChatModeratorListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # liveChatModeratorListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5025,8 +4909,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `prevPageToken`
         # @return [String]
         attr_accessor :prev_page_token
@@ -5036,7 +4920,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -5103,8 +4987,8 @@ module Google
         # @return [String]
         attr_accessor :currency
       
-        # The tier in which the amount belongs. Lower amounts belong to lower
-        # tiers. The lowest tier is <code>1</code>.
+        # The tier in which the amount belongs. Lower amounts belong to lower tiers. The
+        # lowest tier is 1.
         # Corresponds to the JSON property `tier`
         # @return [Fixnum]
         attr_accessor :tier
@@ -5152,8 +5036,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::SuperStickerMetadata]
         attr_accessor :super_sticker_metadata
       
-        # The tier in which the amount belongs. Lower amounts belong to lower
-        # tiers. The lowest tier is <code>1</code>.
+        # The tier in which the amount belongs. Lower amounts belong to lower tiers. The
+        # lowest tier is 1.
         # Corresponds to the JSON property `tier`
         # @return [Fixnum]
         attr_accessor :tier
@@ -5195,8 +5079,8 @@ module Google
       class LiveChatUserBannedMessageDetails
         include Google::Apis::Core::Hashable
       
-        # The duration of the ban. This property is only present if the
-        # <code>banType</code> is <code>temporary</code>.
+        # The duration of the ban. This property is only present if the banType is
+        # temporary.
         # Corresponds to the JSON property `banDurationSeconds`
         # @return [Fixnum]
         attr_accessor :ban_duration_seconds
@@ -5247,14 +5131,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#liveStream"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # liveStream".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>snippet</code> object contains basic details about the
-        # stream, including its channel, title, and description.
+        # The snippet object contains basic details about the stream, including its
+        # channel, title, and description.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::LiveStreamSnippet]
         attr_accessor :snippet
@@ -5326,25 +5210,17 @@ module Google
         # @return [String]
         attr_accessor :closed_captions_ingestion_url
       
-        # Indicates whether the stream is reusable, which means that it
-        # can be bound to multiple broadcasts. It is common for
-        # broadcasters to reuse the same stream for many different
-        # broadcasts if those broadcasts occur at different times.<br><br>
-        # If you set this value to <code>false</code>, then the stream
-        # will not be reusable, which means that it can only be bound to
-        # one broadcast. Non-reusable streams differ from reusable streams in the
-        # following ways:
-        # <ul>
-        # <li>A non-reusable stream can only be bound to one broadcast.</li>
-        # <li>A non-reusable stream might be deleted by an automated process
-        # after the broadcast ends.</li>
-        # <li>The <code><a href="/youtube/v3/live/docs/liveStreams/list">
-        # liveStreams.list</a></code> method does not list non-reusable streams
-        # if you call the method and set the <code>mine</code> parameter to
-        # <code>true</code>. The only way to use that method to retrieve the
-        # resource for a non-reusable stream is to use the <code>id</code>
-        # parameter to identify the stream.</li>
-        # </ul>
+        # Indicates whether the stream is reusable, which means that it can be bound to
+        # multiple broadcasts. It is common for broadcasters to reuse the same stream
+        # for many different broadcasts if those broadcasts occur at different times. If
+        # you set this value to false, then the stream will not be reusable, which means
+        # that it can only be bound to one broadcast. Non-reusable streams differ from
+        # reusable streams in the following ways: - A non-reusable stream can only be
+        # bound to one broadcast. - A non-reusable stream might be deleted by an
+        # automated process after the broadcast ends. - The liveStreams.list method does
+        # not list non-reusable streams if you call the method and set the mine
+        # parameter to true. The only way to use that method to retrieve the resource
+        # for a non-reusable stream is to use the id parameter to identify the stream.
         # Corresponds to the JSON property `isReusable`
         # @return [Boolean]
         attr_accessor :is_reusable
@@ -5411,14 +5287,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::LiveStream>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#liveStreamListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # liveStreamListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5429,8 +5305,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `prevPageToken`
         # @return [String]
         attr_accessor :prev_page_token
@@ -5440,7 +5316,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -5467,14 +5343,13 @@ module Google
       class LiveStreamSnippet
         include Google::Apis::Core::Hashable
       
-        # The ID that YouTube uses to uniquely identify the channel that
-        # is transmitting the stream.
+        # The ID that YouTube uses to uniquely identify the channel that is transmitting
+        # the stream.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
       
-        # The stream's description. The value cannot be longer than 10000
-        # characters.
+        # The stream's description. The value cannot be longer than 10000 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -5485,9 +5360,8 @@ module Google
         attr_accessor :is_default_stream
         alias_method :is_default_stream?, :is_default_stream
       
-        # The date and time that the stream was created. The value is specified in
-        # <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # The date and time that the stream was created. The value is specified in ISO
+        # 8601 format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -5592,9 +5466,8 @@ module Google
         end
       end
       
-      # A <code><strong>member</strong></code> resource represents a member for a
-      # YouTube channel. A member provides recurring monetary support to a creator
-      # and receives special benefits.
+      # A *member* resource represents a member for a YouTube channel. A member
+      # provides recurring monetary support to a creator and receives special benefits.
       class Member
         include Google::Apis::Core::Hashable
       
@@ -5603,13 +5476,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#member"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # member".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>snippet</code> object contains basic details about the member.
+        # The snippet object contains basic details about the member.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::MemberSnippet]
         attr_accessor :snippet
@@ -5645,14 +5518,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::Member>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#memberListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # memberListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5668,7 +5541,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -5737,8 +5610,7 @@ module Google
         # @return [String]
         attr_accessor :highest_accessible_level
       
-        # Display name for the highest level that the user has access to at the
-        # moment.
+        # Display name for the highest level that the user has access to at the moment.
         # Corresponds to the JSON property `highestAccessibleLevelDisplayName`
         # @return [String]
         attr_accessor :highest_accessible_level_display_name
@@ -5772,14 +5644,13 @@ module Google
       class MembershipsDuration
         include Google::Apis::Core::Hashable
       
-        # The date and time when the user became a continuous member across all
-        # levels.
+        # The date and time when the user became a continuous member across all levels.
         # Corresponds to the JSON property `memberSince`
         # @return [String]
         attr_accessor :member_since
       
-        # The cumulative time the user has been a member across all levels in
-        # complete months (the time is rounded down to the nearest integer).
+        # The cumulative time the user has been a member across all levels in complete
+        # months (the time is rounded down to the nearest integer).
         # Corresponds to the JSON property `memberTotalDurationMonths`
         # @return [Fixnum]
         attr_accessor :member_total_duration_months
@@ -5804,14 +5675,13 @@ module Google
         # @return [String]
         attr_accessor :level
       
-        # The date and time when the user became a continuous member for the given
-        # level.
+        # The date and time when the user became a continuous member for the given level.
         # Corresponds to the JSON property `memberSince`
         # @return [String]
         attr_accessor :member_since
       
-        # The cumulative time the user has been a member for the given level in
-        # complete months (the time is rounded down to the nearest integer).
+        # The cumulative time the user has been a member for the given level in complete
+        # months (the time is rounded down to the nearest integer).
         # Corresponds to the JSON property `memberTotalDurationMonths`
         # @return [Fixnum]
         attr_accessor :member_total_duration_months
@@ -5828,10 +5698,10 @@ module Google
         end
       end
       
-      # A <code><strong>membershipsLevel</strong></code> resource represents an offer
-      # made by YouTube creators for their fans. Users can become members of the
-      # channel by joining one of the available levels. They will provide recurring
-      # monetary support and receives special benefits.
+      # A *membershipsLevel* resource represents an offer made by YouTube creators for
+      # their fans. Users can become members of the channel by joining one of the
+      # available levels. They will provide recurring monetary support and receives
+      # special benefits.
       class MembershipsLevel
         include Google::Apis::Core::Hashable
       
@@ -5845,13 +5715,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#membershipsLevelListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # membershipsLevelListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>snippet</code> object contains basic details about the level.
+        # The snippet object contains basic details about the level.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::MembershipsLevelSnippet]
         attr_accessor :snippet
@@ -5888,13 +5758,13 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::MembershipsLevel>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#membershipsLevelListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # membershipsLevelListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -5942,10 +5812,8 @@ module Google
       class MonitorStreamInfo
         include Google::Apis::Core::Hashable
       
-        # If you have set the
-        # <code><a href="#enableMonitorStream">enableMonitorStream</a></code>
-        # property to <code>true</code>, then this property determines the
-        # length of the live broadcast delay.
+        # If you have set the enableMonitorStream property to true, then this property
+        # determines the length of the live broadcast delay.
         # Corresponds to the JSON property `broadcastStreamDelayMs`
         # @return [Fixnum]
         attr_accessor :broadcast_stream_delay_ms
@@ -5955,16 +5823,13 @@ module Google
         # @return [String]
         attr_accessor :embed_html
       
-        # This value determines whether the monitor stream is enabled for the
-        # broadcast. If the monitor stream is enabled, then YouTube will
-        # broadcast the event content on a special stream intended only for
-        # the broadcaster's consumption. The broadcaster can use the stream
-        # to review the event content and also to identify the optimal times
-        # to insert cuepoints.<br><br>
-        # You need to set this value to <code>true</code> if you intend to have
-        # a broadcast delay for your event.<br><br>
-        # <strong>Note:</strong> This property cannot be updated once the
-        # broadcast is in the <code>testing</code> or <code>live</code> state.
+        # This value determines whether the monitor stream is enabled for the broadcast.
+        # If the monitor stream is enabled, then YouTube will broadcast the event
+        # content on a special stream intended only for the broadcaster's consumption.
+        # The broadcaster can use the stream to review the event content and also to
+        # identify the optimal times to insert cuepoints. You need to set this value to
+        # true if you intend to have a broadcast delay for your event. *Note:* This
+        # property cannot be updated once the broadcast is in the testing or live state.
         # Corresponds to the JSON property `enableMonitorStream`
         # @return [Boolean]
         attr_accessor :enable_monitor_stream
@@ -6008,39 +5873,24 @@ module Google
         end
       end
       
-      # A <code><strong>playlist</strong></code> resource represents a YouTube
-      # playlist. A playlist is a collection of videos that can be viewed
-      # sequentially and shared with other users. A playlist can contain up to
-      # 200 videos, and YouTube does not limit the number of playlists that
-      # each user creates. By default, playlists are publicly visible to other
-      # users, but playlists can be public or private.  <br/><br/> YouTube
-      # also uses playlists to identify special collections of videos for a
-      # channel, such as:
-      # <ul>
-      # <li>uploaded videos</li>
-      # <li>favorite videos</li>
-      # <li>positively rated (liked) videos</li>
-      # <li>watch history</li>
-      # <li>watch later</li>
-      # </ul>
-      # To be more specific, these lists are associated with a channel, which
-      # is a collection of a person, group, or company's videos, playlists,
-      # and other YouTube information.  You can retrieve the playlist IDs for
-      # each of these lists from the <code><a
-      # href=\"/youtube/v3/docs/channels\"> channel resource</a></code> for a
-      # given channel.<br/><br/> You can then use the <code> <a
-      # href=\"/youtube/v3/docs/playlistItems/list\">
-      # playlistItems.list</a></code> method to retrieve any of those
-      # lists. You can also add or remove items from those lists by calling
-      # the <code> <a href=\"/youtube/v3/docs/playlistItems/insert\">
-      # playlistItems.insert</a></code> and <code> <a
-      # href=\"/youtube/v3/docs/playlistItems/delete\">
-      # playlistItems.delete</a></code> methods.
+      # A *playlist* resource represents a YouTube playlist. A playlist is a
+      # collection of videos that can be viewed sequentially and shared with other
+      # users. A playlist can contain up to 200 videos, and YouTube does not limit the
+      # number of playlists that each user creates. By default, playlists are publicly
+      # visible to other users, but playlists can be public or private. YouTube also
+      # uses playlists to identify special collections of videos for a channel, such
+      # as: - uploaded videos - favorite videos - positively rated (liked) videos -
+      # watch history - watch later To be more specific, these lists are associated
+      # with a channel, which is a collection of a person, group, or company's videos,
+      # playlists, and other YouTube information. You can retrieve the playlist IDs
+      # for each of these lists from the channel resource for a given channel. You can
+      # then use the playlistItems.list method to retrieve any of those lists. You can
+      # also add or remove items from those lists by calling the playlistItems.insert
+      # and playlistItems.delete methods.
       class Playlist
         include Google::Apis::Core::Hashable
       
-        # The <code>contentDetails</code> object contains information like
-        # video count.
+        # The contentDetails object contains information like video count.
         # Corresponds to the JSON property `contentDetails`
         # @return [Google::Apis::YoutubeV3::PlaylistContentDetails]
         attr_accessor :content_details
@@ -6055,8 +5905,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#playlist"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # playlist".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -6066,8 +5916,8 @@ module Google
         # @return [Hash<String,Google::Apis::YoutubeV3::PlaylistLocalization>]
         attr_accessor :localizations
       
-        # The <code>player</code> object contains information that you would use
-        # to play the playlist in an embedded player.
+        # The player object contains information that you would use to play the playlist
+        # in an embedded player.
         # Corresponds to the JSON property `player`
         # @return [Google::Apis::YoutubeV3::PlaylistPlayer]
         attr_accessor :player
@@ -6077,8 +5927,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::PlaylistSnippet]
         attr_accessor :snippet
       
-        # The <code>status</code> object contains status information for the
-        # playlist.
+        # The status object contains status information for the playlist.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::YoutubeV3::PlaylistStatus]
         attr_accessor :status
@@ -6104,20 +5953,17 @@ module Google
       class PlaylistCard
         include Google::Apis::Core::Hashable
       
-        # Each card can have a custom message.
-        # Optional.
+        # Each card can have a custom message. Optional.
         # Corresponds to the JSON property `customMessage`
         # @return [String]
         attr_accessor :custom_message
       
-        # External playlist ID.
-        # Required.
+        # External playlist ID. Required.
         # Corresponds to the JSON property `playlistId`
         # @return [String]
         attr_accessor :playlist_id
       
-        # Starting video, if not the first.
-        # Optional.
+        # Starting video, if not the first. Optional.
         # Corresponds to the JSON property `startVideoId`
         # @return [String]
         attr_accessor :start_video_id
@@ -6153,41 +5999,26 @@ module Google
         end
       end
       
-      # A <code><strong>playlistItem</strong></code> resource identifies
-      # another resource, such as a video, that is included in a playlist. In
-      # addition, the <code>playlistItem </code> resource contains details
-      # about the included resource that pertain specifically to how that
-      # resource is used in that playlist.<br/><br/> YouTube uses playlists to
-      # identify special collections of videos for a channel, such as:
-      # <ul>
-      # <li>uploaded videos</li>
-      # <li>favorite videos</li>
-      # <li>positively rated (liked) videos</li>
-      # <li>watch history</li>
-      # <li>watch later</li>
-      # </ul>
-      # To be more specific, these lists are associated with a channel, which
-      # is a collection of a person, group, or company's videos, playlists,
-      # and other YouTube information.
-      # <br/><br/>
-      # You can retrieve the playlist IDs for each of these lists from the
-      # <code> <a href=\"/youtube/v3/docs/channels\">channel resource</a>
-      # </code> for a given channel. You can then use the <code> <a
-      # href=\"/youtube/v3/docs/playlistItems/list\">
-      # playlistItems.list</a></code> method to retrieve any of those
-      # lists. You can also add or remove items from those lists by calling
-      # the <code> <a href=\"/youtube/v3/docs/playlistItems/insert\">
-      # playlistItems.insert</a></code> and <code> <a
-      # href=\"/youtube/v3/docs/playlistItems/delete\">
-      # playlistItems.delete</a></code> methods. For example, if a user gives
-      # a positive rating to a video, you would insert that video into the
-      # liked videos playlist for that user's channel.
+      # A *playlistItem* resource identifies another resource, such as a video, that
+      # is included in a playlist. In addition, the playlistItem resource contains
+      # details about the included resource that pertain specifically to how that
+      # resource is used in that playlist. YouTube uses playlists to identify special
+      # collections of videos for a channel, such as: - uploaded videos - favorite
+      # videos - positively rated (liked) videos - watch history - watch later To be
+      # more specific, these lists are associated with a channel, which is a
+      # collection of a person, group, or company's videos, playlists, and other
+      # YouTube information. You can retrieve the playlist IDs for each of these lists
+      # from the channel resource for a given channel. You can then use the
+      # playlistItems.list method to retrieve any of those lists. You can also add or
+      # remove items from those lists by calling the playlistItems.insert and
+      # playlistItems.delete methods. For example, if a user gives a positive rating
+      # to a video, you would insert that video into the liked videos playlist for
+      # that user's channel.
       class PlaylistItem
         include Google::Apis::Core::Hashable
       
-        # The <code>contentDetails</code> object is included in the resource if
-        # the included item is a YouTube video. The object contains additional
-        # information about the video.
+        # The contentDetails object is included in the resource if the included item is
+        # a YouTube video. The object contains additional information about the video.
         # Corresponds to the JSON property `contentDetails`
         # @return [Google::Apis::YoutubeV3::PlaylistItemContentDetails]
         attr_accessor :content_details
@@ -6202,15 +6033,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#playlistItem"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # playlistItem".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
         # Basic details about a playlist, including title, description and thumbnails.
-        # Basic details of a YouTube Playlist item provided by the author.
-        # Next ID: 13
+        # Basic details of a YouTube Playlist item provided by the author. Next ID: 13
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::PlaylistItemSnippet]
         attr_accessor :snippet
@@ -6240,10 +6070,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The time, measured in seconds from the start of the video, when the video
-        # should stop playing. (The playlist owner can specify the times when the
-        # video should start and stop playing when the video is played in the context
-        # of the playlist.) By default, assume that the <code>video.endTime</code> is
-        # the end of the video.
+        # should stop playing. (The playlist owner can specify the times when the video
+        # should start and stop playing when the video is played in the context of the
+        # playlist.) By default, assume that the video.endTime is the end of the video.
         # Corresponds to the JSON property `endAt`
         # @return [String]
         attr_accessor :end_at
@@ -6254,24 +6083,21 @@ module Google
         attr_accessor :note
       
         # The time, measured in seconds from the start of the video, when the video
-        # should start playing. (The playlist owner can specify the times when the
-        # video should start and stop playing when the video is played in the context
-        # of the playlist.) The default value is <code>0</code>.
+        # should start playing. (The playlist owner can specify the times when the video
+        # should start and stop playing when the video is played in the context of the
+        # playlist.) The default value is 0.
         # Corresponds to the JSON property `startAt`
         # @return [String]
         attr_accessor :start_at
       
-        # The ID that YouTube uses to uniquely identify a video. To <a
-        # href="/youtube/v3/docs/video/list.html">retrieve the <code>video</code>
-        # resource</a>, set the <code>id</code> query parameter to this value in your
-        # API request.
+        # The ID that YouTube uses to uniquely identify a video. To retrieve the video
+        # resource, set the id query parameter to this value in your API request.
         # Corresponds to the JSON property `videoId`
         # @return [String]
         attr_accessor :video_id
       
         # The date and time that the video was published to YouTube. The value is
-        # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # specified in ISO 8601 format.
         # Corresponds to the JSON property `videoPublishedAt`
         # @return [String]
         attr_accessor :video_published_at
@@ -6309,15 +6135,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::PlaylistItem>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#playlistItemListResponse"</code>.
-        # Etag of this resource.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # playlistItemListResponse". Etag of this resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6328,8 +6153,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `prevPageToken`
         # @return [String]
         attr_accessor :prev_page_token
@@ -6339,7 +6164,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -6363,13 +6188,12 @@ module Google
       end
       
       # Basic details about a playlist, including title, description and thumbnails.
-      # Basic details of a YouTube Playlist item provided by the author.
-      # Next ID: 13
+      # Basic details of a YouTube Playlist item provided by the author. Next ID: 13
       class PlaylistItemSnippet
         include Google::Apis::Core::Hashable
       
-        # The ID that YouTube uses to uniquely identify the user that added
-        # the item to the playlist.
+        # The ID that YouTube uses to uniquely identify the user that added the item to
+        # the playlist.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
@@ -6384,22 +6208,21 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The ID that YouTube uses to uniquely identify thGe playlist that the
-        # playlist item is in.
+        # The ID that YouTube uses to uniquely identify thGe playlist that the playlist
+        # item is in.
         # Corresponds to the JSON property `playlistId`
         # @return [String]
         attr_accessor :playlist_id
       
-        # The order in which the item appears in the playlist. The value uses a
-        # zero-based index, so the first item has a position of <code>0</code>,
-        # the second item has a position of <code>1</code>, and so forth.
+        # The order in which the item appears in the playlist. The value uses a zero-
+        # based index, so the first item has a position of 0, the second item has a
+        # position of 1, and so forth.
         # Corresponds to the JSON property `position`
         # @return [Fixnum]
         attr_accessor :position
       
         # The date and time that the item was added to the playlist. The value is
-        # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # specified in ISO 8601 format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -6475,14 +6298,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::Playlist>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#playlistListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # playlistListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6493,8 +6316,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `prevPageToken`
         # @return [String]
         attr_accessor :prev_page_token
@@ -6504,7 +6327,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -6556,8 +6379,7 @@ module Google
       class PlaylistPlayer
         include Google::Apis::Core::Hashable
       
-        # An <code>&lt;iframe&gt;</code> tag that embeds a player that will
-        # play the playlist.
+        # An <iframe> tag that embeds a player that will play the playlist.
         # Corresponds to the JSON property `embedHtml`
         # @return [String]
         attr_accessor :embed_html
@@ -6576,8 +6398,8 @@ module Google
       class PlaylistSnippet
         include Google::Apis::Core::Hashable
       
-        # The ID that YouTube uses to uniquely identify the channel that
-        # published the playlist.
+        # The ID that YouTube uses to uniquely identify the channel that published the
+        # playlist.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
@@ -6602,9 +6424,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::PlaylistLocalization]
         attr_accessor :localized
       
-        # The date and time that the playlist was created. The value is specified
-        # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # The date and time that the playlist was created. The value is specified in ISO
+        # 8601 format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -6676,9 +6497,9 @@ module Google
         # @return [Google::Apis::YoutubeV3::PromotedItemId]
         attr_accessor :id
       
-        # If true, the content owner's name will be used when displaying the
-        # promotion. This field can only be set when the update is made on behalf of
-        # the content owner.
+        # If true, the content owner's name will be used when displaying the promotion.
+        # This field can only be set when the update is made on behalf of the content
+        # owner.
         # Corresponds to the JSON property `promotedByContentOwner`
         # @return [Boolean]
         attr_accessor :promoted_by_content_owner
@@ -6706,9 +6527,9 @@ module Google
       class PromotedItemId
         include Google::Apis::Core::Hashable
       
-        # If type is recentUpload, this field identifies the channel from which to
-        # take the recent upload. If missing, the channel is assumed to be the same
-        # channel for which the invideoPromotion is set.
+        # If type is recentUpload, this field identifies the channel from which to take
+        # the recent upload. If missing, the channel is assumed to be the same channel
+        # for which the invideoPromotion is set.
         # Corresponds to the JSON property `recentlyUploadedBy`
         # @return [String]
         attr_accessor :recently_uploaded_by
@@ -6719,15 +6540,15 @@ module Google
         attr_accessor :type
       
         # If the promoted item represents a video, this field represents the unique
-        # YouTube ID identifying it. This field will be present only if
-        # <code>type</code> has the value <code>video</code>.
+        # YouTube ID identifying it. This field will be present only if type has the
+        # value video.
         # Corresponds to the JSON property `videoId`
         # @return [String]
         attr_accessor :video_id
       
         # If the promoted item represents a website, this field represents the url
-        # pointing to the website. This field will be present only if
-        # <code>type</code> has the value <code>website</code>.
+        # pointing to the website. This field will be present only if type has the value
+        # website.
         # Corresponds to the JSON property `websiteUrl`
         # @return [String]
         attr_accessor :website_url
@@ -6793,9 +6614,9 @@ module Google
       class ResourceId
         include Google::Apis::Core::Hashable
       
-        # The ID that YouTube uses to uniquely identify the referred resource, if
-        # that resource is a channel. This property is only present if the
-        # <code>resourceId.kind</code> value is <code>youtube#channel</code>.
+        # The ID that YouTube uses to uniquely identify the referred resource, if that
+        # resource is a channel. This property is only present if the resourceId.kind
+        # value is youtube#channel.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
@@ -6805,16 +6626,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The ID that YouTube uses to uniquely identify the referred resource, if
-        # that resource is a playlist. This property is only present if the
-        # <code>resourceId.kind</code> value is <code>youtube#playlist</code>.
+        # The ID that YouTube uses to uniquely identify the referred resource, if that
+        # resource is a playlist. This property is only present if the resourceId.kind
+        # value is youtube#playlist.
         # Corresponds to the JSON property `playlistId`
         # @return [String]
         attr_accessor :playlist_id
       
-        # The ID that YouTube uses to uniquely identify the referred resource, if
-        # that resource is a video. This property is only present if the
-        # <code>resourceId.kind</code> value is <code>youtube#video</code>.
+        # The ID that YouTube uses to uniquely identify the referred resource, if that
+        # resource is a video. This property is only present if the resourceId.kind
+        # value is youtube#video.
         # Corresponds to the JSON property `videoId`
         # @return [String]
         attr_accessor :video_id
@@ -6851,14 +6672,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::SearchResult>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#searchListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # searchListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6869,8 +6690,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `prevPageToken`
         # @return [String]
         attr_accessor :prev_page_token
@@ -6885,7 +6706,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -6910,9 +6731,9 @@ module Google
       end
       
       # A search result contains information about a YouTube video, channel, or
-      # playlist that matches the search parameters specified in an API request.
-      # While a search result points to a uniquely identifiable resource, like a
-      # video, it does not have its own persistent data.
+      # playlist that matches the search parameters specified in an API request. While
+      # a search result points to a uniquely identifiable resource, like a video, it
+      # does not have its own persistent data.
       class SearchResult
         include Google::Apis::Core::Hashable
       
@@ -6926,8 +6747,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#searchResult"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # searchResult".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -6956,8 +6777,8 @@ module Google
       class SearchResultSnippet
         include Google::Apis::Core::Hashable
       
-        # The value that YouTube uses to uniquely identify the channel that
-        # published the resource that the search result identifies.
+        # The value that YouTube uses to uniquely identify the channel that published
+        # the resource that the search result identifies.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
@@ -6974,16 +6795,14 @@ module Google
         attr_accessor :description
       
         # It indicates if the resource (video or channel) has upcoming/active live
-        # broadcast content. Or it's "none" if there is not any upcoming/active
-        # live broadcasts.
+        # broadcast content. Or it's "none" if there is not any upcoming/active live
+        # broadcasts.
         # Corresponds to the JSON property `liveBroadcastContent`
         # @return [String]
         attr_accessor :live_broadcast_content
       
-        # The creation date and time of the resource that the search result
-        # identifies. The value is specified in <a
-        # href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # The creation date and time of the resource that the search result identifies.
+        # The value is specified in ISO 8601 format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -7014,9 +6833,8 @@ module Google
         end
       end
       
-      # A `__sponsor__` resource represents a sponsor for a YouTube channel.  A
-      # sponsor provides recurring monetary support to a creator and receives special
-      # benefits.
+      # A `__sponsor__` resource represents a sponsor for a YouTube channel. A sponsor
+      # provides recurring monetary support to a creator and receives special benefits.
       class Sponsor
         include Google::Apis::Core::Hashable
       
@@ -7025,8 +6843,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # `"youtube#sponsor"`.
+        # Identifies what kind of resource this is. Value: the fixed string `"youtube#
+        # sponsor"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7067,8 +6885,8 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::Sponsor>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # `"youtube#sponsorListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string `"youtube#
+        # sponsorListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7131,9 +6949,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::ChannelProfileDetails]
         attr_accessor :sponsor_details
       
-        # The date and time when the user became a sponsor. The value is
-        # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (`YYYY-MM-DDThh:mm:ss.sZ`) format.
+        # The date and time when the user became a sponsor. The value is specified in
+        # ISO 8601 (`YYYY-MM-DDThh:mm:ss.sZ`) format.
         # Corresponds to the JSON property `sponsorSince`
         # @return [String]
         attr_accessor :sponsor_since
@@ -7151,11 +6968,10 @@ module Google
         end
       end
       
-      # A <code><strong>subscription</strong></code> resource contains information
-      # about a YouTube user subscription.  A subscription notifies a user when new
-      # videos are added to a channel or when another user takes one of several
-      # actions on YouTube, such as uploading a video, rating a video, or commenting
-      # on a video.
+      # A *subscription* resource contains information about a YouTube user
+      # subscription. A subscription notifies a user when new videos are added to a
+      # channel or when another user takes one of several actions on YouTube, such as
+      # uploading a video, rating a video, or commenting on a video.
       class Subscription
         include Google::Apis::Core::Hashable
       
@@ -7174,8 +6990,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#subscription"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # subscription".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7186,8 +7002,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::SubscriptionSnippet]
         attr_accessor :snippet
       
-        # Basic details about a subscription's subscriber including title,
-        # description, channel ID and thumbnails.
+        # Basic details about a subscription's subscriber including title, description,
+        # channel ID and thumbnails.
         # Corresponds to the JSON property `subscriberSnippet`
         # @return [Google::Apis::YoutubeV3::SubscriptionSubscriberSnippet]
         attr_accessor :subscriber_snippet
@@ -7211,14 +7027,12 @@ module Google
       class SubscriptionContentDetails
         include Google::Apis::Core::Hashable
       
-        # The type of activity this subscription is for
-        # (only uploads, everything).
+        # The type of activity this subscription is for (only uploads, everything).
         # Corresponds to the JSON property `activityType`
         # @return [String]
         attr_accessor :activity_type
       
-        # The number of new items in the subscription since its content was last
-        # read.
+        # The number of new items in the subscription since its content was last read.
         # Corresponds to the JSON property `newItemCount`
         # @return [Fixnum]
         attr_accessor :new_item_count
@@ -7259,14 +7073,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::Subscription>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#subscriptionListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # subscriptionListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -7277,8 +7091,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `prevPageToken`
         # @return [String]
         attr_accessor :prev_page_token
@@ -7288,7 +7102,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -7331,9 +7145,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The date and time that the subscription was created. The value is
-        # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # The date and time that the subscription was created. The value is specified in
+        # ISO 8601 format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -7369,8 +7182,8 @@ module Google
         end
       end
       
-      # Basic details about a subscription's subscriber including title,
-      # description, channel ID and thumbnails.
+      # Basic details about a subscription's subscriber including title, description,
+      # channel ID and thumbnails.
       class SubscriptionSubscriberSnippet
         include Google::Apis::Core::Hashable
       
@@ -7422,8 +7235,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # `"youtube#superChatEvent"`.
+        # Identifies what kind of resource this is. Value: the fixed string `"youtube#
+        # superChatEvent"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7465,14 +7278,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::SuperChatEvent>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#superChatEventListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # superChatEventListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -7488,7 +7301,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -7514,7 +7327,7 @@ module Google
       class SuperChatEventSnippet
         include Google::Apis::Core::Hashable
       
-        # The purchase amount, in micros of the purchase currency.  e.g., 1 is
+        # The purchase amount, in micros of the purchase currency. e.g., 1 is
         # represented as 1000000.
         # Corresponds to the JSON property `amountMicros`
         # @return [Fixnum]
@@ -7530,20 +7343,19 @@ module Google
         # @return [String]
         attr_accessor :comment_text
       
-        # The date and time when the event occurred. The value is
-        # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
+        # The date and time when the event occurred. The value is specified in ISO 8601
         # format.
         # Corresponds to the JSON property `createdAt`
         # @return [String]
         attr_accessor :created_at
       
-        # The currency in which the purchase was made.  ISO 4217.
+        # The currency in which the purchase was made. ISO 4217.
         # Corresponds to the JSON property `currency`
         # @return [String]
         attr_accessor :currency
       
-        # A rendered string that displays the purchase amount and currency
-        # (e.g., "$1.00").  The string is rendered for the given language.
+        # A rendered string that displays the purchase amount and currency (e.g., "$1.00"
+        # ). The string is rendered for the given language.
         # Corresponds to the JSON property `displayString`
         # @return [String]
         attr_accessor :display_string
@@ -7554,14 +7366,14 @@ module Google
         attr_accessor :is_super_sticker_event
         alias_method :is_super_sticker_event?, :is_super_sticker_event
       
-        # The tier for the paid message, which is based on the amount of money spent
-        # to purchase the message.
+        # The tier for the paid message, which is based on the amount of money spent to
+        # purchase the message.
         # Corresponds to the JSON property `messageType`
         # @return [Fixnum]
         attr_accessor :message_type
       
-        # If this event is a Super Sticker event, this field will contain metadata
-        # about the Super Sticker.
+        # If this event is a Super Sticker event, this field will contain metadata about
+        # the Super Sticker.
         # Corresponds to the JSON property `superStickerMetadata`
         # @return [Google::Apis::YoutubeV3::SuperStickerMetadata]
         attr_accessor :super_sticker_metadata
@@ -7594,8 +7406,8 @@ module Google
       class SuperStickerMetadata
         include Google::Apis::Core::Hashable
       
-        # Internationalized alt text that describes the sticker image and any
-        # animation associated with it.
+        # Internationalized alt text that describes the sticker image and any animation
+        # associated with it.
         # Corresponds to the JSON property `altText`
         # @return [String]
         attr_accessor :alt_text
@@ -7605,9 +7417,8 @@ module Google
         # @return [String]
         attr_accessor :alt_text_language
       
-        # Unique identifier of the Super Sticker. This is a shorter form of the
-        # alt_text that includes pack name and a recognizable characteristic of the
-        # sticker.
+        # Unique identifier of the Super Sticker. This is a shorter form of the alt_text
+        # that includes pack name and a recognizable characteristic of the sticker.
         # Corresponds to the JSON property `stickerId`
         # @return [String]
         attr_accessor :sticker_id
@@ -7668,9 +7479,8 @@ module Google
         end
       end
       
-      # A <code><strong>third party account link</strong></code> resource represents
-      # a link between a YouTube account or a channel and an account on a
-      # third-party service.
+      # A *third party account link* resource represents a link between a YouTube
+      # account or a channel and an account on a third-party service.
       class ThirdPartyLink
         include Google::Apis::Core::Hashable
       
@@ -7679,14 +7489,14 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#thirdPartyLink"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # thirdPartyLink".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>linking_token</code> identifies a YouTube account and
-        # channel with which the third party account is linked.
+        # The linking_token identifies a YouTube account and channel with which the
+        # third party account is linked.
         # Corresponds to the JSON property `linkingToken`
         # @return [String]
         attr_accessor :linking_token
@@ -7697,8 +7507,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::ThirdPartyLinkSnippet]
         attr_accessor :snippet
       
-        # The <code>third-party link status</code> object contains information about
-        # the status of the link.
+        # The third-party link status object contains information about the status of
+        # the link.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::YoutubeV3::ThirdPartyLinkStatus]
         attr_accessor :status
@@ -7744,8 +7554,8 @@ module Google
         end
       end
       
-      # The <code>third-party link status</code> object contains information about
-      # the status of the link.
+      # The third-party link status object contains information about the status of
+      # the link.
       class ThirdPartyLinkStatus
         include Google::Apis::Core::Hashable
       
@@ -7857,13 +7667,13 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::ThumbnailDetails>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#thumbnailSetResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # thumbnailSetResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -7895,12 +7705,12 @@ module Google
         end
       end
       
-      # A <code><strong>video</strong></code> resource represents a YouTube video.
+      # A *video* resource represents a YouTube video.
       class Video
         include Google::Apis::Core::Hashable
       
-        # Age restriction details related to a video. This data can only be retrieved
-        # by the video owner.
+        # Age restriction details related to a video. This data can only be retrieved by
+        # the video owner.
         # Corresponds to the JSON property `ageGating`
         # @return [Google::Apis::YoutubeV3::VideoAgeGating]
         attr_accessor :age_gating
@@ -7927,8 +7737,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#video"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # video".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7938,8 +7748,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::VideoLiveStreamingDetails]
         attr_accessor :live_streaming_details
       
-        # The <code>localizations</code> object contains localized versions of the
-        # basic details about the video, such as its title and description.
+        # The localizations object contains localized versions of the basic details
+        # about the video, such as its title and description.
         # Corresponds to the JSON property `localizations`
         # @return [Hash<String,Google::Apis::YoutubeV3::VideoLocalization>]
         attr_accessor :localizations
@@ -7982,14 +7792,13 @@ module Google
         # @return [Google::Apis::YoutubeV3::VideoStatistics]
         attr_accessor :statistics
       
-        # Basic details about a video category, such as its localized title.
-        # Next Id: 17
+        # Basic details about a video category, such as its localized title. Next Id: 17
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::YoutubeV3::VideoStatus]
         attr_accessor :status
       
-        # Specifies suggestions on how to improve video content,
-        # including encoding hints, tag suggestions, and editor suggestions.
+        # Specifies suggestions on how to improve video content, including encoding
+        # hints, tag suggestions, and editor suggestions.
         # Corresponds to the JSON property `suggestions`
         # @return [Google::Apis::YoutubeV3::VideoSuggestions]
         attr_accessor :suggestions
@@ -8040,15 +7849,15 @@ module Google
         # @return [String]
         attr_accessor :language
       
-        # The high-level, or primary, reason that the content is abusive. The value
-        # is an abuse report reason ID.
+        # The high-level, or primary, reason that the content is abusive. The value is
+        # an abuse report reason ID.
         # Corresponds to the JSON property `reasonId`
         # @return [String]
         attr_accessor :reason_id
       
-        # The specific, or secondary, reason that this content is abusive (if
-        # available). The value is an abuse report reason ID that is a valid
-        # secondary reason for the primary reason.
+        # The specific, or secondary, reason that this content is abusive (if available).
+        # The value is an abuse report reason ID that is a valid secondary reason for
+        # the primary reason.
         # Corresponds to the JSON property `secondaryReasonId`
         # @return [String]
         attr_accessor :secondary_reason_id
@@ -8072,9 +7881,9 @@ module Google
         end
       end
       
-      # A `__videoAbuseReportReason__` resource identifies a reason that a video
-      # could be reported as abusive. Video abuse report reasons are used with
-      # `video.ReportAbuse`.
+      # A `__videoAbuseReportReason__` resource identifies a reason that a video could
+      # be reported as abusive. Video abuse report reasons are used with `video.
+      # ReportAbuse`.
       class VideoAbuseReportReason
         include Google::Apis::Core::Hashable
       
@@ -8088,8 +7897,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # `"youtube#videoAbuseReportReason"`.
+        # Identifies what kind of resource this is. Value: the fixed string `"youtube#
+        # videoAbuseReportReason"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8131,8 +7940,8 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::VideoAbuseReportReason>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # `"youtube#videoAbuseReportReasonListResponse"`.
+        # Identifies what kind of resource this is. Value: the fixed string `"youtube#
+        # videoAbuseReportReasonListResponse"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8165,8 +7974,8 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # The secondary reasons associated with this reason, if any are available.
-        # (There might be 0 or more.)
+        # The secondary reasons associated with this reason, if any are available. (
+        # There might be 0 or more.)
         # Corresponds to the JSON property `secondaryReasons`
         # @return [Array<Google::Apis::YoutubeV3::VideoAbuseReportSecondaryReason>]
         attr_accessor :secondary_reasons
@@ -8211,18 +8020,17 @@ module Google
       class VideoAgeGating
         include Google::Apis::Core::Hashable
       
-        # Indicates whether or not the video has alcoholic beverage content. Only
-        # users of legal purchasing age in a particular country, as identified by
-        # ICAP, can view the content.
+        # Indicates whether or not the video has alcoholic beverage content. Only users
+        # of legal purchasing age in a particular country, as identified by ICAP, can
+        # view the content.
         # Corresponds to the JSON property `alcoholContent`
         # @return [Boolean]
         attr_accessor :alcohol_content
         alias_method :alcohol_content?, :alcohol_content
       
         # Age-restricted trailers. For redband trailers and adult-rated video-games.
-        # Only users aged 18+ can view the content. The the field is
-        # <code>true</code> the content is restricted to viewers aged 18+. Otherwise
-        # The field won't be present.
+        # Only users aged 18+ can view the content. The the field is true the content is
+        # restricted to viewers aged 18+. Otherwise The field won't be present.
         # Corresponds to the JSON property `restricted`
         # @return [Boolean]
         attr_accessor :restricted
@@ -8249,20 +8057,17 @@ module Google
       class VideoCard
         include Google::Apis::Core::Hashable
       
-        # Each card can have a custom message.
-        # Optional.
+        # Each card can have a custom message. Optional.
         # Corresponds to the JSON property `customMessage`
         # @return [String]
         attr_accessor :custom_message
       
-        # Playback start time offset in milliseconds.
-        # Optional.
+        # Playback start time offset in milliseconds. Optional.
         # Corresponds to the JSON property `playbackStartOffset`
         # @return [String]
         attr_accessor :playback_start_offset
       
-        # Encrypted Video ID.
-        # Required.
+        # Encrypted Video ID. Required.
         # Corresponds to the JSON property `videoId`
         # @return [String]
         attr_accessor :video_id
@@ -8279,8 +8084,8 @@ module Google
         end
       end
       
-      # A <code><strong>videoCategory</strong></code> resource identifies a
-      # category that has been or could be associated with uploaded videos.
+      # A *videoCategory* resource identifies a category that has been or could be
+      # associated with uploaded videos.
       class VideoCategory
         include Google::Apis::Core::Hashable
       
@@ -8294,8 +8099,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#videoCategory"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # videoCategory".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8332,21 +8137,21 @@ module Google
         # @return [String]
         attr_accessor :event_id
       
-        # A list of video categories that can be associated with YouTube videos. In
-        # this map, the video category ID is the map key, and its value is the
-        # corresponding <code>videoCategory</code> resource.
+        # A list of video categories that can be associated with YouTube videos. In this
+        # map, the video category ID is the map key, and its value is the corresponding
+        # videoCategory resource.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::YoutubeV3::VideoCategory>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#videoCategoryListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # videoCategoryListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -8357,8 +8162,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `prevPageToken`
         # @return [String]
         attr_accessor :prev_page_token
@@ -8368,7 +8173,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -8427,14 +8232,12 @@ module Google
       class VideoContentDetails
         include Google::Apis::Core::Hashable
       
-        # The value of <code>captions</code> indicates whether the video
-        # has captions or not.
+        # The value of captions indicates whether the video has captions or not.
         # Corresponds to the JSON property `caption`
         # @return [String]
         attr_accessor :caption
       
-        # Ratings schemes. The country-specific ratings are mostly for
-        # movies and shows.
+        # Ratings schemes. The country-specific ratings are mostly for movies and shows.
         # LINT.IfChange
         # Corresponds to the JSON property `contentRating`
         # @return [Google::Apis::YoutubeV3::ContentRating]
@@ -8445,42 +8248,36 @@ module Google
         # @return [Google::Apis::YoutubeV3::AccessPolicy]
         attr_accessor :country_restriction
       
-        # The value of <code>definition</code> indicates whether the video is
-        # available in high definition or only in standard definition.
+        # The value of definition indicates whether the video is available in high
+        # definition or only in standard definition.
         # Corresponds to the JSON property `definition`
         # @return [String]
         attr_accessor :definition
       
-        # The value of <code>dimension</code> indicates whether the video is
-        # available in 3D or in 2D.
+        # The value of dimension indicates whether the video is available in 3D or in 2D.
         # Corresponds to the JSON property `dimension`
         # @return [String]
         attr_accessor :dimension
       
-        # The length of the video. The tag value is an <a
-        # href="//en.wikipedia.org/wiki/ISO_8601#Durations">ISO 8601</a> duration in
-        # the format <code>PT#M#S</code>, in which the letters <code>PT</code>
-        # indicate that the value specifies a period of time, and the letters
-        # <code>M</code> and <code>S</code> refer to length in minutes and seconds,
-        # respectively. The <code>#</code> characters preceding the <code>M</code>
-        # and <code>S</code> letters are both integers that specify the number of
-        # minutes (or seconds) of the video. For example, a value of
-        # <code>PT15M51S</code> indicates that the video is 15 minutes and 51 seconds
-        # long.
+        # The length of the video. The tag value is an ISO 8601 duration in the format
+        # PT#M#S, in which the letters PT indicate that the value specifies a period of
+        # time, and the letters M and S refer to length in minutes and seconds,
+        # respectively. The # characters preceding the M and S letters are both integers
+        # that specify the number of minutes (or seconds) of the video. For example, a
+        # value of PT15M51S indicates that the video is 15 minutes and 51 seconds long.
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
       
-        # Indicates whether the video uploader has provided a custom
-        # thumbnail image for the video.
-        # This property is only visible to the video uploader.
+        # Indicates whether the video uploader has provided a custom thumbnail image for
+        # the video. This property is only visible to the video uploader.
         # Corresponds to the JSON property `hasCustomThumbnail`
         # @return [Boolean]
         attr_accessor :has_custom_thumbnail
         alias_method :has_custom_thumbnail?, :has_custom_thumbnail
       
-        # The value of <code>is_license_content</code> indicates whether the video is
-        # licensed content.
+        # The value of is_license_content indicates whether the video is licensed
+        # content.
         # Corresponds to the JSON property `licensedContent`
         # @return [Boolean]
         attr_accessor :licensed_content
@@ -8519,20 +8316,18 @@ module Google
       class VideoContentDetailsRegionRestriction
         include Google::Apis::Core::Hashable
       
-        # A list of region codes that identify countries where the video is
-        # viewable. If this property is present and a country is not listed
-        # in its value, then the video is blocked from appearing in that
-        # country. If this property is present and contains an empty list,
-        # the video is blocked in all countries.
+        # A list of region codes that identify countries where the video is viewable. If
+        # this property is present and a country is not listed in its value, then the
+        # video is blocked from appearing in that country. If this property is present
+        # and contains an empty list, the video is blocked in all countries.
         # Corresponds to the JSON property `allowed`
         # @return [Array<String>]
         attr_accessor :allowed
       
-        # A list of region codes that identify countries where the video is
-        # blocked. If this property is present and a country is not listed in
-        # its value, then the video is viewable in that country. If this
-        # property is present and contains an empty list, the video is
-        # viewable in all countries.
+        # A list of region codes that identify countries where the video is blocked. If
+        # this property is present and a country is not listed in its value, then the
+        # video is viewable in that country. If this property is present and contains an
+        # empty list, the video is viewable in all countries.
         # Corresponds to the JSON property `blocked`
         # @return [Array<String>]
         attr_accessor :blocked
@@ -8554,14 +8349,14 @@ module Google
       class VideoFileDetails
         include Google::Apis::Core::Hashable
       
-        # A list of audio streams contained in the uploaded video file. Each item
-        # in the list contains detailed metadata about an audio stream.
+        # A list of audio streams contained in the uploaded video file. Each item in the
+        # list contains detailed metadata about an audio stream.
         # Corresponds to the JSON property `audioStreams`
         # @return [Array<Google::Apis::YoutubeV3::VideoFileDetailsAudioStream>]
         attr_accessor :audio_streams
       
-        # The uploaded video file's combined (video and audio) bitrate in bits
-        # per second.
+        # The uploaded video file's combined (video and audio) bitrate in bits per
+        # second.
         # Corresponds to the JSON property `bitrateBps`
         # @return [Fixnum]
         attr_accessor :bitrate_bps
@@ -8572,13 +8367,9 @@ module Google
         attr_accessor :container
       
         # The date and time when the uploaded video file was created. The value is
-        # specified in <a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format. Currently, the following ISO 8601 formats are supported:
-        # <ul>
-        # <li>Date only: <code>YYYY-MM-DD</code></li>
-        # <li>Naive time: <code>YYYY-MM-DDTHH:MM:SS</code></li>
-        # <li>Time with timezone: <code>YYYY-MM-DDTHH:MM:SS+HH:MM</code></li>
-        # </ul>
+        # specified in ISO 8601 format. Currently, the following ISO 8601 formats are
+        # supported: - Date only: YYYY-MM-DD - Naive time: YYYY-MM-DDTHH:MM:SS - Time
+        # with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
@@ -8594,21 +8385,21 @@ module Google
         # @return [String]
         attr_accessor :file_name
       
-        # The uploaded file's size in bytes. This field is present whether
-        # a video file or another type of file was uploaded.
+        # The uploaded file's size in bytes. This field is present whether a video file
+        # or another type of file was uploaded.
         # Corresponds to the JSON property `fileSize`
         # @return [Fixnum]
         attr_accessor :file_size
       
-        # The uploaded file's type as detected by YouTube's video processing
-        # engine. Currently, YouTube only processes video files, but this field
-        # is present whether a video file or another type of file was uploaded.
+        # The uploaded file's type as detected by YouTube's video processing engine.
+        # Currently, YouTube only processes video files, but this field is present
+        # whether a video file or another type of file was uploaded.
         # Corresponds to the JSON property `fileType`
         # @return [String]
         attr_accessor :file_type
       
-        # A list of video streams contained in the uploaded video file. Each item
-        # in the list contains detailed metadata about a video stream.
+        # A list of video streams contained in the uploaded video file. Each item in the
+        # list contains detailed metadata about a video stream.
         # Corresponds to the JSON property `videoStreams`
         # @return [Array<Google::Apis::YoutubeV3::VideoFileDetailsVideoStream>]
         attr_accessor :video_streams
@@ -8650,8 +8441,8 @@ module Google
         # @return [String]
         attr_accessor :codec
       
-        # A value that uniquely identifies a video vendor. Typically, the value
-        # is a four-letter vendor code.
+        # A value that uniquely identifies a video vendor. Typically, the value is a
+        # four-letter vendor code.
         # Corresponds to the JSON property `vendor`
         # @return [String]
         attr_accessor :vendor
@@ -8673,8 +8464,8 @@ module Google
       class VideoFileDetailsVideoStream
         include Google::Apis::Core::Hashable
       
-        # The video content's display aspect ratio, which specifies the aspect
-        # ratio in which the video should be displayed.
+        # The video content's display aspect ratio, which specifies the aspect ratio in
+        # which the video should be displayed.
         # Corresponds to the JSON property `aspectRatio`
         # @return [Float]
         attr_accessor :aspect_ratio
@@ -8699,21 +8490,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :height_pixels
       
-        # The amount that YouTube needs to rotate the original source content
-        # to properly display the video.
+        # The amount that YouTube needs to rotate the original source content to
+        # properly display the video.
         # Corresponds to the JSON property `rotation`
         # @return [String]
         attr_accessor :rotation
       
-        # A value that uniquely identifies a video vendor. Typically, the value is
-        # a four-letter vendor code.
+        # A value that uniquely identifies a video vendor. Typically, the value is a
+        # four-letter vendor code.
         # Corresponds to the JSON property `vendor`
         # @return [String]
         attr_accessor :vendor
       
-        # The encoded video content's width in pixels. You can calculate the
-        # video's encoding aspect ratio as
-        # <code>width_pixels</code>&nbsp;/&nbsp;<code>height_pixels</code>.
+        # The encoded video content's width in pixels. You can calculate the video's
+        # encoding aspect ratio as width_pixels / height_pixels.
         # Corresponds to the JSON property `widthPixels`
         # @return [Fixnum]
         attr_accessor :width_pixels
@@ -8754,14 +8544,14 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::Video>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#videoListResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # videoListResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the next page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -8772,8 +8562,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # The token that can be used as the value of the <code>pageToken</code>
-        # parameter to retrieve the previous page in the result set.
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the previous page in the result set.
         # Corresponds to the JSON property `prevPageToken`
         # @return [String]
         attr_accessor :prev_page_token
@@ -8783,7 +8573,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -8810,55 +8600,47 @@ module Google
       class VideoLiveStreamingDetails
         include Google::Apis::Core::Hashable
       
-        # The ID of the currently active live chat attached to this video. This
-        # field is filled only if the video is a currently live broadcast that has
-        # live chat. Once the broadcast transitions to complete this field will be
-        # removed and the live chat closed down. For persistent broadcasts that live
-        # chat id will no longer be tied to this video but rather to the new video
-        # being displayed at the persistent page.
+        # The ID of the currently active live chat attached to this video. This field is
+        # filled only if the video is a currently live broadcast that has live chat.
+        # Once the broadcast transitions to complete this field will be removed and the
+        # live chat closed down. For persistent broadcasts that live chat id will no
+        # longer be tied to this video but rather to the new video being displayed at
+        # the persistent page.
         # Corresponds to the JSON property `activeLiveChatId`
         # @return [String]
         attr_accessor :active_live_chat_id
       
-        # The time that the broadcast actually ended. The value is specified
-        # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format. This value will not be
-        # available until the broadcast is over.
+        # The time that the broadcast actually ended. The value is specified in ISO 8601
+        # format. This value will not be available until the broadcast is over.
         # Corresponds to the JSON property `actualEndTime`
         # @return [String]
         attr_accessor :actual_end_time
       
-        # The time that the broadcast actually started. The value is specified
-        # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format. This value will not be
-        # available until the broadcast begins.
+        # The time that the broadcast actually started. The value is specified in ISO
+        # 8601 format. This value will not be available until the broadcast begins.
         # Corresponds to the JSON property `actualStartTime`
         # @return [String]
         attr_accessor :actual_start_time
       
-        # The number of viewers currently watching the broadcast. The property and
-        # its value will be present if the broadcast has current viewers and the
-        # broadcast owner has not hidden the viewcount for the video. Note that
-        # YouTube stops tracking the number of concurrent viewers for a broadcast
-        # when the broadcast ends. So, this property would not identify the number
-        # of viewers watching an archived video of a live broadcast that already
-        # ended.
+        # The number of viewers currently watching the broadcast. The property and its
+        # value will be present if the broadcast has current viewers and the broadcast
+        # owner has not hidden the viewcount for the video. Note that YouTube stops
+        # tracking the number of concurrent viewers for a broadcast when the broadcast
+        # ends. So, this property would not identify the number of viewers watching an
+        # archived video of a live broadcast that already ended.
         # Corresponds to the JSON property `concurrentViewers`
         # @return [Fixnum]
         attr_accessor :concurrent_viewers
       
-        # The time that the broadcast is scheduled to end. The value is specified
-        # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format. If the value is empty or
-        # the property is not present, then the broadcast is scheduled to continue
-        # indefinitely.
+        # The time that the broadcast is scheduled to end. The value is specified in ISO
+        # 8601 format. If the value is empty or the property is not present, then the
+        # broadcast is scheduled to continue indefinitely.
         # Corresponds to the JSON property `scheduledEndTime`
         # @return [String]
         attr_accessor :scheduled_end_time
       
-        # The time that the broadcast is scheduled to begin. The value is specified
-        # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # The time that the broadcast is scheduled to begin. The value is specified in
+        # ISO 8601 format.
         # Corresponds to the JSON property `scheduledStartTime`
         # @return [String]
         attr_accessor :scheduled_start_time
@@ -8931,8 +8713,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :embed_height
       
-        # An <code>&lt;iframe&gt;</code> tag that embeds a player that will
-        # play the video.
+        # An <iframe> tag that embeds a player that will play the video.
         # Corresponds to the JSON property `embedHtml`
         # @return [String]
         attr_accessor :embed_html
@@ -8959,34 +8740,32 @@ module Google
       class VideoProcessingDetails
         include Google::Apis::Core::Hashable
       
-        # This value indicates whether video editing suggestions, which might
-        # improve video quality or the playback experience, are available for
-        # the video. You can retrieve these suggestions by requesting the
-        # <code>suggestions</code> part in your <code>videos.list()</code> request.
+        # This value indicates whether video editing suggestions, which might improve
+        # video quality or the playback experience, are available for the video. You can
+        # retrieve these suggestions by requesting the suggestions part in your videos.
+        # list() request.
         # Corresponds to the JSON property `editorSuggestionsAvailability`
         # @return [String]
         attr_accessor :editor_suggestions_availability
       
-        # This value indicates whether file details are available for the uploaded
-        # video. You can retrieve a video's file details by requesting the
-        # <code>fileDetails</code> part in your <code>videos.list()</code> request.
+        # This value indicates whether file details are available for the uploaded video.
+        # You can retrieve a video's file details by requesting the fileDetails part in
+        # your videos.list() request.
         # Corresponds to the JSON property `fileDetailsAvailability`
         # @return [String]
         attr_accessor :file_details_availability
       
-        # The reason that YouTube failed to process the video. This property will
-        # only have a value if the <code>processingStatus</code>
-        # property's value is <code>failed</code>.
+        # The reason that YouTube failed to process the video. This property will only
+        # have a value if the processingStatus property's value is failed.
         # Corresponds to the JSON property `processingFailureReason`
         # @return [String]
         attr_accessor :processing_failure_reason
       
         # This value indicates whether the video processing engine has generated
-        # suggestions that might improve YouTube's ability to process the
-        # the video, warnings that explain video processing problems, or
-        # errors that cause video processing problems. You can retrieve these
-        # suggestions by requesting the <code>suggestions</code> part in your
-        # <code>videos.list()</code> request.
+        # suggestions that might improve YouTube's ability to process the the video,
+        # warnings that explain video processing problems, or errors that cause video
+        # processing problems. You can retrieve these suggestions by requesting the
+        # suggestions part in your videos.list() request.
         # Corresponds to the JSON property `processingIssuesAvailability`
         # @return [String]
         attr_accessor :processing_issues_availability
@@ -8996,23 +8775,22 @@ module Google
         # @return [Google::Apis::YoutubeV3::VideoProcessingDetailsProcessingProgress]
         attr_accessor :processing_progress
       
-        # The video's processing status. This value indicates whether YouTube was
-        # able to process the video or if the video is still being processed.
+        # The video's processing status. This value indicates whether YouTube was able
+        # to process the video or if the video is still being processed.
         # Corresponds to the JSON property `processingStatus`
         # @return [String]
         attr_accessor :processing_status
       
-        # This value indicates whether keyword (tag) suggestions are available for
-        # the video. Tags can be added to a video's metadata to make it easier for
-        # other users to find the video. You can retrieve these suggestions by
-        # requesting the <code>suggestions</code> part in your
-        # <code>videos.list()</code> request.
+        # This value indicates whether keyword (tag) suggestions are available for the
+        # video. Tags can be added to a video's metadata to make it easier for other
+        # users to find the video. You can retrieve these suggestions by requesting the
+        # suggestions part in your videos.list() request.
         # Corresponds to the JSON property `tagSuggestionsAvailability`
         # @return [String]
         attr_accessor :tag_suggestions_availability
       
-        # This value indicates whether thumbnail images have been generated for
-        # the video.
+        # This value indicates whether thumbnail images have been generated for the
+        # video.
         # Corresponds to the JSON property `thumbnailsAvailability`
         # @return [String]
         attr_accessor :thumbnails_availability
@@ -9038,27 +8816,25 @@ module Google
       class VideoProcessingDetailsProcessingProgress
         include Google::Apis::Core::Hashable
       
-        # The number of parts of the video that YouTube has already processed.
-        # You can estimate the percentage of the video that YouTube has already
-        # processed by calculating:<br>
-        # <code>100 * parts_processed / parts_total</code><br><br>
-        # Note that since the estimated number of parts could increase without
-        # a corresponding increase in the number of parts that have already been
-        # processed, it is possible that the calculated progress could
-        # periodically decrease while YouTube processes a video.
+        # The number of parts of the video that YouTube has already processed. You can
+        # estimate the percentage of the video that YouTube has already processed by
+        # calculating: 100 * parts_processed / parts_total Note that since the estimated
+        # number of parts could increase without a corresponding increase in the number
+        # of parts that have already been processed, it is possible that the calculated
+        # progress could periodically decrease while YouTube processes a video.
         # Corresponds to the JSON property `partsProcessed`
         # @return [Fixnum]
         attr_accessor :parts_processed
       
-        # An estimate of the total number of parts that need to be processed
-        # for the video. The number may be updated with more precise estimates
-        # while YouTube processes the video.
+        # An estimate of the total number of parts that need to be processed for the
+        # video. The number may be updated with more precise estimates while YouTube
+        # processes the video.
         # Corresponds to the JSON property `partsTotal`
         # @return [Fixnum]
         attr_accessor :parts_total
       
-        # An estimate of the amount of time, in millseconds, that YouTube needs
-        # to finish processing the video.
+        # An estimate of the amount of time, in millseconds, that YouTube needs to
+        # finish processing the video.
         # Corresponds to the JSON property `timeLeftMs`
         # @return [Fixnum]
         attr_accessor :time_left_ms
@@ -9138,13 +8914,13 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::VideoRating>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string
-        # <code>"youtube#videoGetRatingResponse"</code>.
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # videoGetRatingResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The <code>visitorId</code> identifies the visitor.
+        # The visitorId identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -9177,9 +8953,8 @@ module Google
         # @return [String]
         attr_accessor :location_description
       
-        # The date and time when the video was recorded. The value is specified in <a
-        # href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sssZ</code>) format.
+        # The date and time when the video was recorded. The value is specified in ISO
+        # 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format.
         # Corresponds to the JSON property `recordingDate`
         # @return [String]
         attr_accessor :recording_date
@@ -9201,14 +8976,13 @@ module Google
       class VideoSnippet
         include Google::Apis::Core::Hashable
       
-        # The YouTube <a href="/youtube/v3/docs/videoCategories/list">video
-        # category</a> associated with the video.
+        # The YouTube video category associated with the video.
         # Corresponds to the JSON property `categoryId`
         # @return [String]
         attr_accessor :category_id
       
-        # The ID that YouTube uses to uniquely identify the channel that the
-        # video was uploaded to.
+        # The ID that YouTube uses to uniquely identify the channel that the video was
+        # uploaded to.
         # Corresponds to the JSON property `channelId`
         # @return [String]
         attr_accessor :channel_id
@@ -9218,8 +8992,8 @@ module Google
         # @return [String]
         attr_accessor :channel_title
       
-        # The <code>default_audio_language</code> property specifies the language
-        # spoken in the video's default audio track.
+        # The default_audio_language property specifies the language spoken in the video'
+        # s default audio track.
         # Corresponds to the JSON property `defaultAudioLanguage`
         # @return [String]
         attr_accessor :default_audio_language
@@ -9229,14 +9003,13 @@ module Google
         # @return [String]
         attr_accessor :default_language
       
-        # The video's description.
-        # @mutable youtube.videos.insert youtube.videos.update
+        # The video's description. @mutable youtube.videos.insert youtube.videos.update
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Indicates if the video is an upcoming/active live broadcast.
-        # Or it's "none" if the video is not an upcoming/active live broadcast.
+        # Indicates if the video is an upcoming/active live broadcast. Or it's "none" if
+        # the video is not an upcoming/active live broadcast.
         # Corresponds to the JSON property `liveBroadcastContent`
         # @return [String]
         attr_accessor :live_broadcast_content
@@ -9246,9 +9019,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::VideoLocalization]
         attr_accessor :localized
       
-        # The date and time that the video was uploaded. The value is specified
-        # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # The date and time that the video was uploaded. The value is specified in ISO
+        # 8601 format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -9263,8 +9035,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::ThumbnailDetails]
         attr_accessor :thumbnails
       
-        # The video's title.
-        # @mutable youtube.videos.insert youtube.videos.update
+        # The video's title. @mutable youtube.videos.insert youtube.videos.update
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -9300,20 +9071,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :comment_count
       
-        # The number of users who have indicated that they disliked the video by
-        # giving it a negative rating.
+        # The number of users who have indicated that they disliked the video by giving
+        # it a negative rating.
         # Corresponds to the JSON property `dislikeCount`
         # @return [Fixnum]
         attr_accessor :dislike_count
       
-        # The number of users who currently have the video marked as a favorite
-        # video.
+        # The number of users who currently have the video marked as a favorite video.
         # Corresponds to the JSON property `favoriteCount`
         # @return [Fixnum]
         attr_accessor :favorite_count
       
-        # The number of users who have indicated that they liked the video by
-        # giving it a positive rating.
+        # The number of users who have indicated that they liked the video by giving it
+        # a positive rating.
         # Corresponds to the JSON property `likeCount`
         # @return [Fixnum]
         attr_accessor :like_count
@@ -9337,27 +9107,24 @@ module Google
         end
       end
       
-      # Basic details about a video category, such as its localized title.
-      # Next Id: 17
+      # Basic details about a video category, such as its localized title. Next Id: 17
       class VideoStatus
         include Google::Apis::Core::Hashable
       
-        # This value indicates if the video can be embedded on another website.
-        # @mutable youtube.videos.insert youtube.videos.update
+        # This value indicates if the video can be embedded on another website. @mutable
+        # youtube.videos.insert youtube.videos.update
         # Corresponds to the JSON property `embeddable`
         # @return [Boolean]
         attr_accessor :embeddable
         alias_method :embeddable?, :embeddable
       
-        # This value explains why a video failed to upload. This property is
-        # only present if the <code>uploadStatus</code> property indicates that
-        # the upload failed.
+        # This value explains why a video failed to upload. This property is only
+        # present if the uploadStatus property indicates that the upload failed.
         # Corresponds to the JSON property `failureReason`
         # @return [String]
         attr_accessor :failure_reason
       
-        # The video's license.
-        # @mutable youtube.videos.insert youtube.videos.update
+        # The video's license. @mutable youtube.videos.insert youtube.videos.update
         # Corresponds to the JSON property `license`
         # @return [String]
         attr_accessor :license
@@ -9373,26 +9140,24 @@ module Google
         # @return [String]
         attr_accessor :privacy_status
       
-        # This value indicates if the extended video statistics on the watch page
-        # can be viewed by everyone. Note that the view count, likes, etc will still
-        # be visible if this is disabled.
-        # @mutable youtube.videos.insert youtube.videos.update
+        # This value indicates if the extended video statistics on the watch page can be
+        # viewed by everyone. Note that the view count, likes, etc will still be visible
+        # if this is disabled. @mutable youtube.videos.insert youtube.videos.update
         # Corresponds to the JSON property `publicStatsViewable`
         # @return [Boolean]
         attr_accessor :public_stats_viewable
         alias_method :public_stats_viewable?, :public_stats_viewable
       
-        # The date and time when the video is scheduled to publish. It can be set
-        # only if the privacy status of the video is private. The value is specified
-        # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # format.
+        # The date and time when the video is scheduled to publish. It can be set only
+        # if the privacy status of the video is private. The value is specified in ISO
+        # 8601 format.
         # Corresponds to the JSON property `publishAt`
         # @return [String]
         attr_accessor :publish_at
       
-        # This value explains why YouTube rejected an uploaded video. This
-        # property is only present if the <code>uploadStatus</code> property
-        # indicates that the upload was rejected.
+        # This value explains why YouTube rejected an uploaded video. This property is
+        # only present if the uploadStatus property indicates that the upload was
+        # rejected.
         # Corresponds to the JSON property `rejectionReason`
         # @return [String]
         attr_accessor :rejection_reason
@@ -9427,45 +9192,43 @@ module Google
         end
       end
       
-      # Specifies suggestions on how to improve video content,
-      # including encoding hints, tag suggestions, and editor suggestions.
+      # Specifies suggestions on how to improve video content, including encoding
+      # hints, tag suggestions, and editor suggestions.
       class VideoSuggestions
         include Google::Apis::Core::Hashable
       
-        # A list of video editing operations that might improve the video quality
-        # or playback experience of the uploaded video.
+        # A list of video editing operations that might improve the video quality or
+        # playback experience of the uploaded video.
         # Corresponds to the JSON property `editorSuggestions`
         # @return [Array<String>]
         attr_accessor :editor_suggestions
       
-        # A list of errors that will prevent YouTube from successfully processing
-        # the uploaded video video. These errors indicate that, regardless of the
-        # video's current <a href="#processingProgress.processingStatus">processing
-        # status</a>, eventually, that status will almost certainly be
-        # <code>failed</code>.
+        # A list of errors that will prevent YouTube from successfully processing the
+        # uploaded video video. These errors indicate that, regardless of the video's
+        # current processing status, eventually, that status will almost certainly be
+        # failed.
         # Corresponds to the JSON property `processingErrors`
         # @return [Array<String>]
         attr_accessor :processing_errors
       
-        # A list of suggestions that may improve YouTube's ability to process the
-        # video.
+        # A list of suggestions that may improve YouTube's ability to process the video.
         # Corresponds to the JSON property `processingHints`
         # @return [Array<String>]
         attr_accessor :processing_hints
       
-        # A list of reasons why YouTube may have difficulty transcoding the
-        # uploaded video or that might result in an erroneous transcoding.
-        # These warnings are generated before YouTube actually processes the
-        # uploaded video file. In addition, they identify issues that are unlikely
-        # to cause the video processing to fail but that might cause problems
-        # such as sync issues, video artifacts, or a missing audio track.
+        # A list of reasons why YouTube may have difficulty transcoding the uploaded
+        # video or that might result in an erroneous transcoding. These warnings are
+        # generated before YouTube actually processes the uploaded video file. In
+        # addition, they identify issues that are unlikely to cause the video processing
+        # to fail but that might cause problems such as sync issues, video artifacts, or
+        # a missing audio track.
         # Corresponds to the JSON property `processingWarnings`
         # @return [Array<String>]
         attr_accessor :processing_warnings
       
-        # A list of keyword tags that could be added to the video's metadata to
-        # increase the likelihood that users will locate your video when searching
-        # or browsing on YouTube.
+        # A list of keyword tags that could be added to the video's metadata to increase
+        # the likelihood that users will locate your video when searching or browsing on
+        # YouTube.
         # Corresponds to the JSON property `tagSuggestions`
         # @return [Array<Google::Apis::YoutubeV3::VideoSuggestionsTagSuggestion>]
         attr_accessor :tag_suggestions
@@ -9489,10 +9252,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A set of video categories for which the tag is relevant. You can use this
-        # information to display appropriate tag suggestions based on the video
-        # category that the video uploader associates with the video. By default,
-        # tag suggestions are relevant for all categories if there are no restricts
-        # defined for the keyword.
+        # information to display appropriate tag suggestions based on the video category
+        # that the video uploader associates with the video. By default, tag suggestions
+        # are relevant for all categories if there are no restricts defined for the
+        # keyword.
         # Corresponds to the JSON property `categoryRestricts`
         # @return [Array<String>]
         attr_accessor :category_restricts
@@ -9517,25 +9280,24 @@ module Google
       class VideoTopicDetails
         include Google::Apis::Core::Hashable
       
-        # Similar to topic_id, except that these topics are merely relevant to the
-        # video. These are topics that may be mentioned in, or appear in the video.
-        # You can retrieve information about each topic using <a
-        # href="http://wiki.freebase.com/wiki/Topic_API">Freebase Topic API</a>.
+        # Similar to topic_id, except that these topics are merely relevant to the video.
+        # These are topics that may be mentioned in, or appear in the video. You can
+        # retrieve information about each topic using Freebase Topic API.
         # Corresponds to the JSON property `relevantTopicIds`
         # @return [Array<String>]
         attr_accessor :relevant_topic_ids
       
-        # A list of Wikipedia URLs that provide a high-level description of the
-        # video's content.
+        # A list of Wikipedia URLs that provide a high-level description of the video's
+        # content.
         # Corresponds to the JSON property `topicCategories`
         # @return [Array<String>]
         attr_accessor :topic_categories
       
         # A list of Freebase topic IDs that are centrally associated with the video.
-        # These are topics that are centrally featured in the video, and it can be
-        # said that the video is mainly about each of these. You can retrieve
-        # information about each topic using the < a
-        # href="http://wiki.freebase.com/wiki/Topic_API">Freebase Topic API</a>.
+        # These are topics that are centrally featured in the video, and it can be said
+        # that the video is mainly about each of these. You can retrieve information
+        # about each topic using the < a href="http://wiki.freebase.com/wiki/Topic_API">
+        # Freebase Topic API.
         # Corresponds to the JSON property `topicIds`
         # @return [Array<String>]
         attr_accessor :topic_ids

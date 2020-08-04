@@ -51,8 +51,8 @@ module Google
         
         # Creates a new client buyer.
         # @param [Fixnum] account_id
-        #   Unique numerical account ID for the buyer of which the client buyer
-        #   is a customer; the sponsor buyer to create a client for. (required)
+        #   Unique numerical account ID for the buyer of which the client buyer is a
+        #   customer; the sponsor buyer to create a client for. (required)
         # @param [Google::Apis::Adexchangebuyer2V2beta1::Client] client_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -120,19 +120,16 @@ module Google
         # @param [Fixnum] account_id
         #   Unique numerical account ID of the sponsor buyer to list the clients for.
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer clients than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer clients than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListClientsResponse.nextPageToken
-        #   returned from the previous call to the
-        #   accounts.clients.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListClientsResponse.nextPageToken returned from the
+        #   previous call to the accounts.clients.list method.
         # @param [String] partner_client_id
         #   Optional unique identifier (from the standpoint of an Ad Exchange sponsor
-        #   buyer partner) of the client to return.
-        #   If specified, at most one client will be returned in the response.
+        #   buyer partner) of the client to return. If specified, at most one client will
+        #   be returned in the response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -165,8 +162,8 @@ module Google
         
         # Updates an existing client buyer.
         # @param [Fixnum] account_id
-        #   Unique numerical account ID for the buyer of which the client buyer
-        #   is a customer; the sponsor buyer to update a client for. (required)
+        #   Unique numerical account ID for the buyer of which the client buyer is a
+        #   customer; the sponsor buyer to update a client for. (required)
         # @param [Fixnum] client_account_id
         #   Unique numerical account ID of the client to update. (required)
         # @param [Google::Apis::Adexchangebuyer2V2beta1::Client] client_object
@@ -200,13 +197,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates and sends out an email invitation to access
-        # an Ad Exchange client buyer account.
+        # Creates and sends out an email invitation to access an Ad Exchange client
+        # buyer account.
         # @param [Fixnum] account_id
         #   Numerical account ID of the client's sponsor buyer. (required)
         # @param [Fixnum] client_account_id
-        #   Numerical account ID of the client buyer that the user
-        #   should be associated with. (required)
+        #   Numerical account ID of the client buyer that the user should be associated
+        #   with. (required)
         # @param [Google::Apis::Adexchangebuyer2V2beta1::ClientUserInvitation] client_user_invitation_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -242,8 +239,8 @@ module Google
         # @param [Fixnum] account_id
         #   Numerical account ID of the client's sponsor buyer. (required)
         # @param [Fixnum] client_account_id
-        #   Numerical account ID of the client buyer that the user invitation
-        #   to be retrieved is associated with. (required)
+        #   Numerical account ID of the client buyer that the user invitation to be
+        #   retrieved is associated with. (required)
         # @param [Fixnum] invitation_id
         #   Numerical identifier of the user invitation to retrieve. (required)
         # @param [String] fields
@@ -275,27 +272,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the client users invitations for a client
-        # with a given account ID.
+        # Lists all the client users invitations for a client with a given account ID.
         # @param [Fixnum] account_id
         #   Numerical account ID of the client's sponsor buyer. (required)
         # @param [String] client_account_id
-        #   Numerical account ID of the client buyer to list invitations for.
-        #   (required)
-        #   You must either specify a string representation of a
-        #   numerical account identifier or the `-` character
-        #   to list all the invitations for all the clients
-        #   of a given sponsor buyer.
+        #   Numerical account ID of the client buyer to list invitations for. (required)
+        #   You must either specify a string representation of a numerical account
+        #   identifier or the `-` character to list all the invitations for all the
+        #   clients of a given sponsor buyer.
         # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer clients than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   Requested page size. Server may return fewer clients than requested. If
+        #   unspecified, server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListClientUserInvitationsResponse.nextPageToken
-        #   returned from the previous call to the
-        #   clients.invitations.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListClientUserInvitationsResponse.nextPageToken returned
+        #   from the previous call to the clients.invitations.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -330,8 +321,8 @@ module Google
         # @param [Fixnum] account_id
         #   Numerical account ID of the client's sponsor buyer. (required)
         # @param [Fixnum] client_account_id
-        #   Numerical account ID of the client buyer
-        #   that the user to be retrieved is associated with. (required)
+        #   Numerical account ID of the client buyer that the user to be retrieved is
+        #   associated with. (required)
         # @param [Fixnum] user_id
         #   Numerical identifier of the user to retrieve. (required)
         # @param [String] fields
@@ -363,27 +354,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the known client users for a specified
-        # sponsor buyer account ID.
+        # Lists all the known client users for a specified sponsor buyer account ID.
         # @param [Fixnum] account_id
-        #   Numerical account ID of the sponsor buyer of the client to list users for.
-        #   (required)
+        #   Numerical account ID of the sponsor buyer of the client to list users for. (
+        #   required)
         # @param [String] client_account_id
-        #   The account ID of the client buyer to list users for. (required)
-        #   You must specify either a string representation of a
-        #   numerical account identifier or the `-` character
-        #   to list all the client users for all the clients
-        #   of a given sponsor buyer.
+        #   The account ID of the client buyer to list users for. (required) You must
+        #   specify either a string representation of a numerical account identifier or
+        #   the `-` character to list all the client users for all the clients of a given
+        #   sponsor buyer.
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer clients than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer clients than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListClientUsersResponse.nextPageToken
-        #   returned from the previous call to the
-        #   accounts.clients.users.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListClientUsersResponse.nextPageToken returned from the
+        #   previous call to the accounts.clients.users.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -414,13 +400,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing client user.
-        # Only the user status can be changed on update.
+        # Updates an existing client user. Only the user status can be changed on update.
         # @param [Fixnum] account_id
         #   Numerical account ID of the client's sponsor buyer. (required)
         # @param [Fixnum] client_account_id
-        #   Numerical account ID of the client buyer that the user to be retrieved
-        #   is associated with. (required)
+        #   Numerical account ID of the client buyer that the user to be retrieved is
+        #   associated with. (required)
         # @param [Fixnum] user_id
         #   Numerical identifier of the user to retrieve. (required)
         # @param [Google::Apis::Adexchangebuyer2V2beta1::ClientUser] client_user_object
@@ -457,10 +442,8 @@ module Google
         
         # Creates a creative.
         # @param [String] account_id
-        #   The account that this creative belongs to.
-        #   Can be used to filter the response of the
-        #   creatives.list
-        #   method.
+        #   The account that this creative belongs to. Can be used to filter the response
+        #   of the creatives.list method.
         # @param [Google::Apis::Adexchangebuyer2V2beta1::Creative] creative_object
         # @param [String] duplicate_id_mode
         #   Indicates if multiple creatives can share an ID or not. Default is
@@ -530,35 +513,26 @@ module Google
         
         # Lists creatives.
         # @param [String] account_id
-        #   The account to list the creatives from.
-        #   Specify "-" to list all creatives the current user has access to.
+        #   The account to list the creatives from. Specify "-" to list all creatives the
+        #   current user has access to.
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer creatives than requested
-        #   (due to timeout constraint) even if more are available via another call.
-        #   If unspecified, server will pick an appropriate default.
-        #   Acceptable values are 1 to 1000, inclusive.
+        #   Requested page size. The server may return fewer creatives than requested (due
+        #   to timeout constraint) even if more are available via another call. If
+        #   unspecified, server will pick an appropriate default. Acceptable values are 1
+        #   to 1000, inclusive.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListCreativesResponse.next_page_token
-        #   returned from the previous call to 'ListCreatives' method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListCreativesResponse.next_page_token returned from the
+        #   previous call to 'ListCreatives' method.
         # @param [String] query
-        #   An optional query string to filter creatives. If no filter is specified,
-        #   all active creatives will be returned.
-        #   <p>Supported queries are:
-        #   <ul>
-        #   <li>accountId=<i>account_id_string</i>
-        #   <li>creativeId=<i>creative_id_string</i>
-        #   <li>dealsStatus: `approved, conditionally_approved, disapproved,
-        #   not_checked`
-        #   <li>openAuctionStatus: `approved, conditionally_approved, disapproved,
-        #   not_checked`
-        #   <li>attribute: `a numeric attribute from the list of attributes`
-        #   <li>disapprovalReason: `a reason from
-        #   DisapprovalReason`
-        #   </ul>
-        #   Example: 'accountId=12345 AND (dealsStatus:disapproved AND
-        #   disapprovalReason:unacceptable_content) OR attribute:47'
+        #   An optional query string to filter creatives. If no filter is specified, all
+        #   active creatives will be returned. Supported queries are: - accountId=*
+        #   account_id_string* - creativeId=*creative_id_string* - dealsStatus: `approved,
+        #   conditionally_approved, disapproved, not_checked` - openAuctionStatus: `
+        #   approved, conditionally_approved, disapproved, not_checked` - attribute: `a
+        #   numeric attribute from the list of attributes` - disapprovalReason: `a reason
+        #   from DisapprovalReason` Example: 'accountId=12345 AND (dealsStatus:disapproved
+        #   AND disapprovalReason:unacceptable_content) OR attribute:47'
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -594,8 +568,8 @@ module Google
         # @param [String] account_id
         #   The account of the creative to stop notifications for.
         # @param [String] creative_id
-        #   The creative ID of the creative to stop notifications for.
-        #   Specify "-" to specify stopping account level notifications.
+        #   The creative ID of the creative to stop notifications for. Specify "-" to
+        #   specify stopping account level notifications.
         # @param [Google::Apis::Adexchangebuyer2V2beta1::StopWatchingCreativeRequest] stop_watching_creative_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -629,15 +603,11 @@ module Google
         
         # Updates a creative.
         # @param [String] account_id
-        #   The account that this creative belongs to.
-        #   Can be used to filter the response of the
-        #   creatives.list
-        #   method.
+        #   The account that this creative belongs to. Can be used to filter the response
+        #   of the creatives.list method.
         # @param [String] creative_id
-        #   The buyer-defined creative ID of this creative.
-        #   Can be used to filter the response of the
-        #   creatives.list
-        #   method.
+        #   The buyer-defined creative ID of this creative. Can be used to filter the
+        #   response of the creatives.list method.
         # @param [Google::Apis::Adexchangebuyer2V2beta1::Creative] creative_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -669,15 +639,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Watches a creative. Will result in push notifications being sent to the
-        # topic when the creative changes status.
+        # Watches a creative. Will result in push notifications being sent to the topic
+        # when the creative changes status.
         # @param [String] account_id
         #   The account of the creative to watch.
         # @param [String] creative_id
-        #   The creative ID to watch for status changes.
-        #   Specify "-" to watch all creatives under the above account.
-        #   If both creative-level and account-level notifications are
-        #   sent, only a single notification will be sent to the
+        #   The creative ID to watch for status changes. Specify "-" to watch all
+        #   creatives under the above account. If both creative-level and account-level
+        #   notifications are sent, only a single notification will be sent to the
         #   creative-level notification topic.
         # @param [Google::Apis::Adexchangebuyer2V2beta1::WatchCreativeRequest] watch_creative_request_object
         # @param [String] fields
@@ -748,33 +717,25 @@ module Google
         
         # List all creative-deal associations.
         # @param [String] account_id
-        #   The account to list the associations from.
-        #   Specify "-" to list all creatives the current user has access to.
+        #   The account to list the associations from. Specify "-" to list all creatives
+        #   the current user has access to.
         # @param [String] creative_id
-        #   The creative ID to list the associations from.
-        #   Specify "-" to list all creatives under the above account.
+        #   The creative ID to list the associations from. Specify "-" to list all
+        #   creatives under the above account.
         # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer associations than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   Requested page size. Server may return fewer associations than requested. If
+        #   unspecified, server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListDealAssociationsResponse.next_page_token
-        #   returned from the previous call to 'ListDealAssociations' method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListDealAssociationsResponse.next_page_token returned
+        #   from the previous call to 'ListDealAssociations' method.
         # @param [String] query
         #   An optional query string to filter deal associations. If no filter is
-        #   specified, all associations will be returned.
-        #   Supported queries are:
-        #   <ul>
-        #   <li>accountId=<i>account_id_string</i>
-        #   <li>creativeId=<i>creative_id_string</i>
-        #   <li>dealsId=<i>deals_id_string</i>
-        #   <li>dealsStatus:`approved, conditionally_approved, disapproved,
-        #   not_checked`
-        #   <li>openAuctionStatus:`approved, conditionally_approved, disapproved,
-        #   not_checked`
-        #   </ul>
-        #   Example: 'dealsId=12345 AND dealsStatus:disapproved'
+        #   specified, all associations will be returned. Supported queries are: -
+        #   accountId=*account_id_string* - creativeId=*creative_id_string* - dealsId=*
+        #   deals_id_string* - dealsStatus:`approved, conditionally_approved, disapproved,
+        #   not_checked` - openAuctionStatus:`approved, conditionally_approved,
+        #   disapproved, not_checked` Example: 'dealsId=12345 AND dealsStatus:disapproved'
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -842,21 +803,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List finalized proposals, regardless if a proposal is being renegotiated.
-        # A filter expression (PQL query) may be specified to filter the results.
-        # The notes will not be returned.
+        # List finalized proposals, regardless if a proposal is being renegotiated. A
+        # filter expression (PQL query) may be specified to filter the results. The
+        # notes will not be returned.
         # @param [String] account_id
         #   Account ID of the buyer.
         # @param [String] filter
-        #   An optional PQL filter query used to query for proposals.
-        #   Nested repeated fields, such as proposal.deals.targetingCriterion,
-        #   cannot be filtered.
+        #   An optional PQL filter query used to query for proposals. Nested repeated
+        #   fields, such as proposal.deals.targetingCriterion, cannot be filtered.
         # @param [String] filter_syntax
-        #   Syntax the filter is written in. Current implementation defaults to PQL
-        #   but in the future it will be LIST_FILTER.
+        #   Syntax the filter is written in. Current implementation defaults to PQL but in
+        #   the future it will be LIST_FILTER.
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
         #   The page token as returned from ListProposalsResponse.
         # @param [String] fields
@@ -923,19 +883,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all products visible to the buyer (optionally filtered by the
-        # specified PQL query).
+        # List all products visible to the buyer (optionally filtered by the specified
+        # PQL query).
         # @param [String] account_id
         #   Account ID of the buyer.
         # @param [String] filter
-        #   An optional PQL query used to query for products. See
-        #   https://developers.google.com/ad-manager/docs/pqlreference
-        #   for documentation about PQL and examples.
-        #   Nested repeated fields, such as product.targetingCriterion.inclusions,
-        #   cannot be filtered.
+        #   An optional PQL query used to query for products. See https://developers.
+        #   google.com/ad-manager/docs/pqlreference for documentation about PQL and
+        #   examples. Nested repeated fields, such as product.targetingCriterion.
+        #   inclusions, cannot be filtered.
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
         #   The page token as returned from ListProductsResponse.
         # @param [String] fields
@@ -968,10 +927,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Mark the proposal as accepted at the given revision number. If the number
-        # does not match the server's revision number an `ABORTED` error message will
-        # be returned. This call updates the proposal_state from `PROPOSED` to
-        # `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`.
+        # Mark the proposal as accepted at the given revision number. If the number does
+        # not match the server's revision number an `ABORTED` error message will be
+        # returned. This call updates the proposal_state from `PROPOSED` to `
+        # BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`.
         # @param [String] account_id
         #   Account ID of the buyer.
         # @param [String] proposal_id
@@ -1007,10 +966,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new note and attach it to the proposal. The note is assigned
-        # a unique ID by the server.
-        # The proposal revision number will not increase when associated with a
-        # new note.
+        # Create a new note and attach it to the proposal. The note is assigned a unique
+        # ID by the server. The proposal revision number will not increase when
+        # associated with a new note.
         # @param [String] account_id
         #   Account ID of the buyer.
         # @param [String] proposal_id
@@ -1047,8 +1005,8 @@ module Google
         end
         
         # Cancel an ongoing negotiation on a proposal. This does not cancel or end
-        # serving for the deals if the proposal has been finalized, but only cancels
-        # a negotiation unilaterally.
+        # serving for the deals if the proposal has been finalized, but only cancels a
+        # negotiation unilaterally.
         # @param [String] account_id
         #   Account ID of the buyer.
         # @param [String] proposal_id
@@ -1084,12 +1042,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the given proposal to indicate that setup has been completed.
-        # This method is called by the buyer when the line items have been created
-        # on their end for a finalized proposal and all the required creatives
-        # have been uploaded using the creatives API. This call updates the
-        # `is_setup_completed` bit on the proposal and also notifies the seller.
-        # The server will advance the revision number of the most recent proposal.
+        # Update the given proposal to indicate that setup has been completed. This
+        # method is called by the buyer when the line items have been created on their
+        # end for a finalized proposal and all the required creatives have been uploaded
+        # using the creatives API. This call updates the `is_setup_completed` bit on the
+        # proposal and also notifies the seller. The server will advance the revision
+        # number of the most recent proposal.
         # @param [String] account_id
         #   Account ID of the buyer.
         # @param [String] proposal_id
@@ -1125,8 +1083,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create the given proposal. Each created proposal and any deals it contains
-        # are assigned a unique ID by the server.
+        # Create the given proposal. Each created proposal and any deals it contains are
+        # assigned a unique ID by the server.
         # @param [String] account_id
         #   Account ID of the buyer.
         # @param [Google::Apis::Adexchangebuyer2V2beta1::Proposal] proposal_object
@@ -1159,8 +1117,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a proposal given its ID. The proposal is returned at its head
-        # revision.
+        # Gets a proposal given its ID. The proposal is returned at its head revision.
         # @param [String] account_id
         #   Account ID of the buyer.
         # @param [String] proposal_id
@@ -1193,24 +1150,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List proposals. A filter expression (PQL query) may be specified to
-        # filter the results. To retrieve all finalized proposals, regardless if a
-        # proposal is being renegotiated, see the FinalizedProposals resource.
-        # Note that Bidder/ChildSeat relationships differ from the usual behavior.
-        # A Bidder account can only see its child seats' proposals by specifying
-        # the ChildSeat's accountId in the request path.
+        # List proposals. A filter expression (PQL query) may be specified to filter the
+        # results. To retrieve all finalized proposals, regardless if a proposal is
+        # being renegotiated, see the FinalizedProposals resource. Note that Bidder/
+        # ChildSeat relationships differ from the usual behavior. A Bidder account can
+        # only see its child seats' proposals by specifying the ChildSeat's accountId in
+        # the request path.
         # @param [String] account_id
         #   Account ID of the buyer.
         # @param [String] filter
-        #   An optional PQL filter query used to query for proposals.
-        #   Nested repeated fields, such as proposal.deals.targetingCriterion,
-        #   cannot be filtered.
+        #   An optional PQL filter query used to query for proposals. Nested repeated
+        #   fields, such as proposal.deals.targetingCriterion, cannot be filtered.
         # @param [String] filter_syntax
-        #   Syntax the filter is written in. Current implementation defaults to PQL
-        #   but in the future it will be LIST_FILTER.
+        #   Syntax the filter is written in. Current implementation defaults to PQL but in
+        #   the future it will be LIST_FILTER.
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
         #   The page token as returned from ListProposalsResponse.
         # @param [String] fields
@@ -1244,13 +1200,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the given proposal to pause serving.
-        # This method will set the
-        # `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all
-        # deals in the proposal.
-        # It is a no-op to pause an already-paused proposal.
-        # It is an error to call PauseProposal for a proposal that is not
-        # finalized or renegotiating.
+        # Update the given proposal to pause serving. This method will set the `
+        # DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all
+        # deals in the proposal. It is a no-op to pause an already-paused proposal. It
+        # is an error to call PauseProposal for a proposal that is not finalized or
+        # renegotiating.
         # @param [String] account_id
         #   Account ID of the buyer.
         # @param [String] proposal_id
@@ -1286,15 +1240,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the given proposal to resume serving.
-        # This method will set the
-        # `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all
-        # deals in the proposal.
-        # Note that if the `has_seller_paused` bit is also set, serving will not
-        # resume until the seller also resumes.
-        # It is a no-op to resume an already-running proposal.
-        # It is an error to call ResumeProposal for a proposal that is not
-        # finalized or renegotiating.
+        # Update the given proposal to resume serving. This method will set the `
+        # DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all
+        # deals in the proposal. Note that if the `has_seller_paused` bit is also set,
+        # serving will not resume until the seller also resumes. It is a no-op to resume
+        # an already-running proposal. It is an error to call ResumeProposal for a
+        # proposal that is not finalized or renegotiating.
         # @param [String] account_id
         #   Account ID of the buyer.
         # @param [String] proposal_id
@@ -1330,18 +1281,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the given proposal at the client known revision number. If the
-        # server revision has advanced since the passed-in
-        # `proposal.proposal_revision`, an `ABORTED` error message will be returned.
-        # Only the buyer-modifiable fields of the proposal will be updated.
-        # Note that the deals in the proposal will be updated to match the passed-in
-        # copy.
-        # If a passed-in deal does not have a `deal_id`, the server will assign a new
-        # unique ID and create the deal.
-        # If passed-in deal has a `deal_id`, it will be updated to match the
-        # passed-in copy.
-        # Any existing deals not present in the passed-in proposal will be deleted.
-        # It is an error to pass in a deal with a `deal_id` not present at head.
+        # Update the given proposal at the client known revision number. If the server
+        # revision has advanced since the passed-in `proposal.proposal_revision`, an `
+        # ABORTED` error message will be returned. Only the buyer-modifiable fields of
+        # the proposal will be updated. Note that the deals in the proposal will be
+        # updated to match the passed-in copy. If a passed-in deal does not have a `
+        # deal_id`, the server will assign a new unique ID and create the deal. If
+        # passed-in deal has a `deal_id`, it will be updated to match the passed-in copy.
+        # Any existing deals not present in the passed-in proposal will be deleted. It
+        # is an error to pass in a deal with a `deal_id` not present at head.
         # @param [String] account_id
         #   Account ID of the buyer.
         # @param [String] proposal_id
@@ -1448,18 +1396,16 @@ module Google
         
         # Creates the specified filter set for the account with the given account ID.
         # @param [String] owner_name
-        #   Name of the owner (bidder or account) of the filter set to be created.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123: `bidders/123`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456`
+        #   Name of the owner (bidder or account) of the filter set to be created. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123` - For
+        #   an account-level filter set for the buyer account representing bidder 123: `
+        #   bidders/123/accounts/123` - For an account-level filter set for the child seat
+        #   buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
         # @param [Google::Apis::Adexchangebuyer2V2beta1::FilterSet] filter_set_object
         # @param [Boolean] is_transient
-        #   Whether the filter set is transient, or should be persisted indefinitely.
-        #   By default, filter sets are not transient.
-        #   If transient, it will be available for at least 1 hour after creation.
+        #   Whether the filter set is transient, or should be persisted indefinitely. By
+        #   default, filter sets are not transient. If transient, it will be available for
+        #   at least 1 hour after creation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1490,17 +1436,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the requested filter set from the account with the given account
-        # ID.
+        # Deletes the requested filter set from the account with the given account ID.
         # @param [String] name
-        #   Full name of the resource to delete.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Full name of the resource to delete. For example: - For a bidder-level filter
+        #   set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter
+        #   set for the buyer account representing bidder 123: `bidders/123/accounts/123/
+        #   filterSets/abc` - For an account-level filter set for the child seat buyer
+        #   account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1528,17 +1470,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the requested filter set for the account with the given account
-        # ID.
+        # Retrieves the requested filter set for the account with the given account ID.
         # @param [String] name
-        #   Full name of the resource being requested.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Full name of the resource being requested. For example: - For a bidder-level
+        #   filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+        #   filter set for the buyer account representing bidder 123: `bidders/123/
+        #   accounts/123/filterSets/abc` - For an account-level filter set for the child
+        #   seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/
+        #   filterSets/abc`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1568,23 +1507,18 @@ module Google
         
         # Lists all filter sets for the account with the given account ID.
         # @param [String] owner_name
-        #   Name of the owner (bidder or account) of the filter sets to be listed.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123: `bidders/123`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456`
+        #   Name of the owner (bidder or account) of the filter sets to be listed. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123` - For
+        #   an account-level filter set for the buyer account representing bidder 123: `
+        #   bidders/123/accounts/123` - For an account-level filter set for the child seat
+        #   buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListFilterSetsResponse.nextPageToken
-        #   returned from the previous call to the
-        #   accounts.filterSets.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListFilterSetsResponse.nextPageToken returned from the
+        #   previous call to the accounts.filterSets.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1616,23 +1550,19 @@ module Google
         
         # Lists all metrics that are measured in terms of number of bids.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListBidMetricsResponse.nextPageToken
-        #   returned from the previous call to the bidMetrics.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListBidMetricsResponse.nextPageToken returned from the
+        #   previous call to the bidMetrics.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1665,23 +1595,19 @@ module Google
         # List all errors that occurred in bid responses, with the number of bid
         # responses affected for each reason.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListBidResponseErrorsResponse.nextPageToken
-        #   returned from the previous call to the bidResponseErrors.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListBidResponseErrorsResponse.nextPageToken returned from
+        #   the previous call to the bidResponseErrors.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1711,26 +1637,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all reasons for which bid responses were considered to have no
-        # applicable bids, with the number of bid responses affected for each reason.
+        # List all reasons for which bid responses were considered to have no applicable
+        # bids, with the number of bid responses affected for each reason.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListBidResponsesWithoutBidsResponse.nextPageToken
-        #   returned from the previous call to the bidResponsesWithoutBids.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken
+        #   returned from the previous call to the bidResponsesWithoutBids.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1760,26 +1682,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all reasons that caused a bid request not to be sent for an
-        # impression, with the number of bid requests not sent for each reason.
+        # List all reasons that caused a bid request not to be sent for an impression,
+        # with the number of bid requests not sent for each reason.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListFilteredBidRequestsResponse.nextPageToken
-        #   returned from the previous call to the filteredBidRequests.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListFilteredBidRequestsResponse.nextPageToken returned
+        #   from the previous call to the filteredBidRequests.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1812,23 +1730,19 @@ module Google
         # List all reasons for which bids were filtered, with the number of bids
         # filtered for each reason.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListFilteredBidsResponse.nextPageToken
-        #   returned from the previous call to the filteredBids.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListFilteredBidsResponse.nextPageToken returned from the
+        #   previous call to the filteredBids.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1861,29 +1775,24 @@ module Google
         # List all creatives associated with a specific reason for which bids were
         # filtered, with the number of bids filtered for each creative.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] creative_status_id
-        #   The ID of the creative status for which to retrieve a breakdown by
-        #   creative.
-        #   See
-        #   [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/
-        #   downloads/creative-status-codes).
+        #   The ID of the creative status for which to retrieve a breakdown by creative.
+        #   See [creative-status-codes](https://developers.google.com/authorized-buyers/
+        #   rtb/downloads/creative-status-codes).
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListCreativeStatusBreakdownByCreativeResponse.nextPageToken
-        #   returned from the previous call to the filteredBids.creatives.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListCreativeStatusBreakdownByCreativeResponse.
+        #   nextPageToken returned from the previous call to the filteredBids.creatives.
+        #   list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1917,29 +1826,24 @@ module Google
         # List all details associated with a specific reason for which bids were
         # filtered, with the number of bids filtered for each detail.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] creative_status_id
-        #   The ID of the creative status for which to retrieve a breakdown by detail.
-        #   See
+        #   The ID of the creative status for which to retrieve a breakdown by detail. See
         #   [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/
-        #   downloads/creative-status-codes).
-        #   Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
+        #   downloads/creative-status-codes). Details are only available for statuses 10,
+        #   14, 15, 17, 18, 19, 86, and 87.
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListCreativeStatusBreakdownByDetailResponse.nextPageToken
-        #   returned from the previous call to the filteredBids.details.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken
+        #   returned from the previous call to the filteredBids.details.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1972,23 +1876,19 @@ module Google
         
         # Lists all metrics that are measured in terms of number of impressions.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListImpressionMetricsResponse.nextPageToken
-        #   returned from the previous call to the impressionMetrics.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListImpressionMetricsResponse.nextPageToken returned from
+        #   the previous call to the impressionMetrics.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2018,26 +1918,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all reasons for which bids lost in the auction, with the number of
-        # bids that lost for each reason.
+        # List all reasons for which bids lost in the auction, with the number of bids
+        # that lost for each reason.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListLosingBidsResponse.nextPageToken
-        #   returned from the previous call to the losingBids.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListLosingBidsResponse.nextPageToken returned from the
+        #   previous call to the losingBids.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2067,26 +1963,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all reasons for which winning bids were not billable, with the number
-        # of bids not billed for each reason.
+        # List all reasons for which winning bids were not billable, with the number of
+        # bids not billed for each reason.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListNonBillableWinningBidsResponse.nextPageToken
-        #   returned from the previous call to the nonBillableWinningBids.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned
+        #   from the previous call to the nonBillableWinningBids.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2118,18 +2010,16 @@ module Google
         
         # Creates the specified filter set for the account with the given account ID.
         # @param [String] owner_name
-        #   Name of the owner (bidder or account) of the filter set to be created.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123: `bidders/123`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456`
+        #   Name of the owner (bidder or account) of the filter set to be created. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123` - For
+        #   an account-level filter set for the buyer account representing bidder 123: `
+        #   bidders/123/accounts/123` - For an account-level filter set for the child seat
+        #   buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
         # @param [Google::Apis::Adexchangebuyer2V2beta1::FilterSet] filter_set_object
         # @param [Boolean] is_transient
-        #   Whether the filter set is transient, or should be persisted indefinitely.
-        #   By default, filter sets are not transient.
-        #   If transient, it will be available for at least 1 hour after creation.
+        #   Whether the filter set is transient, or should be persisted indefinitely. By
+        #   default, filter sets are not transient. If transient, it will be available for
+        #   at least 1 hour after creation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2160,17 +2050,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the requested filter set from the account with the given account
-        # ID.
+        # Deletes the requested filter set from the account with the given account ID.
         # @param [String] name
-        #   Full name of the resource to delete.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Full name of the resource to delete. For example: - For a bidder-level filter
+        #   set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter
+        #   set for the buyer account representing bidder 123: `bidders/123/accounts/123/
+        #   filterSets/abc` - For an account-level filter set for the child seat buyer
+        #   account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2198,17 +2084,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the requested filter set for the account with the given account
-        # ID.
+        # Retrieves the requested filter set for the account with the given account ID.
         # @param [String] name
-        #   Full name of the resource being requested.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Full name of the resource being requested. For example: - For a bidder-level
+        #   filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level
+        #   filter set for the buyer account representing bidder 123: `bidders/123/
+        #   accounts/123/filterSets/abc` - For an account-level filter set for the child
+        #   seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/
+        #   filterSets/abc`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2238,23 +2121,18 @@ module Google
         
         # Lists all filter sets for the account with the given account ID.
         # @param [String] owner_name
-        #   Name of the owner (bidder or account) of the filter sets to be listed.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123: `bidders/123`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456`
+        #   Name of the owner (bidder or account) of the filter sets to be listed. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123` - For
+        #   an account-level filter set for the buyer account representing bidder 123: `
+        #   bidders/123/accounts/123` - For an account-level filter set for the child seat
+        #   buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListFilterSetsResponse.nextPageToken
-        #   returned from the previous call to the
-        #   accounts.filterSets.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListFilterSetsResponse.nextPageToken returned from the
+        #   previous call to the accounts.filterSets.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2286,23 +2164,19 @@ module Google
         
         # Lists all metrics that are measured in terms of number of bids.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListBidMetricsResponse.nextPageToken
-        #   returned from the previous call to the bidMetrics.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListBidMetricsResponse.nextPageToken returned from the
+        #   previous call to the bidMetrics.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2335,23 +2209,19 @@ module Google
         # List all errors that occurred in bid responses, with the number of bid
         # responses affected for each reason.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListBidResponseErrorsResponse.nextPageToken
-        #   returned from the previous call to the bidResponseErrors.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListBidResponseErrorsResponse.nextPageToken returned from
+        #   the previous call to the bidResponseErrors.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2381,26 +2251,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all reasons for which bid responses were considered to have no
-        # applicable bids, with the number of bid responses affected for each reason.
+        # List all reasons for which bid responses were considered to have no applicable
+        # bids, with the number of bid responses affected for each reason.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListBidResponsesWithoutBidsResponse.nextPageToken
-        #   returned from the previous call to the bidResponsesWithoutBids.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken
+        #   returned from the previous call to the bidResponsesWithoutBids.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2430,26 +2296,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all reasons that caused a bid request not to be sent for an
-        # impression, with the number of bid requests not sent for each reason.
+        # List all reasons that caused a bid request not to be sent for an impression,
+        # with the number of bid requests not sent for each reason.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListFilteredBidRequestsResponse.nextPageToken
-        #   returned from the previous call to the filteredBidRequests.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListFilteredBidRequestsResponse.nextPageToken returned
+        #   from the previous call to the filteredBidRequests.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2482,23 +2344,19 @@ module Google
         # List all reasons for which bids were filtered, with the number of bids
         # filtered for each reason.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListFilteredBidsResponse.nextPageToken
-        #   returned from the previous call to the filteredBids.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListFilteredBidsResponse.nextPageToken returned from the
+        #   previous call to the filteredBids.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2531,29 +2389,24 @@ module Google
         # List all creatives associated with a specific reason for which bids were
         # filtered, with the number of bids filtered for each creative.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] creative_status_id
-        #   The ID of the creative status for which to retrieve a breakdown by
-        #   creative.
-        #   See
-        #   [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/
-        #   downloads/creative-status-codes).
+        #   The ID of the creative status for which to retrieve a breakdown by creative.
+        #   See [creative-status-codes](https://developers.google.com/authorized-buyers/
+        #   rtb/downloads/creative-status-codes).
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListCreativeStatusBreakdownByCreativeResponse.nextPageToken
-        #   returned from the previous call to the filteredBids.creatives.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListCreativeStatusBreakdownByCreativeResponse.
+        #   nextPageToken returned from the previous call to the filteredBids.creatives.
+        #   list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2587,29 +2440,24 @@ module Google
         # List all details associated with a specific reason for which bids were
         # filtered, with the number of bids filtered for each detail.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] creative_status_id
-        #   The ID of the creative status for which to retrieve a breakdown by detail.
-        #   See
+        #   The ID of the creative status for which to retrieve a breakdown by detail. See
         #   [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/
-        #   downloads/creative-status-codes).
-        #   Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
+        #   downloads/creative-status-codes). Details are only available for statuses 10,
+        #   14, 15, 17, 18, 19, 86, and 87.
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListCreativeStatusBreakdownByDetailResponse.nextPageToken
-        #   returned from the previous call to the filteredBids.details.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken
+        #   returned from the previous call to the filteredBids.details.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2642,23 +2490,19 @@ module Google
         
         # Lists all metrics that are measured in terms of number of impressions.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListImpressionMetricsResponse.nextPageToken
-        #   returned from the previous call to the impressionMetrics.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListImpressionMetricsResponse.nextPageToken returned from
+        #   the previous call to the impressionMetrics.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2688,26 +2532,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all reasons for which bids lost in the auction, with the number of
-        # bids that lost for each reason.
+        # List all reasons for which bids lost in the auction, with the number of bids
+        # that lost for each reason.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListLosingBidsResponse.nextPageToken
-        #   returned from the previous call to the losingBids.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListLosingBidsResponse.nextPageToken returned from the
+        #   previous call to the losingBids.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2737,26 +2577,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all reasons for which winning bids were not billable, with the number
-        # of bids not billed for each reason.
+        # List all reasons for which winning bids were not billable, with the number of
+        # bids not billed for each reason.
         # @param [String] filter_set_name
-        #   Name of the filter set that should be applied to the requested metrics.
-        #   For example:
-        #   - For a bidder-level filter set for bidder 123:
-        #   `bidders/123/filterSets/abc`
-        #   - For an account-level filter set for the buyer account representing bidder
-        #   123: `bidders/123/accounts/123/filterSets/abc`
-        #   - For an account-level filter set for the child seat buyer account 456
-        #   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+        #   Name of the filter set that should be applied to the requested metrics. For
+        #   example: - For a bidder-level filter set for bidder 123: `bidders/123/
+        #   filterSets/abc` - For an account-level filter set for the buyer account
+        #   representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an
+        #   account-level filter set for the child seat buyer account 456 whose bidder is
+        #   123: `bidders/123/accounts/456/filterSets/abc`
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer results than requested.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Requested page size. The server may return fewer results than requested. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListNonBillableWinningBidsResponse.nextPageToken
-        #   returned from the previous call to the nonBillableWinningBids.list
-        #   method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned
+        #   from the previous call to the nonBillableWinningBids.list method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

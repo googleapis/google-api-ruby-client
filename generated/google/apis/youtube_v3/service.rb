@@ -50,9 +50,9 @@ module Google
         
         # Inserts a new resource into this collection.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will include.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
         # @param [Google::Apis::YoutubeV3::AbuseReport] abuse_report_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -85,26 +85,23 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>activity</code> resource
-        #   properties that the API response will include.<br><br>If the parameter
+        #   The *part* parameter specifies a comma-separated list of one or more activity
+        #   resource properties that the API response will include. If the parameter
         #   identifies a property that contains child properties, the child properties
-        #   will be included in the response. For example, in an <code>activity</code>
-        #   resource, the <code>snippet</code> property contains other properties that
-        #   identify the type of activity, a display title for the activity, and so
-        #   forth. If you set <code><strong>part=snippet</strong></code>, the API
-        #   response will also contain all of those nested properties.
+        #   will be included in the response. For example, in an activity resource, the
+        #   snippet property contains other properties that identify the type of activity,
+        #   a display title for the activity, and so forth. If you set *part=snippet*, the
+        #   API response will also contain all of those nested properties.
         # @param [String] channel_id
         # @param [Boolean] home
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [Boolean] mine
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] published_after
         # @param [String] published_before
         # @param [String] region_code
@@ -148,17 +145,15 @@ module Google
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is be on behalf of
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the request's authorization credentials identify a YouTube CMS user
-        #   who is acting on behalf of the content owner specified in the parameter
-        #   value. This parameter is intended for YouTube content partners that own and
-        #   manage many different YouTube channels. It allows content owners to
-        #   authenticate once and get access to all their video and channel data,
-        #   without having to provide authentication credentials for each individual
-        #   channel. The actual CMS account that the user authenticates with must be
-        #   linked to the specified YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -192,23 +187,19 @@ module Google
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is be on behalf of
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the request's authorization credentials identify a YouTube CMS user
-        #   who is acting on behalf of the content owner specified in the parameter
-        #   value. This parameter is intended for YouTube content partners that own and
-        #   manage many different YouTube channels. It allows content owners to
-        #   authenticate once and get access to all their video and channel data,
-        #   without having to provide authentication credentials for each individual
-        #   channel. The actual CMS account that the user authenticates with must be
-        #   linked to the specified YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] tfmt
-        #   Convert the captions into this format. Supported options are
-        #   sbv, srt, and vtt.
+        #   Convert the captions into this format. Supported options are sbv, srt, and vtt.
         # @param [String] tlang
-        #   tlang is the language code; machine translate the captions into
-        #   this language.
+        #   tlang is the language code; machine translate the captions into this language.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -247,27 +238,24 @@ module Google
         
         # Inserts a new resource into this collection.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>caption</code> resource parts that the API response will include. Set
-        #   the parameter value to <code>snippet</code>.
+        #   The *part* parameter specifies the caption resource parts that the API
+        #   response will include. Set the parameter value to snippet.
         # @param [Google::Apis::YoutubeV3::Caption] caption_object
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is be on behalf of
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the request's authorization credentials identify a YouTube CMS user
-        #   who is acting on behalf of the content owner specified in the parameter
-        #   value. This parameter is intended for YouTube content partners that own and
-        #   manage many different YouTube channels. It allows content owners to
-        #   authenticate once and get access to all their video and channel data,
-        #   without having to provide authentication credentials for each individual
-        #   channel. The actual CMS account that the user authenticates with must be
-        #   linked to the specified YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [Boolean] sync
-        #   Extra parameter to allow automatically syncing the uploaded
-        #   caption/transcript with the audio.
+        #   Extra parameter to allow automatically syncing the uploaded caption/transcript
+        #   with the audio.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -314,27 +302,23 @@ module Google
         # @param [String] video_id
         #   Returns the captions for the specified video.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>caption</code> resource parts
-        #   that the API response will include. The <code>part</code> names that you
-        #   can include in the parameter value are <code>id</code> and
-        #   <code>snippet</code>.
+        #   The *part* parameter specifies a comma-separated list of one or more caption
+        #   resource parts that the API response will include. The part names that you can
+        #   include in the parameter value are id and snippet.
         # @param [Array<String>, String] id
         #   Returns the captions with the given IDs for Stubby or Apiary.
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is on behalf of.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the request's authorization credentials identify a YouTube CMS user
-        #   who is acting on behalf of the content owner specified in the parameter
-        #   value. This parameter is intended for YouTube content partners that own and
-        #   manage many different YouTube channels. It allows content owners to
-        #   authenticate once and get access to all their video and channel data,
-        #   without having to provide authentication credentials for each individual
-        #   channel. The actual CMS account that the user authenticates with must be
-        #   linked to the specified YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -368,29 +352,25 @@ module Google
         
         # Updates an existing resource.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>caption</code> resource parts
-        #   that the API response will include. The <code>part</code> names that you
-        #   can include in the parameter value are <code>id</code> and
-        #   <code>snippet</code>.
+        #   The *part* parameter specifies a comma-separated list of one or more caption
+        #   resource parts that the API response will include. The part names that you can
+        #   include in the parameter value are id and snippet.
         # @param [Google::Apis::YoutubeV3::Caption] caption_object
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is on behalf of.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the request's authorization credentials identify a YouTube CMS user
-        #   who is acting on behalf of the content owner specified in the parameter
-        #   value. This parameter is intended for YouTube content partners that own and
-        #   manage many different YouTube channels. It allows content owners to
-        #   authenticate once and get access to all their video and channel data,
-        #   without having to provide authentication credentials for each individual
-        #   channel. The actual CMS account that the user authenticates with must be
-        #   linked to the specified YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [Boolean] sync
-        #   Extra parameter to allow automatically syncing the uploaded
-        #   caption/transcript with the audio.
+        #   Extra parameter to allow automatically syncing the uploaded caption/transcript
+        #   with the audio.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -439,37 +419,30 @@ module Google
         #   Unused, channel_id is currently derived from the security context of the
         #   requestor.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the request's authorization credentials identify a YouTube CMS user
-        #   who is acting on behalf of the content owner specified in the parameter
-        #   value. This parameter is intended for YouTube content partners that own and
-        #   manage many different YouTube channels. It allows content owners to
-        #   authenticate once and get access to all their video and channel data,
-        #   without having to provide authentication credentials for each individual
-        #   channel. The actual CMS account that the user authenticates with must be
-        #   linked to the specified YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -514,18 +487,15 @@ module Google
         # Deletes a resource.
         # @param [String] id
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -554,45 +524,36 @@ module Google
         
         # Inserts a new resource into this collection.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will
-        #   include.<br/><br/>The <code>part</code> names that you can include in the
-        #   parameter value are <code>snippet</code> and <code>contentDetails</code>.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include. The part names that you can include in the
+        #   parameter value are snippet and contentDetails.
         # @param [Google::Apis::YoutubeV3::ChannelSection] channel_section_object
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -626,17 +587,14 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>channelSection</code> resource
-        #   properties that the API response will include. The <code>part</code> names
-        #   that you can include in the parameter value are <code>id</code>,
-        #   <code>snippet</code>, and <code>contentDetails</code>.<br><br>If the
-        #   parameter identifies a property that contains child properties, the child
-        #   properties will be included in the response. For example, in a
-        #   <code>channelSection</code> resource, the <code>snippet</code> property
-        #   contains other properties, such as a display title for the channelSection.
-        #   If you set <code><strong>part=snippet</strong></code>, the API response
-        #   will also contain all of those nested properties.
+        #   The *part* parameter specifies a comma-separated list of one or more
+        #   channelSection resource properties that the API response will include. The
+        #   part names that you can include in the parameter value are id, snippet, and
+        #   contentDetails. If the parameter identifies a property that contains child
+        #   properties, the child properties will be included in the response. For example,
+        #   in a channelSection resource, the snippet property contains other properties,
+        #   such as a display title for the channelSection. If you set *part=snippet*, the
+        #   API response will also contain all of those nested properties.
         # @param [String] channel_id
         #   Return the ChannelSections owned by the specified channel ID.
         # @param [String] hl
@@ -646,18 +604,15 @@ module Google
         # @param [Boolean] mine
         #   Return the ChannelSections owned by the authenticated user.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -692,25 +647,21 @@ module Google
         
         # Updates an existing resource.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will
-        #   include.<br/><br/>The <code>part</code> names that you can include in the
-        #   parameter value are <code>snippet</code> and <code>contentDetails</code>.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include. The part names that you can include in the
+        #   parameter value are snippet and contentDetails.
         # @param [Google::Apis::YoutubeV3::ChannelSection] channel_section_object
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -743,15 +694,13 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>channel</code> resource
-        #   properties that the API response will include.<br><br>If the parameter
+        #   The *part* parameter specifies a comma-separated list of one or more channel
+        #   resource properties that the API response will include. If the parameter
         #   identifies a property that contains child properties, the child properties
-        #   will be included in the response. For example, in a <code>channel</code>
-        #   resource, the <code>contentDetails</code> property contains other
-        #   properties, such as the <code>uploads</code> properties. As such, if you
-        #   set <code><strong>part=contentDetails</strong></code>, the API response
-        #   will also contain all of those nested properties.
+        #   will be included in the response. For example, in a channel resource, the
+        #   contentDetails property contains other properties, such as the uploads
+        #   properties. As such, if you set *part=contentDetails*, the API response will
+        #   also contain all of those nested properties.
         # @param [String] category_id
         #   Return the channels within the specified guide category ID.
         # @param [String] for_username
@@ -759,38 +708,34 @@ module Google
         # @param [String] hl
         #   Stands for "host language". Specifies the localization language of the
         #   metadata to be filled into snippet.localized. The field is filled with the
-        #   default metadata if there is no localization in the specified language.
-        #   The parameter value must be a language code included in the list returned
-        #   by the i18nLanguages.list method (e.g. en_US, es_MX).
+        #   default metadata if there is no localization in the specified language. The
+        #   parameter value must be a language code included in the list returned by the
+        #   i18nLanguages.list method (e.g. en_US, es_MX).
         # @param [Array<String>, String] id
         #   Return the channels with the specified IDs.
         # @param [Boolean] managed_by_me
         #   Return the channels managed by the authenticated user.
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [Boolean] mine
         #   Return the ids of channels owned by the authenticated user.
         # @param [Boolean] my_subscribers
         #   Return the channels subscribed to the authenticated user
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -830,26 +775,23 @@ module Google
         
         # Updates an existing resource.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will
-        #   include.<br/><br/>The API currently only allows the parameter value to be
-        #   set to either <code>brandingSettings</code> or
-        #   <code>invideoPromotion</code>. (You cannot update both of those parts with
-        #   a single request.)<br/><br/>Note that this method overrides the existing
-        #   values for all of the mutable properties that are contained in any parts
-        #   that the parameter value specifies.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include. The API currently only allows the parameter
+        #   value to be set to either brandingSettings or invideoPromotion. (You cannot
+        #   update both of those parts with a single request.) Note that this method
+        #   overrides the existing values for all of the mutable properties that are
+        #   contained in any parts that the parameter value specifies.
         # @param [Google::Apis::YoutubeV3::Channel] channel_object
         # @param [String] on_behalf_of_content_owner
-        #   The <code><strong>onBehalfOfContentOwner</strong></code> parameter
-        #   indicates that the authenticated user is acting on behalf of the content
-        #   owner specified in the parameter value. This parameter is intended for
-        #   YouTube content partners that own and manage many different YouTube
-        #   channels. It allows content owners to authenticate once and get access to
-        #   all their video and channel data, without having to provide authentication
-        #   credentials for each individual channel. The actual CMS account that the
-        #   user authenticates with needs to be linked to the specified YouTube content
-        #   owner.
+        #   The *onBehalfOfContentOwner* parameter indicates that the authenticated user
+        #   is acting on behalf of the content owner specified in the parameter value.
+        #   This parameter is intended for YouTube content partners that own and manage
+        #   many different YouTube channels. It allows content owners to authenticate once
+        #   and get access to all their video and channel data, without having to provide
+        #   authentication credentials for each individual channel. The actual CMS account
+        #   that the user authenticates with needs to be linked to the specified YouTube
+        #   content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -882,10 +824,9 @@ module Google
         
         # Inserts a new resource into this collection.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter identifies the properties
-        #   that the API response will include. Set the parameter value to
-        #   <code>snippet</code>. The <code>snippet</code> part has a quota cost of 2
-        #   units.
+        #   The *part* parameter identifies the properties that the API response will
+        #   include. Set the parameter value to snippet. The snippet part has a quota cost
+        #   of 2 units.
         # @param [Google::Apis::YoutubeV3::CommentThread] comment_thread_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -918,33 +859,31 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>commentThread</code> resource
-        #   properties that the API response will include.
+        #   The *part* parameter specifies a comma-separated list of one or more
+        #   commentThread resource properties that the API response will include.
         # @param [String] all_threads_related_to_channel_id
-        #   Returns the comment threads of all videos of the channel and the
-        #   channel comments as well.
+        #   Returns the comment threads of all videos of the channel and the channel
+        #   comments as well.
         # @param [String] channel_id
-        #   Returns the comment threads for all the channel comments (ie does not
-        #   include comments left on videos).
+        #   Returns the comment threads for all the channel comments (ie does not include
+        #   comments left on videos).
         # @param [Array<String>, String] id
         #   Returns the comment threads with the given IDs for Stubby or Apiary.
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [String] moderation_status
-        #   Limits the returned comment threads to those with the specified
-        #   moderation status. Not compatible with the 'id' filter.
-        #   Valid values: published, heldForReview, likelySpam.
+        #   Limits the returned comment threads to those with the specified moderation
+        #   status. Not compatible with the 'id' filter. Valid values: published,
+        #   heldForReview, likelySpam.
         # @param [String] order
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] search_terms
-        #   Limits the returned comment threads to those matching the specified
-        #   key words. Not compatible with the 'id' filter.
+        #   Limits the returned comment threads to those matching the specified key words.
+        #   Not compatible with the 'id' filter.
         # @param [String] text_format
         #   The requested text format for the returned comments.
         # @param [String] video_id
@@ -988,11 +927,10 @@ module Google
         
         # Updates an existing resource.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of <code>commentThread</code> resource properties that
-        #   the API response will include. You must at least include the
-        #   <code>snippet</code> part in the parameter value since that part contains
-        #   all of the properties that the API request can update.
+        #   The *part* parameter specifies a comma-separated list of commentThread
+        #   resource properties that the API response will include. You must at least
+        #   include the snippet part in the parameter value since that part contains all
+        #   of the properties that the API request can update.
         # @param [Google::Apis::YoutubeV3::CommentThread] comment_thread_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1052,10 +990,9 @@ module Google
         
         # Inserts a new resource into this collection.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter identifies the properties
-        #   that the API response will include. Set the parameter value to
-        #   <code>snippet</code>. The <code>snippet</code> part has a quota cost of 2
-        #   units.
+        #   The *part* parameter identifies the properties that the API response will
+        #   include. Set the parameter value to snippet. The snippet part has a quota cost
+        #   of 2 units.
         # @param [Google::Apis::YoutubeV3::Comment] comment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1088,24 +1025,21 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>comment</code> resource
-        #   properties that the API response will include.
+        #   The *part* parameter specifies a comma-separated list of one or more comment
+        #   resource properties that the API response will include.
         # @param [Array<String>, String] id
         #   Returns the comments with the given IDs for One Platform.
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] parent_id
-        #   Returns replies to the specified comment.
-        #   Note, currently YouTube features only one level of replies (ie replies
-        #   to top level comments). However replies to replies may be supported in
-        #   the future.
+        #   Returns replies to the specified comment. Note, currently YouTube features
+        #   only one level of replies (ie replies to top level comments). However replies
+        #   to replies may be supported in the future.
         # @param [String] text_format
         #   The requested text format for the returned comments.
         # @param [String] fields
@@ -1140,8 +1074,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Expresses the caller's opinion that one or more comments should be flagged
-        # as spam.
+        # Expresses the caller's opinion that one or more comments should be flagged as
+        # spam.
         # @param [Array<String>, String] id
         #   Flags the comments with the given IDs as spam in the caller's opinion.
         # @param [String] fields
@@ -1173,16 +1107,15 @@ module Google
         # @param [Array<String>, String] id
         #   Modifies the moderation status of the comments with the given IDs
         # @param [String] moderation_status
-        #   Specifies the requested moderation status. Note, comments can be in
-        #   statuses, which are not available through this call. For example, this
-        #   call does not allow to mark a comment as 'likely spam'.
-        #   Valid values: MODERATION_STATUS_PUBLISHED,
-        #   MODERATION_STATUS_HELD_FOR_REVIEW, MODERATION_STATUS_REJECTED.
+        #   Specifies the requested moderation status. Note, comments can be in statuses,
+        #   which are not available through this call. For example, this call does not
+        #   allow to mark a comment as 'likely spam'. Valid values:
+        #   MODERATION_STATUS_PUBLISHED, MODERATION_STATUS_HELD_FOR_REVIEW,
+        #   MODERATION_STATUS_REJECTED.
         # @param [Boolean] ban_author
-        #   If set to true the author of the comment gets added to the ban list.
-        #   This means all future comments of the author will autmomatically be
-        #   rejected.
-        #   Only valid in combination with STATUS_REJECTED.
+        #   If set to true the author of the comment gets added to the ban list. This
+        #   means all future comments of the author will autmomatically be rejected. Only
+        #   valid in combination with STATUS_REJECTED.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1212,10 +1145,9 @@ module Google
         
         # Updates an existing resource.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter identifies the properties
-        #   that the API response will include. You must at least include the
-        #   <code>snippet</code> part in the parameter value since that part contains
-        #   all of the properties that the API request can update.
+        #   The *part* parameter identifies the properties that the API response will
+        #   include. You must at least include the snippet part in the parameter value
+        #   since that part contains all of the properties that the API request can update.
         # @param [Google::Apis::YoutubeV3::Comment] comment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1248,9 +1180,8 @@ module Google
         
         # Retrieves a list of guide categories.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>guideCategory</code> resource properties that the API response will
-        #   include. Set the parameter value to <code>snippet</code>.
+        #   The *part* parameter specifies the guideCategory resource properties that the
+        #   API response will include. Set the parameter value to snippet.
         # @param [String] hl
         # @param [Array<String>, String] id
         #   Return the guide categories with the given IDs.
@@ -1288,9 +1219,8 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>i18nLanguage</code> resource properties that the API response will
-        #   include. Set the parameter value to <code>snippet</code>.
+        #   The *part* parameter specifies the i18nLanguage resource properties that the
+        #   API response will include. Set the parameter value to snippet.
         # @param [String] hl
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1322,9 +1252,8 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>i18nRegion</code> resource properties that the API response will
-        #   include. Set the parameter value to <code>snippet</code>.
+        #   The *part* parameter specifies the i18nRegion resource properties that the API
+        #   response will include. Set the parameter value to snippet.
         # @param [String] hl
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1358,44 +1287,35 @@ module Google
         # @param [String] id
         #   Broadcast to bind to the stream
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>liveBroadcast</code> resource
-        #   properties that the API response will include. The <code>part</code> names
-        #   that you can include in the parameter value are <code>id</code>,
-        #   <code>snippet</code>, <code>contentDetails</code>, and <code>status</code>.
+        #   The *part* parameter specifies a comma-separated list of one or more
+        #   liveBroadcast resource properties that the API response will include. The part
+        #   names that you can include in the parameter value are id, snippet,
+        #   contentDetails, and status.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] stream_id
         #   Stream to bind, if not set unbind the current one.
         # @param [String] fields
@@ -1429,61 +1349,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Slate and recording control of the live broadcast.
-        # Support actions: slate on/off, recording start/stop/pause/resume.
-        # Design doc: goto/yt-api-liveBroadcast-control
+        # Slate and recording control of the live broadcast. Support actions: slate on/
+        # off, recording start/stop/pause/resume. Design doc: goto/yt-api-liveBroadcast-
+        # control
         # @param [String] id
         #   Broadcast to operate.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>liveBroadcast</code> resource
-        #   properties that the API response will include. The <code>part</code> names
-        #   that you can include in the parameter value are <code>id</code>,
-        #   <code>snippet</code>, <code>contentDetails</code>, and <code>status</code>.
+        #   The *part* parameter specifies a comma-separated list of one or more
+        #   liveBroadcast resource properties that the API response will include. The part
+        #   names that you can include in the parameter value are id, snippet,
+        #   contentDetails, and status.
         # @param [Boolean] display_slate
         #   Whether display or hide slate.
         # @param [Fixnum] offset_time_ms
-        #   The exact time when the actions (e.g. slate on) are executed.
-        #   It is an offset from the first frame of the monitor stream.
-        #   If not set, it means "now" or ASAP.
-        #   This field should not be set if the monitor stream is disabled,
-        #   otherwise an error will be returned.
+        #   The exact time when the actions (e.g. slate on) are executed. It is an offset
+        #   from the first frame of the monitor stream. If not set, it means "now" or ASAP.
+        #   This field should not be set if the monitor stream is disabled, otherwise an
+        #   error will be returned.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] walltime
-        #   The wall clock time at which the action should be executed.
-        #   Only one of offset_time_ms and walltime may be set at a time.
+        #   The wall clock time at which the action should be executed. Only one of
+        #   offset_time_ms and walltime may be set at a time.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1521,38 +1431,30 @@ module Google
         # @param [String] id
         #   Broadcast to delete.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1582,46 +1484,36 @@ module Google
         
         # Inserts a new stream for the authenticated user.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will
-        #   include.<br><br>The <code>part</code> properties that you can include in
-        #   the parameter value are <code>id</code>, <code>snippet</code>,
-        #   <code>contentDetails</code>, and <code>status</code>.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include. The part properties that you can include in the
+        #   parameter value are id, snippet, contentDetails, and status.
         # @param [Google::Apis::YoutubeV3::LiveBroadcast] live_broadcast_object
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1655,11 +1547,10 @@ module Google
         
         # Retrieve the list of broadcasts associated with the given channel.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>liveBroadcast</code> resource
-        #   properties that the API response will include. The <code>part</code> names
-        #   that you can include in the parameter value are <code>id</code>,
-        #   <code>snippet</code>, <code>contentDetails</code>, and <code>status</code>.
+        #   The *part* parameter specifies a comma-separated list of one or more
+        #   liveBroadcast resource properties that the API response will include. The part
+        #   names that you can include in the parameter value are id, snippet,
+        #   contentDetails, and status.
         # @param [String] broadcast_status
         #   Return broadcasts with a certain status, e.g. active broadcasts.
         # @param [String] broadcast_type
@@ -1667,47 +1558,38 @@ module Google
         # @param [Array<String>, String] id
         #   Return broadcasts with the given ids from Stubby or Apiary.
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [Boolean] mine
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1749,44 +1631,35 @@ module Google
         # @param [String] broadcast_status
         #   The status to which the broadcast is going to transition.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>liveBroadcast</code> resource
-        #   properties that the API response will include. The <code>part</code> names
-        #   that you can include in the parameter value are <code>id</code>,
-        #   <code>snippet</code>, <code>contentDetails</code>, and <code>status</code>.
+        #   The *part* parameter specifies a comma-separated list of one or more
+        #   liveBroadcast resource properties that the API response will include. The part
+        #   names that you can include in the parameter value are id, snippet,
+        #   contentDetails, and status.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1820,56 +1693,44 @@ module Google
         
         # Updates an existing broadcast for the authenticated user.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will
-        #   include.<br><br>The <code>part</code> properties that you can include in
-        #   the parameter value are <code>id</code>, <code>snippet</code>,
-        #   <code>contentDetails</code>, and <code>status</code>.<br><br>Note that this
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include. The part properties that you can include in the
+        #   parameter value are id, snippet, contentDetails, and status. Note that this
         #   method will override the existing values for all of the mutable properties
         #   that are contained in any parts that the parameter value specifies. For
-        #   example, a
-        #   broadcast's privacy status is defined in the <code>status</code> part. As
-        #   such, if your request is updating a private or unlisted broadcast, and the
-        #   request's <code>part</code> parameter value includes the
-        #   <code>status</code> part, the broadcast's privacy setting will be updated
-        #   to whatever value the request body specifies. If the request body does not
-        #   specify a value, the existing privacy setting will be removed and the
-        #   broadcast will revert to the default privacy setting.
+        #   example, a broadcast's privacy status is defined in the status part. As such,
+        #   if your request is updating a private or unlisted broadcast, and the request's
+        #   part parameter value includes the status part, the broadcast's privacy setting
+        #   will be updated to whatever value the request body specifies. If the request
+        #   body does not specify a value, the existing privacy setting will be removed
+        #   and the broadcast will revert to the default privacy setting.
         # @param [Google::Apis::YoutubeV3::LiveBroadcast] live_broadcast_object
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1930,10 +1791,9 @@ module Google
         
         # Inserts a new resource into this collection.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response returns. Set the
-        #   parameter value to <code>snippet</code>.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response returns. Set the parameter value to snippet.
         # @param [Google::Apis::YoutubeV3::LiveChatBan] live_chat_ban_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1993,10 +1853,9 @@ module Google
         
         # Inserts a new resource into this collection.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes. It
-        #   identifies the properties that the write operation will set as well as the
-        #   properties that the API response will include. Set the parameter value to
-        #   <code>snippet</code>.
+        #   The *part* parameter serves two purposes. It identifies the properties that
+        #   the write operation will set as well as the properties that the API response
+        #   will include. Set the parameter value to snippet.
         # @param [Google::Apis::YoutubeV3::LiveChatMessage] live_chat_message_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2031,23 +1890,20 @@ module Google
         # @param [String] live_chat_id
         #   The id of the live chat for which comments should be returned.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>liveChatComment</code> resource parts that the API response will
-        #   include. Supported values are <code>id</code> and <code>snippet</code>.
+        #   The *part* parameter specifies the liveChatComment resource parts that the API
+        #   response will include. Supported values are id and snippet.
         # @param [String] hl
-        #   Specifies the localization language in which the system messages
-        #   should be returned.
+        #   Specifies the localization language in which the system messages should be
+        #   returned.
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> property identify other pages that could be
-        #   retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken property identify
+        #   other pages that could be retrieved.
         # @param [Fixnum] profile_image_size
-        #   Specifies the size of the profile image that should be
-        #   returned for each user.
+        #   Specifies the size of the profile image that should be returned for each user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2109,10 +1965,9 @@ module Google
         
         # Inserts a new resource into this collection.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response returns. Set the
-        #   parameter value to <code>snippet</code>.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response returns. Set the parameter value to snippet.
         # @param [Google::Apis::YoutubeV3::LiveChatModerator] live_chat_moderator_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2147,17 +2002,15 @@ module Google
         # @param [String] live_chat_id
         #   The id of the live chat for which moderators should be returned.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>liveChatModerator</code> resource parts that the API response will
-        #   include. Supported values are <code>id</code> and <code>snippet</code>.
+        #   The *part* parameter specifies the liveChatModerator resource parts that the
+        #   API response will include. Supported values are id and snippet.
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2191,38 +2044,30 @@ module Google
         # Deletes an existing stream for the authenticated user.
         # @param [String] id
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2252,46 +2097,36 @@ module Google
         
         # Inserts a new stream for the authenticated user.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will
-        #   include.<br><br>The <code>part</code> properties that you can include in
-        #   the parameter value are <code>id</code>, <code>snippet</code>,
-        #   <code>cdn</code>, and <code>status</code>.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include. The part properties that you can include in the
+        #   parameter value are id, snippet, cdn, and status.
         # @param [Google::Apis::YoutubeV3::LiveStream] live_stream_object
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2325,55 +2160,45 @@ module Google
         
         # Retrieve the list of streams associated with the given channel. --
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>liveStream</code> resource
-        #   properties that the API response will include. The <code>part</code> names
-        #   that you can include in the parameter value are <code>id</code>,
-        #   <code>snippet</code>, <code>cdn</code>, and <code>status</code>.
+        #   The *part* parameter specifies a comma-separated list of one or more
+        #   liveStream resource properties that the API response will include. The part
+        #   names that you can include in the parameter value are id, snippet, cdn, and
+        #   status.
         # @param [Array<String>, String] id
         #   Return LiveStreams with the given ids from Stubby or Apiary.
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [Boolean] mine
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2409,50 +2234,40 @@ module Google
         
         # Updates an existing stream for the authenticated user.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will
-        #   include.<br><br>The <code>part</code> properties that you can include in
-        #   the parameter value are <code>id</code>, <code>snippet</code>,
-        #   <code>cdn</code>, and <code>status</code>.<br><br>Note that this method
-        #   will override the existing values for all of the mutable properties that
-        #   are contained in any parts that the parameter value specifies. If the
-        #   request body does not specify a value for a mutable property, the existing
-        #   value for that property will be removed.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include. The part properties that you can include in the
+        #   parameter value are id, snippet, cdn, and status. Note that this method will
+        #   override the existing values for all of the mutable properties that are
+        #   contained in any parts that the parameter value specifies. If the request body
+        #   does not specify a value for a mutable property, the existing value for that
+        #   property will be removed.
         # @param [Google::Apis::YoutubeV3::LiveStream] live_stream_object
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2486,24 +2301,22 @@ module Google
         
         # Retrieves a list of members that match the request criteria for a channel.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>member</code> resource parts that the API response will include. Set
-        #   the parameter value to <code>snippet</code>.
+        #   The *part* parameter specifies the member resource parts that the API response
+        #   will include. Set the parameter value to snippet.
         # @param [String] filter_by_member_channel_id
-        #   Comma separated list of channel IDs. Only data about members that are part
-        #   of this list will be included in the response.
+        #   Comma separated list of channel IDs. Only data about members that are part of
+        #   this list will be included in the response.
         # @param [String] has_access_to_level
         #   Filter members in the results set to the ones that have access to a level.
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [String] mode
         #   Parameter that specifies which channel members to return.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2538,9 +2351,8 @@ module Google
         
         # Retrieves a list of all pricing levels offered by a creator to the fans.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>membershipsLevel</code> resource parts that the API response will
-        #   include. Supported values are <code>id</code> and <code>snippet</code>.
+        #   The *part* parameter specifies the membershipsLevel resource parts that the
+        #   API response will include. Supported values are id and snippet.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2571,18 +2383,15 @@ module Google
         # Deletes a resource.
         # @param [String] id
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2611,23 +2420,20 @@ module Google
         
         # Inserts a new resource into this collection.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will include.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
         # @param [Google::Apis::YoutubeV3::PlaylistItem] playlist_item_object
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2660,39 +2466,31 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>playlistItem</code> resource
-        #   properties that the API response will include.<br><br>If the parameter
-        #   identifies a property that contains child properties, the child properties
-        #   will be included in the response. For example, in a
-        #   <code>playlistItem</code> resource, the <code>snippet</code> property
-        #   contains numerous fields, including the <code>title</code>,
-        #   <code>description</code>, <code>position</code>, and
-        #   <code>resourceId</code> properties. As such, if you set
-        #   <code><strong>part=snippet</strong></code>, the API response will contain
-        #   all of those properties.
+        #   The *part* parameter specifies a comma-separated list of one or more
+        #   playlistItem resource properties that the API response will include. If the
+        #   parameter identifies a property that contains child properties, the child
+        #   properties will be included in the response. For example, in a playlistItem
+        #   resource, the snippet property contains numerous fields, including the title,
+        #   description, position, and resourceId properties. As such, if you set *part=
+        #   snippet*, the API response will contain all of those properties.
         # @param [Array<String>, String] id
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] playlist_id
         #   Return the playlist items within the given playlist.
         # @param [String] video_id
@@ -2732,34 +2530,29 @@ module Google
         
         # Updates an existing resource.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will
-        #   include.<br/><br/>Note that this method will override the existing values
-        #   for all of the mutable properties that are contained in any parts that the
-        #   parameter value specifies. For example, a playlist item can specify a start
-        #   time and end time, which identify the times portion of the video that
-        #   should play when users watch the video in the playlist. If your request is
-        #   updating a playlist item that sets these values, and the
-        #   request's <code>part</code> parameter value includes the
-        #   <code>contentDetails</code> part, the playlist item's start and end times
-        #   will be updated to whatever value the request body specifies. If the
-        #   request body does not specify values, the existing start and end times will
-        #   be removed and replaced with the default settings.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include. Note that this method will override the
+        #   existing values for all of the mutable properties that are contained in any
+        #   parts that the parameter value specifies. For example, a playlist item can
+        #   specify a start time and end time, which identify the times portion of the
+        #   video that should play when users watch the video in the playlist. If your
+        #   request is updating a playlist item that sets these values, and the request's
+        #   part parameter value includes the contentDetails part, the playlist item's
+        #   start and end times will be updated to whatever value the request body
+        #   specifies. If the request body does not specify values, the existing start and
+        #   end times will be removed and replaced with the default settings.
         # @param [Google::Apis::YoutubeV3::PlaylistItem] playlist_item_object
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2793,18 +2586,15 @@ module Google
         # Deletes a resource.
         # @param [String] id
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2833,43 +2623,35 @@ module Google
         
         # Inserts a new resource into this collection.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will include.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
         # @param [Google::Apis::YoutubeV3::Playlist] playlist_object
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2903,16 +2685,13 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>playlist</code> resource
-        #   properties that the API response will include.<br><br>If the parameter
+        #   The *part* parameter specifies a comma-separated list of one or more playlist
+        #   resource properties that the API response will include. If the parameter
         #   identifies a property that contains child properties, the child properties
-        #   will be included in the response. For example, in a <code>playlist</code>
-        #   resource, the <code>snippet</code> property contains properties like
-        #   <code>author</code>, <code>title</code>, <code>description</code>,
-        #   <code>tags</code>, and <code>timeCreated</code>. As such, if you set
-        #   <code><strong>part=snippet</strong></code>, the API response will contain
-        #   all of those properties.
+        #   will be included in the response. For example, in a playlist resource, the
+        #   snippet property contains properties like author, title, description, tags,
+        #   and timeCreated. As such, if you set *part=snippet*, the API response will
+        #   contain all of those properties.
         # @param [String] channel_id
         #   Return the playlists owned by the specified channel ID.
         # @param [String] hl
@@ -2920,48 +2699,39 @@ module Google
         # @param [Array<String>, String] id
         #   Return the playlists with the given IDs for Stubby or Apiary.
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [Boolean] mine
         #   Return the playlists owned by the authenticated user.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2999,30 +2769,25 @@ module Google
         
         # Updates an existing resource.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will
-        #   include.<br/><br/>Note that this method will override the existing values
-        #   for mutable properties that are contained in any parts that the request
-        #   body specifies. For example, a
-        #   playlist's description is contained in the <code>snippet</code> part, which
-        #   must be included in the request body. If the request does not specify a
-        #   value for the <code>snippet.description</code> property, the playlist's
-        #   existing description will be deleted.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include. Note that this method will override the
+        #   existing values for mutable properties that are contained in any parts that
+        #   the request body specifies. For example, a playlist's description is contained
+        #   in the snippet part, which must be included in the request body. If the
+        #   request does not specify a value for the snippet.description property, the
+        #   playlist's existing description will be deleted.
         # @param [Google::Apis::YoutubeV3::Playlist] playlist_object
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3055,10 +2820,9 @@ module Google
         
         # Retrieves a list of search resources
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>search</code> resource properties
-        #   that the API response will include. Set the parameter value to
-        #   <code>snippet</code>.
+        #   The *part* parameter specifies a comma-separated list of one or more search
+        #   resource properties that the API response will include. Set the parameter
+        #   value to snippet.
         # @param [String] channel_id
         #   Filter on resources belonging to this channelId.
         # @param [String] channel_type
@@ -3068,8 +2832,8 @@ module Google
         # @param [Boolean] for_content_owner
         #   Search owned by a content owner.
         # @param [Boolean] for_developer
-        #   Restrict the search to only retrieve videos uploaded using the project id
-        #   of the authenticated user.
+        #   Restrict the search to only retrieve videos uploaded using the project id of
+        #   the authenticated user.
         # @param [Boolean] for_mine
         #   Search for the private videos of the authenticated user.
         # @param [String] location
@@ -3077,28 +2841,24 @@ module Google
         # @param [String] location_radius
         #   Filter on distance from the location (specified above).
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] order
         #   Sort order of the results.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] published_after
         #   Filter on resources published after this date.
         # @param [String] published_before
@@ -3112,8 +2872,8 @@ module Google
         # @param [String] relevance_language
         #   Return results relevant to this language.
         # @param [String] safe_search
-        #   Indicates whether the search results should include restricted content as
-        #   well as standard content.
+        #   Indicates whether the search results should include restricted content as well
+        #   as standard content.
         # @param [String] topic_id
         #   Restrict results to a particular topic.
         # @param [Array<String>, String] type
@@ -3193,22 +2953,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of sponsors that match the request criteria for a
-        # channel.
+        # Retrieves a list of sponsors that match the request criteria for a channel.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>sponsor</code> resource parts that the API response will include.
-        #   Supported values are <code>id</code> and <code>snippet</code>.
+        #   The *part* parameter specifies the sponsor resource parts that the API
+        #   response will include. Supported values are id and snippet.
         # @param [String] filter
         #   Parameter that specifies which channel sponsors to return.
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3268,9 +3025,9 @@ module Google
         
         # Inserts a new resource into this collection.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will include.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
         # @param [Google::Apis::YoutubeV3::Subscription] subscription_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3303,14 +3060,12 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>subscription</code> resource
-        #   properties that the API response will include.<br><br>If the parameter
-        #   identifies a property that contains child properties, the child properties
-        #   will be included in the response. For example, in a
-        #   <code>subscription</code> resource, the <code>snippet</code> property
-        #   contains other properties, such as a display title for the subscription. If
-        #   you set <code><strong>part=snippet</strong></code>, the API response will
+        #   The *part* parameter specifies a comma-separated list of one or more
+        #   subscription resource properties that the API response will include. If the
+        #   parameter identifies a property that contains child properties, the child
+        #   properties will be included in the response. For example, in a subscription
+        #   resource, the snippet property contains other properties, such as a display
+        #   title for the subscription. If you set *part=snippet*, the API response will
         #   also contain all of those nested properties.
         # @param [String] channel_id
         #   Return the subscriptions of the given channel owner.
@@ -3320,53 +3075,44 @@ module Google
         # @param [Array<String>, String] id
         #   Return the subscriptions with the given IDs for Stubby or Apiary.
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [Boolean] mine
         #   Flag for returning the subscriptions of the authenticated user.
         # @param [Boolean] my_recent_subscribers
         # @param [Boolean] my_subscribers
         #   Return the subscribers of the given channel owner.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [String] order
         #   The order of the returned subscriptions
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3407,19 +3153,17 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>superChatEvent</code> resource parts that the API response will
-        #   include. Supported values are <code>id</code> and <code>snippet</code>.
+        #   The *part* parameter specifies the superChatEvent resource parts that the API
+        #   response will include. Supported values are id and snippet.
         # @param [String] hl
         #   Return rendered funding amounts in specified language.
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result set.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3518,10 +3262,9 @@ module Google
         
         # Inserts a new resource into this collection.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>thirdPartyLink</code> resource parts that the API request and
-        #   response will include. Supported values are <code>linkingToken</code>,
-        #   <code>status</code>, and <code>snippet</code>.
+        #   The *part* parameter specifies the thirdPartyLink resource parts that the API
+        #   request and response will include. Supported values are linkingToken, status,
+        #   and snippet.
         # @param [Google::Apis::YoutubeV3::ThirdPartyLink] third_party_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3554,10 +3297,8 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>thirdPartyLink</code> resource parts that the API response will
-        #   include. Supported values are <code>linkingToken</code>,
-        #   <code>status</code>, and <code>snippet</code>.
+        #   The *part* parameter specifies the thirdPartyLink resource parts that the API
+        #   response will include. Supported values are linkingToken, status, and snippet.
         # @param [String] linking_token
         #   Get a third party link with the given linking token.
         # @param [String] type
@@ -3593,10 +3334,9 @@ module Google
         
         # Updates an existing resource.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>thirdPartyLink</code> resource parts that the API request and
-        #   response will include. Supported values are <code>linkingToken</code>,
-        #   <code>status</code>, and <code>snippet</code>.
+        #   The *part* parameter specifies the thirdPartyLink resource parts that the API
+        #   request and response will include. Supported values are linkingToken, status,
+        #   and snippet.
         # @param [Google::Apis::YoutubeV3::ThirdPartyLink] third_party_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3627,24 +3367,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # As this is not an insert in a strict sense (it supports uploading/setting
-        # of a thumbnail for multiple videos, which doesn't result in creation of a
-        # single resource), I use a custom verb here.
+        # As this is not an insert in a strict sense (it supports uploading/setting of a
+        # thumbnail for multiple videos, which doesn't result in creation of a single
+        # resource), I use a custom verb here.
         # @param [String] video_id
         #   Returns the Thumbnail with the given video IDs for Stubby or Apiary.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The actual
-        #   CMS account that the user authenticates with must be linked to the
-        #   specified YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3685,9 +3422,8 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>videoCategory</code> resource parts that the API response will
-        #   include. Supported values are <code>id</code> and <code>snippet</code>.
+        #   The *part* parameter specifies the videoCategory resource parts that the API
+        #   response will include. Supported values are id and snippet.
         # @param [String] hl
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3719,9 +3455,8 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies the
-        #   <code>videoCategory</code> resource properties that the API response will
-        #   include. Set the parameter value to <code>snippet</code>.
+        #   The *part* parameter specifies the videoCategory resource properties that the
+        #   API response will include. Set the parameter value to snippet.
         # @param [String] hl
         # @param [Array<String>, String] id
         #   Returns the video categories with the given IDs for Stubby or Apiary.
@@ -3759,18 +3494,15 @@ module Google
         # Deletes a resource.
         # @param [String] id
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The actual
-        #   CMS account that the user authenticates with must be linked to the
-        #   specified YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3801,18 +3533,15 @@ module Google
         # videos.
         # @param [Array<String>, String] id
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3843,16 +3572,14 @@ module Google
         
         # Inserts a new resource into this collection.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will
-        #   include.<br/><br/>Note that not all parts contain properties that can be
-        #   set when inserting or updating a video. For example, the
-        #   <code>statistics</code> object encapsulates statistics that YouTube
-        #   calculates for a video and does not contain values that you can set or
-        #   modify. If the parameter value specifies a <code>part</code> that does not
-        #   contain mutable values, that <code>part</code> will still be included in
-        #   the API response.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include. Note that not all parts contain properties that
+        #   can be set when inserting or updating a video. For example, the statistics
+        #   object encapsulates statistics that YouTube calculates for a video and does
+        #   not contain values that you can set or modify. If the parameter value
+        #   specifies a part that does not contain mutable values, that part will still be
+        #   included in the API response.
         # @param [Google::Apis::YoutubeV3::Video] video_object
         # @param [Boolean] auto_levels
         #   Should auto-levels be applied to the upload.
@@ -3860,38 +3587,30 @@ module Google
         #   Notify the channel subscribers about the new video. As default, the
         #   notification is enabled.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly <a
-        #   href="/youtube/v3/guides/authentication">authorized request</a>.
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter
-        #   specifies the YouTube channel ID of the channel to which a video is being
-        #   added. This parameter is required when a request specifies a value for the
-        #   <code>onBehalfOfContentOwner</code> parameter, and it can only be used in
-        #   conjunction with that parameter. In addition, the request must be
-        #   authorized using a CMS account that is linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies. Finally, the
-        #   channel that the <code>onBehalfOfContentOwnerChannel</code> parameter value
-        #   specifies must be linked to the content owner that the
-        #   <code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This
+        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   parameter is intended exclusively for YouTube content partners. The *
+        #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
+        #   the channel to which a video is being added. This parameter is required when a
+        #   request specifies a value for the onBehalfOfContentOwner parameter, and it can
+        #   only be used in conjunction with that parameter. In addition, the request must
+        #   be authorized using a CMS account that is linked to the content owner that the
+        #   onBehalfOfContentOwner parameter specifies. Finally, the channel that the
+        #   onBehalfOfContentOwnerChannel parameter value specifies must be linked to the
+        #   content owner that the onBehalfOfContentOwner parameter specifies. This
         #   parameter is intended for YouTube content partners that own and manage many
-        #   different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter
-        #   value, without having to provide authentication credentials for each
-        #   separate channel.
+        #   different YouTube channels. It allows content owners to authenticate once and
+        #   perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
         # @param [Boolean] stabilize
         #   Should stabilize be applied to the upload.
         # @param [String] fields
@@ -3940,63 +3659,52 @@ module Google
         
         # Retrieves a list of resources, possibly filtered.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter specifies a
-        #   comma-separated list of one or more <code>video</code> resource properties
-        #   that the API response will include.<br><br>If the parameter identifies a
-        #   property that contains child properties, the child properties will be
-        #   included in the response. For example, in a <code>video</code> resource,
-        #   the <code>snippet</code> property contains the <code>channelId</code>,
-        #   <code>title</code>, <code>description</code>, <code>tags</code>, and
-        #   <code>categoryId</code> properties. As such, if you set
-        #   <code><strong>part=snippet</strong></code>, the API response will contain
-        #   all of those properties.
+        #   The *part* parameter specifies a comma-separated list of one or more video
+        #   resource properties that the API response will include. If the parameter
+        #   identifies a property that contains child properties, the child properties
+        #   will be included in the response. For example, in a video resource, the
+        #   snippet property contains the channelId, title, description, tags, and
+        #   categoryId properties. As such, if you set *part=snippet*, the API response
+        #   will contain all of those properties.
         # @param [String] chart
         #   Return the videos that are in the specified chart.
         # @param [String] hl
         #   Stands for "host language". Specifies the localization language of the
         #   metadata to be filled into snippet.localized. The field is filled with the
-        #   default metadata if there is no localization in the specified language.
-        #   The parameter value must be a language code included in the list returned
-        #   by the i18nLanguages.list method (e.g. en_US, es_MX).
+        #   default metadata if there is no localization in the specified language. The
+        #   parameter value must be a language code included in the list returned by the
+        #   i18nLanguages.list method (e.g. en_US, es_MX).
         # @param [Array<String>, String] id
         #   Return videos with the given ids.
         # @param [String] locale
         # @param [Fixnum] max_height
         # @param [Fixnum] max_results
-        #   The <code><strong>maxResults</strong></code> parameter specifies the
-        #   maximum number of items that should be returned in the result
-        #   set.<br><br><strong>Note:</strong> This parameter is supported for use in
-        #   conjunction with the <code><a href="#myRating">myRating</a></code> and
-        #   <code><a href="#chart">chart</a></code> parameters, but it is not supported
-        #   for use in conjunction with the <code><a href="#id">id</a></code>
-        #   parameter.
+        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   be returned in the result set. *Note:* This parameter is supported for use in
+        #   conjunction with the myRating and chart parameters, but it is not supported
+        #   for use in conjunction with the id parameter.
         # @param [Fixnum] max_width
         #   Return the player with maximum height specified in
         # @param [String] my_rating
-        #   Return videos liked/disliked by the authenticated user.
-        #   Does not support RateType.RATED_TYPE_NONE.
+        #   Return videos liked/disliked by the authenticated user. Does not support
+        #   RateType.RATED_TYPE_NONE.
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] page_token
-        #   The <code><strong>pageToken</strong></code> parameter identifies a specific
-        #   page in the result set that should be returned. In an API response, the
-        #   <code>nextPageToken</code> and <code>prevPageToken</code> properties
-        #   identify other pages that could be retrieved.<br><br><strong>Note:</strong>
-        #   This parameter is supported for use in conjunction with the <code><a
-        #   href="#myRating">myRating</a></code> and <code><a
-        #   href="#chart">chart</a></code> parameters, but it is not supported for use
-        #   in conjunction with the <code><a href="#id">id</a></code> parameter.
+        #   The *pageToken* parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved. *Note:* This
+        #   parameter is supported for use in conjunction with the myRating and chart
+        #   parameters, but it is not supported for use in conjunction with the id
+        #   parameter.
         # @param [String] region_code
         #   Use a chart that is specific to the specified region
         # @param [String] video_category_id
@@ -4072,18 +3780,15 @@ module Google
         # Report abuse for a video.
         # @param [Google::Apis::YoutubeV3::VideoAbuseReport] video_abuse_report_object
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4113,40 +3818,33 @@ module Google
         
         # Updates an existing resource.
         # @param [Array<String>, String] part
-        #   The <code><strong>part</strong></code> parameter serves two purposes in
-        #   this operation. It identifies the properties that the write operation will
-        #   set as well as the properties that the API response will
-        #   include.<br/><br/>Note that this method will override the existing values
-        #   for all of the mutable properties that are contained in any parts that the
-        #   parameter value specifies. For example, a
-        #   video's privacy setting is contained in the <code>status</code> part. As
-        #   such, if your request is updating a private video, and the request's
-        #   <code>part</code> parameter value includes the <code>status</code> part,
-        #   the
-        #   video's privacy setting will be updated to whatever value the request body
-        #   specifies. If the request body does not specify a value, the existing
-        #   privacy setting will be removed and the video will revert to the default
-        #   privacy setting.<br/><br/>In addition, not all parts contain properties
-        #   that can be set when inserting or updating a video. For example, the
-        #   <code>statistics</code> object encapsulates statistics that YouTube
-        #   calculates for a video and does not contain values that you can set or
-        #   modify. If the parameter value specifies a <code>part</code> that does not
-        #   contain mutable values, that <code>part</code> will still be included in
-        #   the API response.
+        #   The *part* parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include. Note that this method will override the
+        #   existing values for all of the mutable properties that are contained in any
+        #   parts that the parameter value specifies. For example, a video's privacy
+        #   setting is contained in the status part. As such, if your request is updating
+        #   a private video, and the request's part parameter value includes the status
+        #   part, the video's privacy setting will be updated to whatever value the
+        #   request body specifies. If the request body does not specify a value, the
+        #   existing privacy setting will be removed and the video will revert to the
+        #   default privacy setting. In addition, not all parts contain properties that
+        #   can be set when inserting or updating a video. For example, the statistics
+        #   object encapsulates statistics that YouTube calculates for a video and does
+        #   not contain values that you can set or modify. If the parameter value
+        #   specifies a part that does not contain mutable values, that part will still be
+        #   included in the API response.
         # @param [Google::Apis::YoutubeV3::Video] video_object
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The actual
-        #   CMS account that the user authenticates with must be linked to the
-        #   specified YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4181,18 +3879,15 @@ module Google
         # @param [String] channel_id
         # @param [Google::Apis::YoutubeV3::InvideoBranding] invideo_branding_object
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4234,18 +3929,15 @@ module Google
         # Allows removal of channel watermark.
         # @param [String] channel_id
         # @param [String] on_behalf_of_content_owner
-        #   <strong>Note:</strong> This parameter is intended exclusively for YouTube
-        #   content partners.<br><br>The
-        #   <code><strong>onBehalfOfContentOwner</strong></code> parameter indicates
-        #   that the
-        #   request's authorization credentials identify a YouTube CMS user who is
-        #   acting on behalf of the content owner specified in the parameter value.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate
-        #   once and get access to all their video and channel data, without having to
-        #   provide authentication credentials for each individual channel. The CMS
-        #   account that the user authenticates with must be linked to the specified
-        #   YouTube content owner.
+        #   *Note:* This parameter is intended exclusively for YouTube content partners.
+        #   The *onBehalfOfContentOwner* parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4272,11 +3964,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates infocards for a given video.
-        # Note:
-        # * If the card id is not provided, a new card will be created.
-        # * If the card id is provided, that card will be updated.
-        # * Existing cards will be discarded if they're not included in the request.
+        # Updates infocards for a given video. Note: * If the card id is not provided, a
+        # new card will be created. * If the card id is provided, that card will be
+        # updated. * Existing cards will be discarded if they're not included in the
+        # request.
         # @param [Array<String>, String] part
         #   The properties to update.
         # @param [Google::Apis::YoutubeV3::InfoCards] info_cards_object

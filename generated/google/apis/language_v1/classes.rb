@@ -26,8 +26,8 @@ module Google
       class AnalyzeEntitiesRequest
         include Google::Apis::Core::Hashable
       
-        # ################################################################ #
-        # Represents the input to API methods.
+        # ################################################################ # Represents
+        # the input to API methods.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::LanguageV1::Document]
         attr_accessor :document
@@ -57,9 +57,9 @@ module Google
         # @return [Array<Google::Apis::LanguageV1::Entity>]
         attr_accessor :entities
       
-        # The language of the text, which will be the same as the language specified
-        # in the request or, if not specified, the automatically-detected language.
-        # See Document.language field for more details.
+        # The language of the text, which will be the same as the language specified in
+        # the request or, if not specified, the automatically-detected language. See
+        # Document.language field for more details.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
@@ -79,8 +79,8 @@ module Google
       class AnalyzeEntitySentimentRequest
         include Google::Apis::Core::Hashable
       
-        # ################################################################ #
-        # Represents the input to API methods.
+        # ################################################################ # Represents
+        # the input to API methods.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::LanguageV1::Document]
         attr_accessor :document
@@ -110,9 +110,9 @@ module Google
         # @return [Array<Google::Apis::LanguageV1::Entity>]
         attr_accessor :entities
       
-        # The language of the text, which will be the same as the language specified
-        # in the request or, if not specified, the automatically-detected language.
-        # See Document.language field for more details.
+        # The language of the text, which will be the same as the language specified in
+        # the request or, if not specified, the automatically-detected language. See
+        # Document.language field for more details.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
@@ -132,8 +132,8 @@ module Google
       class AnalyzeSentimentRequest
         include Google::Apis::Core::Hashable
       
-        # ################################################################ #
-        # Represents the input to API methods.
+        # ################################################################ # Represents
+        # the input to API methods.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::LanguageV1::Document]
         attr_accessor :document
@@ -158,15 +158,14 @@ module Google
       class AnalyzeSentimentResponse
         include Google::Apis::Core::Hashable
       
-        # Represents the feeling associated with the entire text or entities in
-        # the text.
+        # Represents the feeling associated with the entire text or entities in the text.
         # Corresponds to the JSON property `documentSentiment`
         # @return [Google::Apis::LanguageV1::Sentiment]
         attr_accessor :document_sentiment
       
-        # The language of the text, which will be the same as the language specified
-        # in the request or, if not specified, the automatically-detected language.
-        # See Document.language field for more details.
+        # The language of the text, which will be the same as the language specified in
+        # the request or, if not specified, the automatically-detected language. See
+        # Document.language field for more details.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
@@ -192,8 +191,8 @@ module Google
       class AnalyzeSyntaxRequest
         include Google::Apis::Core::Hashable
       
-        # ################################################################ #
-        # Represents the input to API methods.
+        # ################################################################ # Represents
+        # the input to API methods.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::LanguageV1::Document]
         attr_accessor :document
@@ -218,9 +217,9 @@ module Google
       class AnalyzeSyntaxResponse
         include Google::Apis::Core::Hashable
       
-        # The language of the text, which will be the same as the language specified
-        # in the request or, if not specified, the automatically-detected language.
-        # See Document.language field for more details.
+        # The language of the text, which will be the same as the language specified in
+        # the request or, if not specified, the automatically-detected language. See
+        # Document.language field for more details.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
@@ -252,8 +251,8 @@ module Google
       class AnnotateTextRequest
         include Google::Apis::Core::Hashable
       
-        # ################################################################ #
-        # Represents the input to API methods.
+        # ################################################################ # Represents
+        # the input to API methods.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::LanguageV1::Document]
         attr_accessor :document
@@ -263,8 +262,8 @@ module Google
         # @return [String]
         attr_accessor :encoding_type
       
-        # All available features for sentiment, syntax, and semantic analysis.
-        # Setting each one to true will enable that specific analysis for the input.
+        # All available features for sentiment, syntax, and semantic analysis. Setting
+        # each one to true will enable that specific analysis for the input.
         # Corresponds to the JSON property `features`
         # @return [Google::Apis::LanguageV1::Features]
         attr_accessor :features
@@ -290,22 +289,20 @@ module Google
         # @return [Array<Google::Apis::LanguageV1::ClassificationCategory>]
         attr_accessor :categories
       
-        # Represents the feeling associated with the entire text or entities in
-        # the text.
+        # Represents the feeling associated with the entire text or entities in the text.
         # Corresponds to the JSON property `documentSentiment`
         # @return [Google::Apis::LanguageV1::Sentiment]
         attr_accessor :document_sentiment
       
         # Entities, along with their semantic information, in the input document.
-        # Populated if the user enables
-        # AnnotateTextRequest.Features.extract_entities.
+        # Populated if the user enables AnnotateTextRequest.Features.extract_entities.
         # Corresponds to the JSON property `entities`
         # @return [Array<Google::Apis::LanguageV1::Entity>]
         attr_accessor :entities
       
-        # The language of the text, which will be the same as the language specified
-        # in the request or, if not specified, the automatically-detected language.
-        # See Document.language field for more details.
+        # The language of the text, which will be the same as the language specified in
+        # the request or, if not specified, the automatically-detected language. See
+        # Document.language field for more details.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
@@ -317,8 +314,7 @@ module Google
         attr_accessor :sentences
       
         # Tokens, along with their syntactic information, in the input document.
-        # Populated if the user enables
-        # AnnotateTextRequest.Features.extract_syntax.
+        # Populated if the user enables AnnotateTextRequest.Features.extract_syntax.
         # Corresponds to the JSON property `tokens`
         # @return [Array<Google::Apis::LanguageV1::Token>]
         attr_accessor :tokens
@@ -342,8 +338,8 @@ module Google
       class ClassificationCategory
         include Google::Apis::Core::Hashable
       
-        # The classifier's confidence of the category. Number represents how certain
-        # the classifier is that this category represents the given text.
+        # The classifier's confidence of the category. Number represents how certain the
+        # classifier is that this category represents the given text.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -369,8 +365,8 @@ module Google
       class ClassifyTextRequest
         include Google::Apis::Core::Hashable
       
-        # ################################################################ #
-        # Represents the input to API methods.
+        # ################################################################ # Represents
+        # the input to API methods.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::LanguageV1::Document]
         attr_accessor :document
@@ -405,16 +401,14 @@ module Google
       end
       
       # Represents dependency parse tree information for a token. (For more
-      # information on dependency labels, see
-      # http://www.aclweb.org/anthology/P13-2017
+      # information on dependency labels, see http://www.aclweb.org/anthology/P13-2017
       class DependencyEdge
         include Google::Apis::Core::Hashable
       
-        # Represents the head of this token in the dependency tree.
-        # This is the index of the token which has an arc going to this token.
-        # The index is the position of the token in the array of tokens returned
-        # by the API method. If this token is a root token, then the
-        # `head_token_index` is its own index.
+        # Represents the head of this token in the dependency tree. This is the index of
+        # the token which has an arc going to this token. The index is the position of
+        # the token in the array of tokens returned by the API method. If this token is
+        # a root token, then the `head_token_index` is its own index.
         # Corresponds to the JSON property `headTokenIndex`
         # @return [Fixnum]
         attr_accessor :head_token_index
@@ -435,39 +429,37 @@ module Google
         end
       end
       
-      # ################################################################ #
-      # Represents the input to API methods.
+      # ################################################################ # Represents
+      # the input to API methods.
       class Document
         include Google::Apis::Core::Hashable
       
-        # The content of the input in string format.
-        # Cloud audit logging exempt since it is based on user data.
+        # The content of the input in string format. Cloud audit logging exempt since it
+        # is based on user data.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
       
-        # The Google Cloud Storage URI where the file content is located.
-        # This URI must be of the form: gs://bucket_name/object_name. For more
-        # details, see https://cloud.google.com/storage/docs/reference-uris.
-        # NOTE: Cloud Storage object versioning is not supported.
+        # The Google Cloud Storage URI where the file content is located. This URI must
+        # be of the form: gs://bucket_name/object_name. For more details, see https://
+        # cloud.google.com/storage/docs/reference-uris. NOTE: Cloud Storage object
+        # versioning is not supported.
         # Corresponds to the JSON property `gcsContentUri`
         # @return [String]
         attr_accessor :gcs_content_uri
       
-        # The language of the document (if not specified, the language is
-        # automatically detected). Both ISO and BCP-47 language codes are
-        # accepted.<br>
-        # [Language
-        # Support](https://cloud.google.com/natural-language/docs/languages) lists
-        # currently supported languages for each API method. If the language (either
-        # specified by the caller or automatically detected) is not supported by the
-        # called API method, an `INVALID_ARGUMENT` error is returned.
+        # The language of the document (if not specified, the language is automatically
+        # detected). Both ISO and BCP-47 language codes are accepted. [Language Support](
+        # https://cloud.google.com/natural-language/docs/languages) lists currently
+        # supported languages for each API method. If the language (either specified by
+        # the caller or automatically detected) is not supported by the called API
+        # method, an `INVALID_ARGUMENT` error is returned.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
       
-        # Required. If the type is not set or is `TYPE_UNSPECIFIED`,
-        # returns an `INVALID_ARGUMENT` error.
+        # Required. If the type is not set or is `TYPE_UNSPECIFIED`, returns an `
+        # INVALID_ARGUMENT` error.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -485,22 +477,22 @@ module Google
         end
       end
       
-      # Represents a phrase in the text that is a known entity, such as
-      # a person, an organization, or location. The API associates information, such
-      # as salience and mentions, with entities.
+      # Represents a phrase in the text that is a known entity, such as a person, an
+      # organization, or location. The API associates information, such as salience
+      # and mentions, with entities.
       class Entity
         include Google::Apis::Core::Hashable
       
-        # The mentions of this entity in the input document. The API currently
-        # supports proper noun mentions.
+        # The mentions of this entity in the input document. The API currently supports
+        # proper noun mentions.
         # Corresponds to the JSON property `mentions`
         # @return [Array<Google::Apis::LanguageV1::EntityMention>]
         attr_accessor :mentions
       
-        # Metadata associated with the entity.
-        # For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`)
-        # and Knowledge Graph MID (`mid`), if they are available. For the metadata
-        # associated with other entity types, see the Type table below.
+        # Metadata associated with the entity. For most entity types, the metadata is a
+        # Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are
+        # available. For the metadata associated with other entity types, see the Type
+        # table below.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata
@@ -510,17 +502,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The salience score associated with the entity in the [0, 1.0] range.
-        # The salience score for an entity provides information about the
-        # importance or centrality of that entity to the entire document text.
-        # Scores closer to 0 are less salient, while scores closer to 1.0 are highly
-        # salient.
+        # The salience score associated with the entity in the [0, 1.0] range. The
+        # salience score for an entity provides information about the importance or
+        # centrality of that entity to the entire document text. Scores closer to 0 are
+        # less salient, while scores closer to 1.0 are highly salient.
         # Corresponds to the JSON property `salience`
         # @return [Float]
         attr_accessor :salience
       
-        # Represents the feeling associated with the entire text or entities in
-        # the text.
+        # Represents the feeling associated with the entire text or entities in the text.
         # Corresponds to the JSON property `sentiment`
         # @return [Google::Apis::LanguageV1::Sentiment]
         attr_accessor :sentiment
@@ -550,8 +540,7 @@ module Google
       class EntityMention
         include Google::Apis::Core::Hashable
       
-        # Represents the feeling associated with the entire text or entities in
-        # the text.
+        # Represents the feeling associated with the entire text or entities in the text.
         # Corresponds to the JSON property `sentiment`
         # @return [Google::Apis::LanguageV1::Sentiment]
         attr_accessor :sentiment
@@ -578,8 +567,8 @@ module Google
         end
       end
       
-      # All available features for sentiment, syntax, and semantic analysis.
-      # Setting each one to true will enable that specific analysis for the input.
+      # All available features for sentiment, syntax, and semantic analysis. Setting
+      # each one to true will enable that specific analysis for the input.
       class Features
         include Google::Apis::Core::Hashable
       
@@ -627,9 +616,8 @@ module Google
         end
       end
       
-      # Represents part of speech information for a token. Parts of speech
-      # are as defined in
-      # http://www.lrec-conf.org/proceedings/lrec2012/pdf/274_Paper.pdf
+      # Represents part of speech information for a token. Parts of speech are as
+      # defined in http://www.lrec-conf.org/proceedings/lrec2012/pdf/274_Paper.pdf
       class PartOfSpeech
         include Google::Apis::Core::Hashable
       
@@ -718,8 +706,7 @@ module Google
       class Sentence
         include Google::Apis::Core::Hashable
       
-        # Represents the feeling associated with the entire text or entities in
-        # the text.
+        # Represents the feeling associated with the entire text or entities in the text.
         # Corresponds to the JSON property `sentiment`
         # @return [Google::Apis::LanguageV1::Sentiment]
         attr_accessor :sentiment
@@ -740,20 +727,17 @@ module Google
         end
       end
       
-      # Represents the feeling associated with the entire text or entities in
-      # the text.
+      # Represents the feeling associated with the entire text or entities in the text.
       class Sentiment
         include Google::Apis::Core::Hashable
       
-        # A non-negative number in the [0, +inf) range, which represents
-        # the absolute magnitude of sentiment regardless of score (positive or
-        # negative).
+        # A non-negative number in the [0, +inf) range, which represents the absolute
+        # magnitude of sentiment regardless of score (positive or negative).
         # Corresponds to the JSON property `magnitude`
         # @return [Float]
         attr_accessor :magnitude
       
-        # Sentiment score between -1.0 (negative sentiment) and 1.0
-        # (positive sentiment).
+        # Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment).
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -769,12 +753,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -783,15 +767,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -839,8 +823,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents dependency parse tree information for a token. (For more
-        # information on dependency labels, see
-        # http://www.aclweb.org/anthology/P13-2017
+        # information on dependency labels, see http://www.aclweb.org/anthology/P13-2017
         # Corresponds to the JSON property `dependencyEdge`
         # @return [Google::Apis::LanguageV1::DependencyEdge]
         attr_accessor :dependency_edge
@@ -850,9 +833,8 @@ module Google
         # @return [String]
         attr_accessor :lemma
       
-        # Represents part of speech information for a token. Parts of speech
-        # are as defined in
-        # http://www.lrec-conf.org/proceedings/lrec2012/pdf/274_Paper.pdf
+        # Represents part of speech information for a token. Parts of speech are as
+        # defined in http://www.lrec-conf.org/proceedings/lrec2012/pdf/274_Paper.pdf
         # Corresponds to the JSON property `partOfSpeech`
         # @return [Google::Apis::LanguageV1::PartOfSpeech]
         attr_accessor :part_of_speech

@@ -31,18 +31,15 @@ module Google
         # @return [String]
         attr_accessor :abusive_status
       
-        # The time at which
-        # [enforcement](https://support.google.com/webtools/answer/7538608) against
-        # the site began or will begin.
-        # Not set when the
-        # filter_status
+        # The time at which [enforcement](https://support.google.com/webtools/answer/
+        # 7538608) against the site began or will begin. Not set when the filter_status
         # is OFF.
         # Corresponds to the JSON property `enforcementTime`
         # @return [String]
         attr_accessor :enforcement_time
       
-        # The site's [enforcement
-        # status](https://support.google.com/webtools/answer/7538608).
+        # The site's [enforcement status](https://support.google.com/webtools/answer/
+        # 7538608).
         # Corresponds to the JSON property `filterStatus`
         # @return [String]
         attr_accessor :filter_status
@@ -52,12 +49,10 @@ module Google
         # @return [String]
         attr_accessor :last_change_time
       
-        # A link to the full Abusive Experience Report for the site.
-        # Not set in
-        # ViolatingSitesResponse.
-        # Note that you must complete the [Search Console verification
-        # process](https://support.google.com/webmasters/answer/9008080) for the site
-        # before you can access the full report.
+        # A link to the full Abusive Experience Report for the site. Not set in
+        # ViolatingSitesResponse. Note that you must complete the [Search Console
+        # verification process](https://support.google.com/webmasters/answer/9008080)
+        # for the site before you can access the full report.
         # Corresponds to the JSON property `reportUrl`
         # @return [String]
         attr_accessor :report_url

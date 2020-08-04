@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/youtube/analytics
     module YoutubeAnalyticsV2
       VERSION = 'V2'
-      REVISION = '20200215'
+      REVISION = '20200801'
 
       # Manage your YouTube account
       AUTH_YOUTUBE = 'https://www.googleapis.com/auth/youtube'

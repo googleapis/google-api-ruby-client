@@ -57,8 +57,8 @@ module Google
         # @return [String]
         attr_accessor :sha1
       
-        # A sha256 hash of the APK payload, encoded as a hex string and matching
-        # the output of the sha256sum command.
+        # A sha256 hash of the APK payload, encoded as a hex string and matching the
+        # output of the sha256sum command.
         # Corresponds to the JSON property `sha256`
         # @return [String]
         attr_accessor :sha256
@@ -78,10 +78,10 @@ module Google
       class ApksAddExternallyHostedRequest
         include Google::Apis::Core::Hashable
       
-        # Defines an APK available for this application that is hosted externally
-        # and not uploaded to Google Play.
-        # This function is only available to organizations using Managed Play whose
-        # application is configured to restrict distribution to the organizations.
+        # Defines an APK available for this application that is hosted externally and
+        # not uploaded to Google Play. This function is only available to organizations
+        # using Managed Play whose application is configured to restrict distribution to
+        # the organizations.
         # Corresponds to the JSON property `externallyHostedApk`
         # @return [Google::Apis::AndroidpublisherV3::ExternallyHostedApk]
         attr_accessor :externally_hosted_apk
@@ -100,10 +100,10 @@ module Google
       class ApksAddExternallyHostedResponse
         include Google::Apis::Core::Hashable
       
-        # Defines an APK available for this application that is hosted externally
-        # and not uploaded to Google Play.
-        # This function is only available to organizations using Managed Play whose
-        # application is configured to restrict distribution to the organizations.
+        # Defines an APK available for this application that is hosted externally and
+        # not uploaded to Google Play. This function is only available to organizations
+        # using Managed Play whose application is configured to restrict distribution to
+        # the organizations.
         # Corresponds to the JSON property `externallyHostedApk`
         # @return [Google::Apis::AndroidpublisherV3::ExternallyHostedApk]
         attr_accessor :externally_hosted_apk
@@ -185,8 +185,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The time (as seconds since Epoch) at which the edit will expire
-        # and
-        # will be no longer valid for use.
+        # and will be no longer valid for use.
         # Corresponds to the JSON property `expiryTimeSeconds`
         # @return [String]
         attr_accessor :expiry_time_seconds
@@ -211,14 +210,14 @@ module Google
       class Bundle
         include Google::Apis::Core::Hashable
       
-        # A sha1 hash of the upload payload, encoded as a hex string and matching
-        # the output of the sha1sum command.
+        # A sha1 hash of the upload payload, encoded as a hex string and matching the
+        # output of the sha1sum command.
         # Corresponds to the JSON property `sha1`
         # @return [String]
         attr_accessor :sha1
       
-        # A sha256 hash of the upload payload, encoded as a hex string and matching
-        # the output of the sha256sum command.
+        # A sha256 hash of the upload payload, encoded as a hex string and matching the
+        # output of the sha256sum command.
         # Corresponds to the JSON property `sha256`
         # @return [String]
         attr_accessor :sha256
@@ -295,9 +294,8 @@ module Google
       class CountryTargeting
         include Google::Apis::Core::Hashable
       
-        # Countries to target, specified as two letter [CLDR
-        # codes](https://unicode.org/cldr/charts/latest/supplemental/
-        # territory_containment_un_m_49.html).
+        # Countries to target, specified as two letter [CLDR codes](https://unicode.org/
+        # cldr/charts/latest/supplemental/territory_containment_un_m_49.html).
         # Corresponds to the JSON property `countries`
         # @return [Array<String>]
         attr_accessor :countries
@@ -362,9 +360,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at
-        # nanosecond resolution. The count is relative to an epoch at UTC midnight on
-        # January 1, 1970.
+        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
+        # resolution. The count is relative to an epoch at UTC midnight on January 1,
+        # 1970.
         # Corresponds to the JSON property `lastModified`
         # @return [Google::Apis::AndroidpublisherV3::Timestamp]
         attr_accessor :last_modified
@@ -473,9 +471,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :screen_density
       
-        # Supported ABI architectures in the order of preference.
-        # The values should be the string as reported by the platform, e.g.
-        # "armeabi-v7a", "x86_64".
+        # Supported ABI architectures in the order of preference. The values should be
+        # the string as reported by the platform, e.g. "armeabi-v7a", "x86_64".
         # Corresponds to the JSON property `supportedAbis`
         # @return [Array<String>]
         attr_accessor :supported_abis
@@ -501,15 +498,15 @@ module Google
       class ExpansionFile
         include Google::Apis::Core::Hashable
       
-        # If set, this field indicates that this APK has an expansion file uploaded
-        # to it: this APK does not reference another APK's expansion file.
-        # The field's value is the size of the uploaded expansion file in bytes.
+        # If set, this field indicates that this APK has an expansion file uploaded to
+        # it: this APK does not reference another APK's expansion file. The field's
+        # value is the size of the uploaded expansion file in bytes.
         # Corresponds to the JSON property `fileSize`
         # @return [Fixnum]
         attr_accessor :file_size
       
-        # If set, this APK's expansion file references another APK's expansion file.
-        # The file_size field will not be set.
+        # If set, this APK's expansion file references another APK's expansion file. The
+        # file_size field will not be set.
         # Corresponds to the JSON property `referencesVersion`
         # @return [Fixnum]
         attr_accessor :references_version
@@ -544,10 +541,10 @@ module Google
         end
       end
       
-      # Defines an APK available for this application that is hosted externally
-      # and not uploaded to Google Play.
-      # This function is only available to organizations using Managed Play whose
-      # application is configured to restrict distribution to the organizations.
+      # Defines an APK available for this application that is hosted externally and
+      # not uploaded to Google Play. This function is only available to organizations
+      # using Managed Play whose application is configured to restrict distribution to
+      # the organizations.
       class ExternallyHostedApk
         include Google::Apis::Core::Hashable
       
@@ -556,8 +553,8 @@ module Google
         # @return [String]
         attr_accessor :application_label
       
-        # A certificate (or array of certificates if a certificate-chain is used)
-        # used to sign this APK, represented as a base64 encoded byte array.
+        # A certificate (or array of certificates if a certificate-chain is used) used
+        # to sign this APK, represented as a base64 encoded byte array.
         # Corresponds to the JSON property `certificateBase64s`
         # @return [Array<String>]
         attr_accessor :certificate_base64s
@@ -567,14 +564,12 @@ module Google
         # @return [String]
         attr_accessor :externally_hosted_url
       
-        # The sha1 checksum of this APK, represented as a base64 encoded byte
-        # array.
+        # The sha1 checksum of this APK, represented as a base64 encoded byte array.
         # Corresponds to the JSON property `fileSha1Base64`
         # @return [String]
         attr_accessor :file_sha1_base64
       
-        # The sha256 checksum of this APK, represented as a base64 encoded byte
-        # array.
+        # The sha256 checksum of this APK, represented as a base64 encoded byte array.
         # Corresponds to the JSON property `fileSha256Base64`
         # @return [String]
         attr_accessor :file_sha256_base64
@@ -762,16 +757,15 @@ module Google
         attr_accessor :default_price
       
         # Grace period of the subscription, specified in ISO 8601 format. Allows
-        # developers to give their subscribers a grace period when the payment
-        # for the new recurrence period is declined.
-        # Acceptable values are P0D (zero days), P3D (three days), P7D (seven days),
-        # P14D (14 days), and P30D (30 days).
+        # developers to give their subscribers a grace period when the payment for the
+        # new recurrence period is declined. Acceptable values are P0D (zero days), P3D (
+        # three days), P7D (seven days), P14D (14 days), and P30D (30 days).
         # Corresponds to the JSON property `gracePeriod`
         # @return [String]
         attr_accessor :grace_period
       
-        # List of localized title and description data. Map key is the language of
-        # the localized data, as defined by BCP-47, e.g. "en-US".
+        # List of localized title and description data. Map key is the language of the
+        # localized data, as defined by BCP-47, e.g. "en-US".
         # Corresponds to the JSON property `listings`
         # @return [Hash<String,Google::Apis::AndroidpublisherV3::InAppProductListing>]
         attr_accessor :listings
@@ -802,9 +796,9 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # Subscription period, specified in ISO 8601 format. Acceptable values are
-        # P1W (one week), P1M (one month), P3M (three months), P6M (six months),
-        # and P1Y (one year).
+        # Subscription period, specified in ISO 8601 format. Acceptable values are P1W (
+        # one week), P1M (one month), P3M (three months), P6M (six months), and P1Y (one
+        # year).
         # Corresponds to the JSON property `subscriptionPeriod`
         # @return [String]
         attr_accessor :subscription_period
@@ -880,22 +874,21 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Information about the current page.
-        # List operations that supports paging return only one "page" of results. This
-        # protocol buffer message describes the page that has been returned.
+        # Information about the current page. List operations that supports paging
+        # return only one "page" of results. This protocol buffer message describes the
+        # page that has been returned.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::AndroidpublisherV3::PageInfo]
         attr_accessor :page_info
       
-        # Pagination information returned by a List operation when token pagination
-        # is enabled.
-        # List operations that supports paging return only one "page" of results. This
-        # protocol buffer message describes the page that has been returned.
-        # When using token pagination, clients should use the next/previous token
-        # to get another page of the result. The presence or absence of next/previous
-        # token indicates whether a next/previous page is available and provides a
-        # mean of accessing this page. ListRequest.page_token should be set to either
-        # next_page_token or previous_page_token to access another page.
+        # Pagination information returned by a List operation when token pagination is
+        # enabled. List operations that supports paging return only one "page" of
+        # results. This protocol buffer message describes the page that has been
+        # returned. When using token pagination, clients should use the next/previous
+        # token to get another page of the result. The presence or absence of next/
+        # previous token indicates whether a next/previous page is available and
+        # provides a mean of accessing this page. ListRequest.page_token should be set
+        # to either next_page_token or previous_page_token to access another page.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::AndroidpublisherV3::TokenPagination]
         attr_accessor :token_pagination
@@ -913,26 +906,24 @@ module Google
         end
       end
       
-      # An artifact resource which gets created when uploading an APK or Android
-      # App Bundle through internal app sharing.
+      # An artifact resource which gets created when uploading an APK or Android App
+      # Bundle through internal app sharing.
       class InternalAppSharingArtifact
         include Google::Apis::Core::Hashable
       
-        # The sha256 fingerprint of the certificate used to sign the generated
-        # artifact.
+        # The sha256 fingerprint of the certificate used to sign the generated artifact.
         # Corresponds to the JSON property `certificateFingerprint`
         # @return [String]
         attr_accessor :certificate_fingerprint
       
-        # The download URL generated for the uploaded artifact.
-        # Users that are authorized to download can follow the link to the Play
-        # Store app to install it.
+        # The download URL generated for the uploaded artifact. Users that are
+        # authorized to download can follow the link to the Play Store app to install it.
         # Corresponds to the JSON property `downloadUrl`
         # @return [String]
         attr_accessor :download_url
       
-        # The sha256 hash of the artifact represented as a lowercase hexadecimal
-        # number, matching the output of the sha256sum command.
+        # The sha256 hash of the artifact represented as a lowercase hexadecimal number,
+        # matching the output of the sha256sum command.
         # Corresponds to the JSON property `sha256`
         # @return [String]
         attr_accessor :sha256
@@ -953,18 +944,17 @@ module Google
       class IntroductoryPriceInfo
         include Google::Apis::Core::Hashable
       
-        # Introductory price of the subscription, not including tax.
-        # The currency is the same as price_currency_code. Price is
-        # expressed in micro-units, where 1,000,000 micro-units represents one unit
-        # of the currency. For example, if the subscription price is €1.99,
-        # price_amount_micros is 1990000.
+        # Introductory price of the subscription, not including tax. The currency is the
+        # same as price_currency_code. Price is expressed in micro-units, where 1,000,
+        # 000 micro-units represents one unit of the currency. For example, if the
+        # subscription price is €1.99, price_amount_micros is 1990000.
         # Corresponds to the JSON property `introductoryPriceAmountMicros`
         # @return [Fixnum]
         attr_accessor :introductory_price_amount_micros
       
-        # ISO 4217 currency code for the introductory subscription price.
-        # For example, if the price is specified in British pounds sterling,
-        # price_currency_code is "GBP".
+        # ISO 4217 currency code for the introductory subscription price. For example,
+        # if the price is specified in British pounds sterling, price_currency_code is "
+        # GBP".
         # Corresponds to the JSON property `introductoryPriceCurrencyCode`
         # @return [String]
         attr_accessor :introductory_price_currency_code
@@ -974,10 +964,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :introductory_price_cycles
       
-        # Introductory price period, specified in ISO 8601 format.
-        # Common values are (but not limited to) "P1W" (one
-        # week), "P1M" (one month), "P3M" (three months), "P6M" (six months),
-        # and "P1Y" (one year).
+        # Introductory price period, specified in ISO 8601 format. Common values are (
+        # but not limited to) "P1W" (one week), "P1M" (one month), "P3M" (three months),
+        # "P6M" (six months), and "P1Y" (one year).
         # Corresponds to the JSON property `introductoryPricePeriod`
         # @return [String]
         attr_accessor :introductory_price_period
@@ -1004,8 +993,8 @@ module Google
         # @return [String]
         attr_accessor :full_description
       
-        # Language localization code (a BCP-47 language tag; for example, "de-AT"
-        # for Austrian German).
+        # Language localization code (a BCP-47 language tag; for example, "de-AT" for
+        # Austrian German).
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
@@ -1068,8 +1057,8 @@ module Google
       class LocalizedText
         include Google::Apis::Core::Hashable
       
-        # Language localization code (a BCP-47 language tag; for example, "de-AT"
-        # for Austrian German).
+        # Language localization code (a BCP-47 language tag; for example, "de-AT" for
+        # Austrian German).
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
@@ -1090,14 +1079,14 @@ module Google
         end
       end
       
-      # Information about the current page.
-      # List operations that supports paging return only one "page" of results. This
-      # protocol buffer message describes the page that has been returned.
+      # Information about the current page. List operations that supports paging
+      # return only one "page" of results. This protocol buffer message describes the
+      # page that has been returned.
       class PageInfo
         include Google::Apis::Core::Hashable
       
-        # Maximum number of results returned in one page.
-        # ! The number of results included in the API response.
+        # Maximum number of results returned in one page. ! The number of results
+        # included in the API response.
         # Corresponds to the JSON property `resultPerPage`
         # @return [Fixnum]
         attr_accessor :result_per_page
@@ -1107,8 +1096,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :start_index
       
-        # Total number of results available on the backend
-        # ! The total number of results in the result set.
+        # Total number of results available on the backend ! The total number of results
+        # in the result set.
         # Corresponds to the JSON property `totalResults`
         # @return [Fixnum]
         attr_accessor :total_results
@@ -1129,8 +1118,8 @@ module Google
       class Price
         include Google::Apis::Core::Hashable
       
-        # 3 letter Currency code, as defined by ISO 4217.
-        # See java/com/google/common/money/CurrencyCode.java
+        # 3 letter Currency code, as defined by ISO 4217. See java/com/google/common/
+        # money/CurrencyCode.java
         # Corresponds to the JSON property `currency`
         # @return [String]
         attr_accessor :currency
@@ -1151,51 +1140,46 @@ module Google
         end
       end
       
-      # A ProductPurchase resource indicates the status of a user's inapp
-      # product purchase.
+      # A ProductPurchase resource indicates the status of a user's inapp product
+      # purchase.
       class ProductPurchase
         include Google::Apis::Core::Hashable
       
-        # The acknowledgement state of the inapp product. Possible values are:
-        # 0. Yet to be acknowledged
-        # 1. Acknowledged
+        # The acknowledgement state of the inapp product. Possible values are: 0. Yet to
+        # be acknowledged 1. Acknowledged
         # Corresponds to the JSON property `acknowledgementState`
         # @return [Fixnum]
         attr_accessor :acknowledgement_state
       
-        # The consumption state of the inapp product. Possible values are:
-        # 0. Yet to be consumed
-        # 1. Consumed
+        # The consumption state of the inapp product. Possible values are: 0. Yet to be
+        # consumed 1. Consumed
         # Corresponds to the JSON property `consumptionState`
         # @return [Fixnum]
         attr_accessor :consumption_state
       
-        # A developer-specified string that contains supplemental
-        # information about an order.
+        # A developer-specified string that contains supplemental information about an
+        # order.
         # Corresponds to the JSON property `developerPayload`
         # @return [String]
         attr_accessor :developer_payload
       
-        # This kind represents an inappPurchase object in the androidpublisher
-        # service.
+        # This kind represents an inappPurchase object in the androidpublisher service.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # An obfuscated version of the id that is uniquely associated with the
-        # user's account in your app. Only present if specified using
-        # https://developer.android.com/reference/com/android/billingclient/api/
-        # BillingFlowParams.Builder#setobfuscatedaccountid
-        # when the purchase was made.
+        # An obfuscated version of the id that is uniquely associated with the user's
+        # account in your app. Only present if specified using https://developer.android.
+        # com/reference/com/android/billingclient/api/BillingFlowParams.Builder#
+        # setobfuscatedaccountid when the purchase was made.
         # Corresponds to the JSON property `obfuscatedExternalAccountId`
         # @return [String]
         attr_accessor :obfuscated_external_account_id
       
-        # An obfuscated version of the id that is uniquely associated with the
-        # user's profile in your app. Only present if specified using
-        # https://developer.android.com/reference/com/android/billingclient/api/
-        # BillingFlowParams.Builder#setobfuscatedprofileid
-        # when the purchase was made.
+        # An obfuscated version of the id that is uniquely associated with the user's
+        # profile in your app. Only present if specified using https://developer.android.
+        # com/reference/com/android/billingclient/api/BillingFlowParams.Builder#
+        # setobfuscatedprofileid when the purchase was made.
         # Corresponds to the JSON property `obfuscatedExternalProfileId`
         # @return [String]
         attr_accessor :obfuscated_external_profile_id
@@ -1210,16 +1194,14 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # The purchase state of the order. Possible values are:
-        # 0. Purchased
-        # 1. Canceled
+        # The purchase state of the order. Possible values are: 0. Purchased 1. Canceled
         # 2. Pending
         # Corresponds to the JSON property `purchaseState`
         # @return [Fixnum]
         attr_accessor :purchase_state
       
-        # The time the product was purchased, in milliseconds since the
-        # epoch (Jan 1, 1970).
+        # The time the product was purchased, in milliseconds since the epoch (Jan 1,
+        # 1970).
         # Corresponds to the JSON property `purchaseTimeMillis`
         # @return [Fixnum]
         attr_accessor :purchase_time_millis
@@ -1229,12 +1211,11 @@ module Google
         # @return [String]
         attr_accessor :purchase_token
       
-        # The type of purchase of the inapp product. This field is only set if
-        # this purchase was not made using the standard in-app billing flow.
-        # Possible values are:
-        # 0. Test (i.e. purchased from a license testing account)
-        # 1. Promo (i.e. purchased using a promo code)
-        # 2. Rewarded (i.e. from watching a video ad instead of paying)
+        # The type of purchase of the inapp product. This field is only set if this
+        # purchase was not made using the standard in-app billing flow. Possible values
+        # are: 0. Test (i.e. purchased from a license testing account) 1. Promo (i.e.
+        # purchased using a promo code) 2. Rewarded (i.e. from watching a video ad
+        # instead of paying)
         # Corresponds to the JSON property `purchaseType`
         # @return [Fixnum]
         attr_accessor :purchase_type
@@ -1321,9 +1302,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at
-        # nanosecond resolution. The count is relative to an epoch at UTC midnight on
-        # January 1, 1970.
+        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
+        # resolution. The count is relative to an epoch at UTC midnight on January 1,
+        # 1970.
         # Corresponds to the JSON property `lastEdited`
         # @return [Google::Apis::AndroidpublisherV3::Timestamp]
         attr_accessor :last_edited
@@ -1348,9 +1329,9 @@ module Google
       class ReviewsListResponse
         include Google::Apis::Core::Hashable
       
-        # Information about the current page.
-        # List operations that supports paging return only one "page" of results. This
-        # protocol buffer message describes the page that has been returned.
+        # Information about the current page. List operations that supports paging
+        # return only one "page" of results. This protocol buffer message describes the
+        # page that has been returned.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::AndroidpublisherV3::PageInfo]
         attr_accessor :page_info
@@ -1360,15 +1341,14 @@ module Google
         # @return [Array<Google::Apis::AndroidpublisherV3::Review>]
         attr_accessor :reviews
       
-        # Pagination information returned by a List operation when token pagination
-        # is enabled.
-        # List operations that supports paging return only one "page" of results. This
-        # protocol buffer message describes the page that has been returned.
-        # When using token pagination, clients should use the next/previous token
-        # to get another page of the result. The presence or absence of next/previous
-        # token indicates whether a next/previous page is available and provides a
-        # mean of accessing this page. ListRequest.page_token should be set to either
-        # next_page_token or previous_page_token to access another page.
+        # Pagination information returned by a List operation when token pagination is
+        # enabled. List operations that supports paging return only one "page" of
+        # results. This protocol buffer message describes the page that has been
+        # returned. When using token pagination, clients should use the next/previous
+        # token to get another page of the result. The presence or absence of next/
+        # previous token indicates whether a next/previous page is available and
+        # provides a mean of accessing this page. ListRequest.page_token should be set
+        # to either next_page_token or previous_page_token to access another page.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::AndroidpublisherV3::TokenPagination]
         attr_accessor :token_pagination
@@ -1429,13 +1409,9 @@ module Google
       class SubscriptionCancelSurveyResult
         include Google::Apis::Core::Hashable
       
-        # The cancellation reason the user chose in the survey.
-        # Possible values are:
-        # 0. Other
-        # 1. I don't use this service enough
-        # 2. Technical issues
-        # 3. Cost-related reasons
-        # 4. I found a better app
+        # The cancellation reason the user chose in the survey. Possible values are: 0.
+        # Other 1. I don't use this service enough 2. Technical issues 3. Cost-related
+        # reasons 4. I found a better app
         # Corresponds to the JSON property `cancelSurveyReason`
         # @return [Fixnum]
         attr_accessor :cancel_survey_reason
@@ -1457,21 +1433,20 @@ module Google
         end
       end
       
-      # A SubscriptionDeferralInfo contains the data needed to defer a
-      # subscription purchase to a future expiry time.
+      # A SubscriptionDeferralInfo contains the data needed to defer a subscription
+      # purchase to a future expiry time.
       class SubscriptionDeferralInfo
         include Google::Apis::Core::Hashable
       
-        # The desired next expiry time to assign to the subscription, in
-        # milliseconds since the Epoch. The given time must be later/greater
-        # than the current expiry time for the subscription.
+        # The desired next expiry time to assign to the subscription, in milliseconds
+        # since the Epoch. The given time must be later/greater than the current expiry
+        # time for the subscription.
         # Corresponds to the JSON property `desiredExpiryTimeMillis`
         # @return [Fixnum]
         attr_accessor :desired_expiry_time_millis
       
-        # The expected expiry time for the subscription.  If the current
-        # expiry time for the subscription is not the value specified
-        # here, the deferral will not occur.
+        # The expected expiry time for the subscription. If the current expiry time for
+        # the subscription is not the value specified here, the deferral will not occur.
         # Corresponds to the JSON property `expectedExpiryTimeMillis`
         # @return [Fixnum]
         attr_accessor :expected_expiry_time_millis
@@ -1499,14 +1474,13 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::Price]
         attr_accessor :new_price
       
-        # The current state of the price change. Possible values are:
-        # 0. Outstanding: State for a pending price change waiting for the user to
-        # agree. In this state, you can optionally seek confirmation from the
-        # user using the In-App API.
-        # 1. Accepted: State for an accepted price change that the subscription
-        # will renew with unless it's canceled. The price change takes effect on
-        # a future date when the subscription renews. Note that the change might
-        # not occur when the subscription is renewed next.
+        # The current state of the price change. Possible values are: 0. Outstanding:
+        # State for a pending price change waiting for the user to agree. In this state,
+        # you can optionally seek confirmation from the user using the In-App API. 1.
+        # Accepted: State for an accepted price change that the subscription will renew
+        # with unless it's canceled. The price change takes effect on a future date when
+        # the subscription renews. Note that the change might not occur when the
+        # subscription is renewed next.
         # Corresponds to the JSON property `state`
         # @return [Fixnum]
         attr_accessor :state
@@ -1522,40 +1496,35 @@ module Google
         end
       end
       
-      # A SubscriptionPurchase resource indicates the status of a user's
-      # subscription purchase.
+      # A SubscriptionPurchase resource indicates the status of a user's subscription
+      # purchase.
       class SubscriptionPurchase
         include Google::Apis::Core::Hashable
       
-        # The acknowledgement state of the subscription product. Possible values
-        # are:
-        # 0. Yet to be acknowledged
-        # 1. Acknowledged
+        # The acknowledgement state of the subscription product. Possible values are: 0.
+        # Yet to be acknowledged 1. Acknowledged
         # Corresponds to the JSON property `acknowledgementState`
         # @return [Fixnum]
         attr_accessor :acknowledgement_state
       
-        # Whether the subscription will automatically be renewed when it
-        # reaches its current expiry time.
+        # Whether the subscription will automatically be renewed when it reaches its
+        # current expiry time.
         # Corresponds to the JSON property `autoRenewing`
         # @return [Boolean]
         attr_accessor :auto_renewing
         alias_method :auto_renewing?, :auto_renewing
       
-        # Time at which the subscription will be automatically resumed, in
-        # milliseconds since the Epoch. Only present if the user has requested to
-        # pause the subscription.
+        # Time at which the subscription will be automatically resumed, in milliseconds
+        # since the Epoch. Only present if the user has requested to pause the
+        # subscription.
         # Corresponds to the JSON property `autoResumeTimeMillis`
         # @return [Fixnum]
         attr_accessor :auto_resume_time_millis
       
-        # The reason why a subscription was canceled or is not auto-renewing.
-        # Possible values are:
-        # 0. User canceled the subscription
-        # 1. Subscription was canceled by the system,
-        # for example because of a billing problem
-        # 2. Subscription was replaced with a new subscription
-        # 3. Subscription was canceled by the developer
+        # The reason why a subscription was canceled or is not auto-renewing. Possible
+        # values are: 0. User canceled the subscription 1. Subscription was canceled by
+        # the system, for example because of a billing problem 2. Subscription was
+        # replaced with a new subscription 3. Subscription was canceled by the developer
         # Corresponds to the JSON property `cancelReason`
         # @return [Fixnum]
         attr_accessor :cancel_reason
@@ -1566,45 +1535,43 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::SubscriptionCancelSurveyResult]
         attr_accessor :cancel_survey_result
       
-        # ISO 3166-1 alpha-2 billing country/region code of the user at the time
-        # the subscription was granted.
+        # ISO 3166-1 alpha-2 billing country/region code of the user at the time the
+        # subscription was granted.
         # Corresponds to the JSON property `countryCode`
         # @return [String]
         attr_accessor :country_code
       
-        # A developer-specified string that contains supplemental
-        # information about an order.
+        # A developer-specified string that contains supplemental information about an
+        # order.
         # Corresponds to the JSON property `developerPayload`
         # @return [String]
         attr_accessor :developer_payload
       
-        # The email address of the user when the subscription was purchased.
-        # Only present for purchases made with 'Subscribe with Google'.
+        # The email address of the user when the subscription was purchased. Only
+        # present for purchases made with 'Subscribe with Google'.
         # Corresponds to the JSON property `emailAddress`
         # @return [String]
         attr_accessor :email_address
       
-        # Time at which the subscription will expire, in milliseconds
-        # since the Epoch.
+        # Time at which the subscription will expire, in milliseconds since the Epoch.
         # Corresponds to the JSON property `expiryTimeMillis`
         # @return [Fixnum]
         attr_accessor :expiry_time_millis
       
-        # User account identifier in the third-party service.
-        # Only present if account linking happened as part of the subscription
-        # purchase flow.
+        # User account identifier in the third-party service. Only present if account
+        # linking happened as part of the subscription purchase flow.
         # Corresponds to the JSON property `externalAccountId`
         # @return [String]
         attr_accessor :external_account_id
       
-        # The family name of the user when the subscription was purchased.
-        # Only present for purchases made with 'Subscribe with Google'.
+        # The family name of the user when the subscription was purchased. Only present
+        # for purchases made with 'Subscribe with Google'.
         # Corresponds to the JSON property `familyName`
         # @return [String]
         attr_accessor :family_name
       
-        # The given name of the user when the subscription was purchased.
-        # Only present for purchases made with 'Subscribe with Google'.
+        # The given name of the user when the subscription was purchased. Only present
+        # for purchases made with 'Subscribe with Google'.
         # Corresponds to the JSON property `givenName`
         # @return [String]
         attr_accessor :given_name
@@ -1620,61 +1587,52 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The purchase token of the originating purchase if this subscription
-        # is one of the following:
-        # 0. Re-signup of a canceled but non-lapsed subscription
-        # 1. Upgrade/downgrade from a previous subscription
-        # For example, suppose a user originally signs up and you receive
-        # purchase token X, then the user cancels and goes through the
-        # resignup flow (before their subscription lapses) and you receive
-        # purchase token Y, and finally the user upgrades their subscription
-        # and you receive purchase token Z. If you call this API with purchase
-        # token Z, this field will be set to Y. If you call this API with
-        # purchase token Y, this field will be set to X. If you call this API
-        # with purchase token X, this field will not be set.
+        # The purchase token of the originating purchase if this subscription is one of
+        # the following: 0. Re-signup of a canceled but non-lapsed subscription 1.
+        # Upgrade/downgrade from a previous subscription For example, suppose a user
+        # originally signs up and you receive purchase token X, then the user cancels
+        # and goes through the resignup flow (before their subscription lapses) and you
+        # receive purchase token Y, and finally the user upgrades their subscription and
+        # you receive purchase token Z. If you call this API with purchase token Z, this
+        # field will be set to Y. If you call this API with purchase token Y, this field
+        # will be set to X. If you call this API with purchase token X, this field will
+        # not be set.
         # Corresponds to the JSON property `linkedPurchaseToken`
         # @return [String]
         attr_accessor :linked_purchase_token
       
-        # An obfuscated version of the id that is uniquely associated with the
-        # user's account in your app. Present for the following purchases:
-        # * If account linking happened as part of the subscription purchase flow.
-        # * It was specified using
+        # An obfuscated version of the id that is uniquely associated with the user's
+        # account in your app. Present for the following purchases: * If account linking
+        # happened as part of the subscription purchase flow. * It was specified using
         # https://developer.android.com/reference/com/android/billingclient/api/
-        # BillingFlowParams.Builder#setobfuscatedaccountid
-        # when the purchase was made.
+        # BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made.
         # Corresponds to the JSON property `obfuscatedExternalAccountId`
         # @return [String]
         attr_accessor :obfuscated_external_account_id
       
-        # An obfuscated version of the id that is uniquely associated with the
-        # user's profile in your app. Only present if specified using
-        # https://developer.android.com/reference/com/android/billingclient/api/
-        # BillingFlowParams.Builder#setobfuscatedprofileid
-        # when the purchase was made.
+        # An obfuscated version of the id that is uniquely associated with the user's
+        # profile in your app. Only present if specified using https://developer.android.
+        # com/reference/com/android/billingclient/api/BillingFlowParams.Builder#
+        # setobfuscatedprofileid when the purchase was made.
         # Corresponds to the JSON property `obfuscatedExternalProfileId`
         # @return [String]
         attr_accessor :obfuscated_external_profile_id
       
-        # The order id of the latest recurring order associated with
-        # the purchase of the subscription.
+        # The order id of the latest recurring order associated with the purchase of the
+        # subscription.
         # Corresponds to the JSON property `orderId`
         # @return [String]
         attr_accessor :order_id
       
-        # The payment state of the subscription. Possible values are:
-        # 0. Payment pending
-        # 1. Payment received
-        # 2. Free trial
-        # 3. Pending deferred upgrade/downgrade
+        # The payment state of the subscription. Possible values are: 0. Payment pending
+        # 1. Payment received 2. Free trial 3. Pending deferred upgrade/downgrade
         # Corresponds to the JSON property `paymentState`
         # @return [Fixnum]
         attr_accessor :payment_state
       
-        # Price of the subscription, not including tax. Price is expressed
-        # in micro-units, where 1,000,000 micro-units represents one unit of
-        # the currency. For example, if the subscription price is &euro;1.99,
-        # price_amount_micros is 1990000.
+        # Price of the subscription, not including tax. Price is expressed in micro-
+        # units, where 1,000,000 micro-units represents one unit of the currency. For
+        # example, if the subscription price is €1.99, price_amount_micros is 1990000.
         # Corresponds to the JSON property `priceAmountMicros`
         # @return [Fixnum]
         attr_accessor :price_amount_micros
@@ -1687,57 +1645,52 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::SubscriptionPriceChange]
         attr_accessor :price_change
       
-        # ISO 4217 currency code for the subscription price. For example,
-        # if the price is specified in British pounds sterling,
-        # price_currency_code is "GBP".
+        # ISO 4217 currency code for the subscription price. For example, if the price
+        # is specified in British pounds sterling, price_currency_code is "GBP".
         # Corresponds to the JSON property `priceCurrencyCode`
         # @return [String]
         attr_accessor :price_currency_code
       
-        # The Google profile id of the user when the subscription was purchased.
-        # Only present for purchases made with 'Subscribe with Google'.
+        # The Google profile id of the user when the subscription was purchased. Only
+        # present for purchases made with 'Subscribe with Google'.
         # Corresponds to the JSON property `profileId`
         # @return [String]
         attr_accessor :profile_id
       
-        # The profile name of the user when the subscription was purchased.
-        # Only present for purchases made with 'Subscribe with Google'.
+        # The profile name of the user when the subscription was purchased. Only present
+        # for purchases made with 'Subscribe with Google'.
         # Corresponds to the JSON property `profileName`
         # @return [String]
         attr_accessor :profile_name
       
-        # The promotion code applied on this purchase. This field is only set if
-        # a vanity code promotion is applied when the subscription was purchased.
+        # The promotion code applied on this purchase. This field is only set if a
+        # vanity code promotion is applied when the subscription was purchased.
         # Corresponds to the JSON property `promotionCode`
         # @return [String]
         attr_accessor :promotion_code
       
-        # The type of promotion applied on this purchase. This field is only set if
-        # a promotion is applied when the subscription was purchased. Possible
-        # values are:
-        # 0. One time code
-        # 1. Vanity code
+        # The type of promotion applied on this purchase. This field is only set if a
+        # promotion is applied when the subscription was purchased. Possible values are:
+        # 0. One time code 1. Vanity code
         # Corresponds to the JSON property `promotionType`
         # @return [Fixnum]
         attr_accessor :promotion_type
       
-        # The type of purchase of the subscription. This field is only set if
-        # this purchase was not made using the standard in-app billing flow.
-        # Possible values are:
-        # 0. Test (i.e. purchased from a license testing account)
-        # 1. Promo (i.e. purchased using a promo code)
+        # The type of purchase of the subscription. This field is only set if this
+        # purchase was not made using the standard in-app billing flow. Possible values
+        # are: 0. Test (i.e. purchased from a license testing account) 1. Promo (i.e.
+        # purchased using a promo code)
         # Corresponds to the JSON property `purchaseType`
         # @return [Fixnum]
         attr_accessor :purchase_type
       
-        # Time at which the subscription was granted, in milliseconds
-        # since the Epoch.
+        # Time at which the subscription was granted, in milliseconds since the Epoch.
         # Corresponds to the JSON property `startTimeMillis`
         # @return [Fixnum]
         attr_accessor :start_time_millis
       
-        # The time at which the subscription was canceled by the user, in
-        # milliseconds since the epoch. Only present if cancelReason is 0.
+        # The time at which the subscription was canceled by the user, in milliseconds
+        # since the epoch. Only present if cancelReason is 0.
         # Corresponds to the JSON property `userCancellationTimeMillis`
         # @return [Fixnum]
         attr_accessor :user_cancellation_time_millis
@@ -1803,8 +1756,8 @@ module Google
       class SubscriptionPurchasesDeferRequest
         include Google::Apis::Core::Hashable
       
-        # A SubscriptionDeferralInfo contains the data needed to defer a
-        # subscription purchase to a future expiry time.
+        # A SubscriptionDeferralInfo contains the data needed to defer a subscription
+        # purchase to a future expiry time.
         # Corresponds to the JSON property `deferralInfo`
         # @return [Google::Apis::AndroidpublisherV3::SubscriptionDeferralInfo]
         attr_accessor :deferral_info
@@ -1877,14 +1830,14 @@ module Google
       end
       
       # A Timestamp represents a point in time independent of any time zone or local
-      # calendar, encoded as a count of seconds and fractions of seconds at
-      # nanosecond resolution. The count is relative to an epoch at UTC midnight on
-      # January 1, 1970.
+      # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
+      # resolution. The count is relative to an epoch at UTC midnight on January 1,
+      # 1970.
       class Timestamp
         include Google::Apis::Core::Hashable
       
-        # Non-negative fractions of a second at nanosecond resolution.
-        # Must be from 0 to 999,999,999 inclusive.
+        # Non-negative fractions of a second at nanosecond resolution. Must be from 0 to
+        # 999,999,999 inclusive.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
@@ -1905,15 +1858,14 @@ module Google
         end
       end
       
-      # Pagination information returned by a List operation when token pagination
-      # is enabled.
-      # List operations that supports paging return only one "page" of results. This
-      # protocol buffer message describes the page that has been returned.
-      # When using token pagination, clients should use the next/previous token
-      # to get another page of the result. The presence or absence of next/previous
-      # token indicates whether a next/previous page is available and provides a
-      # mean of accessing this page. ListRequest.page_token should be set to either
-      # next_page_token or previous_page_token to access another page.
+      # Pagination information returned by a List operation when token pagination is
+      # enabled. List operations that supports paging return only one "page" of
+      # results. This protocol buffer message describes the page that has been
+      # returned. When using token pagination, clients should use the next/previous
+      # token to get another page of the result. The presence or absence of next/
+      # previous token indicates whether a next/previous page is available and
+      # provides a mean of accessing this page. ListRequest.page_token should be set
+      # to either next_page_token or previous_page_token to access another page.
       class TokenPagination
         include Google::Apis::Core::Hashable
       
@@ -1943,8 +1895,8 @@ module Google
       class Track
         include Google::Apis::Core::Hashable
       
-        # In a read request, represents all active releases in the track.
-        # In an update request, represents desired changes.
+        # In a read request, represents all active releases in the track. In an update
+        # request, represents desired changes.
         # Corresponds to the JSON property `releases`
         # @return [Array<Google::Apis::AndroidpublisherV3::TrackRelease>]
         attr_accessor :releases
@@ -1974,18 +1926,18 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::CountryTargeting]
         attr_accessor :country_targeting
       
-        # In-app update priority of the release. All newly added APKs in the
-        # release will be considered at this priority. Can take values in the range
-        # [0, 5], with 5 the highest priority. Defaults to 0.
-        # in_app_update_priority can not be updated once the release is rolled out.
-        # See https://developer.android.com/guide/playcore/in-app-updates.
+        # In-app update priority of the release. All newly added APKs in the release
+        # will be considered at this priority. Can take values in the range [0, 5], with
+        # 5 the highest priority. Defaults to 0. in_app_update_priority can not be
+        # updated once the release is rolled out. See https://developer.android.com/
+        # guide/playcore/in-app-updates.
         # Corresponds to the JSON property `inAppUpdatePriority`
         # @return [Fixnum]
         attr_accessor :in_app_update_priority
       
-        # The release name. Not required to be unique. If not set, the name is
-        # generated from the APK's version_name. If the release contains multiple
-        # APKs, the name is generated from the date.
+        # The release name. Not required to be unique. If not set, the name is generated
+        # from the APK's version_name. If the release contains multiple APKs, the name
+        # is generated from the date.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2000,14 +1952,14 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # Fraction of users who are eligible for a staged release. 0 < fraction < 1.
-        # Can only be set when status is "inProgress" or "halted".
+        # Fraction of users who are eligible for a staged release. 0 < fraction < 1. Can
+        # only be set when status is "inProgress" or "halted".
         # Corresponds to the JSON property `userFraction`
         # @return [Float]
         attr_accessor :user_fraction
       
-        # Version codes of all APKs in the release. Must include version codes to
-        # retain from previous releases.
+        # Version codes of all APKs in the release. Must include version codes to retain
+        # from previous releases.
         # Corresponds to the JSON property `versionCodes`
         # @return [Array<Fixnum>]
         attr_accessor :version_codes
@@ -2057,20 +2009,20 @@ module Google
       class UserComment
         include Google::Apis::Core::Hashable
       
-        # Integer Android SDK version of the user's device at the time the
-        # review was written, e.g. 23 is Marshmallow. May be absent.
+        # Integer Android SDK version of the user's device at the time the review was
+        # written, e.g. 23 is Marshmallow. May be absent.
         # Corresponds to the JSON property `androidOsVersion`
         # @return [Fixnum]
         attr_accessor :android_os_version
       
-        # Integer version code of the app as installed at the time the
-        # review was written. May be absent.
+        # Integer version code of the app as installed at the time the review was
+        # written. May be absent.
         # Corresponds to the JSON property `appVersionCode`
         # @return [Fixnum]
         attr_accessor :app_version_code
       
-        # String version name of the app as installed at the time the
-        # review was written. May be absent.
+        # String version name of the app as installed at the time the review was written.
+        # May be absent.
         # Corresponds to the JSON property `appVersionName`
         # @return [String]
         attr_accessor :app_version_name
@@ -2086,22 +2038,21 @@ module Google
         attr_accessor :device_metadata
       
         # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at
-        # nanosecond resolution. The count is relative to an epoch at UTC midnight on
-        # January 1, 1970.
+        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
+        # resolution. The count is relative to an epoch at UTC midnight on January 1,
+        # 1970.
         # Corresponds to the JSON property `lastModified`
         # @return [Google::Apis::AndroidpublisherV3::Timestamp]
         attr_accessor :last_modified
       
-        # Untranslated text of the review, where the review was translated.
-        # If the review was not translated this is left blank.
+        # Untranslated text of the review, where the review was translated. If the
+        # review was not translated this is left blank.
         # Corresponds to the JSON property `originalText`
         # @return [String]
         attr_accessor :original_text
       
-        # Language code for the reviewer. This is taken from the device
-        # settings so is not guaranteed to match the language the review
-        # is written in. May be absent.
+        # Language code for the reviewer. This is taken from the device settings so is
+        # not guaranteed to match the language the review is written in. May be absent.
         # Corresponds to the JSON property `reviewerLanguage`
         # @return [String]
         attr_accessor :reviewer_language
@@ -2111,10 +2062,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :star_rating
       
-        # The content of the comment, i.e. review body. In some cases
-        # users have been able to write a review with separate title and
-        # body; in those cases the title and body are concatenated and
-        # separated by a tab character.
+        # The content of the comment, i.e. review body. In some cases users have been
+        # able to write a review with separate title and body; in those cases the title
+        # and body are concatenated and separated by a tab character.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -2154,8 +2104,7 @@ module Google
       class UsesPermission
         include Google::Apis::Core::Hashable
       
-        # Optionally, the maximum SDK version for which the permission is
-        # required.
+        # Optionally, the maximum SDK version for which the permission is required.
         # Corresponds to the JSON property `maxSdkVersion`
         # @return [Fixnum]
         attr_accessor :max_sdk_version
@@ -2202,13 +2151,12 @@ module Google
         end
       end
       
-      # A VoidedPurchase resource indicates a purchase that was either
-      # canceled/refunded/charged-back.
+      # A VoidedPurchase resource indicates a purchase that was either canceled/
+      # refunded/charged-back.
       class VoidedPurchase
         include Google::Apis::Core::Hashable
       
-        # This kind represents a voided purchase object in the androidpublisher
-        # service.
+        # This kind represents a voided purchase object in the androidpublisher service.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2219,42 +2167,34 @@ module Google
         # @return [String]
         attr_accessor :order_id
       
-        # The time at which the purchase was made, in milliseconds since the
-        # epoch (Jan 1, 1970).
+        # The time at which the purchase was made, in milliseconds since the epoch (Jan
+        # 1, 1970).
         # Corresponds to the JSON property `purchaseTimeMillis`
         # @return [Fixnum]
         attr_accessor :purchase_time_millis
       
-        # The token which uniquely identifies a one-time purchase or subscription.
-        # To uniquely identify subscription renewals use order_id (available
-        # starting from version 3 of the API).
+        # The token which uniquely identifies a one-time purchase or subscription. To
+        # uniquely identify subscription renewals use order_id (available starting from
+        # version 3 of the API).
         # Corresponds to the JSON property `purchaseToken`
         # @return [String]
         attr_accessor :purchase_token
       
-        # The reason why the purchase was voided, possible values are:
-        # 0. Other
-        # 1. Remorse
-        # 2. Not_received
-        # 3. Defective
-        # 4. Accidental_purchase
-        # 5. Fraud
-        # 6. Friendly_fraud
-        # 7. Chargeback
+        # The reason why the purchase was voided, possible values are: 0. Other 1.
+        # Remorse 2. Not_received 3. Defective 4. Accidental_purchase 5. Fraud 6.
+        # Friendly_fraud 7. Chargeback
         # Corresponds to the JSON property `voidedReason`
         # @return [Fixnum]
         attr_accessor :voided_reason
       
-        # The initiator of voided purchase, possible values are:
-        # 0. User
-        # 1. Developer
-        # 2. Google
+        # The initiator of voided purchase, possible values are: 0. User 1. Developer 2.
+        # Google
         # Corresponds to the JSON property `voidedSource`
         # @return [Fixnum]
         attr_accessor :voided_source
       
-        # The time at which the purchase was canceled/refunded/charged-back,
-        # in milliseconds since the epoch (Jan 1, 1970).
+        # The time at which the purchase was canceled/refunded/charged-back, in
+        # milliseconds since the epoch (Jan 1, 1970).
         # Corresponds to the JSON property `voidedTimeMillis`
         # @return [Fixnum]
         attr_accessor :voided_time_millis
@@ -2279,22 +2219,21 @@ module Google
       class VoidedPurchasesListResponse
         include Google::Apis::Core::Hashable
       
-        # Information about the current page.
-        # List operations that supports paging return only one "page" of results. This
-        # protocol buffer message describes the page that has been returned.
+        # Information about the current page. List operations that supports paging
+        # return only one "page" of results. This protocol buffer message describes the
+        # page that has been returned.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::AndroidpublisherV3::PageInfo]
         attr_accessor :page_info
       
-        # Pagination information returned by a List operation when token pagination
-        # is enabled.
-        # List operations that supports paging return only one "page" of results. This
-        # protocol buffer message describes the page that has been returned.
-        # When using token pagination, clients should use the next/previous token
-        # to get another page of the result. The presence or absence of next/previous
-        # token indicates whether a next/previous page is available and provides a
-        # mean of accessing this page. ListRequest.page_token should be set to either
-        # next_page_token or previous_page_token to access another page.
+        # Pagination information returned by a List operation when token pagination is
+        # enabled. List operations that supports paging return only one "page" of
+        # results. This protocol buffer message describes the page that has been
+        # returned. When using token pagination, clients should use the next/previous
+        # token to get another page of the result. The presence or absence of next/
+        # previous token indicates whether a next/previous page is available and
+        # provides a mean of accessing this page. ListRequest.page_token should be set
+        # to either next_page_token or previous_page_token to access another page.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::AndroidpublisherV3::TokenPagination]
         attr_accessor :token_pagination

@@ -26,7 +26,7 @@ module Google
     # @see https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview
     module SecuritycenterV1p1alpha1
       VERSION = 'V1p1alpha1'
-      REVISION = '20200605'
+      REVISION = '20200731'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

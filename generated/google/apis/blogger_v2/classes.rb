@@ -256,8 +256,7 @@ module Google
         # @return [String]
         attr_accessor :photos_album_key
       
-        # Access permissions that the user has for the blog (ADMIN, AUTHOR, or
-        # READER).
+        # Access permissions that the user has for the blog (ADMIN, AUTHOR, or READER).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role

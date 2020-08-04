@@ -51,8 +51,8 @@ module Google
         # Creates a job and returns it.
         # @param [Google::Apis::YoutubereportingV1::Job] job_object
         # @param [String] on_behalf_of_content_owner
-        #   The content owner's external ID on which behalf the user is acting on. If
-        #   not set, the user is acting for himself (his own channel).
+        #   The content owner's external ID on which behalf the user is acting on. If not
+        #   set, the user is acting for himself (his own channel).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -86,8 +86,8 @@ module Google
         # @param [String] job_id
         #   The ID of the job to delete.
         # @param [String] on_behalf_of_content_owner
-        #   The content owner's external ID on which behalf the user is acting on. If
-        #   not set, the user is acting for himself (his own channel).
+        #   The content owner's external ID on which behalf the user is acting on. If not
+        #   set, the user is acting for himself (his own channel).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -120,8 +120,8 @@ module Google
         # @param [String] job_id
         #   The ID of the job to retrieve.
         # @param [String] on_behalf_of_content_owner
-        #   The content owner's external ID on which behalf the user is acting on. If
-        #   not set, the user is acting for himself (his own channel).
+        #   The content owner's external ID on which behalf the user is acting on. If not
+        #   set, the user is acting for himself (his own channel).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -152,20 +152,19 @@ module Google
         
         # Lists jobs.
         # @param [Boolean] include_system_managed
-        #   If set to true, also system-managed jobs will be returned; otherwise only
-        #   user-created jobs will be returned. System-managed jobs can neither be
-        #   modified nor deleted.
+        #   If set to true, also system-managed jobs will be returned; otherwise only user-
+        #   created jobs will be returned. System-managed jobs can neither be modified nor
+        #   deleted.
         # @param [String] on_behalf_of_content_owner
-        #   The content owner's external ID on which behalf the user is acting on. If
-        #   not set, the user is acting for himself (his own channel).
+        #   The content owner's external ID on which behalf the user is acting on. If not
+        #   set, the user is acting for himself (his own channel).
         # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer jobs than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   Requested page size. Server may return fewer jobs than requested. If
+        #   unspecified, server will pick an appropriate default.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
-        #   this is the value of
-        #   ListReportTypesResponse.next_page_token
-        #   returned in response to the previous call to the `ListJobs` method.
+        #   this is the value of ListReportTypesResponse.next_page_token returned in
+        #   response to the previous call to the `ListJobs` method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -202,8 +201,8 @@ module Google
         # @param [String] report_id
         #   The ID of the report to retrieve.
         # @param [String] on_behalf_of_content_owner
-        #   The content owner's external ID on which behalf the user is acting on. If
-        #   not set, the user is acting for himself (his own channel).
+        #   The content owner's external ID on which behalf the user is acting on. If not
+        #   set, the user is acting for himself (his own channel).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -233,29 +232,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists reports created by a specific job.
-        # Returns NOT_FOUND if the job does not exist.
+        # Lists reports created by a specific job. Returns NOT_FOUND if the job does not
+        # exist.
         # @param [String] job_id
         #   The ID of the job.
         # @param [String] created_after
         #   If set, only reports created after the specified date/time are returned.
         # @param [String] on_behalf_of_content_owner
-        #   The content owner's external ID on which behalf the user is acting on. If
-        #   not set, the user is acting for himself (his own channel).
+        #   The content owner's external ID on which behalf the user is acting on. If not
+        #   set, the user is acting for himself (his own channel).
         # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer report types than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   Requested page size. Server may return fewer report types than requested. If
+        #   unspecified, server will pick an appropriate default.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
-        #   this is the value of
-        #   ListReportsResponse.next_page_token
-        #   returned in response to the previous call to the `ListReports` method.
+        #   this is the value of ListReportsResponse.next_page_token returned in response
+        #   to the previous call to the `ListReports` method.
         # @param [String] start_time_at_or_after
-        #   If set, only reports whose start time is greater than or equal the
-        #   specified date/time are returned.
-        # @param [String] start_time_before
-        #   If set, only reports whose start time is smaller than the specified
+        #   If set, only reports whose start time is greater than or equal the specified
         #   date/time are returned.
+        # @param [String] start_time_before
+        #   If set, only reports whose start time is smaller than the specified date/time
+        #   are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -289,8 +287,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Method for media download. Download is supported
-        # on the URI `/v1/media/`+name`?alt=media`.
+        # Method for media download. Download is supported on the URI `/v1/media/`+name`?
+        # alt=media`.
         # @param [String] resource_name
         #   Name of the media that is being downloaded.
         # @param [String] fields
@@ -329,20 +327,19 @@ module Google
         
         # Lists report types.
         # @param [Boolean] include_system_managed
-        #   If set to true, also system-managed report types will be returned;
-        #   otherwise only the report types that can be used to create new reporting
-        #   jobs will be returned.
+        #   If set to true, also system-managed report types will be returned; otherwise
+        #   only the report types that can be used to create new reporting jobs will be
+        #   returned.
         # @param [String] on_behalf_of_content_owner
-        #   The content owner's external ID on which behalf the user is acting on. If
-        #   not set, the user is acting for himself (his own channel).
+        #   The content owner's external ID on which behalf the user is acting on. If not
+        #   set, the user is acting for himself (his own channel).
         # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer report types than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   Requested page size. Server may return fewer report types than requested. If
+        #   unspecified, server will pick an appropriate default.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
-        #   this is the value of
-        #   ListReportTypesResponse.next_page_token
-        #   returned in response to the previous call to the `ListReportTypes` method.
+        #   this is the value of ListReportTypesResponse.next_page_token returned in
+        #   response to the previous call to the `ListReportTypes` method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

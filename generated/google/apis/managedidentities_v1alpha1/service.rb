@@ -84,8 +84,7 @@ module Google
         # @param [String] filter
         #   The standard list filter.
         # @param [Boolean] include_unrevealed_locations
-        #   If true, the returned list will include locations which are not yet
-        #   revealed.
+        #   If true, the returned list will include locations which are not yet revealed.
         # @param [Fixnum] page_size
         #   The standard list page size.
         # @param [String] page_token
@@ -121,11 +120,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds AD trust in a given domain.
-        # Operation<response: google.protobuf.Empty>
+        # Adds AD trust in a given domain. Operation
         # @param [String] name
-        #   The resource domain name, project name and location using the form:
-        #   `projects/`project_id`/locations/global/domains/`domain_name``
+        #   The resource domain name, project name and location using the form: `projects/`
+        #   project_id`/locations/global/domains/`domain_name``
         # @param [Google::Apis::ManagedidentitiesV1alpha1::AttachTrustRequest] attach_trust_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -156,24 +154,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Microsoft AD Domain in a given project.
-        # Operation<response: google.protobuf.Empty>
+        # Creates a Microsoft AD Domain in a given project. Operation
         # @param [String] parent
-        #   Resource project name and location using the form:
-        #   `projects/`project_id`/locations/global`
+        #   Resource project name and location using the form: `projects/`project_id`/
+        #   locations/global`
         # @param [Google::Apis::ManagedidentitiesV1alpha1::Domain] domain_object
         # @param [String] domain_name
-        #   The fully qualified domain name.
-        #   e.g. mydomain.myorganization.com, with the following restrictions:
-        #   * Must contain only lowercase letters, numbers, periods and hyphens.
-        #   * Must start with a letter.
-        #   * Must contain between 2-64 characters.
-        #   * Must end with a number or a letter.
-        #   * Must not start with period.
-        #   * Must be unique within the project.
-        #   * First segement length (mydomain form example above) shouldn't exceed
-        #   15 chars.
-        #   * The last segment cannot be fully numeric.
+        #   The fully qualified domain name. e.g. mydomain.myorganization.com, with the
+        #   following restrictions: * Must contain only lowercase letters, numbers,
+        #   periods and hyphens. * Must start with a letter. * Must contain between 2-64
+        #   characters. * Must end with a number or a letter. * Must not start with period.
+        #   * Must be unique within the project. * First segement length (mydomain form
+        #   example above) shouldn't exceed 15 chars. * The last segment cannot be fully
+        #   numeric.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -204,11 +197,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes identified domain.
-        # Operation<response: google.protobuf.Empty>
+        # Deletes identified domain. Operation
         # @param [String] name
-        #   Domain resource name using the form:
-        #   `projects/`project_id`/locations/global/domains/`domain_name``
+        #   Domain resource name using the form: `projects/`project_id`/locations/global/
+        #   domains/`domain_name``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -236,11 +228,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes identified trust.
-        # Operation<response: google.protobuf.Empty>
+        # Removes identified trust. Operation
         # @param [String] name
-        #   The resource domain name, project name, and location using the form:
-        #   `projects/`project_id`/locations/global/domains/`domain_name``
+        #   The resource domain name, project name, and location using the form: `projects/
+        #   `project_id`/locations/global/domains/`domain_name``
         # @param [Google::Apis::ManagedidentitiesV1alpha1::DetachTrustRequest] detach_trust_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -273,8 +264,8 @@ module Google
         
         # Gets details of a single Domain.
         # @param [String] name
-        #   Domain resource name using the form:
-        #   `projects/`project_id`/locations/global/domains/`domain_name``
+        #   Domain resource name using the form: `projects/`project_id`/locations/global/
+        #   domains/`domain_name``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -302,22 +293,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -348,20 +336,19 @@ module Google
         
         # Lists Domains in a given project.
         # @param [String] parent
-        #   Required. The resource name of the domain location using the form:
-        #   `projects/`project_id`/locations/global`
+        #   Required. The resource name of the domain location using the form: `projects/`
+        #   project_id`/locations/global`
         # @param [String] filter
-        #   Optional. Filter specifying constraints of a list operation.
-        #   For example, `Domain.fqdn="mydomain.myorginization"`.
+        #   Optional. Filter specifying constraints of a list operation. For example, `
+        #   Domain.fqdn="mydomain.myorginization"`.
         # @param [String] order_by
-        #   Optional. Specifies the ordering of results following syntax at
-        #   https://cloud.google.com/apis/design/design_patterns#sorting_order.
+        #   Optional. Specifies the ordering of results following syntax at https://cloud.
+        #   google.com/apis/design/design_patterns#sorting_order.
         # @param [Fixnum] page_size
         #   If not specified, a default value of 1000 will be used by the service.
-        #   Regardless of the page_size value, the response may include a partial list
-        #   and a caller should only rely on response's
-        #   next_page_token
-        #   to determine if there are more instances left to be queried.
+        #   Regardless of the page_size value, the response may include a partial list and
+        #   a caller should only rely on response's next_page_token to determine if there
+        #   are more instances left to be queried.
         # @param [String] page_token
         #   The next_page_token value returned from a previous List request, if any.
         # @param [String] fields
@@ -395,20 +382,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the metadata and configuration of a specified domain.
-        # Operation<response: google.protobuf.Empty>
+        # Updates the metadata and configuration of a specified domain. Operation
         # @param [String] name
         #   Output only. Unique name of the domain in this scope including projects and
-        #   location using the form:
-        #   `projects/`project_id`/locations/global/domains/`domain_name``.
+        #   location using the form: `projects/`project_id`/locations/global/domains/`
+        #   domain_name``.
         # @param [Google::Apis::ManagedidentitiesV1alpha1::Domain] domain_object
         # @param [String] update_mask
-        #   Mask of fields to update. At least one path must be supplied in this
-        #   field. The elements of the repeated paths field may only include these
-        #   fields from Domain:
-        #   * `labels`
-        #   * `locations`
-        #   * `authorized_networks`
+        #   Mask of fields to update. At least one path must be supplied in this field.
+        #   The elements of the repeated paths field may only include these fields from
+        #   Domain: * `labels` * `locations` * `authorized_networks`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -439,11 +422,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the dns conditional forwarder.
-        # Operation<response: google.protobuf.Empty>
+        # Updates the dns conditional forwarder. Operation
         # @param [String] name
-        #   The resource domain name, project name and location using the form:
-        #   `projects/`project_id`/locations/global/domains/`domain_name``
+        #   The resource domain name, project name and location using the form: `projects/`
+        #   project_id`/locations/global/domains/`domain_name``
         # @param [Google::Apis::ManagedidentitiesV1alpha1::ReconfigureTrustRequest] reconfigure_trust_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -477,8 +459,8 @@ module Google
         # Resets managed identities admin password identified by
         # managed_identities_admin_name
         # @param [String] name
-        #   The domain resource name using the form:
-        #   `projects/`project_id`/locations/global/domains/`domain_name``
+        #   The domain resource name using the form: `projects/`project_id`/locations/
+        #   global/domains/`domain_name``
         # @param [Google::Apis::ManagedidentitiesV1alpha1::ResetAdminPasswordRequest] reset_admin_password_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -510,11 +492,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ManagedidentitiesV1alpha1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -545,15 +527,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ManagedidentitiesV1alpha1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -584,11 +565,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Validate the trust state
-        # Operation<response: google.protobuf.Empty>
+        # Validate the trust state Operation
         # @param [String] name
-        #   The resource domain name, project name, and location using the form:
-        #   `projects/`project_id`/locations/global/domains/`domain_name``
+        #   The resource domain name, project name, and location using the form: `projects/
+        #   `project_id`/locations/global/domains/`domain_name``
         # @param [Google::Apis::ManagedidentitiesV1alpha1::ValidateTrustRequest] validate_trust_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -619,15 +599,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
@@ -661,10 +639,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a long-running operation. This method indicates that the client is
-        # no longer interested in the operation result. It does not cancel the
-        # operation. If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation resource to be deleted.
         # @param [String] fields
@@ -694,9 +672,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -726,15 +703,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter

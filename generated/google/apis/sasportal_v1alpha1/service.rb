@@ -79,12 +79,10 @@ module Google
         
         # Returns a list of requested customers.
         # @param [Fixnum] page_size
-        #   The maximum number of customers
-        #   to return in the response.
+        #   The maximum number of customers to return in the response.
         # @param [String] page_token
         #   A pagination token returned from a previous call to ListCustomers method that
-        #   indicates where
-        #   this listing should continue from.
+        #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -215,8 +213,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a signed device under a
-        # node or customer.
+        # Creates a signed device under a node or customer.
         # @param [String] parent
         #   Required. The name of the parent resource.
         # @param [Google::Apis::SasportalV1alpha1::SasPortalCreateSignedDeviceRequest] sas_portal_create_signed_device_request_object
@@ -313,16 +310,15 @@ module Google
         # @param [String] parent
         #   Required. The name of the parent resource.
         # @param [String] filter
-        #   The filter expression. The filter should have one of the following
-        #   formats: "sn=123454" or "display_name=MyDevice". sn
-        #   corresponds to serial_number of the device. The filter is case insensitive.
+        #   The filter expression. The filter should have one of the following formats: "
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
-        #   The maximum number of devices to return in the response.
-        #   If empty or zero, all devices will be listed.
-        #   Must be in the range [0, 1000].
+        #   The maximum number of devices to return in the response. If empty or zero, all
+        #   devices will be listed. Must be in the range [0, 1000].
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListDevices
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListDevices that indicates
+        #   where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -587,8 +583,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of nodes to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListNodes method
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListNodes method that
+        #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -620,8 +616,7 @@ module Google
         
         # Moves a node under another node or customer.
         # @param [String] name
-        #   Required. The name of the node to
-        #   move.
+        #   Required. The name of the node to move.
         # @param [Google::Apis::SasportalV1alpha1::SasPortalMoveNodeRequest] sas_portal_move_node_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -727,8 +722,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of nodes to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListNodes method
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListNodes method that
+        #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -914,8 +909,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a signed device under a
-        # node or customer.
+        # Creates a signed device under a node or customer.
         # @param [String] parent
         #   Required. The name of the parent resource.
         # @param [Google::Apis::SasportalV1alpha1::SasPortalCreateSignedDeviceRequest] sas_portal_create_signed_device_request_object
@@ -1012,16 +1006,15 @@ module Google
         # @param [String] parent
         #   Required. The name of the parent resource.
         # @param [String] filter
-        #   The filter expression. The filter should have one of the following
-        #   formats: "sn=123454" or "display_name=MyDevice". sn
-        #   corresponds to serial_number of the device. The filter is case insensitive.
+        #   The filter expression. The filter should have one of the following formats: "
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
-        #   The maximum number of devices to return in the response.
-        #   If empty or zero, all devices will be listed.
-        #   Must be in the range [0, 1000].
+        #   The maximum number of devices to return in the response. If empty or zero, all
+        #   devices will be listed. Must be in the range [0, 1000].
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListDevices
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListDevices that indicates
+        #   where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1286,8 +1279,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of nodes to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListNodes method
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListNodes method that
+        #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1319,8 +1312,7 @@ module Google
         
         # Moves a node under another node or customer.
         # @param [String] name
-        #   Required. The name of the node to
-        #   move.
+        #   Required. The name of the node to move.
         # @param [Google::Apis::SasportalV1alpha1::SasPortalMoveNodeRequest] sas_portal_move_node_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1453,8 +1445,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a signed device under a
-        # node or customer.
+        # Creates a signed device under a node or customer.
         # @param [String] parent
         #   Required. The name of the parent resource.
         # @param [Google::Apis::SasportalV1alpha1::SasPortalCreateSignedDeviceRequest] sas_portal_create_signed_device_request_object
@@ -1491,16 +1482,15 @@ module Google
         # @param [String] parent
         #   Required. The name of the parent resource.
         # @param [String] filter
-        #   The filter expression. The filter should have one of the following
-        #   formats: "sn=123454" or "display_name=MyDevice". sn
-        #   corresponds to serial_number of the device. The filter is case insensitive.
+        #   The filter expression. The filter should have one of the following formats: "
+        #   sn=123454" or "display_name=MyDevice". sn corresponds to serial_number of the
+        #   device. The filter is case insensitive.
         # @param [Fixnum] page_size
-        #   The maximum number of devices to return in the response.
-        #   If empty or zero, all devices will be listed.
-        #   Must be in the range [0, 1000].
+        #   The maximum number of devices to return in the response. If empty or zero, all
+        #   devices will be listed. Must be in the range [0, 1000].
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListDevices
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListDevices that indicates
+        #   where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1570,8 +1560,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of nodes to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListNodes method
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call to ListNodes method that
+        #   indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1601,9 +1591,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [Google::Apis::SasportalV1alpha1::SasPortalGetPolicyRequest] sas_portal_get_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -73,7 +73,7 @@ module Google
         # @return [String]
         attr_accessor :job_title
       
-        # A person or organization stating the claim. For instance, "John Doe".<br>
+        # A person or organization stating the claim. For instance, "John Doe".
         # Corresponds to `ClaimReview.itemReviewed.author.name`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -101,8 +101,7 @@ module Google
       class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating
         include Google::Apis::Core::Hashable
       
-        # For numeric ratings, the best value possible in the scale from worst to
-        # best.<br>
+        # For numeric ratings, the best value possible in the scale from worst to best.
         # Corresponds to `ClaimReview.reviewRating.bestRating`.
         # Corresponds to the JSON property `bestRating`
         # @return [Fixnum]
@@ -119,20 +118,18 @@ module Google
         attr_accessor :rating_explanation
       
         # A numeric rating of this claim, in the range worstRating — bestRating
-        # inclusive.<br>
-        # Corresponds to `ClaimReview.reviewRating.ratingValue`.
+        # inclusive. Corresponds to `ClaimReview.reviewRating.ratingValue`.
         # Corresponds to the JSON property `ratingValue`
         # @return [Fixnum]
         attr_accessor :rating_value
       
-        # The truthfulness rating as a human-readible short word or phrase.<br>
-        # Corresponds to `ClaimReview.reviewRating.alternateName`.
+        # The truthfulness rating as a human-readible short word or phrase. Corresponds
+        # to `ClaimReview.reviewRating.alternateName`.
         # Corresponds to the JSON property `textualRating`
         # @return [String]
         attr_accessor :textual_rating
       
-        # For numeric ratings, the worst value possible in the scale from worst to
-        # best.<br>
+        # For numeric ratings, the worst value possible in the scale from worst to best.
         # Corresponds to `ClaimReview.reviewRating.worstRating`.
         # Corresponds to the JSON property `worstRating`
         # @return [Fixnum]
@@ -211,8 +208,8 @@ module Google
         # @return [String]
         attr_accessor :image_url
       
-        # Name of the organization that is publishing the fact check.<br>
-        # Corresponds to `ClaimReview.author.name`.
+        # Name of the organization that is publishing the fact check. Corresponds to `
+        # ClaimReview.author.name`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -228,16 +225,15 @@ module Google
         end
       end
       
-      # Fields for an individual `ClaimReview` element.
-      # Except for sub-messages that group fields together, each of these fields
-      # correspond those in https://schema.org/ClaimReview. We list the precise
-      # mapping for each field.
+      # Fields for an individual `ClaimReview` element. Except for sub-messages that
+      # group fields together, each of these fields correspond those in https://schema.
+      # org/ClaimReview. We list the precise mapping for each field.
       class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup
         include Google::Apis::Core::Hashable
       
         # A list of links to works in which this claim appears, aside from the one
-        # specified in `claim_first_appearance`.<br>
-        # Corresponds to `ClaimReview.itemReviewed[@type=Claim].appearance.url`.
+        # specified in `claim_first_appearance`. Corresponds to `ClaimReview.
+        # itemReviewed[@type=Claim].appearance.url`.
         # Corresponds to the JSON property `claimAppearances`
         # @return [Array<String>]
         attr_accessor :claim_appearances
@@ -247,26 +243,26 @@ module Google
         # @return [Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor]
         attr_accessor :claim_author
       
-        # The date when the claim was made or entered public discourse.<br>
-        # Corresponds to `ClaimReview.itemReviewed.datePublished`.
+        # The date when the claim was made or entered public discourse. Corresponds to `
+        # ClaimReview.itemReviewed.datePublished`.
         # Corresponds to the JSON property `claimDate`
         # @return [String]
         attr_accessor :claim_date
       
-        # A link to a work in which this claim first appears.<br>
-        # Corresponds to `ClaimReview.itemReviewed[@type=Claim].firstAppearance.url`.
+        # A link to a work in which this claim first appears. Corresponds to `
+        # ClaimReview.itemReviewed[@type=Claim].firstAppearance.url`.
         # Corresponds to the JSON property `claimFirstAppearance`
         # @return [String]
         attr_accessor :claim_first_appearance
       
-        # The location where this claim was made.<br>
-        # Corresponds to `ClaimReview.itemReviewed.name`.
+        # The location where this claim was made. Corresponds to `ClaimReview.
+        # itemReviewed.name`.
         # Corresponds to the JSON property `claimLocation`
         # @return [String]
         attr_accessor :claim_location
       
-        # A short summary of the claim being evaluated.<br>
-        # Corresponds to `ClaimReview.claimReviewed`.
+        # A short summary of the claim being evaluated. Corresponds to `ClaimReview.
+        # claimReviewed`.
         # Corresponds to the JSON property `claimReviewed`
         # @return [String]
         attr_accessor :claim_reviewed
@@ -278,7 +274,7 @@ module Google
       
         # This field is optional, and will default to the page URL. We provide this
         # field to allow you the override the default value, but the only permitted
-        # override is the page URL plus an optional anchor link ("page jump").<br>
+        # override is the page URL plus an optional anchor link ("page jump").
         # Corresponds to `ClaimReview.url`
         # Corresponds to the JSON property `url`
         # @return [String]
@@ -310,32 +306,30 @@ module Google
         # @return [Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor]
         attr_accessor :claim_review_author
       
-        # A list of individual claim reviews for this page.
-        # Each item in the list corresponds to one `ClaimReview` element.
+        # A list of individual claim reviews for this page. Each item in the list
+        # corresponds to one `ClaimReview` element.
         # Corresponds to the JSON property `claimReviewMarkups`
         # @return [Array<Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>]
         attr_accessor :claim_review_markups
       
-        # The name of this `ClaimReview` markup page resource, in the form of
-        # `pages/`page_id``. Except for update requests, this field is output-only
-        # and should not be set by the user.
+        # The name of this `ClaimReview` markup page resource, in the form of `pages/`
+        # page_id``. Except for update requests, this field is output-only and should
+        # not be set by the user.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The URL of the page associated with this `ClaimReview` markup.
-        # While every individual `ClaimReview` has its own URL field, semantically
-        # this is a page-level field, and each `ClaimReview` on this page will use
-        # this value unless individually overridden.<br>
-        # Corresponds to `ClaimReview.url`
+        # The URL of the page associated with this `ClaimReview` markup. While every
+        # individual `ClaimReview` has its own URL field, semantically this is a page-
+        # level field, and each `ClaimReview` on this page will use this value unless
+        # individually overridden. Corresponds to `ClaimReview.url`
         # Corresponds to the JSON property `pageUrl`
         # @return [String]
         attr_accessor :page_url
       
-        # The date when the fact check was published.
-        # Similar to the URL, semantically this is a page-level field, and each
-        # `ClaimReview` on this page will contain the same value.<br>
-        # Corresponds to `ClaimReview.datePublished`
+        # The date when the fact check was published. Similar to the URL, semantically
+        # this is a page-level field, and each `ClaimReview` on this page will contain
+        # the same value. Corresponds to `ClaimReview.datePublished`
         # Corresponds to the JSON property `publishDate`
         # @return [String]
         attr_accessor :publish_date
@@ -370,9 +364,8 @@ module Google
         # @return [Array<Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1Claim>]
         attr_accessor :claims
       
-        # The next pagination token in the Search response. It should be used as the
-        # `page_token` for the following request. An empty value means no more
-        # results.
+        # The next pagination token in the Search response. It should be used as the `
+        # page_token` for the following request. An empty value means no more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -397,9 +390,8 @@ module Google
         # @return [Array<Google::Apis::FactchecktoolsV1alpha1::GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>]
         attr_accessor :claim_review_markup_pages
       
-        # The next pagination token in the Search response. It should be used as the
-        # `page_token` for the following request. An empty value means no more
-        # results.
+        # The next pagination token in the Search response. It should be used as the `
+        # page_token` for the following request. An empty value means no more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -424,9 +416,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Host-level site name, without the protocol or "www" prefix. For instance,
-        # "awesomefactchecks.com". This value of this field is based purely on the
-        # claim review URL.
+        # Host-level site name, without the protocol or "www" prefix. For instance, "
+        # awesomefactchecks.com". This value of this field is based purely on the claim
+        # review URL.
         # Corresponds to the JSON property `site`
         # @return [String]
         attr_accessor :site
@@ -442,13 +434,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class GoogleProtobufEmpty
         include Google::Apis::Core::Hashable
       

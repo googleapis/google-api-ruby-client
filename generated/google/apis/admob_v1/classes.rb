@@ -24,30 +24,29 @@ module Google
       
       # Represents a whole or partial calendar date, e.g. a birthday. The time of day
       # and time zone are either specified elsewhere or are not significant. The date
-      # is relative to the Proleptic Gregorian Calendar. This can represent:
-      # * A full date, with non-zero year, month and day values
-      # * A month and day value, with a zero year, e.g. an anniversary
-      # * A year on its own, with zero month and day values
-      # * A year and month value, with a zero day, e.g. a credit card expiration date
-      # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+      # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+      # date, with non-zero year, month and day values * A month and day value, with a
+      # zero year, e.g. an anniversary * A year on its own, with zero month and day
+      # values * A year and month value, with a zero day, e.g. a credit card
+      # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+      # Timestamp`.
       class Date
         include Google::Apis::Core::Hashable
       
-        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        # if specifying a year by itself or a year and month where the day is not
+        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+        # specifying a year by itself or a year and month where the day is not
         # significant.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a
-        # month and day.
+        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        # and day.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
       
-        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-        # a year.
+        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
         # Corresponds to the JSON property `year`
         # @return [Fixnum]
         attr_accessor :year
@@ -70,24 +69,24 @@ module Google
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::AdmobV1::Date]
         attr_accessor :end_date
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::AdmobV1::Date]
         attr_accessor :start_date
@@ -107,38 +106,19 @@ module Google
       class GenerateMediationReportRequest
         include Google::Apis::Core::Hashable
       
-        # The specification for generating an AdMob Mediation report.
-        # For example, the specification to get observed ECPM sliced by ad source and
-        # app for the 'US' and 'CN' countries can look like the following example:
-        # `
-        # "date_range": `
-        # "start_date": `"year": 2018, "month": 9, "day": 1`,
-        # "end_date": `"year": 2018, "month": 9, "day": 30`
-        # `,
-        # "dimensions": ["AD_SOURCE", "APP", "COUNTRY"],
-        # "metrics": ["OBSERVED_ECPM"],
-        # "dimension_filters": [
-        # `
-        # "dimension": "COUNTRY",
-        # "matches_any": `"values": [`"value": "US", "value": "CN"`]`
-        # `
-        # ],
-        # "sort_conditions": [
-        # `"dimension":"APP", order: "ASCENDING"`
-        # ],
-        # "localization_settings": `
-        # "currency_code": "USD",
-        # "language_code": "en-US"
-        # `
-        # `
-        # For a better understanding, you can treat the preceding specification like
-        # the following pseudo SQL:
-        # SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM
-        # FROM MEDIATION_REPORT
-        # WHERE DATE >= '2018-09-01' AND DATE <= '2018-09-30'
-        # AND COUNTRY IN ('US', 'CN')
-        # GROUP BY AD_SOURCE, APP, COUNTRY
-        # ORDER BY APP ASC;
+        # The specification for generating an AdMob Mediation report. For example, the
+        # specification to get observed ECPM sliced by ad source and app for the 'US'
+        # and 'CN' countries can look like the following example: ` "date_range": ` "
+        # start_date": `"year": 2018, "month": 9, "day": 1`, "end_date": `"year": 2018, "
+        # month": 9, "day": 30` `, "dimensions": ["AD_SOURCE", "APP", "COUNTRY"], "
+        # metrics": ["OBSERVED_ECPM"], "dimension_filters": [ ` "dimension": "COUNTRY", "
+        # matches_any": `"values": [`"value": "US", "value": "CN"`]` ` ], "
+        # sort_conditions": [ `"dimension":"APP", order: "ASCENDING"` ], "
+        # localization_settings": ` "currency_code": "USD", "language_code": "en-US" ` `
+        # For a better understanding, you can treat the preceding specification like the
+        # following pseudo SQL: SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM FROM
+        # MEDIATION_REPORT WHERE DATE >= '2018-09-01' AND DATE <= '2018-09-30' AND
+        # COUNTRY IN ('US', 'CN') GROUP BY AD_SOURCE, APP, COUNTRY ORDER BY APP ASC;
         # Corresponds to the JSON property `reportSpec`
         # @return [Google::Apis::AdmobV1::MediationReportSpec]
         attr_accessor :report_spec
@@ -153,39 +133,16 @@ module Google
         end
       end
       
-      # The streaming response for the AdMob Mediation report where the first
-      # response contains the report header, then a stream of row responses, and
-      # finally a footer as the last response message.
-      # For example:
-      # [`
-      # "header": `
-      # "date_range": `
-      # "start_date": `"year": 2018, "month": 9, "day": 1`,
-      # "end_date": `"year": 2018, "month": 9, "day": 1`
-      # `,
-      # "localization_settings": `
-      # "currency_code": "USD",
-      # "language_code": "en-US"
-      # `
-      # `
-      # `,
-      # `
-      # "row": `
-      # "dimension_values": `
-      # "DATE": `"value": "20180918"`,
-      # "APP": `
-      # "value": "ca-app-pub-8123415297019784~1001342552",
-      # "display_label": "My app name!"
-      # `
-      # `,
-      # "metric_values": `
-      # "ESTIMATED_EARNINGS": `"decimal_value": "1324746"`
-      # `
-      # `
-      # `,
-      # `
-      # "footer": `"matching_row_count": 1`
-      # `]
+      # The streaming response for the AdMob Mediation report where the first response
+      # contains the report header, then a stream of row responses, and finally a
+      # footer as the last response message. For example: [` "header": ` "date_range":
+      # ` "start_date": `"year": 2018, "month": 9, "day": 1`, "end_date": `"year":
+      # 2018, "month": 9, "day": 1` `, "localization_settings": ` "currency_code": "
+      # USD", "language_code": "en-US" ` ` `, ` "row": ` "dimension_values": ` "DATE":
+      # `"value": "20180918"`, "APP": ` "value": "ca-app-pub-8123415297019784~
+      # 1001342552", "display_label": "My app name!" ` `, "metric_values": ` "
+      # ESTIMATED_EARNINGS": `"decimal_value": "1324746"` ` ` `, ` "footer": `"
+      # matching_row_count": 1` `]
       class GenerateMediationReportResponse
         include Google::Apis::Core::Hashable
       
@@ -222,39 +179,20 @@ module Google
       class GenerateNetworkReportRequest
         include Google::Apis::Core::Hashable
       
-        # The specification for generating an AdMob Network report.
-        # For example, the specification to get clicks and estimated earnings for only
-        # the 'US' and 'CN' countries can look like the following example:
-        # `
-        # 'date_range': `
-        # 'start_date': `'year': 2018, 'month': 9, 'day': 1`,
-        # 'end_date': `'year': 2018, 'month': 9, 'day': 30`
-        # `,
-        # 'dimensions': ['DATE', 'APP', 'COUNTRY'],
-        # 'metrics': ['CLICKS', 'ESTIMATED_EARNINGS'],
-        # 'dimension_filters': [
-        # `
-        # 'dimension': 'COUNTRY',
-        # 'matches_any': `'values': [`'value': 'US', 'value': 'CN'`]`
-        # `
-        # ],
-        # 'sort_conditions': [
-        # `'dimension':'APP', order: 'ASCENDING'`,
-        # `'metric':'CLICKS', order: 'DESCENDING'`
-        # ],
-        # 'localization_settings': `
-        # 'currency_code': 'USD',
-        # 'language_code': 'en-US'
-        # `
-        # `
-        # For a better understanding, you can treat the preceding specification like
-        # the following pseudo SQL:
-        # SELECT DATE, APP, COUNTRY, CLICKS, ESTIMATED_EARNINGS
-        # FROM NETWORK_REPORT
-        # WHERE DATE >= '2018-09-01' AND DATE <= '2018-09-30'
-        # AND COUNTRY IN ('US', 'CN')
-        # GROUP BY DATE, APP, COUNTRY
-        # ORDER BY APP ASC, CLICKS DESC;
+        # The specification for generating an AdMob Network report. For example, the
+        # specification to get clicks and estimated earnings for only the 'US' and 'CN'
+        # countries can look like the following example: ` 'date_range': ` 'start_date':
+        # `'year': 2018, 'month': 9, 'day': 1`, 'end_date': `'year': 2018, 'month': 9, '
+        # day': 30` `, 'dimensions': ['DATE', 'APP', 'COUNTRY'], 'metrics': ['CLICKS', '
+        # ESTIMATED_EARNINGS'], 'dimension_filters': [ ` 'dimension': 'COUNTRY', '
+        # matches_any': `'values': [`'value': 'US', 'value': 'CN'`]` ` ], '
+        # sort_conditions': [ `'dimension':'APP', order: 'ASCENDING'`, `'metric':'CLICKS'
+        # , order: 'DESCENDING'` ], 'localization_settings': ` 'currency_code': 'USD', '
+        # language_code': 'en-US' ` ` For a better understanding, you can treat the
+        # preceding specification like the following pseudo SQL: SELECT DATE, APP,
+        # COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE >= '2018-09-
+        # 01' AND DATE <= '2018-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY DATE, APP,
+        # COUNTRY ORDER BY APP ASC, CLICKS DESC;
         # Corresponds to the JSON property `reportSpec`
         # @return [Google::Apis::AdmobV1::NetworkReportSpec]
         attr_accessor :report_spec
@@ -271,37 +209,13 @@ module Google
       
       # The streaming response for the AdMob Network report where the first response
       # contains the report header, then a stream of row responses, and finally a
-      # footer as the last response message.
-      # For example:
-      # [`
-      # "header": `
-      # "dateRange": `
-      # "startDate": `"year": 2018, "month": 9, "day": 1`,
-      # "endDate": `"year": 2018, "month": 9, "day": 1`
-      # `,
-      # "localizationSettings": `
-      # "currencyCode": "USD",
-      # "languageCode": "en-US"
-      # `
-      # `
-      # `,
-      # `
-      # "row": `
-      # "dimensionValues": `
-      # "DATE": `"value": "20180918"`,
-      # "APP": `
-      # "value": "ca-app-pub-8123415297019784~1001342552",
-      # displayLabel: "My app name!"
-      # `
-      # `,
-      # "metricValues": `
-      # "ESTIMATED_EARNINGS": `"microsValue": 6500000`
-      # `
-      # `
-      # `,
-      # `
-      # "footer": `"matchingRowCount": 1`
-      # `]
+      # footer as the last response message. For example: [` "header": ` "dateRange": `
+      # "startDate": `"year": 2018, "month": 9, "day": 1`, "endDate": `"year": 2018, "
+      # month": 9, "day": 1` `, "localizationSettings": ` "currencyCode": "USD", "
+      # languageCode": "en-US" ` ` `, ` "row": ` "dimensionValues": ` "DATE": `"value":
+      # "20180918"`, "APP": ` "value": "ca-app-pub-8123415297019784~1001342552",
+      # displayLabel: "My app name!" ` `, "metricValues": ` "ESTIMATED_EARNINGS": `"
+      # microsValue": 6500000` ` ` `, ` "footer": `"matchingRowCount": 1` `]
       class GenerateNetworkReportResponse
         include Google::Apis::Core::Hashable
       
@@ -343,8 +257,8 @@ module Google
         # @return [Array<Google::Apis::AdmobV1::PublisherAccount>]
         attr_accessor :account
       
-        # If not empty, indicates that there might be more accounts for the request;
-        # you must pass this value in a new `ListPublisherAccountsRequest`.
+        # If not empty, indicates that there might be more accounts for the request; you
+        # must pass this value in a new `ListPublisherAccountsRequest`.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -390,38 +304,19 @@ module Google
         end
       end
       
-      # The specification for generating an AdMob Mediation report.
-      # For example, the specification to get observed ECPM sliced by ad source and
-      # app for the 'US' and 'CN' countries can look like the following example:
-      # `
-      # "date_range": `
-      # "start_date": `"year": 2018, "month": 9, "day": 1`,
-      # "end_date": `"year": 2018, "month": 9, "day": 30`
-      # `,
-      # "dimensions": ["AD_SOURCE", "APP", "COUNTRY"],
-      # "metrics": ["OBSERVED_ECPM"],
-      # "dimension_filters": [
-      # `
-      # "dimension": "COUNTRY",
-      # "matches_any": `"values": [`"value": "US", "value": "CN"`]`
-      # `
-      # ],
-      # "sort_conditions": [
-      # `"dimension":"APP", order: "ASCENDING"`
-      # ],
-      # "localization_settings": `
-      # "currency_code": "USD",
-      # "language_code": "en-US"
-      # `
-      # `
-      # For a better understanding, you can treat the preceding specification like
-      # the following pseudo SQL:
-      # SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM
-      # FROM MEDIATION_REPORT
-      # WHERE DATE >= '2018-09-01' AND DATE <= '2018-09-30'
-      # AND COUNTRY IN ('US', 'CN')
-      # GROUP BY AD_SOURCE, APP, COUNTRY
-      # ORDER BY APP ASC;
+      # The specification for generating an AdMob Mediation report. For example, the
+      # specification to get observed ECPM sliced by ad source and app for the 'US'
+      # and 'CN' countries can look like the following example: ` "date_range": ` "
+      # start_date": `"year": 2018, "month": 9, "day": 1`, "end_date": `"year": 2018, "
+      # month": 9, "day": 30` `, "dimensions": ["AD_SOURCE", "APP", "COUNTRY"], "
+      # metrics": ["OBSERVED_ECPM"], "dimension_filters": [ ` "dimension": "COUNTRY", "
+      # matches_any": `"values": [`"value": "US", "value": "CN"`]` ` ], "
+      # sort_conditions": [ `"dimension":"APP", order: "ASCENDING"` ], "
+      # localization_settings": ` "currency_code": "USD", "language_code": "en-US" ` `
+      # For a better understanding, you can treat the preceding specification like the
+      # following pseudo SQL: SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM FROM
+      # MEDIATION_REPORT WHERE DATE >= '2018-09-01' AND DATE <= '2018-09-30' AND
+      # COUNTRY IN ('US', 'CN') GROUP BY AD_SOURCE, APP, COUNTRY ORDER BY APP ASC;
       class MediationReportSpec
         include Google::Apis::Core::Hashable
       
@@ -436,8 +331,8 @@ module Google
         attr_accessor :dimension_filters
       
         # List of dimensions of the report. The value combination of these dimensions
-        # determines the row of the report. If no dimensions are specified, the
-        # report returns a single row of requested metrics for the entire account.
+        # determines the row of the report. If no dimensions are specified, the report
+        # returns a single row of requested metrics for the entire account.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<String>]
         attr_accessor :dimensions
@@ -448,9 +343,9 @@ module Google
         # @return [Google::Apis::AdmobV1::LocalizationSettings]
         attr_accessor :localization_settings
       
-        # Maximum number of report data rows to return. If the value is not set, the
-        # API returns as many rows as possible, up to 100000. Acceptable values are
-        # 1-100000, inclusive. Any other values are treated as 100000.
+        # Maximum number of report data rows to return. If the value is not set, the API
+        # returns as many rows as possible, up to 100000. Acceptable values are 1-100000,
+        # inclusive. Any other values are treated as 100000.
         # Corresponds to the JSON property `maxReportRows`
         # @return [Fixnum]
         attr_accessor :max_report_rows
@@ -460,19 +355,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :metrics
       
-        # Describes the sorting of report rows. The order of the condition in the
-        # list defines its precedence; the earlier the condition, the higher its
-        # precedence. If no sort conditions are specified, the row ordering is
-        # undefined.
+        # Describes the sorting of report rows. The order of the condition in the list
+        # defines its precedence; the earlier the condition, the higher its precedence.
+        # If no sort conditions are specified, the row ordering is undefined.
         # Corresponds to the JSON property `sortConditions`
         # @return [Array<Google::Apis::AdmobV1::MediationReportSpecSortCondition>]
         attr_accessor :sort_conditions
       
-        # A report time zone. Accepts an IANA TZ name values, such as
-        # "America/Los_Angeles."  If no time zone is defined, the account default
-        # takes effect. Check default value by the get account action.
-        # **Warning:** The "America/Los_Angeles" is the only supported value at
-        # the moment.
+        # A report time zone. Accepts an IANA TZ name values, such as "America/
+        # Los_Angeles." If no time zone is defined, the account default takes effect.
+        # Check default value by the get account action. **Warning:** The "America/
+        # Los_Angeles" is the only supported value at the moment.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -550,39 +443,20 @@ module Google
         end
       end
       
-      # The specification for generating an AdMob Network report.
-      # For example, the specification to get clicks and estimated earnings for only
-      # the 'US' and 'CN' countries can look like the following example:
-      # `
-      # 'date_range': `
-      # 'start_date': `'year': 2018, 'month': 9, 'day': 1`,
-      # 'end_date': `'year': 2018, 'month': 9, 'day': 30`
-      # `,
-      # 'dimensions': ['DATE', 'APP', 'COUNTRY'],
-      # 'metrics': ['CLICKS', 'ESTIMATED_EARNINGS'],
-      # 'dimension_filters': [
-      # `
-      # 'dimension': 'COUNTRY',
-      # 'matches_any': `'values': [`'value': 'US', 'value': 'CN'`]`
-      # `
-      # ],
-      # 'sort_conditions': [
-      # `'dimension':'APP', order: 'ASCENDING'`,
-      # `'metric':'CLICKS', order: 'DESCENDING'`
-      # ],
-      # 'localization_settings': `
-      # 'currency_code': 'USD',
-      # 'language_code': 'en-US'
-      # `
-      # `
-      # For a better understanding, you can treat the preceding specification like
-      # the following pseudo SQL:
-      # SELECT DATE, APP, COUNTRY, CLICKS, ESTIMATED_EARNINGS
-      # FROM NETWORK_REPORT
-      # WHERE DATE >= '2018-09-01' AND DATE <= '2018-09-30'
-      # AND COUNTRY IN ('US', 'CN')
-      # GROUP BY DATE, APP, COUNTRY
-      # ORDER BY APP ASC, CLICKS DESC;
+      # The specification for generating an AdMob Network report. For example, the
+      # specification to get clicks and estimated earnings for only the 'US' and 'CN'
+      # countries can look like the following example: ` 'date_range': ` 'start_date':
+      # `'year': 2018, 'month': 9, 'day': 1`, 'end_date': `'year': 2018, 'month': 9, '
+      # day': 30` `, 'dimensions': ['DATE', 'APP', 'COUNTRY'], 'metrics': ['CLICKS', '
+      # ESTIMATED_EARNINGS'], 'dimension_filters': [ ` 'dimension': 'COUNTRY', '
+      # matches_any': `'values': [`'value': 'US', 'value': 'CN'`]` ` ], '
+      # sort_conditions': [ `'dimension':'APP', order: 'ASCENDING'`, `'metric':'CLICKS'
+      # , order: 'DESCENDING'` ], 'localization_settings': ` 'currency_code': 'USD', '
+      # language_code': 'en-US' ` ` For a better understanding, you can treat the
+      # preceding specification like the following pseudo SQL: SELECT DATE, APP,
+      # COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE >= '2018-09-
+      # 01' AND DATE <= '2018-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY DATE, APP,
+      # COUNTRY ORDER BY APP ASC, CLICKS DESC;
       class NetworkReportSpec
         include Google::Apis::Core::Hashable
       
@@ -597,8 +471,8 @@ module Google
         attr_accessor :dimension_filters
       
         # List of dimensions of the report. The value combination of these dimensions
-        # determines the row of the report. If no dimensions are specified, the
-        # report returns a single row of requested metrics for the entire account.
+        # determines the row of the report. If no dimensions are specified, the report
+        # returns a single row of requested metrics for the entire account.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<String>]
         attr_accessor :dimensions
@@ -609,9 +483,9 @@ module Google
         # @return [Google::Apis::AdmobV1::LocalizationSettings]
         attr_accessor :localization_settings
       
-        # Maximum number of report data rows to return. If the value is not set, the
-        # API returns as many rows as possible, up to 100000. Acceptable values are
-        # 1-100000, inclusive. Any other values are treated as 100000.
+        # Maximum number of report data rows to return. If the value is not set, the API
+        # returns as many rows as possible, up to 100000. Acceptable values are 1-100000,
+        # inclusive. Any other values are treated as 100000.
         # Corresponds to the JSON property `maxReportRows`
         # @return [Fixnum]
         attr_accessor :max_report_rows
@@ -621,19 +495,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :metrics
       
-        # Describes the sorting of report rows. The order of the condition in the
-        # list defines its precedence; the earlier the condition, the higher its
-        # precedence. If no sort conditions are specified, the row ordering is
-        # undefined.
+        # Describes the sorting of report rows. The order of the condition in the list
+        # defines its precedence; the earlier the condition, the higher its precedence.
+        # If no sort conditions are specified, the row ordering is undefined.
         # Corresponds to the JSON property `sortConditions`
         # @return [Array<Google::Apis::AdmobV1::NetworkReportSpecSortCondition>]
         attr_accessor :sort_conditions
       
-        # A report time zone. Accepts an IANA TZ name values, such as
-        # "America/Los_Angeles."  If no time zone is defined, the account default
-        # takes effect. Check default value by the get account action.
-        # **Warning:** The "America/Los_Angeles" is the only supported value at
-        # the moment.
+        # A report time zone. Accepts an IANA TZ name values, such as "America/
+        # Los_Angeles." If no time zone is defined, the account default takes effect.
+        # Check default value by the get account action. **Warning:** The "America/
+        # Los_Angeles" is the only supported value at the moment.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -711,8 +583,8 @@ module Google
         end
       end
       
-      # A publisher account contains information relevant to the use of this API,
-      # such as the time zone used for the reports.
+      # A publisher account contains information relevant to the use of this API, such
+      # as the time zone used for the reports.
       class PublisherAccount
         include Google::Apis::Core::Hashable
       
@@ -723,21 +595,20 @@ module Google
         # @return [String]
         attr_accessor :currency_code
       
-        # Resource name of this account.
-        # Format is accounts/`publisher_id`.
+        # Resource name of this account. Format is accounts/`publisher_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The unique ID by which this publisher account can be identified
-        # in the API requests (for example, pub-1234567890).
+        # The unique ID by which this publisher account can be identified in the API
+        # requests (for example, pub-1234567890).
         # Corresponds to the JSON property `publisherId`
         # @return [String]
         attr_accessor :publisher_id
       
-        # The time zone that is used in reports that are generated for this account.
-        # The value is a time-zone ID as specified by the CLDR project,
-        # for example, "America/Los_Angeles".
+        # The time zone that is used in reports that are generated for this account. The
+        # value is a time-zone ID as specified by the CLDR project, for example, "
+        # America/Los_Angeles".
         # Corresponds to the JSON property `reportingTimeZone`
         # @return [String]
         attr_accessor :reporting_time_zone
@@ -760,9 +631,9 @@ module Google
       class ReportFooter
         include Google::Apis::Core::Hashable
       
-        # Total number of rows that matched the request.
-        # Warning: This count does NOT always match the number of rows in the
-        # response. Do not make that assumption when processing the response.
+        # Total number of rows that matched the request. Warning: This count does NOT
+        # always match the number of rows in the response. Do not make that assumption
+        # when processing the response.
         # Corresponds to the JSON property `matchingRowCount`
         # @return [Fixnum]
         attr_accessor :matching_row_count
@@ -826,9 +697,8 @@ module Google
         # @return [Hash<String,Google::Apis::AdmobV1::ReportRowDimensionValue>]
         attr_accessor :dimension_values
       
-        # Map of metric values in a row, with keys as enum name of the metrics. If
-        # a metric being requested has no value returned, the map will not include
-        # it.
+        # Map of metric values in a row, with keys as enum name of the metrics. If a
+        # metric being requested has no value returned, the map will not include it.
         # Corresponds to the JSON property `metricValues`
         # @return [Hash<String,Google::Apis::AdmobV1::ReportRowMetricValue>]
         attr_accessor :metric_values
@@ -848,14 +718,13 @@ module Google
       class ReportRowDimensionValue
         include Google::Apis::Core::Hashable
       
-        # The localized string representation of the value. If unspecified, the
-        # display label should be derived from the value.
+        # The localized string representation of the value. If unspecified, the display
+        # label should be derived from the value.
         # Corresponds to the JSON property `displayLabel`
         # @return [String]
         attr_accessor :display_label
       
-        # Dimension value in the format specified in the report's spec Dimension
-        # enum.
+        # Dimension value in the format specified in the report's spec Dimension enum.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -885,9 +754,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :integer_value
       
-        # Amount in micros. One million is equivalent to one unit. Currency value
-        # is in the unit (USD, EUR or other) specified by the request.
-        # For example, $6.50 whould be represented as 6500000 micros.
+        # Amount in micros. One million is equivalent to one unit. Currency value is in
+        # the unit (USD, EUR or other) specified by the request. For example, $6.50
+        # whould be represented as 6500000 micros.
         # Corresponds to the JSON property `microsValue`
         # @return [Fixnum]
         attr_accessor :micros_value

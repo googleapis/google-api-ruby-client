@@ -49,9 +49,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -81,15 +80,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] filter
         #   The standard list filter.
         # @param [String] name
@@ -130,13 +128,11 @@ module Google
         
         # Enable multiple services on a project. The operation is atomic: if enabling
         # any service fails, then the entire batch fails, and no state changes occur.
-        # Operation<response: google.protobuf.Empty>
+        # Operation
         # @param [String] parent
-        #   Parent to enable services on.
-        #   An example name would be:
-        #   `projects/123`
-        #   where `123` is the project number (not project ID).
-        #   The `BatchEnableServices` method currently only supports projects.
+        #   Parent to enable services on. An example name would be: `projects/123` where `
+        #   123` is the project number (not project ID). The `BatchEnableServices` method
+        #   currently only supports projects.
         # @param [Google::Apis::ServiceusageV1beta1::BatchEnableServicesRequest] batch_enable_services_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -167,19 +163,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Disable a service so that it can no longer be used with a project.
-        # This prevents unintended usage that may cause unexpected billing
-        # charges or security leaks.
-        # It is not valid to call the disable method on a service that is not
-        # currently enabled. Callers will receive a `FAILED_PRECONDITION` status if
-        # the target service is not currently enabled.
-        # Operation<response: google.protobuf.Empty>
+        # Disable a service so that it can no longer be used with a project. This
+        # prevents unintended usage that may cause unexpected billing charges or
+        # security leaks. It is not valid to call the disable method on a service that
+        # is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status
+        # if the target service is not currently enabled. Operation
         # @param [String] name
-        #   Name of the consumer and service to disable the service on.
-        #   The enable and disable methods currently only support projects.
-        #   An example name would be:
-        #   `projects/123/services/serviceusage.googleapis.com`
-        #   where `123` is the project number (not project ID).
+        #   Name of the consumer and service to disable the service on. The enable and
+        #   disable methods currently only support projects. An example name would be: `
+        #   projects/123/services/serviceusage.googleapis.com` where `123` is the project
+        #   number (not project ID).
         # @param [Google::Apis::ServiceusageV1beta1::DisableServiceRequest] disable_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -210,17 +203,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enable a service so that it can be used with a project.
-        # Operation<response: google.protobuf.Empty>
+        # Enable a service so that it can be used with a project. Operation
         # @param [String] name
-        #   Name of the consumer and service to enable the service on.
-        #   The `EnableService` and `DisableService` methods currently only support
-        #   projects.
-        #   Enabling a service requires that the service is public or is shared with
-        #   the user enabling the service.
-        #   An example name would be:
-        #   `projects/123/services/serviceusage.googleapis.com`
-        #   where `123` is the project number (not project ID).
+        #   Name of the consumer and service to enable the service on. The `EnableService`
+        #   and `DisableService` methods currently only support projects. Enabling a
+        #   service requires that the service is public or is shared with the user
+        #   enabling the service. An example name would be: `projects/123/services/
+        #   serviceusage.googleapis.com` where `123` is the project number (not project ID)
+        #   .
         # @param [Google::Apis::ServiceusageV1beta1::EnableServiceRequest] enable_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -253,11 +243,10 @@ module Google
         
         # Generate service identity for service.
         # @param [String] parent
-        #   Name of the consumer and service to generate an identity for.
-        #   The `GenerateServiceIdentity` methods currently only support projects.
-        #   An example name would be:
-        #   `projects/123/services/example.googleapis.com` where `123` is the
-        #   project number.
+        #   Name of the consumer and service to generate an identity for. The `
+        #   GenerateServiceIdentity` methods currently only support projects. An example
+        #   name would be: `projects/123/services/example.googleapis.com` where `123` is
+        #   the project number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -287,10 +276,9 @@ module Google
         
         # Returns the service configuration and enabled state for a given service.
         # @param [String] name
-        #   Name of the consumer and service to get the `ConsumerState` for.
-        #   An example name would be:
-        #   `projects/123/services/serviceusage.googleapis.com`
-        #   where `123` is the project number (not project ID).
+        #   Name of the consumer and service to get the `ConsumerState` for. An example
+        #   name would be: `projects/123/services/serviceusage.googleapis.com` where `123`
+        #   is the project number (not project ID).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -318,28 +306,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all services available to the specified project, and the current
-        # state of those services with respect to the project. The list includes
-        # all public services, all services for which the calling user has the
-        # `servicemanagement.services.bind` permission, and all services that have
-        # already been enabled on the project. The list can be filtered to
-        # only include services in a specific state, for example to only include
-        # services enabled on the project.
+        # List all services available to the specified project, and the current state of
+        # those services with respect to the project. The list includes all public
+        # services, all services for which the calling user has the `servicemanagement.
+        # services.bind` permission, and all services that have already been enabled on
+        # the project. The list can be filtered to only include services in a specific
+        # state, for example to only include services enabled on the project.
         # @param [String] parent
-        #   Parent to search for services on.
-        #   An example name would be:
-        #   `projects/123`
+        #   Parent to search for services on. An example name would be: `projects/123`
         #   where `123` is the project number (not project ID).
         # @param [String] filter
-        #   Only list services that conform to the given filter.
-        #   The allowed filter strings are `state:ENABLED` and `state:DISABLED`.
+        #   Only list services that conform to the given filter. The allowed filter
+        #   strings are `state:ENABLED` and `state:DISABLED`.
         # @param [Fixnum] page_size
-        #   Requested size of the next page of data.
-        #   Requested page size cannot exceed 200.
+        #   Requested size of the next page of data. Requested page size cannot exceed 200.
         #   If not set, the default page size is 50.
         # @param [String] page_token
-        #   Token identifying which result to start with, which is returned by a
-        #   previous list call.
+        #   Token identifying which result to start with, which is returned by a previous
+        #   list call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -372,10 +356,9 @@ module Google
         
         # Retrieves a summary of quota information for a specific quota metric
         # @param [String] name
-        #   The resource name of the quota limit.
-        #   An example name would be:
-        #   projects/123/services/serviceusage.googleapis.com/quotas/metrics/serviceusage.
-        #   googleapis.com%2Fmutate_requests
+        #   The resource name of the quota limit. An example name would be: projects/123/
+        #   services/serviceusage.googleapis.com/quotas/metrics/serviceusage.googleapis.
+        #   com%2Fmutate_requests
         # @param [String] view
         #   Specifies the level of detail for quota information in the response.
         # @param [String] fields
@@ -406,13 +389,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create or update multiple consumer overrides atomically, all on the
-        # same consumer, but on many different metrics or limits.
-        # The name field in the quota override message should not be set.
+        # Create or update multiple consumer overrides atomically, all on the same
+        # consumer, but on many different metrics or limits. The name field in the quota
+        # override message should not be set.
         # @param [String] parent
-        #   The resource name of the consumer.
-        #   An example name would be:
-        #   `projects/123/services/compute.googleapis.com`
+        #   The resource name of the consumer. An example name would be: `projects/123/
+        #   services/compute.googleapis.com`
         # @param [Google::Apis::ServiceusageV1beta1::ImportConsumerOverridesRequest] import_consumer_overrides_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -443,22 +425,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a summary of all quota information visible to the service
-        # consumer, organized by service metric. Each metric includes information
-        # about all of its defined limits. Each limit includes the limit
-        # configuration (quota unit, preciseness, default value), the current
-        # effective limit value, and all of the overrides applied to the limit.
+        # Retrieves a summary of all quota information visible to the service consumer,
+        # organized by service metric. Each metric includes information about all of its
+        # defined limits. Each limit includes the limit configuration (quota unit,
+        # preciseness, default value), the current effective limit value, and all of the
+        # overrides applied to the limit.
         # @param [String] parent
-        #   Parent of the quotas resource.
-        #   Some example names would be:
-        #   projects/123/services/serviceconsumermanagement.googleapis.com
-        #   folders/345/services/serviceconsumermanagement.googleapis.com
-        #   organizations/456/services/serviceconsumermanagement.googleapis.com
+        #   Parent of the quotas resource. Some example names would be: projects/123/
+        #   services/serviceconsumermanagement.googleapis.com folders/345/services/
+        #   serviceconsumermanagement.googleapis.com organizations/456/services/
+        #   serviceconsumermanagement.googleapis.com
         # @param [Fixnum] page_size
         #   Requested size of the next page of data.
         # @param [String] page_token
-        #   Token identifying which result to start with; returned by a previous list
-        #   call.
+        #   Token identifying which result to start with; returned by a previous list call.
         # @param [String] view
         #   Specifies the level of detail for quota information in the response.
         # @param [String] fields
@@ -493,9 +473,9 @@ module Google
         
         # Retrieves a summary of quota information for a specific quota limit.
         # @param [String] name
-        #   The resource name of the quota limit.
-        #   Use the quota limit resource name returned by previous
-        #   ListConsumerQuotaMetrics and GetConsumerQuotaMetric API calls.
+        #   The resource name of the quota limit. Use the quota limit resource name
+        #   returned by previous ListConsumerQuotaMetrics and GetConsumerQuotaMetric API
+        #   calls.
         # @param [String] view
         #   Specifies the level of detail for quota information in the response.
         # @param [String] fields
@@ -526,25 +506,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an admin override.
-        # An admin override is applied by an administrator of a parent folder or
-        # parent organization of the consumer receiving the override. An admin
-        # override is intended to limit the amount of quota the consumer can use out
-        # of the total quota pool allocated to all children of the folder or
+        # Creates an admin override. An admin override is applied by an administrator of
+        # a parent folder or parent organization of the consumer receiving the override.
+        # An admin override is intended to limit the amount of quota the consumer can
+        # use out of the total quota pool allocated to all children of the folder or
         # organization.
         # @param [String] parent
         #   The resource name of the parent quota limit, returned by a
-        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call.
-        #   An example name would be:
-        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would
+        #   be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
         #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
         # @param [Google::Apis::ServiceusageV1beta1::QuotaOverride] quota_override_object
         # @param [Boolean] force
-        #   Whether to force the creation of the quota override.
-        #   If creating an override would cause the effective quota for the consumer to
-        #   decrease by more than 10 percent, the call is rejected, as a safety measure
-        #   to avoid accidentally decreasing quota too quickly. Setting the force
-        #   parameter to true ignores this restriction.
+        #   Whether to force the creation of the quota override. If creating an override
+        #   would cause the effective quota for the consumer to decrease by more than 10
+        #   percent, the call is rejected, as a safety measure to avoid accidentally
+        #   decreasing quota too quickly. Setting the force parameter to true ignores this
+        #   restriction.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -577,16 +555,15 @@ module Google
         
         # Deletes an admin override.
         # @param [String] name
-        #   The resource name of the override to delete.
-        #   An example name would be:
-        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   The resource name of the override to delete. An example name would be: `
+        #   projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
         #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`
         # @param [Boolean] force
-        #   Whether to force the deletion of the quota override.
-        #   If deleting an override would cause the effective quota for the consumer to
-        #   decrease by more than 10 percent, the call is rejected, as a safety measure
-        #   to avoid accidentally decreasing quota too quickly. Setting the force
-        #   parameter to true ignores this restriction.
+        #   Whether to force the deletion of the quota override. If deleting an override
+        #   would cause the effective quota for the consumer to decrease by more than 10
+        #   percent, the call is rejected, as a safety measure to avoid accidentally
+        #   decreasing quota too quickly. Setting the force parameter to true ignores this
+        #   restriction.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -618,15 +595,13 @@ module Google
         # Lists all admin overrides on this limit.
         # @param [String] parent
         #   The resource name of the parent quota limit, returned by a
-        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call.
-        #   An example name would be:
-        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would
+        #   be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
         #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
         # @param [Fixnum] page_size
         #   Requested size of the next page of data.
         # @param [String] page_token
-        #   Token identifying which result to start with; returned by a previous list
-        #   call.
+        #   Token identifying which result to start with; returned by a previous list call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -658,20 +633,19 @@ module Google
         
         # Updates an admin override.
         # @param [String] name
-        #   The resource name of the override to update.
-        #   An example name would be:
-        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   The resource name of the override to update. An example name would be: `
+        #   projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
         #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`
         # @param [Google::Apis::ServiceusageV1beta1::QuotaOverride] quota_override_object
         # @param [Boolean] force
-        #   Whether to force the update of the quota override.
-        #   If updating an override would cause the effective quota for the consumer to
-        #   decrease by more than 10 percent, the call is rejected, as a safety measure
-        #   to avoid accidentally decreasing quota too quickly. Setting the force
-        #   parameter to true ignores this restriction.
+        #   Whether to force the update of the quota override. If updating an override
+        #   would cause the effective quota for the consumer to decrease by more than 10
+        #   percent, the call is rejected, as a safety measure to avoid accidentally
+        #   decreasing quota too quickly. Setting the force parameter to true ignores this
+        #   restriction.
         # @param [String] update_mask
-        #   Update only the specified fields of the override.
-        #   If unset, all fields will be updated.
+        #   Update only the specified fields of the override. If unset, all fields will be
+        #   updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -703,24 +677,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a consumer override.
-        # A consumer override is applied to the consumer on its own authority to
-        # limit its own quota usage. Consumer overrides cannot be used to grant more
-        # quota than would be allowed by admin overrides, producer overrides, or the
-        # default limit of the service.
+        # Creates a consumer override. A consumer override is applied to the consumer on
+        # its own authority to limit its own quota usage. Consumer overrides cannot be
+        # used to grant more quota than would be allowed by admin overrides, producer
+        # overrides, or the default limit of the service.
         # @param [String] parent
         #   The resource name of the parent quota limit, returned by a
-        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call.
-        #   An example name would be:
-        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would
+        #   be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
         #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
         # @param [Google::Apis::ServiceusageV1beta1::QuotaOverride] quota_override_object
         # @param [Boolean] force
-        #   Whether to force the creation of the quota override.
-        #   If creating an override would cause the effective quota for the consumer to
-        #   decrease by more than 10 percent, the call is rejected, as a safety measure
-        #   to avoid accidentally decreasing quota too quickly. Setting the force
-        #   parameter to true ignores this restriction.
+        #   Whether to force the creation of the quota override. If creating an override
+        #   would cause the effective quota for the consumer to decrease by more than 10
+        #   percent, the call is rejected, as a safety measure to avoid accidentally
+        #   decreasing quota too quickly. Setting the force parameter to true ignores this
+        #   restriction.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -753,16 +725,15 @@ module Google
         
         # Deletes a consumer override.
         # @param [String] name
-        #   The resource name of the override to delete.
-        #   An example name would be:
-        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   The resource name of the override to delete. An example name would be: `
+        #   projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
         #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/consumerOverrides/4a3f2c1d`
         # @param [Boolean] force
-        #   Whether to force the deletion of the quota override.
-        #   If deleting an override would cause the effective quota for the consumer to
-        #   decrease by more than 10 percent, the call is rejected, as a safety measure
-        #   to avoid accidentally decreasing quota too quickly. Setting the force
-        #   parameter to true ignores this restriction.
+        #   Whether to force the deletion of the quota override. If deleting an override
+        #   would cause the effective quota for the consumer to decrease by more than 10
+        #   percent, the call is rejected, as a safety measure to avoid accidentally
+        #   decreasing quota too quickly. Setting the force parameter to true ignores this
+        #   restriction.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -794,15 +765,13 @@ module Google
         # Lists all consumer overrides on this limit.
         # @param [String] parent
         #   The resource name of the parent quota limit, returned by a
-        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call.
-        #   An example name would be:
-        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would
+        #   be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
         #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
         # @param [Fixnum] page_size
         #   Requested size of the next page of data.
         # @param [String] page_token
-        #   Token identifying which result to start with; returned by a previous list
-        #   call.
+        #   Token identifying which result to start with; returned by a previous list call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -834,20 +803,19 @@ module Google
         
         # Updates a consumer override.
         # @param [String] name
-        #   The resource name of the override to update.
-        #   An example name would be:
-        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   The resource name of the override to update. An example name would be: `
+        #   projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
         #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/consumerOverrides/4a3f2c1d`
         # @param [Google::Apis::ServiceusageV1beta1::QuotaOverride] quota_override_object
         # @param [Boolean] force
-        #   Whether to force the update of the quota override.
-        #   If updating an override would cause the effective quota for the consumer to
-        #   decrease by more than 10 percent, the call is rejected, as a safety measure
-        #   to avoid accidentally decreasing quota too quickly. Setting the force
-        #   parameter to true ignores this restriction.
+        #   Whether to force the update of the quota override. If updating an override
+        #   would cause the effective quota for the consumer to decrease by more than 10
+        #   percent, the call is rejected, as a safety measure to avoid accidentally
+        #   decreasing quota too quickly. Setting the force parameter to true ignores this
+        #   restriction.
         # @param [String] update_mask
-        #   Update only the specified fields of the override.
-        #   If unset, all fields will be updated.
+        #   Update only the specified fields of the override. If unset, all fields will be
+        #   updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

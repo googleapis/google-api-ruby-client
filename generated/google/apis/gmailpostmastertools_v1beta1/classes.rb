@@ -31,8 +31,7 @@ module Google
         # @return [String]
         attr_accessor :error_class
       
-        # The ratio of messages where the error occurred vs all authenticated
-        # traffic.
+        # The ratio of messages where the error occurred vs all authenticated traffic.
         # Corresponds to the JSON property `errorRatio`
         # @return [Float]
         attr_accessor :error_ratio
@@ -58,15 +57,14 @@ module Google
       class Domain
         include Google::Apis::Core::Hashable
       
-        # Timestamp when the user registered this domain. Assigned by
-        # the server.
+        # Timestamp when the user registered this domain. Assigned by the server.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # The resource name of the Domain.
-        # Domain names have the form `domains/`domain_name``, where domain_name
-        # is the fully qualified domain name (i.e.,  mymail.mydomain.com).
+        # The resource name of the Domain. Domain names have the form `domains/`
+        # domain_name``, where domain_name is the fully qualified domain name (i.e.,
+        # mymail.mydomain.com).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -98,8 +96,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The ratio of user marked spam messages with the identifier vs the total
-        # number of inboxed messages with that identifier.
+        # The ratio of user marked spam messages with the identifier vs the total number
+        # of inboxed messages with that identifier.
         # Corresponds to the JSON property `spamRatio`
         # @return [Float]
         attr_accessor :spam_ratio
@@ -120,8 +118,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Total number of unique IPs in this reputation category. This metric only
-        # pertains to traffic that passed [SPF](http://www.openspf.org/) or
-        # [DKIM](http://www.dkim.org/).
+        # pertains to traffic that passed [SPF](http://www.openspf.org/) or [DKIM](http:/
+        # /www.dkim.org/).
         # Corresponds to the JSON property `numIps`
         # @return [Fixnum]
         attr_accessor :num_ips
@@ -157,8 +155,8 @@ module Google
         # @return [Array<Google::Apis::GmailpostmastertoolsV1beta1::Domain>]
         attr_accessor :domains
       
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -178,8 +176,8 @@ module Google
       class ListTrafficStatsResponse
         include Google::Apis::Core::Hashable
       
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -210,16 +208,16 @@ module Google
         # @return [Array<Google::Apis::GmailpostmastertoolsV1beta1::DeliveryError>]
         attr_accessor :delivery_errors
       
-        # The ratio of mail that successfully authenticated with DKIM vs. all mail
-        # that attempted to authenticate with [DKIM](http://www.dkim.org/). Spoofed
-        # mail is excluded.
+        # The ratio of mail that successfully authenticated with DKIM vs. all mail that
+        # attempted to authenticate with [DKIM](http://www.dkim.org/). Spoofed mail is
+        # excluded.
         # Corresponds to the JSON property `dkimSuccessRatio`
         # @return [Float]
         attr_accessor :dkim_success_ratio
       
-        # The ratio of mail that passed [DMARC](https://dmarc.org/) alignment checks
-        # vs all mail received from the domain that successfully authenticated with
-        # either of [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).
+        # The ratio of mail that passed [DMARC](https://dmarc.org/) alignment checks vs
+        # all mail received from the domain that successfully authenticated with either
+        # of [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).
         # Corresponds to the JSON property `dmarcSuccessRatio`
         # @return [Float]
         attr_accessor :dmarc_success_ratio
@@ -229,27 +227,26 @@ module Google
         # @return [String]
         attr_accessor :domain_reputation
       
-        # The ratio of incoming mail (to Gmail), that passed secure transport (TLS)
-        # vs all mail received from that domain. This metric only pertains to traffic
-        # that passed [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).
+        # The ratio of incoming mail (to Gmail), that passed secure transport (TLS) vs
+        # all mail received from that domain. This metric only pertains to traffic that
+        # passed [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).
         # Corresponds to the JSON property `inboundEncryptionRatio`
         # @return [Float]
         attr_accessor :inbound_encryption_ratio
       
-        # Reputation information pertaining to the IP addresses of the email servers
-        # for the domain. There is exactly one entry for each reputation category
-        # except
+        # Reputation information pertaining to the IP addresses of the email servers for
+        # the domain. There is exactly one entry for each reputation category except
         # REPUTATION_CATEGORY_UNSPECIFIED.
         # Corresponds to the JSON property `ipReputations`
         # @return [Array<Google::Apis::GmailpostmastertoolsV1beta1::IpReputation>]
         attr_accessor :ip_reputations
       
-        # The resource name of the traffic statistics. Traffic statistic names have
-        # the form `domains/`domain`/trafficStats/`date``, where
-        # domain_name is the fully qualified domain name (i.e.,  mymail.mydomain.com)
-        # of the domain this traffic statistics pertains to and date is the date in
-        # yyyymmdd format that these statistics corresponds to.
-        # For example: domains/mymail.mydomain.com/trafficStats/20160807
+        # The resource name of the traffic statistics. Traffic statistic names have the
+        # form `domains/`domain`/trafficStats/`date``, where domain_name is the fully
+        # qualified domain name (i.e., mymail.mydomain.com) of the domain this traffic
+        # statistics pertains to and date is the date in yyyymmdd format that these
+        # statistics corresponds to. For example: domains/mymail.mydomain.com/
+        # trafficStats/20160807
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -260,24 +257,22 @@ module Google
         # @return [Float]
         attr_accessor :outbound_encryption_ratio
       
-        # Spammy [Feedback loop identifiers]
-        # (https://support.google.com/mail/answer/6254652) with their individual spam
-        # rates. This metric only pertains to traffic that is authenticated by
-        # [DKIM](http://www.dkim.org/).
+        # Spammy [Feedback loop identifiers] (https://support.google.com/mail/answer/
+        # 6254652) with their individual spam rates. This metric only pertains to
+        # traffic that is authenticated by [DKIM](http://www.dkim.org/).
         # Corresponds to the JSON property `spammyFeedbackLoops`
         # @return [Array<Google::Apis::GmailpostmastertoolsV1beta1::FeedbackLoop>]
         attr_accessor :spammy_feedback_loops
       
-        # The ratio of mail that successfully authenticated with SPF vs. all mail
-        # that attempted to authenticate with [SPF](http://www.openspf.org/). Spoofed
-        # mail is excluded.
+        # The ratio of mail that successfully authenticated with SPF vs. all mail that
+        # attempted to authenticate with [SPF](http://www.openspf.org/). Spoofed mail is
+        # excluded.
         # Corresponds to the JSON property `spfSuccessRatio`
         # @return [Float]
         attr_accessor :spf_success_ratio
       
         # The ratio of user-report spam vs. email that was sent to the inbox. This
-        # metric only pertains to emails authenticated by
-        # [DKIM](http://www.dkim.org/).
+        # metric only pertains to emails authenticated by [DKIM](http://www.dkim.org/).
         # Corresponds to the JSON property `userReportedSpamRatio`
         # @return [Float]
         attr_accessor :user_reported_spam_ratio

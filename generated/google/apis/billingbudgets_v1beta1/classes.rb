@@ -22,45 +22,38 @@ module Google
   module Apis
     module BillingbudgetsV1beta1
       
-      # AllUpdatesRule defines notifications that are sent based on budget spend
-      # and thresholds.
+      # AllUpdatesRule defines notifications that are sent based on budget spend and
+      # thresholds.
       class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule
         include Google::Apis::Core::Hashable
       
         # Optional. Targets to send notifications to when a threshold is exceeded. This
-        # is in
-        # addition to default recipients who have billing account roles.
-        # The value is the full REST resource name of a monitoring notification
-        # channel with the form
-        # `projects/`project_id`/notificationChannels/`channel_id``. A maximum of 5
-        # channels are allowed. See
-        # https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients
-        # for more details.
+        # is in addition to default recipients who have billing account roles. The value
+        # is the full REST resource name of a monitoring notification channel with the
+        # form `projects/`project_id`/notificationChannels/`channel_id``. A maximum of 5
+        # channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-
+        # notification-recipients for more details.
         # Corresponds to the JSON property `monitoringNotificationChannels`
         # @return [Array<String>]
         attr_accessor :monitoring_notification_channels
       
-        # Required. The name of the Cloud Pub/Sub topic where budget related messages
-        # will be
-        # published, in the form `projects/`project_id`/topics/`topic_id``. Updates
-        # are sent at regular intervals to the topic.
-        # The topic needs to be created before the budget is created; see
-        # https://cloud.google.com/billing/docs/how-to/budgets#manage-notifications
-        # for more details.
-        # Caller is expected to have
-        # `pubsub.topics.setIamPolicy` permission on the topic when it's set for a
-        # budget, otherwise, the API call will fail with PERMISSION_DENIED. See
-        # https://cloud.google.com/billing/docs/how-to/budgets-programmatic-
-        # notifications
-        # for more details on Pub/Sub roles and permissions.
+        # Optional. The name of the Pub/Sub topic where budget related messages will be
+        # published, in the form `projects/`project_id`/topics/`topic_id``. Updates are
+        # sent at regular intervals to the topic. The topic needs to be created before
+        # the budget is created; see https://cloud.google.com/billing/docs/how-to/
+        # budgets#manage-notifications for more details. Caller is expected to have `
+        # pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget,
+        # otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.
+        # google.com/billing/docs/how-to/budgets-programmatic-notifications for more
+        # details on Pub/Sub roles and permissions.
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
       
-        # Required. The schema version of the notification sent to `pubsub_topic`.
-        # Only "1.0" is accepted. It represents the JSON schema as defined in
-        # https://cloud.google.com/billing/docs/how-to/budgets-programmatic-
-        # notifications#notification_format
+        # Optional. The schema version of the notification sent to `pubsub_topic`. Only "
+        # 1.0" is accepted. It represents the JSON schema as defined in https://cloud.
+        # google.com/billing/docs/how-to/budgets-programmatic-notifications#
+        # notification_format
         # Corresponds to the JSON property `schemaVersion`
         # @return [String]
         attr_accessor :schema_version
@@ -77,16 +70,16 @@ module Google
         end
       end
       
-      # A budget is a plan that describes what you expect to spend on Cloud
-      # projects, plus the rules to execute as spend is tracked against that plan,
-      # (for example, send an alert when 90% of the target spend is met).
-      # Currently all plans are monthly budgets so the usage period(s) tracked are
-      # implied (calendar months of usage back-to-back).
+      # A budget is a plan that describes what you expect to spend on Cloud projects,
+      # plus the rules to execute as spend is tracked against that plan, (for example,
+      # send an alert when 90% of the target spend is met). Currently all plans are
+      # monthly budgets so the usage period(s) tracked are implied (calendar months of
+      # usage back-to-back).
       class GoogleCloudBillingBudgetsV1beta1Budget
         include Google::Apis::Core::Hashable
       
-        # AllUpdatesRule defines notifications that are sent based on budget spend
-        # and thresholds.
+        # AllUpdatesRule defines notifications that are sent based on budget spend and
+        # thresholds.
         # Corresponds to the JSON property `allUpdatesRule`
         # @return [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1AllUpdatesRule]
         attr_accessor :all_updates_rule
@@ -101,28 +94,26 @@ module Google
         # @return [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Filter]
         attr_accessor :budget_filter
       
-        # User data for display name in UI.
-        # Validation: <= 60 chars.
+        # User data for display name in UI. Validation: <= 60 chars.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. Etag to validate that the object is unchanged for a
-        # read-modify-write operation.
-        # An empty etag will cause an update to overwrite other changes.
+        # Optional. Etag to validate that the object is unchanged for a read-modify-
+        # write operation. An empty etag will cause an update to overwrite other changes.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # Output only. Resource name of the budget.
-        # The resource name implies the scope of a budget. Values are of the form
-        # `billingAccounts/`billingAccountId`/budgets/`budgetId``.
+        # Output only. Resource name of the budget. The resource name implies the scope
+        # of a budget. Values are of the form `billingAccounts/`billingAccountId`/
+        # budgets/`budgetId``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Optional. Rules that trigger alerts (notifications of thresholds
-        # being crossed) when spend exceeds the specified percentages of the budget.
+        # Optional. Rules that trigger alerts (notifications of thresholds being crossed)
+        # when spend exceeds the specified percentages of the budget.
         # Corresponds to the JSON property `thresholdRules`
         # @return [Array<Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1ThresholdRule>]
         attr_accessor :threshold_rules
@@ -147,11 +138,10 @@ module Google
       class GoogleCloudBillingBudgetsV1beta1BudgetAmount
         include Google::Apis::Core::Hashable
       
-        # Describes a budget amount targeted to last period's spend.
-        # At this time, the amount is automatically 100% of last period's spend;
-        # that is, there are no other options yet.
-        # Future configuration will be described here (for example, configuring a
-        # percentage of last period's spend).
+        # Describes a budget amount targeted to last period's spend. At this time, the
+        # amount is automatically 100% of last period's spend; that is, there are no
+        # other options yet. Future configuration will be described here (for example,
+        # configuring a percentage of last period's spend).
         # Corresponds to the JSON property `lastPeriodAmount`
         # @return [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1LastPeriodAmount]
         attr_accessor :last_period_amount
@@ -176,11 +166,11 @@ module Google
       class GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest
         include Google::Apis::Core::Hashable
       
-        # A budget is a plan that describes what you expect to spend on Cloud
-        # projects, plus the rules to execute as spend is tracked against that plan,
-        # (for example, send an alert when 90% of the target spend is met).
-        # Currently all plans are monthly budgets so the usage period(s) tracked are
-        # implied (calendar months of usage back-to-back).
+        # A budget is a plan that describes what you expect to spend on Cloud projects,
+        # plus the rules to execute as spend is tracked against that plan, (for example,
+        # send an alert when 90% of the target spend is met). Currently all plans are
+        # monthly budgets so the usage period(s) tracked are implied (calendar months of
+        # usage back-to-back).
         # Corresponds to the JSON property `budget`
         # @return [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget]
         attr_accessor :budget
@@ -205,40 +195,36 @@ module Google
         attr_accessor :credit_types_treatment
       
         # Optional. A single label and value pair specifying that usage from only this
-        # set of
-        # labeled resources should be included in the budget. Currently, multiple
-        # entries or multiple values per entry are not allowed. If omitted, the
-        # report will include all labeled and unlabeled usage.
+        # set of labeled resources should be included in the budget. Currently, multiple
+        # entries or multiple values per entry are not allowed. If omitted, the report
+        # will include all labeled and unlabeled usage.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,Array<Object>>]
         attr_accessor :labels
       
-        # Optional. A set of projects of the form `projects/`project``,
-        # specifying that usage from only this set of projects should be
-        # included in the budget. If omitted, the report will include all usage for
-        # the billing account, regardless of which project the usage occurred on.
-        # Only zero or one project can be specified currently.
+        # Optional. A set of projects of the form `projects/`project``, specifying that
+        # usage from only this set of projects should be included in the budget. If
+        # omitted, the report will include all usage for the billing account, regardless
+        # of which project the usage occurred on. Only zero or one project can be
+        # specified currently.
         # Corresponds to the JSON property `projects`
         # @return [Array<String>]
         attr_accessor :projects
       
-        # Optional. A set of services of the form `services/`service_id``,
-        # specifying that usage from only this set of services should be
-        # included in the budget. If omitted, the report will include usage for
-        # all the services.
-        # The service names are available through the Catalog API:
-        # https://cloud.google.com/billing/v1/how-tos/catalog-api.
+        # Optional. A set of services of the form `services/`service_id``, specifying
+        # that usage from only this set of services should be included in the budget. If
+        # omitted, the report will include usage for all the services. The service names
+        # are available through the Catalog API: https://cloud.google.com/billing/v1/how-
+        # tos/catalog-api.
         # Corresponds to the JSON property `services`
         # @return [Array<String>]
         attr_accessor :services
       
         # Optional. A set of subaccounts of the form `billingAccounts/`account_id``,
-        # specifying
-        # that usage from only this set of subaccounts should be included in the
-        # budget. If a subaccount is set to the name of the parent account,
-        # usage from the parent account will be included. If omitted, the
-        # report will include usage from the parent account and all
-        # subaccounts, if they exist.
+        # specifying that usage from only this set of subaccounts should be included in
+        # the budget. If a subaccount is set to the name of the parent account, usage
+        # from the parent account will be included. If omitted, the report will include
+        # usage from the parent account and all subaccounts, if they exist.
         # Corresponds to the JSON property `subaccounts`
         # @return [Array<String>]
         attr_accessor :subaccounts
@@ -257,11 +243,10 @@ module Google
         end
       end
       
-      # Describes a budget amount targeted to last period's spend.
-      # At this time, the amount is automatically 100% of last period's spend;
-      # that is, there are no other options yet.
-      # Future configuration will be described here (for example, configuring a
-      # percentage of last period's spend).
+      # Describes a budget amount targeted to last period's spend. At this time, the
+      # amount is automatically 100% of last period's spend; that is, there are no
+      # other options yet. Future configuration will be described here (for example,
+      # configuring a percentage of last period's spend).
       class GoogleCloudBillingBudgetsV1beta1LastPeriodAmount
         include Google::Apis::Core::Hashable
       
@@ -283,8 +268,8 @@ module Google
         # @return [Array<Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget>]
         attr_accessor :budgets
       
-        # If not empty, indicates that there may be more budgets that match the
-        # request; this value should be passed in a new `ListBudgetsRequest`.
+        # If not empty, indicates that there may be more budgets that match the request;
+        # this value should be passed in a new `ListBudgetsRequest`.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -300,13 +285,12 @@ module Google
         end
       end
       
-      # ThresholdRule contains a definition of a threshold which triggers
-      # an alert (a notification of a threshold being crossed) to be sent when
-      # spend goes above the specified amount.
-      # Alerts are automatically e-mailed to users with the Billing Account
-      # Administrator role or the Billing Account User role.
-      # The thresholds here have no effect on notifications sent to anything
-      # configured under `Budget.all_updates_rule`.
+      # ThresholdRule contains a definition of a threshold which triggers an alert (a
+      # notification of a threshold being crossed) to be sent when spend goes above
+      # the specified amount. Alerts are automatically e-mailed to users with the
+      # Billing Account Administrator role or the Billing Account User role. The
+      # thresholds here have no effect on notifications sent to anything configured
+      # under `Budget.all_updates_rule`.
       class GoogleCloudBillingBudgetsV1beta1ThresholdRule
         include Google::Apis::Core::Hashable
       
@@ -316,9 +300,8 @@ module Google
         # @return [String]
         attr_accessor :spend_basis
       
-        # Required. Send an alert when this threshold is exceeded.
-        # This is a 1.0-based percentage, so 0.5 = 50%.
-        # Validation: non-negative number.
+        # Required. Send an alert when this threshold is exceeded. This is a 1.0-based
+        # percentage, so 0.5 = 50%. Validation: non-negative number.
         # Corresponds to the JSON property `thresholdPercent`
         # @return [Float]
         attr_accessor :threshold_percent
@@ -338,21 +321,20 @@ module Google
       class GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest
         include Google::Apis::Core::Hashable
       
-        # A budget is a plan that describes what you expect to spend on Cloud
-        # projects, plus the rules to execute as spend is tracked against that plan,
-        # (for example, send an alert when 90% of the target spend is met).
-        # Currently all plans are monthly budgets so the usage period(s) tracked are
-        # implied (calendar months of usage back-to-back).
+        # A budget is a plan that describes what you expect to spend on Cloud projects,
+        # plus the rules to execute as spend is tracked against that plan, (for example,
+        # send an alert when 90% of the target spend is met). Currently all plans are
+        # monthly budgets so the usage period(s) tracked are implied (calendar months of
+        # usage back-to-back).
         # Corresponds to the JSON property `budget`
         # @return [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget]
         attr_accessor :budget
       
-        # Optional. Indicates which fields in the provided budget to update.
-        # Read-only fields (such as `name`) cannot be changed. If this is not
-        # provided, then only fields with non-default values from the request are
-        # updated. See
-        # https://developers.google.com/protocol-buffers/docs/proto3#default for more
-        # details about default values.
+        # Optional. Indicates which fields in the provided budget to update. Read-only
+        # fields (such as `name`) cannot be changed. If this is not provided, then only
+        # fields with non-default values from the request are updated. See https://
+        # developers.google.com/protocol-buffers/docs/proto3#default for more details
+        # about default values.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -368,13 +350,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class GoogleProtobufEmpty
         include Google::Apis::Core::Hashable
       
@@ -396,18 +376,17 @@ module Google
         # @return [String]
         attr_accessor :currency_code
       
-        # Number of nano (10^-9) units of the amount.
-        # The value must be between -999,999,999 and +999,999,999 inclusive.
-        # If `units` is positive, `nanos` must be positive or zero.
-        # If `units` is zero, `nanos` can be positive, zero, or negative.
-        # If `units` is negative, `nanos` must be negative or zero.
-        # For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # Number of nano (10^-9) units of the amount. The value must be between -999,999,
+        # 999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be
+        # positive or zero. If `units` is zero, `nanos` can be positive, zero, or
+        # negative. If `units` is negative, `nanos` must be negative or zero. For
+        # example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # The whole units of the amount.
-        # For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        # The whole units of the amount. For example if `currencyCode` is `"USD"`, then
+        # 1 unit is one US dollar.
         # Corresponds to the JSON property `units`
         # @return [Fixnum]
         attr_accessor :units

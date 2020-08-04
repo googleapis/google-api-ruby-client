@@ -22,8 +22,7 @@ module Google
     module BloggerV3
       # Blogger API v3
       #
-      # The Blogger API provides access to posts, comments and pages of a
-      #  Blogger blog.
+      # The Blogger API provides access to posts, comments and pages of a Blogger blog.
       #
       # @example
       #    require 'google/apis/blogger_v3'

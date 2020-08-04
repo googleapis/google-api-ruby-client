@@ -26,12 +26,10 @@ module Google
       class SasPortalAssignment
         include Google::Apis::Core::Hashable
       
-        # The identities the role is assigned to. It can have the following
-        # values:
-        # * ``user_email``: An email address that represents a specific
-        # Google account. For example: `alice@gmail.com`.
-        # * ``group_email``: An email address that represents a Google
-        # group.  For example, `viewers@gmail.com`.
+        # The identities the role is assigned to. It can have the following values: * ``
+        # user_email``: An email address that represents a specific Google account. For
+        # example: `alice@gmail.com`. * ``group_email``: An email address that
+        # represents a Google group. For example, `viewers@gmail.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -56,8 +54,8 @@ module Google
       class SasPortalBulkCreateDeviceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. A csv with each row representing a [device]. Each row must
-        # conform to the regulations described on CreateDeviceRequest's device field.
+        # Required. A csv with each row representing a [device]. Each row must conform
+        # to the regulations described on CreateDeviceRequest's device field.
         # Corresponds to the JSON property `csv`
         # @return [String]
         attr_accessor :csv
@@ -95,8 +93,8 @@ module Google
       class SasPortalCreateSignedDeviceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. JSON Web Token signed using a CPI private key. Payload
-        # must be the JSON encoding of the [Device]. The user_id field must be set.
+        # Required. JSON Web Token signed using a CPI private key. Payload must be the
+        # JSON encoding of the [Device]. The user_id field must be set.
         # Corresponds to the JSON property `encodedDevice`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -189,8 +187,7 @@ module Google
         # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalDeviceConfig]
         attr_accessor :preloaded_config
       
-        # A serial number assigned to the device by the device
-        # manufacturer.
+        # A serial number assigned to the device by the device manufacturer.
         # Corresponds to the JSON property `serialNumber`
         # @return [String]
         attr_accessor :serial_number
@@ -230,8 +227,7 @@ module Google
       
         # This field is related to the radioTechnology field and provides the air
         # interface specification that the CBSD is compliant with at the time of
-        # registration.
-        # Optional
+        # registration. Optional
         # Corresponds to the JSON property `supportedSpec`
         # @return [String]
         attr_accessor :supported_spec
@@ -321,9 +317,9 @@ module Google
         end
       end
       
-      # Device grant. It is an authorization provided by the Spectrum
-      # Access System to a device to transmit using specified operating
-      # parameters after a successful heartbeat by the device.
+      # Device grant. It is an authorization provided by the Spectrum Access System to
+      # a device to transmit using specified operating parameters after a successful
+      # heartbeat by the device.
       class SasPortalDeviceGrant
         include Google::Apis::Core::Hashable
       
@@ -342,10 +338,10 @@ module Google
         # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalFrequencyRange]
         attr_accessor :frequency_range
       
-        # Maximum Equivalent Isotropically Radiated Power (EIRP) permitted
-        # by the grant. The maximum EIRP is in units of dBm/MHz. The
-        # value of maxEirp represents the average (RMS) EIRP that would be
-        # measured by the procedure defined in FCC part 96.41(e)(3).
+        # Maximum Equivalent Isotropically Radiated Power (EIRP) permitted by the grant.
+        # The maximum EIRP is in units of dBm/MHz. The value of maxEirp represents the
+        # average (RMS) EIRP that would be measured by the procedure defined in FCC part
+        # 96.41(e)(3).
         # Corresponds to the JSON property `maxEirp`
         # @return [Float]
         attr_accessor :max_eirp
@@ -462,13 +458,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class SasPortalEmpty
         include Google::Apis::Core::Hashable
       
@@ -506,8 +500,8 @@ module Google
         end
       end
       
-      # Request for GenerateSecret method]
-      # [spectrum.sas.portal.v1alpha1.DeviceManager.GenerateSecret].
+      # Request for GenerateSecret method] [spectrum.sas.portal.v1alpha1.DeviceManager.
+      # GenerateSecret].
       class SasPortalGenerateSecretRequest
         include Google::Apis::Core::Hashable
       
@@ -524,8 +518,7 @@ module Google
       class SasPortalGenerateSecretResponse
         include Google::Apis::Core::Hashable
       
-        # The secret generated by the string and used by
-        # [ValidateInstaller] method.
+        # The secret generated by the string and used by [ValidateInstaller] method.
         # Corresponds to the JSON property `secret`
         # @return [String]
         attr_accessor :secret
@@ -563,41 +556,39 @@ module Google
       class SasPortalInstallationParams
         include Google::Apis::Core::Hashable
       
-        # Boresight direction of the horizontal plane of the antenna in
-        # degrees with respect to true north. The value of this parameter
-        # is an integer with a value between 0 and 359 inclusive. A value
-        # of 0 degrees means true north; a value of 90 degrees means
-        # east. This parameter is optional for Category A devices and
+        # Boresight direction of the horizontal plane of the antenna in degrees with
+        # respect to true north. The value of this parameter is an integer with a value
+        # between 0 and 359 inclusive. A value of 0 degrees means true north; a value of
+        # 90 degrees means east. This parameter is optional for Category A devices and
         # conditional for Category B devices.
         # Corresponds to the JSON property `antennaAzimuth`
         # @return [Fixnum]
         attr_accessor :antenna_azimuth
       
-        # 3-dB antenna beamwidth of the antenna in the horizontal-plane in
-        # degrees.  This parameter is an unsigned integer having a value
-        # between 0 and 360 (degrees) inclusive; it is optional for
-        # Category A devices and conditional for Category B devices.
+        # 3-dB antenna beamwidth of the antenna in the horizontal-plane in degrees. This
+        # parameter is an unsigned integer having a value between 0 and 360 (degrees)
+        # inclusive; it is optional for Category A devices and conditional for Category
+        # B devices.
         # Corresponds to the JSON property `antennaBeamwidth`
         # @return [Fixnum]
         attr_accessor :antenna_beamwidth
       
-        # Antenna downtilt in degrees and is an integer with a value
-        # between -90 and +90 inclusive; a negative value means the antenna
-        # is tilted up (above horizontal). This parameter is optional for
-        # Category A devices and conditional for Category B devices.
+        # Antenna downtilt in degrees and is an integer with a value between -90 and +90
+        # inclusive; a negative value means the antenna is tilted up (above horizontal).
+        # This parameter is optional for Category A devices and conditional for Category
+        # B devices.
         # Corresponds to the JSON property `antennaDowntilt`
         # @return [Fixnum]
         attr_accessor :antenna_downtilt
       
-        # Peak antenna gain in dBi. This parameter is an integer with a
-        # value between -127 and +128 (dBi) inclusive.
+        # Peak antenna gain in dBi. This parameter is an integer with a value between -
+        # 127 and +128 (dBi) inclusive.
         # Corresponds to the JSON property `antennaGain`
         # @return [Fixnum]
         attr_accessor :antenna_gain
       
-        # If an external antenna is used, the antenna model is optionally
-        # provided in this field. The string has a maximum length of 128
-        # octets.
+        # If an external antenna is used, the antenna model is optionally provided in
+        # this field. The string has a maximum length of 128 octets.
         # Corresponds to the JSON property `antennaModel`
         # @return [String]
         attr_accessor :antenna_model
@@ -608,18 +599,17 @@ module Google
         attr_accessor :cpe_cbsd_indication
         alias_method :cpe_cbsd_indication?, :cpe_cbsd_indication
       
-        # This parameter is the maximum device EIRP in units of dBm/10MHz
-        # and is an integer with a value between -127 and +47 (dBm/10 MHz)
-        # inclusive. If not included, SAS interprets it as maximum
-        # allowable EIRP in units of dBm/10MHz for device category.
+        # This parameter is the maximum device EIRP in units of dBm/10MHz and is an
+        # integer with a value between -127 and +47 (dBm/10 MHz) inclusive. If not
+        # included, SAS interprets it as maximum allowable EIRP in units of dBm/10MHz
+        # for device category.
         # Corresponds to the JSON property `eirpCapability`
         # @return [Fixnum]
         attr_accessor :eirp_capability
       
-        # Device antenna height in meters. When the heightType parameter
-        # value is "AGL", the antenna height should be given relative to
-        # ground level. When the heightType parameter value is "AMSL", it
-        # is given with respect to WGS84 datum.
+        # Device antenna height in meters. When the heightType parameter value is "AGL",
+        # the antenna height should be given relative to ground level. When the
+        # heightType parameter value is "AMSL", it is given with respect to WGS84 datum.
         # Corresponds to the JSON property `height`
         # @return [Float]
         attr_accessor :height
@@ -629,42 +619,37 @@ module Google
         # @return [String]
         attr_accessor :height_type
       
-        # A positive number in meters to indicate accuracy of the device
-        # antenna horizontal location. This optional parameter should only
-        # be present if its value is less than the FCC requirement of 50
-        # meters.
+        # A positive number in meters to indicate accuracy of the device antenna
+        # horizontal location. This optional parameter should only be present if its
+        # value is less than the FCC requirement of 50 meters.
         # Corresponds to the JSON property `horizontalAccuracy`
         # @return [Float]
         attr_accessor :horizontal_accuracy
       
-        # Whether the device antenna is indoor or not. True: indoor. False:
-        # outdoor.
+        # Whether the device antenna is indoor or not. True: indoor. False: outdoor.
         # Corresponds to the JSON property `indoorDeployment`
         # @return [Boolean]
         attr_accessor :indoor_deployment
         alias_method :indoor_deployment?, :indoor_deployment
       
-        # Latitude of the device antenna location in degrees relative to
-        # the WGS 84 datum. The allowed range is from -90.000000 to
-        # +90.000000. Positive values represent latitudes north of the
-        # equator; negative values south of the equator.
+        # Latitude of the device antenna location in degrees relative to the WGS 84
+        # datum. The allowed range is from -90.000000 to +90.000000. Positive values
+        # represent latitudes north of the equator; negative values south of the equator.
         # Corresponds to the JSON property `latitude`
         # @return [Float]
         attr_accessor :latitude
       
-        # Longitude of the device antenna location. in degrees relative to
-        # the WGS 84 datum. The allowed range is from -180.000000 to
-        # +180.000000. Positive values represent longitudes east of the
-        # prime meridian; negative values west of the prime
-        # meridian.
+        # Longitude of the device antenna location. in degrees relative to the WGS 84
+        # datum. The allowed range is from -180.000000 to +180.000000. Positive values
+        # represent longitudes east of the prime meridian; negative values west of the
+        # prime meridian.
         # Corresponds to the JSON property `longitude`
         # @return [Float]
         attr_accessor :longitude
       
-        # A positive number in meters to indicate accuracy of the device
-        # antenna vertical location. This optional parameter should only be
-        # present if its value is less than the FCC requirement of 3
-        # meters.
+        # A positive number in meters to indicate accuracy of the device antenna
+        # vertical location. This optional parameter should only be present if its value
+        # is less than the FCC requirement of 3 meters.
         # Corresponds to the JSON property `verticalAccuracy`
         # @return [Float]
         attr_accessor :vertical_accuracy
@@ -696,16 +681,14 @@ module Google
       class SasPortalListCustomersResponse
         include Google::Apis::Core::Hashable
       
-        # The list of customers that
-        # match the request.
+        # The list of customers that match the request.
         # Corresponds to the JSON property `customers`
         # @return [Array<Google::Apis::ProdTtSasportalV1alpha1::SasPortalCustomer>]
         attr_accessor :customers
       
         # A pagination token returned from a previous call to ListCustomers method that
-        # indicates from
-        # where listing should continue. If the field is missing or empty, it means
-        # there are no more customers.
+        # indicates from where listing should continue. If the field is missing or empty,
+        # it means there are no more customers.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -730,9 +713,9 @@ module Google
         # @return [Array<Google::Apis::ProdTtSasportalV1alpha1::SasPortalDevice>]
         attr_accessor :devices
       
-        # A pagination token returned from a previous call to ListDevices method
-        # that indicates from where listing should continue. If the field
-        # is missing or empty, it means there is no more devices.
+        # A pagination token returned from a previous call to ListDevices method that
+        # indicates from where listing should continue. If the field is missing or empty,
+        # it means there is no more devices.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -752,10 +735,9 @@ module Google
       class SasPortalListNodesResponse
         include Google::Apis::Core::Hashable
       
-        # A pagination token returned from a previous call to
-        # ListNodes method
-        # that indicates from where listing should continue. If the field is missing
-        # or empty, it means there is no more nodes.
+        # A pagination token returned from a previous call to ListNodes method that
+        # indicates from where listing should continue. If the field is missing or empty,
+        # it means there is no more nodes.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -780,8 +762,8 @@ module Google
       class SasPortalMoveDeviceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the new parent resource (Node or Customer) to
-        # reparent the device under.
+        # Required. The name of the new parent resource (Node or Customer) to reparent
+        # the device under.
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
@@ -852,47 +834,45 @@ module Google
       class SasPortalOperation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalStatus]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -920,16 +900,14 @@ module Google
         # @return [Array<Google::Apis::ProdTtSasportalV1alpha1::SasPortalAssignment>]
         attr_accessor :assignments
       
-        # The [etag] is used for optimistic concurrency control as a way to
-        # help prevent simultaneous updates of a policy from overwriting
-        # each other.  It is strongly suggested that systems make use of
-        # the [etag] in the read-modify-write cycle to perform policy
-        # updates in order to avoid race conditions: An [etag] is returned
-        # in the response to [GetPolicy], and systems are expected to put
-        # that etag in the request to [SetPolicy] to ensure that their
-        # change will be applied to the same version of the policy.
-        # If no [etag] is provided in the call to [SetPolicy], then the
-        # existing policy is overwritten blindly.
+        # The [etag] is used for optimistic concurrency control as a way to help prevent
+        # simultaneous updates of a policy from overwriting each other. It is strongly
+        # suggested that systems make use of the [etag] in the read-modify-write cycle
+        # to perform policy updates in order to avoid race conditions: An [etag] is
+        # returned in the response to [GetPolicy], and systems are expected to put that
+        # etag in the request to [SetPolicy] to ensure that their change will be applied
+        # to the same version of the policy. If no [etag] is provided in the call to [
+        # SetPolicy], then the existing policy is overwritten blindly.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -976,9 +954,8 @@ module Google
       class SasPortalSignDeviceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The device to sign.
-        # The device fields name, fcc_id and serial_number must be set.
-        # The user_id field must be set.
+        # Required. The device to sign. The device fields name, fcc_id and serial_number
+        # must be set. The user_id field must be set.
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalDevice]
         attr_accessor :device
@@ -993,12 +970,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class SasPortalStatus
         include Google::Apis::Core::Hashable
       
@@ -1007,15 +984,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -1080,9 +1057,8 @@ module Google
       class SasPortalUpdateSignedDeviceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The JSON Web Token signed using a CPI private key. Payload
-        # must be the JSON encoding
-        # of the device. The user_id field must be set.
+        # Required. The JSON Web Token signed using a CPI private key. Payload must be
+        # the JSON encoding of the device. The user_id field must be set.
         # Corresponds to the JSON property `encodedDevice`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1109,14 +1085,14 @@ module Google
       class SasPortalValidateInstallerRequest
         include Google::Apis::Core::Hashable
       
-        # Required. JSON Web Token signed using a CPI private key. Payload
-        # must include a "secret" claim whose value is the secret.
+        # Required. JSON Web Token signed using a CPI private key. Payload must include
+        # a "secret" claim whose value is the secret.
         # Corresponds to the JSON property `encodedSecret`
         # @return [String]
         attr_accessor :encoded_secret
       
-        # Required. Unique installer id (cpiId) from the Certified
-        # Professional Installers database.
+        # Required. Unique installer id (cpiId) from the Certified Professional
+        # Installers database.
         # Corresponds to the JSON property `installerId`
         # @return [String]
         attr_accessor :installer_id
@@ -1138,8 +1114,8 @@ module Google
         end
       end
       
-      # Response for ValidateInstaller method]
-      # [spectrum.sas.portal.v1alpha1.DeviceManager.ValidateInstaller].
+      # Response for ValidateInstaller method] [spectrum.sas.portal.v1alpha1.
+      # DeviceManager.ValidateInstaller].
       class SasPortalValidateInstallerResponse
         include Google::Apis::Core::Hashable
       

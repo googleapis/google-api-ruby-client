@@ -31,15 +31,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :customer_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device.
-        # To understand requirements on identifier sets, read
-        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device. To
+        # understand requirements on identifier sets, read [Identifiers](https://
+        # developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # Metadata entries that can be attached to a `Device`. To learn more, read
-        # [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
+        # Metadata entries that can be attached to a `Device`. To learn more, read [
+        # Device metadata](https://developers.google.com/zero-touch/guides/metadata).
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata
@@ -71,8 +71,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # The resource name of the device in the format
-        # `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
+        # The resource name of the device in the format `partners/[PARTNER_ID]/devices/[
+        # DEVICE_ID]`.
         # Corresponds to the JSON property `deviceName`
         # @return [String]
         attr_accessor :device_name
@@ -89,8 +89,8 @@ module Google
       end
       
       # Request to claim devices asynchronously in batch. Claiming a device adds the
-      # device to zero-touch enrollment and shows the device in the customer's view
-      # of the portal.
+      # device to zero-touch enrollment and shows the device in the customer's view of
+      # the portal.
       class ClaimDevicesRequest
         include Google::Apis::Core::Hashable
       
@@ -113,8 +113,8 @@ module Google
       class Company
         include Google::Apis::Core::Hashable
       
-        # Optional. Email address of customer's users in the admin role.
-        # Each email address must be associated with a Google Account.
+        # Optional. Email address of customer's users in the admin role. Each email
+        # address must be associated with a Google Account.
         # Corresponds to the JSON property `adminEmails`
         # @return [Array<String>]
         attr_accessor :admin_emails
@@ -130,28 +130,24 @@ module Google
         # @return [String]
         attr_accessor :company_name
       
-        # Output only. The API resource name of the company. The resource name is one
-        # of the following formats:
-        # * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`
-        # * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`
-        # * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]`
-        # Assigned by the server.
+        # Output only. The API resource name of the company. The resource name is one of
+        # the following formats: * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]` * `
+        # partners/[PARTNER_ID]/vendors/[VENDOR_ID]` * `partners/[PARTNER_ID]/vendors/[
+        # VENDOR_ID]/customers/[CUSTOMER_ID]` Assigned by the server.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Required. Input only. Email address of customer's users in the owner role. At
-        # least
-        # one `owner_email` is required. Each email address must be associated with a
-        # Google Account. Owners share the same access as admins but can also add,
+        # least one `owner_email` is required. Each email address must be associated
+        # with a Google Account. Owners share the same access as admins but can also add,
         # delete, and edit your organization's portal users.
         # Corresponds to the JSON property `ownerEmails`
         # @return [Array<String>]
         attr_accessor :owner_emails
       
-        # Output only. Whether any user from the company has accepted the latest
-        # Terms of Service (ToS). See
-        # TermsStatus.
+        # Output only. Whether any user from the company has accepted the latest Terms
+        # of Service (ToS). See TermsStatus.
         # Corresponds to the JSON property `termsStatus`
         # @return [String]
         attr_accessor :terms_status
@@ -172,13 +168,12 @@ module Google
       end
       
       # A configuration collects the provisioning options for Android devices. Each
-      # configuration combines the following:
-      # * The EMM device policy controller (DPC) installed on the devices.
-      # * EMM policies enforced on the devices.
-      # * Metadata displayed on the device to help users during setup.
-      # Customers can add as many configurations as they need. However, zero-touch
-      # enrollment works best when a customer sets a default configuration that's
-      # applied to any new devices the organization purchases.
+      # configuration combines the following: * The EMM device policy controller (DPC)
+      # installed on the devices. * EMM policies enforced on the devices. * Metadata
+      # displayed on the device to help users during setup. Customers can add as many
+      # configurations as they need. However, zero-touch enrollment works best when a
+      # customer sets a default configuration that's applied to any new devices the
+      # organization purchases.
       class Configuration
         include Google::Apis::Core::Hashable
       
@@ -193,31 +188,31 @@ module Google
         # @return [Fixnum]
         attr_accessor :configuration_id
       
-        # Required. A short name that describes the configuration's purpose. For
-        # example, _Sales team_ or _Temporary employees_. The zero-touch enrollment
-        # portal displays this name to IT admins.
+        # Required. A short name that describes the configuration's purpose. For example,
+        # _Sales team_ or _Temporary employees_. The zero-touch enrollment portal
+        # displays this name to IT admins.
         # Corresponds to the JSON property `configurationName`
         # @return [String]
         attr_accessor :configuration_name
       
-        # Required. The email address that device users can contact to get help.
-        # Zero-touch enrollment shows this email address to device users before
-        # device provisioning. The value is validated on input.
+        # Required. The email address that device users can contact to get help. Zero-
+        # touch enrollment shows this email address to device users before device
+        # provisioning. The value is validated on input.
         # Corresponds to the JSON property `contactEmail`
         # @return [String]
         attr_accessor :contact_email
       
         # Required. The telephone number that device users can call, using another
-        # device, to get help. Zero-touch enrollment shows this number to device
-        # users before device provisioning. Accepts numerals, spaces, the plus sign,
-        # hyphens, and parentheses.
+        # device, to get help. Zero-touch enrollment shows this number to device users
+        # before device provisioning. Accepts numerals, spaces, the plus sign, hyphens,
+        # and parentheses.
         # Corresponds to the JSON property `contactPhone`
         # @return [String]
         attr_accessor :contact_phone
       
-        # A message, containing one or two sentences, to help device users get help
-        # or give them more details about what’s happening to their device.
-        # Zero-touch enrollment shows this message before the device is provisioned.
+        # A message, containing one or two sentences, to help device users get help or
+        # give them more details about what’s happening to their device. Zero-touch
+        # enrollment shows this message before the device is provisioned.
         # Corresponds to the JSON property `customMessage`
         # @return [String]
         attr_accessor :custom_message
@@ -227,27 +222,24 @@ module Google
         # @return [String]
         attr_accessor :dpc_extras
       
-        # Required. The resource name of the selected DPC (device policy controller)
-        # in the format `customers/[CUSTOMER_ID]/dpcs/*`. To list the supported DPCs,
-        # call
-        # `customers.dpcs.list`.
+        # Required. The resource name of the selected DPC (device policy controller) in
+        # the format `customers/[CUSTOMER_ID]/dpcs/*`. To list the supported DPCs, call `
+        # customers.dpcs.list`.
         # Corresponds to the JSON property `dpcResourcePath`
         # @return [String]
         attr_accessor :dpc_resource_path
       
-        # Required. Whether this is the default configuration that zero-touch
-        # enrollment applies to any new devices the organization purchases in the
-        # future. Only one customer configuration can be the default. Setting this
-        # value to `true`, changes the previous default configuration's `isDefault`
-        # value to `false`.
+        # Required. Whether this is the default configuration that zero-touch enrollment
+        # applies to any new devices the organization purchases in the future. Only one
+        # customer configuration can be the default. Setting this value to `true`,
+        # changes the previous default configuration's `isDefault` value to `false`.
         # Corresponds to the JSON property `isDefault`
         # @return [Boolean]
         attr_accessor :is_default
         alias_method :is_default?, :is_default
       
-        # Output only. The API resource name in the format
-        # `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by
-        # the server.
+        # Output only. The API resource name in the format `customers/[CUSTOMER_ID]/
+        # configurations/[CONFIGURATION_ID]`. Assigned by the server.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -294,21 +286,19 @@ module Google
       class CustomerApplyConfigurationRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The configuration applied to the device in the format
-        # `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
+        # Required. The configuration applied to the device in the format `customers/[
+        # CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
         # Corresponds to the JSON property `configuration`
         # @return [String]
         attr_accessor :configuration
       
         # A `DeviceReference` is an API abstraction that lets you supply a _device_
-        # argument to a method using one of the following identifier types:
-        # * A numeric API resource ID.
-        # * Real-world hardware IDs, such as IMEI number, belonging to the manufactured
-        # device.
-        # Methods that operate on devices take a `DeviceReference` as a parameter type
-        # because it's more flexible for the caller. To learn more about device
-        # identifiers, read
-        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
+        # argument to a method using one of the following identifier types: * A numeric
+        # API resource ID. * Real-world hardware IDs, such as IMEI number, belonging to
+        # the manufactured device. Methods that operate on devices take a `
+        # DeviceReference` as a parameter type because it's more flexible for the caller.
+        # To learn more about device identifiers, read [Identifiers](https://developers.
+        # google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceReference]
         attr_accessor :device
@@ -352,8 +342,8 @@ module Google
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Company>]
         attr_accessor :customers
       
-        # A token used to access the next page of results. Omitted if no further
-        # results are available.
+        # A token used to access the next page of results. Omitted if no further results
+        # are available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -378,8 +368,8 @@ module Google
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Device>]
         attr_accessor :devices
       
-        # A token used to access the next page of results. Omitted if no further
-        # results are available.
+        # A token used to access the next page of results. Omitted if no further results
+        # are available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -399,8 +389,7 @@ module Google
       class CustomerListDpcsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of DPCs available to the customer that support zero-touch
-        # enrollment.
+        # The list of DPCs available to the customer that support zero-touch enrollment.
         # Corresponds to the JSON property `dpcs`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Dpc>]
         attr_accessor :dpcs
@@ -420,14 +409,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A `DeviceReference` is an API abstraction that lets you supply a _device_
-        # argument to a method using one of the following identifier types:
-        # * A numeric API resource ID.
-        # * Real-world hardware IDs, such as IMEI number, belonging to the manufactured
-        # device.
-        # Methods that operate on devices take a `DeviceReference` as a parameter type
-        # because it's more flexible for the caller. To learn more about device
-        # identifiers, read
-        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
+        # argument to a method using one of the following identifier types: * A numeric
+        # API resource ID. * Real-world hardware IDs, such as IMEI number, belonging to
+        # the manufactured device. Methods that operate on devices take a `
+        # DeviceReference` as a parameter type because it's more flexible for the caller.
+        # To learn more about device identifiers, read [Identifiers](https://developers.
+        # google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceReference]
         attr_accessor :device
@@ -447,14 +434,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A `DeviceReference` is an API abstraction that lets you supply a _device_
-        # argument to a method using one of the following identifier types:
-        # * A numeric API resource ID.
-        # * Real-world hardware IDs, such as IMEI number, belonging to the manufactured
-        # device.
-        # Methods that operate on devices take a `DeviceReference` as a parameter type
-        # because it's more flexible for the caller. To learn more about device
-        # identifiers, read
-        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
+        # argument to a method using one of the following identifier types: * A numeric
+        # API resource ID. * Real-world hardware IDs, such as IMEI number, belonging to
+        # the manufactured device. Methods that operate on devices take a `
+        # DeviceReference` as a parameter type because it's more flexible for the caller.
+        # To learn more about device identifiers, read [Identifiers](https://developers.
+        # google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceReference]
         attr_accessor :device
@@ -473,13 +458,10 @@ module Google
       class Device
         include Google::Apis::Core::Hashable
       
-        # Output only. The provisioning claims for a device. Devices claimed for
-        # zero-touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`.
-        # Call
-        # `partners.devices.unclaim`
-        # or
-        # `partners.devices.unclaimAsync`
-        # to remove the device from zero-touch enrollment.
+        # Output only. The provisioning claims for a device. Devices claimed for zero-
+        # touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`. Call `
+        # partners.devices.unclaim` or `partners.devices.unclaimAsync` to remove the
+        # device from zero-touch enrollment.
         # Corresponds to the JSON property `claims`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::DeviceClaim>]
         attr_accessor :claims
@@ -494,21 +476,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device.
-        # To understand requirements on identifier sets, read
-        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device. To
+        # understand requirements on identifier sets, read [Identifiers](https://
+        # developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # Metadata entries that can be attached to a `Device`. To learn more, read
-        # [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
+        # Metadata entries that can be attached to a `Device`. To learn more, read [
+        # Device metadata](https://developers.google.com/zero-touch/guides/metadata).
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata
       
-        # Output only. The API resource name in the format
-        # `partners/[PARTNER_ID]/devices/[DEVICE_ID]`. Assigned by the server.
+        # Output only. The API resource name in the format `partners/[PARTNER_ID]/
+        # devices/[DEVICE_ID]`. Assigned by the server.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -528,10 +510,10 @@ module Google
         end
       end
       
-      # A record of a device claimed by a reseller for a customer. Devices claimed
-      # for zero-touch enrollment have a claim with the type
-      # `SECTION_TYPE_ZERO_TOUCH`. To learn more, read
-      # [Claim devices for customers](/zero-touch/guides/how-it-works#claim).
+      # A record of a device claimed by a reseller for a customer. Devices claimed for
+      # zero-touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`. To
+      # learn more, read [Claim devices for customers](/zero-touch/guides/how-it-works#
+      # claim).
       class DeviceClaim
         include Google::Apis::Core::Hashable
       
@@ -550,8 +532,8 @@ module Google
         # @return [String]
         attr_accessor :section_type
       
-        # The timestamp when the device will exit ‘vacation mode’. This value is
-        # present iff the device is in 'vacation mode'.
+        # The timestamp when the device will exit ‘vacation mode’. This value is present
+        # iff the device is in 'vacation mode'.
         # Corresponds to the JSON property `vacationModeExpireTime`
         # @return [String]
         attr_accessor :vacation_mode_expire_time
@@ -576,9 +558,9 @@ module Google
         end
       end
       
-      # Encapsulates hardware and product IDs to identify a manufactured device.
-      # To understand requirements on identifier sets, read
-      # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
+      # Encapsulates hardware and product IDs to identify a manufactured device. To
+      # understand requirements on identifier sets, read [Identifiers](https://
+      # developers.google.com/zero-touch/guides/identifiers).
       class DeviceIdentifier
         include Google::Apis::Core::Hashable
       
@@ -587,10 +569,9 @@ module Google
         # @return [String]
         attr_accessor :imei
       
-        # The device manufacturer’s name. Matches the device's built-in
-        # value returned from `android.os.Build.MANUFACTURER`. Allowed values are
-        # listed in
-        # [manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names).
+        # The device manufacturer’s name. Matches the device's built-in value returned
+        # from `android.os.Build.MANUFACTURER`. Allowed values are listed in [
+        # manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names).
         # Corresponds to the JSON property `manufacturer`
         # @return [String]
         attr_accessor :manufacturer
@@ -600,9 +581,9 @@ module Google
         # @return [String]
         attr_accessor :meid
       
-        # The device model's name. Matches the device's built-in value returned from
-        # `android.os.Build.MODEL`. Allowed values are listed in
-        # [models](/zero-touch/resources/manufacturer-names#model-names).
+        # The device model's name. Matches the device's built-in value returned from `
+        # android.os.Build.MODEL`. Allowed values are listed in [models](/zero-touch/
+        # resources/manufacturer-names#model-names).
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -627,8 +608,8 @@ module Google
         end
       end
       
-      # Metadata entries that can be attached to a `Device`. To learn more, read
-      # [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
+      # Metadata entries that can be attached to a `Device`. To learn more, read [
+      # Device metadata](https://developers.google.com/zero-touch/guides/metadata).
       class DeviceMetadata
         include Google::Apis::Core::Hashable
       
@@ -648,14 +629,12 @@ module Google
       end
       
       # A `DeviceReference` is an API abstraction that lets you supply a _device_
-      # argument to a method using one of the following identifier types:
-      # * A numeric API resource ID.
-      # * Real-world hardware IDs, such as IMEI number, belonging to the manufactured
-      # device.
-      # Methods that operate on devices take a `DeviceReference` as a parameter type
-      # because it's more flexible for the caller. To learn more about device
-      # identifiers, read
-      # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
+      # argument to a method using one of the following identifier types: * A numeric
+      # API resource ID. * Real-world hardware IDs, such as IMEI number, belonging to
+      # the manufactured device. Methods that operate on devices take a `
+      # DeviceReference` as a parameter type because it's more flexible for the caller.
+      # To learn more about device identifiers, read [Identifiers](https://developers.
+      # google.com/zero-touch/guides/identifiers).
       class DeviceReference
         include Google::Apis::Core::Hashable
       
@@ -664,9 +643,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device.
-        # To understand requirements on identifier sets, read
-        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device. To
+        # understand requirements on identifier sets, read [Identifiers](https://
+        # developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -682,15 +661,15 @@ module Google
         end
       end
       
-      # Tracks the status of a long-running operation to asynchronously update a
-      # batch of reseller metadata attached to devices. To learn more, read
-      # [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).
+      # Tracks the status of a long-running operation to asynchronously update a batch
+      # of reseller metadata attached to devices. To learn more, read [Long‑running
+      # batch operations](/zero-touch/guides/how-it-works#operations).
       class DevicesLongRunningOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # The number of metadata updates in the operation. This might be different
-        # from the number of updates in the request if the API can't parse some of
-        # the updates.
+        # The number of metadata updates in the operation. This might be different from
+        # the number of updates in the request if the API can't parse some of the
+        # updates.
         # Corresponds to the JSON property `devicesCount`
         # @return [Fixnum]
         attr_accessor :devices_count
@@ -700,9 +679,9 @@ module Google
         # @return [String]
         attr_accessor :processing_status
       
-        # The processing progress of the operation. Measured as a number from 0 to
-        # 100. A value of 10O doesnt always mean the operation completed—check for
-        # the inclusion of a `done` field.
+        # The processing progress of the operation. Measured as a number from 0 to 100.
+        # A value of 10O doesnt always mean the operation completed—check for the
+        # inclusion of a `done` field.
         # Corresponds to the JSON property `progress`
         # @return [Fixnum]
         attr_accessor :progress
@@ -720,20 +699,19 @@ module Google
       end
       
       # Tracks the status of a long-running operation to claim, unclaim, or attach
-      # metadata to devices. To learn more, read
-      # [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).
+      # metadata to devices. To learn more, read [Long‑running batch operations](/zero-
+      # touch/guides/how-it-works#operations).
       class DevicesLongRunningOperationResponse
         include Google::Apis::Core::Hashable
       
-        # The processing status for each device in the operation.
-        # One `PerDeviceStatus` per device. The list order matches the items in the
-        # original request.
+        # The processing status for each device in the operation. One `PerDeviceStatus`
+        # per device. The list order matches the items in the original request.
         # Corresponds to the JSON property `perDeviceStatus`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::OperationPerDevice>]
         attr_accessor :per_device_status
       
-        # A summary of how many items in the operation the server processed
-        # successfully. Updated as the operation progresses.
+        # A summary of how many items in the operation the server processed successfully.
+        # Updated as the operation progresses.
         # Corresponds to the JSON property `successCount`
         # @return [Fixnum]
         attr_accessor :success_count
@@ -749,11 +727,11 @@ module Google
         end
       end
       
-      # An EMM's DPC ([device policy
-      # controller](http://developer.android.com/work/dpc/build-dpc.html)).
-      # Zero-touch enrollment installs a DPC (listed in the `Configuration`) on a
-      # device to maintain the customer's mobile policies. All the DPCs listed by the
-      # API support zero-touch enrollment and are available in Google Play.
+      # An EMM's DPC ([device policy controller](http://developer.android.com/work/dpc/
+      # build-dpc.html)). Zero-touch enrollment installs a DPC (listed in the `
+      # Configuration`) on a device to maintain the customer's mobile policies. All
+      # the DPCs listed by the API support zero-touch enrollment and are available in
+      # Google Play.
       class Dpc
         include Google::Apis::Core::Hashable
       
@@ -763,17 +741,16 @@ module Google
         # @return [String]
         attr_accessor :dpc_name
       
-        # Output only. The API resource name in the format
-        # `customers/[CUSTOMER_ID]/dpcs/[DPC_ID]`. Assigned by
-        # the server. To maintain a reference to a DPC across customer accounts,
-        # persist and match the last path component (`DPC_ID`).
+        # Output only. The API resource name in the format `customers/[CUSTOMER_ID]/dpcs/
+        # [DPC_ID]`. Assigned by the server. To maintain a reference to a DPC across
+        # customer accounts, persist and match the last path component (`DPC_ID`).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The DPC's Android application ID that looks like a Java
-        # package name. Zero-touch enrollment installs the DPC app onto a device
-        # using this identifier.
+        # Output only. The DPC's Android application ID that looks like a Java package
+        # name. Zero-touch enrollment installs the DPC app onto a device using this
+        # identifier.
         # Corresponds to the JSON property `packageName`
         # @return [String]
         attr_accessor :package_name
@@ -790,13 +767,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -813,15 +788,15 @@ module Google
       class FindDevicesByDeviceIdentifierRequest
         include Google::Apis::Core::Hashable
       
-        # Encapsulates hardware and product IDs to identify a manufactured device.
-        # To understand requirements on identifier sets, read
-        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device. To
+        # understand requirements on identifier sets, read [Identifiers](https://
+        # developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # Required. The maximum number of devices to show in a page of results. Must
-        # be between 1 and 100 inclusive.
+        # Required. The maximum number of devices to show in a page of results. Must be
+        # between 1 and 100 inclusive.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
@@ -852,8 +827,8 @@ module Google
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Device>]
         attr_accessor :devices
       
-        # A token used to access the next page of results. Omitted if no further
-        # results are available.
+        # A token used to access the next page of results. Omitted if no further results
+        # are available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -884,8 +859,8 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :customer_id
       
-        # Required. The maximum number of devices to show in a page of results. Must
-        # be between 1 and 100 inclusive.
+        # Required. The maximum number of devices to show in a page of results. Must be
+        # between 1 and 100 inclusive.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
@@ -922,8 +897,8 @@ module Google
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Device>]
         attr_accessor :devices
       
-        # A token used to access the next page of results.
-        # Omitted if no further results are available.
+        # A token used to access the next page of results. Omitted if no further results
+        # are available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1024,8 +999,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_size
       
-        # List of vendors of the reseller partner. Fields `name`, `companyId` and
-        # `companyName` are populated to the Company object.
+        # List of vendors of the reseller partner. Fields `name`, `companyId` and `
+        # companyName` are populated to the Company object.
         # Corresponds to the JSON property `vendors`
         # @return [Array<Google::Apis::AndroiddeviceprovisioningV1::Company>]
         attr_accessor :vendors
@@ -1047,20 +1022,19 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::Status]
         attr_accessor :error
@@ -1072,8 +1046,8 @@ module Google
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1098,8 +1072,8 @@ module Google
         end
       end
       
-      # A task for each device in the operation. Corresponds to each device
-      # change in the request.
+      # A task for each device in the operation. Corresponds to each device change in
+      # the request.
       class OperationPerDevice
         include Google::Apis::Core::Hashable
       
@@ -1145,15 +1119,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :customer_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device.
-        # To understand requirements on identifier sets, read
-        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device. To
+        # understand requirements on identifier sets, read [Identifiers](https://
+        # developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # Metadata entries that can be attached to a `Device`. To learn more, read
-        # [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
+        # Metadata entries that can be attached to a `Device`. To learn more, read [
+        # Device metadata](https://developers.google.com/zero-touch/guides/metadata).
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata
@@ -1185,9 +1159,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device.
-        # To understand requirements on identifier sets, read
-        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device. To
+        # understand requirements on identifier sets, read [Identifiers](https://
+        # developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -1198,8 +1172,7 @@ module Google
         attr_accessor :section_type
       
         # Optional. The duration of the vacation unlock starting from when the request
-        # is
-        # processed. (1 day is treated as 24 hours)
+        # is processed. (1 day is treated as 24 hours)
         # Corresponds to the JSON property `vacationModeDays`
         # @return [Fixnum]
         attr_accessor :vacation_mode_days
@@ -1260,12 +1233,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -1274,15 +1247,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -1308,9 +1281,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device.
-        # To understand requirements on identifier sets, read
-        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device. To
+        # understand requirements on identifier sets, read [Identifiers](https://
+        # developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
@@ -1387,8 +1360,8 @@ module Google
       class UpdateDeviceMetadataRequest
         include Google::Apis::Core::Hashable
       
-        # Metadata entries that can be attached to a `Device`. To learn more, read
-        # [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
+        # Metadata entries that can be attached to a `Device`. To learn more, read [
+        # Device metadata](https://developers.google.com/zero-touch/guides/metadata).
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata
@@ -1412,15 +1385,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :device_id
       
-        # Encapsulates hardware and product IDs to identify a manufactured device.
-        # To understand requirements on identifier sets, read
-        # [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
+        # Encapsulates hardware and product IDs to identify a manufactured device. To
+        # understand requirements on identifier sets, read [Identifiers](https://
+        # developers.google.com/zero-touch/guides/identifiers).
         # Corresponds to the JSON property `deviceIdentifier`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceIdentifier]
         attr_accessor :device_identifier
       
-        # Metadata entries that can be attached to a `Device`. To learn more, read
-        # [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
+        # Metadata entries that can be attached to a `Device`. To learn more, read [
+        # Device metadata](https://developers.google.com/zero-touch/guides/metadata).
         # Corresponds to the JSON property `deviceMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::DeviceMetadata]
         attr_accessor :device_metadata

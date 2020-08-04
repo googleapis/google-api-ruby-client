@@ -22,13 +22,11 @@ module Google
   module Apis
     module SecuritycenterV1p1alpha1
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -41,18 +39,16 @@ module Google
         end
       end
       
-      # Security Command Center finding.
-      # A finding is a record of assessment data like security, risk, health, or
-      # privacy, that is ingested into Security Command Center for presentation,
-      # notification, analysis, policy testing, and enforcement. For example, a
-      # cross-site scripting (XSS) vulnerability in an App Engine application is a
-      # finding.
+      # Security Command Center finding. A finding is a record of assessment data like
+      # security, risk, health, or privacy, that is ingested into Security Command
+      # Center for presentation, notification, analysis, policy testing, and
+      # enforcement. For example, a cross-site scripting (XSS) vulnerability in an App
+      # Engine application is a finding.
       class Finding
         include Google::Apis::Core::Hashable
       
-        # The additional taxonomy group within findings from a given source.
-        # This field is immutable after creation time.
-        # Example: "XSS_FLASH_INJECTION"
+        # The additional taxonomy group within findings from a given source. This field
+        # is immutable after creation time. Example: "XSS_FLASH_INJECTION"
         # Corresponds to the JSON property `category`
         # @return [String]
         attr_accessor :category
@@ -62,59 +58,56 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The time at which the event took place. For example, if the finding
-        # represents an open firewall it would capture the time the detector believes
-        # the firewall became open. The accuracy is determined by the detector.
+        # The time at which the event took place. For example, if the finding represents
+        # an open firewall it would capture the time the detector believes the firewall
+        # became open. The accuracy is determined by the detector.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
       
-        # The URI that, if available, points to a web page outside of Security
-        # Command Center where additional information about the finding can be found.
-        # This field is guaranteed to be either empty or a well formed URL.
+        # The URI that, if available, points to a web page outside of Security Command
+        # Center where additional information about the finding can be found. This field
+        # is guaranteed to be either empty or a well formed URL.
         # Corresponds to the JSON property `externalUri`
         # @return [String]
         attr_accessor :external_uri
       
-        # The relative resource name of this finding. See:
-        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
-        # Example:
-        # "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`"
+        # The relative resource name of this finding. See: https://cloud.google.com/apis/
+        # design/resource_names#relative_resource_name Example: "organizations/`
+        # organization_id`/sources/`source_id`/findings/`finding_id`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The relative resource name of the source the finding belongs to. See:
-        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
-        # This field is immutable after creation time.
-        # For example:
-        # "organizations/`organization_id`/sources/`source_id`"
+        # The relative resource name of the source the finding belongs to. See: https://
+        # cloud.google.com/apis/design/resource_names#relative_resource_name This field
+        # is immutable after creation time. For example: "organizations/`organization_id`
+        # /sources/`source_id`"
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
-        # For findings on Google Cloud resources, the full resource
-        # name of the Google Cloud resource this finding is for. See:
-        # https://cloud.google.com/apis/design/resource_names#full_resource_name
-        # When the finding is for a non-Google Cloud resource, the resourceName can
-        # be a customer or partner defined string. This field is immutable after
-        # creation time.
+        # For findings on Google Cloud resources, the full resource name of the Google
+        # Cloud resource this finding is for. See: https://cloud.google.com/apis/design/
+        # resource_names#full_resource_name When the finding is for a non-Google Cloud
+        # resource, the resourceName can be a customer or partner defined string. This
+        # field is immutable after creation time.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
       
-        # User specified security marks that are attached to the parent Security
-        # Command Center resource. Security marks are scoped within a Security Command
-        # Center organization -- they can be modified and viewed by all users who have
-        # proper permissions on the organization.
+        # User specified security marks that are attached to the parent Security Command
+        # Center resource. Security marks are scoped within a Security Command Center
+        # organization -- they can be modified and viewed by all users who have proper
+        # permissions on the organization.
         # Corresponds to the JSON property `securityMarks`
         # @return [Google::Apis::SecuritycenterV1p1alpha1::SecurityMarks]
         attr_accessor :security_marks
       
-        # Source specific properties. These properties are managed by the source
-        # that writes the finding. The key names in the source_properties map must be
-        # between 1 and 255 characters, and must start with a letter and contain
-        # alphanumeric characters or underscores only.
+        # Source specific properties. These properties are managed by the source that
+        # writes the finding. The key names in the source_properties map must be between
+        # 1 and 255 characters, and must start with a letter and contain alphanumeric
+        # characters or underscores only.
         # Corresponds to the JSON property `sourceProperties`
         # @return [Hash<String,Object>]
         attr_accessor :source_properties
@@ -147,12 +140,11 @@ module Google
       class GoogleCloudSecuritycenterV1NotificationMessage
         include Google::Apis::Core::Hashable
       
-        # Security Command Center finding.
-        # A finding is a record of assessment data like security, risk, health, or
-        # privacy, that is ingested into Security Command Center for presentation,
-        # notification, analysis, policy testing, and enforcement. For example, a
-        # cross-site scripting (XSS) vulnerability in an App Engine application is a
-        # finding.
+        # Security Command Center finding. A finding is a record of assessment data like
+        # security, risk, health, or privacy, that is ingested into Security Command
+        # Center for presentation, notification, analysis, policy testing, and
+        # enforcement. For example, a cross-site scripting (XSS) vulnerability in an App
+        # Engine application is a finding.
         # Corresponds to the JSON property `finding`
         # @return [Google::Apis::SecuritycenterV1p1alpha1::Finding]
         attr_accessor :finding
@@ -183,8 +175,8 @@ module Google
       class GoogleCloudSecuritycenterV1Resource
         include Google::Apis::Core::Hashable
       
-        # The full resource name of the resource. See:
-        # https://cloud.google.com/apis/design/resource_names#full_resource_name
+        # The full resource name of the resource. See: https://cloud.google.com/apis/
+        # design/resource_names#full_resource_name
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -273,12 +265,11 @@ module Google
         end
       end
       
-      # Security Command Center representation of a Google Cloud
-      # resource.
-      # The Asset is a Security Command Center resource that captures information
-      # about a single Google Cloud resource. All modifications to an Asset are only
-      # within the context of Security Command Center and don't affect the referenced
-      # Google Cloud resource.
+      # Security Command Center representation of a Google Cloud resource. The Asset
+      # is a Security Command Center resource that captures information about a single
+      # Google Cloud resource. All modifications to an Asset are only within the
+      # context of Security Command Center and don't affect the referenced Google
+      # Cloud resource.
       class GoogleCloudSecuritycenterV1p1beta1Asset
         include Google::Apis::Core::Hashable
       
@@ -289,22 +280,20 @@ module Google
       
         # Cloud IAM Policy information associated with the Google Cloud resource
         # described by the Security Command Center asset. This information is managed
-        # and defined by the Google Cloud resource and cannot be modified by the
-        # user.
+        # and defined by the Google Cloud resource and cannot be modified by the user.
         # Corresponds to the JSON property `iamPolicy`
         # @return [Google::Apis::SecuritycenterV1p1alpha1::GoogleCloudSecuritycenterV1p1beta1IamPolicy]
         attr_accessor :iam_policy
       
-        # The relative resource name of this asset. See:
-        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
-        # Example:
-        # "organizations/`organization_id`/assets/`asset_id`".
+        # The relative resource name of this asset. See: https://cloud.google.com/apis/
+        # design/resource_names#relative_resource_name Example: "organizations/`
+        # organization_id`/assets/`asset_id`".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Resource managed properties. These properties are managed and defined by
-        # the Google Cloud resource and cannot be modified by the user.
+        # Resource managed properties. These properties are managed and defined by the
+        # Google Cloud resource and cannot be modified by the user.
         # Corresponds to the JSON property `resourceProperties`
         # @return [Hash<String,Object>]
         attr_accessor :resource_properties
@@ -315,16 +304,15 @@ module Google
         # @return [Google::Apis::SecuritycenterV1p1alpha1::GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties]
         attr_accessor :security_center_properties
       
-        # User specified security marks that are attached to the parent Security
-        # Command Center resource. Security marks are scoped within a Security Command
-        # Center organization -- they can be modified and viewed by all users who have
-        # proper permissions on the organization.
+        # User specified security marks that are attached to the parent Security Command
+        # Center resource. Security marks are scoped within a Security Command Center
+        # organization -- they can be modified and viewed by all users who have proper
+        # permissions on the organization.
         # Corresponds to the JSON property `securityMarks`
         # @return [Google::Apis::SecuritycenterV1p1alpha1::GoogleCloudSecuritycenterV1p1beta1SecurityMarks]
         attr_accessor :security_marks
       
-        # The time at which the asset was last updated, added, or deleted in Cloud
-        # SCC.
+        # The time at which the asset was last updated, added, or deleted in Cloud SCC.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -345,17 +333,15 @@ module Google
         end
       end
       
-      # Security Command Center finding.
-      # A finding is a record of assessment data (security, risk, health or privacy)
-      # ingested into Security Command Center for presentation, notification,
-      # analysis, policy testing, and enforcement. For example, an XSS vulnerability
-      # in an App Engine application is a finding.
+      # Security Command Center finding. A finding is a record of assessment data (
+      # security, risk, health or privacy) ingested into Security Command Center for
+      # presentation, notification, analysis, policy testing, and enforcement. For
+      # example, an XSS vulnerability in an App Engine application is a finding.
       class GoogleCloudSecuritycenterV1p1beta1Finding
         include Google::Apis::Core::Hashable
       
-        # The additional taxonomy group within findings from a given source.
-        # This field is immutable after creation time.
-        # Example: "XSS_FLASH_INJECTION"
+        # The additional taxonomy group within findings from a given source. This field
+        # is immutable after creation time. Example: "XSS_FLASH_INJECTION"
         # Corresponds to the JSON property `category`
         # @return [String]
         attr_accessor :category
@@ -365,59 +351,56 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The time at which the event took place. For example, if the finding
-        # represents an open firewall it would capture the time the detector believes
-        # the firewall became open. The accuracy is determined by the detector.
+        # The time at which the event took place. For example, if the finding represents
+        # an open firewall it would capture the time the detector believes the firewall
+        # became open. The accuracy is determined by the detector.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
       
-        # The URI that, if available, points to a web page outside of Security
-        # Command Center where additional information about the finding can be found.
-        # This field is guaranteed to be either empty or a well formed URL.
+        # The URI that, if available, points to a web page outside of Security Command
+        # Center where additional information about the finding can be found. This field
+        # is guaranteed to be either empty or a well formed URL.
         # Corresponds to the JSON property `externalUri`
         # @return [String]
         attr_accessor :external_uri
       
-        # The relative resource name of this finding. See:
-        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
-        # Example:
-        # "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`"
+        # The relative resource name of this finding. See: https://cloud.google.com/apis/
+        # design/resource_names#relative_resource_name Example: "organizations/`
+        # organization_id`/sources/`source_id`/findings/`finding_id`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The relative resource name of the source the finding belongs to. See:
-        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
-        # This field is immutable after creation time.
-        # For example:
-        # "organizations/`organization_id`/sources/`source_id`"
+        # The relative resource name of the source the finding belongs to. See: https://
+        # cloud.google.com/apis/design/resource_names#relative_resource_name This field
+        # is immutable after creation time. For example: "organizations/`organization_id`
+        # /sources/`source_id`"
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
-        # For findings on Google Cloud resources, the full resource
-        # name of the Google Cloud resource this finding is for. See:
-        # https://cloud.google.com/apis/design/resource_names#full_resource_name
-        # When the finding is for a non-Google Cloud resource, the resourceName can
-        # be a customer or partner defined string. This field is immutable after
-        # creation time.
+        # For findings on Google Cloud resources, the full resource name of the Google
+        # Cloud resource this finding is for. See: https://cloud.google.com/apis/design/
+        # resource_names#full_resource_name When the finding is for a non-Google Cloud
+        # resource, the resourceName can be a customer or partner defined string. This
+        # field is immutable after creation time.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
       
-        # User specified security marks that are attached to the parent Security
-        # Command Center resource. Security marks are scoped within a Security Command
-        # Center organization -- they can be modified and viewed by all users who have
-        # proper permissions on the organization.
+        # User specified security marks that are attached to the parent Security Command
+        # Center resource. Security marks are scoped within a Security Command Center
+        # organization -- they can be modified and viewed by all users who have proper
+        # permissions on the organization.
         # Corresponds to the JSON property `securityMarks`
         # @return [Google::Apis::SecuritycenterV1p1alpha1::GoogleCloudSecuritycenterV1p1beta1SecurityMarks]
         attr_accessor :security_marks
       
-        # Source specific properties. These properties are managed by the source
-        # that writes the finding. The key names in the source_properties map must be
-        # between 1 and 255 characters, and must start with a letter and contain
-        # alphanumeric characters or underscores only.
+        # Source specific properties. These properties are managed by the source that
+        # writes the finding. The key names in the source_properties map must be between
+        # 1 and 255 characters, and must start with a letter and contain alphanumeric
+        # characters or underscores only.
         # Corresponds to the JSON property `sourceProperties`
         # @return [Hash<String,Object>]
         attr_accessor :source_properties
@@ -448,14 +431,12 @@ module Google
       
       # Cloud IAM Policy information associated with the Google Cloud resource
       # described by the Security Command Center asset. This information is managed
-      # and defined by the Google Cloud resource and cannot be modified by the
-      # user.
+      # and defined by the Google Cloud resource and cannot be modified by the user.
       class GoogleCloudSecuritycenterV1p1beta1IamPolicy
         include Google::Apis::Core::Hashable
       
-        # The JSON representation of the Policy associated with the asset.
-        # See https://cloud.google.com/iam/docs/reference/rest/v1/Policy for
-        # format details.
+        # The JSON representation of the Policy associated with the asset. See https://
+        # cloud.google.com/iam/docs/reference/rest/v1/Policy for format details.
         # Corresponds to the JSON property `policyBlob`
         # @return [String]
         attr_accessor :policy_blob
@@ -474,11 +455,10 @@ module Google
       class GoogleCloudSecuritycenterV1p1beta1NotificationMessage
         include Google::Apis::Core::Hashable
       
-        # Security Command Center finding.
-        # A finding is a record of assessment data (security, risk, health or privacy)
-        # ingested into Security Command Center for presentation, notification,
-        # analysis, policy testing, and enforcement. For example, an XSS vulnerability
-        # in an App Engine application is a finding.
+        # Security Command Center finding. A finding is a record of assessment data (
+        # security, risk, health or privacy) ingested into Security Command Center for
+        # presentation, notification, analysis, policy testing, and enforcement. For
+        # example, an XSS vulnerability in an App Engine application is a finding.
         # Corresponds to the JSON property `finding`
         # @return [Google::Apis::SecuritycenterV1p1alpha1::GoogleCloudSecuritycenterV1p1beta1Finding]
         attr_accessor :finding
@@ -493,8 +473,8 @@ module Google
         # @return [Google::Apis::SecuritycenterV1p1alpha1::GoogleCloudSecuritycenterV1p1beta1Resource]
         attr_accessor :resource
       
-        # Wrapper over asset object that also captures the state change for the asset
-        # e.g. if it was a newly created asset vs updated or deleted asset.
+        # Wrapper over asset object that also captures the state change for the asset e.
+        # g. if it was a newly created asset vs updated or deleted asset.
         # Corresponds to the JSON property `temporalAsset`
         # @return [Google::Apis::SecuritycenterV1p1alpha1::GoogleCloudSecuritycenterV1p1beta1TemporalAsset]
         attr_accessor :temporal_asset
@@ -516,8 +496,8 @@ module Google
       class GoogleCloudSecuritycenterV1p1beta1Resource
         include Google::Apis::Core::Hashable
       
-        # The full resource name of the resource. See:
-        # https://cloud.google.com/apis/design/resource_names#full_resource_name
+        # The full resource name of the resource. See: https://cloud.google.com/apis/
+        # design/resource_names#full_resource_name
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -591,9 +571,9 @@ module Google
         # @return [String]
         attr_accessor :resource_display_name
       
-        # The full resource name of the Google Cloud resource this asset
-        # represents. This field is immutable after create time. See:
-        # https://cloud.google.com/apis/design/resource_names#full_resource_name
+        # The full resource name of the Google Cloud resource this asset represents.
+        # This field is immutable after create time. See: https://cloud.google.com/apis/
+        # design/resource_names#full_resource_name
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -603,8 +583,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_owners
       
-        # The full resource name of the immediate parent of the resource. See:
-        # https://cloud.google.com/apis/design/resource_names#full_resource_name
+        # The full resource name of the immediate parent of the resource. See: https://
+        # cloud.google.com/apis/design/resource_names#full_resource_name
         # Corresponds to the JSON property `resourceParent`
         # @return [String]
         attr_accessor :resource_parent
@@ -614,8 +594,8 @@ module Google
         # @return [String]
         attr_accessor :resource_parent_display_name
       
-        # The full resource name of the project the resource belongs to. See:
-        # https://cloud.google.com/apis/design/resource_names#full_resource_name
+        # The full resource name of the project the resource belongs to. See: https://
+        # cloud.google.com/apis/design/resource_names#full_resource_name
         # Corresponds to the JSON property `resourceProject`
         # @return [String]
         attr_accessor :resource_project
@@ -625,10 +605,9 @@ module Google
         # @return [String]
         attr_accessor :resource_project_display_name
       
-        # The type of the Google Cloud resource. Examples include: APPLICATION,
-        # PROJECT, and ORGANIZATION. This is a case insensitive field defined by
-        # Security Command Center and/or the producer of the resource and is
-        # immutable after create time.
+        # The type of the Google Cloud resource. Examples include: APPLICATION, PROJECT,
+        # and ORGANIZATION. This is a case insensitive field defined by Security Command
+        # Center and/or the producer of the resource and is immutable after create time.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -650,30 +629,26 @@ module Google
         end
       end
       
-      # User specified security marks that are attached to the parent Security
-      # Command Center resource. Security marks are scoped within a Security Command
-      # Center organization -- they can be modified and viewed by all users who have
-      # proper permissions on the organization.
+      # User specified security marks that are attached to the parent Security Command
+      # Center resource. Security marks are scoped within a Security Command Center
+      # organization -- they can be modified and viewed by all users who have proper
+      # permissions on the organization.
       class GoogleCloudSecuritycenterV1p1beta1SecurityMarks
         include Google::Apis::Core::Hashable
       
         # Mutable user specified security marks belonging to the parent resource.
-        # Constraints are as follows:
-        # * Keys and values are treated as case insensitive
-        # * Keys must be between 1 - 256 characters (inclusive)
-        # * Keys must be letters, numbers, underscores, or dashes
-        # * Values have leading and trailing whitespace trimmed, remaining
-        # characters must be between 1 - 4096 characters (inclusive)
+        # Constraints are as follows: * Keys and values are treated as case insensitive *
+        # Keys must be between 1 - 256 characters (inclusive) * Keys must be letters,
+        # numbers, underscores, or dashes * Values have leading and trailing whitespace
+        # trimmed, remaining characters must be between 1 - 4096 characters (inclusive)
         # Corresponds to the JSON property `marks`
         # @return [Hash<String,String>]
         attr_accessor :marks
       
-        # The relative resource name of the SecurityMarks. See:
-        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
-        # Examples:
-        # "organizations/`organization_id`/assets/`asset_id`/securityMarks"
-        # "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`/
-        # securityMarks".
+        # The relative resource name of the SecurityMarks. See: https://cloud.google.com/
+        # apis/design/resource_names#relative_resource_name Examples: "organizations/`
+        # organization_id`/assets/`asset_id`/securityMarks" "organizations/`
+        # organization_id`/sources/`source_id`/findings/`finding_id`/securityMarks".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -689,17 +664,16 @@ module Google
         end
       end
       
-      # Wrapper over asset object that also captures the state change for the asset
-      # e.g. if it was a newly created asset vs updated or deleted asset.
+      # Wrapper over asset object that also captures the state change for the asset e.
+      # g. if it was a newly created asset vs updated or deleted asset.
       class GoogleCloudSecuritycenterV1p1beta1TemporalAsset
         include Google::Apis::Core::Hashable
       
-        # Security Command Center representation of a Google Cloud
-        # resource.
-        # The Asset is a Security Command Center resource that captures information
-        # about a single Google Cloud resource. All modifications to an Asset are only
-        # within the context of Security Command Center and don't affect the referenced
-        # Google Cloud resource.
+        # Security Command Center representation of a Google Cloud resource. The Asset
+        # is a Security Command Center resource that captures information about a single
+        # Google Cloud resource. All modifications to an Asset are only within the
+        # context of Security Command Center and don't affect the referenced Google
+        # Cloud resource.
         # Corresponds to the JSON property `asset`
         # @return [Google::Apis::SecuritycenterV1p1alpha1::GoogleCloudSecuritycenterV1p1beta1Asset]
         attr_accessor :asset
@@ -750,47 +724,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::SecuritycenterV1p1alpha1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -809,30 +781,26 @@ module Google
         end
       end
       
-      # User specified security marks that are attached to the parent Security
-      # Command Center resource. Security marks are scoped within a Security Command
-      # Center organization -- they can be modified and viewed by all users who have
-      # proper permissions on the organization.
+      # User specified security marks that are attached to the parent Security Command
+      # Center resource. Security marks are scoped within a Security Command Center
+      # organization -- they can be modified and viewed by all users who have proper
+      # permissions on the organization.
       class SecurityMarks
         include Google::Apis::Core::Hashable
       
         # Mutable user specified security marks belonging to the parent resource.
-        # Constraints are as follows:
-        # * Keys and values are treated as case insensitive
-        # * Keys must be between 1 - 256 characters (inclusive)
-        # * Keys must be letters, numbers, underscores, or dashes
-        # * Values have leading and trailing whitespace trimmed, remaining
-        # characters must be between 1 - 4096 characters (inclusive)
+        # Constraints are as follows: * Keys and values are treated as case insensitive *
+        # Keys must be between 1 - 256 characters (inclusive) * Keys must be letters,
+        # numbers, underscores, or dashes * Values have leading and trailing whitespace
+        # trimmed, remaining characters must be between 1 - 4096 characters (inclusive)
         # Corresponds to the JSON property `marks`
         # @return [Hash<String,String>]
         attr_accessor :marks
       
-        # The relative resource name of the SecurityMarks. See:
-        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
-        # Examples:
-        # "organizations/`organization_id`/assets/`asset_id`/securityMarks"
-        # "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`/
-        # securityMarks".
+        # The relative resource name of the SecurityMarks. See: https://cloud.google.com/
+        # apis/design/resource_names#relative_resource_name Examples: "organizations/`
+        # organization_id`/assets/`asset_id`/securityMarks" "organizations/`
+        # organization_id`/sources/`source_id`/findings/`finding_id`/securityMarks".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -848,12 +816,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -862,15 +830,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message

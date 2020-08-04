@@ -31,19 +31,15 @@ module Google
         # @return [String]
         attr_accessor :better_ads_status
       
-        # The time at which
-        # [enforcement](https://support.google.com/webtools/answer/7308033) against
-        # the site began or will begin on this platform.
-        # Not set when the
-        # filter_status
-        # is OFF.
+        # The time at which [enforcement](https://support.google.com/webtools/answer/
+        # 7308033) against the site began or will begin on this platform. Not set when
+        # the filter_status is OFF.
         # Corresponds to the JSON property `enforcementTime`
         # @return [String]
         attr_accessor :enforcement_time
       
-        # The site's [enforcement
-        # status](https://support.google.com/webtools/answer/7308033) on this
-        # platform.
+        # The site's [enforcement status](https://support.google.com/webtools/answer/
+        # 7308033) on this platform.
         # Corresponds to the JSON property `filterStatus`
         # @return [String]
         attr_accessor :filter_status
@@ -53,19 +49,16 @@ module Google
         # @return [String]
         attr_accessor :last_change_time
       
-        # The site's regions on this platform.
-        # No longer populated, because there is no longer any semantic difference
-        # between sites in different regions.
+        # The site's regions on this platform. No longer populated, because there is no
+        # longer any semantic difference between sites in different regions.
         # Corresponds to the JSON property `region`
         # @return [Array<String>]
         attr_accessor :region
       
-        # A link to the full Ad Experience Report for the site on this platform..
-        # Not set in
-        # ViolatingSitesResponse.
-        # Note that you must complete the [Search Console verification
-        # process](https://support.google.com/webmasters/answer/9008080) for the site
-        # before you can access the full report.
+        # A link to the full Ad Experience Report for the site on this platform.. Not
+        # set in ViolatingSitesResponse. Note that you must complete the [Search Console
+        # verification process](https://support.google.com/webmasters/answer/9008080)
+        # for the site before you can access the full report.
         # Corresponds to the JSON property `reportUrl`
         # @return [String]
         attr_accessor :report_url

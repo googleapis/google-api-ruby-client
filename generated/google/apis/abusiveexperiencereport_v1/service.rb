@@ -50,9 +50,8 @@ module Google
         
         # Gets a site's Abusive Experience Report summary.
         # @param [String] name
-        #   Required. The name of the site whose summary to get, e.g.
-        #   `sites/http%3A%2F%2Fwww.google.com%2F`.
-        #   Format: `sites/`site``
+        #   Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%
+        #   2Fwww.google.com%2F`. Format: `sites/`site``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

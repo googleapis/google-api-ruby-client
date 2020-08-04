@@ -49,15 +49,13 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
@@ -91,10 +89,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a long-running operation. This method indicates that the client is
-        # no longer interested in the operation result. It does not cancel the
-        # operation. If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation resource to be deleted.
         # @param [String] fields
@@ -124,9 +122,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -156,15 +153,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] filter
         #   The standard list filter.
         # @param [String] name
@@ -204,13 +200,12 @@ module Google
         end
         
         # Enable multiple services on a project. The operation is atomic: if enabling
-        # any service fails, then the entire batch fails, and no state changes occur.
-        # To enable a single service, use the `EnableService` method instead.
+        # any service fails, then the entire batch fails, and no state changes occur. To
+        # enable a single service, use the `EnableService` method instead.
         # @param [String] parent
-        #   Parent to enable services on.
-        #   An example name would be:
-        #   `projects/123` where `123` is the project number.
-        #   The `BatchEnableServices` method currently only supports projects.
+        #   Parent to enable services on. An example name would be: `projects/123` where `
+        #   123` is the project number. The `BatchEnableServices` method currently only
+        #   supports projects.
         # @param [Google::Apis::ServiceusageV1::BatchEnableServicesRequest] batch_enable_services_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -244,17 +239,14 @@ module Google
         # Returns the service configurations and enabled states for a given list of
         # services.
         # @param [String] parent
-        #   Parent to retrieve services from.
-        #   If this is set, the parent of all of the services specified in `names` must
-        #   match this field. An example name would be: `projects/123` where `123` is
-        #   the project number. The `BatchGetServices` method currently only supports
-        #   projects.
+        #   Parent to retrieve services from. If this is set, the parent of all of the
+        #   services specified in `names` must match this field. An example name would be:
+        #   `projects/123` where `123` is the project number. The `BatchGetServices`
+        #   method currently only supports projects.
         # @param [Array<String>, String] names
-        #   Names of the services to retrieve.
-        #   An example name would be:
-        #   `projects/123/services/serviceusage.googleapis.com` where `123` is the
-        #   project number.
-        #   A single request can get a maximum of 30 services at a time.
+        #   Names of the services to retrieve. An example name would be: `projects/123/
+        #   services/serviceusage.googleapis.com` where `123` is the project number. A
+        #   single request can get a maximum of 30 services at a time.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -283,18 +275,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Disable a service so that it can no longer be used with a project.
-        # This prevents unintended usage that may cause unexpected billing
-        # charges or security leaks.
-        # It is not valid to call the disable method on a service that is not
-        # currently enabled. Callers will receive a `FAILED_PRECONDITION` status if
-        # the target service is not currently enabled.
+        # Disable a service so that it can no longer be used with a project. This
+        # prevents unintended usage that may cause unexpected billing charges or
+        # security leaks. It is not valid to call the disable method on a service that
+        # is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status
+        # if the target service is not currently enabled.
         # @param [String] name
-        #   Name of the consumer and service to disable the service on.
-        #   The enable and disable methods currently only support projects.
-        #   An example name would be:
-        #   `projects/123/services/serviceusage.googleapis.com` where `123` is the
-        #   project number.
+        #   Name of the consumer and service to disable the service on. The enable and
+        #   disable methods currently only support projects. An example name would be: `
+        #   projects/123/services/serviceusage.googleapis.com` where `123` is the project
+        #   number.
         # @param [Google::Apis::ServiceusageV1::DisableServiceRequest] disable_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -327,14 +317,11 @@ module Google
         
         # Enable a service so that it can be used with a project.
         # @param [String] name
-        #   Name of the consumer and service to enable the service on.
-        #   The `EnableService` and `DisableService` methods currently only support
-        #   projects.
-        #   Enabling a service requires that the service is public or is shared with
-        #   the user enabling the service.
-        #   An example name would be:
-        #   `projects/123/services/serviceusage.googleapis.com` where `123` is the
-        #   project number.
+        #   Name of the consumer and service to enable the service on. The `EnableService`
+        #   and `DisableService` methods currently only support projects. Enabling a
+        #   service requires that the service is public or is shared with the user
+        #   enabling the service. An example name would be: `projects/123/services/
+        #   serviceusage.googleapis.com` where `123` is the project number.
         # @param [Google::Apis::ServiceusageV1::EnableServiceRequest] enable_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -367,10 +354,9 @@ module Google
         
         # Returns the service configuration and enabled state for a given service.
         # @param [String] name
-        #   Name of the consumer and service to get the `ConsumerState` for.
-        #   An example name would be:
-        #   `projects/123/services/serviceusage.googleapis.com` where `123` is the
-        #   project number.
+        #   Name of the consumer and service to get the `ConsumerState` for. An example
+        #   name would be: `projects/123/services/serviceusage.googleapis.com` where `123`
+        #   is the project number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -398,27 +384,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all services available to the specified project, and the current
-        # state of those services with respect to the project. The list includes
-        # all public services, all services for which the calling user has the
-        # `servicemanagement.services.bind` permission, and all services that have
-        # already been enabled on the project. The list can be filtered to
-        # only include services in a specific state, for example to only include
-        # services enabled on the project.
+        # List all services available to the specified project, and the current state of
+        # those services with respect to the project. The list includes all public
+        # services, all services for which the calling user has the `servicemanagement.
+        # services.bind` permission, and all services that have already been enabled on
+        # the project. The list can be filtered to only include services in a specific
+        # state, for example to only include services enabled on the project.
         # @param [String] parent
-        #   Parent to search for services on.
-        #   An example name would be:
-        #   `projects/123` where `123` is the project number.
+        #   Parent to search for services on. An example name would be: `projects/123`
+        #   where `123` is the project number.
         # @param [String] filter
-        #   Only list services that conform to the given filter.
-        #   The allowed filter strings are `state:ENABLED` and `state:DISABLED`.
+        #   Only list services that conform to the given filter. The allowed filter
+        #   strings are `state:ENABLED` and `state:DISABLED`.
         # @param [Fixnum] page_size
-        #   Requested size of the next page of data.
-        #   Requested page size cannot exceed 200.
+        #   Requested size of the next page of data. Requested page size cannot exceed 200.
         #   If not set, the default page size is 50.
         # @param [String] page_token
-        #   Token identifying which result to start with, which is returned by a
-        #   previous list call.
+        #   Token identifying which result to start with, which is returned by a previous
+        #   list call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

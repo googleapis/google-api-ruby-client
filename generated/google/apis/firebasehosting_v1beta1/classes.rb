@@ -22,8 +22,8 @@ module Google
   module Apis
     module FirebasehostingV1beta1
       
-      # Contains metadata about the user who performed an action, such as creating
-      # a release or finalizing a version.
+      # Contains metadata about the user who performed an action, such as creating a
+      # release or finalizing a version.
       class ActingUser
         include Google::Apis::Core::Hashable
       
@@ -32,8 +32,8 @@ module Google
         # @return [String]
         attr_accessor :email
       
-        # A profile image URL for the user. May not be present if the user has
-        # changed their email address or deleted their account.
+        # A profile image URL for the user. May not be present if the user has changed
+        # their email address or deleted their account.
         # Corresponds to the JSON property `imageUrl`
         # @return [String]
         attr_accessor :image_url
@@ -58,8 +58,8 @@ module Google
         # @return [String]
         attr_accessor :domain_name
       
-        # The value that must be present as a TXT record on the domain name to
-        # satisfy the challenge.
+        # The value that must be present as a TXT record on the domain name to satisfy
+        # the challenge.
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
@@ -79,8 +79,8 @@ module Google
       class CertHttpChallenge
         include Google::Apis::Core::Hashable
       
-        # The URL path on which to serve the specified token to satisfy the
-        # certificate challenge.
+        # The URL path on which to serve the specified token to satisfy the certificate
+        # challenge.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -110,8 +110,8 @@ module Google
       class CloudRunRewrite
         include Google::Apis::Core::Hashable
       
-        # Optional. User-provided region where the Cloud Run service is hosted.<br>
-        # Defaults to `us-central1` if not supplied.
+        # Optional. User-provided region where the Cloud Run service is hosted. Defaults
+        # to `us-central1` if not supplied.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -141,9 +141,9 @@ module Google
         # @return [String]
         attr_accessor :domain_name
       
-        # Defines the behavior of a domain-level redirect. Domain redirects preserve
-        # the path of the redirect but replace the requested domain with the one
-        # specified in the redirect configuration.
+        # Defines the behavior of a domain-level redirect. Domain redirects preserve the
+        # path of the redirect but replace the requested domain with the one specified
+        # in the redirect configuration.
         # Corresponds to the JSON property `domainRedirect`
         # @return [Google::Apis::FirebasehostingV1beta1::DomainRedirect]
         attr_accessor :domain_redirect
@@ -203,8 +203,8 @@ module Google
         # @return [Google::Apis::FirebasehostingV1beta1::CertHttpChallenge]
         attr_accessor :cert_challenge_http
       
-        # The certificate provisioning status; updated when Firebase Hosting
-        # provisions an SSL certificate for the domain.
+        # The certificate provisioning status; updated when Firebase Hosting provisions
+        # an SSL certificate for the domain.
         # Corresponds to the JSON property `certStatus`
         # @return [String]
         attr_accessor :cert_status
@@ -246,9 +246,9 @@ module Google
         end
       end
       
-      # Defines the behavior of a domain-level redirect. Domain redirects preserve
-      # the path of the redirect but replace the requested domain with the one
-      # specified in the redirect configuration.
+      # Defines the behavior of a domain-level redirect. Domain redirects preserve the
+      # path of the redirect but replace the requested domain with the one specified
+      # in the redirect configuration.
       class DomainRedirect
         include Google::Apis::Core::Hashable
       
@@ -273,13 +273,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -292,15 +290,14 @@ module Google
         end
       end
       
-      # A [`header`](/docs/hosting/full-config#headers) is an object that specifies
-      # a URL pattern that, if matched to the request URL path, triggers Hosting to
+      # A [`header`](/docs/hosting/full-config#headers) is an object that specifies a
+      # URL pattern that, if matched to the request URL path, triggers Hosting to
       # apply the specified custom response headers.
       class Header
         include Google::Apis::Core::Hashable
       
-        # The user-supplied
-        # [glob](/docs/hosting/full-config#glob_pattern_matching) to match
-        # against the request URL path.
+        # The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to
+        # match against the request URL path.
         # Corresponds to the JSON property `glob`
         # @return [String]
         attr_accessor :glob
@@ -310,8 +307,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :headers
       
-        # The user-supplied RE2 regular expression to match against the request
-        # URL path.
+        # The user-supplied RE2 regular expression to match against the request URL path.
         # Corresponds to the JSON property `regex`
         # @return [String]
         attr_accessor :regex
@@ -357,10 +353,9 @@ module Google
       class ListReleasesResponse
         include Google::Apis::Core::Hashable
       
-        # If there are additional releases remaining beyond the ones in this
-        # response, then supply this token in the next
-        # [`list`](../sites.versions.files/list) call to continue with the next set
-        # of releases.
+        # If there are additional releases remaining beyond the ones in this response,
+        # then supply this token in the next [`list`](../sites.versions.files/list) call
+        # to continue with the next set of releases.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -436,47 +431,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::FirebasehostingV1beta1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -499,10 +492,10 @@ module Google
       class PopulateVersionFilesRequest
         include Google::Apis::Core::Hashable
       
-        # A set of file paths to the hashes corresponding to assets that should be
-        # added to the version. Note that a file path to an empty hash will remove
-        # the path from the version. Calculate a hash by Gzipping the file then
-        # taking the SHA256 hash of the newly compressed file.
+        # A set of file paths to the hashes corresponding to assets that should be added
+        # to the version. Note that a file path to an empty hash will remove the path
+        # from the version. Calculate a hash by Gzipping the file then taking the SHA256
+        # hash of the newly compressed file.
         # Corresponds to the JSON property `files`
         # @return [Hash<String,String>]
         attr_accessor :files
@@ -527,10 +520,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :upload_required_hashes
       
-        # The URL to which the files should be uploaded, in the format:
-        # <br>"https://upload-firebasehosting.googleapis.com/upload/sites/<var>site-name<
-        # /var>/versions/<var>versionID</var>/files".
-        # <br>Perform a multipart `POST` of the Gzipped file contents to the URL
+        # The URL to which the files should be uploaded, in the format: "https://upload-
+        # firebasehosting.googleapis.com/upload/sites/site-name /versions/versionID/
+        # files". Perform a multipart `POST` of the Gzipped file contents to the URL
         # using a forward slash and the hash of the file appended to the end.
         # Corresponds to the JSON property `uploadUrl`
         # @return [String]
@@ -547,9 +539,8 @@ module Google
         end
       end
       
-      # Version preview configuration. If active and unexpired,
-      # this version will be accessible via a custom URL even
-      # if it is not the currently released version.
+      # Version preview configuration. If active and unexpired, this version will be
+      # accessible via a custom URL even if it is not the currently released version.
       class PreviewConfig
         include Google::Apis::Core::Hashable
       
@@ -559,8 +550,8 @@ module Google
         attr_accessor :active
         alias_method :active?, :active
       
-        # Indicates the expiration time for previewing this
-        # version; preview URL requests received after this time will 404.
+        # Indicates the expiration time for previewing this version; preview URL
+        # requests received after this time will 404.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
@@ -577,38 +568,33 @@ module Google
       end
       
       # A [`redirect`](/docs/hosting/full-config#redirects) object specifies a URL
-      # pattern that, if matched to the request URL path, triggers Hosting to
-      # respond with a redirect to the specified destination path.
+      # pattern that, if matched to the request URL path, triggers Hosting to respond
+      # with a redirect to the specified destination path.
       class Redirect
         include Google::Apis::Core::Hashable
       
-        # The user-supplied
-        # [glob](/docs/hosting/full-config#glob_pattern_matching) to match
-        # against the request URL path.
+        # The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to
+        # match against the request URL path.
         # Corresponds to the JSON property `glob`
         # @return [String]
         attr_accessor :glob
       
-        # Required. The value to put in the HTTP location header of the response.
-        # <br>The location can contain capture group values from the pattern using
-        # a `:` prefix to identify the segment and an optional `*` to capture the
-        # rest of the URL.
-        # For example:
-        # <code>"glob": "/:capture*",
-        # <br>"statusCode": 301,
-        # <br>"location": "https://example.com/foo/:capture"</code>
+        # Required. The value to put in the HTTP location header of the response. The
+        # location can contain capture group values from the pattern using a `:` prefix
+        # to identify the segment and an optional `*` to capture the rest of the URL.
+        # For example: "glob": "/:capture*", "statusCode": 301, "location": "https://
+        # example.com/foo/:capture"
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # The user-supplied RE2 regular expression to match against the request
-        # URL path.
+        # The user-supplied RE2 regular expression to match against the request URL path.
         # Corresponds to the JSON property `regex`
         # @return [String]
         attr_accessor :regex
       
-        # Required. The status HTTP code to return in the response. It must be a
-        # valid 3xx status code.
+        # Required. The status HTTP code to return in the response. It must be a valid
+        # 3xx status code.
         # Corresponds to the JSON property `statusCode`
         # @return [Fixnum]
         attr_accessor :status_code
@@ -626,22 +612,20 @@ module Google
         end
       end
       
-      # A `Release` is a particular
-      # [collection of configurations and files](sites.versions)
-      # that is set to be public at a particular time.
+      # A `Release` is a particular [collection of configurations and files](sites.
+      # versions) that is set to be public at a particular time.
       class Release
         include Google::Apis::Core::Hashable
       
         # The deploy description when the release was created. The value can be up to
-        # 512&nbsp;characters.
+        # 512 characters.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
       
-        # Output only. The unique identifier for the release, in the format:
-        # <code>sites/<var>site-name</var>/releases/<var>releaseID</var></code>
-        # This name is provided in the response body when you call the
-        # [`CreateRelease`](sites.releases/create) endpoint.
+        # Output only. The unique identifier for the release, in the format: sites/ site-
+        # name/releases/releaseID This name is provided in the response body when you
+        # call the [`CreateRelease`](sites.releases/create) endpoint.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -651,21 +635,20 @@ module Google
         # @return [String]
         attr_accessor :release_time
       
-        # Contains metadata about the user who performed an action, such as creating
-        # a release or finalizing a version.
+        # Contains metadata about the user who performed an action, such as creating a
+        # release or finalizing a version.
         # Corresponds to the JSON property `releaseUser`
         # @return [Google::Apis::FirebasehostingV1beta1::ActingUser]
         attr_accessor :release_user
       
-        # Explains the reason for the release.
-        # <br>Specify a value for this field only when creating a `SITE_DISABLE`
-        # type release.
+        # Explains the reason for the release. Specify a value for this field only when
+        # creating a `SITE_DISABLE` type release.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # A `Version` is the collection of configuration and
-        # [static files](sites.versions.files) that determine how a site is displayed.
+        # A `Version` is the collection of configuration and [static files](sites.
+        # versions.files) that determine how a site is displayed.
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::FirebasehostingV1beta1::Version]
         attr_accessor :version
@@ -686,8 +669,8 @@ module Google
       end
       
       # A [`rewrite`](/docs/hosting/full-config#rewrites) object specifies a URL
-      # pattern that, if matched to the request URL path, triggers Hosting to
-      # respond as if the service were given the specified destination URL.
+      # pattern that, if matched to the request URL path, triggers Hosting to respond
+      # as if the service were given the specified destination URL.
       class Rewrite
         include Google::Apis::Core::Hashable
       
@@ -697,15 +680,14 @@ module Google
         attr_accessor :dynamic_links
         alias_method :dynamic_links?, :dynamic_links
       
-        # The function to proxy requests to. Must match the exported function
-        # name exactly.
+        # The function to proxy requests to. Must match the exported function name
+        # exactly.
         # Corresponds to the JSON property `function`
         # @return [String]
         attr_accessor :function
       
-        # The user-supplied
-        # [glob](/docs/hosting/full-config#glob_pattern_matching) to match
-        # against the request URL path.
+        # The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to
+        # match against the request URL path.
         # Corresponds to the JSON property `glob`
         # @return [String]
         attr_accessor :glob
@@ -715,8 +697,7 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # The user-supplied RE2 regular expression to match against the request
-        # URL path.
+        # The user-supplied RE2 regular expression to match against the request URL path.
         # Corresponds to the JSON property `regex`
         # @return [String]
         attr_accessor :regex
@@ -748,8 +729,8 @@ module Google
       # The configuration for how incoming requests to a site should be routed and
       # processed before serving content. The URL request paths are matched against
       # the specified URL patterns in the configuration, then Hosting applies the
-      # applicable configuration according to a specific
-      # [priority order](/docs/hosting/full-config#hosting_priority_order).
+      # applicable configuration according to a specific [priority order](/docs/
+      # hosting/full-config#hosting_priority_order).
       class ServingConfig
         include Google::Apis::Core::Hashable
       
@@ -771,16 +752,16 @@ module Google
         # @return [Array<Google::Apis::FirebasehostingV1beta1::Header>]
         attr_accessor :headers
       
-        # An array of objects (called redirect rules), where each rule specifies a
-        # URL pattern that, if matched to the request URL path, triggers Hosting to
-        # respond with a redirect to the specified destination path.
+        # An array of objects (called redirect rules), where each rule specifies a URL
+        # pattern that, if matched to the request URL path, triggers Hosting to respond
+        # with a redirect to the specified destination path.
         # Corresponds to the JSON property `redirects`
         # @return [Array<Google::Apis::FirebasehostingV1beta1::Redirect>]
         attr_accessor :redirects
       
         # An array of objects (called rewrite rules), where each rule specifies a URL
-        # pattern that, if matched to the request URL path, triggers Hosting to
-        # respond as if the service were given the specified destination URL.
+        # pattern that, if matched to the request URL path, triggers Hosting to respond
+        # as if the service were given the specified destination URL.
         # Corresponds to the JSON property `rewrites`
         # @return [Array<Google::Apis::FirebasehostingV1beta1::Rewrite>]
         attr_accessor :rewrites
@@ -805,23 +786,22 @@ module Google
         end
       end
       
-      # A `SiteConfig` contains metadata associated with a specific site that
-      # controls Firebase Hosting serving behavior
+      # A `SiteConfig` contains metadata associated with a specific site that controls
+      # Firebase Hosting serving behavior
       class SiteConfig
         include Google::Apis::Core::Hashable
       
-        # Whether or not web requests made by site visitors are logged via Cloud
-        # Logging.
+        # Whether or not web requests made by site visitors are logged via Cloud Logging.
         # Corresponds to the JSON property `cloudLoggingEnabled`
         # @return [Boolean]
         attr_accessor :cloud_logging_enabled
         alias_method :cloud_logging_enabled?, :cloud_logging_enabled
       
-        # The number of FINALIZED versions that will be held for a site before
-        # automatic deletion. When a new version is deployed, content for versions
-        # in storage in excess of this number will be deleted, and will no longer be
-        # billed for storage usage. Oldest versions will be deleted first; sites are
-        # created with an unlimited number of max_versions by default.
+        # The number of FINALIZED versions that will be held for a site before automatic
+        # deletion. When a new version is deployed, content for versions in storage in
+        # excess of this number will be deleted, and will no longer be billed for
+        # storage usage. Oldest versions will be deleted first; sites are created with
+        # an unlimited number of max_versions by default.
         # Corresponds to the JSON property `maxVersions`
         # @return [Fixnum]
         attr_accessor :max_versions
@@ -837,12 +817,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -851,15 +831,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -876,16 +856,16 @@ module Google
         end
       end
       
-      # A `Version` is the collection of configuration and
-      # [static files](sites.versions.files) that determine how a site is displayed.
+      # A `Version` is the collection of configuration and [static files](sites.
+      # versions.files) that determine how a site is displayed.
       class Version
         include Google::Apis::Core::Hashable
       
         # The configuration for how incoming requests to a site should be routed and
         # processed before serving content. The URL request paths are matched against
         # the specified URL patterns in the configuration, then Hosting applies the
-        # applicable configuration according to a specific
-        # [priority order](/docs/hosting/full-config#hosting_priority_order).
+        # applicable configuration according to a specific [priority order](/docs/
+        # hosting/full-config#hosting_priority_order).
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::FirebasehostingV1beta1::ServingConfig]
         attr_accessor :config
@@ -895,8 +875,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Contains metadata about the user who performed an action, such as creating
-        # a release or finalizing a version.
+        # Contains metadata about the user who performed an action, such as creating a
+        # release or finalizing a version.
         # Corresponds to the JSON property `createUser`
         # @return [Google::Apis::FirebasehostingV1beta1::ActingUser]
         attr_accessor :create_user
@@ -906,14 +886,14 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
-        # Contains metadata about the user who performed an action, such as creating
-        # a release or finalizing a version.
+        # Contains metadata about the user who performed an action, such as creating a
+        # release or finalizing a version.
         # Corresponds to the JSON property `deleteUser`
         # @return [Google::Apis::FirebasehostingV1beta1::ActingUser]
         attr_accessor :delete_user
       
-        # Output only. The total number of files associated with the version.
-        # <br>This value is calculated after a version is `FINALIZED`.
+        # Output only. The total number of files associated with the version. This value
+        # is calculated after a version is `FINALIZED`.
         # Corresponds to the JSON property `fileCount`
         # @return [Fixnum]
         attr_accessor :file_count
@@ -923,8 +903,8 @@ module Google
         # @return [String]
         attr_accessor :finalize_time
       
-        # Contains metadata about the user who performed an action, such as creating
-        # a release or finalizing a version.
+        # Contains metadata about the user who performed an action, such as creating a
+        # release or finalizing a version.
         # Corresponds to the JSON property `finalizeUser`
         # @return [Google::Apis::FirebasehostingV1beta1::ActingUser]
         attr_accessor :finalize_user
@@ -934,41 +914,33 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The unique identifier for a version, in the format:
-        # <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
-        # This name is provided in the response body when you call the
-        # [`CreateVersion`](../sites.versions/create) endpoint.
+        # The unique identifier for a version, in the format: sites/site-name /versions/
+        # versionID This name is provided in the response body when you call the [`
+        # CreateVersion`](../sites.versions/create) endpoint.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Version preview configuration. If active and unexpired,
-        # this version will be accessible via a custom URL even
-        # if it is not the currently released version.
+        # Version preview configuration. If active and unexpired, this version will be
+        # accessible via a custom URL even if it is not the currently released version.
         # Corresponds to the JSON property `preview`
         # @return [Google::Apis::FirebasehostingV1beta1::PreviewConfig]
         attr_accessor :preview
       
-        # The deploy status of a version.
-        # <br>
-        # <br>For a successful deploy, call the
-        # [`CreateVersion`](sites.versions/create) endpoint to make a new version
-        # (`CREATED` status),
-        # [upload all desired files](sites.versions/populateFiles) to the version,
-        # then [update](sites.versions/patch) the version to the `FINALIZED` status.
-        # <br>
-        # <br>Note that if you leave the version in the `CREATED` state for more
-        # than 12&nbsp;hours, the system will automatically mark the version as
-        # `ABANDONED`.
-        # <br>
-        # <br>You can also change the status of a version to `DELETED` by calling the
-        # [`DeleteVersion`](sites.versions/delete) endpoint.
+        # The deploy status of a version. For a successful deploy, call the [`
+        # CreateVersion`](sites.versions/create) endpoint to make a new version (`
+        # CREATED` status), [upload all desired files](sites.versions/populateFiles) to
+        # the version, then [update](sites.versions/patch) the version to the `FINALIZED`
+        # status. Note that if you leave the version in the `CREATED` state for more
+        # than 12 hours, the system will automatically mark the version as `ABANDONED`.
+        # You can also change the status of a version to `DELETED` by calling the [`
+        # DeleteVersion`](sites.versions/delete) endpoint.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
-        # Output only. The total stored bytesize of the version.
-        # <br>This value is calculated after a version is `FINALIZED`.
+        # Output only. The total stored bytesize of the version. This value is
+        # calculated after a version is `FINALIZED`.
         # Corresponds to the JSON property `versionBytes`
         # @return [Fixnum]
         attr_accessor :version_bytes
@@ -1009,9 +981,8 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Output only. The current status of a particular file in the specified
-        # version.
-        # <br>The value will be either `pending upload` or `uploaded`.
+        # Output only. The current status of a particular file in the specified version.
+        # The value will be either `pending upload` or `uploaded`.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status

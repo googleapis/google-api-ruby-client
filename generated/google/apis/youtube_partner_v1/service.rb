@@ -44,8 +44,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://youtubepartner.googleapis.com/', '')
-          @batch_path = 'batch'
+          super('https://www.googleapis.com/', '')
+          @batch_path = 'batch/youtubePartner/v1'
         end
         
         # Insert an asset label for an owner.

@@ -52,44 +52,36 @@ module Google
         
         # Lists creatives.
         # @param [String] parent
-        #   Required. Name of the parent buyer that owns the creatives.
-        #   The pattern for this resource is either `buyers/`buyerAccountId`` or
-        #   `bidders/`bidderAccountId``.
-        #   For `buyers/`buyerAccountId``, the `buyerAccountId` can be one of the
-        #   following:
-        #   1. The ID of the buyer that is accessing their own creatives.
-        #   2. The ID of the child seat buyer under a bidder account.
-        #   So for listing creatives pertaining to the child seat buyer (`456`)
-        #   under bidder account (`123`), you would use the pattern: `buyers/456`.
-        #   3. The ID of the bidder itself.
-        #   So for listing creatives pertaining to bidder (`123`),
-        #   you would use `buyers/123`.
-        #   If you want to access all creatives pertaining to both the bidder and all
-        #   of its child seat accounts, you would use `bidders/`bidderAccountId``,
-        #   e.g., for all creatives pertaining to bidder (`123`), use `bidders/123`.
+        #   Required. Name of the parent buyer that owns the creatives. The pattern for
+        #   this resource is either `buyers/`buyerAccountId`` or `bidders/`bidderAccountId`
+        #   `. For `buyers/`buyerAccountId``, the `buyerAccountId` can be one of the
+        #   following: 1. The ID of the buyer that is accessing their own creatives. 2.
+        #   The ID of the child seat buyer under a bidder account. So for listing
+        #   creatives pertaining to the child seat buyer (`456`) under bidder account (`
+        #   123`), you would use the pattern: `buyers/456`. 3. The ID of the bidder itself.
+        #   So for listing creatives pertaining to bidder (`123`), you would use `buyers/
+        #   123`. If you want to access all creatives pertaining to both the bidder and
+        #   all of its child seat accounts, you would use `bidders/`bidderAccountId``, e.g.
+        #   , for all creatives pertaining to bidder (`123`), use `bidders/123`.
         # @param [String] filter
-        #   Query string to filter creatives. If no filter is specified,
-        #   all active creatives will be returned.
-        #   Example: 'accountId=12345 AND (dealsStatus:DISAPPROVED AND
-        #   disapprovalReason:UNACCEPTABLE_CONTENT) OR
-        #   declaredAttributes:IS_COOKIE_TARGETED'
+        #   Query string to filter creatives. If no filter is specified, all active
+        #   creatives will be returned. Example: 'accountId=12345 AND (dealsStatus:
+        #   DISAPPROVED AND disapprovalReason:UNACCEPTABLE_CONTENT) OR declaredAttributes:
+        #   IS_COOKIE_TARGETED'
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer creatives than requested
-        #   (due to timeout constraint) even if more are available via another call.
-        #   If unspecified, server will pick an appropriate default.
-        #   Acceptable values are 1 to 1000, inclusive.
+        #   Requested page size. The server may return fewer creatives than requested (due
+        #   to timeout constraint) even if more are available via another call. If
+        #   unspecified, server will pick an appropriate default. Acceptable values are 1
+        #   to 1000, inclusive.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListCreativesResponse.nextPageToken
-        #   returned from the previous call to the 'ListCreatives' method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListCreativesResponse.nextPageToken returned from the
+        #   previous call to the 'ListCreatives' method.
         # @param [String] view
-        #   Controls the amount of information included in the response.
-        #   By default only
-        #   creativeServingDecision
-        #   is included. To retrieve the entire creative
-        #   resource (including the declared
-        #   fields and the creative content) specify the view as "FULL".
+        #   Controls the amount of information included in the response. By default only
+        #   creativeServingDecision is included. To retrieve the entire creative resource (
+        #   including the declared fields and the creative content) specify the view as "
+        #   FULL".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -121,17 +113,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Watches all creatives pertaining to a bidder. It is sufficient to invoke
-        # this endpoint once per bidder. A Pub/Sub topic will be created and
-        # notifications will be pushed to the topic when any of the bidder's
-        # creatives change status. All of the bidder's service accounts will have
-        # access to read from the topic.
-        # Subsequent invocations of this method will return the existing
-        # Pub/Sub configuration.
+        # Watches all creatives pertaining to a bidder. It is sufficient to invoke this
+        # endpoint once per bidder. A Pub/Sub topic will be created and notifications
+        # will be pushed to the topic when any of the bidder's creatives change status.
+        # All of the bidder's service accounts will have access to read from the topic.
+        # Subsequent invocations of this method will return the existing Pub/Sub
+        # configuration.
         # @param [String] parent
         #   Required. To watch all creatives pertaining to the bidder and all its child
-        #   seat
-        #   accounts, the bidder must follow the pattern `bidders/`bidderAccountId``.
+        #   seat accounts, the bidder must follow the pattern `bidders/`bidderAccountId``.
         # @param [Google::Apis::RealtimebiddingV1::WatchCreativesRequest] watch_creatives_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -162,21 +152,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets remarketing tag for a buyer. A remarketing tag is a piece of
-        # JavaScript code that can be placed on a web page. When a user
-        # visits a page containing a remarketing tag, Google adds the user to a user
-        # list.
+        # Gets remarketing tag for a buyer. A remarketing tag is a piece of JavaScript
+        # code that can be placed on a web page. When a user visits a page containing a
+        # remarketing tag, Google adds the user to a user list.
         # @param [String] name
         #   Required. To fetch remarketing tag for an account, name must follow the
-        #   pattern
-        #   `buyers/`accountId`` where ``accountId``
-        #   represents ID of a buyer that owns the remarketing tag. For a
-        #   bidder accessing remarketing tag on behalf of a child seat buyer,
-        #   ``accountId`` should represent the ID of the child seat buyer.
-        #   To fetch remarketing tag for a specific user list, name
-        #   must follow the pattern
-        #   `buyers/`accountId`/userLists/`userListId``. See
-        #   UserList.name.
+        #   pattern `buyers/`accountId`` where ``accountId`` represents ID of a buyer that
+        #   owns the remarketing tag. For a bidder accessing remarketing tag on behalf of
+        #   a child seat buyer, ``accountId`` should represent the ID of the child seat
+        #   buyer. To fetch remarketing tag for a specific user list, name must follow the
+        #   pattern `buyers/`accountId`/userLists/`userListId``. See UserList.name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -207,11 +192,10 @@ module Google
         # Creates a creative.
         # @param [String] parent
         #   Required. The name of the parent buyer that the new creative belongs to that
-        #   must
-        #   follow the pattern `buyers/`buyerAccountId``, where ``buyerAccountId``
+        #   must follow the pattern `buyers/`buyerAccountId``, where ``buyerAccountId``
         #   represents the account ID of the buyer who owns a creative. For a bidder
-        #   accessing creatives on behalf of a child seat buyer, ``buyerAccountId``
-        #   should represent the account ID of the child seat buyer.
+        #   accessing creatives on behalf of a child seat buyer, ``buyerAccountId`` should
+        #   represent the account ID of the child seat buyer.
         # @param [Google::Apis::RealtimebiddingV1::Creative] creative_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -244,15 +228,12 @@ module Google
         
         # Gets a creative.
         # @param [String] name
-        #   Required. Name of the creative to retrieve. See
-        #   creative.name.
+        #   Required. Name of the creative to retrieve. See creative.name.
         # @param [String] view
-        #   Controls the amount of information included in the response.
-        #   By default only
-        #   creativeServingDecision
-        #   is included. To retrieve the entire creative
-        #   resource (including the declared
-        #   fields and the creative content) specify the view as "FULL".
+        #   Controls the amount of information included in the response. By default only
+        #   creativeServingDecision is included. To retrieve the entire creative resource (
+        #   including the declared fields and the creative content) specify the view as "
+        #   FULL".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -283,44 +264,36 @@ module Google
         
         # Lists creatives.
         # @param [String] parent
-        #   Required. Name of the parent buyer that owns the creatives.
-        #   The pattern for this resource is either `buyers/`buyerAccountId`` or
-        #   `bidders/`bidderAccountId``.
-        #   For `buyers/`buyerAccountId``, the `buyerAccountId` can be one of the
-        #   following:
-        #   1. The ID of the buyer that is accessing their own creatives.
-        #   2. The ID of the child seat buyer under a bidder account.
-        #   So for listing creatives pertaining to the child seat buyer (`456`)
-        #   under bidder account (`123`), you would use the pattern: `buyers/456`.
-        #   3. The ID of the bidder itself.
-        #   So for listing creatives pertaining to bidder (`123`),
-        #   you would use `buyers/123`.
-        #   If you want to access all creatives pertaining to both the bidder and all
-        #   of its child seat accounts, you would use `bidders/`bidderAccountId``,
-        #   e.g., for all creatives pertaining to bidder (`123`), use `bidders/123`.
+        #   Required. Name of the parent buyer that owns the creatives. The pattern for
+        #   this resource is either `buyers/`buyerAccountId`` or `bidders/`bidderAccountId`
+        #   `. For `buyers/`buyerAccountId``, the `buyerAccountId` can be one of the
+        #   following: 1. The ID of the buyer that is accessing their own creatives. 2.
+        #   The ID of the child seat buyer under a bidder account. So for listing
+        #   creatives pertaining to the child seat buyer (`456`) under bidder account (`
+        #   123`), you would use the pattern: `buyers/456`. 3. The ID of the bidder itself.
+        #   So for listing creatives pertaining to bidder (`123`), you would use `buyers/
+        #   123`. If you want to access all creatives pertaining to both the bidder and
+        #   all of its child seat accounts, you would use `bidders/`bidderAccountId``, e.g.
+        #   , for all creatives pertaining to bidder (`123`), use `bidders/123`.
         # @param [String] filter
-        #   Query string to filter creatives. If no filter is specified,
-        #   all active creatives will be returned.
-        #   Example: 'accountId=12345 AND (dealsStatus:DISAPPROVED AND
-        #   disapprovalReason:UNACCEPTABLE_CONTENT) OR
-        #   declaredAttributes:IS_COOKIE_TARGETED'
+        #   Query string to filter creatives. If no filter is specified, all active
+        #   creatives will be returned. Example: 'accountId=12345 AND (dealsStatus:
+        #   DISAPPROVED AND disapprovalReason:UNACCEPTABLE_CONTENT) OR declaredAttributes:
+        #   IS_COOKIE_TARGETED'
         # @param [Fixnum] page_size
-        #   Requested page size. The server may return fewer creatives than requested
-        #   (due to timeout constraint) even if more are available via another call.
-        #   If unspecified, server will pick an appropriate default.
-        #   Acceptable values are 1 to 1000, inclusive.
+        #   Requested page size. The server may return fewer creatives than requested (due
+        #   to timeout constraint) even if more are available via another call. If
+        #   unspecified, server will pick an appropriate default. Acceptable values are 1
+        #   to 1000, inclusive.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListCreativesResponse.nextPageToken
-        #   returned from the previous call to the 'ListCreatives' method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListCreativesResponse.nextPageToken returned from the
+        #   previous call to the 'ListCreatives' method.
         # @param [String] view
-        #   Controls the amount of information included in the response.
-        #   By default only
-        #   creativeServingDecision
-        #   is included. To retrieve the entire creative
-        #   resource (including the declared
-        #   fields and the creative content) specify the view as "FULL".
+        #   Controls the amount of information included in the response. By default only
+        #   creativeServingDecision is included. To retrieve the entire creative resource (
+        #   including the declared fields and the creative content) specify the view as "
+        #   FULL".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -354,8 +327,7 @@ module Google
         
         # Updates a creative.
         # @param [String] name
-        #   Name of the creative to update. See
-        #   creative.name.
+        #   Name of the creative to update. See creative.name.
         # @param [Google::Apis::RealtimebiddingV1::Creative] creative_object
         # @param [String] update_mask
         #   Field mask to use for partial in-place updates.
@@ -389,11 +361,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Change the status of a user list to CLOSED. This prevents new users from
-        # being added to the user list.
+        # Change the status of a user list to CLOSED. This prevents new users from being
+        # added to the user list.
         # @param [String] name
-        #   Required. The name of the user list to close.
-        #   See UserList.name
+        #   Required. The name of the user list to close. See UserList.name
         # @param [Google::Apis::RealtimebiddingV1::CloseUserListRequest] close_user_list_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -463,8 +434,7 @@ module Google
         
         # Gets a user list by its name.
         # @param [String] name
-        #   Required. The name of the user list to be retrieved. See
-        #   UserList.name.
+        #   Required. The name of the user list to be retrieved. See UserList.name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -492,21 +462,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets remarketing tag for a buyer. A remarketing tag is a piece of
-        # JavaScript code that can be placed on a web page. When a user
-        # visits a page containing a remarketing tag, Google adds the user to a user
-        # list.
+        # Gets remarketing tag for a buyer. A remarketing tag is a piece of JavaScript
+        # code that can be placed on a web page. When a user visits a page containing a
+        # remarketing tag, Google adds the user to a user list.
         # @param [String] name
         #   Required. To fetch remarketing tag for an account, name must follow the
-        #   pattern
-        #   `buyers/`accountId`` where ``accountId``
-        #   represents ID of a buyer that owns the remarketing tag. For a
-        #   bidder accessing remarketing tag on behalf of a child seat buyer,
-        #   ``accountId`` should represent the ID of the child seat buyer.
-        #   To fetch remarketing tag for a specific user list, name
-        #   must follow the pattern
-        #   `buyers/`accountId`/userLists/`userListId``. See
-        #   UserList.name.
+        #   pattern `buyers/`accountId`` where ``accountId`` represents ID of a buyer that
+        #   owns the remarketing tag. For a bidder accessing remarketing tag on behalf of
+        #   a child seat buyer, ``accountId`` should represent the ID of the child seat
+        #   buyer. To fetch remarketing tag for a specific user list, name must follow the
+        #   pattern `buyers/`accountId`/userLists/`userListId``. See UserList.name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -537,8 +502,7 @@ module Google
         # Lists the user lists visible to the current user.
         # @param [String] parent
         #   Required. The name of the parent buyer for the user lists to be returned that
-        #   must
-        #   follow the pattern `buyers/`buyerAccountId``, where ``buyerAccountId``
+        #   must follow the pattern `buyers/`buyerAccountId``, where ``buyerAccountId``
         #   represents the account ID of the buyer who owns user lists. For a bidder
         #   accessing user lists on behalf of a child seat buyer , ``buyerAccountId``
         #   should represent the account ID of the child seat buyer.
@@ -575,11 +539,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Change the status of a user list to OPEN. This allows new users to be added
-        # to the user list.
+        # Change the status of a user list to OPEN. This allows new users to be added to
+        # the user list.
         # @param [String] name
-        #   Required. The name of the user list to open.
-        #   See UserList.name
+        #   Required. The name of the user list to open. See UserList.name
         # @param [Google::Apis::RealtimebiddingV1::OpenUserListRequest] open_user_list_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -613,12 +576,12 @@ module Google
         # Update the given user list. Only user lists with URLRestrictions can be
         # updated.
         # @param [String] name
-        #   Output only. Name of the user list that must follow the pattern
-        #   `buyers/`buyer`/userLists/`user_list``, where ``buyer`` represents
-        #   the account ID of the buyer who owns the user list. For a bidder accessing
-        #   user lists on behalf of a child seat buyer, ``buyer`` represents
-        #   the account ID of the child seat buyer. ``user_list`` is an int64
-        #   identifier assigned by Google to uniquely identify a user list.
+        #   Output only. Name of the user list that must follow the pattern `buyers/`buyer`
+        #   /userLists/`user_list``, where ``buyer`` represents the account ID of the
+        #   buyer who owns the user list. For a bidder accessing user lists on behalf of a
+        #   child seat buyer, ``buyer`` represents the account ID of the child seat buyer.
+        #   ``user_list`` is an int64 identifier assigned by Google to uniquely identify a
+        #   user list.
         # @param [Google::Apis::RealtimebiddingV1::UserList] user_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

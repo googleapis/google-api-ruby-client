@@ -26,10 +26,9 @@ module Google
       class Promotion
         include Google::Apis::Core::Hashable
       
-        # An array of block objects for this promotion. See [Google WebSearch
-        # Protocol
-        # reference](https://developers.google.com/custom-search/docs/xml_results)
-        # for more information.
+        # An array of block objects for this promotion. See [Google WebSearch Protocol
+        # reference](https://developers.google.com/custom-search/docs/xml_results) for
+        # more information.
         # Corresponds to the JSON property `bodyLines`
         # @return [Array<Google::Apis::CustomsearchV1::Promotion::BodyLine>]
         attr_accessor :body_lines
@@ -186,20 +185,20 @@ module Google
         # @return [Google::Apis::CustomsearchV1::Result::Image]
         attr_accessor :image
       
-        # A unique identifier for the type of current object. For this API, it is
-        # `customsearch#result.`
+        # A unique identifier for the type of current object. For this API, it is `
+        # customsearch#result.`
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Encapsulates all information about [refinement
-        # labels](https://developers.google.com/custom-search/docs/xml_results).
+        # Encapsulates all information about [refinement labels](https://developers.
+        # google.com/custom-search/docs/xml_results).
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::CustomsearchV1::Result::Label>]
         attr_accessor :labels
       
-        # The full URL to which the search result is pointing, e.g.
-        # http://www.example.com/foo/bar.
+        # The full URL to which the search result is pointing, e.g. http://www.example.
+        # com/foo/bar.
         # Corresponds to the JSON property `link`
         # @return [String]
         attr_accessor :link
@@ -209,10 +208,8 @@ module Google
         # @return [String]
         attr_accessor :mime
       
-        # Contains
-        # [PageMap](https://developers.google.com/custom-search/docs/structured_data#
-        # pagemaps)
-        # information for this search result.
+        # Contains [PageMap](https://developers.google.com/custom-search/docs/
+        # structured_data#pagemaps) information for this search result.
         # Corresponds to the JSON property `pagemap`
         # @return [Hash<String,Object>]
         attr_accessor :pagemap
@@ -309,8 +306,8 @@ module Google
         class Label
           include Google::Apis::Core::Hashable
         
-          # The display name of a refinement label. This is the name you should
-          # display in your user interface.
+          # The display name of a refinement label. This is the name you should display in
+          # your user interface.
           # Corresponds to the JSON property `displayName`
           # @return [String]
           attr_accessor :display_name
@@ -320,8 +317,8 @@ module Google
           # @return [String]
           attr_accessor :label_with_op
         
-          # The name of a refinement label, which you can use to refine searches.
-          # Don't display this in your user interface; instead, use displayName.
+          # The name of a refinement label, which you can use to refine searches. Don't
+          # display this in your user interface; instead, use displayName.
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name
@@ -343,12 +340,10 @@ module Google
       class Search
         include Google::Apis::Core::Hashable
       
-        # Metadata and refinements associated with the given search engine,
-        # including:
-        # * The name of the search engine that was used for the query.
-        # *   A set of [facet
-        # objects](https://developers.google.com/custom-search/docs/refinements#create)
-        # (refinements) you can use for refining a search.
+        # Metadata and refinements associated with the given search engine, including: *
+        # The name of the search engine that was used for the query. * A set of [facet
+        # objects](https://developers.google.com/custom-search/docs/refinements#create) (
+        # refinements) you can use for refining a search.
         # Corresponds to the JSON property `context`
         # @return [Hash<String,Object>]
         attr_accessor :context
@@ -364,10 +359,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The set of
-        # [promotions](https://developers.google.com/custom-search/docs/promotions).
-        # Present only if the custom search engine's configuration files define any
-        # promotions for the given query.
+        # The set of [promotions](https://developers.google.com/custom-search/docs/
+        # promotions). Present only if the custom search engine's configuration files
+        # define any promotions for the given query.
         # Corresponds to the JSON property `promotions`
         # @return [Array<Google::Apis::CustomsearchV1::Promotion>]
         attr_accessor :promotions
@@ -447,191 +441,140 @@ module Google
             # @return [Fixnum]
             attr_accessor :count
           
-            # Restricts search results to documents originating in a particular
-            # country. You may use [Boolean
-            # operators](https://developers.google.com/custom-search/docs/xml_results#
-            # booleanOperators)
-            # in the `cr` parameter's value.
-            # Google WebSearch determines the country of a document by analyzing the
-            # following:
-            # * The top-level domain (TLD) of the document's URL.
-            # * The geographic location of the web server's IP address.
-            # See [Country (cr) Parameter
-            # Values](https://developers.google.com/custom-search/docs/xml_results#
-            # countryCollections)
-            # for a list of valid values for this parameter.
+            # Restricts search results to documents originating in a particular country. You
+            # may use [Boolean operators](https://developers.google.com/custom-search/docs/
+            # xml_results#booleanOperators) in the `cr` parameter's value. Google WebSearch
+            # determines the country of a document by analyzing the following: * The top-
+            # level domain (TLD) of the document's URL. * The geographic location of the web
+            # server's IP address. See [Country (cr) Parameter Values](https://developers.
+            # google.com/custom-search/docs/xml_results#countryCollections) for a list of
+            # valid values for this parameter.
             # Corresponds to the JSON property `cr`
             # @return [String]
             attr_accessor :cr
           
-            # The identifier of an engine created using the Programmable Search Engine
-            # [Control Panel](https://programmablesearchengine.google.com/). This is a
-            # custom property not defined in the OpenSearch spec. This parameter is
-            # **required**.
+            # The identifier of an engine created using the Programmable Search Engine [
+            # Control Panel](https://programmablesearchengine.google.com/). This is a custom
+            # property not defined in the OpenSearch spec. This parameter is **required**.
             # Corresponds to the JSON property `cx`
             # @return [String]
             attr_accessor :cx
           
-            # Restricts results to URLs based on date. Supported values include:
-            # * `d[number]`: requests results from the specified number of past days.
-            # * `w[number]`: requests results from the specified number of past weeks.
-            # * `m[number]`: requests results from the specified number of past months.
-            # * `y[number]`: requests results from the specified number of past years.
+            # Restricts results to URLs based on date. Supported values include: * `d[number]
+            # `: requests results from the specified number of past days. * `w[number]`:
+            # requests results from the specified number of past weeks. * `m[number]`:
+            # requests results from the specified number of past months. * `y[number]`:
+            # requests results from the specified number of past years.
             # Corresponds to the JSON property `dateRestrict`
             # @return [String]
             attr_accessor :date_restrict
           
-            # Enables or disables the [Simplified and Traditional Chinese
-            # Search](https://developers.google.com/custom-search/docs/xml_results#
-            # chineseSearch)
-            # feature.
-            # Supported values are:
-            # * `0`: enabled (default)
-            # * `1`: disabled
+            # Enables or disables the [Simplified and Traditional Chinese Search](https://
+            # developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
+            # Supported values are: * `0`: enabled (default) * `1`: disabled
             # Corresponds to the JSON property `disableCnTwTranslation`
             # @return [String]
             attr_accessor :disable_cn_tw_translation
           
-            # Identifies a phrase that all documents in the search results must
-            # contain.
+            # Identifies a phrase that all documents in the search results must contain.
             # Corresponds to the JSON property `exactTerms`
             # @return [String]
             attr_accessor :exact_terms
           
-            # Identifies a word or phrase that should not appear in any documents in
-            # the search results.
+            # Identifies a word or phrase that should not appear in any documents in the
+            # search results.
             # Corresponds to the JSON property `excludeTerms`
             # @return [String]
             attr_accessor :exclude_terms
           
-            # Restricts results to files of a specified extension. Filetypes supported
-            # by Google include:
-            # * Adobe Portable Document Format (`pdf`)
-            # * Adobe PostScript (`ps`)
-            # * Lotus 1-2-3 (`wk1`, `wk2`, `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`)
-            # * Lotus WordPro (`lwp`)
-            # * Macwrite (`mw`)
-            # * Microsoft Excel (`xls`)
-            # * Microsoft PowerPoint (`ppt`)
-            # * Microsoft Word (`doc`)
-            # * Microsoft Works (`wks`, `wps`, `wdb`)
-            # * Microsoft Write (`wri`)
-            # * Rich Text Format (`rtf`)
-            # * Shockwave Flash (`swf`)
-            # * Text (`ans`, `txt`).
-            # Additional filetypes may be added in the future. An up-to-date list can
-            # always be found in Google's [file type
-            # FAQ](https://support.google.com/webmasters/answer/35287).
+            # Restricts results to files of a specified extension. Filetypes supported by
+            # Google include: * Adobe Portable Document Format (`pdf`) * Adobe PostScript (`
+            # ps`) * Lotus 1-2-3 (`wk1`, `wk2`, `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`) *
+            # Lotus WordPro (`lwp`) * Macwrite (`mw`) * Microsoft Excel (`xls`) * Microsoft
+            # PowerPoint (`ppt`) * Microsoft Word (`doc`) * Microsoft Works (`wks`, `wps`, `
+            # wdb`) * Microsoft Write (`wri`) * Rich Text Format (`rtf`) * Shockwave Flash (`
+            # swf`) * Text (`ans`, `txt`). Additional filetypes may be added in the future.
+            # An up-to-date list can always be found in Google's [file type FAQ](https://
+            # support.google.com/webmasters/answer/35287).
             # Corresponds to the JSON property `fileType`
             # @return [String]
             attr_accessor :file_type
           
-            # Activates or deactivates the automatic filtering of Google search
-            # results. See [Automatic
-            # Filtering](https://developers.google.com/custom-search/docs/xml_results#
-            # automaticFiltering)
-            # for more information about Google's search results filters. Valid values
-            # for this parameter are:
-            # * `0`: Disabled
-            # * `1`: Enabled (default)
-            # **Note**: By default, Google applies filtering to all search results to
-            # improve the quality of those results.
+            # Activates or deactivates the automatic filtering of Google search results. See
+            # [Automatic Filtering](https://developers.google.com/custom-search/docs/
+            # xml_results#automaticFiltering) for more information about Google's search
+            # results filters. Valid values for this parameter are: * `0`: Disabled * `1`:
+            # Enabled (default) **Note**: By default, Google applies filtering to all search
+            # results to improve the quality of those results.
             # Corresponds to the JSON property `filter`
             # @return [String]
             attr_accessor :filter
           
-            # Boosts search results whose country of origin matches the parameter
-            # value. See [Country
-            # Codes](https://developers.google.com/custom-search/docs/xml_results#
-            # countryCodes)
-            # for a list of valid values.
-            # Specifying a `gl` parameter value in WebSearch requests should improve
-            # the relevance of results. This is particularly true for international
-            # customers and, even more specifically, for customers in English-speaking
-            # countries other than the United States.
+            # Boosts search results whose country of origin matches the parameter value. See
+            # [Country Codes](https://developers.google.com/custom-search/docs/xml_results#
+            # countryCodes) for a list of valid values. Specifying a `gl` parameter value in
+            # WebSearch requests should improve the relevance of results. This is
+            # particularly true for international customers and, even more specifically, for
+            # customers in English-speaking countries other than the United States.
             # Corresponds to the JSON property `gl`
             # @return [String]
             attr_accessor :gl
           
-            # Specifies the Google domain (for example, google.com, google.de, or
-            # google.fr) to which the search should be limited.
+            # Specifies the Google domain (for example, google.com, google.de, or google.fr)
+            # to which the search should be limited.
             # Corresponds to the JSON property `googleHost`
             # @return [String]
             attr_accessor :google_host
           
-            # Specifies the ending value for a search range. Use `cse:lowRange` and
-            # `cse:highrange` to append an inclusive search range of
-            # `lowRange...highRange` to the query.
+            # Specifies the ending value for a search range. Use `cse:lowRange` and `cse:
+            # highrange` to append an inclusive search range of `lowRange...highRange` to
+            # the query.
             # Corresponds to the JSON property `highRange`
             # @return [String]
             attr_accessor :high_range
           
             # Specifies the interface language (host language) of your user interface.
-            # Explicitly setting this parameter improves the performance and the
-            # quality of your search results.
-            # See the [Interface
-            # Languages](https://developers.google.com/custom-search/docs/xml_results#
-            # wsInterfaceLanguages)
-            # section of [Internationalizing Queries and Results
-            # Presentation](https://developers.google.com/custom-search/docs/xml_results#
-            # wsInternationalizing)
-            # for more information, and [Supported Interface
-            # Languages](https://developers.google.com/custom-search/docs/
-            # xml_results_appendices#interfaceLanguages)
-            # for a list of supported languages.
+            # Explicitly setting this parameter improves the performance and the quality of
+            # your search results. See the [Interface Languages](https://developers.google.
+            # com/custom-search/docs/xml_results#wsInterfaceLanguages) section of [
+            # Internationalizing Queries and Results Presentation](https://developers.google.
+            # com/custom-search/docs/xml_results#wsInternationalizing) for more information,
+            # and [Supported Interface Languages](https://developers.google.com/custom-
+            # search/docs/xml_results_appendices#interfaceLanguages) for a list of supported
+            # languages.
             # Corresponds to the JSON property `hl`
             # @return [String]
             attr_accessor :hl
           
-            # Appends the specified query terms to the query, as if they were combined
-            # with a logical `AND` operator.
+            # Appends the specified query terms to the query, as if they were combined with
+            # a logical `AND` operator.
             # Corresponds to the JSON property `hq`
             # @return [String]
             attr_accessor :hq
           
-            # Restricts results to images of a specified color type. Supported values
-            # are:
-            # * `mono` (black and white)
-            # * `gray` (grayscale)
-            # * `color` (color)
+            # Restricts results to images of a specified color type. Supported values are: *
+            # `mono` (black and white) * `gray` (grayscale) * `color` (color)
             # Corresponds to the JSON property `imgColorType`
             # @return [String]
             attr_accessor :img_color_type
           
-            # Restricts results to images with a specific dominant color. Supported
-            # values are:
-            # * `red`
-            # * `orange`
-            # * `yellow`
-            # * `green`
-            # * `teal`
-            # * `blue`
-            # * `purple`
-            # * `pink`
-            # * `white`
-            # * `gray`
-            # * `black`
-            # * `brown`
+            # Restricts results to images with a specific dominant color. Supported values
+            # are: * `red` * `orange` * `yellow` * `green` * `teal` * `blue` * `purple` * `
+            # pink` * `white` * `gray` * `black` * `brown`
             # Corresponds to the JSON property `imgDominantColor`
             # @return [String]
             attr_accessor :img_dominant_color
           
-            # Restricts results to images of a specified size. Supported values are:
-            # * `icon` (small)
-            # * `small | medium | large | xlarge` (medium)
-            # * `xxlarge` (large)
-            # * `huge` (extra-large)
+            # Restricts results to images of a specified size. Supported values are: * `icon`
+            # (small) * `small | medium | large | xlarge` (medium) * `xxlarge` (large) * `
+            # huge` (extra-large)
             # Corresponds to the JSON property `imgSize`
             # @return [String]
             attr_accessor :img_size
           
-            # Restricts results to images of a specified type. Supported values are:
-            # * `clipart` (Clip art)
-            # * `face` (Face)
-            # * `lineart` (Line drawing)
-            # * `photo` (Photo)
-            # * `animated` (Animated)
-            # * `stock` (Stock)
+            # Restricts results to images of a specified type. Supported values are: * `
+            # clipart` (Clip art) * `face` (Face) * `lineart` (Line drawing) * `photo` (
+            # Photo) * `animated` (Animated) * `stock` (Stock)
             # Corresponds to the JSON property `imgType`
             # @return [String]
             attr_accessor :img_type
@@ -651,18 +594,17 @@ module Google
             # @return [String]
             attr_accessor :link_site
           
-            # Specifies the starting value for a search range. Use `cse:lowRange` and
-            # `cse:highrange` to append an inclusive search range of
-            # `lowRange...highRange` to the query.
+            # Specifies the starting value for a search range. Use `cse:lowRange` and `cse:
+            # highrange` to append an inclusive search range of `lowRange...highRange` to
+            # the query.
             # Corresponds to the JSON property `lowRange`
             # @return [String]
             attr_accessor :low_range
           
             # Provides additional search terms to check for in a document, where each
-            # document in the search results must contain at least one of the
-            # additional search terms. You can also use the [Boolean
-            # OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)
-            # query term for this type of query.
+            # document in the search results must contain at least one of the additional
+            # search terms. You can also use the [Boolean OR](https://developers.google.com/
+            # custom-search/docs/xml_results#BooleanOrqt) query term for this type of query.
             # Corresponds to the JSON property `orTerms`
             # @return [String]
             attr_accessor :or_terms
@@ -678,23 +620,16 @@ module Google
             # @return [String]
             attr_accessor :related_site
           
-            # Filters based on licensing. Supported values include:
-            # * `cc_publicdomain`
-            # * `cc_attribute`
-            # * `cc_sharealike`
-            # * `cc_noncommercial`
-            # * `cc_nonderived`
+            # Filters based on licensing. Supported values include: * `cc_publicdomain` * `
+            # cc_attribute` * `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`
             # Corresponds to the JSON property `rights`
             # @return [String]
             attr_accessor :rights
           
-            # Specifies the [SafeSearch
-            # level](https://developers.google.com/custom-search/docs/xml_results#
-            # safeSearchLevels)
-            # used for filtering out adult results. This is a custom property not
-            # defined in the OpenSearch spec. Valid parameter values are:
-            # * `"off"`: Disable SafeSearch
-            # * `"active"`: Enable SafeSearch
+            # Specifies the [SafeSearch level](https://developers.google.com/custom-search/
+            # docs/xml_results#safeSearchLevels) used for filtering out adult results. This
+            # is a custom property not defined in the OpenSearch spec. Valid parameter
+            # values are: * `"off"`: Disable SafeSearch * `"active"`: Enable SafeSearch
             # Corresponds to the JSON property `safe`
             # @return [String]
             attr_accessor :safe
@@ -704,8 +639,8 @@ module Google
             # @return [String]
             attr_accessor :search_terms
           
-            # Allowed values are `web` or `image`. If unspecified, results are limited
-            # to webpages.
+            # Allowed values are `web` or `image`. If unspecified, results are limited to
+            # webpages.
             # Corresponds to the JSON property `searchType`
             # @return [String]
             attr_accessor :search_type
@@ -715,28 +650,27 @@ module Google
             # @return [String]
             attr_accessor :site_search
           
-            # Specifies whether to include or exclude results from the site named in
-            # the `sitesearch` parameter. Supported values are:
-            # * `i`: include content from site
-            # * `e`: exclude content from site
+            # Specifies whether to include or exclude results from the site named in the `
+            # sitesearch` parameter. Supported values are: * `i`: include content from site *
+            # `e`: exclude content from site
             # Corresponds to the JSON property `siteSearchFilter`
             # @return [String]
             attr_accessor :site_search_filter
           
-            # Specifies that results should be sorted according to the specified
-            # expression. For example, sort by date.
+            # Specifies that results should be sorted according to the specified expression.
+            # For example, sort by date.
             # Corresponds to the JSON property `sort`
             # @return [String]
             attr_accessor :sort
           
-            # The index of the current set of search results into the total set of
-            # results, where the index of the first result is 1.
+            # The index of the current set of search results into the total set of results,
+            # where the index of the first result is 1.
             # Corresponds to the JSON property `startIndex`
             # @return [Fixnum]
             attr_accessor :start_index
           
-            # The page number of this set of results, where the page length is set by
-            # the `count` property.
+            # The page number of this set of results, where the page length is set by the `
+            # count` property.
             # Corresponds to the JSON property `startPage`
             # @return [Fixnum]
             attr_accessor :start_page
@@ -805,191 +739,140 @@ module Google
             # @return [Fixnum]
             attr_accessor :count
           
-            # Restricts search results to documents originating in a particular
-            # country. You may use [Boolean
-            # operators](https://developers.google.com/custom-search/docs/xml_results#
-            # booleanOperators)
-            # in the `cr` parameter's value.
-            # Google WebSearch determines the country of a document by analyzing the
-            # following:
-            # * The top-level domain (TLD) of the document's URL.
-            # * The geographic location of the web server's IP address.
-            # See [Country (cr) Parameter
-            # Values](https://developers.google.com/custom-search/docs/xml_results#
-            # countryCollections)
-            # for a list of valid values for this parameter.
+            # Restricts search results to documents originating in a particular country. You
+            # may use [Boolean operators](https://developers.google.com/custom-search/docs/
+            # xml_results#booleanOperators) in the `cr` parameter's value. Google WebSearch
+            # determines the country of a document by analyzing the following: * The top-
+            # level domain (TLD) of the document's URL. * The geographic location of the web
+            # server's IP address. See [Country (cr) Parameter Values](https://developers.
+            # google.com/custom-search/docs/xml_results#countryCollections) for a list of
+            # valid values for this parameter.
             # Corresponds to the JSON property `cr`
             # @return [String]
             attr_accessor :cr
           
-            # The identifier of an engine created using the Programmable Search Engine
-            # [Control Panel](https://programmablesearchengine.google.com/). This is a
-            # custom property not defined in the OpenSearch spec. This parameter is
-            # **required**.
+            # The identifier of an engine created using the Programmable Search Engine [
+            # Control Panel](https://programmablesearchengine.google.com/). This is a custom
+            # property not defined in the OpenSearch spec. This parameter is **required**.
             # Corresponds to the JSON property `cx`
             # @return [String]
             attr_accessor :cx
           
-            # Restricts results to URLs based on date. Supported values include:
-            # * `d[number]`: requests results from the specified number of past days.
-            # * `w[number]`: requests results from the specified number of past weeks.
-            # * `m[number]`: requests results from the specified number of past months.
-            # * `y[number]`: requests results from the specified number of past years.
+            # Restricts results to URLs based on date. Supported values include: * `d[number]
+            # `: requests results from the specified number of past days. * `w[number]`:
+            # requests results from the specified number of past weeks. * `m[number]`:
+            # requests results from the specified number of past months. * `y[number]`:
+            # requests results from the specified number of past years.
             # Corresponds to the JSON property `dateRestrict`
             # @return [String]
             attr_accessor :date_restrict
           
-            # Enables or disables the [Simplified and Traditional Chinese
-            # Search](https://developers.google.com/custom-search/docs/xml_results#
-            # chineseSearch)
-            # feature.
-            # Supported values are:
-            # * `0`: enabled (default)
-            # * `1`: disabled
+            # Enables or disables the [Simplified and Traditional Chinese Search](https://
+            # developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
+            # Supported values are: * `0`: enabled (default) * `1`: disabled
             # Corresponds to the JSON property `disableCnTwTranslation`
             # @return [String]
             attr_accessor :disable_cn_tw_translation
           
-            # Identifies a phrase that all documents in the search results must
-            # contain.
+            # Identifies a phrase that all documents in the search results must contain.
             # Corresponds to the JSON property `exactTerms`
             # @return [String]
             attr_accessor :exact_terms
           
-            # Identifies a word or phrase that should not appear in any documents in
-            # the search results.
+            # Identifies a word or phrase that should not appear in any documents in the
+            # search results.
             # Corresponds to the JSON property `excludeTerms`
             # @return [String]
             attr_accessor :exclude_terms
           
-            # Restricts results to files of a specified extension. Filetypes supported
-            # by Google include:
-            # * Adobe Portable Document Format (`pdf`)
-            # * Adobe PostScript (`ps`)
-            # * Lotus 1-2-3 (`wk1`, `wk2`, `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`)
-            # * Lotus WordPro (`lwp`)
-            # * Macwrite (`mw`)
-            # * Microsoft Excel (`xls`)
-            # * Microsoft PowerPoint (`ppt`)
-            # * Microsoft Word (`doc`)
-            # * Microsoft Works (`wks`, `wps`, `wdb`)
-            # * Microsoft Write (`wri`)
-            # * Rich Text Format (`rtf`)
-            # * Shockwave Flash (`swf`)
-            # * Text (`ans`, `txt`).
-            # Additional filetypes may be added in the future. An up-to-date list can
-            # always be found in Google's [file type
-            # FAQ](https://support.google.com/webmasters/answer/35287).
+            # Restricts results to files of a specified extension. Filetypes supported by
+            # Google include: * Adobe Portable Document Format (`pdf`) * Adobe PostScript (`
+            # ps`) * Lotus 1-2-3 (`wk1`, `wk2`, `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`) *
+            # Lotus WordPro (`lwp`) * Macwrite (`mw`) * Microsoft Excel (`xls`) * Microsoft
+            # PowerPoint (`ppt`) * Microsoft Word (`doc`) * Microsoft Works (`wks`, `wps`, `
+            # wdb`) * Microsoft Write (`wri`) * Rich Text Format (`rtf`) * Shockwave Flash (`
+            # swf`) * Text (`ans`, `txt`). Additional filetypes may be added in the future.
+            # An up-to-date list can always be found in Google's [file type FAQ](https://
+            # support.google.com/webmasters/answer/35287).
             # Corresponds to the JSON property `fileType`
             # @return [String]
             attr_accessor :file_type
           
-            # Activates or deactivates the automatic filtering of Google search
-            # results. See [Automatic
-            # Filtering](https://developers.google.com/custom-search/docs/xml_results#
-            # automaticFiltering)
-            # for more information about Google's search results filters. Valid values
-            # for this parameter are:
-            # * `0`: Disabled
-            # * `1`: Enabled (default)
-            # **Note**: By default, Google applies filtering to all search results to
-            # improve the quality of those results.
+            # Activates or deactivates the automatic filtering of Google search results. See
+            # [Automatic Filtering](https://developers.google.com/custom-search/docs/
+            # xml_results#automaticFiltering) for more information about Google's search
+            # results filters. Valid values for this parameter are: * `0`: Disabled * `1`:
+            # Enabled (default) **Note**: By default, Google applies filtering to all search
+            # results to improve the quality of those results.
             # Corresponds to the JSON property `filter`
             # @return [String]
             attr_accessor :filter
           
-            # Boosts search results whose country of origin matches the parameter
-            # value. See [Country
-            # Codes](https://developers.google.com/custom-search/docs/xml_results#
-            # countryCodes)
-            # for a list of valid values.
-            # Specifying a `gl` parameter value in WebSearch requests should improve
-            # the relevance of results. This is particularly true for international
-            # customers and, even more specifically, for customers in English-speaking
-            # countries other than the United States.
+            # Boosts search results whose country of origin matches the parameter value. See
+            # [Country Codes](https://developers.google.com/custom-search/docs/xml_results#
+            # countryCodes) for a list of valid values. Specifying a `gl` parameter value in
+            # WebSearch requests should improve the relevance of results. This is
+            # particularly true for international customers and, even more specifically, for
+            # customers in English-speaking countries other than the United States.
             # Corresponds to the JSON property `gl`
             # @return [String]
             attr_accessor :gl
           
-            # Specifies the Google domain (for example, google.com, google.de, or
-            # google.fr) to which the search should be limited.
+            # Specifies the Google domain (for example, google.com, google.de, or google.fr)
+            # to which the search should be limited.
             # Corresponds to the JSON property `googleHost`
             # @return [String]
             attr_accessor :google_host
           
-            # Specifies the ending value for a search range. Use `cse:lowRange` and
-            # `cse:highrange` to append an inclusive search range of
-            # `lowRange...highRange` to the query.
+            # Specifies the ending value for a search range. Use `cse:lowRange` and `cse:
+            # highrange` to append an inclusive search range of `lowRange...highRange` to
+            # the query.
             # Corresponds to the JSON property `highRange`
             # @return [String]
             attr_accessor :high_range
           
             # Specifies the interface language (host language) of your user interface.
-            # Explicitly setting this parameter improves the performance and the
-            # quality of your search results.
-            # See the [Interface
-            # Languages](https://developers.google.com/custom-search/docs/xml_results#
-            # wsInterfaceLanguages)
-            # section of [Internationalizing Queries and Results
-            # Presentation](https://developers.google.com/custom-search/docs/xml_results#
-            # wsInternationalizing)
-            # for more information, and [Supported Interface
-            # Languages](https://developers.google.com/custom-search/docs/
-            # xml_results_appendices#interfaceLanguages)
-            # for a list of supported languages.
+            # Explicitly setting this parameter improves the performance and the quality of
+            # your search results. See the [Interface Languages](https://developers.google.
+            # com/custom-search/docs/xml_results#wsInterfaceLanguages) section of [
+            # Internationalizing Queries and Results Presentation](https://developers.google.
+            # com/custom-search/docs/xml_results#wsInternationalizing) for more information,
+            # and [Supported Interface Languages](https://developers.google.com/custom-
+            # search/docs/xml_results_appendices#interfaceLanguages) for a list of supported
+            # languages.
             # Corresponds to the JSON property `hl`
             # @return [String]
             attr_accessor :hl
           
-            # Appends the specified query terms to the query, as if they were combined
-            # with a logical `AND` operator.
+            # Appends the specified query terms to the query, as if they were combined with
+            # a logical `AND` operator.
             # Corresponds to the JSON property `hq`
             # @return [String]
             attr_accessor :hq
           
-            # Restricts results to images of a specified color type. Supported values
-            # are:
-            # * `mono` (black and white)
-            # * `gray` (grayscale)
-            # * `color` (color)
+            # Restricts results to images of a specified color type. Supported values are: *
+            # `mono` (black and white) * `gray` (grayscale) * `color` (color)
             # Corresponds to the JSON property `imgColorType`
             # @return [String]
             attr_accessor :img_color_type
           
-            # Restricts results to images with a specific dominant color. Supported
-            # values are:
-            # * `red`
-            # * `orange`
-            # * `yellow`
-            # * `green`
-            # * `teal`
-            # * `blue`
-            # * `purple`
-            # * `pink`
-            # * `white`
-            # * `gray`
-            # * `black`
-            # * `brown`
+            # Restricts results to images with a specific dominant color. Supported values
+            # are: * `red` * `orange` * `yellow` * `green` * `teal` * `blue` * `purple` * `
+            # pink` * `white` * `gray` * `black` * `brown`
             # Corresponds to the JSON property `imgDominantColor`
             # @return [String]
             attr_accessor :img_dominant_color
           
-            # Restricts results to images of a specified size. Supported values are:
-            # * `icon` (small)
-            # * `small | medium | large | xlarge` (medium)
-            # * `xxlarge` (large)
-            # * `huge` (extra-large)
+            # Restricts results to images of a specified size. Supported values are: * `icon`
+            # (small) * `small | medium | large | xlarge` (medium) * `xxlarge` (large) * `
+            # huge` (extra-large)
             # Corresponds to the JSON property `imgSize`
             # @return [String]
             attr_accessor :img_size
           
-            # Restricts results to images of a specified type. Supported values are:
-            # * `clipart` (Clip art)
-            # * `face` (Face)
-            # * `lineart` (Line drawing)
-            # * `photo` (Photo)
-            # * `animated` (Animated)
-            # * `stock` (Stock)
+            # Restricts results to images of a specified type. Supported values are: * `
+            # clipart` (Clip art) * `face` (Face) * `lineart` (Line drawing) * `photo` (
+            # Photo) * `animated` (Animated) * `stock` (Stock)
             # Corresponds to the JSON property `imgType`
             # @return [String]
             attr_accessor :img_type
@@ -1009,18 +892,17 @@ module Google
             # @return [String]
             attr_accessor :link_site
           
-            # Specifies the starting value for a search range. Use `cse:lowRange` and
-            # `cse:highrange` to append an inclusive search range of
-            # `lowRange...highRange` to the query.
+            # Specifies the starting value for a search range. Use `cse:lowRange` and `cse:
+            # highrange` to append an inclusive search range of `lowRange...highRange` to
+            # the query.
             # Corresponds to the JSON property `lowRange`
             # @return [String]
             attr_accessor :low_range
           
             # Provides additional search terms to check for in a document, where each
-            # document in the search results must contain at least one of the
-            # additional search terms. You can also use the [Boolean
-            # OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)
-            # query term for this type of query.
+            # document in the search results must contain at least one of the additional
+            # search terms. You can also use the [Boolean OR](https://developers.google.com/
+            # custom-search/docs/xml_results#BooleanOrqt) query term for this type of query.
             # Corresponds to the JSON property `orTerms`
             # @return [String]
             attr_accessor :or_terms
@@ -1036,23 +918,16 @@ module Google
             # @return [String]
             attr_accessor :related_site
           
-            # Filters based on licensing. Supported values include:
-            # * `cc_publicdomain`
-            # * `cc_attribute`
-            # * `cc_sharealike`
-            # * `cc_noncommercial`
-            # * `cc_nonderived`
+            # Filters based on licensing. Supported values include: * `cc_publicdomain` * `
+            # cc_attribute` * `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`
             # Corresponds to the JSON property `rights`
             # @return [String]
             attr_accessor :rights
           
-            # Specifies the [SafeSearch
-            # level](https://developers.google.com/custom-search/docs/xml_results#
-            # safeSearchLevels)
-            # used for filtering out adult results. This is a custom property not
-            # defined in the OpenSearch spec. Valid parameter values are:
-            # * `"off"`: Disable SafeSearch
-            # * `"active"`: Enable SafeSearch
+            # Specifies the [SafeSearch level](https://developers.google.com/custom-search/
+            # docs/xml_results#safeSearchLevels) used for filtering out adult results. This
+            # is a custom property not defined in the OpenSearch spec. Valid parameter
+            # values are: * `"off"`: Disable SafeSearch * `"active"`: Enable SafeSearch
             # Corresponds to the JSON property `safe`
             # @return [String]
             attr_accessor :safe
@@ -1062,8 +937,8 @@ module Google
             # @return [String]
             attr_accessor :search_terms
           
-            # Allowed values are `web` or `image`. If unspecified, results are limited
-            # to webpages.
+            # Allowed values are `web` or `image`. If unspecified, results are limited to
+            # webpages.
             # Corresponds to the JSON property `searchType`
             # @return [String]
             attr_accessor :search_type
@@ -1073,28 +948,27 @@ module Google
             # @return [String]
             attr_accessor :site_search
           
-            # Specifies whether to include or exclude results from the site named in
-            # the `sitesearch` parameter. Supported values are:
-            # * `i`: include content from site
-            # * `e`: exclude content from site
+            # Specifies whether to include or exclude results from the site named in the `
+            # sitesearch` parameter. Supported values are: * `i`: include content from site *
+            # `e`: exclude content from site
             # Corresponds to the JSON property `siteSearchFilter`
             # @return [String]
             attr_accessor :site_search_filter
           
-            # Specifies that results should be sorted according to the specified
-            # expression. For example, sort by date.
+            # Specifies that results should be sorted according to the specified expression.
+            # For example, sort by date.
             # Corresponds to the JSON property `sort`
             # @return [String]
             attr_accessor :sort
           
-            # The index of the current set of search results into the total set of
-            # results, where the index of the first result is 1.
+            # The index of the current set of search results into the total set of results,
+            # where the index of the first result is 1.
             # Corresponds to the JSON property `startIndex`
             # @return [Fixnum]
             attr_accessor :start_index
           
-            # The page number of this set of results, where the page length is set by
-            # the `count` property.
+            # The page number of this set of results, where the page length is set by the `
+            # count` property.
             # Corresponds to the JSON property `startPage`
             # @return [Fixnum]
             attr_accessor :start_page
@@ -1163,191 +1037,140 @@ module Google
             # @return [Fixnum]
             attr_accessor :count
           
-            # Restricts search results to documents originating in a particular
-            # country. You may use [Boolean
-            # operators](https://developers.google.com/custom-search/docs/xml_results#
-            # booleanOperators)
-            # in the `cr` parameter's value.
-            # Google WebSearch determines the country of a document by analyzing the
-            # following:
-            # * The top-level domain (TLD) of the document's URL.
-            # * The geographic location of the web server's IP address.
-            # See [Country (cr) Parameter
-            # Values](https://developers.google.com/custom-search/docs/xml_results#
-            # countryCollections)
-            # for a list of valid values for this parameter.
+            # Restricts search results to documents originating in a particular country. You
+            # may use [Boolean operators](https://developers.google.com/custom-search/docs/
+            # xml_results#booleanOperators) in the `cr` parameter's value. Google WebSearch
+            # determines the country of a document by analyzing the following: * The top-
+            # level domain (TLD) of the document's URL. * The geographic location of the web
+            # server's IP address. See [Country (cr) Parameter Values](https://developers.
+            # google.com/custom-search/docs/xml_results#countryCollections) for a list of
+            # valid values for this parameter.
             # Corresponds to the JSON property `cr`
             # @return [String]
             attr_accessor :cr
           
-            # The identifier of an engine created using the Programmable Search Engine
-            # [Control Panel](https://programmablesearchengine.google.com/). This is a
-            # custom property not defined in the OpenSearch spec. This parameter is
-            # **required**.
+            # The identifier of an engine created using the Programmable Search Engine [
+            # Control Panel](https://programmablesearchengine.google.com/). This is a custom
+            # property not defined in the OpenSearch spec. This parameter is **required**.
             # Corresponds to the JSON property `cx`
             # @return [String]
             attr_accessor :cx
           
-            # Restricts results to URLs based on date. Supported values include:
-            # * `d[number]`: requests results from the specified number of past days.
-            # * `w[number]`: requests results from the specified number of past weeks.
-            # * `m[number]`: requests results from the specified number of past months.
-            # * `y[number]`: requests results from the specified number of past years.
+            # Restricts results to URLs based on date. Supported values include: * `d[number]
+            # `: requests results from the specified number of past days. * `w[number]`:
+            # requests results from the specified number of past weeks. * `m[number]`:
+            # requests results from the specified number of past months. * `y[number]`:
+            # requests results from the specified number of past years.
             # Corresponds to the JSON property `dateRestrict`
             # @return [String]
             attr_accessor :date_restrict
           
-            # Enables or disables the [Simplified and Traditional Chinese
-            # Search](https://developers.google.com/custom-search/docs/xml_results#
-            # chineseSearch)
-            # feature.
-            # Supported values are:
-            # * `0`: enabled (default)
-            # * `1`: disabled
+            # Enables or disables the [Simplified and Traditional Chinese Search](https://
+            # developers.google.com/custom-search/docs/xml_results#chineseSearch) feature.
+            # Supported values are: * `0`: enabled (default) * `1`: disabled
             # Corresponds to the JSON property `disableCnTwTranslation`
             # @return [String]
             attr_accessor :disable_cn_tw_translation
           
-            # Identifies a phrase that all documents in the search results must
-            # contain.
+            # Identifies a phrase that all documents in the search results must contain.
             # Corresponds to the JSON property `exactTerms`
             # @return [String]
             attr_accessor :exact_terms
           
-            # Identifies a word or phrase that should not appear in any documents in
-            # the search results.
+            # Identifies a word or phrase that should not appear in any documents in the
+            # search results.
             # Corresponds to the JSON property `excludeTerms`
             # @return [String]
             attr_accessor :exclude_terms
           
-            # Restricts results to files of a specified extension. Filetypes supported
-            # by Google include:
-            # * Adobe Portable Document Format (`pdf`)
-            # * Adobe PostScript (`ps`)
-            # * Lotus 1-2-3 (`wk1`, `wk2`, `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`)
-            # * Lotus WordPro (`lwp`)
-            # * Macwrite (`mw`)
-            # * Microsoft Excel (`xls`)
-            # * Microsoft PowerPoint (`ppt`)
-            # * Microsoft Word (`doc`)
-            # * Microsoft Works (`wks`, `wps`, `wdb`)
-            # * Microsoft Write (`wri`)
-            # * Rich Text Format (`rtf`)
-            # * Shockwave Flash (`swf`)
-            # * Text (`ans`, `txt`).
-            # Additional filetypes may be added in the future. An up-to-date list can
-            # always be found in Google's [file type
-            # FAQ](https://support.google.com/webmasters/answer/35287).
+            # Restricts results to files of a specified extension. Filetypes supported by
+            # Google include: * Adobe Portable Document Format (`pdf`) * Adobe PostScript (`
+            # ps`) * Lotus 1-2-3 (`wk1`, `wk2`, `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`) *
+            # Lotus WordPro (`lwp`) * Macwrite (`mw`) * Microsoft Excel (`xls`) * Microsoft
+            # PowerPoint (`ppt`) * Microsoft Word (`doc`) * Microsoft Works (`wks`, `wps`, `
+            # wdb`) * Microsoft Write (`wri`) * Rich Text Format (`rtf`) * Shockwave Flash (`
+            # swf`) * Text (`ans`, `txt`). Additional filetypes may be added in the future.
+            # An up-to-date list can always be found in Google's [file type FAQ](https://
+            # support.google.com/webmasters/answer/35287).
             # Corresponds to the JSON property `fileType`
             # @return [String]
             attr_accessor :file_type
           
-            # Activates or deactivates the automatic filtering of Google search
-            # results. See [Automatic
-            # Filtering](https://developers.google.com/custom-search/docs/xml_results#
-            # automaticFiltering)
-            # for more information about Google's search results filters. Valid values
-            # for this parameter are:
-            # * `0`: Disabled
-            # * `1`: Enabled (default)
-            # **Note**: By default, Google applies filtering to all search results to
-            # improve the quality of those results.
+            # Activates or deactivates the automatic filtering of Google search results. See
+            # [Automatic Filtering](https://developers.google.com/custom-search/docs/
+            # xml_results#automaticFiltering) for more information about Google's search
+            # results filters. Valid values for this parameter are: * `0`: Disabled * `1`:
+            # Enabled (default) **Note**: By default, Google applies filtering to all search
+            # results to improve the quality of those results.
             # Corresponds to the JSON property `filter`
             # @return [String]
             attr_accessor :filter
           
-            # Boosts search results whose country of origin matches the parameter
-            # value. See [Country
-            # Codes](https://developers.google.com/custom-search/docs/xml_results#
-            # countryCodes)
-            # for a list of valid values.
-            # Specifying a `gl` parameter value in WebSearch requests should improve
-            # the relevance of results. This is particularly true for international
-            # customers and, even more specifically, for customers in English-speaking
-            # countries other than the United States.
+            # Boosts search results whose country of origin matches the parameter value. See
+            # [Country Codes](https://developers.google.com/custom-search/docs/xml_results#
+            # countryCodes) for a list of valid values. Specifying a `gl` parameter value in
+            # WebSearch requests should improve the relevance of results. This is
+            # particularly true for international customers and, even more specifically, for
+            # customers in English-speaking countries other than the United States.
             # Corresponds to the JSON property `gl`
             # @return [String]
             attr_accessor :gl
           
-            # Specifies the Google domain (for example, google.com, google.de, or
-            # google.fr) to which the search should be limited.
+            # Specifies the Google domain (for example, google.com, google.de, or google.fr)
+            # to which the search should be limited.
             # Corresponds to the JSON property `googleHost`
             # @return [String]
             attr_accessor :google_host
           
-            # Specifies the ending value for a search range. Use `cse:lowRange` and
-            # `cse:highrange` to append an inclusive search range of
-            # `lowRange...highRange` to the query.
+            # Specifies the ending value for a search range. Use `cse:lowRange` and `cse:
+            # highrange` to append an inclusive search range of `lowRange...highRange` to
+            # the query.
             # Corresponds to the JSON property `highRange`
             # @return [String]
             attr_accessor :high_range
           
             # Specifies the interface language (host language) of your user interface.
-            # Explicitly setting this parameter improves the performance and the
-            # quality of your search results.
-            # See the [Interface
-            # Languages](https://developers.google.com/custom-search/docs/xml_results#
-            # wsInterfaceLanguages)
-            # section of [Internationalizing Queries and Results
-            # Presentation](https://developers.google.com/custom-search/docs/xml_results#
-            # wsInternationalizing)
-            # for more information, and [Supported Interface
-            # Languages](https://developers.google.com/custom-search/docs/
-            # xml_results_appendices#interfaceLanguages)
-            # for a list of supported languages.
+            # Explicitly setting this parameter improves the performance and the quality of
+            # your search results. See the [Interface Languages](https://developers.google.
+            # com/custom-search/docs/xml_results#wsInterfaceLanguages) section of [
+            # Internationalizing Queries and Results Presentation](https://developers.google.
+            # com/custom-search/docs/xml_results#wsInternationalizing) for more information,
+            # and [Supported Interface Languages](https://developers.google.com/custom-
+            # search/docs/xml_results_appendices#interfaceLanguages) for a list of supported
+            # languages.
             # Corresponds to the JSON property `hl`
             # @return [String]
             attr_accessor :hl
           
-            # Appends the specified query terms to the query, as if they were combined
-            # with a logical `AND` operator.
+            # Appends the specified query terms to the query, as if they were combined with
+            # a logical `AND` operator.
             # Corresponds to the JSON property `hq`
             # @return [String]
             attr_accessor :hq
           
-            # Restricts results to images of a specified color type. Supported values
-            # are:
-            # * `mono` (black and white)
-            # * `gray` (grayscale)
-            # * `color` (color)
+            # Restricts results to images of a specified color type. Supported values are: *
+            # `mono` (black and white) * `gray` (grayscale) * `color` (color)
             # Corresponds to the JSON property `imgColorType`
             # @return [String]
             attr_accessor :img_color_type
           
-            # Restricts results to images with a specific dominant color. Supported
-            # values are:
-            # * `red`
-            # * `orange`
-            # * `yellow`
-            # * `green`
-            # * `teal`
-            # * `blue`
-            # * `purple`
-            # * `pink`
-            # * `white`
-            # * `gray`
-            # * `black`
-            # * `brown`
+            # Restricts results to images with a specific dominant color. Supported values
+            # are: * `red` * `orange` * `yellow` * `green` * `teal` * `blue` * `purple` * `
+            # pink` * `white` * `gray` * `black` * `brown`
             # Corresponds to the JSON property `imgDominantColor`
             # @return [String]
             attr_accessor :img_dominant_color
           
-            # Restricts results to images of a specified size. Supported values are:
-            # * `icon` (small)
-            # * `small | medium | large | xlarge` (medium)
-            # * `xxlarge` (large)
-            # * `huge` (extra-large)
+            # Restricts results to images of a specified size. Supported values are: * `icon`
+            # (small) * `small | medium | large | xlarge` (medium) * `xxlarge` (large) * `
+            # huge` (extra-large)
             # Corresponds to the JSON property `imgSize`
             # @return [String]
             attr_accessor :img_size
           
-            # Restricts results to images of a specified type. Supported values are:
-            # * `clipart` (Clip art)
-            # * `face` (Face)
-            # * `lineart` (Line drawing)
-            # * `photo` (Photo)
-            # * `animated` (Animated)
-            # * `stock` (Stock)
+            # Restricts results to images of a specified type. Supported values are: * `
+            # clipart` (Clip art) * `face` (Face) * `lineart` (Line drawing) * `photo` (
+            # Photo) * `animated` (Animated) * `stock` (Stock)
             # Corresponds to the JSON property `imgType`
             # @return [String]
             attr_accessor :img_type
@@ -1367,18 +1190,17 @@ module Google
             # @return [String]
             attr_accessor :link_site
           
-            # Specifies the starting value for a search range. Use `cse:lowRange` and
-            # `cse:highrange` to append an inclusive search range of
-            # `lowRange...highRange` to the query.
+            # Specifies the starting value for a search range. Use `cse:lowRange` and `cse:
+            # highrange` to append an inclusive search range of `lowRange...highRange` to
+            # the query.
             # Corresponds to the JSON property `lowRange`
             # @return [String]
             attr_accessor :low_range
           
             # Provides additional search terms to check for in a document, where each
-            # document in the search results must contain at least one of the
-            # additional search terms. You can also use the [Boolean
-            # OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)
-            # query term for this type of query.
+            # document in the search results must contain at least one of the additional
+            # search terms. You can also use the [Boolean OR](https://developers.google.com/
+            # custom-search/docs/xml_results#BooleanOrqt) query term for this type of query.
             # Corresponds to the JSON property `orTerms`
             # @return [String]
             attr_accessor :or_terms
@@ -1394,23 +1216,16 @@ module Google
             # @return [String]
             attr_accessor :related_site
           
-            # Filters based on licensing. Supported values include:
-            # * `cc_publicdomain`
-            # * `cc_attribute`
-            # * `cc_sharealike`
-            # * `cc_noncommercial`
-            # * `cc_nonderived`
+            # Filters based on licensing. Supported values include: * `cc_publicdomain` * `
+            # cc_attribute` * `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`
             # Corresponds to the JSON property `rights`
             # @return [String]
             attr_accessor :rights
           
-            # Specifies the [SafeSearch
-            # level](https://developers.google.com/custom-search/docs/xml_results#
-            # safeSearchLevels)
-            # used for filtering out adult results. This is a custom property not
-            # defined in the OpenSearch spec. Valid parameter values are:
-            # * `"off"`: Disable SafeSearch
-            # * `"active"`: Enable SafeSearch
+            # Specifies the [SafeSearch level](https://developers.google.com/custom-search/
+            # docs/xml_results#safeSearchLevels) used for filtering out adult results. This
+            # is a custom property not defined in the OpenSearch spec. Valid parameter
+            # values are: * `"off"`: Disable SafeSearch * `"active"`: Enable SafeSearch
             # Corresponds to the JSON property `safe`
             # @return [String]
             attr_accessor :safe
@@ -1420,8 +1235,8 @@ module Google
             # @return [String]
             attr_accessor :search_terms
           
-            # Allowed values are `web` or `image`. If unspecified, results are limited
-            # to webpages.
+            # Allowed values are `web` or `image`. If unspecified, results are limited to
+            # webpages.
             # Corresponds to the JSON property `searchType`
             # @return [String]
             attr_accessor :search_type
@@ -1431,28 +1246,27 @@ module Google
             # @return [String]
             attr_accessor :site_search
           
-            # Specifies whether to include or exclude results from the site named in
-            # the `sitesearch` parameter. Supported values are:
-            # * `i`: include content from site
-            # * `e`: exclude content from site
+            # Specifies whether to include or exclude results from the site named in the `
+            # sitesearch` parameter. Supported values are: * `i`: include content from site *
+            # `e`: exclude content from site
             # Corresponds to the JSON property `siteSearchFilter`
             # @return [String]
             attr_accessor :site_search_filter
           
-            # Specifies that results should be sorted according to the specified
-            # expression. For example, sort by date.
+            # Specifies that results should be sorted according to the specified expression.
+            # For example, sort by date.
             # Corresponds to the JSON property `sort`
             # @return [String]
             attr_accessor :sort
           
-            # The index of the current set of search results into the total set of
-            # results, where the index of the first result is 1.
+            # The index of the current set of search results into the total set of results,
+            # where the index of the first result is 1.
             # Corresponds to the JSON property `startIndex`
             # @return [Fixnum]
             attr_accessor :start_index
           
-            # The page number of this set of results, where the page length is set by
-            # the `count` property.
+            # The page number of this set of results, where the page length is set by the `
+            # count` property.
             # Corresponds to the JSON property `startPage`
             # @return [Fixnum]
             attr_accessor :start_page
@@ -1517,8 +1331,8 @@ module Google
         class SearchInformation
           include Google::Apis::Core::Hashable
         
-          # The time taken for the server to return search results, formatted
-          # according to locale style.
+          # The time taken for the server to return search results, formatted according to
+          # locale style.
           # Corresponds to the JSON property `formattedSearchTime`
           # @return [String]
           attr_accessor :formatted_search_time
@@ -1580,16 +1394,13 @@ module Google
         class Url
           include Google::Apis::Core::Hashable
         
-          # The actual [OpenSearch
-          # template](http://www.opensearch.org/specifications/opensearch/1.1#
-          # opensearch_url_template_syntax)
-          # for this API.
+          # The actual [OpenSearch template](http://www.opensearch.org/specifications/
+          # opensearch/1.1#opensearch_url_template_syntax) for this API.
           # Corresponds to the JSON property `template`
           # @return [String]
           attr_accessor :template
         
-          # The MIME type of the OpenSearch URL template for the Custom Search JSON
-          # API.
+          # The MIME type of the OpenSearch URL template for the Custom Search JSON API.
           # Corresponds to the JSON property `type`
           # @return [String]
           attr_accessor :type

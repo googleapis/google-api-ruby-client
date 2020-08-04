@@ -20,13 +20,12 @@ module Google
   module Apis
     # Blogger API v3
     #
-    # The Blogger API provides access to posts, comments and pages of a
-    # Blogger blog.
+    # The Blogger API provides access to posts, comments and pages of a Blogger blog.
     #
     # @see https://developers.google.com/blogger/docs/3.0/getting_started
     module BloggerV2
       VERSION = 'V2'
-      REVISION = '20200405'
+      REVISION = '20200801'
 
       # Manage your Blogger account
       AUTH_BLOGGER = 'https://www.googleapis.com/auth/blogger'

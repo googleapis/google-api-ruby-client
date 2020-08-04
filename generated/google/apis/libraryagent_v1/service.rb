@@ -80,13 +80,12 @@ module Google
         # Lists shelves. The order is unspecified but deterministic. Newly created
         # shelves will not necessarily be added to the end of this list.
         # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer shelves than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   Requested page size. Server may return fewer shelves than requested. If
+        #   unspecified, server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListShelvesResponse.next_page_token
-        #   returned from the previous call to `ListShelves` method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListShelvesResponse.next_page_token returned from the
+        #   previous call to `ListShelves` method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -179,18 +178,17 @@ module Google
         end
         
         # Lists books in a shelf. The order is unspecified but deterministic. Newly
-        # created books will not necessarily be added to the end of this list.
-        # Returns NOT_FOUND if the shelf does not exist.
+        # created books will not necessarily be added to the end of this list. Returns
+        # NOT_FOUND if the shelf does not exist.
         # @param [String] parent
         #   Required. The name of the shelf whose books we'd like to list.
         # @param [Fixnum] page_size
-        #   Requested page size. Server may return fewer books than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   Requested page size. Server may return fewer books than requested. If
+        #   unspecified, server will pick an appropriate default.
         # @param [String] page_token
-        #   A token identifying a page of results the server should return.
-        #   Typically, this is the value of
-        #   ListBooksResponse.next_page_token.
-        #   returned from the previous call to `ListBooks` method.
+        #   A token identifying a page of results the server should return. Typically,
+        #   this is the value of ListBooksResponse.next_page_token. returned from the
+        #   previous call to `ListBooks` method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -221,8 +219,7 @@ module Google
         end
         
         # Return a book to the library. Returns the book if it is returned to the
-        # library successfully.
-        # Returns error if the book does not belong to the library
+        # library successfully. Returns error if the book does not belong to the library
         # or the users didn't borrow before.
         # @param [String] name
         #   Required. The name of the book to return.

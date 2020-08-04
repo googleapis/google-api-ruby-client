@@ -49,8 +49,8 @@ module Google
         
         # Gets information about the specified AdMob publisher account.
         # @param [String] name
-        #   Resource name of the publisher account to retrieve.
-        #   Example: accounts/pub-9876543210987654
+        #   Resource name of the publisher account to retrieve. Example: accounts/pub-
+        #   9876543210987654
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -83,9 +83,9 @@ module Google
         # @param [Fixnum] page_size
         #   Maximum number of accounts to return.
         # @param [String] page_token
-        #   The value returned by the last `ListPublisherAccountsResponse`; indicates
-        #   that this is a continuation of a prior `ListPublisherAccounts` call, and
-        #   that the system should return the next page of data.
+        #   The value returned by the last `ListPublisherAccountsResponse`; indicates that
+        #   this is a continuation of a prior `ListPublisherAccounts` call, and that the
+        #   system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -114,11 +114,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates an AdMob Mediation report based on the provided report
-        # specification.
+        # Generates an AdMob Mediation report based on the provided report specification.
         # @param [String] parent
-        #   Resource name of the account to generate the report for.
-        #   Example: accounts/pub-9876543210987654
+        #   Resource name of the account to generate the report for. Example: accounts/pub-
+        #   9876543210987654
         # @param [Google::Apis::AdmobV1::GenerateMediationReportRequest] generate_mediation_report_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -149,11 +148,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates an AdMob Network report based on the provided report
-        # specification.
+        # Generates an AdMob Network report based on the provided report specification.
         # @param [String] parent
-        #   Resource name of the account to generate the report for.
-        #   Example: accounts/pub-9876543210987654
+        #   Resource name of the account to generate the report for. Example: accounts/pub-
+        #   9876543210987654
         # @param [Google::Apis::AdmobV1::GenerateNetworkReportRequest] generate_network_report_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

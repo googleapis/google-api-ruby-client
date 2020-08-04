@@ -22,13 +22,11 @@ module Google
   module Apis
     module YoutubereportingV1
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -626,8 +624,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The date/time when this job will expire/expired. After a job expired, no
-        # new reports are generated.
+        # The date/time when this job will expire/expired. After a job expired, no new
+        # reports are generated.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
@@ -642,8 +640,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The type of reports this job creates. Corresponds to the ID of a
-        # ReportType.
+        # The type of reports this job creates. Corresponds to the ID of a ReportType.
         # Corresponds to the JSON property `reportTypeId`
         # @return [String]
         attr_accessor :report_type_id
@@ -679,11 +676,9 @@ module Google
         # @return [Array<Google::Apis::YoutubereportingV1::Job>]
         attr_accessor :jobs
       
-        # A token to retrieve next page of results.
-        # Pass this value in the
-        # ListJobsRequest.page_token
-        # field in the subsequent call to `ListJobs` method to retrieve the next
-        # page of results.
+        # A token to retrieve next page of results. Pass this value in the
+        # ListJobsRequest.page_token field in the subsequent call to `ListJobs` method
+        # to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -703,11 +698,9 @@ module Google
       class ListReportTypesResponse
         include Google::Apis::Core::Hashable
       
-        # A token to retrieve next page of results.
-        # Pass this value in the
-        # ListReportTypesRequest.page_token
-        # field in the subsequent call to `ListReportTypes` method to retrieve the
-        # next page of results.
+        # A token to retrieve next page of results. Pass this value in the
+        # ListReportTypesRequest.page_token field in the subsequent call to `
+        # ListReportTypes` method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -732,11 +725,9 @@ module Google
       class ListReportsResponse
         include Google::Apis::Core::Hashable
       
-        # A token to retrieve next page of results.
-        # Pass this value in the
-        # ListReportsRequest.page_token
-        # field in the subsequent call to `ListReports` method to retrieve the next
-        # page of results.
+        # A token to retrieve next page of results. Pass this value in the
+        # ListReportsRequest.page_token field in the subsequent call to `ListReports`
+        # method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -834,9 +825,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # True if this a system-managed report type; otherwise false. Reporting jobs
-        # for system-managed report types are created automatically and can thus not
-        # be used in the `CreateJob` method.
+        # True if this a system-managed report type; otherwise false. Reporting jobs for
+        # system-managed report types are created automatically and can thus not be used
+        # in the `CreateJob` method.
         # Corresponds to the JSON property `systemManaged`
         # @return [Boolean]
         attr_accessor :system_managed

@@ -26,31 +26,25 @@ module Google
       class AdTechnologyProviders
         include Google::Apis::Core::Hashable
       
-        # The detected ad technology provider IDs for this creative.
-        # See https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for
-        # mapping of provider ID to provided name, a privacy policy URL, and a list
-        # of domains which can be attributed to the provider.
-        # If the creative contains provider IDs that are outside of those listed in
-        # the `BidRequest.adslot.consented_providers_settings.consented_providers`
-        # field on the [Google bid
-        # protocol](https://developers.google.com/authorized-buyers/rtb/downloads/
-        # realtime-bidding-proto)
-        # and the
-        # `BidRequest.user.ext.consented_providers_settings.consented_providers`
-        # field on the [OpenRTB
-        # protocol](https://developers.google.com/authorized-buyers/rtb/downloads/
-        # openrtb-adx-proto),
-        # and a bid is submitted with that creative for an impression
-        # that will serve to an EEA user, the bid will be filtered before the
+        # The detected ad technology provider IDs for this creative. See https://storage.
+        # googleapis.com/adx-rtb-dictionaries/providers.csv for mapping of provider ID
+        # to provided name, a privacy policy URL, and a list of domains which can be
+        # attributed to the provider. If the creative contains provider IDs that are
+        # outside of those listed in the `BidRequest.adslot.consented_providers_settings.
+        # consented_providers` field on the [Google bid protocol](https://developers.
+        # google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto) and the `
+        # BidRequest.user.ext.consented_providers_settings.consented_providers` field on
+        # the [OpenRTB protocol](https://developers.google.com/authorized-buyers/rtb/
+        # downloads/openrtb-adx-proto), and a bid is submitted with that creative for an
+        # impression that will serve to an EEA user, the bid will be filtered before the
         # auction.
         # Corresponds to the JSON property `detectedProviderIds`
         # @return [Array<Fixnum>]
         attr_accessor :detected_provider_ids
       
-        # Whether the creative contains an unidentified ad technology provider.
-        # If true for a given creative, any bid submitted with that creative for an
-        # impression that will serve to an EEA user will be filtered before the
-        # auction.
+        # Whether the creative contains an unidentified ad technology provider. If true
+        # for a given creative, any bid submitted with that creative for an impression
+        # that will serve to an EEA user will be filtered before the auction.
         # Corresponds to the JSON property `hasUnidentifiedProvider`
         # @return [Boolean]
         attr_accessor :has_unidentified_provider
@@ -71,37 +65,27 @@ module Google
       class AdvertiserAndBrand
         include Google::Apis::Core::Hashable
       
-        # See https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt
-        # for the list of possible values.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # See https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt for
+        # the list of possible values. Can be used to filter the response of the
+        # creatives.list method.
         # Corresponds to the JSON property `advertiserId`
         # @return [Fixnum]
         attr_accessor :advertiser_id
       
-        # Advertiser name.
-        # Can be used to filter the response of the
-        # creatives.list
+        # Advertiser name. Can be used to filter the response of the creatives.list
         # method.
         # Corresponds to the JSON property `advertiserName`
         # @return [String]
         attr_accessor :advertiser_name
       
-        # Detected brand ID or zero if no brand has been detected.
-        # See https://storage.googleapis.com/adx-rtb-dictionaries/brands.txt for
-        # the list of possible values.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # Detected brand ID or zero if no brand has been detected. See https://storage.
+        # googleapis.com/adx-rtb-dictionaries/brands.txt for the list of possible values.
+        # Can be used to filter the response of the creatives.list method.
         # Corresponds to the JSON property `brandId`
         # @return [Fixnum]
         attr_accessor :brand_id
       
-        # Brand name.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # Brand name. Can be used to filter the response of the creatives.list method.
         # Corresponds to the JSON property `brandName`
         # @return [String]
         attr_accessor :brand_name
@@ -136,24 +120,20 @@ module Google
       class Creative
         include Google::Apis::Core::Hashable
       
-        # Output only. ID of the buyer account that this creative is owned by.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method with equality and inequality check.
+        # Output only. ID of the buyer account that this creative is owned by. Can be
+        # used to filter the response of the creatives.list method with equality and
+        # inequality check.
         # Corresponds to the JSON property `accountId`
         # @return [Fixnum]
         attr_accessor :account_id
       
-        # The link to AdChoices destination page. This is only supported for native
-        # ads.
+        # The link to AdChoices destination page. This is only supported for native ads.
         # Corresponds to the JSON property `adChoicesDestinationUrl`
         # @return [String]
         attr_accessor :ad_choices_destination_url
       
-        # The name of the company being advertised in the creative.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # The name of the company being advertised in the creative. Can be used to
+        # filter the response of the creatives.list method.
         # Corresponds to the JSON property `advertiserName`
         # @return [String]
         attr_accessor :advertiser_name
@@ -168,20 +148,16 @@ module Google
         # @return [String]
         attr_accessor :api_update_time
       
-        # Output only. The format of this creative.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # Output only. The format of this creative. Can be used to filter the response
+        # of the creatives.list method.
         # Corresponds to the JSON property `creativeFormat`
         # @return [String]
         attr_accessor :creative_format
       
         # Buyer-specific creative ID that references this creative in bid responses.
-        # This field is Ignored in update operations. Can be used to filter the
-        # response of the
-        # creatives.list
-        # method.
-        # The maximum length of the creative ID is 128 bytes.
+        # This field is Ignored in update operations. Can be used to filter the response
+        # of the creatives.list method. The maximum length of the creative ID is 128
+        # bytes.
         # Corresponds to the JSON property `creativeId`
         # @return [String]
         attr_accessor :creative_id
@@ -191,51 +167,37 @@ module Google
         # @return [Google::Apis::RealtimebiddingV1::CreativeServingDecision]
         attr_accessor :creative_serving_decision
       
-        # Output only. IDs of all of the deals with which this creative has been used
-        # in bidding.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # Output only. IDs of all of the deals with which this creative has been used in
+        # bidding. Can be used to filter the response of the creatives.list method.
         # Corresponds to the JSON property `dealIds`
         # @return [Array<String>]
         attr_accessor :deal_ids
       
-        # All declared attributes for the ads that may be shown from this creative.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
-        # If the `excluded_attribute` field of a [bid
-        # request](https://developers.google.com/authorized-buyers/rtb/downloads/
-        # realtime-bidding-proto")
-        # contains one of the attributes that were declared or detected for a given
-        # creative, and a bid is submitted with that creative, the bid will be
-        # filtered before the auction.
+        # All declared attributes for the ads that may be shown from this creative. Can
+        # be used to filter the response of the creatives.list method. If the `
+        # excluded_attribute` field of a [bid request](https://developers.google.com/
+        # authorized-buyers/rtb/downloads/realtime-bidding-proto") contains one of the
+        # attributes that were declared or detected for a given creative, and a bid is
+        # submitted with that creative, the bid will be filtered before the auction.
         # Corresponds to the JSON property `declaredAttributes`
         # @return [Array<String>]
         attr_accessor :declared_attributes
       
-        # The set of declared destination URLs for the creative.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # The set of declared destination URLs for the creative. Can be used to filter
+        # the response of the creatives.list method.
         # Corresponds to the JSON property `declaredClickThroughUrls`
         # @return [Array<String>]
         attr_accessor :declared_click_through_urls
       
         # All declared restricted categories for the ads that may be shown from this
-        # creative. Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # creative. Can be used to filter the response of the creatives.list method.
         # Corresponds to the JSON property `declaredRestrictedCategories`
         # @return [Array<String>]
         attr_accessor :declared_restricted_categories
       
-        # IDs for the declared ad technology vendors that may be used by this
-        # creative. See
-        # https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt for
-        # possible values.
-        # Can be used to filter the response of the
-        # creatives.list
+        # IDs for the declared ad technology vendors that may be used by this creative.
+        # See https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt for
+        # possible values. Can be used to filter the response of the creatives.list
         # method.
         # Corresponds to the JSON property `declaredVendorIds`
         # @return [Array<Fixnum>]
@@ -251,11 +213,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :impression_tracking_urls
       
-        # Output only. Name of the creative.
-        # Follows the pattern `buyers/`buyer`/creatives/`creative``, where
-        # ``buyer`` represents the account ID of the buyer who owns the creative,
-        # and ``creative`` is the buyer-specific creative ID that references this
-        # creative in the bid response.
+        # Output only. Name of the creative. Follows the pattern `buyers/`buyer`/
+        # creatives/`creative``, where ``buyer`` represents the account ID of the buyer
+        # who owns the creative, and ``creative`` is the buyer-specific creative ID that
+        # references this creative in the bid response.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -270,9 +231,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :restricted_categories
       
-        # Output only. The version of this creative.
-        # Version for a new creative is 1 and it increments during subsequent
-        # creative updates.
+        # Output only. The version of this creative. Version for a new creative is 1 and
+        # it increments during subsequent creative updates.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -335,24 +295,18 @@ module Google
         # @return [Array<Google::Apis::RealtimebiddingV1::AdvertiserAndBrand>]
         attr_accessor :detected_advertisers
       
-        # Publisher-excludable attributes that were detected for this creative.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
-        # If the `excluded_attribute` field of a [bid
-        # request](https://developers.google.com/authorized-buyers/rtb/downloads/
-        # realtime-bidding-proto)
-        # contains one of the attributes that were declared or detected for a given
-        # creative, and a bid is submitted with that creative, the bid will be
-        # filtered before the auction.
+        # Publisher-excludable attributes that were detected for this creative. Can be
+        # used to filter the response of the creatives.list method. If the `
+        # excluded_attribute` field of a [bid request](https://developers.google.com/
+        # authorized-buyers/rtb/downloads/realtime-bidding-proto) contains one of the
+        # attributes that were declared or detected for a given creative, and a bid is
+        # submitted with that creative, the bid will be filtered before the auction.
         # Corresponds to the JSON property `detectedAttributes`
         # @return [Array<String>]
         attr_accessor :detected_attributes
       
-        # The set of detected destination URLs for the creative.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # The set of detected destination URLs for the creative. Can be used to filter
+        # the response of the creatives.list method.
         # Corresponds to the JSON property `detectedClickThroughUrls`
         # @return [Array<String>]
         attr_accessor :detected_click_through_urls
@@ -362,58 +316,43 @@ module Google
         # @return [Array<String>]
         attr_accessor :detected_domains
       
-        # The detected languages for this creative. The order is
-        # arbitrary. The codes are 2 or 5 characters and are documented at
-        # https://developers.google.com/adwords/api/docs/appendix/languagecodes.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # The detected languages for this creative. The order is arbitrary. The codes
+        # are 2 or 5 characters and are documented at https://developers.google.com/
+        # adwords/api/docs/appendix/languagecodes. Can be used to filter the response of
+        # the creatives.list method.
         # Corresponds to the JSON property `detectedLanguages`
         # @return [Array<String>]
         attr_accessor :detected_languages
       
-        # Detected product categories, if any.
-        # See the ad-product-categories.txt file in the technical documentation
-        # for a list of IDs.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # Detected product categories, if any. See the ad-product-categories.txt file in
+        # the technical documentation for a list of IDs. Can be used to filter the
+        # response of the creatives.list method.
         # Corresponds to the JSON property `detectedProductCategories`
         # @return [Array<Fixnum>]
         attr_accessor :detected_product_categories
       
-        # Detected sensitive categories, if any.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
-        # See the ad-sensitive-categories.txt file in the technical documentation
-        # for a list of IDs. You should use these IDs along with the
-        # excluded-sensitive-category field in the bid request to filter your bids.
+        # Detected sensitive categories, if any. Can be used to filter the response of
+        # the creatives.list method. See the ad-sensitive-categories.txt file in the
+        # technical documentation for a list of IDs. You should use these IDs along with
+        # the excluded-sensitive-category field in the bid request to filter your bids.
         # Corresponds to the JSON property `detectedSensitiveCategories`
         # @return [Array<Fixnum>]
         attr_accessor :detected_sensitive_categories
       
-        # IDs of the ad technology vendors that were detected to be
-        # used by this creative. See
-        # https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt for
-        # possible values.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
-        # If the `allowed_vendor_type` field of a [bid
-        # request](https://developers.google.com/authorized-buyers/rtb/downloads/
-        # realtime-bidding-proto)
-        # does not contain one of the vendor type IDs that were declared or
-        # detected for a given creative, and a bid is submitted with that creative,
-        # the bid will be filtered before the auction.
+        # IDs of the ad technology vendors that were detected to be used by this
+        # creative. See https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt
+        # for possible values. Can be used to filter the response of the creatives.list
+        # method. If the `allowed_vendor_type` field of a [bid request](https://
+        # developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto)
+        # does not contain one of the vendor type IDs that were declared or detected for
+        # a given creative, and a bid is submitted with that creative, the bid will be
+        # filtered before the auction.
         # Corresponds to the JSON property `detectedVendorIds`
         # @return [Array<Fixnum>]
         attr_accessor :detected_vendor_ids
       
-        # The last time the creative status was updated.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # The last time the creative status was updated. Can be used to filter the
+        # response of the creatives.list method.
         # Corresponds to the JSON property `lastStatusUpdate`
         # @return [String]
         attr_accessor :last_status_update
@@ -453,30 +392,29 @@ module Google
       
       # Represents a whole or partial calendar date, e.g. a birthday. The time of day
       # and time zone are either specified elsewhere or are not significant. The date
-      # is relative to the Proleptic Gregorian Calendar. This can represent:
-      # * A full date, with non-zero year, month and day values
-      # * A month and day value, with a zero year, e.g. an anniversary
-      # * A year on its own, with zero month and day values
-      # * A year and month value, with a zero day, e.g. a credit card expiration date
-      # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+      # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+      # date, with non-zero year, month and day values * A month and day value, with a
+      # zero year, e.g. an anniversary * A year on its own, with zero month and day
+      # values * A year and month value, with a zero day, e.g. a credit card
+      # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+      # Timestamp`.
       class Date
         include Google::Apis::Core::Hashable
       
-        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        # if specifying a year by itself or a year and month where the day is not
+        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+        # specifying a year by itself or a year and month where the day is not
         # significant.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a
-        # month and day.
+        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        # and day.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
       
-        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-        # a year.
+        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
         # Corresponds to the JSON property `year`
         # @return [Fixnum]
         attr_accessor :year
@@ -524,8 +462,8 @@ module Google
         end
       end
       
-      # Evidence of the creative's destination URL not functioning properly or
-      # having been incorrectly set up.
+      # Evidence of the creative's destination URL not functioning properly or having
+      # been incorrectly set up.
       class DestinationNotWorkingEvidence
         include Google::Apis::Core::Hashable
       
@@ -544,8 +482,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :http_error
       
-        # Page was crawled successfully, but was detected as either a page with
-        # no content or an error page.
+        # Page was crawled successfully, but was detected as either a page with no
+        # content or an error page.
         # Corresponds to the JSON property `invalidPage`
         # @return [String]
         attr_accessor :invalid_page
@@ -615,8 +553,8 @@ module Google
         # @return [Array<Google::Apis::RealtimebiddingV1::DomainCalls>]
         attr_accessor :top_http_call_domains
       
-        # The total number of HTTP calls made by the creative, including but not
-        # limited to the number of calls in the top_http_call_domains.
+        # The total number of HTTP calls made by the creative, including but not limited
+        # to the number of calls in the top_http_call_domains.
         # Corresponds to the JSON property `totalHttpCallCount`
         # @return [Fixnum]
         attr_accessor :total_http_call_count
@@ -657,8 +595,8 @@ module Google
         end
       end
       
-      # Total download size and URL-level download size breakdown for resources in
-      # a creative.
+      # Total download size and URL-level download size breakdown for resources in a
+      # creative.
       class DownloadSizeEvidence
         include Google::Apis::Core::Hashable
       
@@ -687,10 +625,10 @@ module Google
       class GetRemarketingTagResponse
         include Google::Apis::Core::Hashable
       
-        # A HTML tag that can be placed on the advertiser's page to add users to a
-        # user list. For more information and code samples on using snippet on your
-        # website refer to [Tag your site for remarketing](
-        # https://support.google.com/google-ads/answer/2476688).
+        # A HTML tag that can be placed on the advertiser's page to add users to a user
+        # list. For more information and code samples on using snippet on your website
+        # refer to [Tag your site for remarketing]( https://support.google.com/google-
+        # ads/answer/2476688).
         # Corresponds to the JSON property `snippet`
         # @return [String]
         attr_accessor :snippet
@@ -709,10 +647,8 @@ module Google
       class HtmlContent
         include Google::Apis::Core::Hashable
       
-        # The height of the HTML snippet in pixels.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # The height of the HTML snippet in pixels. Can be used to filter the response
+        # of the creatives.list method.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
@@ -722,10 +658,8 @@ module Google
         # @return [String]
         attr_accessor :snippet
       
-        # The width of the HTML snippet in pixels.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # The width of the HTML snippet in pixels. Can be used to filter the response of
+        # the creatives.list method.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
@@ -765,18 +699,18 @@ module Google
       class HttpCookieEvidence
         include Google::Apis::Core::Hashable
       
-        # Names of cookies that violate Google policies.
-        # For TOO_MANY_COOKIES policy, this will be the cookie names of top domains
-        # with the largest number of cookies. For other policies, this will be all
-        # the cookie names that violate the policy.
+        # Names of cookies that violate Google policies. For TOO_MANY_COOKIES policy,
+        # this will be the cookie names of top domains with the largest number of
+        # cookies. For other policies, this will be all the cookie names that violate
+        # the policy.
         # Corresponds to the JSON property `cookieNames`
         # @return [Array<String>]
         attr_accessor :cookie_names
       
         # The largest number of cookies set by a creative. If this field is set,
-        # cookie_names above will be set to the cookie names of top domains with
-        # the largest number of cookies.
-        # This field will only be set for TOO_MANY_COOKIES policy.
+        # cookie_names above will be set to the cookie names of top domains with the
+        # largest number of cookies. This field will only be set for TOO_MANY_COOKIES
+        # policy.
         # Corresponds to the JSON property `maxCookieCount`
         # @return [Fixnum]
         attr_accessor :max_cookie_count
@@ -792,8 +726,8 @@ module Google
         end
       end
       
-      # An image resource. You may provide a larger image than was requested,
-      # so long as the aspect ratio is preserved.
+      # An image resource. You may provide a larger image than was requested, so long
+      # as the aspect ratio is preserved.
       class Image
         include Google::Apis::Core::Hashable
       
@@ -833,11 +767,9 @@ module Google
         # @return [Array<Google::Apis::RealtimebiddingV1::Creative>]
         attr_accessor :creatives
       
-        # A token to retrieve the next page of results.
-        # Pass this value in the
-        # ListCreativesRequest.pageToken
-        # field in the subsequent call to the `ListCreatives` method to retrieve the
-        # next page of results.
+        # A token to retrieve the next page of results. Pass this value in the
+        # ListCreativesRequest.pageToken field in the subsequent call to the `
+        # ListCreatives` method to retrieve the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -857,11 +789,10 @@ module Google
       class ListUserListsResponse
         include Google::Apis::Core::Hashable
       
-        # The continuation page token to send back to the server in a subsequent
-        # request.
+        # The continuation page token to send back to the server in a subsequent request.
         # Due to a currently known issue, it is recommended that the caller keep
-        # invoking the list method till the time a next page token is not returned
-        # (even if the result set is empty).
+        # invoking the list method till the time a next page token is not returned (even
+        # if the result set is empty).
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -886,18 +817,14 @@ module Google
       class MediaFile
         include Google::Apis::Core::Hashable
       
-        # Bitrate of the video file, in Kbps.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # Bitrate of the video file, in Kbps. Can be used to filter the response of the
+        # creatives.list method.
         # Corresponds to the JSON property `bitrate`
         # @return [Fixnum]
         attr_accessor :bitrate
       
-        # The MIME type of this media file.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # The MIME type of this media file. Can be used to filter the response of the
+        # creatives.list method.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -922,8 +849,8 @@ module Google
         # @return [String]
         attr_accessor :advertiser_name
       
-        # An image resource. You may provide a larger image than was requested,
-        # so long as the aspect ratio is preserved.
+        # An image resource. You may provide a larger image than was requested, so long
+        # as the aspect ratio is preserved.
         # Corresponds to the JSON property `appIcon`
         # @return [Google::Apis::RealtimebiddingV1::Image]
         attr_accessor :app_icon
@@ -953,14 +880,14 @@ module Google
         # @return [String]
         attr_accessor :headline
       
-        # An image resource. You may provide a larger image than was requested,
-        # so long as the aspect ratio is preserved.
+        # An image resource. You may provide a larger image than was requested, so long
+        # as the aspect ratio is preserved.
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::RealtimebiddingV1::Image]
         attr_accessor :image
       
-        # An image resource. You may provide a larger image than was requested,
-        # so long as the aspect ratio is preserved.
+        # An image resource. You may provide a larger image than was requested, so long
+        # as the aspect ratio is preserved.
         # Corresponds to the JSON property `logo`
         # @return [Google::Apis::RealtimebiddingV1::Image]
         attr_accessor :logo
@@ -1030,13 +957,10 @@ module Google
         # @return [String]
         attr_accessor :help_center_url
       
-        # Policy topic this entry refers to. For example, "ALCOHOL",
-        # "TRADEMARKS_IN_AD_TEXT", or "DESTINATION_NOT_WORKING". The set of possible
-        # policy topics is not fixed for a particular API version and may change at
-        # any time.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method
+        # Policy topic this entry refers to. For example, "ALCOHOL", "
+        # TRADEMARKS_IN_AD_TEXT", or "DESTINATION_NOT_WORKING". The set of possible
+        # policy topics is not fixed for a particular API version and may change at any
+        # time. Can be used to filter the response of the creatives.list method
         # Corresponds to the JSON property `policyTopic`
         # @return [String]
         attr_accessor :policy_topic
@@ -1062,8 +986,8 @@ module Google
         # @return [Google::Apis::RealtimebiddingV1::DestinationNotCrawlableEvidence]
         attr_accessor :destination_not_crawlable
       
-        # Evidence of the creative's destination URL not functioning properly or
-        # having been incorrectly set up.
+        # Evidence of the creative's destination URL not functioning properly or having
+        # been incorrectly set up.
         # Corresponds to the JSON property `destinationNotWorking`
         # @return [Google::Apis::RealtimebiddingV1::DestinationNotWorkingEvidence]
         attr_accessor :destination_not_working
@@ -1078,8 +1002,8 @@ module Google
         # @return [Google::Apis::RealtimebiddingV1::DomainCallEvidence]
         attr_accessor :domain_call
       
-        # Total download size and URL-level download size breakdown for resources in
-        # a creative.
+        # Total download size and URL-level download size breakdown for resources in a
+        # creative.
         # Corresponds to the JSON property `downloadSize`
         # @return [Google::Apis::RealtimebiddingV1::DownloadSizeEvidence]
         attr_accessor :download_size
@@ -1114,18 +1038,16 @@ module Google
       class ServingStatus
         include Google::Apis::Core::Hashable
       
-        # Serving status for the given transaction type (e.g., open auction,
-        # deals) or region (e.g., China, Russia).
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # Serving status for the given transaction type (e.g., open auction, deals) or
+        # region (e.g., China, Russia). Can be used to filter the response of the
+        # creatives.list method.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
-        # Policy topics related to the serving decision for this transaction type
-        # (e.g., open auction, deals) or region (e.g., China, Russia).
-        # Topics may be present only if status is DISAPPROVED.
+        # Policy topics related to the serving decision for this transaction type (e.g.,
+        # open auction, deals) or region (e.g., China, Russia). Topics may be present
+        # only if status is DISAPPROVED.
         # Corresponds to the JSON property `topics`
         # @return [Array<Google::Apis::RealtimebiddingV1::PolicyTopicEntry>]
         attr_accessor :topics
@@ -1173,12 +1095,12 @@ module Google
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::RealtimebiddingV1::Date]
         attr_accessor :end_date
@@ -1190,12 +1112,12 @@ module Google
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::RealtimebiddingV1::Date]
         attr_accessor :start_date
@@ -1218,11 +1140,10 @@ module Google
         end
       end
       
-      # Represents an Authorized Buyers user list. Authorized Buyers can
-      # create/update/list user lists. Once a user list is created
-      # in the system, Authorized Buyers can add users to the user list using
-      # the bulk uploader API. Alternatively, users can be added by hosting a
-      # tag on the advertiser's page.
+      # Represents an Authorized Buyers user list. Authorized Buyers can create/update/
+      # list user lists. Once a user list is created in the system, Authorized Buyers
+      # can add users to the user list using the bulk uploader API. Alternatively,
+      # users can be added by hosting a tag on the advertiser's page.
       class UserList
         include Google::Apis::Core::Hashable
       
@@ -1232,24 +1153,23 @@ module Google
         attr_accessor :description
       
         # Required. Display name of the user list. This must be unique across all user
-        # lists
-        # for a given account.
+        # lists for a given account.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Required. The number of days a user's cookie stays on the user list.
-        # The field must be between 0 and 540 inclusive.
+        # Required. The number of days a user's cookie stays on the user list. The field
+        # must be between 0 and 540 inclusive.
         # Corresponds to the JSON property `membershipDurationDays`
         # @return [Fixnum]
         attr_accessor :membership_duration_days
       
-        # Output only. Name of the user list that must follow the pattern
-        # `buyers/`buyer`/userLists/`user_list``, where ``buyer`` represents
-        # the account ID of the buyer who owns the user list. For a bidder accessing
-        # user lists on behalf of a child seat buyer, ``buyer`` represents
-        # the account ID of the child seat buyer. ``user_list`` is an int64
-        # identifier assigned by Google to uniquely identify a user list.
+        # Output only. Name of the user list that must follow the pattern `buyers/`buyer`
+        # /userLists/`user_list``, where ``buyer`` represents the account ID of the
+        # buyer who owns the user list. For a bidder accessing user lists on behalf of a
+        # child seat buyer, ``buyer`` represents the account ID of the child seat buyer.
+        # ``user_list`` is an int64 identifier assigned by Google to uniquely identify a
+        # user list.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1294,8 +1214,8 @@ module Google
         # @return [String]
         attr_accessor :video_url
       
-        # The contents of a VAST document for a video ad.
-        # This document should conform to the VAST 2.0 or 3.0 standard.
+        # The contents of a VAST document for a video ad. This document should conform
+        # to the VAST 2.0 or 3.0 standard.
         # Corresponds to the JSON property `videoVastXml`
         # @return [String]
         attr_accessor :video_vast_xml
@@ -1316,53 +1236,43 @@ module Google
       class VideoMetadata
         include Google::Apis::Core::Hashable
       
-        # The duration of the ad.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # The duration of the ad. Can be used to filter the response of the creatives.
+        # list method.
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
       
-        # Is this a valid VAST ad?
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # Is this a valid VAST ad? Can be used to filter the response of the creatives.
+        # list method.
         # Corresponds to the JSON property `isValidVast`
         # @return [Boolean]
         attr_accessor :is_valid_vast
         alias_method :is_valid_vast?, :is_valid_vast
       
-        # Is this a VPAID ad?
-        # Can be used to filter the response of the
-        # creatives.list
+        # Is this a VPAID ad? Can be used to filter the response of the creatives.list
         # method.
         # Corresponds to the JSON property `isVpaid`
         # @return [Boolean]
         attr_accessor :is_vpaid
         alias_method :is_vpaid?, :is_vpaid
       
-        # The list of all media files declared in the VAST. If there are multiple
-        # VASTs in a wrapper chain, this includes the media files from the deepest
-        # one in the chain.
+        # The list of all media files declared in the VAST. If there are multiple VASTs
+        # in a wrapper chain, this includes the media files from the deepest one in the
+        # chain.
         # Corresponds to the JSON property `mediaFiles`
         # @return [Array<Google::Apis::RealtimebiddingV1::MediaFile>]
         attr_accessor :media_files
       
-        # The minimum duration that the user has to watch before being able to
-        # skip this ad. If the field is not set, the ad is not skippable. If
-        # the field is set, the ad is skippable.
-        # Can be used to filter the response of the
-        # creatives.list
+        # The minimum duration that the user has to watch before being able to skip this
+        # ad. If the field is not set, the ad is not skippable. If the field is set, the
+        # ad is skippable. Can be used to filter the response of the creatives.list
         # method.
         # Corresponds to the JSON property `skipOffset`
         # @return [String]
         attr_accessor :skip_offset
       
-        # The maximum VAST version across all wrapped VAST documents.
-        # Can be used to filter the response of the
-        # creatives.list
-        # method.
+        # The maximum VAST version across all wrapped VAST documents. Can be used to
+        # filter the response of the creatives.list method.
         # Corresponds to the JSON property `vastVersion`
         # @return [String]
         attr_accessor :vast_version
@@ -1382,8 +1292,8 @@ module Google
         end
       end
       
-      # A request to receive push notifications when any of the creatives belonging
-      # to the bidder changes status.
+      # A request to receive push notifications when any of the creatives belonging to
+      # the bidder changes status.
       class WatchCreativesRequest
         include Google::Apis::Core::Hashable
       
@@ -1402,21 +1312,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The Pub/Sub subscription that can be used to pull creative status
-        # notifications. This would be of the format
-        # `projects/`project_id`/subscriptions/`subscription_id``.
-        # Subscription is created with pull delivery. All service accounts belonging
-        # to the bidder will have read access to this subscription.
-        # Subscriptions that are inactive for more than 90 days will be disabled.
-        # Please use
-        # watchCreatives to
-        # re-enable the subscription.
+        # notifications. This would be of the format `projects/`project_id`/
+        # subscriptions/`subscription_id``. Subscription is created with pull delivery.
+        # All service accounts belonging to the bidder will have read access to this
+        # subscription. Subscriptions that are inactive for more than 90 days will be
+        # disabled. Please use watchCreatives to re-enable the subscription.
         # Corresponds to the JSON property `subscription`
         # @return [String]
         attr_accessor :subscription
       
-        # The Pub/Sub topic that will be used to publish creative serving
-        # status notifications. This would be of the format
-        # `projects/`project_id`/topics/`topic_id``.
+        # The Pub/Sub topic that will be used to publish creative serving status
+        # notifications. This would be of the format `projects/`project_id`/topics/`
+        # topic_id``.
         # Corresponds to the JSON property `topic`
         # @return [String]
         attr_accessor :topic

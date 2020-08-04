@@ -50,8 +50,8 @@ module Google
         end
         
         # Finds named entities (currently proper names and common nouns) in the text
-        # along with entity types, salience, mentions for each entity, and
-        # other properties.
+        # along with entity types, salience, mentions for each entity, and other
+        # properties.
         # @param [Google::Apis::LanguageV1beta1::AnalyzeEntitiesRequest] analyze_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

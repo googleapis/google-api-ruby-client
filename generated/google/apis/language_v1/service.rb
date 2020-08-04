@@ -50,8 +50,8 @@ module Google
         end
         
         # Finds named entities (currently proper names and common nouns) in the text
-        # along with entity types, salience, mentions for each entity, and
-        # other properties.
+        # along with entity types, salience, mentions for each entity, and other
+        # properties.
         # @param [Google::Apis::LanguageV1::AnalyzeEntitiesRequest] analyze_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -81,8 +81,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Finds entities, similar to AnalyzeEntities in the text and analyzes
-        # sentiment associated with each entity and its mentions.
+        # Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment
+        # associated with each entity and its mentions.
         # @param [Google::Apis::LanguageV1::AnalyzeEntitySentimentRequest] analyze_entity_sentiment_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

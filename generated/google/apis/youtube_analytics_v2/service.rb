@@ -49,19 +49,18 @@ module Google
         
         # Removes an item from a group.
         # @param [String] id
-        #   The `id` parameter specifies the YouTube group item ID of the group item
-        #   that is being deleted.
+        #   The `id` parameter specifies the YouTube group item ID of the group item that
+        #   is being deleted.
         # @param [String] on_behalf_of_content_owner
         #   This parameter can only be used in a properly authorized request. **Note:**
-        #   This parameter is intended exclusively for YouTube content partners that
-        #   own and manage many different YouTube channels.
-        #   The `onBehalfOfContentOwner` parameter indicates that the request's
-        #   authorization credentials identify a YouTube user who is acting on behalf
-        #   of the content owner specified in the parameter value. It allows content
-        #   owners to authenticate once and get access to all their video and channel
-        #   data, without having to provide authentication credentials for each
-        #   individual channel. The account that the user authenticates with must be
-        #   linked to the specified YouTube content owner.
+        #   This parameter is intended exclusively for YouTube content partners that own
+        #   and manage many different YouTube channels. The `onBehalfOfContentOwner`
+        #   parameter indicates that the request's authorization credentials identify a
+        #   YouTube user who is acting on behalf of the content owner specified in the
+        #   parameter value. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -94,15 +93,14 @@ module Google
         # @param [Google::Apis::YoutubeAnalyticsV2::GroupItem] group_item_object
         # @param [String] on_behalf_of_content_owner
         #   This parameter can only be used in a properly authorized request. **Note:**
-        #   This parameter is intended exclusively for YouTube content partners that
-        #   own and manage many different YouTube channels.
-        #   The `onBehalfOfContentOwner` parameter indicates that the request's
-        #   authorization credentials identify a YouTube user who is acting on behalf
-        #   of the content owner specified in the parameter value. It allows content
-        #   owners to authenticate once and get access to all their video and channel
-        #   data, without having to provide authentication credentials for each
-        #   individual channel. The account that the user authenticates with must be
-        #   linked to the specified YouTube content owner.
+        #   This parameter is intended exclusively for YouTube content partners that own
+        #   and manage many different YouTube channels. The `onBehalfOfContentOwner`
+        #   parameter indicates that the request's authorization credentials identify a
+        #   YouTube user who is acting on behalf of the content owner specified in the
+        #   parameter value. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -138,15 +136,14 @@ module Google
         #   want to retrieve group items.
         # @param [String] on_behalf_of_content_owner
         #   This parameter can only be used in a properly authorized request. **Note:**
-        #   This parameter is intended exclusively for YouTube content partners that
-        #   own and manage many different YouTube channels.
-        #   The `onBehalfOfContentOwner` parameter indicates that the request's
-        #   authorization credentials identify a YouTube user who is acting on behalf
-        #   of the content owner specified in the parameter value. It allows content
-        #   owners to authenticate once and get access to all their video and channel
-        #   data, without having to provide authentication credentials for each
-        #   individual channel. The account that the user authenticates with must be
-        #   linked to the specified YouTube content owner.
+        #   This parameter is intended exclusively for YouTube content partners that own
+        #   and manage many different YouTube channels. The `onBehalfOfContentOwner`
+        #   parameter indicates that the request's authorization credentials identify a
+        #   YouTube user who is acting on behalf of the content owner specified in the
+        #   parameter value. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -177,19 +174,18 @@ module Google
         
         # Deletes a group.
         # @param [String] id
-        #   The `id` parameter specifies the YouTube group ID of the group that is
-        #   being deleted.
+        #   The `id` parameter specifies the YouTube group ID of the group that is being
+        #   deleted.
         # @param [String] on_behalf_of_content_owner
         #   This parameter can only be used in a properly authorized request. **Note:**
-        #   This parameter is intended exclusively for YouTube content partners that
-        #   own and manage many different YouTube channels.
-        #   The `onBehalfOfContentOwner` parameter indicates that the request's
-        #   authorization credentials identify a YouTube user who is acting on behalf
-        #   of the content owner specified in the parameter value. It allows content
-        #   owners to authenticate once and get access to all their video and channel
-        #   data, without having to provide authentication credentials for each
-        #   individual channel. The account that the user authenticates with must be
-        #   linked to the specified YouTube content owner.
+        #   This parameter is intended exclusively for YouTube content partners that own
+        #   and manage many different YouTube channels. The `onBehalfOfContentOwner`
+        #   parameter indicates that the request's authorization credentials identify a
+        #   YouTube user who is acting on behalf of the content owner specified in the
+        #   parameter value. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -222,15 +218,14 @@ module Google
         # @param [Google::Apis::YoutubeAnalyticsV2::Group] group_object
         # @param [String] on_behalf_of_content_owner
         #   This parameter can only be used in a properly authorized request. **Note:**
-        #   This parameter is intended exclusively for YouTube content partners that
-        #   own and manage many different YouTube channels.
-        #   The `onBehalfOfContentOwner` parameter indicates that the request's
-        #   authorization credentials identify a YouTube user who is acting on behalf
-        #   of the content owner specified in the parameter value. It allows content
-        #   owners to authenticate once and get access to all their video and channel
-        #   data, without having to provide authentication credentials for each
-        #   individual channel. The account that the user authenticates with must be
-        #   linked to the specified YouTube content owner.
+        #   This parameter is intended exclusively for YouTube content partners that own
+        #   and manage many different YouTube channels. The `onBehalfOfContentOwner`
+        #   parameter indicates that the request's authorization credentials identify a
+        #   YouTube user who is acting on behalf of the content owner specified in the
+        #   parameter value. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -261,30 +256,28 @@ module Google
         end
         
         # Returns a collection of groups that match the API request parameters. For
-        # example, you can retrieve all groups that the authenticated user owns,
-        # or you can retrieve one or more groups by their unique IDs.
+        # example, you can retrieve all groups that the authenticated user owns, or you
+        # can retrieve one or more groups by their unique IDs.
         # @param [String] id
-        #   The `id` parameter specifies a comma-separated list of the YouTube group
-        #   ID(s) for the resource(s) that are being retrieved. Each group must be
-        #   owned by the authenticated user. In a `group` resource, the `id` property
-        #   specifies the group's YouTube group ID.
-        #   Note that if you do not specify a value for the `id` parameter, then you
-        #   must set the `mine` parameter to `true`.
+        #   The `id` parameter specifies a comma-separated list of the YouTube group ID(s)
+        #   for the resource(s) that are being retrieved. Each group must be owned by the
+        #   authenticated user. In a `group` resource, the `id` property specifies the
+        #   group's YouTube group ID. Note that if you do not specify a value for the `id`
+        #   parameter, then you must set the `mine` parameter to `true`.
         # @param [Boolean] mine
         #   This parameter can only be used in a properly authorized request. Set this
         #   parameter's value to true to retrieve all groups owned by the authenticated
         #   user.
         # @param [String] on_behalf_of_content_owner
         #   This parameter can only be used in a properly authorized request. **Note:**
-        #   This parameter is intended exclusively for YouTube content partners that
-        #   own and manage many different YouTube channels.
-        #   The `onBehalfOfContentOwner` parameter indicates that the request's
-        #   authorization credentials identify a YouTube user who is acting on behalf
-        #   of the content owner specified in the parameter value. It allows content
-        #   owners to authenticate once and get access to all their video and channel
-        #   data, without having to provide authentication credentials for each
-        #   individual channel. The account that the user authenticates with must be
-        #   linked to the specified YouTube content owner.
+        #   This parameter is intended exclusively for YouTube content partners that own
+        #   and manage many different YouTube channels. The `onBehalfOfContentOwner`
+        #   parameter indicates that the request's authorization credentials identify a
+        #   YouTube user who is acting on behalf of the content owner specified in the
+        #   parameter value. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] page_token
         #   The `pageToken` parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the `nextPageToken` property
@@ -323,15 +316,14 @@ module Google
         # @param [Google::Apis::YoutubeAnalyticsV2::Group] group_object
         # @param [String] on_behalf_of_content_owner
         #   This parameter can only be used in a properly authorized request. **Note:**
-        #   This parameter is intended exclusively for YouTube content partners that
-        #   own and manage many different YouTube channels.
-        #   The `onBehalfOfContentOwner` parameter indicates that the request's
-        #   authorization credentials identify a YouTube user who is acting on behalf
-        #   of the content owner specified in the parameter value. It allows content
-        #   owners to authenticate once and get access to all their video and channel
-        #   data, without having to provide authentication credentials for each
-        #   individual channel. The account that the user authenticates with must be
-        #   linked to the specified YouTube content owner.
+        #   This parameter is intended exclusively for YouTube content partners that own
+        #   and manage many different YouTube channels. The `onBehalfOfContentOwner`
+        #   parameter indicates that the request's authorization credentials identify a
+        #   YouTube user who is acting on behalf of the content owner specified in the
+        #   parameter value. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -363,71 +355,59 @@ module Google
         
         # Retrieve your YouTube Analytics reports.
         # @param [String] currency
-        #   The currency to which financial metrics should be converted. The default is
-        #   US Dollar (USD). If the result contains no financial metrics, this flag
-        #   will be ignored. Responds with an error if the specified currency is not
-        #   recognized.",
+        #   The currency to which financial metrics should be converted. The default is US
+        #   Dollar (USD). If the result contains no financial metrics, this flag will be
+        #   ignored. Responds with an error if the specified currency is not recognized.",
         #   pattern: [A-Z]`3`
         # @param [String] dimensions
-        #   A comma-separated list of YouTube Analytics dimensions, such as `views` or
-        #   `ageGroup,gender`. See the [Available
-        #   Reports](/youtube/analytics/v2/available_reports) document for a list of
-        #   the reports that you can retrieve and the dimensions used for those
-        #   reports. Also see the [Dimensions](/youtube/analytics/v2/dimsmets/dims)
-        #   document for definitions of those dimensions."
+        #   A comma-separated list of YouTube Analytics dimensions, such as `views` or `
+        #   ageGroup,gender`. See the [Available Reports](/youtube/analytics/v2/
+        #   available_reports) document for a list of the reports that you can retrieve
+        #   and the dimensions used for those reports. Also see the [Dimensions](/youtube/
+        #   analytics/v2/dimsmets/dims) document for definitions of those dimensions."
         #   pattern: [0-9a-zA-Z,]+
         # @param [String] end_date
-        #   The end date for fetching YouTube Analytics data. The value should be in
-        #   `YYYY-MM-DD` format.
-        #   required: true, pattern: [0-9]`4`-[0-9]`2`-[0-9]`2`
+        #   The end date for fetching YouTube Analytics data. The value should be in `YYYY-
+        #   MM-DD` format. required: true, pattern: [0-9]`4`-[0-9]`2`-[0-9]`2`
         # @param [String] filters
         #   A list of filters that should be applied when retrieving YouTube Analytics
         #   data. The [Available Reports](/youtube/analytics/v2/available_reports)
-        #   document identifies the dimensions that can be used to filter each report,
-        #   and the [Dimensions](/youtube/analytics/v2/dimsmets/dims)  document defines
-        #   those dimensions. If a request uses multiple filters, join them together
-        #   with a semicolon (`;`), and the returned result table will satisfy both
-        #   filters. For example, a filters parameter value of
-        #   `video==dMH0bHeiRNg;country==IT` restricts the result set to include data
-        #   for the given video in Italy.",
+        #   document identifies the dimensions that can be used to filter each report, and
+        #   the [Dimensions](/youtube/analytics/v2/dimsmets/dims) document defines those
+        #   dimensions. If a request uses multiple filters, join them together with a
+        #   semicolon (`;`), and the returned result table will satisfy both filters. For
+        #   example, a filters parameter value of `video==dMH0bHeiRNg;country==IT`
+        #   restricts the result set to include data for the given video in Italy.",
         # @param [String] ids
-        #   Identifies the YouTube channel or content owner for which you are
-        #   retrieving YouTube Analytics data.
-        #   - To request data for a YouTube user, set the `ids` parameter value to
-        #   `channel==CHANNEL_ID`, where `CHANNEL_ID` specifies the unique YouTube
-        #   channel ID.
-        #   - To request data for a YouTube CMS content owner, set the `ids` parameter
-        #   value to `contentOwner==OWNER_NAME`, where `OWNER_NAME` is the CMS name
-        #   of the content owner.
-        #   required: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+
+        #   Identifies the YouTube channel or content owner for which you are retrieving
+        #   YouTube Analytics data. - To request data for a YouTube user, set the `ids`
+        #   parameter value to `channel==CHANNEL_ID`, where `CHANNEL_ID` specifies the
+        #   unique YouTube channel ID. - To request data for a YouTube CMS content owner,
+        #   set the `ids` parameter value to `contentOwner==OWNER_NAME`, where `OWNER_NAME`
+        #   is the CMS name of the content owner. required: true, pattern: [a-zA-Z]+==[a-
+        #   zA-Z0-9_+-]+
         # @param [Boolean] include_historical_channel_data
-        #   If set to true historical data (i.e. channel data from before the linking
-        #   of the channel to the content owner) will be retrieved.",
+        #   If set to true historical data (i.e. channel data from before the linking of
+        #   the channel to the content owner) will be retrieved.",
         # @param [Fixnum] max_results
-        #   The maximum number of rows to include in the response.",
-        #   minValue: 1
+        #   The maximum number of rows to include in the response.", minValue: 1
         # @param [String] metrics
-        #   A comma-separated list of YouTube Analytics metrics, such as `views` or
-        #   `likes,dislikes`. See the
-        #   [Available Reports](/youtube/analytics/v2/available_reports)  document for
-        #   a list of the reports that you can retrieve and the metrics
-        #   available in each report, and see the
-        #   [Metrics](/youtube/analytics/v2/dimsmets/mets) document for definitions of
-        #   those metrics.
-        #   required: true, pattern: [0-9a-zA-Z,]+
+        #   A comma-separated list of YouTube Analytics metrics, such as `views` or `likes,
+        #   dislikes`. See the [Available Reports](/youtube/analytics/v2/available_reports)
+        #   document for a list of the reports that you can retrieve and the metrics
+        #   available in each report, and see the [Metrics](/youtube/analytics/v2/dimsmets/
+        #   mets) document for definitions of those metrics. required: true, pattern: [0-
+        #   9a-zA-Z,]+
         # @param [String] sort
-        #   A comma-separated list of dimensions or metrics that determine the sort
-        #   order for YouTube Analytics data. By default the sort order is ascending.
-        #   The '`-`' prefix causes descending sort order.",
-        #   pattern: [-0-9a-zA-Z,]+
+        #   A comma-separated list of dimensions or metrics that determine the sort order
+        #   for YouTube Analytics data. By default the sort order is ascending. The '`-`'
+        #   prefix causes descending sort order.", pattern: [-0-9a-zA-Z,]+
         # @param [String] start_date
-        #   The start date for fetching YouTube Analytics data. The value should be in
-        #   `YYYY-MM-DD` format.
-        #   required: true, pattern: "[0-9]`4`-[0-9]`2`-[0-9]`2`
+        #   The start date for fetching YouTube Analytics data. The value should be in `
+        #   YYYY-MM-DD` format. required: true, pattern: "[0-9]`4`-[0-9]`2`-[0-9]`2`
         # @param [Fixnum] start_index
-        #   An index of the first entity to retrieve. Use this parameter as a
-        #   pagination mechanism along with the max-results parameter (one-based,
-        #   inclusive).",
+        #   An index of the first entity to retrieve. Use this parameter as a pagination
+        #   mechanism along with the max-results parameter (one-based, inclusive).",
         #   minValue: 1
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

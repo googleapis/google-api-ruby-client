@@ -47,8 +47,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # The RDAP API recognizes this command from the RDAP specification but
-        # does not support it. The response is a formatted 501 error.
+        # The RDAP API recognizes this command from the RDAP specification but does not
+        # support it. The response is a formatted 501 error.
         # @param [String] autnum_id
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -107,8 +107,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The RDAP API recognizes this command from the RDAP specification but
-        # does not support it. The response is a formatted 501 error.
+        # The RDAP API recognizes this command from the RDAP specification but does not
+        # support it. The response is a formatted 501 error.
         # @param [String] entity_id
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -137,8 +137,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The RDAP API recognizes this command from the RDAP specification but
-        # does not support it. The response is a formatted 501 error.
+        # The RDAP API recognizes this command from the RDAP specification but does not
+        # support it. The response is a formatted 501 error.
         # @param [String] ip_id
         # @param [String] ip_id1
         # @param [String] fields
@@ -169,8 +169,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The RDAP API recognizes this command from the RDAP specification but
-        # does not support it. The response is a formatted 501 error.
+        # The RDAP API recognizes this command from the RDAP specification but does not
+        # support it. The response is a formatted 501 error.
         # @param [String] nameserver_id
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -199,8 +199,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The RDAP API recognizes this command from the RDAP specification but
-        # does not support it. The response is a formatted 501 error.
+        # The RDAP API recognizes this command from the RDAP specification but does not
+        # support it. The response is a formatted 501 error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -227,8 +227,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The RDAP API recognizes this command from the RDAP specification but
-        # does not support it. The response is a formatted 501 error.
+        # The RDAP API recognizes this command from the RDAP specification but does not
+        # support it. The response is a formatted 501 error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -282,8 +282,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The RDAP API recognizes this command from the RDAP specification but
-        # does not support it. The response is a formatted 501 error.
+        # The RDAP API recognizes this command from the RDAP specification but does not
+        # support it. The response is a formatted 501 error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -310,8 +310,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The RDAP API recognizes this command from the RDAP specification but
-        # does not support it. The response is a formatted 501 error.
+        # The RDAP API recognizes this command from the RDAP specification but does not
+        # support it. The response is a formatted 501 error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

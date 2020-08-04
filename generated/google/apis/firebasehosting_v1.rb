@@ -27,7 +27,7 @@ module Google
     # @see https://firebase.google.com/docs/hosting/
     module FirebasehostingV1
       VERSION = 'V1'
-      REVISION = '20200629'
+      REVISION = '20200731'
     end
   end
 end

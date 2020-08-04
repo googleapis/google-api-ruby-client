@@ -212,8 +212,8 @@ module Google
         
         # Creates a new APK without uploading the APK itself to Google Play, instead
         # hosting the APK at a specified URL. This function is only available to
-        # organizations using Managed Play whose application is configured to
-        # restrict distribution to the organizations.
+        # organizations using Managed Play whose application is configured to restrict
+        # distribution to the organizations.
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] edit_id
@@ -358,22 +358,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads a new Android App Bundle to this edit.
-        # If you are using the Google API client libraries, please increase the
-        # timeout of the http request before calling this endpoint
-        # (a timeout of 2 minutes is recommended).
-        # See [Timeouts and
-        # Errors](https://developers.google.com/api-client-library/java/google-api-java-
-        # client/errors)
-        # for an example in java.
+        # Uploads a new Android App Bundle to this edit. If you are using the Google API
+        # client libraries, please increase the timeout of the http request before
+        # calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts
+        # and Errors](https://developers.google.com/api-client-library/java/google-api-
+        # java-client/errors) for an example in java.
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [Boolean] ack_bundle_installation_warning
-        #   Must be set to true if the bundle installation may trigger a warning on
-        #   user devices (for example, if installation size may be over a threshold,
-        #   typically 100 MB).
+        #   Must be set to true if the bundle installation may trigger a warning on user
+        #   devices (for example, if installation size may be over a threshold, typically
+        #   100 MB).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -419,8 +416,7 @@ module Google
         # @param [String] edit_id
         #   Unique identifier for this edit.
         # @param [Fixnum] apk_version_code
-        #   The version code of the APK whose Deobfuscation File is being
-        #   uploaded.
+        #   The version code of the APK whose Deobfuscation File is being uploaded.
         # @param [String] deobfuscation_file_type
         #   The type of the deobfuscation file.
         # @param [String] fields
@@ -574,8 +570,8 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [Fixnum] apk_version_code
-        #   The version code of the APK whose expansion file configuration is being
-        #   read or modified.
+        #   The version code of the APK whose expansion file configuration is being read
+        #   or modified.
         # @param [String] expansion_file_type
         #   The file type of the file configuration which is being read or modified.
         # @param [String] fields
@@ -609,15 +605,14 @@ module Google
         end
         
         # Patches the APK's expansion file configuration to reference another APK's
-        # expansion file.
-        # To add a new expansion file use the Upload method.
+        # expansion file. To add a new expansion file use the Upload method.
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [Fixnum] apk_version_code
-        #   The version code of the APK whose expansion file configuration is being
-        #   read or modified.
+        #   The version code of the APK whose expansion file configuration is being read
+        #   or modified.
         # @param [String] expansion_file_type
         #   The file type of the expansion file configuration which is being updated.
         # @param [Google::Apis::AndroidpublisherV3::ExpansionFile] expansion_file_object
@@ -654,15 +649,14 @@ module Google
         end
         
         # Updates the APK's expansion file configuration to reference another APK's
-        # expansion file.
-        # To add a new expansion file use the Upload method.
+        # expansion file. To add a new expansion file use the Upload method.
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [Fixnum] apk_version_code
-        #   The version code of the APK whose expansion file configuration is being
-        #   read or modified.
+        #   The version code of the APK whose expansion file configuration is being read
+        #   or modified.
         # @param [String] expansion_file_type
         #   The file type of the file configuration which is being read or modified.
         # @param [Google::Apis::AndroidpublisherV3::ExpansionFile] expansion_file_object
@@ -704,8 +698,8 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [Fixnum] apk_version_code
-        #   The version code of the APK whose expansion file configuration is being
-        #   read or modified.
+        #   The version code of the APK whose expansion file configuration is being read
+        #   or modified.
         # @param [String] expansion_file_type
         #   The file type of the expansion file configuration which is being updated.
         # @param [String] fields
@@ -754,8 +748,8 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [String] language
-        #   Language localization code (a BCP-47 language tag; for example, "de-AT"
-        #   for Austrian German).
+        #   Language localization code (a BCP-47 language tag; for example, "de-AT" for
+        #   Austrian German).
         # @param [String] image_type
         #   Type of the Image.
         # @param [String] image_id
@@ -789,19 +783,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes all images for the specified language and image type.
-        # Returns an empty response if no images are found.
+        # Deletes all images for the specified language and image type. Returns an empty
+        # response if no images are found.
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [String] language
-        #   Language localization code (a BCP-47 language tag; for example, "de-AT"
-        #   for Austrian German).
-        #   Providing a language that is not supported by the App is a no-op.
+        #   Language localization code (a BCP-47 language tag; for example, "de-AT" for
+        #   Austrian German). Providing a language that is not supported by the App is a
+        #   no-op.
         # @param [String] image_type
-        #   Type of the Image.
-        #   Providing an image type that refers to no images is a no-op.
+        #   Type of the Image. Providing an image type that refers to no images is a no-op.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -838,9 +831,8 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [String] language
-        #   Language localization code (a BCP-47 language tag; for example, "de-AT"
-        #   for Austrian German).
-        #   There must be a store listing for the specified language.
+        #   Language localization code (a BCP-47 language tag; for example, "de-AT" for
+        #   Austrian German). There must be a store listing for the specified language.
         # @param [String] image_type
         #   Type of the Image. Providing an image type that refers to no images will
         #   return an empty response.
@@ -881,9 +873,9 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [String] language
-        #   Language localization code (a BCP-47 language tag; for example, "de-AT"
-        #   for Austrian German).
-        #   Providing a language that is not supported by the App is a no-op.
+        #   Language localization code (a BCP-47 language tag; for example, "de-AT" for
+        #   Austrian German). Providing a language that is not supported by the App is a
+        #   no-op.
         # @param [String] image_type
         #   Type of the Image.
         # @param [String] fields
@@ -932,8 +924,8 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [String] language
-        #   Language localization code (a BCP-47 language tag; for example, "de-AT"
-        #   for Austrian German).
+        #   Language localization code (a BCP-47 language tag; for example, "de-AT" for
+        #   Austrian German).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -998,8 +990,8 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [String] language
-        #   Language localization code (a BCP-47 language tag; for example, "de-AT"
-        #   for Austrian German).
+        #   Language localization code (a BCP-47 language tag; for example, "de-AT" for
+        #   Austrian German).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1068,8 +1060,8 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [String] language
-        #   Language localization code (a BCP-47 language tag; for example, "de-AT"
-        #   for Austrian German).
+        #   Language localization code (a BCP-47 language tag; for example, "de-AT" for
+        #   Austrian German).
         # @param [Google::Apis::AndroidpublisherV3::Listing] listing_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1108,8 +1100,8 @@ module Google
         # @param [String] edit_id
         #   Identifier of the edit.
         # @param [String] language
-        #   Language localization code (a BCP-47 language tag; for example, "de-AT"
-        #   for Austrian German).
+        #   Language localization code (a BCP-47 language tag; for example, "de-AT" for
+        #   Austrian German).
         # @param [Google::Apis::AndroidpublisherV3::Listing] listing_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1472,9 +1464,9 @@ module Google
         #   Package name of the app.
         # @param [Google::Apis::AndroidpublisherV3::InAppProduct] in_app_product_object
         # @param [Boolean] auto_convert_missing_prices
-        #   If true the prices for all regions targeted by the parent app that don't
-        #   have a price specified for this in-app product will be auto converted to
-        #   the target currency based on the default price. Defaults to false.
+        #   If true the prices for all regions targeted by the parent app that don't have
+        #   a price specified for this in-app product will be auto converted to the target
+        #   currency based on the default price. Defaults to false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1551,9 +1543,9 @@ module Google
         #   Unique identifier for the in-app product.
         # @param [Google::Apis::AndroidpublisherV3::InAppProduct] in_app_product_object
         # @param [Boolean] auto_convert_missing_prices
-        #   If true the prices for all regions targeted by the parent app that don't
-        #   have a price specified for this in-app product will be auto converted to
-        #   the target currency based on the default price. Defaults to false.
+        #   If true the prices for all regions targeted by the parent app that don't have
+        #   a price specified for this in-app product will be auto converted to the target
+        #   currency based on the default price. Defaults to false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1592,9 +1584,9 @@ module Google
         #   Unique identifier for the in-app product.
         # @param [Google::Apis::AndroidpublisherV3::InAppProduct] in_app_product_object
         # @param [Boolean] auto_convert_missing_prices
-        #   If true the prices for all regions targeted by the parent app that don't
-        #   have a price specified for this in-app product will be auto converted to
-        #   the target currency based on the default price. Defaults to false.
+        #   If true the prices for all regions targeted by the parent app that don't have
+        #   a price specified for this in-app product will be auto converted to the target
+        #   currency based on the default price. Defaults to false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1626,14 +1618,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads an APK to internal app sharing.
-        # If you are using the Google API client libraries, please increase the
-        # timeout of the http request before calling this endpoint
-        # (a timeout of 2 minutes is recommended).
-        # See [Timeouts and
-        # Errors](https://developers.google.com/api-client-library/java/google-api-java-
-        # client/errors)
-        # for an example in java.
+        # Uploads an APK to internal app sharing. If you are using the Google API client
+        # libraries, please increase the timeout of the http request before calling this
+        # endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](
+        # https://developers.google.com/api-client-library/java/google-api-java-client/
+        # errors) for an example in java.
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] fields
@@ -1673,14 +1662,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads an app bundle to internal app sharing.
-        # If you are using the Google API client libraries, please increase the
-        # timeout of the http request before calling this endpoint
-        # (a timeout of 2 minutes is recommended).
-        # See [Timeouts and
-        # Errors](https://developers.google.com/api-client-library/java/google-api-java-
-        # client/errors)
-        # for an example in java.
+        # Uploads an app bundle to internal app sharing. If you are using the Google API
+        # client libraries, please increase the timeout of the http request before
+        # calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts
+        # and Errors](https://developers.google.com/api-client-library/java/google-api-
+        # java-client/errors) for an example in java.
         # @param [String] package_name
         #   Package name of the app.
         # @param [String] fields
@@ -1722,16 +1708,16 @@ module Google
         
         # Refund a user's subscription or in-app purchase order.
         # @param [String] package_name
-        #   The package name of the application for which this subscription or in-app
-        #   item was purchased (for example, 'com.some.thing').
+        #   The package name of the application for which this subscription or in-app item
+        #   was purchased (for example, 'com.some.thing').
         # @param [String] order_id
         #   The order ID provided to the user when the subscription or in-app order was
         #   purchased.
         # @param [Boolean] revoke
         #   Whether to revoke the purchased item. If set to true, access to the
-        #   subscription or in-app item will be terminated immediately. If the item is
-        #   a recurring subscription, all future payments will also be terminated.
-        #   Consumed in-app items need to be handled by developer's app. (optional).
+        #   subscription or in-app item will be terminated immediately. If the item is a
+        #   recurring subscription, all future payments will also be terminated. Consumed
+        #   in-app items need to be handled by developer's app. (optional).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1761,13 +1747,12 @@ module Google
         
         # Acknowledges a purchase of an inapp item.
         # @param [String] package_name
-        #   The package name of the application the inapp product was sold in (for
-        #   example, 'com.some.thing').
+        #   The package name of the application the inapp product was sold in (for example,
+        #   'com.some.thing').
         # @param [String] product_id
         #   The inapp product SKU (for example, 'com.some.thing.inapp1').
         # @param [String] token
-        #   The token provided to the user's device when the inapp product was
-        #   purchased.
+        #   The token provided to the user's device when the inapp product was purchased.
         # @param [Google::Apis::AndroidpublisherV3::ProductPurchasesAcknowledgeRequest] product_purchases_acknowledge_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1800,13 +1785,12 @@ module Google
         
         # Checks the purchase and consumption status of an inapp item.
         # @param [String] package_name
-        #   The package name of the application the inapp product was sold in (for
-        #   example, 'com.some.thing').
+        #   The package name of the application the inapp product was sold in (for example,
+        #   'com.some.thing').
         # @param [String] product_id
         #   The inapp product SKU (for example, 'com.some.thing.inapp1').
         # @param [String] token
-        #   The token provided to the user's device when the inapp product was
-        #   purchased.
+        #   The token provided to the user's device when the inapp product was purchased.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1838,13 +1822,12 @@ module Google
         
         # Acknowledges a subscription purchase.
         # @param [String] package_name
-        #   The package name of the application for which this subscription was
-        #   purchased (for example, 'com.some.thing').
+        #   The package name of the application for which this subscription was purchased (
+        #   for example, 'com.some.thing').
         # @param [String] subscription_id
         #   The purchased subscription ID (for example, 'monthly001').
         # @param [String] token
-        #   The token provided to the user's device when the subscription was
-        #   purchased.
+        #   The token provided to the user's device when the subscription was purchased.
         # @param [Google::Apis::AndroidpublisherV3::SubscriptionPurchasesAcknowledgeRequest] subscription_purchases_acknowledge_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1875,16 +1858,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels a user's subscription purchase. The subscription remains valid
-        # until its expiration time.
+        # Cancels a user's subscription purchase. The subscription remains valid until
+        # its expiration time.
         # @param [String] package_name
-        #   The package name of the application for which this subscription was
-        #   purchased (for example, 'com.some.thing').
+        #   The package name of the application for which this subscription was purchased (
+        #   for example, 'com.some.thing').
         # @param [String] subscription_id
         #   The purchased subscription ID (for example, 'monthly001').
         # @param [String] token
-        #   The token provided to the user's device when the subscription was
-        #   purchased.
+        #   The token provided to the user's device when the subscription was purchased.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1912,16 +1894,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Defers a user's subscription purchase until a specified future expiration
-        # time.
+        # Defers a user's subscription purchase until a specified future expiration time.
         # @param [String] package_name
-        #   The package name of the application for which this subscription was
-        #   purchased (for example, 'com.some.thing').
+        #   The package name of the application for which this subscription was purchased (
+        #   for example, 'com.some.thing').
         # @param [String] subscription_id
         #   The purchased subscription ID (for example, 'monthly001').
         # @param [String] token
-        #   The token provided to the user's device when the subscription was
-        #   purchased.
+        #   The token provided to the user's device when the subscription was purchased.
         # @param [Google::Apis::AndroidpublisherV3::SubscriptionPurchasesDeferRequest] subscription_purchases_defer_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1954,16 +1934,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Checks whether a user's subscription purchase is valid and returns its
-        # expiry time.
+        # Checks whether a user's subscription purchase is valid and returns its expiry
+        # time.
         # @param [String] package_name
-        #   The package name of the application for which this subscription was
-        #   purchased (for example, 'com.some.thing').
+        #   The package name of the application for which this subscription was purchased (
+        #   for example, 'com.some.thing').
         # @param [String] subscription_id
         #   The purchased subscription ID (for example, 'monthly001').
         # @param [String] token
-        #   The token provided to the user's device when the subscription was
-        #   purchased.
+        #   The token provided to the user's device when the subscription was purchased.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1996,13 +1975,12 @@ module Google
         # Refunds a user's subscription purchase, but the subscription remains valid
         # until its expiration time and it will continue to recur.
         # @param [String] package_name
-        #   The package name of the application for which this subscription was
-        #   purchased (for example, 'com.some.thing').
+        #   The package name of the application for which this subscription was purchased (
+        #   for example, 'com.some.thing').
         # @param [String] subscription_id
         #   "The purchased subscription ID (for example, 'monthly001').
         # @param [String] token
-        #   The token provided to the user's device when the subscription was
-        #   purchased.
+        #   The token provided to the user's device when the subscription was purchased.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2030,16 +2008,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Refunds and immediately revokes a user's subscription purchase. Access to
-        # the subscription will be terminated immediately and it will stop recurring.
+        # Refunds and immediately revokes a user's subscription purchase. Access to the
+        # subscription will be terminated immediately and it will stop recurring.
         # @param [String] package_name
-        #   The package name of the application for which this subscription was
-        #   purchased (for example, 'com.some.thing').
+        #   The package name of the application for which this subscription was purchased (
+        #   for example, 'com.some.thing').
         # @param [String] subscription_id
         #   The purchased subscription ID (for example, 'monthly001').
         # @param [String] token
-        #   The token provided to the user's device when the subscription was
-        #   purchased.
+        #   The token provided to the user's device when the subscription was purchased.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2072,43 +2049,38 @@ module Google
         #   The package name of the application for which voided purchases need to be
         #   returned (for example, 'com.some.thing').
         # @param [Fixnum] end_time
-        #   The time, in milliseconds since the Epoch, of the newest voided purchase
-        #   that you want to see in the response. The value of this parameter cannot
-        #   be greater than the current time and is ignored if a pagination token is
-        #   set. Default value is current time.
-        #   Note: This filter is applied on the time at which the record is seen as
-        #   voided by our systems and not the actual voided time returned in the
-        #   response.
+        #   The time, in milliseconds since the Epoch, of the newest voided purchase that
+        #   you want to see in the response. The value of this parameter cannot be greater
+        #   than the current time and is ignored if a pagination token is set. Default
+        #   value is current time. Note: This filter is applied on the time at which the
+        #   record is seen as voided by our systems and not the actual voided time
+        #   returned in the response.
         # @param [Fixnum] max_results
-        #   Defines how many results the list operation should return.
-        #   The default number depends on the resource collection.
+        #   Defines how many results the list operation should return. The default number
+        #   depends on the resource collection.
         # @param [Fixnum] start_index
-        #   Defines the index of the first element to return.
-        #   This can only be used if indexed paging is enabled.
+        #   Defines the index of the first element to return. This can only be used if
+        #   indexed paging is enabled.
         # @param [Fixnum] start_time
-        #   The time, in milliseconds since the Epoch, of the oldest voided purchase
-        #   that you want to see in the response. The value of this parameter cannot
-        #   be older than 30 days and is ignored if a pagination token is set.
-        #   Default value is current time minus 30 days.
-        #   Note: This filter is applied on the time at which the record is seen as
-        #   voided by our systems and not the actual voided time returned in the
-        #   response.
+        #   The time, in milliseconds since the Epoch, of the oldest voided purchase that
+        #   you want to see in the response. The value of this parameter cannot be older
+        #   than 30 days and is ignored if a pagination token is set. Default value is
+        #   current time minus 30 days. Note: This filter is applied on the time at which
+        #   the record is seen as voided by our systems and not the actual voided time
+        #   returned in the response.
         # @param [String] token
-        #   Defines the token of the page to return, usually taken from
-        #   TokenPagination.
+        #   Defines the token of the page to return, usually taken from TokenPagination.
         #   This can only be used if token paging is enabled.
         # @param [Fixnum] type
-        #   The type of voided purchases that you want to see in the response.
-        #   Possible values are:
-        #   0. Only voided in-app product purchases will be returned in the
-        #   response. This is the default value.
-        #   1. Both voided in-app purchases and voided subscription purchases
-        #   will be returned in the response.
-        #   Note: Before requesting to receive voided subscription purchases, you
-        #   must switch to use orderId in the response which uniquely identifies
-        #   one-time purchases and subscriptions. Otherwise, you will receive multiple
-        #   subscription orders with the same PurchaseToken, because subscription
-        #   renewal orders share the same PurchaseToken.
+        #   The type of voided purchases that you want to see in the response. Possible
+        #   values are: 0. Only voided in-app product purchases will be returned in the
+        #   response. This is the default value. 1. Both voided in-app purchases and
+        #   voided subscription purchases will be returned in the response. Note: Before
+        #   requesting to receive voided subscription purchases, you must switch to use
+        #   orderId in the response which uniquely identifies one-time purchases and
+        #   subscriptions. Otherwise, you will receive multiple subscription orders with
+        #   the same PurchaseToken, because subscription renewal orders share the same
+        #   PurchaseToken.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2293,8 +2265,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Downloads a previously created system APK which is suitable for inclusion
-        # in a system image.
+        # Downloads a previously created system APK which is suitable for inclusion in a
+        # system image.
         # @param [String] package_name
         #   Unique identifier of the Android app.
         # @param [Fixnum] version_code
