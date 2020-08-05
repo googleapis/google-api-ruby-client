@@ -23,12 +23,11 @@ module Google
       # Apigee API
       #
       # The Apigee API lets you programmatically manage Apigee hybrid with a set of
-      #  RESTful operations, including:<ul>  <li>Create, edit, and delete API proxies</
-      #  li>  <li>Manage users</li>  <li>Deploy and undeploy proxy revisions</li>  <li>
-      #  Configure environments</li></ul><p>For information on using the APIs described
-      #  in this section, see <a href="docs.apigee.com/hybrid/latest/api-get-started">
-      #  Get started using the APIs</a>.</p><p><strong>Note:</strong> This product is
-      #  available as a free trial for a time period of 60 days.
+      #  RESTful operations, including: - Create, edit, and delete API proxies - Manage
+      #  users - Deploy and undeploy proxy revisions - Configure environments For
+      #  information on using the APIs described in this section, see Get started using
+      #  the APIs. *Note:* This product is available as a free trial for a time period
+      #  of 60 days.
       #
       # @example
       #    require 'google/apis/apigee_v1'
@@ -53,10 +52,9 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Lists hybrid services and its trusted issuers service account ids.
-        # This api is authenticated and unauthorized(allow all the users) and used by
-        # runtime authn-authz service to query control plane's issuer service account
-        # ids.
+        # Lists hybrid services and its trusted issuers service account ids. This api is
+        # authenticated and unauthorized(allow all the users) and used by runtime authn-
+        # authz service to query control plane's issuer service account ids.
         # @param [String] name
         #   Required. Must be of the form `hybrid/issuers`.
         # @param [String] fields
@@ -86,16 +84,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an Apigee organization. See
-        # [Create an
-        # organization](https://docs.apigee.com/hybrid/latest/precog-provision).
+        # Creates an Apigee organization. See [Create an organization](https://docs.
+        # apigee.com/hybrid/latest/precog-provision).
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Organization] google_cloud_apigee_v1_organization_object
         # @param [String] parent
         #   Required. Name of the GCP project in which to associate the Apigee
-        #   organization.
-        #   Pass the information as a query parameter using the following structure
-        #   in your request:
-        #   `projects/<project>`
+        #   organization. Pass the information as a query parameter using the following
+        #   structure in your request: `projects/`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -125,13 +120,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the profile for an Apigee organization.
-        # See
-        # [Organizations](https://docs.apigee.com/hybrid/latest/terminology#
-        # organizations).
+        # Gets the profile for an Apigee organization. See [Organizations](https://docs.
+        # apigee.com/hybrid/latest/terminology#organizations).
         # @param [String] name
-        #   Required. Apigee organization name in the following format:
-        #   `organizations/`org``
+        #   Required. Apigee organization name in the following format: `organizations/`
+        #   org``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -162,8 +155,7 @@ module Google
         # Gets the deployed ingress configuration for an organization.
         # @param [String] name
         #   Required. Name of the deployed configuration for the organization in the
-        #   following
-        #   format: 'organizations/`org`/deployedIngressConfig'.
+        #   following format: 'organizations/`org`/deployedIngressConfig'.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -191,22 +183,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the service accounts with the permissions required to allow
-        # the Synchronizer to download environment data from the control plane.
-        # An ETag is returned in the response to `getSyncAuthorization`.
-        # Pass that ETag when calling [setSyncAuthorization](setSyncAuthorization)
-        # to ensure that you are updating the correct version. If you don't pass the
-        # ETag in the call to `setSyncAuthorization`, then the existing authorization
-        # is overwritten indiscriminately.
-        # For more information, see
-        # [Enable Synchronizer
-        # access](https://docs.apigee.com/hybrid/latest/synchronizer-access#enable-
-        # synchronizer-access).
-        # **Note**: Available to Apigee hybrid only.
+        # Lists the service accounts with the permissions required to allow the
+        # Synchronizer to download environment data from the control plane. An ETag is
+        # returned in the response to `getSyncAuthorization`. Pass that ETag when
+        # calling [setSyncAuthorization](setSyncAuthorization) to ensure that you are
+        # updating the correct version. If you don't pass the ETag in the call to `
+        # setSyncAuthorization`, then the existing authorization is overwritten
+        # indiscriminately. For more information, see [Enable Synchronizer access](https:
+        # //docs.apigee.com/hybrid/latest/synchronizer-access#enable-synchronizer-access)
+        # . **Note**: Available to Apigee hybrid only.
         # @param [String] name
         #   Required. Name of the Apigee organization. Use the following structure in your
-        #   request:
-        #   `organizations/`org``
+        #   request: `organizations/`org``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GetSyncAuthorizationRequest] google_cloud_apigee_v1_get_sync_authorization_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -238,12 +226,10 @@ module Google
         end
         
         # Lists the Apigee organizations and associated GCP projects that you have
-        # permission to access. See
-        # [Organizations](https://docs.apigee.com/hybrid/latest/terminology#
-        # organizations).
+        # permission to access. See [Organizations](https://docs.apigee.com/hybrid/
+        # latest/terminology#organizations).
         # @param [String] parent
-        #   Required. Use the following structure in your request:
-        #   `organizations`
+        #   Required. Use the following structure in your request: `organizations`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -273,21 +259,16 @@ module Google
         
         # Sets the permissions required to allow the Synchronizer to download
         # environment data from the control plane. You must call this API to enable
-        # proper functioning of hybrid.
-        # Pass the ETag when calling `setSyncAuthorization` to ensure that
-        # you are updating the correct version. To get an ETag,
-        # call [getSyncAuthorization](getSyncAuthorization).
-        # If you don't pass the ETag in the call to `setSyncAuthorization`, then the
-        # existing authorization is overwritten indiscriminately.
-        # For more information, see
-        # [Enable Synchronizer
-        # access](https://docs.apigee.com/hybrid/latest/synchronizer-access#enable-
-        # synchronizer-access).
-        # **Note**: Available to Apigee hybrid only.
+        # proper functioning of hybrid. Pass the ETag when calling `setSyncAuthorization`
+        # to ensure that you are updating the correct version. To get an ETag, call [
+        # getSyncAuthorization](getSyncAuthorization). If you don't pass the ETag in the
+        # call to `setSyncAuthorization`, then the existing authorization is overwritten
+        # indiscriminately. For more information, see [Enable Synchronizer access](https:
+        # //docs.apigee.com/hybrid/latest/synchronizer-access#enable-synchronizer-access)
+        # . **Note**: Available to Apigee hybrid only.
         # @param [String] name
         #   Required. Name of the Apigee organization. Use the following structure in your
-        #   request:
-        #   `organizations/`org``
+        #   request: `organizations/`org``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SyncAuthorization] google_cloud_apigee_v1_sync_authorization_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -321,8 +302,8 @@ module Google
         # Updates the properties for an Apigee organization. No other fields in the
         # organization profile will be updated.
         # @param [String] name
-        #   Required. Apigee organization name in the following format:
-        #   `organizations/`org``
+        #   Required. Apigee organization name in the following format: `organizations/`
+        #   org``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Organization] google_cloud_apigee_v1_organization_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -355,8 +336,8 @@ module Google
         
         # Create a Datastore for an org
         # @param [String] parent
-        #   Required. The parent organization name.
-        #   Must be of the form `organizations/`org``.
+        #   Required. The parent organization name. Must be of the form `organizations/`
+        #   org``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore] google_cloud_apigee_v1_datastore_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -389,8 +370,8 @@ module Google
         
         # Delete a Datastore from an org.
         # @param [String] name
-        #   Required. Resource name of the Datastore to be deleted. Must be of the
-        #   form `organizations/`org`/analytics/datastores/`datastoreId``
+        #   Required. Resource name of the Datastore to be deleted. Must be of the form `
+        #   organizations/`org`/analytics/datastores/`datastoreId``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -420,8 +401,8 @@ module Google
         
         # Get a Datastore
         # @param [String] name
-        #   Required. Resource name of the Datastore to be get. Must be of the
-        #   form `organizations/`org`/analytics/datastores/`datastoreId``
+        #   Required. Resource name of the Datastore to be get. Must be of the form `
+        #   organizations/`org`/analytics/datastores/`datastoreId``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -451,8 +432,8 @@ module Google
         
         # List Datastores
         # @param [String] parent
-        #   Required. The parent organization name.
-        #   Must be of the form `organizations/`org``.
+        #   Required. The parent organization name. Must be of the form `organizations/`
+        #   org``.
         # @param [String] target_type
         #   Optional. TargetType is used to fetch all Datastores that match the type
         # @param [String] fields
@@ -483,12 +464,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Test if Datastore configuration is correct. This includes checking
-        # if credentials provided by customer have required permissions in target
+        # Test if Datastore configuration is correct. This includes checking if
+        # credentials provided by customer have required permissions in target
         # destination storage
         # @param [String] parent
-        #   Required. The parent organization name
-        #   Must be of the form `organizations/`org``
+        #   Required. The parent organization name Must be of the form `organizations/`org`
+        #   `
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore] google_cloud_apigee_v1_datastore_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -521,8 +502,8 @@ module Google
         
         # Update a Datastore
         # @param [String] name
-        #   Required. The resource name of datastore to be updated. Must be of the
-        #   form `organizations/`org`/analytics/datastores/`datastoreId``
+        #   Required. The resource name of datastore to be updated. Must be of the form `
+        #   organizations/`org`/analytics/datastores/`datastoreId``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Datastore] google_cloud_apigee_v1_datastore_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -553,20 +534,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates or creates API product attributes. This API **replaces** the
-        # current list of attributes with the attributes specified in the request
-        # body. In this way, you can update existing attributes, add new attributes,
-        # or delete existing attributes by omitting them from the request body.
-        # OAuth access tokens and Key Management Service (KMS) entities (apps,
-        # developers, and API products) are cached for 180 seconds (current default).
-        # Any custom attributes associated with entities also get cached for at least
-        # 180 seconds after entity is accessed during runtime.
-        # In this case, the `ExpiresIn` element on the OAuthV2 policy won't be able
-        # to expire an access token in less than 180 seconds.
+        # Updates or creates API product attributes. This API **replaces** the current
+        # list of attributes with the attributes specified in the request body. In this
+        # way, you can update existing attributes, add new attributes, or delete
+        # existing attributes by omitting them from the request body. OAuth access
+        # tokens and Key Management Service (KMS) entities (apps, developers, and API
+        # products) are cached for 180 seconds (current default). Any custom attributes
+        # associated with entities also get cached for at least 180 seconds after entity
+        # is accessed during runtime. In this case, the `ExpiresIn` element on the
+        # OAuthV2 policy won't be able to expire an access token in less than 180
+        # seconds.
         # @param [String] name
-        #   **Required.** API product name in the following form:
-        #   <pre>organizations/<var>organization_ID</var>/apiproducts/<var>
-        #   api_product_name</var></pre>
+        #   **Required.** API product name in the following form: organizations/
+        #   organization_ID/apiproducts/api_product_name
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attributes] google_cloud_apigee_v1_attributes_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -597,38 +577,25 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an API product in an organization.
-        # You create API products after
-        # you have proxied backend services using API proxies.
-        # An API product is a
-        # collection of API resources combined with quota settings and metadata that
-        # you can use to deliver customized and productized API bundles to your
-        # developer community. This metadata can include:
-        # - Scope
-        # - Environments
-        # - API proxies
-        # - Extensible profile
-        # API products enable you repackage APIs
-        # on-the-fly, without having to do any additional coding or configuration.
-        # Apigee recommends that you start with a simple API product including only
-        # required elements. You then provision credentials to apps to enable them to
-        # start testing your APIs.
-        # After you have authentication and authorization
-        # working against a simple API product, you can iterate to create finer
-        # grained API products, defining different sets of API resources for each API
-        # product.
-        # <aside class="warning"><strong>WARNING:</strong>
-        # - If you don't specify an API proxy in the request body, <em>any</em> app
-        # associated with the product can make calls to <em>any</em> API in your
-        # entire organization.
-        # - If you don't specify an environment in the request body, the product
-        # allows access to all environments.
-        # </aside>
+        # Creates an API product in an organization. You create API products after you
+        # have proxied backend services using API proxies. An API product is a
+        # collection of API resources combined with quota settings and metadata that you
+        # can use to deliver customized and productized API bundles to your developer
+        # community. This metadata can include: - Scope - Environments - API proxies -
+        # Extensible profile API products enable you repackage APIs on-the-fly, without
+        # having to do any additional coding or configuration. Apigee recommends that
+        # you start with a simple API product including only required elements. You then
+        # provision credentials to apps to enable them to start testing your APIs. After
+        # you have authentication and authorization working against a simple API product,
+        # you can iterate to create finer grained API products, defining different sets
+        # of API resources for each API product. *WARNING:* - If you don't specify an
+        # API proxy in the request body, *any* app associated with the product can make
+        # calls to *any* API in your entire organization. - If you don't specify an
+        # environment in the request body, the product allows access to all environments.
         # For more information, see ``what_api_product``
         # @param [String] parent
-        #   Required. The parent organization name under which the API product will
-        #   be created. Must be in the following form:
-        #   <pre>organizations/<var>organization_ID</var></pre>
+        #   Required. The parent organization name under which the API product will be
+        #   created. Must be in the following form: organizations/organization_ID
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProduct] google_cloud_apigee_v1_api_product_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -659,21 +626,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an API product from an organization.
-        # Deleting an API product
-        # causes app requests to the resource URIs defined in the API product to
-        # fail.
-        # Ensure that you create a new API product to serve existing apps, unless
-        # your intention is to disable access to the resources defined in the API
-        # product.
-        # The API product name required in the request URL is the internal name of
-        # the product, not the display name. While they may be the same, it depends
-        # on whether the API product was created via the UI or the API. View the list
-        # of API products to verify the internal name.
+        # Deletes an API product from an organization. Deleting an API product causes
+        # app requests to the resource URIs defined in the API product to fail. Ensure
+        # that you create a new API product to serve existing apps, unless your
+        # intention is to disable access to the resources defined in the API product.
+        # The API product name required in the request URL is the internal name of the
+        # product, not the display name. While they may be the same, it depends on
+        # whether the API product was created via the UI or the API. View the list of
+        # API products to verify the internal name.
         # @param [String] name
-        #   Required. API product name in the following form:
-        #   <pre>organizations/<var>organization_ID</var>/apiproducts/<var>
-        #   api_product_name</var></pre>
+        #   Required. API product name in the following form: organizations/
+        #   organization_ID/apiproducts/api_product_name
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -701,15 +664,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets configuration details for an API product.
-        # The API product name required in the request URL is the internal name of
-        # the product, not the display name. While they may be the same, it depends
-        # on whether the API product was created via the UI or the API. View the list
-        # of API products to verify the internal name.
+        # Gets configuration details for an API product. The API product name required
+        # in the request URL is the internal name of the product, not the display name.
+        # While they may be the same, it depends on whether the API product was created
+        # via the UI or the API. View the list of API products to verify the internal
+        # name.
         # @param [String] name
-        #   **Required.** API product name in the following form:
-        #   <pre>organizations/<var>organization_ID</var>/apiproducts/<var>
-        #   api_product_name</var></pre>
+        #   **Required.** API product name in the following form: organizations/
+        #   organization_ID/apiproducts/api_product_name
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -737,29 +699,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all API product names for an organization.
-        # Filter the list by passing an `attributename` and `attibutevalue`.
-        # The limit on the number of API products returned by the API is 1000. You
-        # can paginate the list of API products returned using the `startKey` and
-        # `count` query parameters.
+        # Lists all API product names for an organization. Filter the list by passing an
+        # `attributename` and `attibutevalue`. The limit on the number of API products
+        # returned by the API is 1000. You can paginate the list of API products
+        # returned using the `startKey` and `count` query parameters.
         # @param [String] parent
         #   **Required.** The parent organization name in the following form:
-        #   <pre>organizations/<var>organization_ID</var></pre>
+        #   organizations/organization_ID
         # @param [String] attributename
         #   The name of the attribute to search.
         # @param [String] attributevalue
         #   The value of the attribute.
         # @param [Fixnum] count
-        #   Enter the number of API products you want returned in the API call. The
-        #   limit is 1000.
+        #   Enter the number of API products you want returned in the API call. The limit
+        #   is 1000.
         # @param [Boolean] expand
         #   Set to `true` to get expanded details about each API.
         # @param [String] start_key
-        #   Gets a list of API products starting with a specific API product in the
-        #   list. For example, if you're returning 50 API products at a time (using the
-        #   `count` query parameter), you can view products 50-99 by entering the name
-        #   of the 50th API product in the first API (without using `startKey`).
-        #   Product name is case sensitive.
+        #   Gets a list of API products starting with a specific API product in the list.
+        #   For example, if you're returning 50 API products at a time (using the `count`
+        #   query parameter), you can view products 50-99 by entering the name of the 50th
+        #   API product in the first API (without using `startKey`). Product name is case
+        #   sensitive.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -792,17 +753,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing API product. You must include all required values,
-        # whether or not you are updating them, as well as any optional values that
-        # you are updating.
-        # The API product name required in the request URL is the
-        # internal name of the product, not the Display Name. While they may be the
-        # same, it depends on whether the API product was created via UI or API. View
-        # the list of API products to identify their internal names.
+        # Updates an existing API product. You must include all required values, whether
+        # or not you are updating them, as well as any optional values that you are
+        # updating. The API product name required in the request URL is the internal
+        # name of the product, not the Display Name. While they may be the same, it
+        # depends on whether the API product was created via UI or API. View the list of
+        # API products to identify their internal names.
         # @param [String] name
-        #   **Required.** API product name in the following form:
-        #   <pre>organizations/<var>organization_ID</var>/apiproducts/<var>
-        #   api_product_name</var></pre>
+        #   **Required.** API product name in the following form: organizations/
+        #   organization_ID/apiproducts/api_product_name
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApiProduct] google_cloud_apigee_v1_api_product_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -835,9 +794,8 @@ module Google
         
         # Deletes an API product attribute.
         # @param [String] name
-        #   **Required.** API product name in the following form:
-        #   <pre>organizations/<var>organization_ID</var>/apiproducts/<var>
-        #   api_product_name</var>/attributes/<var>attribute_name</var></pre>
+        #   **Required.** API product name in the following form: organizations/
+        #   organization_ID/apiproducts/api_product_name/attributes/attribute_name
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -867,9 +825,8 @@ module Google
         
         # Returns the value of an API product attribute.
         # @param [String] name
-        #   **Required.** API product name in the following form:
-        #   <pre>organizations/<var>organization_ID</var>/apiproducts/<var>
-        #   api_product_name</var>/attributes/<var>attribute_name</var></pre>
+        #   **Required.** API product name in the following form: organizations/
+        #   organization_ID/apiproducts/api_product_name/attributes/attribute_name
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -900,8 +857,7 @@ module Google
         # Returns a list of all API product attributes.
         # @param [String] parent
         #   Required. The parent organization name. Must be in the following form:
-        #   <pre>organizations/<var>organization_ID</var>/apiproducts/<var>
-        #   api_product_name</var></pre>
+        #   organizations/organization_ID/apiproducts/api_product_name
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -929,17 +885,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the value of an API product attribute. Limitations are:
-        # OAuth access tokens and Key Management Service (KMS) entities (apps,
-        # developers, and API products) are cached for 180 seconds (current default).
-        # Any custom attributes associated with entities also get cached for at least
-        # 180 seconds after entity is accessed during runtime.
-        # In this case, the `ExpiresIn` element on the OAuthV2 policy won't be able
-        # to expire an access token in less than 180 seconds.
+        # Updates the value of an API product attribute. Limitations are: OAuth access
+        # tokens and Key Management Service (KMS) entities (apps, developers, and API
+        # products) are cached for 180 seconds (current default). Any custom attributes
+        # associated with entities also get cached for at least 180 seconds after entity
+        # is accessed during runtime. In this case, the `ExpiresIn` element on the
+        # OAuthV2 policy won't be able to expire an access token in less than 180
+        # seconds.
         # @param [String] name
-        #   **Required.** API product name in the following form:
-        #   <pre>organizations/<var>organization_ID</var>/apiproducts/<var>
-        #   api_product_name</var></pre>
+        #   **Required.** API product name in the following form: organizations/
+        #   organization_ID/apiproducts/api_product_name
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute] google_cloud_apigee_v1_attribute_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -970,42 +925,34 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an API proxy.
-        # The API proxy created will not be accessible at runtime until it is
-        # deployed to an environment.
-        # Create a new API proxy by setting the `name` query parameter to the
-        # name of the API proxy.
-        # Import an API proxy configuration bundle stored in zip format
-        # on your local machine to your organization by doing the following:
-        # * Set the `name` query parameter to the name of the API proxy.
-        # * Set the `action` query parameter to `import`.
-        # * Set the `Content-Type` header to `multipart/form-data`.
-        # * Pass as a file the name of API proxy
-        # configuration bundle stored in zip format on your local machine using
-        # the `file` form field.
-        # **Note**: To validate the API proxy configuration bundle only
-        # without importing it, set the `action` query
-        # parameter to `validate`.
-        # When importing an API proxy configuration bundle, if the API proxy
-        # does not exist, it will be created.
-        # If the API proxy exists, then a new revision is created. Invalid API
-        # proxy configurations are rejected, and a list of validation errors is
-        # returned to the client.
+        # Creates an API proxy. The API proxy created will not be accessible at runtime
+        # until it is deployed to an environment. Create a new API proxy by setting the `
+        # name` query parameter to the name of the API proxy. Import an API proxy
+        # configuration bundle stored in zip format on your local machine to your
+        # organization by doing the following: * Set the `name` query parameter to the
+        # name of the API proxy. * Set the `action` query parameter to `import`. * Set
+        # the `Content-Type` header to `multipart/form-data`. * Pass as a file the name
+        # of API proxy configuration bundle stored in zip format on your local machine
+        # using the `file` form field. **Note**: To validate the API proxy configuration
+        # bundle only without importing it, set the `action` query parameter to `
+        # validate`. When importing an API proxy configuration bundle, if the API proxy
+        # does not exist, it will be created. If the API proxy exists, then a new
+        # revision is created. Invalid API proxy configurations are rejected, and a list
+        # of validation errors is returned to the client.
         # @param [String] parent
-        #   Required. Name of the organization in the following format:
-        #   `organizations/`org``
+        #   Required. Name of the organization in the following format: `organizations/`
+        #   org``
         # @param [Google::Apis::ApigeeV1::GoogleApiHttpBody] google_api_http_body_object
         # @param [String] action
-        #   Action to perform when importing an API proxy configuration bundle. Set
-        #   this parameter to one of the following values:
-        #   * `import` to import the API proxy configuration bundle.
-        #   * `validate` to validate the API proxy configuration bundle without
-        #   importing it.
+        #   Action to perform when importing an API proxy configuration bundle. Set this
+        #   parameter to one of the following values: * `import` to import the API proxy
+        #   configuration bundle. * `validate` to validate the API proxy configuration
+        #   bundle without importing it.
         # @param [String] name
         #   Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
         # @param [Boolean] validate
-        #   Ignored. All uploads are validated regardless of the value of this
-        #   field. Maintained for compatibility with Apigee Edge API.
+        #   Ignored. All uploads are validated regardless of the value of this field.
+        #   Maintained for compatibility with Apigee Edge API.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1041,8 +988,8 @@ module Google
         # Deletes an API proxy and all associated endpoints, policies, resources, and
         # revisions. The API proxy must be undeployed before you can delete it.
         # @param [String] name
-        #   Required. Name of the API proxy in the following format:
-        #   `organizations/`org`/apis/`api``
+        #   Required. Name of the API proxy in the following format: `organizations/`org`/
+        #   apis/`api``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1072,8 +1019,8 @@ module Google
         
         # Gets an API proxy including a list of existing revisions.
         # @param [String] name
-        #   Required. Name of the API proxy in the following format:
-        #   `organizations/`org`/apis/`api``
+        #   Required. Name of the API proxy in the following format: `organizations/`org`/
+        #   apis/`api``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1102,11 +1049,10 @@ module Google
         end
         
         # Lists the names of all API proxies in an organization. The names returned
-        # correspond to the names defined in the configuration files for each API
-        # proxy.
+        # correspond to the names defined in the configuration files for each API proxy.
         # @param [String] parent
-        #   Required. Name of the organization in the following format:
-        #   `organizations/`org``
+        #   Required. Name of the organization in the following format: `organizations/`
+        #   org``
         # @param [Boolean] include_meta_data
         #   Flag that specifies whether to include API proxy metadata in the response.
         # @param [Boolean] include_revisions
@@ -1143,9 +1089,7 @@ module Google
         # Lists all deployments of an API proxy.
         # @param [String] parent
         #   Required. Name of the API proxy for which to return deployment information in
-        #   the
-        #   following format:
-        #   `organizations/`org`/apis/`api``
+        #   the following format: `organizations/`org`/apis/`api``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1176,8 +1120,7 @@ module Google
         # Creates a key value map in an api proxy.
         # @param [String] parent
         #   Required. The name of the environment in which to create the key value map.
-        #   Must be of the form
-        #   `organizations/`organization`/apis/`api``.
+        #   Must be of the form `organizations/`organization`/apis/`api``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] google_cloud_apigee_v1_key_value_map_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1210,9 +1153,8 @@ module Google
         
         # Delete a key value map in an api proxy.
         # @param [String] name
-        #   Required. The name of the key value map.
-        #   Must be of the form
-        #   `organizations/`organization`/apis/`api`/keyvaluemaps/`keyvaluemap``.
+        #   Required. The name of the key value map. Must be of the form `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1240,12 +1182,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an API proxy revision and all policies, resources, endpoints,
-        # and revisions associated with it. The API proxy revision must be undeployed
-        # before you can delete it.
+        # Deletes an API proxy revision and all policies, resources, endpoints, and
+        # revisions associated with it. The API proxy revision must be undeployed before
+        # you can delete it.
         # @param [String] name
-        #   Required. API proxy revision in the following format:
-        #   `organizations/`org`/apis/`api`/revisions/`rev``
+        #   Required. API proxy revision in the following format: `organizations/`org`/
+        #   apis/`api`/revisions/`rev``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1273,23 +1215,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an API proxy revision.
-        # To download the API proxy configuration bundle for the specified revision
-        # as a zip file, do the following:
-        # * Set the `format` query parameter to `bundle`.
-        # * Set the `Accept` header to `application/zip`.
-        # If you are using curl, specify `-o filename.zip` to save the output to a
-        # file; otherwise, it displays to `stdout`. Then, develop the API proxy
-        # configuration locally and upload the updated API proxy configuration
-        # revision, as described in
-        # [updateApiProxyRevision](updateApiProxyRevision).
+        # Gets an API proxy revision. To download the API proxy configuration bundle for
+        # the specified revision as a zip file, do the following: * Set the `format`
+        # query parameter to `bundle`. * Set the `Accept` header to `application/zip`.
+        # If you are using curl, specify `-o filename.zip` to save the output to a file;
+        # otherwise, it displays to `stdout`. Then, develop the API proxy configuration
+        # locally and upload the updated API proxy configuration revision, as described
+        # in [updateApiProxyRevision](updateApiProxyRevision).
         # @param [String] name
-        #   Required. API proxy revision in the following format:
-        #   `organizations/`org`/apis/`api`/revisions/`rev``
+        #   Required. API proxy revision in the following format: `organizations/`org`/
+        #   apis/`api`/revisions/`rev``
         # @param [String] format
-        #   Format used when downloading the API proxy configuration revision.
-        #   Set to `bundle` to download the API proxy configuration revision as a zip
-        #   file.
+        #   Format used when downloading the API proxy configuration revision. Set to `
+        #   bundle` to download the API proxy configuration revision as a zip file.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1319,15 +1257,14 @@ module Google
         end
         
         # Updates an existing API proxy revision by uploading the API proxy
-        # configuration bundle as a zip file from your local machine.
-        # You can update only API proxy revisions
-        # that have never been deployed. After deployment, an API proxy revision
-        # becomes immutable, even if it is undeployed.
-        # Set the `Content-Type` header to either
-        # `multipart/form-data` or `application/octet-stream`.
+        # configuration bundle as a zip file from your local machine. You can update
+        # only API proxy revisions that have never been deployed. After deployment, an
+        # API proxy revision becomes immutable, even if it is undeployed. Set the `
+        # Content-Type` header to either `multipart/form-data` or `application/octet-
+        # stream`.
         # @param [String] name
-        #   Required. API proxy revision to update in the following format:
-        #   `organizations/`org`/apis/`api`/revisions/`rev``
+        #   Required. API proxy revision to update in the following format: `organizations/
+        #   `org`/apis/`api`/revisions/`rev``
         # @param [Google::Apis::ApigeeV1::GoogleApiHttpBody] google_api_http_body_object
         # @param [Boolean] validate
         #   Ignored. All uploads are validated regardless of the value of this field.
@@ -1365,9 +1302,8 @@ module Google
         # Lists all deployments of an API proxy revision.
         # @param [String] parent
         #   Required. Name of the API proxy revision for which to return deployment
-        #   information
-        #   in the following format:
-        #   `organizations/`org`/apis/`api`/revisions/`rev``.
+        #   information in the following format: `organizations/`org`/apis/`api`/revisions/
+        #   `rev``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1397,8 +1333,7 @@ module Google
         
         # Gets the app profile for the specified app ID.
         # @param [String] name
-        #   Required. App ID in the following format:
-        #   `organizations/`org`/apps/`app``
+        #   Required. App ID in the following format: `organizations/`org`/apps/`app``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1426,35 +1361,33 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists IDs of apps within an organization that have the specified app status
-        # (approved or revoked) or are of the specified app type
-        # (developer or company).
+        # Lists IDs of apps within an organization that have the specified app status (
+        # approved or revoked) or are of the specified app type (developer or company).
         # @param [String] parent
-        #   Required. Resource path of the parent in the following format:
-        #   `organizations/`org``
+        #   Required. Resource path of the parent in the following format: `organizations/`
+        #   org``
         # @param [String] api_product
         #   API product.
         # @param [String] apptype
-        #   Optional. Filter by the type of the app. Valid values are `company` or
-        #   `developer`. Defaults to `developer`.
+        #   Optional. Filter by the type of the app. Valid values are `company` or `
+        #   developer`. Defaults to `developer`.
         # @param [Boolean] expand
-        #   Optional. Flag that specifies whether to return an expanded list of
-        #   apps for the organization. Defaults to `false`.
+        #   Optional. Flag that specifies whether to return an expanded list of apps for
+        #   the organization. Defaults to `false`.
         # @param [String] ids
         #   Optional. Comma-separated list of app IDs on which to filter.
         # @param [Boolean] include_cred
-        #   Optional. Flag that specifies whether to include credentials in the
-        #   response.
+        #   Optional. Flag that specifies whether to include credentials in the response.
         # @param [String] key_status
-        #   Optional. Key status of the app. Valid values include `approved` or
-        #   `revoked`. Defaults to `approved`.
+        #   Optional. Key status of the app. Valid values include `approved` or `revoked`.
+        #   Defaults to `approved`.
         # @param [Fixnum] rows
         #   Optional. Maximum number of app IDs to return. Defaults to 10000.
         # @param [String] start_key
         #   Returns the list of apps starting from the specified app ID.
         # @param [String] status
-        #   Optional. Filter by the status of the app. Valid values are `approved`
-        #   or `revoked`. Defaults to `approved`.
+        #   Optional. Filter by the status of the app. Valid values are `approved` or `
+        #   revoked`. Defaults to `approved`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1494,13 +1427,10 @@ module Google
         # Lists all deployments of API proxies or shared flows.
         # @param [String] parent
         #   Required. Name of the organization for which to return deployment information
-        #   in the
-        #   following format:
-        #   `organizations/`org``
+        #   in the following format: `organizations/`org``
         # @param [Boolean] shared_flows
         #   Optional. Flag that specifies whether to return shared flow or API proxy
-        #   deployments.
-        #   Set to `true` to return shared flow deployments; set to `false`
+        #   deployments. Set to `true` to return shared flow deployments; set to `false`
         #   to return API proxy deployments. Defaults to `false`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1530,24 +1460,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates developer attributes.
-        # This API replaces the
-        # existing attributes with those specified in the request.
-        # Add new attributes, and include or exclude any existing
-        # attributes that you want to retain or
-        # remove, respectively.
-        # The custom attribute limit is 18.
-        # **Note**: OAuth access tokens and Key Management Service (KMS) entities
-        # (apps, developers, and API products) are cached for 180 seconds
-        # (default). Any custom attributes associated with these entities
-        # are cached for at least 180 seconds after the entity is accessed at
-        # runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy
-        # won't be able to expire an access token in less than 180 seconds.
+        # Updates developer attributes. This API replaces the existing attributes with
+        # those specified in the request. Add new attributes, and include or exclude any
+        # existing attributes that you want to retain or remove, respectively. The
+        # custom attribute limit is 18. **Note**: OAuth access tokens and Key Management
+        # Service (KMS) entities (apps, developers, and API products) are cached for 180
+        # seconds (default). Any custom attributes associated with these entities are
+        # cached for at least 180 seconds after the entity is accessed at runtime.
+        # Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to
+        # expire an access token in less than 180 seconds.
         # @param [String] parent
         #   Required. Email address of the developer for which attributes are being
-        #   updated in
-        #   the following format:
-        #   `organizations/`org`/developers/`developer_email``
+        #   updated in the following format: `organizations/`org`/developers/`
+        #   developer_email``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attributes] google_cloud_apigee_v1_attributes_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1578,14 +1503,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a developer. Once created,
-        # the developer can register an app and obtain an API key.
-        # At creation time, a developer is set as `active`. To change the developer
-        # status, use the SetDeveloperStatus API.
+        # Creates a developer. Once created, the developer can register an app and
+        # obtain an API key. At creation time, a developer is set as `active`. To change
+        # the developer status, use the SetDeveloperStatus API.
         # @param [String] parent
         #   Required. Name of the Apigee organization in which the developer is created.
-        #   Use the following structure in your request:
-        #   `organizations/`org``.
+        #   Use the following structure in your request: `organizations/`org``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Developer] google_cloud_apigee_v1_developer_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1616,21 +1539,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a developer. All apps and API keys associated
-        # with the developer are also removed.
-        # **Warning**: This API will permanently delete the developer
-        # and related artifacts.
-        # To avoid permanently deleting developers and their artifacts,
-        # set the developer status to `inactive` using
-        # the SetDeveloperStatus API.
-        # **Note**: The delete operation is asynchronous. The developer app is
-        # deleted immediately,
-        # but its associated resources, such as apps and API keys, may take anywhere
-        # from a few seconds to a few minutes to be deleted.
+        # Deletes a developer. All apps and API keys associated with the developer are
+        # also removed. **Warning**: This API will permanently delete the developer and
+        # related artifacts. To avoid permanently deleting developers and their
+        # artifacts, set the developer status to `inactive` using the SetDeveloperStatus
+        # API. **Note**: The delete operation is asynchronous. The developer app is
+        # deleted immediately, but its associated resources, such as apps and API keys,
+        # may take anywhere from a few seconds to a few minutes to be deleted.
         # @param [String] name
         #   Required. Email address of the developer. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email``
+        #   request: `organizations/`org`/developers/`developer_email``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1658,13 +1576,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the developer details, including the
-        # developer's name, email address, apps, and other information.
-        # **Note**: The response includes only the first 100 developer apps.
+        # Returns the developer details, including the developer's name, email address,
+        # apps, and other information. **Note**: The response includes only the first
+        # 100 developer apps.
         # @param [String] name
         #   Required. Email address of the developer. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email``
+        #   request: `organizations/`org`/developers/`developer_email``
         # @param [String] action
         #   Status of the developer. Valid values are `active` or `inactive`.
         # @param [String] fields
@@ -1695,44 +1612,32 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all developers in an organization by email address.
-        # By default,
-        # the response does not include company developers. Set the `includeCompany`
-        # query parameter to `true` to include company developers.
-        # **Note**: A maximum of 1000 developers are returned in the response. You
-        # paginate the list of developers returned using the `startKey` and `count`
-        # query parameters.
+        # Lists all developers in an organization by email address. By default, the
+        # response does not include company developers. Set the `includeCompany` query
+        # parameter to `true` to include company developers. **Note**: A maximum of 1000
+        # developers are returned in the response. You paginate the list of developers
+        # returned using the `startKey` and `count` query parameters.
         # @param [String] parent
         #   Required. Name of the Apigee organization. Use the following structure in your
-        #   request:
-        #   `organizations/`org``.
+        #   request: `organizations/`org``.
         # @param [Fixnum] count
         #   Optional. Number of developers to return in the API call. Use with the `
-        #   startKey`
-        #   parameter to provide more targeted filtering.
-        #   The limit is 1000.
+        #   startKey` parameter to provide more targeted filtering. The limit is 1000.
         # @param [Boolean] expand
-        #   Specifies whether to expand the results. Set to `true`
-        #   to expand the results. This query parameter is not valid if you use
-        #   the `count` or `startKey` query parameters.
+        #   Specifies whether to expand the results. Set to `true` to expand the results.
+        #   This query parameter is not valid if you use the `count` or `startKey` query
+        #   parameters.
         # @param [String] ids
         #   Optional. List of IDs to include, separated by commas.
         # @param [Boolean] include_company
         #   Flag that specifies whether to include company details in the response.
         # @param [String] start_key
-        #   **Note**: Must be used in conjunction with the `count` parameter.
-        #   Email address of the developer from which to start displaying the list of
-        #   developers. For example, if the an unfiltered list returns:
-        #   ```
-        #   westley@example.com
-        #   fezzik@example.com
-        #   buttercup@example.com
-        #   ```
-        #   and your `startKey` is `fezzik@example.com`, the list returned will be
-        #   ```
-        #   fezzik@example.com
-        #   buttercup@example.com
-        #   ```
+        #   **Note**: Must be used in conjunction with the `count` parameter. Email
+        #   address of the developer from which to start displaying the list of developers.
+        #   For example, if the an unfiltered list returns: ``` westley@example.com
+        #   fezzik@example.com buttercup@example.com ``` and your `startKey` is `fezzik@
+        #   example.com`, the list returned will be ``` fezzik@example.com buttercup@
+        #   example.com ```
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1765,18 +1670,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the status of a developer. Valid values are `active` or `inactive`.
-        # A developer is `active` by default. If you set a developer's status to
-        # `inactive`, the API keys assigned to the developer apps are no longer valid
-        # even though the API keys are set to `approved`. Inactive developers
-        # can still sign in to the developer portal and create apps; however, any
-        # new API keys generated during app creation won't work.
-        # If successful, the API call returns the
+        # Sets the status of a developer. Valid values are `active` or `inactive`. A
+        # developer is `active` by default. If you set a developer's status to `inactive`
+        # , the API keys assigned to the developer apps are no longer valid even though
+        # the API keys are set to `approved`. Inactive developers can still sign in to
+        # the developer portal and create apps; however, any new API keys generated
+        # during app creation won't work. If successful, the API call returns the
         # following HTTP status code: `204 No Content`
         # @param [String] name
         #   Required. Email address of the developer. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email``
+        #   request: `organizations/`org`/developers/`developer_email``
         # @param [String] action
         #   Status of the developer. Valid values are `active` and `inactive`.
         # @param [String] fields
@@ -1807,21 +1710,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a developer.
-        # This API replaces the existing developer details with those specified
-        # in the request. Include or exclude any existing details that
-        # you want to retain or delete, respectively.
-        # The custom attribute limit is 18.
-        # **Note**: OAuth access tokens and Key Management Service (KMS) entities
-        # (apps, developers, and API products) are cached for 180 seconds
-        # (current default). Any custom attributes associated with these entities
-        # are cached for at least 180 seconds after the entity is accessed at
-        # runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy
-        # won't be able to expire an access token in less than 180 seconds.
+        # Updates a developer. This API replaces the existing developer details with
+        # those specified in the request. Include or exclude any existing details that
+        # you want to retain or delete, respectively. The custom attribute limit is 18. *
+        # *Note**: OAuth access tokens and Key Management Service (KMS) entities (apps,
+        # developers, and API products) are cached for 180 seconds (current default).
+        # Any custom attributes associated with these entities are cached for at least
+        # 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn`
+        # element on the OAuthV2 policy won't be able to expire an access token in less
+        # than 180 seconds.
         # @param [String] name
         #   Required. Email address of the developer. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email``
+        #   request: `organizations/`org`/developers/`developer_email``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Developer] google_cloud_apigee_v1_developer_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1852,12 +1752,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates attributes for a developer app. This API replaces the
-        # current attributes with those specified in the request.
+        # Updates attributes for a developer app. This API replaces the current
+        # attributes with those specified in the request.
         # @param [String] name
         #   Required. Name of the developer app. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app``
+        #   request: `organizations/`org`/developers/`developer_email`/apps/`app``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attributes] google_cloud_apigee_v1_attributes_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1888,17 +1787,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an app associated with a developer. This API associates the
-        # developer app with the specified API
-        # product and auto-generates an API key for the app to use in calls to API
-        # proxies inside that API product.
-        # The `name` is the unique ID of the app
-        # that you can use in API calls. The `DisplayName` (set as an
-        # attribute) appears in the UI. If you don't set the
-        # `DisplayName` attribute, the `name` appears in the UI.
+        # Creates an app associated with a developer. This API associates the developer
+        # app with the specified API product and auto-generates an API key for the app
+        # to use in calls to API proxies inside that API product. The `name` is the
+        # unique ID of the app that you can use in API calls. The `DisplayName` (set as
+        # an attribute) appears in the UI. If you don't set the `DisplayName` attribute,
+        # the `name` appears in the UI.
         # @param [String] parent
-        #   Required. Name of the developer. Use the following structure in your request:
-        #   `organizations/`org`/developers/`developer_email``
+        #   Required. Name of the developer. Use the following structure in your request: `
+        #   organizations/`org`/developers/`developer_email``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperApp] google_cloud_apigee_v1_developer_app_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1929,16 +1826,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a developer app.
-        # **Note**: The delete operation is asynchronous. The developer app is
-        # deleted immediately,
-        # but its associated resources, such as app
-        # keys or access tokens, may take anywhere from a few seconds to a
-        # few minutes to be deleted.
+        # Deletes a developer app. **Note**: The delete operation is asynchronous. The
+        # developer app is deleted immediately, but its associated resources, such as
+        # app keys or access tokens, may take anywhere from a few seconds to a few
+        # minutes to be deleted.
         # @param [String] name
         #   Required. Name of the developer app. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app``
+        #   request: `organizations/`org`/developers/`developer_email`/apps/`app``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1966,41 +1860,32 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Manages access to a developer app by enabling you to:
-        # * Approve or revoke a developer app
-        # * Generate a new consumer key and secret for a developer app
-        # To approve or revoke a developer app, set the `action` query parameter to
-        # `approved` or `revoked`, respectively, and the
-        # `Content-Type` header to `application/octet-stream`. If a developer app is
-        # revoked, none of its API keys are valid for API calls even though
-        # the keys are still `approved`. If successful, the API call returns the
-        # following HTTP status code: `204 No Content`
-        # To generate a new consumer key and secret for a developer
-        # app, pass the new key/secret details. Rather than
-        # replace an existing key, this API generates a new
-        # key. In this case, multiple key
-        # pairs may be associated with a single developer app. Each key pair has an
-        # independent status (`approved` or `revoked`) and expiration time.
-        # Any approved, non-expired key can be used in an API call.
-        # For example, if you're using API key rotation, you can generate new
-        # keys with expiration times that overlap keys that are going to expire.
-        # You might also generate a new consumer key/secret if the security of the
-        # original key/secret is compromised.
-        # The `keyExpiresIn` property defines the
-        # expiration time for the API key in milliseconds. If you don't set
-        # this property or set it to `-1`, the API key never expires.
-        # **Notes**:
-        # * When generating a new key/secret, this API replaces the
-        # existing attributes, notes, and callback URLs with those specified in the
-        # request. Include or exclude any existing information that you want to
-        # retain or delete, respectively.
-        # * To migrate existing consumer keys and secrets to hybrid from another
-        # system, see the
+        # Manages access to a developer app by enabling you to: * Approve or revoke a
+        # developer app * Generate a new consumer key and secret for a developer app To
+        # approve or revoke a developer app, set the `action` query parameter to `
+        # approved` or `revoked`, respectively, and the `Content-Type` header to `
+        # application/octet-stream`. If a developer app is revoked, none of its API keys
+        # are valid for API calls even though the keys are still `approved`. If
+        # successful, the API call returns the following HTTP status code: `204 No
+        # Content` To generate a new consumer key and secret for a developer app, pass
+        # the new key/secret details. Rather than replace an existing key, this API
+        # generates a new key. In this case, multiple key pairs may be associated with a
+        # single developer app. Each key pair has an independent status (`approved` or `
+        # revoked`) and expiration time. Any approved, non-expired key can be used in an
+        # API call. For example, if you're using API key rotation, you can generate new
+        # keys with expiration times that overlap keys that are going to expire. You
+        # might also generate a new consumer key/secret if the security of the original
+        # key/secret is compromised. The `keyExpiresIn` property defines the expiration
+        # time for the API key in milliseconds. If you don't set this property or set it
+        # to `-1`, the API key never expires. **Notes**: * When generating a new key/
+        # secret, this API replaces the existing attributes, notes, and callback URLs
+        # with those specified in the request. Include or exclude any existing
+        # information that you want to retain or delete, respectively. * To migrate
+        # existing consumer keys and secrets to hybrid from another system, see the
         # CreateDeveloperAppKey API.
         # @param [String] name
         #   Required. Name of the developer app. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app``
+        #   request: `organizations/`org`/developers/`developer_email`/apps/`app``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperApp] google_cloud_apigee_v1_developer_app_object
         # @param [String] action
         #   Action. Valid values are `approve` or `revoke`.
@@ -2037,19 +1922,15 @@ module Google
         # Returns the details for a developer app.
         # @param [String] name
         #   Required. Name of the developer app. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app``
+        #   request: `organizations/`org`/developers/`developer_email`/apps/`app``
         # @param [String] entity
-        #   **Note**: Must be used in conjunction with the `query` parameter.
-        #   Set to `apiresources`
-        #   to return the number of API resources
-        #   that have been approved for access by a developer app in the
-        #   specified Apigee organization.
+        #   **Note**: Must be used in conjunction with the `query` parameter. Set to `
+        #   apiresources` to return the number of API resources that have been approved
+        #   for access by a developer app in the specified Apigee organization.
         # @param [String] query
-        #   **Note**: Must be used in conjunction with the `entity` parameter.
-        #   Set to `count` to return the number of API resources
-        #   that have been approved for access by a developer app in the
-        #   specified Apigee organization.
+        #   **Note**: Must be used in conjunction with the `entity` parameter. Set to `
+        #   count` to return the number of API resources that have been approved for
+        #   access by a developer app in the specified Apigee organization.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2079,32 +1960,29 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all apps created by a developer in an Apigee organization.
-        # Optionally, you can request an expanded view of the developer apps.
-        # A maximum of 100 developer apps are returned per API call. You can paginate
-        # the list of deveoper apps returned using the `startKey` and `count` query
-        # parameters.
+        # Lists all apps created by a developer in an Apigee organization. Optionally,
+        # you can request an expanded view of the developer apps. A maximum of 100
+        # developer apps are returned per API call. You can paginate the list of
+        # deveoper apps returned using the `startKey` and `count` query parameters.
         # @param [String] parent
-        #   Required. Name of the developer. Use the following structure in your request:
-        #   `organizations/`org`/developers/`developer_email``
+        #   Required. Name of the developer. Use the following structure in your request: `
+        #   organizations/`org`/developers/`developer_email``
         # @param [Fixnum] count
         #   Number of developer apps to return in the API call. Use with the `startKey`
-        #   parameter to provide more targeted filtering.
-        #   The limit is 1000.
+        #   parameter to provide more targeted filtering. The limit is 1000.
         # @param [Boolean] expand
-        #   Optional. Specifies whether to expand the results. Set to `true`
-        #   to expand the results. This query parameter is not valid if you use
-        #   the `count` or `startKey` query parameters.
+        #   Optional. Specifies whether to expand the results. Set to `true` to expand the
+        #   results. This query parameter is not valid if you use the `count` or `startKey`
+        #   query parameters.
         # @param [Boolean] shallow_expand
-        #   Optional. Specifies whether to expand the results in shallow mode.
-        #   Set to `true` to expand the results in shallow mode.
+        #   Optional. Specifies whether to expand the results in shallow mode. Set to `
+        #   true` to expand the results in shallow mode.
         # @param [String] start_key
-        #   **Note**: Must be used in conjunction with the `count` parameter.
-        #   Name of the developer app from which to start displaying the list of
-        #   developer apps. For example, if you're returning 50 developer apps at
-        #   a time (using the `count` query parameter), you can view developer apps
-        #   50-99 by entering the name of the 50th developer app.
-        #   The developer app name is case sensitive.
+        #   **Note**: Must be used in conjunction with the `count` parameter. Name of the
+        #   developer app from which to start displaying the list of developer apps. For
+        #   example, if you're returning 50 developer apps at a time (using the `count`
+        #   query parameter), you can view developer apps 50-99 by entering the name of
+        #   the 50th developer app. The developer app name is case sensitive.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2136,26 +2014,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the details for a developer app. In addition, you can
-        # add an API product to a developer app and automatically generate
-        # an API key for the app to use when calling APIs in the API product.
-        # If you want to use an existing API key for the API product,
-        # add the API product to the API key using the
-        # UpdateDeveloperAppKey
-        # API.
-        # Using this API, you cannot update the following:
-        # * App name as it is the primary key used to identify the app and cannot
-        # be changed.
-        # * Scopes associated with the app. Instead, use the
-        # ReplaceDeveloperAppKey API.
-        # This API replaces the
-        # existing attributes with those specified in the request.
-        # Include or exclude any existing attributes that you want to retain or
-        # delete, respectively.
+        # Updates the details for a developer app. In addition, you can add an API
+        # product to a developer app and automatically generate an API key for the app
+        # to use when calling APIs in the API product. If you want to use an existing
+        # API key for the API product, add the API product to the API key using the
+        # UpdateDeveloperAppKey API. Using this API, you cannot update the following: *
+        # App name as it is the primary key used to identify the app and cannot be
+        # changed. * Scopes associated with the app. Instead, use the
+        # ReplaceDeveloperAppKey API. This API replaces the existing attributes with
+        # those specified in the request. Include or exclude any existing attributes
+        # that you want to retain or delete, respectively.
         # @param [String] name
         #   Required. Name of the developer app. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app``
+        #   request: `organizations/`org`/developers/`developer_email`/apps/`app``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperApp] google_cloud_apigee_v1_developer_app_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2189,10 +2060,8 @@ module Google
         # Deletes a developer app attribute.
         # @param [String] name
         #   Required. Name of the developer app attribute. Use the following structure in
-        #   your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app`/attributes/`
-        #   attribute``
+        #   your request: `organizations/`org`/developers/`developer_email`/apps/`app`/
+        #   attributes/`attribute``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2223,10 +2092,8 @@ module Google
         # Returns a developer app attribute.
         # @param [String] name
         #   Required. Name of the developer app attribute. Use the following structure in
-        #   your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app`/attributes/`
-        #   attribute``
+        #   your request: `organizations/`org`/developers/`developer_email`/apps/`app`/
+        #   attributes/`attribute``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2257,8 +2124,7 @@ module Google
         # Returns a list of all developer app attributes.
         # @param [String] parent
         #   Required. Name of the developer app. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app``
+        #   request: `organizations/`org`/developers/`developer_email`/apps/`app``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2286,19 +2152,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a developer app attribute.
-        # **Note**: OAuth access tokens and Key Management Service (KMS) entities
-        # (apps, developers, and API products) are cached for 180 seconds
-        # (current default). Any custom attributes associated with these entities
-        # are cached for at least 180 seconds after the entity is accessed at
-        # runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy
+        # Updates a developer app attribute. **Note**: OAuth access tokens and Key
+        # Management Service (KMS) entities (apps, developers, and API products) are
+        # cached for 180 seconds (current default). Any custom attributes associated
+        # with these entities are cached for at least 180 seconds after the entity is
+        # accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy
         # won't be able to expire an access token in less than 180 seconds.
         # @param [String] name
         #   Required. Name of the developer app attribute. Use the following structure in
-        #   your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app`/attributes/`
-        #   attribute``
+        #   your request: `organizations/`org`/developers/`developer_email`/apps/`app`/
+        #   attributes/`attribute``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute] google_cloud_apigee_v1_attribute_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2330,23 +2193,19 @@ module Google
         end
         
         # Creates a custom consumer key and secret for a developer app. This is
-        # particularly useful if you want to migrate existing consumer keys and
-        # secrets to Apigee hybrid from another system.
-        # Consumer keys and secrets can contain letters, numbers, underscores, and
-        # hyphens. No other special characters are allowed. To avoid service
-        # disruptions, a consumer key and secret should not exceed 2 KBs each.
-        # **Note**: When creating the consumer key and secret, an association to
-        # API products will not be made. Therefore, you should not specify the
-        # associated API products in your request. Instead, use the
-        # UpdateDeveloperAppKey API to
-        # make the association after the consumer key and secret are created.
-        # If a consumer key and secret already exist, you can keep them or
-        # delete them using the
-        # DeleteDeveloperAppKey API.
+        # particularly useful if you want to migrate existing consumer keys and secrets
+        # to Apigee hybrid from another system. Consumer keys and secrets can contain
+        # letters, numbers, underscores, and hyphens. No other special characters are
+        # allowed. To avoid service disruptions, a consumer key and secret should not
+        # exceed 2 KBs each. **Note**: When creating the consumer key and secret, an
+        # association to API products will not be made. Therefore, you should not
+        # specify the associated API products in your request. Instead, use the
+        # UpdateDeveloperAppKey API to make the association after the consumer key and
+        # secret are created. If a consumer key and secret already exist, you can keep
+        # them or delete them using the DeleteDeveloperAppKey API.
         # @param [String] parent
-        #   Parent of the developer app key. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/apps`
+        #   Parent of the developer app key. Use the following structure in your request: `
+        #   organizations/`org`/developers/`developer_email`/apps`
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperAppKey] google_cloud_apigee_v1_developer_app_key_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2377,18 +2236,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an app's consumer key and removes all API products
-        # associated with the app. After the consumer key is deleted,
-        # it cannot be used to access any APIs.
-        # **Note**: After you delete a consumer key, you may want to:
-        # 1. Create a new consumer key and secret for the developer app using the
-        # CreateDeveloperAppKey API, and
-        # subsequently add an API product to the key using the
-        # UpdateDeveloperAppKey API.
-        # 2. Delete the developer app, if it is no longer required.
+        # Deletes an app's consumer key and removes all API products associated with the
+        # app. After the consumer key is deleted, it cannot be used to access any APIs. *
+        # *Note**: After you delete a consumer key, you may want to: 1. Create a new
+        # consumer key and secret for the developer app using the CreateDeveloperAppKey
+        # API, and subsequently add an API product to the key using the
+        # UpdateDeveloperAppKey API. 2. Delete the developer app, if it is no longer
+        # required.
         # @param [String] name
-        #   Name of the developer app key. Use the following structure in your request:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app`/keys/`key``
+        #   Name of the developer app key. Use the following structure in your request: `
+        #   organizations/`org`/developers/`developer_email`/apps/`app`/keys/`key``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2416,11 +2273,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns details for a consumer key for a developer app, including the key
-        # and secret value, associated API products, and other information.
+        # Returns details for a consumer key for a developer app, including the key and
+        # secret value, associated API products, and other information.
         # @param [String] name
-        #   Name of the developer app key. Use the following structure in your request:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app`/keys/`key``
+        #   Name of the developer app key. Use the following structure in your request: `
+        #   organizations/`org`/developers/`developer_email`/apps/`app`/keys/`key``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2448,17 +2305,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the scope of an app.
-        # This API replaces the
-        # existing scopes with those specified in the request.
-        # Include or exclude any existing scopes that you want to retain or
-        # delete, respectively. The specified scopes must already
-        # be defined for the API products associated with the app.
-        # This API sets the `scopes` element
-        # under the `apiProducts` element in the attributes of the app.
+        # Updates the scope of an app. This API replaces the existing scopes with those
+        # specified in the request. Include or exclude any existing scopes that you want
+        # to retain or delete, respectively. The specified scopes must already be
+        # defined for the API products associated with the app. This API sets the `
+        # scopes` element under the `apiProducts` element in the attributes of the app.
         # @param [String] name
-        #   Name of the developer app key. Use the following structure in your request:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app`/keys/`key``
+        #   Name of the developer app key. Use the following structure in your request: `
+        #   organizations/`org`/developers/`developer_email`/apps/`app`/keys/`key``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperAppKey] google_cloud_apigee_v1_developer_app_key_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2489,22 +2343,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds an API product to a developer app key, enabling the app that holds
-        # the key to access the API resources bundled in the API product.
-        # In addition, you can add
-        # attributes to a developer app key. This API replaces the
-        # existing attributes with those specified in the request.
-        # Include or exclude any existing attributes that you want to retain or
-        # delete, respectively.
-        # You can use the same key to access all API products
-        # associated with the app.
+        # Adds an API product to a developer app key, enabling the app that holds the
+        # key to access the API resources bundled in the API product. In addition, you
+        # can add attributes to a developer app key. This API replaces the existing
+        # attributes with those specified in the request. Include or exclude any
+        # existing attributes that you want to retain or delete, respectively. You can
+        # use the same key to access all API products associated with the app.
         # @param [String] name
-        #   Name of the developer app key. Use the following structure in your request:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app`/keys/`key``
+        #   Name of the developer app key. Use the following structure in your request: `
+        #   organizations/`org`/developers/`developer_email`/apps/`app`/keys/`key``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperAppKey] google_cloud_apigee_v1_developer_app_key_object
         # @param [String] action
-        #   Approve or revoke the consumer key by setting this value to
-        #   `approve` or `revoke`, respectively.
+        #   Approve or revoke the consumer key by setting this value to `approve` or `
+        #   revoke`, respectively.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2536,14 +2387,12 @@ module Google
         end
         
         # Removes an API product from an app's consumer key. After the API product is
-        # removed, the app cannot access the API resources defined in
-        # that API product.
-        # **Note**: The consumer key is not removed, only its association with the
-        # API product.
+        # removed, the app cannot access the API resources defined in that API product. *
+        # *Note**: The consumer key is not removed, only its association with the API
+        # product.
         # @param [String] name
-        #   Name of the API product in the developer app key in the following
-        #   format:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app`/keys/`key`/
+        #   Name of the API product in the developer app key in the following format: `
+        #   organizations/`org`/developers/`developer_email`/apps/`app`/keys/`key`/
         #   apiproducts/`apiproduct``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2572,20 +2421,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Approve or revoke an app's consumer key. After a consumer key is approved,
-        # the app can use it to access APIs.
-        # A consumer key that is revoked or pending cannot be used to access an API.
-        # Any access tokens associated with a revoked consumer key will remain
-        # active. However, Apigee hybrid checks the status of the consumer key and
-        # if set to `revoked` will not allow access to the API.
+        # Approve or revoke an app's consumer key. After a consumer key is approved, the
+        # app can use it to access APIs. A consumer key that is revoked or pending
+        # cannot be used to access an API. Any access tokens associated with a revoked
+        # consumer key will remain active. However, Apigee hybrid checks the status of
+        # the consumer key and if set to `revoked` will not allow access to the API.
         # @param [String] name
-        #   Name of the API product in the developer app key in the following
-        #   format:
-        #   `organizations/`org`/developers/`developer_email`/apps/`app`/keys/`key`/
+        #   Name of the API product in the developer app key in the following format: `
+        #   organizations/`org`/developers/`developer_email`/apps/`app`/keys/`key`/
         #   apiproducts/`apiproduct``
         # @param [String] action
-        #   Approve or revoke the consumer key by setting this value to
-        #   `approve` or `revoke`, respectively.
+        #   Approve or revoke the consumer key by setting this value to `approve` or `
+        #   revoke`, respectively.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2615,23 +2462,19 @@ module Google
         end
         
         # Creates a custom consumer key and secret for a developer app. This is
-        # particularly useful if you want to migrate existing consumer keys and
-        # secrets to Apigee hybrid from another system.
-        # Consumer keys and secrets can contain letters, numbers, underscores, and
-        # hyphens. No other special characters are allowed. To avoid service
-        # disruptions, a consumer key and secret should not exceed 2 KBs each.
-        # **Note**: When creating the consumer key and secret, an association to
-        # API products will not be made. Therefore, you should not specify the
-        # associated API products in your request. Instead, use the
-        # UpdateDeveloperAppKey API to
-        # make the association after the consumer key and secret are created.
-        # If a consumer key and secret already exist, you can keep them or
-        # delete them using the
-        # DeleteDeveloperAppKey API.
+        # particularly useful if you want to migrate existing consumer keys and secrets
+        # to Apigee hybrid from another system. Consumer keys and secrets can contain
+        # letters, numbers, underscores, and hyphens. No other special characters are
+        # allowed. To avoid service disruptions, a consumer key and secret should not
+        # exceed 2 KBs each. **Note**: When creating the consumer key and secret, an
+        # association to API products will not be made. Therefore, you should not
+        # specify the associated API products in your request. Instead, use the
+        # UpdateDeveloperAppKey API to make the association after the consumer key and
+        # secret are created. If a consumer key and secret already exist, you can keep
+        # them or delete them using the DeleteDeveloperAppKey API.
         # @param [String] parent
-        #   Parent of the developer app key. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/apps`
+        #   Parent of the developer app key. Use the following structure in your request: `
+        #   organizations/`org`/developers/`developer_email`/apps`
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeveloperAppKey] google_cloud_apigee_v1_developer_app_key_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2665,8 +2508,8 @@ module Google
         # Deletes a developer attribute.
         # @param [String] name
         #   Required. Name of the developer attribute. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/attributes/`attribute``
+        #   request: `organizations/`org`/developers/`developer_email`/attributes/`
+        #   attribute``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2697,8 +2540,8 @@ module Google
         # Returns the value of the specified developer attribute.
         # @param [String] name
         #   Required. Name of the developer attribute. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/attributes/`attribute``
+        #   request: `organizations/`org`/developers/`developer_email`/attributes/`
+        #   attribute``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2729,9 +2572,7 @@ module Google
         # Returns a list of all developer attributes.
         # @param [String] parent
         #   Required. Email address of the developer for which attributes are being listed
-        #   in the
-        #   following format:
-        #   `organizations/`org`/developers/`developer_email``
+        #   in the following format: `organizations/`org`/developers/`developer_email``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2759,17 +2600,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a developer attribute.
-        # **Note**: OAuth access tokens and Key Management Service (KMS) entities
-        # (apps, developers, and API products) are cached for 180 seconds
-        # (default). Any custom attributes associated with these entities
-        # are cached for at least 180 seconds after the entity is accessed at
-        # runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy
-        # won't be able to expire an access token in less than 180 seconds.
+        # Updates a developer attribute. **Note**: OAuth access tokens and Key
+        # Management Service (KMS) entities (apps, developers, and API products) are
+        # cached for 180 seconds (default). Any custom attributes associated with these
+        # entities are cached for at least 180 seconds after the entity is accessed at
+        # runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able
+        # to expire an access token in less than 180 seconds.
         # @param [String] name
         #   Required. Name of the developer attribute. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/developers/`developer_email`/attributes/`attribute``
+        #   request: `organizations/`org`/developers/`developer_email`/attributes/`
+        #   attribute``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute] google_cloud_apigee_v1_attribute_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2803,8 +2643,7 @@ module Google
         # Creates a new environment group.
         # @param [String] parent
         #   Required. Name of the organization in which to create the environment group in
-        #   the
-        #   following format: `organizations/`org``.
+        #   the following format: `organizations/`org``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroup] google_cloud_apigee_v1_environment_group_object
         # @param [String] name
         #   ID of the environment group. Overrides any ID in the environment_group
@@ -2841,8 +2680,8 @@ module Google
         
         # Deletes an environment group.
         # @param [String] name
-        #   Required. Name of the environment group in the following format:
-        #   `organizations/`org`/envgroups/`envgroup``.
+        #   Required. Name of the environment group in the following format: `
+        #   organizations/`org`/envgroups/`envgroup``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2872,8 +2711,8 @@ module Google
         
         # Gets an environment group.
         # @param [String] name
-        #   Required. Name of the environment group in the following format:
-        #   `organizations/`org`/envgroups/`envgroup``.
+        #   Required. Name of the environment group in the following format: `
+        #   organizations/`org`/envgroups/`envgroup``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2906,11 +2745,10 @@ module Google
         #   Required. Name of the organization for which to list environment groups in the
         #   following format: `organizations/`org``.
         # @param [Fixnum] page_size
-        #   Maximum number of environment groups to return. The page size defaults
-        #   to 25.
+        #   Maximum number of environment groups to return. The page size defaults to 25.
         # @param [String] page_token
-        #   Page token, returned from a previous ListEnvironmentGroups call, that you
-        #   can use to retrieve the next page.
+        #   Page token, returned from a previous ListEnvironmentGroups call, that you can
+        #   use to retrieve the next page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2942,8 +2780,8 @@ module Google
         
         # Updates an environment group.
         # @param [String] name
-        #   Required. Name of the environment group to update in the format:
-        #   `organizations/`org`/envgroups/`envgroup`.
+        #   Required. Name of the environment group to update in the format: `
+        #   organizations/`org`/envgroups/`envgroup`.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroup] google_cloud_apigee_v1_environment_group_object
         # @param [String] update_mask
         #   List of fields to be updated.
@@ -2980,8 +2818,7 @@ module Google
         # Creates a new attachment of an environment to an environment group.
         # @param [String] parent
         #   Required. EnvironmentGroup under which to create the attachment in the
-        #   following
-        #   format: `organizations/`org`/envgroups/`envgroup``.
+        #   following format: `organizations/`org`/envgroups/`envgroup``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1EnvironmentGroupAttachment] google_cloud_apigee_v1_environment_group_attachment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3015,8 +2852,7 @@ module Google
         # Deletes an environment group attachment.
         # @param [String] name
         #   Required. Name of the environment group attachment to delete in the following
-        #   format:
-        #   `organizations/`org`/envgroups/`envgroup`/attachments/`attachment``.
+        #   format: `organizations/`org`/envgroups/`envgroup`/attachments/`attachment``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3046,8 +2882,8 @@ module Google
         
         # Gets an environment group attachment.
         # @param [String] name
-        #   Required. Name of the environment group attachment in the following format:
-        #   `organizations/`org`/envgroups/`envgroup`/attachments/`attachment``
+        #   Required. Name of the environment group attachment in the following format: `
+        #   organizations/`org`/envgroups/`envgroup`/attachments/`attachment``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3083,8 +2919,8 @@ module Google
         #   Maximum number of environment group attachments to return. The page size
         #   defaults to 25.
         # @param [String] page_token
-        #   Page token, returned by a previous ListEnvironmentGroupAttachments call,
-        #   that you can use to retrieve the next page.
+        #   Page token, returned by a previous ListEnvironmentGroupAttachments call, that
+        #   you can use to retrieve the next page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3116,14 +2952,12 @@ module Google
         
         # Creates an environment in an organization.
         # @param [String] parent
-        #   Required. Name of the organization in which the environment will
-        #   be created. Use the following structure in your request:
-        #   `organizations/`org``
+        #   Required. Name of the organization in which the environment will be created.
+        #   Use the following structure in your request: `organizations/`org``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Environment] google_cloud_apigee_v1_environment_object
         # @param [String] name
-        #   Optional. Name of the environment. Alternatively, the name may
-        #   be specified in the request body in the
-        #   name field.
+        #   Optional. Name of the environment. Alternatively, the name may be specified in
+        #   the request body in the name field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3156,8 +2990,7 @@ module Google
         
         # Deletes an environment from an organization.
         # @param [String] name
-        #   Required. Name of the environment. Use the following structure in your
-        #   request:
+        #   Required. Name of the environment. Use the following structure in your request:
         #   `organizations/`org`/environments/`env``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3251,9 +3084,8 @@ module Google
         # Gets the deployed configuration for an environment.
         # @param [String] name
         #   Required. Name of the environment deployed configuration resource. Use the
-        #   following
-        #   structure in your request:
-        #   `organizations/`org`/environments/`env`/deployedConfig`
+        #   following structure in your request: `organizations/`org`/environments/`env`/
+        #   deployedConfig`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3281,24 +3113,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the IAM policy on an environment. For more information, see
-        # [Manage users, roles, and permissions
-        # using the API](https://docs.apigee.com/hybrid/latest/manage-users-roles).
-        # You must have the `apigee.environments.getIamPolicy` permission to call
-        # this API.
+        # Gets the IAM policy on an environment. For more information, see [Manage users,
+        # roles, and permissions using the API](https://docs.apigee.com/hybrid/latest/
+        # manage-users-roles). You must have the `apigee.environments.getIamPolicy`
+        # permission to call this API.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3327,15 +3156,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the IAM policy on an environment, if the policy already
-        # exists it will be replaced. For more information, see
-        # [Manage users, roles, and permissions
-        # using the API](https://docs.apigee.com/hybrid/latest/manage-users-roles).
-        # You must have the `apigee.environments.setIamPolicy` permission to
-        # call this API.
+        # Sets the IAM policy on an environment, if the policy already exists it will be
+        # replaced. For more information, see [Manage users, roles, and permissions
+        # using the API](https://docs.apigee.com/hybrid/latest/manage-users-roles). You
+        # must have the `apigee.environments.setIamPolicy` permission to call this API.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ApigeeV1::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3366,9 +3193,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a subscription for the environment's Pub/Sub topic.
-        # The server will assign a random name for this subscription.
-        # The "name" and "push_config" must *not* be specified.
+        # Creates a subscription for the environment's Pub/Sub topic. The server will
+        # assign a random name for this subscription. The "name" and "push_config" must *
+        # not* be specified.
         # @param [String] parent
         #   Required. Name of the environment. Use the following structure in your request:
         #   `organizations/`org`/environments/`env``
@@ -3399,13 +3226,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Tests the permissions of a user on an environment,
-        # and returns a subset of permissions that the user has on the environment.
-        # If the environment does not exist, an empty permission set is returned
-        # (a NOT_FOUND error is not returned).
+        # Tests the permissions of a user on an environment, and returns a subset of
+        # permissions that the user has on the environment. If the environment does not
+        # exist, an empty permission set is returned (a NOT_FOUND error is not returned).
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ApigeeV1::GoogleIamV1TestIamPermissionsRequest] google_iam_v1_test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3470,11 +3296,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing environment.
-        # When updating properties, you must pass all existing properties to the API,
-        # even if they are not being changed. If you omit properties from the
-        # payload, the properties are removed. To get the current list of
-        # properties for the environment, use the [Get Environment API](get).
+        # Updates an existing environment. When updating properties, you must pass all
+        # existing properties to the API, even if they are not being changed. If you
+        # omit properties from the payload, the properties are removed. To get the
+        # current list of properties for the environment, use the [Get Environment API](
+        # get).
         # @param [String] name
         #   Required. Name of the environment. Use the following structure in your request:
         #   `organizations/`org`/environments/`env``
@@ -3514,8 +3340,8 @@ module Google
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugMask] google_cloud_apigee_v1_debug_mask_object
         # @param [Boolean] replace_repeated_fields
         #   Boolean flag that specifies whether to replace existing values in the debug
-        #   mask when doing an update. Set to true to replace existing values.
-        #   The default behavior is to append the values (false).
+        #   mask when doing an update. Set to true to replace existing values. The default
+        #   behavior is to append the values (false).
         # @param [String] update_mask
         #   Field debug mask to support partial updates.
         # @param [String] fields
@@ -3549,11 +3375,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing environment.
-        # When updating properties, you must pass all existing properties to the API,
-        # even if they are not being changed. If you omit properties from the
-        # payload, the properties are removed. To get the current list of
-        # properties for the environment, use the [Get Environment API](get).
+        # Updates an existing environment. When updating properties, you must pass all
+        # existing properties to the API, even if they are not being changed. If you
+        # omit properties from the payload, the properties are removed. To get the
+        # current list of properties for the environment, use the [Get Environment API](
+        # get).
         # @param [String] name
         #   Required. Name of the environment. Use the following structure in your request:
         #   `organizations/`org`/environments/`env``
@@ -3587,16 +3413,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a list of metrics and dimensions which can be used for creating
-        # analytics queries and reports.
-        # Each schema element contains the name of the field with its associated type
-        # and if it is either custom field or standard field.
+        # Get a list of metrics and dimensions which can be used for creating analytics
+        # queries and reports. Each schema element contains the name of the field with
+        # its associated type and if it is either custom field or standard field.
         # @param [String] name
-        #   Required. The parent organization and environment names. Must be of the
-        #   form `organizations/`org`/environments/`env`/analytics/admin/schemav2`.
+        #   Required. The parent organization and environment names. Must be of the form `
+        #   organizations/`org`/environments/`env`/analytics/admin/schemav2`.
         # @param [String] type
-        #   Required. Type refers to the dataset name whose schema needs to be
-        #   retrieved E.g. type=fact or type=agg_cus1
+        #   Required. Type refers to the dataset name whose schema needs to be retrieved E.
+        #   g. type=fact or type=agg_cus1
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3625,13 +3450,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Submit a data export job to be processed in the background.
-        # If the request is successful, the API returns a 201 status, a URI that can
-        # be used to retrieve the status of the export job, and the `state` value of
-        # "enqueued".
+        # Submit a data export job to be processed in the background. If the request is
+        # successful, the API returns a 201 status, a URI that can be used to retrieve
+        # the status of the export job, and the `state` value of "enqueued".
         # @param [String] parent
-        #   Required. Names of the parent organization and environment.
-        #   Must be of the form `organizations/`org`/environments/`env``.
+        #   Required. Names of the parent organization and environment. Must be of the
+        #   form `organizations/`org`/environments/`env``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ExportRequest] google_cloud_apigee_v1_export_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3662,11 +3486,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the details and status of an analytics export job.
-        # If the export job is still in progress, its `state` is set to "running".
-        # After the export job has completed successfully, its `state` is set to
-        # "completed".
-        # If the export job fails, its `state` is set to `failed`.
+        # Gets the details and status of an analytics export job. If the export job is
+        # still in progress, its `state` is set to "running". After the export job has
+        # completed successfully, its `state` is set to "completed". If the export job
+        # fails, its `state` is set to `failed`.
         # @param [String] name
         #   Required. Resource name of the export to get.
         # @param [String] fields
@@ -3699,8 +3522,8 @@ module Google
         # Lists the details and status of all analytics export jobs belonging to the
         # parent organization and environment.
         # @param [String] parent
-        #   Required. Names of the parent organization and environment.
-        #   Must be of the form `organizations/`org`/environments/`env``.
+        #   Required. Names of the parent organization and environment. Must be of the
+        #   form `organizations/`org`/environments/`env``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3731,8 +3554,7 @@ module Google
         # Lists all deployments of an API proxy in an environment.
         # @param [String] parent
         #   Required. Name representing an API proxy in an environment in the following
-        #   format:
-        #   `organizations/`org`/environments/`env`/apis/`api``
+        #   format: `organizations/`org`/environments/`env`/apis/`api``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3760,23 +3582,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undeploys an API proxy revision from an environment.
-        # Because multiple revisions of the same API proxy can be deployed in
-        # the same environment if the base paths are different, you must specify the
-        # revision number of the API proxy.
+        # Undeploys an API proxy revision from an environment. Because multiple
+        # revisions of the same API proxy can be deployed in the same environment if the
+        # base paths are different, you must specify the revision number of the API
+        # proxy.
         # @param [String] name
-        #   Required. Name of the API proxy revision deployment in the following format:
-        #   `organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
+        #   Required. Name of the API proxy revision deployment in the following format: `
+        #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
         # @param [Boolean] sequenced_rollout
         #   If true, a best-effort attempt will be made to remove the environment group
-        #   routing rules corresponding to this deployment before removing the
-        #   deployment from the runtime. This is likely to be a rare use case; it is
-        #   only needed when the intended effect of undeploying this proxy is to cause
-        #   the traffic it currently handles to be rerouted to some other existing
-        #   proxy in the environment group. The GenerateUndeployChangeReport API may be
-        #   used to examine routing changes before issuing the undeployment request,
-        #   and its response will indicate if a sequenced rollout is recommended for
-        #   the undeployment.
+        #   routing rules corresponding to this deployment before removing the deployment
+        #   from the runtime. This is likely to be a rare use case; it is only needed when
+        #   the intended effect of undeploying this proxy is to cause the traffic it
+        #   currently handles to be rerouted to some other existing proxy in the
+        #   environment group. The GenerateUndeployChangeReport API may be used to examine
+        #   routing changes before issuing the undeployment request, and its response will
+        #   indicate if a sequenced rollout is recommended for the undeployment.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3808,9 +3629,9 @@ module Google
         # Gets the deployment of an API proxy revision and actual state reported by
         # runtime pods.
         # @param [String] name
-        #   Required. Name representing an API proxy revision in an
-        #   environment in the following format:
-        #   `organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
+        #   Required. Name representing an API proxy revision in an environment in the
+        #   following format: `organizations/`org`/environments/`env`/apis/`api`/revisions/
+        #   `rev``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3840,14 +3661,13 @@ module Google
         
         # Creates a debug session for a deployed API Proxy revision.
         # @param [String] parent
-        #   Required. The resource name of the API Proxy revision deployment for which
-        #   to create the DebugSession. Must be of the form
-        #   `organizations/`organization`/environments/`environment`/apis/`api`/revisions/
-        #   `revision``.
+        #   Required. The resource name of the API Proxy revision deployment for which to
+        #   create the DebugSession. Must be of the form `organizations/`organization`/
+        #   environments/`environment`/apis/`api`/revisions/`revision``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugSession] google_cloud_apigee_v1_debug_session_object
         # @param [Fixnum] timeout
-        #   Optional. The time in seconds after which this DebugSession should end.
-        #   A timeout specified in DebugSession will overwrite this value.
+        #   Optional. The time in seconds after which this DebugSession should end. A
+        #   timeout specified in DebugSession will overwrite this value.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3878,14 +3698,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the data from a debug session. This does not cancel the debug
-        # session or prevent further data from being collected if the session is
-        # still active in runtime pods.
+        # Deletes the data from a debug session. This does not cancel the debug session
+        # or prevent further data from being collected if the session is still active in
+        # runtime pods.
         # @param [String] name
-        #   Required. The name of the debug session to delete.
-        #   Must be of the form:
-        #   `organizations/`organization`/environments/`environment`/apis/`api`/revisions/
-        #   `revision`/debugsessions/`debugsession``.
+        #   Required. The name of the debug session to delete. Must be of the form: `
+        #   organizations/`organization`/environments/`environment`/apis/`api`/revisions/`
+        #   revision`/debugsessions/`debugsession``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3915,10 +3734,9 @@ module Google
         
         # Retrieves a debug session.
         # @param [String] name
-        #   Required. The name of the debug session to retrieve.
-        #   Must be of the form:
-        #   `organizations/`organization`/environments/`environment`/apis/`api`/revisions/
-        #   `revision`/debugsessions/`session``.
+        #   Required. The name of the debug session to retrieve. Must be of the form: `
+        #   organizations/`organization`/environments/`environment`/apis/`api`/revisions/`
+        #   revision`/debugsessions/`session``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3946,19 +3764,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists debug sessions that are currently active in the given API Proxy
-        # revision.
+        # Lists debug sessions that are currently active in the given API Proxy revision.
         # @param [String] parent
-        #   Required. The name of the API Proxy revision deployment for which
-        #   to list debug sessions. Must be of the form:
-        #   `organizations/`organization`/environments/`environment`/apis/`api`/revisions/
-        #   `revision``.
+        #   Required. The name of the API Proxy revision deployment for which to list
+        #   debug sessions. Must be of the form: `organizations/`organization`/
+        #   environments/`environment`/apis/`api`/revisions/`revision``.
         # @param [Fixnum] page_size
-        #   Maximum number of debug sessions to return. The page size defaults
-        #   to 25.
+        #   Maximum number of debug sessions to return. The page size defaults to 25.
         # @param [String] page_token
-        #   Page token, returned from a previous ListDebugSessions call, that you
-        #   can use to retrieve the next page.
+        #   Page token, returned from a previous ListDebugSessions call, that you can use
+        #   to retrieve the next page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3990,9 +3805,9 @@ module Google
         
         # Gets the debug data from a transaction.
         # @param [String] name
-        #   Required. The name of the debug session transaction. Must be of the form:
-        #   `organizations/`organization`/environments/`environment`/apis/`api`/revisions/
-        #   `revision`/debugsessions/`session`/data/`transaction``.
+        #   Required. The name of the debug session transaction. Must be of the form: `
+        #   organizations/`organization`/environments/`environment`/apis/`api`/revisions/`
+        #   revision`/debugsessions/`session`/data/`transaction``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4020,22 +3835,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates a report for a dry run analysis of a DeployApiProxy request
-        # without committing the deployment.
-        # In addition to the standard validations performed when adding deployments,
-        # additional analysis will be done to detect possible traffic routing changes
-        # that would result from this deployment being created. Any potential routing
-        # conflicts or unsafe changes will be reported in the response. This routing
-        # analysis is not performed for a non-dry-run DeployApiProxy request.
+        # Generates a report for a dry run analysis of a DeployApiProxy request without
+        # committing the deployment. In addition to the standard validations performed
+        # when adding deployments, additional analysis will be done to detect possible
+        # traffic routing changes that would result from this deployment being created.
+        # Any potential routing conflicts or unsafe changes will be reported in the
+        # response. This routing analysis is not performed for a non-dry-run
+        # DeployApiProxy request.
         # @param [String] name
-        #   Name of the API proxy revision deployment in the following format:
-        #   `organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
+        #   Name of the API proxy revision deployment in the following format: `
+        #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
         # @param [String] basepath
-        #   Base path where the API proxy revision should be deployed. Defaults to '/'
-        #   if not provided.
+        #   Base path where the API proxy revision should be deployed. Defaults to '/' if
+        #   not provided.
         # @param [Boolean] override
-        #   Flag that specifies whether to force the deployment of the new revision
-        #   over the currently deployed revision by overriding conflict checks.
+        #   Flag that specifies whether to force the deployment of the new revision over
+        #   the currently deployed revision by overriding conflict checks.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4066,16 +3881,15 @@ module Google
         end
         
         # Generates a report for a dry run analysis of an UndeployApiProxy request
-        # without committing the undeploy.
-        # In addition to the standard validations performed when removing
-        # deployments, additional analysis will be done to detect possible traffic
-        # routing changes that would result from this deployment being removed. Any
-        # potential routing conflicts or unsafe changes will be reported in the
-        # response. This routing analysis is not performed for a non-dry-run
-        # UndeployApiProxy request.
+        # without committing the undeploy. In addition to the standard validations
+        # performed when removing deployments, additional analysis will be done to
+        # detect possible traffic routing changes that would result from this deployment
+        # being removed. Any potential routing conflicts or unsafe changes will be
+        # reported in the response. This routing analysis is not performed for a non-dry-
+        # run UndeployApiProxy request.
         # @param [String] name
-        #   Name of the API proxy revision deployment in the following format:
-        #   `organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
+        #   Name of the API proxy revision deployment in the following format: `
+        #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4105,9 +3919,8 @@ module Google
         
         # Deletes a cache.
         # @param [String] name
-        #   Required. Cache resource name of the form:
-        #   `organizations/`organization_id`/environments/`environment_id`/caches/`
-        #   cache_id``
+        #   Required. Cache resource name of the form: `organizations/`organization_id`/
+        #   environments/`environment_id`/caches/`cache_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4138,13 +3951,10 @@ module Google
         # Lists all deployments of API proxies or shared flows in an environment.
         # @param [String] parent
         #   Required. Name of the environment for which to return deployment information
-        #   in the
-        #   following format:
-        #   `organizations/`org`/environments/`env``
+        #   in the following format: `organizations/`org`/environments/`env``
         # @param [Boolean] shared_flows
         #   Optional. Flag that specifies whether to return shared flow or API proxy
-        #   deployments.
-        #   Set to `true` to return shared flow deployments; set to `false`
+        #   deployments. Set to `true` to return shared flow deployments; set to `false`
         #   to return API proxy deployments. Defaults to `false`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4176,9 +3986,9 @@ module Google
         
         # Attaches a shared flow to a flow hook.
         # @param [String] name
-        #   Required. Name of the flow hook to which the shared flow should be
-        #   attached in the following format:
-        #   `organizations/`org`/environments/`env`/flowhooks/`flowhook``
+        #   Required. Name of the flow hook to which the shared flow should be attached in
+        #   the following format: `organizations/`org`/environments/`env`/flowhooks/`
+        #   flowhook``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1FlowHook] google_cloud_apigee_v1_flow_hook_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4211,8 +4021,8 @@ module Google
         
         # Detaches a shared flow from a flow hook.
         # @param [String] name
-        #   Required. Name of the flow hook to detach in the following format:
-        #   `organizations/`org`/environments/`env`/flowhooks/`flowhook``
+        #   Required. Name of the flow hook to detach in the following format: `
+        #   organizations/`org`/environments/`env`/flowhooks/`flowhook``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4241,11 +4051,11 @@ module Google
         end
         
         # Returns the name of the shared flow attached to the specified flow hook. If
-        # there's no shared flow attached to the flow hook, the API does not return
-        # an error; it simply does not return a name in the response.
+        # there's no shared flow attached to the flow hook, the API does not return an
+        # error; it simply does not return a name in the response.
         # @param [String] name
-        #   Required. Name of the flow hook in the following format:
-        #   `organizations/`org`/environments/`env`/flowhooks/`flowhook``
+        #   Required. Name of the flow hook in the following format: `organizations/`org`/
+        #   environments/`env`/flowhooks/`flowhook``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4273,15 +4083,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a keystore or truststore:
-        # * Keystore: Contains certificates and their associated keys.
-        # * Truststore: Contains trusted certificates used to validate a
-        # server's certificate. These certificates are typically self-signed
+        # Creates a keystore or truststore: * Keystore: Contains certificates and their
+        # associated keys. * Truststore: Contains trusted certificates used to validate
+        # a server's certificate. These certificates are typically self-signed
         # certificates or certificates that are not signed by a trusted CA.
         # @param [String] parent
-        #   Required. The name of the environment in which to create the keystore.
-        #   Must be of the form
-        #   `organizations/`organization`/environments/`environment``.
+        #   Required. The name of the environment in which to create the keystore. Must be
+        #   of the form `organizations/`organization`/environments/`environment``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Keystore] google_cloud_apigee_v1_keystore_object
         # @param [String] name
         #   Optional. Overrides the value in Keystore.
@@ -4317,8 +4125,8 @@ module Google
         
         # Deletes a keystore or truststore.
         # @param [String] name
-        #   Required. The name of keystore to delete. Must be of the form
-        #   `organizations/`organization`/environments/`environment`/keystores/`keystore``.
+        #   Required. The name of keystore to delete. Must be of the form `organizations/`
+        #   organization`/environments/`environment`/keystores/`keystore``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4348,8 +4156,8 @@ module Google
         
         # Gets a keystore or truststore.
         # @param [String] name
-        #   Required. The name of keystore. Must be of the form
-        #   `organizations/`organization`/environments/`environment`/keystores/`keystore``.
+        #   Required. The name of keystore. Must be of the form `organizations/`
+        #   organization`/environments/`environment`/keystores/`keystore``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4377,38 +4185,35 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an alias from a key, certificate pair.
-        # The structure of the request is controlled by the `format` query parameter:
-        # * `keycertfile` - Separate PEM-encoded key and certificate files are
-        # uploaded. The request must have `Content-Type: multipart/form-data` and
-        # include fields `keyFile` and `certFile`. If uploading to a truststore,
-        # omit `keyFile`.
-        # * `pkcs12` - A PKCS12 file is uploaded. The request must have
-        # `Content-Type: multipart/form-data` with the file provided in the only
-        # field.
-        # * `selfsignedcert` - A new private key and certificate are generated. The
-        # request must have `Content-Type: application/json` and a body of
-        # CertificateGenerationSpec.
+        # Creates an alias from a key, certificate pair. The structure of the request is
+        # controlled by the `format` query parameter: * `keycertfile` - Separate PEM-
+        # encoded key and certificate files are uploaded. The request must have `Content-
+        # Type: multipart/form-data` and include fields `keyFile` and `certFile`. If
+        # uploading to a truststore, omit `keyFile`. * `pkcs12` - A PKCS12 file is
+        # uploaded. The request must have `Content-Type: multipart/form-data` with the
+        # file provided in the only field. * `selfsignedcert` - A new private key and
+        # certificate are generated. The request must have `Content-Type: application/
+        # json` and a body of CertificateGenerationSpec.
         # @param [String] parent
-        #   Required. The name of the keystore. Must be of the form
-        #   `organizations/`organization`/environments/`environment`/keystores/`keystore``.
+        #   Required. The name of the keystore. Must be of the form `organizations/`
+        #   organization`/environments/`environment`/keystores/`keystore``.
         # @param [Google::Apis::ApigeeV1::GoogleApiHttpBody] google_api_http_body_object
         # @param [String] _password
         #   The password for the private key file, if it exists.
         # @param [String] alias_
-        #   The alias for the key, certificate pair. Values must match
-        #   regular expression `[\w\s-.]`1,255``. This must be provided for all formats
-        #   except 'selfsignedcert'; self-signed certs may specify the alias in either
-        #   this parameter or the JSON body.
+        #   The alias for the key, certificate pair. Values must match regular expression `
+        #   [\w\s-.]`1,255``. This must be provided for all formats except 'selfsignedcert'
+        #   ; self-signed certs may specify the alias in either this parameter or the JSON
+        #   body.
         # @param [String] format
-        #   Required. The format of the data. Must be either `selfsignedcert`,
-        #   `keycertfile`, or `pkcs12`.
+        #   Required. The format of the data. Must be either `selfsignedcert`, `
+        #   keycertfile`, or `pkcs12`.
         # @param [Boolean] ignore_expiry_validation
         #   If `true`, no expiry validation will be performed.
         # @param [Boolean] ignore_newline_validation
         #   If `true`, do not throw an error when the file contains a chain with no
-        #   newline between each certificate. By default, a newline is needed between
-        #   each certificate in a chain.
+        #   newline between each certificate. By default, a newline is needed between each
+        #   certificate in a chain.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4443,12 +4248,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates a PKCS #10 Certificate Signing Request for the private key in
-        # an alias.
+        # Generates a PKCS #10 Certificate Signing Request for the private key in an
+        # alias.
         # @param [String] name
-        #   Required. The name of the alias. Must be of the form
-        #   `organizations/`organization`/environments/`environment`/keystores/`keystore`/
-        #   aliases/`alias``.
+        #   Required. The name of the alias. Must be of the form `organizations/`
+        #   organization`/environments/`environment`/keystores/`keystore`/aliases/`alias``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4478,9 +4282,8 @@ module Google
         
         # Deletes an alias.
         # @param [String] name
-        #   Required. The name of the alias. Must be of the form
-        #   `organizations/`organization`/environments/`environment`/keystores/`keystore`/
-        #   aliases/`alias``.
+        #   Required. The name of the alias. Must be of the form `organizations/`
+        #   organization`/environments/`environment`/keystores/`keystore`/aliases/`alias``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4510,9 +4313,8 @@ module Google
         
         # Gets an alias.
         # @param [String] name
-        #   Required. The name of the alias. Must be of the form
-        #   `organizations/`organization`/environments/`environment`/keystores/`keystore`/
-        #   aliases/`alias``.
+        #   Required. The name of the alias. Must be of the form `organizations/`
+        #   organization`/environments/`environment`/keystores/`keystore`/aliases/`alias``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4542,9 +4344,8 @@ module Google
         
         # Gets the certificate from an alias in PEM-encoded form.
         # @param [String] name
-        #   Required. The name of the alias. Must be of the form
-        #   `organizations/`organization`/environments/`environment`/keystores/`keystore`/
-        #   aliases/`alias``.
+        #   Required. The name of the alias. Must be of the form `organizations/`
+        #   organization`/environments/`environment`/keystores/`keystore`/aliases/`alias``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4574,16 +4375,15 @@ module Google
         
         # Updates the certificate in an alias.
         # @param [String] name
-        #   Required. The name of the alias. Must be of the form
-        #   `organizations/`organization`/environments/`environment`/keystores/`keystore`/
-        #   aliases/`alias``.
+        #   Required. The name of the alias. Must be of the form `organizations/`
+        #   organization`/environments/`environment`/keystores/`keystore`/aliases/`alias``.
         # @param [Google::Apis::ApigeeV1::GoogleApiHttpBody] google_api_http_body_object
         # @param [Boolean] ignore_expiry_validation
         #   Required. If `true`, no expiry validation will be performed.
         # @param [Boolean] ignore_newline_validation
         #   If `true`, do not throw an error when the file contains a chain with no
-        #   newline between each certificate. By default, a newline is needed between
-        #   each certificate in a chain.
+        #   newline between each certificate. By default, a newline is needed between each
+        #   certificate in a chain.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4618,8 +4418,7 @@ module Google
         # Creates a key value map in an environment.
         # @param [String] parent
         #   Required. The name of the environment in which to create the key value map.
-        #   Must be of the form
-        #   `organizations/`organization`/environments/`environment``.
+        #   Must be of the form `organizations/`organization`/environments/`environment``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] google_cloud_apigee_v1_key_value_map_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4652,10 +4451,8 @@ module Google
         
         # Delete a key value map in an environment.
         # @param [String] name
-        #   Required. The name of the key value map.
-        #   Must be of the form
-        #   `organizations/`organization`/environments/`environment`/keyvaluemaps/`
-        #   keyvaluemap``.
+        #   Required. The name of the key value map. Must be of the form `organizations/`
+        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4683,60 +4480,56 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # This api is similar to GetStats
-        # except that the response is less verbose.
-        # In the current scheme, a query parameter _optimized instructs
-        # Edge Analytics to change the response but since this behavior
-        # is not possible with protocol buffer and since this parameter is
-        # predominantly used by Edge UI, we are introducing a separate api.
+        # This api is similar to GetStats except that the response is less verbose. In
+        # the current scheme, a query parameter _optimized instructs Edge Analytics to
+        # change the response but since this behavior is not possible with protocol
+        # buffer and since this parameter is predominantly used by Edge UI, we are
+        # introducing a separate api.
         # @param [String] name
         #   Required. The resource name for which the interactive query will be executed.
-        #   Must be of the form
-        #   `organizations/`organization_id`/environments/`environment_id/stats/`
-        #   dimensions``
-        #   Dimensions let you view metrics in meaningful groupings. E.g. apiproxy,
-        #   target_host. The value of dimensions should be comma separated list as
-        #   shown below
-        #   `organizations/`org`/environments/`env`/stats/apiproxy,request_verb`
+        #   Must be of the form `organizations/`organization_id`/environments/`
+        #   environment_id/stats/`dimensions`` Dimensions let you view metrics in
+        #   meaningful groupings. E.g. apiproxy, target_host. The value of dimensions
+        #   should be comma separated list as shown below `organizations/`org`/
+        #   environments/`env`/stats/apiproxy,request_verb`
         # @param [String] accuracy
         #   Legacy field: not used anymore.
         # @param [String] agg_table
-        #   If customers want to query custom aggregate tables, then this parameter
-        #   can be used to specify the table name. If this parameter is skipped, then
-        #   Edge Query will try to retrieve the data from fact tables which will be
-        #   expensive.
+        #   If customers want to query custom aggregate tables, then this parameter can be
+        #   used to specify the table name. If this parameter is skipped, then Edge Query
+        #   will try to retrieve the data from fact tables which will be expensive.
         # @param [String] filter
         #   Enables drill-down on specific dimension values.
         # @param [String] limit
-        #   This parameter is used to limit the number of result items.
-        #   Default and the max value is 14400.
+        #   This parameter is used to limit the number of result items. Default and the
+        #   max value is 14400.
         # @param [String] offset
-        #   Use offset with limit to enable pagination of results. For example,
-        #   to display results 11-20, set limit to '10' and offset to '10'.
+        #   Use offset with limit to enable pagination of results. For example, to display
+        #   results 11-20, set limit to '10' and offset to '10'.
         # @param [Boolean] realtime
         #   Legacy field: not used anymore.
         # @param [String] select
-        #   Required. The select parameter contains a comma separated list of metrics.
-        #   E.g. sum(message_count),sum(error_count)
+        #   Required. The select parameter contains a comma separated list of metrics. E.g.
+        #   sum(message_count),sum(error_count)
         # @param [Boolean] sonar
         #   This parameter routes the query to api monitoring service for last hour.
         # @param [String] sort
-        #   This parameter specifies if the sort order should be ascending or
-        #   descending Supported values are DESC and ASC.
+        #   This parameter specifies if the sort order should be ascending or descending
+        #   Supported values are DESC and ASC.
         # @param [String] sortby
         #   Comma separated list of columns to sort the final result.
         # @param [String] time_range
-        #   Required. Time interval for the interactive query.
-        #   Time range is specified as start~end E.g. 04/15/2017 00:00~05/15/2017 23:59
+        #   Required. Time interval for the interactive query. Time range is specified as
+        #   start~end E.g. 04/15/2017 00:00~05/15/2017 23:59
         # @param [String] time_unit
-        #   A value of second, minute, hour, day, week, month.
-        #   Time Unit specifies the granularity of metrics returned.
+        #   A value of second, minute, hour, day, week, month. Time Unit specifies the
+        #   granularity of metrics returned.
         # @param [String] topk
-        #   Take 'top k' results from results, for example, to return the top 5
-        #   results 'topk=5'.
+        #   Take 'top k' results from results, for example, to return the top 5 results '
+        #   topk=5'.
         # @param [Boolean] ts_ascending
-        #   Lists timestamps in ascending order if set to true. Recommend setting
-        #   this value to true if you are using sortby with sort=DESC.
+        #   Lists timestamps in ascending order if set to true. Recommend setting this
+        #   value to true if you are using sortby with sort=DESC.
         # @param [String] tzo
         #   This parameters contains the timezone offset value.
         # @param [String] fields
@@ -4781,13 +4574,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Submit a query to be processed in the background.
-        # If the submission of the query succeeds, the API returns a 201 status and
-        # an ID that refer to the query. In addition to the HTTP status 201, the
-        # `state` of "enqueued" means that the request succeeded.
+        # Submit a query to be processed in the background. If the submission of the
+        # query succeeds, the API returns a 201 status and an ID that refer to the query.
+        # In addition to the HTTP status 201, the `state` of "enqueued" means that the
+        # request succeeded.
         # @param [String] parent
-        #   Required. The parent resource name.
-        #   Must be of the form `organizations/`org`/environments/`env``.
+        #   Required. The parent resource name. Must be of the form `organizations/`org`/
+        #   environments/`env``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Query] google_cloud_apigee_v1_query_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4818,12 +4611,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get query status
-        # If the query is still in progress, the `state` is set to "running"
-        # After the query has completed successfully, `state` is set to "completed"
+        # Get query status If the query is still in progress, the `state` is set to "
+        # running" After the query has completed successfully, `state` is set to "
+        # completed"
         # @param [String] name
-        #   Required. Name of the asynchronous query to get. Must be of the form
-        #   `organizations/`org`/environments/`env`/queries/`queryId``.
+        #   Required. Name of the asynchronous query to get. Must be of the form `
+        #   organizations/`org`/environments/`env`/queries/`queryId``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4851,15 +4644,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # After the query is completed, use this API to retrieve the results.
-        # If the request succeeds, and there is a non-zero result set, the result is
-        # downloaded to the client as a zipped JSON file.
-        # The name of the downloaded file will be:
-        # OfflineQueryResult-<query-id>.zip
-        # Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip`
+        # After the query is completed, use this API to retrieve the results. If the
+        # request succeeds, and there is a non-zero result set, the result is downloaded
+        # to the client as a zipped JSON file. The name of the downloaded file will be:
+        # OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-
+        # 318d0cb961bd.zip`
         # @param [String] name
-        #   Required. Name of the asynchronous query result to get. Must be of the
-        #   form `organizations/`org`/environments/`env`/queries/`queryId`/result`.
+        #   Required. Name of the asynchronous query result to get. Must be of the form `
+        #   organizations/`org`/environments/`env`/queries/`queryId`/result`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4889,15 +4681,13 @@ module Google
         
         # Return a list of Asynchronous Queries
         # @param [String] parent
-        #   Required. The parent resource name.
-        #   Must be of the form `organizations/`org`/environments/`env``.
+        #   Required. The parent resource name. Must be of the form `organizations/`org`/
+        #   environments/`env``.
         # @param [String] dataset
-        #   Filter response list by dataset.
-        #   Example: `api`, `mint`
+        #   Filter response list by dataset. Example: `api`, `mint`
         # @param [String] from
-        #   Filter response list by returning asynchronous queries that
-        #   created after this date time.
-        #   Time must be in ISO date-time format like '2011-12-03T10:15:30Z'.
+        #   Filter response list by returning asynchronous queries that created after this
+        #   date time. Time must be in ISO date-time format like '2011-12-03T10:15:30Z'.
         # @param [String] incl_queries_without_report
         #   Flag to include asynchronous queries that don't have a report denifition.
         # @param [String] status
@@ -4905,9 +4695,9 @@ module Google
         # @param [String] submitted_by
         #   Filter response list by user who submitted queries.
         # @param [String] to
-        #   Filter response list by returning asynchronous queries that
-        #   created before this date time.
-        #   Time must be in ISO date-time format like '2011-12-03T10:16:30Z'.
+        #   Filter response list by returning asynchronous queries that created before
+        #   this date time. Time must be in ISO date-time format like '2011-12-03T10:16:
+        #   30Z'.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4943,8 +4733,8 @@ module Google
         
         # Creates a Reference in the specified environment.
         # @param [String] parent
-        #   Required. The parent environment name under which the Reference will
-        #   be created. Must be of the form `organizations/`org`/environments/`env``.
+        #   Required. The parent environment name under which the Reference will be
+        #   created. Must be of the form `organizations/`org`/environments/`env``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Reference] google_cloud_apigee_v1_reference_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4975,11 +4765,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Reference from an environment. Returns the deleted
-        # Reference resource.
+        # Deletes a Reference from an environment. Returns the deleted Reference
+        # resource.
         # @param [String] name
-        #   Required. The name of the Reference to delete. Must be
-        #   of the form `organizations/`org`/environments/`env`/references/`ref``.
+        #   Required. The name of the Reference to delete. Must be of the form `
+        #   organizations/`org`/environments/`env`/references/`ref``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5009,8 +4799,8 @@ module Google
         
         # Gets a Reference resource.
         # @param [String] name
-        #   Required. The name of the Reference to get. Must be of the form
-        #   `organizations/`org`/environments/`env`/references/`ref``.
+        #   Required. The name of the Reference to get. Must be of the form `organizations/
+        #   `org`/environments/`env`/references/`ref``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5038,12 +4828,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing Reference. Note that this operation has PUT
-        # semantics; it will replace the entirety of the existing Reference with
-        # the resource in the request body.
+        # Updates an existing Reference. Note that this operation has PUT semantics; it
+        # will replace the entirety of the existing Reference with the resource in the
+        # request body.
         # @param [String] name
-        #   Required. The name of the Reference to update. Must be of the form
-        #   `organizations/`org`/environments/`env`/references/`ref``.
+        #   Required. The name of the Reference to update. Must be of the form `
+        #   organizations/`org`/environments/`env`/references/`ref``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Reference] google_cloud_apigee_v1_reference_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5074,19 +4864,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a resource file.
-        # Specify the `Content-Type` as `application/octet-stream` or
-        # `multipart/form-data`.
-        # For more information about resource files, see
-        # [Resource files](/api-platform/develop/resource-files).
+        # Creates a resource file. Specify the `Content-Type` as `application/octet-
+        # stream` or `multipart/form-data`. For more information about resource files,
+        # see [Resource files](/api-platform/develop/resource-files).
         # @param [String] parent
         #   Required. Name of the environment in which to create the resource file in the
-        #   following format:
-        #   `organizations/`org`/environments/`env``.
+        #   following format: `organizations/`org`/environments/`env``.
         # @param [Google::Apis::ApigeeV1::GoogleApiHttpBody] google_api_http_body_object
         # @param [String] name
-        #   Required. Name of the resource file.  Must match the regular expression:
-        #   <var>[a-zA-Z0-9:/\\!@#$%^&``\[\]()+\-=,.~'` ]`1,255`</var>
+        #   Required. Name of the resource file. Must match the regular expression: [a-zA-
+        #   Z0-9:/\\!@#$%^&``\[\]()+\-=,.~'` ]`1,255`
         # @param [String] type
         #   Required. Resource file type. `` resource_file_type ``
         # @param [String] fields
@@ -5120,17 +4907,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a resource file.
-        # For more information about resource files, see
-        # [Resource files](/api-platform/develop/resource-files).
+        # Deletes a resource file. For more information about resource files, see [
+        # Resource files](/api-platform/develop/resource-files).
         # @param [String] parent
-        #   Required. Name of the environment in the following format:
-        #   `organizations/`org`/environments/`env``.
+        #   Required. Name of the environment in the following format: `organizations/`org`
+        #   /environments/`env``.
         # @param [String] type
         #   Required. Resource file type. `` resource_file_type ``
         # @param [String] name
-        #   Required. ID of the resource file to delete. Must match the regular
-        #   expression: <var>[a-zA-Z0-9:/\\!@#$%^&``\[\]()+\-=,.~'` ]`1,255`</var>
+        #   Required. ID of the resource file to delete. Must match the regular expression:
+        #   [a-zA-Z0-9:/\\!@#$%^&``\[\]()+\-=,.~'` ]`1,255`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5160,17 +4946,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the contents of a resource file.
-        # For more information about resource files, see
-        # [Resource files](/api-platform/develop/resource-files).
+        # Gets the contents of a resource file. For more information about resource
+        # files, see [Resource files](/api-platform/develop/resource-files).
         # @param [String] parent
-        #   Required. Name of the environment in the following format:
-        #   `organizations/`org`/environments/`env``.
+        #   Required. Name of the environment in the following format: `organizations/`org`
+        #   /environments/`env``.
         # @param [String] type
-        #   Required. Resource file type.  `` resource_file_type ``
+        #   Required. Resource file type. `` resource_file_type ``
         # @param [String] name
-        #   Required. ID of the resource file. Must match the regular
-        #   expression: <var>[a-zA-Z0-9:/\\!@#$%^&``\[\]()+\-=,.~'` ]`1,255`</var>
+        #   Required. ID of the resource file. Must match the regular expression: [a-zA-Z0-
+        #   9:/\\!@#$%^&``\[\]()+\-=,.~'` ]`1,255`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5200,17 +4985,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all resource files.
-        # For more information about resource files, see
-        # [Resource files](/api-platform/develop/resource-files).
+        # Lists all resource files. For more information about resource files, see [
+        # Resource files](/api-platform/develop/resource-files).
         # @param [String] parent
         #   Required. Name of the environment in which to list resource files in the
-        #   following
-        #   format:
-        #   `organizations/`org`/environments/`env``.
+        #   following format: `organizations/`org`/environments/`env``.
         # @param [String] type
-        #   Optional. Type of resource files to list.
-        #   `` resource_file_type ``
+        #   Optional. Type of resource files to list. `` resource_file_type ``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5239,17 +5020,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all resource files.
-        # For more information about resource files, see
-        # [Resource files](/api-platform/develop/resource-files).
+        # Lists all resource files. For more information about resource files, see [
+        # Resource files](/api-platform/develop/resource-files).
         # @param [String] parent
         #   Required. Name of the environment in which to list resource files in the
-        #   following
-        #   format:
-        #   `organizations/`org`/environments/`env``.
+        #   following format: `organizations/`org`/environments/`env``.
         # @param [String] type
-        #   Optional. Type of resource files to list.
-        #   `` resource_file_type ``
+        #   Optional. Type of resource files to list. `` resource_file_type ``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5278,19 +5055,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a resource file.
-        # Specify the `Content-Type` as `application/octet-stream` or
-        # `multipart/form-data`.
-        # For more information about resource files, see
-        # [Resource files](/api-platform/develop/resource-files).
+        # Updates a resource file. Specify the `Content-Type` as `application/octet-
+        # stream` or `multipart/form-data`. For more information about resource files,
+        # see [Resource files](/api-platform/develop/resource-files).
         # @param [String] parent
-        #   Required. Name of the environment in the following format:
-        #   `organizations/`org`/environments/`env``.
+        #   Required. Name of the environment in the following format: `organizations/`org`
+        #   /environments/`env``.
         # @param [String] type
         #   Required. Resource file type. `` resource_file_type ``
         # @param [String] name
-        #   Required. ID of the resource file to update. Must match the regular
-        #   expression: <var>[a-zA-Z0-9:/\\!@#$%^&``\[\]()+\-=,.~'` ]`1,255`</var>
+        #   Required. ID of the resource file to update. Must match the regular expression:
+        #   [a-zA-Z0-9:/\\!@#$%^&``\[\]()+\-=,.~'` ]`1,255`
         # @param [Google::Apis::ApigeeV1::GoogleApiHttpBody] google_api_http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5326,8 +5101,7 @@ module Google
         # Lists all deployments of a shared flow in an environment.
         # @param [String] parent
         #   Required. Name representing a shared flow in an environment in the following
-        #   format:
-        #   `organizations/`org`/environments/`env`/sharedflows/`sharedflow``
+        #   format: `organizations/`org`/environments/`env`/sharedflows/`sharedflow``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5391,9 +5165,8 @@ module Google
         # runtime pods.
         # @param [String] name
         #   Required. Name representing a shared flow in an environment in the following
-        #   format:
-        #   `organizations/`org`/environments/`env`/sharedflows/`sharedflow`/revisions/`
-        #   rev``
+        #   format: `organizations/`org`/environments/`env`/sharedflows/`sharedflow`/
+        #   revisions/`rev``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5421,62 +5194,58 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve metrics grouped by dimensions.
-        # The types of metrics you can retrieve include traffic, message counts,
-        # API call latency, response size, and cache hits and counts.
-        # Dimensions let you view metrics in meaningful groups.
-        # The stats api does accept dimensions as path params. The dimensions are
-        # optional in which case the metrics are computed on the entire data
-        # for the given timerange.
+        # Retrieve metrics grouped by dimensions. The types of metrics you can retrieve
+        # include traffic, message counts, API call latency, response size, and cache
+        # hits and counts. Dimensions let you view metrics in meaningful groups. The
+        # stats api does accept dimensions as path params. The dimensions are optional
+        # in which case the metrics are computed on the entire data for the given
+        # timerange.
         # @param [String] name
         #   Required. The resource name for which the interactive query will be executed.
-        #   Must be of the form
-        #   `organizations/`organization_id`/environments/`environment_id/stats/`
-        #   dimensions``
-        #   Dimensions let you view metrics in meaningful groupings. E.g. apiproxy,
-        #   target_host. The value of dimensions should be comma separated list as
-        #   shown below
-        #   `organizations/`org`/environments/`env`/stats/apiproxy,request_verb`
+        #   Must be of the form `organizations/`organization_id`/environments/`
+        #   environment_id/stats/`dimensions`` Dimensions let you view metrics in
+        #   meaningful groupings. E.g. apiproxy, target_host. The value of dimensions
+        #   should be comma separated list as shown below `organizations/`org`/
+        #   environments/`env`/stats/apiproxy,request_verb`
         # @param [String] accuracy
-        #   Legacy field: not used anymore.
-        #   This field is present to support UI calls which still use this parameter.
+        #   Legacy field: not used anymore. This field is present to support UI calls
+        #   which still use this parameter.
         # @param [String] agg_table
-        #   If customers want to query custom aggregate tables, then this parameter
-        #   can be used to specify the table name. If this parameter is skipped, then
-        #   Edge Query will try to retrieve the data from fact tables which will be
-        #   expensive.
+        #   If customers want to query custom aggregate tables, then this parameter can be
+        #   used to specify the table name. If this parameter is skipped, then Edge Query
+        #   will try to retrieve the data from fact tables which will be expensive.
         # @param [String] filter
         #   Enables drill-down on specific dimension values
         # @param [String] limit
-        #   This parameter is used to limit the number of result items.
-        #   Default and the max value is 14400.
+        #   This parameter is used to limit the number of result items. Default and the
+        #   max value is 14400.
         # @param [String] offset
-        #   Use offset with limit to enable pagination of results. For example,
-        #   to display results 11-20, set limit to '10' and offset to '10'.
+        #   Use offset with limit to enable pagination of results. For example, to display
+        #   results 11-20, set limit to '10' and offset to '10'.
         # @param [Boolean] realtime
         #   Legacy field: not used anymore.
         # @param [String] select
-        #   The select parameter contains a comma separated list of metrics.
-        #   E.g. sum(message_count),sum(error_count)
+        #   The select parameter contains a comma separated list of metrics. E.g. sum(
+        #   message_count),sum(error_count)
         # @param [Boolean] sonar
         #   This parameter routes the query to api monitoring service for last hour.
         # @param [String] sort
-        #   This parameter specifies if the sort order should be ascending or
-        #   descending Supported values are DESC and ASC.
+        #   This parameter specifies if the sort order should be ascending or descending
+        #   Supported values are DESC and ASC.
         # @param [String] sortby
         #   Comma separated list of columns to sort the final result.
         # @param [String] time_range
-        #   Time interval for the interactive query.
-        #   Time range is specified as start~end E.g. 04/15/2017 00:00~05/15/2017 23:59
+        #   Time interval for the interactive query. Time range is specified as start~end
+        #   E.g. 04/15/2017 00:00~05/15/2017 23:59
         # @param [String] time_unit
-        #   A value of second, minute, hour, day, week, month.
-        #   Time Unit specifies the granularity of metrics returned.
+        #   A value of second, minute, hour, day, week, month. Time Unit specifies the
+        #   granularity of metrics returned.
         # @param [String] topk
-        #   Take 'top k' results from results, for example, to return the top 5
-        #   results 'topk=5'.
+        #   Take 'top k' results from results, for example, to return the top 5 results '
+        #   topk=5'.
         # @param [Boolean] ts_ascending
-        #   Lists timestamps in ascending order if set to true. Recommend setting
-        #   this value to true if you are using sortby with sort=DESC.
+        #   Lists timestamps in ascending order if set to true. Recommend setting this
+        #   value to true if you are using sortby with sort=DESC.
         # @param [String] tzo
         #   This parameters contains the timezone offset value.
         # @param [String] fields
@@ -5523,12 +5292,12 @@ module Google
         
         # Creates a TargetServer in the specified environment.
         # @param [String] parent
-        #   Required. The parent environment name under which the TargetServer will
-        #   be created. Must be of the form `organizations/`org`/environments/`env``.
+        #   Required. The parent environment name under which the TargetServer will be
+        #   created. Must be of the form `organizations/`org`/environments/`env``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServer] google_cloud_apigee_v1_target_server_object
         # @param [String] name
-        #   Optional. The ID to give the TargetServer. This will overwrite the
-        #   value in TargetServer.
+        #   Optional. The ID to give the TargetServer. This will overwrite the value in
+        #   TargetServer.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5559,12 +5328,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a TargetServer from an environment. Returns the deleted
-        # TargetServer resource.
+        # Deletes a TargetServer from an environment. Returns the deleted TargetServer
+        # resource.
         # @param [String] name
-        #   Required. The name of the TargetServer to delete. Must be
-        #   of the form
-        #   `organizations/`org`/environments/`env`/targetservers/`target_server_id``.
+        #   Required. The name of the TargetServer to delete. Must be of the form `
+        #   organizations/`org`/environments/`env`/targetservers/`target_server_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5594,8 +5362,8 @@ module Google
         
         # Gets a TargetServer resource.
         # @param [String] name
-        #   Required. The name of the TargetServer to get. Must be of the form
-        #   `organizations/`org`/environments/`env`/targetservers/`target_server_id``.
+        #   Required. The name of the TargetServer to get. Must be of the form `
+        #   organizations/`org`/environments/`env`/targetservers/`target_server_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5623,12 +5391,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing TargetServer. Note that this operation has PUT
-        # semantics; it will replace the entirety of the existing TargetServer with
-        # the resource in the request body.
+        # Updates an existing TargetServer. Note that this operation has PUT semantics;
+        # it will replace the entirety of the existing TargetServer with the resource in
+        # the request body.
         # @param [String] name
-        #   Required. The name of the TargetServer to replace. Must be of the form
-        #   `organizations/`org`/environments/`env`/targetservers/`target_server_id``.
+        #   Required. The name of the TargetServer to replace. Must be of the form `
+        #   organizations/`org`/environments/`env`/targetservers/`target_server_id``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServer] google_cloud_apigee_v1_target_server_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5660,12 +5428,11 @@ module Google
         end
         
         # Creates an Apigee runtime instance. The instance is accessible from the
-        # authorized network configured on the organization.
-        # **Note:** Not supported for Apigee hybrid.
+        # authorized network configured on the organization. **Note:** Not supported for
+        # Apigee hybrid.
         # @param [String] parent
         #   Required. Name of the organization. Use the following structure in your
-        #   request:
-        #   `organizations/`org``.
+        #   request: `organizations/`org``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Instance] google_cloud_apigee_v1_instance_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5696,12 +5463,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an Apigee runtime instance. The instance stops serving
-        # requests and the runtime data is deleted.
-        # **Note:** Not supported for Apigee hybrid.
+        # Deletes an Apigee runtime instance. The instance stops serving requests and
+        # the runtime data is deleted. **Note:** Not supported for Apigee hybrid.
         # @param [String] name
-        #   Required. Name of the instance. Use the following structure in your request:
-        #   `organizations/`org`/instance/`instance``.
+        #   Required. Name of the instance. Use the following structure in your request: `
+        #   organizations/`org`/instance/`instance``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5729,11 +5495,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the details for an Apigee runtime instance.
-        # **Note:** Not supported for Apigee hybrid.
+        # Gets the details for an Apigee runtime instance. **Note:** Not supported for
+        # Apigee hybrid.
         # @param [String] name
-        #   Required. Name of the instance. Use the following structure in your request:
-        #   `organizations/`org`/instances/`instance``.
+        #   Required. Name of the instance. Use the following structure in your request: `
+        #   organizations/`org`/instances/`instance``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5761,17 +5527,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all Apigee runtime instances for the organization.
-        # **Note:** Not supported for Apigee hybrid.
+        # Lists all Apigee runtime instances for the organization. **Note:** Not
+        # supported for Apigee hybrid.
         # @param [String] parent
         #   Required. Name of the organization. Use the following structure in your
-        #   request:
-        #   `organizations/`org``.
+        #   request: `organizations/`org``.
         # @param [Fixnum] page_size
         #   Maximum number of instances to return. Defaults to 25.
         # @param [String] page_token
-        #   Page token, returned from a previous ListInstances call, that you can
-        #   use to retrieve the next page of content.
+        #   Page token, returned from a previous ListInstances call, that you can use to
+        #   retrieve the next page of content.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5803,9 +5568,9 @@ module Google
         
         # Reports the latest status for a runtime instance.
         # @param [String] instance
-        #   The name of the instance reporting this status. For SaaS the request
-        #   will be rejected if no instance exists under this name.
-        #   Format is organizations/`org`/instances/`instance`
+        #   The name of the instance reporting this status. For SaaS the request will be
+        #   rejected if no instance exists under this name. Format is organizations/`org`/
+        #   instances/`instance`
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ReportInstanceStatusRequest] google_cloud_apigee_v1_report_instance_status_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5836,11 +5601,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new attachment of an environment to an instance.
-        # **Note:** Not supported for Apigee hybrid.
+        # Creates a new attachment of an environment to an instance. **Note:** Not
+        # supported for Apigee hybrid.
         # @param [String] parent
-        #   Required. Name of the instance. Use the following structure in your request:
-        #   `organizations/`org`/instances/`instance``.
+        #   Required. Name of the instance. Use the following structure in your request: `
+        #   organizations/`org`/instances/`instance``.
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1InstanceAttachment] google_cloud_apigee_v1_instance_attachment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5871,8 +5636,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an attachment.
-        # **Note:** Not supported for Apigee hybrid.
+        # Deletes an attachment. **Note:** Not supported for Apigee hybrid.
         # @param [String] name
         #   Required. Name of the attachment. Use the following structure in your request:
         #   `organizations/`org`/instances/`instance`/attachments/`attachment``.
@@ -5903,8 +5667,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an attachment.
-        # **Note:** Not supported for Apigee hybrid.
+        # Gets an attachment. **Note:** Not supported for Apigee hybrid.
         # @param [String] name
         #   Required. Name of the attachment. Use the following structure in your request:
         #   `organizations/`org`/instances/`instance`/attachments/`attachment``
@@ -5935,17 +5698,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all attachments to an instance.
-        # **Note:** Not supported for Apigee hybrid.
+        # Lists all attachments to an instance. **Note:** Not supported for Apigee
+        # hybrid.
         # @param [String] parent
         #   Required. Name of the organization. Use the following structure in your
-        #   request:
-        #   `organizations/`org`/instances/`instance``
+        #   request: `organizations/`org`/instances/`instance``
         # @param [Fixnum] page_size
         #   Maximum number of instance attachments to return. Defaults to 25.
         # @param [String] page_token
-        #   Page token, returned by a previous ListInstanceAttachments call, that you
-        #   can use to retrieve the next page of content.
+        #   Page token, returned by a previous ListInstanceAttachments call, that you can
+        #   use to retrieve the next page of content.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6011,9 +5773,8 @@ module Google
         
         # Delete a key value map in an organization.
         # @param [String] name
-        #   Required. The name of the key value map.
-        #   Must be of the form
-        #   `organizations/`organization`/keyvaluemaps/`keyvaluemap``.
+        #   Required. The name of the key value map. Must be of the form `organizations/`
+        #   organization`/keyvaluemaps/`keyvaluemap``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6041,9 +5802,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -6073,15 +5833,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
@@ -6120,17 +5879,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Custom Report for an Organization. A Custom Report
-        # provides Apigee Customers to create custom dashboards in addition
-        # to the standard dashboards which are provided. The Custom Report in its
-        # simplest form contains specifications about metrics, dimensions and
-        # filters. It is important to note that the custom report by itself does not
-        # provide an executable entity. The Edge UI converts the custom report
-        # definition into an analytics query and displays the result in a chart.
+        # Creates a Custom Report for an Organization. A Custom Report provides Apigee
+        # Customers to create custom dashboards in addition to the standard dashboards
+        # which are provided. The Custom Report in its simplest form contains
+        # specifications about metrics, dimensions and filters. It is important to note
+        # that the custom report by itself does not provide an executable entity. The
+        # Edge UI converts the custom report definition into an analytics query and
+        # displays the result in a chart.
         # @param [String] parent
-        #   Required. The parent organization name under which the Custom Report will
-        #   be created. Must be of the form:
-        #   `organizations/`organization_id`/reports`
+        #   Required. The parent organization name under which the Custom Report will be
+        #   created. Must be of the form: `organizations/`organization_id`/reports`
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CustomReport] google_cloud_apigee_v1_custom_report_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6163,8 +5921,8 @@ module Google
         
         # Deletes an existing custom report definition
         # @param [String] name
-        #   Required. Custom Report name of the form:
-        #   `organizations/`organization_id`/reports/`report_name``
+        #   Required. Custom Report name of the form: `organizations/`organization_id`/
+        #   reports/`report_name``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6194,8 +5952,8 @@ module Google
         
         # Retrieve a custom report definition.
         # @param [String] name
-        #   Required. Custom Report name of the form:
-        #   `organizations/`organization_id`/reports/`report_name``
+        #   Required. Custom Report name of the form: `organizations/`organization_id`/
+        #   reports/`report_name``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6225,9 +5983,8 @@ module Google
         
         # Return a list of Custom Reports
         # @param [String] parent
-        #   Required. The parent organization name under which the API product will
-        #   be listed
-        #   `organizations/`organization_id`/reports`
+        #   Required. The parent organization name under which the API product will be
+        #   listed `organizations/`organization_id`/reports`
         # @param [Boolean] expand
         #   Set to 'true' to get expanded details about each custom report.
         # @param [String] fields
@@ -6260,8 +6017,8 @@ module Google
         
         # Update an existing custom report definition
         # @param [String] name
-        #   Required. Custom Report name of the form:
-        #   `organizations/`organization_id`/reports/`report_name``
+        #   Required. Custom Report name of the form: `organizations/`organization_id`/
+        #   reports/`report_name``
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CustomReport] google_cloud_apigee_v1_custom_report_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6292,16 +6049,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads a ZIP-formatted shared flow configuration bundle to an
-        # organization. If the shared flow already exists, this creates a new
-        # revision of it. If the shared flow does not exist, this creates it.
-        # Once imported, the shared flow revision must be deployed before it can be
-        # accessed at runtime.
-        # The size limit of a shared flow bundle is 15 MB.
+        # Uploads a ZIP-formatted shared flow configuration bundle to an organization.
+        # If the shared flow already exists, this creates a new revision of it. If the
+        # shared flow does not exist, this creates it. Once imported, the shared flow
+        # revision must be deployed before it can be accessed at runtime. The size limit
+        # of a shared flow bundle is 15 MB.
         # @param [String] parent
-        #   Required. The name of the parent organization under which to create the
-        #   shared flow. Must be of the form:
-        #   `organizations/`organization_id``
+        #   Required. The name of the parent organization under which to create the shared
+        #   flow. Must be of the form: `organizations/`organization_id``
         # @param [Google::Apis::ApigeeV1::GoogleApiHttpBody] google_api_http_body_object
         # @param [String] action
         #   Required. Must be set to either `import` or `validate`.
@@ -6341,8 +6096,8 @@ module Google
         # Deletes a shared flow and all it's revisions. The shared flow must be
         # undeployed before you can delete it.
         # @param [String] name
-        #   Required. shared flow name of the form:
-        #   `organizations/`organization_id`/sharedflows/`shared_flow_id``
+        #   Required. shared flow name of the form: `organizations/`organization_id`/
+        #   sharedflows/`shared_flow_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6372,9 +6127,8 @@ module Google
         
         # Gets a shared flow by name, including a list of its revisions.
         # @param [String] name
-        #   Required. The name of the shared flow to get. Must be of the
-        #   form:
-        #   `organizations/`organization_id`/sharedflows/`shared_flow_id``
+        #   Required. The name of the shared flow to get. Must be of the form: `
+        #   organizations/`organization_id`/sharedflows/`shared_flow_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6404,9 +6158,8 @@ module Google
         
         # Lists all shared flows in the organization.
         # @param [String] parent
-        #   Required. The name of the parent organization under which to get shared
-        #   flows. Must be of the form:
-        #   `organizations/`organization_id``
+        #   Required. The name of the parent organization under which to get shared flows.
+        #   Must be of the form: `organizations/`organization_id``
         # @param [Boolean] include_meta_data
         #   Indicates whether to include shared flow metadata in the response.
         # @param [Boolean] include_revisions
@@ -6443,9 +6196,7 @@ module Google
         # Lists all deployments of a shared flow.
         # @param [String] parent
         #   Required. Name of the shared flow for which to return deployment information
-        #   in the
-        #   following format:
-        #   `organizations/`org`/sharedflows/`sharedflow``
+        #   in the following format: `organizations/`org`/sharedflows/`sharedflow``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6473,11 +6224,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a shared flow and all associated policies, resources, and
-        # revisions. You must undeploy the shared flow before deleting it.
+        # Deletes a shared flow and all associated policies, resources, and revisions.
+        # You must undeploy the shared flow before deleting it.
         # @param [String] name
-        #   Required. The name of the shared flow revision to delete. Must be of the
-        #   form:
+        #   Required. The name of the shared flow revision to delete. Must be of the form:
         #   `organizations/`organization_id`/sharedflows/`shared_flow_id`/revisions/`
         #   revision_id``
         # @param [String] fields
@@ -6507,17 +6257,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a revision of a shared flow.
-        # If `format=bundle` is passed, it instead outputs a shared flow revision as
-        # a ZIP-formatted bundle of code and config files.
+        # Gets a revision of a shared flow. If `format=bundle` is passed, it instead
+        # outputs a shared flow revision as a ZIP-formatted bundle of code and config
+        # files.
         # @param [String] name
-        #   Required. The name of the shared flow revision to get. Must be of the
-        #   form:
-        #   `organizations/`organization_id`/sharedflows/`shared_flow_id`/revisions/`
+        #   Required. The name of the shared flow revision to get. Must be of the form: `
+        #   organizations/`organization_id`/sharedflows/`shared_flow_id`/revisions/`
         #   revision_id``
         # @param [String] format
-        #   Specify `bundle` to export the contents of the shared flow bundle.
-        #   Otherwise, the bundle metadata is returned.
+        #   Specify `bundle` to export the contents of the shared flow bundle. Otherwise,
+        #   the bundle metadata is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6547,20 +6296,18 @@ module Google
         end
         
         # Updates a shared flow revision. This operation is only allowed on revisions
-        # which have never been deployed. After deployment a revision becomes
-        # immutable, even if it becomes undeployed.
-        # The payload is a ZIP-formatted shared flow.  Content type must be either
-        # multipart/form-data or application/octet-stream.
+        # which have never been deployed. After deployment a revision becomes immutable,
+        # even if it becomes undeployed. The payload is a ZIP-formatted shared flow.
+        # Content type must be either multipart/form-data or application/octet-stream.
         # @param [String] name
-        #   Required. The name of the shared flow revision to update.
-        #   Must be of the form:
+        #   Required. The name of the shared flow revision to update. Must be of the form:
         #   `organizations/`organization_id`/sharedflows/`shared_flow_id`/revisions/`
         #   revision_id``
         # @param [Google::Apis::ApigeeV1::GoogleApiHttpBody] google_api_http_body_object
         # @param [Boolean] validate
-        #   Ignored. All uploads are validated regardless of the value of this field.
-        #   It is kept for compatibility with existing APIs. Must be `true` or `false`
-        #   if provided.
+        #   Ignored. All uploads are validated regardless of the value of this field. It
+        #   is kept for compatibility with existing APIs. Must be `true` or `false` if
+        #   provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6594,9 +6341,8 @@ module Google
         # Lists all deployments of a shared flow revision.
         # @param [String] parent
         #   Required. Name of the API proxy revision for which to return deployment
-        #   information
-        #   in the following format:
-        #   `organizations/`org`/sharedflows/`sharedflow`/revisions/`rev``.
+        #   information in the following format: `organizations/`org`/sharedflows/`
+        #   sharedflow`/revisions/`rev``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

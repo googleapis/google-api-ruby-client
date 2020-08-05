@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/web/tools/chrome-user-experience-report/api/reference
     module ChromeuxreportV1
       VERSION = 'V1'
-      REVISION = '20200720'
+      REVISION = '20200803'
     end
   end
 end

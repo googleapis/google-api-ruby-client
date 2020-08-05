@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecResourceExec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExecStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +65,36 @@ module Google
       end
       
       class ExecutePatchJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtractArchiveResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class File
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FileGcs
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FileRemote
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FileResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,6 +143,54 @@ module Google
       end
       
       class OneTimeSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageResourceApt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageResourceDeb
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageResourceGooGet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageResourceMsi
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageResourceRpm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageResourceYum
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PackageResourceZypper
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +245,42 @@ module Google
       end
       
       class RecurringSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepositoryResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepositoryResourceAptRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepositoryResourceGooRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepositoryResourceYumRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RepositoryResourceZypperRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -223,6 +349,28 @@ module Google
         end
       end
       
+      class ExecResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enforce, as: 'enforce', class: Google::Apis::OsconfigV1::ExecResourceExec, decorator: Google::Apis::OsconfigV1::ExecResourceExec::Representation
+      
+          property :validate, as: 'validate', class: Google::Apis::OsconfigV1::ExecResourceExec, decorator: Google::Apis::OsconfigV1::ExecResourceExec::Representation
+      
+        end
+      end
+      
+      class ExecResourceExec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_success_codes, as: 'allowedSuccessCodes'
+          collection :args, as: 'args'
+          property :file, as: 'file', class: Google::Apis::OsconfigV1::File, decorator: Google::Apis::OsconfigV1::File::Representation
+      
+          property :interpreter, as: 'interpreter'
+          property :script, as: 'script'
+        end
+      end
+      
       class ExecStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -257,6 +405,59 @@ module Google
       
           property :rollout, as: 'rollout', class: Google::Apis::OsconfigV1::PatchRollout, decorator: Google::Apis::OsconfigV1::PatchRollout::Representation
       
+        end
+      end
+      
+      class ExtractArchiveResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creates, as: 'creates'
+          property :destination, as: 'destination'
+          property :overwrite, as: 'overwrite'
+          property :source, as: 'source', class: Google::Apis::OsconfigV1::File, decorator: Google::Apis::OsconfigV1::File::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class File
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_insecure, as: 'allowInsecure'
+          property :gcs, as: 'gcs', class: Google::Apis::OsconfigV1::FileGcs, decorator: Google::Apis::OsconfigV1::FileGcs::Representation
+      
+          property :local_path, as: 'localPath'
+          property :remote, as: 'remote', class: Google::Apis::OsconfigV1::FileRemote, decorator: Google::Apis::OsconfigV1::FileRemote::Representation
+      
+        end
+      end
+      
+      class FileGcs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :object, as: 'object'
+        end
+      end
+      
+      class FileRemote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sha256_checksum, as: 'sha256Checksum'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class FileResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :file, as: 'file', class: Google::Apis::OsconfigV1::File, decorator: Google::Apis::OsconfigV1::File::Representation
+      
+          property :path, as: 'path'
+          property :permissions, as: 'permissions'
+          property :state, as: 'state'
         end
       end
       
@@ -323,6 +524,83 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :execute_time, as: 'executeTime'
+        end
+      end
+      
+      class PackageResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apt, as: 'apt', class: Google::Apis::OsconfigV1::PackageResourceApt, decorator: Google::Apis::OsconfigV1::PackageResourceApt::Representation
+      
+          property :deb, as: 'deb', class: Google::Apis::OsconfigV1::PackageResourceDeb, decorator: Google::Apis::OsconfigV1::PackageResourceDeb::Representation
+      
+          property :desired_state, as: 'desiredState'
+          property :googet, as: 'googet', class: Google::Apis::OsconfigV1::PackageResourceGooGet, decorator: Google::Apis::OsconfigV1::PackageResourceGooGet::Representation
+      
+          property :msi, as: 'msi', class: Google::Apis::OsconfigV1::PackageResourceMsi, decorator: Google::Apis::OsconfigV1::PackageResourceMsi::Representation
+      
+          property :rpm, as: 'rpm', class: Google::Apis::OsconfigV1::PackageResourceRpm, decorator: Google::Apis::OsconfigV1::PackageResourceRpm::Representation
+      
+          property :yum, as: 'yum', class: Google::Apis::OsconfigV1::PackageResourceYum, decorator: Google::Apis::OsconfigV1::PackageResourceYum::Representation
+      
+          property :zypper, as: 'zypper', class: Google::Apis::OsconfigV1::PackageResourceZypper, decorator: Google::Apis::OsconfigV1::PackageResourceZypper::Representation
+      
+        end
+      end
+      
+      class PackageResourceApt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class PackageResourceDeb
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pull_deps, as: 'pullDeps'
+          property :source, as: 'source', class: Google::Apis::OsconfigV1::File, decorator: Google::Apis::OsconfigV1::File::Representation
+      
+        end
+      end
+      
+      class PackageResourceGooGet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class PackageResourceMsi
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_success_codes, as: 'allowedSuccessCodes'
+          collection :flags, as: 'flags'
+          property :source, as: 'source', class: Google::Apis::OsconfigV1::File, decorator: Google::Apis::OsconfigV1::File::Representation
+      
+        end
+      end
+      
+      class PackageResourceRpm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pull_deps, as: 'pullDeps'
+          property :source, as: 'source', class: Google::Apis::OsconfigV1::File, decorator: Google::Apis::OsconfigV1::File::Representation
+      
+        end
+      end
+      
+      class PackageResourceYum
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class PackageResourceZypper
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -470,6 +748,65 @@ module Google
       
           property :weekly, as: 'weekly', class: Google::Apis::OsconfigV1::WeeklySchedule, decorator: Google::Apis::OsconfigV1::WeeklySchedule::Representation
       
+        end
+      end
+      
+      class RepositoryResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apt, as: 'apt', class: Google::Apis::OsconfigV1::RepositoryResourceAptRepository, decorator: Google::Apis::OsconfigV1::RepositoryResourceAptRepository::Representation
+      
+          property :goo, as: 'goo', class: Google::Apis::OsconfigV1::RepositoryResourceGooRepository, decorator: Google::Apis::OsconfigV1::RepositoryResourceGooRepository::Representation
+      
+          property :yum, as: 'yum', class: Google::Apis::OsconfigV1::RepositoryResourceYumRepository, decorator: Google::Apis::OsconfigV1::RepositoryResourceYumRepository::Representation
+      
+          property :zypper, as: 'zypper', class: Google::Apis::OsconfigV1::RepositoryResourceZypperRepository, decorator: Google::Apis::OsconfigV1::RepositoryResourceZypperRepository::Representation
+      
+        end
+      end
+      
+      class RepositoryResourceAptRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_type, as: 'archiveType'
+          collection :components, as: 'components'
+          property :distribution, as: 'distribution'
+          property :gpg_key, as: 'gpgKey'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class RepositoryResourceGooRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :url, as: 'url'
+        end
+      end
+      
+      class RepositoryResourceYumRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_url, as: 'baseUrl'
+          property :display_name, as: 'displayName'
+          collection :gpg_keys, as: 'gpgKeys'
+          property :id, as: 'id'
+        end
+      end
+      
+      class RepositoryResourceZypperRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_url, as: 'baseUrl'
+          property :display_name, as: 'displayName'
+          collection :gpg_keys, as: 'gpgKeys'
+          property :id, as: 'id'
+        end
+      end
+      
+      class ServiceResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

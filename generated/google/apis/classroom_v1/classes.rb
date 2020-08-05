@@ -26,51 +26,46 @@ module Google
       class Announcement
         include Google::Apis::Core::Hashable
       
-        # Absolute link to this announcement in the Classroom web UI.
-        # This is only populated if `state` is `PUBLISHED`.
-        # Read-only.
+        # Absolute link to this announcement in the Classroom web UI. This is only
+        # populated if `state` is `PUBLISHED`. Read-only.
         # Corresponds to the JSON property `alternateLink`
         # @return [String]
         attr_accessor :alternate_link
       
-        # Assignee mode of the announcement.
-        # If unspecified, the default value is `ALL_STUDENTS`.
+        # Assignee mode of the announcement. If unspecified, the default value is `
+        # ALL_STUDENTS`.
         # Corresponds to the JSON property `assigneeMode`
         # @return [String]
         attr_accessor :assignee_mode
       
-        # Identifier of the course.
-        # Read-only.
+        # Identifier of the course. Read-only.
         # Corresponds to the JSON property `courseId`
         # @return [String]
         attr_accessor :course_id
       
-        # Timestamp when this announcement was created.
-        # Read-only.
+        # Timestamp when this announcement was created. Read-only.
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
       
-        # Identifier for the user that created the announcement.
-        # Read-only.
+        # Identifier for the user that created the announcement. Read-only.
         # Corresponds to the JSON property `creatorUserId`
         # @return [String]
         attr_accessor :creator_user_id
       
-        # Classroom-assigned identifier of this announcement, unique per course.
-        # Read-only.
+        # Classroom-assigned identifier of this announcement, unique per course. Read-
+        # only.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Assignee details about a coursework/announcement.
-        # This field is set if and only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+        # Assignee details about a coursework/announcement. This field is set if and
+        # only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
         # Corresponds to the JSON property `individualStudentsOptions`
         # @return [Google::Apis::ClassroomV1::IndividualStudentsOptions]
         attr_accessor :individual_students_options
       
-        # Additional materials.
-        # Announcements must have no more than 20 material items.
+        # Additional materials. Announcements must have no more than 20 material items.
         # Corresponds to the JSON property `materials`
         # @return [Array<Google::Apis::ClassroomV1::Material>]
         attr_accessor :materials
@@ -80,21 +75,18 @@ module Google
         # @return [String]
         attr_accessor :scheduled_time
       
-        # Status of this announcement.
-        # If unspecified, the default state is `DRAFT`.
+        # Status of this announcement. If unspecified, the default state is `DRAFT`.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Description of this announcement.
-        # The text must be a valid UTF-8 string containing no more
-        # than 30,000 characters.
+        # Description of this announcement. The text must be a valid UTF-8 string
+        # containing no more than 30,000 characters.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
       
-        # Timestamp of the most recent change to this announcement.
-        # Read-only.
+        # Timestamp of the most recent change to this announcement. Read-only.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -143,13 +135,12 @@ module Google
       class AssignmentSubmission
         include Google::Apis::Core::Hashable
       
-        # Attachments added by the student.
-        # Drive files that correspond to materials with a share mode of
-        # STUDENT_COPY may not exist yet if the student has not accessed the
-        # assignment in Classroom.
-        # Some attachment metadata is only populated if the requesting user has
-        # permission to access it. Identifier and alternate_link fields are always
-        # available, but others (for example, title) may not be.
+        # Attachments added by the student. Drive files that correspond to materials
+        # with a share mode of STUDENT_COPY may not exist yet if the student has not
+        # accessed the assignment in Classroom. Some attachment metadata is only
+        # populated if the requesting user has permission to access it. Identifier and
+        # alternate_link fields are always available, but others (for example, title)
+        # may not be.
         # Corresponds to the JSON property `attachments`
         # @return [Array<Google::Apis::ClassroomV1::Attachment>]
         attr_accessor :attachments
@@ -164,8 +155,8 @@ module Google
         end
       end
       
-      # Attachment added to student assignment work.
-      # When creating attachments, setting the `form` field is not supported.
+      # Attachment added to student assignment work. When creating attachments,
+      # setting the `form` field is not supported.
       class Attachment
         include Google::Apis::Core::Hashable
       
@@ -202,16 +193,14 @@ module Google
         end
       end
       
-      # A reference to a Cloud Pub/Sub topic.
-      # To register for notifications, the owner of the topic must grant
-      # `classroom-notifications@system.gserviceaccount.com` the
-      # `projects.topics.publish` permission.
+      # A reference to a Cloud Pub/Sub topic. To register for notifications, the owner
+      # of the topic must grant `classroom-notifications@system.gserviceaccount.com`
+      # the `projects.topics.publish` permission.
       class CloudPubsubTopic
         include Google::Apis::Core::Hashable
       
-        # The `name` field of a Cloud Pub/Sub
-        # [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#
-        # Topic).
+        # The `name` field of a Cloud Pub/Sub [Topic](https://cloud.google.com/pubsub/
+        # docs/reference/rest/v1/projects.topics#Topic).
         # Corresponds to the JSON property `topicName`
         # @return [String]
         attr_accessor :topic_name
@@ -230,124 +219,100 @@ module Google
       class Course
         include Google::Apis::Core::Hashable
       
-        # Absolute link to this course in the Classroom web UI.
-        # Read-only.
+        # Absolute link to this course in the Classroom web UI. Read-only.
         # Corresponds to the JSON property `alternateLink`
         # @return [String]
         attr_accessor :alternate_link
       
         # The Calendar ID for a calendar that all course members can see, to which
-        # Classroom adds events for course work and announcements in the course.
-        # Read-only.
+        # Classroom adds events for course work and announcements in the course. Read-
+        # only.
         # Corresponds to the JSON property `calendarId`
         # @return [String]
         attr_accessor :calendar_id
       
-        # The email address of a Google group containing all members of the course.
-        # This group does not accept email and can only be used for permissions.
-        # Read-only.
+        # The email address of a Google group containing all members of the course. This
+        # group does not accept email and can only be used for permissions. Read-only.
         # Corresponds to the JSON property `courseGroupEmail`
         # @return [String]
         attr_accessor :course_group_email
       
-        # Sets of materials that appear on the "about" page of this course.
-        # Read-only.
+        # Sets of materials that appear on the "about" page of this course. Read-only.
         # Corresponds to the JSON property `courseMaterialSets`
         # @return [Array<Google::Apis::ClassroomV1::CourseMaterialSet>]
         attr_accessor :course_material_sets
       
-        # State of the course.
-        # If unspecified, the default state is `PROVISIONED`.
+        # State of the course. If unspecified, the default state is `PROVISIONED`.
         # Corresponds to the JSON property `courseState`
         # @return [String]
         attr_accessor :course_state
       
-        # Creation time of the course.
-        # Specifying this field in a course update mask results in an error.
-        # Read-only.
+        # Creation time of the course. Specifying this field in a course update mask
+        # results in an error. Read-only.
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
       
-        # Optional description.
-        # For example, "We'll be learning about the structure of living
-        # creatures from a combination of textbooks, guest lectures, and lab work.
-        # Expect to be excited!"
-        # If set, this field must be a valid UTF-8 string and no longer than 30,000
-        # characters.
+        # Optional description. For example, "We'll be learning about the structure of
+        # living creatures from a combination of textbooks, guest lectures, and lab work.
+        # Expect to be excited!" If set, this field must be a valid UTF-8 string and no
+        # longer than 30,000 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional heading for the description.
-        # For example, "Welcome to 10th Grade Biology."
-        # If set, this field must be a valid UTF-8 string and no longer than 3600
-        # characters.
+        # Optional heading for the description. For example, "Welcome to 10th Grade
+        # Biology." If set, this field must be a valid UTF-8 string and no longer than
+        # 3600 characters.
         # Corresponds to the JSON property `descriptionHeading`
         # @return [String]
         attr_accessor :description_heading
       
-        # Enrollment code to use when joining this course.
-        # Specifying this field in a course update mask results in an error.
-        # Read-only.
+        # Enrollment code to use when joining this course. Specifying this field in a
+        # course update mask results in an error. Read-only.
         # Corresponds to the JSON property `enrollmentCode`
         # @return [String]
         attr_accessor :enrollment_code
       
-        # Whether or not guardian notifications are enabled for this course.
-        # Read-only.
+        # Whether or not guardian notifications are enabled for this course. Read-only.
         # Corresponds to the JSON property `guardiansEnabled`
         # @return [Boolean]
         attr_accessor :guardians_enabled
         alias_method :guardians_enabled?, :guardians_enabled
       
-        # Identifier for this course assigned by Classroom.
-        # When
-        # creating a course,
-        # you may optionally set this identifier to an
-        # alias string in the
-        # request to create a corresponding alias. The `id` is still assigned by
-        # Classroom and cannot be updated after the course is created.
-        # Specifying this field in a course update mask results in an error.
+        # Identifier for this course assigned by Classroom. When creating a course, you
+        # may optionally set this identifier to an alias string in the request to create
+        # a corresponding alias. The `id` is still assigned by Classroom and cannot be
+        # updated after the course is created. Specifying this field in a course update
+        # mask results in an error.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Name of the course.
-        # For example, "10th Grade Biology".
-        # The name is required. It must be between 1 and 750 characters and a valid
-        # UTF-8 string.
+        # Name of the course. For example, "10th Grade Biology". The name is required.
+        # It must be between 1 and 750 characters and a valid UTF-8 string.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The identifier of the owner of a course.
-        # When specified as a parameter of a
-        # create course request, this
-        # field is required.
-        # The identifier can be one of the following:
-        # * the numeric identifier for the user
-        # * the email address of the user
-        # * the string literal `"me"`, indicating the requesting user
-        # This must be set in a create request. Admins can also specify this field
-        # in a patch course request to
-        # transfer ownership. In other contexts, it is read-only.
+        # The identifier of the owner of a course. When specified as a parameter of a
+        # create course request, this field is required. The identifier can be one of
+        # the following: * the numeric identifier for the user * the email address of
+        # the user * the string literal `"me"`, indicating the requesting user This must
+        # be set in a create request. Admins can also specify this field in a patch
+        # course request to transfer ownership. In other contexts, it is read-only.
         # Corresponds to the JSON property `ownerId`
         # @return [String]
         attr_accessor :owner_id
       
-        # Optional room location.
-        # For example, "301".
-        # If set, this field must be a valid UTF-8 string and no longer than 650
-        # characters.
+        # Optional room location. For example, "301". If set, this field must be a valid
+        # UTF-8 string and no longer than 650 characters.
         # Corresponds to the JSON property `room`
         # @return [String]
         attr_accessor :room
       
-        # Section of the course.
-        # For example, "Period 2".
-        # If set, this field must be a valid UTF-8 string and no longer than 2800
-        # characters.
+        # Section of the course. For example, "Period 2". If set, this field must be a
+        # valid UTF-8 string and no longer than 2800 characters.
         # Corresponds to the JSON property `section`
         # @return [String]
         attr_accessor :section
@@ -358,15 +323,14 @@ module Google
         attr_accessor :teacher_folder
       
         # The email address of a Google group containing all teachers of the course.
-        # This group does not accept email and can only be used for permissions.
-        # Read-only.
+        # This group does not accept email and can only be used for permissions. Read-
+        # only.
         # Corresponds to the JSON property `teacherGroupEmail`
         # @return [String]
         attr_accessor :teacher_group_email
       
-        # Time of the most recent update to this course.
-        # Specifying this field in a course update mask results in an error.
-        # Read-only.
+        # Time of the most recent update to this course. Specifying this field in a
+        # course update mask results in an error. Read-only.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -398,27 +362,24 @@ module Google
         end
       end
       
-      # Alternative identifier for a course.
-      # An alias uniquely identifies a course. It must be unique within one of the
-      # following scopes:
-      # * domain: A domain-scoped alias is visible to all users within the alias
-      # creator's domain and can be created only by a domain admin. A domain-scoped
-      # alias is often used when a course has an identifier external to Classroom.
-      # * project: A project-scoped alias is visible to any request from an
-      # application using the Developer Console project ID that created the alias
-      # and can be created by any project. A project-scoped alias is often used when
-      # an application has alternative identifiers. A random value can also be used
-      # to avoid duplicate courses in the event of transmission failures, as retrying
-      # a request will return `ALREADY_EXISTS` if a previous one has succeeded.
+      # Alternative identifier for a course. An alias uniquely identifies a course. It
+      # must be unique within one of the following scopes: * domain: A domain-scoped
+      # alias is visible to all users within the alias creator's domain and can be
+      # created only by a domain admin. A domain-scoped alias is often used when a
+      # course has an identifier external to Classroom. * project: A project-scoped
+      # alias is visible to any request from an application using the Developer
+      # Console project ID that created the alias and can be created by any project. A
+      # project-scoped alias is often used when an application has alternative
+      # identifiers. A random value can also be used to avoid duplicate courses in the
+      # event of transmission failures, as retrying a request will return `
+      # ALREADY_EXISTS` if a previous one has succeeded.
       class CourseAlias
         include Google::Apis::Core::Hashable
       
-        # Alias string. The format of the string indicates the desired alias scoping.
-        # * `d:<name>` indicates a domain-scoped alias.
-        # Example: `d:math_101`
-        # * `p:<name>` indicates a project-scoped alias.
-        # Example: `p:abc123`
-        # This field has a maximum length of 256 characters.
+        # Alias string. The format of the string indicates the desired alias scoping. * `
+        # d:` indicates a domain-scoped alias. Example: `d:math_101` * `p:` indicates a
+        # project-scoped alias. Example: `p:abc123` This field has a maximum length of
+        # 256 characters.
         # Corresponds to the JSON property `alias`
         # @return [String]
         attr_accessor :alias
@@ -470,9 +431,9 @@ module Google
         end
       end
       
-      # A set of materials that appears on the "About" page of the course.
-      # These materials might include a syllabus, schedule, or other background
-      # information relating to the course as a whole.
+      # A set of materials that appears on the "About" page of the course. These
+      # materials might include a syllabus, schedule, or other background information
+      # relating to the course as a whole.
       class CourseMaterialSet
         include Google::Apis::Core::Hashable
       
@@ -520,15 +481,14 @@ module Google
       class CourseWork
         include Google::Apis::Core::Hashable
       
-        # Absolute link to this course work in the Classroom web UI.
-        # This is only populated if `state` is `PUBLISHED`.
-        # Read-only.
+        # Absolute link to this course work in the Classroom web UI. This is only
+        # populated if `state` is `PUBLISHED`. Read-only.
         # Corresponds to the JSON property `alternateLink`
         # @return [String]
         attr_accessor :alternate_link
       
-        # Assignee mode of the coursework.
-        # If unspecified, the default value is `ALL_STUDENTS`.
+        # Assignee mode of the coursework. If unspecified, the default value is `
+        # ALL_STUDENTS`.
         # Corresponds to the JSON property `assigneeMode`
         # @return [String]
         attr_accessor :assignee_mode
@@ -538,81 +498,72 @@ module Google
         # @return [Google::Apis::ClassroomV1::Assignment]
         attr_accessor :assignment
       
-        # Whether this course work item is associated with the Developer Console
-        # project making the request.
-        # See CreateCourseWork for more
-        # details.
-        # Read-only.
+        # Whether this course work item is associated with the Developer Console project
+        # making the request. See CreateCourseWork for more details. Read-only.
         # Corresponds to the JSON property `associatedWithDeveloper`
         # @return [Boolean]
         attr_accessor :associated_with_developer
         alias_method :associated_with_developer?, :associated_with_developer
       
-        # Identifier of the course.
-        # Read-only.
+        # Identifier of the course. Read-only.
         # Corresponds to the JSON property `courseId`
         # @return [String]
         attr_accessor :course_id
       
-        # Timestamp when this course work was created.
-        # Read-only.
+        # Timestamp when this course work was created. Read-only.
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
       
-        # Identifier for the user that created the coursework.
-        # Read-only.
+        # Identifier for the user that created the coursework. Read-only.
         # Corresponds to the JSON property `creatorUserId`
         # @return [String]
         attr_accessor :creator_user_id
       
-        # Optional description of this course work.
-        # If set, the description must be a valid UTF-8 string containing no more
-        # than 30,000 characters.
+        # Optional description of this course work. If set, the description must be a
+        # valid UTF-8 string containing no more than 30,000 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `dueDate`
         # @return [Google::Apis::ClassroomV1::Date]
         attr_accessor :due_date
       
-        # Represents a time of day. The date and time zone are either not significant
-        # or are specified elsewhere. An API may choose to allow leap seconds. Related
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
         # types are google.type.Date and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `dueTime`
         # @return [Google::Apis::ClassroomV1::TimeOfDay]
         attr_accessor :due_time
       
-        # Classroom-assigned identifier of this course work, unique per course.
-        # Read-only.
+        # Classroom-assigned identifier of this course work, unique per course. Read-
+        # only.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Assignee details about a coursework/announcement.
-        # This field is set if and only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+        # Assignee details about a coursework/announcement. This field is set if and
+        # only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
         # Corresponds to the JSON property `individualStudentsOptions`
         # @return [Google::Apis::ClassroomV1::IndividualStudentsOptions]
         attr_accessor :individual_students_options
       
-        # Additional materials.
-        # CourseWork must have no more than 20 material items.
+        # Additional materials. CourseWork must have no more than 20 material items.
         # Corresponds to the JSON property `materials`
         # @return [Array<Google::Apis::ClassroomV1::Material>]
         attr_accessor :materials
       
-        # Maximum grade for this course work.
-        # If zero or unspecified, this assignment is considered ungraded.
-        # This must be a non-negative integer value.
+        # Maximum grade for this course work. If zero or unspecified, this assignment is
+        # considered ungraded. This must be a non-negative integer value.
         # Corresponds to the JSON property `maxPoints`
         # @return [Float]
         attr_accessor :max_points
@@ -627,39 +578,36 @@ module Google
         # @return [String]
         attr_accessor :scheduled_time
       
-        # Status of this course work.
-        # If unspecified, the default state is `DRAFT`.
+        # Status of this course work. If unspecified, the default state is `DRAFT`.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Setting to determine when students are allowed to modify submissions.
-        # If unspecified, the default value is `MODIFIABLE_UNTIL_TURNED_IN`.
+        # Setting to determine when students are allowed to modify submissions. If
+        # unspecified, the default value is `MODIFIABLE_UNTIL_TURNED_IN`.
         # Corresponds to the JSON property `submissionModificationMode`
         # @return [String]
         attr_accessor :submission_modification_mode
       
-        # Title of this course work.
-        # The title must be a valid UTF-8 string containing between 1 and 3000
-        # characters.
+        # Title of this course work. The title must be a valid UTF-8 string containing
+        # between 1 and 3000 characters.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # Identifier for the topic that this coursework is associated with.
-        # Must match an existing topic in the course.
+        # Identifier for the topic that this coursework is associated with. Must match
+        # an existing topic in the course.
         # Corresponds to the JSON property `topicId`
         # @return [String]
         attr_accessor :topic_id
       
-        # Timestamp of the most recent change to this course work.
-        # Read-only.
+        # Timestamp of the most recent change to this course work. Read-only.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # Type of this course work.
-        # The type is set when the course work is created and cannot be changed.
+        # Type of this course work. The type is set when the course work is created and
+        # cannot be changed.
         # Corresponds to the JSON property `workType`
         # @return [String]
         attr_accessor :work_type
@@ -716,30 +664,29 @@ module Google
       
       # Represents a whole or partial calendar date, e.g. a birthday. The time of day
       # and time zone are either specified elsewhere or are not significant. The date
-      # is relative to the Proleptic Gregorian Calendar. This can represent:
-      # * A full date, with non-zero year, month and day values
-      # * A month and day value, with a zero year, e.g. an anniversary
-      # * A year on its own, with zero month and day values
-      # * A year and month value, with a zero day, e.g. a credit card expiration date
-      # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+      # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+      # date, with non-zero year, month and day values * A month and day value, with a
+      # zero year, e.g. an anniversary * A year on its own, with zero month and day
+      # values * A year and month value, with a zero day, e.g. a credit card
+      # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+      # Timestamp`.
       class Date
         include Google::Apis::Core::Hashable
       
-        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        # if specifying a year by itself or a year and month where the day is not
+        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+        # specifying a year by itself or a year and month where the day is not
         # significant.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a
-        # month and day.
+        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        # and day.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
       
-        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-        # a year.
+        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
         # Corresponds to the JSON property `year`
         # @return [Fixnum]
         attr_accessor :year
@@ -760,8 +707,7 @@ module Google
       class DriveFile
         include Google::Apis::Core::Hashable
       
-        # URL that can be used to access the Drive item.
-        # Read-only.
+        # URL that can be used to access the Drive item. Read-only.
         # Corresponds to the JSON property `alternateLink`
         # @return [String]
         attr_accessor :alternate_link
@@ -771,14 +717,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # URL of a thumbnail image of the Drive item.
-        # Read-only.
+        # URL of a thumbnail image of the Drive item. Read-only.
         # Corresponds to the JSON property `thumbnailUrl`
         # @return [String]
         attr_accessor :thumbnail_url
       
-        # Title of the Drive item.
-        # Read-only.
+        # Title of the Drive item. Read-only.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -800,8 +744,7 @@ module Google
       class DriveFolder
         include Google::Apis::Core::Hashable
       
-        # URL that can be used to access the Drive folder.
-        # Read-only.
+        # URL that can be used to access the Drive folder. Read-only.
         # Corresponds to the JSON property `alternateLink`
         # @return [String]
         attr_accessor :alternate_link
@@ -811,8 +754,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Title of the Drive folder.
-        # Read-only.
+        # Title of the Drive folder. Read-only.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -829,13 +771,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -848,8 +788,8 @@ module Google
         end
       end
       
-      # A class of notifications that an application can register to receive.
-      # For example: "all roster changes for a domain".
+      # A class of notifications that an application can register to receive. For
+      # example: "all roster changes for a domain".
       class Feed
         include Google::Apis::Core::Hashable
       
@@ -889,22 +829,18 @@ module Google
         # @return [String]
         attr_accessor :form_url
       
-        # URL of the form responses document.
-        # Only set if respsonses have been recorded and only when the
-        # requesting user is an editor of the form.
-        # Read-only.
+        # URL of the form responses document. Only set if respsonses have been recorded
+        # and only when the requesting user is an editor of the form. Read-only.
         # Corresponds to the JSON property `responseUrl`
         # @return [String]
         attr_accessor :response_url
       
-        # URL of a thumbnail image of the Form.
-        # Read-only.
+        # URL of a thumbnail image of the Form. Read-only.
         # Corresponds to the JSON property `thumbnailUrl`
         # @return [String]
         attr_accessor :thumbnail_url
       
-        # Title of the Form.
-        # Read-only.
+        # Title of the Form. Read-only.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -960,8 +896,7 @@ module Google
         # @return [String]
         attr_accessor :grade_timestamp
       
-        # The denominator of the grade at this time in the submission grade
-        # history.
+        # The denominator of the grade at this time in the submission grade history.
         # Corresponds to the JSON property `maxPoints`
         # @return [Float]
         attr_accessor :max_points
@@ -985,8 +920,8 @@ module Google
         end
       end
       
-      # Association between a student and a guardian of that student. The guardian
-      # may receive information about the student's course work.
+      # Association between a student and a guardian of that student. The guardian may
+      # receive information about the student's course work.
       class Guardian
         include Google::Apis::Core::Hashable
       
@@ -1000,8 +935,8 @@ module Google
         # @return [Google::Apis::ClassroomV1::UserProfile]
         attr_accessor :guardian_profile
       
-        # The email address to which the initial guardian invitation was sent.
-        # This field is only visible to domain administrators.
+        # The email address to which the initial guardian invitation was sent. This
+        # field is only visible to domain administrators.
         # Corresponds to the JSON property `invitedEmailAddress`
         # @return [String]
         attr_accessor :invited_email_address
@@ -1029,20 +964,18 @@ module Google
       class GuardianInvitation
         include Google::Apis::Core::Hashable
       
-        # The time that this invitation was created.
-        # Read-only.
+        # The time that this invitation was created. Read-only.
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
       
-        # Unique identifier for this invitation.
-        # Read-only.
+        # Unique identifier for this invitation. Read-only.
         # Corresponds to the JSON property `invitationId`
         # @return [String]
         attr_accessor :invitation_id
       
-        # Email address that the invitation was sent to.
-        # This field is only visible to domain administrators.
+        # Email address that the invitation was sent to. This field is only visible to
+        # domain administrators.
         # Corresponds to the JSON property `invitedEmailAddress`
         # @return [String]
         attr_accessor :invited_email_address
@@ -1071,13 +1004,12 @@ module Google
         end
       end
       
-      # Assignee details about a coursework/announcement.
-      # This field is set if and only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+      # Assignee details about a coursework/announcement. This field is set if and
+      # only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
       class IndividualStudentsOptions
         include Google::Apis::Core::Hashable
       
-        # Identifiers for the students that have access to the
-        # coursework/announcement.
+        # Identifiers for the students that have access to the coursework/announcement.
         # Corresponds to the JSON property `studentIds`
         # @return [Array<String>]
         attr_accessor :student_ids
@@ -1101,24 +1033,20 @@ module Google
         # @return [String]
         attr_accessor :course_id
       
-        # Identifier assigned by Classroom.
-        # Read-only.
+        # Identifier assigned by Classroom. Read-only.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Role to invite the user to have.
-        # Must not be `COURSE_ROLE_UNSPECIFIED`.
+        # Role to invite the user to have. Must not be `COURSE_ROLE_UNSPECIFIED`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
       
-        # Identifier of the invited user.
-        # When specified as a parameter of a request, this identifier can be set to
-        # one of the following:
-        # * the numeric identifier for the user
-        # * the email address of the user
-        # * the string literal `"me"`, indicating the requesting user
+        # Identifier of the invited user. When specified as a parameter of a request,
+        # this identifier can be set to one of the following: * the numeric identifier
+        # for the user * the email address of the user * the string literal `"me"`,
+        # indicating the requesting user
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -1140,20 +1068,18 @@ module Google
       class Link
         include Google::Apis::Core::Hashable
       
-        # URL of a thumbnail image of the target URL.
-        # Read-only.
+        # URL of a thumbnail image of the target URL. Read-only.
         # Corresponds to the JSON property `thumbnailUrl`
         # @return [String]
         attr_accessor :thumbnail_url
       
-        # Title of the target of the URL.
-        # Read-only.
+        # Title of the target of the URL. Read-only.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # URL to link to.
-        # This must be a valid UTF-8 string containing between 1 and 2024 characters.
+        # URL to link to. This must be a valid UTF-8 string containing between 1 and
+        # 2024 characters.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -1304,8 +1230,8 @@ module Google
       class ListGuardiansResponse
         include Google::Apis::Core::Hashable
       
-        # Guardians on this page of results that met the criteria specified in
-        # the request.
+        # Guardians on this page of results that met the criteria specified in the
+        # request.
         # Corresponds to the JSON property `guardians`
         # @return [Array<Google::Apis::ClassroomV1::Guardian>]
         attr_accessor :guardians
@@ -1457,8 +1383,8 @@ module Google
         end
       end
       
-      # Material attached to course work.
-      # When creating attachments, setting the `form` field is not supported.
+      # Material attached to course work. When creating attachments, setting the `form`
+      # field is not supported.
       class Material
         include Google::Apis::Core::Hashable
       
@@ -1499,8 +1425,8 @@ module Google
       class ModifyAnnouncementAssigneesRequest
         include Google::Apis::Core::Hashable
       
-        # Mode of the announcement describing whether it is accessible by all
-        # students or specified individual students.
+        # Mode of the announcement describing whether it is accessible by all students
+        # or specified individual students.
         # Corresponds to the JSON property `assigneeMode`
         # @return [String]
         attr_accessor :assignee_mode
@@ -1526,8 +1452,7 @@ module Google
       class ModifyAttachmentsRequest
         include Google::Apis::Core::Hashable
       
-        # Attachments to add.
-        # A student submission may not have more than 20 attachments.
+        # Attachments to add. A student submission may not have more than 20 attachments.
         # Form attachments are not supported.
         # Corresponds to the JSON property `addAttachments`
         # @return [Array<Google::Apis::ClassroomV1::Attachment>]
@@ -1547,8 +1472,8 @@ module Google
       class ModifyCourseWorkAssigneesRequest
         include Google::Apis::Core::Hashable
       
-        # Mode of the coursework describing whether it will be assigned to all
-        # students or specified individual students.
+        # Mode of the coursework describing whether it will be assigned to all students
+        # or specified individual students.
         # Corresponds to the JSON property `assigneeMode`
         # @return [String]
         attr_accessor :assignee_mode
@@ -1575,14 +1500,13 @@ module Google
       class ModifyIndividualStudentsOptions
         include Google::Apis::Core::Hashable
       
-        # IDs of students to be added as having access to this
-        # coursework/announcement.
+        # IDs of students to be added as having access to this coursework/announcement.
         # Corresponds to the JSON property `addStudentIds`
         # @return [Array<String>]
         attr_accessor :add_student_ids
       
-        # IDs of students to be removed from having access to this
-        # coursework/announcement.
+        # IDs of students to be removed from having access to this coursework/
+        # announcement.
         # Corresponds to the JSON property `removeStudentIds`
         # @return [Array<String>]
         attr_accessor :remove_student_ids
@@ -1640,21 +1564,18 @@ module Google
       class Name
         include Google::Apis::Core::Hashable
       
-        # The user's last name.
-        # Read-only.
+        # The user's last name. Read-only.
         # Corresponds to the JSON property `familyName`
         # @return [String]
         attr_accessor :family_name
       
-        # The user's full name formed by concatenating the first and last name
-        # values.
+        # The user's full name formed by concatenating the first and last name values.
         # Read-only.
         # Corresponds to the JSON property `fullName`
         # @return [String]
         attr_accessor :full_name
       
-        # The user's first name.
-        # Read-only.
+        # The user's first name. Read-only.
         # Corresponds to the JSON property `givenName`
         # @return [String]
         attr_accessor :given_name
@@ -1689,28 +1610,26 @@ module Google
       class Registration
         include Google::Apis::Core::Hashable
       
-        # A reference to a Cloud Pub/Sub topic.
-        # To register for notifications, the owner of the topic must grant
-        # `classroom-notifications@system.gserviceaccount.com` the
-        # `projects.topics.publish` permission.
+        # A reference to a Cloud Pub/Sub topic. To register for notifications, the owner
+        # of the topic must grant `classroom-notifications@system.gserviceaccount.com`
+        # the `projects.topics.publish` permission.
         # Corresponds to the JSON property `cloudPubsubTopic`
         # @return [Google::Apis::ClassroomV1::CloudPubsubTopic]
         attr_accessor :cloud_pubsub_topic
       
-        # The time until which the `Registration` is effective.
-        # This is a read-only field assigned by the server.
+        # The time until which the `Registration` is effective. This is a read-only
+        # field assigned by the server.
         # Corresponds to the JSON property `expiryTime`
         # @return [String]
         attr_accessor :expiry_time
       
-        # A class of notifications that an application can register to receive.
-        # For example: "all roster changes for a domain".
+        # A class of notifications that an application can register to receive. For
+        # example: "all roster changes for a domain".
         # Corresponds to the JSON property `feed`
         # @return [Google::Apis::ClassroomV1::Feed]
         attr_accessor :feed
       
-        # A server-generated unique identifier for this `Registration`.
-        # Read-only.
+        # A server-generated unique identifier for this `Registration`. Read-only.
         # Corresponds to the JSON property `registrationId`
         # @return [String]
         attr_accessor :registration_id
@@ -1820,8 +1739,7 @@ module Google
       class Student
         include Google::Apis::Core::Hashable
       
-        # Identifier of the course.
-        # Read-only.
+        # Identifier of the course. Read-only.
         # Corresponds to the JSON property `courseId`
         # @return [String]
         attr_accessor :course_id
@@ -1836,12 +1754,10 @@ module Google
         # @return [Google::Apis::ClassroomV1::DriveFolder]
         attr_accessor :student_work_folder
       
-        # Identifier of the user.
-        # When specified as a parameter of a request, this identifier can be one of
-        # the following:
-        # * the numeric identifier for the user
-        # * the email address of the user
-        # * the string literal `"me"`, indicating the requesting user
+        # Identifier of the user. When specified as a parameter of a request, this
+        # identifier can be one of the following: * the numeric identifier for the user *
+        # the email address of the user * the string literal `"me"`, indicating the
+        # requesting user
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -1859,23 +1775,20 @@ module Google
         end
       end
       
-      # Student submission for course work.
-      # StudentSubmission items are generated when a CourseWork item is created.
-      # StudentSubmissions that have never been accessed (i.e. with `state` = NEW)
-      # may not have a creation time or update time.
+      # Student submission for course work. StudentSubmission items are generated when
+      # a CourseWork item is created. StudentSubmissions that have never been accessed
+      # (i.e. with `state` = NEW) may not have a creation time or update time.
       class StudentSubmission
         include Google::Apis::Core::Hashable
       
-        # Absolute link to the submission in the Classroom web UI.
-        # Read-only.
+        # Absolute link to the submission in the Classroom web UI. Read-only.
         # Corresponds to the JSON property `alternateLink`
         # @return [String]
         attr_accessor :alternate_link
       
-        # Optional grade. If unset, no grade was set.
-        # This value must be non-negative. Decimal (that is, non-integer) values are
-        # allowed, but are rounded to two decimal places.
-        # This may be modified only by course teachers.
+        # Optional grade. If unset, no grade was set. This value must be non-negative.
+        # Decimal (that is, non-integer) values are allowed, but are rounded to two
+        # decimal places. This may be modified only by course teachers.
         # Corresponds to the JSON property `assignedGrade`
         # @return [Float]
         attr_accessor :assigned_grade
@@ -1886,57 +1799,48 @@ module Google
         attr_accessor :assignment_submission
       
         # Whether this student submission is associated with the Developer Console
-        # project making the request.
-        # See CreateCourseWork for more
-        # details.
-        # Read-only.
+        # project making the request. See CreateCourseWork for more details. Read-only.
         # Corresponds to the JSON property `associatedWithDeveloper`
         # @return [Boolean]
         attr_accessor :associated_with_developer
         alias_method :associated_with_developer?, :associated_with_developer
       
-        # Identifier of the course.
-        # Read-only.
+        # Identifier of the course. Read-only.
         # Corresponds to the JSON property `courseId`
         # @return [String]
         attr_accessor :course_id
       
-        # Identifier for the course work this corresponds to.
-        # Read-only.
+        # Identifier for the course work this corresponds to. Read-only.
         # Corresponds to the JSON property `courseWorkId`
         # @return [String]
         attr_accessor :course_work_id
       
-        # Type of course work this submission is for.
-        # Read-only.
+        # Type of course work this submission is for. Read-only.
         # Corresponds to the JSON property `courseWorkType`
         # @return [String]
         attr_accessor :course_work_type
       
-        # Creation time of this submission.
-        # This may be unset if the student has not accessed this item.
-        # Read-only.
+        # Creation time of this submission. This may be unset if the student has not
+        # accessed this item. Read-only.
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
       
-        # Optional pending grade. If unset, no grade was set.
-        # This value must be non-negative. Decimal (that is, non-integer) values are
-        # allowed, but are rounded to two decimal places.
-        # This is only visible to and modifiable by course teachers.
+        # Optional pending grade. If unset, no grade was set. This value must be non-
+        # negative. Decimal (that is, non-integer) values are allowed, but are rounded
+        # to two decimal places. This is only visible to and modifiable by course
+        # teachers.
         # Corresponds to the JSON property `draftGrade`
         # @return [Float]
         attr_accessor :draft_grade
       
-        # Classroom-assigned Identifier for the student submission.
-        # This is unique among submissions for the relevant course work.
-        # Read-only.
+        # Classroom-assigned Identifier for the student submission. This is unique among
+        # submissions for the relevant course work. Read-only.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Whether this submission is late.
-        # Read-only.
+        # Whether this submission is late. Read-only.
         # Corresponds to the JSON property `late`
         # @return [Boolean]
         attr_accessor :late
@@ -1952,27 +1856,23 @@ module Google
         # @return [Google::Apis::ClassroomV1::ShortAnswerSubmission]
         attr_accessor :short_answer_submission
       
-        # State of this submission.
-        # Read-only.
+        # State of this submission. Read-only.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # The history of the submission (includes state and grade histories).
-        # Read-only.
+        # The history of the submission (includes state and grade histories). Read-only.
         # Corresponds to the JSON property `submissionHistory`
         # @return [Array<Google::Apis::ClassroomV1::SubmissionHistory>]
         attr_accessor :submission_history
       
-        # Last update time of this submission.
-        # This may be unset if the student has not accessed this item.
-        # Read-only.
+        # Last update time of this submission. This may be unset if the student has not
+        # accessed this item. Read-only.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # Identifier for the student that owns this submission.
-        # Read-only.
+        # Identifier for the student that owns this submission. Read-only.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -2033,8 +1933,7 @@ module Google
       class Teacher
         include Google::Apis::Core::Hashable
       
-        # Identifier of the course.
-        # Read-only.
+        # Identifier of the course. Read-only.
         # Corresponds to the JSON property `courseId`
         # @return [String]
         attr_accessor :course_id
@@ -2044,12 +1943,10 @@ module Google
         # @return [Google::Apis::ClassroomV1::UserProfile]
         attr_accessor :profile
       
-        # Identifier of the user.
-        # When specified as a parameter of a request, this identifier can be one of
-        # the following:
-        # * the numeric identifier for the user
-        # * the email address of the user
-        # * the string literal `"me"`, indicating the requesting user
+        # Identifier of the user. When specified as a parameter of a request, this
+        # identifier can be one of the following: * the numeric identifier for the user *
+        # the email address of the user * the string literal `"me"`, indicating the
+        # requesting user
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -2066,14 +1963,14 @@ module Google
         end
       end
       
-      # Represents a time of day. The date and time zone are either not significant
-      # or are specified elsewhere. An API may choose to allow leap seconds. Related
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
       # types are google.type.Date and `google.protobuf.Timestamp`.
       class TimeOfDay
         include Google::Apis::Core::Hashable
       
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
-        # to allow the value "24:00:00" for scenarios like business closing time.
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+        # allow the value "24:00:00" for scenarios like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
@@ -2111,29 +2008,25 @@ module Google
       class Topic
         include Google::Apis::Core::Hashable
       
-        # Identifier of the course.
-        # Read-only.
+        # Identifier of the course. Read-only.
         # Corresponds to the JSON property `courseId`
         # @return [String]
         attr_accessor :course_id
       
-        # The name of the topic, generated by the user.
-        # Leading and trailing whitespaces, if any, are trimmed. Also, multiple
-        # consecutive whitespaces are collapsed into one inside the name. The
-        # result must be a non-empty string. Topic names are case sensitive, and must
-        # be no longer than 100 characters.
+        # The name of the topic, generated by the user. Leading and trailing whitespaces,
+        # if any, are trimmed. Also, multiple consecutive whitespaces are collapsed
+        # into one inside the name. The result must be a non-empty string. Topic names
+        # are case sensitive, and must be no longer than 100 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Unique identifier for the topic.
-        # Read-only.
+        # Unique identifier for the topic. Read-only.
         # Corresponds to the JSON property `topicId`
         # @return [String]
         attr_accessor :topic_id
       
-        # The time the topic was last updated by the system.
-        # Read-only.
+        # The time the topic was last updated by the system. Read-only.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -2168,14 +2061,12 @@ module Google
       class UserProfile
         include Google::Apis::Core::Hashable
       
-        # Email address of the user.
-        # Read-only.
+        # Email address of the user. Read-only.
         # Corresponds to the JSON property `emailAddress`
         # @return [String]
         attr_accessor :email_address
       
-        # Identifier of the user.
-        # Read-only.
+        # Identifier of the user. Read-only.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2185,22 +2076,19 @@ module Google
         # @return [Google::Apis::ClassroomV1::Name]
         attr_accessor :name
       
-        # Global permissions of the user.
-        # Read-only.
+        # Global permissions of the user. Read-only.
         # Corresponds to the JSON property `permissions`
         # @return [Array<Google::Apis::ClassroomV1::GlobalPermission>]
         attr_accessor :permissions
       
-        # URL of user's profile photo.
-        # Read-only.
+        # URL of user's profile photo. Read-only.
         # Corresponds to the JSON property `photoUrl`
         # @return [String]
         attr_accessor :photo_url
       
         # Represents whether a G Suite for Education user's domain administrator has
-        # explicitly verified them as being a teacher. If the user is not a member of
-        # a G Suite for Education domain, than this field is always false.
-        # Read-only
+        # explicitly verified them as being a teacher. If the user is not a member of a
+        # G Suite for Education domain, than this field is always false. Read-only
         # Corresponds to the JSON property `verifiedTeacher`
         # @return [Boolean]
         attr_accessor :verified_teacher
@@ -2225,8 +2113,7 @@ module Google
       class YouTubeVideo
         include Google::Apis::Core::Hashable
       
-        # URL that can be used to view the YouTube video.
-        # Read-only.
+        # URL that can be used to view the YouTube video. Read-only.
         # Corresponds to the JSON property `alternateLink`
         # @return [String]
         attr_accessor :alternate_link
@@ -2236,14 +2123,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # URL of a thumbnail image of the YouTube video.
-        # Read-only.
+        # URL of a thumbnail image of the YouTube video. Read-only.
         # Corresponds to the JSON property `thumbnailUrl`
         # @return [String]
         attr_accessor :thumbnail_url
       
-        # Title of the YouTube video.
-        # Read-only.
+        # Title of the YouTube video. Read-only.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title

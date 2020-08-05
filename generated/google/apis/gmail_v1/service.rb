@@ -22,8 +22,8 @@ module Google
     module GmailV1
       # Gmail API
       #
-      # The Gmail API lets you view and manage Gmail mailbox data like
-      #  threads, messages, and labels.
+      # The Gmail API lets you view and manage Gmail mailbox data like threads,
+      #  messages, and labels.
       #
       # @example
       #    require 'google/apis/gmail_v1'
@@ -50,8 +50,8 @@ module Google
         
         # Gets the current user's Gmail profile.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -81,8 +81,8 @@ module Google
         
         # Stop receiving push notifications for the given user mailbox.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -110,8 +110,8 @@ module Google
         
         # Set up or update a push notification watch on the given user mailbox.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::WatchRequest] watch_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -144,8 +144,8 @@ module Google
         
         # Creates a new draft with the `DRAFT` label.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::Draft] draft_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -186,11 +186,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Immediately and permanently deletes the specified draft.
-        # Does not simply trash it.
+        # Immediately and permanently deletes the specified draft. Does not simply trash
+        # it.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the draft to delete.
         # @param [String] fields
@@ -221,8 +221,8 @@ module Google
         
         # Gets the specified draft.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the draft to retrieve.
         # @param [String] format
@@ -258,20 +258,18 @@ module Google
         
         # Lists the drafts in the user's mailbox.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [Boolean] include_spam_trash
-        #   Include drafts from `SPAM` and `TRASH`
-        #   in the results.
+        #   Include drafts from `SPAM` and `TRASH` in the results.
         # @param [Fixnum] max_results
         #   Maximum number of drafts to return.
         # @param [String] page_token
         #   Page token to retrieve a specific page of results in the list.
         # @param [String] q
         #   Only return draft messages matching the specified query. Supports the same
-        #   query format as the Gmail search box. For example,
-        #   `"from:someuser@example.com rfc822msgid:<somemsgid@example.com>
-        #   is:unread"`.
+        #   query format as the Gmail search box. For example, `"from:someuser@example.com
+        #   rfc822msgid: is:unread"`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -303,11 +301,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sends the specified, existing draft to the recipients in the
-        # `To`, `Cc`, and `Bcc` headers.
+        # Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `
+        # Bcc` headers.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::Draft] draft_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -350,8 +348,8 @@ module Google
         
         # Replaces a draft's content.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the draft to update.
         # @param [Google::Apis::GmailV1::Draft] draft_object
@@ -398,8 +396,8 @@ module Google
         # Lists the history of all changes to the given mailbox. History results are
         # returned in chronological order (increasing `historyId`).
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [Array<String>, String] history_types
         #   History types to be returned by the function
         # @param [String] label_id
@@ -409,19 +407,16 @@ module Google
         # @param [String] page_token
         #   Page token to retrieve a specific page of results in the list.
         # @param [Fixnum] start_history_id
-        #   Required. Returns history records after the specified
-        #   `startHistoryId`. The supplied `startHistoryId`
-        #   should be obtained from the `historyId` of a message, thread, or
-        #   previous `list` response. History IDs increase
-        #   chronologically but are not contiguous with random gaps in between valid
-        #   IDs. Supplying an invalid or out of date `startHistoryId`
-        #   typically returns an `HTTP 404` error code. A
-        #   `historyId` is typically valid for at least a week, but in some
-        #   rare circumstances may be valid for only a few hours. If you receive an
-        #   `HTTP 404` error response, your  application should perform a
-        #   full sync. If you receive no `nextPageToken` in the response,
-        #   there are no updates to retrieve and you can store the returned
-        #   `historyId` for a future request.
+        #   Required. Returns history records after the specified `startHistoryId`. The
+        #   supplied `startHistoryId` should be obtained from the `historyId` of a message,
+        #   thread, or previous `list` response. History IDs increase chronologically but
+        #   are not contiguous with random gaps in between valid IDs. Supplying an invalid
+        #   or out of date `startHistoryId` typically returns an `HTTP 404` error code. A `
+        #   historyId` is typically valid for at least a week, but in some rare
+        #   circumstances may be valid for only a few hours. If you receive an `HTTP 404`
+        #   error response, your application should perform a full sync. If you receive no
+        #   `nextPageToken` in the response, there are no updates to retrieve and you can
+        #   store the returned `historyId` for a future request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -456,8 +451,8 @@ module Google
         
         # Creates a new label.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::Label] label_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -491,8 +486,8 @@ module Google
         # Immediately and permanently deletes the specified label and removes it from
         # any messages and threads that it is applied to.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the label to delete.
         # @param [String] fields
@@ -523,8 +518,8 @@ module Google
         
         # Gets the specified label.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the label to retrieve.
         # @param [String] fields
@@ -557,8 +552,8 @@ module Google
         
         # Lists all labels in the user's mailbox.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -588,8 +583,8 @@ module Google
         
         # Patch the specified label.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the label to update.
         # @param [Google::Apis::GmailV1::Label] label_object
@@ -625,8 +620,8 @@ module Google
         
         # Updates the specified label.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the label to update.
         # @param [Google::Apis::GmailV1::Label] label_object
@@ -660,11 +655,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes many messages by message ID.  Provides no guarantees that messages
-        # were not already deleted or even existed at all.
+        # Deletes many messages by message ID. Provides no guarantees that messages were
+        # not already deleted or even existed at all.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::BatchDeleteMessagesRequest] batch_delete_messages_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -695,8 +690,8 @@ module Google
         
         # Modifies the labels on the specified messages.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::BatchModifyMessagesRequest] batch_modify_messages_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -726,10 +721,10 @@ module Google
         end
         
         # Immediately and permanently deletes the specified message. This operation
-        # cannot be undone.  Prefer `messages.trash` instead.
+        # cannot be undone. Prefer `messages.trash` instead.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the message to delete.
         # @param [String] fields
@@ -760,15 +755,14 @@ module Google
         
         # Gets the specified message.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the message to retrieve.
         # @param [String] format
         #   The format to return the message in.
         # @param [Array<String>, String] metadata_headers
-        #   When given and format is `METADATA`, only include headers
-        #   specified.
+        #   When given and format is `METADATA`, only include headers specified.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -799,26 +793,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Imports a message into only this user's mailbox, with standard
-        # email delivery scanning and classification similar to receiving via SMTP.
-        # Does not send a message.
+        # Imports a message into only this user's mailbox, with standard email delivery
+        # scanning and classification similar to receiving via SMTP. Does not send a
+        # message.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::Message] message_object
         # @param [Boolean] deleted
-        #   Mark the email as permanently deleted (not TRASH) and
-        #   only visible in
-        #   <a href="http://support.google.com/vault/">Google Vault</a> to
-        #   a Vault administrator. Only used for G Suite accounts.
+        #   Mark the email as permanently deleted (not TRASH) and only visible in Google
+        #   Vault to a Vault administrator. Only used for G Suite accounts.
         # @param [String] internal_date_source
         #   Source for Gmail's internal date of the message.
         # @param [Boolean] never_mark_spam
-        #   Ignore the Gmail spam classifier decision and never mark
-        #   this email as SPAM in the mailbox.
+        #   Ignore the Gmail spam classifier decision and never mark this email as SPAM in
+        #   the mailbox.
         # @param [Boolean] process_for_calendar
-        #   Process calendar invites in the email and add any extracted
-        #   meetings to the Google Calendar for this user.
+        #   Process calendar invites in the email and add any extracted meetings to the
+        #   Google Calendar for this user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -862,18 +854,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Directly inserts a message into only this user's mailbox similar to
-        # `IMAP APPEND`, bypassing most scanning and classification.
-        # Does not send a message.
+        # Directly inserts a message into only this user's mailbox similar to `IMAP
+        # APPEND`, bypassing most scanning and classification. Does not send a message.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::Message] message_object
         # @param [Boolean] deleted
-        #   Mark the email as permanently deleted (not TRASH) and
-        #   only visible in
-        #   <a href="http://support.google.com/vault/">Google Vault</a> to
-        #   a Vault administrator. Only used for G Suite accounts.
+        #   Mark the email as permanently deleted (not TRASH) and only visible in Google
+        #   Vault to a Vault administrator. Only used for G Suite accounts.
         # @param [String] internal_date_source
         #   Source for Gmail's internal date of the message.
         # @param [String] fields
@@ -919,11 +908,10 @@ module Google
         
         # Lists the messages in the user's mailbox.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [Boolean] include_spam_trash
-        #   Include messages from `SPAM` and `TRASH`
-        #   in the results.
+        #   Include messages from `SPAM` and `TRASH` in the results.
         # @param [Array<String>, String] label_ids
         #   Only return messages with labels that match all of the specified label IDs.
         # @param [Fixnum] max_results
@@ -931,10 +919,9 @@ module Google
         # @param [String] page_token
         #   Page token to retrieve a specific page of results in the list.
         # @param [String] q
-        #   Only return messages matching the specified query. Supports the same
-        #   query format as the Gmail search box. For example,
-        #   `"from:someuser@example.com rfc822msgid:<somemsgid@example.com>
-        #   is:unread"`. Parameter cannot be used when accessing the api
+        #   Only return messages matching the specified query. Supports the same query
+        #   format as the Gmail search box. For example, `"from:someuser@example.com
+        #   rfc822msgid: is:unread"`. Parameter cannot be used when accessing the api
         #   using the gmail.metadata scope.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -970,8 +957,8 @@ module Google
         
         # Modifies the labels on the specified message.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the message to modify.
         # @param [Google::Apis::GmailV1::ModifyMessageRequest] modify_message_request_object
@@ -1005,11 +992,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sends the specified message to the recipients in the
-        # `To`, `Cc`, and `Bcc` headers.
+        # Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc`
+        # headers.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::Message] message_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1052,8 +1039,8 @@ module Google
         
         # Moves the specified message to the trash.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the message to Trash.
         # @param [String] fields
@@ -1086,8 +1073,8 @@ module Google
         
         # Removes the specified message from the trash.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the message to remove from Trash.
         # @param [String] fields
@@ -1120,8 +1107,8 @@ module Google
         
         # Gets the specified message attachment.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] message_id
         #   The ID of the message containing the attachment.
         # @param [String] id
@@ -1157,8 +1144,8 @@ module Google
         
         # Gets the auto-forwarding setting for the specified account.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1188,8 +1175,8 @@ module Google
         
         # Gets IMAP settings.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1219,8 +1206,8 @@ module Google
         
         # Gets language settings.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1250,8 +1237,8 @@ module Google
         
         # Gets POP settings.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1281,8 +1268,8 @@ module Google
         
         # Gets vacation responder settings.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1310,13 +1297,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the auto-forwarding setting for the specified account.  A verified
-        # forwarding address must be specified when auto-forwarding is enabled.
-        # This method is only available to service account clients that have been
-        # delegated domain-wide authority.
+        # Updates the auto-forwarding setting for the specified account. A verified
+        # forwarding address must be specified when auto-forwarding is enabled. This
+        # method is only available to service account clients that have been delegated
+        # domain-wide authority.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::AutoForwarding] auto_forwarding_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1349,8 +1336,8 @@ module Google
         
         # Updates IMAP settings.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::ImapSettings] imap_settings_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1381,15 +1368,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates language settings.
-        # If successful, the return object contains the `displayLanguage`
-        # that was saved for the user, which may differ from the value passed into
-        # the request. This is because the requested `displayLanguage` may
+        # Updates language settings. If successful, the return object contains the `
+        # displayLanguage` that was saved for the user, which may differ from the value
+        # passed into the request. This is because the requested `displayLanguage` may
         # not be directly supported by Gmail but have a close variant that is, and so
         # the variant may be chosen and saved instead.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::LanguageSettings] language_settings_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1422,8 +1408,8 @@ module Google
         
         # Updates POP settings.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::PopSettings] pop_settings_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1456,8 +1442,8 @@ module Google
         
         # Updates vacation responder settings.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::VacationSettings] vacation_settings_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1488,23 +1474,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a delegate with its verification status set directly to
-        # `accepted`, without sending any verification email.  The
-        # delegate user must be a member of the same G Suite organization as the
-        # delegator user.
-        # Gmail imposes limitations on the number of delegates and delegators each
-        # user in a G Suite organization can have. These limits depend on your
-        # organization, but in general each user can have up to 25 delegates and
-        # up to 10 delegators.
-        # Note that a delegate user must be referred to by their primary email
-        # address, and not an email alias.
-        # Also note that when a new delegate is created, there may be up to a one
-        # minute delay before the new delegate is available for use.
-        # This method is only available to service account clients that have been
-        # delegated domain-wide authority.
+        # Adds a delegate with its verification status set directly to `accepted`,
+        # without sending any verification email. The delegate user must be a member of
+        # the same G Suite organization as the delegator user. Gmail imposes limitations
+        # on the number of delegates and delegators each user in a G Suite organization
+        # can have. These limits depend on your organization, but in general each user
+        # can have up to 25 delegates and up to 10 delegators. Note that a delegate user
+        # must be referred to by their primary email address, and not an email alias.
+        # Also note that when a new delegate is created, there may be up to a one minute
+        # delay before the new delegate is available for use. This method is only
+        # available to service account clients that have been delegated domain-wide
+        # authority.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::Delegate] delegate_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1535,15 +1518,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes the specified delegate (which can be of any verification status),
-        # and revokes any verification that may have been required for using it.
-        # Note that a delegate user must be referred to by their primary email
-        # address, and not an email alias.
-        # This method is only available to service account clients that have been
-        # delegated domain-wide authority.
+        # Removes the specified delegate (which can be of any verification status), and
+        # revokes any verification that may have been required for using it. Note that a
+        # delegate user must be referred to by their primary email address, and not an
+        # email alias. This method is only available to service account clients that
+        # have been delegated domain-wide authority.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] delegate_email
         #   The email address of the user to be removed as a delegate.
         # @param [String] fields
@@ -1572,17 +1554,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified delegate.
-        # Note that a delegate user must be referred to by their primary email
-        # address, and not an email alias.
-        # This method is only available to service account clients that have been
-        # delegated domain-wide authority.
+        # Gets the specified delegate. Note that a delegate user must be referred to by
+        # their primary email address, and not an email alias. This method is only
+        # available to service account clients that have been delegated domain-wide
+        # authority.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] delegate_email
-        #   The email address of the user whose delegate relationship is to be
-        #   retrieved.
+        #   The email address of the user whose delegate relationship is to be retrieved.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1611,12 +1591,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the delegates for the specified account.
-        # This method is only available to service account clients that have been
-        # delegated domain-wide authority.
+        # Lists the delegates for the specified account. This method is only available
+        # to service account clients that have been delegated domain-wide authority.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1646,8 +1625,8 @@ module Google
         
         # Creates a filter.
         # @param [String] user_id
-        #   User's email address. The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::Filter] filter_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1680,8 +1659,8 @@ module Google
         
         # Deletes a filter.
         # @param [String] user_id
-        #   User's email address. The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the filter to be deleted.
         # @param [String] fields
@@ -1712,8 +1691,8 @@ module Google
         
         # Gets a filter.
         # @param [String] user_id
-        #   User's email address. The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the filter to be fetched.
         # @param [String] fields
@@ -1746,8 +1725,8 @@ module Google
         
         # Lists the message filters of a Gmail user.
         # @param [String] user_id
-        #   User's email address. The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1775,15 +1754,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a forwarding address.  If ownership verification is required, a
-        # message will be sent to the recipient and the resource's verification
-        # status will be set to `pending`; otherwise, the resource will be
-        # created with verification status set to `accepted`.
-        # This method is only available to service account clients that have been
-        # delegated domain-wide authority.
+        # Creates a forwarding address. If ownership verification is required, a message
+        # will be sent to the recipient and the resource's verification status will be
+        # set to `pending`; otherwise, the resource will be created with verification
+        # status set to `accepted`. This method is only available to service account
+        # clients that have been delegated domain-wide authority.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::ForwardingAddress] forwarding_address_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1814,13 +1792,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified forwarding address and revokes any verification that
-        # may have been required.
-        # This method is only available to service account clients that have been
-        # delegated domain-wide authority.
+        # Deletes the specified forwarding address and revokes any verification that may
+        # have been required. This method is only available to service account clients
+        # that have been delegated domain-wide authority.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] forwarding_email
         #   The forwarding address to be deleted.
         # @param [String] fields
@@ -1851,8 +1828,8 @@ module Google
         
         # Gets the specified forwarding address.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] forwarding_email
         #   The forwarding address to be retrieved.
         # @param [String] fields
@@ -1885,8 +1862,8 @@ module Google
         
         # Lists the forwarding addresses for the specified account.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1914,19 +1891,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a custom "from" send-as alias.  If an SMTP MSA is specified, Gmail
-        # will attempt to connect to the SMTP service to validate the configuration
-        # before creating the alias.  If ownership verification is required for the
-        # alias, a message will be sent to the email address and the resource's
-        # verification status will be set to `pending`; otherwise, the
-        # resource will be created with verification status set to
-        # `accepted`.  If a signature is provided, Gmail will sanitize the
-        # HTML before saving it with the alias.
-        # This method is only available to service account clients that have been
-        # delegated domain-wide authority.
+        # Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will
+        # attempt to connect to the SMTP service to validate the configuration before
+        # creating the alias. If ownership verification is required for the alias, a
+        # message will be sent to the email address and the resource's verification
+        # status will be set to `pending`; otherwise, the resource will be created with
+        # verification status set to `accepted`. If a signature is provided, Gmail will
+        # sanitize the HTML before saving it with the alias. This method is only
+        # available to service account clients that have been delegated domain-wide
+        # authority.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [Google::Apis::GmailV1::SendAs] send_as_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1957,13 +1933,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified send-as alias.  Revokes any verification that may
-        # have been required for using it.
-        # This method is only available to service account clients that have been
-        # delegated domain-wide authority.
+        # Deletes the specified send-as alias. Revokes any verification that may have
+        # been required for using it. This method is only available to service account
+        # clients that have been delegated domain-wide authority.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] send_as_email
         #   The send-as alias to be deleted.
         # @param [String] fields
@@ -1992,11 +1967,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified send-as alias.  Fails with an HTTP 404 error if the
+        # Gets the specified send-as alias. Fails with an HTTP 404 error if the
         # specified address is not a member of the collection.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] send_as_email
         #   The send-as alias to be retrieved.
         # @param [String] fields
@@ -2027,12 +2002,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the send-as aliases for the specified account.  The result includes
-        # the primary send-as address associated with the account as well as any
-        # custom "from" aliases.
+        # Lists the send-as aliases for the specified account. The result includes the
+        # primary send-as address associated with the account as well as any custom "
+        # from" aliases.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2062,8 +2037,8 @@ module Google
         
         # Patch the specified send-as alias.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] send_as_email
         #   The send-as alias to be updated.
         # @param [Google::Apis::GmailV1::SendAs] send_as_object
@@ -2097,14 +2072,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a send-as alias.  If a signature is provided, Gmail will sanitize
-        # the HTML before saving it with the alias.
-        # Addresses other than the primary address for the account can only be
-        # updated by service account clients that have been delegated domain-wide
-        # authority.
+        # Updates a send-as alias. If a signature is provided, Gmail will sanitize the
+        # HTML before saving it with the alias. Addresses other than the primary address
+        # for the account can only be updated by service account clients that have been
+        # delegated domain-wide authority.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] send_as_email
         #   The send-as alias to be updated.
         # @param [Google::Apis::GmailV1::SendAs] send_as_object
@@ -2138,13 +2112,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sends a verification email to the specified send-as alias address.
-        # The verification status must be `pending`.
-        # This method is only available to service account clients that have been
-        # delegated domain-wide authority.
+        # Sends a verification email to the specified send-as alias address. The
+        # verification status must be `pending`. This method is only available to
+        # service account clients that have been delegated domain-wide authority.
         # @param [String] user_id
-        #   User's email address.  The special value "me"
-        #   can be used to indicate the authenticated user.
+        #   User's email address. The special value "me" can be used to indicate the
+        #   authenticated user.
         # @param [String] send_as_email
         #   The send-as alias to be verified.
         # @param [String] fields
@@ -2175,11 +2148,11 @@ module Google
         
         # Deletes the specified S/MIME config for the specified send-as alias.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] send_as_email
-        #   The email address that appears in the "From:" header for mail sent using
-        #   this alias.
+        #   The email address that appears in the "From:" header for mail sent using this
+        #   alias.
         # @param [String] id
         #   The immutable ID for the SmimeInfo.
         # @param [String] fields
@@ -2211,11 +2184,11 @@ module Google
         
         # Gets the specified S/MIME config for the specified send-as alias.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] send_as_email
-        #   The email address that appears in the "From:" header for mail sent using
-        #   this alias.
+        #   The email address that appears in the "From:" header for mail sent using this
+        #   alias.
         # @param [String] id
         #   The immutable ID for the SmimeInfo.
         # @param [String] fields
@@ -2247,14 +2220,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Insert (upload) the given S/MIME config for the specified send-as alias.
-        # Note that pkcs12 format is required for the key.
+        # Insert (upload) the given S/MIME config for the specified send-as alias. Note
+        # that pkcs12 format is required for the key.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] send_as_email
-        #   The email address that appears in the "From:" header for mail sent using
-        #   this alias.
+        #   The email address that appears in the "From:" header for mail sent using this
+        #   alias.
         # @param [Google::Apis::GmailV1::SmimeInfo] smime_info_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2288,11 +2261,11 @@ module Google
         
         # Lists S/MIME configs for the specified send-as alias.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] send_as_email
-        #   The email address that appears in the "From:" header for mail sent using
-        #   this alias.
+        #   The email address that appears in the "From:" header for mail sent using this
+        #   alias.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2323,11 +2296,11 @@ module Google
         
         # Sets the default S/MIME config for the specified send-as alias.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] send_as_email
-        #   The email address that appears in the "From:" header for mail sent using
-        #   this alias.
+        #   The email address that appears in the "From:" header for mail sent using this
+        #   alias.
         # @param [String] id
         #   The immutable ID for the SmimeInfo.
         # @param [String] fields
@@ -2360,8 +2333,8 @@ module Google
         # Immediately and permanently deletes the specified thread. This operation
         # cannot be undone. Prefer `threads.trash` instead.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   ID of the Thread to delete.
         # @param [String] fields
@@ -2392,8 +2365,8 @@ module Google
         
         # Gets the specified thread.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the thread to retrieve.
         # @param [String] format
@@ -2432,11 +2405,10 @@ module Google
         
         # Lists the threads in the user's mailbox.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [Boolean] include_spam_trash
-        #   Include threads from `SPAM` and `TRASH`
-        #   in the results.
+        #   Include threads from `SPAM` and `TRASH` in the results.
         # @param [Array<String>, String] label_ids
         #   Only return threads with labels that match all of the specified label IDs.
         # @param [Fixnum] max_results
@@ -2444,10 +2416,9 @@ module Google
         # @param [String] page_token
         #   Page token to retrieve a specific page of results in the list.
         # @param [String] q
-        #   Only return threads matching the specified query. Supports the same
-        #   query format as the Gmail search box. For example,
-        #   `"from:someuser@example.com rfc822msgid:<somemsgid@example.com>
-        #   is:unread"`. Parameter cannot be used when accessing the api
+        #   Only return threads matching the specified query. Supports the same query
+        #   format as the Gmail search box. For example, `"from:someuser@example.com
+        #   rfc822msgid: is:unread"`. Parameter cannot be used when accessing the api
         #   using the gmail.metadata scope.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2481,11 +2452,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the labels applied to the thread. This applies to all messages
-        # in the thread.
+        # Modifies the labels applied to the thread. This applies to all messages in the
+        # thread.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the thread to modify.
         # @param [Google::Apis::GmailV1::ModifyThreadRequest] modify_thread_request_object
@@ -2521,8 +2492,8 @@ module Google
         
         # Moves the specified thread to the trash.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the thread to Trash.
         # @param [String] fields
@@ -2555,8 +2526,8 @@ module Google
         
         # Removes the specified thread from the trash.
         # @param [String] user_id
-        #   The user's email address. The special value `me`
-        #   can be used to indicate the authenticated user.
+        #   The user's email address. The special value `me` can be used to indicate the
+        #   authenticated user.
         # @param [String] id
         #   The ID of the thread to remove from Trash.
         # @param [String] fields

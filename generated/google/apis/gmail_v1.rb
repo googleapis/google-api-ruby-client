@@ -20,13 +20,13 @@ module Google
   module Apis
     # Gmail API
     #
-    # The Gmail API lets you view and manage Gmail mailbox data like
-    # threads, messages, and labels.
+    # The Gmail API lets you view and manage Gmail mailbox data like threads,
+    # messages, and labels.
     #
     # @see https://developers.google.com/gmail/api/
     module GmailV1
       VERSION = 'V1'
-      REVISION = '20200720'
+      REVISION = '20200803'
 
       # Read, compose, send, and permanently delete all your email from Gmail
       AUTH_SCOPE = 'https://mail.google.com/'

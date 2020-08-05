@@ -22,25 +22,23 @@ module Google
   module Apis
     module ChromeuxreportV1
       
-      # A bin is a discrete portion of data spanning from start to end, or if no
-      # end is given, then from start to +inf.
-      # A bin's start and end values are given in the value type of the metric it
-      # represents. For example, "first contentful paint" is measured in
-      # milliseconds and exposed as ints, therefore its metric bins will use int32s
-      # for its start and end types. However, "cumulative layout shift" is measured
-      # in unitless decimals and is exposed as a decimal encoded as a string,
-      # therefore its metric bins will use strings for its value type.
+      # A bin is a discrete portion of data spanning from start to end, or if no end
+      # is given, then from start to +inf. A bin's start and end values are given in
+      # the value type of the metric it represents. For example, "first contentful
+      # paint" is measured in milliseconds and exposed as ints, therefore its metric
+      # bins will use int32s for its start and end types. However, "cumulative layout
+      # shift" is measured in unitless decimals and is exposed as a decimal encoded as
+      # a string, therefore its metric bins will use strings for its value type.
       class Bin
         include Google::Apis::Core::Hashable
       
-        # The proportion of users that experienced this bin's value for the given
-        # metric.
+        # The proportion of users that experienced this bin's value for the given metric.
         # Corresponds to the JSON property `density`
         # @return [Float]
         attr_accessor :density
       
-        # End is the end of the data bin. If end is not populated, then the bin has
-        # no end and is valid from start to +inf.
+        # End is the end of the data bin. If end is not populated, then the bin has no
+        # end and is valid from start to +inf.
         # Corresponds to the JSON property `end`
         # @return [Object]
         attr_accessor :end
@@ -66,34 +64,31 @@ module Google
       class Key
         include Google::Apis::Core::Hashable
       
-        # The effective connection type is the general connection class that all
-        # users experienced for this record. This field uses the values ["offline",
-        # "slow-2G", "2G", "3G", "4G"] as specified in:
-        # https://wicg.github.io/netinfo/#effective-connection-types
-        # If the effective connection type is unspecified, then aggregated data
-        # over all effective connection types will be returned.
+        # The effective connection type is the general connection class that all users
+        # experienced for this record. This field uses the values ["offline", "slow-2G",
+        # "2G", "3G", "4G"] as specified in: https://wicg.github.io/netinfo/#effective-
+        # connection-types If the effective connection type is unspecified, then
+        # aggregated data over all effective connection types will be returned.
         # Corresponds to the JSON property `effectiveConnectionType`
         # @return [String]
         attr_accessor :effective_connection_type
       
-        # The form factor is the device class that all users used to access the
-        # site for this record.
-        # If the form factor is unspecified, then aggregated data over all form
-        # factors will be returned.
+        # The form factor is the device class that all users used to access the site for
+        # this record. If the form factor is unspecified, then aggregated data over all
+        # form factors will be returned.
         # Corresponds to the JSON property `formFactor`
         # @return [String]
         attr_accessor :form_factor
       
-        # Origin specifies the origin that this record is for.
-        # Note: When specifying an origin, data for loads under this origin over
-        # all pages are aggregated into origin level user experience data.
+        # Origin specifies the origin that this record is for. Note: When specifying an
+        # origin, data for loads under this origin over all pages are aggregated into
+        # origin level user experience data.
         # Corresponds to the JSON property `origin`
         # @return [String]
         attr_accessor :origin
       
-        # Url specifies a specific url that this record is for.
-        # Note: When specifying a "url" only data for that specific url will be
-        # aggregated.
+        # Url specifies a specific url that this record is for. Note: When specifying a "
+        # url" only data for that specific url will be aggregated.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -112,8 +107,8 @@ module Google
       end
       
       # A `metric` is a set of user experience data for a single web performance
-      # metric, like "first contentful paint". It contains a summary histogram of
-      # real world Chrome usage as a series of `bins`.
+      # metric, like "first contentful paint". It contains a summary histogram of real
+      # world Chrome usage as a series of `bins`.
       class Metric
         include Google::Apis::Core::Hashable
       
@@ -124,8 +119,8 @@ module Google
         attr_accessor :histogram
       
         # Percentiles contains synthetic values of a metric at a given statistical
-        # percentile. These are used for estimating a metric's value as experienced
-        # by a percentage of users out of the total number of users.
+        # percentile. These are used for estimating a metric's value as experienced by a
+        # percentage of users out of the total number of users.
         # Corresponds to the JSON property `percentiles`
         # @return [Google::Apis::ChromeuxreportV1::Percentiles]
         attr_accessor :percentiles
@@ -142,8 +137,8 @@ module Google
       end
       
       # Percentiles contains synthetic values of a metric at a given statistical
-      # percentile. These are used for estimating a metric's value as experienced
-      # by a percentage of users out of the total number of users.
+      # percentile. These are used for estimating a metric's value as experienced by a
+      # percentage of users out of the total number of users.
       class Percentiles
         include Google::Apis::Core::Hashable
       
@@ -162,49 +157,44 @@ module Google
         end
       end
       
-      # Request payload sent by a physical web client.
-      # This request includes all necessary context to load a particular
-      # user experience record.
+      # Request payload sent by a physical web client. This request includes all
+      # necessary context to load a particular user experience record.
       class QueryRequest
         include Google::Apis::Core::Hashable
       
         # The effective connection type is a query dimension that specifies the
         # effective network class that the record's data should belong to. This field
         # uses the values ["offline", "slow-2G", "2G", "3G", "4G"] as specified in:
-        # https://wicg.github.io/netinfo/#effective-connection-types
-        # Note: If no effective connection type is specified, then a special record
-        # with aggregated data over all effective connection types will be returned.
+        # https://wicg.github.io/netinfo/#effective-connection-types Note: If no
+        # effective connection type is specified, then a special record with aggregated
+        # data over all effective connection types will be returned.
         # Corresponds to the JSON property `effectiveConnectionType`
         # @return [String]
         attr_accessor :effective_connection_type
       
-        # The form factor is a query dimension that specifies the device class that
-        # the record's data should belong to.
-        # Note: If no form factor is specified, then a special record with
-        # aggregated data over all form factors will be returned.
+        # The form factor is a query dimension that specifies the device class that the
+        # record's data should belong to. Note: If no form factor is specified, then a
+        # special record with aggregated data over all form factors will be returned.
         # Corresponds to the JSON property `formFactor`
         # @return [String]
         attr_accessor :form_factor
       
-        # The metrics that should be included in the response.
-        # If none are specified then any metrics found will be returned.
-        # Allowed values: ["first_contentful_paint",
-        # "first_input_delay", "largest_contentful_paint",
-        # "cumulative_layout_shift"]
+        # The metrics that should be included in the response. If none are specified
+        # then any metrics found will be returned. Allowed values: ["
+        # first_contentful_paint", "first_input_delay", "largest_contentful_paint", "
+        # cumulative_layout_shift"]
         # Corresponds to the JSON property `metrics`
         # @return [Array<String>]
         attr_accessor :metrics
       
-        # The url pattern "origin" refers to a url pattern that is the origin of
-        # a website.
-        # Examples: "https://example.com", "https://cloud.google.com"
+        # The url pattern "origin" refers to a url pattern that is the origin of a
+        # website. Examples: "https://example.com", "https://cloud.google.com"
         # Corresponds to the JSON property `origin`
         # @return [String]
         attr_accessor :origin
       
         # The url pattern "url" refers to a url pattern that is any arbitrary url.
-        # Examples: "https://example.com/",
-        # "https://cloud.google.com/why-google-cloud/"
+        # Examples: "https://example.com/", "https://cloud.google.com/why-google-cloud/"
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -223,11 +213,11 @@ module Google
         end
       end
       
-      # Response payload sent back to a physical web client.
-      # This response contains the record found based on the identiers present in a
-      # `QueryRequest`.  The returned response will have a record, and sometimes
-      # details on normalization actions taken on the request that were necessary to
-      # make the request successful.
+      # Response payload sent back to a physical web client. This response contains
+      # the record found based on the identiers present in a `QueryRequest`. The
+      # returned response will have a record, and sometimes details on normalization
+      # actions taken on the request that were necessary to make the request
+      # successful.
       class QueryResponse
         include Google::Apis::Core::Hashable
       
@@ -266,11 +256,10 @@ module Google
         # @return [Google::Apis::ChromeuxreportV1::Key]
         attr_accessor :key
       
-        # Metrics is the map of user experience data available for the record defined
-        # in the key field. Metrics are keyed on the metric name.
-        # Allowed key values: ["first_contentful_paint",
-        # "first_input_delay", "largest_contentful_paint",
-        # "cumulative_layout_shift"]
+        # Metrics is the map of user experience data available for the record defined in
+        # the key field. Metrics are keyed on the metric name. Allowed key values: ["
+        # first_contentful_paint", "first_input_delay", "largest_contentful_paint", "
+        # cumulative_layout_shift"]
         # Corresponds to the JSON property `metrics`
         # @return [Hash<String,Google::Apis::ChromeuxreportV1::Metric>]
         attr_accessor :metrics
@@ -293,8 +282,8 @@ module Google
       class UrlNormalization
         include Google::Apis::Core::Hashable
       
-        # The URL after any normalization actions. This is a valid user experience
-        # URL that could reasonably be looked up.
+        # The URL after any normalization actions. This is a valid user experience URL
+        # that could reasonably be looked up.
         # Corresponds to the JSON property `normalizedUrl`
         # @return [String]
         attr_accessor :normalized_url

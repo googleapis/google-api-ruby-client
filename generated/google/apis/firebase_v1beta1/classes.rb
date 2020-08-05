@@ -26,34 +26,29 @@ module Google
       class AddFirebaseRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. Instead, to set a Project's default GCP resource location,
-        # call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)
-        # after you add Firebase resources to the GCP `Project`.
-        # The ID of the Project's default GCP resource location. The location
-        # must be one of the available [GCP resource
+        # Deprecated. Instead, to set a Project's default GCP resource location, call [`
+        # FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add
+        # Firebase resources to the GCP `Project`. The ID of the Project's default GCP
+        # resource location. The location must be one of the available [GCP resource
         # locations](https://firebase.google.com/docs/projects/locations).
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
       
-        # Deprecated. Instead, to link a Project with a Google Analytics
-        # account, call
-        # [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics)
-        # after you add Firebase resources to the GCP `Project`.
-        # The region code (CLDR) that the account will use for Google Analytics
-        # data
-        # <br>For example: US, GB, or DE
-        # In Java, use `com.google.i18n.identifiers.RegionCode`.
+        # Deprecated. Instead, to link a Project with a Google Analytics account, call [`
+        # AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after you add
+        # Firebase resources to the GCP `Project`. The region code (CLDR) that the
+        # account will use for Google Analytics data For example: US, GB, or DE In Java,
+        # use `com.google.i18n.identifiers.RegionCode`.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
         attr_accessor :region_code
       
-        # Deprecated. Instead, to link a Project with a Google Analytics
-        # account, call
-        # [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics)
-        # after you add Firebase resources to the GCP `Project`.
-        # The time zone that the account will use for Google Analytics data.
-        # <br>For example: America/Los_Angeles or Africa/Abidjan
+        # Deprecated. Instead, to link a Project with a Google Analytics account, call [`
+        # AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after you add
+        # Firebase resources to the GCP `Project`. The time zone that the account will
+        # use for Google Analytics data. For example: America/Los_Angeles or Africa/
+        # Abidjan
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -74,18 +69,16 @@ module Google
       class AddGoogleAnalyticsRequest
         include Google::Apis::Core::Hashable
       
-        # The ID for the existing
-        # [Google Analytics account](http://www.google.com/analytics/) that you
-        # want to link with the `FirebaseProject`.
-        # Specifying this field will provision a new Google Analytics
-        # property in your Google Analytics account and associate the new property
-        # with the `FirebaseProject`.
+        # The ID for the existing [Google Analytics account](http://www.google.com/
+        # analytics/) that you want to link with the `FirebaseProject`. Specifying this
+        # field will provision a new Google Analytics property in your Google Analytics
+        # account and associate the new property with the `FirebaseProject`.
         # Corresponds to the JSON property `analyticsAccountId`
         # @return [String]
         attr_accessor :analytics_account_id
       
-        # The ID for the existing Google Analytics property that you want to
-        # associate with the `FirebaseProject`.
+        # The ID for the existing Google Analytics property that you want to associate
+        # with the `FirebaseProject`.
         # Corresponds to the JSON property `analyticsPropertyId`
         # @return [String]
         attr_accessor :analytics_property_id
@@ -110,22 +103,20 @@ module Google
         # @return [String]
         attr_accessor :database_url
       
-        # The ID of the Project's default GCP resource location. The location is one
-        # of the available
-        # [GCP resource
-        # locations](https://firebase.google.com/docs/projects/locations).
-        # This field is omitted if the default GCP resource location has not been
-        # finalized yet. To set a Project's default GCP resource location,
-        # call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)
-        # after you add Firebase resources to the Project.
+        # The ID of the Project's default GCP resource location. The location is one of
+        # the available [GCP resource locations](https://firebase.google.com/docs/
+        # projects/locations). This field is omitted if the default GCP resource
+        # location has not been finalized yet. To set a Project's default GCP resource
+        # location, call [`FinalizeDefaultLocation`](../projects.defaultLocation/
+        # finalize) after you add Firebase resources to the Project.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
       
-        # Immutable. A user-assigned unique identifier for the `FirebaseProject`.
-        # This identifier may appear in URLs or names for some Firebase resources
-        # associated with the Project, but it should generally be treated as a
-        # convenience alias to reference the Project.
+        # Immutable. A user-assigned unique identifier for the `FirebaseProject`. This
+        # identifier may appear in URLs or names for some Firebase resources associated
+        # with the Project, but it should generally be treated as a convenience alias to
+        # reference the Project.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -157,13 +148,11 @@ module Google
         # @return [Google::Apis::FirebaseV1beta1::AnalyticsProperty]
         attr_accessor :analytics_property
       
-        # <ul>
-        # <li>For `AndroidApps` and `IosApps`: a map of `app` to `streamId` for each
-        # Firebase App in the specified `FirebaseProject`. Each `app` and
-        # `streamId` appears only once.
-        # <li>For `WebApps`: a map of `app` to `streamId` and `measurementId` for
-        # each `WebApp` in the specified `FirebaseProject`. Each `app`, `streamId`,
-        # and `measurementId` appears only once.
+        # - For `AndroidApps` and `IosApps`: a map of `app` to `streamId` for each
+        # Firebase App in the specified `FirebaseProject`. Each `app` and `streamId`
+        # appears only once. - For `WebApps`: a map of `app` to `streamId` and `
+        # measurementId` for each `WebApp` in the specified `FirebaseProject`. Each `app`
+        # , `streamId`, and `measurementId` appears only once.
         # Corresponds to the JSON property `streamMappings`
         # @return [Array<Google::Apis::FirebaseV1beta1::StreamMapping>]
         attr_accessor :stream_mappings
@@ -190,12 +179,11 @@ module Google
         attr_accessor :display_name
       
         # The globally unique, Google-assigned identifier of the Google Analytics
-        # property associated with the specified `FirebaseProject`.
-        # If you called
-        # [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) to link
-        # the `FirebaseProject` with a Google Analytics account, the value in this
-        # `id` field is the same as the ID of the property either specified or
-        # provisioned with that call to `AddGoogleAnalytics`.
+        # property associated with the specified `FirebaseProject`. If you called [`
+        # AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) to link the `
+        # FirebaseProject` with a Google Analytics account, the value in this `id` field
+        # is the same as the ID of the property either specified or provisioned with
+        # that call to `AddGoogleAnalytics`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -215,9 +203,8 @@ module Google
       class AndroidApp
         include Google::Apis::Core::Hashable
       
-        # Immutable. The globally unique, Firebase-assigned identifier for the
-        # `AndroidApp`.
-        # This identifier should be treated as an opaque token, as the data
+        # Immutable. The globally unique, Firebase-assigned identifier for the `
+        # AndroidApp`. This identifier should be treated as an opaque token, as the data
         # format is not specified.
         # Corresponds to the JSON property `appId`
         # @return [String]
@@ -228,20 +215,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the AndroidApp, in the format:
-        # <code>projects/<var>PROJECT_IDENTIFIER</var>/androidApps/<var>APP_ID</var></
-        # code>
-        # * <var>PROJECT_IDENTIFIER</var>: the parent Project's
-        # [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
-        # ***(recommended)***
-        # or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
-        # Learn more about using project identifiers in
-        # Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
-        # <br>Note that the value for <var>PROJECT_IDENTIFIER</var> in any
-        # response body will be the `ProjectId`.
-        # * <var>APP_ID</var>: the globally unique, Firebase-assigned identifier
-        # for the App
-        # (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
+        # The resource name of the AndroidApp, in the format: projects/
+        # PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project'
+        # s [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(
+        # recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.
+        # project_id). Learn more about using project identifiers in Google's [AIP 2510
+        # standard](https://google.aip.dev/cloud/2510). Note that the value for
+        # PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the
+        # globally unique, Firebase-assigned identifier for the App (see [`appId`](../
+        # projects.androidApps#AndroidApp.FIELDS.app_id)).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -252,8 +234,8 @@ module Google
         # @return [String]
         attr_accessor :package_name
       
-        # Immutable. A user-assigned unique identifier of the parent
-        # FirebaseProject for the `AndroidApp`.
+        # Immutable. A user-assigned unique identifier of the parent FirebaseProject for
+        # the `AndroidApp`.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -282,9 +264,8 @@ module Google
         # @return [String]
         attr_accessor :config_file_contents
       
-        # The filename that the configuration artifact for the `AndroidApp` is
-        # typically saved as.
-        # <br>For example: `google-services.json`
+        # The filename that the configuration artifact for the `AndroidApp` is typically
+        # saved as. For example: `google-services.json`
         # Corresponds to the JSON property `configFilename`
         # @return [String]
         attr_accessor :config_filename
@@ -304,50 +285,41 @@ module Google
       class DefaultResources
         include Google::Apis::Core::Hashable
       
-        # The default Firebase Hosting site name, in the format:
-        # <code><var>PROJECT_ID</var></code>
-        # Though rare, your `projectId` might already be used as the name for an
-        # existing Hosting site in another project (learn more about creating
-        # non-default,
-        # [additional sites](https://firebase.google.com/docs/hosting/multisites)).
-        # In these cases, your `projectId` is appended with a hyphen then five
-        # alphanumeric characters to create your default Hosting site name. For
-        # example, if your `projectId` is `myproject123`, your default Hosting site
-        # name might be:
-        # `myproject123-a5c16`
+        # The default Firebase Hosting site name, in the format: PROJECT_ID Though rare,
+        # your `projectId` might already be used as the name for an existing Hosting
+        # site in another project (learn more about creating non-default, [additional
+        # sites](https://firebase.google.com/docs/hosting/multisites)). In these cases,
+        # your `projectId` is appended with a hyphen then five alphanumeric characters
+        # to create your default Hosting site name. For example, if your `projectId` is `
+        # myproject123`, your default Hosting site name might be: `myproject123-a5c16`
         # Corresponds to the JSON property `hostingSite`
         # @return [String]
         attr_accessor :hosting_site
       
-        # The ID of the Project's default GCP resource location. The location is one
-        # of the available
-        # [GCP resource
-        # locations](https://firebase.google.com/docs/projects/locations).
-        # This field is omitted if the default GCP resource location has not been
-        # finalized yet. To set a Project's default GCP resource location,
-        # call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)
-        # after you add Firebase resources to the Project.
+        # The ID of the Project's default GCP resource location. The location is one of
+        # the available [GCP resource locations](https://firebase.google.com/docs/
+        # projects/locations). This field is omitted if the default GCP resource
+        # location has not been finalized yet. To set a Project's default GCP resource
+        # location, call [`FinalizeDefaultLocation`](../projects.defaultLocation/
+        # finalize) after you add Firebase resources to the Project.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
       
         # The default Firebase Realtime Database instance name, in the format:
-        # <code><var>PROJECT_ID</var></code>
-        # Though rare, your `projectId` might already be used as the name for an
-        # existing Realtime Database instance in another project (learn more about
-        # [database
-        # sharding](https://firebase.google.com/docs/database/usage/sharding)). In
-        # these cases, your `projectId` is appended with a hyphen then five
-        # alphanumeric characters to create your default Realtime Database instance
-        # name. For example, if your `projectId` is `myproject123`, your default
-        # database instance name might be:
-        # `myproject123-a5c16`
+        # PROJECT_ID Though rare, your `projectId` might already be used as the name for
+        # an existing Realtime Database instance in another project (learn more about [
+        # database sharding](https://firebase.google.com/docs/database/usage/sharding)).
+        # In these cases, your `projectId` is appended with a hyphen then five
+        # alphanumeric characters to create your default Realtime Database instance name.
+        # For example, if your `projectId` is `myproject123`, your default database
+        # instance name might be: `myproject123-a5c16`
         # Corresponds to the JSON property `realtimeDatabaseInstance`
         # @return [String]
         attr_accessor :realtime_database_instance
       
         # The default Cloud Storage for Firebase storage bucket, in the format:
-        # <code><var>PROJECT_ID</var>.appspot.com</code>
+        # PROJECT_ID.appspot.com
         # Corresponds to the JSON property `storageBucket`
         # @return [String]
         attr_accessor :storage_bucket
@@ -365,13 +337,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -389,8 +359,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The ID of the Project's default GCP resource location. The location must be
-        # one of the available [GCP resource
-        # locations](https://firebase.google.com/docs/projects/locations).
+        # one of the available [GCP resource locations](https://firebase.google.com/docs/
+        # projects/locations).
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -409,10 +379,9 @@ module Google
       class FirebaseAppInfo
         include Google::Apis::Core::Hashable
       
-        # Immutable. The globally unique, Firebase-assigned identifier for the
-        # `WebApp`.
-        # This identifier should be treated as an opaque token, as the data
-        # format is not specified.
+        # Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`.
+        # This identifier should be treated as an opaque token, as the data format is
+        # not specified.
         # Corresponds to the JSON property `appId`
         # @return [String]
         attr_accessor :app_id
@@ -422,12 +391,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the Firebase App, in the format:
-        # <code>projects/<var>PROJECT_ID</var>/iosApps/<var>APP_ID</var></code>
-        # or
-        # <code>projects/<var>PROJECT_ID</var>/androidApps/<var>APP_ID</var></code>
-        # or
-        # <code>projects/<var>PROJECT_ID</var>/webApps/<var>APP_ID</var></code>
+        # The resource name of the Firebase App, in the format: projects/PROJECT_ID /
+        # iosApps/APP_ID or projects/PROJECT_ID/androidApps/APP_ID or projects/
+        # PROJECT_ID/webApps/APP_ID
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -453,17 +419,13 @@ module Google
       # A `FirebaseProject` is the top-level Firebase entity. It is the container for
       # Firebase Apps, Firebase Hosting sites, storage systems (Firebase Realtime
       # Database, Cloud Firestore, Cloud Storage buckets), and other Firebase and
-      # Google Cloud Platform (GCP) resources.
-      # You create a `FirebaseProject` by calling
-      # AddFirebase
-      # and specifying an *existing*
-      # [GCP
-      # `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/
-      # projects).
-      # This adds Firebase resources to the existing GCP `Project`.
-      # Since a FirebaseProject is actually also a GCP `Project`, a
-      # `FirebaseProject` has the same underlying GCP identifiers (`projectNumber`
-      # and `projectId`). This allows for easy interop with Google APIs.
+      # Google Cloud Platform (GCP) resources. You create a `FirebaseProject` by
+      # calling AddFirebase and specifying an *existing* [GCP `Project`](https://cloud.
+      # google.com/resource-manager/reference/rest/v1/projects). This adds Firebase
+      # resources to the existing GCP `Project`. Since a FirebaseProject is actually
+      # also a GCP `Project`, a `FirebaseProject` has the same underlying GCP
+      # identifiers (`projectNumber` and `projectId`). This allows for easy interop
+      # with Google APIs.
       class FirebaseProject
         include Google::Apis::Core::Hashable
       
@@ -472,32 +434,28 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the Project, in the format:
-        # <code>projects/<var>PROJECT_IDENTIFIER</var></code>
-        # <var>PROJECT_IDENTIFIER</var>: the Project's
-        # [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
-        # ***(recommended)***
-        # or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
-        # <br>Learn more about using project identifiers in
-        # Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
-        # <br>Note that the value for <var>PROJECT_IDENTIFIER</var> in any
-        # response body will be the `ProjectId`.
+        # The resource name of the Project, in the format: projects/PROJECT_IDENTIFIER
+        # PROJECT_IDENTIFIER: the Project's [`ProjectNumber`](../projects#
+        # FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`]
+        # (../projects#FirebaseProject.FIELDS.project_id). Learn more about using
+        # project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/
+        # cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body
+        # will be the `ProjectId`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Immutable. A user-assigned unique identifier for the Project.
-        # This identifier may appear in URLs or names for some Firebase resources
-        # associated with the Project, but it should generally be treated as a
-        # convenience alias to reference the Project.
+        # Immutable. A user-assigned unique identifier for the Project. This identifier
+        # may appear in URLs or names for some Firebase resources associated with the
+        # Project, but it should generally be treated as a convenience alias to
+        # reference the Project.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Immutable. The globally unique, Google-assigned canonical identifier for
-        # the Project.
-        # Use this identifier when configuring integrations and/or
-        # making API calls to Firebase or third-party services.
+        # Immutable. The globally unique, Google-assigned canonical identifier for the
+        # Project. Use this identifier when configuring integrations and/or making API
+        # calls to Firebase or third-party services.
         # Corresponds to the JSON property `projectNumber`
         # @return [Fixnum]
         attr_accessor :project_number
@@ -507,9 +465,8 @@ module Google
         # @return [Google::Apis::FirebaseV1beta1::DefaultResources]
         attr_accessor :resources
       
-        # Output only. The lifecycle state of the Project.
-        # Updates to the state must be performed via
-        # com.google.cloudresourcemanager.v1.Projects.DeleteProject and
+        # Output only. The lifecycle state of the Project. Updates to the state must be
+        # performed via com.google.cloudresourcemanager.v1.Projects.DeleteProject and
         # com.google.cloudresourcemanager.v1.Projects.UndeleteProject
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -534,16 +491,15 @@ module Google
       class IosApp
         include Google::Apis::Core::Hashable
       
-        # Immutable. The globally unique, Firebase-assigned identifier for the
-        # `IosApp`.
-        # This identifier should be treated as an opaque token, as the data
-        # format is not specified.
+        # Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`.
+        # This identifier should be treated as an opaque token, as the data format is
+        # not specified.
         # Corresponds to the JSON property `appId`
         # @return [String]
         attr_accessor :app_id
       
-        # The automatically generated Apple ID assigned to the iOS app by Apple in
-        # the iOS App Store.
+        # The automatically generated Apple ID assigned to the iOS app by Apple in the
+        # iOS App Store.
         # Corresponds to the JSON property `appStoreId`
         # @return [String]
         attr_accessor :app_store_id
@@ -559,24 +515,21 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the IosApp, in the format:
-        # <code>projects/<var>PROJECT_IDENTIFIER</var>/iosApps/<var>APP_ID</var></code>
-        # * <var>PROJECT_IDENTIFIER</var>: the parent Project's
-        # [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
-        # ***(recommended)***
-        # or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
-        # Learn more about using project identifiers in
-        # Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
-        # <br>Note that the value for <var>PROJECT_IDENTIFIER</var> in any
-        # response body will be the `ProjectId`.
-        # * <var>APP_ID</var>: the globally unique, Firebase-assigned identifier
-        # for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
+        # The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /
+        # iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../
+        # projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`
+        # ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about
+        # using project identifiers in Google's [AIP 2510 standard](https://google.aip.
+        # dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response
+        # body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned
+        # identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)
+        # ).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Immutable. A user-assigned unique identifier of the parent
-        # FirebaseProject for the `IosApp`.
+        # Immutable. A user-assigned unique identifier of the parent FirebaseProject for
+        # the `IosApp`.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -607,8 +560,7 @@ module Google
         attr_accessor :config_file_contents
       
         # The filename that the configuration artifact for the `IosApp` is typically
-        # saved as.
-        # <br>For example: `GoogleService-Info.plist`
+        # saved as. For example: `GoogleService-Info.plist`
         # Corresponds to the JSON property `configFilename`
         # @return [String]
         attr_accessor :config_filename
@@ -633,12 +585,11 @@ module Google
         # @return [Array<Google::Apis::FirebaseV1beta1::AndroidApp>]
         attr_accessor :apps
       
-        # If the result list is too large to fit in a single response, then a token
-        # is returned. If the string is empty, then this response is the last page of
-        # results.
-        # This token can be used in a subsequent call to `ListAndroidApps` to
-        # find the next group of Apps.
-        # Page tokens are short-lived and should not be persisted.
+        # If the result list is too large to fit in a single response, then a token is
+        # returned. If the string is empty, then this response is the last page of
+        # results. This token can be used in a subsequent call to `ListAndroidApps` to
+        # find the next group of Apps. Page tokens are short-lived and should not be
+        # persisted.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -663,12 +614,11 @@ module Google
         # @return [Array<Google::Apis::FirebaseV1beta1::Location>]
         attr_accessor :locations
       
-        # If the result list is too large to fit in a single response, then a token
-        # is returned. If the string is empty, then this response is the last page of
-        # results and all available locations have been listed.
-        # This token can be used in a subsequent call to
-        # `ListAvailableLocations` to find more locations.
-        # Page tokens are short-lived and should not be persisted.
+        # If the result list is too large to fit in a single response, then a token is
+        # returned. If the string is empty, then this response is the last page of
+        # results and all available locations have been listed. This token can be used
+        # in a subsequent call to `ListAvailableLocations` to find more locations. Page
+        # tokens are short-lived and should not be persisted.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -688,12 +638,11 @@ module Google
       class ListAvailableProjectsResponse
         include Google::Apis::Core::Hashable
       
-        # If the result list is too large to fit in a single response, then a token
-        # is returned. If the string is empty, then this response is the last page of
-        # results.
-        # This token can be used in a subsequent calls to `ListAvailableProjects`
-        # to find the next group of Projects.
-        # Page tokens are short-lived and should not be persisted.
+        # If the result list is too large to fit in a single response, then a token is
+        # returned. If the string is empty, then this response is the last page of
+        # results. This token can be used in a subsequent calls to `
+        # ListAvailableProjects` to find the next group of Projects. Page tokens are
+        # short-lived and should not be persisted.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -718,12 +667,11 @@ module Google
       class ListFirebaseProjectsResponse
         include Google::Apis::Core::Hashable
       
-        # If the result list is too large to fit in a single response, then a token
-        # is returned. If the string is empty, then this response is the last page of
-        # results.
-        # This token can be used in a subsequent calls to `ListFirebaseProjects`
-        # to find the next group of Projects.
-        # Page tokens are short-lived and should not be persisted.
+        # If the result list is too large to fit in a single response, then a token is
+        # returned. If the string is empty, then this response is the last page of
+        # results. This token can be used in a subsequent calls to `ListFirebaseProjects`
+        # to find the next group of Projects. Page tokens are short-lived and should
+        # not be persisted.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -753,12 +701,11 @@ module Google
         # @return [Array<Google::Apis::FirebaseV1beta1::IosApp>]
         attr_accessor :apps
       
-        # If the result list is too large to fit in a single response, then a token
-        # is returned. If the string is empty, then this response is the last page of
-        # results.
-        # This token can be used in a subsequent call to `ListIosApps` to find
-        # the next group of Apps.
-        # Page tokens are short-lived and should not be persisted.
+        # If the result list is too large to fit in a single response, then a token is
+        # returned. If the string is empty, then this response is the last page of
+        # results. This token can be used in a subsequent call to `ListIosApps` to find
+        # the next group of Apps. Page tokens are short-lived and should not be
+        # persisted.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -802,12 +749,11 @@ module Google
         # @return [Array<Google::Apis::FirebaseV1beta1::WebApp>]
         attr_accessor :apps
       
-        # If the result list is too large to fit in a single response, then a token
-        # is returned. If the string is empty, then this response is the last page of
-        # results.
-        # This token can be used in a subsequent call to `ListWebApps` to find
-        # the next group of Apps.
-        # Page tokens are short-lived and should not be persisted.
+        # If the result list is too large to fit in a single response, then a token is
+        # returned. If the string is empty, then this response is the last page of
+        # results. This token can be used in a subsequent call to `ListWebApps` to find
+        # the next group of Apps. Page tokens are short-lived and should not be
+        # persisted.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -833,16 +779,14 @@ module Google
         attr_accessor :features
       
         # The ID of the GCP resource location. It will be one of the available [GCP
-        # resource
-        # locations](https://firebase.google.com/docs/projects/locations#types).
+        # resource locations](https://firebase.google.com/docs/projects/locations#types).
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
       
-        # Indicates whether the GCP resource location is a [regional or
-        # multi-regional
-        # location](https://firebase.google.com/docs/projects/locations#types)
-        # for data replication.
+        # Indicates whether the GCP resource location is a [regional or multi-regional
+        # location](https://firebase.google.com/docs/projects/locations#types) for data
+        # replication.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -877,47 +821,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::FirebaseV1beta1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -945,25 +887,21 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The ID of the Project's default GCP resource location. The location is one
-        # of the available
-        # [GCP resource
-        # locations](https://firebase.google.com/docs/projects/locations).
-        # Not all Projects will have this field populated. If it is not populated, it
-        # means that the Project does not yet have a default GCP resource location.
-        # To set a Project's default GCP resource location, call
-        # [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you
-        # add Firebase resources to the Project.
+        # The ID of the Project's default GCP resource location. The location is one of
+        # the available [GCP resource locations](https://firebase.google.com/docs/
+        # projects/locations). Not all Projects will have this field populated. If it is
+        # not populated, it means that the Project does not yet have a default GCP
+        # resource location. To set a Project's default GCP resource location, call [`
+        # FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add
+        # Firebase resources to the Project.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
       
         # The resource name of the GCP `Project` to which Firebase resources can be
-        # added, in the format:
-        # <code>projects/<var>PROJECT_IDENTIFIER</var></code>
-        # Refer to the `FirebaseProject`
-        # [`name`](../projects#FirebaseProject.FIELDS.name) field for details
-        # about <var>PROJECT_IDENTIFIER</var> values.
+        # added, in the format: projects/PROJECT_IDENTIFIER Refer to the `
+        # FirebaseProject` [`name`](../projects#FirebaseProject.FIELDS.name) field for
+        # details about PROJECT_IDENTIFIER values.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
@@ -985,16 +923,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The ID of the Google Analytics property associated with the
-        # specified `FirebaseProject`.
-        # <ul>
-        # <li>If not set, then the Google Analytics property that is currently
-        # associated with the specified `FirebaseProject` is removed.
-        # </li>
-        # <li>If set, and the specified `FirebaseProject` is currently associated
-        # with a *different* Google Analytics property, then the response
-        # is a `412 Precondition Failed` error.
-        # </li>
-        # </ul>
+        # specified `FirebaseProject`. - If not set, then the Google Analytics property
+        # that is currently associated with the specified `FirebaseProject` is removed. -
+        # If set, and the specified `FirebaseProject` is currently associated with a *
+        # different* Google Analytics property, then the response is a `412 Precondition
+        # Failed` error.
         # Corresponds to the JSON property `analyticsPropertyId`
         # @return [String]
         attr_accessor :analytics_property_id
@@ -1018,11 +951,10 @@ module Google
         # @return [Array<Google::Apis::FirebaseV1beta1::FirebaseAppInfo>]
         attr_accessor :apps
       
-        # If the result list is too large to fit in a single response, then a token
-        # is returned.
-        # This token can be used in a subsequent calls to `SearchFirebaseApps`
-        # to find the next group of Apps.
-        # Page tokens are short-lived and should not be persisted.
+        # If the result list is too large to fit in a single response, then a token is
+        # returned. This token can be used in a subsequent calls to `SearchFirebaseApps`
+        # to find the next group of Apps. Page tokens are short-lived and should not be
+        # persisted.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1047,23 +979,17 @@ module Google
         # @return [String]
         attr_accessor :cert_type
       
-        # The resource name of the ShaCertificate for the AndroidApp,
-        # in the format:
-        # <code>projects/<var>PROJECT_IDENTIFIER</var>/androidApps/<var>APP_ID</var>/sha/
-        # <var>SHA_HASH</var></code>
-        # * <var>PROJECT_IDENTIFIER</var>: the parent Project's
-        # [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
-        # ***(recommended)***
-        # or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
-        # Learn more about using project identifiers in
-        # Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
-        # <br>Note that the value for <var>PROJECT_IDENTIFIER</var> in any
-        # response body will be the `ProjectId`.
-        # * <var>APP_ID</var>: the globally unique, Firebase-assigned identifier
-        # for the App
-        # (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
-        # * <var>SHA_HASH</var>: the certificate hash for the App (see
-        # [`shaHash`](../projects.androidApps.sha#ShaCertificate.FIELDS.sha_hash)).
+        # The resource name of the ShaCertificate for the AndroidApp, in the format:
+        # projects/PROJECT_IDENTIFIER/androidApps/APP_ID/sha/SHA_HASH *
+        # PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#
+        # FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`]
+        # (../projects#FirebaseProject.FIELDS.project_id). Learn more about using
+        # project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/
+        # cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body
+        # will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned
+        # identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.
+        # FIELDS.app_id)). * SHA_HASH: the certificate hash for the App (see [`shaHash`](
+        # ../projects.androidApps.sha#ShaCertificate.FIELDS.sha_hash)).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1085,12 +1011,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -1099,15 +1025,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -1128,8 +1054,8 @@ module Google
       class StatusProto
         include Google::Apis::Core::Hashable
       
-        # The canonical error code (see codes.proto) that most closely
-        # corresponds to this status. May be missing.
+        # The canonical error code (see codes.proto) that most closely corresponds to
+        # this status. May be missing.
         # Corresponds to the JSON property `canonicalCode`
         # @return [Fixnum]
         attr_accessor :canonical_code
@@ -1150,23 +1076,19 @@ module Google
         # @return [Google::Apis::FirebaseV1beta1::MessageSet]
         attr_accessor :message_set
       
-        # Message that groups a protocol type_id (as defined by MessageSet),
-        # with an encoded message of that type.  Its use is similar to
-        # MessageSet, except it represents a single (type, encoded message)
-        # instead of a set.
-        # To embed "proto" inside "typed_msg":
-        # MyProtoMessage proto;
-        # TypedMessage typed_msg;
-        # typed_msg.set_type_id(proto2::bridge::GetTypeId(proto));
-        # proto.AppendToCord(typed_msg.mutable_message());
-        # Error handling is omitted from the sample code above. GetTypeId() will return
-        # 0 for messages that don't have a TypeId specified.
+        # Message that groups a protocol type_id (as defined by MessageSet), with an
+        # encoded message of that type. Its use is similar to MessageSet, except it
+        # represents a single (type, encoded message) instead of a set. To embed "proto"
+        # inside "typed_msg": MyProtoMessage proto; TypedMessage typed_msg; typed_msg.
+        # set_type_id(proto2::bridge::GetTypeId(proto)); proto.AppendToCord(typed_msg.
+        # mutable_message()); Error handling is omitted from the sample code above.
+        # GetTypeId() will return 0 for messages that don't have a TypeId specified.
         # Corresponds to the JSON property `payload`
         # @return [Google::Apis::FirebaseV1beta1::TypedMessage]
         attr_accessor :payload
       
-        # The following are usually only present when code != 0
-        # Space to which this status belongs
+        # The following are usually only present when code != 0 Space to which this
+        # status belongs
         # Corresponds to the JSON property `space`
         # @return [String]
         attr_accessor :space
@@ -1190,37 +1112,28 @@ module Google
       class StreamMapping
         include Google::Apis::Core::Hashable
       
-        # The resource name of the Firebase App associated with the
-        # Google Analytics data stream, in the format:
-        # <code>projects/<var>PROJECT_IDENTIFIER</var>/androidApps/<var>APP_ID</var></
-        # code>
-        # or
-        # <code>projects/<var>PROJECT_IDENTIFIER</var>/iosApps/<var>APP_ID</var></code>
-        # or
-        # <code>projects/<var>PROJECT_IDENTIFIER</var>/webApps/<var>APP_ID</var></code>
-        # Refer to the `FirebaseProject`
-        # [`name`](../projects#FirebaseProject.FIELDS.name) field for details
-        # about <var>PROJECT_IDENTIFIER</var> values.
+        # The resource name of the Firebase App associated with the Google Analytics
+        # data stream, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID or
+        # projects/PROJECT_IDENTIFIER/iosApps/APP_ID or projects/PROJECT_IDENTIFIER /
+        # webApps/APP_ID Refer to the `FirebaseProject` [`name`](../projects#
+        # FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values.
         # Corresponds to the JSON property `app`
         # @return [String]
         attr_accessor :app
       
-        # Applicable for Firebase Web Apps only.
-        # The unique Google-assigned identifier of the Google Analytics web
-        # stream associated with the Firebase Web App. Firebase SDKs use this ID to
-        # interact with Google Analytics APIs.
-        # Learn more about this ID and Google Analytics web streams in the
-        # [Analytics
-        # documentation](https://support.google.com/analytics/topic/9303475).
+        # Applicable for Firebase Web Apps only. The unique Google-assigned identifier
+        # of the Google Analytics web stream associated with the Firebase Web App.
+        # Firebase SDKs use this ID to interact with Google Analytics APIs. Learn more
+        # about this ID and Google Analytics web streams in the [Analytics documentation]
+        # (https://support.google.com/analytics/topic/9303475).
         # Corresponds to the JSON property `measurementId`
         # @return [String]
         attr_accessor :measurement_id
       
         # The unique Google-assigned identifier of the Google Analytics data stream
-        # associated with the Firebase App.
-        # Learn more about Google Analytics data streams in the
-        # [Analytics
-        # documentation](https://support.google.com/analytics/answer/9303323).
+        # associated with the Firebase App. Learn more about Google Analytics data
+        # streams in the [Analytics documentation](https://support.google.com/analytics/
+        # answer/9303323).
         # Corresponds to the JSON property `streamId`
         # @return [Fixnum]
         attr_accessor :stream_id
@@ -1237,17 +1150,13 @@ module Google
         end
       end
       
-      # Message that groups a protocol type_id (as defined by MessageSet),
-      # with an encoded message of that type.  Its use is similar to
-      # MessageSet, except it represents a single (type, encoded message)
-      # instead of a set.
-      # To embed "proto" inside "typed_msg":
-      # MyProtoMessage proto;
-      # TypedMessage typed_msg;
-      # typed_msg.set_type_id(proto2::bridge::GetTypeId(proto));
-      # proto.AppendToCord(typed_msg.mutable_message());
-      # Error handling is omitted from the sample code above. GetTypeId() will return
-      # 0 for messages that don't have a TypeId specified.
+      # Message that groups a protocol type_id (as defined by MessageSet), with an
+      # encoded message of that type. Its use is similar to MessageSet, except it
+      # represents a single (type, encoded message) instead of a set. To embed "proto"
+      # inside "typed_msg": MyProtoMessage proto; TypedMessage typed_msg; typed_msg.
+      # set_type_id(proto2::bridge::GetTypeId(proto)); proto.AppendToCord(typed_msg.
+      # mutable_message()); Error handling is omitted from the sample code above.
+      # GetTypeId() will return 0 for messages that don't have a TypeId specified.
       class TypedMessage
         include Google::Apis::Core::Hashable
       
@@ -1277,10 +1186,9 @@ module Google
       class WebApp
         include Google::Apis::Core::Hashable
       
-        # Immutable. The globally unique, Firebase-assigned identifier for the
-        # `WebApp`.
-        # This identifier should be treated as an opaque token, as the data
-        # format is not specified.
+        # Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`.
+        # This identifier should be treated as an opaque token, as the data format is
+        # not specified.
         # Corresponds to the JSON property `appId`
         # @return [String]
         attr_accessor :app_id
@@ -1295,24 +1203,21 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the WebApp, in the format:
-        # <code>projects/<var>PROJECT_IDENTIFIER</var>/webApps/<var>APP_ID</var></code>
-        # * <var>PROJECT_IDENTIFIER</var>: the parent Project's
-        # [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number)
-        # ***(recommended)***
-        # or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id).
-        # Learn more about using project identifiers in
-        # Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
-        # <br>Note that the value for <var>PROJECT_IDENTIFIER</var> in any
-        # response body will be the `ProjectId`.
-        # * <var>APP_ID</var>: the globally unique, Firebase-assigned identifier
-        # for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
+        # The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /
+        # webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../
+        # projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`
+        # ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about
+        # using project identifiers in Google's [AIP 2510 standard](https://google.aip.
+        # dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response
+        # body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned
+        # identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)
+        # ).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Immutable. A user-assigned unique identifier of the parent
-        # FirebaseProject for the `WebApp`.
+        # Immutable. A user-assigned unique identifier of the parent FirebaseProject for
+        # the `WebApp`.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -1340,14 +1245,13 @@ module Google
         # @return [String]
         attr_accessor :api_key
       
-        # Immutable. The globally unique, Firebase-assigned identifier for the
-        # `WebApp`.
+        # Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`.
         # Corresponds to the JSON property `appId`
         # @return [String]
         attr_accessor :app_id
       
         # The domain Firebase Auth configures for OAuth redirects, in the format:
-        # <code><var>PROJECT_ID</var>.firebaseapp.com</code>
+        # PROJECT_ID.firebaseapp.com
         # Corresponds to the JSON property `authDomain`
         # @return [String]
         attr_accessor :auth_domain
@@ -1357,20 +1261,24 @@ module Google
         # @return [String]
         attr_accessor :database_url
       
-        # The ID of the Project's default GCP resource location. The location is one
-        # of the available
-        # [GCP resource
-        # locations](https://firebase.google.com/docs/projects/locations).
-        # This field is omitted if the default GCP resource location has not been
-        # finalized yet. To set a Project's default GCP resource location,
-        # call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)
-        # after you add Firebase resources to the Project.
+        # The ID of the Project's default GCP resource location. The location is one of
+        # the available [GCP resource locations](https://firebase.google.com/docs/
+        # projects/locations). This field is omitted if the default GCP resource
+        # location has not been finalized yet. To set a Project's default GCP resource
+        # location, call [`FinalizeDefaultLocation`](../projects.defaultLocation/
+        # finalize) after you add Firebase resources to the Project.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
       
-        # This field will no longer be provided here. Instead, use
-        # `GetAnalyticsDetails`
+        # The unique Google-assigned identifier of the Google Analytics web stream
+        # associated with the Firebase Web App. Firebase SDKs use this ID to interact
+        # with Google Analytics APIs. This field is only present if the App is linked to
+        # a web stream in a Google Analytics App + Web property. Learn more about this
+        # ID and Google Analytics web streams in the [Analytics documentation](https://
+        # support.google.com/analytics/topic/9303475). To generate a `measurementId` and
+        # link the Web App with a Google Analytics web stream, call [`AddGoogleAnalytics`
+        # ](../../v1beta1/projects/addGoogleAnalytics).
         # Corresponds to the JSON property `measurementId`
         # @return [String]
         attr_accessor :measurement_id

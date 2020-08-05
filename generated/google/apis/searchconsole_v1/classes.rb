@@ -45,8 +45,8 @@ module Google
       class Image
         include Google::Apis::Core::Hashable
       
-        # Image data in format determined by the mime type. Currently, the format
-        # will always be "image/png", but this might change in the future.
+        # Image data in format determined by the mime type. Currently, the format will
+        # always be "image/png", but this might change in the future.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]

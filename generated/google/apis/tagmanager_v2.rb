@@ -20,13 +20,12 @@ module Google
   module Apis
     # Tag Manager API
     #
-    # This API allows clients to access and modify container and tag
-    # configuration.
+    # This API allows clients to access and modify container and tag configuration.
     #
     # @see https://developers.google.com/tag-manager
     module TagmanagerV2
       VERSION = 'V2'
-      REVISION = '20200728'
+      REVISION = '20200803'
 
       # Delete your Google Tag Manager containers
       AUTH_TAGMANAGER_DELETE_CONTAINERS = 'https://www.googleapis.com/auth/tagmanager.delete.containers'

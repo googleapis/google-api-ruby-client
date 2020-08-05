@@ -47,17 +47,15 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a managed short Dynamic Link given either a valid long Dynamic Link
-        # or details such as Dynamic Link domain, Android and iOS app information.
-        # The created short Dynamic Link will not expire.
-        # This differs from CreateShortDynamicLink in the following ways:
-        # - The request will also contain a name for the link (non unique name
-        # for the front end).
-        # - The response must be authenticated with an auth token (generated with
-        # the admin service account).
-        # - The link will appear in the FDL list of links in the console front end.
-        # The Dynamic Link domain in the request must be owned by requester's
-        # Firebase project.
+        # Creates a managed short Dynamic Link given either a valid long Dynamic Link or
+        # details such as Dynamic Link domain, Android and iOS app information. The
+        # created short Dynamic Link will not expire. This differs from
+        # CreateShortDynamicLink in the following ways: - The request will also contain
+        # a name for the link (non unique name for the front end). - The response must
+        # be authenticated with an auth token (generated with the admin service account).
+        # - The link will appear in the FDL list of links in the console front end. The
+        # Dynamic Link domain in the request must be owned by requester's Firebase
+        # project.
         # @param [Google::Apis::FirebasedynamiclinksV1::CreateManagedShortLinkRequest] create_managed_short_link_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -87,13 +85,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a short Dynamic Link given either a valid long Dynamic Link or
-        # details such as Dynamic Link domain, Android and iOS app information.
-        # The created short Dynamic Link will not expire.
-        # Repeated calls with the same long Dynamic Link or Dynamic Link information
-        # will produce the same short Dynamic Link.
-        # The Dynamic Link domain in the request must be owned by requester's
-        # Firebase project.
+        # Creates a short Dynamic Link given either a valid long Dynamic Link or details
+        # such as Dynamic Link domain, Android and iOS app information. The created
+        # short Dynamic Link will not expire. Repeated calls with the same long Dynamic
+        # Link or Dynamic Link information will produce the same short Dynamic Link. The
+        # Dynamic Link domain in the request must be owned by requester's Firebase
+        # project.
         # @param [Google::Apis::FirebasedynamiclinksV1::CreateShortDynamicLinkRequest] create_short_dynamic_link_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -123,9 +120,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetches analytics stats of a short Dynamic Link for a given
-        # duration. Metrics include number of clicks, redirects, installs,
-        # app first opens, and app reopens.
+        # Fetches analytics stats of a short Dynamic Link for a given duration. Metrics
+        # include number of clicks, redirects, installs, app first opens, and app
+        # reopens.
         # @param [String] dynamic_link
         #   Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz
         # @param [Fixnum] duration_days

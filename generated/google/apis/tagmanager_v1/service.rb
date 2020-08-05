@@ -22,8 +22,7 @@ module Google
     module TagmanagerV1
       # Tag Manager API
       #
-      # This API allows clients to access and modify container and tag
-      #  configuration.
+      # This API allows clients to access and modify container and tag configuration.
       #
       # @example
       #    require 'google/apis/tagmanager_v1'
@@ -110,8 +109,8 @@ module Google
         #   The GTM Account ID.
         # @param [Google::Apis::TagmanagerV1::Account] account_object
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the account
-        #   in storage.
+        #   When provided, this fingerprint must match the fingerprint of the account in
+        #   storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -276,8 +275,8 @@ module Google
         #   The GTM Container ID.
         # @param [Google::Apis::TagmanagerV1::Container] container_object
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the
-        #   container in storage.
+        #   When provided, this fingerprint must match the fingerprint of the container in
+        #   storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -457,8 +456,8 @@ module Google
         #   The GTM Environment ID.
         # @param [Google::Apis::TagmanagerV1::Environment] environment_object
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the
-        #   environment in storage.
+        #   When provided, this fingerprint must match the fingerprint of the environment
+        #   in storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1124,8 +1123,8 @@ module Google
         #   The GTM Trigger ID.
         # @param [Google::Apis::TagmanagerV1::Trigger] trigger_object
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the trigger
-        #   in storage.
+        #   When provided, this fingerprint must match the fingerprint of the trigger in
+        #   storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1306,8 +1305,8 @@ module Google
         #   The GTM Variable ID.
         # @param [Google::Apis::TagmanagerV1::Variable] variable_object
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the variable
-        #   in storage.
+        #   When provided, this fingerprint must match the fingerprint of the variable in
+        #   storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1416,8 +1415,8 @@ module Google
         # @param [String] container_id
         #   The GTM Container ID.
         # @param [String] container_version_id
-        #   The GTM Container Version ID. Specify <code>published</code> to retrieve
-        #   the currently published version.
+        #   The GTM Container Version ID. Specify published to retrieve the currently
+        #   published version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1494,8 +1493,8 @@ module Google
         # @param [String] container_version_id
         #   The GTM Container Version ID.
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the
-        #   container version in storage.
+        #   When provided, this fingerprint must match the fingerprint of the container
+        #   version in storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1527,9 +1526,9 @@ module Google
         end
         
         # Restores a Container Version. This will overwrite the container's current
-        # configuration (including its variables, triggers and tags). The operation
-        # will not have any effect on the version that is being served (i.e. the
-        # published version).
+        # configuration (including its variables, triggers and tags). The operation will
+        # not have any effect on the version that is being served (i.e. the published
+        # version).
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
@@ -1610,8 +1609,8 @@ module Google
         #   The GTM Container Version ID.
         # @param [Google::Apis::TagmanagerV1::ContainerVersion] container_version_object
         # @param [String] fingerprint
-        #   When provided, this fingerprint must match the fingerprint of the
-        #   container version in storage.
+        #   When provided, this fingerprint must match the fingerprint of the container
+        #   version in storage.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

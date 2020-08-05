@@ -1370,7 +1370,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The list of APIs usable within the Service Perimeter. Must be empty
-        # unless 'enable_restriction' is True.
+        # unless 'enable_restriction' is True. You can specify a list of individual
+        # services, as well as include the 'RESTRICTED-SERVICES' value, which
+        # automatically includes all of the services protected by the perimeter.
         # Corresponds to the JSON property `allowedServices`
         # @return [Array<String>]
         attr_accessor :allowed_services

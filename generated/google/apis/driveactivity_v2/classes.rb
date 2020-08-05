@@ -313,16 +313,16 @@ module Google
       # How the individual activities are consolidated. A set of activities may be
       # consolidated into one combined activity if they are related in some way, such
       # as one actor performing the same action on multiple targets, or multiple
-      # actors performing the same action on a single target. The strategy defines
-      # the rules for which activities are related.
+      # actors performing the same action on a single target. The strategy defines the
+      # rules for which activities are related.
       class ConsolidationStrategy
         include Google::Apis::Core::Hashable
       
         # A strategy which consolidates activities using the grouping rules from the
-        # legacy V1 Activity API. Similar actions occurring within a window of time
-        # can be grouped across multiple targets (such as moving a set of files at
-        # once) or multiple actors (such as several users editing the same item).
-        # Grouping rules for this strategy are specific to each type of action.
+        # legacy V1 Activity API. Similar actions occurring within a window of time can
+        # be grouped across multiple targets (such as moving a set of files at once) or
+        # multiple actors (such as several users editing the same item). Grouping rules
+        # for this strategy are specific to each type of action.
         # Corresponds to the JSON property `legacy`
         # @return [Google::Apis::DriveactivityV2::Legacy]
         attr_accessor :legacy
@@ -473,9 +473,8 @@ module Google
       class Drive
         include Google::Apis::Core::Hashable
       
-        # The resource name of the shared drive. The format is
-        # "COLLECTION_ID/DRIVE_ID". Clients should not assume a specific collection
-        # ID for this resource name.
+        # The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID".
+        # Clients should not assume a specific collection ID for this resource name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -502,12 +501,12 @@ module Google
         end
       end
       
-      # A single Drive activity comprising one or more Actions by one or more
-      # Actors on one or more Targets. Some Action groupings occur spontaneously,
-      # such as moving an item into a shared folder triggering a permission change.
-      # Other groupings of related Actions, such as multiple Actors editing one item
-      # or moving multiple files into a new folder, are controlled by the selection
-      # of a ConsolidationStrategy in the QueryDriveActivityRequest.
+      # A single Drive activity comprising one or more Actions by one or more Actors
+      # on one or more Targets. Some Action groupings occur spontaneously, such as
+      # moving an item into a shared folder triggering a permission change. Other
+      # groupings of related Actions, such as multiple Actors editing one item or
+      # moving multiple files into a new folder, are controlled by the selection of a
+      # ConsolidationStrategy in the QueryDriveActivityRequest.
       class DriveActivity
         include Google::Apis::Core::Hashable
       
@@ -527,8 +526,7 @@ module Google
         attr_accessor :primary_action_detail
       
         # All Google Drive objects this activity is about (e.g. file, folder, drive).
-        # This represents the state of the target immediately after the actions
-        # occurred.
+        # This represents the state of the target immediately after the actions occurred.
         # Corresponds to the JSON property `targets`
         # @return [Array<Google::Apis::DriveactivityV2::Target>]
         attr_accessor :targets
@@ -614,8 +612,8 @@ module Google
         # @return [Google::Apis::DriveactivityV2::Folder]
         attr_accessor :folder
       
-        # The MIME type of the Drive item.  See
-        # https://developers.google.com/drive/v3/web/mime-types.
+        # The MIME type of the Drive item. See https://developers.google.com/drive/v3/
+        # web/mime-types.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -705,9 +703,8 @@ module Google
       class DriveReference
         include Google::Apis::Core::Hashable
       
-        # The resource name of the shared drive. The format is
-        # "COLLECTION_ID/DRIVE_ID". Clients should not assume a specific collection
-        # ID for this resource name.
+        # The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID".
+        # Clients should not assume a specific collection ID for this resource name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -759,22 +756,22 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The comment in the discussion thread. This identifier is an opaque string
-        # compatible with the Drive API; see
-        # https://developers.google.com/drive/v3/reference/comments/get
+        # compatible with the Drive API; see https://developers.google.com/drive/v3/
+        # reference/comments/get
         # Corresponds to the JSON property `legacyCommentId`
         # @return [String]
         attr_accessor :legacy_comment_id
       
         # The discussion thread to which the comment was added. This identifier is an
-        # opaque string compatible with the Drive API and references the first
-        # comment in a discussion; see
-        # https://developers.google.com/drive/v3/reference/comments/get
+        # opaque string compatible with the Drive API and references the first comment
+        # in a discussion; see https://developers.google.com/drive/v3/reference/comments/
+        # get
         # Corresponds to the JSON property `legacyDiscussionId`
         # @return [String]
         attr_accessor :legacy_discussion_id
       
-        # The link to the discussion thread containing this comment, for example,
-        # "https://docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID".
+        # The link to the discussion thread containing this comment, for example, "https:
+        # //docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID".
         # Corresponds to the JSON property `linkToDiscussion`
         # @return [String]
         attr_accessor :link_to_discussion
@@ -871,9 +868,9 @@ module Google
         attr_accessor :is_current_user
         alias_method :is_current_user?, :is_current_user
       
-        # The identifier for this user that can be used with the People API to get
-        # more information. The format is "people/ACCOUNT_ID". See
-        # https://developers.google.com/people/.
+        # The identifier for this user that can be used with the People API to get more
+        # information. The format is "people/ACCOUNT_ID". See https://developers.google.
+        # com/people/.
         # Corresponds to the JSON property `personName`
         # @return [String]
         attr_accessor :person_name
@@ -890,10 +887,10 @@ module Google
       end
       
       # A strategy which consolidates activities using the grouping rules from the
-      # legacy V1 Activity API. Similar actions occurring within a window of time
-      # can be grouped across multiple targets (such as moving a set of files at
-      # once) or multiple actors (such as several users editing the same item).
-      # Grouping rules for this strategy are specific to each type of action.
+      # legacy V1 Activity API. Similar actions occurring within a window of time can
+      # be grouped across multiple targets (such as moving a set of files at once) or
+      # multiple actors (such as several users editing the same item). Grouping rules
+      # for this strategy are specific to each type of action.
       class Legacy
         include Google::Apis::Core::Hashable
       
@@ -1020,10 +1017,8 @@ module Google
         # @return [Google::Apis::DriveactivityV2::Group]
         attr_accessor :group
       
-        # Indicates the
-        # <a href="/drive/web/manage-sharing#roles">Google Drive permissions
-        # role</a>. The role determines a user's ability to read, write, and
-        # comment on items.
+        # Indicates the Google Drive permissions role. The role determines a user's
+        # ability to read, write, and comment on items.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1096,8 +1091,8 @@ module Google
       class QueryDriveActivityRequest
         include Google::Apis::Core::Hashable
       
-        # Return activities for this Drive folder and all children and descendants.
-        # The format is "items/ITEM_ID".
+        # Return activities for this Drive folder and all children and descendants. The
+        # format is "items/ITEM_ID".
         # Corresponds to the JSON property `ancestorName`
         # @return [String]
         attr_accessor :ancestor_name
@@ -1105,50 +1100,42 @@ module Google
         # How the individual activities are consolidated. A set of activities may be
         # consolidated into one combined activity if they are related in some way, such
         # as one actor performing the same action on multiple targets, or multiple
-        # actors performing the same action on a single target. The strategy defines
-        # the rules for which activities are related.
+        # actors performing the same action on a single target. The strategy defines the
+        # rules for which activities are related.
         # Corresponds to the JSON property `consolidationStrategy`
         # @return [Google::Apis::DriveactivityV2::ConsolidationStrategy]
         attr_accessor :consolidation_strategy
       
         # The filtering for items returned from this query request. The format of the
-        # filter string is a sequence of expressions, joined by an optional "AND",
-        # where each expression is of the form "field operator value".
-        # Supported fields:
-        # - <tt>time</tt>: Uses numerical operators on date values either in
-        # terms of milliseconds since Jan 1, 1970 or in RFC 3339 format.
-        # Examples:
-        # - <tt>time > 1452409200000 AND time <= 1492812924310</tt>
-        # - <tt>time >= "2016-01-10T01:02:03-05:00"</tt>
-        # - <tt>detail.action_detail_case</tt>: Uses the "has" operator (:) and
-        # either a singular value or a list of allowed action types enclosed in
-        # parentheses.
-        # Examples:
-        # - <tt>detail.action_detail_case: RENAME</tt>
-        # - <tt>detail.action_detail_case:(CREATE EDIT)</tt>
-        # - <tt>-detail.action_detail_case:MOVE</tt>
+        # filter string is a sequence of expressions, joined by an optional "AND", where
+        # each expression is of the form "field operator value". Supported fields: -
+        # time: Uses numerical operators on date values either in terms of milliseconds
+        # since Jan 1, 1970 or in RFC 3339 format. Examples: - time > 1452409200000 AND
+        # time <= 1492812924310 - time >= "2016-01-10T01:02:03-05:00" - detail.
+        # action_detail_case: Uses the "has" operator (:) and either a singular value or
+        # a list of allowed action types enclosed in parentheses. Examples: - detail.
+        # action_detail_case: RENAME - detail.action_detail_case:(CREATE EDIT) - -detail.
+        # action_detail_case:MOVE
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # Return activities for this Drive item. The format is
-        # "items/ITEM_ID".
+        # Return activities for this Drive item. The format is "items/ITEM_ID".
         # Corresponds to the JSON property `itemName`
         # @return [String]
         attr_accessor :item_name
       
         # The miminum number of activities desired in the response; the server will
         # attempt to return at least this quanitity. The server may also return fewer
-        # activities if it has a partial response ready before the request times out.
-        # If not set, a default value is used.
+        # activities if it has a partial response ready before the request times out. If
+        # not set, a default value is used.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
         # The token identifying which page of results to return. Set this to the
-        # next_page_token value returned from a previous query to obtain the
-        # following page of results. If not set, the first page of results will be
-        # returned.
+        # next_page_token value returned from a previous query to obtain the following
+        # page of results. If not set, the first page of results will be returned.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -1177,8 +1164,8 @@ module Google
         # @return [Array<Google::Apis::DriveactivityV2::DriveActivity>]
         attr_accessor :activities
       
-        # Token to retrieve the next page of results, or
-        # empty if there are no more results in the list.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

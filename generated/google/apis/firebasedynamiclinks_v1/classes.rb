@@ -26,10 +26,9 @@ module Google
       class AnalyticsInfo
         include Google::Apis::Core::Hashable
       
-        # Parameters for Google Play Campaign Measurements.
-        # [Learn
-        # more](https://developers.google.com/analytics/devguides/collection/android/v4/
-        # campaigns#campaign-params)
+        # Parameters for Google Play Campaign Measurements. [Learn more](https://
+        # developers.google.com/analytics/devguides/collection/android/v4/campaigns#
+        # campaign-params)
         # Corresponds to the JSON property `googlePlayAnalytics`
         # @return [Google::Apis::FirebasedynamiclinksV1::GooglePlayAnalytics]
         attr_accessor :google_play_analytics
@@ -64,8 +63,8 @@ module Google
         # @return [String]
         attr_accessor :android_link
       
-        # Minimum version code for the Android app. If the installed app’s version
-        # code is lower, then the user is taken to the Play Store.
+        # Minimum version code for the Android app. If the installed app’s version code
+        # is lower, then the user is taken to the Play Store.
         # Corresponds to the JSON property `androidMinPackageVersionCode`
         # @return [String]
         attr_accessor :android_min_package_version_code
@@ -97,19 +96,17 @@ module Google
         # @return [Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo]
         attr_accessor :dynamic_link_info
       
-        # Full long Dynamic Link URL with desired query parameters specified.
-        # For example,
-        # "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample",
-        # [Learn
-        # more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
+        # Full long Dynamic Link URL with desired query parameters specified. For
+        # example, "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample"
+        # , [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-
+        # shortener).
         # Corresponds to the JSON property `longDynamicLink`
         # @return [String]
         attr_accessor :long_dynamic_link
       
         # Link name to associate with the link. It's used for marketer to identify
-        # manually-created links in the Firebase console
-        # (https://console.firebase.google.com/).
-        # Links must be named to be tracked.
+        # manually-created links in the Firebase console (https://console.firebase.
+        # google.com/). Links must be named to be tracked.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -178,11 +175,10 @@ module Google
         # @return [Google::Apis::FirebasedynamiclinksV1::DynamicLinkInfo]
         attr_accessor :dynamic_link_info
       
-        # Full long Dynamic Link URL with desired query parameters specified.
-        # For example,
-        # "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample",
-        # [Learn
-        # more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
+        # Full long Dynamic Link URL with desired query parameters specified. For
+        # example, "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample"
+        # , [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-
+        # shortener).
         # Corresponds to the JSON property `longDynamicLink`
         # @return [String]
         attr_accessor :long_dynamic_link
@@ -274,16 +270,14 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # Device language code setting obtained by executing JavaScript code in
-        # WebView.
+        # Device language code setting obtained by executing JavaScript code in WebView.
         # Corresponds to the JSON property `languageCodeFromWebview`
         # @return [String]
         attr_accessor :language_code_from_webview
       
-        # Device language code raw setting.
-        # iOS does returns language code in different format than iOS WebView.
-        # For example WebView returns en_US, but iOS returns en-US.
-        # Field below will return raw value returned by iOS.
+        # Device language code raw setting. iOS does returns language code in different
+        # format than iOS WebView. For example WebView returns en_US, but iOS returns en-
+        # US. Field below will return raw value returned by iOS.
         # Corresponds to the JSON property `languageCodeRaw`
         # @return [String]
         attr_accessor :language_code_raw
@@ -369,19 +363,18 @@ module Google
         # @return [Google::Apis::FirebasedynamiclinksV1::DesktopInfo]
         attr_accessor :desktop_info
       
-        # E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps
-        # More examples can be found in description of getNormalizedUriPrefix in
-        # j/c/g/firebase/dynamiclinks/uri/DdlDomain.java
-        # Will fallback to dynamic_link_domain is this field is missing
+        # E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps More
+        # examples can be found in description of getNormalizedUriPrefix in j/c/g/
+        # firebase/dynamiclinks/uri/DdlDomain.java Will fallback to dynamic_link_domain
+        # is this field is missing
         # Corresponds to the JSON property `domainUriPrefix`
         # @return [String]
         attr_accessor :domain_uri_prefix
       
-        # Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl
-        # [Learn
-        # more](https://firebase.google.com/docs/dynamic-links/android/receive) on
-        # how to set up Dynamic Link domain associated with your Firebase project.
-        # Required if missing domain_uri_prefix.
+        # Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl [Learn more](
+        # https://firebase.google.com/docs/dynamic-links/android/receive) on how to set
+        # up Dynamic Link domain associated with your Firebase project. Required if
+        # missing domain_uri_prefix.
         # Corresponds to the JSON property `dynamicLinkDomain`
         # @return [String]
         attr_accessor :dynamic_link_domain
@@ -391,12 +384,10 @@ module Google
         # @return [Google::Apis::FirebasedynamiclinksV1::IosInfo]
         attr_accessor :ios_info
       
-        # The link your app will open, You can specify any URL your app can handle.
-        # This link must be a well-formatted URL, be properly URL-encoded, and use
-        # the HTTP or HTTPS scheme. See 'link' parameters in the
-        # [documentation](https://firebase.google.com/docs/dynamic-links/create-manually)
-        # .
-        # Required.
+        # The link your app will open, You can specify any URL your app can handle. This
+        # link must be a well-formatted URL, be properly URL-encoded, and use the HTTP
+        # or HTTPS scheme. See 'link' parameters in the [documentation](https://firebase.
+        # google.com/docs/dynamic-links/create-manually). Required.
         # Corresponds to the JSON property `link`
         # @return [String]
         attr_accessor :link
@@ -406,8 +397,8 @@ module Google
         # @return [Google::Apis::FirebasedynamiclinksV1::NavigationInfo]
         attr_accessor :navigation_info
       
-        # Parameters for social meta tag params.
-        # Used to set meta tag data for link previews on social sites.
+        # Parameters for social meta tag params. Used to set meta tag data for link
+        # previews on social sites.
         # Corresponds to the JSON property `socialMetaTagInfo`
         # @return [Google::Apis::FirebasedynamiclinksV1::SocialMetaTagInfo]
         attr_accessor :social_meta_tag_info
@@ -481,13 +472,13 @@ module Google
       end
       
       # Request for iSDK to execute strong match flow for post-install attribution.
-      # This is meant for iOS requests only. Requests from other platforms will
-      # not be honored.
+      # This is meant for iOS requests only. Requests from other platforms will not be
+      # honored.
       class GetIosPostInstallAttributionRequest
         include Google::Apis::Core::Hashable
       
-        # App installation epoch time (https://en.wikipedia.org/wiki/Unix_time).
-        # This is a client signal for a more accurate weak match.
+        # App installation epoch time (https://en.wikipedia.org/wiki/Unix_time). This is
+        # a client signal for a more accurate weak match.
         # Corresponds to the JSON property `appInstallationTime`
         # @return [Fixnum]
         attr_accessor :app_installation_time
@@ -502,15 +493,13 @@ module Google
         # @return [Google::Apis::FirebasedynamiclinksV1::DeviceInfo]
         attr_accessor :device
       
-        # iOS version, ie: 9.3.5.
-        # Consider adding "build".
+        # iOS version, ie: 9.3.5. Consider adding "build".
         # Corresponds to the JSON property `iosVersion`
         # @return [String]
         attr_accessor :ios_version
       
-        # App post install attribution retrieval information. Disambiguates
-        # mechanism (iSDK or developer invoked) to retrieve payload from
-        # clicked link.
+        # App post install attribution retrieval information. Disambiguates mechanism (
+        # iSDK or developer invoked) to retrieve payload from clicked link.
         # Corresponds to the JSON property `retrievalMethod`
         # @return [String]
         attr_accessor :retrieval_method
@@ -521,14 +510,14 @@ module Google
         attr_accessor :sdk_version
       
         # Possible unique matched link that server need to check before performing
-        # fingerprint match. If passed link is short server need to expand the link.
-        # If link is long server need to vslidate the link.
+        # fingerprint match. If passed link is short server need to expand the link. If
+        # link is long server need to vslidate the link.
         # Corresponds to the JSON property `uniqueMatchLinkToCheck`
         # @return [String]
         attr_accessor :unique_match_link_to_check
       
-        # Strong match page information. Disambiguates between default UI and
-        # custom page to present when strong match succeeds/fails to find cookie.
+        # Strong match page information. Disambiguates between default UI and custom
+        # page to present when strong match succeeds/fails to find cookie.
         # Corresponds to the JSON property `visualStyle`
         # @return [String]
         attr_accessor :visual_style
@@ -554,8 +543,8 @@ module Google
       class GetIosPostInstallAttributionResponse
         include Google::Apis::Core::Hashable
       
-        # The minimum version for app, specified by dev through ?imv= parameter.
-        # Return to iSDK to allow app to evaluate if current version meets this.
+        # The minimum version for app, specified by dev through ?imv= parameter. Return
+        # to iSDK to allow app to evaluate if current version meets this.
         # Corresponds to the JSON property `appMinimumVersion`
         # @return [String]
         attr_accessor :app_minimum_version
@@ -565,46 +554,44 @@ module Google
         # @return [String]
         attr_accessor :attribution_confidence
       
-        # The deep-link attributed post-install via one of several techniques
-        # (fingerprint, copy unique).
+        # The deep-link attributed post-install via one of several techniques (
+        # fingerprint, copy unique).
         # Corresponds to the JSON property `deepLink`
         # @return [String]
         attr_accessor :deep_link
       
         # User-agent specific custom-scheme URIs for iSDK to open. This will be set
-        # according to the user-agent tha the click was originally made in. There is
-        # no Safari-equivalent custom-scheme open URLs.
-        # ie: googlechrome://www.example.com
-        # ie: firefox://open-url?url=http://www.example.com
-        # ie: opera-http://example.com
+        # according to the user-agent tha the click was originally made in. There is no
+        # Safari-equivalent custom-scheme open URLs. ie: googlechrome://www.example.com
+        # ie: firefox://open-url?url=http://www.example.com ie: opera-http://example.com
         # Corresponds to the JSON property `externalBrowserDestinationLink`
         # @return [String]
         attr_accessor :external_browser_destination_link
       
-        # The link to navigate to update the app if min version is not met.
-        # This is either (in order): 1) fallback link (from ?ifl= parameter, if
-        # specified by developer) or 2) AppStore URL (from ?isi= parameter, if
-        # specified), or 3) the payload link (from required link= parameter).
+        # The link to navigate to update the app if min version is not met. This is
+        # either (in order): 1) fallback link (from ?ifl= parameter, if specified by
+        # developer) or 2) AppStore URL (from ?isi= parameter, if specified), or 3) the
+        # payload link (from required link= parameter).
         # Corresponds to the JSON property `fallbackLink`
         # @return [String]
         attr_accessor :fallback_link
       
-        # Invitation ID attributed post-install via one of several techniques
-        # (fingerprint, copy unique).
+        # Invitation ID attributed post-install via one of several techniques (
+        # fingerprint, copy unique).
         # Corresponds to the JSON property `invitationId`
         # @return [String]
         attr_accessor :invitation_id
       
-        # Instruction for iSDK to attemmpt to perform strong match. For instance,
-        # if browser does not support/allow cookie or outside of support browsers,
-        # this will be false.
+        # Instruction for iSDK to attemmpt to perform strong match. For instance, if
+        # browser does not support/allow cookie or outside of support browsers, this
+        # will be false.
         # Corresponds to the JSON property `isStrongMatchExecutable`
         # @return [Boolean]
         attr_accessor :is_strong_match_executable
         alias_method :is_strong_match_executable?, :is_strong_match_executable
       
-        # Describes why match failed, ie: "discarded due to low confidence".
-        # This message will be publicly visible.
+        # Describes why match failed, ie: "discarded due to low confidence". This
+        # message will be publicly visible.
         # Corresponds to the JSON property `matchMessage`
         # @return [String]
         attr_accessor :match_message
@@ -621,10 +608,10 @@ module Google
         attr_accessor :requested_link
       
         # The entire FDL, expanded from a short link. It is the same as the
-        # requested_link, if it is long. Parameters from this should not be
-        # used directly (ie: server can default utm_[campaign|medium|source]
-        # to a value when requested_link lack them, server determine the best
-        # fallback_link when requested_link specifies >1 fallback links).
+        # requested_link, if it is long. Parameters from this should not be used
+        # directly (ie: server can default utm_[campaign|medium|source] to a value when
+        # requested_link lack them, server determine the best fallback_link when
+        # requested_link specifies >1 fallback links).
         # Corresponds to the JSON property `resolvedLink`
         # @return [String]
         attr_accessor :resolved_link
@@ -689,14 +676,9 @@ module Google
         # @return [String]
         attr_accessor :bundle_id
       
-        # FDL link to be verified from an app universal link open.
-        # The FDL link can be one of:
-        # 1) short FDL.
-        # e.g. <app_code>.page.link/<ddl_id>, or
-        # 2) long FDL.
-        # e.g. <app_code>.page.link/?`query params`, or
-        # 3) Invite FDL.
-        # e.g. <app_code>.page.link/i/<invite_id_or_alias>
+        # FDL link to be verified from an app universal link open. The FDL link can be
+        # one of: 1) short FDL. e.g. .page.link/, or 2) long FDL. e.g. .page.link/?`
+        # query params`, or 3) Invite FDL. e.g. .page.link/i/
         # Corresponds to the JSON property `requestedLink`
         # @return [String]
         attr_accessor :requested_link
@@ -723,8 +705,8 @@ module Google
       class GetIosReopenAttributionResponse
         include Google::Apis::Core::Hashable
       
-        # The deep-link attributed the app universal link open. For both regular
-        # FDL links and invite FDL links.
+        # The deep-link attributed the app universal link open. For both regular FDL
+        # links and invite FDL links.
         # Corresponds to the JSON property `deepLink`
         # @return [String]
         attr_accessor :deep_link
@@ -734,8 +716,8 @@ module Google
         # @return [String]
         attr_accessor :invitation_id
       
-        # FDL input value of the "&imv=" parameter, minimum app version to be
-        # returned to Google Firebase SDK running on iOS-9.
+        # FDL input value of the "&imv=" parameter, minimum app version to be returned
+        # to Google Firebase SDK running on iOS-9.
         # Corresponds to the JSON property `iosMinAppVersion`
         # @return [String]
         attr_accessor :ios_min_app_version
@@ -789,17 +771,15 @@ module Google
         end
       end
       
-      # Parameters for Google Play Campaign Measurements.
-      # [Learn
-      # more](https://developers.google.com/analytics/devguides/collection/android/v4/
-      # campaigns#campaign-params)
+      # Parameters for Google Play Campaign Measurements. [Learn more](https://
+      # developers.google.com/analytics/devguides/collection/android/v4/campaigns#
+      # campaign-params)
       class GooglePlayAnalytics
         include Google::Apis::Core::Hashable
       
-        # [AdWords autotagging
-        # parameter](https://support.google.com/analytics/answer/1033981?hl=en); used
-        # to measure Google AdWords ads. This value is generated dynamically and
-        # should never be modified.
+        # [AdWords autotagging parameter](https://support.google.com/analytics/answer/
+        # 1033981?hl=en); used to measure Google AdWords ads. This value is generated
+        # dynamically and should never be modified.
         # Corresponds to the JSON property `gclid`
         # @return [String]
         attr_accessor :gclid
@@ -821,8 +801,7 @@ module Google
         # @return [String]
         attr_accessor :utm_medium
       
-        # Campaign source; used to identify a search engine, newsletter, or other
-        # source.
+        # Campaign source; used to identify a search engine, newsletter, or other source.
         # Corresponds to the JSON property `utmSource`
         # @return [String]
         attr_accessor :utm_source
@@ -856,8 +835,8 @@ module Google
         # @return [String]
         attr_accessor :at
       
-        # Campaign text that developers can optionally add to any link in order to
-        # track sales from a specific marketing campaign.
+        # Campaign text that developers can optionally add to any link in order to track
+        # sales from a specific marketing campaign.
         # Corresponds to the JSON property `ct`
         # @return [String]
         attr_accessor :ct
@@ -900,9 +879,8 @@ module Google
         # @return [String]
         attr_accessor :ios_bundle_id
       
-        # Custom (destination) scheme to use for iOS. By default, we’ll use the
-        # bundle ID as the custom scheme. Developer can override this behavior using
-        # this param.
+        # Custom (destination) scheme to use for iOS. By default, we’ll use the bundle
+        # ID as the custom scheme. Developer can override this behavior using this param.
         # Corresponds to the JSON property `iosCustomScheme`
         # @return [String]
         attr_accessor :ios_custom_scheme
@@ -968,8 +946,7 @@ module Google
         # @return [String]
         attr_accessor :link
       
-        # Link name defined by the creator.
-        # Required.
+        # Link name defined by the creator. Required.
         # Corresponds to the JSON property `linkName`
         # @return [String]
         attr_accessor :link_name
@@ -998,8 +975,8 @@ module Google
       class NavigationInfo
         include Google::Apis::Core::Hashable
       
-        # If this option is on, FDL click will be forced to redirect rather than
-        # show an interstitial page.
+        # If this option is on, FDL click will be forced to redirect rather than show an
+        # interstitial page.
         # Corresponds to the JSON property `enableForcedRedirect`
         # @return [Boolean]
         attr_accessor :enable_forced_redirect
@@ -1015,8 +992,8 @@ module Google
         end
       end
       
-      # Parameters for social meta tag params.
-      # Used to set meta tag data for link previews on social sites.
+      # Parameters for social meta tag params. Used to set meta tag data for link
+      # previews on social sites.
       class SocialMetaTagInfo
         include Google::Apis::Core::Hashable
       

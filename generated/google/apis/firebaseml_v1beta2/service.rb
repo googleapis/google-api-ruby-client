@@ -47,11 +47,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a model in Firebase ML.
-        # The longrunning operation will eventually return a Model
+        # Creates a model in Firebase ML. The longrunning operation will eventually
+        # return a Model
         # @param [String] parent
-        #   Required. The parent project resource where the model is to be created.
-        #   The parent must have the form `projects/`project_id``
+        #   Required. The parent project resource where the model is to be created. The
+        #   parent must have the form `projects/`project_id``
         # @param [Google::Apis::FirebasemlV1beta2::Model] model_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -84,8 +84,8 @@ module Google
         
         # Deletes a model
         # @param [String] name
-        #   Required. The name of the model to delete.
-        #   The name must have the form `projects/`project_id`/models/`model_id``
+        #   Required. The name of the model to delete. The name must have the form `
+        #   projects/`project_id`/models/`model_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -115,8 +115,8 @@ module Google
         
         # Gets a model resource.
         # @param [String] name
-        #   Required. The name of the model to get.
-        #   The name must have the form `projects/`project_id`/models/`model_id``
+        #   Required. The name of the model to get. The name must have the form `projects/`
+        #   project_id`/models/`model_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -146,11 +146,11 @@ module Google
         
         # Lists the models
         # @param [String] parent
-        #   Required. The name of the parent to list models for.
-        #   The parent must have the form `projects/`project_id`'
+        #   Required. The name of the parent to list models for. The parent must have the
+        #   form `projects/`project_id`'
         # @param [String] filter
-        #   A filter for the list
-        #   e.g. 'tags: abc' to list models which are tagged with "abc"
+        #   A filter for the list e.g. 'tags: abc' to list models which are tagged with "
+        #   abc"
         # @param [Fixnum] page_size
         #   The maximum number of items to return
         # @param [String] page_token
@@ -187,9 +187,8 @@ module Google
         
         # Updates a model. The longrunning operation will eventually return a Model.
         # @param [String] name
-        #   The resource name of the Model.
-        #   Model names have the form `projects/`project_id`/models/`model_id``
-        #   The name is ignored when creating a model.
+        #   The resource name of the Model. Model names have the form `projects/`
+        #   project_id`/models/`model_id`` The name is ignored when creating a model.
         # @param [Google::Apis::FirebasemlV1beta2::Model] model_object
         # @param [String] update_mask
         #   The update mask
@@ -223,9 +222,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields

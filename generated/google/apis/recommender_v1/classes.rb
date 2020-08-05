@@ -87,8 +87,8 @@ module Google
         # @return [String]
         attr_accessor :category
       
-        # A struct of custom fields to explain the insight.
-        # Example: "grantedPermissionsCount": "1000"
+        # A struct of custom fields to explain the insight. Example: "
+        # grantedPermissionsCount": "1000"
         # Corresponds to the JSON property `content`
         # @return [Hash<String,Object>]
         attr_accessor :content
@@ -99,8 +99,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Fingerprint of the Insight. Provides optimistic locking when updating
-        # states.
+        # Fingerprint of the Insight. Provides optimistic locking when updating states.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -120,9 +119,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Observation period that led to the insight. The source data used to
-        # generate the insight ends at last_refresh_time and begins at
-        # (last_refresh_time - observation_period).
+        # Observation period that led to the insight. The source data used to generate
+        # the insight ends at last_refresh_time and begins at (last_refresh_time -
+        # observation_period).
         # Corresponds to the JSON property `observationPeriod`
         # @return [String]
         attr_accessor :observation_period
@@ -161,9 +160,8 @@ module Google
       class GoogleCloudRecommenderV1InsightRecommendationReference
         include Google::Apis::Core::Hashable
       
-        # Recommendation resource name, e.g.
-        # projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/
-        # recommendations/[RECOMMENDATION_ID]
+        # Recommendation resource name, e.g. projects/[PROJECT_NUMBER]/locations/[
+        # LOCATION]/recommenders/[RECOMMENDER_ID]/recommendations/[RECOMMENDATION_ID]
         # Corresponds to the JSON property `recommendation`
         # @return [String]
         attr_accessor :recommendation
@@ -264,9 +262,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Optional. State properties user wish to include with this state.  Full replace
-        # of the
-        # current state_metadata.
+        # Optional. State properties user wish to include with this state. Full replace
+        # of the current state_metadata.
         # Corresponds to the JSON property `stateMetadata`
         # @return [Hash<String,String>]
         attr_accessor :state_metadata
@@ -291,10 +288,9 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # State properties to include with this state. Overwrites any existing
-        # `state_metadata`.
-        # Keys must match the regex /^a-z0-9`0,62`$/.
-        # Values must match the regex /^[a-zA-Z0-9_./-]`0,255`$/.
+        # State properties to include with this state. Overwrites any existing `
+        # state_metadata`. Keys must match the regex /^a-z0-9`0,62`$/. Values must match
+        # the regex /^[a-zA-Z0-9_./-]`0,255`$/.
         # Corresponds to the JSON property `stateMetadata`
         # @return [Hash<String,String>]
         attr_accessor :state_metadata
@@ -319,10 +315,9 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # State properties to include with this state. Overwrites any existing
-        # `state_metadata`.
-        # Keys must match the regex /^a-z0-9`0,62`$/.
-        # Values must match the regex /^[a-zA-Z0-9_./-]`0,255`$/.
+        # State properties to include with this state. Overwrites any existing `
+        # state_metadata`. Keys must match the regex /^a-z0-9`0,62`$/. Values must match
+        # the regex /^[a-zA-Z0-9_./-]`0,255`$/.
         # Corresponds to the JSON property `stateMetadata`
         # @return [Hash<String,String>]
         attr_accessor :state_metadata
@@ -347,10 +342,9 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # State properties to include with this state. Overwrites any existing
-        # `state_metadata`.
-        # Keys must match the regex /^a-z0-9`0,62`$/.
-        # Values must match the regex /^[a-zA-Z0-9_./-]`0,255`$/.
+        # State properties to include with this state. Overwrites any existing `
+        # state_metadata`. Keys must match the regex /^a-z0-9`0,62`$/. Values must match
+        # the regex /^[a-zA-Z0-9_./-]`0,255`$/.
         # Corresponds to the JSON property `stateMetadata`
         # @return [Hash<String,String>]
         attr_accessor :state_metadata
@@ -367,19 +361,17 @@ module Google
       end
       
       # Contains an operation for a resource loosely based on the JSON-PATCH format
-      # with support for:
-      # * Custom filters for describing partial array patch.
-      # * Extended path values for describing nested arrays.
-      # * Custom fields for describing the resource for which the operation is being
-      # described.
-      # * Allows extension to custom operations not natively supported by RFC6902.
-      # See https://tools.ietf.org/html/rfc6902 for details on the original RFC.
+      # with support for: * Custom filters for describing partial array patch. *
+      # Extended path values for describing nested arrays. * Custom fields for
+      # describing the resource for which the operation is being described. * Allows
+      # extension to custom operations not natively supported by RFC6902. See https://
+      # tools.ietf.org/html/rfc6902 for details on the original RFC.
       class GoogleCloudRecommenderV1Operation
         include Google::Apis::Core::Hashable
       
-        # Type of this operation. Contains one of 'and', 'remove', 'replace', 'move',
-        # 'copy', 'test' and custom operations. This field is case-insensitive and
-        # always populated.
+        # Type of this operation. Contains one of 'and', 'remove', 'replace', 'move', '
+        # copy', 'test' and custom operations. This field is case-insensitive and always
+        # populated.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -392,45 +384,34 @@ module Google
       
         # Set of filters to apply if `path` refers to array elements or nested array
         # elements in order to narrow down to a single unique element that is being
-        # tested/modified.
-        # This is intended to be an exact match per filter. To perform advanced
-        # matching, use path_value_matchers.
-        # * Example: `
-        # "/versions/*/name" : "it-123"
-        # "/versions/*/targetSize/percent": 20
-        # `
-        # * Example: `
-        # "/bindings/*/role": "roles/admin"
-        # "/bindings/*/condition" : null
-        # `
-        # * Example: `
-        # "/bindings/*/role": "roles/admin"
-        # "/bindings/*/members/*" : ["x@google.com", "y@google.com"]
-        # `
-        # When both path_filters and path_value_matchers are set, an implicit AND
-        # must be performed.
+        # tested/modified. This is intended to be an exact match per filter. To perform
+        # advanced matching, use path_value_matchers. * Example: ` "/versions/*/name" : "
+        # it-123" "/versions/*/targetSize/percent": 20 ` * Example: ` "/bindings/*/role":
+        # "roles/admin" "/bindings/*/condition" : null ` * Example: ` "/bindings/*/role"
+        # : "roles/admin" "/bindings/*/members/*" : ["x@google.com", "y@google.com"] `
+        # When both path_filters and path_value_matchers are set, an implicit AND must
+        # be performed.
         # Corresponds to the JSON property `pathFilters`
         # @return [Hash<String,Object>]
         attr_accessor :path_filters
       
-        # Similar to path_filters, this contains set of filters to apply if `path`
-        # field referes to array elements. This is meant to support value matching
-        # beyond exact match. To perform exact match, use path_filters.
-        # When both path_filters and path_value_matchers are set, an implicit AND
-        # must be performed.
+        # Similar to path_filters, this contains set of filters to apply if `path` field
+        # referes to array elements. This is meant to support value matching beyond
+        # exact match. To perform exact match, use path_filters. When both path_filters
+        # and path_value_matchers are set, an implicit AND must be performed.
         # Corresponds to the JSON property `pathValueMatchers`
         # @return [Hash<String,Google::Apis::RecommenderV1::GoogleCloudRecommenderV1ValueMatcher>]
         attr_accessor :path_value_matchers
       
-        # Contains the fully qualified resource name. This field is always populated.
-        # ex: //cloudresourcemanager.googleapis.com/projects/foo.
+        # Contains the fully qualified resource name. This field is always populated. ex:
+        # //cloudresourcemanager.googleapis.com/projects/foo.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
       
         # Type of GCP resource being modified/tested. This field is always populated.
-        # Example: cloudresourcemanager.googleapis.com/Project,
-        # compute.googleapis.com/Instance
+        # Example: cloudresourcemanager.googleapis.com/Project, compute.googleapis.com/
+        # Instance
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -441,18 +422,17 @@ module Google
         # @return [String]
         attr_accessor :source_path
       
-        # Can be set with action 'copy' to copy resource configuration across
-        # different resources of the same type. Example: A resource clone can be
-        # done via action = 'copy', path = "/", from = "/",
-        # source_resource = <source> and resource_name = <target>.
-        # This field is empty for all other values of `action`.
+        # Can be set with action 'copy' to copy resource configuration across different
+        # resources of the same type. Example: A resource clone can be done via action =
+        # 'copy', path = "/", from = "/", source_resource = and resource_name = . This
+        # field is empty for all other values of `action`.
         # Corresponds to the JSON property `sourceResource`
         # @return [String]
         attr_accessor :source_resource
       
-        # Value for the `path` field. Will be set for actions:'add'/'replace'.
-        # Maybe set for action: 'test'. Either this or `value_matcher` will be set
-        # for 'test' operation. An exact match must be performed.
+        # Value for the `path` field. Will be set for actions:'add'/'replace'. Maybe set
+        # for action: 'test'. Either this or `value_matcher` will be set for 'test'
+        # operation. An exact match must be performed.
         # Corresponds to the JSON property `value`
         # @return [Object]
         attr_accessor :value
@@ -507,8 +487,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional set of additional impact that this recommendation may have when
-        # trying to optimize for the primary category. These may be positive
-        # or negative.
+        # trying to optimize for the primary category. These may be positive or negative.
         # Corresponds to the JSON property `additionalImpact`
         # @return [Array<Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Impact>]
         attr_accessor :additional_impact
@@ -529,14 +508,14 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Fingerprint of the Recommendation. Provides optimistic locking when
-        # updating states.
+        # Fingerprint of the Recommendation. Provides optimistic locking when updating
+        # states.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # Last time this recommendation was refreshed by the system that created it
-        # in the first place.
+        # Last time this recommendation was refreshed by the system that created it in
+        # the first place.
         # Corresponds to the JSON property `lastRefreshTime`
         # @return [String]
         attr_accessor :last_refresh_time
@@ -551,14 +530,13 @@ module Google
         # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Impact]
         attr_accessor :primary_impact
       
-        # Contains an identifier for a subtype of recommendations produced for the
-        # same recommender. Subtype is a function of content and impact, meaning a
-        # new subtype might be added when significant changes to `content` or
-        # `primary_impact.category` are introduced. See the Recommenders section
-        # to see a list of subtypes for a given Recommender.
-        # Examples:
-        # For recommender = "google.iam.policy.Recommender",
-        # recommender_subtype can be one of "REMOVE_ROLE"/"REPLACE_ROLE"
+        # Contains an identifier for a subtype of recommendations produced for the same
+        # recommender. Subtype is a function of content and impact, meaning a new
+        # subtype might be added when significant changes to `content` or `
+        # primary_impact.category` are introduced. See the Recommenders section to see a
+        # list of subtypes for a given Recommender. Examples: For recommender = "google.
+        # iam.policy.Recommender", recommender_subtype can be one of "REMOVE_ROLE"/"
+        # REPLACE_ROLE"
         # Corresponds to the JSON property `recommenderSubtype`
         # @return [String]
         attr_accessor :recommender_subtype
@@ -591,9 +569,9 @@ module Google
       class GoogleCloudRecommenderV1RecommendationContent
         include Google::Apis::Core::Hashable
       
-        # Operations to one or more Google Cloud resources grouped in such a way
-        # that, all operations within one group are expected to be performed
-        # atomically and in an order.
+        # Operations to one or more Google Cloud resources grouped in such a way that,
+        # all operations within one group are expected to be performed atomically and in
+        # an order.
         # Corresponds to the JSON property `operationGroups`
         # @return [Array<Google::Apis::RecommenderV1::GoogleCloudRecommenderV1OperationGroup>]
         attr_accessor :operation_groups
@@ -612,9 +590,8 @@ module Google
       class GoogleCloudRecommenderV1RecommendationInsightReference
         include Google::Apis::Core::Hashable
       
-        # Insight resource name, e.g.
-        # projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/
-        # insights/[INSIGHT_ID]
+        # Insight resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/
+        # insightTypes/[INSIGHT_TYPE_ID]/insights/[INSIGHT_ID]
         # Corresponds to the JSON property `insight`
         # @return [String]
         attr_accessor :insight
@@ -658,9 +635,9 @@ module Google
       class GoogleCloudRecommenderV1ValueMatcher
         include Google::Apis::Core::Hashable
       
-        # To be used for full regex matching. The regular expression is using the
-        # Google RE2 syntax (https://github.com/google/re2/wiki/Syntax), so to be
-        # used with RE2::FullMatch
+        # To be used for full regex matching. The regular expression is using the Google
+        # RE2 syntax (https://github.com/google/re2/wiki/Syntax), so to be used with RE2:
+        # :FullMatch
         # Corresponds to the JSON property `matchesPattern`
         # @return [String]
         attr_accessor :matches_pattern
@@ -684,18 +661,17 @@ module Google
         # @return [String]
         attr_accessor :currency_code
       
-        # Number of nano (10^-9) units of the amount.
-        # The value must be between -999,999,999 and +999,999,999 inclusive.
-        # If `units` is positive, `nanos` must be positive or zero.
-        # If `units` is zero, `nanos` can be positive, zero, or negative.
-        # If `units` is negative, `nanos` must be negative or zero.
-        # For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # Number of nano (10^-9) units of the amount. The value must be between -999,999,
+        # 999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be
+        # positive or zero. If `units` is zero, `nanos` can be positive, zero, or
+        # negative. If `units` is negative, `nanos` must be negative or zero. For
+        # example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # The whole units of the amount.
-        # For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        # The whole units of the amount. For example if `currencyCode` is `"USD"`, then
+        # 1 unit is one US dollar.
         # Corresponds to the JSON property `units`
         # @return [Fixnum]
         attr_accessor :units

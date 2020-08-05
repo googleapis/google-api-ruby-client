@@ -47,11 +47,10 @@ module Google
           @batch_path = 'batch/androidenterprise/v1'
         end
         
-        # Uploads a report containing any changes in app states on the device since
-        # the last report was generated. You can call this method up to 3 times every
-        # 24 hours for a given device.
-        # If you exceed the quota, then the Google Play EMM API returns <code>HTTP
-        # 429 Too Many Requests</code>.
+        # Uploads a report containing any changes in app states on the device since the
+        # last report was generated. You can call this method up to 3 times every 24
+        # hours for a given device. If you exceed the quota, then the Google Play EMM
+        # API returns HTTP 429 Too Many Requests.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -121,13 +120,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves whether a device's access to Google services is enabled or
-        # disabled.
+        # Retrieves whether a device's access to Google services is enabled or disabled.
         # The device state takes effect only if enforcing EMM policies on Android
-        # devices is enabled in the Google Admin Console.
-        # Otherwise, the device state is ignored and all devices are allowed access
-        # to Google services.
-        # This is only supported for Google-managed users.
+        # devices is enabled in the Google Admin Console. Otherwise, the device state is
+        # ignored and all devices are allowed access to Google services. This is only
+        # supported for Google-managed users.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -196,12 +193,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets whether a device's access to Google services is enabled or disabled.
-        # The device state takes effect only if enforcing EMM policies on Android
-        # devices is enabled in the Google Admin Console.
-        # Otherwise, the device state is ignored and all devices are allowed access
-        # to Google services.
-        # This is only supported for Google-managed users.
+        # Sets whether a device's access to Google services is enabled or disabled. The
+        # device state takes effect only if enforcing EMM policies on Android devices is
+        # enabled in the Google Admin Console. Otherwise, the device state is ignored
+        # and all devices are allowed access to Google services. This is only supported
+        # for Google-managed users.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -249,10 +245,9 @@ module Google
         #   The ID of the device.
         # @param [Google::Apis::AndroidenterpriseV1::Device] device_object
         # @param [String] update_mask
-        #   Mask that identifies which fields to update. If not set, all modifiable
-        #   fields will be modified.
-        #   When set in a query parameter, this field should be specified as
-        #   <code>updateMask=&lt;field1&gt;,&lt;field2&gt;,...</code>
+        #   Mask that identifies which fields to update. If not set, all modifiable fields
+        #   will be modified. When set in a query parameter, this field should be
+        #   specified as updateMask=<field1>,<field2>,...
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -285,12 +280,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Acknowledges notifications that were received from
-        # Enterprises.PullNotificationSet to prevent subsequent calls from returning
-        # the same notifications.
+        # Acknowledges notifications that were received from Enterprises.
+        # PullNotificationSet to prevent subsequent calls from returning the same
+        # notifications.
         # @param [String] notification_set_id
-        #   The notification set ID as returned by Enterprises.PullNotificationSet.
-        #   This must be provided.
+        #   The notification set ID as returned by Enterprises.PullNotificationSet. This
+        #   must be provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -316,9 +311,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Completes the signup flow, by specifying the Completion token and
-        # Enterprise token.
-        # This request must not be called multiple times for a given Enterprise
+        # Completes the signup flow, by specifying the Completion token and Enterprise
+        # token. This request must not be called multiple times for a given Enterprise
         # Token.
         # @param [String] completion_token
         #   The Completion token initially returned by GenerateSignupUrl.
@@ -352,10 +346,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a unique token to access an embeddable UI. To generate a
-        # web UI, pass the generated token into the managed Google Play javascript
-        # API. Each token may only be used to start one UI session. See the
-        # javascript API documentation for further information.
+        # Returns a unique token to access an embeddable UI. To generate a web UI, pass
+        # the generated token into the managed Google Play javascript API. Each token
+        # may only be used to start one UI session. See the javascript API documentation
+        # for further information.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpec] administrator_web_token_spec_object
@@ -424,13 +418,12 @@ module Google
         # Generates a sign-up URL.
         # @param [String] callback_url
         #   The callback URL to which the Admin will be redirected after successfully
-        #   creating an enterprise. Before redirecting there the system will add a
-        #   single query parameter to this URL named "enterpriseToken" which will
-        #   contain an opaque token to be used for the CompleteSignup request.<br>
-        #   Beware that this means that the URL will be parsed, the parameter added
-        #   and then a new URL formatted, i.e. there may be some minor formatting
-        #   changes and, more importantly, the URL must be well-formed so that it can
-        #   be parsed.
+        #   creating an enterprise. Before redirecting there the system will add a single
+        #   query parameter to this URL named "enterpriseToken" which will contain an
+        #   opaque token to be used for the CompleteSignup request. Beware that this means
+        #   that the URL will be parsed, the parameter added and then a new URL formatted,
+        #   i.e. there may be some minor formatting changes and, more importantly, the URL
+        #   must be well-formed so that it can be parsed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -488,21 +481,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a service account and credentials. The service account
-        # can be bound to the enterprise by calling setAccount. The service account
-        # is unique to this enterprise and EMM, and will be deleted if the enterprise
-        # is unbound. The credentials contain private key data and are not stored
-        # server-side.
-        # <br> <br>
-        # This method can only be called after calling
-        # Enterprises.Enroll or Enterprises.CompleteSignup, and before
-        # Enterprises.SetAccount; at other times it will return an error.
-        # <br> <br>
-        # Subsequent calls after the first will generate a new, unique set of
-        # credentials, and invalidate the previously generated credentials.
-        # <br> <br>
-        # Once the service account is bound to the enterprise, it can be managed
-        # using the serviceAccountKeys resource.
+        # Returns a service account and credentials. The service account can be bound to
+        # the enterprise by calling setAccount. The service account is unique to this
+        # enterprise and EMM, and will be deleted if the enterprise is unbound. The
+        # credentials contain private key data and are not stored server-side. This
+        # method can only be called after calling Enterprises.Enroll or Enterprises.
+        # CompleteSignup, and before Enterprises.SetAccount; at other times it will
+        # return an error. Subsequent calls after the first will generate a new, unique
+        # set of credentials, and invalidate the previously generated credentials. Once
+        # the service account is bound to the enterprise, it can be managed using the
+        # serviceAccountKeys resource.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] key_type
@@ -535,9 +523,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the store layout for the enterprise. If the store layout
-        # has not been set, returns "basic" as the store layout type and no
-        # homepage.
+        # Returns the store layout for the enterprise. If the store layout has not been
+        # set, returns "basic" as the store layout type and no homepage.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] fields
@@ -567,11 +554,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up an enterprise by domain name.
-        # This is only supported for enterprises created via the Google-initiated
-        # creation flow.  Lookup of the id is not needed for enterprises created via
-        # the EMM-initiated flow since the EMM learns the enterprise ID in the
-        # callback specified in the Enterprises.generateSignupUrl call.
+        # Looks up an enterprise by domain name. This is only supported for enterprises
+        # created via the Google-initiated creation flow. Lookup of the id is not needed
+        # for enterprises created via the EMM-initiated flow since the EMM learns the
+        # enterprise ID in the callback specified in the Enterprises.generateSignupUrl
+        # call.
         # @param [String] domain
         #   Required. The exact primary domain name of the enterprise to look up.
         # @param [String] fields
@@ -601,38 +588,26 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Pulls and returns a notification set for the enterprises associated with
-        # the service account authenticated for the request. The notification set may
-        # be empty if no notification are pending.
-        # <br>
-        # A notification set returned needs to be acknowledged within 20 seconds
-        # by calling Enterprises.AcknowledgeNotificationSet, unless the
-        # notification set is empty.
-        # <br>
-        # Notifications that are not acknowledged within the 20 seconds will
-        # eventually be included again in the response to another PullNotificationSet
-        # request, and those that are never acknowledged will ultimately be deleted
-        # according to the Google Cloud Platform Pub/Sub system policy.
-        # <br>
-        # Multiple requests might be performed concurrently to retrieve
-        # notifications, in which case the pending notifications (if any) will be
-        # split among each caller, if any are pending.
-        # <br>
-        # If no notifications are present, an empty notification list is returned.
-        # Subsequent requests may return more notifications once they become
-        # available.
+        # Pulls and returns a notification set for the enterprises associated with the
+        # service account authenticated for the request. The notification set may be
+        # empty if no notification are pending. A notification set returned needs to be
+        # acknowledged within 20 seconds by calling Enterprises.
+        # AcknowledgeNotificationSet, unless the notification set is empty.
+        # Notifications that are not acknowledged within the 20 seconds will eventually
+        # be included again in the response to another PullNotificationSet request, and
+        # those that are never acknowledged will ultimately be deleted according to the
+        # Google Cloud Platform Pub/Sub system policy. Multiple requests might be
+        # performed concurrently to retrieve notifications, in which case the pending
+        # notifications (if any) will be split among each caller, if any are pending. If
+        # no notifications are present, an empty notification list is returned.
+        # Subsequent requests may return more notifications once they become available.
         # @param [String] request_mode
-        #   The request mode for pulling notifications.
-        #   <br>
-        #   Specifying <code>waitForNotifications</code> will cause the request to
-        #   block and wait until one or more notifications are present, or return an
-        #   empty notification list if no notifications are present after some time.
-        #   <br>
-        #   Speciying <code>returnImmediately</code> will cause the request to
+        #   The request mode for pulling notifications. Specifying waitForNotifications
+        #   will cause the request to block and wait until one or more notifications are
+        #   present, or return an empty notification list if no notifications are present
+        #   after some time. Speciying returnImmediately will cause the request to
         #   immediately return the pending notifications, or an empty list if no
-        #   notifications are present.
-        #   <br>
-        #   If omitted, defaults to <code>waitForNotifications</code>.
+        #   notifications are present. If omitted, defaults to waitForNotifications.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -660,8 +635,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sends a test notification to validate the EMM integration with
-        # the Google Cloud Pub/Sub service for this enterprise.
+        # Sends a test notification to validate the EMM integration with the Google
+        # Cloud Pub/Sub service for this enterprise.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] fields
@@ -725,15 +700,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the store layout for the enterprise. By default, storeLayoutType
-        # is set to "basic" and the basic store layout is enabled. The basic
-        # layout only contains apps approved by the admin, and that have
-        # been added to the available product set for a user (using the
-        # <a href="/android/work/play/emm-api/v1/users/setAvailableProductSet">
-        # setAvailableProductSet</a> call). Apps on the page are sorted in order of
-        # their product ID value. If you create a custom store layout (by setting
-        # storeLayoutType = "custom" and setting a homepage), the basic store
-        # layout is disabled.
+        # Sets the store layout for the enterprise. By default, storeLayoutType is set
+        # to "basic" and the basic store layout is enabled. The basic layout only
+        # contains apps approved by the admin, and that have been added to the available
+        # product set for a user (using the setAvailableProductSet call). Apps on the
+        # page are sorted in order of their product ID value. If you create a custom
+        # store layout (by setting storeLayoutType = "custom" and setting a homepage),
+        # the basic store layout is disabled.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Google::Apis::AndroidenterpriseV1::StoreLayout] store_layout_object
@@ -907,9 +880,9 @@ module Google
         # @param [Google::Apis::AndroidenterpriseV1::Entitlement] entitlement_object
         # @param [Boolean] install
         #   Set to true to also install the product on all the user's devices where
-        #   possible. Failure to install on one or more devices will not prevent
-        #   this operation from returning successfully, as long as the entitlement
-        #   was successfully assigned to the user.
+        #   possible. Failure to install on one or more devices will not prevent this
+        #   operation from returning successfully, as long as the entitlement was
+        #   successfully assigned to the user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -946,8 +919,8 @@ module Google
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] group_license_id
-        #   The ID of the product the group license is for, e.g.
-        #   "app:com.google.android.gm".
+        #   The ID of the product the group license is for, e.g. "app:com.google.android.
+        #   gm".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1006,13 +979,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the IDs of the users who have been granted entitlements
-        # under the license.
+        # Retrieves the IDs of the users who have been granted entitlements under the
+        # license.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] group_license_id
-        #   The ID of the product the group license is for, e.g.
-        #   "app:com.google.android.gm".
+        #   The ID of the product the group license is for, e.g. "app:com.google.android.
+        #   gm".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1041,9 +1014,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Requests to remove an app from a device. A call to <code>get</code> or
-        # <code>list</code> will still show the app as installed on the device until
-        # it is actually removed.
+        # Requests to remove an app from a device. A call to get or list will still show
+        # the app as installed on the device until it is actually removed.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -1051,8 +1023,8 @@ module Google
         # @param [String] device_id
         #   The Android ID of the device.
         # @param [String] install_id
-        #   The ID of the product represented by the install, e.g.
-        #   "app:com.google.android.gm".
+        #   The ID of the product represented by the install, e.g. "app:com.google.android.
+        #   gm".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1089,8 +1061,8 @@ module Google
         # @param [String] device_id
         #   The Android ID of the device.
         # @param [String] install_id
-        #   The ID of the product represented by the install, e.g.
-        #   "app:com.google.android.gm".
+        #   The ID of the product represented by the install, e.g. "app:com.google.android.
+        #   gm".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1157,9 +1129,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Requests to install the latest version of an app to a device. If the app
-        # is already installed, then it is updated to the latest version if
-        # necessary.
+        # Requests to install the latest version of an app to a device. If the app is
+        # already installed, then it is updated to the latest version if necessary.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -1167,8 +1138,8 @@ module Google
         # @param [String] device_id
         #   The Android ID of the device.
         # @param [String] install_id
-        #   The ID of the product represented by the install, e.g.
-        #   "app:com.google.android.gm".
+        #   The ID of the product represented by the install, e.g. "app:com.google.android.
+        #   gm".
         # @param [Google::Apis::AndroidenterpriseV1::Install] install_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1202,8 +1173,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes a per-device managed configuration for an app for the specified
-        # device.
+        # Removes a per-device managed configuration for an app for the specified device.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -1211,8 +1181,8 @@ module Google
         # @param [String] device_id
         #   The Android ID of the device.
         # @param [String] managed_configuration_for_device_id
-        #   The ID of the managed configuration (a product ID), e.g.
-        #   "app:com.google.android.gm".
+        #   The ID of the managed configuration (a product ID), e.g. "app:com.google.
+        #   android.gm".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1249,8 +1219,8 @@ module Google
         # @param [String] device_id
         #   The Android ID of the device.
         # @param [String] managed_configuration_for_device_id
-        #   The ID of the managed configuration (a product ID), e.g.
-        #   "app:com.google.android.gm".
+        #   The ID of the managed configuration (a product ID), e.g. "app:com.google.
+        #   android.gm".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1281,8 +1251,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the per-device managed configurations for the specified device.
-        # Only the ID is set.
+        # Lists all the per-device managed configurations for the specified device. Only
+        # the ID is set.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -1327,8 +1297,8 @@ module Google
         # @param [String] device_id
         #   The Android ID of the device.
         # @param [String] managed_configuration_for_device_id
-        #   The ID of the managed configuration (a product ID), e.g.
-        #   "app:com.google.android.gm".
+        #   The ID of the managed configuration (a product ID), e.g. "app:com.google.
+        #   android.gm".
         # @param [Google::Apis::AndroidenterpriseV1::ManagedConfiguration] managed_configuration_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1368,8 +1338,8 @@ module Google
         # @param [String] user_id
         #   The ID of the user.
         # @param [String] managed_configuration_for_user_id
-        #   The ID of the managed configuration (a product ID), e.g.
-        #   "app:com.google.android.gm".
+        #   The ID of the managed configuration (a product ID), e.g. "app:com.google.
+        #   android.gm".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1404,8 +1374,8 @@ module Google
         # @param [String] user_id
         #   The ID of the user.
         # @param [String] managed_configuration_for_user_id
-        #   The ID of the managed configuration (a product ID), e.g.
-        #   "app:com.google.android.gm".
+        #   The ID of the managed configuration (a product ID), e.g. "app:com.google.
+        #   android.gm".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1435,8 +1405,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the per-user managed configurations for the specified user. Only
-        # the ID is set.
+        # Lists all the per-user managed configurations for the specified user. Only the
+        # ID is set.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -1470,24 +1440,17 @@ module Google
         end
         
         # Adds or updates the managed configuration settings for an app for the
-        # specified user.
-        # If you support the <a
-        # href="https://developers.google.com/android/work/play/emm-api/managed-
-        # configurations-iframe">Managed
-        # configurations iframe</a>,
-        # you can apply managed configurations to a user by specifying an
-        # <code>mcmId</code>
-        # and its associated configuration variables (if any) in the request.
-        # Alternatively,
-        # all EMMs can apply managed configurations by passing a list of managed
-        # properties.
+        # specified user. If you support the Managed configurations iframe, you can
+        # apply managed configurations to a user by specifying an mcmId and its
+        # associated configuration variables (if any) in the request. Alternatively, all
+        # EMMs can apply managed configurations by passing a list of managed properties.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
         #   The ID of the user.
         # @param [String] managed_configuration_for_user_id
-        #   The ID of the managed configuration (a product ID), e.g.
-        #   "app:com.google.android.gm".
+        #   The ID of the managed configuration (a product ID), e.g. "app:com.google.
+        #   android.gm".
         # @param [Google::Apis::AndroidenterpriseV1::ManagedConfiguration] managed_configuration_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1524,8 +1487,7 @@ module Google
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] product_id
-        #   The ID of the product for which the managed configurations settings applies
-        #   to.
+        #   The ID of the product for which the managed configurations settings applies to.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1588,13 +1550,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # <p>Approves the specified product and the relevant app permissions, if any.
-        # The maximum number of products that you can approve per enterprise customer
-        # is 1,000.</p>
-        # <p>To learn how to use managed Google Play to design and create a store
-        # layout to display approved products to your users,
-        # see <a href="/android/work/play/emm-api/store-layout">Store Layout
-        # Design</a>.</p>
+        # Approves the specified product and the relevant app permissions, if any. The
+        # maximum number of products that you can approve per enterprise customer is 1,
+        # 000. To learn how to use managed Google Play to design and create a store
+        # layout to display approved products to your users, see Store Layout Design.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] product_id
@@ -1628,23 +1587,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates a URL that can be rendered in an iframe to display the
-        # permissions (if any) of a product. An enterprise admin must view these
-        # permissions and accept them on behalf of their organization in order to
-        # approve that product. <br><br>
-        # Admins should accept the displayed permissions by
-        # interacting with a separate UI element in the EMM console, which in turn
-        # should trigger the use of this URL as the
-        # <code>approvalUrlInfo.approvalUrl</code> property in a
-        # <code>Products.approve</code> call to approve the product.
-        # This URL can only be used to display permissions for up to 1 day.
+        # Generates a URL that can be rendered in an iframe to display the permissions (
+        # if any) of a product. An enterprise admin must view these permissions and
+        # accept them on behalf of their organization in order to approve that product.
+        # Admins should accept the displayed permissions by interacting with a separate
+        # UI element in the EMM console, which in turn should trigger the use of this
+        # URL as the approvalUrlInfo.approvalUrl property in a Products.approve call to
+        # approve the product. This URL can only be used to display permissions for up
+        # to 1 day.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] product_id
         #   The ID of the product.
         # @param [String] language_code
-        #   The BCP 47 language code used for permission names and descriptions in
-        #   the returned iframe, for instance "en-US".
+        #   The BCP 47 language code used for permission names and descriptions in the
+        #   returned iframe, for instance "en-US".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1710,14 +1667,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the schema that defines the configurable properties for this
-        # product. All products have a schema, but this schema may be empty if no
-        # managed configurations have been defined. This schema can be used to
-        # populate a UI that allows an admin to configure the product.
-        # To apply a managed configuration based on the schema obtained using this
-        # API, see
-        # <a href="/android/work/play/emm-api/managed-configurations">Managed
-        # Configurations through Play</a>.
+        # Retrieves the schema that defines the configurable properties for this product.
+        # All products have a schema, but this schema may be empty if no managed
+        # configurations have been defined. This schema can be used to populate a UI
+        # that allows an admin to configure the product. To apply a managed
+        # configuration based on the schema obtained using this API, see Managed
+        # Configurations through Play.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] product_id
@@ -1786,29 +1741,26 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Finds approved products that match a query, or all approved products
-        # if there is no query.
+        # Finds approved products that match a query, or all approved products if there
+        # is no query.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Boolean] approved
-        #   Specifies whether to search among all products (false) or among
-        #   only products that have been approved (true). Only "true" is
-        #   supported, and should be specified.
+        #   Specifies whether to search among all products (false) or among only products
+        #   that have been approved (true). Only "true" is supported, and should be
+        #   specified.
         # @param [String] language
-        #   The BCP47 tag for the user's preferred language (e.g. "en-US", "de").
-        #   Results are returned in the language best matching the preferred
-        #   language.
+        #   The BCP47 tag for the user's preferred language (e.g. "en-US", "de"). Results
+        #   are returned in the language best matching the preferred language.
         # @param [Fixnum] max_results
-        #   Defines how many results the list operation should return.
-        #   The default number depends on the resource collection.
+        #   Defines how many results the list operation should return. The default number
+        #   depends on the resource collection.
         # @param [String] query
-        #   The search query as typed in the Google Play store search box.
-        #   If omitted, all approved apps will be returned (using the pagination
-        #   parameters), including apps that are not available in the store
-        #   (e.g. unpublished apps).
+        #   The search query as typed in the Google Play store search box. If omitted, all
+        #   approved apps will be returned (using the pagination parameters), including
+        #   apps that are not available in the store (e.g. unpublished apps).
         # @param [String] token
-        #   Defines the token of the page to return, usually taken from
-        #   TokenPagination.
+        #   Defines the token of the page to return, usually taken from TokenPagination.
         #   This can only be used if token paging is enabled.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1875,8 +1827,8 @@ module Google
         
         # Removes and invalidates the specified credentials for the service account
         # associated with this enterprise. The calling service account must have been
-        # retrieved by calling Enterprises.GetServiceAccount and must have been set
-        # as the enterprise service account by calling Enterprises.SetAccount.
+        # retrieved by calling Enterprises.GetServiceAccount and must have been set as
+        # the enterprise service account by calling Enterprises.SetAccount.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] key_id
@@ -1909,10 +1861,9 @@ module Google
         
         # Generates new credentials for the service account associated with this
         # enterprise. The calling service account must have been retrieved by calling
-        # Enterprises.GetServiceAccount and must have been set as the enterprise
-        # service account by calling Enterprises.SetAccount. <br><br>
-        # Only the type of the key should be populated in the resource to be
-        # inserted.
+        # Enterprises.GetServiceAccount and must have been set as the enterprise service
+        # account by calling Enterprises.SetAccount. Only the type of the key should be
+        # populated in the resource to be inserted.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Google::Apis::AndroidenterpriseV1::ServiceAccountKey] service_account_key_object
@@ -1946,10 +1897,10 @@ module Google
         end
         
         # Lists all active credentials for the service account associated with this
-        # enterprise. Only the ID and key type are returned. The calling service
-        # account must have been retrieved by calling Enterprises.GetServiceAccount
-        # and must have been set as the enterprise service account by calling
-        # Enterprises.SetAccount.
+        # enterprise. Only the ID and key type are returned. The calling service account
+        # must have been retrieved by calling Enterprises.GetServiceAccount and must
+        # have been set as the enterprise service account by calling Enterprises.
+        # SetAccount.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] fields
@@ -2352,10 +2303,9 @@ module Google
         end
         
         # Generates an authentication token which the device policy client can use to
-        # provision the given EMM-managed user account on a device.
-        # The generated token is single-use and expires after a few minutes.
-        # You can provision a maximum of 10 devices per user.
-        # This call only works with EMM-managed accounts.
+        # provision the given EMM-managed user account on a device. The generated token
+        # is single-use and expires after a few minutes. You can provision a maximum of
+        # 10 devices per user. This call only works with EMM-managed accounts.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -2454,13 +2404,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new EMM-managed user.
-        # The <a href="/android/work/play/emm-api/v1/users.html">Users</a> resource
-        # passed in the body of the request should include an
-        # <code>accountIdentifier</code> and an <code>accountType</code>.
-        # <p>If a corresponding user already exists with the same account identifier,
-        # the user will be updated with the resource. In this case only the
-        # <code>displayName</code> field can be changed.
+        # Creates a new EMM-managed user. The Users resource passed in the body of the
+        # request should include an accountIdentifier and an accountType. If a
+        # corresponding user already exists with the same account identifier, the user
+        # will be updated with the resource. In this case only the displayName field can
+        # be changed.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [Google::Apis::AndroidenterpriseV1::User] user_object
@@ -2493,10 +2441,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up a user by primary email address.
-        # This is only supported for Google-managed users.  Lookup of the id is not
-        # needed for EMM-managed users because the id is already returned in the
-        # result of the Users.insert call.
+        # Looks up a user by primary email address. This is only supported for Google-
+        # managed users. Lookup of the id is not needed for EMM-managed users because
+        # the id is already returned in the result of the Users.insert call.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] email
@@ -2529,10 +2476,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Revokes access to all devices currently provisioned to the user. The user
-        # will no longer be able to use the managed Play store on any of their
-        # managed devices.
-        # This call only works with EMM-managed accounts.
+        # Revokes access to all devices currently provisioned to the user. The user will
+        # no longer be able to use the managed Play store on any of their managed
+        # devices. This call only works with EMM-managed accounts.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -2563,11 +2509,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the set of products that a user is entitled to access (referred to
-        # as <em>whitelisted</em> products). Only products that are
-        # <a href="/android/work/play/emm-api/v1/products/approve">approved</a>
-        # or products that were previously approved (products with revoked approval)
-        # can be whitelisted.
+        # Modifies the set of products that a user is entitled to access (referred to as
+        # *whitelisted* products). Only products that are approved or products that were
+        # previously approved (products with revoked approval) can be whitelisted.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -2603,13 +2547,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the details of an EMM-managed user.
-        # Can be used with EMM-managed users only (not Google managed users).
-        # Pass the new details in the
-        # <a href="/android/work/play/emm-api/v1/users.html">Users</a>
-        # resource in the request body. Only the <code>displayName</code> field
-        # can be changed. Other fields must either be unset or have the
-        # currently active value.
+        # Updates the details of an EMM-managed user. Can be used with EMM-managed users
+        # only (not Google managed users). Pass the new details in the Users resource in
+        # the request body. Only the displayName field can be changed. Other fields must
+        # either be unset or have the currently active value.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id

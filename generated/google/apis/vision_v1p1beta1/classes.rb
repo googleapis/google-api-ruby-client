@@ -27,12 +27,12 @@ module Google
       class AnnotateFileResponse
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VisionV1p1beta1::Status]
         attr_accessor :error
@@ -42,8 +42,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::InputConfig]
         attr_accessor :input_config
       
-        # Individual responses to images found within the file. This field will be
-        # empty if the `error` field is set.
+        # Individual responses to images found within the file. This field will be empty
+        # if the `error` field is set.
         # Corresponds to the JSON property `responses`
         # @return [Array<Google::Apis::VisionV1p1beta1::AnnotateImageResponse>]
         attr_accessor :responses
@@ -81,12 +81,12 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::CropHintsAnnotation]
         attr_accessor :crop_hints_annotation
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VisionV1p1beta1::Status]
         attr_accessor :error
@@ -96,13 +96,12 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::FaceAnnotation>]
         attr_accessor :face_annotations
       
-        # TextAnnotation contains a structured representation of OCR extracted text.
-        # The hierarchy of an OCR extracted text structure is like this:
-        # TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
-        # Each structural component, starting from Page, may further have their own
-        # properties. Properties describe detected languages, breaks etc.. Please refer
-        # to the TextAnnotation.TextProperty message definition below for more
-        # detail.
+        # TextAnnotation contains a structured representation of OCR extracted text. The
+        # hierarchy of an OCR extracted text structure is like this: TextAnnotation ->
+        # Page -> Block -> Paragraph -> Word -> Symbol Each structural component,
+        # starting from Page, may further have their own properties. Properties describe
+        # detected languages, breaks etc.. Please refer to the TextAnnotation.
+        # TextProperty message definition below for more detail.
         # Corresponds to the JSON property `fullTextAnnotation`
         # @return [Google::Apis::VisionV1p1beta1::TextAnnotation]
         attr_accessor :full_text_annotation
@@ -122,8 +121,8 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::EntityAnnotation>]
         attr_accessor :landmark_annotations
       
-        # If present, localized object detection has completed successfully.
-        # This will be sorted descending by confidence score.
+        # If present, localized object detection has completed successfully. This will
+        # be sorted descending by confidence score.
         # Corresponds to the JSON property `localizedObjectAnnotations`
         # @return [Array<Google::Apis::VisionV1p1beta1::LocalizedObjectAnnotation>]
         attr_accessor :localized_object_annotations
@@ -138,9 +137,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::ProductSearchResults]
         attr_accessor :product_search_results
       
-        # Set of features pertaining to the image, computed by computer vision
-        # methods over safe-search verticals (for example, adult, spoof, medical,
-        # violence).
+        # Set of features pertaining to the image, computed by computer vision methods
+        # over safe-search verticals (for example, adult, spoof, medical, violence).
         # Corresponds to the JSON property `safeSearchAnnotation`
         # @return [Google::Apis::VisionV1p1beta1::SafeSearchAnnotation]
         attr_accessor :safe_search_annotation
@@ -256,14 +254,14 @@ module Google
         end
       end
       
-      # Metadata for the batch operations such as the current state.
-      # This is included in the `metadata` field of the `Operation` returned by the
-      # `GetOperation` call of the `google::longrunning::Operations` service.
+      # Metadata for the batch operations such as the current state. This is included
+      # in the `metadata` field of the `Operation` returned by the `GetOperation` call
+      # of the `google::longrunning::Operations` service.
       class BatchOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # The time when the batch request is finished and
-        # google.longrunning.Operation.done is set to true.
+        # The time when the batch request is finished and google.longrunning.Operation.
+        # done is set to true.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -360,122 +358,61 @@ module Google
       
       # Represents a color in the RGBA color space. This representation is designed
       # for simplicity of conversion to/from color representations in various
-      # languages over compactness; for example, the fields of this representation
-      # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-      # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-      # method in iOS; and, with just a little work, it can be easily formatted into
-      # a CSS "rgba()" string in JavaScript, as well.
-      # Note: this proto does not carry information about the absolute color space
-      # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-      # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-      # space.
-      # Note: when color equality needs to be decided, implementations, unless
-      # documented otherwise, will treat two colors to be equal if all their red,
-      # green, blue and alpha values each differ by at most 1e-5.
-      # Example (Java):
-      # import com.google.type.Color;
-      # // ...
-      # public static java.awt.Color fromProto(Color protocolor) `
-      # float alpha = protocolor.hasAlpha()
-      # ? protocolor.getAlpha().getValue()
-      # : 1.0;
-      # return new java.awt.Color(
-      # protocolor.getRed(),
-      # protocolor.getGreen(),
-      # protocolor.getBlue(),
-      # alpha);
-      # `
-      # public static Color toProto(java.awt.Color color) `
-      # float red = (float) color.getRed();
-      # float green = (float) color.getGreen();
-      # float blue = (float) color.getBlue();
-      # float denominator = 255.0;
-      # Color.Builder resultBuilder =
-      # Color
-      # .newBuilder()
-      # .setRed(red / denominator)
-      # .setGreen(green / denominator)
-      # .setBlue(blue / denominator);
-      # int alpha = color.getAlpha();
-      # if (alpha != 255) `
-      # result.setAlpha(
-      # FloatValue
-      # .newBuilder()
-      # .setValue(((float) alpha) / denominator)
-      # .build());
-      # `
-      # return resultBuilder.build();
-      # `
-      # // ...
-      # Example (iOS / Obj-C):
-      # // ...
-      # static UIColor* fromProto(Color* protocolor) `
-      # float red = [protocolor red];
-      # float green = [protocolor green];
-      # float blue = [protocolor blue];
-      # FloatValue* alpha_wrapper = [protocolor alpha];
-      # float alpha = 1.0;
-      # if (alpha_wrapper != nil) `
-      # alpha = [alpha_wrapper value];
-      # `
-      # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-      # `
-      # static Color* toProto(UIColor* color) `
-      # CGFloat red, green, blue, alpha;
-      # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-      # return nil;
-      # `
-      # Color* result = [[Color alloc] init];
-      # [result setRed:red];
-      # [result setGreen:green];
-      # [result setBlue:blue];
-      # if (alpha <= 0.9999) `
-      # [result setAlpha:floatWrapperWithValue(alpha)];
-      # `
-      # [result autorelease];
-      # return result;
-      # `
-      # // ...
-      # Example (JavaScript):
-      # // ...
-      # var protoToCssColor = function(rgb_color) `
-      # var redFrac = rgb_color.red || 0.0;
-      # var greenFrac = rgb_color.green || 0.0;
-      # var blueFrac = rgb_color.blue || 0.0;
-      # var red = Math.floor(redFrac * 255);
-      # var green = Math.floor(greenFrac * 255);
-      # var blue = Math.floor(blueFrac * 255);
-      # if (!('alpha' in rgb_color)) `
-      # return rgbToCssColor_(red, green, blue);
-      # `
-      # var alphaFrac = rgb_color.alpha.value || 0.0;
-      # var rgbParams = [red, green, blue].join(',');
-      # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-      # `;
-      # var rgbToCssColor_ = function(red, green, blue) `
-      # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-      # var hexString = rgbNumber.toString(16);
-      # var missingZeros = 6 - hexString.length;
-      # var resultBuilder = ['#'];
-      # for (var i = 0; i < missingZeros; i++) `
-      # resultBuilder.push('0');
-      # `
-      # resultBuilder.push(hexString);
-      # return resultBuilder.join('');
-      # `;
-      # // ...
+      # languages over compactness; for example, the fields of this representation can
+      # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+      # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+      # method in iOS; and, with just a little work, it can be easily formatted into a
+      # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+      # information about the absolute color space that should be used to interpret
+      # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+      # applications SHOULD assume the sRGB color space. Note: when color equality
+      # needs to be decided, implementations, unless documented otherwise, will treat
+      # two colors to be equal if all their red, green, blue and alpha values each
+      # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+      # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+      # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+      # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+      # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+      # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+      # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+      # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+      # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+      # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+      # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+      # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+      # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+      # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+      # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+      # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+      # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+      # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+      # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+      # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+      # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+      # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+      # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+      # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+      # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+      # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+      # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+      # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+      # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+      # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+      # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+      # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+      # join(''); `; // ...
       class Color
         include Google::Apis::Core::Hashable
       
-        # The fraction of this color that should be applied to the pixel. That is,
-        # the final pixel color is defined by the equation:
-        # pixel color = alpha * (this color) + (1.0 - alpha) * (background color)
-        # This means that a value of 1.0 corresponds to a solid color, whereas
-        # a value of 0.0 corresponds to a completely transparent color. This
-        # uses a wrapper message rather than a simple float scalar so that it is
-        # possible to distinguish between a default value and the value being unset.
-        # If omitted, this color object is to be rendered as a solid color
-        # (as if the alpha value had been explicitly given with a value of 1.0).
+        # The fraction of this color that should be applied to the pixel. That is, the
+        # final pixel color is defined by the equation: pixel color = alpha * (this
+        # color) + (1.0 - alpha) * (background color) This means that a value of 1.0
+        # corresponds to a solid color, whereas a value of 0.0 corresponds to a
+        # completely transparent color. This uses a wrapper message rather than a simple
+        # float scalar so that it is possible to distinguish between a default value and
+        # the value being unset. If omitted, this color object is to be rendered as a
+        # solid color (as if the alpha value had been explicitly given with a value of 1.
+        # 0).
         # Corresponds to the JSON property `alpha`
         # @return [Float]
         attr_accessor :alpha
@@ -508,123 +445,61 @@ module Google
         end
       end
       
-      # Color information consists of RGB channels, score, and the fraction of
-      # the image that the color occupies in the image.
+      # Color information consists of RGB channels, score, and the fraction of the
+      # image that the color occupies in the image.
       class ColorInfo
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `color`
         # @return [Google::Apis::VisionV1p1beta1::Color]
         attr_accessor :color
       
-        # The fraction of pixels the color occupies in the image.
-        # Value in range [0, 1].
+        # The fraction of pixels the color occupies in the image. Value in range [0, 1].
         # Corresponds to the JSON property `pixelFraction`
         # @return [Float]
         attr_accessor :pixel_fraction
@@ -655,7 +530,7 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::BoundingPoly]
         attr_accessor :bounding_poly
       
-        # Confidence of this being a salient region.  Range [0, 1].
+        # Confidence of this being a salient region. Range [0, 1].
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -732,9 +607,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -778,11 +652,10 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::BoundingPoly]
         attr_accessor :bounding_poly
       
-        # **Deprecated. Use `score` instead.**
-        # The accuracy of the entity detection in an image.
-        # For example, for an image in which the "Eiffel Tower" entity is detected,
-        # this field represents the confidence that there is a tower in the query
-        # image. Range [0, 1].
+        # **Deprecated. Use `score` instead.** The accuracy of the entity detection in
+        # an image. For example, for an image in which the "Eiffel Tower" entity is
+        # detected, this field represents the confidence that there is a tower in the
+        # query image. Range [0, 1].
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -792,30 +665,29 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The language code for the locale in which the entity textual
-        # `description` is expressed.
+        # The language code for the locale in which the entity textual `description` is
+        # expressed.
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
       
-        # The location information for the detected entity. Multiple
-        # `LocationInfo` elements can be present because one location may
-        # indicate the location of the scene in the image, and another location
-        # may indicate the location of the place where the image was taken.
-        # Location information is usually present for landmarks.
+        # The location information for the detected entity. Multiple `LocationInfo`
+        # elements can be present because one location may indicate the location of the
+        # scene in the image, and another location may indicate the location of the
+        # place where the image was taken. Location information is usually present for
+        # landmarks.
         # Corresponds to the JSON property `locations`
         # @return [Array<Google::Apis::VisionV1p1beta1::LocationInfo>]
         attr_accessor :locations
       
-        # Opaque entity ID. Some IDs may be available in
-        # [Google Knowledge Graph Search
+        # Opaque entity ID. Some IDs may be available in [Google Knowledge Graph Search
         # API](https://developers.google.com/knowledge-graph/).
         # Corresponds to the JSON property `mid`
         # @return [String]
         attr_accessor :mid
       
-        # Some entities may have optional user-supplied `Property` (name/value)
-        # fields, such a score or string that qualifies the entity.
+        # Some entities may have optional user-supplied `Property` (name/value) fields,
+        # such a score or string that qualifies the entity.
         # Corresponds to the JSON property `properties`
         # @return [Array<Google::Apis::VisionV1p1beta1::Property>]
         attr_accessor :properties
@@ -825,11 +697,11 @@ module Google
         # @return [Float]
         attr_accessor :score
       
-        # The relevancy of the ICA (Image Content Annotation) label to the
-        # image. For example, the relevancy of "tower" is likely higher to an image
-        # containing the detected "Eiffel Tower" than to an image containing a
-        # detected distant towering building, even though the confidence that
-        # there is a tower in each image may be the same. Range [0, 1].
+        # The relevancy of the ICA (Image Content Annotation) label to the image. For
+        # example, the relevancy of "tower" is likely higher to an image containing the
+        # detected "Eiffel Tower" than to an image containing a detected distant
+        # towering building, even though the confidence that there is a tower in each
+        # image may be the same. Range [0, 1].
         # Corresponds to the JSON property `topicality`
         # @return [Float]
         attr_accessor :topicality
@@ -902,15 +774,15 @@ module Google
         attr_accessor :landmarks
       
         # Yaw angle, which indicates the leftward/rightward angle that the face is
-        # pointing relative to the vertical plane perpendicular to the image. Range
-        # [-180,180].
+        # pointing relative to the vertical plane perpendicular to the image. Range [-
+        # 180,180].
         # Corresponds to the JSON property `panAngle`
         # @return [Float]
         attr_accessor :pan_angle
       
-        # Roll angle, which indicates the amount of clockwise/anti-clockwise rotation
-        # of the face relative to the image vertical about the axis perpendicular to
-        # the face. Range [-180,180].
+        # Roll angle, which indicates the amount of clockwise/anti-clockwise rotation of
+        # the face relative to the image vertical about the axis perpendicular to the
+        # face. Range [-180,180].
         # Corresponds to the JSON property `rollAngle`
         # @return [Float]
         attr_accessor :roll_angle
@@ -964,24 +836,20 @@ module Google
       class GcsDestination
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage URI prefix where the results will be stored. Results
-        # will be in JSON format and preceded by its corresponding input URI prefix.
-        # This field can either represent a gcs file prefix or gcs directory. In
-        # either case, the uri should be unique because in order to get all of the
-        # output files, you will need to do a wildcard gcs search on the uri prefix
-        # you provide.
-        # Examples:
-        # *    File Prefix: gs://bucket-name/here/filenameprefix   The output files
-        # will be created in gs://bucket-name/here/ and the names of the
-        # output files will begin with "filenameprefix".
-        # *    Directory Prefix: gs://bucket-name/some/location/   The output files
-        # will be created in gs://bucket-name/some/location/ and the names of the
-        # output files could be anything because there was no filename prefix
-        # specified.
-        # If multiple outputs, each response is still AnnotateFileResponse, each of
-        # which contains some subset of the full list of AnnotateImageResponse.
-        # Multiple outputs can happen if, for example, the output JSON is too large
-        # and overflows into multiple sharded files.
+        # Google Cloud Storage URI prefix where the results will be stored. Results will
+        # be in JSON format and preceded by its corresponding input URI prefix. This
+        # field can either represent a gcs file prefix or gcs directory. In either case,
+        # the uri should be unique because in order to get all of the output files, you
+        # will need to do a wildcard gcs search on the uri prefix you provide. Examples:
+        # * File Prefix: gs://bucket-name/here/filenameprefix The output files will be
+        # created in gs://bucket-name/here/ and the names of the output files will begin
+        # with "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The
+        # output files will be created in gs://bucket-name/some/location/ and the names
+        # of the output files could be anything because there was no filename prefix
+        # specified. If multiple outputs, each response is still AnnotateFileResponse,
+        # each of which contains some subset of the full list of AnnotateImageResponse.
+        # Multiple outputs can happen if, for example, the output JSON is too large and
+        # overflows into multiple sharded files.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1000,8 +868,8 @@ module Google
       class GcsSource
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage URI for the input file. This must only be a
-        # Google Cloud Storage object. Wildcards are not currently supported.
+        # Google Cloud Storage URI for the input file. This must only be a Google Cloud
+        # Storage object. Wildcards are not currently supported.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1035,16 +903,13 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1InputConfig]
         attr_accessor :input_config
       
-        # Pages of the file to perform image annotation.
-        # Pages starts from 1, we assume the first page of the file is page 1.
-        # At most 5 pages are supported per request. Pages can be negative.
-        # Page 1 means the first page.
-        # Page 2 means the second page.
-        # Page -1 means the last page.
-        # Page -2 means the second to the last page.
-        # If the file is GIF instead of PDF or TIFF, page refers to GIF frames.
-        # If this field is empty, by default the service performs image annotation
-        # for the first 5 pages of the file.
+        # Pages of the file to perform image annotation. Pages starts from 1, we assume
+        # the first page of the file is page 1. At most 5 pages are supported per
+        # request. Pages can be negative. Page 1 means the first page. Page 2 means the
+        # second page. Page -1 means the last page. Page -2 means the second to the last
+        # page. If the file is GIF instead of PDF or TIFF, page refers to GIF frames. If
+        # this field is empty, by default the service performs image annotation for the
+        # first 5 pages of the file.
         # Corresponds to the JSON property `pages`
         # @return [Array<Fixnum>]
         attr_accessor :pages
@@ -1067,12 +932,12 @@ module Google
       class GoogleCloudVisionV1p1beta1AnnotateFileResponse
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VisionV1p1beta1::Status]
         attr_accessor :error
@@ -1082,8 +947,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1InputConfig]
         attr_accessor :input_config
       
-        # Individual responses to images found within the file. This field will be
-        # empty if the `error` field is set.
+        # Individual responses to images found within the file. This field will be empty
+        # if the `error` field is set.
         # Corresponds to the JSON property `responses`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1AnnotateImageResponse>]
         attr_accessor :responses
@@ -1153,12 +1018,12 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1CropHintsAnnotation]
         attr_accessor :crop_hints_annotation
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VisionV1p1beta1::Status]
         attr_accessor :error
@@ -1168,13 +1033,12 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1FaceAnnotation>]
         attr_accessor :face_annotations
       
-        # TextAnnotation contains a structured representation of OCR extracted text.
-        # The hierarchy of an OCR extracted text structure is like this:
-        # TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
-        # Each structural component, starting from Page, may further have their own
-        # properties. Properties describe detected languages, breaks etc.. Please refer
-        # to the TextAnnotation.TextProperty message definition below for more
-        # detail.
+        # TextAnnotation contains a structured representation of OCR extracted text. The
+        # hierarchy of an OCR extracted text structure is like this: TextAnnotation ->
+        # Page -> Block -> Paragraph -> Word -> Symbol Each structural component,
+        # starting from Page, may further have their own properties. Properties describe
+        # detected languages, breaks etc.. Please refer to the TextAnnotation.
+        # TextProperty message definition below for more detail.
         # Corresponds to the JSON property `fullTextAnnotation`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1TextAnnotation]
         attr_accessor :full_text_annotation
@@ -1194,8 +1058,8 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1EntityAnnotation>]
         attr_accessor :landmark_annotations
       
-        # If present, localized object detection has completed successfully.
-        # This will be sorted descending by confidence score.
+        # If present, localized object detection has completed successfully. This will
+        # be sorted descending by confidence score.
         # Corresponds to the JSON property `localizedObjectAnnotations`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>]
         attr_accessor :localized_object_annotations
@@ -1210,9 +1074,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1ProductSearchResults]
         attr_accessor :product_search_results
       
-        # Set of features pertaining to the image, computed by computer vision
-        # methods over safe-search verticals (for example, adult, spoof, medical,
-        # violence).
+        # Set of features pertaining to the image, computed by computer vision methods
+        # over safe-search verticals (for example, adult, spoof, medical, violence).
         # Corresponds to the JSON property `safeSearchAnnotation`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1SafeSearchAnnotation]
         attr_accessor :safe_search_annotation
@@ -1306,19 +1169,15 @@ module Google
         end
       end
       
-      # Multiple async file annotation requests are batched into a single service
-      # call.
+      # Multiple async file annotation requests are batched into a single service call.
       class GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Target project and location to make a call.
-        # Format: `projects/`project-id`/locations/`location-id``.
-        # If no parent is specified, a region will be chosen automatically.
-        # Supported location-ids:
-        # `us`: USA country only,
-        # `asia`: East asia areas, like Japan, Taiwan,
-        # `eu`: The European Union.
-        # Example: `projects/project-A/locations/eu`.
+        # Optional. Target project and location to make a call. Format: `projects/`
+        # project-id`/locations/`location-id``. If no parent is specified, a region will
+        # be chosen automatically. Supported location-ids: `us`: USA country only, `asia`
+        # : East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `
+        # projects/project-A/locations/eu`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1368,14 +1227,11 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1OutputConfig]
         attr_accessor :output_config
       
-        # Optional. Target project and location to make a call.
-        # Format: `projects/`project-id`/locations/`location-id``.
-        # If no parent is specified, a region will be chosen automatically.
-        # Supported location-ids:
-        # `us`: USA country only,
-        # `asia`: East asia areas, like Japan, Taiwan,
-        # `eu`: The European Union.
-        # Example: `projects/project-A/locations/eu`.
+        # Optional. Target project and location to make a call. Format: `projects/`
+        # project-id`/locations/`location-id``. If no parent is specified, a region will
+        # be chosen automatically. Supported location-ids: `us`: USA country only, `asia`
+        # : East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `
+        # projects/project-A/locations/eu`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1401,14 +1257,11 @@ module Google
       class GoogleCloudVisionV1p1beta1BatchAnnotateFilesRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Target project and location to make a call.
-        # Format: `projects/`project-id`/locations/`location-id``.
-        # If no parent is specified, a region will be chosen automatically.
-        # Supported location-ids:
-        # `us`: USA country only,
-        # `asia`: East asia areas, like Japan, Taiwan,
-        # `eu`: The European Union.
-        # Example: `projects/project-A/locations/eu`.
+        # Optional. Target project and location to make a call. Format: `projects/`
+        # project-id`/locations/`location-id``. If no parent is specified, a region will
+        # be chosen automatically. Supported location-ids: `us`: USA country only, `asia`
+        # : East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `
+        # projects/project-A/locations/eu`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1454,14 +1307,11 @@ module Google
       class GoogleCloudVisionV1p1beta1BatchAnnotateImagesRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Target project and location to make a call.
-        # Format: `projects/`project-id`/locations/`location-id``.
-        # If no parent is specified, a region will be chosen automatically.
-        # Supported location-ids:
-        # `us`: USA country only,
-        # `asia`: East asia areas, like Japan, Taiwan,
-        # `eu`: The European Union.
-        # Example: `projects/project-A/locations/eu`.
+        # Optional. Target project and location to make a call. Format: `projects/`
+        # project-id`/locations/`location-id``. If no parent is specified, a region will
+        # be chosen automatically. Supported location-ids: `us`: USA country only, `asia`
+        # : East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `
+        # projects/project-A/locations/eu`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1569,123 +1419,61 @@ module Google
         end
       end
       
-      # Color information consists of RGB channels, score, and the fraction of
-      # the image that the color occupies in the image.
+      # Color information consists of RGB channels, score, and the fraction of the
+      # image that the color occupies in the image.
       class GoogleCloudVisionV1p1beta1ColorInfo
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `color`
         # @return [Google::Apis::VisionV1p1beta1::Color]
         attr_accessor :color
       
-        # The fraction of pixels the color occupies in the image.
-        # Value in range [0, 1].
+        # The fraction of pixels the color occupies in the image. Value in range [0, 1].
         # Corresponds to the JSON property `pixelFraction`
         # @return [Float]
         attr_accessor :pixel_fraction
@@ -1716,7 +1504,7 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # Confidence of this being a salient region.  Range [0, 1].
+        # Confidence of this being a salient region. Range [0, 1].
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -1762,12 +1550,11 @@ module Google
       class GoogleCloudVisionV1p1beta1CropHintsParams
         include Google::Apis::Core::Hashable
       
-        # Aspect ratios in floats, representing the ratio of the width to the height
-        # of the image. For example, if the desired aspect ratio is 4/3, the
-        # corresponding float value should be 1.33333.  If not specified, the
-        # best possible crop is returned. The number of provided aspect ratios is
-        # limited to a maximum of 16; any aspect ratios provided after the 16th are
-        # ignored.
+        # Aspect ratios in floats, representing the ratio of the width to the height of
+        # the image. For example, if the desired aspect ratio is 4/3, the corresponding
+        # float value should be 1.33333. If not specified, the best possible crop is
+        # returned. The number of provided aspect ratios is limited to a maximum of 16;
+        # any aspect ratios provided after the 16th are ignored.
         # Corresponds to the JSON property `aspectRatios`
         # @return [Array<Float>]
         attr_accessor :aspect_ratios
@@ -1810,11 +1597,10 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # **Deprecated. Use `score` instead.**
-        # The accuracy of the entity detection in an image.
-        # For example, for an image in which the "Eiffel Tower" entity is detected,
-        # this field represents the confidence that there is a tower in the query
-        # image. Range [0, 1].
+        # **Deprecated. Use `score` instead.** The accuracy of the entity detection in
+        # an image. For example, for an image in which the "Eiffel Tower" entity is
+        # detected, this field represents the confidence that there is a tower in the
+        # query image. Range [0, 1].
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -1824,30 +1610,29 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The language code for the locale in which the entity textual
-        # `description` is expressed.
+        # The language code for the locale in which the entity textual `description` is
+        # expressed.
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
       
-        # The location information for the detected entity. Multiple
-        # `LocationInfo` elements can be present because one location may
-        # indicate the location of the scene in the image, and another location
-        # may indicate the location of the place where the image was taken.
-        # Location information is usually present for landmarks.
+        # The location information for the detected entity. Multiple `LocationInfo`
+        # elements can be present because one location may indicate the location of the
+        # scene in the image, and another location may indicate the location of the
+        # place where the image was taken. Location information is usually present for
+        # landmarks.
         # Corresponds to the JSON property `locations`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1LocationInfo>]
         attr_accessor :locations
       
-        # Opaque entity ID. Some IDs may be available in
-        # [Google Knowledge Graph Search
+        # Opaque entity ID. Some IDs may be available in [Google Knowledge Graph Search
         # API](https://developers.google.com/knowledge-graph/).
         # Corresponds to the JSON property `mid`
         # @return [String]
         attr_accessor :mid
       
-        # Some entities may have optional user-supplied `Property` (name/value)
-        # fields, such a score or string that qualifies the entity.
+        # Some entities may have optional user-supplied `Property` (name/value) fields,
+        # such a score or string that qualifies the entity.
         # Corresponds to the JSON property `properties`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1Property>]
         attr_accessor :properties
@@ -1857,11 +1642,11 @@ module Google
         # @return [Float]
         attr_accessor :score
       
-        # The relevancy of the ICA (Image Content Annotation) label to the
-        # image. For example, the relevancy of "tower" is likely higher to an image
-        # containing the detected "Eiffel Tower" than to an image containing a
-        # detected distant towering building, even though the confidence that
-        # there is a tower in each image may be the same. Range [0, 1].
+        # The relevancy of the ICA (Image Content Annotation) label to the image. For
+        # example, the relevancy of "tower" is likely higher to an image containing the
+        # detected "Eiffel Tower" than to an image containing a detected distant
+        # towering building, even though the confidence that there is a tower in each
+        # image may be the same. Range [0, 1].
         # Corresponds to the JSON property `topicality`
         # @return [Float]
         attr_accessor :topicality
@@ -1934,15 +1719,15 @@ module Google
         attr_accessor :landmarks
       
         # Yaw angle, which indicates the leftward/rightward angle that the face is
-        # pointing relative to the vertical plane perpendicular to the image. Range
-        # [-180,180].
+        # pointing relative to the vertical plane perpendicular to the image. Range [-
+        # 180,180].
         # Corresponds to the JSON property `panAngle`
         # @return [Float]
         attr_accessor :pan_angle
       
-        # Roll angle, which indicates the amount of clockwise/anti-clockwise rotation
-        # of the face relative to the image vertical about the axis perpendicular to
-        # the face. Range [-180,180].
+        # Roll angle, which indicates the amount of clockwise/anti-clockwise rotation of
+        # the face relative to the image vertical about the axis perpendicular to the
+        # face. Range [-180,180].
         # Corresponds to the JSON property `rollAngle`
         # @return [Float]
         attr_accessor :roll_angle
@@ -1996,9 +1781,9 @@ module Google
       class GoogleCloudVisionV1p1beta1FaceAnnotationLandmark
         include Google::Apis::Core::Hashable
       
-        # A 3D position in the image, used primarily for Face detection landmarks.
-        # A valid Position must have both x and y coordinates.
-        # The position coordinates are in the same scale as the original image.
+        # A 3D position in the image, used primarily for Face detection landmarks. A
+        # valid Position must have both x and y coordinates. The position coordinates
+        # are in the same scale as the original image.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1Position]
         attr_accessor :position
@@ -2020,20 +1805,19 @@ module Google
       end
       
       # The type of Google Cloud Vision API detection to perform, and the maximum
-      # number of results to return for that type. Multiple `Feature` objects can
-      # be specified in the `features` list.
+      # number of results to return for that type. Multiple `Feature` objects can be
+      # specified in the `features` list.
       class GoogleCloudVisionV1p1beta1Feature
         include Google::Apis::Core::Hashable
       
-        # Maximum number of results of this type. Does not apply to
-        # `TEXT_DETECTION`, `DOCUMENT_TEXT_DETECTION`, or `CROP_HINTS`.
+        # Maximum number of results of this type. Does not apply to `TEXT_DETECTION`, `
+        # DOCUMENT_TEXT_DETECTION`, or `CROP_HINTS`.
         # Corresponds to the JSON property `maxResults`
         # @return [Fixnum]
         attr_accessor :max_results
       
-        # Model to use for the feature.
-        # Supported values: "builtin/stable" (the default if unset) and
-        # "builtin/latest".
+        # Model to use for the feature. Supported values: "builtin/stable" (the default
+        # if unset) and "builtin/latest".
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -2059,24 +1843,20 @@ module Google
       class GoogleCloudVisionV1p1beta1GcsDestination
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage URI prefix where the results will be stored. Results
-        # will be in JSON format and preceded by its corresponding input URI prefix.
-        # This field can either represent a gcs file prefix or gcs directory. In
-        # either case, the uri should be unique because in order to get all of the
-        # output files, you will need to do a wildcard gcs search on the uri prefix
-        # you provide.
-        # Examples:
-        # *    File Prefix: gs://bucket-name/here/filenameprefix   The output files
-        # will be created in gs://bucket-name/here/ and the names of the
-        # output files will begin with "filenameprefix".
-        # *    Directory Prefix: gs://bucket-name/some/location/   The output files
-        # will be created in gs://bucket-name/some/location/ and the names of the
-        # output files could be anything because there was no filename prefix
-        # specified.
-        # If multiple outputs, each response is still AnnotateFileResponse, each of
-        # which contains some subset of the full list of AnnotateImageResponse.
-        # Multiple outputs can happen if, for example, the output JSON is too large
-        # and overflows into multiple sharded files.
+        # Google Cloud Storage URI prefix where the results will be stored. Results will
+        # be in JSON format and preceded by its corresponding input URI prefix. This
+        # field can either represent a gcs file prefix or gcs directory. In either case,
+        # the uri should be unique because in order to get all of the output files, you
+        # will need to do a wildcard gcs search on the uri prefix you provide. Examples:
+        # * File Prefix: gs://bucket-name/here/filenameprefix The output files will be
+        # created in gs://bucket-name/here/ and the names of the output files will begin
+        # with "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The
+        # output files will be created in gs://bucket-name/some/location/ and the names
+        # of the output files could be anything because there was no filename prefix
+        # specified. If multiple outputs, each response is still AnnotateFileResponse,
+        # each of which contains some subset of the full list of AnnotateImageResponse.
+        # Multiple outputs can happen if, for example, the output JSON is too large and
+        # overflows into multiple sharded files.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2095,8 +1875,8 @@ module Google
       class GoogleCloudVisionV1p1beta1GcsSource
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage URI for the input file. This must only be a
-        # Google Cloud Storage object. Wildcards are not currently supported.
+        # Google Cloud Storage URI for the input file. This must only be a Google Cloud
+        # Storage object. Wildcards are not currently supported.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2115,11 +1895,11 @@ module Google
       class GoogleCloudVisionV1p1beta1Image
         include Google::Apis::Core::Hashable
       
-        # Image content, represented as a stream of bytes.
-        # Note: As with all `bytes` fields, protobuffers use a pure binary
-        # representation, whereas JSON representations use base64.
-        # Currently, this field only works for BatchAnnotateImages requests. It does
-        # not work for AsyncBatchAnnotateImages requests.
+        # Image content, represented as a stream of bytes. Note: As with all `bytes`
+        # fields, protobuffers use a pure binary representation, whereas JSON
+        # representations use base64. Currently, this field only works for
+        # BatchAnnotateImages requests. It does not work for AsyncBatchAnnotateImages
+        # requests.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2146,8 +1926,8 @@ module Google
       class GoogleCloudVisionV1p1beta1ImageAnnotationContext
         include Google::Apis::Core::Hashable
       
-        # If the file was a PDF or TIFF, this field gives the page number within
-        # the file used to produce the image.
+        # If the file was a PDF or TIFF, this field gives the page number within the
+        # file used to produce the image.
         # Corresponds to the JSON property `pageNumber`
         # @return [Fixnum]
         attr_accessor :page_number
@@ -2179,12 +1959,12 @@ module Google
       
         # List of languages to use for TEXT_DETECTION. In most cases, an empty value
         # yields the best results since it enables automatic language detection. For
-        # languages based on the Latin alphabet, setting `language_hints` is not
-        # needed. In rare cases, when the language of the text in the image is known,
-        # setting a hint will help get better results (although it will be a
-        # significant hindrance if the hint is wrong). Text detection returns an
-        # error if one or more of the specified languages is not one of the
-        # [supported languages](https://cloud.google.com/vision/docs/languages).
+        # languages based on the Latin alphabet, setting `language_hints` is not needed.
+        # In rare cases, when the language of the text in the image is known, setting a
+        # hint will help get better results (although it will be a significant hindrance
+        # if the hint is wrong). Text detection returns an error if one or more of the
+        # specified languages is not one of the [supported languages](https://cloud.
+        # google.com/vision/docs/languages).
         # Corresponds to the JSON property `languageHints`
         # @return [Array<String>]
         attr_accessor :language_hints
@@ -2241,29 +2021,24 @@ module Google
       class GoogleCloudVisionV1p1beta1ImageSource
         include Google::Apis::Core::Hashable
       
-        # **Use `image_uri` instead.**
-        # The Google Cloud Storage  URI of the form
-        # `gs://bucket_name/object_name`. Object versioning is not supported. See
-        # [Google Cloud Storage Request
-        # URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
+        # **Use `image_uri` instead.** The Google Cloud Storage URI of the form `gs://
+        # bucket_name/object_name`. Object versioning is not supported. See [Google
+        # Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-
+        # uris) for more info.
         # Corresponds to the JSON property `gcsImageUri`
         # @return [String]
         attr_accessor :gcs_image_uri
       
-        # The URI of the source image. Can be either:
-        # 1. A Google Cloud Storage URI of the form
-        # `gs://bucket_name/object_name`. Object versioning is not supported. See
-        # [Google Cloud Storage Request
-        # URIs](https://cloud.google.com/storage/docs/reference-uris) for more
-        # info.
-        # 2. A publicly-accessible image HTTP/HTTPS URL. When fetching images from
-        # HTTP/HTTPS URLs, Google cannot guarantee that the request will be
-        # completed. Your request may fail if the specified host denies the
-        # request (e.g. due to request throttling or DOS prevention), or if Google
-        # throttles requests to the site for abuse prevention. You should not
-        # depend on externally-hosted images for production applications.
-        # When both `gcs_image_uri` and `image_uri` are specified, `image_uri` takes
-        # precedence.
+        # The URI of the source image. Can be either: 1. A Google Cloud Storage URI of
+        # the form `gs://bucket_name/object_name`. Object versioning is not supported.
+        # See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/
+        # reference-uris) for more info. 2. A publicly-accessible image HTTP/HTTPS URL.
+        # When fetching images from HTTP/HTTPS URLs, Google cannot guarantee that the
+        # request will be completed. Your request may fail if the specified host denies
+        # the request (e.g. due to request throttling or DOS prevention), or if Google
+        # throttles requests to the site for abuse prevention. You should not depend on
+        # externally-hosted images for production applications. When both `gcs_image_uri`
+        # and `image_uri` are specified, `image_uri` takes precedence.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
@@ -2283,11 +2058,11 @@ module Google
       class GoogleCloudVisionV1p1beta1InputConfig
         include Google::Apis::Core::Hashable
       
-        # File content, represented as a stream of bytes.
-        # Note: As with all `bytes` fields, protobuffers use a pure binary
-        # representation, whereas JSON representations use base64.
-        # Currently, this field only works for BatchAnnotateFiles requests. It does
-        # not work for AsyncBatchAnnotateFiles requests.
+        # File content, represented as a stream of bytes. Note: As with all `bytes`
+        # fields, protobuffers use a pure binary representation, whereas JSON
+        # representations use base64. Currently, this field only works for
+        # BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles
+        # requests.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2298,8 +2073,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1GcsSource]
         attr_accessor :gcs_source
       
-        # The type of the file. Currently only "application/pdf", "image/tiff" and
-        # "image/gif" are supported. Wildcards are not supported.
+        # The type of the file. Currently only "application/pdf", "image/tiff" and "
+        # image/gif" are supported. Wildcards are not supported.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -2322,18 +2097,16 @@ module Google
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the
-        # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-        # standard</a>. Values must be within normalized ranges.
+        # specified otherwise, this must conform to the WGS84 standard. Values must be
+        # within normalized ranges.
         # Corresponds to the JSON property `maxLatLng`
         # @return [Google::Apis::VisionV1p1beta1::LatLng]
         attr_accessor :max_lat_lng
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the
-        # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-        # standard</a>. Values must be within normalized ranges.
+        # specified otherwise, this must conform to the WGS84 standard. Values must be
+        # within normalized ranges.
         # Corresponds to the JSON property `minLatLng`
         # @return [Google::Apis::VisionV1p1beta1::LatLng]
         attr_accessor :min_lat_lng
@@ -2358,9 +2131,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -2400,9 +2172,8 @@ module Google
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the
-        # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-        # standard</a>. Values must be within normalized ranges.
+        # specified otherwise, this must conform to the WGS84 standard. Values must be
+        # within normalized ranges.
         # Corresponds to the JSON property `latLng`
         # @return [Google::Apis::VisionV1p1beta1::LatLng]
         attr_accessor :lat_lng
@@ -2417,9 +2188,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the normalized vertex coordinates are relative to the original image
-      # and range from 0 to 1.
+      # A vertex represents a 2D point in the image. NOTE: the normalized vertex
+      # coordinates are relative to the original image and range from 0 to 1.
       class GoogleCloudVisionV1p1beta1NormalizedVertex
         include Google::Apis::Core::Hashable
       
@@ -2479,13 +2249,11 @@ module Google
       class GoogleCloudVisionV1p1beta1OutputConfig
         include Google::Apis::Core::Hashable
       
-        # The max number of response protos to put into each output JSON file on
-        # Google Cloud Storage.
-        # The valid range is [1, 100]. If not specified, the default value is 20.
-        # For example, for one pdf file with 100 pages, 100 response protos will
-        # be generated. If `batch_size` = 20, then 5 json files each
-        # containing 20 response protos will be written under the prefix
-        # `gcs_destination`.`uri`.
+        # The max number of response protos to put into each output JSON file on Google
+        # Cloud Storage. The valid range is [1, 100]. If not specified, the default
+        # value is 20. For example, for one pdf file with 100 pages, 100 response protos
+        # will be generated. If `batch_size` = 20, then 5 json files each containing 20
+        # response protos will be written under the prefix `gcs_destination`.`uri`.
         # Currently, batch_size only applies to GcsDestination, with potential future
         # support for other output configurations.
         # Corresponds to the JSON property `batchSize`
@@ -2522,8 +2290,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Page height. For PDFs the unit is points. For images (including
-        # TIFFs) the unit is pixels.
+        # Page height. For PDFs the unit is points. For images (including TIFFs) the
+        # unit is pixels.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
@@ -2533,8 +2301,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1TextAnnotationTextProperty]
         attr_accessor :property
       
-        # Page width. For PDFs the unit is points. For images (including
-        # TIFFs) the unit is pixels.
+        # Page width. For PDFs the unit is points. For images (including TIFFs) the unit
+        # is pixels.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
@@ -2590,9 +2358,9 @@ module Google
         end
       end
       
-      # A 3D position in the image, used primarily for Face detection landmarks.
-      # A valid Position must have both x and y coordinates.
-      # The position coordinates are in the same scale as the original image.
+      # A 3D position in the image, used primarily for Face detection landmarks. A
+      # valid Position must have both x and y coordinates. The position coordinates
+      # are in the same scale as the original image.
       class GoogleCloudVisionV1p1beta1Position
         include Google::Apis::Core::Hashable
       
@@ -2639,33 +2407,28 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the product.
-        # Format is:
-        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-        # This field is ignored when creating a product.
+        # The resource name of the product. Format is: `projects/PROJECT_ID/locations/
+        # LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Immutable. The category for the product identified by the reference image.
-        # This should
-        # be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
-        # "homegoods", "apparel", and "toys" are still supported, but these should
-        # not be used for new products.
+        # This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-
+        # v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys"
+        # are still supported, but these should not be used for new products.
         # Corresponds to the JSON property `productCategory`
         # @return [String]
         attr_accessor :product_category
       
-        # Key-value pairs that can be attached to a product. At query time,
-        # constraints can be specified based on the product_labels.
-        # Note that integer values can be provided as strings, e.g. "1199". Only
-        # strings with integer values can match a range-based restriction which is
-        # to be supported soon.
-        # Multiple values can be assigned to the same key. One product may have up to
-        # 500 product_labels.
-        # Notice that the total number of distinct product_labels over all products
-        # in one ProductSet cannot exceed 1M, otherwise the product search pipeline
-        # will refuse to work for that ProductSet.
+        # Key-value pairs that can be attached to a product. At query time, constraints
+        # can be specified based on the product_labels. Note that integer values can be
+        # provided as strings, e.g. "1199". Only strings with integer values can match a
+        # range-based restriction which is to be supported soon. Multiple values can be
+        # assigned to the same key. One product may have up to 500 product_labels.
+        # Notice that the total number of distinct product_labels over all products in
+        # one ProductSet cannot exceed 1M, otherwise the product search pipeline will
+        # refuse to work for that ProductSet.
         # Corresponds to the JSON property `productLabels`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1ProductKeyValue>]
         attr_accessor :product_labels
@@ -2694,8 +2457,8 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # The value of the label attached to the product. Cannot be empty and
-        # cannot exceed 128 bytes.
+        # The value of the label attached to the product. Cannot be empty and cannot
+        # exceed 128 bytes.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -2720,30 +2483,29 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # The filtering expression. This can be used to restrict search results based
-        # on Product labels. We currently support an AND of OR of key-value
-        # expressions, where each expression within an OR must have the same key. An
-        # '=' should be used to connect the key and value.
-        # For example, "(color = red OR color = blue) AND brand = Google" is
-        # acceptable, but "(color = red OR brand = Google)" is not acceptable.
-        # "color: red" is not acceptable because it uses a ':' instead of an '='.
+        # The filtering expression. This can be used to restrict search results based on
+        # Product labels. We currently support an AND of OR of key-value expressions,
+        # where each expression within an OR must have the same key. An '=' should be
+        # used to connect the key and value. For example, "(color = red OR color = blue)
+        # AND brand = Google" is acceptable, but "(color = red OR brand = Google)" is
+        # not acceptable. "color: red" is not acceptable because it uses a ':' instead
+        # of an '='.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # The list of product categories to search in. Currently, we only consider
-        # the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
-        # "packagedgoods-v1", or "general-v1" should be specified. The legacy
-        # categories "homegoods", "apparel", and "toys" are still supported but will
-        # be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
-        # or "toys-v2" for better product search accuracy. It is recommended to
-        # migrate existing products to these categories as well.
+        # The list of product categories to search in. Currently, we only consider the
+        # first category, and either "homegoods-v2", "apparel-v2", "toys-v2", "
+        # packagedgoods-v1", or "general-v1" should be specified. The legacy categories "
+        # homegoods", "apparel", and "toys" are still supported but will be deprecated.
+        # For new products, please use "homegoods-v2", "apparel-v2", or "toys-v2" for
+        # better product search accuracy. It is recommended to migrate existing products
+        # to these categories as well.
         # Corresponds to the JSON property `productCategories`
         # @return [Array<String>]
         attr_accessor :product_categories
       
-        # The resource name of a ProductSet to be searched for similar images.
-        # Format is:
+        # The resource name of a ProductSet to be searched for similar images. Format is:
         # `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
         # Corresponds to the JSON property `productSet`
         # @return [String]
@@ -2767,8 +2529,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Timestamp of the index which provided these results. Products added to the
-        # product set and products removed from the product set after this time are
-        # not reflected in the current results.
+        # product set and products removed from the product set after this time are not
+        # reflected in the current results.
         # Corresponds to the JSON property `indexTime`
         # @return [String]
         attr_accessor :index_time
@@ -2798,8 +2560,7 @@ module Google
         end
       end
       
-      # Information about the products similar to a single product in a query
-      # image.
+      # Information about the products similar to a single product in a query image.
       class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
         include Google::Apis::Core::Hashable
       
@@ -2834,9 +2595,8 @@ module Google
       class GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
         include Google::Apis::Core::Hashable
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -2873,8 +2633,8 @@ module Google
       class GoogleCloudVisionV1p1beta1ProductSearchResultsResult
         include Google::Apis::Core::Hashable
       
-        # The resource name of the image from the product that is the closest match
-        # to the query.
+        # The resource name of the image from the product that is the closest match to
+        # the query.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
@@ -2884,8 +2644,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1Product]
         attr_accessor :product
       
-        # A confidence level on the match, ranging from 0 (no confidence) to
-        # 1 (full confidence).
+        # A confidence level on the match, ranging from 0 (no confidence) to 1 (full
+        # confidence).
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -2933,15 +2693,14 @@ module Google
         end
       end
       
-      # Set of features pertaining to the image, computed by computer vision
-      # methods over safe-search verticals (for example, adult, spoof, medical,
-      # violence).
+      # Set of features pertaining to the image, computed by computer vision methods
+      # over safe-search verticals (for example, adult, spoof, medical, violence).
       class GoogleCloudVisionV1p1beta1SafeSearchAnnotation
         include Google::Apis::Core::Hashable
       
         # Represents the adult content likelihood for the image. Adult content may
-        # contain elements such as nudity, pornographic images or cartoons, or
-        # sexual activities.
+        # contain elements such as nudity, pornographic images or cartoons, or sexual
+        # activities.
         # Corresponds to the JSON property `adult`
         # @return [String]
         attr_accessor :adult
@@ -2953,15 +2712,14 @@ module Google
       
         # Likelihood that the request image contains racy content. Racy content may
         # include (but is not limited to) skimpy or sheer clothing, strategically
-        # covered nudity, lewd or provocative poses, or close-ups of sensitive
-        # body areas.
+        # covered nudity, lewd or provocative poses, or close-ups of sensitive body
+        # areas.
         # Corresponds to the JSON property `racy`
         # @return [String]
         attr_accessor :racy
       
-        # Spoof likelihood. The likelihood that an modification
-        # was made to the image's canonical version to make it appear
-        # funny or offensive.
+        # Spoof likelihood. The likelihood that an modification was made to the image's
+        # canonical version to make it appear funny or offensive.
         # Corresponds to the JSON property `spoof`
         # @return [String]
         attr_accessor :spoof
@@ -3022,13 +2780,12 @@ module Google
         end
       end
       
-      # TextAnnotation contains a structured representation of OCR extracted text.
-      # The hierarchy of an OCR extracted text structure is like this:
-      # TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
-      # Each structural component, starting from Page, may further have their own
-      # properties. Properties describe detected languages, breaks etc.. Please refer
-      # to the TextAnnotation.TextProperty message definition below for more
-      # detail.
+      # TextAnnotation contains a structured representation of OCR extracted text. The
+      # hierarchy of an OCR extracted text structure is like this: TextAnnotation ->
+      # Page -> Block -> Paragraph -> Word -> Symbol Each structural component,
+      # starting from Page, may further have their own properties. Properties describe
+      # detected languages, breaks etc.. Please refer to the TextAnnotation.
+      # TextProperty message definition below for more detail.
       class GoogleCloudVisionV1p1beta1TextAnnotation
         include Google::Apis::Core::Hashable
       
@@ -3088,9 +2845,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -3131,8 +2887,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the vertex coordinates are in the same scale as the original image.
+      # A vertex represents a 2D point in the image. NOTE: the vertex coordinates are
+      # in the same scale as the original image.
       class GoogleCloudVisionV1p1beta1Vertex
         include Google::Apis::Core::Hashable
       
@@ -3161,14 +2917,14 @@ module Google
       class GoogleCloudVisionV1p1beta1WebDetection
         include Google::Apis::Core::Hashable
       
-        # The service's best guess as to the topic of the request image.
-        # Inferred from similar images on the open web.
+        # The service's best guess as to the topic of the request image. Inferred from
+        # similar images on the open web.
         # Corresponds to the JSON property `bestGuessLabels`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1WebDetectionWebLabel>]
         attr_accessor :best_guess_labels
       
-        # Fully matching images from the Internet.
-        # Can include resized copies of the query image.
+        # Fully matching images from the Internet. Can include resized copies of the
+        # query image.
         # Corresponds to the JSON property `fullMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1WebDetectionWebImage>]
         attr_accessor :full_matching_images
@@ -3178,9 +2934,9 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1WebDetectionWebPage>]
         attr_accessor :pages_with_matching_images
       
-        # Partial matching images from the Internet.
-        # Those images are similar enough to share some key-point features. For
-        # example an original image will likely have partial matching for its crops.
+        # Partial matching images from the Internet. Those images are similar enough to
+        # share some key-point features. For example an original image will likely have
+        # partial matching for its crops.
         # Corresponds to the JSON property `partialMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1WebDetectionWebImage>]
         attr_accessor :partial_matching_images
@@ -3244,8 +3000,8 @@ module Google
         # @return [String]
         attr_accessor :entity_id
       
-        # Overall relevancy score for the entity.
-        # Not normalized and not comparable across different image queries.
+        # Overall relevancy score for the entity. Not normalized and not comparable
+        # across different image queries.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -3296,9 +3052,9 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # The BCP-47 language code for `label`, such as "en-US" or "sr-Latn".
-        # For more information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code for `label`, such as "en-US" or "sr-Latn". For more
+        # information, see http://www.unicode.org/reports/tr35/#
+        # Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -3318,8 +3074,8 @@ module Google
       class GoogleCloudVisionV1p1beta1WebDetectionWebPage
         include Google::Apis::Core::Hashable
       
-        # Fully matching images on the page.
-        # Can include resized copies of the query image.
+        # Fully matching images on the page. Can include resized copies of the query
+        # image.
         # Corresponds to the JSON property `fullMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1WebDetectionWebImage>]
         attr_accessor :full_matching_images
@@ -3329,10 +3085,9 @@ module Google
         # @return [String]
         attr_accessor :page_title
       
-        # Partial matching images on the page.
-        # Those images are similar enough to share some key-point features. For
-        # example an original image will likely have partial matching for its
-        # crops.
+        # Partial matching images on the page. Those images are similar enough to share
+        # some key-point features. For example an original image will likely have
+        # partial matching for its crops.
         # Corresponds to the JSON property `partialMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1WebDetectionWebImage>]
         attr_accessor :partial_matching_images
@@ -3380,8 +3135,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1TextAnnotationTextProperty]
         attr_accessor :property
       
-        # List of symbols in the word.
-        # The order of the symbols follows the natural reading order.
+        # List of symbols in the word. The order of the symbols follows the natural
+        # reading order.
         # Corresponds to the JSON property `symbols`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1Symbol>]
         attr_accessor :symbols
@@ -3404,12 +3159,12 @@ module Google
       class GoogleCloudVisionV1p2beta1AnnotateFileResponse
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VisionV1p1beta1::Status]
         attr_accessor :error
@@ -3419,8 +3174,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1InputConfig]
         attr_accessor :input_config
       
-        # Individual responses to images found within the file. This field will be
-        # empty if the `error` field is set.
+        # Individual responses to images found within the file. This field will be empty
+        # if the `error` field is set.
         # Corresponds to the JSON property `responses`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1AnnotateImageResponse>]
         attr_accessor :responses
@@ -3458,12 +3213,12 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1CropHintsAnnotation]
         attr_accessor :crop_hints_annotation
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VisionV1p1beta1::Status]
         attr_accessor :error
@@ -3473,13 +3228,12 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1FaceAnnotation>]
         attr_accessor :face_annotations
       
-        # TextAnnotation contains a structured representation of OCR extracted text.
-        # The hierarchy of an OCR extracted text structure is like this:
-        # TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
-        # Each structural component, starting from Page, may further have their own
-        # properties. Properties describe detected languages, breaks etc.. Please refer
-        # to the TextAnnotation.TextProperty message definition below for more
-        # detail.
+        # TextAnnotation contains a structured representation of OCR extracted text. The
+        # hierarchy of an OCR extracted text structure is like this: TextAnnotation ->
+        # Page -> Block -> Paragraph -> Word -> Symbol Each structural component,
+        # starting from Page, may further have their own properties. Properties describe
+        # detected languages, breaks etc.. Please refer to the TextAnnotation.
+        # TextProperty message definition below for more detail.
         # Corresponds to the JSON property `fullTextAnnotation`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1TextAnnotation]
         attr_accessor :full_text_annotation
@@ -3499,8 +3253,8 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1EntityAnnotation>]
         attr_accessor :landmark_annotations
       
-        # If present, localized object detection has completed successfully.
-        # This will be sorted descending by confidence score.
+        # If present, localized object detection has completed successfully. This will
+        # be sorted descending by confidence score.
         # Corresponds to the JSON property `localizedObjectAnnotations`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>]
         attr_accessor :localized_object_annotations
@@ -3515,9 +3269,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1ProductSearchResults]
         attr_accessor :product_search_results
       
-        # Set of features pertaining to the image, computed by computer vision
-        # methods over safe-search verticals (for example, adult, spoof, medical,
-        # violence).
+        # Set of features pertaining to the image, computed by computer vision methods
+        # over safe-search verticals (for example, adult, spoof, medical, violence).
         # Corresponds to the JSON property `safeSearchAnnotation`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1SafeSearchAnnotation]
         attr_accessor :safe_search_annotation
@@ -3662,123 +3415,61 @@ module Google
         end
       end
       
-      # Color information consists of RGB channels, score, and the fraction of
-      # the image that the color occupies in the image.
+      # Color information consists of RGB channels, score, and the fraction of the
+      # image that the color occupies in the image.
       class GoogleCloudVisionV1p2beta1ColorInfo
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `color`
         # @return [Google::Apis::VisionV1p1beta1::Color]
         attr_accessor :color
       
-        # The fraction of pixels the color occupies in the image.
-        # Value in range [0, 1].
+        # The fraction of pixels the color occupies in the image. Value in range [0, 1].
         # Corresponds to the JSON property `pixelFraction`
         # @return [Float]
         attr_accessor :pixel_fraction
@@ -3809,7 +3500,7 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # Confidence of this being a salient region.  Range [0, 1].
+        # Confidence of this being a salient region. Range [0, 1].
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -3879,11 +3570,10 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # **Deprecated. Use `score` instead.**
-        # The accuracy of the entity detection in an image.
-        # For example, for an image in which the "Eiffel Tower" entity is detected,
-        # this field represents the confidence that there is a tower in the query
-        # image. Range [0, 1].
+        # **Deprecated. Use `score` instead.** The accuracy of the entity detection in
+        # an image. For example, for an image in which the "Eiffel Tower" entity is
+        # detected, this field represents the confidence that there is a tower in the
+        # query image. Range [0, 1].
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -3893,30 +3583,29 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The language code for the locale in which the entity textual
-        # `description` is expressed.
+        # The language code for the locale in which the entity textual `description` is
+        # expressed.
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
       
-        # The location information for the detected entity. Multiple
-        # `LocationInfo` elements can be present because one location may
-        # indicate the location of the scene in the image, and another location
-        # may indicate the location of the place where the image was taken.
-        # Location information is usually present for landmarks.
+        # The location information for the detected entity. Multiple `LocationInfo`
+        # elements can be present because one location may indicate the location of the
+        # scene in the image, and another location may indicate the location of the
+        # place where the image was taken. Location information is usually present for
+        # landmarks.
         # Corresponds to the JSON property `locations`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1LocationInfo>]
         attr_accessor :locations
       
-        # Opaque entity ID. Some IDs may be available in
-        # [Google Knowledge Graph Search
+        # Opaque entity ID. Some IDs may be available in [Google Knowledge Graph Search
         # API](https://developers.google.com/knowledge-graph/).
         # Corresponds to the JSON property `mid`
         # @return [String]
         attr_accessor :mid
       
-        # Some entities may have optional user-supplied `Property` (name/value)
-        # fields, such a score or string that qualifies the entity.
+        # Some entities may have optional user-supplied `Property` (name/value) fields,
+        # such a score or string that qualifies the entity.
         # Corresponds to the JSON property `properties`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1Property>]
         attr_accessor :properties
@@ -3926,11 +3615,11 @@ module Google
         # @return [Float]
         attr_accessor :score
       
-        # The relevancy of the ICA (Image Content Annotation) label to the
-        # image. For example, the relevancy of "tower" is likely higher to an image
-        # containing the detected "Eiffel Tower" than to an image containing a
-        # detected distant towering building, even though the confidence that
-        # there is a tower in each image may be the same. Range [0, 1].
+        # The relevancy of the ICA (Image Content Annotation) label to the image. For
+        # example, the relevancy of "tower" is likely higher to an image containing the
+        # detected "Eiffel Tower" than to an image containing a detected distant
+        # towering building, even though the confidence that there is a tower in each
+        # image may be the same. Range [0, 1].
         # Corresponds to the JSON property `topicality`
         # @return [Float]
         attr_accessor :topicality
@@ -4003,15 +3692,15 @@ module Google
         attr_accessor :landmarks
       
         # Yaw angle, which indicates the leftward/rightward angle that the face is
-        # pointing relative to the vertical plane perpendicular to the image. Range
-        # [-180,180].
+        # pointing relative to the vertical plane perpendicular to the image. Range [-
+        # 180,180].
         # Corresponds to the JSON property `panAngle`
         # @return [Float]
         attr_accessor :pan_angle
       
-        # Roll angle, which indicates the amount of clockwise/anti-clockwise rotation
-        # of the face relative to the image vertical about the axis perpendicular to
-        # the face. Range [-180,180].
+        # Roll angle, which indicates the amount of clockwise/anti-clockwise rotation of
+        # the face relative to the image vertical about the axis perpendicular to the
+        # face. Range [-180,180].
         # Corresponds to the JSON property `rollAngle`
         # @return [Float]
         attr_accessor :roll_angle
@@ -4065,9 +3754,9 @@ module Google
       class GoogleCloudVisionV1p2beta1FaceAnnotationLandmark
         include Google::Apis::Core::Hashable
       
-        # A 3D position in the image, used primarily for Face detection landmarks.
-        # A valid Position must have both x and y coordinates.
-        # The position coordinates are in the same scale as the original image.
+        # A 3D position in the image, used primarily for Face detection landmarks. A
+        # valid Position must have both x and y coordinates. The position coordinates
+        # are in the same scale as the original image.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1Position]
         attr_accessor :position
@@ -4092,24 +3781,20 @@ module Google
       class GoogleCloudVisionV1p2beta1GcsDestination
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage URI prefix where the results will be stored. Results
-        # will be in JSON format and preceded by its corresponding input URI prefix.
-        # This field can either represent a gcs file prefix or gcs directory. In
-        # either case, the uri should be unique because in order to get all of the
-        # output files, you will need to do a wildcard gcs search on the uri prefix
-        # you provide.
-        # Examples:
-        # *    File Prefix: gs://bucket-name/here/filenameprefix   The output files
-        # will be created in gs://bucket-name/here/ and the names of the
-        # output files will begin with "filenameprefix".
-        # *    Directory Prefix: gs://bucket-name/some/location/   The output files
-        # will be created in gs://bucket-name/some/location/ and the names of the
-        # output files could be anything because there was no filename prefix
-        # specified.
-        # If multiple outputs, each response is still AnnotateFileResponse, each of
-        # which contains some subset of the full list of AnnotateImageResponse.
-        # Multiple outputs can happen if, for example, the output JSON is too large
-        # and overflows into multiple sharded files.
+        # Google Cloud Storage URI prefix where the results will be stored. Results will
+        # be in JSON format and preceded by its corresponding input URI prefix. This
+        # field can either represent a gcs file prefix or gcs directory. In either case,
+        # the uri should be unique because in order to get all of the output files, you
+        # will need to do a wildcard gcs search on the uri prefix you provide. Examples:
+        # * File Prefix: gs://bucket-name/here/filenameprefix The output files will be
+        # created in gs://bucket-name/here/ and the names of the output files will begin
+        # with "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The
+        # output files will be created in gs://bucket-name/some/location/ and the names
+        # of the output files could be anything because there was no filename prefix
+        # specified. If multiple outputs, each response is still AnnotateFileResponse,
+        # each of which contains some subset of the full list of AnnotateImageResponse.
+        # Multiple outputs can happen if, for example, the output JSON is too large and
+        # overflows into multiple sharded files.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -4128,8 +3813,8 @@ module Google
       class GoogleCloudVisionV1p2beta1GcsSource
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage URI for the input file. This must only be a
-        # Google Cloud Storage object. Wildcards are not currently supported.
+        # Google Cloud Storage URI for the input file. This must only be a Google Cloud
+        # Storage object. Wildcards are not currently supported.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -4149,8 +3834,8 @@ module Google
       class GoogleCloudVisionV1p2beta1ImageAnnotationContext
         include Google::Apis::Core::Hashable
       
-        # If the file was a PDF or TIFF, this field gives the page number within
-        # the file used to produce the image.
+        # If the file was a PDF or TIFF, this field gives the page number within the
+        # file used to produce the image.
         # Corresponds to the JSON property `pageNumber`
         # @return [Fixnum]
         attr_accessor :page_number
@@ -4194,11 +3879,11 @@ module Google
       class GoogleCloudVisionV1p2beta1InputConfig
         include Google::Apis::Core::Hashable
       
-        # File content, represented as a stream of bytes.
-        # Note: As with all `bytes` fields, protobuffers use a pure binary
-        # representation, whereas JSON representations use base64.
-        # Currently, this field only works for BatchAnnotateFiles requests. It does
-        # not work for AsyncBatchAnnotateFiles requests.
+        # File content, represented as a stream of bytes. Note: As with all `bytes`
+        # fields, protobuffers use a pure binary representation, whereas JSON
+        # representations use base64. Currently, this field only works for
+        # BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles
+        # requests.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -4209,8 +3894,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1GcsSource]
         attr_accessor :gcs_source
       
-        # The type of the file. Currently only "application/pdf", "image/tiff" and
-        # "image/gif" are supported. Wildcards are not supported.
+        # The type of the file. Currently only "application/pdf", "image/tiff" and "
+        # image/gif" are supported. Wildcards are not supported.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -4236,9 +3921,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -4278,9 +3962,8 @@ module Google
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the
-        # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-        # standard</a>. Values must be within normalized ranges.
+        # specified otherwise, this must conform to the WGS84 standard. Values must be
+        # within normalized ranges.
         # Corresponds to the JSON property `latLng`
         # @return [Google::Apis::VisionV1p1beta1::LatLng]
         attr_accessor :lat_lng
@@ -4295,9 +3978,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the normalized vertex coordinates are relative to the original image
-      # and range from 0 to 1.
+      # A vertex represents a 2D point in the image. NOTE: the normalized vertex
+      # coordinates are relative to the original image and range from 0 to 1.
       class GoogleCloudVisionV1p2beta1NormalizedVertex
         include Google::Apis::Core::Hashable
       
@@ -4357,13 +4039,11 @@ module Google
       class GoogleCloudVisionV1p2beta1OutputConfig
         include Google::Apis::Core::Hashable
       
-        # The max number of response protos to put into each output JSON file on
-        # Google Cloud Storage.
-        # The valid range is [1, 100]. If not specified, the default value is 20.
-        # For example, for one pdf file with 100 pages, 100 response protos will
-        # be generated. If `batch_size` = 20, then 5 json files each
-        # containing 20 response protos will be written under the prefix
-        # `gcs_destination`.`uri`.
+        # The max number of response protos to put into each output JSON file on Google
+        # Cloud Storage. The valid range is [1, 100]. If not specified, the default
+        # value is 20. For example, for one pdf file with 100 pages, 100 response protos
+        # will be generated. If `batch_size` = 20, then 5 json files each containing 20
+        # response protos will be written under the prefix `gcs_destination`.`uri`.
         # Currently, batch_size only applies to GcsDestination, with potential future
         # support for other output configurations.
         # Corresponds to the JSON property `batchSize`
@@ -4400,8 +4080,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Page height. For PDFs the unit is points. For images (including
-        # TIFFs) the unit is pixels.
+        # Page height. For PDFs the unit is points. For images (including TIFFs) the
+        # unit is pixels.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
@@ -4411,8 +4091,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1TextAnnotationTextProperty]
         attr_accessor :property
       
-        # Page width. For PDFs the unit is points. For images (including
-        # TIFFs) the unit is pixels.
+        # Page width. For PDFs the unit is points. For images (including TIFFs) the unit
+        # is pixels.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
@@ -4468,9 +4148,9 @@ module Google
         end
       end
       
-      # A 3D position in the image, used primarily for Face detection landmarks.
-      # A valid Position must have both x and y coordinates.
-      # The position coordinates are in the same scale as the original image.
+      # A 3D position in the image, used primarily for Face detection landmarks. A
+      # valid Position must have both x and y coordinates. The position coordinates
+      # are in the same scale as the original image.
       class GoogleCloudVisionV1p2beta1Position
         include Google::Apis::Core::Hashable
       
@@ -4517,33 +4197,28 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the product.
-        # Format is:
-        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-        # This field is ignored when creating a product.
+        # The resource name of the product. Format is: `projects/PROJECT_ID/locations/
+        # LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Immutable. The category for the product identified by the reference image.
-        # This should
-        # be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
-        # "homegoods", "apparel", and "toys" are still supported, but these should
-        # not be used for new products.
+        # This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-
+        # v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys"
+        # are still supported, but these should not be used for new products.
         # Corresponds to the JSON property `productCategory`
         # @return [String]
         attr_accessor :product_category
       
-        # Key-value pairs that can be attached to a product. At query time,
-        # constraints can be specified based on the product_labels.
-        # Note that integer values can be provided as strings, e.g. "1199". Only
-        # strings with integer values can match a range-based restriction which is
-        # to be supported soon.
-        # Multiple values can be assigned to the same key. One product may have up to
-        # 500 product_labels.
-        # Notice that the total number of distinct product_labels over all products
-        # in one ProductSet cannot exceed 1M, otherwise the product search pipeline
-        # will refuse to work for that ProductSet.
+        # Key-value pairs that can be attached to a product. At query time, constraints
+        # can be specified based on the product_labels. Note that integer values can be
+        # provided as strings, e.g. "1199". Only strings with integer values can match a
+        # range-based restriction which is to be supported soon. Multiple values can be
+        # assigned to the same key. One product may have up to 500 product_labels.
+        # Notice that the total number of distinct product_labels over all products in
+        # one ProductSet cannot exceed 1M, otherwise the product search pipeline will
+        # refuse to work for that ProductSet.
         # Corresponds to the JSON property `productLabels`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1ProductKeyValue>]
         attr_accessor :product_labels
@@ -4572,8 +4247,8 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # The value of the label attached to the product. Cannot be empty and
-        # cannot exceed 128 bytes.
+        # The value of the label attached to the product. Cannot be empty and cannot
+        # exceed 128 bytes.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -4594,8 +4269,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Timestamp of the index which provided these results. Products added to the
-        # product set and products removed from the product set after this time are
-        # not reflected in the current results.
+        # product set and products removed from the product set after this time are not
+        # reflected in the current results.
         # Corresponds to the JSON property `indexTime`
         # @return [String]
         attr_accessor :index_time
@@ -4625,8 +4300,7 @@ module Google
         end
       end
       
-      # Information about the products similar to a single product in a query
-      # image.
+      # Information about the products similar to a single product in a query image.
       class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
         include Google::Apis::Core::Hashable
       
@@ -4661,9 +4335,8 @@ module Google
       class GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
         include Google::Apis::Core::Hashable
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -4700,8 +4373,8 @@ module Google
       class GoogleCloudVisionV1p2beta1ProductSearchResultsResult
         include Google::Apis::Core::Hashable
       
-        # The resource name of the image from the product that is the closest match
-        # to the query.
+        # The resource name of the image from the product that is the closest match to
+        # the query.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
@@ -4711,8 +4384,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1Product]
         attr_accessor :product
       
-        # A confidence level on the match, ranging from 0 (no confidence) to
-        # 1 (full confidence).
+        # A confidence level on the match, ranging from 0 (no confidence) to 1 (full
+        # confidence).
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -4760,15 +4433,14 @@ module Google
         end
       end
       
-      # Set of features pertaining to the image, computed by computer vision
-      # methods over safe-search verticals (for example, adult, spoof, medical,
-      # violence).
+      # Set of features pertaining to the image, computed by computer vision methods
+      # over safe-search verticals (for example, adult, spoof, medical, violence).
       class GoogleCloudVisionV1p2beta1SafeSearchAnnotation
         include Google::Apis::Core::Hashable
       
         # Represents the adult content likelihood for the image. Adult content may
-        # contain elements such as nudity, pornographic images or cartoons, or
-        # sexual activities.
+        # contain elements such as nudity, pornographic images or cartoons, or sexual
+        # activities.
         # Corresponds to the JSON property `adult`
         # @return [String]
         attr_accessor :adult
@@ -4780,15 +4452,14 @@ module Google
       
         # Likelihood that the request image contains racy content. Racy content may
         # include (but is not limited to) skimpy or sheer clothing, strategically
-        # covered nudity, lewd or provocative poses, or close-ups of sensitive
-        # body areas.
+        # covered nudity, lewd or provocative poses, or close-ups of sensitive body
+        # areas.
         # Corresponds to the JSON property `racy`
         # @return [String]
         attr_accessor :racy
       
-        # Spoof likelihood. The likelihood that an modification
-        # was made to the image's canonical version to make it appear
-        # funny or offensive.
+        # Spoof likelihood. The likelihood that an modification was made to the image's
+        # canonical version to make it appear funny or offensive.
         # Corresponds to the JSON property `spoof`
         # @return [String]
         attr_accessor :spoof
@@ -4849,13 +4520,12 @@ module Google
         end
       end
       
-      # TextAnnotation contains a structured representation of OCR extracted text.
-      # The hierarchy of an OCR extracted text structure is like this:
-      # TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
-      # Each structural component, starting from Page, may further have their own
-      # properties. Properties describe detected languages, breaks etc.. Please refer
-      # to the TextAnnotation.TextProperty message definition below for more
-      # detail.
+      # TextAnnotation contains a structured representation of OCR extracted text. The
+      # hierarchy of an OCR extracted text structure is like this: TextAnnotation ->
+      # Page -> Block -> Paragraph -> Word -> Symbol Each structural component,
+      # starting from Page, may further have their own properties. Properties describe
+      # detected languages, breaks etc.. Please refer to the TextAnnotation.
+      # TextProperty message definition below for more detail.
       class GoogleCloudVisionV1p2beta1TextAnnotation
         include Google::Apis::Core::Hashable
       
@@ -4915,9 +4585,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -4958,8 +4627,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the vertex coordinates are in the same scale as the original image.
+      # A vertex represents a 2D point in the image. NOTE: the vertex coordinates are
+      # in the same scale as the original image.
       class GoogleCloudVisionV1p2beta1Vertex
         include Google::Apis::Core::Hashable
       
@@ -4988,14 +4657,14 @@ module Google
       class GoogleCloudVisionV1p2beta1WebDetection
         include Google::Apis::Core::Hashable
       
-        # The service's best guess as to the topic of the request image.
-        # Inferred from similar images on the open web.
+        # The service's best guess as to the topic of the request image. Inferred from
+        # similar images on the open web.
         # Corresponds to the JSON property `bestGuessLabels`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1WebDetectionWebLabel>]
         attr_accessor :best_guess_labels
       
-        # Fully matching images from the Internet.
-        # Can include resized copies of the query image.
+        # Fully matching images from the Internet. Can include resized copies of the
+        # query image.
         # Corresponds to the JSON property `fullMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1WebDetectionWebImage>]
         attr_accessor :full_matching_images
@@ -5005,9 +4674,9 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1WebDetectionWebPage>]
         attr_accessor :pages_with_matching_images
       
-        # Partial matching images from the Internet.
-        # Those images are similar enough to share some key-point features. For
-        # example an original image will likely have partial matching for its crops.
+        # Partial matching images from the Internet. Those images are similar enough to
+        # share some key-point features. For example an original image will likely have
+        # partial matching for its crops.
         # Corresponds to the JSON property `partialMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1WebDetectionWebImage>]
         attr_accessor :partial_matching_images
@@ -5051,8 +4720,8 @@ module Google
         # @return [String]
         attr_accessor :entity_id
       
-        # Overall relevancy score for the entity.
-        # Not normalized and not comparable across different image queries.
+        # Overall relevancy score for the entity. Not normalized and not comparable
+        # across different image queries.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -5103,9 +4772,9 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # The BCP-47 language code for `label`, such as "en-US" or "sr-Latn".
-        # For more information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code for `label`, such as "en-US" or "sr-Latn". For more
+        # information, see http://www.unicode.org/reports/tr35/#
+        # Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -5125,8 +4794,8 @@ module Google
       class GoogleCloudVisionV1p2beta1WebDetectionWebPage
         include Google::Apis::Core::Hashable
       
-        # Fully matching images on the page.
-        # Can include resized copies of the query image.
+        # Fully matching images on the page. Can include resized copies of the query
+        # image.
         # Corresponds to the JSON property `fullMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1WebDetectionWebImage>]
         attr_accessor :full_matching_images
@@ -5136,10 +4805,9 @@ module Google
         # @return [String]
         attr_accessor :page_title
       
-        # Partial matching images on the page.
-        # Those images are similar enough to share some key-point features. For
-        # example an original image will likely have partial matching for its
-        # crops.
+        # Partial matching images on the page. Those images are similar enough to share
+        # some key-point features. For example an original image will likely have
+        # partial matching for its crops.
         # Corresponds to the JSON property `partialMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1WebDetectionWebImage>]
         attr_accessor :partial_matching_images
@@ -5187,8 +4855,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1TextAnnotationTextProperty]
         attr_accessor :property
       
-        # List of symbols in the word.
-        # The order of the symbols follows the natural reading order.
+        # List of symbols in the word. The order of the symbols follows the natural
+        # reading order.
         # Corresponds to the JSON property `symbols`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1Symbol>]
         attr_accessor :symbols
@@ -5211,12 +4879,12 @@ module Google
       class GoogleCloudVisionV1p3beta1AnnotateFileResponse
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VisionV1p1beta1::Status]
         attr_accessor :error
@@ -5226,8 +4894,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1InputConfig]
         attr_accessor :input_config
       
-        # Individual responses to images found within the file. This field will be
-        # empty if the `error` field is set.
+        # Individual responses to images found within the file. This field will be empty
+        # if the `error` field is set.
         # Corresponds to the JSON property `responses`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1AnnotateImageResponse>]
         attr_accessor :responses
@@ -5265,12 +4933,12 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1CropHintsAnnotation]
         attr_accessor :crop_hints_annotation
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VisionV1p1beta1::Status]
         attr_accessor :error
@@ -5280,13 +4948,12 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1FaceAnnotation>]
         attr_accessor :face_annotations
       
-        # TextAnnotation contains a structured representation of OCR extracted text.
-        # The hierarchy of an OCR extracted text structure is like this:
-        # TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
-        # Each structural component, starting from Page, may further have their own
-        # properties. Properties describe detected languages, breaks etc.. Please refer
-        # to the TextAnnotation.TextProperty message definition below for more
-        # detail.
+        # TextAnnotation contains a structured representation of OCR extracted text. The
+        # hierarchy of an OCR extracted text structure is like this: TextAnnotation ->
+        # Page -> Block -> Paragraph -> Word -> Symbol Each structural component,
+        # starting from Page, may further have their own properties. Properties describe
+        # detected languages, breaks etc.. Please refer to the TextAnnotation.
+        # TextProperty message definition below for more detail.
         # Corresponds to the JSON property `fullTextAnnotation`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1TextAnnotation]
         attr_accessor :full_text_annotation
@@ -5306,8 +4973,8 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1EntityAnnotation>]
         attr_accessor :landmark_annotations
       
-        # If present, localized object detection has completed successfully.
-        # This will be sorted descending by confidence score.
+        # If present, localized object detection has completed successfully. This will
+        # be sorted descending by confidence score.
         # Corresponds to the JSON property `localizedObjectAnnotations`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>]
         attr_accessor :localized_object_annotations
@@ -5322,9 +4989,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1ProductSearchResults]
         attr_accessor :product_search_results
       
-        # Set of features pertaining to the image, computed by computer vision
-        # methods over safe-search verticals (for example, adult, spoof, medical,
-        # violence).
+        # Set of features pertaining to the image, computed by computer vision methods
+        # over safe-search verticals (for example, adult, spoof, medical, violence).
         # Corresponds to the JSON property `safeSearchAnnotation`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1SafeSearchAnnotation]
         attr_accessor :safe_search_annotation
@@ -5401,14 +5067,14 @@ module Google
         end
       end
       
-      # Metadata for the batch operations such as the current state.
-      # This is included in the `metadata` field of the `Operation` returned by the
-      # `GetOperation` call of the `google::longrunning::Operations` service.
+      # Metadata for the batch operations such as the current state. This is included
+      # in the `metadata` field of the `Operation` returned by the `GetOperation` call
+      # of the `google::longrunning::Operations` service.
       class GoogleCloudVisionV1p3beta1BatchOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # The time when the batch request is finished and
-        # google.longrunning.Operation.done is set to true.
+        # The time when the batch request is finished and google.longrunning.Operation.
+        # done is set to true.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -5503,123 +5169,61 @@ module Google
         end
       end
       
-      # Color information consists of RGB channels, score, and the fraction of
-      # the image that the color occupies in the image.
+      # Color information consists of RGB channels, score, and the fraction of the
+      # image that the color occupies in the image.
       class GoogleCloudVisionV1p3beta1ColorInfo
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `color`
         # @return [Google::Apis::VisionV1p1beta1::Color]
         attr_accessor :color
       
-        # The fraction of pixels the color occupies in the image.
-        # Value in range [0, 1].
+        # The fraction of pixels the color occupies in the image. Value in range [0, 1].
         # Corresponds to the JSON property `pixelFraction`
         # @return [Float]
         attr_accessor :pixel_fraction
@@ -5650,7 +5254,7 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # Confidence of this being a salient region.  Range [0, 1].
+        # Confidence of this being a salient region. Range [0, 1].
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -5720,11 +5324,10 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # **Deprecated. Use `score` instead.**
-        # The accuracy of the entity detection in an image.
-        # For example, for an image in which the "Eiffel Tower" entity is detected,
-        # this field represents the confidence that there is a tower in the query
-        # image. Range [0, 1].
+        # **Deprecated. Use `score` instead.** The accuracy of the entity detection in
+        # an image. For example, for an image in which the "Eiffel Tower" entity is
+        # detected, this field represents the confidence that there is a tower in the
+        # query image. Range [0, 1].
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -5734,30 +5337,29 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The language code for the locale in which the entity textual
-        # `description` is expressed.
+        # The language code for the locale in which the entity textual `description` is
+        # expressed.
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
       
-        # The location information for the detected entity. Multiple
-        # `LocationInfo` elements can be present because one location may
-        # indicate the location of the scene in the image, and another location
-        # may indicate the location of the place where the image was taken.
-        # Location information is usually present for landmarks.
+        # The location information for the detected entity. Multiple `LocationInfo`
+        # elements can be present because one location may indicate the location of the
+        # scene in the image, and another location may indicate the location of the
+        # place where the image was taken. Location information is usually present for
+        # landmarks.
         # Corresponds to the JSON property `locations`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1LocationInfo>]
         attr_accessor :locations
       
-        # Opaque entity ID. Some IDs may be available in
-        # [Google Knowledge Graph Search
+        # Opaque entity ID. Some IDs may be available in [Google Knowledge Graph Search
         # API](https://developers.google.com/knowledge-graph/).
         # Corresponds to the JSON property `mid`
         # @return [String]
         attr_accessor :mid
       
-        # Some entities may have optional user-supplied `Property` (name/value)
-        # fields, such a score or string that qualifies the entity.
+        # Some entities may have optional user-supplied `Property` (name/value) fields,
+        # such a score or string that qualifies the entity.
         # Corresponds to the JSON property `properties`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1Property>]
         attr_accessor :properties
@@ -5767,11 +5369,11 @@ module Google
         # @return [Float]
         attr_accessor :score
       
-        # The relevancy of the ICA (Image Content Annotation) label to the
-        # image. For example, the relevancy of "tower" is likely higher to an image
-        # containing the detected "Eiffel Tower" than to an image containing a
-        # detected distant towering building, even though the confidence that
-        # there is a tower in each image may be the same. Range [0, 1].
+        # The relevancy of the ICA (Image Content Annotation) label to the image. For
+        # example, the relevancy of "tower" is likely higher to an image containing the
+        # detected "Eiffel Tower" than to an image containing a detected distant
+        # towering building, even though the confidence that there is a tower in each
+        # image may be the same. Range [0, 1].
         # Corresponds to the JSON property `topicality`
         # @return [Float]
         attr_accessor :topicality
@@ -5844,15 +5446,15 @@ module Google
         attr_accessor :landmarks
       
         # Yaw angle, which indicates the leftward/rightward angle that the face is
-        # pointing relative to the vertical plane perpendicular to the image. Range
-        # [-180,180].
+        # pointing relative to the vertical plane perpendicular to the image. Range [-
+        # 180,180].
         # Corresponds to the JSON property `panAngle`
         # @return [Float]
         attr_accessor :pan_angle
       
-        # Roll angle, which indicates the amount of clockwise/anti-clockwise rotation
-        # of the face relative to the image vertical about the axis perpendicular to
-        # the face. Range [-180,180].
+        # Roll angle, which indicates the amount of clockwise/anti-clockwise rotation of
+        # the face relative to the image vertical about the axis perpendicular to the
+        # face. Range [-180,180].
         # Corresponds to the JSON property `rollAngle`
         # @return [Float]
         attr_accessor :roll_angle
@@ -5906,9 +5508,9 @@ module Google
       class GoogleCloudVisionV1p3beta1FaceAnnotationLandmark
         include Google::Apis::Core::Hashable
       
-        # A 3D position in the image, used primarily for Face detection landmarks.
-        # A valid Position must have both x and y coordinates.
-        # The position coordinates are in the same scale as the original image.
+        # A 3D position in the image, used primarily for Face detection landmarks. A
+        # valid Position must have both x and y coordinates. The position coordinates
+        # are in the same scale as the original image.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1Position]
         attr_accessor :position
@@ -5933,24 +5535,20 @@ module Google
       class GoogleCloudVisionV1p3beta1GcsDestination
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage URI prefix where the results will be stored. Results
-        # will be in JSON format and preceded by its corresponding input URI prefix.
-        # This field can either represent a gcs file prefix or gcs directory. In
-        # either case, the uri should be unique because in order to get all of the
-        # output files, you will need to do a wildcard gcs search on the uri prefix
-        # you provide.
-        # Examples:
-        # *    File Prefix: gs://bucket-name/here/filenameprefix   The output files
-        # will be created in gs://bucket-name/here/ and the names of the
-        # output files will begin with "filenameprefix".
-        # *    Directory Prefix: gs://bucket-name/some/location/   The output files
-        # will be created in gs://bucket-name/some/location/ and the names of the
-        # output files could be anything because there was no filename prefix
-        # specified.
-        # If multiple outputs, each response is still AnnotateFileResponse, each of
-        # which contains some subset of the full list of AnnotateImageResponse.
-        # Multiple outputs can happen if, for example, the output JSON is too large
-        # and overflows into multiple sharded files.
+        # Google Cloud Storage URI prefix where the results will be stored. Results will
+        # be in JSON format and preceded by its corresponding input URI prefix. This
+        # field can either represent a gcs file prefix or gcs directory. In either case,
+        # the uri should be unique because in order to get all of the output files, you
+        # will need to do a wildcard gcs search on the uri prefix you provide. Examples:
+        # * File Prefix: gs://bucket-name/here/filenameprefix The output files will be
+        # created in gs://bucket-name/here/ and the names of the output files will begin
+        # with "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The
+        # output files will be created in gs://bucket-name/some/location/ and the names
+        # of the output files could be anything because there was no filename prefix
+        # specified. If multiple outputs, each response is still AnnotateFileResponse,
+        # each of which contains some subset of the full list of AnnotateImageResponse.
+        # Multiple outputs can happen if, for example, the output JSON is too large and
+        # overflows into multiple sharded files.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -5969,8 +5567,8 @@ module Google
       class GoogleCloudVisionV1p3beta1GcsSource
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage URI for the input file. This must only be a
-        # Google Cloud Storage object. Wildcards are not currently supported.
+        # Google Cloud Storage URI for the input file. This must only be a Google Cloud
+        # Storage object. Wildcards are not currently supported.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -5990,8 +5588,8 @@ module Google
       class GoogleCloudVisionV1p3beta1ImageAnnotationContext
         include Google::Apis::Core::Hashable
       
-        # If the file was a PDF or TIFF, this field gives the page number within
-        # the file used to produce the image.
+        # If the file was a PDF or TIFF, this field gives the page number within the
+        # file used to produce the image.
         # Corresponds to the JSON property `pageNumber`
         # @return [Fixnum]
         attr_accessor :page_number
@@ -6031,9 +5629,8 @@ module Google
         end
       end
       
-      # Response message for the `ImportProductSets` method.
-      # This message is returned by the
-      # google.longrunning.Operations.GetOperation method in the returned
+      # Response message for the `ImportProductSets` method. This message is returned
+      # by the google.longrunning.Operations.GetOperation method in the returned
       # google.longrunning.Operation.response field.
       class GoogleCloudVisionV1p3beta1ImportProductSetsResponse
         include Google::Apis::Core::Hashable
@@ -6043,11 +5640,10 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1ReferenceImage>]
         attr_accessor :reference_images
       
-        # The rpc status for each ImportProductSet request, including both successes
-        # and errors.
-        # The number of statuses here matches the number of lines in the csv file,
-        # and statuses[i] stores the success or failure status of processing the i-th
-        # line of the csv, starting from line 0.
+        # The rpc status for each ImportProductSet request, including both successes and
+        # errors. The number of statuses here matches the number of lines in the csv
+        # file, and statuses[i] stores the success or failure status of processing the i-
+        # th line of the csv, starting from line 0.
         # Corresponds to the JSON property `statuses`
         # @return [Array<Google::Apis::VisionV1p1beta1::Status>]
         attr_accessor :statuses
@@ -6067,11 +5663,11 @@ module Google
       class GoogleCloudVisionV1p3beta1InputConfig
         include Google::Apis::Core::Hashable
       
-        # File content, represented as a stream of bytes.
-        # Note: As with all `bytes` fields, protobuffers use a pure binary
-        # representation, whereas JSON representations use base64.
-        # Currently, this field only works for BatchAnnotateFiles requests. It does
-        # not work for AsyncBatchAnnotateFiles requests.
+        # File content, represented as a stream of bytes. Note: As with all `bytes`
+        # fields, protobuffers use a pure binary representation, whereas JSON
+        # representations use base64. Currently, this field only works for
+        # BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles
+        # requests.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -6082,8 +5678,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1GcsSource]
         attr_accessor :gcs_source
       
-        # The type of the file. Currently only "application/pdf", "image/tiff" and
-        # "image/gif" are supported. Wildcards are not supported.
+        # The type of the file. Currently only "application/pdf", "image/tiff" and "
+        # image/gif" are supported. Wildcards are not supported.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -6109,9 +5705,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -6151,9 +5746,8 @@ module Google
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the
-        # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-        # standard</a>. Values must be within normalized ranges.
+        # specified otherwise, this must conform to the WGS84 standard. Values must be
+        # within normalized ranges.
         # Corresponds to the JSON property `latLng`
         # @return [Google::Apis::VisionV1p1beta1::LatLng]
         attr_accessor :lat_lng
@@ -6168,9 +5762,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the normalized vertex coordinates are relative to the original image
-      # and range from 0 to 1.
+      # A vertex represents a 2D point in the image. NOTE: the normalized vertex
+      # coordinates are relative to the original image and range from 0 to 1.
       class GoogleCloudVisionV1p3beta1NormalizedVertex
         include Google::Apis::Core::Hashable
       
@@ -6230,13 +5823,11 @@ module Google
       class GoogleCloudVisionV1p3beta1OutputConfig
         include Google::Apis::Core::Hashable
       
-        # The max number of response protos to put into each output JSON file on
-        # Google Cloud Storage.
-        # The valid range is [1, 100]. If not specified, the default value is 20.
-        # For example, for one pdf file with 100 pages, 100 response protos will
-        # be generated. If `batch_size` = 20, then 5 json files each
-        # containing 20 response protos will be written under the prefix
-        # `gcs_destination`.`uri`.
+        # The max number of response protos to put into each output JSON file on Google
+        # Cloud Storage. The valid range is [1, 100]. If not specified, the default
+        # value is 20. For example, for one pdf file with 100 pages, 100 response protos
+        # will be generated. If `batch_size` = 20, then 5 json files each containing 20
+        # response protos will be written under the prefix `gcs_destination`.`uri`.
         # Currently, batch_size only applies to GcsDestination, with potential future
         # support for other output configurations.
         # Corresponds to the JSON property `batchSize`
@@ -6273,8 +5864,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Page height. For PDFs the unit is points. For images (including
-        # TIFFs) the unit is pixels.
+        # Page height. For PDFs the unit is points. For images (including TIFFs) the
+        # unit is pixels.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
@@ -6284,8 +5875,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1TextAnnotationTextProperty]
         attr_accessor :property
       
-        # Page width. For PDFs the unit is points. For images (including
-        # TIFFs) the unit is pixels.
+        # Page width. For PDFs the unit is points. For images (including TIFFs) the unit
+        # is pixels.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
@@ -6341,9 +5932,9 @@ module Google
         end
       end
       
-      # A 3D position in the image, used primarily for Face detection landmarks.
-      # A valid Position must have both x and y coordinates.
-      # The position coordinates are in the same scale as the original image.
+      # A 3D position in the image, used primarily for Face detection landmarks. A
+      # valid Position must have both x and y coordinates. The position coordinates
+      # are in the same scale as the original image.
       class GoogleCloudVisionV1p3beta1Position
         include Google::Apis::Core::Hashable
       
@@ -6390,33 +5981,28 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the product.
-        # Format is:
-        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-        # This field is ignored when creating a product.
+        # The resource name of the product. Format is: `projects/PROJECT_ID/locations/
+        # LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Immutable. The category for the product identified by the reference image.
-        # This should
-        # be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
-        # "homegoods", "apparel", and "toys" are still supported, but these should
-        # not be used for new products.
+        # This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-
+        # v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys"
+        # are still supported, but these should not be used for new products.
         # Corresponds to the JSON property `productCategory`
         # @return [String]
         attr_accessor :product_category
       
-        # Key-value pairs that can be attached to a product. At query time,
-        # constraints can be specified based on the product_labels.
-        # Note that integer values can be provided as strings, e.g. "1199". Only
-        # strings with integer values can match a range-based restriction which is
-        # to be supported soon.
-        # Multiple values can be assigned to the same key. One product may have up to
-        # 500 product_labels.
-        # Notice that the total number of distinct product_labels over all products
-        # in one ProductSet cannot exceed 1M, otherwise the product search pipeline
-        # will refuse to work for that ProductSet.
+        # Key-value pairs that can be attached to a product. At query time, constraints
+        # can be specified based on the product_labels. Note that integer values can be
+        # provided as strings, e.g. "1199". Only strings with integer values can match a
+        # range-based restriction which is to be supported soon. Multiple values can be
+        # assigned to the same key. One product may have up to 500 product_labels.
+        # Notice that the total number of distinct product_labels over all products in
+        # one ProductSet cannot exceed 1M, otherwise the product search pipeline will
+        # refuse to work for that ProductSet.
         # Corresponds to the JSON property `productLabels`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1ProductKeyValue>]
         attr_accessor :product_labels
@@ -6445,8 +6031,8 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # The value of the label attached to the product. Cannot be empty and
-        # cannot exceed 128 bytes.
+        # The value of the label attached to the product. Cannot be empty and cannot
+        # exceed 128 bytes.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -6467,8 +6053,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Timestamp of the index which provided these results. Products added to the
-        # product set and products removed from the product set after this time are
-        # not reflected in the current results.
+        # product set and products removed from the product set after this time are not
+        # reflected in the current results.
         # Corresponds to the JSON property `indexTime`
         # @return [String]
         attr_accessor :index_time
@@ -6498,8 +6084,7 @@ module Google
         end
       end
       
-      # Information about the products similar to a single product in a query
-      # image.
+      # Information about the products similar to a single product in a query image.
       class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
         include Google::Apis::Core::Hashable
       
@@ -6534,9 +6119,8 @@ module Google
       class GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
         include Google::Apis::Core::Hashable
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -6573,8 +6157,8 @@ module Google
       class GoogleCloudVisionV1p3beta1ProductSearchResultsResult
         include Google::Apis::Core::Hashable
       
-        # The resource name of the image from the product that is the closest match
-        # to the query.
+        # The resource name of the image from the product that is the closest match to
+        # the query.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
@@ -6584,8 +6168,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1Product]
         attr_accessor :product
       
-        # A confidence level on the match, ranging from 0 (no confidence) to
-        # 1 (full confidence).
+        # A confidence level on the match, ranging from 0 (no confidence) to 1 (full
+        # confidence).
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -6639,28 +6223,24 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Bounding polygons around the areas of interest in the reference
-        # image.
-        # If this field is empty, the system will try to detect regions of
-        # interest. At most 10 bounding polygons will be used.
-        # The provided shape is converted into a non-rotated rectangle. Once
-        # converted, the small edge of the rectangle must be greater than or equal
-        # to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5
-        # is not).
+        # image. If this field is empty, the system will try to detect regions of
+        # interest. At most 10 bounding polygons will be used. The provided shape is
+        # converted into a non-rotated rectangle. Once converted, the small edge of the
+        # rectangle must be greater than or equal to 300 pixels. The aspect ratio must
+        # be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
         # Corresponds to the JSON property `boundingPolys`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1BoundingPoly>]
         attr_accessor :bounding_polys
       
-        # The resource name of the reference image.
-        # Format is:
-        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/
-        # IMAGE_ID`.
-        # This field is ignored when creating a reference image.
+        # The resource name of the reference image. Format is: `projects/PROJECT_ID/
+        # locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is
+        # ignored when creating a reference image.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. The Google Cloud Storage URI of the reference image.
-        # The URI must start with `gs://`.
+        # Required. The Google Cloud Storage URI of the reference image. The URI must
+        # start with `gs://`.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -6677,15 +6257,14 @@ module Google
         end
       end
       
-      # Set of features pertaining to the image, computed by computer vision
-      # methods over safe-search verticals (for example, adult, spoof, medical,
-      # violence).
+      # Set of features pertaining to the image, computed by computer vision methods
+      # over safe-search verticals (for example, adult, spoof, medical, violence).
       class GoogleCloudVisionV1p3beta1SafeSearchAnnotation
         include Google::Apis::Core::Hashable
       
         # Represents the adult content likelihood for the image. Adult content may
-        # contain elements such as nudity, pornographic images or cartoons, or
-        # sexual activities.
+        # contain elements such as nudity, pornographic images or cartoons, or sexual
+        # activities.
         # Corresponds to the JSON property `adult`
         # @return [String]
         attr_accessor :adult
@@ -6697,15 +6276,14 @@ module Google
       
         # Likelihood that the request image contains racy content. Racy content may
         # include (but is not limited to) skimpy or sheer clothing, strategically
-        # covered nudity, lewd or provocative poses, or close-ups of sensitive
-        # body areas.
+        # covered nudity, lewd or provocative poses, or close-ups of sensitive body
+        # areas.
         # Corresponds to the JSON property `racy`
         # @return [String]
         attr_accessor :racy
       
-        # Spoof likelihood. The likelihood that an modification
-        # was made to the image's canonical version to make it appear
-        # funny or offensive.
+        # Spoof likelihood. The likelihood that an modification was made to the image's
+        # canonical version to make it appear funny or offensive.
         # Corresponds to the JSON property `spoof`
         # @return [String]
         attr_accessor :spoof
@@ -6766,13 +6344,12 @@ module Google
         end
       end
       
-      # TextAnnotation contains a structured representation of OCR extracted text.
-      # The hierarchy of an OCR extracted text structure is like this:
-      # TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
-      # Each structural component, starting from Page, may further have their own
-      # properties. Properties describe detected languages, breaks etc.. Please refer
-      # to the TextAnnotation.TextProperty message definition below for more
-      # detail.
+      # TextAnnotation contains a structured representation of OCR extracted text. The
+      # hierarchy of an OCR extracted text structure is like this: TextAnnotation ->
+      # Page -> Block -> Paragraph -> Word -> Symbol Each structural component,
+      # starting from Page, may further have their own properties. Properties describe
+      # detected languages, breaks etc.. Please refer to the TextAnnotation.
+      # TextProperty message definition below for more detail.
       class GoogleCloudVisionV1p3beta1TextAnnotation
         include Google::Apis::Core::Hashable
       
@@ -6832,9 +6409,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -6875,8 +6451,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the vertex coordinates are in the same scale as the original image.
+      # A vertex represents a 2D point in the image. NOTE: the vertex coordinates are
+      # in the same scale as the original image.
       class GoogleCloudVisionV1p3beta1Vertex
         include Google::Apis::Core::Hashable
       
@@ -6905,14 +6481,14 @@ module Google
       class GoogleCloudVisionV1p3beta1WebDetection
         include Google::Apis::Core::Hashable
       
-        # The service's best guess as to the topic of the request image.
-        # Inferred from similar images on the open web.
+        # The service's best guess as to the topic of the request image. Inferred from
+        # similar images on the open web.
         # Corresponds to the JSON property `bestGuessLabels`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1WebDetectionWebLabel>]
         attr_accessor :best_guess_labels
       
-        # Fully matching images from the Internet.
-        # Can include resized copies of the query image.
+        # Fully matching images from the Internet. Can include resized copies of the
+        # query image.
         # Corresponds to the JSON property `fullMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1WebDetectionWebImage>]
         attr_accessor :full_matching_images
@@ -6922,9 +6498,9 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1WebDetectionWebPage>]
         attr_accessor :pages_with_matching_images
       
-        # Partial matching images from the Internet.
-        # Those images are similar enough to share some key-point features. For
-        # example an original image will likely have partial matching for its crops.
+        # Partial matching images from the Internet. Those images are similar enough to
+        # share some key-point features. For example an original image will likely have
+        # partial matching for its crops.
         # Corresponds to the JSON property `partialMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1WebDetectionWebImage>]
         attr_accessor :partial_matching_images
@@ -6968,8 +6544,8 @@ module Google
         # @return [String]
         attr_accessor :entity_id
       
-        # Overall relevancy score for the entity.
-        # Not normalized and not comparable across different image queries.
+        # Overall relevancy score for the entity. Not normalized and not comparable
+        # across different image queries.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -7020,9 +6596,9 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # The BCP-47 language code for `label`, such as "en-US" or "sr-Latn".
-        # For more information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code for `label`, such as "en-US" or "sr-Latn". For more
+        # information, see http://www.unicode.org/reports/tr35/#
+        # Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -7042,8 +6618,8 @@ module Google
       class GoogleCloudVisionV1p3beta1WebDetectionWebPage
         include Google::Apis::Core::Hashable
       
-        # Fully matching images on the page.
-        # Can include resized copies of the query image.
+        # Fully matching images on the page. Can include resized copies of the query
+        # image.
         # Corresponds to the JSON property `fullMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1WebDetectionWebImage>]
         attr_accessor :full_matching_images
@@ -7053,10 +6629,9 @@ module Google
         # @return [String]
         attr_accessor :page_title
       
-        # Partial matching images on the page.
-        # Those images are similar enough to share some key-point features. For
-        # example an original image will likely have partial matching for its
-        # crops.
+        # Partial matching images on the page. Those images are similar enough to share
+        # some key-point features. For example an original image will likely have
+        # partial matching for its crops.
         # Corresponds to the JSON property `partialMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1WebDetectionWebImage>]
         attr_accessor :partial_matching_images
@@ -7104,8 +6679,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1TextAnnotationTextProperty]
         attr_accessor :property
       
-        # List of symbols in the word.
-        # The order of the symbols follows the natural reading order.
+        # List of symbols in the word. The order of the symbols follows the natural
+        # reading order.
         # Corresponds to the JSON property `symbols`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1Symbol>]
         attr_accessor :symbols
@@ -7128,12 +6703,12 @@ module Google
       class GoogleCloudVisionV1p4beta1AnnotateFileResponse
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VisionV1p1beta1::Status]
         attr_accessor :error
@@ -7143,8 +6718,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1InputConfig]
         attr_accessor :input_config
       
-        # Individual responses to images found within the file. This field will be
-        # empty if the `error` field is set.
+        # Individual responses to images found within the file. This field will be empty
+        # if the `error` field is set.
         # Corresponds to the JSON property `responses`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1AnnotateImageResponse>]
         attr_accessor :responses
@@ -7182,12 +6757,12 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1CropHintsAnnotation]
         attr_accessor :crop_hints_annotation
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VisionV1p1beta1::Status]
         attr_accessor :error
@@ -7197,13 +6772,12 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1FaceAnnotation>]
         attr_accessor :face_annotations
       
-        # TextAnnotation contains a structured representation of OCR extracted text.
-        # The hierarchy of an OCR extracted text structure is like this:
-        # TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
-        # Each structural component, starting from Page, may further have their own
-        # properties. Properties describe detected languages, breaks etc.. Please refer
-        # to the TextAnnotation.TextProperty message definition below for more
-        # detail.
+        # TextAnnotation contains a structured representation of OCR extracted text. The
+        # hierarchy of an OCR extracted text structure is like this: TextAnnotation ->
+        # Page -> Block -> Paragraph -> Word -> Symbol Each structural component,
+        # starting from Page, may further have their own properties. Properties describe
+        # detected languages, breaks etc.. Please refer to the TextAnnotation.
+        # TextProperty message definition below for more detail.
         # Corresponds to the JSON property `fullTextAnnotation`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1TextAnnotation]
         attr_accessor :full_text_annotation
@@ -7223,8 +6797,8 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1EntityAnnotation>]
         attr_accessor :landmark_annotations
       
-        # If present, localized object detection has completed successfully.
-        # This will be sorted descending by confidence score.
+        # If present, localized object detection has completed successfully. This will
+        # be sorted descending by confidence score.
         # Corresponds to the JSON property `localizedObjectAnnotations`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>]
         attr_accessor :localized_object_annotations
@@ -7239,9 +6813,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1ProductSearchResults]
         attr_accessor :product_search_results
       
-        # Set of features pertaining to the image, computed by computer vision
-        # methods over safe-search verticals (for example, adult, spoof, medical,
-        # violence).
+        # Set of features pertaining to the image, computed by computer vision methods
+        # over safe-search verticals (for example, adult, spoof, medical, violence).
         # Corresponds to the JSON property `safeSearchAnnotation`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1SafeSearchAnnotation]
         attr_accessor :safe_search_annotation
@@ -7357,14 +6930,14 @@ module Google
         end
       end
       
-      # Metadata for the batch operations such as the current state.
-      # This is included in the `metadata` field of the `Operation` returned by the
-      # `GetOperation` call of the `google::longrunning::Operations` service.
+      # Metadata for the batch operations such as the current state. This is included
+      # in the `metadata` field of the `Operation` returned by the `GetOperation` call
+      # of the `google::longrunning::Operations` service.
       class GoogleCloudVisionV1p4beta1BatchOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # The time when the batch request is finished and
-        # google.longrunning.Operation.done is set to true.
+        # The time when the batch request is finished and google.longrunning.Operation.
+        # done is set to true.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -7473,8 +7046,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the preloaded Celebrity. Has the format
-        # `builtin/`mid``.
+        # The resource name of the preloaded Celebrity. Has the format `builtin/`mid``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -7491,123 +7063,61 @@ module Google
         end
       end
       
-      # Color information consists of RGB channels, score, and the fraction of
-      # the image that the color occupies in the image.
+      # Color information consists of RGB channels, score, and the fraction of the
+      # image that the color occupies in the image.
       class GoogleCloudVisionV1p4beta1ColorInfo
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `color`
         # @return [Google::Apis::VisionV1p1beta1::Color]
         attr_accessor :color
       
-        # The fraction of pixels the color occupies in the image.
-        # Value in range [0, 1].
+        # The fraction of pixels the color occupies in the image. Value in range [0, 1].
         # Corresponds to the JSON property `pixelFraction`
         # @return [Float]
         attr_accessor :pixel_fraction
@@ -7638,7 +7148,7 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # Confidence of this being a salient region.  Range [0, 1].
+        # Confidence of this being a salient region. Range [0, 1].
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -7708,11 +7218,10 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # **Deprecated. Use `score` instead.**
-        # The accuracy of the entity detection in an image.
-        # For example, for an image in which the "Eiffel Tower" entity is detected,
-        # this field represents the confidence that there is a tower in the query
-        # image. Range [0, 1].
+        # **Deprecated. Use `score` instead.** The accuracy of the entity detection in
+        # an image. For example, for an image in which the "Eiffel Tower" entity is
+        # detected, this field represents the confidence that there is a tower in the
+        # query image. Range [0, 1].
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -7722,30 +7231,29 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The language code for the locale in which the entity textual
-        # `description` is expressed.
+        # The language code for the locale in which the entity textual `description` is
+        # expressed.
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
       
-        # The location information for the detected entity. Multiple
-        # `LocationInfo` elements can be present because one location may
-        # indicate the location of the scene in the image, and another location
-        # may indicate the location of the place where the image was taken.
-        # Location information is usually present for landmarks.
+        # The location information for the detected entity. Multiple `LocationInfo`
+        # elements can be present because one location may indicate the location of the
+        # scene in the image, and another location may indicate the location of the
+        # place where the image was taken. Location information is usually present for
+        # landmarks.
         # Corresponds to the JSON property `locations`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1LocationInfo>]
         attr_accessor :locations
       
-        # Opaque entity ID. Some IDs may be available in
-        # [Google Knowledge Graph Search
+        # Opaque entity ID. Some IDs may be available in [Google Knowledge Graph Search
         # API](https://developers.google.com/knowledge-graph/).
         # Corresponds to the JSON property `mid`
         # @return [String]
         attr_accessor :mid
       
-        # Some entities may have optional user-supplied `Property` (name/value)
-        # fields, such a score or string that qualifies the entity.
+        # Some entities may have optional user-supplied `Property` (name/value) fields,
+        # such a score or string that qualifies the entity.
         # Corresponds to the JSON property `properties`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1Property>]
         attr_accessor :properties
@@ -7755,11 +7263,11 @@ module Google
         # @return [Float]
         attr_accessor :score
       
-        # The relevancy of the ICA (Image Content Annotation) label to the
-        # image. For example, the relevancy of "tower" is likely higher to an image
-        # containing the detected "Eiffel Tower" than to an image containing a
-        # detected distant towering building, even though the confidence that
-        # there is a tower in each image may be the same. Range [0, 1].
+        # The relevancy of the ICA (Image Content Annotation) label to the image. For
+        # example, the relevancy of "tower" is likely higher to an image containing the
+        # detected "Eiffel Tower" than to an image containing a detected distant
+        # towering building, even though the confidence that there is a tower in each
+        # image may be the same. Range [0, 1].
         # Corresponds to the JSON property `topicality`
         # @return [Float]
         attr_accessor :topicality
@@ -7832,23 +7340,23 @@ module Google
         attr_accessor :landmarks
       
         # Yaw angle, which indicates the leftward/rightward angle that the face is
-        # pointing relative to the vertical plane perpendicular to the image. Range
-        # [-180,180].
+        # pointing relative to the vertical plane perpendicular to the image. Range [-
+        # 180,180].
         # Corresponds to the JSON property `panAngle`
         # @return [Float]
         attr_accessor :pan_angle
       
-        # Additional recognition information. Only computed if
-        # image_context.face_recognition_params is provided, **and** a match is found
-        # to a Celebrity in the input CelebritySet. This field is
-        # sorted in order of decreasing confidence values.
+        # Additional recognition information. Only computed if image_context.
+        # face_recognition_params is provided, **and** a match is found to a Celebrity
+        # in the input CelebritySet. This field is sorted in order of decreasing
+        # confidence values.
         # Corresponds to the JSON property `recognitionResult`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1FaceRecognitionResult>]
         attr_accessor :recognition_result
       
-        # Roll angle, which indicates the amount of clockwise/anti-clockwise rotation
-        # of the face relative to the image vertical about the axis perpendicular to
-        # the face. Range [-180,180].
+        # Roll angle, which indicates the amount of clockwise/anti-clockwise rotation of
+        # the face relative to the image vertical about the axis perpendicular to the
+        # face. Range [-180,180].
         # Corresponds to the JSON property `rollAngle`
         # @return [Float]
         attr_accessor :roll_angle
@@ -7903,9 +7411,9 @@ module Google
       class GoogleCloudVisionV1p4beta1FaceAnnotationLandmark
         include Google::Apis::Core::Hashable
       
-        # A 3D position in the image, used primarily for Face detection landmarks.
-        # A valid Position must have both x and y coordinates.
-        # The position coordinates are in the same scale as the original image.
+        # A 3D position in the image, used primarily for Face detection landmarks. A
+        # valid Position must have both x and y coordinates. The position coordinates
+        # are in the same scale as the original image.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1Position]
         attr_accessor :position
@@ -7955,24 +7463,20 @@ module Google
       class GoogleCloudVisionV1p4beta1GcsDestination
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage URI prefix where the results will be stored. Results
-        # will be in JSON format and preceded by its corresponding input URI prefix.
-        # This field can either represent a gcs file prefix or gcs directory. In
-        # either case, the uri should be unique because in order to get all of the
-        # output files, you will need to do a wildcard gcs search on the uri prefix
-        # you provide.
-        # Examples:
-        # *    File Prefix: gs://bucket-name/here/filenameprefix   The output files
-        # will be created in gs://bucket-name/here/ and the names of the
-        # output files will begin with "filenameprefix".
-        # *    Directory Prefix: gs://bucket-name/some/location/   The output files
-        # will be created in gs://bucket-name/some/location/ and the names of the
-        # output files could be anything because there was no filename prefix
-        # specified.
-        # If multiple outputs, each response is still AnnotateFileResponse, each of
-        # which contains some subset of the full list of AnnotateImageResponse.
-        # Multiple outputs can happen if, for example, the output JSON is too large
-        # and overflows into multiple sharded files.
+        # Google Cloud Storage URI prefix where the results will be stored. Results will
+        # be in JSON format and preceded by its corresponding input URI prefix. This
+        # field can either represent a gcs file prefix or gcs directory. In either case,
+        # the uri should be unique because in order to get all of the output files, you
+        # will need to do a wildcard gcs search on the uri prefix you provide. Examples:
+        # * File Prefix: gs://bucket-name/here/filenameprefix The output files will be
+        # created in gs://bucket-name/here/ and the names of the output files will begin
+        # with "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The
+        # output files will be created in gs://bucket-name/some/location/ and the names
+        # of the output files could be anything because there was no filename prefix
+        # specified. If multiple outputs, each response is still AnnotateFileResponse,
+        # each of which contains some subset of the full list of AnnotateImageResponse.
+        # Multiple outputs can happen if, for example, the output JSON is too large and
+        # overflows into multiple sharded files.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -7991,8 +7495,8 @@ module Google
       class GoogleCloudVisionV1p4beta1GcsSource
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage URI for the input file. This must only be a
-        # Google Cloud Storage object. Wildcards are not currently supported.
+        # Google Cloud Storage URI for the input file. This must only be a Google Cloud
+        # Storage object. Wildcards are not currently supported.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -8012,8 +7516,8 @@ module Google
       class GoogleCloudVisionV1p4beta1ImageAnnotationContext
         include Google::Apis::Core::Hashable
       
-        # If the file was a PDF or TIFF, this field gives the page number within
-        # the file used to produce the image.
+        # If the file was a PDF or TIFF, this field gives the page number within the
+        # file used to produce the image.
         # Corresponds to the JSON property `pageNumber`
         # @return [Fixnum]
         attr_accessor :page_number
@@ -8053,9 +7557,8 @@ module Google
         end
       end
       
-      # Response message for the `ImportProductSets` method.
-      # This message is returned by the
-      # google.longrunning.Operations.GetOperation method in the returned
+      # Response message for the `ImportProductSets` method. This message is returned
+      # by the google.longrunning.Operations.GetOperation method in the returned
       # google.longrunning.Operation.response field.
       class GoogleCloudVisionV1p4beta1ImportProductSetsResponse
         include Google::Apis::Core::Hashable
@@ -8065,11 +7568,10 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1ReferenceImage>]
         attr_accessor :reference_images
       
-        # The rpc status for each ImportProductSet request, including both successes
-        # and errors.
-        # The number of statuses here matches the number of lines in the csv file,
-        # and statuses[i] stores the success or failure status of processing the i-th
-        # line of the csv, starting from line 0.
+        # The rpc status for each ImportProductSet request, including both successes and
+        # errors. The number of statuses here matches the number of lines in the csv
+        # file, and statuses[i] stores the success or failure status of processing the i-
+        # th line of the csv, starting from line 0.
         # Corresponds to the JSON property `statuses`
         # @return [Array<Google::Apis::VisionV1p1beta1::Status>]
         attr_accessor :statuses
@@ -8089,11 +7591,11 @@ module Google
       class GoogleCloudVisionV1p4beta1InputConfig
         include Google::Apis::Core::Hashable
       
-        # File content, represented as a stream of bytes.
-        # Note: As with all `bytes` fields, protobuffers use a pure binary
-        # representation, whereas JSON representations use base64.
-        # Currently, this field only works for BatchAnnotateFiles requests. It does
-        # not work for AsyncBatchAnnotateFiles requests.
+        # File content, represented as a stream of bytes. Note: As with all `bytes`
+        # fields, protobuffers use a pure binary representation, whereas JSON
+        # representations use base64. Currently, this field only works for
+        # BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles
+        # requests.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -8104,8 +7606,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1GcsSource]
         attr_accessor :gcs_source
       
-        # The type of the file. Currently only "application/pdf", "image/tiff" and
-        # "image/gif" are supported. Wildcards are not supported.
+        # The type of the file. Currently only "application/pdf", "image/tiff" and "
+        # image/gif" are supported. Wildcards are not supported.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -8131,9 +7633,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -8173,9 +7674,8 @@ module Google
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the
-        # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-        # standard</a>. Values must be within normalized ranges.
+        # specified otherwise, this must conform to the WGS84 standard. Values must be
+        # within normalized ranges.
         # Corresponds to the JSON property `latLng`
         # @return [Google::Apis::VisionV1p1beta1::LatLng]
         attr_accessor :lat_lng
@@ -8190,9 +7690,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the normalized vertex coordinates are relative to the original image
-      # and range from 0 to 1.
+      # A vertex represents a 2D point in the image. NOTE: the normalized vertex
+      # coordinates are relative to the original image and range from 0 to 1.
       class GoogleCloudVisionV1p4beta1NormalizedVertex
         include Google::Apis::Core::Hashable
       
@@ -8252,13 +7751,11 @@ module Google
       class GoogleCloudVisionV1p4beta1OutputConfig
         include Google::Apis::Core::Hashable
       
-        # The max number of response protos to put into each output JSON file on
-        # Google Cloud Storage.
-        # The valid range is [1, 100]. If not specified, the default value is 20.
-        # For example, for one pdf file with 100 pages, 100 response protos will
-        # be generated. If `batch_size` = 20, then 5 json files each
-        # containing 20 response protos will be written under the prefix
-        # `gcs_destination`.`uri`.
+        # The max number of response protos to put into each output JSON file on Google
+        # Cloud Storage. The valid range is [1, 100]. If not specified, the default
+        # value is 20. For example, for one pdf file with 100 pages, 100 response protos
+        # will be generated. If `batch_size` = 20, then 5 json files each containing 20
+        # response protos will be written under the prefix `gcs_destination`.`uri`.
         # Currently, batch_size only applies to GcsDestination, with potential future
         # support for other output configurations.
         # Corresponds to the JSON property `batchSize`
@@ -8295,8 +7792,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Page height. For PDFs the unit is points. For images (including
-        # TIFFs) the unit is pixels.
+        # Page height. For PDFs the unit is points. For images (including TIFFs) the
+        # unit is pixels.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
@@ -8306,8 +7803,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1TextAnnotationTextProperty]
         attr_accessor :property
       
-        # Page width. For PDFs the unit is points. For images (including
-        # TIFFs) the unit is pixels.
+        # Page width. For PDFs the unit is points. For images (including TIFFs) the unit
+        # is pixels.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
@@ -8363,9 +7860,9 @@ module Google
         end
       end
       
-      # A 3D position in the image, used primarily for Face detection landmarks.
-      # A valid Position must have both x and y coordinates.
-      # The position coordinates are in the same scale as the original image.
+      # A 3D position in the image, used primarily for Face detection landmarks. A
+      # valid Position must have both x and y coordinates. The position coordinates
+      # are in the same scale as the original image.
       class GoogleCloudVisionV1p4beta1Position
         include Google::Apis::Core::Hashable
       
@@ -8412,33 +7909,28 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the product.
-        # Format is:
-        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-        # This field is ignored when creating a product.
+        # The resource name of the product. Format is: `projects/PROJECT_ID/locations/
+        # LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Immutable. The category for the product identified by the reference image.
-        # This should
-        # be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
-        # "homegoods", "apparel", and "toys" are still supported, but these should
-        # not be used for new products.
+        # This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-
+        # v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys"
+        # are still supported, but these should not be used for new products.
         # Corresponds to the JSON property `productCategory`
         # @return [String]
         attr_accessor :product_category
       
-        # Key-value pairs that can be attached to a product. At query time,
-        # constraints can be specified based on the product_labels.
-        # Note that integer values can be provided as strings, e.g. "1199". Only
-        # strings with integer values can match a range-based restriction which is
-        # to be supported soon.
-        # Multiple values can be assigned to the same key. One product may have up to
-        # 500 product_labels.
-        # Notice that the total number of distinct product_labels over all products
-        # in one ProductSet cannot exceed 1M, otherwise the product search pipeline
-        # will refuse to work for that ProductSet.
+        # Key-value pairs that can be attached to a product. At query time, constraints
+        # can be specified based on the product_labels. Note that integer values can be
+        # provided as strings, e.g. "1199". Only strings with integer values can match a
+        # range-based restriction which is to be supported soon. Multiple values can be
+        # assigned to the same key. One product may have up to 500 product_labels.
+        # Notice that the total number of distinct product_labels over all products in
+        # one ProductSet cannot exceed 1M, otherwise the product search pipeline will
+        # refuse to work for that ProductSet.
         # Corresponds to the JSON property `productLabels`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1ProductKeyValue>]
         attr_accessor :product_labels
@@ -8467,8 +7959,8 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # The value of the label attached to the product. Cannot be empty and
-        # cannot exceed 128 bytes.
+        # The value of the label attached to the product. Cannot be empty and cannot
+        # exceed 128 bytes.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -8489,8 +7981,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Timestamp of the index which provided these results. Products added to the
-        # product set and products removed from the product set after this time are
-        # not reflected in the current results.
+        # product set and products removed from the product set after this time are not
+        # reflected in the current results.
         # Corresponds to the JSON property `indexTime`
         # @return [String]
         attr_accessor :index_time
@@ -8520,8 +8012,7 @@ module Google
         end
       end
       
-      # Information about the products similar to a single product in a query
-      # image.
+      # Information about the products similar to a single product in a query image.
       class GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
         include Google::Apis::Core::Hashable
       
@@ -8556,9 +8047,8 @@ module Google
       class GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
         include Google::Apis::Core::Hashable
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -8595,8 +8085,8 @@ module Google
       class GoogleCloudVisionV1p4beta1ProductSearchResultsResult
         include Google::Apis::Core::Hashable
       
-        # The resource name of the image from the product that is the closest match
-        # to the query.
+        # The resource name of the image from the product that is the closest match to
+        # the query.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
@@ -8606,8 +8096,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1Product]
         attr_accessor :product
       
-        # A confidence level on the match, ranging from 0 (no confidence) to
-        # 1 (full confidence).
+        # A confidence level on the match, ranging from 0 (no confidence) to 1 (full
+        # confidence).
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -8661,28 +8151,24 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Bounding polygons around the areas of interest in the reference
-        # image.
-        # If this field is empty, the system will try to detect regions of
-        # interest. At most 10 bounding polygons will be used.
-        # The provided shape is converted into a non-rotated rectangle. Once
-        # converted, the small edge of the rectangle must be greater than or equal
-        # to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5
-        # is not).
+        # image. If this field is empty, the system will try to detect regions of
+        # interest. At most 10 bounding polygons will be used. The provided shape is
+        # converted into a non-rotated rectangle. Once converted, the small edge of the
+        # rectangle must be greater than or equal to 300 pixels. The aspect ratio must
+        # be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
         # Corresponds to the JSON property `boundingPolys`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1BoundingPoly>]
         attr_accessor :bounding_polys
       
-        # The resource name of the reference image.
-        # Format is:
-        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/
-        # IMAGE_ID`.
-        # This field is ignored when creating a reference image.
+        # The resource name of the reference image. Format is: `projects/PROJECT_ID/
+        # locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is
+        # ignored when creating a reference image.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. The Google Cloud Storage URI of the reference image.
-        # The URI must start with `gs://`.
+        # Required. The Google Cloud Storage URI of the reference image. The URI must
+        # start with `gs://`.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -8699,15 +8185,14 @@ module Google
         end
       end
       
-      # Set of features pertaining to the image, computed by computer vision
-      # methods over safe-search verticals (for example, adult, spoof, medical,
-      # violence).
+      # Set of features pertaining to the image, computed by computer vision methods
+      # over safe-search verticals (for example, adult, spoof, medical, violence).
       class GoogleCloudVisionV1p4beta1SafeSearchAnnotation
         include Google::Apis::Core::Hashable
       
         # Represents the adult content likelihood for the image. Adult content may
-        # contain elements such as nudity, pornographic images or cartoons, or
-        # sexual activities.
+        # contain elements such as nudity, pornographic images or cartoons, or sexual
+        # activities.
         # Corresponds to the JSON property `adult`
         # @return [String]
         attr_accessor :adult
@@ -8719,15 +8204,14 @@ module Google
       
         # Likelihood that the request image contains racy content. Racy content may
         # include (but is not limited to) skimpy or sheer clothing, strategically
-        # covered nudity, lewd or provocative poses, or close-ups of sensitive
-        # body areas.
+        # covered nudity, lewd or provocative poses, or close-ups of sensitive body
+        # areas.
         # Corresponds to the JSON property `racy`
         # @return [String]
         attr_accessor :racy
       
-        # Spoof likelihood. The likelihood that an modification
-        # was made to the image's canonical version to make it appear
-        # funny or offensive.
+        # Spoof likelihood. The likelihood that an modification was made to the image's
+        # canonical version to make it appear funny or offensive.
         # Corresponds to the JSON property `spoof`
         # @return [String]
         attr_accessor :spoof
@@ -8788,13 +8272,12 @@ module Google
         end
       end
       
-      # TextAnnotation contains a structured representation of OCR extracted text.
-      # The hierarchy of an OCR extracted text structure is like this:
-      # TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
-      # Each structural component, starting from Page, may further have their own
-      # properties. Properties describe detected languages, breaks etc.. Please refer
-      # to the TextAnnotation.TextProperty message definition below for more
-      # detail.
+      # TextAnnotation contains a structured representation of OCR extracted text. The
+      # hierarchy of an OCR extracted text structure is like this: TextAnnotation ->
+      # Page -> Block -> Paragraph -> Word -> Symbol Each structural component,
+      # starting from Page, may further have their own properties. Properties describe
+      # detected languages, breaks etc.. Please refer to the TextAnnotation.
+      # TextProperty message definition below for more detail.
       class GoogleCloudVisionV1p4beta1TextAnnotation
         include Google::Apis::Core::Hashable
       
@@ -8854,9 +8337,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -8897,8 +8379,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the vertex coordinates are in the same scale as the original image.
+      # A vertex represents a 2D point in the image. NOTE: the vertex coordinates are
+      # in the same scale as the original image.
       class GoogleCloudVisionV1p4beta1Vertex
         include Google::Apis::Core::Hashable
       
@@ -8927,14 +8409,14 @@ module Google
       class GoogleCloudVisionV1p4beta1WebDetection
         include Google::Apis::Core::Hashable
       
-        # The service's best guess as to the topic of the request image.
-        # Inferred from similar images on the open web.
+        # The service's best guess as to the topic of the request image. Inferred from
+        # similar images on the open web.
         # Corresponds to the JSON property `bestGuessLabels`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1WebDetectionWebLabel>]
         attr_accessor :best_guess_labels
       
-        # Fully matching images from the Internet.
-        # Can include resized copies of the query image.
+        # Fully matching images from the Internet. Can include resized copies of the
+        # query image.
         # Corresponds to the JSON property `fullMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1WebDetectionWebImage>]
         attr_accessor :full_matching_images
@@ -8944,9 +8426,9 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1WebDetectionWebPage>]
         attr_accessor :pages_with_matching_images
       
-        # Partial matching images from the Internet.
-        # Those images are similar enough to share some key-point features. For
-        # example an original image will likely have partial matching for its crops.
+        # Partial matching images from the Internet. Those images are similar enough to
+        # share some key-point features. For example an original image will likely have
+        # partial matching for its crops.
         # Corresponds to the JSON property `partialMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1WebDetectionWebImage>]
         attr_accessor :partial_matching_images
@@ -8990,8 +8472,8 @@ module Google
         # @return [String]
         attr_accessor :entity_id
       
-        # Overall relevancy score for the entity.
-        # Not normalized and not comparable across different image queries.
+        # Overall relevancy score for the entity. Not normalized and not comparable
+        # across different image queries.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -9042,9 +8524,9 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # The BCP-47 language code for `label`, such as "en-US" or "sr-Latn".
-        # For more information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code for `label`, such as "en-US" or "sr-Latn". For more
+        # information, see http://www.unicode.org/reports/tr35/#
+        # Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -9064,8 +8546,8 @@ module Google
       class GoogleCloudVisionV1p4beta1WebDetectionWebPage
         include Google::Apis::Core::Hashable
       
-        # Fully matching images on the page.
-        # Can include resized copies of the query image.
+        # Fully matching images on the page. Can include resized copies of the query
+        # image.
         # Corresponds to the JSON property `fullMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1WebDetectionWebImage>]
         attr_accessor :full_matching_images
@@ -9075,10 +8557,9 @@ module Google
         # @return [String]
         attr_accessor :page_title
       
-        # Partial matching images on the page.
-        # Those images are similar enough to share some key-point features. For
-        # example an original image will likely have partial matching for its
-        # crops.
+        # Partial matching images on the page. Those images are similar enough to share
+        # some key-point features. For example an original image will likely have
+        # partial matching for its crops.
         # Corresponds to the JSON property `partialMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1WebDetectionWebImage>]
         attr_accessor :partial_matching_images
@@ -9126,8 +8607,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1TextAnnotationTextProperty]
         attr_accessor :property
       
-        # List of symbols in the word.
-        # The order of the symbols follows the natural reading order.
+        # List of symbols in the word. The order of the symbols follows the natural
+        # reading order.
         # Corresponds to the JSON property `symbols`
         # @return [Array<Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1Symbol>]
         attr_accessor :symbols
@@ -9145,8 +8626,7 @@ module Google
         end
       end
       
-      # Information about the products similar to a single product in a query
-      # image.
+      # Information about the products similar to a single product in a query image.
       class GroupedResult
         include Google::Apis::Core::Hashable
       
@@ -9182,8 +8662,8 @@ module Google
       class ImageAnnotationContext
         include Google::Apis::Core::Hashable
       
-        # If the file was a PDF or TIFF, this field gives the page number within
-        # the file used to produce the image.
+        # If the file was a PDF or TIFF, this field gives the page number within the
+        # file used to produce the image.
         # Corresponds to the JSON property `pageNumber`
         # @return [Fixnum]
         attr_accessor :page_number
@@ -9223,9 +8703,8 @@ module Google
         end
       end
       
-      # Response message for the `ImportProductSets` method.
-      # This message is returned by the
-      # google.longrunning.Operations.GetOperation method in the returned
+      # Response message for the `ImportProductSets` method. This message is returned
+      # by the google.longrunning.Operations.GetOperation method in the returned
       # google.longrunning.Operation.response field.
       class ImportProductSetsResponse
         include Google::Apis::Core::Hashable
@@ -9235,11 +8714,10 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::ReferenceImage>]
         attr_accessor :reference_images
       
-        # The rpc status for each ImportProductSet request, including both successes
-        # and errors.
-        # The number of statuses here matches the number of lines in the csv file,
-        # and statuses[i] stores the success or failure status of processing the i-th
-        # line of the csv, starting from line 0.
+        # The rpc status for each ImportProductSet request, including both successes and
+        # errors. The number of statuses here matches the number of lines in the csv
+        # file, and statuses[i] stores the success or failure status of processing the i-
+        # th line of the csv, starting from line 0.
         # Corresponds to the JSON property `statuses`
         # @return [Array<Google::Apis::VisionV1p1beta1::Status>]
         attr_accessor :statuses
@@ -9259,11 +8737,11 @@ module Google
       class InputConfig
         include Google::Apis::Core::Hashable
       
-        # File content, represented as a stream of bytes.
-        # Note: As with all `bytes` fields, protobuffers use a pure binary
-        # representation, whereas JSON representations use base64.
-        # Currently, this field only works for BatchAnnotateFiles requests. It does
-        # not work for AsyncBatchAnnotateFiles requests.
+        # File content, represented as a stream of bytes. Note: As with all `bytes`
+        # fields, protobuffers use a pure binary representation, whereas JSON
+        # representations use base64. Currently, this field only works for
+        # BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles
+        # requests.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -9274,8 +8752,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::GcsSource]
         attr_accessor :gcs_source
       
-        # The type of the file. Currently only "application/pdf", "image/tiff" and
-        # "image/gif" are supported. Wildcards are not supported.
+        # The type of the file. Currently only "application/pdf", "image/tiff" and "
+        # image/gif" are supported. Wildcards are not supported.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -9302,8 +8780,8 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # The value of the label attached to the product. Cannot be empty and
-        # cannot exceed 128 bytes.
+        # The value of the label attached to the product. Cannot be empty and cannot
+        # exceed 128 bytes.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -9323,9 +8801,9 @@ module Google
       class Landmark
         include Google::Apis::Core::Hashable
       
-        # A 3D position in the image, used primarily for Face detection landmarks.
-        # A valid Position must have both x and y coordinates.
-        # The position coordinates are in the same scale as the original image.
+        # A 3D position in the image, used primarily for Face detection landmarks. A
+        # valid Position must have both x and y coordinates. The position coordinates
+        # are in the same scale as the original image.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::VisionV1p1beta1::Position]
         attr_accessor :position
@@ -9348,9 +8826,8 @@ module Google
       
       # An object representing a latitude/longitude pair. This is expressed as a pair
       # of doubles representing degrees latitude and degrees longitude. Unless
-      # specified otherwise, this must conform to the
-      # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-      # standard</a>. Values must be within normalized ranges.
+      # specified otherwise, this must conform to the WGS84 standard. Values must be
+      # within normalized ranges.
       class LatLng
         include Google::Apis::Core::Hashable
       
@@ -9384,9 +8861,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::BoundingPoly]
         attr_accessor :bounding_poly
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -9426,9 +8902,8 @@ module Google
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the
-        # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-        # standard</a>. Values must be within normalized ranges.
+        # specified otherwise, this must conform to the WGS84 standard. Values must be
+        # within normalized ranges.
         # Corresponds to the JSON property `latLng`
         # @return [Google::Apis::VisionV1p1beta1::LatLng]
         attr_accessor :lat_lng
@@ -9443,9 +8918,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the normalized vertex coordinates are relative to the original image
-      # and range from 0 to 1.
+      # A vertex represents a 2D point in the image. NOTE: the normalized vertex
+      # coordinates are relative to the original image and range from 0 to 1.
       class NormalizedVertex
         include Google::Apis::Core::Hashable
       
@@ -9474,9 +8948,8 @@ module Google
       class ObjectAnnotation
         include Google::Apis::Core::Hashable
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -9514,47 +8987,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::VisionV1p1beta1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -9608,13 +9079,11 @@ module Google
       class OutputConfig
         include Google::Apis::Core::Hashable
       
-        # The max number of response protos to put into each output JSON file on
-        # Google Cloud Storage.
-        # The valid range is [1, 100]. If not specified, the default value is 20.
-        # For example, for one pdf file with 100 pages, 100 response protos will
-        # be generated. If `batch_size` = 20, then 5 json files each
-        # containing 20 response protos will be written under the prefix
-        # `gcs_destination`.`uri`.
+        # The max number of response protos to put into each output JSON file on Google
+        # Cloud Storage. The valid range is [1, 100]. If not specified, the default
+        # value is 20. For example, for one pdf file with 100 pages, 100 response protos
+        # will be generated. If `batch_size` = 20, then 5 json files each containing 20
+        # response protos will be written under the prefix `gcs_destination`.`uri`.
         # Currently, batch_size only applies to GcsDestination, with potential future
         # support for other output configurations.
         # Corresponds to the JSON property `batchSize`
@@ -9651,8 +9120,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Page height. For PDFs the unit is points. For images (including
-        # TIFFs) the unit is pixels.
+        # Page height. For PDFs the unit is points. For images (including TIFFs) the
+        # unit is pixels.
         # Corresponds to the JSON property `height`
         # @return [Fixnum]
         attr_accessor :height
@@ -9662,8 +9131,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::TextProperty]
         attr_accessor :property
       
-        # Page width. For PDFs the unit is points. For images (including
-        # TIFFs) the unit is pixels.
+        # Page width. For PDFs the unit is points. For images (including TIFFs) the unit
+        # is pixels.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
@@ -9719,9 +9188,9 @@ module Google
         end
       end
       
-      # A 3D position in the image, used primarily for Face detection landmarks.
-      # A valid Position must have both x and y coordinates.
-      # The position coordinates are in the same scale as the original image.
+      # A 3D position in the image, used primarily for Face detection landmarks. A
+      # valid Position must have both x and y coordinates. The position coordinates
+      # are in the same scale as the original image.
       class Position
         include Google::Apis::Core::Hashable
       
@@ -9768,33 +9237,28 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The resource name of the product.
-        # Format is:
-        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-        # This field is ignored when creating a product.
+        # The resource name of the product. Format is: `projects/PROJECT_ID/locations/
+        # LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Immutable. The category for the product identified by the reference image.
-        # This should
-        # be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
-        # "homegoods", "apparel", and "toys" are still supported, but these should
-        # not be used for new products.
+        # This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-
+        # v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys"
+        # are still supported, but these should not be used for new products.
         # Corresponds to the JSON property `productCategory`
         # @return [String]
         attr_accessor :product_category
       
-        # Key-value pairs that can be attached to a product. At query time,
-        # constraints can be specified based on the product_labels.
-        # Note that integer values can be provided as strings, e.g. "1199". Only
-        # strings with integer values can match a range-based restriction which is
-        # to be supported soon.
-        # Multiple values can be assigned to the same key. One product may have up to
-        # 500 product_labels.
-        # Notice that the total number of distinct product_labels over all products
-        # in one ProductSet cannot exceed 1M, otherwise the product search pipeline
-        # will refuse to work for that ProductSet.
+        # Key-value pairs that can be attached to a product. At query time, constraints
+        # can be specified based on the product_labels. Note that integer values can be
+        # provided as strings, e.g. "1199". Only strings with integer values can match a
+        # range-based restriction which is to be supported soon. Multiple values can be
+        # assigned to the same key. One product may have up to 500 product_labels.
+        # Notice that the total number of distinct product_labels over all products in
+        # one ProductSet cannot exceed 1M, otherwise the product search pipeline will
+        # refuse to work for that ProductSet.
         # Corresponds to the JSON property `productLabels`
         # @return [Array<Google::Apis::VisionV1p1beta1::KeyValue>]
         attr_accessor :product_labels
@@ -9818,8 +9282,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Timestamp of the index which provided these results. Products added to the
-        # product set and products removed from the product set after this time are
-        # not reflected in the current results.
+        # product set and products removed from the product set after this time are not
+        # reflected in the current results.
         # Corresponds to the JSON property `indexTime`
         # @return [String]
         attr_accessor :index_time
@@ -9886,28 +9350,24 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Bounding polygons around the areas of interest in the reference
-        # image.
-        # If this field is empty, the system will try to detect regions of
-        # interest. At most 10 bounding polygons will be used.
-        # The provided shape is converted into a non-rotated rectangle. Once
-        # converted, the small edge of the rectangle must be greater than or equal
-        # to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5
-        # is not).
+        # image. If this field is empty, the system will try to detect regions of
+        # interest. At most 10 bounding polygons will be used. The provided shape is
+        # converted into a non-rotated rectangle. Once converted, the small edge of the
+        # rectangle must be greater than or equal to 300 pixels. The aspect ratio must
+        # be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
         # Corresponds to the JSON property `boundingPolys`
         # @return [Array<Google::Apis::VisionV1p1beta1::BoundingPoly>]
         attr_accessor :bounding_polys
       
-        # The resource name of the reference image.
-        # Format is:
-        # `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/
-        # IMAGE_ID`.
-        # This field is ignored when creating a reference image.
+        # The resource name of the reference image. Format is: `projects/PROJECT_ID/
+        # locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is
+        # ignored when creating a reference image.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. The Google Cloud Storage URI of the reference image.
-        # The URI must start with `gs://`.
+        # Required. The Google Cloud Storage URI of the reference image. The URI must
+        # start with `gs://`.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -9928,8 +9388,8 @@ module Google
       class Result
         include Google::Apis::Core::Hashable
       
-        # The resource name of the image from the product that is the closest match
-        # to the query.
+        # The resource name of the image from the product that is the closest match to
+        # the query.
         # Corresponds to the JSON property `image`
         # @return [String]
         attr_accessor :image
@@ -9939,8 +9399,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::Product]
         attr_accessor :product
       
-        # A confidence level on the match, ranging from 0 (no confidence) to
-        # 1 (full confidence).
+        # A confidence level on the match, ranging from 0 (no confidence) to 1 (full
+        # confidence).
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -9957,15 +9417,14 @@ module Google
         end
       end
       
-      # Set of features pertaining to the image, computed by computer vision
-      # methods over safe-search verticals (for example, adult, spoof, medical,
-      # violence).
+      # Set of features pertaining to the image, computed by computer vision methods
+      # over safe-search verticals (for example, adult, spoof, medical, violence).
       class SafeSearchAnnotation
         include Google::Apis::Core::Hashable
       
         # Represents the adult content likelihood for the image. Adult content may
-        # contain elements such as nudity, pornographic images or cartoons, or
-        # sexual activities.
+        # contain elements such as nudity, pornographic images or cartoons, or sexual
+        # activities.
         # Corresponds to the JSON property `adult`
         # @return [String]
         attr_accessor :adult
@@ -9977,15 +9436,14 @@ module Google
       
         # Likelihood that the request image contains racy content. Racy content may
         # include (but is not limited to) skimpy or sheer clothing, strategically
-        # covered nudity, lewd or provocative poses, or close-ups of sensitive
-        # body areas.
+        # covered nudity, lewd or provocative poses, or close-ups of sensitive body
+        # areas.
         # Corresponds to the JSON property `racy`
         # @return [String]
         attr_accessor :racy
       
-        # Spoof likelihood. The likelihood that an modification
-        # was made to the image's canonical version to make it appear
-        # funny or offensive.
+        # Spoof likelihood. The likelihood that an modification was made to the image's
+        # canonical version to make it appear funny or offensive.
         # Corresponds to the JSON property `spoof`
         # @return [String]
         attr_accessor :spoof
@@ -10009,12 +9467,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -10023,15 +9481,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -10085,13 +9543,12 @@ module Google
         end
       end
       
-      # TextAnnotation contains a structured representation of OCR extracted text.
-      # The hierarchy of an OCR extracted text structure is like this:
-      # TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
-      # Each structural component, starting from Page, may further have their own
-      # properties. Properties describe detected languages, breaks etc.. Please refer
-      # to the TextAnnotation.TextProperty message definition below for more
-      # detail.
+      # TextAnnotation contains a structured representation of OCR extracted text. The
+      # hierarchy of an OCR extracted text structure is like this: TextAnnotation ->
+      # Page -> Block -> Paragraph -> Word -> Symbol Each structural component,
+      # starting from Page, may further have their own properties. Properties describe
+      # detected languages, breaks etc.. Please refer to the TextAnnotation.
+      # TextProperty message definition below for more detail.
       class TextAnnotation
         include Google::Apis::Core::Hashable
       
@@ -10141,8 +9598,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the vertex coordinates are in the same scale as the original image.
+      # A vertex represents a 2D point in the image. NOTE: the vertex coordinates are
+      # in the same scale as the original image.
       class Vertex
         include Google::Apis::Core::Hashable
       
@@ -10171,14 +9628,14 @@ module Google
       class WebDetection
         include Google::Apis::Core::Hashable
       
-        # The service's best guess as to the topic of the request image.
-        # Inferred from similar images on the open web.
+        # The service's best guess as to the topic of the request image. Inferred from
+        # similar images on the open web.
         # Corresponds to the JSON property `bestGuessLabels`
         # @return [Array<Google::Apis::VisionV1p1beta1::WebLabel>]
         attr_accessor :best_guess_labels
       
-        # Fully matching images from the Internet.
-        # Can include resized copies of the query image.
+        # Fully matching images from the Internet. Can include resized copies of the
+        # query image.
         # Corresponds to the JSON property `fullMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::WebImage>]
         attr_accessor :full_matching_images
@@ -10188,9 +9645,9 @@ module Google
         # @return [Array<Google::Apis::VisionV1p1beta1::WebPage>]
         attr_accessor :pages_with_matching_images
       
-        # Partial matching images from the Internet.
-        # Those images are similar enough to share some key-point features. For
-        # example an original image will likely have partial matching for its crops.
+        # Partial matching images from the Internet. Those images are similar enough to
+        # share some key-point features. For example an original image will likely have
+        # partial matching for its crops.
         # Corresponds to the JSON property `partialMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::WebImage>]
         attr_accessor :partial_matching_images
@@ -10234,8 +9691,8 @@ module Google
         # @return [String]
         attr_accessor :entity_id
       
-        # Overall relevancy score for the entity.
-        # Not normalized and not comparable across different image queries.
+        # Overall relevancy score for the entity. Not normalized and not comparable
+        # across different image queries.
         # Corresponds to the JSON property `score`
         # @return [Float]
         attr_accessor :score
@@ -10286,9 +9743,9 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # The BCP-47 language code for `label`, such as "en-US" or "sr-Latn".
-        # For more information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code for `label`, such as "en-US" or "sr-Latn". For more
+        # information, see http://www.unicode.org/reports/tr35/#
+        # Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -10308,8 +9765,8 @@ module Google
       class WebPage
         include Google::Apis::Core::Hashable
       
-        # Fully matching images on the page.
-        # Can include resized copies of the query image.
+        # Fully matching images on the page. Can include resized copies of the query
+        # image.
         # Corresponds to the JSON property `fullMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::WebImage>]
         attr_accessor :full_matching_images
@@ -10319,10 +9776,9 @@ module Google
         # @return [String]
         attr_accessor :page_title
       
-        # Partial matching images on the page.
-        # Those images are similar enough to share some key-point features. For
-        # example an original image will likely have partial matching for its
-        # crops.
+        # Partial matching images on the page. Those images are similar enough to share
+        # some key-point features. For example an original image will likely have
+        # partial matching for its crops.
         # Corresponds to the JSON property `partialMatchingImages`
         # @return [Array<Google::Apis::VisionV1p1beta1::WebImage>]
         attr_accessor :partial_matching_images
@@ -10370,8 +9826,8 @@ module Google
         # @return [Google::Apis::VisionV1p1beta1::TextProperty]
         attr_accessor :property
       
-        # List of symbols in the word.
-        # The order of the symbols follows the natural reading order.
+        # List of symbols in the word. The order of the symbols follows the natural
+        # reading order.
         # Corresponds to the JSON property `symbols`
         # @return [Array<Google::Apis::VisionV1p1beta1::Symbol>]
         attr_accessor :symbols

@@ -47,8 +47,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets the requested insight. Requires the recommender.*.get IAM permission
-        # for the specified insight type.
+        # Gets the requested insight. Requires the recommender.*.get IAM permission for
+        # the specified insight type.
         # @param [String] name
         #   Required. Name of the insight.
         # @param [String] fields
@@ -81,27 +81,21 @@ module Google
         # Lists insights for a Cloud project. Requires the recommender.*.list IAM
         # permission for the specified insight type.
         # @param [String] parent
-        #   Required. The container resource on which to execute the request.
-        #   Acceptable formats:
-        #   1.
-        #   "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]"
-        #   ,
-        #   LOCATION here refers to GCP Locations:
-        #   https://cloud.google.com/about/locations/
+        #   Required. The container resource on which to execute the request. Acceptable
+        #   formats: 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[
+        #   INSIGHT_TYPE_ID]", LOCATION here refers to GCP Locations: https://cloud.google.
+        #   com/about/locations/
         # @param [String] filter
         #   Optional. Filter expression to restrict the insights returned. Supported
-        #   filter fields: state
-        #   Eg: `state:"DISMISSED" or state:"ACTIVE"
+        #   filter fields: state Eg: `state:"DISMISSED" or state:"ACTIVE"
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request.  Non-
-        #   positive
-        #   values are ignored. If not specified, the server will determine the number
-        #   of results to return.
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. If not specified, the server will determine the
+        #   number of results to return.
         # @param [String] page_token
         #   Optional. If present, retrieves the next batch of results from the preceding
-        #   call to
-        #   this method. `page_token` must be the value of `next_page_token` from the
-        #   previous response. The values of other method parameters must be identical
+        #   call to this method. `page_token` must be the value of `next_page_token` from
+        #   the previous response. The values of other method parameters must be identical
         #   to those in the previous call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -133,11 +127,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Marks the Insight State as Accepted. Users can use this method to
-        # indicate to the Recommender API that they have applied some action based
-        # on the insight. This stops the insight content from being updated.
-        # MarkInsightAccepted can be applied to insights in ACTIVE state. Requires
-        # the recommender.*.update IAM permission for the specified insight.
+        # Marks the Insight State as Accepted. Users can use this method to indicate to
+        # the Recommender API that they have applied some action based on the insight.
+        # This stops the insight content from being updated. MarkInsightAccepted can be
+        # applied to insights in ACTIVE state. Requires the recommender.*.update IAM
+        # permission for the specified insight.
         # @param [String] name
         #   Required. Name of the insight.
         # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest] google_cloud_recommender_v1beta1_mark_insight_accepted_request_object
@@ -170,8 +164,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the requested recommendation. Requires the recommender.*.get
-        # IAM permission for the specified recommender.
+        # Gets the requested recommendation. Requires the recommender.*.get IAM
+        # permission for the specified recommender.
         # @param [String] name
         #   Required. Name of the recommendation.
         # @param [String] fields
@@ -201,29 +195,25 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists recommendations for a Cloud project. Requires the recommender.*.list
-        # IAM permission for the specified recommender.
+        # Lists recommendations for a Cloud project. Requires the recommender.*.list IAM
+        # permission for the specified recommender.
         # @param [String] parent
-        #   Required. The container resource on which to execute the request.
-        #   Acceptable formats:
-        #   1.
-        #   "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]",
-        #   LOCATION here refers to GCP Locations:
-        #   https://cloud.google.com/about/locations/
+        #   Required. The container resource on which to execute the request. Acceptable
+        #   formats: 1. "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[
+        #   RECOMMENDER_ID]", LOCATION here refers to GCP Locations: https://cloud.google.
+        #   com/about/locations/
         # @param [String] filter
-        #   Filter expression to restrict the recommendations returned. Supported
-        #   filter fields: state_info.state
-        #   Eg: `state_info.state:"DISMISSED" or state_info.state:"FAILED"
+        #   Filter expression to restrict the recommendations returned. Supported filter
+        #   fields: state_info.state Eg: `state_info.state:"DISMISSED" or state_info.state:
+        #   "FAILED"
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request.  Non-
-        #   positive
-        #   values are ignored. If not specified, the server will determine the number
-        #   of results to return.
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. If not specified, the server will determine the
+        #   number of results to return.
         # @param [String] page_token
         #   Optional. If present, retrieves the next batch of results from the preceding
-        #   call to
-        #   this method. `page_token` must be the value of `next_page_token` from the
-        #   previous response. The values of other method parameters must be identical
+        #   call to this method. `page_token` must be the value of `next_page_token` from
+        #   the previous response. The values of other method parameters must be identical
         #   to those in the previous call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -260,9 +250,8 @@ module Google
         # recommendation themselves. This stops the recommendation content from being
         # updated. Associated insights are frozen and placed in the ACCEPTED state.
         # MarkRecommendationClaimed can be applied to recommendations in CLAIMED or
-        # ACTIVE state.
-        # Requires the recommender.*.update IAM permission for the specified
-        # recommender.
+        # ACTIVE state. Requires the recommender.*.update IAM permission for the
+        # specified recommender.
         # @param [String] name
         #   Required. Name of the recommendation.
         # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest] google_cloud_recommender_v1beta1_mark_recommendation_claimed_request_object
@@ -298,12 +287,10 @@ module Google
         # Marks the Recommendation State as Failed. Users can use this method to
         # indicate to the Recommender API that they have applied the recommendation
         # themselves, and the operation failed. This stops the recommendation content
-        # from being updated. Associated insights are frozen and placed in the
-        # ACCEPTED state.
-        # MarkRecommendationFailed can be applied to recommendations in ACTIVE,
-        # CLAIMED, SUCCEEDED, or FAILED state.
-        # Requires the recommender.*.update IAM permission for the specified
-        # recommender.
+        # from being updated. Associated insights are frozen and placed in the ACCEPTED
+        # state. MarkRecommendationFailed can be applied to recommendations in ACTIVE,
+        # CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM
+        # permission for the specified recommender.
         # @param [String] name
         #   Required. Name of the recommendation.
         # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest] google_cloud_recommender_v1beta1_mark_recommendation_failed_request_object
@@ -339,12 +326,10 @@ module Google
         # Marks the Recommendation State as Succeeded. Users can use this method to
         # indicate to the Recommender API that they have applied the recommendation
         # themselves, and the operation was successful. This stops the recommendation
-        # content from being updated. Associated insights are frozen and placed in
-        # the ACCEPTED state.
-        # MarkRecommendationSucceeded can be applied to recommendations in ACTIVE,
-        # CLAIMED, SUCCEEDED, or FAILED state.
-        # Requires the recommender.*.update IAM permission for the specified
-        # recommender.
+        # content from being updated. Associated insights are frozen and placed in the
+        # ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations
+        # in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.
+        # update IAM permission for the specified recommender.
         # @param [String] name
         #   Required. Name of the recommendation.
         # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest] google_cloud_recommender_v1beta1_mark_recommendation_succeeded_request_object

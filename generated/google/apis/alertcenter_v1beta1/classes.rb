@@ -81,16 +81,16 @@ module Google
         # @return [String]
         attr_accessor :query
       
-        # List of alert IDs superseded by this alert. It is used to indicate that
-        # this alert is essentially extension of superseded alerts and we found the
+        # List of alert IDs superseded by this alert. It is used to indicate that this
+        # alert is essentially extension of superseded alerts and we found the
         # relationship after creating these alerts.
         # Corresponds to the JSON property `supersededAlerts`
         # @return [Array<String>]
         attr_accessor :superseded_alerts
       
-        # Alert ID superseding this alert. It is used to indicate that superseding
-        # alert is essentially extension of this alert and we found the relationship
-        # after creating both alerts.
+        # Alert ID superseding this alert. It is used to indicate that superseding alert
+        # is essentially extension of this alert and we found the relationship after
+        # creating both alerts.
         # Corresponds to the JSON property `supersedingAlert`
         # @return [String]
         attr_accessor :superseding_alert
@@ -100,10 +100,8 @@ module Google
         # @return [String]
         attr_accessor :threshold
       
-        # The trigger sources for this rule.
-        # * GMAIL_EVENTS
-        # * DEVICE_EVENTS
-        # * USER_EVENTS
+        # The trigger sources for this rule. * GMAIL_EVENTS * DEVICE_EVENTS *
+        # USER_EVENTS
         # Corresponds to the JSON property `triggerSource`
         # @return [String]
         attr_accessor :trigger_source
@@ -158,8 +156,8 @@ module Google
         # @return [String]
         attr_accessor :customer_id
       
-        # Optional. The data associated with this alert, for example
-        # google.apps.alertcenter.type.DeviceCompromised.
+        # Optional. The data associated with this alert, for example google.apps.
+        # alertcenter.type.DeviceCompromised.
         # Corresponds to the JSON property `data`
         # @return [Hash<String,Object>]
         attr_accessor :data
@@ -170,22 +168,22 @@ module Google
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # Optional. The time the event that caused this alert ceased being active.
-        # If provided, the end time must not be earlier than the start time.
-        # If not provided, it indicates an ongoing alert.
+        # Optional. The time the event that caused this alert ceased being active. If
+        # provided, the end time must not be earlier than the start time. If not
+        # provided, it indicates an ongoing alert.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
         # Optional. `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of an alert from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform alert updates in order to avoid race
-        # conditions: An `etag` is returned in the response which contains alerts,
-        # and systems are expected to put that etag in the request to update alert to
-        # ensure that their change will be applied to the same version of the alert.
-        # If no `etag` is provided in the call to update alert, then the existing
-        # alert is overwritten blindly.
+        # prevent simultaneous updates of an alert from overwriting each other. It is
+        # strongly suggested that systems make use of the `etag` in the read-modify-
+        # write cycle to perform alert updates in order to avoid race conditions: An `
+        # etag` is returned in the response which contains alerts, and systems are
+        # expected to put that etag in the request to update alert to ensure that their
+        # change will be applied to the same version of the alert. If no `etag` is
+        # provided in the call to update alert, then the existing alert is overwritten
+        # blindly.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -195,36 +193,28 @@ module Google
         # @return [Google::Apis::AlertcenterV1beta1::AlertMetadata]
         attr_accessor :metadata
       
-        # Output only. An optional
-        # [Security Investigation Tool](https://support.google.com/a/answer/7575955)
-        # query for this alert.
+        # Output only. An optional [Security Investigation Tool](https://support.google.
+        # com/a/answer/7575955) query for this alert.
         # Corresponds to the JSON property `securityInvestigationToolLink`
         # @return [String]
         attr_accessor :security_investigation_tool_link
       
-        # Required. A unique identifier for the system that reported the alert.
-        # This is output only after alert is created.
-        # Supported sources are any of the following:
-        # * Google Operations
-        # * Mobile device management
-        # * Gmail phishing
-        # * Domain wide takeout
-        # * State sponsored attack
-        # * Google identity
+        # Required. A unique identifier for the system that reported the alert. This is
+        # output only after alert is created. Supported sources are any of the following:
+        # * Google Operations * Mobile device management * Gmail phishing * Domain wide
+        # takeout * State sponsored attack * Google identity
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
       
-        # Required. The time the event that caused this alert was started or
-        # detected.
+        # Required. The time the event that caused this alert was started or detected.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Required. The type of the alert.
-        # This is output only after alert is created.
-        # For a list of available alert types see
-        # [G Suite Alert types](/admin-sdk/alertcenter/reference/alert-types).
+        # Required. The type of the alert. This is output only after alert is created.
+        # For a list of available alert types see [G Suite Alert types](/admin-sdk/
+        # alertcenter/reference/alert-types).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -324,36 +314,29 @@ module Google
         # @return [String]
         attr_accessor :customer_id
       
-        # Optional. `etag` is used for optimistic concurrency control as a way to
-        # help prevent simultaneous updates of an alert metadata from overwriting
-        # each other. It is strongly suggested that systems make use of the `etag` in
-        # the read-modify-write cycle to perform metatdata updates in order to avoid
-        # race conditions: An `etag` is returned in the response which contains alert
-        # metadata, and systems are expected to put that etag in the request to
-        # update alert metadata to ensure that their change will be applied to the
-        # same version of the alert metadata.
-        # If no `etag` is provided in the call to update alert metadata, then the
-        # existing alert metadata is overwritten blindly.
+        # Optional. `etag` is used for optimistic concurrency control as a way to help
+        # prevent simultaneous updates of an alert metadata from overwriting each other.
+        # It is strongly suggested that systems make use of the `etag` in the read-
+        # modify-write cycle to perform metatdata updates in order to avoid race
+        # conditions: An `etag` is returned in the response which contains alert
+        # metadata, and systems are expected to put that etag in the request to update
+        # alert metadata to ensure that their change will be applied to the same version
+        # of the alert metadata. If no `etag` is provided in the call to update alert
+        # metadata, then the existing alert metadata is overwritten blindly.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
         # The severity value of the alert. Alert Center will set this field at alert
-        # creation time, default's to an empty string when it could not be
-        # determined.
-        # The supported values for update actions on this field are the following:
-        # * HIGH
-        # * MEDIUM
-        # * LOW
+        # creation time, default's to an empty string when it could not be determined.
+        # The supported values for update actions on this field are the following: *
+        # HIGH * MEDIUM * LOW
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
       
-        # The current status of the alert.
-        # The supported values are the following:
-        # * NOT_STARTED
-        # * IN_PROGRESS
-        # * CLOSED
+        # The current status of the alert. The supported values are the following: *
+        # NOT_STARTED * IN_PROGRESS * CLOSED
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -402,8 +385,8 @@ module Google
       class Attachment
         include Google::Apis::Core::Hashable
       
-        # A representation of a CSV file attachment, as a list of column headers and
-        # a list of data rows.
+        # A representation of a CSV file attachment, as a list of column headers and a
+        # list of data rows.
         # Corresponds to the JSON property `csv`
         # @return [Google::Apis::AlertcenterV1beta1::Csv]
         attr_accessor :csv
@@ -438,8 +421,7 @@ module Google
         # @return [Array<Google::Apis::AlertcenterV1beta1::GmailMessageInfo>]
         attr_accessor :messages
       
-        # The source IP address of the malicious email, for example,
-        # `127.0.0.1`.
+        # The source IP address of the malicious email, for example, `127.0.0.1`.
         # Corresponds to the JSON property `sourceIp`
         # @return [String]
         attr_accessor :source_ip
@@ -559,21 +541,20 @@ module Google
         end
       end
       
-      # A reference to a Cloud Pubsub topic.
-      # To register for notifications, the owner of the topic must grant
-      # `alerts-api-push-notifications@system.gserviceaccount.com` the
-      # `projects.topics.publish` permission.
+      # A reference to a Cloud Pubsub topic. To register for notifications, the owner
+      # of the topic must grant `alerts-api-push-notifications@system.gserviceaccount.
+      # com` the `projects.topics.publish` permission.
       class CloudPubsubTopic
         include Google::Apis::Core::Hashable
       
-        # Optional. The format of the payload that would be sent.
-        # If not specified the format will be JSON.
+        # Optional. The format of the payload that would be sent. If not specified the
+        # format will be JSON.
         # Corresponds to the JSON property `payloadFormat`
         # @return [String]
         attr_accessor :payload_format
       
-        # The `name` field of a Cloud Pubsub [Topic]
-        # (https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
+        # The `name` field of a Cloud Pubsub [Topic] (https://cloud.google.com/pubsub/
+        # docs/reference/rest/v1/projects.topics#Topic).
         # Corresponds to the JSON property `topicName`
         # @return [String]
         attr_accessor :topic_name
@@ -589,13 +570,13 @@ module Google
         end
       end
       
-      # A representation of a CSV file attachment, as a list of column headers and
-      # a list of data rows.
+      # A representation of a CSV file attachment, as a list of column headers and a
+      # list of data rows.
       class Csv
         include Google::Apis::Core::Hashable
       
-        # The list of data rows in a CSV file, as string arrays rather than as a
-        # single comma-separated string.
+        # The list of data rows in a CSV file, as string arrays rather than as a single
+        # comma-separated string.
         # Corresponds to the JSON property `dataRows`
         # @return [Array<Google::Apis::AlertcenterV1beta1::CsvRow>]
         attr_accessor :data_rows
@@ -620,8 +601,8 @@ module Google
       class CsvRow
         include Google::Apis::Core::Hashable
       
-        # The data entries in a CSV file row, as a string array rather than a
-        # single comma-separated string.
+        # The data entries in a CSV file row, as a string array rather than a single
+        # comma-separated string.
         # Corresponds to the JSON property `entries`
         # @return [Array<String>]
         attr_accessor :entries
@@ -665,8 +646,8 @@ module Google
       class DeviceCompromisedSecurityDetail
         include Google::Apis::Core::Hashable
       
-        # The device compromised state. Possible values are "`Compromised`" or
-        # "`Not Compromised`".
+        # The device compromised state. Possible values are "`Compromised`" or "`Not
+        # Compromised`".
         # Corresponds to the JSON property `deviceCompromisedState`
         # @return [String]
         attr_accessor :device_compromised_state
@@ -782,13 +763,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -904,8 +883,8 @@ module Google
       class ListAlertFeedbackResponse
         include Google::Apis::Core::Hashable
       
-        # The list of alert feedback.
-        # Feedback entries for each alert are ordered by creation time descending.
+        # The list of alert feedback. Feedback entries for each alert are ordered by
+        # creation time descending.
         # Corresponds to the JSON property `feedback`
         # @return [Array<Google::Apis::AlertcenterV1beta1::AlertFeedback>]
         attr_accessor :feedback
@@ -930,9 +909,9 @@ module Google
         attr_accessor :alerts
       
         # The token for the next page. If not empty, indicates that there may be more
-        # alerts that match the listing request; this value can be used in a
-        # subsequent ListAlertsRequest to get alerts continuing from last result
-        # of the current list call.
+        # alerts that match the listing request; this value can be used in a subsequent
+        # ListAlertsRequest to get alerts continuing from last result of the current
+        # list call.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -952,14 +931,14 @@ module Google
       class LoginDetails
         include Google::Apis::Core::Hashable
       
-        # Optional. The human-readable IP address (for example,
-        # `11.22.33.44`) that is associated with the warning event.
+        # Optional. The human-readable IP address (for example, `11.22.33.44`) that is
+        # associated with the warning event.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
       
-        # Optional. The successful login time that is associated with the warning
-        # event. This isn't present for blocked login attempts.
+        # Optional. The successful login time that is associated with the warning event.
+        # This isn't present for blocked login attempts.
         # Corresponds to the JSON property `loginTime`
         # @return [String]
         attr_accessor :login_time
@@ -975,14 +954,10 @@ module Google
         end
       end
       
-      # Proto for all phishing alerts with common payload.
-      # Supported types are any of the following:
-      # * User reported phishing
-      # * User reported spam spike
-      # * Suspicious message reported
-      # * Phishing reclassification
-      # * Malware reclassification
-      # * Gmail potential employee spoofing
+      # Proto for all phishing alerts with common payload. Supported types are any of
+      # the following: * User reported phishing * User reported spam spike *
+      # Suspicious message reported * Phishing reclassification * Malware
+      # reclassification * Gmail potential employee spoofing
       class MailPhishing
         include Google::Apis::Core::Hashable
       
@@ -1082,16 +1057,14 @@ module Google
         end
       end
       
-      # Settings for callback notifications.
-      # For more details see [G Suite Alert
+      # Settings for callback notifications. For more details see [G Suite Alert
       # Notification](/admin-sdk/alertcenter/guides/notifications).
       class Notification
         include Google::Apis::Core::Hashable
       
-        # A reference to a Cloud Pubsub topic.
-        # To register for notifications, the owner of the topic must grant
-        # `alerts-api-push-notifications@system.gserviceaccount.com` the
-        # `projects.topics.publish` permission.
+        # A reference to a Cloud Pubsub topic. To register for notifications, the owner
+        # of the topic must grant `alerts-api-push-notifications@system.gserviceaccount.
+        # com` the `projects.topics.publish` permission.
         # Corresponds to the JSON property `cloudPubsubTopic`
         # @return [Google::Apis::AlertcenterV1beta1::CloudPubsubTopic]
         attr_accessor :cloud_pubsub_topic
@@ -1106,10 +1079,9 @@ module Google
         end
       end
       
-      # Alert for a spike in user reported phishing.
-      # <aside class="warning"><b>Warning</b>: This type has been deprecated. Use
-      # [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing)
-      # instead.</aside>
+      # Alert for a spike in user reported phishing. *Warning*: This type has been
+      # deprecated. Use [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/
+      # MailPhishing) instead.
       class PhishingSpike
         include Google::Apis::Core::Hashable
       
@@ -1170,8 +1142,7 @@ module Google
       class RequestInfo
         include Google::Apis::Core::Hashable
       
-        # List of app developers who triggered notifications for above
-        # application.
+        # List of app developers who triggered notifications for above application.
         # Corresponds to the JSON property `appDeveloperEmail`
         # @return [Array<String>]
         attr_accessor :app_developer_email
@@ -1181,8 +1152,8 @@ module Google
         # @return [String]
         attr_accessor :app_key
       
-        # Required. Number of requests sent for this application to set up default
-        # SQL instance.
+        # Required. Number of requests sent for this application to set up default SQL
+        # instance.
         # Corresponds to the JSON property `numberOfRequests`
         # @return [Fixnum]
         attr_accessor :number_of_requests
@@ -1264,13 +1235,11 @@ module Google
         # @return [Array<Google::Apis::AlertcenterV1beta1::MatchInfo>]
         attr_accessor :match_info
       
-        # Resource recipients.
-        # For Drive, they are grantees that the Drive file was shared with at the
-        # time of rule triggering. Valid values include user emails, group emails,
-        # domains, or 'anyone' if the file was publicly accessible. If the file was
-        # private the recipients list will be empty.
-        # For Gmail, they are emails of the users or groups that the Gmail message
-        # was sent to.
+        # Resource recipients. For Drive, they are grantees that the Drive file was
+        # shared with at the time of rule triggering. Valid values include user emails,
+        # group emails, domains, or 'anyone' if the file was publicly accessible. If the
+        # file was private the recipients list will be empty. For Gmail, they are emails
+        # of the users or groups that the Gmail message was sent to.
         # Corresponds to the JSON property `recipients`
         # @return [Array<String>]
         attr_accessor :recipients
@@ -1362,12 +1331,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -1376,15 +1345,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -1498,8 +1467,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The unique identifier of the G Suite organization account of the
-        # customer the alert is associated with.
-        # Inferred from the caller identity if not provided.
+        # customer the alert is associated with. Inferred from the caller identity if
+        # not provided.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id

@@ -22,13 +22,11 @@ module Google
   module Apis
     module FirebasemlV1beta2
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -50,8 +48,8 @@ module Google
         # @return [Array<Google::Apis::FirebasemlV1beta2::Model>]
         attr_accessor :models
       
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -83,15 +81,13 @@ module Google
         attr_accessor :create_time
       
         # Required. The name of the model to create. The name can be up to 32 characters
-        # long
-        # and can consist only of ASCII Latin letters A-Z and a-z, underscores(_)
+        # long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_)
         # and ASCII digits 0-9. It must start with a letter.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. See RFC7232
-        # https://tools.ietf.org/html/rfc7232#section-2.3
+        # Output only. See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -102,15 +98,14 @@ module Google
         # @return [String]
         attr_accessor :model_hash
       
-        # The resource name of the Model.
-        # Model names have the form `projects/`project_id`/models/`model_id``
-        # The name is ignored when creating a model.
+        # The resource name of the Model. Model names have the form `projects/`
+        # project_id`/models/`model_id`` The name is ignored when creating a model.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # State common to all model types.
-        # Includes publishing and validation information.
+        # State common to all model types. Includes publishing and validation
+        # information.
         # Corresponds to the JSON property `state`
         # @return [Google::Apis::FirebasemlV1beta2::ModelState]
         attr_accessor :state
@@ -149,8 +144,7 @@ module Google
         end
       end
       
-      # This is returned in the longrunning operations
-      # for create/update.
+      # This is returned in the longrunning operations for create/update.
       class ModelOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -159,8 +153,8 @@ module Google
         # @return [String]
         attr_accessor :basic_operation_status
       
-        # The name of the model we are creating/updating
-        # The name must have the form `projects/`project_id`/models/`model_id``
+        # The name of the model we are creating/updating The name must have the form `
+        # projects/`project_id`/models/`model_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -176,8 +170,8 @@ module Google
         end
       end
       
-      # State common to all model types.
-      # Includes publishing and validation information.
+      # State common to all model types. Includes publishing and validation
+      # information.
       class ModelState
         include Google::Apis::Core::Hashable
       
@@ -187,12 +181,12 @@ module Google
         attr_accessor :published
         alias_method :published?, :published
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `validationError`
         # @return [Google::Apis::FirebasemlV1beta2::Status]
         attr_accessor :validation_error
@@ -213,47 +207,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::FirebasemlV1beta2::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -272,12 +264,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -286,15 +278,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -315,18 +307,16 @@ module Google
       class TfLiteModel
         include Google::Apis::Core::Hashable
       
-        # The TfLite file containing the model. (Stored in Google Cloud).
-        # The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite
-        # Note: If you update the file in the original location, it is
-        # necessary to call UpdateModel for ML to pick up and validate the
-        # updated file.
+        # The TfLite file containing the model. (Stored in Google Cloud). The
+        # gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If
+        # you update the file in the original location, it is necessary to call
+        # UpdateModel for ML to pick up and validate the updated file.
         # Corresponds to the JSON property `gcsTfliteUri`
         # @return [String]
         attr_accessor :gcs_tflite_uri
       
         # Output only. A boolean indicating that this model was uploaded from the
-        # console.
-        # Read only
+        # console. Read only
         # Corresponds to the JSON property `managedUpload`
         # @return [Boolean]
         attr_accessor :managed_upload

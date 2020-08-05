@@ -22,8 +22,8 @@ module Google
   module Apis
     module AndroidenterpriseV1
       
-      # This represents an enterprise admin who can manage the enterprise
-      # in the managed Google Play store.
+      # This represents an enterprise admin who can manage the enterprise in the
+      # managed Google Play store.
       class Administrator
         include Google::Apis::Core::Hashable
       
@@ -61,9 +61,9 @@ module Google
         end
       end
       
-      # Specification for a token used to generate iframes. The token specifies
-      # what data the admin is allowed to modify and the URI the iframe is
-      # allowed to communiate with.
+      # Specification for a token used to generate iframes. The token specifies what
+      # data the admin is allowed to modify and the URI the iframe is allowed to
+      # communiate with.
       class AdministratorWebTokenSpec
         include Google::Apis::Core::Hashable
       
@@ -72,14 +72,14 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecManagedConfigurations]
         attr_accessor :managed_configurations
       
-        # The URI of the parent frame hosting the iframe. To prevent XSS, the iframe
-        # may not be hosted at other URIs. This URI must be https.
-        # Use whitespaces to separate multiple parent URIs.
+        # The URI of the parent frame hosting the iframe. To prevent XSS, the iframe may
+        # not be hosted at other URIs. This URI must be https. Use whitespaces to
+        # separate multiple parent URIs.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
-        # Deprecated. Use <code>PlaySearch.approveApps</code>.
+        # Deprecated. Use PlaySearch.approveApps.
         # Corresponds to the JSON property `permission`
         # @return [Array<String>]
         attr_accessor :permission
@@ -144,10 +144,7 @@ module Google
       class AdministratorWebTokenSpecPlaySearch
         include Google::Apis::Core::Hashable
       
-        # Allow access to the iframe in <a
-        # href="https://developers.google.com/android/work/play/emm-api/managed-play-
-        # iframe#render">approve
-        # mode</a>. Default is false.
+        # Allow access to the iframe in approve mode. Default is false.
         # Corresponds to the JSON property `approveApps`
         # @return [Boolean]
         attr_accessor :approve_apps
@@ -230,8 +227,8 @@ module Google
         end
       end
       
-      # Represents the list of app restrictions available to be pre-configured for
-      # the product.
+      # Represents the list of app restrictions available to be pre-configured for the
+      # product.
       class AppRestrictionsSchema
         include Google::Apis::Core::Hashable
       
@@ -257,14 +254,13 @@ module Google
       end
       
       # An event generated when a new app version is uploaded to Google Play and its
-      # app restrictions schema changed.
-      # To fetch the app restrictions schema for an app, use
-      # Products.getAppRestrictionsSchema on the EMM API.
+      # app restrictions schema changed. To fetch the app restrictions schema for an
+      # app, use Products.getAppRestrictionsSchema on the EMM API.
       class AppRestrictionsSchemaChangeEvent
         include Google::Apis::Core::Hashable
       
-        # The id of the product (e.g. "app:com.google.android.gm") for which the
-        # app restriction schema changed. This field will always be present.
+        # The id of the product (e.g. "app:com.google.android.gm") for which the app
+        # restriction schema changed. This field will always be present.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -289,37 +285,34 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestrictionRestrictionValue]
         attr_accessor :default_value
       
-        # A longer description of the restriction, giving more detail of what it
-        # affects.
+        # A longer description of the restriction, giving more detail of what it affects.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # For <code>choice</code> or <code>multiselect</code> restrictions, the list
-        # of possible entries' human-readable names.
+        # For choice or multiselect restrictions, the list of possible entries' human-
+        # readable names.
         # Corresponds to the JSON property `entry`
         # @return [Array<String>]
         attr_accessor :entry
       
-        # For <code>choice</code> or <code>multiselect</code> restrictions, the list
-        # of possible entries' machine-readable values. These values should be used
-        # in the configuration, either as a single <code>string</code> value for a
-        # <code>choice</code> restriction or in a <code>stringArray</code> for a
-        # <code>multiselect</code> restriction.
+        # For choice or multiselect restrictions, the list of possible entries' machine-
+        # readable values. These values should be used in the configuration, either as a
+        # single string value for a choice restriction or in a stringArray for a
+        # multiselect restriction.
         # Corresponds to the JSON property `entryValue`
         # @return [Array<String>]
         attr_accessor :entry_value
       
-        # The unique key that the product uses to identify the restriction,
-        # e.g. "com.google.android.gm.fieldname".
+        # The unique key that the product uses to identify the restriction, e.g. "com.
+        # google.android.gm.fieldname".
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
-        # For <code>bundle</code> or <code>bundleArray</code> restrictions, the list
-        # of nested restrictions. A <code>bundle</code> restriction is always nested
-        # within a <code>bundleArray</code> restriction, and a
-        # <code>bundleArray</code> restriction is at most two levels deep.
+        # For bundle or bundleArray restrictions, the list of nested restrictions. A
+        # bundle restriction is always nested within a bundleArray restriction, and a
+        # bundleArray restriction is at most two levels deep.
         # Corresponds to the JSON property `nestedRestriction`
         # @return [Array<Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction>]
         attr_accessor :nested_restriction
@@ -371,14 +364,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :value_integer
       
-        # The list of string values - this will only be present if type is
-        # multiselect.
+        # The list of string values - this will only be present if type is multiselect.
         # Corresponds to the JSON property `valueMultiselect`
         # @return [Array<String>]
         attr_accessor :value_multiselect
       
-        # The string value - this will be present for types string, choice and
-        # hidden.
+        # The string value - this will be present for types string, choice and hidden.
         # Corresponds to the JSON property `valueString`
         # @return [String]
         attr_accessor :value_string
@@ -401,14 +392,12 @@ module Google
       class AppState
         include Google::Apis::Core::Hashable
       
-        # List of keyed app states.
-        # This field will always be present.
+        # List of keyed app states. This field will always be present.
         # Corresponds to the JSON property `keyedAppState`
         # @return [Array<Google::Apis::AndroidenterpriseV1::KeyedAppState>]
         attr_accessor :keyed_app_state
       
-        # The package name of the app.
-        # This field will always be present.
+        # The package name of the app. This field will always be present.
         # Corresponds to the JSON property `packageName`
         # @return [String]
         attr_accessor :package_name
@@ -457,14 +446,14 @@ module Google
         attr_accessor :is_production
         alias_method :is_production?, :is_production
       
-        # Deprecated, use <code>trackId</code> instead.
+        # Deprecated, use trackId instead.
         # Corresponds to the JSON property `track`
         # @return [String]
         attr_accessor :track
       
-        # Track ids that the app version is published in. Replaces the
-        # <code>track</code> field (deprecated), but doesn't include the production
-        # track (see <code>isProduction</code> instead).
+        # Track ids that the app version is published in. Replaces the track field (
+        # deprecated), but doesn't include the production track (see isProduction
+        # instead).
         # Corresponds to the JSON property `trackId`
         # @return [Array<String>]
         attr_accessor :track_id
@@ -474,8 +463,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :version_code
       
-        # The string used in the Play store by the app developer to identify
-        # the version.
+        # The string used in the Play store by the app developer to identify the version.
         # The string is not necessarily unique or localized (for example, the string
         # could be "1.4").
         # Corresponds to the JSON property `versionString`
@@ -501,7 +489,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A URL that displays a product's permissions and that can also be used to
-        # approve the product with the <code>Products.approve</code> call.
+        # approve the product with the Products.approve call.
         # Corresponds to the JSON property `approvalUrl`
         # @return [String]
         attr_accessor :approval_url
@@ -522,8 +510,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The authentication token to be passed to the device policy client on the
-        # device where it can be used to provision the account for which this token
-        # was generated.
+        # device where it can be used to provision the account for which this token was
+        # generated.
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
@@ -574,8 +562,8 @@ module Google
       class AutoInstallPolicy
         include Google::Apis::Core::Hashable
       
-        # The constraints for auto-installing the app. You can specify a maximum of
-        # one constraint.
+        # The constraints for auto-installing the app. You can specify a maximum of one
+        # constraint.
         # Corresponds to the JSON property `autoInstallConstraint`
         # @return [Array<Google::Apis::AndroidenterpriseV1::AutoInstallConstraint>]
         attr_accessor :auto_install_constraint
@@ -592,9 +580,9 @@ module Google
         attr_accessor :auto_install_priority
       
         # The minimum version of the app. If a lower version of the app is installed,
-        # then the app will be auto-updated according to the auto-install
-        # constraints, instead of waiting for the regular auto-update. You can set a
-        # minimum version code for at most 20 apps per device.
+        # then the app will be auto-updated according to the auto-install constraints,
+        # instead of waiting for the regular auto-update. You can set a minimum version
+        # code for at most 20 apps per device.
         # Corresponds to the JSON property `minimumVersionCode`
         # @return [Fixnum]
         attr_accessor :minimum_version_code
@@ -612,10 +600,10 @@ module Google
         end
       end
       
-      # A configuration variables resource contains the managed configuration
-      # settings ID to be applied to a single user, as well as the variable set that
-      # is attributed to the user. The variable set will be used to replace
-      # placeholders in the managed configuration settings.
+      # A configuration variables resource contains the managed configuration settings
+      # ID to be applied to a single user, as well as the variable set that is
+      # attributed to the user. The variable set will be used to replace placeholders
+      # in the managed configuration settings.
       class ConfigurationVariables
         include Google::Apis::Core::Hashable
       
@@ -640,31 +628,26 @@ module Google
         end
       end
       
-      # A Devices resource represents a mobile device managed by the EMM and
-      # belonging to a specific enterprise user.
+      # A Devices resource represents a mobile device managed by the EMM and belonging
+      # to a specific enterprise user.
       class Device
         include Google::Apis::Core::Hashable
       
-        # The Google Play Services Android ID for the device encoded as
-        # a lowercase hex string. For example,
-        # <code>&quot;123456789abcdef0&quot;</code>.
+        # The Google Play Services Android ID for the device encoded as a lowercase hex
+        # string. For example, "123456789abcdef0".
         # Corresponds to the JSON property `androidId`
         # @return [String]
         attr_accessor :android_id
       
-        # Identifies the extent to which the device is controlled by a managed
-        # Google Play EMM in various deployment configurations. <br><br>
-        # Possible values include:
-        # <ul><li>"<code>managedDevice</code>", a device that has the EMM's device
-        # policy controller (DPC) as the device owner.</li>
-        # <li>"<code>managedProfile</code>", a device that has a profile managed
-        # by the DPC (DPC is profile owner) in addition to a separate, personal
-        # profile that is unavailable to the DPC.</li>
-        # <li>"<code>containerApp</code>", no longer used (deprecated).</li>
-        # <li>"<code>unmanagedProfile</code>", a device that has been allowed (by the
-        # domain's admin, using the Admin Console to enable the privilege) to use
-        # managed Google Play, but the profile is itself
-        # not owned by a DPC.</li></ul>
+        # Identifies the extent to which the device is controlled by a managed Google
+        # Play EMM in various deployment configurations. Possible values include: - "
+        # managedDevice", a device that has the EMM's device policy controller (DPC) as
+        # the device owner. - "managedProfile", a device that has a profile managed by
+        # the DPC (DPC is profile owner) in addition to a separate, personal profile
+        # that is unavailable to the DPC. - "containerApp", no longer used (deprecated).
+        # - "unmanagedProfile", a device that has been allowed (by the domain's admin,
+        # using the Admin Console to enable the privilege) to use managed Google Play,
+        # but the profile is itself not owned by a DPC.
         # Corresponds to the JSON property `managementType`
         # @return [String]
         attr_accessor :management_type
@@ -698,15 +681,14 @@ module Google
       class DeviceReport
         include Google::Apis::Core::Hashable
       
-        # List of app states set by managed apps on the device. App states are
-        # defined by the app's developers.
-        # This field will always be present.
+        # List of app states set by managed apps on the device. App states are defined
+        # by the app's developers. This field will always be present.
         # Corresponds to the JSON property `appState`
         # @return [Array<Google::Apis::AndroidenterpriseV1::AppState>]
         attr_accessor :app_state
       
-        # The timestamp of the last report update in milliseconds since epoch.
-        # This field will always be present.
+        # The timestamp of the last report update in milliseconds since epoch. This
+        # field will always be present.
         # Corresponds to the JSON property `lastUpdatedTimestampMillis`
         # @return [Fixnum]
         attr_accessor :last_updated_timestamp_millis
@@ -726,8 +708,7 @@ module Google
       class DeviceReportUpdateEvent
         include Google::Apis::Core::Hashable
       
-        # The Android ID of the device.
-        # This field will always be present.
+        # The Android ID of the device. This field will always be present.
         # Corresponds to the JSON property `deviceId`
         # @return [String]
         attr_accessor :device_id
@@ -738,8 +719,7 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::DeviceReport]
         attr_accessor :report
       
-        # The ID of the user.
-        # This field will always be present.
+        # The ID of the user. This field will always be present.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -756,15 +736,15 @@ module Google
         end
       end
       
-      # The state of a user's device, as accessed by the getState and setState
-      # methods on device resources.
+      # The state of a user's device, as accessed by the getState and setState methods
+      # on device resources.
       class DeviceState
         include Google::Apis::Core::Hashable
       
-        # The state of the Google account on the device. "enabled" indicates that
-        # the Google account on the device can be used to access Google services
-        # (including Google Play), while "disabled" means that it cannot.
-        # A new device is initially in the "disabled" state.
+        # The state of the Google account on the device. "enabled" indicates that the
+        # Google account on the device can be used to access Google services (including
+        # Google Play), while "disabled" means that it cannot. A new device is initially
+        # in the "disabled" state.
         # Corresponds to the JSON property `accountState`
         # @return [String]
         attr_accessor :account_state
@@ -798,27 +778,22 @@ module Google
         end
       end
       
-      # An Enterprises resource represents the binding between an EMM and a
-      # specific organization. That binding can be instantiated in one of two
-      # different ways using this API as follows:
-      # <ul><li>For Google managed domain customers, the process involves using
-      # <code>Enterprises.enroll</code> and <code>Enterprises.setAccount</code> (in
-      # conjunction with artifacts obtained from the Admin console and the Google
-      # API Console) and submitted to the EMM through a more-or-less manual
-      # process.</li>
-      # <li>For managed Google Play Accounts customers, the process involves using
-      # <code>Enterprises.generateSignupUrl</code> and
-      # <code>Enterprises.completeSignup</code> in conjunction with the managed
-      # Google Play sign-up UI (Google-provided mechanism) to create the binding
-      # without manual steps.</li></ul> As an EMM, you can support either or both
-      # approaches in your EMM console. See <a
-      # href="/android/work/play/emm-api/create-enterprise">Create an Enterprise</a>
-      # for details.
+      # An Enterprises resource represents the binding between an EMM and a specific
+      # organization. That binding can be instantiated in one of two different ways
+      # using this API as follows: - For Google managed domain customers, the process
+      # involves using Enterprises.enroll and Enterprises.setAccount (in conjunction
+      # with artifacts obtained from the Admin console and the Google API Console) and
+      # submitted to the EMM through a more-or-less manual process. - For managed
+      # Google Play Accounts customers, the process involves using Enterprises.
+      # generateSignupUrl and Enterprises.completeSignup in conjunction with the
+      # managed Google Play sign-up UI (Google-provided mechanism) to create the
+      # binding without manual steps. As an EMM, you can support either or both
+      # approaches in your EMM console. See Create an Enterprise for details.
       class Enterprise
         include Google::Apis::Core::Hashable
       
-        # Admins of the enterprise. This is only supported for enterprises
-        # created via the EMM-initiated flow.
+        # Admins of the enterprise. This is only supported for enterprises created via
+        # the EMM-initiated flow.
         # Corresponds to the JSON property `administrator`
         # @return [Array<Google::Apis::AndroidenterpriseV1::Administrator>]
         attr_accessor :administrator
@@ -851,8 +826,8 @@ module Google
         end
       end
       
-      # A service account that can be used to authenticate as the enterprise to
-      # API calls that require such authentication.
+      # A service account that can be used to authenticate as the enterprise to API
+      # calls that require such authentication.
       class EnterpriseAccount
         include Google::Apis::Core::Hashable
       
@@ -899,8 +874,8 @@ module Google
         # @return [String]
         attr_accessor :message_id
       
-        # The name of the Cloud Pub/Sub topic to which notifications for this
-        # enterprise's enrolled account will be sent.
+        # The name of the Cloud Pub/Sub topic to which notifications for this enterprise'
+        # s enrolled account will be sent.
         # Corresponds to the JSON property `topicName`
         # @return [String]
         attr_accessor :topic_name
@@ -920,35 +895,32 @@ module Google
       # to use a particular app. Entitlements are user specific, not device specific.
       # This allows a user with an entitlement to an app to install the app on all
       # their devices. It's also possible for a user to hold an entitlement to an app
-      # without installing the app on any device.
-      # The API can be used to create an entitlement. As an option, you can also use
-      # the API to trigger the installation of an app on all a user's managed devices
-      # at the same time the entitlement is created.
-      # If the app is free, creating the entitlement also creates a group license
-      # for that app. For paid apps, creating the entitlement consumes one license,
-      # and that license remains consumed until the entitlement is removed. If the
-      # enterprise hasn't purchased enough licenses, then no entitlement is created
-      # and the installation fails. An entitlement is also not created for an app if
-      # the app requires permissions that the enterprise hasn't accepted.
-      # If an entitlement is deleted, the app may be uninstalled from a user's
-      # device. As a best practice, uninstall the app by calling
-      # <a class="method-link" method="androidenterprise.installs.delete">
-      # Installs.delete()</a> before deleting the entitlement.
-      # Entitlements for apps that a user pays for on an unmanaged profile have
-      # <code class="">"userPurchase"</code> as the entitlement reason. These
+      # without installing the app on any device. The API can be used to create an
+      # entitlement. As an option, you can also use the API to trigger the
+      # installation of an app on all a user's managed devices at the same time the
+      # entitlement is created. If the app is free, creating the entitlement also
+      # creates a group license for that app. For paid apps, creating the entitlement
+      # consumes one license, and that license remains consumed until the entitlement
+      # is removed. If the enterprise hasn't purchased enough licenses, then no
+      # entitlement is created and the installation fails. An entitlement is also not
+      # created for an app if the app requires permissions that the enterprise hasn't
+      # accepted. If an entitlement is deleted, the app may be uninstalled from a user'
+      # s device. As a best practice, uninstall the app by calling Installs.delete()
+      # before deleting the entitlement. Entitlements for apps that a user pays for on
+      # an unmanaged profile have "userPurchase" as the entitlement reason. These
       # entitlements cannot be removed via the API.
       class Entitlement
         include Google::Apis::Core::Hashable
       
-        # The ID of the product that the entitlement is for. For example,
-        # <code>&quot;app:com.google.android.gm&quot;</code>.
+        # The ID of the product that the entitlement is for. For example, "app:com.
+        # google.android.gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
       
-        # The reason for the entitlement. For example, <code class="">"free"</code>
-        # for free apps. This property is temporary: it will be replaced by the <code
-        # class="">acquisition kind</code> field of group licenses.
+        # The reason for the entitlement. For example, "free" for free apps. This
+        # property is temporary: it will be replaced by the acquisition kind field of
+        # group licenses.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -968,9 +940,9 @@ module Google
       class ListEntitlementsResponse
         include Google::Apis::Core::Hashable
       
-        # An entitlement of a user to a product (e.g. an app).
-        # For example, a free app that they have installed, or a paid app that they
-        # have been allocated a license to.
+        # An entitlement of a user to a product (e.g. an app). For example, a free app
+        # that they have installed, or a paid app that they have been allocated a
+        # license to.
         # Corresponds to the JSON property `entitlement`
         # @return [Array<Google::Apis::AndroidenterpriseV1::Entitlement>]
         attr_accessor :entitlement
@@ -985,74 +957,67 @@ module Google
         end
       end
       
-      # Group license objects allow you to keep track of licenses (called
-      # <a href="/android/work/play/emm-api/v1/entitlements">entitlements</a>)
+      # Group license objects allow you to keep track of licenses (called entitlements)
       # for both free and paid apps. For a free app, a group license is created when
       # an enterprise admin first approves the product in Google Play or when the
       # first entitlement for the product is created for a user via the API. For a
       # paid app, a group license object is only created when an enterprise admin
-      # purchases the product in Google Play for the first time.
-      # Use the API to query group licenses. A <code>Grouplicenses</code> resource
-      # includes the total number of licenses purchased (paid apps only) and the
-      # total number of licenses currently in use. In other words, the total number
-      # of <code>Entitlements</code> that exist for the product.
-      # Only one group license object is created per product and group license
-      # objects are never deleted. If a product is unapproved, its group license
-      # remains. This allows enterprise admins to keep track of any remaining
-      # entitlements for the product.
+      # purchases the product in Google Play for the first time. Use the API to query
+      # group licenses. A Grouplicenses resource includes the total number of licenses
+      # purchased (paid apps only) and the total number of licenses currently in use.
+      # In other words, the total number of Entitlements that exist for the product.
+      # Only one group license object is created per product and group license objects
+      # are never deleted. If a product is unapproved, its group license remains. This
+      # allows enterprise admins to keep track of any remaining entitlements for the
+      # product.
       class GroupLicense
         include Google::Apis::Core::Hashable
       
-        # How this group license was acquired. <code>&quot;bulkPurchase&quot;</code>
-        # means that this Grouplicenses resource was created because the enterprise
-        # purchased licenses for this product; otherwise, the value is
-        # <code>&quot;free&quot;</code> (for free products).
+        # How this group license was acquired. "bulkPurchase" means that this
+        # Grouplicenses resource was created because the enterprise purchased licenses
+        # for this product; otherwise, the value is "free" (for free products).
         # Corresponds to the JSON property `acquisitionKind`
         # @return [String]
         attr_accessor :acquisition_kind
       
-        # Whether the product to which this group license relates is currently
-        # approved by the enterprise. Products are approved when a group license is
-        # first created, but this approval may be revoked by an enterprise admin via
-        # Google Play. Unapproved products will not be visible to end users in
-        # collections, and new entitlements to them should not normally be created.
+        # Whether the product to which this group license relates is currently approved
+        # by the enterprise. Products are approved when a group license is first created,
+        # but this approval may be revoked by an enterprise admin via Google Play.
+        # Unapproved products will not be visible to end users in collections, and new
+        # entitlements to them should not normally be created.
         # Corresponds to the JSON property `approval`
         # @return [String]
         attr_accessor :approval
       
-        # The total number of provisioned licenses for this product.
-        # Returned by read operations, but ignored in write operations.
+        # The total number of provisioned licenses for this product. Returned by read
+        # operations, but ignored in write operations.
         # Corresponds to the JSON property `numProvisioned`
         # @return [Fixnum]
         attr_accessor :num_provisioned
       
-        # The number of purchased licenses (possibly in multiple purchases).
-        # If this field is omitted, then there is no limit on the number of licenses
-        # that can be provisioned (for example, if the acquisition kind is
-        # <code>&quot;free&quot;</code>).
+        # The number of purchased licenses (possibly in multiple purchases). If this
+        # field is omitted, then there is no limit on the number of licenses that can be
+        # provisioned (for example, if the acquisition kind is "free").
         # Corresponds to the JSON property `numPurchased`
         # @return [Fixnum]
         attr_accessor :num_purchased
       
-        # The permission approval status of the product. This field
-        # is only set if the product is approved. Possible states are:<ul>
-        # <li>"<code>currentApproved</code>", the current set
+        # The permission approval status of the product. This field is only set if the
+        # product is approved. Possible states are: - "currentApproved", the current set
         # of permissions is approved, but additional permissions will require the
-        # administrator to reapprove the product (If the product was approved
-        # without specifying the approved permissions setting, then this is the
-        # default behavior.),</li>
-        # <li>"<code>needsReapproval</code>", the product has unapproved permissions.
-        # No additional product licenses can be assigned until the product is
-        # reapproved,</li>
-        # <li>"<code>allCurrentAndFutureApproved</code>",
-        # the current permissions are approved and any future permission updates
-        # will be automatically approved without administrator review.</li></ul>
+        # administrator to reapprove the product (If the product was approved without
+        # specifying the approved permissions setting, then this is the default behavior.
+        # ), - "needsReapproval", the product has unapproved permissions. No additional
+        # product licenses can be assigned until the product is reapproved, - "
+        # allCurrentAndFutureApproved", the current permissions are approved and any
+        # future permission updates will be automatically approved without administrator
+        # review.
         # Corresponds to the JSON property `permissions`
         # @return [String]
         attr_accessor :permissions
       
-        # The ID of the product that the license is for. For example,
-        # <code>&quot;app:com.google.android.gm&quot;</code>.
+        # The ID of the product that the license is for. For example, "app:com.google.
+        # android.gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -1110,49 +1075,41 @@ module Google
         end
       end
       
-      # The existence of an Installs resource indicates that an app is
-      # installed on a particular device (or that an install is pending).
-      # The API can be used to create an install resource using the
-      # <a class="method-link" method="androidenterprise.installs.update">update</a>
-      # method. This triggers the actual install of the app on the device. If the
-      # user does not already have an entitlement for the app, then an attempt is
-      # made to create one. If this fails (for example, because the app is not free
-      # and there is no available license), then the creation of the install fails.
-      # The API can also be used to update an installed app. If
-      # the&nbsp;<a class="method-link" method="androidenterprise.installs.update"
-      # style="font-style: normal; font-size: 14px; font-family: Roboto, sans-serif;
-      # line-height: 22.3999996185303px;">update</a>&nbsp;method is
-      # used on an existing install, then the app will be updated to the latest
-      # available version.
-      # Note that it is not possible to force the installation of a specific version
-      # of an app: the version code is read-only.
-      # If a user installs an app themselves (as permitted by the enterprise), then
-      # again an install resource and possibly an entitlement resource are
-      # automatically created.
-      # The API can also be used to delete an install resource, which triggers the
-      # removal of the app from the device. Note that deleting an install does not
-      # automatically remove the corresponding entitlement, even if there are no
-      # remaining installs. The install resource will also be deleted if the user
-      # uninstalls the app themselves.
+      # The existence of an Installs resource indicates that an app is installed on a
+      # particular device (or that an install is pending). The API can be used to
+      # create an install resource using the update method. This triggers the actual
+      # install of the app on the device. If the user does not already have an
+      # entitlement for the app, then an attempt is made to create one. If this fails (
+      # for example, because the app is not free and there is no available license),
+      # then the creation of the install fails. The API can also be used to update an
+      # installed app. If the update method is used on an existing install, then the
+      # app will be updated to the latest available version. Note that it is not
+      # possible to force the installation of a specific version of an app: the
+      # version code is read-only. If a user installs an app themselves (as permitted
+      # by the enterprise), then again an install resource and possibly an entitlement
+      # resource are automatically created. The API can also be used to delete an
+      # install resource, which triggers the removal of the app from the device. Note
+      # that deleting an install does not automatically remove the corresponding
+      # entitlement, even if there are no remaining installs. The install resource
+      # will also be deleted if the user uninstalls the app themselves.
       class Install
         include Google::Apis::Core::Hashable
       
-        # Install state. The state <code>&quot;installPending&quot;</code>
-        # means that an install request has recently been made and download to the
-        # device is in progress. The state <code>&quot;installed&quot;</code>
-        # means that the app has been installed. This field is read-only.
+        # Install state. The state "installPending" means that an install request has
+        # recently been made and download to the device is in progress. The state "
+        # installed" means that the app has been installed. This field is read-only.
         # Corresponds to the JSON property `installState`
         # @return [String]
         attr_accessor :install_state
       
-        # The ID of the product that the install is for. For example,
-        # <code>&quot;app:com.google.android.gm&quot;</code>.
+        # The ID of the product that the install is for. For example, "app:com.google.
+        # android.gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
       
-        # The version of the installed product. Guaranteed to be set only if the
-        # install state is <code>&quot;installed&quot;</code>.
+        # The version of the installed product. Guaranteed to be set only if the install
+        # state is "installed".
         # Corresponds to the JSON property `versionCode`
         # @return [Fixnum]
         attr_accessor :version_code
@@ -1173,8 +1130,7 @@ module Google
       class InstallFailureEvent
         include Google::Apis::Core::Hashable
       
-        # The Android ID of the device.
-        # This field will always be present.
+        # The Android ID of the device. This field will always be present.
         # Corresponds to the JSON property `deviceId`
         # @return [String]
         attr_accessor :device_id
@@ -1184,20 +1140,18 @@ module Google
         # @return [String]
         attr_accessor :failure_details
       
-        # The reason for the installation failure.
-        # This field will always be present.
+        # The reason for the installation failure. This field will always be present.
         # Corresponds to the JSON property `failureReason`
         # @return [String]
         attr_accessor :failure_reason
       
-        # The id of the product (e.g. "app:com.google.android.gm") for which the
-        # install failure event occured. This field will always be present.
+        # The id of the product (e.g. "app:com.google.android.gm") for which the install
+        # failure event occured. This field will always be present.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
       
-        # The ID of the user.
-        # This field will always be present.
+        # The ID of the user. This field will always be present.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -1220,9 +1174,8 @@ module Google
       class ListInstallsResponse
         include Google::Apis::Core::Hashable
       
-        # An installation of an app for a user on a specific device.
-        # The existence of an install implies that the user must have an
-        # entitlement to the app.
+        # An installation of an app for a user on a specific device. The existence of an
+        # install implies that the user must have an entitlement to the app.
         # Corresponds to the JSON property `install`
         # @return [Array<Google::Apis::AndroidenterpriseV1::Install>]
         attr_accessor :install
@@ -1242,36 +1195,34 @@ module Google
       class KeyedAppState
         include Google::Apis::Core::Hashable
       
-        # Additional field intended for machine-readable data. For example, a number
-        # or JSON object. To prevent XSS, we recommend removing any HTML from the
-        # data before displaying it.
+        # Additional field intended for machine-readable data. For example, a number or
+        # JSON object. To prevent XSS, we recommend removing any HTML from the data
+        # before displaying it.
         # Corresponds to the JSON property `data`
         # @return [String]
         attr_accessor :data
       
-        # Key indicating what the app is providing a state for. The content of the
-        # key is set by the app's developer. To prevent XSS, we recommend removing
-        # any HTML from the key before displaying it.
-        # This field will always be present.
+        # Key indicating what the app is providing a state for. The content of the key
+        # is set by the app's developer. To prevent XSS, we recommend removing any HTML
+        # from the key before displaying it. This field will always be present.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
-        # Free-form, human-readable message describing the app state. For example,
-        # an error message. To prevent XSS, we recommend removing any HTML from the
-        # message before displaying it.
+        # Free-form, human-readable message describing the app state. For example, an
+        # error message. To prevent XSS, we recommend removing any HTML from the message
+        # before displaying it.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
       
-        # Severity of the app state.
-        # This field will always be present.
+        # Severity of the app state. This field will always be present.
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
       
-        # Timestamp of when the app set the state in milliseconds since epoch.
-        # This field will always be present.
+        # Timestamp of when the app set the state in milliseconds since epoch. This
+        # field will always be present.
         # Corresponds to the JSON property `stateTimestampMillis`
         # @return [Fixnum]
         attr_accessor :state_timestamp_millis
@@ -1315,9 +1266,8 @@ module Google
         end
       end
       
-      # Maintenance window for managed Google Play Accounts.
-      # This allows Play store to update the apps on the foreground in the designated
-      # window.
+      # Maintenance window for managed Google Play Accounts. This allows Play store to
+      # update the apps on the foreground in the designated window.
       class MaintenanceWindow
         include Google::Apis::Core::Hashable
       
@@ -1345,15 +1295,15 @@ module Google
       end
       
       # A managed configuration resource contains the set of managed properties
-      # defined by the app developer in the app's managed configurations schema,
-      # as well as any configuration variables defined for the user.
+      # defined by the app developer in the app's managed configurations schema, as
+      # well as any configuration variables defined for the user.
       class ManagedConfiguration
         include Google::Apis::Core::Hashable
       
-        # A configuration variables resource contains the managed configuration
-        # settings ID to be applied to a single user, as well as the variable set that
-        # is attributed to the user. The variable set will be used to replace
-        # placeholders in the managed configuration settings.
+        # A configuration variables resource contains the managed configuration settings
+        # ID to be applied to a single user, as well as the variable set that is
+        # attributed to the user. The variable set will be used to replace placeholders
+        # in the managed configuration settings.
         # Corresponds to the JSON property `configurationVariables`
         # @return [Google::Apis::AndroidenterpriseV1::ConfigurationVariables]
         attr_accessor :configuration_variables
@@ -1368,8 +1318,8 @@ module Google
         # @return [Array<Google::Apis::AndroidenterpriseV1::ManagedProperty>]
         attr_accessor :managed_property
       
-        # The ID of the product that the managed configuration is for, e.g.
-        # "app:com.google.android.gm".
+        # The ID of the product that the managed configuration is for, e.g. "app:com.
+        # google.android.gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -1425,15 +1375,15 @@ module Google
         end
       end
       
-      # A managed configurations settings resource contains the set of
-      # managed properties that have been configured for an Android app to be applied
-      # to a set of users. The app's developer would have
-      # defined configurable properties in the managed configurations schema.
+      # A managed configurations settings resource contains the set of managed
+      # properties that have been configured for an Android app to be applied to a set
+      # of users. The app's developer would have defined configurable properties in
+      # the managed configurations schema.
       class ManagedConfigurationsSettings
         include Google::Apis::Core::Hashable
       
-        # The last updated time of the managed configuration settings in
-        # milliseconds since 1970-01-01T00:00:00Z.
+        # The last updated time of the managed configuration settings in milliseconds
+        # since 1970-01-01T00:00:00Z.
         # Corresponds to the JSON property `lastUpdatedTimestampMillis`
         # @return [Fixnum]
         attr_accessor :last_updated_timestamp_millis
@@ -1464,8 +1414,8 @@ module Google
       class ManagedConfigurationsSettingsListResponse
         include Google::Apis::Core::Hashable
       
-        # A managed configurations settings for an app that may be assigned to a
-        # group of users in an enterprise.
+        # A managed configurations settings for an app that may be assigned to a group
+        # of users in an enterprise.
         # Corresponds to the JSON property `managedConfigurationsSettings`
         # @return [Array<Google::Apis::AndroidenterpriseV1::ManagedConfigurationsSettings>]
         attr_accessor :managed_configurations_settings
@@ -1492,8 +1442,7 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # The boolean value - this will only be present if type of the property is
-        # bool.
+        # The boolean value - this will only be present if type of the property is bool.
         # Corresponds to the JSON property `valueBool`
         # @return [Boolean]
         attr_accessor :value_bool
@@ -1504,8 +1453,8 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::ManagedPropertyBundle]
         attr_accessor :value_bundle
       
-        # The list of bundles of properties - this will only be present if type of
-        # the property is bundle_array.
+        # The list of bundles of properties - this will only be present if type of the
+        # property is bundle_array.
         # Corresponds to the JSON property `valueBundleArray`
         # @return [Array<Google::Apis::AndroidenterpriseV1::ManagedPropertyBundle>]
         attr_accessor :value_bundle_array
@@ -1516,14 +1465,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :value_integer
       
-        # The string value - this will only be present if type of the property is
-        # string, choice or hidden.
+        # The string value - this will only be present if type of the property is string,
+        # choice or hidden.
         # Corresponds to the JSON property `valueString`
         # @return [String]
         attr_accessor :value_string
       
-        # The list of string values - this will only be present if type of the
-        # property is multiselect.
+        # The list of string values - this will only be present if type of the property
+        # is multiselect.
         # Corresponds to the JSON property `valueStringArray`
         # @return [Array<String>]
         attr_accessor :value_string_array
@@ -1567,8 +1516,7 @@ module Google
       class NewDeviceEvent
         include Google::Apis::Core::Hashable
       
-        # The Android ID of the device.
-        # This field will always be present.
+        # The Android ID of the device. This field will always be present.
         # Corresponds to the JSON property `deviceId`
         # @return [String]
         attr_accessor :device_id
@@ -1578,19 +1526,15 @@ module Google
         # @return [String]
         attr_accessor :dpc_package_name
       
-        # Identifies the extent to which the device is controlled by an Android
-        # EMM in various deployment configurations. <br><br>
-        # Possible values include:
-        # <ul><li>"<code>managedDevice</code>", a device where the DPC is set as
-        # device owner,</li>
-        # <li>"<code>managedProfile</code>", a device where the DPC is set as profile
-        # owner.</li></ul>
+        # Identifies the extent to which the device is controlled by an Android EMM in
+        # various deployment configurations. Possible values include: - "managedDevice",
+        # a device where the DPC is set as device owner, - "managedProfile", a device
+        # where the DPC is set as profile owner.
         # Corresponds to the JSON property `managementType`
         # @return [String]
         attr_accessor :management_type
       
-        # The ID of the user.
-        # This field will always be present.
+        # The ID of the user. This field will always be present.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -1612,10 +1556,9 @@ module Google
       class NewPermissionsEvent
         include Google::Apis::Core::Hashable
       
-        # The set of permissions that the enterprise admin has already approved for
-        # this application.
-        # Use Permissions.Get on the EMM API to retrieve details about these
-        # permissions.
+        # The set of permissions that the enterprise admin has already approved for this
+        # application. Use Permissions.Get on the EMM API to retrieve details about
+        # these permissions.
         # Corresponds to the JSON property `approvedPermissions`
         # @return [Array<String>]
         attr_accessor :approved_permissions
@@ -1626,9 +1569,8 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # The set of permissions that the app is currently requesting.
-        # Use Permissions.Get on the EMM API to retrieve details about these
-        # permissions.
+        # The set of permissions that the app is currently requesting. Use Permissions.
+        # Get on the EMM API to retrieve details about these permissions.
         # Corresponds to the JSON property `requestedPermissions`
         # @return [Array<String>]
         attr_accessor :requested_permissions
@@ -1650,9 +1592,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An event generated when a new app version is uploaded to Google Play and its
-        # app restrictions schema changed.
-        # To fetch the app restrictions schema for an app, use
-        # Products.getAppRestrictionsSchema on the EMM API.
+        # app restrictions schema changed. To fetch the app restrictions schema for an
+        # app, use Products.getAppRestrictionsSchema on the EMM API.
         # Corresponds to the JSON property `appRestrictionsSchemaChangeEvent`
         # @return [Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaChangeEvent]
         attr_accessor :app_restrictions_schema_change_event
@@ -1670,8 +1611,8 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::DeviceReportUpdateEvent]
         attr_accessor :device_report_update_event
       
-        # The ID of the enterprise for which the notification is sent.
-        # This will always be present.
+        # The ID of the enterprise for which the notification is sent. This will always
+        # be present.
         # Corresponds to the JSON property `enterpriseId`
         # @return [String]
         attr_accessor :enterprise_id
@@ -1706,9 +1647,8 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::ProductAvailabilityChangeEvent]
         attr_accessor :product_availability_change_event
       
-        # The time when the notification was published in
-        # milliseconds since 1970-01-01T00:00:00Z.
-        # This will always be present.
+        # The time when the notification was published in milliseconds since 1970-01-
+        # 01T00:00:00Z. This will always be present.
         # Corresponds to the JSON property `timestampMillis`
         # @return [Fixnum]
         attr_accessor :timestamp_millis
@@ -1733,8 +1673,8 @@ module Google
         end
       end
       
-      # A resource returned by the PullNotificationSet API, which contains
-      # a collection of notifications for enterprises associated with the service
+      # A resource returned by the PullNotificationSet API, which contains a
+      # collection of notifications for enterprises associated with the service
       # account authenticated for the request.
       class NotificationSet
         include Google::Apis::Core::Hashable
@@ -1744,9 +1684,9 @@ module Google
         # @return [Array<Google::Apis::AndroidenterpriseV1::Notification>]
         attr_accessor :notification
       
-        # The notification set ID, required to mark the notification as
-        # received with the Enterprises.AcknowledgeNotification API.
-        # This will be omitted if no notifications are present.
+        # The notification set ID, required to mark the notification as received with
+        # the Enterprises.AcknowledgeNotification API. This will be omitted if no
+        # notifications are present.
         # Corresponds to the JSON property `notificationSetId`
         # @return [String]
         attr_accessor :notification_set_id
@@ -1762,14 +1702,14 @@ module Google
         end
       end
       
-      # Information about the current page.
-      # List operations that supports paging return only one "page" of results. This
-      # protocol buffer message describes the page that has been returned.
+      # Information about the current page. List operations that supports paging
+      # return only one "page" of results. This protocol buffer message describes the
+      # page that has been returned.
       class PageInfo
         include Google::Apis::Core::Hashable
       
-        # Maximum number of results returned in one page.
-        # ! The number of results included in the API response.
+        # Maximum number of results returned in one page. ! The number of results
+        # included in the API response.
         # Corresponds to the JSON property `resultPerPage`
         # @return [Fixnum]
         attr_accessor :result_per_page
@@ -1779,8 +1719,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :start_index
       
-        # Total number of results available on the backend
-        # ! The total number of results in the result set.
+        # Total number of results available on the backend ! The total number of results
+        # in the result set.
         # Corresponds to the JSON property `totalResults`
         # @return [Fixnum]
         attr_accessor :total_results
@@ -1798,18 +1738,16 @@ module Google
       end
       
       # A Permissions resource represents some extra capability, to be granted to an
-      # Android app, which requires explicit consent. An enterprise admin must
-      # consent to these permissions on behalf of their users before an
-      # entitlement for the app can be created.
-      # The permissions collection is read-only. The information provided for
-      # each permission (localized name and description) is intended to be
-      # used in the MDM user interface when obtaining consent from the
-      # enterprise.
+      # Android app, which requires explicit consent. An enterprise admin must consent
+      # to these permissions on behalf of their users before an entitlement for the
+      # app can be created. The permissions collection is read-only. The information
+      # provided for each permission (localized name and description) is intended to
+      # be used in the MDM user interface when obtaining consent from the enterprise.
       class Permission
         include Google::Apis::Core::Hashable
       
-        # A longer description of the Permissions resource, giving more details of
-        # what it affects.
+        # A longer description of the Permissions resource, giving more details of what
+        # it affects.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1841,41 +1779,38 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The auto-update policy for apps installed on the device. "choiceToTheUser"
-        # allows the device's user to configure the app update policy. "always"
-        # enables auto updates. "never" disables auto updates. "wifiOnly" enables
-        # auto updates only when the device is connected to wifi.
+        # allows the device's user to configure the app update policy. "always" enables
+        # auto updates. "never" disables auto updates. "wifiOnly" enables auto updates
+        # only when the device is connected to wifi.
         # Corresponds to the JSON property `autoUpdatePolicy`
         # @return [String]
         attr_accessor :auto_update_policy
       
-        # Whether the device reports app states to the EMM. The default value is
-        # "deviceReportDisabled".
+        # Whether the device reports app states to the EMM. The default value is "
+        # deviceReportDisabled".
         # Corresponds to the JSON property `deviceReportPolicy`
         # @return [String]
         attr_accessor :device_report_policy
       
-        # Maintenance window for managed Google Play Accounts.
-        # This allows Play store to update the apps on the foreground in the designated
-        # window.
+        # Maintenance window for managed Google Play Accounts. This allows Play store to
+        # update the apps on the foreground in the designated window.
         # Corresponds to the JSON property `maintenanceWindow`
         # @return [Google::Apis::AndroidenterpriseV1::MaintenanceWindow]
         attr_accessor :maintenance_window
       
-        # The availability granted to the device for the specified products. "all"
-        # gives the device access to all products, regardless of approval status.
-        # "all" does not enable automatic visibility of "alpha" or "beta" tracks.
-        # "whitelist" grants the device access the products specified in
-        # productPolicy[]. Only products that are approved or products that were
-        # previously approved (products with revoked approval) by the enterprise can
-        # be whitelisted. If no value is provided, the availability set at the user
-        # level is applied by default.
+        # The availability granted to the device for the specified products. "all" gives
+        # the device access to all products, regardless of approval status. "all" does
+        # not enable automatic visibility of "alpha" or "beta" tracks. "whitelist"
+        # grants the device access the products specified in productPolicy[]. Only
+        # products that are approved or products that were previously approved (products
+        # with revoked approval) by the enterprise can be whitelisted. If no value is
+        # provided, the availability set at the user level is applied by default.
         # Corresponds to the JSON property `productAvailabilityPolicy`
         # @return [String]
         attr_accessor :product_availability_policy
       
-        # The list of product policies. The <code>productAvailabilityPolicy</code>
-        # needs to be set to <code>WHITELIST</code> or <code>ALL</code> for the
-        # product policies to be applied.
+        # The list of product policies. The productAvailabilityPolicy needs to be set to
+        # WHITELIST or ALL for the product policies to be applied.
         # Corresponds to the JSON property `productPolicy`
         # @return [Array<Google::Apis::AndroidenterpriseV1::ProductPolicy>]
         attr_accessor :product_policy
@@ -1897,10 +1832,9 @@ module Google
       # A Products resource represents an app in the Google Play store that is
       # available to at least some users in the enterprise. (Some apps are restricted
       # to a single enterprise, and no information about them is made available
-      # outside that enterprise.)
-      # The information provided for each product (localized name, icon, link
-      # to the full Google Play details page) is intended to allow a basic
-      # representation of the product within an EMM user interface.
+      # outside that enterprise.) The information provided for each product (localized
+      # name, icon, link to the full Google Play details page) is intended to allow a
+      # basic representation of the product within an EMM user interface.
       class Product
         include Google::Apis::Core::Hashable
       
@@ -1924,7 +1858,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :available_countries
       
-        # Deprecated, use <code>appTracks</code> instead.
+        # Deprecated, use appTracks instead.
         # Corresponds to the JSON property `availableTracks`
         # @return [Array<String>]
         attr_accessor :available_tracks
@@ -1949,13 +1883,12 @@ module Google
         # @return [String]
         attr_accessor :details_url
       
-        # How and to whom the package is made available.
-        # The value <code>publicGoogleHosted</code> means that the package is
-        # available through the Play store and not restricted to a specific
-        # enterprise. The value <code>privateGoogleHosted</code> means that the
-        # package is a private app (restricted to an enterprise) but hosted by
-        # Google. The value <code>privateSelfHosted</code> means that the package is
-        # a private app (restricted to an enterprise) and is privately hosted.
+        # How and to whom the package is made available. The value publicGoogleHosted
+        # means that the package is available through the Play store and not restricted
+        # to a specific enterprise. The value privateGoogleHosted means that the package
+        # is a private app (restricted to an enterprise) but hosted by Google. The value
+        # privateSelfHosted means that the package is a private app (restricted to an
+        # enterprise) and is privately hosted.
         # Corresponds to the JSON property `distributionChannel`
         # @return [String]
         attr_accessor :distribution_channel
@@ -1965,14 +1898,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :features
       
-        # A link to an image that can be used as an icon for the product.
-        # This image is suitable for use at up to 512px x 512px.
+        # A link to an image that can be used as an icon for the product. This image is
+        # suitable for use at up to 512px x 512px.
         # Corresponds to the JSON property `iconUrl`
         # @return [String]
         attr_accessor :icon_url
       
-        # The approximate time (within 7 days) the app was last published, expressed
-        # in milliseconds since epoch.
+        # The approximate time (within 7 days) the app was last published, expressed in
+        # milliseconds since epoch.
         # Corresponds to the JSON property `lastUpdatedTimestampMillis`
         # @return [Fixnum]
         attr_accessor :last_updated_timestamp_millis
@@ -1987,16 +1920,15 @@ module Google
         # @return [Array<Google::Apis::AndroidenterpriseV1::ProductPermission>]
         attr_accessor :permissions
       
-        # A string of the form <code><em>app:&lt;package name&gt;</em></code>. For
-        # example, <code>app:com.google.android.gm</code> represents the Gmail app.
+        # A string of the form *app:<package name>*. For example, app:com.google.android.
+        # gm represents the Gmail app.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
       
-        # Whether this product is free, free with in-app purchases, or paid.
-        # If the pricing is unknown, this means the product is not generally
-        # available anymore (even though it might still be available to
-        # people who own it).
+        # Whether this product is free, free with in-app purchases, or paid. If the
+        # pricing is unknown, this means the product is not generally available anymore (
+        # even though it might still be available to people who own it).
         # Corresponds to the JSON property `productPricing`
         # @return [String]
         attr_accessor :product_pricing
@@ -2022,8 +1954,8 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::ProductSigningCertificate]
         attr_accessor :signing_certificate
       
-        # A link to a smaller image that can be used as an icon for the product.
-        # This image is suitable for use at up to 128px x 128px.
+        # A link to a smaller image that can be used as an icon for the product. This
+        # image is suitable for use at up to 128px x 128px.
         # Corresponds to the JSON property `smallIconUrl`
         # @return [String]
         attr_accessor :small_icon_url
@@ -2033,8 +1965,8 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # A link to the managed Google Play details page for the product,
-        # for use by an Enterprise admin.
+        # A link to the managed Google Play details page for the product, for use by an
+        # Enterprise admin.
         # Corresponds to the JSON property `workDetailsUrl`
         # @return [String]
         attr_accessor :work_details_url
@@ -2076,8 +2008,8 @@ module Google
       class ProductApprovalEvent
         include Google::Apis::Core::Hashable
       
-        # Whether the product was approved or unapproved.
-        # This field will always be present.
+        # Whether the product was approved or unapproved. This field will always be
+        # present.
         # Corresponds to the JSON property `approved`
         # @return [String]
         attr_accessor :approved
@@ -2103,14 +2035,13 @@ module Google
       class ProductAvailabilityChangeEvent
         include Google::Apis::Core::Hashable
       
-        # The new state of the product.
-        # This field will always be present.
+        # The new state of the product. This field will always be present.
         # Corresponds to the JSON property `availabilityStatus`
         # @return [String]
         attr_accessor :availability_status
       
-        # The id of the product (e.g. "app:com.google.android.gm") for which the
-        # product availability changed. This field will always be present.
+        # The id of the product (e.g. "app:com.google.android.gm") for which the product
+        # availability changed. This field will always be present.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -2126,11 +2057,10 @@ module Google
         end
       end
       
-      # A product permissions resource represents the set of permissions
-      # required by a specific app and whether or not they have been accepted
-      # by an enterprise admin.
-      # The API can be used to read the set of permissions, and also to update
-      # the set to indicate that permissions have been accepted.
+      # A product permissions resource represents the set of permissions required by a
+      # specific app and whether or not they have been accepted by an enterprise admin.
+      # The API can be used to read the set of permissions, and also to update the
+      # set to indicate that permissions have been accepted.
       class ProductPermission
         include Google::Apis::Core::Hashable
       
@@ -2155,8 +2085,8 @@ module Google
         end
       end
       
-      # Information about the permissions required by a specific app and
-      # whether they have been accepted by the enterprise.
+      # Information about the permissions required by a specific app and whether they
+      # have been accepted by the enterprise.
       class ProductPermissions
         include Google::Apis::Core::Hashable
       
@@ -2165,8 +2095,8 @@ module Google
         # @return [Array<Google::Apis::AndroidenterpriseV1::ProductPermission>]
         attr_accessor :permission
       
-        # The ID of the app that the permissions relate to, e.g.
-        # "app:com.google.android.gm".
+        # The ID of the app that the permissions relate to, e.g. "app:com.google.android.
+        # gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -2192,26 +2122,25 @@ module Google
         attr_accessor :auto_install_policy
       
         # A managed configuration resource contains the set of managed properties
-        # defined by the app developer in the app's managed configurations schema,
-        # as well as any configuration variables defined for the user.
+        # defined by the app developer in the app's managed configurations schema, as
+        # well as any configuration variables defined for the user.
         # Corresponds to the JSON property `managedConfiguration`
         # @return [Google::Apis::AndroidenterpriseV1::ManagedConfiguration]
         attr_accessor :managed_configuration
       
-        # The ID of the product. For example,
-        # <code>&quot;app:com.google.android.gm&quot;</code>.
+        # The ID of the product. For example, "app:com.google.android.gm".
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
       
         # Grants the device visibility to the specified product release track(s),
-        # identified by <code>trackIds</code>. The list of release tracks of a
-        # product can be obtained by calling Products.Get.
+        # identified by trackIds. The list of release tracks of a product can be
+        # obtained by calling Products.Get.
         # Corresponds to the JSON property `trackIds`
         # @return [Array<String>]
         attr_accessor :track_ids
       
-        # Deprecated. Use <code>trackIds</code> instead.
+        # Deprecated. Use trackIds instead.
         # Corresponds to the JSON property `tracks`
         # @return [Array<String>]
         attr_accessor :tracks
@@ -2239,28 +2168,26 @@ module Google
         # @return [Array<String>]
         attr_accessor :product_id
       
-        # The interpretation of this product set. "unknown" should never be sent and
-        # is ignored if received. "whitelist" means that the user is entitled to
-        # access the product set. "includeAll" means that all products are
-        # accessible, including products that are approved, products with revoked
-        # approval, and products that have never been approved. "allApproved" means
-        # that the user is entitled to access all products that are approved for the
-        # enterprise. If the value is "allApproved" or "includeAll", the productId
-        # field is ignored. If no value is provided, it is interpreted as
-        # "whitelist" for backwards compatibility.
-        # Further "allApproved" or "includeAll" does not enable automatic
-        # visibility of "alpha" or "beta" tracks for Android app. Use
-        # ProductVisibility to enable "alpha" or "beta" tracks per user.
+        # The interpretation of this product set. "unknown" should never be sent and is
+        # ignored if received. "whitelist" means that the user is entitled to access the
+        # product set. "includeAll" means that all products are accessible, including
+        # products that are approved, products with revoked approval, and products that
+        # have never been approved. "allApproved" means that the user is entitled to
+        # access all products that are approved for the enterprise. If the value is "
+        # allApproved" or "includeAll", the productId field is ignored. If no value is
+        # provided, it is interpreted as "whitelist" for backwards compatibility.
+        # Further "allApproved" or "includeAll" does not enable automatic visibility of "
+        # alpha" or "beta" tracks for Android app. Use ProductVisibility to enable "
+        # alpha" or "beta" tracks per user.
         # Corresponds to the JSON property `productSetBehavior`
         # @return [String]
         attr_accessor :product_set_behavior
       
-        # Additional list of product IDs making up the product set.
-        # Unlike the productID array, in this list It's possible to specify
-        # which tracks (alpha, beta, production) of a product are visible to the
-        # user. See ProductVisibility and its fields for more information. Specifying
-        # the same product ID both here and in the productId array is not allowed and
-        # it will result in an error.
+        # Additional list of product IDs making up the product set. Unlike the productID
+        # array, in this list It's possible to specify which tracks (alpha, beta,
+        # production) of a product are visible to the user. See ProductVisibility and
+        # its fields for more information. Specifying the same product ID both here and
+        # in the productId array is not allowed and it will result in an error.
         # Corresponds to the JSON property `productVisibility`
         # @return [Array<Google::Apis::AndroidenterpriseV1::ProductVisibility>]
         attr_accessor :product_visibility
@@ -2282,8 +2209,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The base64 urlsafe encoded SHA1 hash of the certificate. (This field is
-        # deprecated in favor of SHA2-256. It should not be used and may be
-        # removed at any time.)
+        # deprecated in favor of SHA2-256. It should not be used and may be removed at
+        # any time.)
         # Corresponds to the JSON property `certificateHashSha1`
         # @return [String]
         attr_accessor :certificate_hash_sha1
@@ -2308,19 +2235,19 @@ module Google
       class ProductVisibility
         include Google::Apis::Core::Hashable
       
-        # The product ID to make visible to the user.
-        # Required for each item in the productVisibility list.
+        # The product ID to make visible to the user. Required for each item in the
+        # productVisibility list.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
       
         # Grants the user visibility to the specified product track(s), identified by
-        # <code>trackIds</code>.
+        # trackIds.
         # Corresponds to the JSON property `trackIds`
         # @return [Array<String>]
         attr_accessor :track_ids
       
-        # Deprecated. Use <code>trackIds</code> instead.
+        # Deprecated. Use trackIds instead.
         # Corresponds to the JSON property `tracks`
         # @return [Array<String>]
         attr_accessor :tracks
@@ -2346,12 +2273,12 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::ApprovalUrlInfo]
         attr_accessor :approval_url_info
       
-        # Sets how new permission requests for the product are handled.
-        # "allPermissions" automatically approves all current and future
-        # permissions for the product. "currentPermissionsOnly" approves the
-        # current set of permissions for the product, but any future permissions
-        # added through updates will require manual reapproval. If not specified,
-        # only the current set of permissions will be approved.
+        # Sets how new permission requests for the product are handled. "allPermissions"
+        # automatically approves all current and future permissions for the product. "
+        # currentPermissionsOnly" approves the current set of permissions for the
+        # product, but any future permissions added through updates will require manual
+        # reapproval. If not specified, only the current set of permissions will be
+        # approved.
         # Corresponds to the JSON property `approvedPermissions`
         # @return [String]
         attr_accessor :approved_permissions
@@ -2371,15 +2298,13 @@ module Google
       class GenerateProductApprovalUrlResponse
         include Google::Apis::Core::Hashable
       
-        # A URL that can be rendered in an iframe to display the permissions (if
-        # any) of a product.
-        # This URL can be used to approve the product only once and only within 24
-        # hours of being generated, using the <code>Products.approve</code> call.
-        # If the product is currently unapproved and has no permissions, this
-        # URL will point to an empty page.
-        # If the product is currently approved, a URL will only be generated if
-        # that product has added permissions since it was last approved, and the
-        # URL will only display those new permissions that have not yet been
+        # A URL that can be rendered in an iframe to display the permissions (if any) of
+        # a product. This URL can be used to approve the product only once and only
+        # within 24 hours of being generated, using the Products.approve call. If the
+        # product is currently unapproved and has no permissions, this URL will point to
+        # an empty page. If the product is currently approved, a URL will only be
+        # generated if that product has added permissions since it was last approved,
+        # and the URL will only display those new permissions that have not yet been
         # accepted.
         # Corresponds to the JSON property `url`
         # @return [String]
@@ -2399,9 +2324,9 @@ module Google
       class ProductsListResponse
         include Google::Apis::Core::Hashable
       
-        # Information about the current page.
-        # List operations that supports paging return only one "page" of results. This
-        # protocol buffer message describes the page that has been returned.
+        # Information about the current page. List operations that supports paging
+        # return only one "page" of results. This protocol buffer message describes the
+        # page that has been returned.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::AndroidenterpriseV1::PageInfo]
         attr_accessor :page_info
@@ -2412,15 +2337,14 @@ module Google
         # @return [Array<Google::Apis::AndroidenterpriseV1::Product>]
         attr_accessor :product
       
-        # Pagination information returned by a List operation when token pagination
-        # is enabled.
-        # List operations that supports paging return only one "page" of results. This
-        # protocol buffer message describes the page that has been returned.
-        # When using token pagination, clients should use the next/previous token
-        # to get another page of the result. The presence or absence of next/previous
-        # token indicates whether a next/previous page is available and provides a
-        # mean of accessing this page. ListRequest.page_token should be set to either
-        # next_page_token or previous_page_token to access another page.
+        # Pagination information returned by a List operation when token pagination is
+        # enabled. List operations that supports paging return only one "page" of
+        # results. This protocol buffer message describes the page that has been
+        # returned. When using token pagination, clients should use the next/previous
+        # token to get another page of the result. The presence or absence of next/
+        # previous token indicates whether a next/previous page is available and
+        # provides a mean of accessing this page. ListRequest.page_token should be set
+        # to either next_page_token or previous_page_token to access another page.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::AndroidenterpriseV1::TokenPagination]
         attr_accessor :token_pagination
@@ -2468,23 +2392,21 @@ module Google
       class ServiceAccountKey
         include Google::Apis::Core::Hashable
       
-        # The body of the private key credentials file, in string format. This
-        # is only populated when the ServiceAccountKey is created, and is not stored
-        # by Google.
+        # The body of the private key credentials file, in string format. This is only
+        # populated when the ServiceAccountKey is created, and is not stored by Google.
         # Corresponds to the JSON property `data`
         # @return [String]
         attr_accessor :data
       
-        # An opaque, unique identifier for this ServiceAccountKey.
-        # Assigned by the server.
+        # An opaque, unique identifier for this ServiceAccountKey. Assigned by the
+        # server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
         # Public key data for the credentials file. This is an X.509 cert. If you are
-        # using the <code>googleCredentials</code> key type, this is identical to the
-        # cert that can be retrieved by using the X.509 cert url inside of the
-        # credentials file.
+        # using the googleCredentials key type, this is identical to the cert that can
+        # be retrieved by using the X.509 cert url inside of the credentials file.
         # Corresponds to the JSON property `publicData`
         # @return [String]
         attr_accessor :public_data
@@ -2526,13 +2448,13 @@ module Google
         end
       end
       
-      # A resource returned by the GenerateSignupUrl API, which contains the
-      # Signup URL and Completion Token.
+      # A resource returned by the GenerateSignupUrl API, which contains the Signup
+      # URL and Completion Token.
       class SignupInfo
         include Google::Apis::Core::Hashable
       
-        # An opaque token that will be required, along with the Enterprise Token,
-        # for obtaining the enterprise resource from CompleteSignup.
+        # An opaque token that will be required, along with the Enterprise Token, for
+        # obtaining the enterprise resource from CompleteSignup.
         # Corresponds to the JSON property `completionToken`
         # @return [String]
         attr_accessor :completion_token
@@ -2542,8 +2464,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # A URL under which the Admin can sign up for an enterprise.
-        # The page pointed to cannot be rendered in an iframe.
+        # A URL under which the Admin can sign up for an enterprise. The page pointed to
+        # cannot be rendered in an iframe.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -2570,28 +2492,25 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Ordered list of localized strings giving the name of this page.
-        # The text displayed is the one that best matches the user locale,
-        # or the first entry if there is no good match. There needs to be
-        # at least one entry.
+        # Ordered list of localized strings giving the name of this page. The text
+        # displayed is the one that best matches the user locale, or the first entry if
+        # there is no good match. There needs to be at least one entry.
         # Corresponds to the JSON property `name`
         # @return [Array<Google::Apis::AndroidenterpriseV1::LocalizedText>]
         attr_accessor :name
       
         # String (US-ASCII only) used to determine order of this cluster within the
-        # parent page's elements. Page elements are sorted in lexicographic order
-        # of this field.
-        # Duplicated values are allowed, but ordering between elements with
-        # duplicate order is undefined.
-        # The value of this field is never visible to a user, it is used solely
-        # for the purpose of defining an ordering. Maximum length is 256
-        # characters.
+        # parent page's elements. Page elements are sorted in lexicographic order of
+        # this field. Duplicated values are allowed, but ordering between elements with
+        # duplicate order is undefined. The value of this field is never visible to a
+        # user, it is used solely for the purpose of defining an ordering. Maximum
+        # length is 256 characters.
         # Corresponds to the JSON property `orderInPage`
         # @return [String]
         attr_accessor :order_in_page
       
-        # List of products in the order they are displayed in the cluster. There
-        # should not be duplicates within a cluster.
+        # List of products in the order they are displayed in the cluster. There should
+        # not be duplicates within a cluster.
         # Corresponds to the JSON property `productId`
         # @return [Array<String>]
         attr_accessor :product_id
@@ -2609,24 +2528,22 @@ module Google
         end
       end
       
-      # General setting for the managed Google Play store layout,
-      # currently only specifying the page to display the first time
-      # the store is opened.
+      # General setting for the managed Google Play store layout, currently only
+      # specifying the page to display the first time the store is opened.
       class StoreLayout
         include Google::Apis::Core::Hashable
       
-        # The ID of the store page to be used as the homepage. The homepage is the
-        # first page shown in the managed Google Play Store.
-        # Not specifying a homepage is equivalent to setting the store layout
-        # type to "basic".
+        # The ID of the store page to be used as the homepage. The homepage is the first
+        # page shown in the managed Google Play Store. Not specifying a homepage is
+        # equivalent to setting the store layout type to "basic".
         # Corresponds to the JSON property `homepageId`
         # @return [String]
         attr_accessor :homepage_id
       
-        # The store layout type. By default, this value is set to "basic"
-        # if the homepageId field is not set, and to "custom" otherwise.
-        # If set to "basic", the layout will consist of all approved apps that
-        # have been whitelisted for the user.
+        # The store layout type. By default, this value is set to "basic" if the
+        # homepageId field is not set, and to "custom" otherwise. If set to "basic", the
+        # layout will consist of all approved apps that have been whitelisted for the
+        # user.
         # Corresponds to the JSON property `storeLayoutType`
         # @return [String]
         attr_accessor :store_layout_type
@@ -2680,9 +2597,8 @@ module Google
         end
       end
       
-      # Definition of a managed Google Play store page, made of a localized name
-      # and links to other pages. A page also contains clusters defined
-      # as a subcollection.
+      # Definition of a managed Google Play store page, made of a localized name and
+      # links to other pages. A page also contains clusters defined as a subcollection.
       class StorePage
         include Google::Apis::Core::Hashable
       
@@ -2691,19 +2607,17 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Ordered list of pages a user should be able to reach from this page.
-        # The list can't include this page.
-        # It is recommended that the basic pages are created first,
-        # before adding the links between pages.
-        # The API doesn't verify that the pages exist or the pages are reachable.
+        # Ordered list of pages a user should be able to reach from this page. The list
+        # can't include this page. It is recommended that the basic pages are created
+        # first, before adding the links between pages. The API doesn't verify that the
+        # pages exist or the pages are reachable.
         # Corresponds to the JSON property `link`
         # @return [Array<String>]
         attr_accessor :link
       
-        # Ordered list of localized strings giving the name of this page.
-        # The text displayed is the one that best matches the user locale,
-        # or the first entry if there is no good match. There needs to be
-        # at least one entry.
+        # Ordered list of localized strings giving the name of this page. The text
+        # displayed is the one that best matches the user locale, or the first entry if
+        # there is no good match. There needs to be at least one entry.
         # Corresponds to the JSON property `name`
         # @return [Array<Google::Apis::AndroidenterpriseV1::LocalizedText>]
         attr_accessor :name
@@ -2720,15 +2634,14 @@ module Google
         end
       end
       
-      # Pagination information returned by a List operation when token pagination
-      # is enabled.
-      # List operations that supports paging return only one "page" of results. This
-      # protocol buffer message describes the page that has been returned.
-      # When using token pagination, clients should use the next/previous token
-      # to get another page of the result. The presence or absence of next/previous
-      # token indicates whether a next/previous page is available and provides a
-      # mean of accessing this page. ListRequest.page_token should be set to either
-      # next_page_token or previous_page_token to access another page.
+      # Pagination information returned by a List operation when token pagination is
+      # enabled. List operations that supports paging return only one "page" of
+      # results. This protocol buffer message describes the page that has been
+      # returned. When using token pagination, clients should use the next/previous
+      # token to get another page of the result. The presence or absence of next/
+      # previous token indicates whether a next/previous page is available and
+      # provides a mean of accessing this page. ListRequest.page_token should be set
+      # to either next_page_token or previous_page_token to access another page.
       class TokenPagination
         include Google::Apis::Core::Hashable
       
@@ -2758,15 +2671,15 @@ module Google
       class TrackInfo
         include Google::Apis::Core::Hashable
       
-        # A modifiable name for a track. This is the visible name in the play
-        # developer console.
+        # A modifiable name for a track. This is the visible name in the play developer
+        # console.
         # Corresponds to the JSON property `trackAlias`
         # @return [String]
         attr_accessor :track_alias
       
-        # Unmodifiable, unique track identifier. This identifier is the
-        # releaseTrackId in the url of the play developer console page that displays
-        # the track information.
+        # Unmodifiable, unique track identifier. This identifier is the releaseTrackId
+        # in the url of the play developer console page that displays the track
+        # information.
         # Corresponds to the JSON property `trackId`
         # @return [String]
         attr_accessor :track_id
@@ -2783,43 +2696,37 @@ module Google
       end
       
       # A Users resource represents an account associated with an enterprise. The
-      # account may be specific to a device or to an individual user (who can then
-      # use the account across multiple devices). The account may provide access to
+      # account may be specific to a device or to an individual user (who can then use
+      # the account across multiple devices). The account may provide access to
       # managed Google Play only, or to other Google services, depending on the
-      # identity model:
-      # <ul><li>The Google managed domain identity model requires synchronization to
-      # Google account sources (via <code>primaryEmail</code>).</li>
-      # <li>The managed Google Play Accounts identity model provides a dynamic means
-      # for enterprises to create user or device accounts as needed. These accounts
-      # provide access to managed Google Play.</li>
-      # </ul>
+      # identity model: - The Google managed domain identity model requires
+      # synchronization to Google account sources (via primaryEmail). - The managed
+      # Google Play Accounts identity model provides a dynamic means for enterprises
+      # to create user or device accounts as needed. These accounts provide access to
+      # managed Google Play.
       class User
         include Google::Apis::Core::Hashable
       
-        # A unique identifier you create for this user, such as "user342" or
-        # "asset#44418". Do not use personally identifiable information (PII) for
-        # this property. Must always be set for EMM-managed users.
-        # Not set for Google-managed users.
+        # A unique identifier you create for this user, such as "user342" or "asset#
+        # 44418". Do not use personally identifiable information (PII) for this property.
+        # Must always be set for EMM-managed users. Not set for Google-managed users.
         # Corresponds to the JSON property `accountIdentifier`
         # @return [String]
         attr_accessor :account_identifier
       
-        # The type of account that this user represents. A <code>userAccount</code>
-        # can be installed on multiple devices, but a <code>deviceAccount</code> is
-        # specific to a single device. An EMM-managed user (<code>emmManaged</code>)
-        # can be either type (<code>userAccount</code>, <code>deviceAccount</code>),
-        # but a Google-managed user (<code>googleManaged</code>) is always a
-        # <code>userAccount</code>.
+        # The type of account that this user represents. A userAccount can be installed
+        # on multiple devices, but a deviceAccount is specific to a single device. An
+        # EMM-managed user (emmManaged) can be either type (userAccount, deviceAccount),
+        # but a Google-managed user (googleManaged) is always a userAccount.
         # Corresponds to the JSON property `accountType`
         # @return [String]
         attr_accessor :account_type
       
         # The name that will appear in user interfaces. Setting this property is
-        # optional when creating EMM-managed users. If you do set this property,
-        # use something generic about the organization (such as "Example, Inc.") or
-        # your name (as EMM).
-        # Not used for Google-managed user accounts.
-        # @mutable androidenterprise.users.update
+        # optional when creating EMM-managed users. If you do set this property, use
+        # something generic about the organization (such as "Example, Inc.") or your
+        # name (as EMM). Not used for Google-managed user accounts. @mutable
+        # androidenterprise.users.update
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2829,17 +2736,15 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The entity that manages the user.  With <code>googleManaged</code> users,
-        # the source of truth is Google so EMMs have to make sure a Google Account
-        # exists for the user.  With <code>emmManaged</code> users, the
-        # EMM is in charge.
+        # The entity that manages the user. With googleManaged users, the source of
+        # truth is Google so EMMs have to make sure a Google Account exists for the user.
+        # With emmManaged users, the EMM is in charge.
         # Corresponds to the JSON property `managementType`
         # @return [String]
         attr_accessor :management_type
       
-        # The user's primary email address, for example, "jsmith@example.com".
-        # Will always be set for Google managed users and not set for EMM managed
-        # users.
+        # The user's primary email address, for example, "jsmith@example.com". Will
+        # always be set for Google managed users and not set for EMM managed users.
         # Corresponds to the JSON property `primaryEmail`
         # @return [String]
         attr_accessor :primary_email
@@ -2878,10 +2783,10 @@ module Google
         end
       end
       
-      # A variable set is a key-value pair of EMM-provided placeholders and
-      # its corresponding value, which is attributed to a user. For example,
-      # $FIRSTNAME could be a placeholder, and its value could be Alice. Placeholders
-      # should start with a '$' sign and should be alphanumeric only.
+      # A variable set is a key-value pair of EMM-provided placeholders and its
+      # corresponding value, which is attributed to a user. For example, $FIRSTNAME
+      # could be a placeholder, and its value could be Alice. Placeholders should
+      # start with a '$' sign and should be alphanumeric only.
       class VariableSet
         include Google::Apis::Core::Hashable
       
@@ -2907,23 +2812,19 @@ module Google
       end
       
       # A WebApps resource represents a web app created for an enterprise. Web apps
-      # are published to managed Google Play and can be distributed like other
-      # Android apps. On a user's device, a web app opens its specified URL.
+      # are published to managed Google Play and can be distributed like other Android
+      # apps. On a user's device, a web app opens its specified URL.
       class WebApp
         include Google::Apis::Core::Hashable
       
-        # The display mode of the web app. <br><br>
-        # Possible values include:
-        # <ul><li>"<code>minimalUi</code>", the device's status bar, navigation bar,
-        # the app's URL, and a refresh button are visible when the app is open. For
-        # HTTP URLs, you can only select this option.
-        # <li>"<code>standalone</code>", the device's status bar and navigation
-        # bar are visible when the app is open.
-        # <li>"<code>fullScreen</code>", the app opens in full screen mode, hiding
-        # the device's status and navigation bars.  All browser UI elements, page
-        # URL, system status bar and back button are not visible, and the web app
-        # takes up the entirety of the available display area.
-        # </ul>
+        # The display mode of the web app. Possible values include: - "minimalUi", the
+        # device's status bar, navigation bar, the app's URL, and a refresh button are
+        # visible when the app is open. For HTTP URLs, you can only select this option. -
+        # "standalone", the device's status bar and navigation bar are visible when the
+        # app is open. - "fullScreen", the app opens in full screen mode, hiding the
+        # device's status and navigation bars. All browser UI elements, page URL, system
+        # status bar and back button are not visible, and the web app takes up the
+        # entirety of the available display area.
         # Corresponds to the JSON property `displayMode`
         # @return [String]
         attr_accessor :display_mode
@@ -2952,19 +2853,16 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # The current version of the app.
-        # <p>Note that the version can automatically increase during the lifetime of
-        # the web app, while Google does internal housekeeping to keep the web app
-        # up-to-date.
+        # The current version of the app. Note that the version can automatically
+        # increase during the lifetime of the web app, while Google does internal
+        # housekeeping to keep the web app up-to-date.
         # Corresponds to the JSON property `versionCode`
         # @return [Fixnum]
         attr_accessor :version_code
       
-        # The ID of the application.  A string of the form
-        # <code>&quot;app:&lt;package name&gt;&quot;</code> where the package name
-        # always starts with the prefix
-        # <code>&quot;com.google.enterprise.webapp.&quot;</code> followed by a
-        # random id.
+        # The ID of the application. A string of the form "app:<package name>" where the
+        # package name always starts with the prefix "com.google.enterprise.webapp."
+        # followed by a random id.
         # Corresponds to the JSON property `webAppId`
         # @return [String]
         attr_accessor :web_app_id
@@ -2990,12 +2888,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
-        # section 5 "Base 64 Encoding with URL and Filename Safe Alphabet").
-        # <ul>
-        # <li>The image type can be png or jpg.
-        # <li>The image should ideally be square.
-        # <li>The image should ideally have a size of 512x512.
-        # </ul>
+        # section 5 "Base 64 Encoding with URL and Filename Safe Alphabet"). - The image
+        # type can be png or jpg. - The image should ideally be square. - The image
+        # should ideally have a size of 512x512.
         # Corresponds to the JSON property `imageData`
         # @return [String]
         attr_accessor :image_data
