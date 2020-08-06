@@ -103,15 +103,13 @@ Use the authorized Client object to call Google APIs by completing the following
 1. Build a service object for the API that you want to call. You build a a service object by calling the discovered_api method of an APIClient object with the name and version of the API. For example, to call version 1beta3 of the Cloud SQL Administration API:
 
 ```rb
-
 sqladmin = Google::Apis::SqladminV1beta4::SqladminService.new
 sqladmin.authorization = auth_client
 
-Make requests to the API service using the
-  interface
-  provided by the service object, and providing the authorized
-  Client object. For example, to list the instances of Cloud SQL
-  databases in the examinable-example-123 project:
+# Make requests to the API service using the interface
+# provided by the service object, and providing the authorized
+# Client object. For example, to list the instances of Cloud SQL
+# databases in the examinable-example-123 project:
 
 instances = sqladmin.list_instances('examinable-example-123')
 ```
