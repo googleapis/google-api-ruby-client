@@ -50,22 +50,19 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a new RuntimeConfig resource. The configuration name must be
-        # unique within project.
+        # Creates a new RuntimeConfig resource. The configuration name must be unique
+        # within project.
         # @param [String] parent
-        #   The [project
-        #   ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)
-        #   for this request, in the format `projects/[PROJECT_ID]`.
+        #   The [project ID](https://support.google.com/cloud/answer/6158840?hl=en&
+        #   ref_topic=6158848) for this request, in the format `projects/[PROJECT_ID]`.
         # @param [Google::Apis::RuntimeconfigV1beta1::RuntimeConfig] runtime_config_object
         # @param [String] request_id
-        #   An optional but recommended unique `request_id`. If the server
-        #   receives two `create()` requests  with the same
-        #   `request_id`, then the second request will be ignored and the
-        #   first resource created and stored in the backend is returned.
-        #   Empty `request_id` fields are ignored.
-        #   It is responsibility of the client to ensure uniqueness of the
-        #   `request_id` strings.
-        #   `request_id` strings are limited to 64 characters.
+        #   An optional but recommended unique `request_id`. If the server receives two `
+        #   create()` requests with the same `request_id`, then the second request will be
+        #   ignored and the first resource created and stored in the backend is returned.
+        #   Empty `request_id` fields are ignored. It is responsibility of the client to
+        #   ensure uniqueness of the `request_id` strings. `request_id` strings are
+        #   limited to 64 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -98,8 +95,8 @@ module Google
         
         # Deletes a RuntimeConfig resource.
         # @param [String] name
-        #   The RuntimeConfig resource to delete, in the format:
-        #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
+        #   The RuntimeConfig resource to delete, in the format: `projects/[PROJECT_ID]/
+        #   configs/[CONFIG_NAME]`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -129,8 +126,8 @@ module Google
         
         # Gets information about a RuntimeConfig resource.
         # @param [String] name
-        #   The name of the RuntimeConfig resource to retrieve, in the format:
-        #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
+        #   The name of the RuntimeConfig resource to retrieve, in the format: `projects/[
+        #   PROJECT_ID]/configs/[CONFIG_NAME]`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -158,22 +155,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -204,15 +198,14 @@ module Google
         
         # Lists all the RuntimeConfig resources within project.
         # @param [String] parent
-        #   The [project
-        #   ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)
-        #   for this request, in the format `projects/[PROJECT_ID]`.
+        #   The [project ID](https://support.google.com/cloud/answer/6158840?hl=en&
+        #   ref_topic=6158848) for this request, in the format `projects/[PROJECT_ID]`.
         # @param [Fixnum] page_size
         #   Specifies the number of results to return per page. If there are fewer
         #   elements than the specified number, returns all elements.
         # @param [String] page_token
-        #   Specifies a page token to use. Set `pageToken` to a `nextPageToken`
-        #   returned by a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -243,11 +236,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::RuntimeconfigV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -278,15 +271,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::RuntimeconfigV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -319,8 +311,8 @@ module Google
         
         # Updates a RuntimeConfig resource. The configuration must exist beforehand.
         # @param [String] name
-        #   The name of the RuntimeConfig resource to update, in the format:
-        #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
+        #   The name of the RuntimeConfig resource to update, in the format: `projects/[
+        #   PROJECT_ID]/configs/[CONFIG_NAME]`
         # @param [Google::Apis::RuntimeconfigV1beta1::RuntimeConfig] runtime_config_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -351,9 +343,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -383,15 +374,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::RuntimeconfigV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -422,27 +412,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a variable within the given configuration. You cannot create
-        # a variable with a name that is a prefix of an existing variable name, or a
-        # name that has an existing variable name as a prefix.
-        # To learn more about creating a variable, read the
-        # [Setting and Getting
-        # Data](/deployment-manager/runtime-configurator/set-and-get-variables)
-        # documentation.
+        # Creates a variable within the given configuration. You cannot create a
+        # variable with a name that is a prefix of an existing variable name, or a name
+        # that has an existing variable name as a prefix. To learn more about creating a
+        # variable, read the [Setting and Getting Data](/deployment-manager/runtime-
+        # configurator/set-and-get-variables) documentation.
         # @param [String] parent
-        #   The path to the RutimeConfig resource that this variable should belong to.
-        #   The configuration must exist beforehand; the path must be in the format:
-        #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
+        #   The path to the RutimeConfig resource that this variable should belong to. The
+        #   configuration must exist beforehand; the path must be in the format: `projects/
+        #   [PROJECT_ID]/configs/[CONFIG_NAME]`
         # @param [Google::Apis::RuntimeconfigV1beta1::Variable] variable_object
         # @param [String] request_id
-        #   An optional but recommended unique `request_id`. If the server
-        #   receives two `create()` requests  with the same
-        #   `request_id`, then the second request will be ignored and the
-        #   first resource created and stored in the backend is returned.
-        #   Empty `request_id` fields are ignored.
-        #   It is responsibility of the client to ensure uniqueness of the
-        #   `request_id` strings.
-        #   `request_id` strings are limited to 64 characters.
+        #   An optional but recommended unique `request_id`. If the server receives two `
+        #   create()` requests with the same `request_id`, then the second request will be
+        #   ignored and the first resource created and stored in the backend is returned.
+        #   Empty `request_id` fields are ignored. It is responsibility of the client to
+        #   ensure uniqueness of the `request_id` strings. `request_id` strings are
+        #   limited to 64 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -473,17 +459,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a variable or multiple variables.
-        # If you specify a variable name, then that variable is deleted. If you
-        # specify a prefix and `recursive` is true, then all variables with that
-        # prefix are deleted. You must set a `recursive` to true if you delete
-        # variables by prefix.
+        # Deletes a variable or multiple variables. If you specify a variable name, then
+        # that variable is deleted. If you specify a prefix and `recursive` is true,
+        # then all variables with that prefix are deleted. You must set a `recursive` to
+        # true if you delete variables by prefix.
         # @param [String] name
-        #   The name of the variable to delete, in the format:
-        #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]`
+        #   The name of the variable to delete, in the format: `projects/[PROJECT_ID]/
+        #   configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]`
         # @param [Boolean] recursive
-        #   Set to `true` to recursively delete multiple variables with the same
-        #   prefix.
+        #   Set to `true` to recursively delete multiple variables with the same prefix.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -514,8 +498,8 @@ module Google
         
         # Gets information about a single variable.
         # @param [String] name
-        #   The name of the variable to return, in the format:
-        #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIBLE_NAME]`
+        #   The name of the variable to return, in the format: `projects/[PROJECT_ID]/
+        #   configs/[CONFIG_NAME]/variables/[VARIBLE_NAME]`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -543,28 +527,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists variables within given a configuration, matching any provided
-        # filters. This only lists variable names, not the values, unless
-        # `return_values` is true, in which case only variables that user has IAM
-        # permission to GetVariable will be returned.
+        # Lists variables within given a configuration, matching any provided filters.
+        # This only lists variable names, not the values, unless `return_values` is true,
+        # in which case only variables that user has IAM permission to GetVariable will
+        # be returned.
         # @param [String] parent
-        #   The path to the RuntimeConfig resource for which you want to list
-        #   variables. The configuration must exist beforehand; the path must be in the
-        #   format:
-        #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
+        #   The path to the RuntimeConfig resource for which you want to list variables.
+        #   The configuration must exist beforehand; the path must be in the format: `
+        #   projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
         # @param [String] filter
-        #   Filters variables by matching the specified filter. For example:
-        #   `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
+        #   Filters variables by matching the specified filter. For example: `projects/
+        #   example-project/config/[CONFIG_NAME]/variables/example-variable`.
         # @param [Fixnum] page_size
         #   Specifies the number of results to return per page. If there are fewer
         #   elements than the specified number, returns all elements.
         # @param [String] page_token
-        #   Specifies a page token to use. Set `pageToken` to a `nextPageToken`
-        #   returned by a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [Boolean] return_values
-        #   The flag indicates whether the user wants to return values of variables.
-        #   If true, then only those variables that user has IAM GetVariable permission
-        #   will be returned along with their values.
+        #   The flag indicates whether the user wants to return values of variables. If
+        #   true, then only those variables that user has IAM GetVariable permission will
+        #   be returned along with their values.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -596,15 +579,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::RuntimeconfigV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -637,8 +619,8 @@ module Google
         
         # Updates an existing variable with a new value.
         # @param [String] name
-        #   The name of the variable to update, in the format:
-        #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]`
+        #   The name of the variable to update, in the format: `projects/[PROJECT_ID]/
+        #   configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]`
         # @param [Google::Apis::RuntimeconfigV1beta1::Variable] variable_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -670,19 +652,17 @@ module Google
         end
         
         # Watches a specific variable and waits for a change in the variable's value.
-        # When there is a change, this method returns the new value or times out.
-        # If a variable is deleted while being watched, the `variableState` state is
-        # set to `DELETED` and the method returns the last known variable `value`.
-        # If you set the deadline for watching to a larger value than internal
-        # timeout (60 seconds), the current variable value is returned and the
-        # `variableState` will be `VARIABLE_STATE_UNSPECIFIED`.
-        # To learn more about creating a watcher, read the
-        # [Watching a Variable for
-        # Changes](/deployment-manager/runtime-configurator/watching-a-variable)
-        # documentation.
+        # When there is a change, this method returns the new value or times out. If a
+        # variable is deleted while being watched, the `variableState` state is set to `
+        # DELETED` and the method returns the last known variable `value`. If you set
+        # the deadline for watching to a larger value than internal timeout (60 seconds),
+        # the current variable value is returned and the `variableState` will be `
+        # VARIABLE_STATE_UNSPECIFIED`. To learn more about creating a watcher, read the [
+        # Watching a Variable for Changes](/deployment-manager/runtime-configurator/
+        # watching-a-variable) documentation.
         # @param [String] name
-        #   The name of the variable to watch, in the format:
-        #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
+        #   The name of the variable to watch, in the format: `projects/[PROJECT_ID]/
+        #   configs/[CONFIG_NAME]`
         # @param [Google::Apis::RuntimeconfigV1beta1::WatchVariableRequest] watch_variable_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -714,24 +694,22 @@ module Google
         end
         
         # Creates a Waiter resource. This operation returns a long-running Operation
-        # resource which can be polled for completion. However, a waiter with the
-        # given name will exist (and can be retrieved) prior to the operation
-        # completing. If the operation fails, the failed Waiter resource will
-        # still exist and must be deleted prior to subsequent creation attempts.
+        # resource which can be polled for completion. However, a waiter with the given
+        # name will exist (and can be retrieved) prior to the operation completing. If
+        # the operation fails, the failed Waiter resource will still exist and must be
+        # deleted prior to subsequent creation attempts.
         # @param [String] parent
-        #   The path to the configuration that will own the waiter.
-        #   The configuration must exist beforehand; the path must be in the format:
-        #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`.
+        #   The path to the configuration that will own the waiter. The configuration must
+        #   exist beforehand; the path must be in the format: `projects/[PROJECT_ID]/
+        #   configs/[CONFIG_NAME]`.
         # @param [Google::Apis::RuntimeconfigV1beta1::Waiter] waiter_object
         # @param [String] request_id
-        #   An optional but recommended unique `request_id`. If the server
-        #   receives two `create()` requests  with the same
-        #   `request_id`, then the second request will be ignored and the
-        #   first resource created and stored in the backend is returned.
-        #   Empty `request_id` fields are ignored.
-        #   It is responsibility of the client to ensure uniqueness of the
-        #   `request_id` strings.
-        #   `request_id` strings are limited to 64 characters.
+        #   An optional but recommended unique `request_id`. If the server receives two `
+        #   create()` requests with the same `request_id`, then the second request will be
+        #   ignored and the first resource created and stored in the backend is returned.
+        #   Empty `request_id` fields are ignored. It is responsibility of the client to
+        #   ensure uniqueness of the `request_id` strings. `request_id` strings are
+        #   limited to 64 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -764,8 +742,8 @@ module Google
         
         # Deletes the waiter with the specified name.
         # @param [String] name
-        #   The Waiter resource to delete, in the format:
-        #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]`
+        #   The Waiter resource to delete, in the format: `projects/[PROJECT_ID]/configs/[
+        #   CONFIG_NAME]/waiters/[WAITER_NAME]`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -796,8 +774,7 @@ module Google
         # Gets information about a single waiter.
         # @param [String] name
         #   The fully-qualified name of the Waiter resource object to retrieve, in the
-        #   format:
-        #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]`
+        #   format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -827,15 +804,15 @@ module Google
         
         # List waiters within the given configuration.
         # @param [String] parent
-        #   The path to the configuration for which you want to get a list of waiters.
-        #   The configuration must exist beforehand; the path must be in the format:
-        #   `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
+        #   The path to the configuration for which you want to get a list of waiters. The
+        #   configuration must exist beforehand; the path must be in the format: `projects/
+        #   [PROJECT_ID]/configs/[CONFIG_NAME]`
         # @param [Fixnum] page_size
         #   Specifies the number of results to return per page. If there are fewer
         #   elements than the specified number, returns all elements.
         # @param [String] page_token
-        #   Specifies a page token to use. Set `pageToken` to a `nextPageToken`
-        #   returned by a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -865,15 +842,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::RuntimeconfigV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

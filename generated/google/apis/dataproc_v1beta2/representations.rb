@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MetastoreConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NamespacedGkeDeploymentTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -598,6 +604,8 @@ module Google
           property :lifecycle_config, as: 'lifecycleConfig', class: Google::Apis::DataprocV1beta2::LifecycleConfig, decorator: Google::Apis::DataprocV1beta2::LifecycleConfig::Representation
       
           property :master_config, as: 'masterConfig', class: Google::Apis::DataprocV1beta2::InstanceGroupConfig, decorator: Google::Apis::DataprocV1beta2::InstanceGroupConfig::Representation
+      
+          property :metastore_config, as: 'metastoreConfig', class: Google::Apis::DataprocV1beta2::MetastoreConfig, decorator: Google::Apis::DataprocV1beta2::MetastoreConfig::Representation
       
           property :secondary_worker_config, as: 'secondaryWorkerConfig', class: Google::Apis::DataprocV1beta2::InstanceGroupConfig, decorator: Google::Apis::DataprocV1beta2::InstanceGroupConfig::Representation
       
@@ -1012,6 +1020,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_group_manager_name, as: 'instanceGroupManagerName'
           property :instance_template_name, as: 'instanceTemplateName'
+        end
+      end
+      
+      class MetastoreConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataproc_metastore_service, as: 'dataprocMetastoreService'
         end
       end
       

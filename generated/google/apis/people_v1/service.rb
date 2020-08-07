@@ -391,9 +391,9 @@ module Google
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Defaults to
         #   all fields if not set. Valid values are: * addresses * ageRanges * biographies
-        #   * birthdays * calendarUrls * coverPhotos * emailAddresses * events *
-        #   externalIds * genders * imClients * interests * locales * memberships *
-        #   metadata * miscKeywords * names * nicknames * occupations * organizations *
+        #   * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses *
+        #   events * externalIds * genders * imClients * interests * locales * memberships
+        #   * metadata * miscKeywords * names * nicknames * occupations * organizations *
         #   phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
         #   userDefined
         # @param [Array<String>, String] sources
@@ -466,11 +466,11 @@ module Google
         #   Optional. A field mask to restrict which fields on the person are returned.
         #   Multiple fields can be specified by separating them with commas. Defaults to
         #   empty if not set, which will skip the post mutate get. Valid values are: *
-        #   addresses * ageRanges * biographies * birthdays * calendarUrls * coverPhotos *
-        #   emailAddresses * events * externalIds * genders * imClients * interests *
-        #   locales * memberships * metadata * miscKeywords * names * nicknames *
-        #   occupations * organizations * phoneNumbers * photos * relations * residences *
-        #   sipAddresses * skills * urls * userDefined
+        #   addresses * ageRanges * biographies * birthdays * calendarUrls * clientData *
+        #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
+        #   interests * locales * memberships * metadata * miscKeywords * names *
+        #   nicknames * occupations * organizations * phoneNumbers * photos * relations *
+        #   residences * sipAddresses * skills * urls * userDefined
         # @param [Array<String>, String] sources
         #   Optional. A mask of what source types to return. Defaults to ReadSourceType.
         #   CONTACT and ReadSourceType.PROFILE if not set.
@@ -517,10 +517,10 @@ module Google
         #   Required. A field mask to restrict which fields on the person are returned.
         #   Multiple fields can be specified by separating them with commas. Valid values
         #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
-        #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
-        #   interests * locales * memberships * metadata * miscKeywords * names *
-        #   nicknames * occupations * organizations * phoneNumbers * photos * relations *
-        #   residences * sipAddresses * skills * urls * userDefined
+        #   clientData * coverPhotos * emailAddresses * events * externalIds * genders *
+        #   imClients * interests * locales * memberships * metadata * miscKeywords *
+        #   names * nicknames * occupations * organizations * phoneNumbers * photos *
+        #   relations * residences * sipAddresses * skills * urls * userDefined
         # @param [String] request_mask_include_field
         #   Required. Comma-separated list of person fields to be included in the response.
         #   Each path should start with `person.`: for example, `person.names` or `person.
@@ -565,10 +565,10 @@ module Google
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Valid values
         #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
-        #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
-        #   interests * locales * memberships * metadata * miscKeywords * names *
-        #   nicknames * occupations * organizations * phoneNumbers * photos * relations *
-        #   residences * sipAddresses * skills * urls * userDefined
+        #   clientData * coverPhotos * emailAddresses * events * externalIds * genders *
+        #   imClients * interests * locales * memberships * metadata * miscKeywords *
+        #   names * nicknames * occupations * organizations * phoneNumbers * photos *
+        #   relations * residences * sipAddresses * skills * urls * userDefined
         # @param [String] request_mask_include_field
         #   Required. Comma-separated list of person fields to be included in the response.
         #   Each path should start with `person.`: for example, `person.names` or `person.
@@ -630,10 +630,10 @@ module Google
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Valid values
         #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
-        #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
-        #   interests * locales * memberships * metadata * miscKeywords * names *
-        #   nicknames * occupations * organizations * phoneNumbers * photos * relations *
-        #   residences * sipAddresses * skills * urls * userDefined
+        #   clientData * coverPhotos * emailAddresses * events * externalIds * genders *
+        #   imClients * interests * locales * memberships * metadata * miscKeywords *
+        #   names * nicknames * occupations * organizations * phoneNumbers * photos *
+        #   relations * residences * sipAddresses * skills * urls * userDefined
         # @param [Boolean] request_sync_token
         #   Optional. Whether the response should include `next_sync_token`, which can be
         #   used to get all changes since the last request. For subsequent sync requests
@@ -698,10 +698,10 @@ module Google
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Valid values
         #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
-        #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
-        #   interests * locales * memberships * metadata * miscKeywords * names *
-        #   nicknames * occupations * organizations * phoneNumbers * photos * relations *
-        #   residences * sipAddresses * skills * urls * userDefined
+        #   clientData * coverPhotos * emailAddresses * events * externalIds * genders *
+        #   imClients * interests * locales * memberships * metadata * miscKeywords *
+        #   names * nicknames * occupations * organizations * phoneNumbers * photos *
+        #   relations * residences * sipAddresses * skills * urls * userDefined
         # @param [Array<String>, String] sources
         #   Required. Directory sources to return.
         # @param [String] fields
@@ -757,9 +757,9 @@ module Google
         #   Optional. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Defaults to
         #   all fields if not set. Valid values are: * addresses * ageRanges * biographies
-        #   * birthdays * calendarUrls * coverPhotos * emailAddresses * events *
-        #   externalIds * genders * imClients * interests * locales * memberships *
-        #   metadata * miscKeywords * names * nicknames * occupations * organizations *
+        #   * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses *
+        #   events * externalIds * genders * imClients * interests * locales * memberships
+        #   * metadata * miscKeywords * names * nicknames * occupations * organizations *
         #   phoneNumbers * photos * relations * residences * sipAddresses * skills * urls *
         #   userDefined
         # @param [Array<String>, String] sources
@@ -769,9 +769,9 @@ module Google
         #   Required. A field mask to restrict which fields on the person are updated.
         #   Multiple fields can be specified by separating them with commas. All updated
         #   fields will be replaced. Valid values are: * addresses * biographies *
-        #   birthdays * calendarUrls * emailAddresses * events * externalIds * genders *
-        #   imClients * interests * locales * memberships * miscKeywords * names *
-        #   nicknames * occupations * organizations * phoneNumbers * relations *
+        #   birthdays * calendarUrls * clientData * emailAddresses * events * externalIds *
+        #   genders * imClients * interests * locales * memberships * miscKeywords *
+        #   names * nicknames * occupations * organizations * phoneNumbers * relations *
         #   residences * sipAddresses * urls * userDefined
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -855,10 +855,10 @@ module Google
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple fields can be specified by separating them with commas. Valid values
         #   are: * addresses * ageRanges * biographies * birthdays * calendarUrls *
-        #   coverPhotos * emailAddresses * events * externalIds * genders * imClients *
-        #   interests * locales * memberships * metadata * miscKeywords * names *
-        #   nicknames * occupations * organizations * phoneNumbers * photos * relations *
-        #   residences * sipAddresses * skills * urls * userDefined
+        #   clientData * coverPhotos * emailAddresses * events * externalIds * genders *
+        #   imClients * interests * locales * memberships * metadata * miscKeywords *
+        #   names * nicknames * occupations * organizations * phoneNumbers * photos *
+        #   relations * residences * sipAddresses * skills * urls * userDefined
         # @param [String] request_mask_include_field
         #   Required. Comma-separated list of person fields to be included in the response.
         #   Each path should start with `person.`: for example, `person.names` or `person.

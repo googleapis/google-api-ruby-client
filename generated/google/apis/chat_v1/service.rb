@@ -47,11 +47,10 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Downloads media. Download is supported
-        # on the URI `/v1/media/`+name`?alt=media`.
+        # Downloads media. Download is supported on the URI `/v1/media/`+name`?alt=media`
+        # .
         # @param [String] resource_name
-        #   Name of the media that is being downloaded.  See
-        #   ReadRequest.resource_name.
+        #   Name of the media that is being downloaded. See ReadRequest.resource_name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -88,8 +87,8 @@ module Google
         
         # Returns a space.
         # @param [String] name
-        #   Required. Resource name of the space, in the form "spaces/*".
-        #   Example: spaces/AAAAMpdlehY
+        #   Required. Resource name of the space, in the form "spaces/*". Example: spaces/
+        #   AAAAMpdlehY
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -119,9 +118,8 @@ module Google
         
         # Lists spaces the caller is a member of.
         # @param [Fixnum] page_size
-        #   Requested page size. The value is capped at 1000.
-        #   Server may return fewer results than requested.
-        #   If unspecified, server will default to 100.
+        #   Requested page size. The value is capped at 1000. Server may return fewer
+        #   results than requested. If unspecified, server will default to 100.
         # @param [String] page_token
         #   A token identifying a page of results the server should return.
         # @param [String] fields
@@ -154,9 +152,8 @@ module Google
         
         # Returns a membership.
         # @param [String] name
-        #   Required. Resource name of the membership to be retrieved, in the form
-        #   "spaces/*/members/*".
-        #   Example: spaces/AAAAMpdlehY/members/105115627578887013105
+        #   Required. Resource name of the membership to be retrieved, in the form "spaces/
+        #   */members/*". Example: spaces/AAAAMpdlehY/members/105115627578887013105
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -187,12 +184,10 @@ module Google
         # Lists human memberships in a space.
         # @param [String] parent
         #   Required. The resource name of the space for which membership list is to be
-        #   fetched, in the form "spaces/*".
-        #   Example: spaces/AAAAMpdlehY
+        #   fetched, in the form "spaces/*". Example: spaces/AAAAMpdlehY
         # @param [Fixnum] page_size
-        #   Requested page size. The value is capped at 1000.
-        #   Server may return fewer results than requested.
-        #   If unspecified, server will default to 100.
+        #   Requested page size. The value is capped at 1000. Server may return fewer
+        #   results than requested. If unspecified, server will default to 100.
         # @param [String] page_token
         #   A token identifying a page of results the server should return.
         # @param [String] fields
@@ -226,18 +221,16 @@ module Google
         
         # Creates a message.
         # @param [String] parent
-        #   Required. Space resource name, in the form "spaces/*".
-        #   Example: spaces/AAAAMpdlehY
+        #   Required. Space resource name, in the form "spaces/*". Example: spaces/
+        #   AAAAMpdlehY
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] thread_key
-        #   Opaque thread identifier string that can be specified to group messages
-        #   into a single thread. If this is the first message with a given thread
-        #   identifier, a new thread is created. Subsequent messages with the same
-        #   thread identifier will be posted into the same thread. This relieves bots
-        #   and webhooks from having to store the Hangouts Chat thread ID of a thread (
-        #   created earlier by them) to post
-        #   further updates to it.
-        #   Has no effect if thread field,
+        #   Opaque thread identifier string that can be specified to group messages into a
+        #   single thread. If this is the first message with a given thread identifier, a
+        #   new thread is created. Subsequent messages with the same thread identifier
+        #   will be posted into the same thread. This relieves bots and webhooks from
+        #   having to store the Hangouts Chat thread ID of a thread (created earlier by
+        #   them) to post further updates to it. Has no effect if thread field,
         #   corresponding to an existing thread, is set in message.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -271,9 +264,8 @@ module Google
         
         # Deletes a message.
         # @param [String] name
-        #   Required. Resource name of the message to be deleted, in the form
-        #   "spaces/*/messages/*"
-        #   Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+        #   Required. Resource name of the message to be deleted, in the form "spaces/*/
+        #   messages/*" Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -303,9 +295,8 @@ module Google
         
         # Returns a message.
         # @param [String] name
-        #   Required. Resource name of the message to be retrieved, in the form
-        #   "spaces/*/messages/*".
-        #   Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+        #   Required. Resource name of the message to be retrieved, in the form "spaces/*/
+        #   messages/*". Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -335,15 +326,12 @@ module Google
         
         # Updates a message.
         # @param [String] name
-        #   Resource name, in the form "spaces/*/messages/*".
-        #   Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+        #   Resource name, in the form "spaces/*/messages/*". Example: spaces/AAAAMpdlehY/
+        #   messages/UMxbHmzDlr4.UMxbHmzDlr4
         # @param [Google::Apis::ChatV1::Message] message_object
         # @param [String] update_mask
-        #   Required. The field paths to be updated, comma separated if there are
-        #   multiple.
-        #   Currently supported field paths:
-        #   * text
-        #   * cards
+        #   Required. The field paths to be updated, comma separated if there are multiple.
+        #   Currently supported field paths: * text * cards
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -377,8 +365,8 @@ module Google
         # Gets the metadata of a message attachment. The attachment data is fetched
         # using the media API.
         # @param [String] name
-        #   Resource name of the attachment, in the form
-        #   "spaces/*/messages/*/attachments/*".
+        #   Resource name of the attachment, in the form "spaces/*/messages/*/attachments/*
+        #   ".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -43,8 +43,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/sql'
+          super('https://sqladmin.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Deletes the backup taken by a backup run.
@@ -1323,7 +1323,7 @@ module Google
         
         # Start External master migration.
         # @param [String] project
-        #   ID of the project that contains the first generation instance.
+        #   ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [String] sync_mode

@@ -22,13 +22,13 @@ module Google
   module Apis
     module BigqueryreservationV1
       
-      # A Assignment allows a project to submit jobs
-      # of a certain type using slots from the specified reservation.
+      # A Assignment allows a project to submit jobs of a certain type using slots
+      # from the specified reservation.
       class Assignment
         include Google::Apis::Core::Hashable
       
-        # The resource which will use the reservation. E.g.
-        # `projects/myproject`, `folders/123`, or `organizations/456`.
+        # The resource which will use the reservation. E.g. `projects/myproject`, `
+        # folders/123`, or `organizations/456`.
         # Corresponds to the JSON property `assignee`
         # @return [String]
         attr_accessor :assignee
@@ -38,8 +38,8 @@ module Google
         # @return [String]
         attr_accessor :job_type
       
-        # Output only. Name of the resource. E.g.:
-        # `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
+        # Output only. Name of the resource. E.g.: `projects/myproject/locations/US/
+        # reservations/team1-prod/assignments/123`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -66,9 +66,8 @@ module Google
       class BiReservation
         include Google::Apis::Core::Hashable
       
-        # The resource name of the singleton BI reservation.
-        # Reservation names have the form
-        # `projects/`project_id`/locations/`location_id`/bireservation`.
+        # The resource name of the singleton BI reservation. Reservation names have the
+        # form `projects/`project_id`/locations/`location_id`/bireservation`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -95,43 +94,39 @@ module Google
         end
       end
       
-      # Capacity commitment is a way to purchase compute capacity for BigQuery jobs
-      # (in the form of slots) with some committed period of usage. Annual
-      # commitments renew by default. Commitments can be removed after their
-      # commitment end time passes.
-      # In order to remove annual commitment, its plan needs to be changed
-      # to monthly or flex first.
-      # A capacity commitment resource exists as a child resource of the admin
-      # project.
+      # Capacity commitment is a way to purchase compute capacity for BigQuery jobs (
+      # in the form of slots) with some committed period of usage. Annual commitments
+      # renew by default. Commitments can be removed after their commitment end time
+      # passes. In order to remove annual commitment, its plan needs to be changed to
+      # monthly or flex first. A capacity commitment resource exists as a child
+      # resource of the admin project.
       class CapacityCommitment
         include Google::Apis::Core::Hashable
       
         # Output only. The end of the current commitment period. It is applicable only
-        # for ACTIVE
-        # capacity commitments.
+        # for ACTIVE capacity commitments.
         # Corresponds to the JSON property `commitmentEndTime`
         # @return [String]
         attr_accessor :commitment_end_time
       
         # Output only. The start of the current commitment period. It is applicable only
-        # for
-        # ACTIVE capacity commitments.
+        # for ACTIVE capacity commitments.
         # Corresponds to the JSON property `commitmentStartTime`
         # @return [String]
         attr_accessor :commitment_start_time
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `failureStatus`
         # @return [Google::Apis::BigqueryreservationV1::Status]
         attr_accessor :failure_status
       
-        # Output only. The resource name of the capacity commitment, e.g.,
-        # `projects/myproject/locations/US/capacityCommitments/123`
+        # Output only. The resource name of the capacity commitment, e.g., `projects/
+        # myproject/locations/US/capacityCommitments/123`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -175,13 +170,12 @@ module Google
         end
       end
       
-      # The metadata for operation returned from
-      # ReservationService.CreateSlotPool.
+      # The metadata for operation returned from ReservationService.CreateSlotPool.
       class CreateSlotPoolMetadata
         include Google::Apis::Core::Hashable
       
-        # Resource name of the slot pool that is being created. E.g.,
-        # projects/myproject/locations/us-central1/reservations/foo/slotPools/123
+        # Resource name of the slot pool that is being created. E.g., projects/myproject/
+        # locations/us-central1/reservations/foo/slotPools/123
         # Corresponds to the JSON property `slotPool`
         # @return [String]
         attr_accessor :slot_pool
@@ -196,13 +190,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -224,8 +216,8 @@ module Google
         # @return [Array<Google::Apis::BigqueryreservationV1::Assignment>]
         attr_accessor :assignments
       
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -250,8 +242,8 @@ module Google
         # @return [Array<Google::Apis::BigqueryreservationV1::CapacityCommitment>]
         attr_accessor :capacity_commitments
       
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -296,8 +288,8 @@ module Google
       class ListReservationsResponse
         include Google::Apis::Core::Hashable
       
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -322,11 +314,10 @@ module Google
       class MergeCapacityCommitmentsRequest
         include Google::Apis::Core::Hashable
       
-        # Ids of capacity commitments to merge.
-        # These capacity commitments must exist under admin project and location
-        # specified in the parent.
-        # ID is the last portion of capacity commitment name e.g., 'abc' for
-        # projects/myproject/locations/US/capacityCommitments/abc
+        # Ids of capacity commitments to merge. These capacity commitments must exist
+        # under admin project and location specified in the parent. ID is the last
+        # portion of capacity commitment name e.g., 'abc' for projects/myproject/
+        # locations/US/capacityCommitments/abc
         # Corresponds to the JSON property `capacityCommitmentIds`
         # @return [Array<String>]
         attr_accessor :capacity_commitment_ids
@@ -341,18 +332,15 @@ module Google
         end
       end
       
-      # The request for
-      # ReservationService.MoveAssignment.
-      # **Note**: "bigquery.reservationAssignments.create" permission is required on
-      # the destination_id.
-      # **Note**: "bigquery.reservationAssignments.create" and
-      # "bigquery.reservationAssignments.delete" permission are required on the
-      # related assignee.
+      # The request for ReservationService.MoveAssignment. **Note**: "bigquery.
+      # reservationAssignments.create" permission is required on the destination_id. **
+      # Note**: "bigquery.reservationAssignments.create" and "bigquery.
+      # reservationAssignments.delete" permission are required on the related assignee.
       class MoveAssignmentRequest
         include Google::Apis::Core::Hashable
       
-        # The new reservation ID, e.g.:
-        # `projects/myotherproject/locations/US/reservations/team2-prod`
+        # The new reservation ID, e.g.: `projects/myotherproject/locations/US/
+        # reservations/team2-prod`
         # Corresponds to the JSON property `destinationId`
         # @return [String]
         attr_accessor :destination_id
@@ -372,47 +360,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::BigqueryreservationV1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -443,20 +429,19 @@ module Google
         attr_accessor :ignore_idle_slots
         alias_method :ignore_idle_slots?, :ignore_idle_slots
       
-        # The resource name of the reservation, e.g.,
-        # `projects/*/locations/*/reservations/team1-prod`.
+        # The resource name of the reservation, e.g., `projects/*/locations/*/
+        # reservations/team1-prod`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Minimum slots available to this reservation. A slot is a unit of
-        # computational power in BigQuery, and serves as the unit of parallelism.
-        # Queries using this reservation might use more slots during runtime if
-        # ignore_idle_slots is set to false.
-        # If the new reservation's slot capacity exceed the parent's slot capacity or
-        # if total slot capacity of the new reservation and its siblings exceeds the
-        # parent's slot capacity, the request will fail with
-        # `google.rpc.Code.RESOURCE_EXHAUSTED`.
+        # Minimum slots available to this reservation. A slot is a unit of computational
+        # power in BigQuery, and serves as the unit of parallelism. Queries using this
+        # reservation might use more slots during runtime if ignore_idle_slots is set to
+        # false. If the new reservation's slot capacity exceed the parent's slot
+        # capacity or if total slot capacity of the new reservation and its siblings
+        # exceeds the parent's slot capacity, the request will fail with `google.rpc.
+        # Code.RESOURCE_EXHAUSTED`.
         # Corresponds to the JSON property `slotCapacity`
         # @return [Fixnum]
         attr_accessor :slot_capacity
@@ -482,8 +467,8 @@ module Google
         # @return [Array<Google::Apis::BigqueryreservationV1::Assignment>]
         attr_accessor :assignments
       
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -508,8 +493,8 @@ module Google
         # @return [Array<Google::Apis::BigqueryreservationV1::Assignment>]
         attr_accessor :assignments
       
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -548,26 +533,22 @@ module Google
       class SplitCapacityCommitmentResponse
         include Google::Apis::Core::Hashable
       
-        # Capacity commitment is a way to purchase compute capacity for BigQuery jobs
-        # (in the form of slots) with some committed period of usage. Annual
-        # commitments renew by default. Commitments can be removed after their
-        # commitment end time passes.
-        # In order to remove annual commitment, its plan needs to be changed
-        # to monthly or flex first.
-        # A capacity commitment resource exists as a child resource of the admin
-        # project.
+        # Capacity commitment is a way to purchase compute capacity for BigQuery jobs (
+        # in the form of slots) with some committed period of usage. Annual commitments
+        # renew by default. Commitments can be removed after their commitment end time
+        # passes. In order to remove annual commitment, its plan needs to be changed to
+        # monthly or flex first. A capacity commitment resource exists as a child
+        # resource of the admin project.
         # Corresponds to the JSON property `first`
         # @return [Google::Apis::BigqueryreservationV1::CapacityCommitment]
         attr_accessor :first
       
-        # Capacity commitment is a way to purchase compute capacity for BigQuery jobs
-        # (in the form of slots) with some committed period of usage. Annual
-        # commitments renew by default. Commitments can be removed after their
-        # commitment end time passes.
-        # In order to remove annual commitment, its plan needs to be changed
-        # to monthly or flex first.
-        # A capacity commitment resource exists as a child resource of the admin
-        # project.
+        # Capacity commitment is a way to purchase compute capacity for BigQuery jobs (
+        # in the form of slots) with some committed period of usage. Annual commitments
+        # renew by default. Commitments can be removed after their commitment end time
+        # passes. In order to remove annual commitment, its plan needs to be changed to
+        # monthly or flex first. A capacity commitment resource exists as a child
+        # resource of the admin project.
         # Corresponds to the JSON property `second`
         # @return [Google::Apis::BigqueryreservationV1::CapacityCommitment]
         attr_accessor :second
@@ -583,12 +564,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -597,15 +578,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message

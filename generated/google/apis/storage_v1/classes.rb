@@ -499,10 +499,11 @@ module Google
               # @return [Date]
               attr_accessor :created_before
             
-              # A timestamp in RFC 3339 format. This condition is satisfied when the custom
-              # time on an object is before this timestamp.
+              # A date in RFC 3339 format with only the date part (for instance, "2013-01-15").
+              # This condition is satisfied when the custom time on an object is before this
+              # date in UTC.
               # Corresponds to the JSON property `customTimeBefore`
-              # @return [DateTime]
+              # @return [Date]
               attr_accessor :custom_time_before
             
               # Number of days elapsed since the user-specified timestamp set on an object.
@@ -544,11 +545,11 @@ module Google
               # @return [Array<String>]
               attr_accessor :matches_storage_class
             
-              # A timestamp in RFC 3339 format. This condition is satisfied when the
-              # noncurrent time on an object is before this timestamp. This condition is
-              # relevant only for versioned objects.
+              # A date in RFC 3339 format with only the date part (for instance, "2013-01-15").
+              # This condition is satisfied when the noncurrent time on an object is before
+              # this date in UTC. This condition is relevant only for versioned objects.
               # Corresponds to the JSON property `noncurrentTimeBefore`
-              # @return [DateTime]
+              # @return [Date]
               attr_accessor :noncurrent_time_before
             
               # Relevant only for versioned objects. If the value is N, this condition is

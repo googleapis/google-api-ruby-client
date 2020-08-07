@@ -21,20 +21,17 @@ module Google
     # Cloud Data Fusion API
     #
     # Cloud Data Fusion is a fully-managed, cloud native, enterprise data
-    # integration service for
-    # quickly building and managing data pipelines. It provides a graphical
-    # interface to increase
-    # time efficiency and reduce complexity, and allows business users,
-    # developers, and data
-    # scientists to easily and reliably build scalable data integration
-    # solutions to cleanse,
+    # integration service for quickly building and managing data pipelines. It
+    # provides a graphical interface to increase time efficiency and reduce
+    # complexity, and allows business users, developers, and data scientists to
+    # easily and reliably build scalable data integration solutions to cleanse,
     # prepare, blend, transfer and transform data without having to wrestle with
     # infrastructure.
     #
     # @see https://cloud.google.com/data-fusion/docs
     module DatafusionV1
       VERSION = 'V1'
-      REVISION = '20200609'
+      REVISION = '20200803'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

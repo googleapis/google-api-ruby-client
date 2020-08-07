@@ -49,13 +49,11 @@ module Google
         end
         
         # Sends OAuth credentials to a running environment on behalf of a user. When
-        # this completes, the environment will be authorized to run various Google
-        # Cloud command line tools without requiring the user to manually
-        # authenticate.
+        # this completes, the environment will be authorized to run various Google Cloud
+        # command line tools without requiring the user to manually authenticate.
         # @param [String] name
-        #   Name of the resource that should receive the credentials, for example
-        #   `users/me/environments/default` or
-        #   `users/someone@example.com/environments/default`.
+        #   Name of the resource that should receive the credentials, for example `users/
+        #   me/environments/default` or `users/someone@example.com/environments/default`.
         # @param [Google::Apis::CloudshellV1alpha1::AuthorizeEnvironmentRequest] authorize_environment_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -88,8 +86,8 @@ module Google
         
         # Gets an environment. Returns NOT_FOUND if the environment does not exist.
         # @param [String] name
-        #   Name of the requested resource, for example `users/me/environments/default`
-        #   or `users/someone@example.com/environments/default`.
+        #   Name of the requested resource, for example `users/me/environments/default` or
+        #   `users/someone@example.com/environments/default`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -119,9 +117,8 @@ module Google
         
         # Updates an existing environment.
         # @param [String] name
-        #   Name of the resource to be updated, for example
-        #   `users/me/environments/default` or
-        #   `users/someone@example.com/environments/default`.
+        #   Name of the resource to be updated, for example `users/me/environments/default`
+        #   or `users/someone@example.com/environments/default`.
         # @param [Google::Apis::CloudshellV1alpha1::Environment] environment_object
         # @param [String] update_mask
         #   Mask specifying which fields in the environment should be updated.
@@ -156,15 +153,14 @@ module Google
         end
         
         # Starts an existing environment, allowing clients to connect to it. The
-        # returned operation will contain an instance of StartEnvironmentMetadata in
-        # its metadata field. Users can wait for the environment to start by polling
-        # this operation via GetOperation. Once the environment has finished starting
-        # and is ready to accept connections, the operation will contain a
+        # returned operation will contain an instance of StartEnvironmentMetadata in its
+        # metadata field. Users can wait for the environment to start by polling this
+        # operation via GetOperation. Once the environment has finished starting and is
+        # ready to accept connections, the operation will contain a
         # StartEnvironmentResponse in its response field.
         # @param [String] name
-        #   Name of the resource that should be started, for example
-        #   `users/me/environments/default` or
-        #   `users/someone@example.com/environments/default`.
+        #   Name of the resource that should be started, for example `users/me/
+        #   environments/default` or `users/someone@example.com/environments/default`.
         # @param [Google::Apis::CloudshellV1alpha1::StartEnvironmentRequest] start_environment_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -197,8 +193,8 @@ module Google
         
         # Adds a public SSH key to an environment, allowing clients with the
         # corresponding private key to connect to that environment via SSH. If a key
-        # with the same format and content already exists, this will return the
-        # existing key.
+        # with the same format and content already exists, this will return the existing
+        # key.
         # @param [String] parent
         #   Parent resource name, e.g. `users/me/environments/default`.
         # @param [Google::Apis::CloudshellV1alpha1::CreatePublicKeyRequest] create_public_key_request_object
@@ -231,11 +227,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes a public SSH key from an environment. Clients will no longer be
-        # able to connect to the environment using the corresponding private key.
+        # Removes a public SSH key from an environment. Clients will no longer be able
+        # to connect to the environment using the corresponding private key.
         # @param [String] name
-        #   Name of the resource to be deleted, e.g.
-        #   `users/me/environments/default/publicKeys/my-key`.
+        #   Name of the resource to be deleted, e.g. `users/me/environments/default/
+        #   publicKeys/my-key`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

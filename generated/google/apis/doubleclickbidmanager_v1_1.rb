@@ -20,12 +20,13 @@ module Google
   module Apis
     # DoubleClick Bid Manager API
     #
-    # API for viewing and managing your reports in DoubleClick Bid Manager.
+    # DoubleClick Bid Manager API allows users to manage and create campaigns and
+    # reports.
     #
     # @see https://developers.google.com/bid-manager/
     module DoubleclickbidmanagerV1_1
       VERSION = 'V1_1'
-      REVISION = '20200723'
+      REVISION = '20200731'
 
       # View and manage your reports in DoubleClick Bid Manager
       AUTH_DOUBLECLICKBIDMANAGER = 'https://www.googleapis.com/auth/doubleclickbidmanager'

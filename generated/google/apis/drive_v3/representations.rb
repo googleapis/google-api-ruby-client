@@ -734,6 +734,7 @@ module Google
           collection :team_drive_permission_details, as: 'teamDrivePermissionDetails', class: Google::Apis::DriveV3::Permission::TeamDrivePermissionDetail, decorator: Google::Apis::DriveV3::Permission::TeamDrivePermissionDetail::Representation
       
           property :type, as: 'type'
+          property :view, as: 'view'
         end
         
         class PermissionDetail

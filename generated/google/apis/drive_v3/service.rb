@@ -141,6 +141,9 @@ module Google
         #   for this file.
         # @param [Boolean] include_items_from_all_drives
         #   Whether both My Drive and shared drive items should be included in results.
+        # @param [String] include_permissions_for_view
+        #   Specifies which additional view's permissions to include in the response. Only
+        #   'published' is supported.
         # @param [Boolean] include_removed
         #   Whether to include changes indicating that items have been removed from the
         #   list of changes, for example by deletion or loss of access.
@@ -180,13 +183,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_changes(page_token, drive_id: nil, include_corpus_removals: nil, include_items_from_all_drives: nil, include_removed: nil, include_team_drive_items: nil, page_size: nil, restrict_to_my_drive: nil, spaces: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_changes(page_token, drive_id: nil, include_corpus_removals: nil, include_items_from_all_drives: nil, include_permissions_for_view: nil, include_removed: nil, include_team_drive_items: nil, page_size: nil, restrict_to_my_drive: nil, spaces: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'changes', options)
           command.response_representation = Google::Apis::DriveV3::ChangeList::Representation
           command.response_class = Google::Apis::DriveV3::ChangeList
           command.query['driveId'] = drive_id unless drive_id.nil?
           command.query['includeCorpusRemovals'] = include_corpus_removals unless include_corpus_removals.nil?
           command.query['includeItemsFromAllDrives'] = include_items_from_all_drives unless include_items_from_all_drives.nil?
+          command.query['includePermissionsForView'] = include_permissions_for_view unless include_permissions_for_view.nil?
           command.query['includeRemoved'] = include_removed unless include_removed.nil?
           command.query['includeTeamDriveItems'] = include_team_drive_items unless include_team_drive_items.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -219,6 +223,9 @@ module Google
         #   for this file.
         # @param [Boolean] include_items_from_all_drives
         #   Whether both My Drive and shared drive items should be included in results.
+        # @param [String] include_permissions_for_view
+        #   Specifies which additional view's permissions to include in the response. Only
+        #   'published' is supported.
         # @param [Boolean] include_removed
         #   Whether to include changes indicating that items have been removed from the
         #   list of changes, for example by deletion or loss of access.
@@ -258,7 +265,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_change(page_token, channel_object = nil, drive_id: nil, include_corpus_removals: nil, include_items_from_all_drives: nil, include_removed: nil, include_team_drive_items: nil, page_size: nil, restrict_to_my_drive: nil, spaces: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_change(page_token, channel_object = nil, drive_id: nil, include_corpus_removals: nil, include_items_from_all_drives: nil, include_permissions_for_view: nil, include_removed: nil, include_team_drive_items: nil, page_size: nil, restrict_to_my_drive: nil, spaces: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'changes/watch', options)
           command.request_representation = Google::Apis::DriveV3::Channel::Representation
           command.request_object = channel_object
@@ -267,6 +274,7 @@ module Google
           command.query['driveId'] = drive_id unless drive_id.nil?
           command.query['includeCorpusRemovals'] = include_corpus_removals unless include_corpus_removals.nil?
           command.query['includeItemsFromAllDrives'] = include_items_from_all_drives unless include_items_from_all_drives.nil?
+          command.query['includePermissionsForView'] = include_permissions_for_view unless include_permissions_for_view.nil?
           command.query['includeRemoved'] = include_removed unless include_removed.nil?
           command.query['includeTeamDriveItems'] = include_team_drive_items unless include_team_drive_items.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -784,6 +792,9 @@ module Google
         #   file. Domain administrators can choose to make all uploaded files visible to
         #   the domain by default; this parameter bypasses that behavior for the request.
         #   Permissions are still inherited from parent folders.
+        # @param [String] include_permissions_for_view
+        #   Specifies which additional view's permissions to include in the response. Only
+        #   'published' is supported.
         # @param [Boolean] keep_revision_forever
         #   Whether to set the 'keepForever' field in the new head revision. This is only
         #   applicable to files with binary content in Google Drive. Only 200 revisions
@@ -814,7 +825,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def copy_file(file_id, file_object = nil, enforce_single_parent: nil, ignore_default_visibility: nil, keep_revision_forever: nil, ocr_language: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def copy_file(file_id, file_object = nil, enforce_single_parent: nil, ignore_default_visibility: nil, include_permissions_for_view: nil, keep_revision_forever: nil, ocr_language: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/copy', options)
           command.request_representation = Google::Apis::DriveV3::File::Representation
           command.request_object = file_object
@@ -823,6 +834,7 @@ module Google
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['ignoreDefaultVisibility'] = ignore_default_visibility unless ignore_default_visibility.nil?
+          command.query['includePermissionsForView'] = include_permissions_for_view unless include_permissions_for_view.nil?
           command.query['keepRevisionForever'] = keep_revision_forever unless keep_revision_forever.nil?
           command.query['ocrLanguage'] = ocr_language unless ocr_language.nil?
           command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
@@ -844,6 +856,9 @@ module Google
         #   file. Domain administrators can choose to make all uploaded files visible to
         #   the domain by default; this parameter bypasses that behavior for the request.
         #   Permissions are still inherited from parent folders.
+        # @param [String] include_permissions_for_view
+        #   Specifies which additional view's permissions to include in the response. Only
+        #   'published' is supported.
         # @param [Boolean] keep_revision_forever
         #   Whether to set the 'keepForever' field in the new head revision. This is only
         #   applicable to files with binary content in Google Drive. Only 200 revisions
@@ -880,7 +895,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_file(file_object = nil, enforce_single_parent: nil, ignore_default_visibility: nil, keep_revision_forever: nil, ocr_language: nil, supports_all_drives: nil, supports_team_drives: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def create_file(file_object = nil, enforce_single_parent: nil, ignore_default_visibility: nil, include_permissions_for_view: nil, keep_revision_forever: nil, ocr_language: nil, supports_all_drives: nil, supports_team_drives: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command = make_simple_command(:post, 'files', options)
           else
@@ -894,6 +909,7 @@ module Google
           command.response_class = Google::Apis::DriveV3::File
           command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['ignoreDefaultVisibility'] = ignore_default_visibility unless ignore_default_visibility.nil?
+          command.query['includePermissionsForView'] = include_permissions_for_view unless include_permissions_for_view.nil?
           command.query['keepRevisionForever'] = keep_revision_forever unless keep_revision_forever.nil?
           command.query['ocrLanguage'] = ocr_language unless ocr_language.nil?
           command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
@@ -1058,6 +1074,9 @@ module Google
         # @param [Boolean] acknowledge_abuse
         #   Whether the user is acknowledging the risk of downloading known malware or
         #   other abusive files. This is only applicable when alt=media.
+        # @param [String] include_permissions_for_view
+        #   Specifies which additional view's permissions to include in the response. Only
+        #   'published' is supported.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -1083,7 +1102,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_file(file_id, acknowledge_abuse: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def get_file(file_id, acknowledge_abuse: nil, include_permissions_for_view: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
             command = make_simple_command(:get, 'files/{fileId}', options)
           else
@@ -1094,6 +1113,7 @@ module Google
           command.response_class = Google::Apis::DriveV3::File
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['acknowledgeAbuse'] = acknowledge_abuse unless acknowledge_abuse.nil?
+          command.query['includePermissionsForView'] = include_permissions_for_view unless include_permissions_for_view.nil?
           command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1116,6 +1136,9 @@ module Google
         #   ID of the shared drive to search.
         # @param [Boolean] include_items_from_all_drives
         #   Whether both My Drive and shared drive items should be included in results.
+        # @param [String] include_permissions_for_view
+        #   Specifies which additional view's permissions to include in the response. Only
+        #   'published' is supported.
         # @param [Boolean] include_team_drive_items
         #   Deprecated use includeItemsFromAllDrives instead.
         # @param [String] order_by
@@ -1163,7 +1186,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_files(corpora: nil, corpus: nil, drive_id: nil, include_items_from_all_drives: nil, include_team_drive_items: nil, order_by: nil, page_size: nil, page_token: nil, q: nil, spaces: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_files(corpora: nil, corpus: nil, drive_id: nil, include_items_from_all_drives: nil, include_permissions_for_view: nil, include_team_drive_items: nil, order_by: nil, page_size: nil, page_token: nil, q: nil, spaces: nil, supports_all_drives: nil, supports_team_drives: nil, team_drive_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'files', options)
           command.response_representation = Google::Apis::DriveV3::FileList::Representation
           command.response_class = Google::Apis::DriveV3::FileList
@@ -1171,6 +1194,7 @@ module Google
           command.query['corpus'] = corpus unless corpus.nil?
           command.query['driveId'] = drive_id unless drive_id.nil?
           command.query['includeItemsFromAllDrives'] = include_items_from_all_drives unless include_items_from_all_drives.nil?
+          command.query['includePermissionsForView'] = include_permissions_for_view unless include_permissions_for_view.nil?
           command.query['includeTeamDriveItems'] = include_team_drive_items unless include_team_drive_items.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -1199,6 +1223,9 @@ module Google
         #   removed from all current folders and placed in the requested folder. Other
         #   requests that increase the number of parents fail, except when the
         #   canAddMyDriveParent file capability is true and a single parent is being added.
+        # @param [String] include_permissions_for_view
+        #   Specifies which additional view's permissions to include in the response. Only
+        #   'published' is supported.
         # @param [Boolean] keep_revision_forever
         #   Whether to set the 'keepForever' field in the new head revision. This is only
         #   applicable to files with binary content in Google Drive. Only 200 revisions
@@ -1237,7 +1264,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_file(file_id, file_object = nil, add_parents: nil, enforce_single_parent: nil, keep_revision_forever: nil, ocr_language: nil, remove_parents: nil, supports_all_drives: nil, supports_team_drives: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def update_file(file_id, file_object = nil, add_parents: nil, enforce_single_parent: nil, include_permissions_for_view: nil, keep_revision_forever: nil, ocr_language: nil, remove_parents: nil, supports_all_drives: nil, supports_team_drives: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command = make_simple_command(:patch, 'files/{fileId}', options)
           else
@@ -1252,6 +1279,7 @@ module Google
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['addParents'] = add_parents unless add_parents.nil?
           command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
+          command.query['includePermissionsForView'] = include_permissions_for_view unless include_permissions_for_view.nil?
           command.query['keepRevisionForever'] = keep_revision_forever unless keep_revision_forever.nil?
           command.query['ocrLanguage'] = ocr_language unless ocr_language.nil?
           command.query['removeParents'] = remove_parents unless remove_parents.nil?
@@ -1271,6 +1299,9 @@ module Google
         # @param [Boolean] acknowledge_abuse
         #   Whether the user is acknowledging the risk of downloading known malware or
         #   other abusive files. This is only applicable when alt=media.
+        # @param [String] include_permissions_for_view
+        #   Specifies which additional view's permissions to include in the response. Only
+        #   'published' is supported.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -1296,7 +1327,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_file(file_id, channel_object = nil, acknowledge_abuse: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def watch_file(file_id, channel_object = nil, acknowledge_abuse: nil, include_permissions_for_view: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
             command = make_simple_command(:post, 'files/{fileId}/watch', options)
           else
@@ -1309,6 +1340,7 @@ module Google
           command.response_class = Google::Apis::DriveV3::Channel
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['acknowledgeAbuse'] = acknowledge_abuse unless acknowledge_abuse.nil?
+          command.query['includePermissionsForView'] = include_permissions_for_view unless include_permissions_for_view.nil?
           command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1489,6 +1521,9 @@ module Google
         # Lists a file's or shared drive's permissions.
         # @param [String] file_id
         #   The ID of the file or shared drive.
+        # @param [String] include_permissions_for_view
+        #   Specifies which additional view's permissions to include in the response. Only
+        #   'published' is supported.
         # @param [Fixnum] page_size
         #   The maximum number of permissions to return per page. When not set for files
         #   in a shared drive, at most 100 results will be returned. When not set for
@@ -1524,11 +1559,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_permissions(file_id, page_size: nil, page_token: nil, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_permissions(file_id, include_permissions_for_view: nil, page_size: nil, page_token: nil, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'files/{fileId}/permissions', options)
           command.response_representation = Google::Apis::DriveV3::PermissionList::Representation
           command.response_class = Google::Apis::DriveV3::PermissionList
           command.params['fileId'] = file_id unless file_id.nil?
+          command.query['includePermissionsForView'] = include_permissions_for_view unless include_permissions_for_view.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?

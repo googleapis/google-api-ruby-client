@@ -38,8 +38,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Rules within Channel Grouping. There is a limit of 100 rules that can be set
-        # per channel grouping.
+        # Rules within Channel Grouping. There is a limit of 100 rules that can be
+        # set per channel grouping.
         # Corresponds to the JSON property `rules`
         # @return [Array<Google::Apis::DoubleclickbidmanagerV1_1::Rule>]
         attr_accessor :rules
@@ -60,8 +60,8 @@ module Google
       class DisjunctiveMatchStatement
         include Google::Apis::Core::Hashable
       
-        # Filters. There is a limit of 100 filters that can be set per disjunctive match
-        # statement.
+        # Filters. There is a limit of 100 filters that can be set per disjunctive
+        # match statement.
         # Corresponds to the JSON property `eventFilters`
         # @return [Array<Google::Apis::DoubleclickbidmanagerV1_1::EventFilter>]
         attr_accessor :event_filters
@@ -80,8 +80,8 @@ module Google
       class DownloadLineItemsRequest
         include Google::Apis::Core::Hashable
       
-        # File specification (column names, types, order) in which the line items will
-        # be returned. Default to EWF.
+        # File specification (column names, types, order) in which the line items
+        # will be returned. Default to <code>EWF</code>.
         # Corresponds to the JSON property `fileSpec`
         # @return [String]
         attr_accessor :file_spec
@@ -97,7 +97,8 @@ module Google
         # @return [String]
         attr_accessor :filter_type
       
-        # Format in which the line items will be returned. Default to CSV.
+        # Format in which the line items will be returned. Default to
+        # <code>CSV</code>.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
@@ -119,8 +120,10 @@ module Google
       class DownloadLineItemsResponse
         include Google::Apis::Core::Hashable
       
-        # Retrieved line items in CSV format. For more information about file formats,
-        # see  Entity Write File Format.
+        # Retrieved line items in CSV format. For more information about file
+        # formats, see <a
+        # href="https://developers.google.com/bid-manager/guides/entity-write/format">
+        # Entity Write File Format</a>.
         # Corresponds to the JSON property `lineItems`
         # @return [String]
         attr_accessor :line_items
@@ -140,21 +143,18 @@ module Google
       class DownloadRequest
         include Google::Apis::Core::Hashable
       
-        # File types that will be returned. If INVENTORY_SOURCE is requested, no other
-        # file types may be requested.
-        # Acceptable values are:
-        # - "AD"
-        # - "AD_GROUP"
-        # - "CAMPAIGN"
-        # - "INSERTION_ORDER"
-        # - "INVENTORY_SOURCE"
-        # - "LINE_ITEM"
+        # File types that will be returned. If INVENTORY_SOURCE is requested, no
+        # other file types may be requested. <br><br>Acceptable values are: <ul>
+        # <li>"<code>AD</code>"</li> <li>"<code>AD_GROUP</code>"</li>
+        # <li>"<code>CAMPAIGN</code>"</li> <li>"<code>INSERTION_ORDER</code>"</li>
+        # <li>"<code>INVENTORY_SOURCE</code>"</li> <li>"<code>LINE_ITEM</code>"</li>
+        # </ul>
         # Corresponds to the JSON property `fileTypes`
         # @return [Array<String>]
         attr_accessor :file_types
       
-        # The IDs of the specified filter type. This is used to filter entities to fetch.
-        # At least one ID must be specified.
+        # The IDs of the specified filter type. This is used to filter entities to
+        # fetch. At least one ID must be specified.
         # Corresponds to the JSON property `filterIds`
         # @return [Array<Fixnum>]
         attr_accessor :filter_ids
@@ -166,7 +166,7 @@ module Google
         attr_accessor :filter_type
       
         # SDF Version (column names, types, order) in which the entities will be
-        # returned. Default to 5.
+        # returned. Default to <code>5</code>.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -282,8 +282,8 @@ module Google
       class ListQueriesResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # doubleclickbidmanager#listQueriesResponse".
+        # Identifies what kind of resource this is. Value: the fixed string
+        # <code>"doubleclickbidmanager#listQueriesResponse"</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -314,8 +314,8 @@ module Google
       class ListReportsResponse
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # doubleclickbidmanager#listReportsResponse".
+        # Identifies what kind of resource this is. Value: the fixed string
+        # <code>"doubleclickbidmanager#listReportsResponse"</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -346,9 +346,9 @@ module Google
       class Options
         include Google::Apis::Core::Hashable
       
-        # Set to true and filter your report by `FILTER_INSERTION_ORDER` or `
-        # FILTER_LINE_ITEM` to include data for audience lists specifically targeted by
-        # those items.
+        # Set to true and filter your report by `FILTER_INSERTION_ORDER` or
+        # `FILTER_LINE_ITEM` to include data for audience lists specifically targeted
+        # by those items.
         # Corresponds to the JSON property `includeOnlyTargetedUserLists`
         # @return [Boolean]
         attr_accessor :include_only_targeted_user_lists
@@ -421,11 +421,10 @@ module Google
       end
       
       # Path filters specify which paths to include in a report. A path is the result
-      # of combining DV360 events based on User ID to create a workflow of users'
-      # actions.
-      # When a path filter is set, the resulting report will only include paths that
-      # match the specified event at the specified position. All other paths will be
-      # excluded.
+      # of combining DV360 events based on User ID to create a workflow of
+      # users' actions.<br><br> When a path filter is set, the resulting report will
+      # only include paths that match the specified event at the specified position.
+      # All other paths will be excluded.
       class PathFilter
         include Google::Apis::Core::Hashable
       
@@ -434,8 +433,8 @@ module Google
         # @return [Array<Google::Apis::DoubleclickbidmanagerV1_1::EventFilter>]
         attr_accessor :event_filters
       
-        # Indicates the position of the path the filter should match to (first, last, or
-        # any event in path).
+        # Indicates the position of the path the filter should match to (first, last,
+        # or any event in path).
         # Corresponds to the JSON property `pathMatchPosition`
         # @return [String]
         attr_accessor :path_match_position
@@ -461,7 +460,8 @@ module Google
         # @return [Google::Apis::DoubleclickbidmanagerV1_1::ChannelGrouping]
         attr_accessor :channel_grouping
       
-        # Path Filters. There is a limit of 100 path filters that can be set per report.
+        # Path Filters. There is a limit of 100 path filters that can be set per
+        # report.
         # Corresponds to the JSON property `pathFilters`
         # @return [Array<Google::Apis::DoubleclickbidmanagerV1_1::PathFilter>]
         attr_accessor :path_filters
@@ -512,8 +512,8 @@ module Google
       class Query
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # doubleclickbidmanager#query".
+        # Identifies what kind of resource this is. Value: the fixed string
+        # <code>"doubleclickbidmanager#query"</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -534,15 +534,17 @@ module Google
         attr_accessor :query_id
       
         # The ending time for the data that is shown in the report. Note,
-        # reportDataEndTimeMs is required if metadata.dataRange is CUSTOM_DATES and
-        # ignored otherwise.
+        # <code>reportDataEndTimeMs</code> is required if
+        # <code>metadata.dataRange</code> is <code>CUSTOM_DATES</code> and ignored
+        # otherwise.
         # Corresponds to the JSON property `reportDataEndTimeMs`
         # @return [Fixnum]
         attr_accessor :report_data_end_time_ms
       
         # The starting time for the data that is shown in the report. Note,
-        # reportDataStartTimeMs is required if metadata.dataRange is CUSTOM_DATES and
-        # ignored otherwise.
+        # <code>reportDataStartTimeMs</code> is required if
+        # <code>metadata.dataRange</code> is <code>CUSTOM_DATES</code> and ignored
+        # otherwise.
         # Corresponds to the JSON property `reportDataStartTimeMs`
         # @return [Fixnum]
         attr_accessor :report_data_start_time_ms
@@ -552,7 +554,8 @@ module Google
         # @return [Google::Apis::DoubleclickbidmanagerV1_1::QuerySchedule]
         attr_accessor :schedule
       
-        # Canonical timezone code for report data time. Defaults to America/New_York.
+        # Canonical timezone code for report data time. Defaults to
+        # <code>America/New_York</code>.
         # Corresponds to the JSON property `timezoneCode`
         # @return [String]
         attr_accessor :timezone_code
@@ -604,11 +607,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :latest_report_run_time_ms
       
-        # Locale of the generated reports. Valid values are cs CZECH de GERMAN en
-        # ENGLISH es SPANISH fr FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH pt-BR
-        # BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk UKRAINIAN zh-CN CHINA_CHINESE zh-
-        # TW TAIWAN_CHINESE
-        # An locale string not in the list above will generate reports in English.
+        # Locale of the generated reports. Valid values are cs      CZECH de
+        # GERMAN en      ENGLISH es      SPANISH fr      FRENCH it      ITALIAN ja
+        # JAPANESE ko      KOREAN pl      POLISH pt-BR   BRAZILIAN_PORTUGUESE ru
+        # RUSSIAN tr      TURKISH uk      UKRAINIAN zh-CN   CHINA_CHINESE zh-TW
+        # TAIWAN_CHINESE <br><br> An locale string not in the list above will
+        # generate reports in English.
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
@@ -624,14 +628,15 @@ module Google
         attr_accessor :running
         alias_method :running?, :running
       
-        # Whether to send an email notification when a report is ready. Default to false.
+        # Whether to send an email notification when a report is ready. Default to
+        # false.
         # Corresponds to the JSON property `sendNotification`
         # @return [Boolean]
         attr_accessor :send_notification
         alias_method :send_notification?, :send_notification
       
-        # List of email addresses which are sent email notifications when the report is
-        # finished. Separate from sendNotification.
+        # List of email addresses which are sent email notifications when the report
+        # is finished. Separate from <code>sendNotification</code>.
         # Corresponds to the JSON property `shareEmailAddress`
         # @return [Array<String>]
         attr_accessor :share_email_address
@@ -681,8 +686,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :next_run_minute_of_day
       
-        # Canonical timezone code for report generation time. Defaults to America/
-        # New_York.
+        # Canonical timezone code for report generation time. Defaults to
+        # <code>America/New_York</code>.
         # Corresponds to the JSON property `nextRunTimezoneCode`
         # @return [String]
         attr_accessor :next_run_timezone_code
@@ -785,7 +790,8 @@ module Google
       class ReportMetadata
         include Google::Apis::Core::Hashable
       
-        # The path to the location in Google Cloud Storage where the report is stored.
+        # The path to the location in Google Cloud Storage where the report is
+        # stored.
         # Corresponds to the JSON property `googleCloudStoragePath`
         # @return [String]
         attr_accessor :google_cloud_storage_path
@@ -906,9 +912,10 @@ module Google
         end
       end
       
-      # A Rule defines a name, and a boolean expression in [conjunctive normal form](
-      # http://mathworld.wolfram.com/ConjunctiveNormalForm.html)`.external` that can
-      # be applied to a path event to determine if that name should be applied.
+      # A Rule defines a name, and a boolean expression in [conjunctive normal
+      # form](http:
+      # //mathworld.wolfram.com/ConjunctiveNormalForm.html)`.external` that can be
+      # // applied to a path event to determine if that name should be applied.
       class Rule
         include Google::Apis::Core::Hashable
       
@@ -943,20 +950,21 @@ module Google
         attr_accessor :data_range
       
         # The ending time for the data that is shown in the report. Note,
-        # reportDataEndTimeMs is required if dataRange is CUSTOM_DATES and ignored
-        # otherwise.
+        # <code>reportDataEndTimeMs</code> is required if <code>dataRange</code> is
+        # <code>CUSTOM_DATES</code> and ignored otherwise.
         # Corresponds to the JSON property `reportDataEndTimeMs`
         # @return [Fixnum]
         attr_accessor :report_data_end_time_ms
       
         # The starting time for the data that is shown in the report. Note,
-        # reportDataStartTimeMs is required if dataRange is CUSTOM_DATES and ignored
-        # otherwise.
+        # <code>reportDataStartTimeMs</code> is required if <code>dataRange</code> is
+        # <code>CUSTOM_DATES</code> and ignored otherwise.
         # Corresponds to the JSON property `reportDataStartTimeMs`
         # @return [Fixnum]
         attr_accessor :report_data_start_time_ms
       
-        # Canonical timezone code for report data time. Defaults to America/New_York.
+        # Canonical timezone code for report data time. Defaults to
+        # <code>America/New_York</code>.
         # Corresponds to the JSON property `timezoneCode`
         # @return [String]
         attr_accessor :timezone_code
@@ -978,19 +986,21 @@ module Google
       class UploadLineItemsRequest
         include Google::Apis::Core::Hashable
       
-        # Set to true to get upload status without actually persisting the line items.
+        # Set to <code>true</code> to get upload status without actually persisting
+        # the line items.
         # Corresponds to the JSON property `dryRun`
         # @return [Boolean]
         attr_accessor :dry_run
         alias_method :dry_run?, :dry_run
       
-        # Format the line items are in. Default to CSV.
+        # Format the line items are in. Default to <code>CSV</code>.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
       
-        # Line items in CSV to upload. Refer to  Entity Write File Format for more
-        # information on file format.
+        # Line items in CSV to upload. Refer to <a
+        # href="https://developers.google.com/bid-manager/guides/entity-write/format">
+        # Entity Write File Format</a> for more information on file format.
         # Corresponds to the JSON property `lineItems`
         # @return [String]
         attr_accessor :line_items

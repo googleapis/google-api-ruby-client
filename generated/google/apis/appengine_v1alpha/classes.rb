@@ -141,15 +141,15 @@ module Google
       
         # Unencrypted PEM encoded RSA private key. This field is set once on certificate
         # creation and then encrypted. The key size must be 2048 bits or fewer. Must
-        # include the header and footer. Example: <pre> -----BEGIN RSA PRIVATE KEY----- <
-        # unencrypted_key_value> -----END RSA PRIVATE KEY----- </pre> @InputOnly
+        # include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----
+        # END RSA PRIVATE KEY----- @InputOnly
         # Corresponds to the JSON property `privateKey`
         # @return [String]
         attr_accessor :private_key
       
         # PEM encoded x.509 public key certificate. This field is set once on
-        # certificate creation. Must include the header and footer. Example: <pre> -----
-        # BEGIN CERTIFICATE----- <certificate_value> -----END CERTIFICATE----- </pre>
+        # certificate creation. Must include the header and footer. Example: -----BEGIN
+        # CERTIFICATE----- -----END CERTIFICATE-----
         # Corresponds to the JSON property `publicCertificate`
         # @return [String]
         attr_accessor :public_certificate
@@ -270,11 +270,9 @@ module Google
       
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for Empty is empty JSON object ``.
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # Empty is empty JSON object ``.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -422,8 +420,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Cross-service attributes for the location. For example
-        # `"cloud.googleapis.com/region": "us-east1"`
+        # Cross-service attributes for the location. For example `"cloud.googleapis.com/
+        # region": "us-east1"`
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels

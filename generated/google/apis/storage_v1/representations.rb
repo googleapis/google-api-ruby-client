@@ -403,14 +403,14 @@ module Google
                 property :age, as: 'age'
                 property :created_before, as: 'createdBefore', type: Date
             
-                property :custom_time_before, as: 'customTimeBefore', type: DateTime
+                property :custom_time_before, as: 'customTimeBefore', type: Date
             
                 property :days_since_custom_time, as: 'daysSinceCustomTime'
                 property :days_since_noncurrent_time, as: 'daysSinceNoncurrentTime'
                 property :is_live, as: 'isLive'
                 property :matches_pattern, as: 'matchesPattern'
                 collection :matches_storage_class, as: 'matchesStorageClass'
-                property :noncurrent_time_before, as: 'noncurrentTimeBefore', type: DateTime
+                property :noncurrent_time_before, as: 'noncurrentTimeBefore', type: Date
             
                 property :num_newer_versions, as: 'numNewerVersions'
               end

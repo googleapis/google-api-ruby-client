@@ -235,11 +235,13 @@ module Google
           property :network_config, as: 'networkConfig', class: Google::Apis::DatafusionV1::NetworkConfig, decorator: Google::Apis::DatafusionV1::NetworkConfig::Representation
       
           hash :options, as: 'options'
+          property :p4_service_account, as: 'p4ServiceAccount'
           property :private_instance, as: 'privateInstance'
           property :service_account, as: 'serviceAccount'
           property :service_endpoint, as: 'serviceEndpoint'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
+          property :tenant_project_id, as: 'tenantProjectId'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
           property :version, as: 'version'
@@ -381,6 +383,7 @@ module Google
       class Version
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :available_features, as: 'availableFeatures'
           property :default_version, as: 'defaultVersion'
           property :version_number, as: 'versionNumber'
         end

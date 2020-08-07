@@ -55,8 +55,8 @@ module Google
         # @param [String] encoded_request
         #   A serialized FindFullHashesRequest proto.
         # @param [String] client_id
-        #   A client ID that (hopefully) uniquely identifies the client implementation
-        #   of the Safe Browsing API.
+        #   A client ID that (hopefully) uniquely identifies the client implementation of
+        #   the Safe Browsing API.
         # @param [String] client_version
         #   The version of the client implementation.
         # @param [String] fields
@@ -186,8 +186,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetches the most recent threat list updates. A client can request updates
-        # for multiple lists at once.
+        # Fetches the most recent threat list updates. A client can request updates for
+        # multiple lists at once.
         # @param [Google::Apis::SafebrowsingV4::FetchThreatListUpdatesRequest] fetch_threat_list_updates_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

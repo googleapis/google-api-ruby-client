@@ -49,15 +49,14 @@ module Google
         end
         
         # Returns true if valid credentials exist for the given data source and
-        # requesting user.
-        # Some data sources doesn't support service account, so we need to talk to
-        # them on behalf of the end user. This API just checks whether we have OAuth
-        # token for the particular user, which is a pre-requisite before user can
-        # create a transfer config.
+        # requesting user. Some data sources doesn't support service account, so we need
+        # to talk to them on behalf of the end user. This API just checks whether we
+        # have OAuth token for the particular user, which is a pre-requisite before user
+        # can create a transfer config.
         # @param [String] name
-        #   Required. The data source in the form:
-        #   `projects/`project_id`/dataSources/`data_source_id`` or
-        #   `projects/`project_id`/locations/`location_id`/dataSources/`data_source_id``.
+        #   Required. The data source in the form: `projects/`project_id`/dataSources/`
+        #   data_source_id`` or `projects/`project_id`/locations/`location_id`/dataSources/
+        #   `data_source_id``.
         # @param [Google::Apis::BigquerydatatransferV1::CheckValidCredsRequest] check_valid_creds_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -88,12 +87,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a supported data source and returns its settings,
-        # which can be used for UI rendering.
+        # Retrieves a supported data source and returns its settings, which can be used
+        # for UI rendering.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/dataSources/`data_source_id`` or
-        #   `projects/`project_id`/locations/`location_id`/dataSources/`data_source_id``
+        #   Required. The field will contain name of the resource requested, for example: `
+        #   projects/`project_id`/dataSources/`data_source_id`` or `projects/`project_id`/
+        #   locations/`location_id`/dataSources/`data_source_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -121,19 +120,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists supported data sources and returns their settings,
-        # which can be used for UI rendering.
+        # Lists supported data sources and returns their settings, which can be used for
+        # UI rendering.
         # @param [String] parent
         #   Required. The BigQuery project id for which data sources should be returned.
-        #   Must be in the form: `projects/`project_id`` or
-        #   `projects/`project_id`/locations/`location_id`
+        #   Must be in the form: `projects/`project_id`` or `projects/`project_id`/
+        #   locations/`location_id`
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
-        #   Pagination token, which can be used to request a specific page
-        #   of `ListDataSourcesRequest` list results. For multiple-page
-        #   results, `ListDataSourcesResponse` outputs
-        #   a `next_page` token, which can be used as the
+        #   Pagination token, which can be used to request a specific page of `
+        #   ListDataSourcesRequest` list results. For multiple-page results, `
+        #   ListDataSourcesResponse` outputs a `next_page` token, which can be used as the
         #   `page_token` value to request the next page of list results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -234,15 +232,14 @@ module Google
         end
         
         # Returns true if valid credentials exist for the given data source and
-        # requesting user.
-        # Some data sources doesn't support service account, so we need to talk to
-        # them on behalf of the end user. This API just checks whether we have OAuth
-        # token for the particular user, which is a pre-requisite before user can
-        # create a transfer config.
+        # requesting user. Some data sources doesn't support service account, so we need
+        # to talk to them on behalf of the end user. This API just checks whether we
+        # have OAuth token for the particular user, which is a pre-requisite before user
+        # can create a transfer config.
         # @param [String] name
-        #   Required. The data source in the form:
-        #   `projects/`project_id`/dataSources/`data_source_id`` or
-        #   `projects/`project_id`/locations/`location_id`/dataSources/`data_source_id``.
+        #   Required. The data source in the form: `projects/`project_id`/dataSources/`
+        #   data_source_id`` or `projects/`project_id`/locations/`location_id`/dataSources/
+        #   `data_source_id``.
         # @param [Google::Apis::BigquerydatatransferV1::CheckValidCredsRequest] check_valid_creds_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -273,12 +270,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a supported data source and returns its settings,
-        # which can be used for UI rendering.
+        # Retrieves a supported data source and returns its settings, which can be used
+        # for UI rendering.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/dataSources/`data_source_id`` or
-        #   `projects/`project_id`/locations/`location_id`/dataSources/`data_source_id``
+        #   Required. The field will contain name of the resource requested, for example: `
+        #   projects/`project_id`/dataSources/`data_source_id`` or `projects/`project_id`/
+        #   locations/`location_id`/dataSources/`data_source_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -306,19 +303,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists supported data sources and returns their settings,
-        # which can be used for UI rendering.
+        # Lists supported data sources and returns their settings, which can be used for
+        # UI rendering.
         # @param [String] parent
         #   Required. The BigQuery project id for which data sources should be returned.
-        #   Must be in the form: `projects/`project_id`` or
-        #   `projects/`project_id`/locations/`location_id`
+        #   Must be in the form: `projects/`project_id`` or `projects/`project_id`/
+        #   locations/`location_id`
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
-        #   Pagination token, which can be used to request a specific page
-        #   of `ListDataSourcesRequest` list results. For multiple-page
-        #   results, `ListDataSourcesResponse` outputs
-        #   a `next_page` token, which can be used as the
+        #   Pagination token, which can be used to request a specific page of `
+        #   ListDataSourcesRequest` list results. For multiple-page results, `
+        #   ListDataSourcesResponse` outputs a `next_page` token, which can be used as the
         #   `page_token` value to request the next page of list results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -352,40 +348,33 @@ module Google
         # Creates a new data transfer configuration.
         # @param [String] parent
         #   Required. The BigQuery project id where the transfer configuration should be
-        #   created.
-        #   Must be in the format projects/`project_id`/locations/`location_id` or
-        #   projects/`project_id`. If specified location and location of the
+        #   created. Must be in the format projects/`project_id`/locations/`location_id`
+        #   or projects/`project_id`. If specified location and location of the
         #   destination bigquery dataset do not match - the request will fail.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
         # @param [String] authorization_code
         #   Optional OAuth2 authorization code to use with this transfer configuration.
-        #   This is required if new credentials are needed, as indicated by
-        #   `CheckValidCreds`.
-        #   In order to obtain authorization_code, please make a
-        #   request to
-        #   https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=<
-        #   datatransferapiclientid>&scope=<data_source_scopes>&redirect_uri=<redirect_uri>
-        #   * client_id should be OAuth client_id of BigQuery DTS API for the given
-        #   data source returned by ListDataSources method.
-        #   * data_source_scopes are the scopes returned by ListDataSources method.
-        #   * redirect_uri is an optional parameter. If not specified, then
-        #   authorization code is posted to the opener of authorization flow window.
-        #   Otherwise it will be sent to the redirect uri. A special value of
-        #   urn:ietf:wg:oauth:2.0:oob means that authorization code should be
-        #   returned in the title bar of the browser, with the page text prompting
-        #   the user to copy the code and paste it in the application.
+        #   This is required if new credentials are needed, as indicated by `
+        #   CheckValidCreds`. In order to obtain authorization_code, please make a request
+        #   to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&
+        #   redirect_uri= * client_id should be OAuth client_id of BigQuery DTS API for
+        #   the given data source returned by ListDataSources method. * data_source_scopes
+        #   are the scopes returned by ListDataSources method. * redirect_uri is an
+        #   optional parameter. If not specified, then authorization code is posted to the
+        #   opener of authorization flow window. Otherwise it will be sent to the redirect
+        #   uri. A special value of urn:ietf:wg:oauth:2.0:oob means that authorization
+        #   code should be returned in the title bar of the browser, with the page text
+        #   prompting the user to copy the code and paste it in the application.
         # @param [String] service_account_name
-        #   Optional service account name. If this field is set, transfer config will
-        #   be created with this service account credentials. It requires that
-        #   requesting user calling this API has permissions to act as this service
-        #   account.
+        #   Optional service account name. If this field is set, transfer config will be
+        #   created with this service account credentials. It requires that requesting
+        #   user calling this API has permissions to act as this service account.
         # @param [String] version_info
-        #   Optional version info. If users want to find a very recent access token,
-        #   that is, immediately after approving access, users have to set the
-        #   version_info claim in the token request. To obtain the version_info, users
-        #   must use the "none+gsession" response type. which be return a
-        #   version_info back in the authorization response which be be put in a JWT
-        #   claim in the token request.
+        #   Optional version info. If users want to find a very recent access token, that
+        #   is, immediately after approving access, users have to set the version_info
+        #   claim in the token request. To obtain the version_info, users must use the "
+        #   none+gsession" response type. which be return a version_info back in the
+        #   authorization response which be be put in a JWT claim in the token request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -418,12 +407,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a data transfer configuration,
-        # including any associated transfer runs and logs.
+        # Deletes a data transfer configuration, including any associated transfer runs
+        # and logs.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``
+        #   Required. The field will contain name of the resource requested, for example: `
+        #   projects/`project_id`/transferConfigs/`config_id`` or `projects/`project_id`/
+        #   locations/`location_id`/transferConfigs/`config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -453,9 +442,9 @@ module Google
         
         # Returns information about a data transfer config.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``
+        #   Required. The field will contain name of the resource requested, for example: `
+        #   projects/`project_id`/transferConfigs/`config_id`` or `projects/`project_id`/
+        #   locations/`location_id`/transferConfigs/`config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -485,19 +474,17 @@ module Google
         
         # Returns information about all data transfers in the project.
         # @param [String] parent
-        #   Required. The BigQuery project id for which data sources
-        #   should be returned: `projects/`project_id`` or
-        #   `projects/`project_id`/locations/`location_id``
+        #   Required. The BigQuery project id for which data sources should be returned: `
+        #   projects/`project_id`` or `projects/`project_id`/locations/`location_id``
         # @param [Array<String>, String] data_source_ids
         #   When specified, only configurations of requested data sources are returned.
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
-        #   Pagination token, which can be used to request a specific page
-        #   of `ListTransfersRequest` list results. For multiple-page
-        #   results, `ListTransfersResponse` outputs
-        #   a `next_page` token, which can be used as the
-        #   `page_token` value to request the next page of list results.
+        #   Pagination token, which can be used to request a specific page of `
+        #   ListTransfersRequest` list results. For multiple-page results, `
+        #   ListTransfersResponse` outputs a `next_page` token, which can be used as the `
+        #   page_token` value to request the next page of list results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -528,49 +515,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a data transfer configuration.
-        # All fields must be set, even if they are not updated.
+        # Updates a data transfer configuration. All fields must be set, even if they
+        # are not updated.
         # @param [String] name
-        #   The resource name of the transfer config.
-        #   Transfer config names have the form of
-        #   `projects/`project_id`/locations/`region`/transferConfigs/`config_id``.
-        #   The name is automatically generated based on the config_id specified in
-        #   CreateTransferConfigRequest along with project_id and region. If config_id
-        #   is not provided, usually a uuid, even though it is not guaranteed or
-        #   required, will be generated for config_id.
+        #   The resource name of the transfer config. Transfer config names have the form
+        #   of `projects/`project_id`/locations/`region`/transferConfigs/`config_id``. The
+        #   name is automatically generated based on the config_id specified in
+        #   CreateTransferConfigRequest along with project_id and region. If config_id is
+        #   not provided, usually a uuid, even though it is not guaranteed or required,
+        #   will be generated for config_id.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
         # @param [String] authorization_code
-        #   Optional OAuth2 authorization code to use with this transfer configuration.
-        #   If it is provided, the transfer configuration will be associated with the
-        #   authorizing user.
-        #   In order to obtain authorization_code, please make a
-        #   request to
-        #   https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=<
-        #   datatransferapiclientid>&scope=<data_source_scopes>&redirect_uri=<redirect_uri>
-        #   * client_id should be OAuth client_id of BigQuery DTS API for the given
-        #   data source returned by ListDataSources method.
-        #   * data_source_scopes are the scopes returned by ListDataSources method.
-        #   * redirect_uri is an optional parameter. If not specified, then
-        #   authorization code is posted to the opener of authorization flow window.
-        #   Otherwise it will be sent to the redirect uri. A special value of
-        #   urn:ietf:wg:oauth:2.0:oob means that authorization code should be
-        #   returned in the title bar of the browser, with the page text prompting
-        #   the user to copy the code and paste it in the application.
+        #   Optional OAuth2 authorization code to use with this transfer configuration. If
+        #   it is provided, the transfer configuration will be associated with the
+        #   authorizing user. In order to obtain authorization_code, please make a request
+        #   to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&
+        #   redirect_uri= * client_id should be OAuth client_id of BigQuery DTS API for
+        #   the given data source returned by ListDataSources method. * data_source_scopes
+        #   are the scopes returned by ListDataSources method. * redirect_uri is an
+        #   optional parameter. If not specified, then authorization code is posted to the
+        #   opener of authorization flow window. Otherwise it will be sent to the redirect
+        #   uri. A special value of urn:ietf:wg:oauth:2.0:oob means that authorization
+        #   code should be returned in the title bar of the browser, with the page text
+        #   prompting the user to copy the code and paste it in the application.
         # @param [String] service_account_name
-        #   Optional service account name. If this field is set and
-        #   "service_account_name" is set in update_mask, transfer config will be
-        #   updated to use this service account credentials. It requires that
-        #   requesting user calling this API has permissions to act as this service
-        #   account.
+        #   Optional service account name. If this field is set and "service_account_name"
+        #   is set in update_mask, transfer config will be updated to use this service
+        #   account credentials. It requires that requesting user calling this API has
+        #   permissions to act as this service account.
         # @param [String] update_mask
         #   Required. Required list of fields to be updated in this request.
         # @param [String] version_info
-        #   Optional version info. If users want to find a very recent access token,
-        #   that is, immediately after approving access, users have to set the
-        #   version_info claim in the token request. To obtain the version_info, users
-        #   must use the "none+gsession" response type. which be return a
-        #   version_info back in the authorization response which be be put in a JWT
-        #   claim in the token request.
+        #   Optional version info. If users want to find a very recent access token, that
+        #   is, immediately after approving access, users have to set the version_info
+        #   claim in the token request. To obtain the version_info, users must use the "
+        #   none+gsession" response type. which be return a version_info back in the
+        #   authorization response which be be put in a JWT claim in the token request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -604,15 +584,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates transfer runs for a time range [start_time, end_time].
-        # For each date - or whatever granularity the data source supports - in the
-        # range, one transfer run is created.
-        # Note that runs are created per UTC time in the time range.
+        # Creates transfer runs for a time range [start_time, end_time]. For each date -
+        # or whatever granularity the data source supports - in the range, one transfer
+        # run is created. Note that runs are created per UTC time in the time range.
         # DEPRECATED: use StartManualTransferRuns instead.
         # @param [String] parent
-        #   Required. Transfer configuration name in the form:
-        #   `projects/`project_id`/transferConfigs/`config_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``.
+        #   Required. Transfer configuration name in the form: `projects/`project_id`/
+        #   transferConfigs/`config_id`` or `projects/`project_id`/locations/`location_id`/
+        #   transferConfigs/`config_id``.
         # @param [Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsRequest] schedule_transfer_runs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -645,12 +624,12 @@ module Google
         
         # Start manual transfer runs to be executed now with schedule_time equal to
         # current time. The transfer runs can be created for a time range where the
-        # run_time is between start_time (inclusive) and end_time (exclusive), or for
-        # a specific run_time.
+        # run_time is between start_time (inclusive) and end_time (exclusive), or for a
+        # specific run_time.
         # @param [String] parent
-        #   Transfer configuration name in the form:
-        #   `projects/`project_id`/transferConfigs/`config_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``.
+        #   Transfer configuration name in the form: `projects/`project_id`/
+        #   transferConfigs/`config_id`` or `projects/`project_id`/locations/`location_id`/
+        #   transferConfigs/`config_id``.
         # @param [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest] start_manual_transfer_runs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -683,10 +662,9 @@ module Google
         
         # Deletes the specified transfer run.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
-        #   runs/`run_id``
+        #   Required. The field will contain name of the resource requested, for example: `
+        #   projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or `projects/`
+        #   project_id`/locations/`location_id`/transferConfigs/`config_id`/runs/`run_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -716,10 +694,9 @@ module Google
         
         # Returns information about the particular transfer run.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
-        #   runs/`run_id``
+        #   Required. The field will contain name of the resource requested, for example: `
+        #   projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or `projects/`
+        #   project_id`/locations/`location_id`/transferConfigs/`config_id`/runs/`run_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -750,18 +727,16 @@ module Google
         # Returns information about running and completed jobs.
         # @param [String] parent
         #   Required. Name of transfer configuration for which transfer runs should be
-        #   retrieved.
-        #   Format of transfer configuration resource name is:
-        #   `projects/`project_id`/transferConfigs/`config_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``.
+        #   retrieved. Format of transfer configuration resource name is: `projects/`
+        #   project_id`/transferConfigs/`config_id`` or `projects/`project_id`/locations/`
+        #   location_id`/transferConfigs/`config_id``.
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
-        #   Pagination token, which can be used to request a specific page
-        #   of `ListTransferRunsRequest` list results. For multiple-page
-        #   results, `ListTransferRunsResponse` outputs
-        #   a `next_page` token, which can be used as the
-        #   `page_token` value to request the next page of list results.
+        #   Pagination token, which can be used to request a specific page of `
+        #   ListTransferRunsRequest` list results. For multiple-page results, `
+        #   ListTransferRunsResponse` outputs a `next_page` token, which can be used as
+        #   the `page_token` value to request the next page of list results.
         # @param [String] run_attempt
         #   Indicates how run attempts are to be pulled.
         # @param [Array<String>, String] states
@@ -799,21 +774,19 @@ module Google
         
         # Returns user facing log messages for the data transfer run.
         # @param [String] parent
-        #   Required. Transfer run name in the form:
-        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
-        #   runs/`run_id``
+        #   Required. Transfer run name in the form: `projects/`project_id`/
+        #   transferConfigs/`config_id`/runs/`run_id`` or `projects/`project_id`/locations/
+        #   `location_id`/transferConfigs/`config_id`/runs/`run_id``
         # @param [Array<String>, String] message_types
-        #   Message types to return. If not populated - INFO, WARNING and ERROR
-        #   messages are returned.
+        #   Message types to return. If not populated - INFO, WARNING and ERROR messages
+        #   are returned.
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
-        #   Pagination token, which can be used to request a specific page
-        #   of `ListTransferLogsRequest` list results. For multiple-page
-        #   results, `ListTransferLogsResponse` outputs
-        #   a `next_page` token, which can be used as the
-        #   `page_token` value to request the next page of list results.
+        #   Pagination token, which can be used to request a specific page of `
+        #   ListTransferLogsRequest` list results. For multiple-page results, `
+        #   ListTransferLogsResponse` outputs a `next_page` token, which can be used as
+        #   the `page_token` value to request the next page of list results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -847,40 +820,33 @@ module Google
         # Creates a new data transfer configuration.
         # @param [String] parent
         #   Required. The BigQuery project id where the transfer configuration should be
-        #   created.
-        #   Must be in the format projects/`project_id`/locations/`location_id` or
-        #   projects/`project_id`. If specified location and location of the
+        #   created. Must be in the format projects/`project_id`/locations/`location_id`
+        #   or projects/`project_id`. If specified location and location of the
         #   destination bigquery dataset do not match - the request will fail.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
         # @param [String] authorization_code
         #   Optional OAuth2 authorization code to use with this transfer configuration.
-        #   This is required if new credentials are needed, as indicated by
-        #   `CheckValidCreds`.
-        #   In order to obtain authorization_code, please make a
-        #   request to
-        #   https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=<
-        #   datatransferapiclientid>&scope=<data_source_scopes>&redirect_uri=<redirect_uri>
-        #   * client_id should be OAuth client_id of BigQuery DTS API for the given
-        #   data source returned by ListDataSources method.
-        #   * data_source_scopes are the scopes returned by ListDataSources method.
-        #   * redirect_uri is an optional parameter. If not specified, then
-        #   authorization code is posted to the opener of authorization flow window.
-        #   Otherwise it will be sent to the redirect uri. A special value of
-        #   urn:ietf:wg:oauth:2.0:oob means that authorization code should be
-        #   returned in the title bar of the browser, with the page text prompting
-        #   the user to copy the code and paste it in the application.
+        #   This is required if new credentials are needed, as indicated by `
+        #   CheckValidCreds`. In order to obtain authorization_code, please make a request
+        #   to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&
+        #   redirect_uri= * client_id should be OAuth client_id of BigQuery DTS API for
+        #   the given data source returned by ListDataSources method. * data_source_scopes
+        #   are the scopes returned by ListDataSources method. * redirect_uri is an
+        #   optional parameter. If not specified, then authorization code is posted to the
+        #   opener of authorization flow window. Otherwise it will be sent to the redirect
+        #   uri. A special value of urn:ietf:wg:oauth:2.0:oob means that authorization
+        #   code should be returned in the title bar of the browser, with the page text
+        #   prompting the user to copy the code and paste it in the application.
         # @param [String] service_account_name
-        #   Optional service account name. If this field is set, transfer config will
-        #   be created with this service account credentials. It requires that
-        #   requesting user calling this API has permissions to act as this service
-        #   account.
+        #   Optional service account name. If this field is set, transfer config will be
+        #   created with this service account credentials. It requires that requesting
+        #   user calling this API has permissions to act as this service account.
         # @param [String] version_info
-        #   Optional version info. If users want to find a very recent access token,
-        #   that is, immediately after approving access, users have to set the
-        #   version_info claim in the token request. To obtain the version_info, users
-        #   must use the "none+gsession" response type. which be return a
-        #   version_info back in the authorization response which be be put in a JWT
-        #   claim in the token request.
+        #   Optional version info. If users want to find a very recent access token, that
+        #   is, immediately after approving access, users have to set the version_info
+        #   claim in the token request. To obtain the version_info, users must use the "
+        #   none+gsession" response type. which be return a version_info back in the
+        #   authorization response which be be put in a JWT claim in the token request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -913,12 +879,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a data transfer configuration,
-        # including any associated transfer runs and logs.
+        # Deletes a data transfer configuration, including any associated transfer runs
+        # and logs.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``
+        #   Required. The field will contain name of the resource requested, for example: `
+        #   projects/`project_id`/transferConfigs/`config_id`` or `projects/`project_id`/
+        #   locations/`location_id`/transferConfigs/`config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -948,9 +914,9 @@ module Google
         
         # Returns information about a data transfer config.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``
+        #   Required. The field will contain name of the resource requested, for example: `
+        #   projects/`project_id`/transferConfigs/`config_id`` or `projects/`project_id`/
+        #   locations/`location_id`/transferConfigs/`config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -980,19 +946,17 @@ module Google
         
         # Returns information about all data transfers in the project.
         # @param [String] parent
-        #   Required. The BigQuery project id for which data sources
-        #   should be returned: `projects/`project_id`` or
-        #   `projects/`project_id`/locations/`location_id``
+        #   Required. The BigQuery project id for which data sources should be returned: `
+        #   projects/`project_id`` or `projects/`project_id`/locations/`location_id``
         # @param [Array<String>, String] data_source_ids
         #   When specified, only configurations of requested data sources are returned.
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
-        #   Pagination token, which can be used to request a specific page
-        #   of `ListTransfersRequest` list results. For multiple-page
-        #   results, `ListTransfersResponse` outputs
-        #   a `next_page` token, which can be used as the
-        #   `page_token` value to request the next page of list results.
+        #   Pagination token, which can be used to request a specific page of `
+        #   ListTransfersRequest` list results. For multiple-page results, `
+        #   ListTransfersResponse` outputs a `next_page` token, which can be used as the `
+        #   page_token` value to request the next page of list results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1023,49 +987,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a data transfer configuration.
-        # All fields must be set, even if they are not updated.
+        # Updates a data transfer configuration. All fields must be set, even if they
+        # are not updated.
         # @param [String] name
-        #   The resource name of the transfer config.
-        #   Transfer config names have the form of
-        #   `projects/`project_id`/locations/`region`/transferConfigs/`config_id``.
-        #   The name is automatically generated based on the config_id specified in
-        #   CreateTransferConfigRequest along with project_id and region. If config_id
-        #   is not provided, usually a uuid, even though it is not guaranteed or
-        #   required, will be generated for config_id.
+        #   The resource name of the transfer config. Transfer config names have the form
+        #   of `projects/`project_id`/locations/`region`/transferConfigs/`config_id``. The
+        #   name is automatically generated based on the config_id specified in
+        #   CreateTransferConfigRequest along with project_id and region. If config_id is
+        #   not provided, usually a uuid, even though it is not guaranteed or required,
+        #   will be generated for config_id.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
         # @param [String] authorization_code
-        #   Optional OAuth2 authorization code to use with this transfer configuration.
-        #   If it is provided, the transfer configuration will be associated with the
-        #   authorizing user.
-        #   In order to obtain authorization_code, please make a
-        #   request to
-        #   https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=<
-        #   datatransferapiclientid>&scope=<data_source_scopes>&redirect_uri=<redirect_uri>
-        #   * client_id should be OAuth client_id of BigQuery DTS API for the given
-        #   data source returned by ListDataSources method.
-        #   * data_source_scopes are the scopes returned by ListDataSources method.
-        #   * redirect_uri is an optional parameter. If not specified, then
-        #   authorization code is posted to the opener of authorization flow window.
-        #   Otherwise it will be sent to the redirect uri. A special value of
-        #   urn:ietf:wg:oauth:2.0:oob means that authorization code should be
-        #   returned in the title bar of the browser, with the page text prompting
-        #   the user to copy the code and paste it in the application.
+        #   Optional OAuth2 authorization code to use with this transfer configuration. If
+        #   it is provided, the transfer configuration will be associated with the
+        #   authorizing user. In order to obtain authorization_code, please make a request
+        #   to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&
+        #   redirect_uri= * client_id should be OAuth client_id of BigQuery DTS API for
+        #   the given data source returned by ListDataSources method. * data_source_scopes
+        #   are the scopes returned by ListDataSources method. * redirect_uri is an
+        #   optional parameter. If not specified, then authorization code is posted to the
+        #   opener of authorization flow window. Otherwise it will be sent to the redirect
+        #   uri. A special value of urn:ietf:wg:oauth:2.0:oob means that authorization
+        #   code should be returned in the title bar of the browser, with the page text
+        #   prompting the user to copy the code and paste it in the application.
         # @param [String] service_account_name
-        #   Optional service account name. If this field is set and
-        #   "service_account_name" is set in update_mask, transfer config will be
-        #   updated to use this service account credentials. It requires that
-        #   requesting user calling this API has permissions to act as this service
-        #   account.
+        #   Optional service account name. If this field is set and "service_account_name"
+        #   is set in update_mask, transfer config will be updated to use this service
+        #   account credentials. It requires that requesting user calling this API has
+        #   permissions to act as this service account.
         # @param [String] update_mask
         #   Required. Required list of fields to be updated in this request.
         # @param [String] version_info
-        #   Optional version info. If users want to find a very recent access token,
-        #   that is, immediately after approving access, users have to set the
-        #   version_info claim in the token request. To obtain the version_info, users
-        #   must use the "none+gsession" response type. which be return a
-        #   version_info back in the authorization response which be be put in a JWT
-        #   claim in the token request.
+        #   Optional version info. If users want to find a very recent access token, that
+        #   is, immediately after approving access, users have to set the version_info
+        #   claim in the token request. To obtain the version_info, users must use the "
+        #   none+gsession" response type. which be return a version_info back in the
+        #   authorization response which be be put in a JWT claim in the token request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1099,15 +1056,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates transfer runs for a time range [start_time, end_time].
-        # For each date - or whatever granularity the data source supports - in the
-        # range, one transfer run is created.
-        # Note that runs are created per UTC time in the time range.
+        # Creates transfer runs for a time range [start_time, end_time]. For each date -
+        # or whatever granularity the data source supports - in the range, one transfer
+        # run is created. Note that runs are created per UTC time in the time range.
         # DEPRECATED: use StartManualTransferRuns instead.
         # @param [String] parent
-        #   Required. Transfer configuration name in the form:
-        #   `projects/`project_id`/transferConfigs/`config_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``.
+        #   Required. Transfer configuration name in the form: `projects/`project_id`/
+        #   transferConfigs/`config_id`` or `projects/`project_id`/locations/`location_id`/
+        #   transferConfigs/`config_id``.
         # @param [Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsRequest] schedule_transfer_runs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1140,12 +1096,12 @@ module Google
         
         # Start manual transfer runs to be executed now with schedule_time equal to
         # current time. The transfer runs can be created for a time range where the
-        # run_time is between start_time (inclusive) and end_time (exclusive), or for
-        # a specific run_time.
+        # run_time is between start_time (inclusive) and end_time (exclusive), or for a
+        # specific run_time.
         # @param [String] parent
-        #   Transfer configuration name in the form:
-        #   `projects/`project_id`/transferConfigs/`config_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``.
+        #   Transfer configuration name in the form: `projects/`project_id`/
+        #   transferConfigs/`config_id`` or `projects/`project_id`/locations/`location_id`/
+        #   transferConfigs/`config_id``.
         # @param [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest] start_manual_transfer_runs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1178,10 +1134,9 @@ module Google
         
         # Deletes the specified transfer run.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
-        #   runs/`run_id``
+        #   Required. The field will contain name of the resource requested, for example: `
+        #   projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or `projects/`
+        #   project_id`/locations/`location_id`/transferConfigs/`config_id`/runs/`run_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1211,10 +1166,9 @@ module Google
         
         # Returns information about the particular transfer run.
         # @param [String] name
-        #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
-        #   runs/`run_id``
+        #   Required. The field will contain name of the resource requested, for example: `
+        #   projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or `projects/`
+        #   project_id`/locations/`location_id`/transferConfigs/`config_id`/runs/`run_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1245,18 +1199,16 @@ module Google
         # Returns information about running and completed jobs.
         # @param [String] parent
         #   Required. Name of transfer configuration for which transfer runs should be
-        #   retrieved.
-        #   Format of transfer configuration resource name is:
-        #   `projects/`project_id`/transferConfigs/`config_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``.
+        #   retrieved. Format of transfer configuration resource name is: `projects/`
+        #   project_id`/transferConfigs/`config_id`` or `projects/`project_id`/locations/`
+        #   location_id`/transferConfigs/`config_id``.
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
-        #   Pagination token, which can be used to request a specific page
-        #   of `ListTransferRunsRequest` list results. For multiple-page
-        #   results, `ListTransferRunsResponse` outputs
-        #   a `next_page` token, which can be used as the
-        #   `page_token` value to request the next page of list results.
+        #   Pagination token, which can be used to request a specific page of `
+        #   ListTransferRunsRequest` list results. For multiple-page results, `
+        #   ListTransferRunsResponse` outputs a `next_page` token, which can be used as
+        #   the `page_token` value to request the next page of list results.
         # @param [String] run_attempt
         #   Indicates how run attempts are to be pulled.
         # @param [Array<String>, String] states
@@ -1294,21 +1246,19 @@ module Google
         
         # Returns user facing log messages for the data transfer run.
         # @param [String] parent
-        #   Required. Transfer run name in the form:
-        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or
-        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
-        #   runs/`run_id``
+        #   Required. Transfer run name in the form: `projects/`project_id`/
+        #   transferConfigs/`config_id`/runs/`run_id`` or `projects/`project_id`/locations/
+        #   `location_id`/transferConfigs/`config_id`/runs/`run_id``
         # @param [Array<String>, String] message_types
-        #   Message types to return. If not populated - INFO, WARNING and ERROR
-        #   messages are returned.
+        #   Message types to return. If not populated - INFO, WARNING and ERROR messages
+        #   are returned.
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
-        #   Pagination token, which can be used to request a specific page
-        #   of `ListTransferLogsRequest` list results. For multiple-page
-        #   results, `ListTransferLogsResponse` outputs
-        #   a `next_page` token, which can be used as the
-        #   `page_token` value to request the next page of list results.
+        #   Pagination token, which can be used to request a specific page of `
+        #   ListTransferLogsRequest` list results. For multiple-page results, `
+        #   ListTransferLogsResponse` outputs a `next_page` token, which can be used as
+        #   the `page_token` value to request the next page of list results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

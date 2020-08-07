@@ -291,6 +291,38 @@ module Google
         end
       end
       
+      # Arbitrary client data that is populated by clients. Duplicate keys and values
+      # are allowed.
+      class ClientData
+        include Google::Apis::Core::Hashable
+      
+        # The client specified key of the client data.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The client specified value of the client data.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A contact group.
       class ContactGroup
         include Google::Apis::Core::Hashable
@@ -468,8 +500,8 @@ module Google
         # Optional. A field mask to restrict which fields on the person are returned.
         # Multiple fields can be specified by separating them with commas. Defaults to
         # the copy mask with metadata and membership fields if not set. Valid values are:
-        # * addresses * ageRanges * biographies * birthdays * calendarUrls *
-        # coverPhotos * emailAddresses * events * externalIds * genders * imClients *
+        # * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData
+        # * coverPhotos * emailAddresses * events * externalIds * genders * imClients *
         # interests * locales * memberships * metadata * miscKeywords * names *
         # nicknames * occupations * organizations * phoneNumbers * photos * relations *
         # residences * sipAddresses * skills * urls * userDefined
@@ -1601,6 +1633,11 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::CalendarUrl>]
         attr_accessor :calendar_urls
       
+        # The person's client data.
+        # Corresponds to the JSON property `clientData`
+        # @return [Array<Google::Apis::PeopleV1::ClientData>]
+        attr_accessor :client_data
+      
         # Output only. The person's cover photos.
         # Corresponds to the JSON property `coverPhotos`
         # @return [Array<Google::Apis::PeopleV1::CoverPhoto>]
@@ -1763,6 +1800,7 @@ module Google
           @birthdays = args[:birthdays] if args.key?(:birthdays)
           @bragging_rights = args[:bragging_rights] if args.key?(:bragging_rights)
           @calendar_urls = args[:calendar_urls] if args.key?(:calendar_urls)
+          @client_data = args[:client_data] if args.key?(:client_data)
           @cover_photos = args[:cover_photos] if args.key?(:cover_photos)
           @email_addresses = args[:email_addresses] if args.key?(:email_addresses)
           @etag = args[:etag] if args.key?(:etag)
@@ -2386,11 +2424,11 @@ module Google
         # Optional. A field mask to restrict which fields on the person are returned.
         # Multiple fields can be specified by separating them with commas. Defaults to
         # empty if not set, which will skip the post mutate get. Valid values are: *
-        # addresses * ageRanges * biographies * birthdays * calendarUrls * coverPhotos *
-        # emailAddresses * events * externalIds * genders * imClients * interests *
-        # locales * memberships * metadata * miscKeywords * names * nicknames *
-        # occupations * organizations * phoneNumbers * photos * relations * residences *
-        # sipAddresses * skills * urls * userDefined
+        # addresses * ageRanges * biographies * birthdays * calendarUrls * clientData *
+        # coverPhotos * emailAddresses * events * externalIds * genders * imClients *
+        # interests * locales * memberships * metadata * miscKeywords * names *
+        # nicknames * occupations * organizations * phoneNumbers * photos * relations *
+        # residences * sipAddresses * skills * urls * userDefined
         # Corresponds to the JSON property `personFields`
         # @return [String]
         attr_accessor :person_fields

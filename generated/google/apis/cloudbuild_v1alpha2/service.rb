@@ -47,15 +47,13 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
@@ -89,9 +87,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -123,15 +120,13 @@ module Google
         
         # Creates a `WorkerPool` to run the builds, and returns the new worker pool.
         # @param [String] parent
-        #   Required. The parent resource where this book will be created.
-        #   Format: projects/`project`
+        #   Required. The parent resource where this book will be created. Format:
+        #   projects/`project`
         # @param [Google::Apis::CloudbuildV1alpha2::WorkerPool] worker_pool_object
         # @param [String] worker_pool_id
         #   Required. Immutable. The ID to use for the `WorkerPool`, which will become the
-        #   final component
-        #   of the resource name.
-        #   This value should be 1-63 characters, and valid characters
-        #   are /a-z-/.
+        #   final component of the resource name. This value should be 1-63 characters,
+        #   and valid characters are /a-z-/.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -164,8 +159,8 @@ module Google
         
         # Deletes a `WorkerPool`.
         # @param [String] name
-        #   Required. The name of the `WorkerPool` to delete.
-        #   Format: projects/`project`/workerPools/`workerPool`
+        #   Required. The name of the `WorkerPool` to delete. Format: projects/`project`/
+        #   workerPools/`workerPool`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -195,8 +190,8 @@ module Google
         
         # Returns details of a `WorkerPool`.
         # @param [String] name
-        #   Required. The name of the `WorkerPool` to retrieve.
-        #   Format: projects/`project`/workerPools/`workerPool`
+        #   Required. The name of the `WorkerPool` to retrieve. Format: projects/`project`/
+        #   workerPools/`workerPool`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -226,8 +221,8 @@ module Google
         
         # Lists `WorkerPool`s by project.
         # @param [String] parent
-        #   Required. The parent, which owns this collection of `WorkerPools`.
-        #   Format: projects/`project`
+        #   Required. The parent, which owns this collection of `WorkerPools`. Format:
+        #   projects/`project`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -257,10 +252,9 @@ module Google
         
         # Updates a `WorkerPool`.
         # @param [String] name
-        #   Output only. The resource name of the `WorkerPool`.
-        #   Format of the name is `projects/`project_id`/workerPools/`worker_pool_id``,
-        #   where the value of `worker_pool_id` is provided in the CreateWorkerPool
-        #   request.
+        #   Output only. The resource name of the `WorkerPool`. Format of the name is `
+        #   projects/`project_id`/workerPools/`worker_pool_id``, where the value of `
+        #   worker_pool_id` is provided in the CreateWorkerPool request.
         # @param [Google::Apis::CloudbuildV1alpha2::WorkerPool] worker_pool_object
         # @param [String] update_mask
         #   A mask specifying which fields in `WorkerPool` should be updated.

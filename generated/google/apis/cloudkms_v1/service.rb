@@ -119,12 +119,12 @@ module Google
         
         # Create a new KeyRing in a given Project and Location.
         # @param [String] parent
-        #   Required. The resource name of the location associated with the
-        #   KeyRings, in the format `projects/*/locations/*`.
+        #   Required. The resource name of the location associated with the KeyRings, in
+        #   the format `projects/*/locations/*`.
         # @param [Google::Apis::CloudkmsV1::KeyRing] key_ring_object
         # @param [String] key_ring_id
-        #   Required. It must be unique within a location and match the regular
-        #   expression `[a-zA-Z0-9_-]`1,63``
+        #   Required. It must be unique within a location and match the regular expression
+        #   `[a-zA-Z0-9_-]`1,63``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -185,22 +185,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -231,26 +228,25 @@ module Google
         
         # Lists KeyRings.
         # @param [String] parent
-        #   Required. The resource name of the location associated with the
-        #   KeyRings, in the format `projects/*/locations/*`.
+        #   Required. The resource name of the location associated with the KeyRings, in
+        #   the format `projects/*/locations/*`.
         # @param [String] filter
         #   Optional. Only include resources that match the filter in the response. For
-        #   more information, see
-        #   [Sorting and filtering list
-        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   more information, see [Sorting and filtering list results](https://cloud.
+        #   google.com/kms/docs/sorting-and-filtering).
         # @param [String] order_by
         #   Optional. Specify how the results should be sorted. If not specified, the
-        #   results will be sorted in the default order.  For more information, see
-        #   [Sorting and filtering list
-        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   results will be sorted in the default order. For more information, see [
+        #   Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-
+        #   and-filtering).
         # @param [Fixnum] page_size
-        #   Optional. Optional limit on the number of KeyRings to include in the
-        #   response.  Further KeyRings can subsequently be obtained by
-        #   including the ListKeyRingsResponse.next_page_token in a subsequent
-        #   request.  If unspecified, the server will pick an appropriate default.
+        #   Optional. Optional limit on the number of KeyRings to include in the response.
+        #   Further KeyRings can subsequently be obtained by including the
+        #   ListKeyRingsResponse.next_page_token in a subsequent request. If unspecified,
+        #   the server will pick an appropriate default.
         # @param [String] page_token
-        #   Optional. Optional pagination token, returned earlier via
-        #   ListKeyRingsResponse.next_page_token.
+        #   Optional. Optional pagination token, returned earlier via ListKeyRingsResponse.
+        #   next_page_token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -283,11 +279,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudkmsV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -318,15 +314,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudkmsV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -357,23 +352,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new CryptoKey within a KeyRing.
-        # CryptoKey.purpose and
-        # CryptoKey.version_template.algorithm
-        # are required.
+        # Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.
+        # version_template.algorithm are required.
         # @param [String] parent
-        #   Required. The name of the KeyRing associated with the
-        #   CryptoKeys.
+        #   Required. The name of the KeyRing associated with the CryptoKeys.
         # @param [Google::Apis::CloudkmsV1::CryptoKey] crypto_key_object
         # @param [String] crypto_key_id
-        #   Required. It must be unique within a KeyRing and match the regular
-        #   expression `[a-zA-Z0-9_-]`1,63``
+        #   Required. It must be unique within a KeyRing and match the regular expression `
+        #   [a-zA-Z0-9_-]`1,63``
         # @param [Boolean] skip_initial_version_creation
         #   If set to true, the request will create a CryptoKey without any
-        #   CryptoKeyVersions. You must manually call
-        #   CreateCryptoKeyVersion or
-        #   ImportCryptoKeyVersion
-        #   before you can use this CryptoKey.
+        #   CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or
+        #   ImportCryptoKeyVersion before you can use this CryptoKey.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -405,11 +395,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Decrypts data that was protected by Encrypt. The CryptoKey.purpose
-        # must be ENCRYPT_DECRYPT.
+        # Decrypts data that was protected by Encrypt. The CryptoKey.purpose must be
+        # ENCRYPT_DECRYPT.
         # @param [String] name
-        #   Required. The resource name of the CryptoKey to use for decryption.
-        #   The server will choose the appropriate version.
+        #   Required. The resource name of the CryptoKey to use for decryption. The server
+        #   will choose the appropriate version.
         # @param [Google::Apis::CloudkmsV1::DecryptRequest] decrypt_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -440,14 +430,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Encrypts data, so that it can only be recovered by a call to Decrypt.
-        # The CryptoKey.purpose must be
-        # ENCRYPT_DECRYPT.
+        # Encrypts data, so that it can only be recovered by a call to Decrypt. The
+        # CryptoKey.purpose must be ENCRYPT_DECRYPT.
         # @param [String] name
-        #   Required. The resource name of the CryptoKey or CryptoKeyVersion
-        #   to use for encryption.
-        #   If a CryptoKey is specified, the server will use its
-        #   primary version.
+        #   Required. The resource name of the CryptoKey or CryptoKeyVersion to use for
+        #   encryption. If a CryptoKey is specified, the server will use its primary
+        #   version.
         # @param [Google::Apis::CloudkmsV1::EncryptRequest] encrypt_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -478,8 +466,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns metadata for a given CryptoKey, as well as its
-        # primary CryptoKeyVersion.
+        # Returns metadata for a given CryptoKey, as well as its primary
+        # CryptoKeyVersion.
         # @param [String] name
         #   Required. The name of the CryptoKey to get.
         # @param [String] fields
@@ -509,22 +497,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -555,23 +540,22 @@ module Google
         
         # Lists CryptoKeys.
         # @param [String] parent
-        #   Required. The resource name of the KeyRing to list, in the format
-        #   `projects/*/locations/*/keyRings/*`.
+        #   Required. The resource name of the KeyRing to list, in the format `projects/*/
+        #   locations/*/keyRings/*`.
         # @param [String] filter
         #   Optional. Only include resources that match the filter in the response. For
-        #   more information, see
-        #   [Sorting and filtering list
-        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   more information, see [Sorting and filtering list results](https://cloud.
+        #   google.com/kms/docs/sorting-and-filtering).
         # @param [String] order_by
         #   Optional. Specify how the results should be sorted. If not specified, the
-        #   results will be sorted in the default order. For more information, see
-        #   [Sorting and filtering list
-        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   results will be sorted in the default order. For more information, see [
+        #   Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-
+        #   and-filtering).
         # @param [Fixnum] page_size
         #   Optional. Optional limit on the number of CryptoKeys to include in the
-        #   response.  Further CryptoKeys can subsequently be obtained by
-        #   including the ListCryptoKeysResponse.next_page_token in a subsequent
-        #   request.  If unspecified, the server will pick an appropriate default.
+        #   response. Further CryptoKeys can subsequently be obtained by including the
+        #   ListCryptoKeysResponse.next_page_token in a subsequent request. If unspecified,
+        #   the server will pick an appropriate default.
         # @param [String] page_token
         #   Optional. Optional pagination token, returned earlier via
         #   ListCryptoKeysResponse.next_page_token.
@@ -611,8 +595,8 @@ module Google
         
         # Update a CryptoKey.
         # @param [String] name
-        #   Output only. The resource name for this CryptoKey in the format
-        #   `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        #   Output only. The resource name for this CryptoKey in the format `projects/*/
+        #   locations/*/keyRings/*/cryptoKeys/*`.
         # @param [Google::Apis::CloudkmsV1::CryptoKey] crypto_key_object
         # @param [String] update_mask
         #   Required. List of fields to be updated in this request.
@@ -647,11 +631,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudkmsV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -682,15 +666,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudkmsV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -721,8 +704,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the version of a CryptoKey that will be used in Encrypt.
-        # Returns an error if called on an asymmetric key.
+        # Update the version of a CryptoKey that will be used in Encrypt. Returns an
+        # error if called on an asymmetric key.
         # @param [String] name
         #   Required. The resource name of the CryptoKey to update.
         # @param [Google::Apis::CloudkmsV1::UpdateCryptoKeyPrimaryVersionRequest] update_crypto_key_primary_version_request_object
@@ -755,12 +738,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Decrypts data that was encrypted with a public key retrieved from
-        # GetPublicKey corresponding to a CryptoKeyVersion with
-        # CryptoKey.purpose ASYMMETRIC_DECRYPT.
+        # Decrypts data that was encrypted with a public key retrieved from GetPublicKey
+        # corresponding to a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_DECRYPT.
         # @param [String] name
-        #   Required. The resource name of the CryptoKeyVersion to use for
-        #   decryption.
+        #   Required. The resource name of the CryptoKeyVersion to use for decryption.
         # @param [Google::Apis::CloudkmsV1::AsymmetricDecryptRequest] asymmetric_decrypt_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -791,9 +772,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Signs data using a CryptoKeyVersion with CryptoKey.purpose
-        # ASYMMETRIC_SIGN, producing a signature that can be verified with the public
-        # key retrieved from GetPublicKey.
+        # Signs data using a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_SIGN,
+        # producing a signature that can be verified with the public key retrieved from
+        # GetPublicKey.
         # @param [String] name
         #   Required. The resource name of the CryptoKeyVersion to use for signing.
         # @param [Google::Apis::CloudkmsV1::AsymmetricSignRequest] asymmetric_sign_request_object
@@ -826,13 +807,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new CryptoKeyVersion in a CryptoKey.
-        # The server will assign the next sequential id. If unset,
-        # state will be set to
-        # ENABLED.
+        # Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next
+        # sequential id. If unset, state will be set to ENABLED.
         # @param [String] parent
-        #   Required. The name of the CryptoKey associated with
-        #   the CryptoKeyVersions.
+        #   Required. The name of the CryptoKey associated with the CryptoKeyVersions.
         # @param [Google::Apis::CloudkmsV1::CryptoKeyVersion] crypto_key_version_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -863,16 +841,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Schedule a CryptoKeyVersion for destruction.
-        # Upon calling this method, CryptoKeyVersion.state will be set to
-        # DESTROY_SCHEDULED
-        # and destroy_time will be set to a time 24
-        # hours in the future, at which point the state
-        # will be changed to
-        # DESTROYED, and the key
-        # material will be irrevocably destroyed.
-        # Before the destroy_time is reached,
-        # RestoreCryptoKeyVersion may be called to reverse the process.
+        # Schedule a CryptoKeyVersion for destruction. Upon calling this method,
+        # CryptoKeyVersion.state will be set to DESTROY_SCHEDULED and destroy_time will
+        # be set to a time 24 hours in the future, at which point the state will be
+        # changed to DESTROYED, and the key material will be irrevocably destroyed.
+        # Before the destroy_time is reached, RestoreCryptoKeyVersion may be called to
+        # reverse the process.
         # @param [String] name
         #   Required. The resource name of the CryptoKeyVersion to destroy.
         # @param [Google::Apis::CloudkmsV1::DestroyCryptoKeyVersionRequest] destroy_crypto_key_version_request_object
@@ -935,13 +909,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the public key for the given CryptoKeyVersion. The
-        # CryptoKey.purpose must be
-        # ASYMMETRIC_SIGN or
-        # ASYMMETRIC_DECRYPT.
+        # Returns the public key for the given CryptoKeyVersion. The CryptoKey.purpose
+        # must be ASYMMETRIC_SIGN or ASYMMETRIC_DECRYPT.
         # @param [String] name
-        #   Required. The name of the CryptoKeyVersion public key to
-        #   get.
+        #   Required. The name of the CryptoKeyVersion public key to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -969,13 +940,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Imports a new CryptoKeyVersion into an existing CryptoKey using the
-        # wrapped key material provided in the request.
-        # The version ID will be assigned the next sequential id within the
-        # CryptoKey.
+        # Imports a new CryptoKeyVersion into an existing CryptoKey using the wrapped
+        # key material provided in the request. The version ID will be assigned the next
+        # sequential id within the CryptoKey.
         # @param [String] parent
-        #   Required. The name of the CryptoKey to
-        #   be imported into.
+        #   Required. The name of the CryptoKey to be imported into.
         # @param [Google::Apis::CloudkmsV1::ImportCryptoKeyVersionRequest] import_crypto_key_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1008,24 +977,22 @@ module Google
         
         # Lists CryptoKeyVersions.
         # @param [String] parent
-        #   Required. The resource name of the CryptoKey to list, in the format
-        #   `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        #   Required. The resource name of the CryptoKey to list, in the format `projects/*
+        #   /locations/*/keyRings/*/cryptoKeys/*`.
         # @param [String] filter
         #   Optional. Only include resources that match the filter in the response. For
-        #   more information, see
-        #   [Sorting and filtering list
-        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   more information, see [Sorting and filtering list results](https://cloud.
+        #   google.com/kms/docs/sorting-and-filtering).
         # @param [String] order_by
         #   Optional. Specify how the results should be sorted. If not specified, the
-        #   results will be sorted in the default order. For more information, see
-        #   [Sorting and filtering list
-        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   results will be sorted in the default order. For more information, see [
+        #   Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-
+        #   and-filtering).
         # @param [Fixnum] page_size
-        #   Optional. Optional limit on the number of CryptoKeyVersions to
-        #   include in the response. Further CryptoKeyVersions can
-        #   subsequently be obtained by including the
-        #   ListCryptoKeyVersionsResponse.next_page_token in a subsequent request.
-        #   If unspecified, the server will pick an appropriate default.
+        #   Optional. Optional limit on the number of CryptoKeyVersions to include in the
+        #   response. Further CryptoKeyVersions can subsequently be obtained by including
+        #   the ListCryptoKeyVersionsResponse.next_page_token in a subsequent request. If
+        #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
         #   Optional. Optional pagination token, returned earlier via
         #   ListCryptoKeyVersionsResponse.next_page_token.
@@ -1063,15 +1030,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a CryptoKeyVersion's metadata.
-        # state may be changed between
-        # ENABLED and
-        # DISABLED using this
-        # method. See DestroyCryptoKeyVersion and RestoreCryptoKeyVersion to
-        # move between other states.
+        # Update a CryptoKeyVersion's metadata. state may be changed between ENABLED and
+        # DISABLED using this method. See DestroyCryptoKeyVersion and
+        # RestoreCryptoKeyVersion to move between other states.
         # @param [String] name
-        #   Output only. The resource name for this CryptoKeyVersion in the format
-        #   `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
+        #   Output only. The resource name for this CryptoKeyVersion in the format `
+        #   projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
         # @param [Google::Apis::CloudkmsV1::CryptoKeyVersion] crypto_key_version_object
         # @param [String] update_mask
         #   Required. List of fields to be updated in this request.
@@ -1105,12 +1069,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Restore a CryptoKeyVersion in the
-        # DESTROY_SCHEDULED
-        # state.
-        # Upon restoration of the CryptoKeyVersion, state
-        # will be set to DISABLED,
-        # and destroy_time will be cleared.
+        # Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state. Upon restoration of
+        # the CryptoKeyVersion, state will be set to DISABLED, and destroy_time will be
+        # cleared.
         # @param [String] name
         #   Required. The resource name of the CryptoKeyVersion to restore.
         # @param [Google::Apis::CloudkmsV1::RestoreCryptoKeyVersionRequest] restore_crypto_key_version_request_object
@@ -1143,15 +1104,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a new ImportJob within a KeyRing.
-        # ImportJob.import_method is required.
+        # Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
         # @param [String] parent
-        #   Required. The name of the KeyRing associated with the
-        #   ImportJobs.
+        #   Required. The name of the KeyRing associated with the ImportJobs.
         # @param [Google::Apis::CloudkmsV1::ImportJob] import_job_object
         # @param [String] import_job_id
-        #   Required. It must be unique within a KeyRing and match the regular
-        #   expression `[a-zA-Z0-9_-]`1,63``
+        #   Required. It must be unique within a KeyRing and match the regular expression `
+        #   [a-zA-Z0-9_-]`1,63``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1212,22 +1171,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1258,23 +1214,22 @@ module Google
         
         # Lists ImportJobs.
         # @param [String] parent
-        #   Required. The resource name of the KeyRing to list, in the format
-        #   `projects/*/locations/*/keyRings/*`.
+        #   Required. The resource name of the KeyRing to list, in the format `projects/*/
+        #   locations/*/keyRings/*`.
         # @param [String] filter
         #   Optional. Only include resources that match the filter in the response. For
-        #   more information, see
-        #   [Sorting and filtering list
-        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   more information, see [Sorting and filtering list results](https://cloud.
+        #   google.com/kms/docs/sorting-and-filtering).
         # @param [String] order_by
         #   Optional. Specify how the results should be sorted. If not specified, the
-        #   results will be sorted in the default order. For more information, see
-        #   [Sorting and filtering list
-        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   results will be sorted in the default order. For more information, see [
+        #   Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-
+        #   and-filtering).
         # @param [Fixnum] page_size
         #   Optional. Optional limit on the number of ImportJobs to include in the
-        #   response. Further ImportJobs can subsequently be obtained by
-        #   including the ListImportJobsResponse.next_page_token in a subsequent
-        #   request. If unspecified, the server will pick an appropriate default.
+        #   response. Further ImportJobs can subsequently be obtained by including the
+        #   ListImportJobsResponse.next_page_token in a subsequent request. If unspecified,
+        #   the server will pick an appropriate default.
         # @param [String] page_token
         #   Optional. Optional pagination token, returned earlier via
         #   ListImportJobsResponse.next_page_token.
@@ -1310,11 +1265,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudkmsV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1345,15 +1300,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudkmsV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

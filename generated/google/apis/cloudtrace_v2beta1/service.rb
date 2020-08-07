@@ -51,15 +51,14 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a sink that exports trace spans to a destination.  The
-        # export of newly-ingested traces begins immediately, unless the sink's
-        # `writer_identity` is not permitted to write to the destination.  A sink can
-        # export traces only from the resource owning the sink (the 'parent').
+        # Creates a sink that exports trace spans to a destination. The export of newly-
+        # ingested traces begins immediately, unless the sink's `writer_identity` is not
+        # permitted to write to the destination. A sink can export traces only from the
+        # resource owning the sink (the 'parent').
         # @param [String] parent
         #   Required. The resource in which to create the sink (currently only project
-        #   sinks are supported):
-        #   "projects/[PROJECT_ID]"
-        #   Examples: `"projects/my-trace-project"`, `"projects/123456789"`.
+        #   sinks are supported): "projects/[PROJECT_ID]" Examples: `"projects/my-trace-
+        #   project"`, `"projects/123456789"`.
         # @param [Google::Apis::CloudtraceV2beta1::TraceSink] trace_sink_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -92,10 +91,9 @@ module Google
         
         # Deletes a sink.
         # @param [String] name
-        #   Required. The full resource name of the sink to delete, including the
-        #   parent resource and the sink identifier:
-        #   "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]"
-        #   Example: `"projects/12345/traceSinks/my-sink-id"`.
+        #   Required. The full resource name of the sink to delete, including the parent
+        #   resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[
+        #   SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -125,9 +123,8 @@ module Google
         
         # Get a trace sink by name under the parent resource (GCP project).
         # @param [String] name
-        #   Required. The resource name of the sink:
-        #   "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]"
-        #   Example: `"projects/12345/traceSinks/my-sink-id"`.
+        #   Required. The resource name of the sink: "projects/[PROJECT_NUMBER]/traceSinks/
+        #   [SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -158,17 +155,16 @@ module Google
         # List all sinks for the parent resource (GCP project).
         # @param [String] parent
         #   Required. The parent resource whose sinks are to be listed (currently only
-        #   project parent resources are supported):
-        #   "projects/[PROJECT_ID]"
+        #   project parent resources are supported): "projects/[PROJECT_ID]"
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request.
-        #   Non-positive values are ignored.  The presence of `nextPageToken` in the
-        #   response indicates that more results might be available.
+        #   Optional. The maximum number of results to return from this request. Non-
+        #   positive values are ignored. The presence of `nextPageToken` in the response
+        #   indicates that more results might be available.
         # @param [String] page_token
         #   Optional. If present, then retrieve the next batch of results from the
-        #   preceding call to this method.  `pageToken` must be the value of
-        #   `nextPageToken` from the previous response.  The values of other method
-        #   parameters should be identical to those in the previous call.
+        #   preceding call to this method. `pageToken` must be the value of `nextPageToken`
+        #   from the previous response. The values of other method parameters should be
+        #   identical to those in the previous call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -198,24 +194,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a sink.  This method updates fields in the existing sink according
-        # to the provided update mask. The sink's name cannot be changed nor any
-        # output-only fields (e.g. the writer_identity).
+        # Updates a sink. This method updates fields in the existing sink according to
+        # the provided update mask. The sink's name cannot be changed nor any output-
+        # only fields (e.g. the writer_identity).
         # @param [String] name
-        #   Required. The full resource name of the sink to update, including the
-        #   parent resource and the sink identifier:
-        #   "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]"
-        #   Example: `"projects/12345/traceSinks/my-sink-id"`.
+        #   Required. The full resource name of the sink to update, including the parent
+        #   resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[
+        #   SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`.
         # @param [Google::Apis::CloudtraceV2beta1::TraceSink] trace_sink_object
         # @param [String] update_mask
-        #   Required. Field mask that specifies the fields in `trace_sink` that are to
-        #   be updated. A sink field is overwritten if, and only if, it is
-        #   in the update mask.  `name` and `writer_identity` fields cannot be updated.
-        #   An empty updateMask is considered an error.
-        #   For a detailed `FieldMask` definition, see
-        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   fieldmask
-        #   Example: `updateMask=output_config`.
+        #   Required. Field mask that specifies the fields in `trace_sink` that are to be
+        #   updated. A sink field is overwritten if, and only if, it is in the update mask.
+        #   `name` and `writer_identity` fields cannot be updated. An empty updateMask is
+        #   considered an error. For a detailed `FieldMask` definition, see https://
+        #   developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask Example: `updateMask=output_config`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

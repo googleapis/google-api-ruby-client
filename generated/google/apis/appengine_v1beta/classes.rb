@@ -515,15 +515,15 @@ module Google
       
         # Unencrypted PEM encoded RSA private key. This field is set once on certificate
         # creation and then encrypted. The key size must be 2048 bits or fewer. Must
-        # include the header and footer. Example: <pre> -----BEGIN RSA PRIVATE KEY----- <
-        # unencrypted_key_value> -----END RSA PRIVATE KEY----- </pre> @InputOnly
+        # include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----
+        # END RSA PRIVATE KEY----- @InputOnly
         # Corresponds to the JSON property `privateKey`
         # @return [String]
         attr_accessor :private_key
       
         # PEM encoded x.509 public key certificate. This field is set once on
-        # certificate creation. Must include the header and footer. Example: <pre> -----
-        # BEGIN CERTIFICATE----- <certificate_value> -----END CERTIFICATE----- </pre>
+        # certificate creation. Must include the header and footer. Example: -----BEGIN
+        # CERTIFICATE----- -----END CERTIFICATE-----
         # Corresponds to the JSON property `publicCertificate`
         # @return [String]
         attr_accessor :public_certificate
@@ -731,11 +731,11 @@ module Google
       class DebugInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # Public SSH key to add to the instance. Examples:
-        # [USERNAME]:ssh-rsa [KEY_VALUE] [USERNAME]
-        # [USERNAME]:ssh-rsa [KEY_VALUE] google-ssh `"userName":"[USERNAME]","expireOn":"
-        # [EXPIRE_TIME]"`For more information, see Adding and Removing SSH Keys (https://
-        # cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).
+        # Public SSH key to add to the instance. Examples: [USERNAME]:ssh-rsa [KEY_VALUE]
+        # [USERNAME] [USERNAME]:ssh-rsa [KEY_VALUE] google-ssh `"userName":"[USERNAME]",
+        # "expireOn":"[EXPIRE_TIME]"`For more information, see Adding and Removing SSH
+        # Keys (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys)
+        # .
         # Corresponds to the JSON property `sshKey`
         # @return [String]
         attr_accessor :ssh_key
@@ -879,11 +879,9 @@ module Google
       
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for Empty is empty JSON object ``.
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # Empty is empty JSON object ``.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -1048,7 +1046,7 @@ module Google
         attr_accessor :sha1_sum
       
         # URL source to use to fetch this file. Must be a URL to a resource in Google
-        # Cloud Storage in the form 'http(s)://storage.googleapis.com/<bucket>/<object>'.
+        # Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
         # Corresponds to the JSON property `sourceUrl`
         # @return [String]
         attr_accessor :source_url
@@ -1092,7 +1090,7 @@ module Google
         # IP address or range, defined using CIDR notation, of requests that this rule
         # applies to. You can use the wildcard character "*" to match all IPs equivalent
         # to "0/0" and "::/0" together. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:
-        # db8::/32  or 2001:0db8:0000:0042:0000:8a2e:0370:7334.<p>Truncation will be
+        # db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. Truncation will be
         # silently performed on addresses which are not properly truncated. For example,
         # 1.2.3.4/24 is accepted as the same address as 1.2.3.0/24. Similarly, for IPv6,
         # 2001:db8::1/32 is accepted as the same address as 2001:db8::/32.
@@ -1654,8 +1652,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Cross-service attributes for the location. For example
-        # `"cloud.googleapis.com/region": "us-east1"`
+        # Cross-service attributes for the location. For example `"cloud.googleapis.com/
+        # region": "us-east1"`
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1800,18 +1798,16 @@ module Google
         # Google Cloud Platform sub-network where the virtual machines are created.
         # Specify the short name, not the resource path.If a subnetwork name is
         # specified, a network name will also be required unless it is for the default
-        # network.
-        # If the network that the instance is being created in is a Legacy network, then
-        # the IP address is allocated from the IPv4Range.
-        # If the network that the instance is being created in is an auto Subnet Mode
-        # Network, then only network name should be specified (not the subnetwork_name)
-        # and the IP address is created from the IPCidrRange of the subnetwork that
-        # exists in that zone for that network.
-        # If the network that the instance is being created in is a custom Subnet Mode
-        # Network, then the subnetwork_name must be specified and the IP address is
-        # created from the IPCidrRange of the subnetwork.If specified, the subnetwork
-        # must exist in the same region as the App Engine flexible environment
-        # application.
+        # network. If the network that the instance is being created in is a Legacy
+        # network, then the IP address is allocated from the IPv4Range. If the network
+        # that the instance is being created in is an auto Subnet Mode Network, then
+        # only network name should be specified (not the subnetwork_name) and the IP
+        # address is created from the IPCidrRange of the subnetwork that exists in that
+        # zone for that network. If the network that the instance is being created in is
+        # a custom Subnet Mode Network, then the subnetwork_name must be specified and
+        # the IP address is created from the IPCidrRange of the subnetwork.If specified,
+        # the subnetwork must exist in the same region as the App Engine flexible
+        # environment application.
         # Corresponds to the JSON property `subnetworkName`
         # @return [String]
         attr_accessor :subnetwork_name
@@ -2270,6 +2266,12 @@ module Google
         # @return [Float]
         attr_accessor :disk_gb
       
+        # The name of the encryption key that is stored in Google Cloud KMS. Only should
+        # be used by Cloud Composer to encrypt the vm disk
+        # Corresponds to the JSON property `kmsKeyReference`
+        # @return [String]
+        attr_accessor :kms_key_reference
+      
         # Memory (GB) needed.
         # Corresponds to the JSON property `memoryGb`
         # @return [Float]
@@ -2288,6 +2290,7 @@ module Google
         def update!(**args)
           @cpu = args[:cpu] if args.key?(:cpu)
           @disk_gb = args[:disk_gb] if args.key?(:disk_gb)
+          @kms_key_reference = args[:kms_key_reference] if args.key?(:kms_key_reference)
           @memory_gb = args[:memory_gb] if args.key?(:memory_gb)
           @volumes = args[:volumes] if args.key?(:volumes)
         end
@@ -2801,9 +2804,9 @@ module Google
         attr_accessor :inbound_services
       
         # Instance class that is used to run this version. Valid values are:
-        # AutomaticScaling: F1, F2, F4, F4_1G
-        # ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for
-        # AutomaticScaling and B1 for ManualScaling or BasicScaling.
+        # AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4,
+        # B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or
+        # BasicScaling.
         # Corresponds to the JSON property `instanceClass`
         # @return [String]
         attr_accessor :instance_class
@@ -2861,7 +2864,7 @@ module Google
       
         # The version of the API in the given runtime environment. Please see the app.
         # yaml reference for valid values at https://cloud.google.com/appengine/docs/
-        # standard/<language>/config/appref
+        # standard//config/appref
         # Corresponds to the JSON property `runtimeApiVersion`
         # @return [String]
         attr_accessor :runtime_api_version
@@ -3023,7 +3026,7 @@ module Google
         attr_accessor :files_count
       
         # URL of the zip file to deploy from. Must be a URL to a resource in Google
-        # Cloud Storage in the form 'http(s)://storage.googleapis.com/<bucket>/<object>'.
+        # Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
         # Corresponds to the JSON property `sourceUrl`
         # @return [String]
         attr_accessor :source_url

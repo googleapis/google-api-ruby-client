@@ -55,9 +55,9 @@ module Google
         # create permission on the specified project. For more information, see Google
         # Cloud IAM (https://cloud.google.com/iam).
         # @param [String] parent
-        #   Required. The project on which to execute the request. The format is:
-        #   projects/[PROJECT_ID_OR_NUMBER]
-        #   The [PROJECT_ID_OR_NUMBER] must match the dashboard resource name.
+        #   Required. The project on which to execute the request. The format is: projects/
+        #   [PROJECT_ID_OR_NUMBER] The [PROJECT_ID_OR_NUMBER] must match the dashboard
+        #   resource name.
         # @param [Google::Apis::MonitoringV1::Dashboard] dashboard_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -92,8 +92,8 @@ module Google
         # dashboards.delete permission on the specified dashboard. For more information,
         # see Google Cloud IAM (https://cloud.google.com/iam).
         # @param [String] name
-        #   Required. The resource name of the Dashboard. The format is:
-        #   projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID]
+        #   Required. The resource name of the Dashboard. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID]
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -125,10 +125,9 @@ module Google
         # get permission on the specified dashboard. For more information, see Google
         # Cloud IAM (https://cloud.google.com/iam).
         # @param [String] name
-        #   Required. The resource name of the Dashboard. The format is one of:
-        #   dashboards/[DASHBOARD_ID] (for system dashboards)
-        #   projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID]  (for custom
-        #   dashboards).
+        #   Required. The resource name of the Dashboard. The format is one of: dashboards/
+        #   [DASHBOARD_ID] (for system dashboards) projects/[PROJECT_ID_OR_NUMBER]/
+        #   dashboards/[DASHBOARD_ID] (for custom dashboards).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -160,8 +159,8 @@ module Google
         # list permission on the specified project. For more information, see Google
         # Cloud IAM (https://cloud.google.com/iam).
         # @param [String] parent
-        #   Required. The scope of the dashboards to list. The format is:
-        #   projects/[PROJECT_ID_OR_NUMBER]
+        #   Required. The scope of the dashboards to list. The format is: projects/[
+        #   PROJECT_ID_OR_NUMBER]
         # @param [Fixnum] page_size
         #   A positive number that is the maximum number of results to return. If
         #   unspecified, a default of 1000 is used.

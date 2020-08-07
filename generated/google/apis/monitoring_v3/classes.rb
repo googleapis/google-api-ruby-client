@@ -172,9 +172,8 @@ module Google
         attr_accessor :mutation_record
       
         # Required if the policy exists. The resource name for this policy. The format
-        # is:
-        # projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
-        # [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
+        # is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [
+        # ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
         # created. When calling the alertPolicies.create method, do not include the name
         # field in the alerting policy passed as part of the request.
         # Corresponds to the JSON property `name`
@@ -366,7 +365,7 @@ module Google
       
         # Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (=
         # N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1):
-        # boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
+        # boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
         # least one element. If bounds has only one element, then there are no finite
         # buckets, and that single element is the common boundary of the overflow and
         # underflow buckets.
@@ -378,7 +377,7 @@ module Google
         # proportional to the value of the lower bound. Each bucket represents a
         # constant relative uncertainty on a specific value in the bucket.There are
         # num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:
-        # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).  Lower bound (1 <= i <
+        # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i <
         # N): scale * (growth_factor ^ (i - 1)).
         # Corresponds to the JSON property `exponentialBuckets`
         # @return [Google::Apis::MonitoringV3::Exponential]
@@ -388,8 +387,7 @@ module Google
         # overflow and underflow). Each bucket represents a constant absolute
         # uncertainty on the specific value in the bucket.There are num_finite_buckets +
         # 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-
-        # 1): offset + (width * i).  Lower bound (1 <= i < N): offset + (width * (i - 1))
-        # .
+        # 1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
         # Corresponds to the JSON property `linearBuckets`
         # @return [Google::Apis::MonitoringV3::Linear]
         attr_accessor :linear_buckets
@@ -660,20 +658,19 @@ module Google
         attr_accessor :display_name
       
         # Required if the condition exists. The unique resource name for this condition.
-        # Its format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[
-        # CONDITION_ID]
-        # [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is
-        # created as part of a new or updated alerting policy.When calling the
-        # alertPolicies.create method, do not include the name field in the conditions
-        # of the requested alerting policy. Stackdriver Monitoring creates the condition
-        # identifiers and includes them in the new policy.When calling the alertPolicies.
-        # update method to update a policy, including a condition name causes the
-        # existing condition to be updated. Conditions without names are added to the
-        # updated policy. Existing conditions are deleted if they are not updated.Best
-        # practice is to preserve [CONDITION_ID] if you make only small changes, such as
-        # those to condition thresholds, durations, or trigger values. Otherwise, treat
-        # the change as a new condition and let the existing condition be deleted.
+        # Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/
+        # conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring
+        # when the condition is created as part of a new or updated alerting policy.When
+        # calling the alertPolicies.create method, do not include the name field in the
+        # conditions of the requested alerting policy. Stackdriver Monitoring creates
+        # the condition identifiers and includes them in the new policy.When calling the
+        # alertPolicies.update method to update a policy, including a condition name
+        # causes the existing condition to be updated. Conditions without names are
+        # added to the updated policy. Existing conditions are deleted if they are not
+        # updated.Best practice is to preserve [CONDITION_ID] if you make only small
+        # changes, such as those to condition thresholds, durations, or trigger values.
+        # Otherwise, treat the change as a new condition and let the existing condition
+        # be deleted.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -693,8 +690,8 @@ module Google
       
       # Optional. Used to perform content matching. This allows matching based on
       # substrings and regular expressions, together with their negations. Only the
-      # first 4&nbsp;MB of an HTTP or HTTPS check's response (and the first 1&nbsp;MB
-      # of a TCP check's response) are examined for purposes of content matching.
+      # first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP
+      # check's response) are examined for purposes of content matching.
       class ContentMatcher
         include Google::Apis::Core::Hashable
       
@@ -746,10 +743,8 @@ module Google
         # attributes according to the schema. For example, a particular Compute Engine
         # VM instance could be represented by the following object, because the
         # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone":
-        # ` "type": "gce_instance",
-        # "labels": ` "instance_id": "12345678901234",
-        # "zone": "us-central1-a" ``
+        # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
+        # zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :resource
@@ -929,11 +924,10 @@ module Google
         attr_accessor :range
       
         # The sum of squared deviations from the mean of the values in the population.
-        # For values x_i this is:
-        # Sum[i=1..n]((x_i - mean)^2)
-        # Knuth, "The Art of Computer Programming", Vol. 2, page 323, 3rd edition
-        # describes Welford's method for accumulating this sum in one pass.If count is
-        # zero then this field must be zero.
+        # For values x_i this is: Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of
+        # Computer Programming", Vol. 2, page 323, 3rd edition describes Welford's
+        # method for accumulating this sum in one pass.If count is zero then this field
+        # must be zero.
         # Corresponds to the JSON property `sumOfSquaredDeviation`
         # @return [Float]
         attr_accessor :sum_of_squared_deviation
@@ -955,16 +949,16 @@ module Google
       end
       
       # A DistributionCut defines a TimeSeries and thresholds used for measuring good
-      # service and total service. The TimeSeries must have ValueType =
-      # DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed
-      # good_service will be the count of values x in the Distribution such that range.
-      # min <= x < range.max.
+      # service and total service. The TimeSeries must have ValueType = DISTRIBUTION
+      # and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service
+      # will be the count of values x in the Distribution such that range.min <= x <
+      # range.max.
       class DistributionCut
         include Google::Apis::Core::Hashable
       
         # A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
-        # specifying a TimeSeries aggregating values. Must have ValueType =
-        # DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
+        # specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION
+        # and MetricKind = DELTA or MetricKind = CUMULATIVE.
         # Corresponds to the JSON property `distributionFilter`
         # @return [String]
         attr_accessor :distribution_filter
@@ -1048,11 +1042,9 @@ module Google
       
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for Empty is empty JSON object ``.
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # Empty is empty JSON object ``.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -1105,7 +1097,7 @@ module Google
       
         # Contextual information about the example value. Examples are:Trace: type.
         # googleapis.com/google.monitoring.v3.SpanContextLiteral string: type.googleapis.
-        # com/google.protobuf.StringValueLabels dropped during aggregation:  type.
+        # com/google.protobuf.StringValueLabels dropped during aggregation: type.
         # googleapis.com/google.monitoring.v3.DroppedLabelsThere may be only a single
         # attachment of any given message type in a single exemplar, and this is
         # enforced by the system.
@@ -1138,7 +1130,7 @@ module Google
       
       # Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (=
       # N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1):
-      # boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
+      # boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
       # least one element. If bounds has only one element, then there are no finite
       # buckets, and that single element is the common boundary of the overflow and
       # underflow buckets.
@@ -1164,7 +1156,7 @@ module Google
       # proportional to the value of the lower bound. Each bucket represents a
       # constant relative uncertainty on a specific value in the bucket.There are
       # num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:
-      # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).  Lower bound (1 <= i <
+      # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i <
       # N): scale * (growth_factor ^ (i - 1)).
       class Exponential
         include Google::Apis::Core::Hashable
@@ -1396,18 +1388,17 @@ module Google
         attr_accessor :is_cluster
         alias_method :is_cluster?, :is_cluster
       
-        # Output only. The name of this group. The format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-        # When creating a group, this field is ignored and a new name is created
-        # consisting of the project specified in the call to CreateGroup and a unique [
-        # GROUP_ID] that is generated automatically.
+        # Output only. The name of this group. The format is: projects/[
+        # PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is
+        # ignored and a new name is created consisting of the project specified in the
+        # call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The name of the group's parent, if it has one. The format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-        # For groups with no parent, parent_name is the empty string, "".
+        # The name of the group's parent, if it has one. The format is: projects/[
+        # PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name
+        # is the empty string, "".
         # Corresponds to the JSON property `parentName`
         # @return [String]
         attr_accessor :parent_name
@@ -1548,9 +1539,9 @@ module Google
         # @return [String]
         attr_accessor :gcp_zone
       
-        # A unique resource name for this InternalChecker. The format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID]
-        # [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime
+        # A unique resource name for this InternalChecker. The format is: projects/[
+        # PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [
+        # PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime
         # check config associated with the internal checker.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1597,11 +1588,10 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The key for this label. The key must meet the following criteria:
-        # Does not exceed 100 characters.
-        # Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]*
-        # The first character must be an upper- or lower-case letter.
-        # The remaining characters must be letters, digits, or underscores.
+        # The key for this label. The key must meet the following criteria: Does not
+        # exceed 100 characters. Matches the following regular expression: [a-zA-Z][a-zA-
+        # Z0-9_]* The first character must be an upper- or lower-case letter. The
+        # remaining characters must be letters, digits, or underscores.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -1679,8 +1669,7 @@ module Google
       # overflow and underflow). Each bucket represents a constant absolute
       # uncertainty on the specific value in the bucket.There are num_finite_buckets +
       # 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-
-      # 1): offset + (width * i).  Lower bound (1 <= i < N): offset + (width * (i - 1))
-      # .
+      # 1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
       class Linear
         include Google::Apis::Core::Hashable
       
@@ -2210,14 +2199,12 @@ module Google
       # Defines a metric type and its schema. Once a metric descriptor is created,
       # deleting or altering it stops data collection and makes the metric type's
       # existing data unusable.The following are specific rules for service defined
-      # Monitoring metric descriptors:
-      # type, metric_kind, value_type and description  fields are all required. The
-      # unit field must be specified  if the value_type is any of DOUBLE, INT64,
-      # DISTRIBUTION.
-      # Maximum of default 500 metric descriptors per service is allowed.
-      # Maximum of default 10 labels per metric descriptor is allowed.The default
-      # maximum limit can be overridden. Please follow https://cloud.google.com/
-      # monitoring/quotas
+      # Monitoring metric descriptors: type, metric_kind, value_type and description
+      # fields are all required. The unit field must be specified if the value_type is
+      # any of DOUBLE, INT64, DISTRIBUTION. Maximum of default 500 metric descriptors
+      # per service is allowed. Maximum of default 10 labels per metric descriptor is
+      # allowed.The default maximum limit can be overridden. Please follow https://
+      # cloud.google.com/monitoring/quotas
       class MetricDescriptor
         include Google::Apis::Core::Hashable
       
@@ -2235,10 +2222,9 @@ module Google
         attr_accessor :display_name
       
         # The set of labels that can be used to describe a specific instance of this
-        # metric type.The label key name must follow:
-        # Only upper and lower-case letters, digits and underscores (_) are  allowed.
-        # Label name must start with a letter or digit.
-        # The maximum length of a label name is 100 characters.For example, the
+        # metric type.The label key name must follow: Only upper and lower-case letters,
+        # digits and underscores (_) are allowed. Label name must start with a letter or
+        # digit. The maximum length of a label name is 100 characters.For example, the
         # appengine.googleapis.com/http/server/response_latencies metric type has a
         # label for the HTTP response code, response_code, so you can look at latencies
         # for successful responses or just for responses that failed.
@@ -2278,16 +2264,14 @@ module Google
         # The metric type, including its DNS name prefix. The type is not URL-encoded.
         # All service defined metrics must be prefixed with the service name, in the
         # format of `service name`/`relative metric name`, such as cloudsql.googleapis.
-        # com/database/cpu/utilization. The relative metric name must follow:
-        # Only upper and lower-case letters, digits, '/' and underscores '_' are
-        # allowed.
-        # The maximum number of characters allowed for the relative_metric_name is  100.
-        # All user-defined metric types have the DNS name custom.googleapis.com,
-        # external.googleapis.com, or logging.googleapis.com/user/.Metric types should
-        # use a natural hierarchical grouping. For example:
-        # "custom.googleapis.com/invoice/paid/amount"
-        # "external.googleapis.com/prometheus/up"
-        # "appengine.googleapis.com/http/server/response_latencies"
+        # com/database/cpu/utilization. The relative metric name must follow: Only upper
+        # and lower-case letters, digits, '/' and underscores '_' are allowed. The
+        # maximum number of characters allowed for the relative_metric_name is 100.All
+        # user-defined metric types have the DNS name custom.googleapis.com, external.
+        # googleapis.com, or logging.googleapis.com/user/.Metric types should use a
+        # natural hierarchical grouping. For example: "custom.googleapis.com/invoice/
+        # paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/
+        # http/server/response_latencies"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2306,65 +2290,34 @@ module Google
         # a DOUBLE CUMULATIVE metric whose unit is ks`CPU`, and then write the value 12.
         # 005 (which is 12005/1000), or use Kis`CPU` and write 11.723 (which is 12005/
         # 1024).The supported units are a subset of The Unified Code for Units of
-        # Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)
-        # bit bit
-        # By byte
-        # s second
-        # min minute
-        # h hour
-        # d day
-        # 1 dimensionlessPrefixes (PREFIX)
-        # k kilo (10^3)
-        # M mega (10^6)
-        # G giga (10^9)
-        # T tera (10^12)
-        # P peta (10^15)
-        # E exa (10^18)
-        # Z zetta (10^21)
-        # Y yotta (10^24)
-        # m milli (10^-3)
-        # u micro (10^-6)
-        # n nano (10^-9)
-        # p pico (10^-12)
-        # f femto (10^-15)
-        # a atto (10^-18)
-        # z zepto (10^-21)
-        # y yocto (10^-24)
-        # Ki kibi (2^10)
-        # Mi mebi (2^20)
-        # Gi gibi (2^30)
-        # Ti tebi (2^40)
-        # Pi pebi (2^50)GrammarThe grammar also includes these connectors:
-        # / division or ratio (as an infix operator). For examples,  kBy/`email` or MiBy/
-        # 10ms (although you should almost never  have /s in a metric unit; rates should
-        # always be computed at  query time from the underlying cumulative or delta
-        # value).
-        # . multiplication or composition (as an infix operator). For  examples, GBy.d
-        # or k`watt`.h.The grammar for a unit is as follows:
-        # Expression = Component ` "." Component ` ` "/" Component ` ;
-        # Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ]
-        # | Annotation
-        # | "1"
-        # ;
-        # Annotation = "`" NAME "`" ;
-        # Notes:
-        # Annotation is just a comment if it follows a UNIT. If the annotation  is used
-        # alone, then the unit is equivalent to 1. For examples,  `request`/s == 1/s, By`
-        # transmitted`/s == By/s.
-        # NAME is a sequence of non-blank printable ASCII characters not  containing `
-        # or `.
-        # 1 represents a unitary dimensionless  unit (https://en.wikipedia.org/wiki/
-        # Dimensionless_quantity) of 1, such  as in 1/s. It is typically used when none
-        # of the basic units are  appropriate. For example, "new users per day" can be
-        # represented as  1/d or `new-users`/d (and a metric value 5 would mean "5 new
-        # users). Alternatively, "thousands of page views per day" would be  represented
-        # as 1000/d or k1/d or k`page_views`/d (and a metric  value of 5.3 would mean "
-        # 5300 page views per day").
-        # % represents dimensionless value of 1/100, and annotates values giving  a
-        # percentage (so the metric values are typically in the range of 0..100,  and a
-        # metric value 3 means "3 percent").
-        # 10^2.% indicates a metric contains a ratio, typically in the range  0..1, that
-        # will be multiplied by 100 and displayed as a percentage  (so a metric value 0.
+        # Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT) bit
+        # bit By byte s second min minute h hour d day 1 dimensionlessPrefixes (PREFIX)
+        # k kilo (10^3) M mega (10^6) G giga (10^9) T tera (10^12) P peta (10^15) E exa (
+        # 10^18) Z zetta (10^21) Y yotta (10^24) m milli (10^-3) u micro (10^-6) n nano (
+        # 10^-9) p pico (10^-12) f femto (10^-15) a atto (10^-18) z zepto (10^-21) y
+        # yocto (10^-24) Ki kibi (2^10) Mi mebi (2^20) Gi gibi (2^30) Ti tebi (2^40) Pi
+        # pebi (2^50)GrammarThe grammar also includes these connectors: / division or
+        # ratio (as an infix operator). For examples, kBy/`email` or MiBy/10ms (although
+        # you should almost never have /s in a metric unit; rates should always be
+        # computed at query time from the underlying cumulative or delta value). .
+        # multiplication or composition (as an infix operator). For examples, GBy.d or k`
+        # watt`.h.The grammar for a unit is as follows: Expression = Component ` "."
+        # Component ` ` "/" Component ` ; Component = ( [ PREFIX ] UNIT | "%" ) [
+        # Annotation ] | Annotation | "1" ; Annotation = "`" NAME "`" ; Notes:
+        # Annotation is just a comment if it follows a UNIT. If the annotation is used
+        # alone, then the unit is equivalent to 1. For examples, `request`/s == 1/s, By`
+        # transmitted`/s == By/s. NAME is a sequence of non-blank printable ASCII
+        # characters not containing ` or `. 1 represents a unitary dimensionless unit (
+        # https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in 1/s. It
+        # is typically used when none of the basic units are appropriate. For example, "
+        # new users per day" can be represented as 1/d or `new-users`/d (and a metric
+        # value 5 would mean "5 new users). Alternatively, "thousands of page views per
+        # day" would be represented as 1000/d or k1/d or k`page_views`/d (and a metric
+        # value of 5.3 would mean "5300 page views per day"). % represents dimensionless
+        # value of 1/100, and annotates values giving a percentage (so the metric values
+        # are typically in the range of 0..100, and a metric value 3 means "3 percent").
+        # 10^2.% indicates a metric contains a ratio, typically in the range 0..1, that
+        # will be multiplied by 100 and displayed as a percentage (so a metric value 0.
         # 03 means "3 percent").
         # Corresponds to the JSON property `unit`
         # @return [String]
@@ -2570,10 +2523,8 @@ module Google
       # attributes according to the schema. For example, a particular Compute Engine
       # VM instance could be represented by the following object, because the
       # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-      # zone":
-      # ` "type": "gce_instance",
-      # "labels": ` "instance_id": "12345678901234",
-      # "zone": "us-central1-a" ``
+      # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
+      # zone": "us-central1-a" ``
       class MonitoredResource
         include Google::Apis::Core::Hashable
       
@@ -2609,18 +2560,14 @@ module Google
       # the use of the labels "instance_id" and "zone" to identify particular VM
       # instances.Different services can support different monitored resource types.
       # The following are specific rules to service defined monitored resources for
-      # Monitoring and Logging:
-      # The type, display_name, description, labels and launch_stage  fields are all
-      # required.
-      # The first label of the monitored resource descriptor must be
-      # resource_container. There are legacy monitored resource descritptors  start
-      # with project_id.
-      # It must include a location label.
-      # Maximum of default 5 service defined monitored resource descriptors  is
-      # allowed per service.
-      # Maximum of default 10 labels per monitored resource is allowed.The default
-      # maximum limit can be overridden. Please follow https://cloud.google.com/
-      # monitoring/quotas
+      # Monitoring and Logging: The type, display_name, description, labels and
+      # launch_stage fields are all required. The first label of the monitored
+      # resource descriptor must be resource_container. There are legacy monitored
+      # resource descritptors start with project_id. It must include a location label.
+      # Maximum of default 5 service defined monitored resource descriptors is allowed
+      # per service. Maximum of default 10 labels per monitored resource is allowed.
+      # The default maximum limit can be overridden. Please follow https://cloud.
+      # google.com/monitoring/quotas
       class MonitoredResourceDescriptor
         include Google::Apis::Core::Hashable
       
@@ -2638,12 +2585,11 @@ module Google
         attr_accessor :display_name
       
         # Required. A set of labels used to describe instances of this monitored
-        # resource type. The label key name must follow:
-        # Only upper and lower-case letters, digits and underscores (_) are  allowed.
-        # Label name must start with a letter or digit.
-        # The maximum length of a label name is 100 characters.For example, an
-        # individual Google Cloud SQL database is identified by values for the labels
-        # database_id and location.
+        # resource type. The label key name must follow: Only upper and lower-case
+        # letters, digits and underscores (_) are allowed. Label name must start with a
+        # letter or digit. The maximum length of a label name is 100 characters.For
+        # example, an individual Google Cloud SQL database is identified by values for
+        # the labels database_id and location.
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
         attr_accessor :labels
@@ -2667,11 +2613,10 @@ module Google
         # represents databases in Google Cloud SQL.All service defined monitored
         # resource types must be prefixed with the service name, in the format of `
         # service name`/`relative resource name`. The relative resource name must follow:
-        # Only upper and lower-case letters and digits are allowed.
-        # It must start with upper case character and is recommended to use Upper  Camel
-        # Case style.
-        # The maximum number of characters allowed for the relative_resource_name  is
-        # 100.Note there are legacy service monitored resources not following this rule.
+        # Only upper and lower-case letters and digits are allowed. It must start with
+        # upper case character and is recommended to use Upper Camel Case style. The
+        # maximum number of characters allowed for the relative_resource_name is 100.
+        # Note there are legacy service monitored resources not following this rule.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2702,10 +2647,8 @@ module Google
         # Output only. Values for predefined system metadata labels. System labels are a
         # kind of metadata extracted by Google, including "machine_image", "vpc", "
         # subnet_id", "security_group", "name", etc. System label values can be only
-        # strings, Boolean values, or a list of strings. For example:
-        # ` "name": "my-test-instance",
-        # "security_group": ["a", "b", "c"],
-        # "spot_instance": false `
+        # strings, Boolean values, or a list of strings. For example: ` "name": "my-test-
+        # instance", "security_group": ["a", "b", "c"], "spot_instance": false `
         # Corresponds to the JSON property `systemLabels`
         # @return [Hash<String,Object>]
         attr_accessor :system_labels
@@ -2792,9 +2735,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The full REST resource name for this channel. The format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
-        # The [CHANNEL_ID] is automatically assigned by the server on creation.
+        # The full REST resource name for this channel. The format is: projects/[
+        # PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is
+        # automatically assigned by the server on creation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2879,9 +2822,9 @@ module Google
         # @return [String]
         attr_accessor :launch_stage
       
-        # The full REST resource name for this descriptor. The format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[TYPE]
-        # In the above, [TYPE] is the value of the type field.
+        # The full REST resource name for this descriptor. The format is: projects/[
+        # PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[TYPE] In the above, [
+        # TYPE] is the value of the type field.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2984,27 +2927,25 @@ module Google
         # A closed time interval. It extends from the start time to the end time, and
         # includes both: [startTime, endTime]. Valid time intervals depend on the
         # MetricKind of the metric value. In no case can the end time be earlier than
-        # the start time.
-        # For GAUGE metrics, the startTime value is technically optional; if  no value
-        # is specified, the start time defaults to the value of the  end time, and the
-        # interval represents a single point in time. If both  start and end times are
-        # specified, they must be identical. Such an  interval is valid only for GAUGE
-        # metrics, which are point-in-time  measurements. The end time of a new interval
-        # must be at least a  millisecond after the end time of the previous interval.
-        # For DELTA metrics, the start time and end time must specify a  non-zero
-        # interval, with subsequent points specifying contiguous and  non-overlapping
-        # intervals. For DELTA metrics, the start time of  the next interval must be at
-        # least a millisecond after the end time  of the previous interval.
-        # For CUMULATIVE metrics, the start time and end time must specify a  a non-zero
-        # interval, with subsequent points specifying the same  start time and
-        # increasing end times, until an event resets the  cumulative value to zero and
-        # sets a new start time for the following  points. The new start time must be at
-        # least a millisecond after the  end time of the previous interval.
-        # The start time of a new interval must be at least a millisecond after the  end
-        # time of the previous interval because intervals are closed. If the  start time
-        # of a new interval is the same as the end time of the previous  interval, then
-        # data written at the new start time could overwrite data  written at the
-        # previous end time.
+        # the start time. For GAUGE metrics, the startTime value is technically optional;
+        # if no value is specified, the start time defaults to the value of the end
+        # time, and the interval represents a single point in time. If both start and
+        # end times are specified, they must be identical. Such an interval is valid
+        # only for GAUGE metrics, which are point-in-time measurements. The end time of
+        # a new interval must be at least a millisecond after the end time of the
+        # previous interval. For DELTA metrics, the start time and end time must specify
+        # a non-zero interval, with subsequent points specifying contiguous and non-
+        # overlapping intervals. For DELTA metrics, the start time of the next interval
+        # must be at least a millisecond after the end time of the previous interval.
+        # For CUMULATIVE metrics, the start time and end time must specify a a non-zero
+        # interval, with subsequent points specifying the same start time and increasing
+        # end times, until an event resets the cumulative value to zero and sets a new
+        # start time for the following points. The new start time must be at least a
+        # millisecond after the end time of the previous interval. The start time of a
+        # new interval must be at least a millisecond after the end time of the previous
+        # interval because intervals are closed. If the start time of a new interval is
+        # the same as the end time of the previous interval, then data written at the
+        # new start time could overwrite data written at the previous end time.
         # Corresponds to the JSON property `interval`
         # @return [Google::Apis::MonitoringV3::TimeInterval]
         attr_accessor :interval
@@ -3034,27 +2975,25 @@ module Google
         # A closed time interval. It extends from the start time to the end time, and
         # includes both: [startTime, endTime]. Valid time intervals depend on the
         # MetricKind of the metric value. In no case can the end time be earlier than
-        # the start time.
-        # For GAUGE metrics, the startTime value is technically optional; if  no value
-        # is specified, the start time defaults to the value of the  end time, and the
-        # interval represents a single point in time. If both  start and end times are
-        # specified, they must be identical. Such an  interval is valid only for GAUGE
-        # metrics, which are point-in-time  measurements. The end time of a new interval
-        # must be at least a  millisecond after the end time of the previous interval.
-        # For DELTA metrics, the start time and end time must specify a  non-zero
-        # interval, with subsequent points specifying contiguous and  non-overlapping
-        # intervals. For DELTA metrics, the start time of  the next interval must be at
-        # least a millisecond after the end time  of the previous interval.
-        # For CUMULATIVE metrics, the start time and end time must specify a  a non-zero
-        # interval, with subsequent points specifying the same  start time and
-        # increasing end times, until an event resets the  cumulative value to zero and
-        # sets a new start time for the following  points. The new start time must be at
-        # least a millisecond after the  end time of the previous interval.
-        # The start time of a new interval must be at least a millisecond after the  end
-        # time of the previous interval because intervals are closed. If the  start time
-        # of a new interval is the same as the end time of the previous  interval, then
-        # data written at the new start time could overwrite data  written at the
-        # previous end time.
+        # the start time. For GAUGE metrics, the startTime value is technically optional;
+        # if no value is specified, the start time defaults to the value of the end
+        # time, and the interval represents a single point in time. If both start and
+        # end times are specified, they must be identical. Such an interval is valid
+        # only for GAUGE metrics, which are point-in-time measurements. The end time of
+        # a new interval must be at least a millisecond after the end time of the
+        # previous interval. For DELTA metrics, the start time and end time must specify
+        # a non-zero interval, with subsequent points specifying contiguous and non-
+        # overlapping intervals. For DELTA metrics, the start time of the next interval
+        # must be at least a millisecond after the end time of the previous interval.
+        # For CUMULATIVE metrics, the start time and end time must specify a a non-zero
+        # interval, with subsequent points specifying the same start time and increasing
+        # end times, until an event resets the cumulative value to zero and sets a new
+        # start time for the following points. The new start time must be at least a
+        # millisecond after the end time of the previous interval. The start time of a
+        # new interval must be at least a millisecond after the end time of the previous
+        # interval because intervals are closed. If the start time of a new interval is
+        # the same as the end time of the previous interval, then data written at the
+        # new start time could overwrite data written at the previous end time.
         # Corresponds to the JSON property `timeInterval`
         # @return [Google::Apis::MonitoringV3::TimeInterval]
         attr_accessor :time_interval
@@ -3180,20 +3119,20 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A DistributionCut defines a TimeSeries and thresholds used for measuring good
-        # service and total service. The TimeSeries must have ValueType =
-        # DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed
-        # good_service will be the count of values x in the Distribution such that range.
-        # min <= x < range.max.
+        # service and total service. The TimeSeries must have ValueType = DISTRIBUTION
+        # and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service
+        # will be the count of values x in the Distribution such that range.min <= x <
+        # range.max.
         # Corresponds to the JSON property `distributionCut`
         # @return [Google::Apis::MonitoringV3::DistributionCut]
         attr_accessor :distribution_cut
       
         # A TimeSeriesRatio specifies two TimeSeries to use for computing the
         # good_service / total_service ratio. The specified TimeSeries must have
-        # ValueType = DOUBLE or ValueType = INT64 and must have MetricKind =
-        # DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two
-        # of good, bad, and total, and the relationship good_service +
-        # bad_service = total_service will be assumed.
+        # ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or
+        # MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two of good,
+        # bad, and total, and the relationship good_service + bad_service =
+        # total_service will be assumed.
         # Corresponds to the JSON property `goodTotalRatio`
         # @return [Google::Apis::MonitoringV3::TimeSeriesRatio]
         attr_accessor :good_total_ratio
@@ -3288,8 +3227,8 @@ module Google
         # @return [Google::Apis::MonitoringV3::MeshIstio]
         attr_accessor :mesh_istio
       
-        # Resource name for this Service. The format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+        # Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/
+        # services/[SERVICE_ID]
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3320,15 +3259,14 @@ module Google
       # some services, the SLI is well-defined. In such cases, the SLI can be
       # described easily by referencing the well-known SLI and providing the needed
       # parameters. Alternatively, a "custom" SLI can be defined with a query to the
-      # underlying metric store. An SLI is defined to be good_service /
-      # total_service over any queried time interval. The value of performance always
-      # falls into the range 0 <= performance <= 1. A custom SLI describes how to
-      # compute this ratio, whether this is by dividing values from a pair of time
-      # series, cutting a Distribution into good and bad counts, or counting time
-      # windows in which the service complies with a criterion. For separation of
-      # concerns, a single Service-Level Indicator measures performance for only one
-      # aspect of service quality, such as fraction of successful queries or fast-
-      # enough queries.
+      # underlying metric store. An SLI is defined to be good_service / total_service
+      # over any queried time interval. The value of performance always falls into the
+      # range 0 <= performance <= 1. A custom SLI describes how to compute this ratio,
+      # whether this is by dividing values from a pair of time series, cutting a
+      # Distribution into good and bad counts, or counting time windows in which the
+      # service complies with a criterion. For separation of concerns, a single
+      # Service-Level Indicator measures performance for only one aspect of service
+      # quality, such as fraction of successful queries or fast-enough queries.
       class ServiceLevelIndicator
         include Google::Apis::Core::Hashable
       
@@ -3375,9 +3313,8 @@ module Google
       class ServiceLevelObjective
         include Google::Apis::Core::Hashable
       
-        # A calendar period, semantically "since the start of the current <
-        # calendar_period>". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are
-        # supported.
+        # A calendar period, semantically "since the start of the current ". At this
+        # time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
         # Corresponds to the JSON property `calendarPeriod`
         # @return [String]
         attr_accessor :calendar_period
@@ -3393,15 +3330,14 @@ module Google
         # @return [Float]
         attr_accessor :goal
       
-        # Resource name for this ServiceLevelObjective. The format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[
-        # SLO_NAME]
+        # Resource name for this ServiceLevelObjective. The format is: projects/[
+        # PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # A rolling time period, semantically "in the past <rolling_period>". Must be an
-        # integer multiple of 1 day no larger than 30 days.
+        # A rolling time period, semantically "in the past ". Must be an integer
+        # multiple of 1 day no larger than 30 days.
         # Corresponds to the JSON property `rollingPeriod`
         # @return [String]
         attr_accessor :rolling_period
@@ -3410,15 +3346,14 @@ module Google
         # some services, the SLI is well-defined. In such cases, the SLI can be
         # described easily by referencing the well-known SLI and providing the needed
         # parameters. Alternatively, a "custom" SLI can be defined with a query to the
-        # underlying metric store. An SLI is defined to be good_service /
-        # total_service over any queried time interval. The value of performance always
-        # falls into the range 0 <= performance <= 1. A custom SLI describes how to
-        # compute this ratio, whether this is by dividing values from a pair of time
-        # series, cutting a Distribution into good and bad counts, or counting time
-        # windows in which the service complies with a criterion. For separation of
-        # concerns, a single Service-Level Indicator measures performance for only one
-        # aspect of service quality, such as fraction of successful queries or fast-
-        # enough queries.
+        # underlying metric store. An SLI is defined to be good_service / total_service
+        # over any queried time interval. The value of performance always falls into the
+        # range 0 <= performance <= 1. A custom SLI describes how to compute this ratio,
+        # whether this is by dividing values from a pair of time series, cutting a
+        # Distribution into good and bad counts, or counting time windows in which the
+        # service complies with a criterion. For separation of concerns, a single
+        # Service-Level Indicator measures performance for only one aspect of service
+        # quality, such as fraction of successful queries or fast-enough queries.
         # Corresponds to the JSON property `serviceLevelIndicator`
         # @return [Google::Apis::MonitoringV3::ServiceLevelIndicator]
         attr_accessor :service_level_indicator
@@ -3460,17 +3395,16 @@ module Google
       end
       
       # The context of a span, attached to Exemplars in Distribution values during
-      # aggregation.It contains the name of a span with format:
-      # projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+      # aggregation.It contains the name of a span with format: projects/[
+      # PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
       class SpanContext
         include Google::Apis::Core::Hashable
       
-        # The resource name of the span. The format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
-        # [TRACE_ID] is a unique identifier for a trace within a project; it is a 32-
-        # character hexadecimal encoding of a 16-byte array.[SPAN_ID] is a unique
-        # identifier for a span within a trace; it is a 16-character hexadecimal
-        # encoding of an 8-byte array.
+        # The resource name of the span. The format is: projects/[PROJECT_ID_OR_NUMBER]/
+        # traces/[TRACE_ID]/spans/[SPAN_ID] [TRACE_ID] is a unique identifier for a
+        # trace within a project; it is a 32-character hexadecimal encoding of a 16-byte
+        # array.[SPAN_ID] is a unique identifier for a span within a trace; it is a 16-
+        # character hexadecimal encoding of an 8-byte array.
         # Corresponds to the JSON property `spanName`
         # @return [String]
         attr_accessor :span_name
@@ -3568,27 +3502,25 @@ module Google
       # A closed time interval. It extends from the start time to the end time, and
       # includes both: [startTime, endTime]. Valid time intervals depend on the
       # MetricKind of the metric value. In no case can the end time be earlier than
-      # the start time.
-      # For GAUGE metrics, the startTime value is technically optional; if  no value
-      # is specified, the start time defaults to the value of the  end time, and the
-      # interval represents a single point in time. If both  start and end times are
-      # specified, they must be identical. Such an  interval is valid only for GAUGE
-      # metrics, which are point-in-time  measurements. The end time of a new interval
-      # must be at least a  millisecond after the end time of the previous interval.
-      # For DELTA metrics, the start time and end time must specify a  non-zero
-      # interval, with subsequent points specifying contiguous and  non-overlapping
-      # intervals. For DELTA metrics, the start time of  the next interval must be at
-      # least a millisecond after the end time  of the previous interval.
-      # For CUMULATIVE metrics, the start time and end time must specify a  a non-zero
-      # interval, with subsequent points specifying the same  start time and
-      # increasing end times, until an event resets the  cumulative value to zero and
-      # sets a new start time for the following  points. The new start time must be at
-      # least a millisecond after the  end time of the previous interval.
-      # The start time of a new interval must be at least a millisecond after the  end
-      # time of the previous interval because intervals are closed. If the  start time
-      # of a new interval is the same as the end time of the previous  interval, then
-      # data written at the new start time could overwrite data  written at the
-      # previous end time.
+      # the start time. For GAUGE metrics, the startTime value is technically optional;
+      # if no value is specified, the start time defaults to the value of the end
+      # time, and the interval represents a single point in time. If both start and
+      # end times are specified, they must be identical. Such an interval is valid
+      # only for GAUGE metrics, which are point-in-time measurements. The end time of
+      # a new interval must be at least a millisecond after the end time of the
+      # previous interval. For DELTA metrics, the start time and end time must specify
+      # a non-zero interval, with subsequent points specifying contiguous and non-
+      # overlapping intervals. For DELTA metrics, the start time of the next interval
+      # must be at least a millisecond after the end time of the previous interval.
+      # For CUMULATIVE metrics, the start time and end time must specify a a non-zero
+      # interval, with subsequent points specifying the same start time and increasing
+      # end times, until an event resets the cumulative value to zero and sets a new
+      # start time for the following points. The new start time must be at least a
+      # millisecond after the end time of the previous interval. The start time of a
+      # new interval must be at least a millisecond after the end time of the previous
+      # interval because intervals are closed. If the start time of a new interval is
+      # the same as the end time of the previous interval, then data written at the
+      # new start time could overwrite data written at the previous end time.
       class TimeInterval
         include Google::Apis::Core::Hashable
       
@@ -3665,10 +3597,8 @@ module Google
         # attributes according to the schema. For example, a particular Compute Engine
         # VM instance could be represented by the following object, because the
         # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone":
-        # ` "type": "gce_instance",
-        # "labels": ` "instance_id": "12345678901234",
-        # "zone": "us-central1-a" ``
+        # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
+        # zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :resource
@@ -3760,10 +3690,10 @@ module Google
       
       # A TimeSeriesRatio specifies two TimeSeries to use for computing the
       # good_service / total_service ratio. The specified TimeSeries must have
-      # ValueType = DOUBLE or ValueType = INT64 and must have MetricKind =
-      # DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two
-      # of good, bad, and total, and the relationship good_service +
-      # bad_service = total_service will be assumed.
+      # ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or
+      # MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two of good,
+      # bad, and total, and the relationship good_service + bad_service =
+      # total_service will be assumed.
       class TimeSeriesRatio
         include Google::Apis::Core::Hashable
       
@@ -3778,16 +3708,16 @@ module Google
       
         # A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
         # specifying a TimeSeries quantifying good service provided. Must have ValueType
-        # = DOUBLE or ValueType = INT64 and must have MetricKind =
-        # DELTA or MetricKind = CUMULATIVE.
+        # = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind =
+        # CUMULATIVE.
         # Corresponds to the JSON property `goodServiceFilter`
         # @return [String]
         attr_accessor :good_service_filter
       
         # A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
         # specifying a TimeSeries quantifying total demanded service. Must have
-        # ValueType = DOUBLE or ValueType = INT64 and must have MetricKind =
-        # DELTA or MetricKind = CUMULATIVE.
+        # ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or
+        # MetricKind = CUMULATIVE.
         # Corresponds to the JSON property `totalServiceFilter`
         # @return [String]
         attr_accessor :total_service_filter
@@ -3908,13 +3838,12 @@ module Google
         attr_accessor :distribution_value
       
         # A 64-bit double-precision floating-point number. Its magnitude is
-        # approximately &plusmn;10<sup>&plusmn;300</sup> and it has 16 significant
-        # digits of precision.
+        # approximately ±10±300 and it has 16 significant digits of precision.
         # Corresponds to the JSON property `doubleValue`
         # @return [Float]
         attr_accessor :double_value
       
-        # A 64-bit integer. Its range is approximately &plusmn;9.2x10<sup>18</sup>.
+        # A 64-bit integer. Its range is approximately ±9.2x1018.
         # Corresponds to the JSON property `int64Value`
         # @return [Fixnum]
         attr_accessor :int64_value
@@ -3988,17 +3917,15 @@ module Google
         # attributes according to the schema. For example, a particular Compute Engine
         # VM instance could be represented by the following object, because the
         # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone":
-        # ` "type": "gce_instance",
-        # "labels": ` "instance_id": "12345678901234",
-        # "zone": "us-central1-a" ``
+        # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
+        # zone": "us-central1-a" ``
         # Corresponds to the JSON property `monitoredResource`
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :monitored_resource
       
         # A unique resource name for this Uptime check configuration. The format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
-        # This field should be omitted when creating the Uptime check configuration; on
+        # projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This
+        # field should be omitted when creating the Uptime check configuration; on
         # create, the resource name is assigned by the server and included in the
         # response.
         # Corresponds to the JSON property `name`

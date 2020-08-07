@@ -2169,6 +2169,12 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Indicates the view for this permission. Only populated for permissions that
+        # belong to a view. published is the only supported value.
+        # Corresponds to the JSON property `view`
+        # @return [String]
+        attr_accessor :view
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2188,6 +2194,7 @@ module Google
           @role = args[:role] if args.key?(:role)
           @team_drive_permission_details = args[:team_drive_permission_details] if args.key?(:team_drive_permission_details)
           @type = args[:type] if args.key?(:type)
+          @view = args[:view] if args.key?(:view)
         end
         
         # 

@@ -22,8 +22,7 @@ module Google
   module Apis
     module CloudshellV1alpha1
       
-      # Request message for
-      # AuthorizeEnvironment.
+      # Request message for AuthorizeEnvironment.
       class AuthorizeEnvironmentRequest
         include Google::Apis::Core::Hashable
       
@@ -55,8 +54,7 @@ module Google
         end
       end
       
-      # Request message for
-      # CreatePublicKey.
+      # Request message for CreatePublicKey.
       class CreatePublicKeyRequest
         include Google::Apis::Core::Hashable
       
@@ -75,13 +73,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -101,8 +97,8 @@ module Google
       class Environment
         include Google::Apis::Core::Hashable
       
-        # Required. Full path to the Docker image used to run this environment, e.g.
-        # "gcr.io/dev-con/cloud-devshell:latest".
+        # Required. Full path to the Docker image used to run this environment, e.g. "
+        # gcr.io/dev-con/cloud-devshell:latest".
         # Corresponds to the JSON property `dockerImage`
         # @return [String]
         attr_accessor :docker_image
@@ -113,39 +109,38 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Output only. Full name of this resource, in the format
-        # `users/`owner_email`/environments/`environment_id``. ``owner_email`` is the
-        # email address of the user to whom this environment belongs, and
-        # ``environment_id`` is the identifier of this environment. For example,
-        # `users/someone@example.com/environments/default`.
+        # Output only. Full name of this resource, in the format `users/`owner_email`/
+        # environments/`environment_id``. ``owner_email`` is the email address of the
+        # user to whom this environment belongs, and ``environment_id`` is the
+        # identifier of this environment. For example, `users/someone@example.com/
+        # environments/default`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. Public keys associated with the environment. Clients can
-        # connect to this environment via SSH only if they possess a private key
-        # corresponding to at least one of these public keys. Keys can be added to or
-        # removed from the environment using the CreatePublicKey and DeletePublicKey
-        # methods.
+        # Output only. Public keys associated with the environment. Clients can connect
+        # to this environment via SSH only if they possess a private key corresponding
+        # to at least one of these public keys. Keys can be added to or removed from the
+        # environment using the CreatePublicKey and DeletePublicKey methods.
         # Corresponds to the JSON property `publicKeys`
         # @return [Array<Google::Apis::CloudshellV1alpha1::PublicKey>]
         attr_accessor :public_keys
       
-        # Indicates the size of the backing VM running the environment.  If set to
-        # something other than DEFAULT, it will be reverted to the default VM size
-        # after vm_size_expire_time.
+        # Indicates the size of the backing VM running the environment. If set to
+        # something other than DEFAULT, it will be reverted to the default VM size after
+        # vm_size_expire_time.
         # Corresponds to the JSON property `size`
         # @return [String]
         attr_accessor :size
       
-        # Output only. Host to which clients can connect to initiate SSH sessions
-        # with the environment.
+        # Output only. Host to which clients can connect to initiate SSH sessions with
+        # the environment.
         # Corresponds to the JSON property `sshHost`
         # @return [String]
         attr_accessor :ssh_host
       
-        # Output only. Port to which clients can connect to initiate SSH sessions
-        # with the environment.
+        # Output only. Port to which clients can connect to initiate SSH sessions with
+        # the environment.
         # Corresponds to the JSON property `sshPort`
         # @return [Fixnum]
         attr_accessor :ssh_port
@@ -161,8 +156,8 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. The time when the Environment will expire back to the default
-        # VM size.
+        # Output only. The time when the Environment will expire back to the default VM
+        # size.
         # Corresponds to the JSON property `vmSizeExpireTime`
         # @return [String]
         attr_accessor :vm_size_expire_time
@@ -205,47 +200,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::CloudshellV1alpha1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -279,12 +272,12 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # Output only. Full name of this resource, in the format
-        # `users/`owner_email`/environments/`environment_id`/publicKeys/`key_id``.
-        # ``owner_email`` is the email address of the user to whom the key belongs.
-        # ``environment_id`` is the identifier of the environment to which the key
-        # grants access. ``key_id`` is the unique identifier of the key. For example,
-        # `users/someone@example.com/environments/default/publicKeys/myKey`.
+        # Output only. Full name of this resource, in the format `users/`owner_email`/
+        # environments/`environment_id`/publicKeys/`key_id``. ``owner_email`` is the
+        # email address of the user to whom the key belongs. ``environment_id`` is the
+        # identifier of the environment to which the key grants access. ``key_id`` is
+        # the unique identifier of the key. For example, `users/someone@example.com/
+        # environments/default/publicKeys/myKey`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -321,15 +314,14 @@ module Google
         end
       end
       
-      # Request message for
-      # StartEnvironment.
+      # Request message for StartEnvironment.
       class StartEnvironmentRequest
         include Google::Apis::Core::Hashable
       
         # The initial access token passed to the environment. If this is present and
-        # valid, the environment will be pre-authenticated with gcloud so that the
-        # user can run gcloud commands in Cloud Shell without having to log in. This
-        # code can be updated later by calling AuthorizeEnvironment.
+        # valid, the environment will be pre-authenticated with gcloud so that the user
+        # can run gcloud commands in Cloud Shell without having to log in. This code can
+        # be updated later by calling AuthorizeEnvironment.
         # Corresponds to the JSON property `accessToken`
         # @return [String]
         attr_accessor :access_token
@@ -351,8 +343,7 @@ module Google
       end
       
       # Message included in the response field of operations returned from
-      # StartEnvironment
-      # once the operation is complete.
+      # StartEnvironment once the operation is complete.
       class StartEnvironmentResponse
         include Google::Apis::Core::Hashable
       
@@ -374,12 +365,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -388,15 +379,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message

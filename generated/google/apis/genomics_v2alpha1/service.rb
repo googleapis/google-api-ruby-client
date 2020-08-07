@@ -47,21 +47,17 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Runs a pipeline.  The returned Operation's metadata field will contain a
-        # google.genomics.v2alpha1.Metadata object describing the status of the
-        # pipeline execution.  The [response] field will contain a
-        # google.genomics.v2alpha1.RunPipelineResponse object if the pipeline
-        # completes successfully.
-        # **Note:** Before you can use this method, the Genomics Service Agent
-        # must have access to your project. This is done automatically when the
-        # Cloud Genomics API is first enabled, but if you delete this permission,
-        # or if you enabled the Cloud Genomics API before the v2alpha1 API
-        # launch, you must disable and re-enable the API to grant the Genomics
-        # Service Agent the required permissions.
-        # Authorization requires the following [Google
-        # IAM](https://cloud.google.com/iam/) permission:
-        # * `genomics.operations.create`
-        # [1]: /genomics/gsa
+        # Runs a pipeline. The returned Operation's metadata field will contain a google.
+        # genomics.v2alpha1.Metadata object describing the status of the pipeline
+        # execution. The [response] field will contain a google.genomics.v2alpha1.
+        # RunPipelineResponse object if the pipeline completes successfully. **Note:**
+        # Before you can use this method, the Genomics Service Agent must have access to
+        # your project. This is done automatically when the Cloud Genomics API is first
+        # enabled, but if you delete this permission, or if you enabled the Cloud
+        # Genomics API before the v2alpha1 API launch, you must disable and re-enable
+        # the API to grant the Genomics Service Agent the required permissions.
+        # Authorization requires the following [Google IAM](https://cloud.google.com/iam/
+        # ) permission: * `genomics.operations.create` [1]: /genomics/gsa
         # @param [Google::Apis::GenomicsV2alpha1::RunPipelineRequest] run_pipeline_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -91,15 +87,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation.
-        # The server makes a best effort to cancel the operation, but success is not
-        # guaranteed. Clients may use Operations.GetOperation
-        # or Operations.ListOperations
-        # to check whether the cancellation succeeded or the operation completed
-        # despite cancellation.
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. Clients
+        # may use Operations.GetOperation or Operations.ListOperations to check whether
+        # the cancellation succeeded or the operation completed despite cancellation.
         # Authorization requires the following [Google IAM](https://cloud.google.com/iam)
-        # permission&#58;
-        # * `genomics.operations.cancel`
+        # permission: * `genomics.operations.cancel`
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::GenomicsV2alpha1::CancelOperationRequest] cancel_operation_request_object
@@ -132,12 +125,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.
-        # Clients can use this method to poll the operation result at intervals as
-        # recommended by the API service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # Authorization requires the following [Google IAM](https://cloud.google.com/iam)
-        # permission&#58;
-        # * `genomics.operations.get`
+        # permission: * `genomics.operations.get`
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -167,39 +158,29 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request.
-        # Authorization requires the following [Google IAM](https://cloud.google.com/iam)
-        # permission&#58;
-        # * `genomics.operations.list`
+        # Lists operations that match the specified filter in the request. Authorization
+        # requires the following [Google IAM](https://cloud.google.com/iam) permission: *
+        # `genomics.operations.list`
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
-        #   A string for filtering Operations.
-        #   In v2alpha1, the following filter fields are supported&#58;
-        #   * createTime&#58; The time this job was created
-        #   * events&#58; The set of event (names) that have occurred while running
-        #   the pipeline.  The &#58; operator can be used to determine if a
-        #   particular event has occurred.
-        #   * error&#58; If the pipeline is running, this value is NULL.  Once the
-        #   pipeline finishes, the value is the standard Google error code.
-        #   * labels.key or labels."key with space" where key is a label key.
-        #   * done&#58; If the pipeline is running, this value is false. Once the
-        #   pipeline finishes, the value is true.
-        #   In v1 and v1alpha2, the following filter fields are supported&#58;
-        #   * projectId&#58; Required. Corresponds to
-        #   OperationMetadata.projectId.
-        #   * createTime&#58; The time this job was created, in seconds from the
-        #   [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `<=`
-        #   operators.
-        #   * status&#58; Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `CANCELED`. Only
-        #   one status may be specified.
-        #   * labels.key where key is a label key.
-        #   Examples&#58;
-        #   * `projectId = my-project AND createTime >= 1432140000`
-        #   * `projectId = my-project AND createTime >= 1432140000 AND createTime <=
-        #   1432150000 AND status = RUNNING`
-        #   * `projectId = my-project AND labels.color = *`
-        #   * `projectId = my-project AND labels.color = red`
+        #   A string for filtering Operations. In v2alpha1, the following filter fields
+        #   are supported: * createTime: The time this job was created * events: The set
+        #   of event (names) that have occurred while running the pipeline. The : operator
+        #   can be used to determine if a particular event has occurred. * error: If the
+        #   pipeline is running, this value is NULL. Once the pipeline finishes, the value
+        #   is the standard Google error code. * labels.key or labels."key with space"
+        #   where key is a label key. * done: If the pipeline is running, this value is
+        #   false. Once the pipeline finishes, the value is true. In v1 and v1alpha2, the
+        #   following filter fields are supported: * projectId: Required. Corresponds to
+        #   OperationMetadata.projectId. * createTime: The time this job was created, in
+        #   seconds from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=`
+        #   and/or `<=` operators. * status: Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `
+        #   CANCELED`. Only one status may be specified. * labels.key where key is a label
+        #   key. Examples: * `projectId = my-project AND createTime >= 1432140000` * `
+        #   projectId = my-project AND createTime >= 1432140000 AND createTime <=
+        #   1432150000 AND status = RUNNING` * `projectId = my-project AND labels.color = *
+        #   ` * `projectId = my-project AND labels.color = red`
         # @param [Fixnum] page_size
         #   The maximum number of results to return. The maximum value is 256.
         # @param [String] page_token
@@ -234,11 +215,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The worker uses this method to retrieve the assigned operation and
-        # provide periodic status updates.
+        # The worker uses this method to retrieve the assigned operation and provide
+        # periodic status updates.
         # @param [String] id
-        #   The VM identity token for authenticating the VM instance.
-        #   https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+        #   The VM identity token for authenticating the VM instance. https://cloud.google.
+        #   com/compute/docs/instances/verifying-instance-identity
         # @param [Google::Apis::GenomicsV2alpha1::CheckInRequest] check_in_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -269,11 +250,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The worker uses this method to retrieve the assigned operation and
-        # provide periodic status updates.
+        # The worker uses this method to retrieve the assigned operation and provide
+        # periodic status updates.
         # @param [String] id
-        #   The VM identity token for authenticating the VM instance.
-        #   https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+        #   The VM identity token for authenticating the VM instance. https://cloud.google.
+        #   com/compute/docs/instances/verifying-instance-identity
         # @param [Google::Apis::GenomicsV2alpha1::CheckInRequest] check_in_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

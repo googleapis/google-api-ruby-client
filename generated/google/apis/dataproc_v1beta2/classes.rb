@@ -442,6 +442,11 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::InstanceGroupConfig]
         attr_accessor :master_config
       
+        # Specifies the metastore configuration.
+        # Corresponds to the JSON property `metastoreConfig`
+        # @return [Google::Apis::DataprocV1beta2::MetastoreConfig]
+        attr_accessor :metastore_config
+      
         # The config settings for Compute Engine resources in an instance group, such as
         # a master or worker group.
         # Corresponds to the JSON property `secondaryWorkerConfig`
@@ -490,6 +495,7 @@ module Google
           @initialization_actions = args[:initialization_actions] if args.key?(:initialization_actions)
           @lifecycle_config = args[:lifecycle_config] if args.key?(:lifecycle_config)
           @master_config = args[:master_config] if args.key?(:master_config)
+          @metastore_config = args[:metastore_config] if args.key?(:metastore_config)
           @secondary_worker_config = args[:secondary_worker_config] if args.key?(:secondary_worker_config)
           @security_config = args[:security_config] if args.key?(:security_config)
           @software_config = args[:software_config] if args.key?(:software_config)
@@ -2108,6 +2114,25 @@ module Google
         def update!(**args)
           @instance_group_manager_name = args[:instance_group_manager_name] if args.key?(:instance_group_manager_name)
           @instance_template_name = args[:instance_template_name] if args.key?(:instance_template_name)
+        end
+      end
+      
+      # Specifies the metastore configuration.
+      class MetastoreConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Relative resource name of an existing Dataproc Metastore service.
+        # Corresponds to the JSON property `dataprocMetastoreService`
+        # @return [String]
+        attr_accessor :dataproc_metastore_service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataproc_metastore_service = args[:dataproc_metastore_service] if args.key?(:dataproc_metastore_service)
         end
       end
       

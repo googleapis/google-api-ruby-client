@@ -3175,6 +3175,12 @@ module Google
         # @return [String]
         attr_accessor :value
       
+        # Indicates the view for this permission. Only populated for permissions that
+        # belong to a view. published is the only supported value.
+        # Corresponds to the JSON property `view`
+        # @return [String]
+        attr_accessor :view
+      
         # Whether the link is required for this permission.
         # Corresponds to the JSON property `withLink`
         # @return [Boolean]
@@ -3204,6 +3210,7 @@ module Google
           @team_drive_permission_details = args[:team_drive_permission_details] if args.key?(:team_drive_permission_details)
           @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
+          @view = args[:view] if args.key?(:view)
           @with_link = args[:with_link] if args.key?(:with_link)
         end
         

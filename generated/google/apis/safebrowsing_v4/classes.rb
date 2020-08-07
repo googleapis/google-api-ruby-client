@@ -26,8 +26,8 @@ module Google
       class Checksum
         include Google::Apis::Core::Hashable
       
-        # The SHA256 hash of the client state; that is, of the sorted list of all
-        # hashes present in the database.
+        # The SHA256 hash of the client state; that is, of the sorted list of all hashes
+        # present in the database.
         # Corresponds to the JSON property `sha256`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -47,8 +47,8 @@ module Google
       class ClientInfo
         include Google::Apis::Core::Hashable
       
-        # A client ID that (hopefully) uniquely identifies the client implementation
-        # of the Safe Browsing API.
+        # A client ID that (hopefully) uniquely identifies the client implementation of
+        # the Safe Browsing API.
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
@@ -73,35 +73,33 @@ module Google
       class Constraints
         include Google::Apis::Core::Hashable
       
-        # A client's physical location, expressed as a ISO 31166-1 alpha-2
-        # region code.
+        # A client's physical location, expressed as a ISO 31166-1 alpha-2 region code.
         # Corresponds to the JSON property `deviceLocation`
         # @return [String]
         attr_accessor :device_location
       
-        # Requests the lists for a specific language. Expects ISO 639 alpha-2
-        # format.
+        # Requests the lists for a specific language. Expects ISO 639 alpha-2 format.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
       
-        # Sets the maximum number of entries that the client is willing to have
-        # in the local database for the specified list. This should be a power of
-        # 2 between 2**10 and 2**20. If zero, no database size limit is set.
+        # Sets the maximum number of entries that the client is willing to have in the
+        # local database for the specified list. This should be a power of 2 between 2**
+        # 10 and 2**20. If zero, no database size limit is set.
         # Corresponds to the JSON property `maxDatabaseEntries`
         # @return [Fixnum]
         attr_accessor :max_database_entries
       
         # The maximum size in number of entries. The update will not contain more
-        # entries than this value.  This should be a power of 2 between 2**10 and
-        # 2**20.  If zero, no update size limit is set.
+        # entries than this value. This should be a power of 2 between 2**10 and 2**20.
+        # If zero, no update size limit is set.
         # Corresponds to the JSON property `maxUpdateEntries`
         # @return [Fixnum]
         attr_accessor :max_update_entries
       
-        # Requests the list for a specific geographic location. If not set the
-        # server may pick that value based on the user's IP address. Expects ISO
-        # 3166-1 alpha-2 format.
+        # Requests the list for a specific geographic location. If not set the server
+        # may pick that value based on the user's IP address. Expects ISO 3166-1 alpha-2
+        # format.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -126,13 +124,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -146,9 +142,7 @@ module Google
       end
       
       # Describes a Safe Browsing API update request. Clients can request updates for
-      # multiple lists in a single request.
-      # NOTE: Field index 2 is unused.
-      # NEXT: 5
+      # multiple lists in a single request. NOTE: Field index 2 is unused. NEXT: 5
       class FetchThreatListUpdatesRequest
         include Google::Apis::Core::Hashable
       
@@ -182,8 +176,8 @@ module Google
         # @return [Array<Google::Apis::SafebrowsingV4::ListUpdateResponse>]
         attr_accessor :list_update_responses
       
-        # The minimum duration the client must wait before issuing any update
-        # request. If this field is not set clients may update as soon as they want.
+        # The minimum duration the client must wait before issuing any update request.
+        # If this field is not set clients may update as soon as they want.
         # Corresponds to the JSON property `minimumWaitDuration`
         # @return [String]
         attr_accessor :minimum_wait_duration
@@ -247,14 +241,14 @@ module Google
         attr_accessor :matches
       
         # The minimum duration the client must wait before issuing any find hashes
-        # request. If this field is not set, clients can issue a request as soon as
-        # they want.
+        # request. If this field is not set, clients can issue a request as soon as they
+        # want.
         # Corresponds to the JSON property `minimumWaitDuration`
         # @return [String]
         attr_accessor :minimum_wait_duration
       
-        # For requested entities that did not match the threat list, how long to
-        # cache the response.
+        # For requested entities that did not match the threat list, how long to cache
+        # the response.
         # Corresponds to the JSON property `negativeCacheDuration`
         # @return [String]
         attr_accessor :negative_cache_duration
@@ -349,8 +343,8 @@ module Google
         # @return [String]
         attr_accessor :platform_type
       
-        # The current state of the client for the requested list (the encrypted
-        # client state that was received from the last successful list update).
+        # The current state of the client for the requested list (the encrypted client
+        # state that was received from the last successful list update).
         # Corresponds to the JSON property `state`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -384,9 +378,8 @@ module Google
       class ListUpdateResponse
         include Google::Apis::Core::Hashable
       
-        # A set of entries to add to a local threat type's list. Repeated to allow
-        # for a combination of compressed and raw data to be sent in a single
-        # response.
+        # A set of entries to add to a local threat type's list. Repeated to allow for a
+        # combination of compressed and raw data to be sent in a single response.
         # Corresponds to the JSON property `additions`
         # @return [Array<Google::Apis::SafebrowsingV4::ThreatEntrySet>]
         attr_accessor :additions
@@ -407,8 +400,8 @@ module Google
         # @return [String]
         attr_accessor :platform_type
       
-        # A set of entries to remove from a local threat type's list. In practice,
-        # this field is empty or contains exactly one ThreatEntrySet.
+        # A set of entries to remove from a local threat type's list. In practice, this
+        # field is empty or contains exactly one ThreatEntrySet.
         # Corresponds to the JSON property `removals`
         # @return [Array<Google::Apis::SafebrowsingV4::ThreatEntrySet>]
         attr_accessor :removals
@@ -476,21 +469,20 @@ module Google
       # The uncompressed threat entries in hash format of a particular prefix length.
       # Hashes can be anywhere from 4 to 32 bytes in size. A large majority are 4
       # bytes, but some hashes are lengthened if they collide with the hash of a
-      # popular URL.
-      # Used for sending ThreatEntrySet to clients that do not support compression,
-      # or when sending non-4-byte hashes to clients that do support compression.
+      # popular URL. Used for sending ThreatEntrySet to clients that do not support
+      # compression, or when sending non-4-byte hashes to clients that do support
+      # compression.
       class RawHashes
         include Google::Apis::Core::Hashable
       
-        # The number of bytes for each prefix encoded below.  This field can be
-        # anywhere from 4 (shortest prefix) to 32 (full SHA256 hash).
+        # The number of bytes for each prefix encoded below. This field can be anywhere
+        # from 4 (shortest prefix) to 32 (full SHA256 hash).
         # Corresponds to the JSON property `prefixSize`
         # @return [Fixnum]
         attr_accessor :prefix_size
       
         # The hashes, in binary format, concatenated into one long string. Hashes are
-        # sorted in lexicographic order. For JSON API users, hashes are
-        # base64-encoded.
+        # sorted in lexicographic order. For JSON API users, hashes are base64-encoded.
         # Corresponds to the JSON property `rawHashes`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -551,8 +543,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_entries
       
-        # The Golomb-Rice parameter, which is a number between 2 and 28. This field
-        # is missing (that is, zero) if `num_entries` is zero.
+        # The Golomb-Rice parameter, which is a number between 2 and 28. This field is
+        # missing (that is, zero) if `num_entries` is zero.
         # Corresponds to the JSON property `riceParameter`
         # @return [Fixnum]
         attr_accessor :rice_parameter
@@ -570,21 +562,20 @@ module Google
         end
       end
       
-      # An individual threat; for example, a malicious URL or its hash
-      # representation. Only one of these fields should be set.
+      # An individual threat; for example, a malicious URL or its hash representation.
+      # Only one of these fields should be set.
       class ThreatEntry
         include Google::Apis::Core::Hashable
       
-        # The digest of an executable in SHA256 format. The API supports both
-        # binary and hex digests. For JSON requests, digests are base64-encoded.
+        # The digest of an executable in SHA256 format. The API supports both binary and
+        # hex digests. For JSON requests, digests are base64-encoded.
         # Corresponds to the JSON property `digest`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :digest
       
-        # A hash prefix, consisting of the most significant 4-32 bytes of a SHA256
-        # hash. This field is in binary format. For JSON requests, hashes are
-        # base64-encoded.
+        # A hash prefix, consisting of the most significant 4-32 bytes of a SHA256 hash.
+        # This field is in binary format. For JSON requests, hashes are base64-encoded.
         # Corresponds to the JSON property `hash`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -640,9 +631,9 @@ module Google
         # The uncompressed threat entries in hash format of a particular prefix length.
         # Hashes can be anywhere from 4 to 32 bytes in size. A large majority are 4
         # bytes, but some hashes are lengthened if they collide with the hash of a
-        # popular URL.
-        # Used for sending ThreatEntrySet to clients that do not support compression,
-        # or when sending non-4-byte hashes to clients that do support compression.
+        # popular URL. Used for sending ThreatEntrySet to clients that do not support
+        # compression, or when sending non-4-byte hashes to clients that do support
+        # compression.
         # Corresponds to the JSON property `rawHashes`
         # @return [Google::Apis::SafebrowsingV4::RawHashes]
         attr_accessor :raw_hashes
@@ -687,8 +678,8 @@ module Google
         # @return [Google::Apis::SafebrowsingV4::ClientInfo]
         attr_accessor :client_info
       
-        # An individual threat; for example, a malicious URL or its hash
-        # representation. Only one of these fields should be set.
+        # An individual threat; for example, a malicious URL or its hash representation.
+        # Only one of these fields should be set.
         # Corresponds to the JSON property `entry`
         # @return [Google::Apis::SafebrowsingV4::ThreatEntry]
         attr_accessor :entry
@@ -767,8 +758,8 @@ module Google
       end
       
       # Describes an individual threat list. A list is defined by three parameters:
-      # the type of threat posed, the type of platform targeted by the threat, and
-      # the type of entries in the list.
+      # the type of threat posed, the type of platform targeted by the threat, and the
+      # type of entries in the list.
       class ThreatListDescriptor
         include Google::Apis::Core::Hashable
       
@@ -814,8 +805,8 @@ module Google
         # @return [String]
         attr_accessor :platform_type
       
-        # An individual threat; for example, a malicious URL or its hash
-        # representation. Only one of these fields should be set.
+        # An individual threat; for example, a malicious URL or its hash representation.
+        # Only one of these fields should be set.
         # Corresponds to the JSON property `threat`
         # @return [Google::Apis::SafebrowsingV4::ThreatEntry]
         attr_accessor :threat

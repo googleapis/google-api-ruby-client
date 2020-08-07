@@ -1004,6 +1004,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpu, as: 'cpu'
           property :disk_gb, as: 'diskGb'
+          property :kms_key_reference, as: 'kmsKeyReference'
           property :memory_gb, as: 'memoryGb'
           collection :volumes, as: 'volumes', class: Google::Apis::AppengineV1::Volume, decorator: Google::Apis::AppengineV1::Volume::Representation
       

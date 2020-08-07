@@ -43,7 +43,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The whitelisted value for the access control list.
+        # The allowlisted value for the access control list.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -446,7 +446,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the flag. These flags are passed at instance startup, so
-        # include both server options and system variables for MySQL. Flags should be
+        # include both server options and system variables for MySQL. Flags are
         # specified with underscores, not hyphens. For more information, see <a
         # href="/sql/docs/mysql/flags">Configuring Database Flags</a> in the Cloud
         # SQL documentation.
@@ -454,7 +454,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The value of the flag. Booleans should be set to <b>on</b> for true
+        # The value of the flag. Booleans are set to <b>on</b> for true
         # and <b>off</b> for false. This field must be omitted if the flag
         # doesn't take a value.
         # Corresponds to the JSON property `value`
@@ -492,7 +492,7 @@ module Google
         attr_accessor :connection_name
       
         # The current disk usage of the instance in bytes. This property has been
-        # deprecated. Users should use the
+        # deprecated. Use the
         # "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud
         # Monitoring API instead. Please see <a
         # href="https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/
@@ -838,14 +838,14 @@ module Google
         # @return [String]
         attr_accessor :ca_certificate
       
-        # PEM representation of the slave's x509 certificate.
+        # PEM representation of the replica's x509 certificate.
         # Corresponds to the JSON property `clientCertificate`
         # @return [String]
         attr_accessor :client_certificate
       
-        # PEM representation of the slave's private key. The corresponsing public key
-        # is encoded in the client's certificate. The format of the slave's private
-        # key can be either PKCS #1 or PKCS #8.
+        # PEM representation of the replica's private key. The corresponsing public
+        # key is encoded in the client's certificate. The format of the replica's
+        # private key can be either PKCS #1 or PKCS #8.
         # Corresponds to the JSON property `clientKey`
         # @return [String]
         attr_accessor :client_key
@@ -1142,7 +1142,7 @@ module Google
         attr_accessor :min_value
       
         # This is the name of the flag. Flag names always use underscores, not
-        # hyphens, e.g. <b>max_allowed_packet</b>
+        # hyphens, for example: <b>max_allowed_packet</b>
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1577,13 +1577,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The list of external networks that are allowed to connect to the instance
-        # using the IP. In 'CIDR' notation, also known as 'slash' notation (e.g.
-        # <b>192.168.100.0/24</b>).
+        # using the IP. In 'CIDR' notation, also known as 'slash' notation (for
+        # example: <b>192.168.100.0/24</b>).
         # Corresponds to the JSON property `authorizedNetworks`
         # @return [Array<Google::Apis::SqlV1beta4::AclEntry>]
         attr_accessor :authorized_networks
       
-        # Whether the instance should be assigned an IP address or not.
+        # Whether the instance is assigned a public IP address or not.
         # Corresponds to the JSON property `ipv4Enabled`
         # @return [Boolean]
         attr_accessor :ipv4_enabled
@@ -1597,7 +1597,7 @@ module Google
         # @return [String]
         attr_accessor :private_network
       
-        # Whether SSL connections over IP should be enforced or not.
+        # Whether SSL connections over IP are enforced or not.
         # Corresponds to the JSON property `requireSsl`
         # @return [Boolean]
         attr_accessor :require_ssl
@@ -1654,8 +1654,8 @@ module Google
         end
       end
       
-      # Preferred location. This specifies where a Cloud SQL instance should
-      # preferably be located, either in a specific Compute Engine zone, or
+      # Preferred location. This specifies where a Cloud SQL instance
+      # is located, either in a specific Compute Engine zone, or
       # co-located with an App Engine application. Note that if the preferred
       # location is not available, the instance will be located as close as possible
       # within the region. Only one location may be specified.
@@ -1673,8 +1673,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The preferred Compute Engine zone (e.g. us-central1-a, us-central1-b,
-        # etc.).
+        # The preferred Compute Engine zone (for example: us-central1-a,
+        # us-central1-b, etc.).
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -1691,8 +1691,8 @@ module Google
         end
       end
       
-      # Maintenance window. This specifies when a v2 Cloud SQL instance should
-      # preferably be restarted for system maintenance purposes.
+      # Maintenance window. This specifies when a Cloud SQL instance
+      # is restarted for system maintenance purposes.
       class MaintenanceWindow
         include Google::Apis::Core::Hashable
       
@@ -1741,13 +1741,13 @@ module Google
         # @return [String]
         attr_accessor :ca_certificate
       
-        # PEM representation of the slave's x509 certificate.
+        # PEM representation of the replica's x509 certificate.
         # Corresponds to the JSON property `clientCertificate`
         # @return [String]
         attr_accessor :client_certificate
       
-        # PEM representation of the slave's private key. The corresponsing public key
-        # is encoded in the client's certificate.
+        # PEM representation of the replica's private key. The corresponsing public
+        # key is encoded in the client's certificate.
         # Corresponds to the JSON property `clientKey`
         # @return [String]
         attr_accessor :client_key
@@ -1757,11 +1757,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :connect_retry_interval
       
-        # Path to a SQL dump file in Google Cloud Storage from which the slave
+        # Path to a SQL dump file in Google Cloud Storage from which the replica
         # instance is to be created. The URI is in the form gs://bucketName/fileName.
         # Compressed gzip files (.gz) are also supported.
-        # Dumps should have the binlog co-ordinates from which replication should
-        # begin. This can be accomplished by setting --master-data to 1 when using
+        # Dumps have the binlog co-ordinates from which replication
+        # begins. This can be accomplished by setting --master-data to 1 when using
         # mysqldump.
         # Corresponds to the JSON property `dumpFilePath`
         # @return [String]
@@ -1828,13 +1828,13 @@ module Google
         # @return [String]
         attr_accessor :ca_certificate
       
-        # PEM representation of the slave's x509 certificate.
+        # PEM representation of the replica's x509 certificate.
         # Corresponds to the JSON property `clientCertificate`
         # @return [String]
         attr_accessor :client_certificate
       
-        # PEM representation of the slave's private key. The corresponsing public key
-        # is encoded in the client's certificate.
+        # PEM representation of the replica's private key. The corresponsing public
+        # key is encoded in the client's certificate.
         # Corresponds to the JSON property `clientKey`
         # @return [String]
         attr_accessor :client_key
@@ -2310,8 +2310,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Preferred location. This specifies where a Cloud SQL instance should
-        # preferably be located, either in a specific Compute Engine zone, or
+        # Preferred location. This specifies where a Cloud SQL instance
+        # is located, either in a specific Compute Engine zone, or
         # co-located with an App Engine application. Note that if the preferred
         # location is not available, the instance will be located as close as possible
         # within the region. Only one location may be specified.
@@ -2319,8 +2319,8 @@ module Google
         # @return [Google::Apis::SqlV1beta4::LocationPreference]
         attr_accessor :location_preference
       
-        # Maintenance window. This specifies when a v2 Cloud SQL instance should
-        # preferably be restarted for system maintenance purposes.
+        # Maintenance window. This specifies when a Cloud SQL instance
+        # is restarted for system maintenance purposes.
         # Corresponds to the JSON property `maintenanceWindow`
         # @return [Google::Apis::SqlV1beta4::MaintenanceWindow]
         attr_accessor :maintenance_window

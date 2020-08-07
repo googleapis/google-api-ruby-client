@@ -22,12 +22,11 @@ module Google
   module Apis
     module BigquerydatatransferV1
       
-      # A request to determine whether the user has valid credentials. This method
-      # is used to limit the number of OAuth popups in the user interface. The
-      # user id is inferred from the API call context.
-      # If the data source has the Google+ authorization type, this method
-      # returns false, as it cannot be determined whether the credentials are
-      # already valid merely based on the user id.
+      # A request to determine whether the user has valid credentials. This method is
+      # used to limit the number of OAuth popups in the user interface. The user id is
+      # inferred from the API call context. If the data source has the Google+
+      # authorization type, this method returns false, as it cannot be determined
+      # whether the credentials are already valid merely based on the user id.
       class CheckValidCredsRequest
         include Google::Apis::Core::Hashable
       
@@ -60,8 +59,8 @@ module Google
         end
       end
       
-      # Represents data source metadata. Metadata is sufficient to
-      # render UI and request proper OAuth tokens.
+      # Represents data source metadata. Metadata is sufficient to render UI and
+      # request proper OAuth tokens.
       class DataSource
         include Google::Apis::Core::Hashable
       
@@ -75,10 +74,9 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
-        # Specifies whether the data source supports automatic data refresh for the
-        # past few days, and how it's supported.
-        # For some data sources, data might not be complete until a few days later,
-        # so it's useful to refresh data automatically.
+        # Specifies whether the data source supports automatic data refresh for the past
+        # few days, and how it's supported. For some data sources, data might not be
+        # complete until a few days later, so it's useful to refresh data automatically.
         # Corresponds to the JSON property `dataRefreshType`
         # @return [String]
         attr_accessor :data_refresh_type
@@ -88,17 +86,15 @@ module Google
         # @return [String]
         attr_accessor :data_source_id
       
-        # Default data refresh window on days.
-        # Only meaningful when `data_refresh_type` = `SLIDING_WINDOW`.
+        # Default data refresh window on days. Only meaningful when `data_refresh_type` =
+        # `SLIDING_WINDOW`.
         # Corresponds to the JSON property `defaultDataRefreshWindowDays`
         # @return [Fixnum]
         attr_accessor :default_data_refresh_window_days
       
-        # Default data transfer schedule.
-        # Examples of valid schedules include:
-        # `1st,3rd monday of month 15:30`,
-        # `every wed,fri of jan,jun 13:15`, and
-        # `first sunday of quarter 00:00`.
+        # Default data transfer schedule. Examples of valid schedules include: `1st,3rd
+        # monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of
+        # quarter 00:00`.
         # Corresponds to the JSON property `defaultSchedule`
         # @return [String]
         attr_accessor :default_schedule
@@ -118,8 +114,7 @@ module Google
         # @return [String]
         attr_accessor :help_url
       
-        # Disables backfilling and manual run scheduling
-        # for the data source.
+        # Disables backfilling and manual run scheduling for the data source.
         # Corresponds to the JSON property `manualRunsDisabled`
         # @return [Boolean]
         attr_accessor :manual_runs_disabled
@@ -140,16 +135,16 @@ module Google
         # @return [Array<Google::Apis::BigquerydatatransferV1::DataSourceParameter>]
         attr_accessor :parameters
       
-        # Api auth scopes for which refresh token needs to be obtained. These are
-        # scopes needed by a data source to prepare data and ingest them into
-        # BigQuery, e.g., https://www.googleapis.com/auth/bigquery
+        # Api auth scopes for which refresh token needs to be obtained. These are scopes
+        # needed by a data source to prepare data and ingest them into BigQuery, e.g.,
+        # https://www.googleapis.com/auth/bigquery
         # Corresponds to the JSON property `scopes`
         # @return [Array<String>]
         attr_accessor :scopes
       
         # Specifies whether the data source supports a user defined schedule, or
-        # operates on the default schedule.
-        # When set to `true`, user can override default schedule.
+        # operates on the default schedule. When set to `true`, user can override
+        # default schedule.
         # Corresponds to the JSON property `supportsCustomSchedule`
         # @return [Boolean]
         attr_accessor :supports_custom_schedule
@@ -166,8 +161,8 @@ module Google
         # @return [String]
         attr_accessor :transfer_type
       
-        # The number of seconds to wait for an update from the data source
-        # before the Data Transfer Service marks the transfer as FAILED.
+        # The number of seconds to wait for an update from the data source before the
+        # Data Transfer Service marks the transfer as FAILED.
         # Corresponds to the JSON property `updateDeadlineSeconds`
         # @return [Fixnum]
         attr_accessor :update_deadline_seconds
@@ -199,12 +194,11 @@ module Google
         end
       end
       
-      # Represents a data source parameter with validation rules, so that
-      # parameters can be rendered in the UI. These parameters are given to us by
-      # supported data sources, and include all needed information for rendering
-      # and validation.
-      # Thus, whoever uses this api can decide to generate either generic ui,
-      # or custom data source specific forms.
+      # Represents a data source parameter with validation rules, so that parameters
+      # can be rendered in the UI. These parameters are given to us by supported data
+      # sources, and include all needed information for rendering and validation. Thus,
+      # whoever uses this api can decide to generate either generic ui, or custom
+      # data source specific forms.
       class DataSourceParameter
         include Google::Apis::Core::Hashable
       
@@ -213,8 +207,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_values
       
-        # If true, it should not be used in new transfers, and it should not be
-        # visible to users.
+        # If true, it should not be used in new transfers, and it should not be visible
+        # to users.
         # Corresponds to the JSON property `deprecated`
         # @return [Boolean]
         attr_accessor :deprecated
@@ -320,8 +314,7 @@ module Google
         end
       end
       
-      # Represents preferences for sending email notifications for transfer run
-      # events.
+      # Represents preferences for sending email notifications for transfer run events.
       class EmailPreferences
         include Google::Apis::Core::Hashable
       
@@ -341,13 +334,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -369,10 +360,9 @@ module Google
         # @return [Array<Google::Apis::BigquerydatatransferV1::DataSource>]
         attr_accessor :data_sources
       
-        # Output only. The next-pagination token. For multiple-page list results,
-        # this token can be used as the
-        # `ListDataSourcesRequest.page_token`
-        # to request the next page of list results.
+        # Output only. The next-pagination token. For multiple-page list results, this
+        # token can be used as the `ListDataSourcesRequest.page_token` to request the
+        # next page of list results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -417,10 +407,9 @@ module Google
       class ListTransferConfigsResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. The next-pagination token. For multiple-page list results,
-        # this token can be used as the
-        # `ListTransferConfigsRequest.page_token`
-        # to request the next page of list results.
+        # Output only. The next-pagination token. For multiple-page list results, this
+        # token can be used as the `ListTransferConfigsRequest.page_token` to request
+        # the next page of list results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -445,10 +434,9 @@ module Google
       class ListTransferLogsResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. The next-pagination token. For multiple-page list results,
-        # this token can be used as the
-        # `GetTransferRunLogRequest.page_token`
-        # to request the next page of list results.
+        # Output only. The next-pagination token. For multiple-page list results, this
+        # token can be used as the `GetTransferRunLogRequest.page_token` to request the
+        # next page of list results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -473,10 +461,9 @@ module Google
       class ListTransferRunsResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. The next-pagination token. For multiple-page list results,
-        # this token can be used as the
-        # `ListTransferRunsRequest.page_token`
-        # to request the next page of list results.
+        # Output only. The next-pagination token. For multiple-page list results, this
+        # token can be used as the `ListTransferRunsRequest.page_token` to request the
+        # next page of list results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -501,14 +488,14 @@ module Google
       class Location
         include Google::Apis::Core::Hashable
       
-        # The friendly name for this location, typically a nearby city name.
-        # For example, "Tokyo".
+        # The friendly name for this location, typically a nearby city name. For example,
+        # "Tokyo".
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Cross-service attributes for the location. For example
-        # `"cloud.googleapis.com/region": "us-east1"`
+        # Cross-service attributes for the location. For example `"cloud.googleapis.com/
+        # region": "us-east1"`
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -524,8 +511,8 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # Resource name for the location, which may vary between implementations.
-        # For example: `"projects/example-project/locations/us-east1"`
+        # Resource name for the location, which may vary between implementations. For
+        # example: `"projects/example-project/locations/us-east1"`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -558,18 +545,17 @@ module Google
         alias_method :disable_auto_scheduling?, :disable_auto_scheduling
       
         # Defines time to stop scheduling transfer runs. A transfer run cannot be
-        # scheduled at or after the end time. The end time can be changed at any
-        # moment. The time when a data transfer can be trigerred manually is not
-        # limited by this option.
+        # scheduled at or after the end time. The end time can be changed at any moment.
+        # The time when a data transfer can be trigerred manually is not limited by this
+        # option.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
         # Specifies time to start scheduling transfer runs. The first run will be
-        # scheduled at or after the start time according to a recurrence pattern
-        # defined in the schedule string. The start time can be changed at any
-        # moment. The time when a data transfer can be trigerred manually is not
-        # limited by this option.
+        # scheduled at or after the start time according to a recurrence pattern defined
+        # in the schedule string. The start time can be changed at any moment. The time
+        # when a data transfer can be trigerred manually is not limited by this option.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -590,14 +576,14 @@ module Google
       class ScheduleTransferRunsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. End time of the range of transfer runs. For example,
-        # `"2017-05-30T00:00:00+00:00"`.
+        # Required. End time of the range of transfer runs. For example, `"2017-05-30T00:
+        # 00:00+00:00"`.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Required. Start time of the range of transfer runs. For example,
-        # `"2017-05-25T00:00:00+00:00"`.
+        # Required. Start time of the range of transfer runs. For example, `"2017-05-
+        # 25T00:00:00+00:00"`.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -636,8 +622,8 @@ module Google
       class StartManualTransferRunsRequest
         include Google::Apis::Core::Hashable
       
-        # Specific run_time for a transfer run to be started. The
-        # requested_run_time must not be in the future.
+        # Specific run_time for a transfer run to be started. The requested_run_time
+        # must not be in the future.
         # Corresponds to the JSON property `requestedRunTime`
         # @return [String]
         attr_accessor :requested_run_time
@@ -678,12 +664,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -692,15 +678,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -722,18 +708,18 @@ module Google
       class TimeRange
         include Google::Apis::Core::Hashable
       
-        # End time of the range of transfer runs. For example,
-        # `"2017-05-30T00:00:00+00:00"`. The end_time must not be in the future.
-        # Creates transfer runs where run_time is in the range between start_time
-        # (inclusive) and end_time (exclusive).
+        # End time of the range of transfer runs. For example, `"2017-05-30T00:00:00+00:
+        # 00"`. The end_time must not be in the future. Creates transfer runs where
+        # run_time is in the range between start_time (inclusive) and end_time (
+        # exclusive).
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Start time of the range of transfer runs. For example,
-        # `"2017-05-25T00:00:00+00:00"`. The start_time must be strictly less than
-        # the end_time. Creates transfer runs where run_time is in the range
-        # between start_time (inclusive) and end_time (exclusive).
+        # Start time of the range of transfer runs. For example, `"2017-05-25T00:00:00+
+        # 00:00"`. The start_time must be strictly less than the end_time. Creates
+        # transfer runs where run_time is in the range between start_time (inclusive)
+        # and end_time (exclusive).
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -749,21 +735,20 @@ module Google
         end
       end
       
-      # Represents a data transfer configuration. A transfer configuration
-      # contains all metadata needed to perform a data transfer. For example,
-      # `destination_dataset_id` specifies where data should be stored.
-      # When a new transfer configuration is created, the specified
-      # `destination_dataset_id` is created when needed and shared with the
-      # appropriate data source service account.
+      # Represents a data transfer configuration. A transfer configuration contains
+      # all metadata needed to perform a data transfer. For example, `
+      # destination_dataset_id` specifies where data should be stored. When a new
+      # transfer configuration is created, the specified `destination_dataset_id` is
+      # created when needed and shared with the appropriate data source service
+      # account.
       class TransferConfig
         include Google::Apis::Core::Hashable
       
-        # The number of days to look back to automatically refresh the data.
-        # For example, if `data_refresh_window_days = 10`, then every day
-        # BigQuery reingests data for [today-10, today-1], rather than ingesting data
-        # for just [today-1].
-        # Only valid if the data source supports the feature. Set the value to  0
-        # to use the default value.
+        # The number of days to look back to automatically refresh the data. For example,
+        # if `data_refresh_window_days = 10`, then every day BigQuery reingests data
+        # for [today-10, today-1], rather than ingesting data for just [today-1]. Only
+        # valid if the data source supports the feature. Set the value to 0 to use the
+        # default value.
         # Corresponds to the JSON property `dataRefreshWindowDays`
         # @return [Fixnum]
         attr_accessor :data_refresh_window_days
@@ -783,8 +768,8 @@ module Google
         # @return [String]
         attr_accessor :destination_dataset_id
       
-        # Is this config disabled. When set to true, no runs are scheduled
-        # for a given transfer.
+        # Is this config disabled. When set to true, no runs are scheduled for a given
+        # transfer.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
@@ -795,19 +780,17 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Represents preferences for sending email notifications for transfer run
-        # events.
+        # Represents preferences for sending email notifications for transfer run events.
         # Corresponds to the JSON property `emailPreferences`
         # @return [Google::Apis::BigquerydatatransferV1::EmailPreferences]
         attr_accessor :email_preferences
       
-        # The resource name of the transfer config.
-        # Transfer config names have the form of
-        # `projects/`project_id`/locations/`region`/transferConfigs/`config_id``.
-        # The name is automatically generated based on the config_id specified in
-        # CreateTransferConfigRequest along with project_id and region. If config_id
-        # is not provided, usually a uuid, even though it is not guaranteed or
-        # required, will be generated for config_id.
+        # The resource name of the transfer config. Transfer config names have the form
+        # of `projects/`project_id`/locations/`region`/transferConfigs/`config_id``. The
+        # name is automatically generated based on the config_id specified in
+        # CreateTransferConfigRequest along with project_id and region. If config_id is
+        # not provided, usually a uuid, even though it is not guaranteed or required,
+        # will be generated for config_id.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -817,8 +800,8 @@ module Google
         # @return [String]
         attr_accessor :next_run_time
       
-        # Pub/Sub topic where notifications will be sent after transfer runs
-        # associated with this transfer config finish.
+        # Pub/Sub topic where notifications will be sent after transfer runs associated
+        # with this transfer config finish.
         # Corresponds to the JSON property `notificationPubsubTopic`
         # @return [String]
         attr_accessor :notification_pubsub_topic
@@ -828,19 +811,14 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :params
       
-        # Data transfer schedule.
-        # If the data source does not support a custom schedule, this should be
-        # empty. If it is empty, the default value for the data source will be
-        # used.
-        # The specified times are in UTC.
-        # Examples of valid format:
-        # `1st,3rd monday of month 15:30`,
-        # `every wed,fri of jan,jun 13:15`, and
-        # `first sunday of quarter 00:00`.
-        # See more explanation about the format here:
-        # https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-
-        # cron-yaml#the_schedule_format
-        # NOTE: the granularity should be at least 8 hours, or less frequent.
+        # Data transfer schedule. If the data source does not support a custom schedule,
+        # this should be empty. If it is empty, the default value for the data source
+        # will be used. The specified times are in UTC. Examples of valid format: `1st,
+        # 3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first
+        # sunday of quarter 00:00`. See more explanation about the format here: https://
+        # cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#
+        # the_schedule_format NOTE: the granularity should be at least 8 hours, or less
+        # frequent.
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule
@@ -935,33 +913,30 @@ module Google
         # @return [String]
         attr_accessor :destination_dataset_id
       
-        # Represents preferences for sending email notifications for transfer run
-        # events.
+        # Represents preferences for sending email notifications for transfer run events.
         # Corresponds to the JSON property `emailPreferences`
         # @return [Google::Apis::BigquerydatatransferV1::EmailPreferences]
         attr_accessor :email_preferences
       
-        # Output only. Time when transfer run ended.
-        # Parameter ignored by server for input requests.
+        # Output only. Time when transfer run ended. Parameter ignored by server for
+        # input requests.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `errorStatus`
         # @return [Google::Apis::BigquerydatatransferV1::Status]
         attr_accessor :error_status
       
-        # The resource name of the transfer run.
-        # Transfer run names have the form
-        # `projects/`project_id`/locations/`location`/transferConfigs/`config_id`/runs/`
-        # run_id``.
-        # The name is ignored when creating a transfer run.
+        # The resource name of the transfer run. Transfer run names have the form `
+        # projects/`project_id`/locations/`location`/transferConfigs/`config_id`/runs/`
+        # run_id``. The name is ignored when creating a transfer run.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -983,11 +958,10 @@ module Google
         # @return [String]
         attr_accessor :run_time
       
-        # Output only. Describes the schedule of this transfer run if it was
-        # created as part of a regular schedule. For batch transfer runs that are
-        # scheduled manually, this is empty.
-        # NOTE: the system might choose to delay the schedule depending on the
-        # current load, so `schedule_time` doesn't always match this.
+        # Output only. Describes the schedule of this transfer run if it was created as
+        # part of a regular schedule. For batch transfer runs that are scheduled
+        # manually, this is empty. NOTE: the system might choose to delay the schedule
+        # depending on the current load, so `schedule_time` doesn't always match this.
         # Corresponds to the JSON property `schedule`
         # @return [String]
         attr_accessor :schedule
@@ -997,8 +971,8 @@ module Google
         # @return [String]
         attr_accessor :schedule_time
       
-        # Output only. Time when transfer run was started.
-        # Parameter ignored by server for input requests.
+        # Output only. Time when transfer run was started. Parameter ignored by server
+        # for input requests.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time

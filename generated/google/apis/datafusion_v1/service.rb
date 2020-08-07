@@ -23,13 +23,10 @@ module Google
       # Cloud Data Fusion API
       #
       # Cloud Data Fusion is a fully-managed, cloud native, enterprise data
-      #  integration service for
-      #  quickly building and managing data pipelines. It provides a graphical
-      #  interface to increase
-      #  time efficiency and reduce complexity, and allows business users,
-      #  developers, and data
-      #  scientists to easily and reliably build scalable data integration
-      #  solutions to cleanse,
+      #  integration service for quickly building and managing data pipelines. It
+      #  provides a graphical interface to increase time efficiency and reduce
+      #  complexity, and allows business users, developers, and data scientists to
+      #  easily and reliably build scalable data integration solutions to cleanse,
       #  prepare, blend, transfer and transform data without having to wrestle with
       #  infrastructure.
       #
@@ -92,8 +89,7 @@ module Google
         # @param [String] filter
         #   The standard list filter.
         # @param [Boolean] include_unrevealed_locations
-        #   If true, the returned list will include locations which are not yet
-        #   revealed.
+        #   If true, the returned list will include locations which are not yet revealed.
         # @param [Fixnum] page_size
         #   The standard list page size.
         # @param [String] page_token
@@ -131,8 +127,8 @@ module Google
         
         # Creates a new Data Fusion instance in the specified project and location.
         # @param [String] parent
-        #   The instance's project and location in the format
-        #   projects/`project`/locations/`location`.
+        #   The instance's project and location in the format projects/`project`/locations/
+        #   `location`.
         # @param [Google::Apis::DatafusionV1::Instance] instance_object
         # @param [String] instance_id
         #   The name of the instance to create.
@@ -168,8 +164,8 @@ module Google
         
         # Deletes a single Date Fusion instance.
         # @param [String] name
-        #   The instance resource name in the format
-        #   projects/`project`/locations/`location`/instances/`instance`
+        #   The instance resource name in the format projects/`project`/locations/`
+        #   location`/instances/`instance`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -199,8 +195,8 @@ module Google
         
         # Gets details of a single Data Fusion instance.
         # @param [String] name
-        #   The instance resource name in the format
-        #   projects/`project`/locations/`location`/instances/`instance`.
+        #   The instance resource name in the format projects/`project`/locations/`
+        #   location`/instances/`instance`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -228,22 +224,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -274,19 +267,19 @@ module Google
         
         # Lists Data Fusion instances in the specified project and location.
         # @param [String] parent
-        #   The project and location for which to retrieve instance information
-        #   in the format projects/`project`/locations/`location`. If the location is
-        #   specified as '-' (wildcard), then all regions available to the project
-        #   are queried, and the results are aggregated.
+        #   The project and location for which to retrieve instance information in the
+        #   format projects/`project`/locations/`location`. If the location is specified
+        #   as '-' (wildcard), then all regions available to the project are queried, and
+        #   the results are aggregated.
         # @param [String] filter
         #   List filter.
         # @param [String] order_by
-        #   Sort results. Supported values are "name", "name desc",  or "" (unsorted).
+        #   Sort results. Supported values are "name", "name desc", or "" (unsorted).
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token
-        #   The next_page_token value to use if there are additional
-        #   results to retrieve for this list request.
+        #   The next_page_token value to use if there are additional results to retrieve
+        #   for this list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -320,15 +313,14 @@ module Google
         
         # Updates a single Data Fusion instance.
         # @param [String] name
-        #   Output only. The name of this instance is in the form of
-        #   projects/`project`/locations/`location`/instances/`instance`.
+        #   Output only. The name of this instance is in the form of projects/`project`/
+        #   locations/`location`/instances/`instance`.
         # @param [Google::Apis::DatafusionV1::Instance] instance_object
         # @param [String] update_mask
-        #   Field mask is used to specify the fields that the update will overwrite
-        #   in an instance resource. The fields specified in the update_mask are
-        #   relative to the resource, not the full request.
-        #   A field will be overwritten if it is in the mask.
-        #   If the user does not provide a mask, all the supported fields (labels,
+        #   Field mask is used to specify the fields that the update will overwrite in an
+        #   instance resource. The fields specified in the update_mask are relative to the
+        #   resource, not the full request. A field will be overwritten if it is in the
+        #   mask. If the user does not provide a mask, all the supported fields (labels,
         #   options, and version currently) will be overwritten.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -360,8 +352,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Restart a single Data Fusion instance.
-        # At the end of an operation instance is fully restarted.
+        # Restart a single Data Fusion instance. At the end of an operation instance is
+        # fully restarted.
         # @param [String] name
         #   Name of the Data Fusion instance which need to be restarted in the form of
         #   projects/`project`/locations/`location`/instances/`instance`
@@ -396,11 +388,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::DatafusionV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -431,15 +423,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::DatafusionV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -470,15 +461,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
@@ -512,10 +501,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a long-running operation. This method indicates that the client is
-        # no longer interested in the operation result. It does not cancel the
-        # operation. If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation resource to be deleted.
         # @param [String] fields
@@ -545,9 +534,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -577,15 +565,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
@@ -624,20 +611,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists possible versions for Data Fusion instances in the specified project
-        # and location.
+        # Lists possible versions for Data Fusion instances in the specified project and
+        # location.
         # @param [String] parent
         #   Required. The project and location for which to retrieve instance information
         #   in the format projects/`project`/locations/`location`.
         # @param [Boolean] latest_patch_only
-        #   Whether or not to return the latest patch of every available minor version.
-        #   If true, only the latest patch will be returned. Ex. if allowed versions is
-        #   [6.1.1, 6.1.2, 6.2.0] then response will be [6.1.2, 6.2.0]
+        #   Whether or not to return the latest patch of every available minor version. If
+        #   true, only the latest patch will be returned. Ex. if allowed versions is [6.1.
+        #   1, 6.1.2, 6.2.0] then response will be [6.1.2, 6.2.0]
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token
-        #   The next_page_token value to use if there are additional
-        #   results to retrieve for this list request.
+        #   The next_page_token value to use if there are additional results to retrieve
+        #   for this list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

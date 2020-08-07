@@ -47,15 +47,13 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
@@ -89,9 +87,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -156,8 +153,8 @@ module Google
         
         # Deletes a `WorkerPool` by its project ID and WorkerPool name.
         # @param [String] name
-        #   The field will contain name of the resource requested, for example:
-        #   "projects/project-1/workerPools/workerpool-name"
+        #   The field will contain name of the resource requested, for example: "projects/
+        #   project-1/workerPools/workerpool-name"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -187,8 +184,8 @@ module Google
         
         # Returns information about a `WorkerPool`.
         # @param [String] name
-        #   The field will contain name of the resource requested, for example:
-        #   "projects/project-1/workerPools/workerpool-name"
+        #   The field will contain name of the resource requested, for example: "projects/
+        #   project-1/workerPools/workerpool-name"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -248,8 +245,8 @@ module Google
         
         # Update a `WorkerPool`.
         # @param [String] name
-        #   The field will contain name of the resource requested, for example:
-        #   "projects/project-1/workerPools/workerpool-name"
+        #   The field will contain name of the resource requested, for example: "projects/
+        #   project-1/workerPools/workerpool-name"
         # @param [Google::Apis::CloudbuildV1alpha1::WorkerPool] worker_pool_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

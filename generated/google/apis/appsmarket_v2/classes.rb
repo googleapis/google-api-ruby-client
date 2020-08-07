@@ -51,7 +51,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The customer's license status.
+        # The customer's license status. One of: - `ACTIVE`: The customer has a valid
+        # license. - `UNLICENSED`: There is no license: either this customer has never
+        # installed your application, or else has deleted it.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -196,8 +198,7 @@ module Google
         # @return [Array<Google::Apis::AppsmarketV2::Reassignments>]
         attr_accessor :reassignments
       
-        # The time the event occurred, measuring in milliseconds since the UNIX
-        # epoch.
+        # The time the event occurred, measuring in milliseconds since the UNIX epoch.
         # Corresponds to the JSON property `timestamp`
         # @return [Fixnum]
         attr_accessor :timestamp
@@ -235,12 +236,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of notifications. One or more of:
-        # - provisions -- A new license of the application has been provisioned.
-        # - expiries -- A license of the application has expired.
-        # - deletions -- An application has been deleted from a domain.
-        # - reassignments -- An administrator has assigned or revoked a seat license
-        # for the application on the provided domain.
+        # The list of notifications. One or more of: - `provisions`: A new license of
+        # the application has been provisioned. - `expiries`: A license of the
+        # application has expired. - `deletions`: An application has been deleted from a
+        # domain. - `reassignments`: An administrator has assigned or revoked a seat
+        # license for the application on the provided domain.
         # Corresponds to the JSON property `notifications`
         # @return [Array<Google::Apis::AppsmarketV2::LicenseNotification>]
         attr_accessor :notifications
@@ -360,13 +360,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The user's licensing status. One of:
-        # - ACTIVE -- The user has a valid license and should be permitted to use the
-        # application.
-        # - UNLICENSED -- The administrator of this user's domain never assigned a
-        # seat for the application to this user.
-        # - EXPIRED -- The administrator assigned a seat to this user, but the
-        # license is expired.
+        # The user's licensing status. One of: - `ACTIVE`: The user has a valid license
+        # and should be permitted to use the application. - `UNLICENSED`: The
+        # administrator of this user's domain never assigned a seat for the application
+        # to this user. - `EXPIRED`: The administrator assigned a seat to this user, but
+        # the license is expired.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state

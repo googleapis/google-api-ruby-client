@@ -342,11 +342,9 @@ module Google
       
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for Empty is empty JSON object ``.
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # Empty is empty JSON object ``.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -708,14 +706,14 @@ module Google
         # x is above/below a warning threshold that triggers above/below, then the
         # scorecard is in a warning state - unless x also puts it in a danger state. (
         # Danger trumps warning.)As an example, consider a scorecard with the following
-        # four thresholds: `  value: 90,  category: 'DANGER',  trigger: 'ABOVE', `, `
-        # value: 70,  category: 'WARNING',  trigger: 'ABOVE', `, `  value: 10,  category:
-        # 'DANGER',  trigger: 'BELOW', `, `  value: 20,  category: 'WARNING',  trigger:
-        # 'BELOW', `Then: values less than or equal to 10 would put the scorecard in a
-        # DANGER state, values greater than 10 but less than or equal to 20 a WARNING
-        # state, values strictly between 20 and 70 an OK state, values greater than or
-        # equal to 70 but less than 90 a WARNING state, and values greater than or equal
-        # to 90 a DANGER state.
+        # four thresholds: ` value: 90, category: 'DANGER', trigger: 'ABOVE', `, ` value:
+        # 70, category: 'WARNING', trigger: 'ABOVE', `, ` value: 10, category: 'DANGER',
+        # trigger: 'BELOW', `, ` value: 20, category: 'WARNING', trigger: 'BELOW', `
+        # Then: values less than or equal to 10 would put the scorecard in a DANGER
+        # state, values greater than 10 but less than or equal to 20 a WARNING state,
+        # values strictly between 20 and 70 an OK state, values greater than or equal to
+        # 70 but less than 90 a WARNING state, and values greater than or equal to 90 a
+        # DANGER state.
         # Corresponds to the JSON property `thresholds`
         # @return [Array<Google::Apis::MonitoringV1::Threshold>]
         attr_accessor :thresholds
@@ -761,17 +759,16 @@ module Google
       end
       
       # The context of a span, attached to Exemplars in Distribution values during
-      # aggregation.It contains the name of a span with format:
-      # projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+      # aggregation.It contains the name of a span with format: projects/[
+      # PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
       class SpanContext
         include Google::Apis::Core::Hashable
       
-        # The resource name of the span. The format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
-        # [TRACE_ID] is a unique identifier for a trace within a project; it is a 32-
-        # character hexadecimal encoding of a 16-byte array.[SPAN_ID] is a unique
-        # identifier for a span within a trace; it is a 16-character hexadecimal
-        # encoding of an 8-byte array.
+        # The resource name of the span. The format is: projects/[PROJECT_ID_OR_NUMBER]/
+        # traces/[TRACE_ID]/spans/[SPAN_ID] [TRACE_ID] is a unique identifier for a
+        # trace within a project; it is a 32-character hexadecimal encoding of a 16-byte
+        # array.[SPAN_ID] is a unique identifier for a span within a trace; it is a 16-
+        # character hexadecimal encoding of an 8-byte array.
         # Corresponds to the JSON property `spanName`
         # @return [String]
         attr_accessor :span_name
@@ -1179,11 +1176,9 @@ module Google
       
         # A generic empty message that you can re-use to avoid defining duplicated empty
         # messages in your APIs. A typical example is to use it as the request or the
-        # response type of an API method. For instance:
-        # service Foo `
-        # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-        # `
-        # The JSON representation for Empty is empty JSON object ``.
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+        # Empty is empty JSON object ``.
         # Corresponds to the JSON property `blank`
         # @return [Google::Apis::MonitoringV1::Empty]
         attr_accessor :blank

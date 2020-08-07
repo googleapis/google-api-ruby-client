@@ -22,7 +22,8 @@ module Google
     module DoubleclickbidmanagerV1_1
       # DoubleClick Bid Manager API
       #
-      # API for viewing and managing your reports in DoubleClick Bid Manager.
+      # DoubleClick Bid Manager API allows users to manage and create campaigns and
+      #  reports.
       #
       # @example
       #    require 'google/apis/doubleclickbidmanager_v1_1'
@@ -38,17 +39,13 @@ module Google
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'doubleclickbidmanager/v1.1/')
-          @batch_path = 'batch/doubleclickbidmanager/v1.1'
+          super('https://www.googleapis.com/', '')
+          @batch_path = 'batch/doubleclickbidmanager'
         end
         
         # Retrieves line items in CSV format. YouTube & partners line items are not
@@ -57,10 +54,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -73,15 +68,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def downloadlineitems_lineitem(download_line_items_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'lineitems/downloadlineitems', options)
+        def downloadlineitems_lineitem(download_line_items_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'doubleclickbidmanager/v1.1/lineitems/downloadlineitems', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::DownloadLineItemsRequest::Representation
           command.request_object = download_line_items_request_object
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::DownloadLineItemsResponse::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1_1::DownloadLineItemsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -91,10 +85,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -107,30 +99,27 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def uploadlineitems_lineitem(upload_line_items_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'lineitems/uploadlineitems', options)
+        def uploadlineitems_lineitem(upload_line_items_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'doubleclickbidmanager/v1.1/lineitems/uploadlineitems', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::UploadLineItemsRequest::Representation
           command.request_object = upload_line_items_request_object
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::UploadLineItemsResponse::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1_1::UploadLineItemsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Creates a query.
         # @param [Google::Apis::DoubleclickbidmanagerV1_1::Query] query_object
         # @param [Boolean] asynchronous
-        #   If true, tries to run the query asynchronously. Only applicable when the
-        #   frequency is ONE_TIME.
+        #   If true, tries to run the query asynchronously. Only applicable when
+        #   the frequency is <code>ONE_TIME</code>.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -143,8 +132,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def createquery_query(query_object = nil, asynchronous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'query', options)
+        def createquery_query(query_object = nil, asynchronous: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'doubleclickbidmanager/v1.1/query', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::Query::Representation
           command.request_object = query_object
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::Query::Representation
@@ -152,7 +141,6 @@ module Google
           command.query['asynchronous'] = asynchronous unless asynchronous.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -162,10 +150,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -178,12 +164,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deletequery_query(query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'query/{queryId}', options)
+        def deletequery_query(query_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'doubleclickbidmanager/v1.1/query/{queryId}', options)
           command.params['queryId'] = query_id unless query_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -193,10 +178,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -209,30 +192,27 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def getquery_query(query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'query/{queryId}', options)
+        def getquery_query(query_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'doubleclickbidmanager/v1.1/query/{queryId}', options)
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::Query::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1_1::Query
           command.params['queryId'] = query_id unless query_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Retrieves stored queries.
         # @param [Fixnum] page_size
-        #   Maximum number of results per page. Must be between 1 and 100. Defaults to 100
-        #   if unspecified.
+        #   Maximum number of results per page. Must be between <code>1</code> and
+        #   <code>100</code>. Defaults to <code>100</code> if unspecified.
         # @param [String] page_token
         #   Optional pagination token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -245,15 +225,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def listqueries_query(page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'queries', options)
+        def listqueries_query(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'doubleclickbidmanager/v1.1/queries', options)
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::ListQueriesResponse::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1_1::ListQueriesResponse
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -266,10 +245,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -282,15 +259,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def runquery_query(query_id, run_query_request_object = nil, asynchronous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'query/{queryId}', options)
+        def runquery_query(query_id, run_query_request_object = nil, asynchronous: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'doubleclickbidmanager/v1.1/query/{queryId}', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::RunQueryRequest::Representation
           command.request_object = run_query_request_object
           command.params['queryId'] = query_id unless query_id.nil?
           command.query['asynchronous'] = asynchronous unless asynchronous.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -298,17 +274,15 @@ module Google
         # @param [Fixnum] query_id
         #   Query ID with which the reports are associated.
         # @param [Fixnum] page_size
-        #   Maximum number of results per page. Must be between 1 and 100. Defaults to 100
-        #   if unspecified.
+        #   Maximum number of results per page. Must be between <code>1</code> and
+        #   <code>100</code>. Defaults to <code>100</code> if unspecified.
         # @param [String] page_token
         #   Optional pagination token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -321,8 +295,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def listreports_report(query_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'queries/{queryId}/reports', options)
+        def listreports_report(query_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'doubleclickbidmanager/v1.1/queries/{queryId}/reports', options)
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::ListReportsResponse::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1_1::ListReportsResponse
           command.params['queryId'] = query_id unless query_id.nil?
@@ -330,7 +304,6 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -339,10 +312,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -355,15 +326,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def download_sdf(download_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'sdf/download', options)
+        def download_sdf(download_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'doubleclickbidmanager/v1.1/sdf/download', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::DownloadRequest::Representation
           command.request_object = download_request_object
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::DownloadResponse::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1_1::DownloadResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -372,7 +342,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end

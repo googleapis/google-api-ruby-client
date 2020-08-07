@@ -124,12 +124,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudRecommendationengineV1beta1GetCatalogItemsWithItemGroupIdResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudRecommendationengineV1beta1Image
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -482,16 +476,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :input_uris, as: 'inputUris'
           property :json_schema, as: 'jsonSchema'
-        end
-      end
-      
-      class GoogleCloudRecommendationengineV1beta1GetCatalogItemsWithItemGroupIdResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :canonical_catalog_item, as: 'canonicalCatalogItem', class: Google::Apis::RecommendationengineV1beta1::GoogleCloudRecommendationengineV1beta1CatalogItem, decorator: Google::Apis::RecommendationengineV1beta1::GoogleCloudRecommendationengineV1beta1CatalogItem::Representation
-      
-          collection :catalog_items, as: 'catalogItems', class: Google::Apis::RecommendationengineV1beta1::GoogleCloudRecommendationengineV1beta1CatalogItem, decorator: Google::Apis::RecommendationengineV1beta1::GoogleCloudRecommendationengineV1beta1CatalogItem::Representation
-      
         end
       end
       

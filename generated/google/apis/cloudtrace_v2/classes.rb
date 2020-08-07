@@ -83,19 +83,18 @@ module Google
       class Attributes
         include Google::Apis::Core::Hashable
       
-        # The set of attributes. Each attribute's key can be up to 128 bytes
-        # long. The value can be a string up to 256 bytes, a signed 64-bit integer,
-        # or the Boolean values `true` and `false`. For example:
-        # "/instance_id": ` "string_value": ` "value": "my-instance" ` `
-        # "/http/request_bytes": ` "int_value": 300 `
-        # "abc.com/myattribute": ` "bool_value": false `
+        # The set of attributes. Each attribute's key can be up to 128 bytes long. The
+        # value can be a string up to 256 bytes, a signed 64-bit integer, or the Boolean
+        # values `true` and `false`. For example: "/instance_id": ` "string_value": ` "
+        # value": "my-instance" ` ` "/http/request_bytes": ` "int_value": 300 ` "abc.com/
+        # myattribute": ` "bool_value": false `
         # Corresponds to the JSON property `attributeMap`
         # @return [Hash<String,Google::Apis::CloudtraceV2::AttributeValue>]
         attr_accessor :attribute_map
       
         # The number of attributes that were discarded. Attributes can be discarded
-        # because their keys are too long or because there are too many attributes.
-        # If this value is 0 then all attributes are valid.
+        # because their keys are too long or because there are too many attributes. If
+        # this value is 0 then all attributes are valid.
         # Corresponds to the JSON property `droppedAttributesCount`
         # @return [Fixnum]
         attr_accessor :dropped_attributes_count
@@ -115,8 +114,8 @@ module Google
       class BatchWriteSpansRequest
         include Google::Apis::Core::Hashable
       
-        # Required. A list of new spans. The span names must not match existing
-        # spans, or the results are undefined.
+        # Required. A list of new spans. The span names must not match existing spans,
+        # or the results are undefined.
         # Corresponds to the JSON property `spans`
         # @return [Array<Google::Apis::CloudtraceV2::Span>]
         attr_accessor :spans
@@ -131,13 +130,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -151,9 +148,9 @@ module Google
       end
       
       # A pointer from the current span to another span in the same trace or in a
-      # different trace. For example, this can be used in batching operations,
-      # where a single batch handler processes multiple requests from different
-      # traces or when the handler receives a request from a different project.
+      # different trace. For example, this can be used in batching operations, where a
+      # single batch handler processes multiple requests from different traces or when
+      # the handler receives a request from a different project.
       class Link
         include Google::Apis::Core::Hashable
       
@@ -190,13 +187,13 @@ module Google
         end
       end
       
-      # A collection of links, which are references from this span to a span
-      # in the same or different trace.
+      # A collection of links, which are references from this span to a span in the
+      # same or different trace.
       class Links
         include Google::Apis::Core::Hashable
       
-        # The number of dropped links after the maximum size was enforced. If
-        # this value is 0, then no links were dropped.
+        # The number of dropped links after the maximum size was enforced. If this value
+        # is 0, then no links were dropped.
         # Corresponds to the JSON property `droppedLinksCount`
         # @return [Fixnum]
         attr_accessor :dropped_links_count
@@ -221,21 +218,19 @@ module Google
       class MessageEvent
         include Google::Apis::Core::Hashable
       
-        # The number of compressed bytes sent or received. If missing assumed to
-        # be the same size as uncompressed.
+        # The number of compressed bytes sent or received. If missing assumed to be the
+        # same size as uncompressed.
         # Corresponds to the JSON property `compressedSizeBytes`
         # @return [Fixnum]
         attr_accessor :compressed_size_bytes
       
-        # An identifier for the MessageEvent's message that can be used to match
-        # SENT and RECEIVED MessageEvents. It is recommended to be unique within
-        # a Span.
+        # An identifier for the MessageEvent's message that can be used to match SENT
+        # and RECEIVED MessageEvents. It is recommended to be unique within a Span.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # Type of MessageEvent. Indicates whether the message was sent or
-        # received.
+        # Type of MessageEvent. Indicates whether the message was sent or received.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -283,12 +278,11 @@ module Google
         end
       end
       
-      # A span represents a single operation within a trace. Spans can be
-      # nested to form a trace tree. Often, a trace contains a root span
-      # that describes the end-to-end latency, and one or more subspans for
-      # its sub-operations. A trace can also contain multiple root spans,
-      # or none at all. Spans do not need to be contiguous&mdash;there may be
-      # gaps or overlaps between spans in a trace.
+      # A span represents a single operation within a trace. Spans can be nested to
+      # form a trace tree. Often, a trace contains a root span that describes the end-
+      # to-end latency, and one or more subspans for its sub-operations. A trace can
+      # also contain multiple root spans, or none at all. Spans do not need to be
+      # contiguous—there may be gaps or overlaps between spans in a trace.
       class Span
         include Google::Apis::Core::Hashable
       
@@ -297,8 +291,8 @@ module Google
         # @return [Google::Apis::CloudtraceV2::Attributes]
         attr_accessor :attributes
       
-        # Optional. The number of child spans that were generated while this span
-        # was active. If set, allows implementation to detect missing child spans.
+        # Optional. The number of child spans that were generated while this span was
+        # active. If set, allows implementation to detect missing child spans.
         # Corresponds to the JSON property `childSpanCount`
         # @return [Fixnum]
         attr_accessor :child_span_count
@@ -309,39 +303,36 @@ module Google
         attr_accessor :display_name
       
         # Required. The end time of the span. On the client side, this is the time kept
-        # by
-        # the local machine where the span execution ends. On the server side, this
+        # by the local machine where the span execution ends. On the server side, this
         # is the time when the server application handler stops running.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # A collection of links, which are references from this span to a span
-        # in the same or different trace.
+        # A collection of links, which are references from this span to a span in the
+        # same or different trace.
         # Corresponds to the JSON property `links`
         # @return [Google::Apis::CloudtraceV2::Links]
         attr_accessor :links
       
-        # Required. The resource name of the span in the following format:
-        # projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
-        # identifier for a trace within a project;
-        # it is a 32-character hexadecimal encoding of a 16-byte array.
-        # [SPAN_ID] is a unique identifier for a span within a trace; it
-        # is a 16-character hexadecimal encoding of an 8-byte array. It should not
-        # be zero.
+        # Required. The resource name of the span in the following format: projects/[
+        # PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace
+        # within a project; it is a 32-character hexadecimal encoding of a 16-byte array.
+        # [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-
+        # character hexadecimal encoding of an 8-byte array. It should not be zero.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The [SPAN_ID] of this span's parent span. If this is a root span,
-        # then this field must be empty.
+        # The [SPAN_ID] of this span's parent span. If this is a root span, then this
+        # field must be empty.
         # Corresponds to the JSON property `parentSpanId`
         # @return [String]
         attr_accessor :parent_span_id
       
-        # Optional. Set this parameter to indicate whether this span is in
-        # the same process as its parent. If you do not set this parameter,
-        # Trace is unable to take advantage of this helpful information.
+        # Optional. Set this parameter to indicate whether this span is in the same
+        # process as its parent. If you do not set this parameter, Trace is unable to
+        # take advantage of this helpful information.
         # Corresponds to the JSON property `sameProcessAsParentSpan`
         # @return [Boolean]
         attr_accessor :same_process_as_parent_span
@@ -353,9 +344,8 @@ module Google
         attr_accessor :span_id
       
         # Optional. Distinguishes between spans generated in a particular context. For
-        # example,
-        # two spans with the same name may be distinguished using `CLIENT` (caller)
-        # and `SERVER` (callee) to identify an RPC call.
+        # example, two spans with the same name may be distinguished using `CLIENT` (
+        # caller) and `SERVER` (callee) to identify an RPC call.
         # Corresponds to the JSON property `spanKind`
         # @return [String]
         attr_accessor :span_kind
@@ -366,26 +356,25 @@ module Google
         attr_accessor :stack_trace
       
         # Required. The start time of the span. On the client side, this is the time
-        # kept by
-        # the local machine where the span execution starts. On the server side, this
-        # is the time when the server's application handler starts running.
+        # kept by the local machine where the span execution starts. On the server side,
+        # this is the time when the server's application handler starts running.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::CloudtraceV2::Status]
         attr_accessor :status
       
-        # A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation
-        # on the span, consisting of either user-supplied key:value pairs, or
-        # details of a message sent/received between Spans.
+        # A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation on
+        # the span, consisting of either user-supplied key:value pairs, or details of a
+        # message sent/received between Spans.
         # Corresponds to the JSON property `timeEvents`
         # @return [Google::Apis::CloudtraceV2::TimeEvents]
         attr_accessor :time_events
@@ -417,8 +406,8 @@ module Google
       class StackFrame
         include Google::Apis::Core::Hashable
       
-        # The column number where the function call appears, if available.
-        # This is important in JavaScript because of its anonymous functions.
+        # The column number where the function call appears, if available. This is
+        # important in JavaScript because of its anonymous functions.
         # Corresponds to the JSON property `columnNumber`
         # @return [Fixnum]
         attr_accessor :column_number
@@ -473,9 +462,8 @@ module Google
       class StackFrames
         include Google::Apis::Core::Hashable
       
-        # The number of stack frames that were dropped because there
-        # were too many stack frames.
-        # If this value is 0, then no stack frames were dropped.
+        # The number of stack frames that were dropped because there were too many stack
+        # frames. If this value is 0, then no stack frames were dropped.
         # Corresponds to the JSON property `droppedFramesCount`
         # @return [Fixnum]
         attr_accessor :dropped_frames_count
@@ -505,13 +493,11 @@ module Google
         # @return [Google::Apis::CloudtraceV2::StackFrames]
         attr_accessor :stack_frames
       
-        # The hash ID is used to conserve network bandwidth for duplicate
-        # stack traces within a single trace.
-        # Often multiple spans will have identical stack traces.
-        # The first occurrence of a stack trace should contain both the
-        # `stackFrame` content and a value in `stackTraceHashId`.
-        # Subsequent spans within the same request can refer
-        # to that stack trace by only setting `stackTraceHashId`.
+        # The hash ID is used to conserve network bandwidth for duplicate stack traces
+        # within a single trace. Often multiple spans will have identical stack traces.
+        # The first occurrence of a stack trace should contain both the `stackFrame`
+        # content and a value in `stackTraceHashId`. Subsequent spans within the same
+        # request can refer to that stack trace by only setting `stackTraceHashId`.
         # Corresponds to the JSON property `stackTraceHashId`
         # @return [Fixnum]
         attr_accessor :stack_trace_hash_id
@@ -527,12 +513,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -541,15 +527,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -597,20 +583,20 @@ module Google
         end
       end
       
-      # A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation
-      # on the span, consisting of either user-supplied key:value pairs, or
-      # details of a message sent/received between Spans.
+      # A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation on
+      # the span, consisting of either user-supplied key:value pairs, or details of a
+      # message sent/received between Spans.
       class TimeEvents
         include Google::Apis::Core::Hashable
       
-        # The number of dropped annotations in all the included time events.
-        # If the value is 0, then no annotations were dropped.
+        # The number of dropped annotations in all the included time events. If the
+        # value is 0, then no annotations were dropped.
         # Corresponds to the JSON property `droppedAnnotationsCount`
         # @return [Fixnum]
         attr_accessor :dropped_annotations_count
       
-        # The number of dropped message events in all the included time events.
-        # If the value is 0, then no message events were dropped.
+        # The number of dropped message events in all the included time events. If the
+        # value is 0, then no message events were dropped.
         # Corresponds to the JSON property `droppedMessageEventsCount`
         # @return [Fixnum]
         attr_accessor :dropped_message_events_count
@@ -636,18 +622,17 @@ module Google
       class TruncatableString
         include Google::Apis::Core::Hashable
       
-        # The number of bytes removed from the original string. If this
-        # value is 0, then the string was not shortened.
+        # The number of bytes removed from the original string. If this value is 0, then
+        # the string was not shortened.
         # Corresponds to the JSON property `truncatedByteCount`
         # @return [Fixnum]
         attr_accessor :truncated_byte_count
       
-        # The shortened string. For example, if the original string is 500
-        # bytes long and the limit of the string is 128 bytes, then
-        # `value` contains the first 128 bytes of the 500-byte string.
-        # Truncation always happens on a UTF8 character boundary. If there
-        # are multi-byte characters in the string, then the length of the
-        # shortened string might be less than the size limit.
+        # The shortened string. For example, if the original string is 500 bytes long
+        # and the limit of the string is 128 bytes, then `value` contains the first 128
+        # bytes of the 500-byte string. Truncation always happens on a UTF8 character
+        # boundary. If there are multi-byte characters in the string, then the length of
+        # the shortened string might be less than the size limit.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value

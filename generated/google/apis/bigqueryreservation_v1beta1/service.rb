@@ -49,8 +49,8 @@ module Google
         
         # Retrieves a BI reservation.
         # @param [String] name
-        #   Required. Name of the requested reservation, for example:
-        #   `projects/`project_id`/locations/`location_id`/bireservation`
+        #   Required. Name of the requested reservation, for example: `projects/`
+        #   project_id`/locations/`location_id`/bireservation`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -78,38 +78,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up assignments for a specified resource for a particular region.
-        # If the request is about a project:
-        # 1. Assignments created on the project will be returned if they exist.
-        # 2. Otherwise assignments created on the closest ancestor will be
-        # returned.
-        # 3. Assignments for different JobTypes will all be returned.
-        # The same logic applies if the request is about a folder.
-        # If the request is about an organization, then assignments created on the
-        # organization will be returned (organization doesn't have ancestors).
-        # Comparing to ListAssignments, there are some behavior
-        # differences:
-        # 1. permission on the assignee will be verified in this API.
-        # 2. Hierarchy lookup (project->folder->organization) happens in this API.
-        # 3. Parent here is `projects/*/locations/*`, instead of
-        # `projects/*/locations/*reservations/*`.
-        # **Note** "-" cannot be used for projects
-        # nor locations.
+        # Looks up assignments for a specified resource for a particular region. If the
+        # request is about a project: 1. Assignments created on the project will be
+        # returned if they exist. 2. Otherwise assignments created on the closest
+        # ancestor will be returned. 3. Assignments for different JobTypes will all be
+        # returned. The same logic applies if the request is about a folder. If the
+        # request is about an organization, then assignments created on the organization
+        # will be returned (organization doesn't have ancestors). Comparing to
+        # ListAssignments, there are some behavior differences: 1. permission on the
+        # assignee will be verified in this API. 2. Hierarchy lookup (project->folder->
+        # organization) happens in this API. 3. Parent here is `projects/*/locations/*`,
+        # instead of `projects/*/locations/*reservations/*`. **Note** "-" cannot be used
+        # for projects nor locations.
         # @param [String] parent
         #   Required. The resource name of the admin project(containing project and
-        #   location),
-        #   e.g.:
-        #   `projects/myproject/locations/US`.
+        #   location), e.g.: `projects/myproject/locations/US`.
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token
         #   The next_page_token value returned from a previous List request, if any.
         # @param [String] query
-        #   Please specify resource name as assignee in the query.
-        #   Examples:
-        #   * `assignee=projects/myproject`
-        #   * `assignee=folders/123`
-        #   * `assignee=organizations/456`
+        #   Please specify resource name as assignee in the query. Examples: * `assignee=
+        #   projects/myproject` * `assignee=folders/123` * `assignee=organizations/456`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -140,16 +130,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a BI reservation.
-        # Only fields specified in the `field_mask` are updated.
-        # A singleton BI reservation always exists with default size 0.
-        # In order to reserve BI capacity it needs to be updated to an amount
-        # greater than 0. In order to release BI capacity reservation size
-        # must be set to 0.
+        # Updates a BI reservation. Only fields specified in the `field_mask` are
+        # updated. A singleton BI reservation always exists with default size 0. In
+        # order to reserve BI capacity it needs to be updated to an amount greater than
+        # 0. In order to release BI capacity reservation size must be set to 0.
         # @param [String] name
-        #   The resource name of the singleton BI reservation.
-        #   Reservation names have the form
-        #   `projects/`project_id`/locations/`location_id`/bireservation`.
+        #   The resource name of the singleton BI reservation. Reservation names have the
+        #   form `projects/`project_id`/locations/`location_id`/bireservation`.
         # @param [Google::Apis::BigqueryreservationV1beta1::BiReservation] bi_reservation_object
         # @param [String] update_mask
         #   A list of fields to be updated in this request.
@@ -185,8 +172,8 @@ module Google
         
         # Creates a new capacity commitment resource.
         # @param [String] parent
-        #   Required. Resource name of the parent reservation. E.g.,
-        #   `projects/myproject/locations/US`
+        #   Required. Resource name of the parent reservation. E.g., `projects/myproject/
+        #   locations/US`
         # @param [Google::Apis::BigqueryreservationV1beta1::CapacityCommitment] capacity_commitment_object
         # @param [Boolean] enforce_single_admin_project_per_org
         #   If true, fail the request if another project in the organization has a
@@ -221,12 +208,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a capacity commitment. Attempting to delete capacity commitment
-        # before its commitment_end_time will fail with the error code
-        # `google.rpc.Code.FAILED_PRECONDITION`.
+        # Deletes a capacity commitment. Attempting to delete capacity commitment before
+        # its commitment_end_time will fail with the error code `google.rpc.Code.
+        # FAILED_PRECONDITION`.
         # @param [String] name
-        #   Required. Resource name of the capacity commitment to delete. E.g.,
-        #   `projects/myproject/locations/US/capacityCommitments/123`
+        #   Required. Resource name of the capacity commitment to delete. E.g., `projects/
+        #   myproject/locations/US/capacityCommitments/123`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -256,8 +243,8 @@ module Google
         
         # Returns information about the capacity commitment.
         # @param [String] name
-        #   Required. Resource name of the capacity commitment to retrieve. E.g.,
-        #   `projects/myproject/locations/US/capacityCommitments/123`
+        #   Required. Resource name of the capacity commitment to retrieve. E.g., `
+        #   projects/myproject/locations/US/capacityCommitments/123`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -287,8 +274,8 @@ module Google
         
         # Lists all the capacity commitments for the admin project.
         # @param [String] parent
-        #   Required. Resource name of the parent reservation. E.g.,
-        #   `projects/myproject/locations/US`
+        #   Required. Resource name of the parent reservation. E.g., `projects/myproject/
+        #   locations/US`
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token
@@ -322,14 +309,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Merges capacity commitments of the same plan into a single commitment.
-        # The resulting capacity commitment has the greater commitment_end_time
-        # out of the to-be-merged capacity commitments.
-        # Attempting to merge capacity commitments of different plan will fail
-        # with the error code `google.rpc.Code.FAILED_PRECONDITION`.
+        # Merges capacity commitments of the same plan into a single commitment. The
+        # resulting capacity commitment has the greater commitment_end_time out of the
+        # to-be-merged capacity commitments. Attempting to merge capacity commitments of
+        # different plan will fail with the error code `google.rpc.Code.
+        # FAILED_PRECONDITION`.
         # @param [String] parent
-        #   Parent resource that identifies admin project and location e.g.,
-        #   `projects/myproject/locations/us`
+        #   Parent resource that identifies admin project and location e.g., `projects/
+        #   myproject/locations/us`
         # @param [Google::Apis::BigqueryreservationV1beta1::MergeCapacityCommitmentsRequest] merge_capacity_commitments_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -360,14 +347,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing capacity commitment.
-        # Only `plan` and `renewal_plan` fields can be updated.
-        # Plan can only be changed to a plan of a longer commitment period.
-        # Attempting to change to a plan with shorter commitment period will fail
-        # with the error code `google.rpc.Code.FAILED_PRECONDITION`.
+        # Updates an existing capacity commitment. Only `plan` and `renewal_plan` fields
+        # can be updated. Plan can only be changed to a plan of a longer commitment
+        # period. Attempting to change to a plan with shorter commitment period will
+        # fail with the error code `google.rpc.Code.FAILED_PRECONDITION`.
         # @param [String] name
-        #   Output only. The resource name of the capacity commitment, e.g.,
-        #   `projects/myproject/locations/US/capacityCommitments/123`
+        #   Output only. The resource name of the capacity commitment, e.g., `projects/
+        #   myproject/locations/US/capacityCommitments/123`
         # @param [Google::Apis::BigqueryreservationV1beta1::CapacityCommitment] capacity_commitment_object
         # @param [String] update_mask
         #   Standard field mask for the set of fields to be updated.
@@ -401,15 +387,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Splits capacity commitment to two commitments of the same plan and
-        # `commitment_end_time`.
-        # A common use case is to enable downgrading commitments.
-        # For example, in order to downgrade from 10000 slots to 8000, you might
-        # split a 10000 capacity commitment into commitments of 2000 and 8000. Then,
-        # you would change the plan of the first one to `FLEX` and then delete it.
+        # Splits capacity commitment to two commitments of the same plan and `
+        # commitment_end_time`. A common use case is to enable downgrading commitments.
+        # For example, in order to downgrade from 10000 slots to 8000, you might split a
+        # 10000 capacity commitment into commitments of 2000 and 8000. Then, you would
+        # change the plan of the first one to `FLEX` and then delete it.
         # @param [String] name
-        #   Required. The resource name e.g.,:
-        #   `projects/myproject/locations/US/capacityCommitments/123`
+        #   Required. The resource name e.g.,: `projects/myproject/locations/US/
+        #   capacityCommitments/123`
         # @param [Google::Apis::BigqueryreservationV1beta1::SplitCapacityCommitmentRequest] split_capacity_commitment_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -442,8 +427,7 @@ module Google
         
         # Creates a new reservation resource.
         # @param [String] parent
-        #   Required. Project, location. E.g.,
-        #   `projects/myproject/locations/US`
+        #   Required. Project, location. E.g., `projects/myproject/locations/US`
         # @param [Google::Apis::BigqueryreservationV1beta1::Reservation] reservation_object
         # @param [String] reservation_id
         #   The reservation ID. This field must only contain lower case alphanumeric
@@ -478,12 +462,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a reservation.
-        # Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has
-        # assignments.
+        # Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` when
+        # reservation has assignments.
         # @param [String] name
-        #   Required. Resource name of the reservation to retrieve. E.g.,
-        #   `projects/myproject/locations/US/reservations/team1-prod`
+        #   Required. Resource name of the reservation to retrieve. E.g., `projects/
+        #   myproject/locations/US/reservations/team1-prod`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -513,8 +496,8 @@ module Google
         
         # Returns information about the reservation.
         # @param [String] name
-        #   Required. Resource name of the reservation to retrieve. E.g.,
-        #   `projects/myproject/locations/US/reservations/team1-prod`
+        #   Required. Resource name of the reservation to retrieve. E.g., `projects/
+        #   myproject/locations/US/reservations/team1-prod`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -544,14 +527,13 @@ module Google
         
         # Lists all the reservations for the project in the specified location.
         # @param [String] parent
-        #   Required. The parent resource name containing project and location, e.g.:
-        #   `projects/myproject/locations/US`
+        #   Required. The parent resource name containing project and location, e.g.: `
+        #   projects/myproject/locations/US`
         # @param [String] filter
         #   Can be used to filter out reservations based on names, capacity, etc, e.g.:
-        #   filter="reservation.slot_capacity > 200"
-        #   filter="reservation.name = \"*dev/*\""
-        #   Advanced filtering syntax can be
-        #   [here](https://cloud.google.com/logging/docs/view/advanced-filters).
+        #   filter="reservation.slot_capacity > 200" filter="reservation.name = \"*dev/*\""
+        #   Advanced filtering syntax can be [here](https://cloud.google.com/logging/docs/
+        #   view/advanced-filters).
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token
@@ -588,8 +570,8 @@ module Google
         
         # Updates an existing reservation resource.
         # @param [String] name
-        #   The resource name of the reservation, e.g.,
-        #   `projects/*/locations/*/reservations/team1-prod`.
+        #   The resource name of the reservation, e.g., `projects/*/locations/*/
+        #   reservations/team1-prod`.
         # @param [Google::Apis::BigqueryreservationV1beta1::Reservation] reservation_object
         # @param [String] update_mask
         #   Standard field mask for the set of fields to be updated.
@@ -623,32 +605,26 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an assignment object which allows the given project to submit jobs
-        # of a certain type using slots from the specified reservation.
-        # Currently a
-        # resource (project, folder, organization) can only have one assignment per
-        # each (job_type, location) combination, and that reservation will be used
-        # for all jobs of the matching type.
-        # Different assignments can be created on different levels of the
-        # projects, folders or organization hierarchy.  During query execution,
-        # the assignment is looked up at the project, folder and organization levels
-        # in that order. The first assignment found is applied to the query.
-        # When creating assignments, it does not matter if other assignments exist at
-        # higher levels.
-        # Example:
-        # * The organization `organizationA` contains two projects, `project1`
-        # and `project2`.
-        # * Assignments for all three entities (`organizationA`, `project1`, and
-        # `project2`) could all be created and mapped to the same or different
-        # reservations.
-        # Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have
-        # 'bigquery.admin' permissions on the project using the reservation
-        # and the project that owns this reservation.
-        # Returns `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment
-        # does not match location of the reservation.
+        # Creates an assignment object which allows the given project to submit jobs of
+        # a certain type using slots from the specified reservation. Currently a
+        # resource (project, folder, organization) can only have one assignment per each
+        # (job_type, location) combination, and that reservation will be used for all
+        # jobs of the matching type. Different assignments can be created on different
+        # levels of the projects, folders or organization hierarchy. During query
+        # execution, the assignment is looked up at the project, folder and organization
+        # levels in that order. The first assignment found is applied to the query. When
+        # creating assignments, it does not matter if other assignments exist at higher
+        # levels. Example: * The organization `organizationA` contains two projects, `
+        # project1` and `project2`. * Assignments for all three entities (`organizationA`
+        # , `project1`, and `project2`) could all be created and mapped to the same or
+        # different reservations. Returns `google.rpc.Code.PERMISSION_DENIED` if user
+        # does not have 'bigquery.admin' permissions on the project using the
+        # reservation and the project that owns this reservation. Returns `google.rpc.
+        # Code.INVALID_ARGUMENT` when location of the assignment does not match location
+        # of the reservation.
         # @param [String] parent
-        #   Required. The parent resource name of the assignment
-        #   E.g. `projects/myproject/locations/US/reservations/team1-prod`
+        #   Required. The parent resource name of the assignment E.g. `projects/myproject/
+        #   locations/US/reservations/team1-prod`
         # @param [Google::Apis::BigqueryreservationV1beta1::Assignment] assignment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -679,21 +655,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a assignment. No expansion will happen.
-        # Example:
-        # * Organization `organizationA` contains two projects, `project1` and
-        # `project2`.
-        # * Reservation `res1` exists and was created previously.
-        # * CreateAssignment was used previously to define the following
-        # associations between entities and reservations: `<organizationA, res1>`
-        # and `<project1, res1>`
-        # In this example, deletion of the `<organizationA, res1>` assignment won't
-        # affect the other assignment `<project1, res1>`. After said deletion,
-        # queries from `project1` will still use `res1` while queries from
-        # `project2` will switch to use on-demand mode.
+        # Deletes a assignment. No expansion will happen. Example: * Organization `
+        # organizationA` contains two projects, `project1` and `project2`. * Reservation
+        # `res1` exists and was created previously. * CreateAssignment was used
+        # previously to define the following associations between entities and
+        # reservations: `` and `` In this example, deletion of the `` assignment won't
+        # affect the other assignment ``. After said deletion, queries from `project1`
+        # will still use `res1` while queries from `project2` will switch to use on-
+        # demand mode.
         # @param [String] name
-        #   Required. Name of the resource, e.g.
-        #   `projects/myproject/locations/US/reservations/team1-prod/assignments/123`
+        #   Required. Name of the resource, e.g. `projects/myproject/locations/US/
+        #   reservations/team1-prod/assignments/123`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -721,26 +693,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists assignments.
-        # Only explicitly created assignments will be returned.
-        # Example:
-        # * Organization `organizationA` contains two projects, `project1` and
-        # `project2`.
-        # * Reservation `res1` exists and was created previously.
-        # * CreateAssignment was used previously to define the following
-        # associations between entities and reservations: `<organizationA, res1>`
-        # and `<project1, res1>`
-        # In this example, ListAssignments will just return the above two assignments
-        # for reservation `res1`, and no expansion/merge will happen.
-        # The wildcard "-" can be used for
-        # reservations in the request. In that case all assignments belongs to the
-        # specified project and location will be listed.
-        # **Note** "-" cannot be used for projects nor locations.
+        # Lists assignments. Only explicitly created assignments will be returned.
+        # Example: * Organization `organizationA` contains two projects, `project1` and `
+        # project2`. * Reservation `res1` exists and was created previously. *
+        # CreateAssignment was used previously to define the following associations
+        # between entities and reservations: `` and `` In this example, ListAssignments
+        # will just return the above two assignments for reservation `res1`, and no
+        # expansion/merge will happen. The wildcard "-" can be used for reservations in
+        # the request. In that case all assignments belongs to the specified project and
+        # location will be listed. **Note** "-" cannot be used for projects nor
+        # locations.
         # @param [String] parent
-        #   Required. The parent resource name e.g.:
-        #   `projects/myproject/locations/US/reservations/team1-prod`
-        #   Or:
-        #   `projects/myproject/locations/US/reservations/-`
+        #   Required. The parent resource name e.g.: `projects/myproject/locations/US/
+        #   reservations/team1-prod` Or: `projects/myproject/locations/US/reservations/-`
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token
@@ -774,14 +739,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Moves an assignment under a new reservation.
-        # This differs from removing an existing assignment and recreating a new one
-        # by providing a transactional change that ensures an assignee always has an
-        # associated reservation.
+        # Moves an assignment under a new reservation. This differs from removing an
+        # existing assignment and recreating a new one by providing a transactional
+        # change that ensures an assignee always has an associated reservation.
         # @param [String] name
-        #   Required. The resource name of the assignment,
-        #   e.g.
-        #   `projects/myproject/locations/US/reservations/team1-prod/assignments/123`
+        #   Required. The resource name of the assignment, e.g. `projects/myproject/
+        #   locations/US/reservations/team1-prod/assignments/123`
         # @param [Google::Apis::BigqueryreservationV1beta1::MoveAssignmentRequest] move_assignment_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

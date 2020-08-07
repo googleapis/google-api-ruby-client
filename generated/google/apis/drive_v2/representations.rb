@@ -1075,6 +1075,7 @@ module Google
       
           property :type, as: 'type'
           property :value, as: 'value'
+          property :view, as: 'view'
           property :with_link, as: 'withLink'
         end
         

@@ -51,11 +51,10 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Sends new spans to new or existing traces. You cannot update
-        # existing spans.
+        # Sends new spans to new or existing traces. You cannot update existing spans.
         # @param [String] name
-        #   Required. The name of the project where the spans belong. The format is
-        #   `projects/[PROJECT_ID]`.
+        #   Required. The name of the project where the spans belong. The format is `
+        #   projects/[PROJECT_ID]`.
         # @param [Google::Apis::CloudtraceV2::BatchWriteSpansRequest] batch_write_spans_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -88,13 +87,11 @@ module Google
         
         # Creates a new span.
         # @param [String] name
-        #   Required. The resource name of the span in the following format:
-        #   projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
-        #   identifier for a trace within a project;
-        #   it is a 32-character hexadecimal encoding of a 16-byte array.
-        #   [SPAN_ID] is a unique identifier for a span within a trace; it
-        #   is a 16-character hexadecimal encoding of an 8-byte array. It should not
-        #   be zero.
+        #   Required. The resource name of the span in the following format: projects/[
+        #   PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace
+        #   within a project; it is a 32-character hexadecimal encoding of a 16-byte array.
+        #   [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-
+        #   character hexadecimal encoding of an 8-byte array. It should not be zero.
         # @param [Google::Apis::CloudtraceV2::Span] span_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

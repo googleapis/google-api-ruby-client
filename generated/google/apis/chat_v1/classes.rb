@@ -22,10 +22,10 @@ module Google
   module Apis
     module ChatV1
       
-      # List of string parameters to supply when the action method is invoked.
-      # For example, consider three snooze buttons: snooze now, snooze 1 day,
-      # snooze next week. You might use action method = snooze(), passing the
-      # snooze type and snooze time in the list of string parameters.
+      # List of string parameters to supply when the action method is invoked. For
+      # example, consider three snooze buttons: snooze now, snooze 1 day, snooze next
+      # week. You might use action method = snooze(), passing the snooze type and
+      # snooze time in the list of string parameters.
       class ActionParameter
         include Google::Apis::Core::Hashable
       
@@ -75,28 +75,12 @@ module Google
         end
       end
       
-      # Annotations associated with the plain-text body of the message.
-      # Example plain-text message body:
-      # ```
-      # Hello @FooBot how are you!"
-      # ```
-      # The corresponding annotations metadata:
-      # ```
-      # "annotations":[`
-      # "type":"USER_MENTION",
-      # "startIndex":6,
-      # "length":7,
-      # "userMention": `
-      # "user": `
-      # "name":"users/107946847022116401880",
-      # "displayName":"FooBot",
-      # "avatarUrl":"https://goo.gl/aeDtrS",
-      # "type":"BOT"
-      # `,
-      # "type":"MENTION"
-      # `
-      # `]
-      # ```
+      # Annotations associated with the plain-text body of the message. Example plain-
+      # text message body: ``` Hello @FooBot how are you!" ``` The corresponding
+      # annotations metadata: ``` "annotations":[` "type":"USER_MENTION", "startIndex":
+      # 6, "length":7, "userMention": ` "user": ` "name":"users/107946847022116401880",
+      # "displayName":"FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" `, "
+      # type":"MENTION" ` `] ```
       class Annotation
         include Google::Apis::Core::Hashable
       
@@ -155,8 +139,8 @@ module Google
         attr_accessor :content_type
       
         # Output only. The download URL which should be used to allow a human user to
-        # download the attachment. Bots should not use this URL to download
-        # attachment content.
+        # download the attachment. Bots should not use this URL to download attachment
+        # content.
         # Corresponds to the JSON property `downloadUri`
         # @return [String]
         attr_accessor :download_uri
@@ -166,8 +150,8 @@ module Google
         # @return [Google::Apis::ChatV1::DriveDataRef]
         attr_accessor :drive_data_ref
       
-        # Resource name of the attachment, in the form
-        # "spaces/*/messages/*/attachments/*".
+        # Resource name of the attachment, in the form "spaces/*/messages/*/attachments/*
+        # ".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -177,9 +161,8 @@ module Google
         # @return [String]
         attr_accessor :source
       
-        # Output only. The thumbnail URL which should be used to preview the
-        # attachment to a human user. Bots should not use this URL to download
-        # attachment content.
+        # Output only. The thumbnail URL which should be used to preview the attachment
+        # to a human user. Bots should not use this URL to download attachment content.
         # Corresponds to the JSON property `thumbnailUri`
         # @return [String]
         attr_accessor :thumbnail_uri
@@ -205,8 +188,8 @@ module Google
       class AttachmentDataRef
         include Google::Apis::Core::Hashable
       
-        # The resource name of the attachment data. This is used with the media API
-        # to download the attachment data.
+        # The resource name of the attachment data. This is used with the media API to
+        # download the attachment data.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -283,10 +266,9 @@ module Google
         end
       end
       
-      # A card action is
-      # the action associated with the card. For an invoice card, a
-      # typical action would be: delete invoice, email invoice or open the
-      # invoice in browser.
+      # A card action is the action associated with the card. For an invoice card, a
+      # typical action would be: delete invoice, email invoice or open the invoice in
+      # browser.
       class CardAction
         include Google::Apis::Core::Hashable
       
@@ -330,9 +312,9 @@ module Google
         # @return [String]
         attr_accessor :subtitle
       
-        # The title must be specified. The header has a fixed height: if both a
-        # title and subtitle is specified, each will take up 1 line. If only the
-        # title is specified, it will take up both lines.
+        # The title must be specified. The header has a fixed height: if both a title
+        # and subtitle is specified, each will take up 1 line. If only the title is
+        # specified, it will take up both lines.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -354,16 +336,16 @@ module Google
       class DeprecatedEvent
         include Google::Apis::Core::Hashable
       
-        # A form action describes the behavior when the form is submitted.
-        # For example, an Apps Script can be invoked to handle the form.
+        # A form action describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
         # Corresponds to the JSON property `action`
         # @return [Google::Apis::ChatV1::FormAction]
         attr_accessor :action
       
         # The URL the bot should redirect the user to after they have completed an
-        # authorization or configuration flow outside of Hangouts Chat. See the
-        # [Authorizing access to 3p services guide](/hangouts/chat/how-tos/auth-3p)
-        # for more information.
+        # authorization or configuration flow outside of Hangouts Chat. See the [
+        # Authorizing access to 3p services guide](/hangouts/chat/how-tos/auth-3p) for
+        # more information.
         # Corresponds to the JSON property `configCompleteRedirectUrl`
         # @return [String]
         attr_accessor :config_complete_redirect_url
@@ -383,17 +365,16 @@ module Google
         # @return [Google::Apis::ChatV1::Space]
         attr_accessor :space
       
-        # The bot-defined key for the thread related to the event. See the
-        # thread_key field of the
-        # `spaces.message.create` request for more information.
+        # The bot-defined key for the thread related to the event. See the thread_key
+        # field of the `spaces.message.create` request for more information.
         # Corresponds to the JSON property `threadKey`
         # @return [String]
         attr_accessor :thread_key
       
         # A secret value that bots can use to verify if a request is from Google. The
         # token is randomly generated by Google, remains static, and can be obtained
-        # from the Hangouts Chat API configuration page in the Cloud Console.
-        # Developers can revoke/regenerate it if needed from the same page.
+        # from the Hangouts Chat API configuration page in the Cloud Console. Developers
+        # can revoke/regenerate it if needed from the same page.
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
@@ -445,13 +426,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -464,15 +443,15 @@ module Google
         end
       end
       
-      # A form action describes the behavior when the form is submitted.
-      # For example, an Apps Script can be invoked to handle the form.
+      # A form action describes the behavior when the form is submitted. For example,
+      # an Apps Script can be invoked to handle the form.
       class FormAction
         include Google::Apis::Core::Hashable
       
-        # The method name is used to identify which part of the form triggered the
-        # form submission. This information is echoed back to the bot as part of
-        # the card click event. The same method name can be used for several
-        # elements that trigger a common behavior if desired.
+        # The method name is used to identify which part of the form triggered the form
+        # submission. This information is echoed back to the bot as part of the card
+        # click event. The same method name can be used for several elements that
+        # trigger a common behavior if desired.
         # Corresponds to the JSON property `actionMethodName`
         # @return [String]
         attr_accessor :action_method_name
@@ -497,10 +476,10 @@ module Google
       class Image
         include Google::Apis::Core::Hashable
       
-        # The aspect ratio of this image (width/height). This field allows clients
-        # to reserve the right height for the image while waiting for it to load.
-        # It's not meant to override the native aspect ratio of the image.
-        # If unset, the server fills it by prefetching the image.
+        # The aspect ratio of this image (width/height). This field allows clients to
+        # reserve the right height for the image while waiting for it to load. It's not
+        # meant to override the native aspect ratio of the image. If unset, the server
+        # fills it by prefetching the image.
         # Corresponds to the JSON property `aspectRatio`
         # @return [Float]
         attr_accessor :aspect_ratio
@@ -531,8 +510,7 @@ module Google
       class ImageButton
         include Google::Apis::Core::Hashable
       
-        # The icon specified by an enum that indices to an icon provided by Chat
-        # API.
+        # The icon specified by an enum that indices to an icon provided by Chat API.
         # Corresponds to the JSON property `icon`
         # @return [String]
         attr_accessor :icon
@@ -542,8 +520,8 @@ module Google
         # @return [String]
         attr_accessor :icon_url
       
-        # The name of this image_button which will be used for accessibility.
-        # Default value will be provided if developers don't specify.
+        # The name of this image_button which will be used for accessibility. Default
+        # value will be provided if developers don't specify.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -566,8 +544,8 @@ module Google
         end
       end
       
-      # A UI element contains a key (label) and a value (content). And this
-      # element may also contain some actions such as onclick button.
+      # A UI element contains a key (label) and a value (content). And this element
+      # may also contain some actions such as onclick button.
       class KeyValue
         include Google::Apis::Core::Hashable
       
@@ -592,8 +570,8 @@ module Google
         attr_accessor :content_multiline
         alias_method :content_multiline?, :content_multiline
       
-        # An enum value that will be replaced by the Chat API with the
-        # corresponding icon image.
+        # An enum value that will be replaced by the Chat API with the corresponding
+        # icon image.
         # Corresponds to the JSON property `icon`
         # @return [String]
         attr_accessor :icon
@@ -639,8 +617,8 @@ module Google
         # @return [Array<Google::Apis::ChatV1::Membership>]
         attr_accessor :memberships
       
-        # Continuation token to retrieve the next page of results. It will be empty
-        # for the last page of results.
+        # Continuation token to retrieve the next page of results. It will be empty for
+        # the last page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -660,9 +638,9 @@ module Google
       class ListSpacesResponse
         include Google::Apis::Core::Hashable
       
-        # Continuation token to retrieve the next page of results. It will be empty
-        # for the last page of results. Tokens expire in an hour. An error is thrown
-        # if an expired token is passed.
+        # Continuation token to retrieve the next page of results. It will be empty for
+        # the last page of results. Tokens expire in an hour. An error is thrown if an
+        # expired token is passed.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -706,8 +684,8 @@ module Google
       class Membership
         include Google::Apis::Core::Hashable
       
-        # The creation time of the membership a.k.a the time at which the member
-        # joined the space, if applicable.
+        # The creation time of the membership a.k.a the time at which the member joined
+        # the space, if applicable.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -717,8 +695,8 @@ module Google
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :member
       
-        # Resource name of the membership, in the form "spaces/*/members/*".
-        # Example: spaces/AAAAMpdlehY/members/105115627578887013105
+        # Resource name of the membership, in the form "spaces/*/members/*". Example:
+        # spaces/AAAAMpdlehY/members/105115627578887013105
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -765,15 +743,14 @@ module Google
         # @return [Array<Google::Apis::ChatV1::Attachment>]
         attr_accessor :attachment
       
-        # Rich, formatted and interactive cards that can be used to display UI
-        # elements such as: formatted texts, buttons, clickable images. Cards are
-        # normally displayed below the plain-text body of the message.
+        # Rich, formatted and interactive cards that can be used to display UI elements
+        # such as: formatted texts, buttons, clickable images. Cards are normally
+        # displayed below the plain-text body of the message.
         # Corresponds to the JSON property `cards`
         # @return [Array<Google::Apis::ChatV1::Card>]
         attr_accessor :cards
       
-        # Output only. The time at which the message was created in Hangouts Chat
-        # server.
+        # Output only. The time at which the message was created in Hangouts Chat server.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -784,15 +761,15 @@ module Google
         # @return [String]
         attr_accessor :fallback_text
       
-        # Resource name, in the form "spaces/*/messages/*".
-        # Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
+        # Resource name, in the form "spaces/*/messages/*". Example: spaces/AAAAMpdlehY/
+        # messages/UMxbHmzDlr4.UMxbHmzDlr4
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Text for generating preview chips. This text will not be displayed to the
-        # user, but any links to images, web pages, videos, etc. included here will
-        # generate preview chips.
+        # Text for generating preview chips. This text will not be displayed to the user,
+        # but any links to images, web pages, videos, etc. included here will generate
+        # preview chips.
         # Corresponds to the JSON property `previewText`
         # @return [String]
         attr_accessor :preview_text
@@ -843,8 +820,8 @@ module Google
       class OnClick
         include Google::Apis::Core::Hashable
       
-        # A form action describes the behavior when the form is submitted.
-        # For example, an Apps Script can be invoked to handle the form.
+        # A form action describes the behavior when the form is submitted. For example,
+        # an Apps Script can be invoked to handle the form.
         # Corresponds to the JSON property `action`
         # @return [Google::Apis::ChatV1::FormAction]
         attr_accessor :action
@@ -884,10 +861,9 @@ module Google
         end
       end
       
-      # A section contains a collection of widgets that are rendered
-      # (vertically) in the order that they are specified. Across all platforms,
-      # cards have a narrow fixed width, so
-      # there is currently no need for layout properties (e.g. float).
+      # A section contains a collection of widgets that are rendered (vertically) in
+      # the order that they are specified. Across all platforms, cards have a narrow
+      # fixed width, so there is currently no need for layout properties (e.g. float).
       class Section
         include Google::Apis::Core::Hashable
       
@@ -916,15 +892,14 @@ module Google
       class Space
         include Google::Apis::Core::Hashable
       
-        # Output only. The display name (only if the space is a room).
-        # Please note that this field might not be populated in direct messages
-        # between humans.
+        # Output only. The display name (only if the space is a room). Please note that
+        # this field might not be populated in direct messages between humans.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name of the space, in the form "spaces/*".
-        # Example: spaces/AAAAMpdlehYs
+        # Resource name of the space, in the form "spaces/*". Example: spaces/
+        # AAAAMpdlehYs
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -941,8 +916,8 @@ module Google
         attr_accessor :threaded
         alias_method :threaded?, :threaded
       
-        # Output only. The type of a space.
-        # This is deprecated. Use `single_user_bot_dm` instead.
+        # Output only. The type of a space. This is deprecated. Use `single_user_bot_dm`
+        # instead.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1009,8 +984,8 @@ module Google
       class Thread
         include Google::Apis::Core::Hashable
       
-        # Resource name, in the form "spaces/*/threads/*".
-        # Example: spaces/AAAAMpdlehY/threads/UMxbHmzDlr4
+        # Resource name, in the form "spaces/*/threads/*". Example: spaces/AAAAMpdlehY/
+        # threads/UMxbHmzDlr4
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1091,8 +1066,8 @@ module Google
       class WidgetMarkup
         include Google::Apis::Core::Hashable
       
-        # A list of buttons. Buttons is also oneof data and only one of these
-        # fields should be set.
+        # A list of buttons. Buttons is also oneof data and only one of these fields
+        # should be set.
         # Corresponds to the JSON property `buttons`
         # @return [Array<Google::Apis::ChatV1::Button>]
         attr_accessor :buttons
@@ -1102,8 +1077,8 @@ module Google
         # @return [Google::Apis::ChatV1::Image]
         attr_accessor :image
       
-        # A UI element contains a key (label) and a value (content). And this
-        # element may also contain some actions such as onclick button.
+        # A UI element contains a key (label) and a value (content). And this element
+        # may also contain some actions such as onclick button.
         # Corresponds to the JSON property `keyValue`
         # @return [Google::Apis::ChatV1::KeyValue]
         attr_accessor :key_value

@@ -294,6 +294,7 @@ module Google
       
           property :result, as: 'result', class: Google::Apis::GenomicsV2alpha1::Status, decorator: Google::Apis::GenomicsV2alpha1::Status::Representation
       
+          property :sos_report, :base64 => true, as: 'sosReport'
           property :worker_status, as: 'workerStatus', class: Google::Apis::GenomicsV2alpha1::WorkerStatus, decorator: Google::Apis::GenomicsV2alpha1::WorkerStatus::Representation
       
         end

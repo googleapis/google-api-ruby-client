@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClientData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContactGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -465,6 +471,16 @@ module Google
         end
       end
       
+      class ClientData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
+      
+          property :value, as: 'value'
+        end
+      end
+      
       class ContactGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -829,6 +845,8 @@ module Google
           collection :bragging_rights, as: 'braggingRights', class: Google::Apis::PeopleV1::BraggingRights, decorator: Google::Apis::PeopleV1::BraggingRights::Representation
       
           collection :calendar_urls, as: 'calendarUrls', class: Google::Apis::PeopleV1::CalendarUrl, decorator: Google::Apis::PeopleV1::CalendarUrl::Representation
+      
+          collection :client_data, as: 'clientData', class: Google::Apis::PeopleV1::ClientData, decorator: Google::Apis::PeopleV1::ClientData::Representation
       
           collection :cover_photos, as: 'coverPhotos', class: Google::Apis::PeopleV1::CoverPhoto, decorator: Google::Apis::PeopleV1::CoverPhoto::Representation
       
