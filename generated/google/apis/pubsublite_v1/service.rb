@@ -49,14 +49,13 @@ module Google
         
         # Creates a new subscription.
         # @param [String] parent
-        #   Required. The parent location in which to create the subscription.
-        #   Structured like `projects/`project_number`/locations/`location``.
+        #   Required. The parent location in which to create the subscription. Structured
+        #   like `projects/`project_number`/locations/`location``.
         # @param [Google::Apis::PubsubliteV1::Subscription] subscription_object
         # @param [String] subscription_id
         #   Required. The ID to use for the subscription, which will become the final
-        #   component
-        #   of the subscription's name.
-        #   This value is structured like: `my-sub-name`.
+        #   component of the subscription's name. This value is structured like: `my-sub-
+        #   name`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -149,17 +148,17 @@ module Google
         
         # Returns the list of subscriptions for the given project.
         # @param [String] parent
-        #   Required. The parent whose subscriptions are to be listed.
-        #   Structured like `projects/`project_number`/locations/`location``.
+        #   Required. The parent whose subscriptions are to be listed. Structured like `
+        #   projects/`project_number`/locations/`location``.
         # @param [Fixnum] page_size
         #   The maximum number of subscriptions to return. The service may return fewer
-        #   than this value.
-        #   If unset or zero, all subscriptions for the parent will be returned.
+        #   than this value. If unset or zero, all subscriptions for the parent will be
+        #   returned.
         # @param [String] page_token
-        #   A page token, received from a previous `ListSubscriptions` call.
-        #   Provide this to retrieve the subsequent page.
-        #   When paginating, all other parameters provided to `ListSubscriptions` must
-        #   match the call that provided the page token.
+        #   A page token, received from a previous `ListSubscriptions` call. Provide this
+        #   to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListSubscriptions` must match the call that provided the page
+        #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -191,9 +190,8 @@ module Google
         
         # Updates properties of the specified subscription.
         # @param [String] name
-        #   The name of the subscription.
-        #   Structured like:
-        #   projects/`project_number`/locations/`location`/subscriptions/`subscription_id`
+        #   The name of the subscription. Structured like: projects/`project_number`/
+        #   locations/`location`/subscriptions/`subscription_id`
         # @param [Google::Apis::PubsubliteV1::Subscription] subscription_object
         # @param [String] update_mask
         #   Required. A mask specifying the subscription fields to change.
@@ -229,14 +227,12 @@ module Google
         
         # Creates a new topic.
         # @param [String] parent
-        #   Required. The parent location in which to create the topic.
-        #   Structured like `projects/`project_number`/locations/`location``.
+        #   Required. The parent location in which to create the topic. Structured like `
+        #   projects/`project_number`/locations/`location``.
         # @param [Google::Apis::PubsubliteV1::Topic] topic_object
         # @param [String] topic_id
         #   Required. The ID to use for the topic, which will become the final component
-        #   of
-        #   the topic's name.
-        #   This value is structured like: `my-topic-name`.
+        #   of the topic's name. This value is structured like: `my-topic-name`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -359,17 +355,15 @@ module Google
         
         # Returns the list of topics for the given project.
         # @param [String] parent
-        #   Required. The parent whose topics are to be listed.
-        #   Structured like `projects/`project_number`/locations/`location``.
+        #   Required. The parent whose topics are to be listed. Structured like `projects/`
+        #   project_number`/locations/`location``.
         # @param [Fixnum] page_size
-        #   The maximum number of topics to return. The service may return fewer than
-        #   this value.
-        #   If unset or zero, all topics for the parent will be returned.
+        #   The maximum number of topics to return. The service may return fewer than this
+        #   value. If unset or zero, all topics for the parent will be returned.
         # @param [String] page_token
-        #   A page token, received from a previous `ListTopics` call.
-        #   Provide this to retrieve the subsequent page.
-        #   When paginating, all other parameters provided to `ListTopics` must match
-        #   the call that provided the page token.
+        #   A page token, received from a previous `ListTopics` call. Provide this to
+        #   retrieve the subsequent page. When paginating, all other parameters provided
+        #   to `ListTopics` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -401,9 +395,8 @@ module Google
         
         # Updates properties of the specified topic.
         # @param [String] name
-        #   The name of the topic.
-        #   Structured like:
-        #   projects/`project_number`/locations/`location`/topics/`topic_id`
+        #   The name of the topic. Structured like: projects/`project_number`/locations/`
+        #   location`/topics/`topic_id`
         # @param [Google::Apis::PubsubliteV1::Topic] topic_object
         # @param [String] update_mask
         #   Required. A mask specifying the topic fields to change.
@@ -442,13 +435,13 @@ module Google
         #   Required. The name of the topic whose subscriptions to list.
         # @param [Fixnum] page_size
         #   The maximum number of subscriptions to return. The service may return fewer
-        #   than this value.
-        #   If unset or zero, all subscriptions for the given topic will be returned.
+        #   than this value. If unset or zero, all subscriptions for the given topic will
+        #   be returned.
         # @param [String] page_token
-        #   A page token, received from a previous `ListTopicSubscriptions` call.
-        #   Provide this to retrieve the subsequent page.
-        #   When paginating, all other parameters provided to `ListTopicSubscriptions`
-        #   must match the call that provided the page token.
+        #   A page token, received from a previous `ListTopicSubscriptions` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListTopicSubscriptions` must match the call that provided the
+        #   page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -480,19 +473,17 @@ module Google
         
         # Returns all committed cursor information for a subscription.
         # @param [String] parent
-        #   Required. The subscription for which to retrieve cursors.
-        #   Structured like
-        #   `projects/`project_number`/locations/`location`/subscriptions/`subscription_id`
-        #   `.
+        #   Required. The subscription for which to retrieve cursors. Structured like `
+        #   projects/`project_number`/locations/`location`/subscriptions/`subscription_id``
+        #   .
         # @param [Fixnum] page_size
         #   The maximum number of cursors to return. The service may return fewer than
-        #   this value.
-        #   If unset or zero, all cursors for the parent will be returned.
+        #   this value. If unset or zero, all cursors for the parent will be returned.
         # @param [String] page_token
-        #   A page token, received from a previous `ListPartitionCursors` call.
-        #   Provide this to retrieve the subsequent page.
-        #   When paginating, all other parameters provided to `ListPartitionCursors`
-        #   must match the call that provided the page token.
+        #   A page token, received from a previous `ListPartitionCursors` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListPartitionCursors` must match the call that provided the page
+        #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

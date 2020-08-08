@@ -22,66 +22,59 @@ module Google
   module Apis
     module DlpV2
       
-      # A task to execute on the completion of a job.
-      # See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
+      # A task to execute on the completion of a job. See https://cloud.google.com/dlp/
+      # docs/concepts-actions to learn more.
       class GooglePrivacyDlpV2Action
         include Google::Apis::Core::Hashable
       
-        # Enable email notification to project owners and editors on jobs's
-        # completion/failure.
+        # Enable email notification to project owners and editors on jobs's completion/
+        # failure.
         # Corresponds to the JSON property `jobNotificationEmails`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobNotificationEmails]
         attr_accessor :job_notification_emails
       
         # Publish a message into given Pub/Sub topic when DlpJob has completed. The
-        # message contains a single field, `DlpJobName`, which is equal to the
-        # finished job's
-        # [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.
-        # dlpJobs#DlpJob).
-        # Compatible with: Inspect, Risk
+        # message contains a single field, `DlpJobName`, which is equal to the finished
+        # job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/
+        # projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
         # Corresponds to the JSON property `pubSub`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub]
         attr_accessor :pub_sub
       
         # Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the
-        # results of the DlpJob will be applied to the entry for the resource scanned
-        # in Cloud Data Catalog. Any labels previously written by another DlpJob will
-        # be deleted. InfoType naming patterns are strictly enforced when using this
+        # results of the DlpJob will be applied to the entry for the resource scanned in
+        # Cloud Data Catalog. Any labels previously written by another DlpJob will be
+        # deleted. InfoType naming patterns are strictly enforced when using this
         # feature. Note that the findings will be persisted in Cloud Data Catalog
-        # storage and are governed by Data Catalog service-specific policy, see
-        # https://cloud.google.com/terms/service-terms
-        # Only a single instance of this action can be specified and only allowed if
-        # all resources being scanned are BigQuery tables.
-        # Compatible with: Inspect
+        # storage and are governed by Data Catalog service-specific policy, see https://
+        # cloud.google.com/terms/service-terms Only a single instance of this action can
+        # be specified and only allowed if all resources being scanned are BigQuery
+        # tables. Compatible with: Inspect
         # Corresponds to the JSON property `publishFindingsToCloudDataCatalog`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog]
         attr_accessor :publish_findings_to_cloud_data_catalog
       
-        # Publish the result summary of a DlpJob to the Cloud Security
-        # Command Center (CSCC Alpha).
-        # This action is only available for projects which are parts of
-        # an organization and whitelisted for the alpha Cloud Security Command
-        # Center.
-        # The action will publish count of finding instances and their info types.
-        # The summary of findings will be persisted in CSCC and are governed by CSCC
-        # service-specific policy, see https://cloud.google.com/terms/service-terms
-        # Only a single instance of this action can be specified.
-        # Compatible with: Inspect
+        # Publish the result summary of a DlpJob to the Cloud Security Command Center (
+        # CSCC Alpha). This action is only available for projects which are parts of an
+        # organization and whitelisted for the alpha Cloud Security Command Center. The
+        # action will publish count of finding instances and their info types. The
+        # summary of findings will be persisted in CSCC and are governed by CSCC service-
+        # specific policy, see https://cloud.google.com/terms/service-terms Only a
+        # single instance of this action can be specified. Compatible with: Inspect
         # Corresponds to the JSON property `publishSummaryToCscc`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishSummaryToCscc]
         attr_accessor :publish_summary_to_cscc
       
-        # Enable Stackdriver metric dlp.googleapis.com/finding_count. This
-        # will publish a metric to stack driver on each infotype requested and
-        # how many findings were found for it. CustomDetectors will be bucketed
-        # as 'Custom' under the Stackdriver label 'info_type'.
+        # Enable Stackdriver metric dlp.googleapis.com/finding_count. This will publish
+        # a metric to stack driver on each infotype requested and how many findings were
+        # found for it. CustomDetectors will be bucketed as 'Custom' under the
+        # Stackdriver label 'info_type'.
         # Corresponds to the JSON property `publishToStackdriver`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToStackdriver]
         attr_accessor :publish_to_stackdriver
       
         # If set, the detailed findings will be persisted to the specified
-        # OutputStorageConfig. Only a single instance of this action can be
-        # specified.
+        # OutputStorageConfig. Only a single instance of this action can be specified.
         # Compatible with: Inspect, Risk
         # Corresponds to the JSON property `saveFindings`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SaveFindings]
@@ -157,10 +150,8 @@ module Google
         attr_accessor :requested_privacy_metric
       
         # Message defining the location of a BigQuery table. A table is uniquely
-        # identified  by its project_id, dataset_id, and table_name. Within a query
-        # a table is often referenced with a string in the format of:
-        # `<project_id>:<dataset_id>.<table_id>` or
-        # `<project_id>.<dataset_id>.<table_id>`.
+        # identified by its project_id, dataset_id, and table_name. Within a query a
+        # table is often referenced with a string in the format of: `:.` or `..`.
         # Corresponds to the JSON property `requestedSourceTable`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
         attr_accessor :requested_source_table
@@ -182,13 +173,12 @@ module Google
         end
       end
       
-      # An auxiliary table contains statistical information on the relative
-      # frequency of different quasi-identifiers values. It has one or several
-      # quasi-identifiers columns, and one column that indicates the relative
-      # frequency of each quasi-identifier tuple.
-      # If a tuple is present in the data but not in the auxiliary table, the
-      # corresponding relative frequency is assumed to be zero (and thus, the
-      # tuple is highly reidentifiable).
+      # An auxiliary table contains statistical information on the relative frequency
+      # of different quasi-identifiers values. It has one or several quasi-identifiers
+      # columns, and one column that indicates the relative frequency of each quasi-
+      # identifier tuple. If a tuple is present in the data but not in the auxiliary
+      # table, the corresponding relative frequency is assumed to be zero (and thus,
+      # the tuple is highly reidentifiable).
       class GooglePrivacyDlpV2AuxiliaryTable
         include Google::Apis::Core::Hashable
       
@@ -203,10 +193,8 @@ module Google
         attr_accessor :relative_frequency
       
         # Message defining the location of a BigQuery table. A table is uniquely
-        # identified  by its project_id, dataset_id, and table_name. Within a query
-        # a table is often referenced with a string in the format of:
-        # `<project_id>:<dataset_id>.<table_id>` or
-        # `<project_id>.<dataset_id>.<table_id>`.
+        # identified by its project_id, dataset_id, and table_name. Within a query a
+        # table is often referenced with a string in the format of: `:.` or `..`.
         # Corresponds to the JSON property `table`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
         attr_accessor :table
@@ -233,10 +221,8 @@ module Google
         attr_accessor :field
       
         # Message defining the location of a BigQuery table. A table is uniquely
-        # identified  by its project_id, dataset_id, and table_name. Within a query
-        # a table is often referenced with a string in the format of:
-        # `<project_id>:<dataset_id>.<table_id>` or
-        # `<project_id>.<dataset_id>.<table_id>`.
+        # identified by its project_id, dataset_id, and table_name. Within a query a
+        # table is often referenced with a string in the format of: `:.` or `..`.
         # Corresponds to the JSON property `table`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
         attr_accessor :table
@@ -257,19 +243,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Row number inferred at the time the table was scanned. This value is
-        # nondeterministic, cannot be queried, and may be null for inspection
-        # jobs. To locate findings within a table, specify
-        # `inspect_job.storage_config.big_query_options.identifying_fields` in
-        # `CreateDlpJobRequest`.
+        # nondeterministic, cannot be queried, and may be null for inspection jobs. To
+        # locate findings within a table, specify `inspect_job.storage_config.
+        # big_query_options.identifying_fields` in `CreateDlpJobRequest`.
         # Corresponds to the JSON property `rowNumber`
         # @return [Fixnum]
         attr_accessor :row_number
       
         # Message defining the location of a BigQuery table. A table is uniquely
-        # identified  by its project_id, dataset_id, and table_name. Within a query
-        # a table is often referenced with a string in the format of:
-        # `<project_id>:<dataset_id>.<table_id>` or
-        # `<project_id>.<dataset_id>.<table_id>`.
+        # identified by its project_id, dataset_id, and table_name. Within a query a
+        # table is often referenced with a string in the format of: `:.` or `..`.
         # Corresponds to the JSON property `tableReference`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
         attr_accessor :table_reference
@@ -295,11 +278,11 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :excluded_fields
       
-        # Table fields that may uniquely identify a row within the table. When
-        # `actions.saveFindings.outputConfig.table` is specified, the values of
-        # columns specified here are available in the output table under
-        # `location.content_locations.record_location.record_key.id_values`. Nested
-        # fields such as `person.birthdate.year` are allowed.
+        # Table fields that may uniquely identify a row within the table. When `actions.
+        # saveFindings.outputConfig.table` is specified, the values of columns specified
+        # here are available in the output table under `location.content_locations.
+        # record_location.record_key.id_values`. Nested fields such as `person.birthdate.
+        # year` are allowed.
         # Corresponds to the JSON property `identifyingFields`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :identifying_fields
@@ -327,10 +310,8 @@ module Google
         attr_accessor :sample_method
       
         # Message defining the location of a BigQuery table. A table is uniquely
-        # identified  by its project_id, dataset_id, and table_name. Within a query
-        # a table is often referenced with a string in the format of:
-        # `<project_id>:<dataset_id>.<table_id>` or
-        # `<project_id>.<dataset_id>.<table_id>`.
+        # identified by its project_id, dataset_id, and table_name. Within a query a
+        # table is often referenced with a string in the format of: `:.` or `..`.
         # Corresponds to the JSON property `tableReference`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
         attr_accessor :table_reference
@@ -351,10 +332,8 @@ module Google
       end
       
       # Message defining the location of a BigQuery table. A table is uniquely
-      # identified  by its project_id, dataset_id, and table_name. Within a query
-      # a table is often referenced with a string in the format of:
-      # `<project_id>:<dataset_id>.<table_id>` or
-      # `<project_id>.<dataset_id>.<table_id>`.
+      # identified by its project_id, dataset_id, and table_name. Within a query a
+      # table is often referenced with a string in the format of: `:.` or `..`.
       class GooglePrivacyDlpV2BigQueryTable
         include Google::Apis::Core::Hashable
       
@@ -363,8 +342,8 @@ module Google
         # @return [String]
         attr_accessor :dataset_id
       
-        # The Google Cloud Platform project ID of the project containing the table.
-        # If omitted, project ID is inferred from the API call.
+        # The Google Cloud Platform project ID of the project containing the table. If
+        # omitted, project ID is inferred from the API call.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -427,32 +406,29 @@ module Google
       class GooglePrivacyDlpV2Bucket
         include Google::Apis::Core::Hashable
       
-        # Set of primitive values supported by the system.
-        # Note that for the purposes of inspection or transformation, the number
-        # of bytes considered to comprise a 'Value' is based on its representation
-        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
-        # 123456789, the number of bytes would be counted as 9, even though an
-        # int64 only holds up to 8 bytes of data.
+        # Set of primitive values supported by the system. Note that for the purposes of
+        # inspection or transformation, the number of bytes considered to comprise a '
+        # Value' is based on its representation as a UTF-8 encoded string. For example,
+        # if 'integer_value' is set to 123456789, the number of bytes would be counted
+        # as 9, even though an int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `max`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Value]
         attr_accessor :max
       
-        # Set of primitive values supported by the system.
-        # Note that for the purposes of inspection or transformation, the number
-        # of bytes considered to comprise a 'Value' is based on its representation
-        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
-        # 123456789, the number of bytes would be counted as 9, even though an
-        # int64 only holds up to 8 bytes of data.
+        # Set of primitive values supported by the system. Note that for the purposes of
+        # inspection or transformation, the number of bytes considered to comprise a '
+        # Value' is based on its representation as a UTF-8 encoded string. For example,
+        # if 'integer_value' is set to 123456789, the number of bytes would be counted
+        # as 9, even though an int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `min`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Value]
         attr_accessor :min
       
-        # Set of primitive values supported by the system.
-        # Note that for the purposes of inspection or transformation, the number
-        # of bytes considered to comprise a 'Value' is based on its representation
-        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
-        # 123456789, the number of bytes would be counted as 9, even though an
-        # int64 only holds up to 8 bytes of data.
+        # Set of primitive values supported by the system. Note that for the purposes of
+        # inspection or transformation, the number of bytes considered to comprise a '
+        # Value' is based on its representation as a UTF-8 encoded string. For example,
+        # if 'integer_value' is set to 123456789, the number of bytes would be counted
+        # as 9, even though an int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `replacementValue`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Value]
         attr_accessor :replacement_value
@@ -471,12 +447,10 @@ module Google
       
       # Generalization function that buckets values based on ranges. The ranges and
       # replacement values are dynamically provided by the user for custom behavior,
-      # such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH
-      # This can be used on
-      # data of type: number, long, string, timestamp.
-      # If the bound `Value` type differs from the type of data being transformed, we
-      # will first attempt converting the type of the data to be transformed to match
-      # the type of the bound before comparing.
+      # such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of
+      # type: number, long, string, timestamp. If the bound `Value` type differs from
+      # the type of data being transformed, we will first attempt converting the type
+      # of the data to be transformed to match the type of the bound before comparing.
       # See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
       class GooglePrivacyDlpV2BucketingConfig
         include Google::Apis::Core::Hashable
@@ -535,8 +509,8 @@ module Google
         end
       end
       
-      # Compute numerical stats over an individual column, including
-      # number of distinct values and value count distribution.
+      # Compute numerical stats over an individual column, including number of
+      # distinct values and value count distribution.
       class GooglePrivacyDlpV2CategoricalStatsConfig
         include Google::Apis::Core::Hashable
       
@@ -569,8 +543,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :bucket_value_count
       
-        # Sample of value frequencies in this bucket. The total number of
-        # values returned per bucket is capped at 20.
+        # Sample of value frequencies in this bucket. The total number of values
+        # returned per bucket is capped at 20.
         # Corresponds to the JSON property `bucketValues`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2ValueFrequency>]
         attr_accessor :bucket_values
@@ -618,12 +592,11 @@ module Google
         end
       end
       
-      # Partially mask a string by replacing a given number of characters with a
-      # fixed character. Masking can start from the beginning or end of the string.
-      # This can be used on data of any type (numbers, longs, and so on) and when
-      # de-identifying structured data we'll attempt to preserve the original data's
-      # type. (This allows you to take a long like 123 and modify it to a string like
-      # **3.
+      # Partially mask a string by replacing a given number of characters with a fixed
+      # character. Masking can start from the beginning or end of the string. This can
+      # be used on data of any type (numbers, longs, and so on) and when de-
+      # identifying structured data we'll attempt to preserve the original data's type.
+      # (This allows you to take a long like 123 and modify it to a string like **3.
       class GooglePrivacyDlpV2CharacterMaskConfig
         include Google::Apis::Core::Hashable
       
@@ -635,25 +608,25 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2CharsToIgnore>]
         attr_accessor :characters_to_ignore
       
-        # Character to use to mask the sensitive values&mdash;for example, `*` for an
-        # alphabetic string such as a name, or `0` for a numeric string such as ZIP
-        # code or credit card number. This string must have a length of 1. If not
-        # supplied, this value defaults to `*` for strings, and `0` for digits.
+        # Character to use to mask the sensitive values—for example, `*` for an
+        # alphabetic string such as a name, or `0` for a numeric string such as ZIP code
+        # or credit card number. This string must have a length of 1. If not supplied,
+        # this value defaults to `*` for strings, and `0` for digits.
         # Corresponds to the JSON property `maskingCharacter`
         # @return [String]
         attr_accessor :masking_character
       
-        # Number of characters to mask. If not set, all matching chars will be
-        # masked. Skipped characters do not count towards this tally.
+        # Number of characters to mask. If not set, all matching chars will be masked.
+        # Skipped characters do not count towards this tally.
         # Corresponds to the JSON property `numberToMask`
         # @return [Fixnum]
         attr_accessor :number_to_mask
       
-        # Mask characters in reverse order. For example, if `masking_character` is
-        # `0`, `number_to_mask` is `14`, and `reverse_order` is `false`, then the
-        # input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
-        # If `masking_character` is `*`, `number_to_mask` is `3`, and `reverse_order`
-        # is `true`, then the string `12345` is masked as `12***`.
+        # Mask characters in reverse order. For example, if `masking_character` is `0`, `
+        # number_to_mask` is `14`, and `reverse_order` is `false`, then the input string
+        # `1234-5678-9012-3456` is masked as `00000000000000-3456`. If `
+        # masking_character` is `*`, `number_to_mask` is `3`, and `reverse_order` is `
+        # true`, then the string `12345` is masked as `12***`.
         # Corresponds to the JSON property `reverseOrder`
         # @return [Boolean]
         attr_accessor :reverse_order
@@ -703,8 +676,7 @@ module Google
       class GooglePrivacyDlpV2CloudStorageFileSet
         include Google::Apis::Core::Hashable
       
-        # The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the
-        # path is allowed.
+        # The url, in the format `gs:///`. Trailing wildcard in the path is allowed.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -719,22 +691,21 @@ module Google
         end
       end
       
-      # Options defining a file or a set of files within a Google Cloud Storage
-      # bucket.
+      # Options defining a file or a set of files within a Google Cloud Storage bucket.
       class GooglePrivacyDlpV2CloudStorageOptions
         include Google::Apis::Core::Hashable
       
         # Max number of bytes to scan from a file. If a scanned file's size is bigger
-        # than this value then the rest of the bytes are omitted. Only one
-        # of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+        # than this value then the rest of the bytes are omitted. Only one of
+        # bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
         # Corresponds to the JSON property `bytesLimitPerFile`
         # @return [Fixnum]
         attr_accessor :bytes_limit_per_file
       
-        # Max percentage of bytes to scan from a file. The rest are omitted. The
-        # number of bytes scanned is rounded down. Must be between 0 and 100,
-        # inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one
-        # of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+        # Max percentage of bytes to scan from a file. The rest are omitted. The number
+        # of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both
+        # 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and
+        # bytes_limit_per_file_percent can be specified.
         # Corresponds to the JSON property `bytesLimitPerFilePercent`
         # @return [Fixnum]
         attr_accessor :bytes_limit_per_file_percent
@@ -744,13 +715,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FileSet]
         attr_accessor :file_set
       
-        # List of file type groups to include in the scan.
-        # If empty, all files are scanned and available data format processors
-        # are applied. In addition, the binary content of the selected files
-        # is always scanned as well.
-        # Images are scanned only as binary if the specified region
-        # does not support image inspection and no file_types were specified.
-        # Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+        # List of file type groups to include in the scan. If empty, all files are
+        # scanned and available data format processors are applied. In addition, the
+        # binary content of the selected files is always scanned as well. Images are
+        # scanned only as binary if the specified region does not support image
+        # inspection and no file_types were specified. Image inspection is restricted to
+        # 'global', 'us', 'asia', and 'europe'.
         # Corresponds to the JSON property `fileTypes`
         # @return [Array<String>]
         attr_accessor :file_types
@@ -786,8 +756,8 @@ module Google
       class GooglePrivacyDlpV2CloudStoragePath
         include Google::Apis::Core::Hashable
       
-        # A url representing a file or path (no wildcards) in Cloud Storage.
-        # Example: gs://[BUCKET_NAME]/dictionary.txt
+        # A url representing a file or path (no wildcards) in Cloud Storage. Example: gs:
+        # //[BUCKET_NAME]/dictionary.txt
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -804,30 +774,23 @@ module Google
       
       # Message representing a set of files in a Cloud Storage bucket. Regular
       # expressions are used to allow fine-grained control over which files in the
-      # bucket to include.
-      # Included files are those that match at least one item in `include_regex` and
-      # do not match any items in `exclude_regex`. Note that a file that matches
-      # items from both lists will _not_ be included. For a match to occur, the
-      # entire file path (i.e., everything in the url after the bucket name) must
-      # match the regular expression.
-      # For example, given the input ``bucket_name: "mybucket", include_regex:
-      # ["directory1/.*"], exclude_regex:
-      # ["directory1/excluded.*"]``:
-      # * `gs://mybucket/directory1/myfile` will be included
-      # * `gs://mybucket/directory1/directory2/myfile` will be included (`.*` matches
-      # across `/`)
-      # * `gs://mybucket/directory0/directory1/myfile` will _not_ be included (the
-      # full path doesn't match any items in `include_regex`)
-      # * `gs://mybucket/directory1/excludedfile` will _not_ be included (the path
-      # matches an item in `exclude_regex`)
-      # If `include_regex` is left empty, it will match all files by default
-      # (this is equivalent to setting `include_regex: [".*"]`).
-      # Some other common use cases:
-      # * ``bucket_name: "mybucket", exclude_regex: [".*\.pdf"]`` will include all
-      # files in `mybucket` except for .pdf files
-      # * ``bucket_name: "mybucket", include_regex: ["directory/[^/]+"]`` will
-      # include all files directly under `gs://mybucket/directory/`, without matching
-      # across `/`
+      # bucket to include. Included files are those that match at least one item in `
+      # include_regex` and do not match any items in `exclude_regex`. Note that a file
+      # that matches items from both lists will _not_ be included. For a match to
+      # occur, the entire file path (i.e., everything in the url after the bucket name)
+      # must match the regular expression. For example, given the input ``bucket_name:
+      # "mybucket", include_regex: ["directory1/.*"], exclude_regex: ["directory1/
+      # excluded.*"]``: * `gs://mybucket/directory1/myfile` will be included * `gs://
+      # mybucket/directory1/directory2/myfile` will be included (`.*` matches across `/
+      # `) * `gs://mybucket/directory0/directory1/myfile` will _not_ be included (the
+      # full path doesn't match any items in `include_regex`) * `gs://mybucket/
+      # directory1/excludedfile` will _not_ be included (the path matches an item in `
+      # exclude_regex`) If `include_regex` is left empty, it will match all files by
+      # default (this is equivalent to setting `include_regex: [".*"]`). Some other
+      # common use cases: * ``bucket_name: "mybucket", exclude_regex: [".*\.pdf"]``
+      # will include all files in `mybucket` except for .pdf files * ``bucket_name: "
+      # mybucket", include_regex: ["directory/[^/]+"]`` will include all files
+      # directly under `gs://mybucket/directory/`, without matching across `/`
       class GooglePrivacyDlpV2CloudStorageRegexFileSet
         include Google::Apis::Core::Hashable
       
@@ -836,24 +799,22 @@ module Google
         # @return [String]
         attr_accessor :bucket_name
       
-        # A list of regular expressions matching file paths to exclude. All files in
-        # the bucket that match at least one of these regular expressions will be
-        # excluded from the scan.
-        # Regular expressions use RE2
-        # [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found
-        # under the google/re2 repository on GitHub.
+        # A list of regular expressions matching file paths to exclude. All files in the
+        # bucket that match at least one of these regular expressions will be excluded
+        # from the scan. Regular expressions use RE2 [syntax](https://github.com/google/
+        # re2/wiki/Syntax); a guide can be found under the google/re2 repository on
+        # GitHub.
         # Corresponds to the JSON property `excludeRegex`
         # @return [Array<String>]
         attr_accessor :exclude_regex
       
-        # A list of regular expressions matching file paths to include. All files in
-        # the bucket that match at least one of these regular expressions will be
-        # included in the set of files, except for those that also match an item in
-        # `exclude_regex`. Leaving this field empty will match all files by default
-        # (this is equivalent to including `.*` in the list).
-        # Regular expressions use RE2
-        # [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found
-        # under the google/re2 repository on GitHub.
+        # A list of regular expressions matching file paths to include. All files in the
+        # bucket that match at least one of these regular expressions will be included
+        # in the set of files, except for those that also match an item in `
+        # exclude_regex`. Leaving this field empty will match all files by default (this
+        # is equivalent to including `.*` in the list). Regular expressions use RE2 [
+        # syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under
+        # the google/re2 repository on GitHub.
         # Corresponds to the JSON property `includeRegex`
         # @return [Array<String>]
         attr_accessor :include_regex
@@ -901,23 +862,18 @@ module Google
         end
       end
       
-      # The field type of `value` and `field` do not need to match to be
-      # considered equal, but not all comparisons are possible.
-      # EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types,
-      # but all other comparisons are invalid with incompatible types.
-      # A `value` of type:
-      # - `string` can be compared against all other types
-      # - `boolean` can only be compared against other booleans
-      # - `integer` can be compared against doubles or a string if the string value
-      # can be parsed as an integer.
-      # - `double` can be compared against integers or a string if the string can
-      # be parsed as a double.
-      # - `Timestamp` can be compared against strings in RFC 3339 date string
-      # format.
-      # - `TimeOfDay` can be compared against timestamps and strings in the format
-      # of 'HH:mm:ss'.
-      # If we fail to compare do to type mismatch, a warning will be given and
-      # the condition will evaluate to false.
+      # The field type of `value` and `field` do not need to match to be considered
+      # equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt
+      # to compare even with incompatible types, but all other comparisons are invalid
+      # with incompatible types. A `value` of type: - `string` can be compared against
+      # all other types - `boolean` can only be compared against other booleans - `
+      # integer` can be compared against doubles or a string if the string value can
+      # be parsed as an integer. - `double` can be compared against integers or a
+      # string if the string can be parsed as a double. - `Timestamp` can be compared
+      # against strings in RFC 3339 date string format. - `TimeOfDay` can be compared
+      # against timestamps and strings in the format of 'HH:mm:ss'. If we fail to
+      # compare do to type mismatch, a warning will be given and the condition will
+      # evaluate to false.
       class GooglePrivacyDlpV2Condition
         include Google::Apis::Core::Hashable
       
@@ -931,12 +887,11 @@ module Google
         # @return [String]
         attr_accessor :operator
       
-        # Set of primitive values supported by the system.
-        # Note that for the purposes of inspection or transformation, the number
-        # of bytes considered to comprise a 'Value' is based on its representation
-        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
-        # 123456789, the number of bytes would be counted as 9, even though an
-        # int64 only holds up to 8 bytes of data.
+        # Set of primitive values supported by the system. Note that for the purposes of
+        # inspection or transformation, the number of bytes considered to comprise a '
+        # Value' is based on its representation as a UTF-8 encoded string. For example,
+        # if 'integer_value' is set to 123456789, the number of bytes would be counted
+        # as 9, even though an int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `value`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Value]
         attr_accessor :value
@@ -972,41 +927,35 @@ module Google
         end
       end
       
-      # Represents a container that may contain DLP findings.
-      # Examples of a container include a file, table, or database record.
+      # Represents a container that may contain DLP findings. Examples of a container
+      # include a file, table, or database record.
       class GooglePrivacyDlpV2Container
         include Google::Apis::Core::Hashable
       
-        # A string representation of the full container name.
-        # Examples:
-        # - BigQuery: 'Project:DataSetId.TableId'
-        # - Google Cloud Storage: 'gs://Bucket/folders/filename.txt'
+        # A string representation of the full container name. Examples: - BigQuery: '
+        # Project:DataSetId.TableId' - Google Cloud Storage: 'gs://Bucket/folders/
+        # filename.txt'
         # Corresponds to the JSON property `fullPath`
         # @return [String]
         attr_accessor :full_path
       
-        # Project where the finding was found.
-        # Can be different from the project that owns the finding.
+        # Project where the finding was found. Can be different from the project that
+        # owns the finding.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # The rest of the path after the root.
-        # Examples:
-        # - For BigQuery table `project_id:dataset_id.table_id`, the relative path is
-        # `table_id`
-        # - Google Cloud Storage file `gs://bucket/folder/filename.txt`, the relative
-        # path is `folder/filename.txt`
+        # The rest of the path after the root. Examples: - For BigQuery table `
+        # project_id:dataset_id.table_id`, the relative path is `table_id` - Google
+        # Cloud Storage file `gs://bucket/folder/filename.txt`, the relative path is `
+        # folder/filename.txt`
         # Corresponds to the JSON property `relativePath`
         # @return [String]
         attr_accessor :relative_path
       
-        # The root of the container.
-        # Examples:
-        # - For BigQuery table `project_id:dataset_id.table_id`, the root is
-        # `dataset_id`
-        # - For Google Cloud Storage file `gs://bucket/folder/filename.txt`, the root
-        # is `gs://bucket`
+        # The root of the container. Examples: - For BigQuery table `project_id:
+        # dataset_id.table_id`, the root is `dataset_id` - For Google Cloud Storage file
+        # `gs://bucket/folder/filename.txt`, the root is `gs://bucket`
         # Corresponds to the JSON property `rootPath`
         # @return [String]
         attr_accessor :root_path
@@ -1016,16 +965,15 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Findings container modification timestamp, if applicable.
-        # For Google Cloud Storage contains last file modification timestamp.
-        # For BigQuery table contains last_modified_time property.
-        # For Datastore - not populated.
+        # Findings container modification timestamp, if applicable. For Google Cloud
+        # Storage contains last file modification timestamp. For BigQuery table contains
+        # last_modified_time property. For Datastore - not populated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # Findings container version, if available
-        # ("generation" for Google Cloud Storage).
+        # Findings container version, if available ("generation" for Google Cloud
+        # Storage).
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -1055,9 +1003,9 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ByteContentItem]
         attr_accessor :byte_item
       
-        # Structured content to inspect. Up to 50,000 `Value`s per request allowed.
-        # See https://cloud.google.com/dlp/docs/inspecting-text#inspecting_a_table to
-        # learn more.
+        # Structured content to inspect. Up to 50,000 `Value`s per request allowed. See
+        # https://cloud.google.com/dlp/docs/inspecting-text#inspecting_a_table to learn
+        # more.
         # Corresponds to the JSON property `table`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Table]
         attr_accessor :table
@@ -1084,28 +1032,25 @@ module Google
       class GooglePrivacyDlpV2ContentLocation
         include Google::Apis::Core::Hashable
       
-        # Name of the container where the finding is located.
-        # The top level name is the source file name or table name. Names of some
-        # common storage containers are formatted as follows:
-        # * BigQuery tables:  ``project_id`:`dataset_id`.`table_id``
-        # * Cloud Storage files: `gs://`bucket`/`path``
-        # * Datastore namespace: `namespace`
-        # Nested names could be absent if the embedded object has no string
+        # Name of the container where the finding is located. The top level name is the
+        # source file name or table name. Names of some common storage containers are
+        # formatted as follows: * BigQuery tables: ``project_id`:`dataset_id`.`table_id``
+        # * Cloud Storage files: `gs://`bucket`/`path`` * Datastore namespace: `
+        # namespace` Nested names could be absent if the embedded object has no string
         # identifier (for an example an image contained within a document).
         # Corresponds to the JSON property `containerName`
         # @return [String]
         attr_accessor :container_name
       
-        # Findings container modification timestamp, if applicable.
-        # For Google Cloud Storage contains last file modification timestamp.
-        # For BigQuery table contains last_modified_time property.
-        # For Datastore - not populated.
+        # Findings container modification timestamp, if applicable. For Google Cloud
+        # Storage contains last file modification timestamp. For BigQuery table contains
+        # last_modified_time property. For Datastore - not populated.
         # Corresponds to the JSON property `containerTimestamp`
         # @return [String]
         attr_accessor :container_timestamp
       
-        # Findings container version, if available
-        # ("generation" for Google Cloud Storage).
+        # Findings container version, if available ("generation" for Google Cloud
+        # Storage).
         # Corresponds to the JSON property `containerVersion`
         # @return [String]
         attr_accessor :container_version
@@ -1150,8 +1095,8 @@ module Google
       class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest
         include Google::Apis::Core::Hashable
       
-        # DeidentifyTemplates contains instructions on how to de-identify content.
-        # See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+        # DeidentifyTemplates contains instructions on how to de-identify content. See
+        # https://cloud.google.com/dlp/docs/concepts-templates to learn more.
         # Corresponds to the JSON property `deidentifyTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
         attr_accessor :deidentify_template
@@ -1161,10 +1106,10 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
-        # The template id can contain uppercase and lowercase letters,
-        # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
-        # characters. Can be empty to allow the system to generate one.
+        # The template id can contain uppercase and lowercase letters, numbers, and
+        # hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The
+        # maximum length is 100 characters. Can be empty to allow the system to generate
+        # one.
         # Corresponds to the JSON property `templateId`
         # @return [String]
         attr_accessor :template_id
@@ -1181,9 +1126,8 @@ module Google
         end
       end
       
-      # Request message for CreateDlpJobRequest. Used to initiate long running
-      # jobs such as calculating risk metrics or inspecting Google Cloud
-      # Storage.
+      # Request message for CreateDlpJobRequest. Used to initiate long running jobs
+      # such as calculating risk metrics or inspecting Google Cloud Storage.
       class GooglePrivacyDlpV2CreateDlpJobRequest
         include Google::Apis::Core::Hashable
       
@@ -1192,10 +1136,9 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectJobConfig]
         attr_accessor :inspect_job
       
-        # The job id can contain uppercase and lowercase letters,
-        # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
-        # characters. Can be empty to allow the system to generate one.
+        # The job id can contain uppercase and lowercase letters, numbers, and hyphens;
+        # that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum
+        # length is 100 characters. Can be empty to allow the system to generate one.
         # Corresponds to the JSON property `jobId`
         # @return [String]
         attr_accessor :job_id
@@ -1205,8 +1148,8 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
-        # Configuration for a risk analysis job. See
-        # https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
+        # Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/
+        # concepts-risk-analysis to learn more.
         # Corresponds to the JSON property `riskJob`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RiskAnalysisJobConfig]
         attr_accessor :risk_job
@@ -1230,8 +1173,8 @@ module Google
       
         # The inspectTemplate contains a configuration (set of types of sensitive data
         # to be detected) to be used anywhere you otherwise would normally specify
-        # InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates
-        # to learn more.
+        # InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to
+        # learn more.
         # Corresponds to the JSON property `inspectTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
         attr_accessor :inspect_template
@@ -1241,10 +1184,10 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
-        # The template id can contain uppercase and lowercase letters,
-        # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
-        # characters. Can be empty to allow the system to generate one.
+        # The template id can contain uppercase and lowercase letters, numbers, and
+        # hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The
+        # maximum length is 100 characters. Can be empty to allow the system to generate
+        # one.
         # Corresponds to the JSON property `templateId`
         # @return [String]
         attr_accessor :template_id
@@ -1265,8 +1208,8 @@ module Google
       class GooglePrivacyDlpV2CreateJobTriggerRequest
         include Google::Apis::Core::Hashable
       
-        # Contains a configuration to make dlp api calls on a repeating basis.
-        # See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
+        # Contains a configuration to make dlp api calls on a repeating basis. See https:
+        # //cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
         # Corresponds to the JSON property `jobTrigger`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger]
         attr_accessor :job_trigger
@@ -1276,10 +1219,10 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
-        # The trigger id can contain uppercase and lowercase letters,
-        # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
-        # characters. Can be empty to allow the system to generate one.
+        # The trigger id can contain uppercase and lowercase letters, numbers, and
+        # hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The
+        # maximum length is 100 characters. Can be empty to allow the system to generate
+        # one.
         # Corresponds to the JSON property `triggerId`
         # @return [String]
         attr_accessor :trigger_id
@@ -1300,9 +1243,9 @@ module Google
       class GooglePrivacyDlpV2CreateStoredInfoTypeRequest
         include Google::Apis::Core::Hashable
       
-        # Configuration for stored infoTypes. All fields and subfield are provided
-        # by the user. For more information, see
-        # https://cloud.google.com/dlp/docs/creating-custom-infotypes.
+        # Configuration for stored infoTypes. All fields and subfield are provided by
+        # the user. For more information, see https://cloud.google.com/dlp/docs/creating-
+        # custom-infotypes.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
         attr_accessor :config
@@ -1312,10 +1255,10 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
-        # The storedInfoType ID can contain uppercase and lowercase letters,
-        # numbers, and hyphens; that is, it must match the regular
-        # expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
-        # characters. Can be empty to allow the system to generate one.
+        # The storedInfoType ID can contain uppercase and lowercase letters, numbers,
+        # and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`.
+        # The maximum length is 100 characters. Can be empty to allow the system to
+        # generate one.
         # Corresponds to the JSON property `storedInfoTypeId`
         # @return [String]
         attr_accessor :stored_info_type_id
@@ -1333,8 +1276,8 @@ module Google
       end
       
       # Pseudonymization method that generates deterministic encryption for the given
-      # input. Outputs a base64 encoded representation of the encrypted output.
-      # Uses AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
+      # input. Outputs a base64 encoded representation of the encrypted output. Uses
+      # AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
       class GooglePrivacyDlpV2CryptoDeterministicConfig
         include Google::Apis::Core::Hashable
       
@@ -1343,10 +1286,9 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
         attr_accessor :context
       
-        # This is a data encryption key (DEK) (as opposed to
-        # a key encryption key (KEK) stored by KMS).
-        # When using KMS to wrap/unwrap DEKs, be sure to set an appropriate
-        # IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
+        # This is a data encryption key (DEK) (as opposed to a key encryption key (KEK)
+        # stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an
+        # appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
         # unwrap the data crypto key.
         # Corresponds to the JSON property `cryptoKey`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoKey]
@@ -1370,19 +1312,17 @@ module Google
       end
       
       # Pseudonymization method that generates surrogates via cryptographic hashing.
-      # Uses SHA-256.
-      # The key size must be either 32 or 64 bytes.
-      # Outputs a base64 encoded representation of the hashed output
-      # (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
-      # Currently, only string and integer values can be hashed.
-      # See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+      # Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64
+      # encoded representation of the hashed output (for example,
+      # L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and
+      # integer values can be hashed. See https://cloud.google.com/dlp/docs/
+      # pseudonymization to learn more.
       class GooglePrivacyDlpV2CryptoHashConfig
         include Google::Apis::Core::Hashable
       
-        # This is a data encryption key (DEK) (as opposed to
-        # a key encryption key (KEK) stored by KMS).
-        # When using KMS to wrap/unwrap DEKs, be sure to set an appropriate
-        # IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
+        # This is a data encryption key (DEK) (as opposed to a key encryption key (KEK)
+        # stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an
+        # appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
         # unwrap the data crypto key.
         # Corresponds to the JSON property `cryptoKey`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoKey]
@@ -1398,31 +1338,29 @@ module Google
         end
       end
       
-      # This is a data encryption key (DEK) (as opposed to
-      # a key encryption key (KEK) stored by KMS).
-      # When using KMS to wrap/unwrap DEKs, be sure to set an appropriate
-      # IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
+      # This is a data encryption key (DEK) (as opposed to a key encryption key (KEK)
+      # stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an
+      # appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
       # unwrap the data crypto key.
       class GooglePrivacyDlpV2CryptoKey
         include Google::Apis::Core::Hashable
       
-        # Include to use an existing data crypto key wrapped by KMS.
-        # The wrapped key must be a 128/192/256 bit key.
-        # Authorization requires the following IAM permissions when sending a request
-        # to perform a crypto transformation using a kms-wrapped crypto key:
-        # dlp.kms.encrypt
+        # Include to use an existing data crypto key wrapped by KMS. The wrapped key
+        # must be a 128/192/256 bit key. Authorization requires the following IAM
+        # permissions when sending a request to perform a crypto transformation using a
+        # kms-wrapped crypto key: dlp.kms.encrypt
         # Corresponds to the JSON property `kmsWrapped`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2KmsWrappedCryptoKey]
         attr_accessor :kms_wrapped
       
-        # Use this to have a random data crypto key generated.
-        # It will be discarded after the request finishes.
+        # Use this to have a random data crypto key generated. It will be discarded
+        # after the request finishes.
         # Corresponds to the JSON property `transient`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TransientCryptoKey]
         attr_accessor :transient
       
-        # Using raw keys is prone to security risks due to accidentally
-        # leaking the key. Choose another type of key if possible.
+        # Using raw keys is prone to security risks due to accidentally leaking the key.
+        # Choose another type of key if possible.
         # Corresponds to the JSON property `unwrapped`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2UnwrappedCryptoKey]
         attr_accessor :unwrapped
@@ -1439,18 +1377,17 @@ module Google
         end
       end
       
-      # Replaces an identifier with a surrogate using Format Preserving Encryption
-      # (FPE) with the FFX mode of operation; however when used in the
-      # `ReidentifyContent` API method, it serves the opposite function by reversing
+      # Replaces an identifier with a surrogate using Format Preserving Encryption (
+      # FPE) with the FFX mode of operation; however when used in the `
+      # ReidentifyContent` API method, it serves the opposite function by reversing
       # the surrogate back into the original identifier. The identifier must be
-      # encoded as ASCII. For a given crypto key and context, the same identifier
-      # will be replaced with the same surrogate. Identifiers must be at least two
+      # encoded as ASCII. For a given crypto key and context, the same identifier will
+      # be replaced with the same surrogate. Identifiers must be at least two
       # characters long. In the case that the identifier is the empty string, it will
       # be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn
-      # more.
-      # Note: We recommend using  CryptoDeterministicConfig for all use cases which
-      # do not require preserving the input alphabet space and size, plus warrant
-      # referential integrity.
+      # more. Note: We recommend using CryptoDeterministicConfig for all use cases
+      # which do not require preserving the input alphabet space and size, plus
+      # warrant referential integrity.
       class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig
         include Google::Apis::Core::Hashable
       
@@ -1464,25 +1401,21 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
         attr_accessor :context
       
-        # This is a data encryption key (DEK) (as opposed to
-        # a key encryption key (KEK) stored by KMS).
-        # When using KMS to wrap/unwrap DEKs, be sure to set an appropriate
-        # IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
+        # This is a data encryption key (DEK) (as opposed to a key encryption key (KEK)
+        # stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an
+        # appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
         # unwrap the data crypto key.
         # Corresponds to the JSON property `cryptoKey`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoKey]
         attr_accessor :crypto_key
       
-        # This is supported by mapping these to the alphanumeric characters
-        # that the FFX mode natively supports. This happens before/after
-        # encryption/decryption.
-        # Each character listed must appear only once.
-        # Number of characters must be in the range [2, 95].
-        # This must be encoded as ASCII.
-        # The order of characters does not matter.
-        # The full list of allowed characters is:
-        # <code>0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
-        # ~`!@#$%^&*()_-+=`[`]|\:;"'<,>.?/</code>
+        # This is supported by mapping these to the alphanumeric characters that the FFX
+        # mode natively supports. This happens before/after encryption/decryption. Each
+        # character listed must appear only once. Number of characters must be in the
+        # range [2, 95]. This must be encoded as ASCII. The order of characters does not
+        # matter. The full list of allowed characters is:
+        # 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+=
+        # `[`]|\:;"'<,>.?/
         # Corresponds to the JSON property `customAlphabet`
         # @return [String]
         attr_accessor :custom_alphabet
@@ -1517,41 +1450,37 @@ module Google
       class GooglePrivacyDlpV2CustomInfoType
         include Google::Apis::Core::Hashable
       
-        # Set of detection rules to apply to all findings of this CustomInfoType.
-        # Rules are applied in order that they are specified. Not supported for the
-        # `surrogate_type` CustomInfoType.
+        # Set of detection rules to apply to all findings of this CustomInfoType. Rules
+        # are applied in order that they are specified. Not supported for the `
+        # surrogate_type` CustomInfoType.
         # Corresponds to the JSON property `detectionRules`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DetectionRule>]
         attr_accessor :detection_rules
       
-        # Custom information type based on a dictionary of words or phrases. This can
-        # be used to match sensitive information specific to the data, such as a list
-        # of employee IDs or job titles.
-        # Dictionary words are case-insensitive and all characters other than letters
-        # and digits in the unicode [Basic Multilingual
+        # Custom information type based on a dictionary of words or phrases. This can be
+        # used to match sensitive information specific to the data, such as a list of
+        # employee IDs or job titles. Dictionary words are case-insensitive and all
+        # characters other than letters and digits in the unicode [Basic Multilingual
         # Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#
-        # Basic_Multilingual_Plane)
-        # will be replaced with whitespace when scanning for matches, so the
-        # dictionary phrase "Sam Johnson" will match all three phrases "sam johnson",
-        # "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters
-        # surrounding any match must be of a different type than the adjacent
-        # characters within the word, so letters must be next to non-letters and
-        # digits next to non-digits. For example, the dictionary word "jen" will
-        # match the first three letters of the text "jen123" but will return no
-        # matches for "jennifer".
-        # Dictionary words containing a large number of characters that are not
-        # letters or digits may result in unexpected findings because such characters
-        # are treated as whitespace. The
-        # [limits](https://cloud.google.com/dlp/limits) page contains details about
-        # the size limits of dictionaries. For dictionaries that do not fit within
-        # these constraints, consider using `LargeCustomDictionaryConfig` in the
-        # `StoredInfoType` API.
+        # Basic_Multilingual_Plane) will be replaced with whitespace when scanning for
+        # matches, so the dictionary phrase "Sam Johnson" will match all three phrases "
+        # sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the
+        # characters surrounding any match must be of a different type than the adjacent
+        # characters within the word, so letters must be next to non-letters and digits
+        # next to non-digits. For example, the dictionary word "jen" will match the
+        # first three letters of the text "jen123" but will return no matches for "
+        # jennifer". Dictionary words containing a large number of characters that are
+        # not letters or digits may result in unexpected findings because such
+        # characters are treated as whitespace. The [limits](https://cloud.google.com/
+        # dlp/limits) page contains details about the size limits of dictionaries. For
+        # dictionaries that do not fit within these constraints, consider using `
+        # LargeCustomDictionaryConfig` in the `StoredInfoType` API.
         # Corresponds to the JSON property `dictionary`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary]
         attr_accessor :dictionary
       
-        # If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding
-        # to be returned. It still can be used for rules matching.
+        # If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be
+        # returned. It still can be used for rules matching.
         # Corresponds to the JSON property `exclusionType`
         # @return [String]
         attr_accessor :exclusion_type
@@ -1561,9 +1490,9 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
         attr_accessor :info_type
       
-        # Likelihood to return for this CustomInfoType. This base value can be
-        # altered by a detection rule if the finding meets the criteria specified by
-        # the rule. Defaults to `VERY_LIKELY` if not specified.
+        # Likelihood to return for this CustomInfoType. This base value can be altered
+        # by a detection rule if the finding meets the criteria specified by the rule.
+        # Defaults to `VERY_LIKELY` if not specified.
         # Corresponds to the JSON property `likelihood`
         # @return [String]
         attr_accessor :likelihood
@@ -1578,15 +1507,13 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredType]
         attr_accessor :stored_type
       
-        # Message for detecting output from deidentification transformations
-        # such as
-        # [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/
-        # v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig).
-        # These types of transformations are
-        # those that perform pseudonymization, thereby producing a "surrogate" as
-        # output. This should be used in conjunction with a field on the
-        # transformation such as `surrogate_info_type`. This CustomInfoType does
-        # not support the use of `detection_rules`.
+        # Message for detecting output from deidentification transformations such as [`
+        # CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/
+        # v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types
+        # of transformations are those that perform pseudonymization, thereby producing
+        # a "surrogate" as output. This should be used in conjunction with a field on
+        # the transformation such as `surrogate_info_type`. This CustomInfoType does not
+        # support the use of `detection_rules`.
         # Corresponds to the JSON property `surrogateType`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2SurrogateType]
         attr_accessor :surrogate_type
@@ -1612,9 +1539,8 @@ module Google
       class GooglePrivacyDlpV2DatastoreKey
         include Google::Apis::Core::Hashable
       
-        # A unique identifier for a Datastore entity.
-        # If a key's partition ID or any of its path kinds or names are
-        # reserved/read-only, the key is reserved/read-only.
+        # A unique identifier for a Datastore entity. If a key's partition ID or any of
+        # its path kinds or names are reserved/read-only, the key is reserved/read-only.
         # A reserved/read-only key is forbidden in certain documented contexts.
         # Corresponds to the JSON property `entityKey`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Key]
@@ -1639,11 +1565,9 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2KindExpression]
         attr_accessor :kind
       
-        # Datastore partition ID.
-        # A partition ID identifies a grouping of entities. The grouping is always
-        # by project and namespace, however the namespace ID may be empty.
-        # A partition ID contains several dimensions:
-        # project ID and namespace ID.
+        # Datastore partition ID. A partition ID identifies a grouping of entities. The
+        # grouping is always by project and namespace, however the namespace ID may be
+        # empty. A partition ID contains several dimensions: project ID and namespace ID.
         # Corresponds to the JSON property `partitionId`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PartitionId]
         attr_accessor :partition_id
@@ -1660,8 +1584,8 @@ module Google
       end
       
       # Shifts dates by random number of days, with option to be consistent for the
-      # same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting
-      # to learn more.
+      # same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to
+      # learn more.
       class GooglePrivacyDlpV2DateShiftConfig
         include Google::Apis::Core::Hashable
       
@@ -1670,10 +1594,9 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
         attr_accessor :context
       
-        # This is a data encryption key (DEK) (as opposed to
-        # a key encryption key (KEK) stored by KMS).
-        # When using KMS to wrap/unwrap DEKs, be sure to set an appropriate
-        # IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
+        # This is a data encryption key (DEK) (as opposed to a key encryption key (KEK)
+        # stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an
+        # appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
         # unwrap the data crypto key.
         # Corresponds to the JSON property `cryptoKey`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoKey]
@@ -1685,10 +1608,9 @@ module Google
         attr_accessor :lower_bound_days
       
         # Required. Range of shift in days. Actual shift will be selected at random
-        # within this
-        # range (inclusive ends). Negative means shift to earlier in time. Must not
-        # be more than 365250 days (1000 years) each direction.
-        # For example, 3 means shift date to at most 3 days into the future.
+        # within this range (inclusive ends). Negative means shift to earlier in time.
+        # Must not be more than 365250 days (1000 years) each direction. For example, 3
+        # means shift date to at most 3 days into the future.
         # Corresponds to the JSON property `upperBoundDays`
         # @return [Fixnum]
         attr_accessor :upper_bound_days
@@ -1706,19 +1628,18 @@ module Google
         end
       end
       
-      # Message for a date time object.
-      # e.g. 2018-01-01, 5th August.
+      # Message for a date time object. e.g. 2018-01-01, 5th August.
       class GooglePrivacyDlpV2DateTime
         include Google::Apis::Core::Hashable
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `date`
         # @return [Google::Apis::DlpV2::GoogleTypeDate]
         attr_accessor :date
@@ -1728,8 +1649,8 @@ module Google
         # @return [String]
         attr_accessor :day_of_week
       
-        # Represents a time of day. The date and time zone are either not significant
-        # or are specified elsewhere. An API may choose to allow leap seconds. Related
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
         # types are google.type.Date and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `time`
         # @return [Google::Apis::DlpV2::GoogleTypeTimeOfDay]
@@ -1757,28 +1678,25 @@ module Google
       class GooglePrivacyDlpV2DeidentifyConfig
         include Google::Apis::Core::Hashable
       
-        # A type of transformation that will scan unstructured text and
-        # apply various `PrimitiveTransformation`s to each finding, where the
-        # transformation is applied to only values that were identified as a specific
-        # info_type.
+        # A type of transformation that will scan unstructured text and apply various `
+        # PrimitiveTransformation`s to each finding, where the transformation is applied
+        # to only values that were identified as a specific info_type.
         # Corresponds to the JSON property `infoTypeTransformations`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeTransformations]
         attr_accessor :info_type_transformations
       
-        # A type of transformation that is applied over structured data such as a
-        # table.
+        # A type of transformation that is applied over structured data such as a table.
         # Corresponds to the JSON property `recordTransformations`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RecordTransformations]
         attr_accessor :record_transformations
       
-        # How to handle transformation errors during de-identification. A
-        # transformation error occurs when the requested transformation is incompatible
-        # with the data. For example, trying to de-identify an IP address using a
-        # `DateShift` transformation would result in a transformation error, since date
-        # info cannot be extracted from an IP address.
-        # Information about any incompatible transformations, and how they were
-        # handled, is returned in the response as part of the
-        # `TransformationOverviews`.
+        # How to handle transformation errors during de-identification. A transformation
+        # error occurs when the requested transformation is incompatible with the data.
+        # For example, trying to de-identify an IP address using a `DateShift`
+        # transformation would result in a transformation error, since date info cannot
+        # be extracted from an IP address. Information about any incompatible
+        # transformations, and how they were handled, is returned in the response as
+        # part of the `TransformationOverviews`.
         # Corresponds to the JSON property `transformationErrorHandling`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationErrorHandling]
         attr_accessor :transformation_error_handling
@@ -1804,27 +1722,24 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyConfig]
         attr_accessor :deidentify_config
       
-        # Template to use. Any configuration directly specified in
-        # deidentify_config will override those set in the template. Singular fields
-        # that are set in this request will replace their corresponding fields in the
-        # template. Repeated fields are appended. Singular sub-messages and groups
-        # are recursively merged.
+        # Template to use. Any configuration directly specified in deidentify_config
+        # will override those set in the template. Singular fields that are set in this
+        # request will replace their corresponding fields in the template. Repeated
+        # fields are appended. Singular sub-messages and groups are recursively merged.
         # Corresponds to the JSON property `deidentifyTemplateName`
         # @return [String]
         attr_accessor :deidentify_template_name
       
-        # Configuration description of the scanning process.
-        # When used with redactContent only info_types and min_likelihood are currently
-        # used.
+        # Configuration description of the scanning process. When used with
+        # redactContent only info_types and min_likelihood are currently used.
         # Corresponds to the JSON property `inspectConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
         attr_accessor :inspect_config
       
-        # Template to use. Any configuration directly specified in
-        # inspect_config will override those set in the template. Singular fields
-        # that are set in this request will replace their corresponding fields in the
-        # template. Repeated fields are appended. Singular sub-messages and groups
-        # are recursively merged.
+        # Template to use. Any configuration directly specified in inspect_config will
+        # override those set in the template. Singular fields that are set in this
+        # request will replace their corresponding fields in the template. Repeated
+        # fields are appended. Singular sub-messages and groups are recursively merged.
         # Corresponds to the JSON property `inspectTemplateName`
         # @return [String]
         attr_accessor :inspect_template_name
@@ -1879,8 +1794,8 @@ module Google
         end
       end
       
-      # DeidentifyTemplates contains instructions on how to de-identify content.
-      # See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+      # DeidentifyTemplates contains instructions on how to de-identify content. See
+      # https://cloud.google.com/dlp/docs/concepts-templates to learn more.
       class GooglePrivacyDlpV2DeidentifyTemplate
         include Google::Apis::Core::Hashable
       
@@ -1904,10 +1819,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. The template name.
-        # The template will have one of the following formats:
-        # `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR
-        # `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
+        # Output only. The template name. The template will have one of the following
+        # formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `
+        # organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1932,30 +1846,29 @@ module Google
         end
       end
       
-      # δ-presence metric, used to estimate how likely it is for an attacker to
-      # figure out that one given individual appears in a de-identified dataset.
-      # Similarly to the k-map metric, we cannot compute δ-presence exactly without
-      # knowing the attack dataset, so we use a statistical model instead.
+      # δ-presence metric, used to estimate how likely it is for an attacker to figure
+      # out that one given individual appears in a de-identified dataset. Similarly to
+      # the k-map metric, we cannot compute δ-presence exactly without knowing the
+      # attack dataset, so we use a statistical model instead.
       class GooglePrivacyDlpV2DeltaPresenceEstimationConfig
         include Google::Apis::Core::Hashable
       
-        # Several auxiliary tables can be used in the analysis. Each custom_tag
-        # used to tag a quasi-identifiers field must appear in exactly one
-        # field of one auxiliary table.
+        # Several auxiliary tables can be used in the analysis. Each custom_tag used to
+        # tag a quasi-identifiers field must appear in exactly one field of one
+        # auxiliary table.
         # Corresponds to the JSON property `auxiliaryTables`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2StatisticalTable>]
         attr_accessor :auxiliary_tables
       
         # Required. Fields considered to be quasi-identifiers. No two fields can have
-        # the
-        # same tag.
+        # the same tag.
         # Corresponds to the JSON property `quasiIds`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2QuasiId>]
         attr_accessor :quasi_ids
       
-        # ISO 3166-1 alpha-2 region code to use in the statistical modeling.
-        # Set if no column is tagged with a region-specific InfoType (like
-        # US_ZIP_5) or a region code.
+        # ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no
+        # column is tagged with a region-specific InfoType (like US_ZIP_5) or a region
+        # code.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
         attr_accessor :region_code
@@ -1972,15 +1885,11 @@ module Google
         end
       end
       
-      # A DeltaPresenceEstimationHistogramBucket message with the following
-      # values:
-      # min_probability: 0.1
-      # max_probability: 0.2
-      # frequency: 42
-      # means that there are 42 records for which δ is in [0.1, 0.2). An
-      # important particular case is when min_probability = max_probability = 1:
-      # then, every individual who shares this quasi-identifier combination is in
-      # the dataset.
+      # A DeltaPresenceEstimationHistogramBucket message with the following values:
+      # min_probability: 0.1 max_probability: 0.2 frequency: 42 means that there are
+      # 42 records for which δ is in [0.1, 0.2). An important particular case is when
+      # min_probability = max_probability = 1: then, every individual who shares this
+      # quasi-identifier combination is in the dataset.
       class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket
         include Google::Apis::Core::Hashable
       
@@ -1994,8 +1903,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :bucket_value_count
       
-        # Sample of quasi-identifier tuple values in this bucket. The total
-        # number of classes returned per bucket is capped at 20.
+        # Sample of quasi-identifier tuple values in this bucket. The total number of
+        # classes returned per bucket is capped at 20.
         # Corresponds to the JSON property `bucketValues`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>]
         attr_accessor :bucket_values
@@ -2028,14 +1937,13 @@ module Google
       class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues
         include Google::Apis::Core::Hashable
       
-        # The estimated probability that a given individual sharing these
-        # quasi-identifier values is in the dataset. This value, typically called
-        # δ, is the ratio between the number of records in the dataset with these
-        # quasi-identifier values, and the total number of individuals (inside
-        # *and* outside the dataset) with these quasi-identifier values.
-        # For example, if there are 15 individuals in the dataset who share the
-        # same quasi-identifier values, and an estimated 100 people in the entire
-        # population with these values, then δ is 0.15.
+        # The estimated probability that a given individual sharing these quasi-
+        # identifier values is in the dataset. This value, typically called δ, is the
+        # ratio between the number of records in the dataset with these quasi-identifier
+        # values, and the total number of individuals (inside *and* outside the dataset)
+        # with these quasi-identifier values. For example, if there are 15 individuals
+        # in the dataset who share the same quasi-identifier values, and an estimated
+        # 100 people in the entire population with these values, then δ is 0.15.
         # Corresponds to the JSON property `estimatedProbability`
         # @return [Float]
         attr_accessor :estimated_probability
@@ -2061,14 +1969,13 @@ module Google
       class GooglePrivacyDlpV2DeltaPresenceEstimationResult
         include Google::Apis::Core::Hashable
       
-        # The intervals [min_probability, max_probability) do not overlap. If a
-        # value doesn't correspond to any such interval, the associated frequency
-        # is zero. For example, the following records:
-        # `min_probability: 0, max_probability: 0.1, frequency: 17`
-        # `min_probability: 0.2, max_probability: 0.3, frequency: 42`
-        # `min_probability: 0.3, max_probability: 0.4, frequency: 99`
-        # mean that there are no record with an estimated probability in [0.1, 0.2)
-        # nor larger or equal to 0.4.
+        # The intervals [min_probability, max_probability) do not overlap. If a value
+        # doesn't correspond to any such interval, the associated frequency is zero. For
+        # example, the following records: `min_probability: 0, max_probability: 0.1,
+        # frequency: 17` `min_probability: 0.2, max_probability: 0.3, frequency: 42` `
+        # min_probability: 0.3, max_probability: 0.4, frequency: 99` mean that there are
+        # no record with an estimated probability in [0.1, 0.2) nor larger or equal to 0.
+        # 4.
         # Corresponds to the JSON property `deltaPresenceEstimationHistogram`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>]
         attr_accessor :delta_presence_estimation_histogram
@@ -2083,15 +1990,15 @@ module Google
         end
       end
       
-      # Deprecated; use `InspectionRuleSet` instead. Rule for modifying a
-      # `CustomInfoType` to alter behavior under certain circumstances, depending
-      # on the specific details of the rule. Not supported for the `surrogate_type`
+      # Deprecated; use `InspectionRuleSet` instead. Rule for modifying a `
+      # CustomInfoType` to alter behavior under certain circumstances, depending on
+      # the specific details of the rule. Not supported for the `surrogate_type`
       # custom infoType.
       class GooglePrivacyDlpV2DetectionRule
         include Google::Apis::Core::Hashable
       
-        # The rule that adjusts the likelihood of findings within a certain
-        # proximity of hotwords.
+        # The rule that adjusts the likelihood of findings within a certain proximity of
+        # hotwords.
         # Corresponds to the JSON property `hotwordRule`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HotwordRule]
         attr_accessor :hotword_rule
@@ -2106,28 +2013,24 @@ module Google
         end
       end
       
-      # Custom information type based on a dictionary of words or phrases. This can
-      # be used to match sensitive information specific to the data, such as a list
-      # of employee IDs or job titles.
-      # Dictionary words are case-insensitive and all characters other than letters
-      # and digits in the unicode [Basic Multilingual
+      # Custom information type based on a dictionary of words or phrases. This can be
+      # used to match sensitive information specific to the data, such as a list of
+      # employee IDs or job titles. Dictionary words are case-insensitive and all
+      # characters other than letters and digits in the unicode [Basic Multilingual
       # Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#
-      # Basic_Multilingual_Plane)
-      # will be replaced with whitespace when scanning for matches, so the
-      # dictionary phrase "Sam Johnson" will match all three phrases "sam johnson",
-      # "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters
-      # surrounding any match must be of a different type than the adjacent
-      # characters within the word, so letters must be next to non-letters and
-      # digits next to non-digits. For example, the dictionary word "jen" will
-      # match the first three letters of the text "jen123" but will return no
-      # matches for "jennifer".
-      # Dictionary words containing a large number of characters that are not
-      # letters or digits may result in unexpected findings because such characters
-      # are treated as whitespace. The
-      # [limits](https://cloud.google.com/dlp/limits) page contains details about
-      # the size limits of dictionaries. For dictionaries that do not fit within
-      # these constraints, consider using `LargeCustomDictionaryConfig` in the
-      # `StoredInfoType` API.
+      # Basic_Multilingual_Plane) will be replaced with whitespace when scanning for
+      # matches, so the dictionary phrase "Sam Johnson" will match all three phrases "
+      # sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the
+      # characters surrounding any match must be of a different type than the adjacent
+      # characters within the word, so letters must be next to non-letters and digits
+      # next to non-digits. For example, the dictionary word "jen" will match the
+      # first three letters of the text "jen123" but will return no matches for "
+      # jennifer". Dictionary words containing a large number of characters that are
+      # not letters or digits may result in unexpected findings because such
+      # characters are treated as whitespace. The [limits](https://cloud.google.com/
+      # dlp/limits) page contains details about the size limits of dictionaries. For
+      # dictionaries that do not fit within these constraints, consider using `
+      # LargeCustomDictionaryConfig` in the `StoredInfoType` API.
       class GooglePrivacyDlpV2Dictionary
         include Google::Apis::Core::Hashable
       
@@ -2230,8 +2133,8 @@ module Google
       class GooglePrivacyDlpV2DocumentLocation
         include Google::Apis::Core::Hashable
       
-        # Offset of the line, from the beginning of the file, where the finding
-        # is located.
+        # Offset of the line, from the beginning of the file, where the finding is
+        # located.
         # Corresponds to the JSON property `fileOffset`
         # @return [Fixnum]
         attr_accessor :file_offset
@@ -2246,11 +2149,11 @@ module Google
         end
       end
       
-      # An entity in a dataset is a field or set of fields that correspond to a
-      # single person. For example, in medical records the `EntityId` might be a
-      # patient identifier, or for financial records it might be an account
-      # identifier. This message is used when generalizations or analysis must take
-      # into account that multiple rows correspond to the same entity.
+      # An entity in a dataset is a field or set of fields that correspond to a single
+      # person. For example, in medical records the `EntityId` might be a patient
+      # identifier, or for financial records it might be an account identifier. This
+      # message is used when generalizations or analysis must take into account that
+      # multiple rows correspond to the same entity.
       class GooglePrivacyDlpV2EntityId
         include Google::Apis::Core::Hashable
       
@@ -2269,17 +2172,17 @@ module Google
         end
       end
       
-      # Details information about an error encountered during job execution or
-      # the results of an unsuccessful activation of the JobTrigger.
+      # Details information about an error encountered during job execution or the
+      # results of an unsuccessful activation of the JobTrigger.
       class GooglePrivacyDlpV2Error
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `details`
         # @return [Google::Apis::DlpV2::GoogleRpcStatus]
         attr_accessor :details
@@ -2305,12 +2208,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # InfoType list in ExclusionRule rule drops a finding when it overlaps or
-        # contained within with a finding of an infoType from this list. For
-        # example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"` and
-        # `exclusion_rule` containing `exclude_info_types.info_types` with
-        # "EMAIL_ADDRESS" the phone number findings are dropped if they overlap
-        # with EMAIL_ADDRESS finding.
-        # That leads to "555-222-2222@example.org" to generate only a single
+        # contained within with a finding of an infoType from this list. For example,
+        # for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"` and `
+        # exclusion_rule` containing `exclude_info_types.info_types` with "EMAIL_ADDRESS"
+        # the phone number findings are dropped if they overlap with EMAIL_ADDRESS
+        # finding. That leads to "555-222-2222@example.org" to generate only a single
         # finding, namely email address.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
@@ -2326,33 +2228,29 @@ module Google
         end
       end
       
-      # The rule that specifies conditions when findings of infoTypes specified in
-      # `InspectionRuleSet` are removed from results.
+      # The rule that specifies conditions when findings of infoTypes specified in `
+      # InspectionRuleSet` are removed from results.
       class GooglePrivacyDlpV2ExclusionRule
         include Google::Apis::Core::Hashable
       
-        # Custom information type based on a dictionary of words or phrases. This can
-        # be used to match sensitive information specific to the data, such as a list
-        # of employee IDs or job titles.
-        # Dictionary words are case-insensitive and all characters other than letters
-        # and digits in the unicode [Basic Multilingual
+        # Custom information type based on a dictionary of words or phrases. This can be
+        # used to match sensitive information specific to the data, such as a list of
+        # employee IDs or job titles. Dictionary words are case-insensitive and all
+        # characters other than letters and digits in the unicode [Basic Multilingual
         # Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#
-        # Basic_Multilingual_Plane)
-        # will be replaced with whitespace when scanning for matches, so the
-        # dictionary phrase "Sam Johnson" will match all three phrases "sam johnson",
-        # "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters
-        # surrounding any match must be of a different type than the adjacent
-        # characters within the word, so letters must be next to non-letters and
-        # digits next to non-digits. For example, the dictionary word "jen" will
-        # match the first three letters of the text "jen123" but will return no
-        # matches for "jennifer".
-        # Dictionary words containing a large number of characters that are not
-        # letters or digits may result in unexpected findings because such characters
-        # are treated as whitespace. The
-        # [limits](https://cloud.google.com/dlp/limits) page contains details about
-        # the size limits of dictionaries. For dictionaries that do not fit within
-        # these constraints, consider using `LargeCustomDictionaryConfig` in the
-        # `StoredInfoType` API.
+        # Basic_Multilingual_Plane) will be replaced with whitespace when scanning for
+        # matches, so the dictionary phrase "Sam Johnson" will match all three phrases "
+        # sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the
+        # characters surrounding any match must be of a different type than the adjacent
+        # characters within the word, so letters must be next to non-letters and digits
+        # next to non-digits. For example, the dictionary word "jen" will match the
+        # first three letters of the text "jen123" but will return no matches for "
+        # jennifer". Dictionary words containing a large number of characters that are
+        # not letters or digits may result in unexpected findings because such
+        # characters are treated as whitespace. The [limits](https://cloud.google.com/
+        # dlp/limits) page contains details about the size limits of dictionaries. For
+        # dictionaries that do not fit within these constraints, consider using `
+        # LargeCustomDictionaryConfig` in the `StoredInfoType` API.
         # Corresponds to the JSON property `dictionary`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary]
         attr_accessor :dictionary
@@ -2394,8 +2292,8 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Conditions]
         attr_accessor :conditions
       
-        # The operator to apply to the result of conditions. Default and currently
-        # only supported value is `AND`.
+        # The operator to apply to the result of conditions. Default and currently only
+        # supported value is `AND`.
         # Corresponds to the JSON property `logicalOperator`
         # @return [String]
         attr_accessor :logical_operator
@@ -2434,8 +2332,8 @@ module Google
       class GooglePrivacyDlpV2FieldTransformation
         include Google::Apis::Core::Hashable
       
-        # A condition for determining whether a transformation should be applied to
-        # a field.
+        # A condition for determining whether a transformation should be applied to a
+        # field.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RecordCondition]
         attr_accessor :condition
@@ -2445,10 +2343,9 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :fields
       
-        # A type of transformation that will scan unstructured text and
-        # apply various `PrimitiveTransformation`s to each finding, where the
-        # transformation is applied to only values that were identified as a specific
-        # info_type.
+        # A type of transformation that will scan unstructured text and apply various `
+        # PrimitiveTransformation`s to each finding, where the transformation is applied
+        # to only values that were identified as a specific info_type.
         # Corresponds to the JSON property `infoTypeTransformations`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeTransformations]
         attr_accessor :info_type_transformations
@@ -2477,42 +2374,34 @@ module Google
       
         # Message representing a set of files in a Cloud Storage bucket. Regular
         # expressions are used to allow fine-grained control over which files in the
-        # bucket to include.
-        # Included files are those that match at least one item in `include_regex` and
-        # do not match any items in `exclude_regex`. Note that a file that matches
-        # items from both lists will _not_ be included. For a match to occur, the
-        # entire file path (i.e., everything in the url after the bucket name) must
-        # match the regular expression.
-        # For example, given the input ``bucket_name: "mybucket", include_regex:
-        # ["directory1/.*"], exclude_regex:
-        # ["directory1/excluded.*"]``:
-        # * `gs://mybucket/directory1/myfile` will be included
-        # * `gs://mybucket/directory1/directory2/myfile` will be included (`.*` matches
-        # across `/`)
-        # * `gs://mybucket/directory0/directory1/myfile` will _not_ be included (the
-        # full path doesn't match any items in `include_regex`)
-        # * `gs://mybucket/directory1/excludedfile` will _not_ be included (the path
-        # matches an item in `exclude_regex`)
-        # If `include_regex` is left empty, it will match all files by default
-        # (this is equivalent to setting `include_regex: [".*"]`).
-        # Some other common use cases:
-        # * ``bucket_name: "mybucket", exclude_regex: [".*\.pdf"]`` will include all
-        # files in `mybucket` except for .pdf files
-        # * ``bucket_name: "mybucket", include_regex: ["directory/[^/]+"]`` will
-        # include all files directly under `gs://mybucket/directory/`, without matching
-        # across `/`
+        # bucket to include. Included files are those that match at least one item in `
+        # include_regex` and do not match any items in `exclude_regex`. Note that a file
+        # that matches items from both lists will _not_ be included. For a match to
+        # occur, the entire file path (i.e., everything in the url after the bucket name)
+        # must match the regular expression. For example, given the input ``bucket_name:
+        # "mybucket", include_regex: ["directory1/.*"], exclude_regex: ["directory1/
+        # excluded.*"]``: * `gs://mybucket/directory1/myfile` will be included * `gs://
+        # mybucket/directory1/directory2/myfile` will be included (`.*` matches across `/
+        # `) * `gs://mybucket/directory0/directory1/myfile` will _not_ be included (the
+        # full path doesn't match any items in `include_regex`) * `gs://mybucket/
+        # directory1/excludedfile` will _not_ be included (the path matches an item in `
+        # exclude_regex`) If `include_regex` is left empty, it will match all files by
+        # default (this is equivalent to setting `include_regex: [".*"]`). Some other
+        # common use cases: * ``bucket_name: "mybucket", exclude_regex: [".*\.pdf"]``
+        # will include all files in `mybucket` except for .pdf files * ``bucket_name: "
+        # mybucket", include_regex: ["directory/[^/]+"]`` will include all files
+        # directly under `gs://mybucket/directory/`, without matching across `/`
         # Corresponds to the JSON property `regexFileSet`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageRegexFileSet]
         attr_accessor :regex_file_set
       
-        # The Cloud Storage url of the file(s) to scan, in the format
-        # `gs://<bucket>/<path>`. Trailing wildcard in the path is allowed.
-        # If the url ends in a trailing slash, the bucket or directory represented
-        # by the url will be scanned non-recursively (content in sub-directories
-        # will not be scanned). This means that `gs://mybucket/` is equivalent to
-        # `gs://mybucket/*`, and `gs://mybucket/directory/` is equivalent to
-        # `gs://mybucket/directory/*`.
-        # Exactly one of `url` or `regex_file_set` must be set.
+        # The Cloud Storage url of the file(s) to scan, in the format `gs:///`. Trailing
+        # wildcard in the path is allowed. If the url ends in a trailing slash, the
+        # bucket or directory represented by the url will be scanned non-recursively (
+        # content in sub-directories will not be scanned). This means that `gs://
+        # mybucket/` is equivalent to `gs://mybucket/*`, and `gs://mybucket/directory/`
+        # is equivalent to `gs://mybucket/directory/*`. Exactly one of `url` or `
+        # regex_file_set` must be set.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -2552,15 +2441,12 @@ module Google
         # @return [String]
         attr_accessor :job_name
       
-        # The labels associated with this `Finding`.
-        # Label keys must be between 1 and 63 characters long and must conform
-        # to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
-        # Label values must be between 0 and 63 characters long and must conform
-        # to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-        # No more than 10 labels can be associated with a given finding.
-        # Examples:
-        # * `"environment" : "production"`
-        # * `"pipeline" : "etl"`
+        # The labels associated with this `Finding`. Label keys must be between 1 and 63
+        # characters long and must conform to the following regular expression: `[a-z]([-
+        # a-z0-9]*[a-z0-9])?`. Label values must be between 0 and 63 characters long and
+        # must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. No
+        # more than 10 labels can be associated with a given finding. Examples: * `"
+        # environment" : "production"` * `"pipeline" : "etl"`
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2575,18 +2461,16 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Location]
         attr_accessor :location
       
-        # Resource name in format
-        # projects/`project`/locations/`location`/findings/`finding` Populated only
-        # when viewing persisted findings.
+        # Resource name in format projects/`project`/locations/`location`/findings/`
+        # finding` Populated only when viewing persisted findings.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The content that was found. Even if the content is not textual, it
-        # may be converted to a textual representation here.
-        # Provided if `include_quote` is true and the finding is
-        # less than or equal to 4096 bytes long. If the finding exceeds 4096 bytes
-        # in length, the quote may be omitted.
+        # The content that was found. Even if the content is not textual, it may be
+        # converted to a textual representation here. Provided if `include_quote` is
+        # true and the finding is less than or equal to 4096 bytes long. If the finding
+        # exceeds 4096 bytes in length, the quote may be omitted.
         # Corresponds to the JSON property `quote`
         # @return [String]
         attr_accessor :quote
@@ -2636,17 +2520,16 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeLimit>]
         attr_accessor :max_findings_per_info_type
       
-        # Max number of findings that will be returned for each item scanned.
-        # When set within `InspectJobConfig`,
-        # the maximum returned is 2000 regardless if this is set higher.
-        # When set within `InspectContentRequest`, this field is ignored.
+        # Max number of findings that will be returned for each item scanned. When set
+        # within `InspectJobConfig`, the maximum returned is 2000 regardless if this is
+        # set higher. When set within `InspectContentRequest`, this field is ignored.
         # Corresponds to the JSON property `maxFindingsPerItem`
         # @return [Fixnum]
         attr_accessor :max_findings_per_item
       
-        # Max number of findings that will be returned per request/job.
-        # When set within `InspectContentRequest`, the maximum returned is 2000
-        # regardless if this is set higher.
+        # Max number of findings that will be returned per request/job. When set within `
+        # InspectContentRequest`, the maximum returned is 2000 regardless if this is set
+        # higher.
         # Corresponds to the JSON property `maxFindingsPerRequest`
         # @return [Fixnum]
         attr_accessor :max_findings_per_request
@@ -2676,45 +2559,41 @@ module Google
         end
       end
       
-      # Buckets values based on fixed size ranges. The
-      # Bucketing transformation can provide all of this functionality,
-      # but requires more configuration. This message is provided as a convenience to
-      # the user for simple bucketing strategies.
-      # The transformed value will be a hyphenated string of
-      # `lower_bound`-`upper_bound`, i.e if lower_bound = 10 and upper_bound = 20
-      # all values that are within this bucket will be replaced with "10-20".
-      # This can be used on data of type: double, long.
-      # If the bound Value type differs from the type of data
-      # being transformed, we will first attempt converting the type of the data to
-      # be transformed to match the type of the bound before comparing.
-      # See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+      # Buckets values based on fixed size ranges. The Bucketing transformation can
+      # provide all of this functionality, but requires more configuration. This
+      # message is provided as a convenience to the user for simple bucketing
+      # strategies. The transformed value will be a hyphenated string of `lower_bound`-
+      # `upper_bound`, i.e if lower_bound = 10 and upper_bound = 20 all values that
+      # are within this bucket will be replaced with "10-20". This can be used on data
+      # of type: double, long. If the bound Value type differs from the type of data
+      # being transformed, we will first attempt converting the type of the data to be
+      # transformed to match the type of the bound before comparing. See https://cloud.
+      # google.com/dlp/docs/concepts-bucketing to learn more.
       class GooglePrivacyDlpV2FixedSizeBucketingConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Size of each bucket (except for minimum and maximum buckets). So if
-        # `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the
-        # following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60,
-        # 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+        # Required. Size of each bucket (except for minimum and maximum buckets). So if `
+        # lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the
+        # following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70,
+        # 70-80, 80-89, 89+. Precision up to 2 decimals works.
         # Corresponds to the JSON property `bucketSize`
         # @return [Float]
         attr_accessor :bucket_size
       
-        # Set of primitive values supported by the system.
-        # Note that for the purposes of inspection or transformation, the number
-        # of bytes considered to comprise a 'Value' is based on its representation
-        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
-        # 123456789, the number of bytes would be counted as 9, even though an
-        # int64 only holds up to 8 bytes of data.
+        # Set of primitive values supported by the system. Note that for the purposes of
+        # inspection or transformation, the number of bytes considered to comprise a '
+        # Value' is based on its representation as a UTF-8 encoded string. For example,
+        # if 'integer_value' is set to 123456789, the number of bytes would be counted
+        # as 9, even though an int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `lowerBound`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Value]
         attr_accessor :lower_bound
       
-        # Set of primitive values supported by the system.
-        # Note that for the purposes of inspection or transformation, the number
-        # of bytes considered to comprise a 'Value' is based on its representation
-        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
-        # 123456789, the number of bytes would be counted as 9, even though an
-        # int64 only holds up to 8 bytes of data.
+        # Set of primitive values supported by the system. Note that for the purposes of
+        # inspection or transformation, the number of bytes considered to comprise a '
+        # Value' is based on its representation as a UTF-8 encoded string. For example,
+        # if 'integer_value' is set to 123456789, the number of bytes would be counted
+        # as 9, even though an int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `upperBound`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Value]
         attr_accessor :upper_bound
@@ -2731,8 +2610,8 @@ module Google
         end
       end
       
-      # The rule that adjusts the likelihood of findings within a certain
-      # proximity of hotwords.
+      # The rule that adjusts the likelihood of findings within a certain proximity of
+      # hotwords.
       class GooglePrivacyDlpV2HotwordRule
         include Google::Apis::Core::Hashable
       
@@ -2741,14 +2620,13 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Regex]
         attr_accessor :hotword_regex
       
-        # Message for specifying an adjustment to the likelihood of a finding as
-        # part of a detection rule.
+        # Message for specifying an adjustment to the likelihood of a finding as part of
+        # a detection rule.
         # Corresponds to the JSON property `likelihoodAdjustment`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2LikelihoodAdjustment]
         attr_accessor :likelihood_adjustment
       
-        # Message for specifying a window around a finding to apply a detection
-        # rule.
+        # Message for specifying a window around a finding to apply a detection rule.
         # Corresponds to the JSON property `proximity`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Proximity]
         attr_accessor :proximity
@@ -2795,39 +2673,34 @@ module Google
       class GooglePrivacyDlpV2HybridFindingDetails
         include Google::Apis::Core::Hashable
       
-        # Represents a container that may contain DLP findings.
-        # Examples of a container include a file, table, or database record.
+        # Represents a container that may contain DLP findings. Examples of a container
+        # include a file, table, or database record.
         # Corresponds to the JSON property `containerDetails`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Container]
         attr_accessor :container_details
       
-        # Offset in bytes of the line, from the beginning of the file, where the
-        # finding  is located. Populate if the item being scanned is only part of a
-        # bigger item, such as a shard of a file and you want to track the absolute
-        # position of the finding.
+        # Offset in bytes of the line, from the beginning of the file, where the finding
+        # is located. Populate if the item being scanned is only part of a bigger item,
+        # such as a shard of a file and you want to track the absolute position of the
+        # finding.
         # Corresponds to the JSON property `fileOffset`
         # @return [Fixnum]
         attr_accessor :file_offset
       
-        # Labels to represent user provided metadata about the data being inspected.
-        # If configured by the job, some key values may be required.
-        # The labels associated with `Finding`'s produced by hybrid
-        # inspection.
-        # Label keys must be between 1 and 63 characters long and must conform
-        # to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
-        # Label values must be between 0 and 63 characters long and must conform
-        # to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-        # No more than 10 labels can be associated with a given finding.
-        # Examples:
-        # * `"environment" : "production"`
-        # * `"pipeline" : "etl"`
+        # Labels to represent user provided metadata about the data being inspected. If
+        # configured by the job, some key values may be required. The labels associated
+        # with `Finding`'s produced by hybrid inspection. Label keys must be between 1
+        # and 63 characters long and must conform to the following regular expression: `[
+        # a-z]([-a-z0-9]*[a-z0-9])?`. Label values must be between 0 and 63 characters
+        # long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
+        # . No more than 10 labels can be associated with a given finding. Examples: * `"
+        # environment" : "production"` * `"pipeline" : "etl"`
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Offset of the row for tables. Populate if the row(s) being scanned are
-        # part of a bigger dataset and you want to keep track of their absolute
-        # position.
+        # Offset of the row for tables. Populate if the row(s) being scanned are part of
+        # a bigger dataset and you want to keep track of their absolute position.
         # Corresponds to the JSON property `rowOffset`
         # @return [Fixnum]
         attr_accessor :row_offset
@@ -2908,17 +2781,16 @@ module Google
       class GooglePrivacyDlpV2HybridInspectStatistics
         include Google::Apis::Core::Hashable
       
-        # The number of hybrid inspection requests aborted because the job ran
-        # out of quota or was ended before they could be processed.
+        # The number of hybrid inspection requests aborted because the job ran out of
+        # quota or was ended before they could be processed.
         # Corresponds to the JSON property `abortedCount`
         # @return [Fixnum]
         attr_accessor :aborted_count
       
-        # The number of hybrid requests currently being processed. Only populated
-        # when called via method `getDlpJob`.
-        # A burst of traffic may cause hybrid inspect requests to be enqueued.
-        # Processing will take place as quickly as possible, but resource limitations
-        # may impact how long a request is enqueued for.
+        # The number of hybrid requests currently being processed. Only populated when
+        # called via method `getDlpJob`. A burst of traffic may cause hybrid inspect
+        # requests to be enqueued. Processing will take place as quickly as possible,
+        # but resource limitations may impact how long a request is enqueued for.
         # Corresponds to the JSON property `pendingCount`
         # @return [Fixnum]
         attr_accessor :pending_count
@@ -2940,36 +2812,32 @@ module Google
         end
       end
       
-      # Configuration to control jobs where the content being inspected is outside
-      # of Google Cloud Platform.
+      # Configuration to control jobs where the content being inspected is outside of
+      # Google Cloud Platform.
       class GooglePrivacyDlpV2HybridOptions
         include Google::Apis::Core::Hashable
       
-        # A short description of where the data is coming from. Will be stored once
-        # in the job. 256 max length.
+        # A short description of where the data is coming from. Will be stored once in
+        # the job. 256 max length.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # To organize findings, these labels will be added to each finding.
-        # Label keys must be between 1 and 63 characters long and must conform
-        # to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
-        # Label values must be between 0 and 63 characters long and must conform
-        # to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-        # No more than 10 labels can be associated with a given finding.
-        # Examples:
-        # * `"environment" : "production"`
-        # * `"pipeline" : "etl"`
+        # To organize findings, these labels will be added to each finding. Label keys
+        # must be between 1 and 63 characters long and must conform to the following
+        # regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. Label values must be between
+        # 0 and 63 characters long and must conform to the regular expression `([a-z]([-
+        # a-z0-9]*[a-z0-9])?)?`. No more than 10 labels can be associated with a given
+        # finding. Examples: * `"environment" : "production"` * `"pipeline" : "etl"`
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # These are labels that each inspection request must include within their
-        # 'finding_labels' map. Request may contain others, but any missing one of
-        # these will be rejected.
-        # Label keys must be between 1 and 63 characters long and must conform
-        # to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
-        # No more than 10 keys can be required.
+        # These are labels that each inspection request must include within their '
+        # finding_labels' map. Request may contain others, but any missing one of these
+        # will be rejected. Label keys must be between 1 and 63 characters long and must
+        # conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. No
+        # more than 10 keys can be required.
         # Corresponds to the JSON property `requiredFindingLabelKeys`
         # @return [Array<String>]
         attr_accessor :required_finding_label_keys
@@ -3048,11 +2916,11 @@ module Google
       class GooglePrivacyDlpV2InfoType
         include Google::Apis::Core::Hashable
       
-        # Name of the information type. Either a name of your choosing when
-        # creating a CustomInfoType, or one of the names listed
-        # at https://cloud.google.com/dlp/docs/infotypes-reference when specifying
-        # a built-in type.  When sending Cloud DLP results to Data Catalog, infoType
-        # names should conform to the pattern `[A-Za-z0-9$-_]`1,64``.
+        # Name of the information type. Either a name of your choosing when creating a
+        # CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/
+        # docs/infotypes-reference when specifying a built-in type. When sending Cloud
+        # DLP results to Data Catalog, infoType names should conform to the pattern `[A-
+        # Za-z0-9$-_]`1,64``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3105,8 +2973,8 @@ module Google
         end
       end
       
-      # Max findings configuration per infoType, per content item or long
-      # running DlpJob.
+      # Max findings configuration per infoType, per content item or long running
+      # DlpJob.
       class GooglePrivacyDlpV2InfoTypeLimit
         include Google::Apis::Core::Hashable
       
@@ -3156,14 +3024,13 @@ module Google
         end
       end
       
-      # A transformation to apply to text that is identified as a specific
-      # info_type.
+      # A transformation to apply to text that is identified as a specific info_type.
       class GooglePrivacyDlpV2InfoTypeTransformation
         include Google::Apis::Core::Hashable
       
-        # InfoTypes to apply the transformation to. An empty list will cause
-        # this transformation to apply to all findings that correspond to
-        # infoTypes that were requested in `InspectConfig`.
+        # InfoTypes to apply the transformation to. An empty list will cause this
+        # transformation to apply to all findings that correspond to infoTypes that were
+        # requested in `InspectConfig`.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
         attr_accessor :info_types
@@ -3184,15 +3051,14 @@ module Google
         end
       end
       
-      # A type of transformation that will scan unstructured text and
-      # apply various `PrimitiveTransformation`s to each finding, where the
-      # transformation is applied to only values that were identified as a specific
-      # info_type.
+      # A type of transformation that will scan unstructured text and apply various `
+      # PrimitiveTransformation`s to each finding, where the transformation is applied
+      # to only values that were identified as a specific info_type.
       class GooglePrivacyDlpV2InfoTypeTransformations
         include Google::Apis::Core::Hashable
       
-        # Required. Transformation for each infoType. Cannot specify more than one
-        # for a given infoType.
+        # Required. Transformation for each infoType. Cannot specify more than one for a
+        # given infoType.
         # Corresponds to the JSON property `transformations`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeTransformation>]
         attr_accessor :transformations
@@ -3207,20 +3073,19 @@ module Google
         end
       end
       
-      # Configuration description of the scanning process.
-      # When used with redactContent only info_types and min_likelihood are currently
-      # used.
+      # Configuration description of the scanning process. When used with
+      # redactContent only info_types and min_likelihood are currently used.
       class GooglePrivacyDlpV2InspectConfig
         include Google::Apis::Core::Hashable
       
-        # List of options defining data content to scan.
-        # If empty, text, images, and other content will be included.
+        # List of options defining data content to scan. If empty, text, images, and
+        # other content will be included.
         # Corresponds to the JSON property `contentOptions`
         # @return [Array<String>]
         attr_accessor :content_options
       
-        # CustomInfoTypes provided by the user. See
-        # https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        # CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/
+        # creating-custom-infotypes to learn more.
         # Corresponds to the JSON property `customInfoTypes`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2CustomInfoType>]
         attr_accessor :custom_info_types
@@ -3238,14 +3103,13 @@ module Google
         attr_accessor :include_quote
         alias_method :include_quote?, :include_quote
       
-        # Restricts what info_types to look for. The values must correspond to
-        # InfoType values returned by ListInfoTypes or listed at
-        # https://cloud.google.com/dlp/docs/infotypes-reference.
-        # When no InfoTypes or CustomInfoTypes are specified in a request, the
-        # system may automatically choose what detectors to run. By default this may
-        # be all types, but may change over time as detectors are updated.
-        # If you need precise control and predictability as to what detectors are
-        # run you should specify specific InfoTypes listed in the reference,
+        # Restricts what info_types to look for. The values must correspond to InfoType
+        # values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/
+        # docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified
+        # in a request, the system may automatically choose what detectors to run. By
+        # default this may be all types, but may change over time as detectors are
+        # updated. If you need precise control and predictability as to what detectors
+        # are run you should specify specific InfoTypes listed in the reference,
         # otherwise a default list will be used, which may change over time.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
@@ -3256,16 +3120,15 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FindingLimits]
         attr_accessor :limits
       
-        # Only returns findings equal or above this threshold. The default is
-        # POSSIBLE.
+        # Only returns findings equal or above this threshold. The default is POSSIBLE.
         # See https://cloud.google.com/dlp/docs/likelihood to learn more.
         # Corresponds to the JSON property `minLikelihood`
         # @return [String]
         attr_accessor :min_likelihood
       
-        # Set of rules to apply to the findings for this InspectConfig.
-        # Exclusion rules, contained in the set are executed in the end, other
-        # rules are executed in the order they are specified for each info type.
+        # Set of rules to apply to the findings for this InspectConfig. Exclusion rules,
+        # contained in the set are executed in the end, other rules are executed in the
+        # order they are specified for each info type.
         # Corresponds to the JSON property `ruleSet`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InspectionRuleSet>]
         attr_accessor :rule_set
@@ -3291,18 +3154,16 @@ module Google
       class GooglePrivacyDlpV2InspectContentRequest
         include Google::Apis::Core::Hashable
       
-        # Configuration description of the scanning process.
-        # When used with redactContent only info_types and min_likelihood are currently
-        # used.
+        # Configuration description of the scanning process. When used with
+        # redactContent only info_types and min_likelihood are currently used.
         # Corresponds to the JSON property `inspectConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
         attr_accessor :inspect_config
       
-        # Template to use. Any configuration directly specified in
-        # inspect_config will override those set in the template. Singular fields
-        # that are set in this request will replace their corresponding fields in the
-        # template. Repeated fields are appended. Singular sub-messages and groups
-        # are recursively merged.
+        # Template to use. Any configuration directly specified in inspect_config will
+        # override those set in the template. Singular fields that are set in this
+        # request will replace their corresponding fields in the template. Repeated
+        # fields are appended. Singular sub-messages and groups are recursively merged.
         # Corresponds to the JSON property `inspectTemplateName`
         # @return [String]
         attr_accessor :inspect_template_name
@@ -3383,15 +3244,14 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Action>]
         attr_accessor :actions
       
-        # Configuration description of the scanning process.
-        # When used with redactContent only info_types and min_likelihood are currently
-        # used.
+        # Configuration description of the scanning process. When used with
+        # redactContent only info_types and min_likelihood are currently used.
         # Corresponds to the JSON property `inspectConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
         attr_accessor :inspect_config
       
-        # If provided, will be used as the default for all values in InspectConfig.
-        # `inspect_config` will be merged into the values persisted as part of the
+        # If provided, will be used as the default for all values in InspectConfig. `
+        # inspect_config` will be merged into the values persisted as part of the
         # template.
         # Corresponds to the JSON property `inspectTemplateName`
         # @return [String]
@@ -3424,12 +3284,11 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Finding>]
         attr_accessor :findings
       
-        # If true, then this item might have more findings than were returned,
-        # and the findings returned are an arbitrary subset of all findings.
-        # The findings list might be truncated because the input items were too
-        # large, or because the server reached the maximum amount of resources
-        # allowed for a single API call. For best results, divide the input into
-        # smaller batches.
+        # If true, then this item might have more findings than were returned, and the
+        # findings returned are an arbitrary subset of all findings. The findings list
+        # might be truncated because the input items were too large, or because the
+        # server reached the maximum amount of resources allowed for a single API call.
+        # For best results, divide the input into smaller batches.
         # Corresponds to the JSON property `findingsTruncated`
         # @return [Boolean]
         attr_accessor :findings_truncated
@@ -3448,8 +3307,8 @@ module Google
       
       # The inspectTemplate contains a configuration (set of types of sensitive data
       # to be detected) to be used anywhere you otherwise would normally specify
-      # InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates
-      # to learn more.
+      # InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to
+      # learn more.
       class GooglePrivacyDlpV2InspectTemplate
         include Google::Apis::Core::Hashable
       
@@ -3468,17 +3327,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Configuration description of the scanning process.
-        # When used with redactContent only info_types and min_likelihood are currently
-        # used.
+        # Configuration description of the scanning process. When used with
+        # redactContent only info_types and min_likelihood are currently used.
         # Corresponds to the JSON property `inspectConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
         attr_accessor :inspect_config
       
-        # Output only. The template name.
-        # The template will have one of the following formats:
-        # `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR
-        # `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
+        # Output only. The template name. The template will have one of the following
+        # formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/
+        # ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3503,19 +3360,19 @@ module Google
         end
       end
       
-      # A single inspection rule to be applied to infoTypes, specified in
-      # `InspectionRuleSet`.
+      # A single inspection rule to be applied to infoTypes, specified in `
+      # InspectionRuleSet`.
       class GooglePrivacyDlpV2InspectionRule
         include Google::Apis::Core::Hashable
       
-        # The rule that specifies conditions when findings of infoTypes specified in
-        # `InspectionRuleSet` are removed from results.
+        # The rule that specifies conditions when findings of infoTypes specified in `
+        # InspectionRuleSet` are removed from results.
         # Corresponds to the JSON property `exclusionRule`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ExclusionRule]
         attr_accessor :exclusion_rule
       
-        # The rule that adjusts the likelihood of findings within a certain
-        # proximity of hotwords.
+        # The rule that adjusts the likelihood of findings within a certain proximity of
+        # hotwords.
         # Corresponds to the JSON property `hotwordRule`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HotwordRule]
         attr_accessor :hotword_rule
@@ -3557,8 +3414,8 @@ module Google
         end
       end
       
-      # Enable email notification to project owners and editors on jobs's
-      # completion/failure.
+      # Enable email notification to project owners and editors on jobs's completion/
+      # failure.
       class GooglePrivacyDlpV2JobNotificationEmails
         include Google::Apis::Core::Hashable
       
@@ -3571,8 +3428,8 @@ module Google
         end
       end
       
-      # Contains a configuration to make dlp api calls on a repeating basis.
-      # See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
+      # Contains a configuration to make dlp api calls on a repeating basis. See https:
+      # //cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
       class GooglePrivacyDlpV2JobTrigger
         include Google::Apis::Core::Hashable
       
@@ -3592,10 +3449,9 @@ module Google
         attr_accessor :display_name
       
         # Output only. A stream of errors encountered when the trigger was activated.
-        # Repeated
-        # errors may result in the JobTrigger automatically being paused.
-        # Will return the last 100 errors. Whenever the JobTrigger is modified
-        # this list will be cleared.
+        # Repeated errors may result in the JobTrigger automatically being paused. Will
+        # return the last 100 errors. Whenever the JobTrigger is modified this list will
+        # be cleared.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Error>]
         attr_accessor :errors
@@ -3611,8 +3467,8 @@ module Google
         attr_accessor :last_run_time
       
         # Unique resource name for the triggeredJob, assigned by the service when the
-        # triggeredJob is created, for example
-        # `projects/dlp-test-project/jobTriggers/53234423`.
+        # triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/
+        # 53234423`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3622,9 +3478,9 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # A list of triggers which will be OR'ed together. Only one in the list
-        # needs to trigger for a job to be started. The list may contain only
-        # a single Schedule trigger and must have at least one object.
+        # A list of triggers which will be OR'ed together. Only one in the list needs to
+        # trigger for a job to be started. The list may contain only a single Schedule
+        # trigger and must have at least one object.
         # Corresponds to the JSON property `triggers`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Trigger>]
         attr_accessor :triggers
@@ -3657,20 +3513,19 @@ module Google
       class GooglePrivacyDlpV2KAnonymityConfig
         include Google::Apis::Core::Hashable
       
-        # An entity in a dataset is a field or set of fields that correspond to a
-        # single person. For example, in medical records the `EntityId` might be a
-        # patient identifier, or for financial records it might be an account
-        # identifier. This message is used when generalizations or analysis must take
-        # into account that multiple rows correspond to the same entity.
+        # An entity in a dataset is a field or set of fields that correspond to a single
+        # person. For example, in medical records the `EntityId` might be a patient
+        # identifier, or for financial records it might be an account identifier. This
+        # message is used when generalizations or analysis must take into account that
+        # multiple rows correspond to the same entity.
         # Corresponds to the JSON property `entityId`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2EntityId]
         attr_accessor :entity_id
       
-        # Set of fields to compute k-anonymity over. When multiple fields are
-        # specified, they are considered a single composite key. Structs and
-        # repeated data types are not supported; however, nested fields are
-        # supported so long as they are not structs themselves or nested within
-        # a repeated field.
+        # Set of fields to compute k-anonymity over. When multiple fields are specified,
+        # they are considered a single composite key. Structs and repeated data types
+        # are not supported; however, nested fields are supported so long as they are
+        # not structs themselves or nested within a repeated field.
         # Corresponds to the JSON property `quasiIds`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :quasi_ids
@@ -3690,15 +3545,15 @@ module Google
       class GooglePrivacyDlpV2KAnonymityEquivalenceClass
         include Google::Apis::Core::Hashable
       
-        # Size of the equivalence class, for example number of rows with the
-        # above set of values.
+        # Size of the equivalence class, for example number of rows with the above set
+        # of values.
         # Corresponds to the JSON property `equivalenceClassSize`
         # @return [Fixnum]
         attr_accessor :equivalence_class_size
       
-        # Set of values defining the equivalence class. One value per
-        # quasi-identifier column in the original KAnonymity metric message.
-        # The order is always the same as the original request.
+        # Set of values defining the equivalence class. One value per quasi-identifier
+        # column in the original KAnonymity metric message. The order is always the same
+        # as the original request.
         # Corresponds to the JSON property `quasiIdsValues`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Value>]
         attr_accessor :quasi_ids_values
@@ -3728,8 +3583,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :bucket_value_count
       
-        # Sample of equivalence classes in this bucket. The total number of
-        # classes returned per bucket is capped at 20.
+        # Sample of equivalence classes in this bucket. The total number of classes
+        # returned per bucket is capped at 20.
         # Corresponds to the JSON property `bucketValues`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2KAnonymityEquivalenceClass>]
         attr_accessor :bucket_values
@@ -3777,32 +3632,31 @@ module Google
         end
       end
       
-      # Reidentifiability metric. This corresponds to a risk model similar to what
-      # is called "journalist risk" in the literature, except the attack dataset is
-      # statistically modeled instead of being perfectly known. This can be done
-      # using publicly available data (like the US Census), or using a custom
-      # statistical model (indicated as one or several BigQuery tables), or by
-      # extrapolating from the distribution of values in the input dataset.
+      # Reidentifiability metric. This corresponds to a risk model similar to what is
+      # called "journalist risk" in the literature, except the attack dataset is
+      # statistically modeled instead of being perfectly known. This can be done using
+      # publicly available data (like the US Census), or using a custom statistical
+      # model (indicated as one or several BigQuery tables), or by extrapolating from
+      # the distribution of values in the input dataset.
       class GooglePrivacyDlpV2KMapEstimationConfig
         include Google::Apis::Core::Hashable
       
-        # Several auxiliary tables can be used in the analysis. Each custom_tag
-        # used to tag a quasi-identifiers column must appear in exactly one column
-        # of one auxiliary table.
+        # Several auxiliary tables can be used in the analysis. Each custom_tag used to
+        # tag a quasi-identifiers column must appear in exactly one column of one
+        # auxiliary table.
         # Corresponds to the JSON property `auxiliaryTables`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2AuxiliaryTable>]
         attr_accessor :auxiliary_tables
       
         # Required. Fields considered to be quasi-identifiers. No two columns can have
-        # the
-        # same tag.
+        # the same tag.
         # Corresponds to the JSON property `quasiIds`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2TaggedField>]
         attr_accessor :quasi_ids
       
-        # ISO 3166-1 alpha-2 region code to use in the statistical modeling.
-        # Set if no column is tagged with a region-specific InfoType (like
-        # US_ZIP_5) or a region code.
+        # ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no
+        # column is tagged with a region-specific InfoType (like US_ZIP_5) or a region
+        # code.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
         attr_accessor :region_code
@@ -3820,13 +3674,11 @@ module Google
       end
       
       # A KMapEstimationHistogramBucket message with the following values:
-      # min_anonymity: 3
-      # max_anonymity: 5
-      # frequency: 42
-      # means that there are 42 records whose quasi-identifier values correspond
-      # to 3, 4 or 5 people in the overlying population. An important particular
-      # case is when min_anonymity = max_anonymity = 1: the frequency field then
-      # corresponds to the number of uniquely identifiable records.
+      # min_anonymity: 3 max_anonymity: 5 frequency: 42 means that there are 42
+      # records whose quasi-identifier values correspond to 3, 4 or 5 people in the
+      # overlying population. An important particular case is when min_anonymity =
+      # max_anonymity = 1: the frequency field then corresponds to the number of
+      # uniquely identifiable records.
       class GooglePrivacyDlpV2KMapEstimationHistogramBucket
         include Google::Apis::Core::Hashable
       
@@ -3840,8 +3692,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :bucket_value_count
       
-        # Sample of quasi-identifier tuple values in this bucket. The total
-        # number of classes returned per bucket is capped at 20.
+        # Sample of quasi-identifier tuple values in this bucket. The total number of
+        # classes returned per bucket is capped at 20.
         # Corresponds to the JSON property `bucketValues`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2KMapEstimationQuasiIdValues>]
         attr_accessor :bucket_values
@@ -3900,14 +3752,12 @@ module Google
       class GooglePrivacyDlpV2KMapEstimationResult
         include Google::Apis::Core::Hashable
       
-        # The intervals [min_anonymity, max_anonymity] do not overlap. If a value
-        # doesn't correspond to any such interval, the associated frequency is
-        # zero. For example, the following records:
-        # `min_anonymity: 1, max_anonymity: 1, frequency: 17`
-        # `min_anonymity: 2, max_anonymity: 3, frequency: 42`
-        # `min_anonymity: 5, max_anonymity: 10, frequency: 99`
-        # mean that there are no record with an estimated anonymity of 4, 5, or
-        # larger than 10.
+        # The intervals [min_anonymity, max_anonymity] do not overlap. If a value doesn'
+        # t correspond to any such interval, the associated frequency is zero. For
+        # example, the following records: `min_anonymity: 1, max_anonymity: 1, frequency:
+        # 17` `min_anonymity: 2, max_anonymity: 3, frequency: 42` `min_anonymity: 5,
+        # max_anonymity: 10, frequency: 99` mean that there are no record with an
+        # estimated anonymity of 4, 5, or larger than 10.
         # Corresponds to the JSON property `kMapEstimationHistogram`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2KMapEstimationHistogramBucket>]
         attr_accessor :k_map_estimation_histogram
@@ -3922,30 +3772,26 @@ module Google
         end
       end
       
-      # A unique identifier for a Datastore entity.
-      # If a key's partition ID or any of its path kinds or names are
-      # reserved/read-only, the key is reserved/read-only.
+      # A unique identifier for a Datastore entity. If a key's partition ID or any of
+      # its path kinds or names are reserved/read-only, the key is reserved/read-only.
       # A reserved/read-only key is forbidden in certain documented contexts.
       class GooglePrivacyDlpV2Key
         include Google::Apis::Core::Hashable
       
-        # Datastore partition ID.
-        # A partition ID identifies a grouping of entities. The grouping is always
-        # by project and namespace, however the namespace ID may be empty.
-        # A partition ID contains several dimensions:
-        # project ID and namespace ID.
+        # Datastore partition ID. A partition ID identifies a grouping of entities. The
+        # grouping is always by project and namespace, however the namespace ID may be
+        # empty. A partition ID contains several dimensions: project ID and namespace ID.
         # Corresponds to the JSON property `partitionId`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PartitionId]
         attr_accessor :partition_id
       
-        # The entity path.
-        # An entity path consists of one or more elements composed of a kind and a
-        # string or numerical identifier, which identify entities. The first
-        # element identifies a _root entity_, the second element identifies
-        # a _child_ of the root entity, the third element identifies a child of the
-        # second entity, and so forth. The entities identified by all prefixes of
-        # the path are called the element's _ancestors_.
-        # A path can never be empty, and a path can have at most 100 elements.
+        # The entity path. An entity path consists of one or more elements composed of a
+        # kind and a string or numerical identifier, which identify entities. The first
+        # element identifies a _root entity_, the second element identifies a _child_ of
+        # the root entity, the third element identifies a child of the second entity,
+        # and so forth. The entities identified by all prefixes of the path are called
+        # the element's _ancestors_. A path can never be empty, and a path can have at
+        # most 100 elements.
         # Corresponds to the JSON property `path`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2PathElement>]
         attr_accessor :path
@@ -3980,11 +3826,10 @@ module Google
         end
       end
       
-      # Include to use an existing data crypto key wrapped by KMS.
-      # The wrapped key must be a 128/192/256 bit key.
-      # Authorization requires the following IAM permissions when sending a request
-      # to perform a crypto transformation using a kms-wrapped crypto key:
-      # dlp.kms.encrypt
+      # Include to use an existing data crypto key wrapped by KMS. The wrapped key
+      # must be a 128/192/256 bit key. Authorization requires the following IAM
+      # permissions when sending a request to perform a crypto transformation using a
+      # kms-wrapped crypto key: dlp.kms.encrypt
       class GooglePrivacyDlpV2KmsWrappedCryptoKey
         include Google::Apis::Core::Hashable
       
@@ -4014,9 +3859,9 @@ module Google
       class GooglePrivacyDlpV2LDiversityConfig
         include Google::Apis::Core::Hashable
       
-        # Set of quasi-identifiers indicating how equivalence classes are
-        # defined for the l-diversity computation. When multiple fields are
-        # specified, they are considered a single composite key.
+        # Set of quasi-identifiers indicating how equivalence classes are defined for
+        # the l-diversity computation. When multiple fields are specified, they are
+        # considered a single composite key.
         # Corresponds to the JSON property `quasiIds`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :quasi_ids
@@ -4051,8 +3896,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_distinct_sensitive_values
       
-        # Quasi-identifier values defining the k-anonymity equivalence
-        # class. The order is always the same as the original request.
+        # Quasi-identifier values defining the k-anonymity equivalence class. The order
+        # is always the same as the original request.
         # Corresponds to the JSON property `quasiIdsValues`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Value>]
         attr_accessor :quasi_ids_values
@@ -4089,20 +3934,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :bucket_value_count
       
-        # Sample of equivalence classes in this bucket. The total number of
-        # classes returned per bucket is capped at 20.
+        # Sample of equivalence classes in this bucket. The total number of classes
+        # returned per bucket is capped at 20.
         # Corresponds to the JSON property `bucketValues`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2LDiversityEquivalenceClass>]
         attr_accessor :bucket_values
       
-        # Lower bound on the sensitive value frequencies of the equivalence
-        # classes in this bucket.
+        # Lower bound on the sensitive value frequencies of the equivalence classes in
+        # this bucket.
         # Corresponds to the JSON property `sensitiveValueFrequencyLowerBound`
         # @return [Fixnum]
         attr_accessor :sensitive_value_frequency_lower_bound
       
-        # Upper bound on the sensitive value frequencies of the equivalence
-        # classes in this bucket.
+        # Upper bound on the sensitive value frequencies of the equivalence classes in
+        # this bucket.
         # Corresponds to the JSON property `sensitiveValueFrequencyUpperBound`
         # @return [Fixnum]
         attr_accessor :sensitive_value_frequency_upper_bound
@@ -4141,11 +3986,10 @@ module Google
       end
       
       # Configuration for a custom dictionary created from a data source of any size
-      # up to the maximum size defined in the
-      # [limits](https://cloud.google.com/dlp/limits) page. The artifacts of
-      # dictionary creation are stored in the specified Google Cloud Storage
-      # location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries
-      # that satisfy the size requirements.
+      # up to the maximum size defined in the [limits](https://cloud.google.com/dlp/
+      # limits) page. The artifacts of dictionary creation are stored in the specified
+      # Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for
+      # smaller dictionaries that satisfy the size requirements.
       class GooglePrivacyDlpV2LargeCustomDictionaryConfig
         include Google::Apis::Core::Hashable
       
@@ -4196,9 +4040,8 @@ module Google
       end
       
       # Skips the data without modifying it if the requested transformation would
-      # cause an error. For example, if a `DateShift` transformation were applied
-      # an an IP address, this mode would leave the IP address unchanged in the
-      # response.
+      # cause an error. For example, if a `DateShift` transformation were applied an
+      # an IP address, this mode would leave the IP address unchanged in the response.
       class GooglePrivacyDlpV2LeaveUntransformed
         include Google::Apis::Core::Hashable
       
@@ -4211,8 +4054,8 @@ module Google
         end
       end
       
-      # Message for specifying an adjustment to the likelihood of a finding as
-      # part of a detection rule.
+      # Message for specifying an adjustment to the likelihood of a finding as part of
+      # a detection rule.
       class GooglePrivacyDlpV2LikelihoodAdjustment
         include Google::Apis::Core::Hashable
       
@@ -4221,14 +4064,13 @@ module Google
         # @return [String]
         attr_accessor :fixed_likelihood
       
-        # Increase or decrease the likelihood by the specified number of
-        # levels. For example, if a finding would be `POSSIBLE` without the
-        # detection rule and `relative_likelihood` is 1, then it is upgraded to
-        # `LIKELY`, while a value of -1 would downgrade it to `UNLIKELY`.
-        # Likelihood may never drop below `VERY_UNLIKELY` or exceed
-        # `VERY_LIKELY`, so applying an adjustment of 1 followed by an
-        # adjustment of -1 when base likelihood is `VERY_LIKELY` will result in
-        # a final likelihood of `LIKELY`.
+        # Increase or decrease the likelihood by the specified number of levels. For
+        # example, if a finding would be `POSSIBLE` without the detection rule and `
+        # relative_likelihood` is 1, then it is upgraded to `LIKELY`, while a value of -
+        # 1 would downgrade it to `UNLIKELY`. Likelihood may never drop below `
+        # VERY_UNLIKELY` or exceed `VERY_LIKELY`, so applying an adjustment of 1
+        # followed by an adjustment of -1 when base likelihood is `VERY_LIKELY` will
+        # result in a final likelihood of `LIKELY`.
         # Corresponds to the JSON property `relativeLikelihood`
         # @return [Fixnum]
         attr_accessor :relative_likelihood
@@ -4254,8 +4096,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate>]
         attr_accessor :deidentify_templates
       
-        # If the next page is available then the next page token to be used
-        # in following ListDeidentifyTemplates request.
+        # If the next page is available then the next page token to be used in following
+        # ListDeidentifyTemplates request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -4324,8 +4166,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate>]
         attr_accessor :inspect_templates
       
-        # If the next page is available then the next page token to be used
-        # in following ListInspectTemplates request.
+        # If the next page is available then the next page token to be used in following
+        # ListInspectTemplates request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -4350,8 +4192,8 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger>]
         attr_accessor :job_triggers
       
-        # If the next page is available then the next page token to be used
-        # in following ListJobTriggers request.
+        # If the next page is available then the next page token to be used in following
+        # ListJobTriggers request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -4371,8 +4213,8 @@ module Google
       class GooglePrivacyDlpV2ListStoredInfoTypesResponse
         include Google::Apis::Core::Hashable
       
-        # If the next page is available then the next page token to be used
-        # in following ListStoredInfoTypes request.
+        # If the next page is available then the next page token to be used in following
+        # ListStoredInfoTypes request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -4407,14 +4249,14 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Range]
         attr_accessor :codepoint_range
       
-        # Represents a container that may contain DLP findings.
-        # Examples of a container include a file, table, or database record.
+        # Represents a container that may contain DLP findings. Examples of a container
+        # include a file, table, or database record.
         # Corresponds to the JSON property `container`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Container]
         attr_accessor :container
       
-        # List of nested objects pointing to the precise location of the finding
-        # within the file or record.
+        # List of nested objects pointing to the precise location of the finding within
+        # the file or record.
         # Corresponds to the JSON property `contentLocations`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2ContentLocation>]
         attr_accessor :content_locations
@@ -4432,8 +4274,7 @@ module Google
         end
       end
       
-      # Job trigger option for hybrid jobs. Jobs must be manually created
-      # and finished.
+      # Job trigger option for hybrid jobs. Jobs must be manually created and finished.
       class GooglePrivacyDlpV2Manual
         include Google::Apis::Core::Hashable
       
@@ -4471,8 +4312,8 @@ module Google
         end
       end
       
-      # Compute numerical stats over an individual column, including
-      # min, max, and quantiles.
+      # Compute numerical stats over an individual column, including min, max, and
+      # quantiles.
       class GooglePrivacyDlpV2NumericalStatsConfig
         include Google::Apis::Core::Hashable
       
@@ -4495,28 +4336,26 @@ module Google
       class GooglePrivacyDlpV2NumericalStatsResult
         include Google::Apis::Core::Hashable
       
-        # Set of primitive values supported by the system.
-        # Note that for the purposes of inspection or transformation, the number
-        # of bytes considered to comprise a 'Value' is based on its representation
-        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
-        # 123456789, the number of bytes would be counted as 9, even though an
-        # int64 only holds up to 8 bytes of data.
+        # Set of primitive values supported by the system. Note that for the purposes of
+        # inspection or transformation, the number of bytes considered to comprise a '
+        # Value' is based on its representation as a UTF-8 encoded string. For example,
+        # if 'integer_value' is set to 123456789, the number of bytes would be counted
+        # as 9, even though an int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `maxValue`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Value]
         attr_accessor :max_value
       
-        # Set of primitive values supported by the system.
-        # Note that for the purposes of inspection or transformation, the number
-        # of bytes considered to comprise a 'Value' is based on its representation
-        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
-        # 123456789, the number of bytes would be counted as 9, even though an
-        # int64 only holds up to 8 bytes of data.
+        # Set of primitive values supported by the system. Note that for the purposes of
+        # inspection or transformation, the number of bytes considered to comprise a '
+        # Value' is based on its representation as a UTF-8 encoded string. For example,
+        # if 'integer_value' is set to 123456789, the number of bytes would be counted
+        # as 9, even though an int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `minValue`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Value]
         attr_accessor :min_value
       
-        # List of 99 values that partition the set of field values into 100 equal
-        # sized buckets.
+        # List of 99 values that partition the set of field values into 100 equal sized
+        # buckets.
         # Corresponds to the JSON property `quantileValues`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Value>]
         attr_accessor :quantile_values
@@ -4537,24 +4376,21 @@ module Google
       class GooglePrivacyDlpV2OutputStorageConfig
         include Google::Apis::Core::Hashable
       
-        # Schema used for writing the findings for Inspect jobs. This field is only
-        # used for Inspect and must be unspecified for Risk jobs. Columns are derived
-        # from the `Finding` object. If appending to an existing table, any columns
-        # from the predefined schema that are missing will be added. No columns in
-        # the existing table will be deleted.
-        # If unspecified, then all available columns will be used for a new table or
-        # an (existing) table with no schema, and no changes will be made to an
-        # existing table that has a schema.
-        # Only for use with external storage.
+        # Schema used for writing the findings for Inspect jobs. This field is only used
+        # for Inspect and must be unspecified for Risk jobs. Columns are derived from
+        # the `Finding` object. If appending to an existing table, any columns from the
+        # predefined schema that are missing will be added. No columns in the existing
+        # table will be deleted. If unspecified, then all available columns will be used
+        # for a new table or an (existing) table with no schema, and no changes will be
+        # made to an existing table that has a schema. Only for use with external
+        # storage.
         # Corresponds to the JSON property `outputSchema`
         # @return [String]
         attr_accessor :output_schema
       
         # Message defining the location of a BigQuery table. A table is uniquely
-        # identified  by its project_id, dataset_id, and table_name. Within a query
-        # a table is often referenced with a string in the format of:
-        # `<project_id>:<dataset_id>.<table_id>` or
-        # `<project_id>.<dataset_id>.<table_id>`.
+        # identified by its project_id, dataset_id, and table_name. Within a query a
+        # table is often referenced with a string in the format of: `:.` or `..`.
         # Corresponds to the JSON property `table`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
         attr_accessor :table
@@ -4570,11 +4406,9 @@ module Google
         end
       end
       
-      # Datastore partition ID.
-      # A partition ID identifies a grouping of entities. The grouping is always
-      # by project and namespace, however the namespace ID may be empty.
-      # A partition ID contains several dimensions:
-      # project ID and namespace ID.
+      # Datastore partition ID. A partition ID identifies a grouping of entities. The
+      # grouping is always by project and namespace, however the namespace ID may be
+      # empty. A partition ID contains several dimensions: project ID and namespace ID.
       class GooglePrivacyDlpV2PartitionId
         include Google::Apis::Core::Hashable
       
@@ -4599,31 +4433,26 @@ module Google
         end
       end
       
-      # A (kind, ID/name) pair used to construct a key path.
-      # If either name or ID is set, the element is complete.
-      # If neither is set, the element is incomplete.
+      # A (kind, ID/name) pair used to construct a key path. If either name or ID is
+      # set, the element is complete. If neither is set, the element is incomplete.
       class GooglePrivacyDlpV2PathElement
         include Google::Apis::Core::Hashable
       
-        # The auto-allocated ID of the entity.
-        # Never equal to zero. Values less than zero are discouraged and may not
-        # be supported in the future.
+        # The auto-allocated ID of the entity. Never equal to zero. Values less than
+        # zero are discouraged and may not be supported in the future.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # The kind of the entity.
-        # A kind matching regex `__.*__` is reserved/read-only.
-        # A kind must not contain more than 1500 bytes when UTF-8 encoded.
-        # Cannot be `""`.
+        # The kind of the entity. A kind matching regex `__.*__` is reserved/read-only.
+        # A kind must not contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`
+        # .
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The name of the entity.
-        # A name matching regex `__.*__` is reserved/read-only.
-        # A name must not be more than 1500 bytes when UTF-8 encoded.
-        # Cannot be `""`.
+        # The name of the entity. A name matching regex `__.*__` is reserved/read-only.
+        # A name must not be more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4646,80 +4475,73 @@ module Google
       
         # Generalization function that buckets values based on ranges. The ranges and
         # replacement values are dynamically provided by the user for custom behavior,
-        # such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH
-        # This can be used on
-        # data of type: number, long, string, timestamp.
-        # If the bound `Value` type differs from the type of data being transformed, we
-        # will first attempt converting the type of the data to be transformed to match
-        # the type of the bound before comparing.
+        # such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of
+        # type: number, long, string, timestamp. If the bound `Value` type differs from
+        # the type of data being transformed, we will first attempt converting the type
+        # of the data to be transformed to match the type of the bound before comparing.
         # See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
         # Corresponds to the JSON property `bucketingConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BucketingConfig]
         attr_accessor :bucketing_config
       
-        # Partially mask a string by replacing a given number of characters with a
-        # fixed character. Masking can start from the beginning or end of the string.
-        # This can be used on data of any type (numbers, longs, and so on) and when
-        # de-identifying structured data we'll attempt to preserve the original data's
-        # type. (This allows you to take a long like 123 and modify it to a string like
-        # **3.
+        # Partially mask a string by replacing a given number of characters with a fixed
+        # character. Masking can start from the beginning or end of the string. This can
+        # be used on data of any type (numbers, longs, and so on) and when de-
+        # identifying structured data we'll attempt to preserve the original data's type.
+        # (This allows you to take a long like 123 and modify it to a string like **3.
         # Corresponds to the JSON property `characterMaskConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CharacterMaskConfig]
         attr_accessor :character_mask_config
       
         # Pseudonymization method that generates deterministic encryption for the given
-        # input. Outputs a base64 encoded representation of the encrypted output.
-        # Uses AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
+        # input. Outputs a base64 encoded representation of the encrypted output. Uses
+        # AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
         # Corresponds to the JSON property `cryptoDeterministicConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoDeterministicConfig]
         attr_accessor :crypto_deterministic_config
       
         # Pseudonymization method that generates surrogates via cryptographic hashing.
-        # Uses SHA-256.
-        # The key size must be either 32 or 64 bytes.
-        # Outputs a base64 encoded representation of the hashed output
-        # (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
-        # Currently, only string and integer values can be hashed.
-        # See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+        # Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64
+        # encoded representation of the hashed output (for example,
+        # L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and
+        # integer values can be hashed. See https://cloud.google.com/dlp/docs/
+        # pseudonymization to learn more.
         # Corresponds to the JSON property `cryptoHashConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoHashConfig]
         attr_accessor :crypto_hash_config
       
-        # Replaces an identifier with a surrogate using Format Preserving Encryption
-        # (FPE) with the FFX mode of operation; however when used in the
-        # `ReidentifyContent` API method, it serves the opposite function by reversing
+        # Replaces an identifier with a surrogate using Format Preserving Encryption (
+        # FPE) with the FFX mode of operation; however when used in the `
+        # ReidentifyContent` API method, it serves the opposite function by reversing
         # the surrogate back into the original identifier. The identifier must be
-        # encoded as ASCII. For a given crypto key and context, the same identifier
-        # will be replaced with the same surrogate. Identifiers must be at least two
+        # encoded as ASCII. For a given crypto key and context, the same identifier will
+        # be replaced with the same surrogate. Identifiers must be at least two
         # characters long. In the case that the identifier is the empty string, it will
         # be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn
-        # more.
-        # Note: We recommend using  CryptoDeterministicConfig for all use cases which
-        # do not require preserving the input alphabet space and size, plus warrant
-        # referential integrity.
+        # more. Note: We recommend using CryptoDeterministicConfig for all use cases
+        # which do not require preserving the input alphabet space and size, plus
+        # warrant referential integrity.
         # Corresponds to the JSON property `cryptoReplaceFfxFpeConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig]
         attr_accessor :crypto_replace_ffx_fpe_config
       
         # Shifts dates by random number of days, with option to be consistent for the
-        # same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting
-        # to learn more.
+        # same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to
+        # learn more.
         # Corresponds to the JSON property `dateShiftConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DateShiftConfig]
         attr_accessor :date_shift_config
       
-        # Buckets values based on fixed size ranges. The
-        # Bucketing transformation can provide all of this functionality,
-        # but requires more configuration. This message is provided as a convenience to
-        # the user for simple bucketing strategies.
-        # The transformed value will be a hyphenated string of
-        # `lower_bound`-`upper_bound`, i.e if lower_bound = 10 and upper_bound = 20
-        # all values that are within this bucket will be replaced with "10-20".
-        # This can be used on data of type: double, long.
-        # If the bound Value type differs from the type of data
-        # being transformed, we will first attempt converting the type of the data to
-        # be transformed to match the type of the bound before comparing.
-        # See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        # Buckets values based on fixed size ranges. The Bucketing transformation can
+        # provide all of this functionality, but requires more configuration. This
+        # message is provided as a convenience to the user for simple bucketing
+        # strategies. The transformed value will be a hyphenated string of `lower_bound`-
+        # `upper_bound`, i.e if lower_bound = 10 and upper_bound = 20 all values that
+        # are within this bucket will be replaced with "10-20". This can be used on data
+        # of type: double, long. If the bound Value type differs from the type of data
+        # being transformed, we will first attempt converting the type of the data to be
+        # transformed to match the type of the bound before comparing. See https://cloud.
+        # google.com/dlp/docs/concepts-bucketing to learn more.
         # Corresponds to the JSON property `fixedSizeBucketingConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FixedSizeBucketingConfig]
         attr_accessor :fixed_size_bucketing_config
@@ -4771,16 +4593,16 @@ module Google
       class GooglePrivacyDlpV2PrivacyMetric
         include Google::Apis::Core::Hashable
       
-        # Compute numerical stats over an individual column, including
-        # number of distinct values and value count distribution.
+        # Compute numerical stats over an individual column, including number of
+        # distinct values and value count distribution.
         # Corresponds to the JSON property `categoricalStatsConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CategoricalStatsConfig]
         attr_accessor :categorical_stats_config
       
-        # δ-presence metric, used to estimate how likely it is for an attacker to
-        # figure out that one given individual appears in a de-identified dataset.
-        # Similarly to the k-map metric, we cannot compute δ-presence exactly without
-        # knowing the attack dataset, so we use a statistical model instead.
+        # δ-presence metric, used to estimate how likely it is for an attacker to figure
+        # out that one given individual appears in a de-identified dataset. Similarly to
+        # the k-map metric, we cannot compute δ-presence exactly without knowing the
+        # attack dataset, so we use a statistical model instead.
         # Corresponds to the JSON property `deltaPresenceEstimationConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeltaPresenceEstimationConfig]
         attr_accessor :delta_presence_estimation_config
@@ -4790,12 +4612,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2KAnonymityConfig]
         attr_accessor :k_anonymity_config
       
-        # Reidentifiability metric. This corresponds to a risk model similar to what
-        # is called "journalist risk" in the literature, except the attack dataset is
-        # statistically modeled instead of being perfectly known. This can be done
-        # using publicly available data (like the US Census), or using a custom
-        # statistical model (indicated as one or several BigQuery tables), or by
-        # extrapolating from the distribution of values in the input dataset.
+        # Reidentifiability metric. This corresponds to a risk model similar to what is
+        # called "journalist risk" in the literature, except the attack dataset is
+        # statistically modeled instead of being perfectly known. This can be done using
+        # publicly available data (like the US Census), or using a custom statistical
+        # model (indicated as one or several BigQuery tables), or by extrapolating from
+        # the distribution of values in the input dataset.
         # Corresponds to the JSON property `kMapEstimationConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2KMapEstimationConfig]
         attr_accessor :k_map_estimation_config
@@ -4805,8 +4627,8 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2LDiversityConfig]
         attr_accessor :l_diversity_config
       
-        # Compute numerical stats over an individual column, including
-        # min, max, and quantiles.
+        # Compute numerical stats over an individual column, including min, max, and
+        # quantiles.
         # Corresponds to the JSON property `numericalStatsConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2NumericalStatsConfig]
         attr_accessor :numerical_stats_config
@@ -4826,8 +4648,7 @@ module Google
         end
       end
       
-      # Message for specifying a window around a finding to apply a detection
-      # rule.
+      # Message for specifying a window around a finding to apply a detection rule.
       class GooglePrivacyDlpV2Proximity
         include Google::Apis::Core::Hashable
       
@@ -4853,15 +4674,14 @@ module Google
       end
       
       # Publish findings of a DlpJob to Cloud Data Catalog. Labels summarizing the
-      # results of the DlpJob will be applied to the entry for the resource scanned
-      # in Cloud Data Catalog. Any labels previously written by another DlpJob will
-      # be deleted. InfoType naming patterns are strictly enforced when using this
+      # results of the DlpJob will be applied to the entry for the resource scanned in
+      # Cloud Data Catalog. Any labels previously written by another DlpJob will be
+      # deleted. InfoType naming patterns are strictly enforced when using this
       # feature. Note that the findings will be persisted in Cloud Data Catalog
-      # storage and are governed by Data Catalog service-specific policy, see
-      # https://cloud.google.com/terms/service-terms
-      # Only a single instance of this action can be specified and only allowed if
-      # all resources being scanned are BigQuery tables.
-      # Compatible with: Inspect
+      # storage and are governed by Data Catalog service-specific policy, see https://
+      # cloud.google.com/terms/service-terms Only a single instance of this action can
+      # be specified and only allowed if all resources being scanned are BigQuery
+      # tables. Compatible with: Inspect
       class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
         include Google::Apis::Core::Hashable
       
@@ -4874,16 +4694,13 @@ module Google
         end
       end
       
-      # Publish the result summary of a DlpJob to the Cloud Security
-      # Command Center (CSCC Alpha).
-      # This action is only available for projects which are parts of
-      # an organization and whitelisted for the alpha Cloud Security Command
-      # Center.
-      # The action will publish count of finding instances and their info types.
-      # The summary of findings will be persisted in CSCC and are governed by CSCC
-      # service-specific policy, see https://cloud.google.com/terms/service-terms
-      # Only a single instance of this action can be specified.
-      # Compatible with: Inspect
+      # Publish the result summary of a DlpJob to the Cloud Security Command Center (
+      # CSCC Alpha). This action is only available for projects which are parts of an
+      # organization and whitelisted for the alpha Cloud Security Command Center. The
+      # action will publish count of finding instances and their info types. The
+      # summary of findings will be persisted in CSCC and are governed by CSCC service-
+      # specific policy, see https://cloud.google.com/terms/service-terms Only a
+      # single instance of this action can be specified. Compatible with: Inspect
       class GooglePrivacyDlpV2PublishSummaryToCscc
         include Google::Apis::Core::Hashable
       
@@ -4897,18 +4714,16 @@ module Google
       end
       
       # Publish a message into given Pub/Sub topic when DlpJob has completed. The
-      # message contains a single field, `DlpJobName`, which is equal to the
-      # finished job's
-      # [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.
-      # dlpJobs#DlpJob).
-      # Compatible with: Inspect, Risk
+      # message contains a single field, `DlpJobName`, which is equal to the finished
+      # job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/
+      # projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
       class GooglePrivacyDlpV2PublishToPubSub
         include Google::Apis::Core::Hashable
       
         # Cloud Pub/Sub topic to send notifications to. The topic must have given
-        # publishing access rights to the DLP API service account executing
-        # the long running DlpJob sending the notifications.
-        # Format is projects/`project`/topics/`topic`.
+        # publishing access rights to the DLP API service account executing the long
+        # running DlpJob sending the notifications. Format is projects/`project`/topics/`
+        # topic`.
         # Corresponds to the JSON property `topic`
         # @return [String]
         attr_accessor :topic
@@ -4923,10 +4738,10 @@ module Google
         end
       end
       
-      # Enable Stackdriver metric dlp.googleapis.com/finding_count. This
-      # will publish a metric to stack driver on each infotype requested and
-      # how many findings were found for it. CustomDetectors will be bucketed
-      # as 'Custom' under the Stackdriver label 'info_type'.
+      # Enable Stackdriver metric dlp.googleapis.com/finding_count. This will publish
+      # a metric to stack driver on each infotype requested and how many findings were
+      # found for it. CustomDetectors will be bucketed as 'Custom' under the
+      # Stackdriver label 'info_type'.
       class GooglePrivacyDlpV2PublishToStackdriver
         include Google::Apis::Core::Hashable
       
@@ -4943,9 +4758,9 @@ module Google
       class GooglePrivacyDlpV2QuasiId
         include Google::Apis::Core::Hashable
       
-        # A column can be tagged with a custom tag. In this case, the user must
-        # indicate an auxiliary table that contains statistical information on
-        # the possible values of this column (below).
+        # A column can be tagged with a custom tag. In this case, the user must indicate
+        # an auxiliary table that contains statistical information on the possible
+        # values of this column (below).
         # Corresponds to the JSON property `customTag`
         # @return [String]
         attr_accessor :custom_tag
@@ -4955,13 +4770,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
         attr_accessor :field
       
-        # A generic empty message that you can re-use to avoid defining duplicated
-        # empty messages in your APIs. A typical example is to use it as the request
-        # or the response type of an API method. For instance:
-        # service Foo `
-        # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-        # `
-        # The JSON representation for `Empty` is empty JSON object ````.
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+        # `Empty` is empty JSON object ````.
         # Corresponds to the JSON property `inferred`
         # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
         attr_accessor :inferred
@@ -4984,8 +4797,8 @@ module Google
         end
       end
       
-      # A quasi-identifier column has a custom_tag, used to know which column
-      # in the data corresponds to which column in the statistical model.
+      # A quasi-identifier column has a custom_tag, used to know which column in the
+      # data corresponds to which column in the statistical model.
       class GooglePrivacyDlpV2QuasiIdField
         include Google::Apis::Core::Hashable
       
@@ -5010,14 +4823,14 @@ module Google
         end
       end
       
-      # A quasi-identifier column has a custom_tag, used to know which column
-      # in the data corresponds to which column in the statistical model.
+      # A quasi-identifier column has a custom_tag, used to know which column in the
+      # data corresponds to which column in the statistical model.
       class GooglePrivacyDlpV2QuasiIdentifierField
         include Google::Apis::Core::Hashable
       
-        # A column can be tagged with a custom tag. In this case, the user must
-        # indicate an auxiliary table that contains statistical information on
-        # the possible values of this column (below).
+        # A column can be tagged with a custom tag. In this case, the user must indicate
+        # an auxiliary table that contains statistical information on the possible
+        # values of this column (below).
         # Corresponds to the JSON property `customTag`
         # @return [String]
         attr_accessor :custom_tag
@@ -5042,8 +4855,7 @@ module Google
       class GooglePrivacyDlpV2QuoteInfo
         include Google::Apis::Core::Hashable
       
-        # Message for a date time object.
-        # e.g. 2018-01-01, 5th August.
+        # Message for a date time object. e.g. 2018-01-01, 5th August.
         # Corresponds to the JSON property `dateTime`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DateTime]
         attr_accessor :date_time
@@ -5083,8 +4895,8 @@ module Google
         end
       end
       
-      # A condition for determining whether a transformation should be applied to
-      # a field.
+      # A condition for determining whether a transformation should be applied to a
+      # field.
       class GooglePrivacyDlpV2RecordCondition
         include Google::Apis::Core::Hashable
       
@@ -5117,8 +4929,8 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DatastoreKey]
         attr_accessor :datastore_key
       
-        # Values of identifying columns in the given row. Order of values matches
-        # the order of `identifying_fields` specified in the scanning request.
+        # Values of identifying columns in the given row. Order of values matches the
+        # order of `identifying_fields` specified in the scanning request.
         # Corresponds to the JSON property `idValues`
         # @return [Array<String>]
         attr_accessor :id_values
@@ -5171,8 +4983,8 @@ module Google
       class GooglePrivacyDlpV2RecordSuppression
         include Google::Apis::Core::Hashable
       
-        # A condition for determining whether a transformation should be applied to
-        # a field.
+        # A condition for determining whether a transformation should be applied to a
+        # field.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RecordCondition]
         attr_accessor :condition
@@ -5187,8 +4999,7 @@ module Google
         end
       end
       
-      # A type of transformation that is applied over structured data such as a
-      # table.
+      # A type of transformation that is applied over structured data such as a table.
       class GooglePrivacyDlpV2RecordTransformations
         include Google::Apis::Core::Hashable
       
@@ -5229,8 +5040,8 @@ module Google
         end
       end
       
-      # Request to search for potentially sensitive info in an image and redact it
-      # by covering it with a colored rectangle.
+      # Request to search for potentially sensitive info in an image and redact it by
+      # covering it with a colored rectangle.
       class GooglePrivacyDlpV2RedactImageRequest
         include Google::Apis::Core::Hashable
       
@@ -5244,16 +5055,14 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2ImageRedactionConfig>]
         attr_accessor :image_redaction_configs
       
-        # Whether the response should include findings along with the redacted
-        # image.
+        # Whether the response should include findings along with the redacted image.
         # Corresponds to the JSON property `includeFindings`
         # @return [Boolean]
         attr_accessor :include_findings
         alias_method :include_findings?, :include_findings
       
-        # Configuration description of the scanning process.
-        # When used with redactContent only info_types and min_likelihood are currently
-        # used.
+        # Configuration description of the scanning process. When used with
+        # redactContent only info_types and min_likelihood are currently used.
         # Corresponds to the JSON property `inspectConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
         attr_accessor :inspect_config
@@ -5281,9 +5090,9 @@ module Google
       class GooglePrivacyDlpV2RedactImageResponse
         include Google::Apis::Core::Hashable
       
-        # If an image was being inspected and the InspectConfig's include_quote was
-        # set to true, then this field will include all text, if any, that was found
-        # in the image.
+        # If an image was being inspected and the InspectConfig's include_quote was set
+        # to true, then this field will include all text, if any, that was found in the
+        # image.
         # Corresponds to the JSON property `extractedText`
         # @return [String]
         attr_accessor :extracted_text
@@ -5315,15 +5124,14 @@ module Google
       class GooglePrivacyDlpV2Regex
         include Google::Apis::Core::Hashable
       
-        # The index of the submatch to extract as findings. When not
-        # specified, the entire match is returned. No more than 3 may be included.
+        # The index of the submatch to extract as findings. When not specified, the
+        # entire match is returned. No more than 3 may be included.
         # Corresponds to the JSON property `groupIndexes`
         # @return [Array<Fixnum>]
         attr_accessor :group_indexes
       
-        # Pattern defining the regular expression. Its syntax
-        # (https://github.com/google/re2/wiki/Syntax) can be found under the
-        # google/re2 repository on GitHub.
+        # Pattern defining the regular expression. Its syntax (https://github.com/google/
+        # re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern
@@ -5343,18 +5151,16 @@ module Google
       class GooglePrivacyDlpV2ReidentifyContentRequest
         include Google::Apis::Core::Hashable
       
-        # Configuration description of the scanning process.
-        # When used with redactContent only info_types and min_likelihood are currently
-        # used.
+        # Configuration description of the scanning process. When used with
+        # redactContent only info_types and min_likelihood are currently used.
         # Corresponds to the JSON property `inspectConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
         attr_accessor :inspect_config
       
-        # Template to use. Any configuration directly specified in
-        # `inspect_config` will override those set in the template. Singular fields
-        # that are set in this request will replace their corresponding fields in the
-        # template. Repeated fields are appended. Singular sub-messages and groups
-        # are recursively merged.
+        # Template to use. Any configuration directly specified in `inspect_config` will
+        # override those set in the template. Singular fields that are set in this
+        # request will replace their corresponding fields in the template. Repeated
+        # fields are appended. Singular sub-messages and groups are recursively merged.
         # Corresponds to the JSON property `inspectTemplateName`
         # @return [String]
         attr_accessor :inspect_template_name
@@ -5374,13 +5180,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyConfig]
         attr_accessor :reidentify_config
       
-        # Template to use. References an instance of `DeidentifyTemplate`.
-        # Any configuration directly specified in `reidentify_config` or
-        # `inspect_config` will override those set in the template. The
-        # `DeidentifyTemplate` used must include only reversible transformations.
-        # Singular fields that are set in this request will replace their
-        # corresponding fields in the template. Repeated fields are appended.
-        # Singular sub-messages and groups are recursively merged.
+        # Template to use. References an instance of `DeidentifyTemplate`. Any
+        # configuration directly specified in `reidentify_config` or `inspect_config`
+        # will override those set in the template. The `DeidentifyTemplate` used must
+        # include only reversible transformations. Singular fields that are set in this
+        # request will replace their corresponding fields in the template. Repeated
+        # fields are appended. Singular sub-messages and groups are recursively merged.
         # Corresponds to the JSON property `reidentifyTemplateName`
         # @return [String]
         attr_accessor :reidentify_template_name
@@ -5429,12 +5234,11 @@ module Google
       class GooglePrivacyDlpV2ReplaceValueConfig
         include Google::Apis::Core::Hashable
       
-        # Set of primitive values supported by the system.
-        # Note that for the purposes of inspection or transformation, the number
-        # of bytes considered to comprise a 'Value' is based on its representation
-        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
-        # 123456789, the number of bytes would be counted as 9, even though an
-        # int64 only holds up to 8 bytes of data.
+        # Set of primitive values supported by the system. Note that for the purposes of
+        # inspection or transformation, the number of bytes considered to comprise a '
+        # Value' is based on its representation as a UTF-8 encoded string. For example,
+        # if 'integer_value' is set to 123456789, the number of bytes would be counted
+        # as 9, even though an int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `newValue`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Value]
         attr_accessor :new_value
@@ -5473,8 +5277,8 @@ module Google
       
         # The inspectTemplate contains a configuration (set of types of sensitive data
         # to be detected) to be used anywhere you otherwise would normally specify
-        # InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates
-        # to learn more.
+        # InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to
+        # learn more.
         # Corresponds to the JSON property `snapshotInspectTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
         attr_accessor :snapshot_inspect_template
@@ -5499,8 +5303,8 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridInspectStatistics]
         attr_accessor :hybrid_stats
       
-        # Statistics of how many instances of each info type were found during
-        # inspect job.
+        # Statistics of how many instances of each info type were found during inspect
+        # job.
         # Corresponds to the JSON property `infoTypeStats`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeStats>]
         attr_accessor :info_type_stats
@@ -5528,8 +5332,8 @@ module Google
         end
       end
       
-      # Configuration for a risk analysis job. See
-      # https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
+      # Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/
+      # concepts-risk-analysis to learn more.
       class GooglePrivacyDlpV2RiskAnalysisJobConfig
         include Google::Apis::Core::Hashable
       
@@ -5545,10 +5349,8 @@ module Google
         attr_accessor :privacy_metric
       
         # Message defining the location of a BigQuery table. A table is uniquely
-        # identified  by its project_id, dataset_id, and table_name. Within a query
-        # a table is often referenced with a string in the format of:
-        # `<project_id>:<dataset_id>.<table_id>` or
-        # `<project_id>.<dataset_id>.<table_id>`.
+        # identified by its project_id, dataset_id, and table_name. Within a query a
+        # table is often referenced with a string in the format of: `:.` or `..`.
         # Corresponds to the JSON property `sourceTable`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
         attr_accessor :source_table
@@ -5585,8 +5387,7 @@ module Google
       end
       
       # If set, the detailed findings will be persisted to the specified
-      # OutputStorageConfig. Only a single instance of this action can be
-      # specified.
+      # OutputStorageConfig. Only a single instance of this action can be specified.
       # Compatible with: Inspect, Risk
       class GooglePrivacyDlpV2SaveFindings
         include Google::Apis::Core::Hashable
@@ -5610,12 +5411,11 @@ module Google
       class GooglePrivacyDlpV2Schedule
         include Google::Apis::Core::Hashable
       
-        # With this option a job is started a regular periodic basis. For
-        # example: every day (86400 seconds).
-        # A scheduled start time will be skipped if the previous
-        # execution has not ended when its scheduled time occurs.
-        # This value must be set to a time duration greater than or equal
-        # to 1 day and can be no longer than 60 days.
+        # With this option a job is started a regular periodic basis. For example: every
+        # day (86400 seconds). A scheduled start time will be skipped if the previous
+        # execution has not ended when its scheduled time occurs. This value must be set
+        # to a time duration greater than or equal to 1 day and can be no longer than 60
+        # days.
         # Corresponds to the JSON property `recurrencePeriodDuration`
         # @return [String]
         attr_accessor :recurrence_period_duration
@@ -5631,12 +5431,11 @@ module Google
       end
       
       # An auxiliary table containing statistical information on the relative
-      # frequency of different quasi-identifiers values. It has one or several
-      # quasi-identifiers columns, and one column that indicates the relative
-      # frequency of each quasi-identifier tuple.
-      # If a tuple is present in the data but not in the auxiliary table, the
-      # corresponding relative frequency is assumed to be zero (and thus, the
-      # tuple is highly reidentifiable).
+      # frequency of different quasi-identifiers values. It has one or several quasi-
+      # identifiers columns, and one column that indicates the relative frequency of
+      # each quasi-identifier tuple. If a tuple is present in the data but not in the
+      # auxiliary table, the corresponding relative frequency is assumed to be zero (
+      # and thus, the tuple is highly reidentifiable).
       class GooglePrivacyDlpV2StatisticalTable
         include Google::Apis::Core::Hashable
       
@@ -5651,10 +5450,8 @@ module Google
         attr_accessor :relative_frequency
       
         # Message defining the location of a BigQuery table. A table is uniquely
-        # identified  by its project_id, dataset_id, and table_name. Within a query
-        # a table is often referenced with a string in the format of:
-        # `<project_id>:<dataset_id>.<table_id>` or
-        # `<project_id>.<dataset_id>.<table_id>`.
+        # identified by its project_id, dataset_id, and table_name. Within a query a
+        # table is often referenced with a string in the format of: `:.` or `..`.
         # Corresponds to the JSON property `table`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryTable]
         attr_accessor :table
@@ -5680,8 +5477,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BigQueryOptions]
         attr_accessor :big_query_options
       
-        # Options defining a file or a set of files within a Google Cloud Storage
-        # bucket.
+        # Options defining a file or a set of files within a Google Cloud Storage bucket.
         # Corresponds to the JSON property `cloudStorageOptions`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudStorageOptions]
         attr_accessor :cloud_storage_options
@@ -5691,14 +5487,14 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DatastoreOptions]
         attr_accessor :datastore_options
       
-        # Configuration to control jobs where the content being inspected is outside
-        # of Google Cloud Platform.
+        # Configuration to control jobs where the content being inspected is outside of
+        # Google Cloud Platform.
         # Corresponds to the JSON property `hybridOptions`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridOptions]
         attr_accessor :hybrid_options
       
-        # Configuration of the timespan of the items to include in scanning.
-        # Currently only supported when inspecting Google Cloud Storage and BigQuery.
+        # Configuration of the timespan of the items to include in scanning. Currently
+        # only supported when inspecting Google Cloud Storage and BigQuery.
         # Corresponds to the JSON property `timespanConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TimespanConfig]
         attr_accessor :timespan_config
@@ -5752,8 +5548,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Pending versions of the stored info type. Empty if no versions are
-        # pending.
+        # Pending versions of the stored info type. Empty if no versions are pending.
         # Corresponds to the JSON property `pendingVersions`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeVersion>]
         attr_accessor :pending_versions
@@ -5770,9 +5565,9 @@ module Google
         end
       end
       
-      # Configuration for stored infoTypes. All fields and subfield are provided
-      # by the user. For more information, see
-      # https://cloud.google.com/dlp/docs/creating-custom-infotypes.
+      # Configuration for stored infoTypes. All fields and subfield are provided by
+      # the user. For more information, see https://cloud.google.com/dlp/docs/creating-
+      # custom-infotypes.
       class GooglePrivacyDlpV2StoredInfoTypeConfig
         include Google::Apis::Core::Hashable
       
@@ -5781,28 +5576,24 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Custom information type based on a dictionary of words or phrases. This can
-        # be used to match sensitive information specific to the data, such as a list
-        # of employee IDs or job titles.
-        # Dictionary words are case-insensitive and all characters other than letters
-        # and digits in the unicode [Basic Multilingual
+        # Custom information type based on a dictionary of words or phrases. This can be
+        # used to match sensitive information specific to the data, such as a list of
+        # employee IDs or job titles. Dictionary words are case-insensitive and all
+        # characters other than letters and digits in the unicode [Basic Multilingual
         # Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#
-        # Basic_Multilingual_Plane)
-        # will be replaced with whitespace when scanning for matches, so the
-        # dictionary phrase "Sam Johnson" will match all three phrases "sam johnson",
-        # "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters
-        # surrounding any match must be of a different type than the adjacent
-        # characters within the word, so letters must be next to non-letters and
-        # digits next to non-digits. For example, the dictionary word "jen" will
-        # match the first three letters of the text "jen123" but will return no
-        # matches for "jennifer".
-        # Dictionary words containing a large number of characters that are not
-        # letters or digits may result in unexpected findings because such characters
-        # are treated as whitespace. The
-        # [limits](https://cloud.google.com/dlp/limits) page contains details about
-        # the size limits of dictionaries. For dictionaries that do not fit within
-        # these constraints, consider using `LargeCustomDictionaryConfig` in the
-        # `StoredInfoType` API.
+        # Basic_Multilingual_Plane) will be replaced with whitespace when scanning for
+        # matches, so the dictionary phrase "Sam Johnson" will match all three phrases "
+        # sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the
+        # characters surrounding any match must be of a different type than the adjacent
+        # characters within the word, so letters must be next to non-letters and digits
+        # next to non-digits. For example, the dictionary word "jen" will match the
+        # first three letters of the text "jen123" but will return no matches for "
+        # jennifer". Dictionary words containing a large number of characters that are
+        # not letters or digits may result in unexpected findings because such
+        # characters are treated as whitespace. The [limits](https://cloud.google.com/
+        # dlp/limits) page contains details about the size limits of dictionaries. For
+        # dictionaries that do not fit within these constraints, consider using `
+        # LargeCustomDictionaryConfig` in the `StoredInfoType` API.
         # Corresponds to the JSON property `dictionary`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary]
         attr_accessor :dictionary
@@ -5813,11 +5604,10 @@ module Google
         attr_accessor :display_name
       
         # Configuration for a custom dictionary created from a data source of any size
-        # up to the maximum size defined in the
-        # [limits](https://cloud.google.com/dlp/limits) page. The artifacts of
-        # dictionary creation are stored in the specified Google Cloud Storage
-        # location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries
-        # that satisfy the size requirements.
+        # up to the maximum size defined in the [limits](https://cloud.google.com/dlp/
+        # limits) page. The artifacts of dictionary creation are stored in the specified
+        # Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for
+        # smaller dictionaries that satisfy the size requirements.
         # Corresponds to the JSON property `largeCustomDictionary`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2LargeCustomDictionaryConfig]
         attr_accessor :large_custom_dictionary
@@ -5865,36 +5655,35 @@ module Google
       class GooglePrivacyDlpV2StoredInfoTypeVersion
         include Google::Apis::Core::Hashable
       
-        # Configuration for stored infoTypes. All fields and subfield are provided
-        # by the user. For more information, see
-        # https://cloud.google.com/dlp/docs/creating-custom-infotypes.
+        # Configuration for stored infoTypes. All fields and subfield are provided by
+        # the user. For more information, see https://cloud.google.com/dlp/docs/creating-
+        # custom-infotypes.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
         attr_accessor :config
       
-        # Create timestamp of the version. Read-only, determined by the system
-        # when the version is created.
+        # Create timestamp of the version. Read-only, determined by the system when the
+        # version is created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Errors that occurred when creating this storedInfoType version, or
-        # anomalies detected in the storedInfoType data that render it unusable. Only
-        # the five most recent errors will be displayed, with the most recent error
-        # appearing first.
-        # For example, some of the data for stored custom dictionaries is put in
+        # Errors that occurred when creating this storedInfoType version, or anomalies
+        # detected in the storedInfoType data that render it unusable. Only the five
+        # most recent errors will be displayed, with the most recent error appearing
+        # first. For example, some of the data for stored custom dictionaries is put in
         # the user's Google Cloud Storage bucket, and if this data is modified or
-        # deleted by the user or another system, the dictionary becomes invalid.
-        # If any errors occur, fix the problem indicated by the error message and
-        # use the UpdateStoredInfoType API method to create another version of the
-        # storedInfoType to continue using it, reusing the same `config` if it was
-        # not the source of the error.
+        # deleted by the user or another system, the dictionary becomes invalid. If any
+        # errors occur, fix the problem indicated by the error message and use the
+        # UpdateStoredInfoType API method to create another version of the
+        # storedInfoType to continue using it, reusing the same `config` if it was not
+        # the source of the error.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Error>]
         attr_accessor :errors
       
-        # Stored info type version state. Read-only, updated by the system
-        # during dictionary creation.
+        # Stored info type version state. Read-only, updated by the system during
+        # dictionary creation.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -5928,9 +5717,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Resource name of the requested `StoredInfoType`, for example
-        # `organizations/433245324/storedInfoTypes/432452342` or
-        # `projects/project-id/storedInfoTypes/432452342`.
+        # Resource name of the requested `StoredInfoType`, for example `organizations/
+        # 433245324/storedInfoTypes/432452342` or `projects/project-id/storedInfoTypes/
+        # 432452342`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5946,8 +5735,8 @@ module Google
         end
       end
       
-      # A collection that informs the user the number of times a particular
-      # `TransformationResultCode` and error details occurred.
+      # A collection that informs the user the number of times a particular `
+      # TransformationResultCode` and error details occurred.
       class GooglePrivacyDlpV2SummaryResult
         include Google::Apis::Core::Hashable
       
@@ -5961,8 +5750,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
-        # A place for warnings or errors to show up if a transformation didn't
-        # work as expected.
+        # A place for warnings or errors to show up if a transformation didn't work as
+        # expected.
         # Corresponds to the JSON property `details`
         # @return [String]
         attr_accessor :details
@@ -5979,15 +5768,13 @@ module Google
         end
       end
       
-      # Message for detecting output from deidentification transformations
-      # such as
-      # [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/
-      # v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig).
-      # These types of transformations are
-      # those that perform pseudonymization, thereby producing a "surrogate" as
-      # output. This should be used in conjunction with a field on the
-      # transformation such as `surrogate_info_type`. This CustomInfoType does
-      # not support the use of `detection_rules`.
+      # Message for detecting output from deidentification transformations such as [`
+      # CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/
+      # v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types
+      # of transformations are those that perform pseudonymization, thereby producing
+      # a "surrogate" as output. This should be used in conjunction with a field on
+      # the transformation such as `surrogate_info_type`. This CustomInfoType does not
+      # support the use of `detection_rules`.
       class GooglePrivacyDlpV2SurrogateType
         include Google::Apis::Core::Hashable
       
@@ -6000,9 +5787,9 @@ module Google
         end
       end
       
-      # Structured content to inspect. Up to 50,000 `Value`s per request allowed.
-      # See https://cloud.google.com/dlp/docs/inspecting-text#inspecting_a_table to
-      # learn more.
+      # Structured content to inspect. Up to 50,000 `Value`s per request allowed. See
+      # https://cloud.google.com/dlp/docs/inspecting-text#inspecting_a_table to learn
+      # more.
       class GooglePrivacyDlpV2Table
         include Google::Apis::Core::Hashable
       
@@ -6031,12 +5818,11 @@ module Google
       class GooglePrivacyDlpV2TableLocation
         include Google::Apis::Core::Hashable
       
-        # The zero-based index of the row where the finding is located. Only
-        # populated for resources that have a natural ordering, not BigQuery. In
-        # BigQuery, to identify the row a finding came from, populate
-        # BigQueryOptions.identifying_fields with your primary key column names and
-        # when you store the findings the value of those columns will be stored
-        # inside of Finding.
+        # The zero-based index of the row where the finding is located. Only populated
+        # for resources that have a natural ordering, not BigQuery. In BigQuery, to
+        # identify the row a finding came from, populate BigQueryOptions.
+        # identifying_fields with your primary key column names and when you store the
+        # findings the value of those columns will be stored inside of Finding.
         # Corresponds to the JSON property `rowIndex`
         # @return [Fixnum]
         attr_accessor :row_index
@@ -6056,9 +5842,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The columns that are the primary keys for table objects included in
-        # ContentItem. A copy of this cell's value will stored alongside alongside
-        # each finding so that the finding can be traced to the specific row it came
-        # from. No more than 3 may be provided.
+        # ContentItem. A copy of this cell's value will stored alongside alongside each
+        # finding so that the finding can be traced to the specific row it came from. No
+        # more than 3 may be provided.
         # Corresponds to the JSON property `identifyingFields`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :identifying_fields
@@ -6077,9 +5863,9 @@ module Google
       class GooglePrivacyDlpV2TaggedField
         include Google::Apis::Core::Hashable
       
-        # A column can be tagged with a custom tag. In this case, the user must
-        # indicate an auxiliary table that contains statistical information on
-        # the possible values of this column (below).
+        # A column can be tagged with a custom tag. In this case, the user must indicate
+        # an auxiliary table that contains statistical information on the possible
+        # values of this column (below).
         # Corresponds to the JSON property `customTag`
         # @return [String]
         attr_accessor :custom_tag
@@ -6089,13 +5875,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
         attr_accessor :field
       
-        # A generic empty message that you can re-use to avoid defining duplicated
-        # empty messages in your APIs. A typical example is to use it as the request
-        # or the response type of an API method. For instance:
-        # service Foo `
-        # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-        # `
-        # The JSON representation for `Empty` is empty JSON object ````.
+        # A generic empty message that you can re-use to avoid defining duplicated empty
+        # messages in your APIs. A typical example is to use it as the request or the
+        # response type of an API method. For instance: service Foo ` rpc Bar(google.
+        # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+        # `Empty` is empty JSON object ````.
         # Corresponds to the JSON property `inferred`
         # @return [Google::Apis::DlpV2::GoogleProtobufEmpty]
         attr_accessor :inferred
@@ -6155,8 +5939,8 @@ module Google
       class GooglePrivacyDlpV2TimeZone
         include Google::Apis::Core::Hashable
       
-        # Set only if the offset can be determined. Positive for time ahead of UTC.
-        # E.g. For "UTC-9", this value is -540.
+        # Set only if the offset can be determined. Positive for time ahead of UTC. E.g.
+        # For "UTC-9", this value is -540.
         # Corresponds to the JSON property `offsetMinutes`
         # @return [Fixnum]
         attr_accessor :offset_minutes
@@ -6171,22 +5955,22 @@ module Google
         end
       end
       
-      # Configuration of the timespan of the items to include in scanning.
-      # Currently only supported when inspecting Google Cloud Storage and BigQuery.
+      # Configuration of the timespan of the items to include in scanning. Currently
+      # only supported when inspecting Google Cloud Storage and BigQuery.
       class GooglePrivacyDlpV2TimespanConfig
         include Google::Apis::Core::Hashable
       
-        # When the job is started by a JobTrigger we will automatically figure out
-        # a valid start_time to avoid scanning files that have not been modified
-        # since the last time the JobTrigger executed. This will be based on the
-        # time of the execution of the last run of the JobTrigger.
+        # When the job is started by a JobTrigger we will automatically figure out a
+        # valid start_time to avoid scanning files that have not been modified since the
+        # last time the JobTrigger executed. This will be based on the time of the
+        # execution of the last run of the JobTrigger.
         # Corresponds to the JSON property `enableAutoPopulationOfTimespanConfig`
         # @return [Boolean]
         attr_accessor :enable_auto_population_of_timespan_config
         alias_method :enable_auto_population_of_timespan_config?, :enable_auto_population_of_timespan_config
       
-        # Exclude files or rows newer than this value.
-        # If set to zero, no upper time limit is applied.
+        # Exclude files or rows newer than this value. If set to zero, no upper time
+        # limit is applied.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -6214,21 +5998,19 @@ module Google
         end
       end
       
-      # How to handle transformation errors during de-identification. A
-      # transformation error occurs when the requested transformation is incompatible
-      # with the data. For example, trying to de-identify an IP address using a
-      # `DateShift` transformation would result in a transformation error, since date
-      # info cannot be extracted from an IP address.
-      # Information about any incompatible transformations, and how they were
-      # handled, is returned in the response as part of the
-      # `TransformationOverviews`.
+      # How to handle transformation errors during de-identification. A transformation
+      # error occurs when the requested transformation is incompatible with the data.
+      # For example, trying to de-identify an IP address using a `DateShift`
+      # transformation would result in a transformation error, since date info cannot
+      # be extracted from an IP address. Information about any incompatible
+      # transformations, and how they were handled, is returned in the response as
+      # part of the `TransformationOverviews`.
       class GooglePrivacyDlpV2TransformationErrorHandling
         include Google::Apis::Core::Hashable
       
         # Skips the data without modifying it if the requested transformation would
-        # cause an error. For example, if a `DateShift` transformation were applied
-        # an an IP address, this mode would leave the IP address unchanged in the
-        # response.
+        # cause an error. For example, if a `DateShift` transformation were applied an
+        # an IP address, this mode would leave the IP address unchanged in the response.
         # Corresponds to the JSON property `leaveUntransformed`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2LeaveUntransformed]
         attr_accessor :leave_untransformed
@@ -6274,9 +6056,8 @@ module Google
         end
       end
       
-      # Summary of a single transformation.
-      # Only one of 'transformation', 'field_transformation', or 'record_suppress'
-      # will be set.
+      # Summary of a single transformation. Only one of 'transformation', '
+      # field_transformation', or 'record_suppress' will be set.
       class GooglePrivacyDlpV2TransformationSummary
         include Google::Apis::Core::Hashable
       
@@ -6285,9 +6066,9 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
         attr_accessor :field
       
-        # The field transformation that was applied.
-        # If multiple field transformations are requested for a single field,
-        # this list will contain all of them; otherwise, only one is supplied.
+        # The field transformation that was applied. If multiple field transformations
+        # are requested for a single field, this list will contain all of them;
+        # otherwise, only one is supplied.
         # Corresponds to the JSON property `fieldTransformations`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldTransformation>]
         attr_accessor :field_transformations
@@ -6334,17 +6115,16 @@ module Google
         end
       end
       
-      # Use this to have a random data crypto key generated.
-      # It will be discarded after the request finishes.
+      # Use this to have a random data crypto key generated. It will be discarded
+      # after the request finishes.
       class GooglePrivacyDlpV2TransientCryptoKey
         include Google::Apis::Core::Hashable
       
-        # Required. Name of the key.
-        # This is an arbitrary string used to differentiate different keys.
-        # A unique key is generated per name: two separate `TransientCryptoKey`
-        # protos share the same generated key if their names are the same.
-        # When the data crypto key is generated, this name is not used in any way
-        # (repeating the api call will result in a different key being generated).
+        # Required. Name of the key. This is an arbitrary string used to differentiate
+        # different keys. A unique key is generated per name: two separate `
+        # TransientCryptoKey` protos share the same generated key if their names are the
+        # same. When the data crypto key is generated, this name is not used in any way (
+        # repeating the api call will result in a different key being generated).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -6363,8 +6143,7 @@ module Google
       class GooglePrivacyDlpV2Trigger
         include Google::Apis::Core::Hashable
       
-        # Job trigger option for hybrid jobs. Jobs must be manually created
-        # and finished.
+        # Job trigger option for hybrid jobs. Jobs must be manually created and finished.
         # Corresponds to the JSON property `manual`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Manual]
         attr_accessor :manual
@@ -6385,8 +6164,8 @@ module Google
         end
       end
       
-      # Using raw keys is prone to security risks due to accidentally
-      # leaking the key. Choose another type of key if possible.
+      # Using raw keys is prone to security risks due to accidentally leaking the key.
+      # Choose another type of key if possible.
       class GooglePrivacyDlpV2UnwrappedCryptoKey
         include Google::Apis::Core::Hashable
       
@@ -6410,8 +6189,8 @@ module Google
       class GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest
         include Google::Apis::Core::Hashable
       
-        # DeidentifyTemplates contains instructions on how to de-identify content.
-        # See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+        # DeidentifyTemplates contains instructions on how to de-identify content. See
+        # https://cloud.google.com/dlp/docs/concepts-templates to learn more.
         # Corresponds to the JSON property `deidentifyTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
         attr_accessor :deidentify_template
@@ -6438,8 +6217,8 @@ module Google
       
         # The inspectTemplate contains a configuration (set of types of sensitive data
         # to be detected) to be used anywhere you otherwise would normally specify
-        # InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates
-        # to learn more.
+        # InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to
+        # learn more.
         # Corresponds to the JSON property `inspectTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
         attr_accessor :inspect_template
@@ -6464,8 +6243,8 @@ module Google
       class GooglePrivacyDlpV2UpdateJobTriggerRequest
         include Google::Apis::Core::Hashable
       
-        # Contains a configuration to make dlp api calls on a repeating basis.
-        # See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
+        # Contains a configuration to make dlp api calls on a repeating basis. See https:
+        # //cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
         # Corresponds to the JSON property `jobTrigger`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger]
         attr_accessor :job_trigger
@@ -6490,9 +6269,9 @@ module Google
       class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest
         include Google::Apis::Core::Hashable
       
-        # Configuration for stored infoTypes. All fields and subfield are provided
-        # by the user. For more information, see
-        # https://cloud.google.com/dlp/docs/creating-custom-infotypes.
+        # Configuration for stored infoTypes. All fields and subfield are provided by
+        # the user. For more information, see https://cloud.google.com/dlp/docs/creating-
+        # custom-infotypes.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
         attr_accessor :config
@@ -6513,12 +6292,11 @@ module Google
         end
       end
       
-      # Set of primitive values supported by the system.
-      # Note that for the purposes of inspection or transformation, the number
-      # of bytes considered to comprise a 'Value' is based on its representation
-      # as a UTF-8 encoded string. For example, if 'integer_value' is set to
-      # 123456789, the number of bytes would be counted as 9, even though an
-      # int64 only holds up to 8 bytes of data.
+      # Set of primitive values supported by the system. Note that for the purposes of
+      # inspection or transformation, the number of bytes considered to comprise a '
+      # Value' is based on its representation as a UTF-8 encoded string. For example,
+      # if 'integer_value' is set to 123456789, the number of bytes would be counted
+      # as 9, even though an int64 only holds up to 8 bytes of data.
       class GooglePrivacyDlpV2Value
         include Google::Apis::Core::Hashable
       
@@ -6530,12 +6308,12 @@ module Google
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # * A full date, with non-zero year, month and day values
-        # * A month and day value, with a zero year, e.g. an anniversary
-        # * A year on its own, with zero month and day values
-        # * A year and month value, with a zero day, e.g. a credit card expiration date
-        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
         # Corresponds to the JSON property `dateValue`
         # @return [Google::Apis::DlpV2::GoogleTypeDate]
         attr_accessor :date_value
@@ -6560,8 +6338,8 @@ module Google
         # @return [String]
         attr_accessor :string_value
       
-        # Represents a time of day. The date and time zone are either not significant
-        # or are specified elsewhere. An API may choose to allow leap seconds. Related
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
         # types are google.type.Date and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `timeValue`
         # @return [Google::Apis::DlpV2::GoogleTypeTimeOfDay]
@@ -6598,12 +6376,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
-        # Set of primitive values supported by the system.
-        # Note that for the purposes of inspection or transformation, the number
-        # of bytes considered to comprise a 'Value' is based on its representation
-        # as a UTF-8 encoded string. For example, if 'integer_value' is set to
-        # 123456789, the number of bytes would be counted as 9, even though an
-        # int64 only holds up to 8 bytes of data.
+        # Set of primitive values supported by the system. Note that for the purposes of
+        # inspection or transformation, the number of bytes considered to comprise a '
+        # Value' is based on its representation as a UTF-8 encoded string. For example,
+        # if 'integer_value' is set to 123456789, the number of bytes would be counted
+        # as 9, even though an int64 only holds up to 8 bytes of data.
         # Corresponds to the JSON property `value`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Value]
         attr_accessor :value
@@ -6623,9 +6400,9 @@ module Google
       class GooglePrivacyDlpV2WordList
         include Google::Apis::Core::Hashable
       
-        # Words or phrases defining the dictionary. The dictionary must contain
-        # at least one phrase and every phrase must contain at least 2 characters
-        # that are letters or digits. [required]
+        # Words or phrases defining the dictionary. The dictionary must contain at least
+        # one phrase and every phrase must contain at least 2 characters that are
+        # letters or digits. [required]
         # Corresponds to the JSON property `words`
         # @return [Array<String>]
         attr_accessor :words
@@ -6640,13 +6417,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class GoogleProtobufEmpty
         include Google::Apis::Core::Hashable
       
@@ -6659,12 +6434,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class GoogleRpcStatus
         include Google::Apis::Core::Hashable
       
@@ -6673,15 +6448,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -6700,30 +6475,29 @@ module Google
       
       # Represents a whole or partial calendar date, e.g. a birthday. The time of day
       # and time zone are either specified elsewhere or are not significant. The date
-      # is relative to the Proleptic Gregorian Calendar. This can represent:
-      # * A full date, with non-zero year, month and day values
-      # * A month and day value, with a zero year, e.g. an anniversary
-      # * A year on its own, with zero month and day values
-      # * A year and month value, with a zero day, e.g. a credit card expiration date
-      # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+      # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+      # date, with non-zero year, month and day values * A month and day value, with a
+      # zero year, e.g. an anniversary * A year on its own, with zero month and day
+      # values * A year and month value, with a zero day, e.g. a credit card
+      # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+      # Timestamp`.
       class GoogleTypeDate
         include Google::Apis::Core::Hashable
       
-        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-        # if specifying a year by itself or a year and month where the day is not
+        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+        # specifying a year by itself or a year and month where the day is not
         # significant.
         # Corresponds to the JSON property `day`
         # @return [Fixnum]
         attr_accessor :day
       
-        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a
-        # month and day.
+        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        # and day.
         # Corresponds to the JSON property `month`
         # @return [Fixnum]
         attr_accessor :month
       
-        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-        # a year.
+        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
         # Corresponds to the JSON property `year`
         # @return [Fixnum]
         attr_accessor :year
@@ -6740,14 +6514,14 @@ module Google
         end
       end
       
-      # Represents a time of day. The date and time zone are either not significant
-      # or are specified elsewhere. An API may choose to allow leap seconds. Related
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
       # types are google.type.Date and `google.protobuf.Timestamp`.
       class GoogleTypeTimeOfDay
         include Google::Apis::Core::Hashable
       
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
-        # to allow the value "24:00:00" for scenarios like business closing time.
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+        # allow the value "24:00:00" for scenarios like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours

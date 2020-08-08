@@ -49,8 +49,8 @@ module Google
         end
         
         # Audits an advertiser. Returns the counts of used entities per resource type
-        # under the advertiser provided. Used entities count towards their [respective
-        # resource limit]: (https://support.google.com/displayvideo/answer/6071450?hl=en)
+        # under the advertiser provided. Used entities count towards their respective
+        # resource limit. See https://support.google.com/displayvideo/answer/6071450.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to audit.
         # @param [String] read_mask
@@ -2845,9 +2845,9 @@ module Google
         # @param [Fixnum] custom_bidding_algorithm_id
         #   Required. The ID of the custom bidding algorithm to fetch.
         # @param [Fixnum] advertiser_id
-        #   The ID of the DV3 partner that has access to the custom bidding algorithm.
+        #   The ID of the DV360 partner that has access to the custom bidding algorithm.
         # @param [Fixnum] partner_id
-        #   The ID of the DV3 partner that has access to the custom bidding algorithm.
+        #   The ID of the DV360 partner that has access to the custom bidding algorithm.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2881,7 +2881,7 @@ module Google
         # can be used in bidding stratgies. The order is defined by the order_by
         # parameter.
         # @param [Fixnum] advertiser_id
-        #   The ID of the DV3 advertiser that has access to the custom bidding algorithm.
+        #   The ID of the DV360 advertiser that has access to the custom bidding algorithm.
         # @param [String] filter
         #   Allows filtering by custom bidding algorithm fields. Supported syntax: *
         #   Filter expressions are made up of one or more restrictions. * Restrictions can
@@ -2912,7 +2912,7 @@ module Google
         #   ListCustomBiddingAlgorithms` method. If not specified, the first page of
         #   results will be returned.
         # @param [Fixnum] partner_id
-        #   The ID of the DV3 partner that has access to the custom bidding algorithm.
+        #   The ID of the DV360 partner that has access to the custom bidding algorithm.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3856,9 +3856,9 @@ module Google
         
         # Bulk edits targeting options under a single partner. The operation will delete
         # the assigned targeting options provided in
-        # BulkEditPartnerAssignedTargetingOptionsRequest.delete_requests and then create
+        # BulkEditPartnerAssignedTargetingOptionsRequest.deleteRequests and then create
         # the assigned targeting options provided in
-        # BulkEditPartnerAssignedTargetingOptionsRequest.create_requests .
+        # BulkEditPartnerAssignedTargetingOptionsRequest.createRequests .
         # @param [Fixnum] partner_id
         #   Required. The ID of the partner.
         # @param [Google::Apis::DisplayvideoV1::BulkEditPartnerAssignedTargetingOptionsRequest] bulk_edit_partner_assigned_targeting_options_request_object
@@ -4657,9 +4657,9 @@ module Google
         end
         
         # Bulk edits user roles for a user. The operation will delete the assigned user
-        # roles provided in BulkEditAssignedUserRolesRequest.deleted_assigned_user_roles
+        # roles provided in BulkEditAssignedUserRolesRequest.deletedAssignedUserRoles
         # and then assign the user roles provided in BulkEditAssignedUserRolesRequest.
-        # created_assigned_user_roles.
+        # createdAssignedUserRoles.
         # @param [Fixnum] user_id
         #   Required. The ID of the user to which the assigned user roles belong.
         # @param [Google::Apis::DisplayvideoV1::BulkEditAssignedUserRolesRequest] bulk_edit_assigned_user_roles_request_object

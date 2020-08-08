@@ -1117,20 +1117,20 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The number of ACTIVE and PAUSED campaigns under this advertiser. These
-        # campaigns count towards the limit of 9,999 campaigns per advertiser.
+        # campaigns count towards the limit of 9999 campaigns per advertiser.
         # Corresponds to the JSON property `usedCampaignsCount`
         # @return [Fixnum]
         attr_accessor :used_campaigns_count
       
         # The number of ACTIVE, PAUSED and DRAFT insertion orders under this advertiser.
-        # These insertion orders count towards the limit of 9,999 insertion orders per
+        # These insertion orders count towards the limit of 9999 insertion orders per
         # advertiser.
         # Corresponds to the JSON property `usedInsertionOrdersCount`
         # @return [Fixnum]
         attr_accessor :used_insertion_orders_count
       
         # The number of ACTIVE, PAUSED, and DRAFT line items under this advertiser.
-        # These line items count towards the limit of 9,999 line items per advertiser.
+        # These line items count towards the limit of 9999 line items per advertiser.
         # Corresponds to the JSON property `usedLineItemsCount`
         # @return [Fixnum]
         attr_accessor :used_line_items_count
@@ -1469,7 +1469,7 @@ module Google
         end
       end
       
-      # Response message for BulkEditAssignedUserRoles.
+      # 
       class BulkEditAssignedUserRolesResponse
         include Google::Apis::Core::Hashable
       
@@ -5579,7 +5579,7 @@ module Google
         end
       end
       
-      # Response message for CustomBiddingAlgorithmService.ListCustomBiddingAlgorithms.
+      # 
       class ListCustomBiddingAlgorithmsResponse
         include Google::Apis::Core::Hashable
       
@@ -5906,7 +5906,7 @@ module Google
         end
       end
       
-      # Response message for ListPartnerAssignedTargetingOptions.
+      # 
       class ListPartnerAssignedTargetingOptionsResponse
         include Google::Apis::Core::Hashable
       
@@ -5934,7 +5934,7 @@ module Google
         end
       end
       
-      # Response message for ListPartners.
+      # 
       class ListPartnersResponse
         include Google::Apis::Core::Hashable
       
@@ -6015,7 +6015,7 @@ module Google
         end
       end
       
-      # Response message for ListUsers.
+      # 
       class ListUsersResponse
         include Google::Apis::Core::Hashable
       

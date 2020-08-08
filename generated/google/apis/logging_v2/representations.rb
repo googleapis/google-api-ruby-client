@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteBucketRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WriteLogEntriesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -402,6 +408,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :lifecycle_state, as: 'lifecycleState'
+          property :locked, as: 'locked'
           property :name, as: 'name'
           property :retention_days, as: 'retentionDays'
           property :update_time, as: 'updateTime'
@@ -505,6 +512,8 @@ module Google
           property :description, as: 'description'
           property :destination, as: 'destination'
           property :disabled, as: 'disabled'
+          collection :exclusions, as: 'exclusions', class: Google::Apis::LoggingV2::LogExclusion, decorator: Google::Apis::LoggingV2::LogExclusion::Representation
+      
           property :filter, as: 'filter'
           property :include_children, as: 'includeChildren'
           property :name, as: 'name'
@@ -626,6 +635,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :repository, as: 'repository'
           property :revision_id, as: 'revisionId'
+        end
+      end
+      
+      class UndeleteBucketRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

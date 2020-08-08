@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Timepoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Voice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -97,6 +103,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_config, as: 'audioConfig', class: Google::Apis::TexttospeechV1beta1::AudioConfig, decorator: Google::Apis::TexttospeechV1beta1::AudioConfig::Representation
       
+          collection :enable_time_pointing, as: 'enableTimePointing'
           property :input, as: 'input', class: Google::Apis::TexttospeechV1beta1::SynthesisInput, decorator: Google::Apis::TexttospeechV1beta1::SynthesisInput::Representation
       
           property :voice, as: 'voice', class: Google::Apis::TexttospeechV1beta1::VoiceSelectionParams, decorator: Google::Apis::TexttospeechV1beta1::VoiceSelectionParams::Representation
@@ -107,7 +114,19 @@ module Google
       class SynthesizeSpeechResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_config, as: 'audioConfig', class: Google::Apis::TexttospeechV1beta1::AudioConfig, decorator: Google::Apis::TexttospeechV1beta1::AudioConfig::Representation
+      
           property :audio_content, :base64 => true, as: 'audioContent'
+          collection :timepoints, as: 'timepoints', class: Google::Apis::TexttospeechV1beta1::Timepoint, decorator: Google::Apis::TexttospeechV1beta1::Timepoint::Representation
+      
+        end
+      end
+      
+      class Timepoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mark_name, as: 'markName'
+          property :time_seconds, as: 'timeSeconds'
         end
       end
       

@@ -1196,6 +1196,16 @@ module Google
         # @return [Google::Apis::PubsubV1::DeadLetterPolicy]
         attr_accessor :dead_letter_policy
       
+        # Indicates whether the subscription is detached from its topic. Detached
+        # subscriptions don't receive messages from their topic and don't retain any
+        # backlog. `Pull` and `StreamingPull` requests will return
+        # FAILED_PRECONDITION. If the subscription is a push subscription, pushes to
+        # the endpoint will not be made.
+        # Corresponds to the JSON property `detached`
+        # @return [Boolean]
+        attr_accessor :detached
+        alias_method :detached?, :detached
+      
         # If true, messages published with the same `ordering_key` in `PubsubMessage`
         # will be delivered to the subscribers in the order in which they
         # are received by the Pub/Sub system. Otherwise, they may be delivered in
@@ -1290,6 +1300,7 @@ module Google
         def update!(**args)
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
           @dead_letter_policy = args[:dead_letter_policy] if args.key?(:dead_letter_policy)
+          @detached = args[:detached] if args.key?(:detached)
           @enable_message_ordering = args[:enable_message_ordering] if args.key?(:enable_message_ordering)
           @expiration_policy = args[:expiration_policy] if args.key?(:expiration_policy)
           @filter = args[:filter] if args.key?(:filter)

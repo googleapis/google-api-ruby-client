@@ -22,13 +22,11 @@ module Google
   module Apis
     module OsloginV1beta
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -138,8 +136,8 @@ module Google
         # @return [String]
         attr_accessor :shell
       
-        # System identifier for which account the username or uid applies to.
-        # By default, the empty value is used.
+        # System identifier for which account the username or uid applies to. By default,
+        # the empty value is used.
         # Corresponds to the JSON property `systemId`
         # @return [String]
         attr_accessor :system_id
@@ -188,9 +186,7 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
-        # Public key text in SSH format, defined by
-        # <a href="https://www.ietf.org/rfc/rfc4253.txt" target="_blank">RFC4253</a>
-        # section 6.6.
+        # Public key text in SSH format, defined by RFC4253 section 6.6.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key

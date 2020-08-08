@@ -47,31 +47,26 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Look up grants for a specified resource for a particular region.
-        # If the request is about a project:
-        # 1) Grants created on the project will be returned if they exist.
-        # 2) Otherwise grants created on the closest ancestor will be returned.
-        # 3) Grants for different JobTypes will all be returned.
-        # Same logic applies if the request is about a folder.
-        # If the request is about an organization, then grants created on the
-        # organization will be returned (organization doesn't have ancestors).
-        # Comparing to ListReservationGrants, there are two behavior
-        # differences:
-        # 1) permission on the grantee will be verified in this API.
-        # 2) Hierarchy lookup (project->folder->organization) happens in this API.
+        # Look up grants for a specified resource for a particular region. If the
+        # request is about a project: 1) Grants created on the project will be returned
+        # if they exist. 2) Otherwise grants created on the closest ancestor will be
+        # returned. 3) Grants for different JobTypes will all be returned. Same logic
+        # applies if the request is about a folder. If the request is about an
+        # organization, then grants created on the organization will be returned (
+        # organization doesn't have ancestors). Comparing to ListReservationGrants,
+        # there are two behavior differences: 1) permission on the grantee will be
+        # verified in this API. 2) Hierarchy lookup (project->folder->organization)
+        # happens in this API.
         # @param [String] parent
         #   The parent resource name (containing project and location), which owns the
-        #   grants. e.g.:
-        #   "projects/myproject/locations/us-central1".
+        #   grants. e.g.: "projects/myproject/locations/us-central1".
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token
         #   The next_page_token value returned from a previous List request, if any.
         # @param [String] query
-        #   Please specify resource name as grantee in the query.
-        #   e.g., "grantee=projects/myproject"
-        #   "grantee=folders/123"
-        #   "grantee=organizations/456"
+        #   Please specify resource name as grantee in the query. e.g., "grantee=projects/
+        #   myproject" "grantee=folders/123" "grantee=organizations/456"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -102,15 +97,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
@@ -141,9 +134,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -173,14 +165,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have
-        # 'bigquery.admin' permissions on the project using the reservation
-        # and the project that owns this reservation.
-        # Returns `google.rpc.Code.INVALID_ARGUMENT` when location of the grant
-        # does not match location of the reservation.
+        # Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have 'bigquery.
+        # admin' permissions on the project using the reservation and the project that
+        # owns this reservation. Returns `google.rpc.Code.INVALID_ARGUMENT` when
+        # location of the grant does not match location of the reservation.
         # @param [String] parent
-        #   The parent resource name of the reservation grant
-        #   E.g.: projects/myproject/location/eu.
+        #   The parent resource name of the reservation grant E.g.: projects/myproject/
+        #   location/eu.
         # @param [Google::Apis::BigqueryreservationV1alpha2::ReservationGrant] reservation_grant_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -211,19 +202,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a reservation grant. No expansion will happen.
-        # E.g:
-        # organizationA contains project1 and project2. Reservation res1 exists.
+        # Deletes a reservation grant. No expansion will happen. E.g: organizationA
+        # contains project1 and project2. Reservation res1 exists.
         # CreateReservationGrant was invoked previously and following grants were
-        # created explicitly:
-        # <organizationA, res1>
-        # <project1, res1>
-        # Then deletion of <organizationA, res1> won't affect <project1, res1>. After
-        # deletion of <organizationA, res1>, queries from project1 will still use
-        # res1, while queries from project2 will use on-demand mode.
+        # created explicitly: Then deletion of won't affect . After deletion of ,
+        # queries from project1 will still use res1, while queries from project2 will
+        # use on-demand mode.
         # @param [String] name
-        #   Name of the resource, e.g.:
-        #   projects/myproject/locations/eu/reservationGrants/123
+        #   Name of the resource, e.g.: projects/myproject/locations/eu/reservationGrants/
+        #   123
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -251,15 +238,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists reservation grants.
-        # Only explicitly created grants will be returned. E.g:
+        # Lists reservation grants. Only explicitly created grants will be returned. E.g:
         # organizationA contains project1 and project2. Reservation res1 exists.
         # CreateReservationGrant was invoked previously and following grants were
-        # created explicitly:
-        # <organizationA, res1>
-        # <project1, res1>
-        # Then this API will just return the above two grants for reservation res1,
-        # and no expansion/merge will happen.
+        # created explicitly: Then this API will just return the above two grants for
+        # reservation res1, and no expansion/merge will happen.
         # @param [String] parent
         #   The parent resource name e.g.: projects/myproject/location/eu.
         # @param [Fixnum] page_size
@@ -295,15 +278,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new reservation resource. Multiple reservations are created if
-        # the ancestor reservations do not exist.
+        # Creates a new reservation resource. Multiple reservations are created if the
+        # ancestor reservations do not exist.
         # @param [String] parent
-        #   Project, location, and (optionally) reservation name. E.g.,
-        #   projects/myproject/locations/us-central1/reservations/parent
+        #   Project, location, and (optionally) reservation name. E.g., projects/myproject/
+        #   locations/us-central1/reservations/parent
         # @param [Google::Apis::BigqueryreservationV1alpha2::Reservation] reservation_object
         # @param [String] reservation_id
-        #   The reservation ID relative to the parent, e.g., "dev". This field must
-        #   only contain alphanumeric characters.
+        #   The reservation ID relative to the parent, e.g., "dev". This field must only
+        #   contain alphanumeric characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -334,15 +317,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new reservation resource. Multiple reservations are created if
-        # the ancestor reservations do not exist.
+        # Creates a new reservation resource. Multiple reservations are created if the
+        # ancestor reservations do not exist.
         # @param [String] parent
-        #   Project, location, and (optionally) reservation name. E.g.,
-        #   projects/myproject/locations/us-central1/reservations/parent
+        #   Project, location, and (optionally) reservation name. E.g., projects/myproject/
+        #   locations/us-central1/reservations/parent
         # @param [Google::Apis::BigqueryreservationV1alpha2::Reservation] reservation_object
         # @param [String] reservation_id
-        #   The reservation ID relative to the parent, e.g., "dev". This field must
-        #   only contain alphanumeric characters.
+        #   The reservation ID relative to the parent, e.g., "dev". This field must only
+        #   contain alphanumeric characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -373,19 +356,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a reservation.
-        # Returns `google.rpc.Code.FAILED_PRECONDITION` in the following cases:
-        # 1. When reservation has child reservations. This check can be bypassed by
-        # setting DeleteReservationRequest.force flag to true.
-        # 2. When top-level reservation with slot pools is being deleted.
+        # Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` in the
+        # following cases: 1. When reservation has child reservations. This check can be
+        # bypassed by setting DeleteReservationRequest.force flag to true. 2. When top-
+        # level reservation with slot pools is being deleted.
         # @param [String] name
-        #   Resource name of the reservation to retrieve. E.g.,
-        #   projects/myproject/locations/us-central1/reservations/my_reservation
+        #   Resource name of the reservation to retrieve. E.g., projects/myproject/
+        #   locations/us-central1/reservations/my_reservation
         # @param [Boolean] force
         #   If true, deletes all the child reservations of the given reservation.
-        #   Otherwise, attempting to delete a reservation that has child
-        #   reservations will fail with error code
-        #   `google.rpc.Code.FAILED_PRECONDITION`.
+        #   Otherwise, attempting to delete a reservation that has child reservations will
+        #   fail with error code `google.rpc.Code.FAILED_PRECONDITION`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -416,8 +397,8 @@ module Google
         
         # Returns information about the reservation.
         # @param [String] name
-        #   Resource name of the reservation to retrieve. E.g.,
-        #   projects/myproject/locations/us-central1/reservations/path/to/reserv
+        #   Resource name of the reservation to retrieve. E.g., projects/myproject/
+        #   locations/us-central1/reservations/path/to/reserv
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -447,14 +428,13 @@ module Google
         
         # Lists all the reservations for the project in the specified location.
         # @param [String] parent
-        #   The parent resource name containing project and location, e.g.:
-        #   "projects/myproject/locations/us-central1"
+        #   The parent resource name containing project and location, e.g.: "projects/
+        #   myproject/locations/us-central1"
         # @param [String] filter
         #   Can be used to filter out reservations based on names, capacity, etc, e.g.:
-        #   filter="reservation.slot_capacity > 200"
-        #   filter="reservation.name = \"*dev/*\""
-        #   Advanced filtering syntax can be
-        #   [here](https://cloud.google.com/logging/docs/view/advanced-filters).
+        #   filter="reservation.slot_capacity > 200" filter="reservation.name = \"*dev/*\""
+        #   Advanced filtering syntax can be [here](https://cloud.google.com/logging/docs/
+        #   view/advanced-filters).
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token
@@ -492,10 +472,9 @@ module Google
         # Updates an existing reservation resource. Applicable only for child
         # reservations.
         # @param [String] name
-        #   The resource name of the reservation, e.g.,
-        #   "projects/*/locations/*/reservations/dev/team/product". Reservation names
-        #   (e.g., "dev/team/product") exceeding a depth of six will fail with
-        #   `google.rpc.Code.INVALID_ARGUMENT`.
+        #   The resource name of the reservation, e.g., "projects/*/locations/*/
+        #   reservations/dev/team/product". Reservation names (e.g., "dev/team/product")
+        #   exceeding a depth of six will fail with `google.rpc.Code.INVALID_ARGUMENT`.
         # @param [Google::Apis::BigqueryreservationV1alpha2::Reservation] reservation_object
         # @param [String] update_mask
         #   Standard field mask for the set of fields to be updated.
@@ -530,12 +509,11 @@ module Google
         end
         
         # Deletes a slot pool. Attempting to delete slot pool before its
-        # commitment_end_time will fail with the error code
-        # `google.rpc.Code.FAILED_PRECONDITION`.
+        # commitment_end_time will fail with the error code `google.rpc.Code.
+        # FAILED_PRECONDITION`.
         # @param [String] name
-        #   Resource name of the slot pool to delete. E.g.,
-        #   projects/myproject/locations/us-central1/reservations/my_reservation/
-        #   slotPools/123
+        #   Resource name of the slot pool to delete. E.g., projects/myproject/locations/
+        #   us-central1/reservations/my_reservation/slotPools/123
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -565,9 +543,8 @@ module Google
         
         # Returns information about the slot pool.
         # @param [String] name
-        #   Resource name of the slot pool to retrieve. E.g.,
-        #   projects/myproject/locations/us-central1/reservations/my_reservation/
-        #   slotPools/123
+        #   Resource name of the slot pool to retrieve. E.g., projects/myproject/locations/
+        #   us-central1/reservations/my_reservation/slotPools/123
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -597,9 +574,9 @@ module Google
         
         # Lists all the slot pools for the reservation.
         # @param [String] parent
-        #   Resource name of the parent reservation. Only top-level reservations can
-        #   have slot pools. E.g.,
-        #   projects/myproject/locations/us-central1/reservations/my_reservation
+        #   Resource name of the parent reservation. Only top-level reservations can have
+        #   slot pools. E.g., projects/myproject/locations/us-central1/reservations/
+        #   my_reservation
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token

@@ -76,7 +76,7 @@ module Google
       
         # Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (=
         # N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1):
-        # boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
+        # boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
         # least one element. If bounds has only one element, then there are no finite
         # buckets, and that single element is the common boundary of the overflow and
         # underflow buckets.
@@ -88,7 +88,7 @@ module Google
         # proportional to the value of the lower bound. Each bucket represents a
         # constant relative uncertainty on a specific value in the bucket.There are
         # num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:
-        # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).  Lower bound (1 <= i <
+        # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i <
         # N): scale * (growth_factor ^ (i - 1)).
         # Corresponds to the JSON property `exponentialBuckets`
         # @return [Google::Apis::LoggingV2::Exponential]
@@ -98,8 +98,7 @@ module Google
         # overflow and underflow). Each bucket represents a constant absolute
         # uncertainty on the specific value in the bucket.There are num_finite_buckets +
         # 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-
-        # 1): offset + (width * i).  Lower bound (1 <= i < N): offset + (width * (i - 1))
-        # .
+        # 1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
         # Corresponds to the JSON property `linearBuckets`
         # @return [Google::Apis::LoggingV2::Linear]
         attr_accessor :linear_buckets
@@ -125,9 +124,9 @@ module Google
       class CmekSettings
         include Google::Apis::Core::Hashable
       
-        # The resource name for the configured Cloud KMS key.KMS key name format:  "
+        # The resource name for the configured Cloud KMS key.KMS key name format: "
         # projects/PROJECT_ID/locations/LOCATION/keyRings/KEYRING/cryptoKeys/KEY"For
-        # example:  "projects/my-project-id/locations/my-region/keyRings/key-ring-name/
+        # example: "projects/my-project-id/locations/my-region/keyRings/key-ring-name/
         # cryptoKeys/key-name"To enable CMEK for the Logs Router, set this field to a
         # valid kms_key_name for which the associated service account has the required
         # roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.The Cloud
@@ -173,11 +172,9 @@ module Google
       
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for Empty is empty JSON object ``.
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # Empty is empty JSON object ``.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -192,7 +189,7 @@ module Google
       
       # Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (=
       # N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1):
-      # boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
+      # boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at
       # least one element. If bounds has only one element, then there are no finite
       # buckets, and that single element is the common boundary of the overflow and
       # underflow buckets.
@@ -218,7 +215,7 @@ module Google
       # proportional to the value of the lower bound. Each bucket represents a
       # constant relative uncertainty on a specific value in the bucket.There are
       # num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:
-      # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).  Lower bound (1 <= i <
+      # Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i <
       # N): scale * (growth_factor ^ (i - 1)).
       class Exponential
         include Google::Apis::Core::Hashable
@@ -339,8 +336,7 @@ module Google
         attr_accessor :status
       
         # The user agent sent by the client. Example: "Mozilla/4.0 (compatible; MSIE 6.0;
-        # Windows 98; Q312461; .NET
-        # CLR 1.0.3705)".
+        # Windows 98; Q312461; .NET CLR 1.0.3705)".
         # Corresponds to the JSON property `userAgent`
         # @return [String]
         attr_accessor :user_agent
@@ -404,8 +400,7 @@ module Google
       # overflow and underflow). Each bucket represents a constant absolute
       # uncertainty on the specific value in the bucket.There are num_finite_buckets +
       # 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-
-      # 1): offset + (width * i).  Lower bound (1 <= i < N): offset + (width * (i - 1))
-      # .
+      # 1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
       class Linear
         include Google::Apis::Core::Hashable
       
@@ -538,12 +533,9 @@ module Google
         attr_accessor :project_ids
       
         # Required. Names of one or more parent resources from which to retrieve log
-        # entries:
-        # "projects/[PROJECT_ID]"
-        # "organizations/[ORGANIZATION_ID]"
-        # "billingAccounts/[BILLING_ACCOUNT_ID]"
-        # "folders/[FOLDER_ID]"
-        # Projects listed in the project_ids field are added to this list.
+        # entries: "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "
+        # billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Projects listed in
+        # the project_ids field are added to this list.
         # Corresponds to the JSON property `resourceNames`
         # @return [Array<String>]
         attr_accessor :resource_names
@@ -727,11 +719,17 @@ module Google
         # @return [String]
         attr_accessor :lifecycle_state
       
+        # Whether the bucket has been locked. The retention period on a locked bucket
+        # may not be changed. Locked buckets may only be deleted if they are empty.
+        # Corresponds to the JSON property `locked`
+        # @return [Boolean]
+        attr_accessor :locked
+        alias_method :locked?, :locked
+      
         # The resource name of the bucket. For example: "projects/my-project-id/
-        # locations/my-location/buckets/my-bucket-id The supported locations are:  "
-        # global"  "us-central1"For the location of global it is unspecified where logs
-        # are actually stored. Once a bucket has been created, the location can not be
-        # changed.
+        # locations/my-location/buckets/my-bucket-id The supported locations are: "
+        # global"For the location of global it is unspecified where logs are actually
+        # stored. Once a bucket has been created, the location can not be changed.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -758,6 +756,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @locked = args[:locked] if args.key?(:locked)
           @name = args[:name] if args.key?(:name)
           @retention_days = args[:retention_days] if args.key?(:retention_days)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -780,7 +779,7 @@ module Google
         # timestamp, and with the same insert_id to be duplicates which are removed in a
         # single query result. However, there are no guarantees of de-duplication in the
         # export of logs.If the insert_id is omitted when writing a log entry, the
-        # Logging API  assigns its own unique identifier in this field.In queries, the
+        # Logging API assigns its own unique identifier in this field.In queries, the
         # insert_id is also used to order log entries that have the same log_name and
         # timestamp values.
         # Corresponds to the JSON property `insertId`
@@ -799,22 +798,20 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. The resource name of the log to which this log entry belongs:
-        # "projects/[PROJECT_ID]/logs/[LOG_ID]"
-        # "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-        # "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-        # "folders/[FOLDER_ID]/logs/[LOG_ID]"
-        # A project number may be used in place of PROJECT_ID. The project number is
-        # translated to its corresponding PROJECT_ID internally and the log_name field
-        # will contain PROJECT_ID in queries and exports.[LOG_ID] must be URL-encoded
-        # within log_name. Example: "organizations/1234567890/logs/cloudresourcemanager.
-        # googleapis.com%2Factivity". [LOG_ID] must be less than 512 characters long and
-        # can only include the following characters: upper and lower case alphanumeric
-        # characters, forward-slash, underscore, hyphen, and period.For backward
-        # compatibility, if log_name begins with a forward-slash, such as /projects/...,
-        # then the log entry is ingested as usual but the forward-slash is removed.
-        # Listing the log entry will not show the leading slash and filtering for a log
-        # name with a leading slash will never return any results.
+        # Required. The resource name of the log to which this log entry belongs: "
+        # projects/[PROJECT_ID]/logs/[LOG_ID]" "organizations/[ORGANIZATION_ID]/logs/[
+        # LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]" "folders/[
+        # FOLDER_ID]/logs/[LOG_ID]" A project number may be used in place of PROJECT_ID.
+        # The project number is translated to its corresponding PROJECT_ID internally
+        # and the log_name field will contain PROJECT_ID in queries and exports.[LOG_ID]
+        # must be URL-encoded within log_name. Example: "organizations/1234567890/logs/
+        # cloudresourcemanager.googleapis.com%2Factivity". [LOG_ID] must be less than
+        # 512 characters long and can only include the following characters: upper and
+        # lower case alphanumeric characters, forward-slash, underscore, hyphen, and
+        # period.For backward compatibility, if log_name begins with a forward-slash,
+        # such as /projects/..., then the log entry is ingested as usual but the forward-
+        # slash is removed. Listing the log entry will not show the leading slash and
+        # filtering for a log name with a leading slash will never return any results.
         # Corresponds to the JSON property `logName`
         # @return [String]
         attr_accessor :log_name
@@ -837,7 +834,7 @@ module Google
         # The log entry payload, represented as a protocol buffer. Some Google Cloud
         # Platform services use this field for their log entry payloads.The following
         # protocol buffer types are supported; user-defined types are not supported:"
-        # type.googleapis.com/google.cloud.audit.AuditLog"  "type.googleapis.com/google.
+        # type.googleapis.com/google.cloud.audit.AuditLog" "type.googleapis.com/google.
         # appengine.logging.v1.RequestLog"
         # Corresponds to the JSON property `protoPayload`
         # @return [Hash<String,Object>]
@@ -856,10 +853,8 @@ module Google
         # attributes according to the schema. For example, a particular Compute Engine
         # VM instance could be represented by the following object, because the
         # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone":
-        # ` "type": "gce_instance",
-        # "labels": ` "instance_id": "12345678901234",
-        # "zone": "us-central1-a" ``
+        # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
+        # zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::LoggingV2::MonitoredResource]
         attr_accessor :resource
@@ -1170,9 +1165,9 @@ module Google
         attr_accessor :description
       
         # Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/
-        # advanced_filters) which is used to match log entries. Example:
-        # "resource.type=gae_app AND severity>=ERROR"
-        # The maximum length of the filter is 20000 characters.
+        # advanced_filters) which is used to match log entries. Example: "resource.type=
+        # gae_app AND severity>=ERROR" The maximum length of the filter is 20000
+        # characters.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1194,14 +1189,12 @@ module Google
         # Defines a metric type and its schema. Once a metric descriptor is created,
         # deleting or altering it stops data collection and makes the metric type's
         # existing data unusable.The following are specific rules for service defined
-        # Monitoring metric descriptors:
-        # type, metric_kind, value_type and description  fields are all required. The
-        # unit field must be specified  if the value_type is any of DOUBLE, INT64,
-        # DISTRIBUTION.
-        # Maximum of default 500 metric descriptors per service is allowed.
-        # Maximum of default 10 labels per metric descriptor is allowed.The default
-        # maximum limit can be overridden. Please follow https://cloud.google.com/
-        # monitoring/quotas
+        # Monitoring metric descriptors: type, metric_kind, value_type and description
+        # fields are all required. The unit field must be specified if the value_type is
+        # any of DOUBLE, INT64, DISTRIBUTION. Maximum of default 500 metric descriptors
+        # per service is allowed. Maximum of default 10 labels per metric descriptor is
+        # allowed.The default maximum limit can be overridden. Please follow https://
+        # cloud.google.com/monitoring/quotas
         # Corresponds to the JSON property `metricDescriptor`
         # @return [Google::Apis::LoggingV2::MetricDescriptor]
         attr_accessor :metric_descriptor
@@ -1228,15 +1221,15 @@ module Google
         # Optional. A value_extractor is required when using a distribution logs-based
         # metric to extract the values to record from a log entry. Two functions are
         # supported for value extraction: EXTRACT(field) or REGEXP_EXTRACT(field, regex).
-        # The argument are:  1. field: The name of the log entry field from which the
-        # value is to be  extracted.  2. regex: A regular expression using the Google
-        # RE2 syntax  (https://github.com/google/re2/wiki/Syntax) with a single capture
-        # group to extract data from the specified log entry field. The value  of the
-        # field is converted to a string before applying the regex.  It is an error to
-        # specify a regex that does not include exactly one  capture group.The result of
-        # the extraction must be convertible to a double type, as the distribution
-        # always records double values. If either the extraction or the conversion to
-        # double fails, then those values are not recorded in the distribution.Example:
+        # The argument are: 1. field: The name of the log entry field from which the
+        # value is to be extracted. 2. regex: A regular expression using the Google RE2
+        # syntax (https://github.com/google/re2/wiki/Syntax) with a single capture group
+        # to extract data from the specified log entry field. The value of the field is
+        # converted to a string before applying the regex. It is an error to specify a
+        # regex that does not include exactly one capture group.The result of the
+        # extraction must be convertible to a double type, as the distribution always
+        # records double values. If either the extraction or the conversion to double
+        # fails, then those values are not recorded in the distribution.Example:
         # REGEXP_EXTRACT(jsonPayload.request, ".*quantity=(\d+).*")
         # Corresponds to the JSON property `valueExtractor`
         # @return [String]
@@ -1292,12 +1285,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Required. The export destination:
-        # "storage.googleapis.com/[GCS_BUCKET]"
-        # "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-        # "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-        # The sink's writer_identity, set when the sink is created, must have permission
-        # to write to the destination or else the log entries are not exported. For more
+        # Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "
+        # bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.
+        # googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's
+        # writer_identity, set when the sink is created, must have permission to write
+        # to the destination or else the log entries are not exported. For more
         # information, see Exporting Logs with Sinks (https://cloud.google.com/logging/
         # docs/api/tasks/exporting-logs).
         # Corresponds to the JSON property `destination`
@@ -1311,10 +1303,17 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
+        # Optional. Log entries that match any of the exclusion filters will not be
+        # exported. If a log entry is matched by both filter and one of
+        # exclusion_filters it will not be exported.
+        # Corresponds to the JSON property `exclusions`
+        # @return [Array<Google::Apis::LoggingV2::LogExclusion>]
+        attr_accessor :exclusions
+      
         # Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/
         # advanced-queries). The only exported log entries are those that are in the
-        # resource owning the sink and that match the filter. For example:
-        # logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
+        # resource owning the sink and that match the filter. For example: logName="
+        # projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1328,9 +1327,8 @@ module Google
         # if this field is true, then the filter resource.type=gce_instance would export
         # all Compute Engine VM instance log entries from all projects in the sink's
         # parent. To only export entries from certain child projects, filter on the
-        # project part of the log name:
-        # logName:("projects/test-project1/" OR "projects/test-project2/") AND
-        # resource.type=gce_instance
+        # project part of the log name: logName:("projects/test-project1/" OR "projects/
+        # test-project2/") AND resource.type=gce_instance
         # Corresponds to the JSON property `includeChildren`
         # @return [Boolean]
         attr_accessor :include_children
@@ -1356,16 +1354,15 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Output only. An IAM identity&mdash;a service account or group&mdash;under
-        # which Logging writes the exported log entries to the sink's destination. This
-        # field is set by sinks.create and sinks.update based on the value of
-        # unique_writer_identity in those methods.Until you grant this identity write-
-        # access to the destination, log entry exports from this sink will fail. For
-        # more information, see Granting Access for a Resource (https://cloud.google.com/
-        # iam/docs/granting-roles-to-service-accounts#
-        # granting_access_to_a_service_account_for_a_resource). Consult the destination
-        # service's documentation to determine the appropriate IAM roles to assign to
-        # the identity.
+        # Output only. An IAM identity—a service account or group—under which Logging
+        # writes the exported log entries to the sink's destination. This field is set
+        # by sinks.create and sinks.update based on the value of unique_writer_identity
+        # in those methods.Until you grant this identity write-access to the destination,
+        # log entry exports from this sink will fail. For more information, see
+        # Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-
+        # roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource).
+        # Consult the destination service's documentation to determine the appropriate
+        # IAM roles to assign to the identity.
         # Corresponds to the JSON property `writerIdentity`
         # @return [String]
         attr_accessor :writer_identity
@@ -1381,6 +1378,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @destination = args[:destination] if args.key?(:destination)
           @disabled = args[:disabled] if args.key?(:disabled)
+          @exclusions = args[:exclusions] if args.key?(:exclusions)
           @filter = args[:filter] if args.key?(:filter)
           @include_children = args[:include_children] if args.key?(:include_children)
           @name = args[:name] if args.key?(:name)
@@ -1393,14 +1391,12 @@ module Google
       # Defines a metric type and its schema. Once a metric descriptor is created,
       # deleting or altering it stops data collection and makes the metric type's
       # existing data unusable.The following are specific rules for service defined
-      # Monitoring metric descriptors:
-      # type, metric_kind, value_type and description  fields are all required. The
-      # unit field must be specified  if the value_type is any of DOUBLE, INT64,
-      # DISTRIBUTION.
-      # Maximum of default 500 metric descriptors per service is allowed.
-      # Maximum of default 10 labels per metric descriptor is allowed.The default
-      # maximum limit can be overridden. Please follow https://cloud.google.com/
-      # monitoring/quotas
+      # Monitoring metric descriptors: type, metric_kind, value_type and description
+      # fields are all required. The unit field must be specified if the value_type is
+      # any of DOUBLE, INT64, DISTRIBUTION. Maximum of default 500 metric descriptors
+      # per service is allowed. Maximum of default 10 labels per metric descriptor is
+      # allowed.The default maximum limit can be overridden. Please follow https://
+      # cloud.google.com/monitoring/quotas
       class MetricDescriptor
         include Google::Apis::Core::Hashable
       
@@ -1418,10 +1414,9 @@ module Google
         attr_accessor :display_name
       
         # The set of labels that can be used to describe a specific instance of this
-        # metric type.The label key name must follow:
-        # Only upper and lower-case letters, digits and underscores (_) are  allowed.
-        # Label name must start with a letter or digit.
-        # The maximum length of a label name is 100 characters.For example, the
+        # metric type.The label key name must follow: Only upper and lower-case letters,
+        # digits and underscores (_) are allowed. Label name must start with a letter or
+        # digit. The maximum length of a label name is 100 characters.For example, the
         # appengine.googleapis.com/http/server/response_latencies metric type has a
         # label for the HTTP response code, response_code, so you can look at latencies
         # for successful responses or just for responses that failed.
@@ -1461,16 +1456,14 @@ module Google
         # The metric type, including its DNS name prefix. The type is not URL-encoded.
         # All service defined metrics must be prefixed with the service name, in the
         # format of `service name`/`relative metric name`, such as cloudsql.googleapis.
-        # com/database/cpu/utilization. The relative metric name must follow:
-        # Only upper and lower-case letters, digits, '/' and underscores '_' are
-        # allowed.
-        # The maximum number of characters allowed for the relative_metric_name is  100.
-        # All user-defined metric types have the DNS name custom.googleapis.com,
-        # external.googleapis.com, or logging.googleapis.com/user/.Metric types should
-        # use a natural hierarchical grouping. For example:
-        # "custom.googleapis.com/invoice/paid/amount"
-        # "external.googleapis.com/prometheus/up"
-        # "appengine.googleapis.com/http/server/response_latencies"
+        # com/database/cpu/utilization. The relative metric name must follow: Only upper
+        # and lower-case letters, digits, '/' and underscores '_' are allowed. The
+        # maximum number of characters allowed for the relative_metric_name is 100.All
+        # user-defined metric types have the DNS name custom.googleapis.com, external.
+        # googleapis.com, or logging.googleapis.com/user/.Metric types should use a
+        # natural hierarchical grouping. For example: "custom.googleapis.com/invoice/
+        # paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/
+        # http/server/response_latencies"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1489,65 +1482,34 @@ module Google
         # a DOUBLE CUMULATIVE metric whose unit is ks`CPU`, and then write the value 12.
         # 005 (which is 12005/1000), or use Kis`CPU` and write 11.723 (which is 12005/
         # 1024).The supported units are a subset of The Unified Code for Units of
-        # Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)
-        # bit bit
-        # By byte
-        # s second
-        # min minute
-        # h hour
-        # d day
-        # 1 dimensionlessPrefixes (PREFIX)
-        # k kilo (10^3)
-        # M mega (10^6)
-        # G giga (10^9)
-        # T tera (10^12)
-        # P peta (10^15)
-        # E exa (10^18)
-        # Z zetta (10^21)
-        # Y yotta (10^24)
-        # m milli (10^-3)
-        # u micro (10^-6)
-        # n nano (10^-9)
-        # p pico (10^-12)
-        # f femto (10^-15)
-        # a atto (10^-18)
-        # z zepto (10^-21)
-        # y yocto (10^-24)
-        # Ki kibi (2^10)
-        # Mi mebi (2^20)
-        # Gi gibi (2^30)
-        # Ti tebi (2^40)
-        # Pi pebi (2^50)GrammarThe grammar also includes these connectors:
-        # / division or ratio (as an infix operator). For examples,  kBy/`email` or MiBy/
-        # 10ms (although you should almost never  have /s in a metric unit; rates should
-        # always be computed at  query time from the underlying cumulative or delta
-        # value).
-        # . multiplication or composition (as an infix operator). For  examples, GBy.d
-        # or k`watt`.h.The grammar for a unit is as follows:
-        # Expression = Component ` "." Component ` ` "/" Component ` ;
-        # Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ]
-        # | Annotation
-        # | "1"
-        # ;
-        # Annotation = "`" NAME "`" ;
-        # Notes:
-        # Annotation is just a comment if it follows a UNIT. If the annotation  is used
-        # alone, then the unit is equivalent to 1. For examples,  `request`/s == 1/s, By`
-        # transmitted`/s == By/s.
-        # NAME is a sequence of non-blank printable ASCII characters not  containing `
-        # or `.
-        # 1 represents a unitary dimensionless  unit (https://en.wikipedia.org/wiki/
-        # Dimensionless_quantity) of 1, such  as in 1/s. It is typically used when none
-        # of the basic units are  appropriate. For example, "new users per day" can be
-        # represented as  1/d or `new-users`/d (and a metric value 5 would mean "5 new
-        # users). Alternatively, "thousands of page views per day" would be  represented
-        # as 1000/d or k1/d or k`page_views`/d (and a metric  value of 5.3 would mean "
-        # 5300 page views per day").
-        # % represents dimensionless value of 1/100, and annotates values giving  a
-        # percentage (so the metric values are typically in the range of 0..100,  and a
-        # metric value 3 means "3 percent").
-        # 10^2.% indicates a metric contains a ratio, typically in the range  0..1, that
-        # will be multiplied by 100 and displayed as a percentage  (so a metric value 0.
+        # Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT) bit
+        # bit By byte s second min minute h hour d day 1 dimensionlessPrefixes (PREFIX)
+        # k kilo (10^3) M mega (10^6) G giga (10^9) T tera (10^12) P peta (10^15) E exa (
+        # 10^18) Z zetta (10^21) Y yotta (10^24) m milli (10^-3) u micro (10^-6) n nano (
+        # 10^-9) p pico (10^-12) f femto (10^-15) a atto (10^-18) z zepto (10^-21) y
+        # yocto (10^-24) Ki kibi (2^10) Mi mebi (2^20) Gi gibi (2^30) Ti tebi (2^40) Pi
+        # pebi (2^50)GrammarThe grammar also includes these connectors: / division or
+        # ratio (as an infix operator). For examples, kBy/`email` or MiBy/10ms (although
+        # you should almost never have /s in a metric unit; rates should always be
+        # computed at query time from the underlying cumulative or delta value). .
+        # multiplication or composition (as an infix operator). For examples, GBy.d or k`
+        # watt`.h.The grammar for a unit is as follows: Expression = Component ` "."
+        # Component ` ` "/" Component ` ; Component = ( [ PREFIX ] UNIT | "%" ) [
+        # Annotation ] | Annotation | "1" ; Annotation = "`" NAME "`" ; Notes:
+        # Annotation is just a comment if it follows a UNIT. If the annotation is used
+        # alone, then the unit is equivalent to 1. For examples, `request`/s == 1/s, By`
+        # transmitted`/s == By/s. NAME is a sequence of non-blank printable ASCII
+        # characters not containing ` or `. 1 represents a unitary dimensionless unit (
+        # https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in 1/s. It
+        # is typically used when none of the basic units are appropriate. For example, "
+        # new users per day" can be represented as 1/d or `new-users`/d (and a metric
+        # value 5 would mean "5 new users). Alternatively, "thousands of page views per
+        # day" would be represented as 1000/d or k1/d or k`page_views`/d (and a metric
+        # value of 5.3 would mean "5300 page views per day"). % represents dimensionless
+        # value of 1/100, and annotates values giving a percentage (so the metric values
+        # are typically in the range of 0..100, and a metric value 3 means "3 percent").
+        # 10^2.% indicates a metric contains a ratio, typically in the range 0..1, that
+        # will be multiplied by 100 and displayed as a percentage (so a metric value 0.
         # 03 means "3 percent").
         # Corresponds to the JSON property `unit`
         # @return [String]
@@ -1623,10 +1585,8 @@ module Google
       # attributes according to the schema. For example, a particular Compute Engine
       # VM instance could be represented by the following object, because the
       # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-      # zone":
-      # ` "type": "gce_instance",
-      # "labels": ` "instance_id": "12345678901234",
-      # "zone": "us-central1-a" ``
+      # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
+      # zone": "us-central1-a" ``
       class MonitoredResource
         include Google::Apis::Core::Hashable
       
@@ -1661,18 +1621,14 @@ module Google
       # the use of the labels "instance_id" and "zone" to identify particular VM
       # instances.Different services can support different monitored resource types.
       # The following are specific rules to service defined monitored resources for
-      # Monitoring and Logging:
-      # The type, display_name, description, labels and launch_stage  fields are all
-      # required.
-      # The first label of the monitored resource descriptor must be
-      # resource_container. There are legacy monitored resource descritptors  start
-      # with project_id.
-      # It must include a location label.
-      # Maximum of default 5 service defined monitored resource descriptors  is
-      # allowed per service.
-      # Maximum of default 10 labels per monitored resource is allowed.The default
-      # maximum limit can be overridden. Please follow https://cloud.google.com/
-      # monitoring/quotas
+      # Monitoring and Logging: The type, display_name, description, labels and
+      # launch_stage fields are all required. The first label of the monitored
+      # resource descriptor must be resource_container. There are legacy monitored
+      # resource descritptors start with project_id. It must include a location label.
+      # Maximum of default 5 service defined monitored resource descriptors is allowed
+      # per service. Maximum of default 10 labels per monitored resource is allowed.
+      # The default maximum limit can be overridden. Please follow https://cloud.
+      # google.com/monitoring/quotas
       class MonitoredResourceDescriptor
         include Google::Apis::Core::Hashable
       
@@ -1690,12 +1646,11 @@ module Google
         attr_accessor :display_name
       
         # Required. A set of labels used to describe instances of this monitored
-        # resource type. The label key name must follow:
-        # Only upper and lower-case letters, digits and underscores (_) are  allowed.
-        # Label name must start with a letter or digit.
-        # The maximum length of a label name is 100 characters.For example, an
-        # individual Google Cloud SQL database is identified by values for the labels
-        # database_id and location.
+        # resource type. The label key name must follow: Only upper and lower-case
+        # letters, digits and underscores (_) are allowed. Label name must start with a
+        # letter or digit. The maximum length of a label name is 100 characters.For
+        # example, an individual Google Cloud SQL database is identified by values for
+        # the labels database_id and location.
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::LoggingV2::LabelDescriptor>]
         attr_accessor :labels
@@ -1719,11 +1674,10 @@ module Google
         # represents databases in Google Cloud SQL.All service defined monitored
         # resource types must be prefixed with the service name, in the format of `
         # service name`/`relative resource name`. The relative resource name must follow:
-        # Only upper and lower-case letters and digits are allowed.
-        # It must start with upper case character and is recommended to use Upper  Camel
-        # Case style.
-        # The maximum number of characters allowed for the relative_resource_name  is
-        # 100.Note there are legacy service monitored resources not following this rule.
+        # Only upper and lower-case letters and digits are allowed. It must start with
+        # upper case character and is recommended to use Upper Camel Case style. The
+        # maximum number of characters allowed for the relative_resource_name is 100.
+        # Note there are legacy service monitored resources not following this rule.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1754,10 +1708,8 @@ module Google
         # Output only. Values for predefined system metadata labels. System labels are a
         # kind of metadata extracted by Google, including "machine_image", "vpc", "
         # subnet_id", "security_group", "name", etc. System label values can be only
-        # strings, Boolean values, or a list of strings. For example:
-        # ` "name": "my-test-instance",
-        # "security_group": ["a", "b", "c"],
-        # "spot_instance": false `
+        # strings, Boolean values, or a list of strings. For example: ` "name": "my-test-
+        # instance", "security_group": ["a", "b", "c"], "spot_instance": false `
         # Corresponds to the JSON property `systemLabels`
         # @return [Hash<String,Object>]
         attr_accessor :system_labels
@@ -2073,6 +2025,19 @@ module Google
         end
       end
       
+      # The parameters to UndeleteBucket.
+      class UndeleteBucketRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The parameters to WriteLogEntries.
       class WriteLogEntriesRequest
         include Google::Apis::Core::Hashable
@@ -2114,14 +2079,11 @@ module Google
         attr_accessor :labels
       
         # Optional. A default log resource name that is assigned to all log entries in
-        # entries that do not specify a value for log_name:
-        # "projects/[PROJECT_ID]/logs/[LOG_ID]"
-        # "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-        # "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-        # "folders/[FOLDER_ID]/logs/[LOG_ID]"
-        # [LOG_ID] must be URL-encoded. For example:
-        # "projects/my-project-id/logs/syslog"
-        # "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity"
+        # entries that do not specify a value for log_name: "projects/[PROJECT_ID]/logs/[
+        # LOG_ID]" "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[
+        # BILLING_ACCOUNT_ID]/logs/[LOG_ID]" "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID]
+        # must be URL-encoded. For example: "projects/my-project-id/logs/syslog" "
+        # organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity"
         # The permission logging.logEntries.create is needed on each project,
         # organization, billing account, or folder that is receiving new log entries,
         # whether the resource is specified in logName or in an individual log entry.
@@ -2147,10 +2109,8 @@ module Google
         # attributes according to the schema. For example, a particular Compute Engine
         # VM instance could be represented by the following object, because the
         # MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "
-        # zone":
-        # ` "type": "gce_instance",
-        # "labels": ` "instance_id": "12345678901234",
-        # "zone": "us-central1-a" ``
+        # zone": ` "type": "gce_instance", "labels": ` "instance_id": "12345678901234", "
+        # zone": "us-central1-a" ``
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::LoggingV2::MonitoredResource]
         attr_accessor :resource

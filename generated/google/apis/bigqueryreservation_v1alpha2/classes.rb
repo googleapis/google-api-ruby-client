@@ -22,13 +22,12 @@ module Google
   module Apis
     module BigqueryreservationV1alpha2
       
-      # The metadata for operation returned from
-      # ReservationService.CreateSlotPool.
+      # The metadata for operation returned from ReservationService.CreateSlotPool.
       class CreateSlotPoolMetadata
         include Google::Apis::Core::Hashable
       
-        # Resource name of the slot pool that is being created. E.g.,
-        # projects/myproject/locations/us-central1/reservations/foo/slotPools/123
+        # Resource name of the slot pool that is being created. E.g., projects/myproject/
+        # locations/us-central1/reservations/foo/slotPools/123
         # Corresponds to the JSON property `slotPool`
         # @return [String]
         attr_accessor :slot_pool
@@ -43,13 +42,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -66,8 +63,8 @@ module Google
       class ListReservationGrantsResponse
         include Google::Apis::Core::Hashable
       
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -92,8 +89,8 @@ module Google
       class ListReservationsResponse
         include Google::Apis::Core::Hashable
       
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -118,8 +115,8 @@ module Google
       class ListSlotPoolsResponse
         include Google::Apis::Core::Hashable
       
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -145,47 +142,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::BigqueryreservationV1alpha2::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -208,35 +203,31 @@ module Google
       class Reservation
         include Google::Apis::Core::Hashable
       
-        # The resource name of the reservation, e.g.,
-        # "projects/*/locations/*/reservations/dev/team/product". Reservation names
-        # (e.g., "dev/team/product") exceeding a depth of six will fail with
-        # `google.rpc.Code.INVALID_ARGUMENT`.
+        # The resource name of the reservation, e.g., "projects/*/locations/*/
+        # reservations/dev/team/product". Reservation names (e.g., "dev/team/product")
+        # exceeding a depth of six will fail with `google.rpc.Code.INVALID_ARGUMENT`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Maximum slots available to this reservation and its children. A slot is a
-        # unit of computational power in BigQuery, and serves as the unit of
-        # parallelism. In a scan of a multi-partitioned table, a single slot operates
-        # on a single partition of the table.
-        # If the new reservation's slot capacity exceed the parent's slot capacity or
-        # if total slot capacity of the new reservation and its siblings exceeds the
-        # parent's slot capacity, the request will fail with
-        # `google.rpc.Code.RESOURCE_EXHAUSTED`.
+        # Maximum slots available to this reservation and its children. A slot is a unit
+        # of computational power in BigQuery, and serves as the unit of parallelism. In
+        # a scan of a multi-partitioned table, a single slot operates on a single
+        # partition of the table. If the new reservation's slot capacity exceed the
+        # parent's slot capacity or if total slot capacity of the new reservation and
+        # its siblings exceeds the parent's slot capacity, the request will fail with `
+        # google.rpc.Code.RESOURCE_EXHAUSTED`.
         # Corresponds to the JSON property `slotCapacity`
         # @return [Fixnum]
         attr_accessor :slot_capacity
       
-        # If true, any query using this reservation will also be submitted to the
-        # parent reservation. This allows the query to share the additional slot
-        # capacity of the parent with other queries in the parent reservation. If the
-        # parent also has this field set to true, then this process will continue
-        # until it encounters a reservation for which this is false.
-        # If false, a query using this reservation will
-        # execute with the maximum slot capacity as specified above.
-        # If not specified, default value is true.
-        # Ignored for top-level reservation.
+        # If true, any query using this reservation will also be submitted to the parent
+        # reservation. This allows the query to share the additional slot capacity of
+        # the parent with other queries in the parent reservation. If the parent also
+        # has this field set to true, then this process will continue until it
+        # encounters a reservation for which this is false. If false, a query using this
+        # reservation will execute with the maximum slot capacity as specified above. If
+        # not specified, default value is true. Ignored for top-level reservation.
         # Corresponds to the JSON property `useParentReservation`
         # @return [Boolean]
         attr_accessor :use_parent_reservation
@@ -254,13 +245,13 @@ module Google
         end
       end
       
-      # A ReservationGrant allows a project to submit jobs
-      # of a certain type using slots from the specified reservation.
+      # A ReservationGrant allows a project to submit jobs of a certain type using
+      # slots from the specified reservation.
       class ReservationGrant
         include Google::Apis::Core::Hashable
       
-        # The resource which will use the reservation. E.g.
-        # projects/myproject, folders/123, organizations/456.
+        # The resource which will use the reservation. E.g. projects/myproject, folders/
+        # 123, organizations/456.
         # Corresponds to the JSON property `grantee`
         # @return [String]
         attr_accessor :grantee
@@ -270,16 +261,15 @@ module Google
         # @return [String]
         attr_accessor :job_type
       
-        # Output only. Name of the resource. E.g.:
-        # projects/myproject/locations/eu/reservationGrants/123.
+        # Output only. Name of the resource. E.g.: projects/myproject/locations/eu/
+        # reservationGrants/123.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Resource name of the reservation.
-        # E.g., projects/myproject/locations/eu/reservations/my_reservation.
-        # This reservation must be in the same location as the grant.
-        # This reservation should belong to the same parent project.
+        # Resource name of the reservation. E.g., projects/myproject/locations/eu/
+        # reservations/my_reservation. This reservation must be in the same location as
+        # the grant. This reservation should belong to the same parent project.
         # Corresponds to the JSON property `reservation`
         # @return [String]
         attr_accessor :reservation
@@ -307,8 +297,8 @@ module Google
       class SearchReservationGrantsResponse
         include Google::Apis::Core::Hashable
       
-        # Token to retrieve the next page of results, or empty if there are no
-        # more results in the list.
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -333,34 +323,32 @@ module Google
       # usage. Slot pool is immutable and cannot be deleted until the end of the
       # commitment period. After the end of the commitment period, slots are still
       # available but can be freely removed any time. Annual commitments will
-      # automatically be downgraded to monthly after the commitment ends.
-      # A slot pool resource exists as a child resource of a top-level reservation.
-      # Sum of all the ACTIVE pools slot_count is always equal to the reservation
-      # slot_capacity.
+      # automatically be downgraded to monthly after the commitment ends. A slot pool
+      # resource exists as a child resource of a top-level reservation. Sum of all the
+      # ACTIVE pools slot_count is always equal to the reservation slot_capacity.
       class SlotPool
         include Google::Apis::Core::Hashable
       
-        # Output only. The end of the commitment period. Slot pool cannot be
-        # removed before commitment_end_time. It is applicable only for ACTIVE slot
-        # pools and is computed as a combination of the plan and the time when the
-        # slot pool became ACTIVE.
+        # Output only. The end of the commitment period. Slot pool cannot be removed
+        # before commitment_end_time. It is applicable only for ACTIVE slot pools and is
+        # computed as a combination of the plan and the time when the slot pool became
+        # ACTIVE.
         # Corresponds to the JSON property `commitmentEndTime`
         # @return [String]
         attr_accessor :commitment_end_time
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `failureStatus`
         # @return [Google::Apis::BigqueryreservationV1alpha2::Status]
         attr_accessor :failure_status
       
-        # Output only. The resource name of the slot pool, e.g.,
-        # projects/myproject/locations/us-central1/reservations/myreservation/
-        # slotPools/123
+        # Output only. The resource name of the slot pool, e.g., projects/myproject/
+        # locations/us-central1/reservations/myreservation/slotPools/123
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -395,12 +383,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -409,15 +397,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message

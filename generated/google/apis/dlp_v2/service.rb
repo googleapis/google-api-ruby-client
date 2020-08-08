@@ -49,21 +49,18 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Returns a list of the sensitive information types that the DLP API
-        # supports. See https://cloud.google.com/dlp/docs/infotypes-reference to
-        # learn more.
+        # Returns a list of the sensitive information types that the DLP API supports.
+        # See https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
         # @param [String] filter
-        #   filter to only return infoTypes supported by certain parts of the
-        #   API. Defaults to supported_by=INSPECT.
+        #   filter to only return infoTypes supported by certain parts of the API.
+        #   Defaults to supported_by=INSPECT.
         # @param [String] language_code
-        #   BCP-47 language code for localized infoType friendly
-        #   names. If omitted, or if localized strings are not available,
-        #   en-US strings will be returned.
+        #   BCP-47 language code for localized infoType friendly names. If omitted, or if
+        #   localized strings are not available, en-US strings will be returned.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] parent
-        #   The parent resource name.
-        #   - Format:locations/[LOCATION-ID]
+        #   The parent resource name. - Format:locations/[LOCATION-ID]
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -94,19 +91,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of the sensitive information types that the DLP API
-        # supports. See https://cloud.google.com/dlp/docs/infotypes-reference to
-        # learn more.
+        # Returns a list of the sensitive information types that the DLP API supports.
+        # See https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
         # @param [String] parent
-        #   The parent resource name.
-        #   - Format:locations/[LOCATION-ID]
+        #   The parent resource name. - Format:locations/[LOCATION-ID]
         # @param [String] filter
-        #   filter to only return infoTypes supported by certain parts of the
-        #   API. Defaults to supported_by=INSPECT.
+        #   filter to only return infoTypes supported by certain parts of the API.
+        #   Defaults to supported_by=INSPECT.
         # @param [String] language_code
-        #   BCP-47 language code for localized infoType friendly
-        #   names. If omitted, or if localized strings are not available,
-        #   en-US strings will be returned.
+        #   BCP-47 language code for localized infoType friendly names. If omitted, or if
+        #   localized strings are not available, en-US strings will be returned.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] fields
@@ -139,16 +133,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a DeidentifyTemplate for re-using frequently used configuration
-        # for de-identifying content, images, and storage.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Creates a DeidentifyTemplate for re-using frequently used configuration for de-
+        # identifying content, images, and storage. See https://cloud.google.com/dlp/
+        # docs/creating-templates-deid to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -179,14 +170,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a DeidentifyTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be
-        #   deleted,
-        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
-        #   projects/project-id/deidentifyTemplates/432452342.
+        #   deleted, for example `organizations/433245324/deidentifyTemplates/432452342`
+        #   or projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -214,13 +203,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a DeidentifyTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be read,
-        #   for
-        #   example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -249,34 +236,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DeidentifyTemplates.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc,update_time, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the template was created.
-        #   - `update_time`: corresponds to time the template was last updated.
-        #   - `name`: corresponds to template's name.
-        #   - `display_name`: corresponds to template's display name.
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the template was created. - `update_time`: corresponds to time the template
+        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
+        #   corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns
-        #   a page of max size 100.
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to `ListDeidentifyTemplates`.
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListDeidentifyTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -308,13 +289,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the DeidentifyTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of organization and deidentify template to be updated,
-        #   for
-        #   example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest] google_privacy_dlp_v2_update_deidentify_template_request_object
         # @param [String] fields
@@ -346,15 +325,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an InspectTemplate for re-using frequently used configuration
-        # for inspecting content, images, and storage.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Creates an InspectTemplate for re-using frequently used configuration for
+        # inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/
+        # creating-templates to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -385,13 +362,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an InspectTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be deleted,
-        #   for
-        #   example `organizations/433245324/inspectTemplates/432452342` or
-        #   projects/project-id/inspectTemplates/432452342.
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -419,13 +395,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an InspectTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be read,
-        #   for
-        #   example `organizations/433245324/inspectTemplates/432452342` or
-        #   projects/project-id/inspectTemplates/432452342.
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -453,33 +428,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists InspectTemplates.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc,update_time, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the template was created.
-        #   - `update_time`: corresponds to time the template was last updated.
-        #   - `name`: corresponds to template's name.
-        #   - `display_name`: corresponds to template's display name.
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the template was created. - `update_time`: corresponds to time the template
+        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
+        #   corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns
-        #   a page of max size 100.
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to `ListInspectTemplates`.
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListInspectTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -511,12 +481,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the InspectTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] name
         #   Required. Resource name of organization and inspectTemplate to be updated, for
-        #   example `organizations/433245324/inspectTemplates/432452342` or
-        #   projects/project-id/inspectTemplates/432452342.
+        #   example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest] google_privacy_dlp_v2_update_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -547,16 +517,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a DeidentifyTemplate for re-using frequently used configuration
-        # for de-identifying content, images, and storage.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Creates a DeidentifyTemplate for re-using frequently used configuration for de-
+        # identifying content, images, and storage. See https://cloud.google.com/dlp/
+        # docs/creating-templates-deid to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -587,14 +554,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a DeidentifyTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be
-        #   deleted,
-        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
-        #   projects/project-id/deidentifyTemplates/432452342.
+        #   deleted, for example `organizations/433245324/deidentifyTemplates/432452342`
+        #   or projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -622,13 +587,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a DeidentifyTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be read,
-        #   for
-        #   example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -657,34 +620,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DeidentifyTemplates.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc,update_time, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the template was created.
-        #   - `update_time`: corresponds to time the template was last updated.
-        #   - `name`: corresponds to template's name.
-        #   - `display_name`: corresponds to template's display name.
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the template was created. - `update_time`: corresponds to time the template
+        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
+        #   corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns
-        #   a page of max size 100.
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to `ListDeidentifyTemplates`.
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListDeidentifyTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -716,13 +673,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the DeidentifyTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of organization and deidentify template to be updated,
-        #   for
-        #   example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest] google_privacy_dlp_v2_update_deidentify_template_request_object
         # @param [String] fields
@@ -754,15 +709,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an InspectTemplate for re-using frequently used configuration
-        # for inspecting content, images, and storage.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Creates an InspectTemplate for re-using frequently used configuration for
+        # inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/
+        # creating-templates to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -793,13 +746,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an InspectTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be deleted,
-        #   for
-        #   example `organizations/433245324/inspectTemplates/432452342` or
-        #   projects/project-id/inspectTemplates/432452342.
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -827,13 +779,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an InspectTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be read,
-        #   for
-        #   example `organizations/433245324/inspectTemplates/432452342` or
-        #   projects/project-id/inspectTemplates/432452342.
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -861,33 +812,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists InspectTemplates.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc,update_time, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the template was created.
-        #   - `update_time`: corresponds to time the template was last updated.
-        #   - `name`: corresponds to template's name.
-        #   - `display_name`: corresponds to template's display name.
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the template was created. - `update_time`: corresponds to time the template
+        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
+        #   corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns
-        #   a page of max size 100.
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to `ListInspectTemplates`.
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListInspectTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -919,12 +865,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the InspectTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] name
         #   Required. Resource name of organization and inspectTemplate to be updated, for
-        #   example `organizations/433245324/inspectTemplates/432452342` or
-        #   projects/project-id/inspectTemplates/432452342.
+        #   example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest] google_privacy_dlp_v2_update_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -955,15 +901,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a pre-built stored infoType to be used for inspection.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Creates a pre-built stored infoType to be used for inspection. See https://
+        # cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -994,14 +937,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a stored infoType.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-
+        # stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be deleted,
-        #   for
-        #   example `organizations/433245324/storedInfoTypes/432452342` or
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   for example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1029,13 +970,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a stored infoType.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-
+        # infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be read, for
-        #   example `organizations/433245324/storedInfoTypes/432452342` or
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1063,35 +1003,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists stored infoTypes.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-
+        # infotypes to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc, display_name, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the most recent version of the
-        #   resource was created.
-        #   - `state`: corresponds to the state of the resource.
-        #   - `name`: corresponds to resource name.
-        #   - `display_name`: corresponds to info type's display name.
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc, display_name,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the most recent version of the resource was created. - `state`: corresponds to
+        #   the state of the resource. - `name`: corresponds to resource name. - `
+        #   display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns
-        #   a page of max size 100.
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to `ListStoredInfoTypes`.
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListStoredInfoTypes`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1124,13 +1057,12 @@ module Google
         end
         
         # Updates the stored infoType by creating a new version. The existing version
-        # will continue to be used until the new version is ready.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # will continue to be used until the new version is ready. See https://cloud.
+        # google.com/dlp/docs/creating-stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of organization and storedInfoType to be updated, for
-        #   example `organizations/433245324/storedInfoTypes/432452342` or
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest] google_privacy_dlp_v2_update_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1161,15 +1093,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a pre-built stored infoType to be used for inspection.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Creates a pre-built stored infoType to be used for inspection. See https://
+        # cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1200,14 +1129,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a stored infoType.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-
+        # stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be deleted,
-        #   for
-        #   example `organizations/433245324/storedInfoTypes/432452342` or
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   for example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1235,13 +1162,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a stored infoType.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-
+        # infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be read, for
-        #   example `organizations/433245324/storedInfoTypes/432452342` or
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1269,35 +1195,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists stored infoTypes.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-
+        # infotypes to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc, display_name, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the most recent version of the
-        #   resource was created.
-        #   - `state`: corresponds to the state of the resource.
-        #   - `name`: corresponds to resource name.
-        #   - `display_name`: corresponds to info type's display name.
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc, display_name,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the most recent version of the resource was created. - `state`: corresponds to
+        #   the state of the resource. - `name`: corresponds to resource name. - `
+        #   display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns
-        #   a page of max size 100.
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to `ListStoredInfoTypes`.
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListStoredInfoTypes`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1330,13 +1249,12 @@ module Google
         end
         
         # Updates the stored infoType by creating a new version. The existing version
-        # will continue to be used until the new version is ready.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # will continue to be used until the new version is ready. See https://cloud.
+        # google.com/dlp/docs/creating-stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of organization and storedInfoType to be updated, for
-        #   example `organizations/433245324/storedInfoTypes/432452342` or
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest] google_privacy_dlp_v2_update_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1367,17 +1285,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # De-identifies potentially sensitive info from a ContentItem.
-        # This method has limits on input size and output size.
-        # See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to
-        # learn more.
-        # When no InfoTypes or CustomInfoTypes are specified in this request, the
-        # system will automatically choose what detectors to run. By default this may
-        # be all types, but may change over time as detectors are updated.
+        # De-identifies potentially sensitive info from a ContentItem. This method has
+        # limits on input size and output size. See https://cloud.google.com/dlp/docs/
+        # deidentify-sensitive-data to learn more. When no InfoTypes or CustomInfoTypes
+        # are specified in this request, the system will automatically choose what
+        # detectors to run. By default this may be all types, but may change over time
+        # as detectors are updated.
         # @param [String] parent
-        #   Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[
+        #   PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentRequest] google_privacy_dlp_v2_deidentify_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1408,17 +1324,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Finds potentially sensitive info in content.
-        # This method has limits on input size, processing time, and output size.
-        # When no InfoTypes or CustomInfoTypes are specified in this request, the
-        # system will automatically choose what detectors to run. By default this may
-        # be all types, but may change over time as detectors are updated.
-        # For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images
-        # and https://cloud.google.com/dlp/docs/inspecting-text,
+        # Finds potentially sensitive info in content. This method has limits on input
+        # size, processing time, and output size. When no InfoTypes or CustomInfoTypes
+        # are specified in this request, the system will automatically choose what
+        # detectors to run. By default this may be all types, but may change over time
+        # as detectors are updated. For how to guides, see https://cloud.google.com/dlp/
+        # docs/inspecting-images and https://cloud.google.com/dlp/docs/inspecting-text,
         # @param [String] parent
-        #   Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[
+        #   PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentRequest] google_privacy_dlp_v2_inspect_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1449,15 +1363,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Re-identifies content that has been de-identified.
-        # See
-        # https://cloud.google.com/dlp/docs/pseudonymization#re-
-        # identification_in_free_text_code_example
-        # to learn more.
+        # Re-identifies content that has been de-identified. See https://cloud.google.
+        # com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example to
+        # learn more.
         # @param [String] parent
-        #   Required. The parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Required. The parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentRequest] google_privacy_dlp_v2_reidentify_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1488,16 +1399,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a DeidentifyTemplate for re-using frequently used configuration
-        # for de-identifying content, images, and storage.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Creates a DeidentifyTemplate for re-using frequently used configuration for de-
+        # identifying content, images, and storage. See https://cloud.google.com/dlp/
+        # docs/creating-templates-deid to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1528,14 +1436,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a DeidentifyTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be
-        #   deleted,
-        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
-        #   projects/project-id/deidentifyTemplates/432452342.
+        #   deleted, for example `organizations/433245324/deidentifyTemplates/432452342`
+        #   or projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1563,13 +1469,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a DeidentifyTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be read,
-        #   for
-        #   example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1598,34 +1502,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DeidentifyTemplates.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc,update_time, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the template was created.
-        #   - `update_time`: corresponds to time the template was last updated.
-        #   - `name`: corresponds to template's name.
-        #   - `display_name`: corresponds to template's display name.
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the template was created. - `update_time`: corresponds to time the template
+        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
+        #   corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns
-        #   a page of max size 100.
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to `ListDeidentifyTemplates`.
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListDeidentifyTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1657,13 +1555,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the DeidentifyTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of organization and deidentify template to be updated,
-        #   for
-        #   example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest] google_privacy_dlp_v2_update_deidentify_template_request_object
         # @param [String] fields
@@ -1695,11 +1591,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running DlpJob. The server
-        # makes a best effort to cancel the DlpJob, but success is not
-        # guaranteed.
-        # See https://cloud.google.com/dlp/docs/inspecting-storage and
-        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+        # Starts asynchronous cancellation on a long-running DlpJob. The server makes a
+        # best effort to cancel the DlpJob, but success is not guaranteed. See https://
+        # cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/
+        # docs/compute-risk-analysis to learn more.
         # @param [String] name
         #   Required. The name of the DlpJob resource to be cancelled.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CancelDlpJobRequest] google_privacy_dlp_v2_cancel_dlp_job_request_object
@@ -1732,16 +1627,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new job to inspect storage or calculate risk metrics.
-        # See https://cloud.google.com/dlp/docs/inspecting-storage and
-        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
-        # When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the
-        # system will automatically choose what detectors to run. By default this may
-        # be all types, but may change over time as detectors are updated.
+        # Creates a new job to inspect storage or calculate risk metrics. See https://
+        # cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/
+        # docs/compute-risk-analysis to learn more. When no InfoTypes or CustomInfoTypes
+        # are specified in inspect jobs, the system will automatically choose what
+        # detectors to run. By default this may be all types, but may change over time
+        # as detectors are updated.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDlpJobRequest] google_privacy_dlp_v2_create_dlp_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1772,11 +1666,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a long-running DlpJob. This method indicates that the client is
-        # no longer interested in the DlpJob result. The job will be cancelled if
-        # possible.
-        # See https://cloud.google.com/dlp/docs/inspecting-storage and
-        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+        # Deletes a long-running DlpJob. This method indicates that the client is no
+        # longer interested in the DlpJob result. The job will be cancelled if possible.
+        # See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.
+        # google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] name
         #   Required. The name of the DlpJob resource to be deleted.
         # @param [String] fields
@@ -1806,9 +1699,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running DlpJob.
-        # See https://cloud.google.com/dlp/docs/inspecting-storage and
-        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+        # Gets the latest state of a long-running DlpJob. See https://cloud.google.com/
+        # dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-
+        # analysis to learn more.
         # @param [String] name
         #   Required. The name of the DlpJob resource.
         # @param [String] fields
@@ -1838,50 +1731,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DlpJobs that match the specified filter in the request.
-        # See https://cloud.google.com/dlp/docs/inspecting-storage and
-        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+        # Lists DlpJobs that match the specified filter in the request. See https://
+        # cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/
+        # docs/compute-risk-analysis to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [String] filter
-        #   Allows filtering.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by `AND` or `OR` logical operators. A
-        #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * Supported fields/values for inspect jobs:
-        #   - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED
-        #   - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
-        #   - `trigger_name` - The resource name of the trigger that created job.
-        #   - 'end_time` - Corresponds to time the job finished.
-        #   - 'start_time` - Corresponds to time the job finished.
-        #   * Supported fields for risk analysis jobs:
-        #   - `state` - RUNNING|CANCELED|FINISHED|FAILED
-        #   - 'end_time` - Corresponds to time the job finished.
-        #   - 'start_time` - Corresponds to time the job finished.
-        #   * The operator must be `=` or `!=`.
-        #   Examples:
-        #   * inspected_storage = cloud_storage AND state = done
-        #   * inspected_storage = cloud_storage OR inspected_storage = bigquery
-        #   * inspected_storage = cloud_storage AND (state = done OR state = canceled)
-        #   * end_time > \"2017-12-12T00:00:00+00:00\"
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
+        #   more restrictions. * Restrictions can be combined by `AND` or `OR` logical
+        #   operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+        #   has the form of ``field` `operator` `value``. * Supported fields/values for
+        #   inspect jobs: - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED - `
+        #   inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The
+        #   resource name of the trigger that created job. - 'end_time` - Corresponds to
+        #   time the job finished. - 'start_time` - Corresponds to time the job finished. *
+        #   Supported fields for risk analysis jobs: - `state` - RUNNING|CANCELED|
+        #   FINISHED|FAILED - 'end_time` - Corresponds to time the job finished. - '
+        #   start_time` - Corresponds to time the job finished. * The operator must be `=`
+        #   or `!=`. Examples: * inspected_storage = cloud_storage AND state = done *
+        #   inspected_storage = cloud_storage OR inspected_storage = bigquery *
+        #   inspected_storage = cloud_storage AND (state = done OR state = canceled) *
+        #   end_time > \"2017-12-12T00:00:00+00:00\" The length of this field should be no
+        #   more than 500 characters.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc, end_time asc, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the job was created.
-        #   - `end_time`: corresponds to time the job ended.
-        #   - `name`: corresponds to job's name.
-        #   - `state`: corresponds to `state`
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc, end_time asc,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the job was created. - `end_time`: corresponds to time the job ended. - `name`:
+        #   corresponds to job's name. - `state`: corresponds to `state`
         # @param [Fixnum] page_size
         #   The standard list page size.
         # @param [String] page_token
@@ -1921,17 +1802,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Redacts potentially sensitive info from an image.
-        # This method has limits on input size, processing time, and output size.
-        # See https://cloud.google.com/dlp/docs/redacting-sensitive-data-images to
-        # learn more.
-        # When no InfoTypes or CustomInfoTypes are specified in this request, the
-        # system will automatically choose what detectors to run. By default this may
-        # be all types, but may change over time as detectors are updated.
+        # Redacts potentially sensitive info from an image. This method has limits on
+        # input size, processing time, and output size. See https://cloud.google.com/dlp/
+        # docs/redacting-sensitive-data-images to learn more. When no InfoTypes or
+        # CustomInfoTypes are specified in this request, the system will automatically
+        # choose what detectors to run. By default this may be all types, but may change
+        # over time as detectors are updated.
         # @param [String] parent
-        #   The parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   The parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[
+        #   PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageRequest] google_privacy_dlp_v2_redact_image_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1962,15 +1841,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an InspectTemplate for re-using frequently used configuration
-        # for inspecting content, images, and storage.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Creates an InspectTemplate for re-using frequently used configuration for
+        # inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/
+        # creating-templates to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2001,13 +1878,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an InspectTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be deleted,
-        #   for
-        #   example `organizations/433245324/inspectTemplates/432452342` or
-        #   projects/project-id/inspectTemplates/432452342.
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2035,13 +1911,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an InspectTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be read,
-        #   for
-        #   example `organizations/433245324/inspectTemplates/432452342` or
-        #   projects/project-id/inspectTemplates/432452342.
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2069,33 +1944,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists InspectTemplates.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc,update_time, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the template was created.
-        #   - `update_time`: corresponds to time the template was last updated.
-        #   - `name`: corresponds to template's name.
-        #   - `display_name`: corresponds to template's display name.
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the template was created. - `update_time`: corresponds to time the template
+        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
+        #   corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns
-        #   a page of max size 100.
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to `ListInspectTemplates`.
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListInspectTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2127,12 +1997,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the InspectTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] name
         #   Required. Resource name of organization and inspectTemplate to be updated, for
-        #   example `organizations/433245324/inspectTemplates/432452342` or
-        #   projects/project-id/inspectTemplates/432452342.
+        #   example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest] google_privacy_dlp_v2_update_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2163,11 +2033,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Activate a job trigger. Causes the immediate execute of a trigger
-        # instead of waiting on the trigger event to occur.
+        # Activate a job trigger. Causes the immediate execute of a trigger instead of
+        # waiting on the trigger event to occur.
         # @param [String] name
-        #   Required. Resource name of the trigger to activate, for example
-        #   `projects/dlp-test-project/jobTriggers/53234423`.
+        #   Required. Resource name of the trigger to activate, for example `projects/dlp-
+        #   test-project/jobTriggers/53234423`.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2ActivateJobTriggerRequest] google_privacy_dlp_v2_activate_job_trigger_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2199,12 +2069,11 @@ module Google
         end
         
         # Creates a job trigger to run DLP actions such as scanning storage for
-        # sensitive information on a set schedule.
-        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        # sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/
+        # creating-job-triggers to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateJobTriggerRequest] google_privacy_dlp_v2_create_job_trigger_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2235,11 +2104,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a job trigger.
-        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        # Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-
+        # triggers to learn more.
         # @param [String] name
-        #   Required. Resource name of the project and the triggeredJob, for example
-        #   `projects/dlp-test-project/jobTriggers/53234423`.
+        #   Required. Resource name of the project and the triggeredJob, for example `
+        #   projects/dlp-test-project/jobTriggers/53234423`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2267,11 +2136,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a job trigger.
-        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        # Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-
+        # triggers to learn more.
         # @param [String] name
-        #   Required. Resource name of the project and the triggeredJob, for example
-        #   `projects/dlp-test-project/jobTriggers/53234423`.
+        #   Required. Resource name of the project and the triggeredJob, for example `
+        #   projects/dlp-test-project/jobTriggers/53234423`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2299,53 +2168,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists job triggers.
-        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        # Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-
+        # triggers to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [String] filter
-        #   Allows filtering.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by `AND` or `OR` logical operators. A
-        #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * Supported fields/values for inspect jobs:
-        #   - `status` - HEALTHY|PAUSED|CANCELLED
-        #   - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
-        #   - 'last_run_time` - RFC 3339 formatted timestamp, surrounded by
-        #   quotation marks. Nanoseconds are ignored.
-        #   - 'error_count' - Number of errors that have occurred while running.
-        #   * The operator must be `=` or `!=` for status and inspected_storage.
-        #   Examples:
-        #   * inspected_storage = cloud_storage AND status = HEALTHY
-        #   * inspected_storage = cloud_storage OR inspected_storage = bigquery
-        #   * inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY)
-        #   * last_run_time > \"2017-12-12T00:00:00+00:00\"
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
+        #   more restrictions. * Restrictions can be combined by `AND` or `OR` logical
+        #   operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+        #   has the form of ``field` `operator` `value``. * Supported fields/values for
+        #   inspect jobs: - `status` - HEALTHY|PAUSED|CANCELLED - `inspected_storage` -
+        #   DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
+        #   timestamp, surrounded by quotation marks. Nanoseconds are ignored. - '
+        #   error_count' - Number of errors that have occurred while running. * The
+        #   operator must be `=` or `!=` for status and inspected_storage. Examples: *
+        #   inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage =
+        #   cloud_storage OR inspected_storage = bigquery * inspected_storage =
+        #   cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time > \"2017-
+        #   12-12T00:00:00+00:00\" The length of this field should be no more than 500
+        #   characters.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of triggeredJob fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc,update_time, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the JobTrigger was created.
-        #   - `update_time`: corresponds to time the JobTrigger was last updated.
-        #   - `last_run_time`: corresponds to the last time the JobTrigger ran.
-        #   - `name`: corresponds to JobTrigger's name.
-        #   - `display_name`: corresponds to JobTrigger's display name.
-        #   - `status`: corresponds to JobTrigger's status.
+        #   Comma separated list of triggeredJob fields to order by, followed by `asc` or `
+        #   desc` postfix. This list is case-insensitive, default sorting order is
+        #   ascending, redundant space characters are insignificant. Example: `name asc,
+        #   update_time, create_time desc` Supported fields are: - `create_time`:
+        #   corresponds to time the JobTrigger was created. - `update_time`: corresponds
+        #   to time the JobTrigger was last updated. - `last_run_time`: corresponds to the
+        #   last time the JobTrigger ran. - `name`: corresponds to JobTrigger's name. - `
+        #   display_name`: corresponds to JobTrigger's display name. - `status`:
+        #   corresponds to JobTrigger's status.
         # @param [Fixnum] page_size
         #   Size of the page, can be limited by a server.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to ListJobTriggers. `order_by` field must not
-        #   change for subsequent calls.
+        #   Page token to continue retrieval. Comes from previous call to ListJobTriggers.
+        #   `order_by` field must not change for subsequent calls.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2378,11 +2237,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a job trigger.
-        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        # Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-
+        # triggers to learn more.
         # @param [String] name
-        #   Required. Resource name of the project and the triggeredJob, for example
-        #   `projects/dlp-test-project/jobTriggers/53234423`.
+        #   Required. Resource name of the project and the triggeredJob, for example `
+        #   projects/dlp-test-project/jobTriggers/53234423`.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateJobTriggerRequest] google_privacy_dlp_v2_update_job_trigger_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2413,17 +2272,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # De-identifies potentially sensitive info from a ContentItem.
-        # This method has limits on input size and output size.
-        # See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to
-        # learn more.
-        # When no InfoTypes or CustomInfoTypes are specified in this request, the
-        # system will automatically choose what detectors to run. By default this may
-        # be all types, but may change over time as detectors are updated.
+        # De-identifies potentially sensitive info from a ContentItem. This method has
+        # limits on input size and output size. See https://cloud.google.com/dlp/docs/
+        # deidentify-sensitive-data to learn more. When no InfoTypes or CustomInfoTypes
+        # are specified in this request, the system will automatically choose what
+        # detectors to run. By default this may be all types, but may change over time
+        # as detectors are updated.
         # @param [String] parent
-        #   Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[
+        #   PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentRequest] google_privacy_dlp_v2_deidentify_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2454,17 +2311,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Finds potentially sensitive info in content.
-        # This method has limits on input size, processing time, and output size.
-        # When no InfoTypes or CustomInfoTypes are specified in this request, the
-        # system will automatically choose what detectors to run. By default this may
-        # be all types, but may change over time as detectors are updated.
-        # For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images
-        # and https://cloud.google.com/dlp/docs/inspecting-text,
+        # Finds potentially sensitive info in content. This method has limits on input
+        # size, processing time, and output size. When no InfoTypes or CustomInfoTypes
+        # are specified in this request, the system will automatically choose what
+        # detectors to run. By default this may be all types, but may change over time
+        # as detectors are updated. For how to guides, see https://cloud.google.com/dlp/
+        # docs/inspecting-images and https://cloud.google.com/dlp/docs/inspecting-text,
         # @param [String] parent
-        #   Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[
+        #   PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentRequest] google_privacy_dlp_v2_inspect_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2495,15 +2350,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Re-identifies content that has been de-identified.
-        # See
-        # https://cloud.google.com/dlp/docs/pseudonymization#re-
-        # identification_in_free_text_code_example
-        # to learn more.
+        # Re-identifies content that has been de-identified. See https://cloud.google.
+        # com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example to
+        # learn more.
         # @param [String] parent
-        #   Required. The parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Required. The parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentRequest] google_privacy_dlp_v2_reidentify_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2534,16 +2386,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a DeidentifyTemplate for re-using frequently used configuration
-        # for de-identifying content, images, and storage.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Creates a DeidentifyTemplate for re-using frequently used configuration for de-
+        # identifying content, images, and storage. See https://cloud.google.com/dlp/
+        # docs/creating-templates-deid to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2574,14 +2423,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a DeidentifyTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be
-        #   deleted,
-        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
-        #   projects/project-id/deidentifyTemplates/432452342.
+        #   deleted, for example `organizations/433245324/deidentifyTemplates/432452342`
+        #   or projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2609,13 +2456,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a DeidentifyTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be read,
-        #   for
-        #   example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2644,34 +2489,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DeidentifyTemplates.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc,update_time, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the template was created.
-        #   - `update_time`: corresponds to time the template was last updated.
-        #   - `name`: corresponds to template's name.
-        #   - `display_name`: corresponds to template's display name.
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the template was created. - `update_time`: corresponds to time the template
+        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
+        #   corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns
-        #   a page of max size 100.
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to `ListDeidentifyTemplates`.
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListDeidentifyTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2703,13 +2542,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the DeidentifyTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-        # more.
+        # Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of organization and deidentify template to be updated,
-        #   for
-        #   example `organizations/433245324/deidentifyTemplates/432452342` or
+        #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest] google_privacy_dlp_v2_update_deidentify_template_request_object
         # @param [String] fields
@@ -2741,11 +2578,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running DlpJob. The server
-        # makes a best effort to cancel the DlpJob, but success is not
-        # guaranteed.
-        # See https://cloud.google.com/dlp/docs/inspecting-storage and
-        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+        # Starts asynchronous cancellation on a long-running DlpJob. The server makes a
+        # best effort to cancel the DlpJob, but success is not guaranteed. See https://
+        # cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/
+        # docs/compute-risk-analysis to learn more.
         # @param [String] name
         #   Required. The name of the DlpJob resource to be cancelled.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CancelDlpJobRequest] google_privacy_dlp_v2_cancel_dlp_job_request_object
@@ -2778,16 +2614,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new job to inspect storage or calculate risk metrics.
-        # See https://cloud.google.com/dlp/docs/inspecting-storage and
-        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
-        # When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the
-        # system will automatically choose what detectors to run. By default this may
-        # be all types, but may change over time as detectors are updated.
+        # Creates a new job to inspect storage or calculate risk metrics. See https://
+        # cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/
+        # docs/compute-risk-analysis to learn more. When no InfoTypes or CustomInfoTypes
+        # are specified in inspect jobs, the system will automatically choose what
+        # detectors to run. By default this may be all types, but may change over time
+        # as detectors are updated.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDlpJobRequest] google_privacy_dlp_v2_create_dlp_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2818,11 +2653,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a long-running DlpJob. This method indicates that the client is
-        # no longer interested in the DlpJob result. The job will be cancelled if
-        # possible.
-        # See https://cloud.google.com/dlp/docs/inspecting-storage and
-        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+        # Deletes a long-running DlpJob. This method indicates that the client is no
+        # longer interested in the DlpJob result. The job will be cancelled if possible.
+        # See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.
+        # google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] name
         #   Required. The name of the DlpJob resource to be deleted.
         # @param [String] fields
@@ -2852,11 +2686,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Finish a running hybrid DlpJob. Triggers the finalization steps and running
-        # of any enabled actions that have not yet run.
-        # Early access feature is in a pre-release state and might change or have
-        # limited support. For more information, see
-        # https://cloud.google.com/products#product-launch-stages.
+        # Finish a running hybrid DlpJob. Triggers the finalization steps and running of
+        # any enabled actions that have not yet run. Early access feature is in a pre-
+        # release state and might change or have limited support. For more information,
+        # see https://cloud.google.com/products#product-launch-stages.
         # @param [String] name
         #   Required. The name of the DlpJob resource to be cancelled.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2FinishDlpJobRequest] google_privacy_dlp_v2_finish_dlp_job_request_object
@@ -2889,9 +2722,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running DlpJob.
-        # See https://cloud.google.com/dlp/docs/inspecting-storage and
-        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+        # Gets the latest state of a long-running DlpJob. See https://cloud.google.com/
+        # dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-
+        # analysis to learn more.
         # @param [String] name
         #   Required. The name of the DlpJob resource.
         # @param [String] fields
@@ -2921,12 +2754,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Inspect hybrid content and store findings to a job.
-        # To review the findings inspect the job. Inspection will occur
-        # asynchronously.
-        # Early access feature is in a pre-release state and might change or have
-        # limited support. For more information, see
-        # https://cloud.google.com/products#product-launch-stages.
+        # Inspect hybrid content and store findings to a job. To review the findings
+        # inspect the job. Inspection will occur asynchronously. Early access feature is
+        # in a pre-release state and might change or have limited support. For more
+        # information, see https://cloud.google.com/products#product-launch-stages.
         # @param [String] name
         #   Required. Resource name of the job to execute a hybrid inspect on, for example
         #   `projects/dlp-test-project/dlpJob/53234423`.
@@ -2960,50 +2791,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DlpJobs that match the specified filter in the request.
-        # See https://cloud.google.com/dlp/docs/inspecting-storage and
-        # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+        # Lists DlpJobs that match the specified filter in the request. See https://
+        # cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/
+        # docs/compute-risk-analysis to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [String] filter
-        #   Allows filtering.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by `AND` or `OR` logical operators. A
-        #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * Supported fields/values for inspect jobs:
-        #   - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED
-        #   - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
-        #   - `trigger_name` - The resource name of the trigger that created job.
-        #   - 'end_time` - Corresponds to time the job finished.
-        #   - 'start_time` - Corresponds to time the job finished.
-        #   * Supported fields for risk analysis jobs:
-        #   - `state` - RUNNING|CANCELED|FINISHED|FAILED
-        #   - 'end_time` - Corresponds to time the job finished.
-        #   - 'start_time` - Corresponds to time the job finished.
-        #   * The operator must be `=` or `!=`.
-        #   Examples:
-        #   * inspected_storage = cloud_storage AND state = done
-        #   * inspected_storage = cloud_storage OR inspected_storage = bigquery
-        #   * inspected_storage = cloud_storage AND (state = done OR state = canceled)
-        #   * end_time > \"2017-12-12T00:00:00+00:00\"
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
+        #   more restrictions. * Restrictions can be combined by `AND` or `OR` logical
+        #   operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+        #   has the form of ``field` `operator` `value``. * Supported fields/values for
+        #   inspect jobs: - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED - `
+        #   inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The
+        #   resource name of the trigger that created job. - 'end_time` - Corresponds to
+        #   time the job finished. - 'start_time` - Corresponds to time the job finished. *
+        #   Supported fields for risk analysis jobs: - `state` - RUNNING|CANCELED|
+        #   FINISHED|FAILED - 'end_time` - Corresponds to time the job finished. - '
+        #   start_time` - Corresponds to time the job finished. * The operator must be `=`
+        #   or `!=`. Examples: * inspected_storage = cloud_storage AND state = done *
+        #   inspected_storage = cloud_storage OR inspected_storage = bigquery *
+        #   inspected_storage = cloud_storage AND (state = done OR state = canceled) *
+        #   end_time > \"2017-12-12T00:00:00+00:00\" The length of this field should be no
+        #   more than 500 characters.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc, end_time asc, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the job was created.
-        #   - `end_time`: corresponds to time the job ended.
-        #   - `name`: corresponds to job's name.
-        #   - `state`: corresponds to `state`
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc, end_time asc,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the job was created. - `end_time`: corresponds to time the job ended. - `name`:
+        #   corresponds to job's name. - `state`: corresponds to `state`
         # @param [Fixnum] page_size
         #   The standard list page size.
         # @param [String] page_token
@@ -3043,17 +2862,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Redacts potentially sensitive info from an image.
-        # This method has limits on input size, processing time, and output size.
-        # See https://cloud.google.com/dlp/docs/redacting-sensitive-data-images to
-        # learn more.
-        # When no InfoTypes or CustomInfoTypes are specified in this request, the
-        # system will automatically choose what detectors to run. By default this may
-        # be all types, but may change over time as detectors are updated.
+        # Redacts potentially sensitive info from an image. This method has limits on
+        # input size, processing time, and output size. See https://cloud.google.com/dlp/
+        # docs/redacting-sensitive-data-images to learn more. When no InfoTypes or
+        # CustomInfoTypes are specified in this request, the system will automatically
+        # choose what detectors to run. By default this may be all types, but may change
+        # over time as detectors are updated.
         # @param [String] parent
-        #   The parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   The parent resource name. - Format:projects/[PROJECT-ID] - Format:projects/[
+        #   PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageRequest] google_privacy_dlp_v2_redact_image_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3084,15 +2901,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an InspectTemplate for re-using frequently used configuration
-        # for inspecting content, images, and storage.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Creates an InspectTemplate for re-using frequently used configuration for
+        # inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/
+        # creating-templates to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3123,13 +2938,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an InspectTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be deleted,
-        #   for
-        #   example `organizations/433245324/inspectTemplates/432452342` or
-        #   projects/project-id/inspectTemplates/432452342.
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3157,13 +2971,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an InspectTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be read,
-        #   for
-        #   example `organizations/433245324/inspectTemplates/432452342` or
-        #   projects/project-id/inspectTemplates/432452342.
+        #   for example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3191,33 +3004,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists InspectTemplates.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc,update_time, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the template was created.
-        #   - `update_time`: corresponds to time the template was last updated.
-        #   - `name`: corresponds to template's name.
-        #   - `display_name`: corresponds to template's display name.
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc,update_time,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the template was created. - `update_time`: corresponds to time the template
+        #   was last updated. - `name`: corresponds to template's name. - `display_name`:
+        #   corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns
-        #   a page of max size 100.
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to `ListInspectTemplates`.
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListInspectTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3249,12 +3057,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the InspectTemplate.
-        # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        # Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-
+        # templates to learn more.
         # @param [String] name
         #   Required. Resource name of organization and inspectTemplate to be updated, for
-        #   example `organizations/433245324/inspectTemplates/432452342` or
-        #   projects/project-id/inspectTemplates/432452342.
+        #   example `organizations/433245324/inspectTemplates/432452342` or projects/
+        #   project-id/inspectTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest] google_privacy_dlp_v2_update_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3285,11 +3093,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Activate a job trigger. Causes the immediate execute of a trigger
-        # instead of waiting on the trigger event to occur.
+        # Activate a job trigger. Causes the immediate execute of a trigger instead of
+        # waiting on the trigger event to occur.
         # @param [String] name
-        #   Required. Resource name of the trigger to activate, for example
-        #   `projects/dlp-test-project/jobTriggers/53234423`.
+        #   Required. Resource name of the trigger to activate, for example `projects/dlp-
+        #   test-project/jobTriggers/53234423`.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2ActivateJobTriggerRequest] google_privacy_dlp_v2_activate_job_trigger_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3321,12 +3129,11 @@ module Google
         end
         
         # Creates a job trigger to run DLP actions such as scanning storage for
-        # sensitive information on a set schedule.
-        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        # sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/
+        # creating-job-triggers to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateJobTriggerRequest] google_privacy_dlp_v2_create_job_trigger_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3357,11 +3164,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a job trigger.
-        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        # Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-
+        # triggers to learn more.
         # @param [String] name
-        #   Required. Resource name of the project and the triggeredJob, for example
-        #   `projects/dlp-test-project/jobTriggers/53234423`.
+        #   Required. Resource name of the project and the triggeredJob, for example `
+        #   projects/dlp-test-project/jobTriggers/53234423`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3389,11 +3196,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a job trigger.
-        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        # Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-
+        # triggers to learn more.
         # @param [String] name
-        #   Required. Resource name of the project and the triggeredJob, for example
-        #   `projects/dlp-test-project/jobTriggers/53234423`.
+        #   Required. Resource name of the project and the triggeredJob, for example `
+        #   projects/dlp-test-project/jobTriggers/53234423`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3421,16 +3228,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Inspect hybrid content and store findings to a trigger. The inspection
-        # will be processed asynchronously. To review the findings monitor the
-        # jobs within the trigger.
-        # Early access feature is in a pre-release state and might change or have
-        # limited support. For more information, see
-        # https://cloud.google.com/products#product-launch-stages.
+        # Inspect hybrid content and store findings to a trigger. The inspection will be
+        # processed asynchronously. To review the findings monitor the jobs within the
+        # trigger. Early access feature is in a pre-release state and might change or
+        # have limited support. For more information, see https://cloud.google.com/
+        # products#product-launch-stages.
         # @param [String] name
         #   Required. Resource name of the trigger to execute a hybrid inspect on, for
-        #   example
-        #   `projects/dlp-test-project/jobTriggers/53234423`.
+        #   example `projects/dlp-test-project/jobTriggers/53234423`.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridInspectJobTriggerRequest] google_privacy_dlp_v2_hybrid_inspect_job_trigger_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3461,53 +3266,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists job triggers.
-        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        # Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-
+        # triggers to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   projects/[PROJECT-ID]/locations/[LOCATION-ID]
         # @param [String] filter
-        #   Allows filtering.
-        #   Supported syntax:
-        #   * Filter expressions are made up of one or more restrictions.
-        #   * Restrictions can be combined by `AND` or `OR` logical operators. A
-        #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of ``field` `operator` `value``.
-        #   * Supported fields/values for inspect jobs:
-        #   - `status` - HEALTHY|PAUSED|CANCELLED
-        #   - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
-        #   - 'last_run_time` - RFC 3339 formatted timestamp, surrounded by
-        #   quotation marks. Nanoseconds are ignored.
-        #   - 'error_count' - Number of errors that have occurred while running.
-        #   * The operator must be `=` or `!=` for status and inspected_storage.
-        #   Examples:
-        #   * inspected_storage = cloud_storage AND status = HEALTHY
-        #   * inspected_storage = cloud_storage OR inspected_storage = bigquery
-        #   * inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY)
-        #   * last_run_time > \"2017-12-12T00:00:00+00:00\"
-        #   The length of this field should be no more than 500 characters.
+        #   Allows filtering. Supported syntax: * Filter expressions are made up of one or
+        #   more restrictions. * Restrictions can be combined by `AND` or `OR` logical
+        #   operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+        #   has the form of ``field` `operator` `value``. * Supported fields/values for
+        #   inspect jobs: - `status` - HEALTHY|PAUSED|CANCELLED - `inspected_storage` -
+        #   DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
+        #   timestamp, surrounded by quotation marks. Nanoseconds are ignored. - '
+        #   error_count' - Number of errors that have occurred while running. * The
+        #   operator must be `=` or `!=` for status and inspected_storage. Examples: *
+        #   inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage =
+        #   cloud_storage OR inspected_storage = bigquery * inspected_storage =
+        #   cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time > \"2017-
+        #   12-12T00:00:00+00:00\" The length of this field should be no more than 500
+        #   characters.
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of triggeredJob fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc,update_time, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the JobTrigger was created.
-        #   - `update_time`: corresponds to time the JobTrigger was last updated.
-        #   - `last_run_time`: corresponds to the last time the JobTrigger ran.
-        #   - `name`: corresponds to JobTrigger's name.
-        #   - `display_name`: corresponds to JobTrigger's display name.
-        #   - `status`: corresponds to JobTrigger's status.
+        #   Comma separated list of triggeredJob fields to order by, followed by `asc` or `
+        #   desc` postfix. This list is case-insensitive, default sorting order is
+        #   ascending, redundant space characters are insignificant. Example: `name asc,
+        #   update_time, create_time desc` Supported fields are: - `create_time`:
+        #   corresponds to time the JobTrigger was created. - `update_time`: corresponds
+        #   to time the JobTrigger was last updated. - `last_run_time`: corresponds to the
+        #   last time the JobTrigger ran. - `name`: corresponds to JobTrigger's name. - `
+        #   display_name`: corresponds to JobTrigger's display name. - `status`:
+        #   corresponds to JobTrigger's status.
         # @param [Fixnum] page_size
         #   Size of the page, can be limited by a server.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to ListJobTriggers. `order_by` field must not
-        #   change for subsequent calls.
+        #   Page token to continue retrieval. Comes from previous call to ListJobTriggers.
+        #   `order_by` field must not change for subsequent calls.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3540,11 +3335,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a job trigger.
-        # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        # Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-
+        # triggers to learn more.
         # @param [String] name
-        #   Required. Resource name of the project and the triggeredJob, for example
-        #   `projects/dlp-test-project/jobTriggers/53234423`.
+        #   Required. Resource name of the project and the triggeredJob, for example `
+        #   projects/dlp-test-project/jobTriggers/53234423`.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateJobTriggerRequest] google_privacy_dlp_v2_update_job_trigger_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3575,15 +3370,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a pre-built stored infoType to be used for inspection.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Creates a pre-built stored infoType to be used for inspection. See https://
+        # cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3614,14 +3406,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a stored infoType.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-
+        # stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be deleted,
-        #   for
-        #   example `organizations/433245324/storedInfoTypes/432452342` or
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   for example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3649,13 +3439,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a stored infoType.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-
+        # infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be read, for
-        #   example `organizations/433245324/storedInfoTypes/432452342` or
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3683,35 +3472,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists stored infoTypes.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-
+        # infotypes to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc, display_name, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the most recent version of the
-        #   resource was created.
-        #   - `state`: corresponds to the state of the resource.
-        #   - `name`: corresponds to resource name.
-        #   - `display_name`: corresponds to info type's display name.
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc, display_name,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the most recent version of the resource was created. - `state`: corresponds to
+        #   the state of the resource. - `name`: corresponds to resource name. - `
+        #   display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns
-        #   a page of max size 100.
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to `ListStoredInfoTypes`.
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListStoredInfoTypes`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3744,13 +3526,12 @@ module Google
         end
         
         # Updates the stored infoType by creating a new version. The existing version
-        # will continue to be used until the new version is ready.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # will continue to be used until the new version is ready. See https://cloud.
+        # google.com/dlp/docs/creating-stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of organization and storedInfoType to be updated, for
-        #   example `organizations/433245324/storedInfoTypes/432452342` or
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest] google_privacy_dlp_v2_update_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3781,15 +3562,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a pre-built stored infoType to be used for inspection.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Creates a pre-built stored infoType to be used for inspection. See https://
+        # cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3820,14 +3598,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a stored infoType.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-
+        # stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be deleted,
-        #   for
-        #   example `organizations/433245324/storedInfoTypes/432452342` or
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   for example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3855,13 +3631,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a stored infoType.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-
+        # infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be read, for
-        #   example `organizations/433245324/storedInfoTypes/432452342` or
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3889,35 +3664,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists stored infoTypes.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-
+        # infotypes to learn more.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   - Format:projects/[PROJECT-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]
-        #   - Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]
-        #   - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
+        #   Required. Parent resource name. - Format:projects/[PROJECT-ID] - Format:
+        #   organizations/[ORGANIZATION-ID] - Format:projects/[PROJECT-ID]/locations/[
+        #   LOCATION-ID] - Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]
         # @param [String] location_id
         #   Deprecated. This field has no effect.
         # @param [String] order_by
-        #   Comma separated list of fields to order by,
-        #   followed by `asc` or `desc` postfix. This list is case-insensitive,
-        #   default sorting order is ascending, redundant space characters are
-        #   insignificant.
-        #   Example: `name asc, display_name, create_time desc`
-        #   Supported fields are:
-        #   - `create_time`: corresponds to time the most recent version of the
-        #   resource was created.
-        #   - `state`: corresponds to the state of the resource.
-        #   - `name`: corresponds to resource name.
-        #   - `display_name`: corresponds to info type's display name.
+        #   Comma separated list of fields to order by, followed by `asc` or `desc`
+        #   postfix. This list is case-insensitive, default sorting order is ascending,
+        #   redundant space characters are insignificant. Example: `name asc, display_name,
+        #   create_time desc` Supported fields are: - `create_time`: corresponds to time
+        #   the most recent version of the resource was created. - `state`: corresponds to
+        #   the state of the resource. - `name`: corresponds to resource name. - `
+        #   display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
-        #   Size of the page, can be limited by server. If zero server returns
-        #   a page of max size 100.
+        #   Size of the page, can be limited by server. If zero server returns a page of
+        #   max size 100.
         # @param [String] page_token
-        #   Page token to continue retrieval. Comes from previous call
-        #   to `ListStoredInfoTypes`.
+        #   Page token to continue retrieval. Comes from previous call to `
+        #   ListStoredInfoTypes`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3950,13 +3718,12 @@ module Google
         end
         
         # Updates the stored infoType by creating a new version. The existing version
-        # will continue to be used until the new version is ready.
-        # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-        # learn more.
+        # will continue to be used until the new version is ready. See https://cloud.
+        # google.com/dlp/docs/creating-stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of organization and storedInfoType to be updated, for
-        #   example `organizations/433245324/storedInfoTypes/432452342` or
-        #   projects/project-id/storedInfoTypes/432452342.
+        #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
+        #   project-id/storedInfoTypes/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest] google_privacy_dlp_v2_update_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

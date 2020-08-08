@@ -47,17 +47,15 @@ module Google
           @batch_path = 'batch'
         end
         
-        # CreateProfile creates a new profile resource in the online mode.
-        # The server ensures that the new profiles are created at a constant rate per
-        # deployment, so the creation request may hang for some time until the next
-        # profile session is available.
-        # The request may fail with ABORTED error if the creation is not available
-        # within ~1m, the response will indicate the duration of the backoff the
-        # client should take before attempting creating a profile again. The backoff
-        # duration is returned in google.rpc.RetryInfo extension on the response
-        # status. To a gRPC client, the extension will be return as a
-        # binary-serialized proto in the trailing metadata item named
-        # "google.rpc.retryinfo-bin".
+        # CreateProfile creates a new profile resource in the online mode. The server
+        # ensures that the new profiles are created at a constant rate per deployment,
+        # so the creation request may hang for some time until the next profile session
+        # is available. The request may fail with ABORTED error if the creation is not
+        # available within ~1m, the response will indicate the duration of the backoff
+        # the client should take before attempting creating a profile again. The backoff
+        # duration is returned in google.rpc.RetryInfo extension on the response status.
+        # To a gRPC client, the extension will be return as a binary-serialized proto in
+        # the trailing metadata item named "google.rpc.retryinfo-bin".
         # @param [String] parent
         #   Parent project to create the profile in.
         # @param [Google::Apis::CloudprofilerV2::CreateProfileRequest] create_profile_request_object
@@ -90,9 +88,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # CreateOfflineProfile creates a new profile resource in the offline mode.
-        # The client provides the profile to create along with the profile bytes, the
-        # server records it.
+        # CreateOfflineProfile creates a new profile resource in the offline mode. The
+        # client provides the profile to create along with the profile bytes, the server
+        # records it.
         # @param [String] parent
         #   Parent project to create the profile in.
         # @param [Google::Apis::CloudprofilerV2::Profile] profile_object
@@ -127,16 +125,16 @@ module Google
         
         # UpdateProfile updates the profile bytes and labels on the profile resource
         # created in the online mode. Updating the bytes for profiles created in the
-        # offline mode is currently not supported: the profile content must be
-        # provided at the time of the profile creation.
+        # offline mode is currently not supported: the profile content must be provided
+        # at the time of the profile creation.
         # @param [String] name
         #   Output only. Opaque, server-assigned, unique ID for this profile.
         # @param [Google::Apis::CloudprofilerV2::Profile] profile_object
         # @param [String] update_mask
         #   Field mask used to specify the fields to be overwritten. Currently only
-        #   profile_bytes and labels fields are supported by UpdateProfile, so only
-        #   those fields can be specified in the mask. When no mask is provided, all
-        #   fields are overwritten.
+        #   profile_bytes and labels fields are supported by UpdateProfile, so only those
+        #   fields can be specified in the mask. When no mask is provided, all fields are
+        #   overwritten.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

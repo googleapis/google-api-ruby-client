@@ -153,6 +153,11 @@ module Google
         # @return [Google::Apis::TexttospeechV1beta1::AudioConfig]
         attr_accessor :audio_config
       
+        # Whether and what timepoints are returned in the response.
+        # Corresponds to the JSON property `enableTimePointing`
+        # @return [Array<String>]
+        attr_accessor :enable_time_pointing
+      
         # Contains text input to be synthesized. Either `text` or `ssml` must be
         # supplied. Supplying both or neither returns
         # google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000
@@ -173,6 +178,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_config = args[:audio_config] if args.key?(:audio_config)
+          @enable_time_pointing = args[:enable_time_pointing] if args.key?(:enable_time_pointing)
           @input = args[:input] if args.key?(:input)
           @voice = args[:voice] if args.key?(:voice)
         end
@@ -181,6 +187,11 @@ module Google
       # The message returned to the client by the `SynthesizeSpeech` method.
       class SynthesizeSpeechResponse
         include Google::Apis::Core::Hashable
+      
+        # Description of audio data to be synthesized.
+        # Corresponds to the JSON property `audioConfig`
+        # @return [Google::Apis::TexttospeechV1beta1::AudioConfig]
+        attr_accessor :audio_config
       
         # The audio data bytes encoded as specified in the request, including the
         # header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS).
@@ -192,13 +203,47 @@ module Google
         # @return [String]
         attr_accessor :audio_content
       
+        # A link between a position in the original request input and a corresponding
+        # time in the output audio. It's only supported via <mark> of SSML input.
+        # Corresponds to the JSON property `timepoints`
+        # @return [Array<Google::Apis::TexttospeechV1beta1::Timepoint>]
+        attr_accessor :timepoints
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @audio_config = args[:audio_config] if args.key?(:audio_config)
           @audio_content = args[:audio_content] if args.key?(:audio_content)
+          @timepoints = args[:timepoints] if args.key?(:timepoints)
+        end
+      end
+      
+      # This contains a mapping between a certain point in the input text and a
+      # corresponding time in the output audio.
+      class Timepoint
+        include Google::Apis::Core::Hashable
+      
+        # Timepoint name as received from the client within <mark> tag.
+        # Corresponds to the JSON property `markName`
+        # @return [String]
+        attr_accessor :mark_name
+      
+        # Time offset in seconds from the start of the synthesized audio.
+        # Corresponds to the JSON property `timeSeconds`
+        # @return [Float]
+        attr_accessor :time_seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mark_name = args[:mark_name] if args.key?(:mark_name)
+          @time_seconds = args[:time_seconds] if args.key?(:time_seconds)
         end
       end
       

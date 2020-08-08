@@ -26,14 +26,12 @@ module Google
       class Capacity
         include Google::Apis::Core::Hashable
       
-        # Publish throughput capacity per partition in MiB/s.
-        # Must be >= 4 and <= 16.
+        # Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
         # Corresponds to the JSON property `publishMibPerSec`
         # @return [Fixnum]
         attr_accessor :publish_mib_per_sec
       
-        # Subscribe throughput capacity per partition in MiB/s.
-        # Must be >= 4 and <= 32.
+        # Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32.
         # Corresponds to the JSON property `subscribeMibPerSec`
         # @return [Fixnum]
         attr_accessor :subscribe_mib_per_sec
@@ -88,13 +86,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -111,8 +107,8 @@ module Google
       class ListPartitionCursorsResponse
         include Google::Apis::Core::Hashable
       
-        # A token, which can be sent as `page_token` to retrieve the next page.
-        # If this field is omitted, there are no subsequent pages.
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -137,8 +133,8 @@ module Google
       class ListSubscriptionsResponse
         include Google::Apis::Core::Hashable
       
-        # A token that can be sent as `page_token` to retrieve the next page of
-        # results. If this field is omitted, there are no more results.
+        # A token that can be sent as `page_token` to retrieve the next page of results.
+        # If this field is omitted, there are no more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -164,8 +160,8 @@ module Google
       class ListTopicSubscriptionsResponse
         include Google::Apis::Core::Hashable
       
-        # A token that can be sent as `page_token` to retrieve the next page of
-        # results. If this field is omitted, there are no more results.
+        # A token that can be sent as `page_token` to retrieve the next page of results.
+        # If this field is omitted, there are no more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -191,8 +187,8 @@ module Google
       class ListTopicsResponse
         include Google::Apis::Core::Hashable
       
-        # A token that can be sent as `page_token` to retrieve the next page of
-        # results. If this field is omitted, there are no more results.
+        # A token that can be sent as `page_token` to retrieve the next page of results.
+        # If this field is omitted, there are no more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -228,11 +224,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
-        # Every partition in the topic is allocated throughput equivalent to
-        # `scale` times the standard partition throughput (4 MiB/s). This is also
-        # reflected in the cost of this topic; a topic with `scale` of 2 and
-        # count of 10 is charged for 20 partitions. This value must be in the
-        # range [1,4].
+        # Every partition in the topic is allocated throughput equivalent to `scale`
+        # times the standard partition throughput (4 MiB/s). This is also reflected in
+        # the cost of this topic; a topic with `scale` of 2 and count of 10 is charged
+        # for 20 partitions. This value must be in the range [1,4].
         # Corresponds to the JSON property `scale`
         # @return [Fixnum]
         attr_accessor :scale
@@ -280,15 +275,15 @@ module Google
       
         # The provisioned storage, in bytes, per partition. If the number of bytes
         # stored in any of the topic's partitions grows beyond this value, older
-        # messages will be dropped to make room for newer ones, regardless of the
-        # value of `period`.
+        # messages will be dropped to make room for newer ones, regardless of the value
+        # of `period`.
         # Corresponds to the JSON property `perPartitionBytes`
         # @return [Fixnum]
         attr_accessor :per_partition_bytes
       
-        # How long a published message is retained. If unset, messages will be
-        # retained as long as the bytes retained for each partition is below
-        # `per_partition_bytes`.
+        # How long a published message is retained. If unset, messages will be retained
+        # as long as the bytes retained for each partition is below `per_partition_bytes`
+        # .
         # Corresponds to the JSON property `period`
         # @return [String]
         attr_accessor :period
@@ -313,15 +308,13 @@ module Google
         # @return [Google::Apis::PubsubliteV1::DeliveryConfig]
         attr_accessor :delivery_config
       
-        # The name of the subscription.
-        # Structured like:
-        # projects/`project_number`/locations/`location`/subscriptions/`subscription_id`
+        # The name of the subscription. Structured like: projects/`project_number`/
+        # locations/`location`/subscriptions/`subscription_id`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The name of the topic this subscription is attached to.
-        # Structured like:
+        # The name of the topic this subscription is attached to. Structured like:
         # projects/`project_number`/locations/`location`/topics/`topic_id`
         # Corresponds to the JSON property `topic`
         # @return [String]
@@ -343,9 +336,8 @@ module Google
       class Topic
         include Google::Apis::Core::Hashable
       
-        # The name of the topic.
-        # Structured like:
-        # projects/`project_number`/locations/`location`/topics/`topic_id`
+        # The name of the topic. Structured like: projects/`project_number`/locations/`
+        # location`/topics/`topic_id`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
