@@ -65,57 +65,16 @@ module Google
         attr_accessor :country_id
       
         # ID of currency associated with this account. This is a required field.
-        # Acceptable values are:
-        # - "1" for USD
-        # - "2" for GBP
-        # - "3" for ESP
-        # - "4" for SEK
-        # - "5" for CAD
-        # - "6" for JPY
-        # - "7" for DEM
-        # - "8" for AUD
-        # - "9" for FRF
-        # - "10" for ITL
-        # - "11" for DKK
-        # - "12" for NOK
-        # - "13" for FIM
-        # - "14" for ZAR
-        # - "15" for IEP
-        # - "16" for NLG
-        # - "17" for EUR
-        # - "18" for KRW
-        # - "19" for TWD
-        # - "20" for SGD
-        # - "21" for CNY
-        # - "22" for HKD
-        # - "23" for NZD
-        # - "24" for MYR
-        # - "25" for BRL
-        # - "26" for PTE
-        # - "27" for MXP
-        # - "28" for CLP
-        # - "29" for TRY
-        # - "30" for ARS
-        # - "31" for PEN
-        # - "32" for ILS
-        # - "33" for CHF
-        # - "34" for VEF
-        # - "35" for COP
-        # - "36" for GTQ
-        # - "37" for PLN
-        # - "39" for INR
-        # - "40" for THB
-        # - "41" for IDR
-        # - "42" for CZK
-        # - "43" for RON
-        # - "44" for HUF
-        # - "45" for RUB
-        # - "46" for AED
-        # - "47" for BGN
-        # - "48" for HRK
-        # - "49" for MXN
-        # - "50" for NGN
-        # - "51" for EGP
+        # Acceptable values are: - "1" for USD - "2" for GBP - "3" for ESP - "4" for SEK
+        # - "5" for CAD - "6" for JPY - "7" for DEM - "8" for AUD - "9" for FRF - "10"
+        # for ITL - "11" for DKK - "12" for NOK - "13" for FIM - "14" for ZAR - "15" for
+        # IEP - "16" for NLG - "17" for EUR - "18" for KRW - "19" for TWD - "20" for SGD
+        # - "21" for CNY - "22" for HKD - "23" for NZD - "24" for MYR - "25" for BRL - "
+        # 26" for PTE - "27" for MXP - "28" for CLP - "29" for TRY - "30" for ARS - "31"
+        # for PEN - "32" for ILS - "33" for CHF - "34" for VEF - "35" for COP - "36" for
+        # GTQ - "37" for PLN - "39" for INR - "40" for THB - "41" for IDR - "42" for CZK
+        # - "43" for RON - "44" for HUF - "45" for RUB - "46" for AED - "47" for BGN - "
+        # 48" for HRK - "49" for MXN - "50" for NGN - "51" for EGP
         # Corresponds to the JSON property `currencyId`
         # @return [Fixnum]
         attr_accessor :currency_id
@@ -141,24 +100,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Locale of this account.
-        # Acceptable values are:
-        # - "cs" (Czech)
-        # - "de" (German)
-        # - "en" (English)
-        # - "en-GB" (English United Kingdom)
-        # - "es" (Spanish)
-        # - "fr" (French)
-        # - "it" (Italian)
-        # - "ja" (Japanese)
-        # - "ko" (Korean)
-        # - "pl" (Polish)
-        # - "pt-BR" (Portuguese Brazil)
-        # - "ru" (Russian)
-        # - "sv" (Swedish)
-        # - "tr" (Turkish)
-        # - "zh-CN" (Chinese Simplified)
-        # - "zh-TW" (Chinese Traditional)
+        # Locale of this account. Acceptable values are: - "cs" (Czech) - "de" (German) -
+        # "en" (English) - "en-GB" (English United Kingdom) - "es" (Spanish) - "fr" (
+        # French) - "it" (Italian) - "ja" (Japanese) - "ko" (Korean) - "pl" (Polish) - "
+        # pt-BR" (Portuguese Brazil) - "ru" (Russian) - "sv" (Swedish) - "tr" (Turkish) -
+        # "zh-CN" (Chinese Simplified) - "zh-TW" (Chinese Traditional)
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
@@ -277,10 +223,8 @@ module Google
       class AccountPermission
         include Google::Apis::Core::Hashable
       
-        # Account profiles associated with this account permission.
-        # Possible values are:
-        # - "ACCOUNT_PROFILE_BASIC"
-        # - "ACCOUNT_PROFILE_STANDARD"
+        # Account profiles associated with this account permission. Possible values are:
+        # - "ACCOUNT_PROFILE_BASIC" - "ACCOUNT_PROFILE_STANDARD"
         # Corresponds to the JSON property `accountProfiles`
         # @return [Array<String>]
         attr_accessor :account_profiles
@@ -462,31 +406,19 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Locale of the user profile. This is a required field.
-        # Acceptable values are:
-        # - "cs" (Czech)
-        # - "de" (German)
-        # - "en" (English)
-        # - "en-GB" (English United Kingdom)
-        # - "es" (Spanish)
-        # - "fr" (French)
-        # - "it" (Italian)
-        # - "ja" (Japanese)
-        # - "ko" (Korean)
-        # - "pl" (Polish)
-        # - "pt-BR" (Portuguese Brazil)
-        # - "ru" (Russian)
-        # - "sv" (Swedish)
-        # - "tr" (Turkish)
-        # - "zh-CN" (Chinese Simplified)
-        # - "zh-TW" (Chinese Traditional)
+        # Locale of the user profile. This is a required field. Acceptable values are: -
+        # "cs" (Czech) - "de" (German) - "en" (English) - "en-GB" (English United
+        # Kingdom) - "es" (Spanish) - "fr" (French) - "it" (Italian) - "ja" (Japanese) -
+        # "ko" (Korean) - "pl" (Polish) - "pt-BR" (Portuguese Brazil) - "ru" (Russian) -
+        # "sv" (Swedish) - "tr" (Turkish) - "zh-CN" (Chinese Simplified) - "zh-TW" (
+        # Chinese Traditional)
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
       
         # Name of the user profile. This is a required field. Must be less than 64
         # characters long, must be globally unique, and cannot contain whitespace or any
-        # of the following characters: "&;"#%,".
+        # of the following characters: "&;<>"#%,".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -760,8 +692,7 @@ module Google
         attr_accessor :dynamic_click_tracker
         alias_method :dynamic_click_tracker?, :dynamic_click_tracker
       
-        # Date and time that this ad should stop serving. Must be later than the start
-        # time. This is a required field on insertion.
+        # 
         # Corresponds to the JSON property `endTime`
         # @return [DateTime]
         attr_accessor :end_time
@@ -842,8 +773,7 @@ module Google
         attr_accessor :ssl_required
         alias_method :ssl_required?, :ssl_required
       
-        # Date and time that this ad should start serving. If creating an ad, this field
-        # must be a time in the future. This is a required field on insertion.
+        # 
         # Corresponds to the JSON property `startTime`
         # @return [DateTime]
         attr_accessor :start_time
@@ -1102,11 +1032,10 @@ module Google
         # ID will be created automatically, so on insert this field should be left blank.
         # This field can be set to another advertiser's floodlight configuration ID in
         # order to share that advertiser's floodlight configuration with this advertiser,
-        # so long as:
-        # - This advertiser's original floodlight configuration is not already
-        # associated with floodlight activities or floodlight activity groups.
-        # - This advertiser's original floodlight configuration is not already shared
-        # with another advertiser.
+        # so long as: - This advertiser's original floodlight configuration is not
+        # already associated with floodlight activities or floodlight activity groups. -
+        # This advertiser's original floodlight configuration is not already shared with
+        # another advertiser.
         # Corresponds to the JSON property `floodlightConfigurationId`
         # @return [Fixnum]
         attr_accessor :floodlight_configuration_id
@@ -1572,12 +1501,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :default_landing_page_id
       
-        # Date on which the campaign will stop running. On insert, the end date must be
-        # today or a future date. The end date must be later than or be the same as the
-        # start date. If, for example, you set 6/25/2015 as both the start and end dates,
-        # the effective campaign run date is just that day only, 6/25/2015. The hours,
-        # minutes, and seconds of the end date should not be set, as doing so will
-        # result in an error. This is a required field.
+        # 
         # Corresponds to the JSON property `endDate`
         # @return [Date]
         attr_accessor :end_date
@@ -1625,9 +1549,7 @@ module Google
         attr_accessor :nielsen_ocr_enabled
         alias_method :nielsen_ocr_enabled?, :nielsen_ocr_enabled
       
-        # Date on which the campaign starts running. The start date can be any date. The
-        # hours, minutes, and seconds of the start date should not be set, as doing so
-        # will result in an error. This is a required field.
+        # 
         # Corresponds to the JSON property `startDate`
         # @return [Date]
         attr_accessor :start_date
@@ -1834,7 +1756,7 @@ module Google
         # @return [String]
         attr_accessor :action
       
-        # Time when the object was modified.
+        # 
         # Corresponds to the JSON property `changeTime`
         # @return [DateTime]
         attr_accessor :change_time
@@ -2155,13 +2077,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Read-only convenience field representing the actual URL that will be used for
-        # this click-through. The URL is computed as follows:
-        # - If defaultLandingPage is enabled then the campaign's default landing page
-        # URL is assigned to this field.
+        # this click-through. The URL is computed as follows: - If defaultLandingPage is
+        # enabled then the campaign's default landing page URL is assigned to this field.
         # - If defaultLandingPage is not enabled and a landingPageId is specified then
-        # that landing page's URL is assigned to this field.
-        # - If neither of the above cases apply, then the customClickThroughUrl is
-        # assigned to this field.
+        # that landing page's URL is assigned to this field. - If neither of the above
+        # cases apply, then the customClickThroughUrl is assigned to this field.
         # Corresponds to the JSON property `computedClickThroughUrl`
         # @return [String]
         attr_accessor :computed_click_through_url
@@ -3064,14 +2984,9 @@ module Google
         # assigned DISPLAY or DISPLAY_INTERSTITIAL instead. IN_STREAM_VIDEO refers to
         # rendering in in-stream video ads developed with the VAST standard.
         # IN_STREAM_AUDIO refers to rendering in in-stream audio ads developed with the
-        # VAST standard. Applicable to all creative types.
-        # Acceptable values are:
-        # - "APP"
-        # - "APP_INTERSTITIAL"
-        # - "IN_STREAM_VIDEO"
-        # - "IN_STREAM_AUDIO"
-        # - "DISPLAY"
-        # - "DISPLAY_INTERSTITIAL"
+        # VAST standard. Applicable to all creative types. Acceptable values are: - "APP"
+        # - "APP_INTERSTITIAL" - "IN_STREAM_VIDEO" - "IN_STREAM_AUDIO" - "DISPLAY" - "
+        # DISPLAY_INTERSTITIAL"
         # Corresponds to the JSON property `compatibility`
         # @return [Array<String>]
         attr_accessor :compatibility
@@ -3354,9 +3269,9 @@ module Google
         attr_accessor :total_file_size
       
         # Type of this creative. This is a required field. Applicable to all creative
-        # types.
-        # Note: FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for existing
-        # creatives. New creatives should use DISPLAY as a replacement for these types.
+        # types. *Note:* FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for
+        # existing creatives. New creatives should use DISPLAY as a replacement for
+        # these types.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3480,7 +3395,7 @@ module Google
         attr_accessor :additional_sizes
       
         # Possible alignments for an asset. This is a read-only field. Applicable to the
-        # following creative types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL.
+        # following creative types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL .
         # Corresponds to the JSON property `alignment`
         # @return [String]
         attr_accessor :alignment
@@ -3717,27 +3632,24 @@ module Google
         # creative types: all REDIRECT and TRACKING_TEXT. This is a required field.
         # PRIMARY applies to DISPLAY, FLASH_INPAGE, HTML5_BANNER, IMAGE,
         # DISPLAY_IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple primary
-        # assets), and all VPAID creatives.
-        # BACKUP_IMAGE applies to FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and all
-        # VPAID creatives. Applicable to DISPLAY when the primary asset type is not
-        # HTML_IMAGE.
-        # ADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to FLASH_INPAGE creatives.
-        # OTHER refers to assets from sources other than Campaign Manager, such as
-        # Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID creatives.
-        # PARENT_VIDEO refers to videos uploaded by the user in Campaign Manager and is
-        # applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.
-        # TRANSCODED_VIDEO refers to videos transcoded by Campaign Manager from
-        # PARENT_VIDEO assets and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO
-        # creatives.
-        # ALTERNATE_VIDEO refers to the Campaign Manager representation of child asset
-        # videos from Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These
-        # cannot be added or removed within Campaign Manager.
-        # For VPAID_LINEAR_VIDEO creatives, PARENT_VIDEO, TRANSCODED_VIDEO and
-        # ALTERNATE_VIDEO assets that are marked active serve as backup in case the
-        # VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or
-        # removed for an INSTREAM_VIDEO or VPAID_LINEAR_VIDEO creative.
-        # PARENT_AUDIO refers to audios uploaded by the user in Campaign Manager and is
-        # applicable to INSTREAM_AUDIO creatives.
+        # assets), and all VPAID creatives. BACKUP_IMAGE applies to FLASH_INPAGE,
+        # HTML5_BANNER, all RICH_MEDIA, and all VPAID creatives. Applicable to DISPLAY
+        # when the primary asset type is not HTML_IMAGE. ADDITIONAL_IMAGE and
+        # ADDITIONAL_FLASH apply to FLASH_INPAGE creatives. OTHER refers to assets from
+        # sources other than Campaign Manager, such as Studio uploaded assets,
+        # applicable to all RICH_MEDIA and all VPAID creatives. PARENT_VIDEO refers to
+        # videos uploaded by the user in Campaign Manager and is applicable to
+        # INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives. TRANSCODED_VIDEO refers to
+        # videos transcoded by Campaign Manager from PARENT_VIDEO assets and is
+        # applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives. ALTERNATE_VIDEO
+        # refers to the Campaign Manager representation of child asset videos from
+        # Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be
+        # added or removed within Campaign Manager. For VPAID_LINEAR_VIDEO creatives,
+        # PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO assets that are marked
+        # active serve as backup in case the VPAID creative cannot be served. Only
+        # PARENT_VIDEO assets can be added or removed for an INSTREAM_VIDEO or
+        # VPAID_LINEAR_VIDEO creative. PARENT_AUDIO refers to audios uploaded by the
+        # user in Campaign Manager and is applicable to INSTREAM_AUDIO creatives.
         # TRANSCODED_AUDIO refers to audios transcoded by Campaign Manager from
         # PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO creatives.
         # Corresponds to the JSON property `role`
@@ -3965,32 +3877,15 @@ module Google
         attr_accessor :timer_custom_events
       
         # Rules validated during code generation that generated a warning. This is a
-        # read-only, auto-generated field.
-        # Possible values are:
-        # - "ADMOB_REFERENCED"
-        # - "ASSET_FORMAT_UNSUPPORTED_DCM"
-        # - "ASSET_INVALID"
-        # - "CLICK_TAG_HARD_CODED"
-        # - "CLICK_TAG_INVALID"
-        # - "CLICK_TAG_IN_GWD"
-        # - "CLICK_TAG_MISSING"
-        # - "CLICK_TAG_MORE_THAN_ONE"
-        # - "CLICK_TAG_NON_TOP_LEVEL"
-        # - "COMPONENT_UNSUPPORTED_DCM"
-        # - "ENABLER_UNSUPPORTED_METHOD_DCM"
-        # - "EXTERNAL_FILE_REFERENCED"
-        # - "FILE_DETAIL_EMPTY"
-        # - "FILE_TYPE_INVALID"
-        # - "GWD_PROPERTIES_INVALID"
-        # - "HTML5_FEATURE_UNSUPPORTED"
-        # - "LINKED_FILE_NOT_FOUND"
-        # - "MAX_FLASH_VERSION_11"
-        # - "MRAID_REFERENCED"
-        # - "NOT_SSL_COMPLIANT"
-        # - "ORPHANED_ASSET"
-        # - "PRIMARY_HTML_MISSING"
-        # - "SVG_INVALID"
-        # - "ZIP_INVALID"
+        # read-only, auto-generated field. Possible values are: - "ADMOB_REFERENCED" - "
+        # ASSET_FORMAT_UNSUPPORTED_DCM" - "ASSET_INVALID" - "CLICK_TAG_HARD_CODED" - "
+        # CLICK_TAG_INVALID" - "CLICK_TAG_IN_GWD" - "CLICK_TAG_MISSING" - "
+        # CLICK_TAG_MORE_THAN_ONE" - "CLICK_TAG_NON_TOP_LEVEL" - "
+        # COMPONENT_UNSUPPORTED_DCM" - "ENABLER_UNSUPPORTED_METHOD_DCM" - "
+        # EXTERNAL_FILE_REFERENCED" - "FILE_DETAIL_EMPTY" - "FILE_TYPE_INVALID" - "
+        # GWD_PROPERTIES_INVALID" - "HTML5_FEATURE_UNSUPPORTED" - "LINKED_FILE_NOT_FOUND"
+        # - "MAX_FLASH_VERSION_11" - "MRAID_REFERENCED" - "NOT_SSL_COMPLIANT" - "
+        # ORPHANED_ASSET" - "PRIMARY_HTML_MISSING" - "SVG_INVALID" - "ZIP_INVALID"
         # Corresponds to the JSON property `warnedValidationRules`
         # @return [Array<String>]
         attr_accessor :warned_validation_rules
@@ -4092,25 +3987,17 @@ module Google
         # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :creative_id_dimension_value
       
-        # Date and time that the assigned creative should stop serving. Must be later
-        # than the start time.
+        # 
         # Corresponds to the JSON property `endTime`
         # @return [DateTime]
         attr_accessor :end_time
       
-        # Rich media exit overrides for this creative assignment.
-        # Applicable when the creative type is any of the following:
-        # - DISPLAY
-        # - RICH_MEDIA_INPAGE
-        # - RICH_MEDIA_INPAGE_FLOATING
-        # - RICH_MEDIA_IM_EXPAND
-        # - RICH_MEDIA_EXPANDING
-        # - RICH_MEDIA_INTERSTITIAL_FLOAT
-        # - RICH_MEDIA_MOBILE_IN_APP
-        # - RICH_MEDIA_MULTI_FLOATING
-        # - RICH_MEDIA_PEEL_DOWN
-        # - VPAID_LINEAR
-        # - VPAID_NON_LINEAR
+        # Rich media exit overrides for this creative assignment. Applicable when the
+        # creative type is any of the following: - DISPLAY - RICH_MEDIA_INPAGE -
+        # RICH_MEDIA_INPAGE_FLOATING - RICH_MEDIA_IM_EXPAND - RICH_MEDIA_EXPANDING -
+        # RICH_MEDIA_INTERSTITIAL_FLOAT - RICH_MEDIA_MOBILE_IN_APP -
+        # RICH_MEDIA_MULTI_FLOATING - RICH_MEDIA_PEEL_DOWN - VPAID_LINEAR -
+        # VPAID_NON_LINEAR
         # Corresponds to the JSON property `richMediaExitOverrides`
         # @return [Array<Google::Apis::DfareportingV3_4::RichMediaExitOverride>]
         attr_accessor :rich_media_exit_overrides
@@ -4129,7 +4016,7 @@ module Google
         attr_accessor :ssl_compliant
         alias_method :ssl_compliant?, :ssl_compliant
       
-        # Date and time that the assigned creative should start serving.
+        # 
         # Corresponds to the JSON property `startTime`
         # @return [DateTime]
         attr_accessor :start_time
@@ -4167,10 +4054,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Read-only convenience field representing the actual URL that will be used for
-        # this click-through. The URL is computed as follows:
-        # - If landingPageId is specified then that landing page's URL is assigned to
-        # this field.
-        # - Otherwise, the customClickThroughUrl is assigned to this field.
+        # this click-through. The URL is computed as follows: - If landingPageId is
+        # specified then that landing page's URL is assigned to this field. - Otherwise,
+        # the customClickThroughUrl is assigned to this field.
         # Corresponds to the JSON property `computedClickThroughUrl`
         # @return [String]
         attr_accessor :computed_click_through_url
@@ -5272,8 +5158,7 @@ module Google
       class DateRange
         include Google::Apis::Core::Hashable
       
-        # The end date of the date range, inclusive. A string of the format: "yyyy-MM-dd"
-        # .
+        # 
         # Corresponds to the JSON property `endDate`
         # @return [Date]
         attr_accessor :end_date
@@ -5288,8 +5173,7 @@ module Google
         # @return [String]
         attr_accessor :relative_date_range
       
-        # The start date of the date range, inclusive. A string of the format: "yyyy-MM-
-        # dd".
+        # 
         # Corresponds to the JSON property `startDate`
         # @return [Date]
         attr_accessor :start_date
@@ -5311,15 +5195,8 @@ module Google
       class DayPartTargeting
         include Google::Apis::Core::Hashable
       
-        # Days of the week when the ad will serve.
-        # Acceptable values are:
-        # - "SUNDAY"
-        # - "MONDAY"
-        # - "TUESDAY"
-        # - "WEDNESDAY"
-        # - "THURSDAY"
-        # - "FRIDAY"
-        # - "SATURDAY"
+        # Days of the week when the ad will serve. Acceptable values are: - "SUNDAY" - "
+        # MONDAY" - "TUESDAY" - "WEDNESDAY" - "THURSDAY" - "FRIDAY" - "SATURDAY"
         # Corresponds to the JSON property `daysOfWeek`
         # @return [Array<String>]
         attr_accessor :days_of_week
@@ -5676,8 +5553,7 @@ module Google
         # @return [String]
         attr_accessor :dimension_name
       
-        # The end date of the date range for which to retrieve dimension values. A
-        # string of the format "yyyy-MM-dd".
+        # 
         # Corresponds to the JSON property `endDate`
         # @return [Date]
         attr_accessor :end_date
@@ -5687,13 +5563,12 @@ module Google
         # @return [Array<Google::Apis::DfareportingV3_4::DimensionFilter>]
         attr_accessor :filters
       
-        # The kind of request this is, in this case dfareporting#dimensionValueRequest.
+        # The kind of request this is, in this case dfareporting#dimensionValueRequest .
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The start date of the date range for which to retrieve dimension values. A
-        # string of the format "yyyy-MM-dd".
+        # 
         # Corresponds to the JSON property `startDate`
         # @return [Date]
         attr_accessor :start_date
@@ -5728,21 +5603,15 @@ module Google
         # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
-        # Tag types for regular placements.
-        # Acceptable values are:
-        # - "STANDARD"
-        # - "IFRAME_JAVASCRIPT_INPAGE"
-        # - "INTERNAL_REDIRECT_INPAGE"
-        # - "JAVASCRIPT_INPAGE"
+        # Tag types for regular placements. Acceptable values are: - "STANDARD" - "
+        # IFRAME_JAVASCRIPT_INPAGE" - "INTERNAL_REDIRECT_INPAGE" - "JAVASCRIPT_INPAGE"
         # Corresponds to the JSON property `inpageTagFormats`
         # @return [Array<String>]
         attr_accessor :inpage_tag_formats
       
-        # Tag types for interstitial placements.
-        # Acceptable values are:
-        # - "IFRAME_JAVASCRIPT_INTERSTITIAL"
-        # - "INTERNAL_REDIRECT_INTERSTITIAL"
-        # - "JAVASCRIPT_INTERSTITIAL"
+        # Tag types for interstitial placements. Acceptable values are: - "
+        # IFRAME_JAVASCRIPT_INTERSTITIAL" - "INTERNAL_REDIRECT_INTERSTITIAL" - "
+        # JAVASCRIPT_INTERSTITIAL"
         # Corresponds to the JSON property `interstitialTagFormats`
         # @return [Array<String>]
         attr_accessor :interstitial_tag_formats
@@ -6092,7 +5961,7 @@ module Google
         attr_accessor :site_filter_type
       
         # Filter list of site IDs associated with this event tag. The siteFilterType
-        # determines whether this is a whitelist or blacklist filter.
+        # determines whether this is a allowlist or blocklist filter.
         # Corresponds to the JSON property `siteIds`
         # @return [Array<Fixnum>]
         attr_accessor :site_ids
@@ -6257,6 +6126,23 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_time
       
+        # Extra information added to operations that support Scotty media requests.
+        # Corresponds to the JSON property `mediaRequestInfo`
+        # @return [Google::Apis::DfareportingV3_4::MediaRequestInfo]
+        attr_accessor :media_request_info
+      
+        # This message is for backends to pass their scotty media specific fields to ESF.
+        # Backend will include this in their response message to ESF. Example:
+        # ExportFile is an rpc defined for upload using scotty from ESF. rpc ExportFile(
+        # ExportFileRequest) returns (ExportFileResponse) Message ExportFileResponse
+        # will include apiserving.MediaResponseInfo to tell ESF about data like
+        # dynamic_dropzone it needs to pass to Scotty. message ExportFileResponse `
+        # optional gdata.Media blob = 1; optional apiserving.MediaResponseInfo
+        # media_response_info = 2 `
+        # Corresponds to the JSON property `mediaResponseInfo`
+        # @return [Google::Apis::DfareportingV3_4::MediaResponseInfo]
+        attr_accessor :media_response_info
+      
         # The ID of the report this file was generated from.
         # Corresponds to the JSON property `reportId`
         # @return [Fixnum]
@@ -6285,6 +6171,8 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @last_modified_time = args[:last_modified_time] if args.key?(:last_modified_time)
+          @media_request_info = args[:media_request_info] if args.key?(:media_request_info)
+          @media_response_info = args[:media_response_info] if args.key?(:media_response_info)
           @report_id = args[:report_id] if args.key?(:report_id)
           @status = args[:status] if args.key?(:status)
           @urls = args[:urls] if args.key?(:urls)
@@ -6361,7 +6249,7 @@ module Google
       class Flight
         include Google::Apis::Core::Hashable
       
-        # Inventory item flight end date.
+        # 
         # Corresponds to the JSON property `endDate`
         # @return [Date]
         attr_accessor :end_date
@@ -6371,7 +6259,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :rate_or_cost
       
-        # Inventory item flight start date.
+        # 
         # Corresponds to the JSON property `startDate`
         # @return [Date]
         attr_accessor :start_date
@@ -6629,9 +6517,8 @@ module Google
         # Value of the cat= parameter in the floodlight tag, which the ad servers use to
         # identify the activity. This is optional: if empty, a new tag string will be
         # generated for you. This string must be 1 to 8 characters long, with valid
-        # characters being [a-z][A-Z][0-9][-][ _ ]. This tag string must also be unique
-        # among activities of the same activity group. This field is read-only after
-        # insertion.
+        # characters being a-z0-9[ _ ]. This tag string must also be unique among
+        # activities of the same activity group. This field is read-only after insertion.
         # Corresponds to the JSON property `tagString`
         # @return [String]
         attr_accessor :tag_string
@@ -6777,9 +6664,9 @@ module Google
         # Value of the type= parameter in the floodlight tag, which the ad servers use
         # to identify the activity group that the activity belongs to. This is optional:
         # if empty, a new tag string will be generated for you. This string must be 1 to
-        # 8 characters long, with valid characters being [a-z][A-Z][0-9][-][ _ ]. This
-        # tag string must also be unique among activity groups of the same floodlight
-        # configuration. This field is read-only after insertion.
+        # 8 characters long, with valid characters being a-z0-9[ _ ]. This tag string
+        # must also be unique among activity groups of the same floodlight configuration.
+        # This field is read-only after insertion.
         # Corresponds to the JSON property `tagString`
         # @return [String]
         attr_accessor :tag_string
@@ -7771,6 +7658,151 @@ module Google
         end
       end
       
+      # Extra information added to operations that support Scotty media requests.
+      class MediaRequestInfo
+        include Google::Apis::Core::Hashable
+      
+        # The number of current bytes uploaded or downloaded.
+        # Corresponds to the JSON property `currentBytes`
+        # @return [Fixnum]
+        attr_accessor :current_bytes
+      
+        # Data to be copied to backend requests. Custom data is returned to Scotty in
+        # the agent_state field, which Scotty will then provide in subsequent upload
+        # notifications.
+        # Corresponds to the JSON property `customData`
+        # @return [String]
+        attr_accessor :custom_data
+      
+        # Set if the http request info is diff encoded. The value of this field is the
+        # version number of the base revision. This is corresponding to Apiary's
+        # mediaDiffObjectVersion (//depot/google3/java/com/google/api/server/media/
+        # variable/DiffObjectVersionVariable.java). See go/esf-scotty-diff-upload for
+        # more information.
+        # Corresponds to the JSON property `diffObjectVersion`
+        # @return [String]
+        attr_accessor :diff_object_version
+      
+        # The type of notification received from Scotty.
+        # Corresponds to the JSON property `notificationType`
+        # @return [String]
+        attr_accessor :notification_type
+      
+        # The Scotty request ID.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # The total size of the file.
+        # Corresponds to the JSON property `totalBytes`
+        # @return [Fixnum]
+        attr_accessor :total_bytes
+      
+        # Whether the total bytes field contains an estimated data.
+        # Corresponds to the JSON property `totalBytesIsEstimated`
+        # @return [Boolean]
+        attr_accessor :total_bytes_is_estimated
+        alias_method :total_bytes_is_estimated?, :total_bytes_is_estimated
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_bytes = args[:current_bytes] if args.key?(:current_bytes)
+          @custom_data = args[:custom_data] if args.key?(:custom_data)
+          @diff_object_version = args[:diff_object_version] if args.key?(:diff_object_version)
+          @notification_type = args[:notification_type] if args.key?(:notification_type)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @total_bytes = args[:total_bytes] if args.key?(:total_bytes)
+          @total_bytes_is_estimated = args[:total_bytes_is_estimated] if args.key?(:total_bytes_is_estimated)
+        end
+      end
+      
+      # This message is for backends to pass their scotty media specific fields to ESF.
+      # Backend will include this in their response message to ESF. Example:
+      # ExportFile is an rpc defined for upload using scotty from ESF. rpc ExportFile(
+      # ExportFileRequest) returns (ExportFileResponse) Message ExportFileResponse
+      # will include apiserving.MediaResponseInfo to tell ESF about data like
+      # dynamic_dropzone it needs to pass to Scotty. message ExportFileResponse `
+      # optional gdata.Media blob = 1; optional apiserving.MediaResponseInfo
+      # media_response_info = 2 `
+      class MediaResponseInfo
+        include Google::Apis::Core::Hashable
+      
+        # Data to copy from backend response to the next backend requests. Custom data
+        # is returned to Scotty in the agent_state field, which Scotty will then provide
+        # in subsequent upload notifications.
+        # Corresponds to the JSON property `customData`
+        # @return [String]
+        attr_accessor :custom_data
+      
+        # Specifies any transformation to be applied to data before persisting it or
+        # retrieving from storage. E.g., encryption options for blobstore2. This should
+        # be of the form uploader_service.DataStorageTransform.
+        # Corresponds to the JSON property `dataStorageTransform`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data_storage_transform
+      
+        # Specifies the Scotty Drop Target to use for uploads. If present in a media
+        # response, Scotty does not upload to a standard drop zone. Instead, Scotty
+        # saves the upload directly to the location specified in this drop target.
+        # Unlike drop zones, the drop target is the final storage location for an upload.
+        # So, the agent does not need to clone the blob at the end of the upload. The
+        # agent is responsible for garbage collecting any orphaned blobs that may occur
+        # due to aborted uploads. For more information, see the drop target design doc
+        # here: http://goto/ScottyDropTarget This field will be preferred to
+        # dynamicDropzone. If provided, the identified field in the response must be of
+        # the type uploader.agent.DropTarget.
+        # Corresponds to the JSON property `dynamicDropTarget`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :dynamic_drop_target
+      
+        # Specifies the Scotty dropzone to use for uploads.
+        # Corresponds to the JSON property `dynamicDropzone`
+        # @return [String]
+        attr_accessor :dynamic_dropzone
+      
+        # Request class to use for all Blobstore operations for this request.
+        # Corresponds to the JSON property `requestClass`
+        # @return [String]
+        attr_accessor :request_class
+      
+        # Specifies the TrafficClass that Scotty should use for any RPCs to fetch the
+        # response bytes. Will override the traffic class GTOS of the incoming http
+        # request. This is a temporary field to facilitate whitelisting and
+        # experimentation by the bigstore agent only. For instance, this does not apply
+        # to RTMP reads. WARNING: DO NOT USE WITHOUT PERMISSION FROM THE SCOTTY TEAM.
+        # Corresponds to the JSON property `trafficClassField`
+        # @return [String]
+        attr_accessor :traffic_class_field
+      
+        # Tells Scotty to verify hashes on the agent's behalf by parsing out the X-Goog-
+        # Hash header.
+        # Corresponds to the JSON property `verifyHashFromHeader`
+        # @return [Boolean]
+        attr_accessor :verify_hash_from_header
+        alias_method :verify_hash_from_header?, :verify_hash_from_header
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_data = args[:custom_data] if args.key?(:custom_data)
+          @data_storage_transform = args[:data_storage_transform] if args.key?(:data_storage_transform)
+          @dynamic_drop_target = args[:dynamic_drop_target] if args.key?(:dynamic_drop_target)
+          @dynamic_dropzone = args[:dynamic_dropzone] if args.key?(:dynamic_dropzone)
+          @request_class = args[:request_class] if args.key?(:request_class)
+          @traffic_class_field = args[:traffic_class_field] if args.key?(:traffic_class_field)
+          @verify_hash_from_header = args[:verify_hash_from_header] if args.key?(:verify_hash_from_header)
+        end
+      end
+      
       # Represents a metric.
       class Metric
         include Google::Apis::Core::Hashable
@@ -8576,7 +8608,7 @@ module Google
         # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :created_info
       
-        # Effective date of this order document.
+        # 
         # Corresponds to the JSON property `effectiveDate`
         # @return [Date]
         attr_accessor :effective_date
@@ -8597,7 +8629,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :last_sent_recipients
       
-        # Timestamp of the last email sent with this order document.
+        # 
         # Corresponds to the JSON property `lastSentTime`
         # @return [DateTime]
         attr_accessor :last_sent_time
@@ -9114,23 +9146,16 @@ module Google
         attr_accessor :subaccount_id
       
         # Tag formats to generate for this placement. This field is required on
-        # insertion.
-        # Acceptable values are:
-        # - "PLACEMENT_TAG_STANDARD"
-        # - "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
-        # - "PLACEMENT_TAG_IFRAME_ILAYER"
-        # - "PLACEMENT_TAG_INTERNAL_REDIRECT"
-        # - "PLACEMENT_TAG_JAVASCRIPT"
-        # - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT"
-        # - "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT"
-        # - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT"
-        # - "PLACEMENT_TAG_CLICK_COMMANDS"
-        # - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
-        # - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3"
-        # - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
-        # - "PLACEMENT_TAG_TRACKING"
-        # - "PLACEMENT_TAG_TRACKING_IFRAME"
-        # - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
+        # insertion. Acceptable values are: - "PLACEMENT_TAG_STANDARD" - "
+        # PLACEMENT_TAG_IFRAME_JAVASCRIPT" - "PLACEMENT_TAG_IFRAME_ILAYER" - "
+        # PLACEMENT_TAG_INTERNAL_REDIRECT" - "PLACEMENT_TAG_JAVASCRIPT" - "
+        # PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" - "
+        # PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" - "
+        # PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" - "PLACEMENT_TAG_CLICK_COMMANDS" - "
+        # PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" - "
+        # PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" - "
+        # PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" - "PLACEMENT_TAG_TRACKING" - "
+        # PLACEMENT_TAG_TRACKING_IFRAME" - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
         # Corresponds to the JSON property `tagFormats`
         # @return [Array<String>]
         attr_accessor :tag_formats
@@ -9159,9 +9184,8 @@ module Google
       
         # VPAID adapter setting for this placement. Controls which VPAID format the
         # measurement adapter will use for in-stream video creatives assigned to this
-        # placement.
-        # Note: Flash is no longer supported. This field now defaults to HTML5 when the
-        # following values are provided: FLASH, BOTH.
+        # placement. *Note:* Flash is no longer supported. This field now defaults to
+        # HTML5 when the following values are provided: FLASH, BOTH.
         # Corresponds to the JSON property `vpaidAdapterChoice`
         # @return [String]
         attr_accessor :vpaid_adapter_choice
@@ -9842,7 +9866,7 @@ module Google
         # @return [String]
         attr_accessor :cap_cost_type
       
-        # End date of this inventory item.
+        # 
         # Corresponds to the JSON property `endDate`
         # @return [Date]
         attr_accessor :end_date
@@ -9870,7 +9894,7 @@ module Google
         # @return [String]
         attr_accessor :pricing_type
       
-        # Start date of this inventory item.
+        # 
         # Corresponds to the JSON property `startDate`
         # @return [Date]
         attr_accessor :start_date
@@ -9899,12 +9923,7 @@ module Google
         # @return [String]
         attr_accessor :cap_cost_option
       
-        # Placement end date. This date must be later than, or the same day as, the
-        # placement start date, but not later than the campaign end date. If, for
-        # example, you set 6/25/2015 as both the start and end dates, the effective
-        # placement date is just that day only, 6/25/2015. The hours, minutes, and
-        # seconds of the end date should not be set, as doing so will result in an error.
-        # This field is required on insertion.
+        # 
         # Corresponds to the JSON property `endDate`
         # @return [Date]
         attr_accessor :end_date
@@ -9932,16 +9951,12 @@ module Google
         # @return [String]
         attr_accessor :pricing_type
       
-        # Placement start date. This date must be later than, or the same day as, the
-        # campaign start date. The hours, minutes, and seconds of the start date should
-        # not be set, as doing so will result in an error. This field is required on
-        # insertion.
+        # 
         # Corresponds to the JSON property `startDate`
         # @return [Date]
         attr_accessor :start_date
       
-        # Testing start date of this placement. The hours, minutes, and seconds of the
-        # start date should not be set, as doing so will result in an error.
+        # 
         # Corresponds to the JSON property `testingStartDate`
         # @return [Date]
         attr_accessor :testing_start_date
@@ -9967,12 +9982,7 @@ module Google
       class PricingSchedulePricingPeriod
         include Google::Apis::Core::Hashable
       
-        # Pricing period end date. This date must be later than, or the same day as, the
-        # pricing period start date, but not later than the placement end date. The
-        # period end date can be the same date as the period start date. If, for example,
-        # you set 6/25/2015 as both the start and end dates, the effective pricing
-        # period date is just that day only, 6/25/2015. The hours, minutes, and seconds
-        # of the end date should not be set, as doing so will result in an error.
+        # 
         # Corresponds to the JSON property `endDate`
         # @return [Date]
         attr_accessor :end_date
@@ -9988,9 +9998,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :rate_or_cost_nanos
       
-        # Pricing period start date. This date must be later than, or the same day as,
-        # the placement start date. The hours, minutes, and seconds of the start date
-        # should not be set, as doing so will result in an error.
+        # 
         # Corresponds to the JSON property `startDate`
         # @return [Date]
         attr_accessor :start_date
@@ -10057,7 +10065,7 @@ module Google
         # @return [String]
         attr_accessor :client_name
       
-        # End date of the project.
+        # 
         # Corresponds to the JSON property `endDate`
         # @return [Date]
         attr_accessor :end_date
@@ -10088,7 +10096,7 @@ module Google
         # @return [String]
         attr_accessor :overview
       
-        # Start date of the project.
+        # 
         # Corresponds to the JSON property `startDate`
         # @return [Date]
         attr_accessor :start_date
@@ -10691,9 +10699,9 @@ module Google
           # @return [Google::Apis::DfareportingV3_4::DateRange]
           attr_accessor :date_range
         
-          # The list of filters on which dimensions are filtered.
-          # Filters for different dimensions are ANDed, filters for the same dimension are
-          # grouped together and ORed.
+          # The list of filters on which dimensions are filtered. Filters for different
+          # dimensions are ANDed, filters for the same dimension are grouped together and
+          # ORed.
           # Corresponds to the JSON property `dimensionFilters`
           # @return [Array<Google::Apis::DfareportingV3_4::DimensionValue>]
           attr_accessor :dimension_filters
@@ -10831,9 +10839,9 @@ module Google
           # @return [Google::Apis::DfareportingV3_4::DateRange]
           attr_accessor :date_range
         
-          # The list of filters on which dimensions are filtered.
-          # Filters for different dimensions are ANDed, filters for the same dimension are
-          # grouped together and ORed.
+          # The list of filters on which dimensions are filtered. Filters for different
+          # dimensions are ANDed, filters for the same dimension are grouped together and
+          # ORed.
           # Corresponds to the JSON property `dimensionFilters`
           # @return [Array<Google::Apis::DfareportingV3_4::DimensionValue>]
           attr_accessor :dimension_filters
@@ -11194,9 +11202,9 @@ module Google
           # @return [Google::Apis::DfareportingV3_4::DateRange]
           attr_accessor :date_range
         
-          # The list of filters on which dimensions are filtered.
-          # Filters for different dimensions are ANDed, filters for the same dimension are
-          # grouped together and ORed.
+          # The list of filters on which dimensions are filtered. Filters for different
+          # dimensions are ANDed, filters for the same dimension are grouped together and
+          # ORed.
           # Corresponds to the JSON property `dimensionFilters`
           # @return [Array<Google::Apis::DfareportingV3_4::DimensionValue>]
           attr_accessor :dimension_filters
@@ -11219,7 +11227,7 @@ module Google
           # @return [Array<String>]
           attr_accessor :metric_names
         
-          # The list of names of  Reach By Frequency metrics the report should include.
+          # The list of names of Reach By Frequency metrics the report should include.
           # Corresponds to the JSON property `reachByFrequencyMetricNames`
           # @return [Array<String>]
           attr_accessor :reach_by_frequency_metric_names
@@ -11258,15 +11266,15 @@ module Google
           # @return [Fixnum]
           attr_accessor :every
         
-          # The expiration date when the scheduled report stops running.
+          # 
           # Corresponds to the JSON property `expirationDate`
           # @return [Date]
           attr_accessor :expiration_date
         
-          # The interval for which the report is repeated. Note:
-          # - "DAILY" also requires field "every" to be set.
-          # - "WEEKLY" also requires fields "every" and "repeatsOnWeekDays" to be set.
-          # - "MONTHLY" also requires fields "every" and "runsOnDayOfMonth" to be set.
+          # The interval for which the report is repeated. Note: - "DAILY" also requires
+          # field "every" to be set. - "WEEKLY" also requires fields "every" and "
+          # repeatsOnWeekDays" to be set. - "MONTHLY" also requires fields "every" and "
+          # runsOnDayOfMonth" to be set.
           # Corresponds to the JSON property `repeats`
           # @return [String]
           attr_accessor :repeats
@@ -11278,15 +11286,15 @@ module Google
         
           # Enum to define for "MONTHLY" scheduled reports whether reports should be
           # repeated on the same day of the month as "startDate" or the same day of the
-          # week of the month.
-          # Example: If 'startDate' is Monday, April 2nd 2012 (2012-04-02), "DAY_OF_MONTH"
-          # would run subsequent reports on the 2nd of every Month, and "WEEK_OF_MONTH"
-          # would run subsequent reports on the first Monday of the month.
+          # week of the month. Example: If 'startDate' is Monday, April 2nd 2012 (2012-04-
+          # 02), "DAY_OF_MONTH" would run subsequent reports on the 2nd of every Month,
+          # and "WEEK_OF_MONTH" would run subsequent reports on the first Monday of the
+          # month.
           # Corresponds to the JSON property `runsOnDayOfMonth`
           # @return [String]
           attr_accessor :runs_on_day_of_month
         
-          # Start date of date range for which scheduled reports should be run.
+          # 
           # Corresponds to the JSON property `startDate`
           # @return [Date]
           attr_accessor :start_date
@@ -11414,40 +11422,19 @@ module Google
         attr_accessor :lookback_configuration
       
         # Report generation time zone ID of this account. This is a required field that
-        # can only be changed by a superuser.
-        # Acceptable values are:
-        # - "1" for "America/New_York"
-        # - "2" for "Europe/London"
-        # - "3" for "Europe/Paris"
-        # - "4" for "Africa/Johannesburg"
-        # - "5" for "Asia/Jerusalem"
-        # - "6" for "Asia/Shanghai"
-        # - "7" for "Asia/Hong_Kong"
-        # - "8" for "Asia/Tokyo"
-        # - "9" for "Australia/Sydney"
-        # - "10" for "Asia/Dubai"
-        # - "11" for "America/Los_Angeles"
-        # - "12" for "Pacific/Auckland"
-        # - "13" for "America/Sao_Paulo"
-        # - "16" for "America/Asuncion"
-        # - "17" for "America/Chicago"
-        # - "18" for "America/Denver"
-        # - "19" for "America/St_Johns"
-        # - "20" for "Asia/Dhaka"
-        # - "21" for "Asia/Jakarta"
-        # - "22" for "Asia/Kabul"
-        # - "23" for "Asia/Karachi"
-        # - "24" for "Asia/Calcutta"
-        # - "25" for "Asia/Pyongyang"
-        # - "26" for "Asia/Rangoon"
-        # - "27" for "Atlantic/Cape_Verde"
-        # - "28" for "Atlantic/South_Georgia"
-        # - "29" for "Australia/Adelaide"
-        # - "30" for "Australia/Lord_Howe"
-        # - "31" for "Europe/Moscow"
-        # - "32" for "Pacific/Kiritimati"
-        # - "35" for "Pacific/Norfolk"
-        # - "36" for "Pacific/Tongatapu"
+        # can only be changed by a superuser. Acceptable values are: - "1" for "America/
+        # New_York" - "2" for "Europe/London" - "3" for "Europe/Paris" - "4" for "Africa/
+        # Johannesburg" - "5" for "Asia/Jerusalem" - "6" for "Asia/Shanghai" - "7" for "
+        # Asia/Hong_Kong" - "8" for "Asia/Tokyo" - "9" for "Australia/Sydney" - "10" for
+        # "Asia/Dubai" - "11" for "America/Los_Angeles" - "12" for "Pacific/Auckland" - "
+        # 13" for "America/Sao_Paulo" - "16" for "America/Asuncion" - "17" for "America/
+        # Chicago" - "18" for "America/Denver" - "19" for "America/St_Johns" - "20" for "
+        # Asia/Dhaka" - "21" for "Asia/Jakarta" - "22" for "Asia/Kabul" - "23" for "Asia/
+        # Karachi" - "24" for "Asia/Calcutta" - "25" for "Asia/Pyongyang" - "26" for "
+        # Asia/Rangoon" - "27" for "Atlantic/Cape_Verde" - "28" for "Atlantic/
+        # South_Georgia" - "29" for "Australia/Adelaide" - "30" for "Australia/Lord_Howe"
+        # - "31" for "Europe/Moscow" - "32" for "Pacific/Kiritimati" - "35" for "
+        # Pacific/Norfolk" - "36" for "Pacific/Tongatapu"
         # Corresponds to the JSON property `reportGenerationTimeZoneId`
         # @return [Fixnum]
         attr_accessor :report_generation_time_zone_id
@@ -11775,9 +11762,9 @@ module Google
         # measurement adapter will use for in-stream video creatives assigned to the
         # placement. The publisher's specifications will typically determine this
         # setting. For VPAID creatives, the adapter format will match the VPAID format (
-        # HTML5 VPAID creatives use the HTML5 adapter).
-        # Note: Flash is no longer supported. This field now defaults to HTML5 when the
-        # following values are provided: FLASH, BOTH.
+        # HTML5 VPAID creatives use the HTML5 adapter). *Note:* Flash is no longer
+        # supported. This field now defaults to HTML5 when the following values are
+        # provided: FLASH, BOTH.
         # Corresponds to the JSON property `vpaidAdapterChoiceTemplate`
         # @return [String]
         attr_accessor :vpaid_adapter_choice_template
@@ -12784,7 +12771,7 @@ module Google
       
       # A UserProfile resource lets you list all DFA user profiles that are associated
       # with a Google user account. The profile_id needs to be specified in other API
-      # requests. 
+      # requests.
       class UserProfile
         include Google::Apis::Core::Hashable
       
