@@ -26,9 +26,8 @@ module Google
       class BatchDeletePhotosRequest
         include Google::Apis::Core::Hashable
       
-        # Required. IDs of the Photos. HTTP
-        # GET requests require the following syntax for the URL query parameter:
-        # `photoIds=<id1>&photoIds=<id2>&...`.
+        # Required. IDs of the Photos. HTTP GET requests require the following syntax
+        # for the URL query parameter: `photoIds=&photoIds=&...`.
         # Corresponds to the JSON property `photoIds`
         # @return [Array<String>]
         attr_accessor :photo_ids
@@ -43,13 +42,11 @@ module Google
         end
       end
       
-      # Response to batch delete of one or more
-      # Photos.
+      # Response to batch delete of one or more Photos.
       class BatchDeletePhotosResponse
         include Google::Apis::Core::Hashable
       
-        # The status for the operation to delete a single
-        # Photo in the batch request.
+        # The status for the operation to delete a single Photo in the batch request.
         # Corresponds to the JSON property `status`
         # @return [Array<Google::Apis::StreetviewpublishV1::Status>]
         attr_accessor :status
@@ -68,10 +65,8 @@ module Google
       class BatchGetPhotosResponse
         include Google::Apis::Core::Hashable
       
-        # List of results for each individual
-        # Photo requested, in the same order as
-        # the requests in
-        # BatchGetPhotos.
+        # List of results for each individual Photo requested, in the same order as the
+        # requests in BatchGetPhotos.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::StreetviewpublishV1::PhotoResponse>]
         attr_accessor :results
@@ -86,13 +81,12 @@ module Google
         end
       end
       
-      # Request to update the metadata of photos.
-      # Updating the pixels of photos is not supported.
+      # Request to update the metadata of photos. Updating the pixels of photos is not
+      # supported.
       class BatchUpdatePhotosRequest
         include Google::Apis::Core::Hashable
       
-        # Required. List of
-        # UpdatePhotoRequests.
+        # Required. List of UpdatePhotoRequests.
         # Corresponds to the JSON property `updatePhotoRequests`
         # @return [Array<Google::Apis::StreetviewpublishV1::UpdatePhotoRequest>]
         attr_accessor :update_photo_requests
@@ -107,14 +101,12 @@ module Google
         end
       end
       
-      # Response to batch update of metadata of one or more
-      # Photos.
+      # Response to batch update of metadata of one or more Photos.
       class BatchUpdatePhotosResponse
         include Google::Apis::Core::Hashable
       
-        # List of results for each individual
-        # Photo updated, in the same order as
-        # the request.
+        # List of results for each individual Photo updated, in the same order as the
+        # request.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::StreetviewpublishV1::PhotoResponse>]
         attr_accessor :results
@@ -148,13 +140,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -169,9 +159,8 @@ module Google
       
       # An object representing a latitude/longitude pair. This is expressed as a pair
       # of doubles representing degrees latitude and degrees longitude. Unless
-      # specified otherwise, this must conform to the
-      # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-      # standard</a>. Values must be within normalized ranges.
+      # specified otherwise, this must conform to the WGS84 standard. Values must be
+      # within normalized ranges.
       class LatLng
         include Google::Apis::Core::Hashable
       
@@ -200,16 +189,16 @@ module Google
       class Level
         include Google::Apis::Core::Hashable
       
-        # Required. A name assigned to this Level, restricted to 3 characters.
-        # Consider how the elevator buttons would be labeled for this level if there
-        # was an elevator.
+        # Required. A name assigned to this Level, restricted to 3 characters. Consider
+        # how the elevator buttons would be labeled for this level if there was an
+        # elevator.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Floor number, used for ordering. 0 indicates the ground level, 1 indicates
-        # the first level above ground level, -1 indicates the first level under
-        # ground level. Non-integer values are OK.
+        # Floor number, used for ordering. 0 indicates the ground level, 1 indicates the
+        # first level above ground level, -1 indicates the first level under ground
+        # level. Non-integer values are OK.
         # Corresponds to the JSON property `number`
         # @return [Float]
         attr_accessor :number
@@ -235,9 +224,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of photos. The
-        # pageSize field
-        # in the request determines the number of items returned.
+        # List of photos. The pageSize field in the request determines the number of
+        # items returned.
         # Corresponds to the JSON property `photos`
         # @return [Array<Google::Apis::StreetviewpublishV1::Photo>]
         attr_accessor :photos
@@ -258,47 +246,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::StreetviewpublishV1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -321,24 +307,20 @@ module Google
       class Photo
         include Google::Apis::Core::Hashable
       
-        # Absolute time when the photo was captured.
-        # When the photo has no exif timestamp, this is used to set a timestamp in
-        # the photo metadata.
+        # Absolute time when the photo was captured. When the photo has no exif
+        # timestamp, this is used to set a timestamp in the photo metadata.
         # Corresponds to the JSON property `captureTime`
         # @return [String]
         attr_accessor :capture_time
       
-        # Connections to other photos. A connection represents the link from this
-        # photo to another photo.
+        # Connections to other photos. A connection represents the link from this photo
+        # to another photo.
         # Corresponds to the JSON property `connections`
         # @return [Array<Google::Apis::StreetviewpublishV1::Connection>]
         attr_accessor :connections
       
-        # Output only. The download URL for the photo bytes. This field is set only
-        # when
-        # GetPhotoRequest.view
-        # is set to
-        # PhotoView.INCLUDE_DOWNLOAD_URL.
+        # Output only. The download URL for the photo bytes. This field is set only when
+        # GetPhotoRequest.view is set to PhotoView.INCLUDE_DOWNLOAD_URL.
         # Corresponds to the JSON property `downloadUrl`
         # @return [String]
         attr_accessor :download_url
@@ -429,12 +411,8 @@ module Google
         end
       end
       
-      # Response payload for a single
-      # Photo
-      # in batch operations including
-      # BatchGetPhotos
-      # and
-      # BatchUpdatePhotos.
+      # Response payload for a single Photo in batch operations including
+      # BatchGetPhotos and BatchUpdatePhotos.
       class PhotoResponse
         include Google::Apis::Core::Hashable
       
@@ -443,12 +421,12 @@ module Google
         # @return [Google::Apis::StreetviewpublishV1::Photo]
         attr_accessor :photo
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::StreetviewpublishV1::Status]
         attr_accessor :status
@@ -468,8 +446,8 @@ module Google
       class Place
         include Google::Apis::Core::Hashable
       
-        # Output-only. The language_code that the name is localized with. This should
-        # be the language_code specified in the request, but may be a fallback.
+        # Output-only. The language_code that the name is localized with. This should be
+        # the language_code specified in the request, but may be a fallback.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -479,8 +457,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Place identifier, as described in
-        # https://developers.google.com/places/place-id.
+        # Place identifier, as described in https://developers.google.com/places/place-
+        # id.
         # Corresponds to the JSON property `placeId`
         # @return [String]
         attr_accessor :place_id
@@ -501,35 +479,31 @@ module Google
       class Pose
         include Google::Apis::Core::Hashable
       
-        # The estimated horizontal accuracy of this pose in meters with 68%
-        # confidence (one standard deviation). For example, on Android, this value is
-        # available from this method:
-        # https://developer.android.com/reference/android/location/Location#getAccuracy()
-        # .
-        # Other platforms have different methods of obtaining similar accuracy
-        # estimations.
+        # The estimated horizontal accuracy of this pose in meters with 68% confidence (
+        # one standard deviation). For example, on Android, this value is available from
+        # this method: https://developer.android.com/reference/android/location/Location#
+        # getAccuracy(). Other platforms have different methods of obtaining similar
+        # accuracy estimations.
         # Corresponds to the JSON property `accuracyMeters`
         # @return [Float]
         attr_accessor :accuracy_meters
       
-        # Altitude of the pose in meters above WGS84 ellipsoid.
-        # NaN indicates an unmeasured quantity.
+        # Altitude of the pose in meters above WGS84 ellipsoid. NaN indicates an
+        # unmeasured quantity.
         # Corresponds to the JSON property `altitude`
         # @return [Float]
         attr_accessor :altitude
       
-        # Compass heading, measured at the center of the photo in degrees clockwise
-        # from North. Value must be >=0 and <360.
-        # NaN indicates an unmeasured quantity.
+        # Compass heading, measured at the center of the photo in degrees clockwise from
+        # North. Value must be >=0 and <360. NaN indicates an unmeasured quantity.
         # Corresponds to the JSON property `heading`
         # @return [Float]
         attr_accessor :heading
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the
-        # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-        # standard</a>. Values must be within normalized ranges.
+        # specified otherwise, this must conform to the WGS84 standard. Values must be
+        # within normalized ranges.
         # Corresponds to the JSON property `latLngPair`
         # @return [Google::Apis::StreetviewpublishV1::LatLng]
         attr_accessor :lat_lng_pair
@@ -539,17 +513,15 @@ module Google
         # @return [Google::Apis::StreetviewpublishV1::Level]
         attr_accessor :level
       
-        # Pitch, measured at the center of the photo in degrees. Value must be >=-90
-        # and <= 90. A value of -90 means looking directly down, and a value of 90
-        # means looking directly up.
-        # NaN indicates an unmeasured quantity.
+        # Pitch, measured at the center of the photo in degrees. Value must be >=-90 and
+        # <= 90. A value of -90 means looking directly down, and a value of 90 means
+        # looking directly up. NaN indicates an unmeasured quantity.
         # Corresponds to the JSON property `pitch`
         # @return [Float]
         attr_accessor :pitch
       
-        # Roll, measured in degrees. Value must be >= 0 and <360. A value of 0
-        # means level with the horizon.
-        # NaN indicates an unmeasured quantity.
+        # Roll, measured in degrees. Value must be >= 0 and <360. A value of 0 means
+        # level with the horizon. NaN indicates an unmeasured quantity.
         # Corresponds to the JSON property `roll`
         # @return [Float]
         attr_accessor :roll
@@ -570,12 +542,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -584,15 +556,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -609,9 +581,8 @@ module Google
         end
       end
       
-      # Request to update the metadata of a
-      # Photo. Updating the pixels of a photo
-      # is not supported.
+      # Request to update the metadata of a Photo. Updating the pixels of a photo is
+      # not supported.
       class UpdatePhotoRequest
         include Google::Apis::Core::Hashable
       
@@ -620,28 +591,16 @@ module Google
         # @return [Google::Apis::StreetviewpublishV1::Photo]
         attr_accessor :photo
       
-        # Required. Mask that identifies fields on the photo metadata to update.
-        # If not present, the old Photo
-        # metadata is entirely replaced with the
-        # new Photo metadata in this request.
-        # The update fails if invalid fields are specified. Multiple fields can be
-        # specified in a comma-delimited list.
-        # The following fields are valid:
-        # * `pose.heading`
-        # * `pose.latLngPair`
-        # * `pose.pitch`
-        # * `pose.roll`
-        # * `pose.level`
-        # * `pose.altitude`
-        # * `connections`
-        # * `places`
-        # <aside class="note"><b>Note:</b> When
-        # updateMask
-        # contains repeated fields, the entire set of repeated values get replaced
-        # with the new contents. For example, if
-        # updateMask
-        # contains `connections` and `UpdatePhotoRequest.photo.connections` is empty,
-        # all connections are removed.</aside>
+        # Required. Mask that identifies fields on the photo metadata to update. If not
+        # present, the old Photo metadata is entirely replaced with the new Photo
+        # metadata in this request. The update fails if invalid fields are specified.
+        # Multiple fields can be specified in a comma-delimited list. The following
+        # fields are valid: * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.
+        # roll` * `pose.level` * `pose.altitude` * `connections` * `places` *Note:* When
+        # updateMask contains repeated fields, the entire set of repeated values get
+        # replaced with the new contents. For example, if updateMask contains `
+        # connections` and `UpdatePhotoRequest.photo.connections` is empty, all
+        # connections are removed.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -661,9 +620,8 @@ module Google
       class UploadRef
         include Google::Apis::Core::Hashable
       
-        # Required. An upload reference should be unique for each user. It follows
-        # the form:
-        # "https://streetviewpublish.googleapis.com/media/user/`account_id`/photo/`
+        # Required. An upload reference should be unique for each user. It follows the
+        # form: "https://streetviewpublish.googleapis.com/media/user/`account_id`/photo/`
         # upload_reference`"
         # Corresponds to the JSON property `uploadUrl`
         # @return [String]

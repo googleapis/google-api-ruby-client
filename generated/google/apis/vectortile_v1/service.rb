@@ -49,73 +49,69 @@ module Google
         
         # Gets a feature tile by its tile resource name.
         # @param [String] name
-        #   Required. Resource name of the tile. The tile resource name is prefixed by
-        #   its collection ID `tiles/` followed by the resource ID, which encodes the
-        #   tile's global x and y coordinates and zoom level as `@<x>,<y>,<zoom>z`.
-        #   For example, `tiles/@1,2,3z`.
+        #   Required. Resource name of the tile. The tile resource name is prefixed by its
+        #   collection ID `tiles/` followed by the resource ID, which encodes the tile's
+        #   global x and y coordinates and zoom level as `@,,z`. For example, `tiles/@1,2,
+        #   3z`.
         # @param [String] client_info_api_client
-        #   API client name and version. For example, the SDK calling the API. The
-        #   exact format is up to the client.
+        #   API client name and version. For example, the SDK calling the API. The exact
+        #   format is up to the client.
         # @param [String] client_info_application_id
-        #   Application ID, such as the package name on Android and the bundle
-        #   identifier on iOS platforms.
+        #   Application ID, such as the package name on Android and the bundle identifier
+        #   on iOS platforms.
         # @param [String] client_info_application_version
-        #   Application version number, such as "1.2.3". The exact format is
-        #   application-dependent.
+        #   Application version number, such as "1.2.3". The exact format is application-
+        #   dependent.
         # @param [String] client_info_device_model
-        #   Device model as reported by the device. The exact format is
-        #   platform-dependent.
+        #   Device model as reported by the device. The exact format is platform-dependent.
         # @param [String] client_info_operating_system
-        #   Operating system name and version as reported by the OS. For example,
-        #   "Mac OS X 10.10.4". The exact format is platform-dependent.
+        #   Operating system name and version as reported by the OS. For example, "Mac OS
+        #   X 10.10.4". The exact format is platform-dependent.
         # @param [String] client_info_platform
         #   Platform where the application is running.
         # @param [String] client_info_user_id
-        #   A client-generated user ID. The ID should be generated and persisted during
-        #   the first user session or whenever a pre-existing ID is not found. The
+        #   Required. A client-generated user ID. The ID should be generated and persisted
+        #   during the first user session or whenever a pre-existing ID is not found. The
         #   exact format is up to the client. This must be non-empty in a
-        #   GetFeatureTileRequest (whether via the header or
-        #   GetFeatureTileRequest.client_info).
+        #   GetFeatureTileRequest (whether via the header or GetFeatureTileRequest.
+        #   client_info).
         # @param [String] client_tile_version_id
-        #   Optional version id identifying the tile that is already in the client's
-        #   cache. This field should be populated with the most recent version_id value
-        #   returned by the API for the requested tile.
-        #   If the version id is empty the server always returns a newly rendered tile.
-        #   If it is provided the server checks if the tile contents would be identical
-        #   to one that's already on the client, and if so, returns a stripped-down
-        #   response tile with STATUS_OK_DATA_UNCHANGED instead.
+        #   Optional version id identifying the tile that is already in the client's cache.
+        #   This field should be populated with the most recent version_id value returned
+        #   by the API for the requested tile. If the version id is empty the server
+        #   always returns a newly rendered tile. If it is provided the server checks if
+        #   the tile contents would be identical to one that's already on the client, and
+        #   if so, returns a stripped-down response tile with STATUS_OK_DATA_UNCHANGED
+        #   instead.
         # @param [Boolean] enable_detailed_highway_types
-        #   Flag indicating whether detailed highway types should be returned. If this
-        #   is set, the CONTROLLED_ACCESS_HIGHWAY type may be returned. If not, then
-        #   these highways will have the generic HIGHWAY type.
-        #   This exists for backwards compatibility reasons.
+        #   Flag indicating whether detailed highway types should be returned. If this is
+        #   set, the CONTROLLED_ACCESS_HIGHWAY type may be returned. If not, then these
+        #   highways will have the generic HIGHWAY type. This exists for backwards
+        #   compatibility reasons.
         # @param [Boolean] enable_feature_names
-        #   Flag indicating whether human-readable names should be returned for
-        #   features. If this is set, the display_name field on the feature will be
-        #   filled out.
+        #   Flag indicating whether human-readable names should be returned for features.
+        #   If this is set, the display_name field on the feature will be filled out.
         # @param [Boolean] enable_modeled_volumes
-        #   Flag indicating whether 3D building models should be enabled. If this is
-        #   set structures will be returned as 3D modeled volumes rather than 2.5D
-        #   extruded areas where possible.
+        #   Flag indicating whether 3D building models should be enabled. If this is set
+        #   structures will be returned as 3D modeled volumes rather than 2.5D extruded
+        #   areas where possible.
         # @param [Boolean] enable_political_features
         #   Flag indicating whether political features should be returned.
         # @param [Boolean] enable_private_roads
-        #   Flag indicating whether the returned tile will contain road features that
-        #   are marked private. Private roads are indicated by the
-        #   Feature.segment_info.road_info.is_private field.
+        #   Flag indicating whether the returned tile will contain road features that are
+        #   marked private. Private roads are indicated by the Feature.segment_info.
+        #   road_info.is_private field.
         # @param [Boolean] enable_unclipped_buildings
-        #   Flag indicating whether unclipped buildings should be returned. If this is
-        #   set, building render ops will extend beyond the tile boundary. Buildings
-        #   will only be returned on the tile that contains their centroid.
+        #   Flag indicating whether unclipped buildings should be returned. If this is set,
+        #   building render ops will extend beyond the tile boundary. Buildings will only
+        #   be returned on the tile that contains their centroid.
         # @param [String] language_code
-        #   Required. The BCP-47 language code corresponding to the language in which
-        #   the name was requested, such as "en-US" or "sr-Latn".
-        #   For more information, see
+        #   Required. The BCP-47 language code corresponding to the language in which the
+        #   name was requested, such as "en-US" or "sr-Latn". For more information, see
         #   http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # @param [String] region_code
         #   Required. The Unicode country/region code (CLDR) of the location from which
-        #   the request is coming from, such as "US" and "419".
-        #   For more information, see
+        #   the request is coming from, such as "US" and "419". For more information, see
         #   http://www.unicode.org/reports/tr35/#unicode_region_subtag.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -162,60 +158,51 @@ module Google
         
         # Gets a terrain tile by its tile resource name.
         # @param [String] name
-        #   Required. Resource name of the tile. The tile resource name is prefixed by
-        #   its collection ID `terraintiles/` followed by the resource ID, which
-        #   encodes the tile's global x and y coordinates and zoom level as
-        #   `@<x>,<y>,<zoom>z`. For example, `terraintiles/@1,2,3z`.
+        #   Required. Resource name of the tile. The tile resource name is prefixed by its
+        #   collection ID `terraintiles/` followed by the resource ID, which encodes the
+        #   tile's global x and y coordinates and zoom level as `@,,z`. For example, `
+        #   terraintiles/@1,2,3z`.
         # @param [Fixnum] altitude_precision_centimeters
-        #   The precision of terrain altitudes in centimeters.
-        #   Possible values: between 1 (cm level precision) and 1,000,000 (10-kilometer
-        #   level precision).
+        #   The precision of terrain altitudes in centimeters. Possible values: between 1 (
+        #   cm level precision) and 1,000,000 (10-kilometer level precision).
         # @param [String] client_info_api_client
-        #   API client name and version. For example, the SDK calling the API. The
-        #   exact format is up to the client.
+        #   API client name and version. For example, the SDK calling the API. The exact
+        #   format is up to the client.
         # @param [String] client_info_application_id
-        #   Application ID, such as the package name on Android and the bundle
-        #   identifier on iOS platforms.
+        #   Application ID, such as the package name on Android and the bundle identifier
+        #   on iOS platforms.
         # @param [String] client_info_application_version
-        #   Application version number, such as "1.2.3". The exact format is
-        #   application-dependent.
+        #   Application version number, such as "1.2.3". The exact format is application-
+        #   dependent.
         # @param [String] client_info_device_model
-        #   Device model as reported by the device. The exact format is
-        #   platform-dependent.
+        #   Device model as reported by the device. The exact format is platform-dependent.
         # @param [String] client_info_operating_system
-        #   Operating system name and version as reported by the OS. For example,
-        #   "Mac OS X 10.10.4". The exact format is platform-dependent.
+        #   Operating system name and version as reported by the OS. For example, "Mac OS
+        #   X 10.10.4". The exact format is platform-dependent.
         # @param [String] client_info_platform
         #   Platform where the application is running.
         # @param [String] client_info_user_id
-        #   A client-generated user ID. The ID should be generated and persisted during
-        #   the first user session or whenever a pre-existing ID is not found. The
+        #   Required. A client-generated user ID. The ID should be generated and persisted
+        #   during the first user session or whenever a pre-existing ID is not found. The
         #   exact format is up to the client. This must be non-empty in a
-        #   GetFeatureTileRequest (whether via the header or
-        #   GetFeatureTileRequest.client_info).
+        #   GetFeatureTileRequest (whether via the header or GetFeatureTileRequest.
+        #   client_info).
         # @param [Fixnum] max_elevation_resolution_cells
-        #   The maximum allowed resolution for the returned elevation heightmap.
-        #   Possible values: between 1 and 1024 (and not less than
-        #   min_elevation_resolution_cells).
-        #   Over-sized heightmaps will be non-uniformly down-sampled such that each
-        #   edge is no longer than this value. Non-uniformity is chosen to maximise the
-        #   amount of preserved data.
-        #   For example:
-        #   Original resolution: 100px (width) * 30px (height)
-        #   max_elevation_resolution: 30
-        #   New resolution: 30px (width) * 30px (height)
+        #   The maximum allowed resolution for the returned elevation heightmap. Possible
+        #   values: between 1 and 1024 (and not less than min_elevation_resolution_cells).
+        #   Over-sized heightmaps will be non-uniformly down-sampled such that each edge
+        #   is no longer than this value. Non-uniformity is chosen to maximise the amount
+        #   of preserved data. For example: Original resolution: 100px (width) * 30px (
+        #   height) max_elevation_resolution: 30 New resolution: 30px (width) * 30px (
+        #   height)
         # @param [Fixnum] min_elevation_resolution_cells
-        #   The minimum allowed resolution for the returned elevation heightmap.
-        #   Possible values: between 0 and 1024 (and not more than
-        #   max_elevation_resolution_cells). Zero is supported for backward
-        #   compatibility.
-        #   Under-sized heightmaps will be non-uniformly up-sampled
-        #   such that each edge is no shorter than this value. Non-uniformity is chosen
-        #   to maximise the amount of preserved data.
-        #   For example:
-        #   Original resolution: 30px (width) * 10px (height)
-        #   min_elevation_resolution: 30
-        #   New resolution: 30px (width) * 30px (height)
+        #   The minimum allowed resolution for the returned elevation heightmap. Possible
+        #   values: between 0 and 1024 (and not more than max_elevation_resolution_cells).
+        #   Zero is supported for backward compatibility. Under-sized heightmaps will be
+        #   non-uniformly up-sampled such that each edge is no shorter than this value.
+        #   Non-uniformity is chosen to maximise the amount of preserved data. For example:
+        #   Original resolution: 30px (width) * 10px (height) min_elevation_resolution:
+        #   30 New resolution: 30px (width) * 30px (height)
         # @param [Array<String>, String] terrain_formats
         #   Terrain formats that the client understands.
         # @param [String] fields

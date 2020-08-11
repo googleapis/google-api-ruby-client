@@ -22,55 +22,55 @@ module Google
   module Apis
     module ManufacturersV1
       
-      # Attributes of the product. For more information, see
-      # https://support.google.com/manufacturers/answer/6124116.
+      # Attributes of the product. For more information, see https://support.google.
+      # com/manufacturers/answer/6124116.
       class Attributes
         include Google::Apis::Core::Hashable
       
-        # The additional images of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#addlimage.
+        # The additional images of the product. For more information, see https://
+        # support.google.com/manufacturers/answer/6124116#addlimage.
         # Corresponds to the JSON property `additionalImageLink`
         # @return [Array<Google::Apis::ManufacturersV1::Image>]
         attr_accessor :additional_image_link
       
-        # The target age group of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#agegroup.
+        # The target age group of the product. For more information, see https://support.
+        # google.com/manufacturers/answer/6124116#agegroup.
         # Corresponds to the JSON property `ageGroup`
         # @return [String]
         attr_accessor :age_group
       
-        # The brand name of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#brand.
+        # The brand name of the product. For more information, see https://support.
+        # google.com/manufacturers/answer/6124116#brand.
         # Corresponds to the JSON property `brand`
         # @return [String]
         attr_accessor :brand
       
-        # The capacity of a product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#capacity.
+        # The capacity of a product. For more information, see https://support.google.
+        # com/manufacturers/answer/6124116#capacity.
         # Corresponds to the JSON property `capacity`
         # @return [Google::Apis::ManufacturersV1::Capacity]
         attr_accessor :capacity
       
-        # The color of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#color.
+        # The color of the product. For more information, see https://support.google.com/
+        # manufacturers/answer/6124116#color.
         # Corresponds to the JSON property `color`
         # @return [String]
         attr_accessor :color
       
-        # The number of products in a single package. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#count.
+        # The number of products in a single package. For more information, see https://
+        # support.google.com/manufacturers/answer/6124116#count.
         # Corresponds to the JSON property `count`
         # @return [Google::Apis::ManufacturersV1::Count]
         attr_accessor :count
       
-        # The description of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#description.
+        # The description of the product. For more information, see https://support.
+        # google.com/manufacturers/answer/6124116#description.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The disclosure date of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#disclosure.
+        # The disclosure date of the product. For more information, see https://support.
+        # google.com/manufacturers/answer/6124116#disclosure.
         # Corresponds to the JSON property `disclosureDate`
         # @return [String]
         attr_accessor :disclosure_date
@@ -80,32 +80,32 @@ module Google
         # @return [Array<String>]
         attr_accessor :excluded_destination
       
-        # The rich format description of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#featuredesc.
+        # The rich format description of the product. For more information, see https://
+        # support.google.com/manufacturers/answer/6124116#featuredesc.
         # Corresponds to the JSON property `featureDescription`
         # @return [Array<Google::Apis::ManufacturersV1::FeatureDescription>]
         attr_accessor :feature_description
       
-        # The flavor of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#flavor.
+        # The flavor of the product. For more information, see https://support.google.
+        # com/manufacturers/answer/6124116#flavor.
         # Corresponds to the JSON property `flavor`
         # @return [String]
         attr_accessor :flavor
       
-        # The format of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#format.
+        # The format of the product. For more information, see https://support.google.
+        # com/manufacturers/answer/6124116#format.
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
       
-        # The target gender of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#gender.
+        # The target gender of the product. For more information, see https://support.
+        # google.com/manufacturers/answer/6124116#gender.
         # Corresponds to the JSON property `gender`
         # @return [String]
         attr_accessor :gender
       
-        # The Global Trade Item Number (GTIN) of the product. For more information,
-        # see https://support.google.com/manufacturers/answer/6124116#gtin.
+        # The Global Trade Item Number (GTIN) of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#gtin.
         # Corresponds to the JSON property `gtin`
         # @return [Array<String>]
         attr_accessor :gtin
@@ -120,93 +120,92 @@ module Google
         # @return [Array<String>]
         attr_accessor :included_destination
       
-        # The item group id of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#itemgroupid.
+        # The item group id of the product. For more information, see https://support.
+        # google.com/manufacturers/answer/6124116#itemgroupid.
         # Corresponds to the JSON property `itemGroupId`
         # @return [String]
         attr_accessor :item_group_id
       
-        # The material of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#material.
+        # The material of the product. For more information, see https://support.google.
+        # com/manufacturers/answer/6124116#material.
         # Corresponds to the JSON property `material`
         # @return [String]
         attr_accessor :material
       
-        # The Manufacturer Part Number (MPN) of the product. For more information,
-        # see https://support.google.com/manufacturers/answer/6124116#mpn.
+        # The Manufacturer Part Number (MPN) of the product. For more information, see
+        # https://support.google.com/manufacturers/answer/6124116#mpn.
         # Corresponds to the JSON property `mpn`
         # @return [String]
         attr_accessor :mpn
       
-        # The pattern of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#pattern.
+        # The pattern of the product. For more information, see https://support.google.
+        # com/manufacturers/answer/6124116#pattern.
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern
       
-        # The details of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#productdetail.
+        # The details of the product. For more information, see https://support.google.
+        # com/manufacturers/answer/6124116#productdetail.
         # Corresponds to the JSON property `productDetail`
         # @return [Array<Google::Apis::ManufacturersV1::ProductDetail>]
         attr_accessor :product_detail
       
-        # The name of the group of products related to the product. For more
-        # information, see
-        # https://support.google.com/manufacturers/answer/6124116#productline.
+        # The name of the group of products related to the product. For more information,
+        # see https://support.google.com/manufacturers/answer/6124116#productline.
         # Corresponds to the JSON property `productLine`
         # @return [String]
         attr_accessor :product_line
       
-        # The canonical name of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#productname.
+        # The canonical name of the product. For more information, see https://support.
+        # google.com/manufacturers/answer/6124116#productname.
         # Corresponds to the JSON property `productName`
         # @return [String]
         attr_accessor :product_name
       
-        # The URL of the detail page of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#productpage.
+        # The URL of the detail page of the product. For more information, see https://
+        # support.google.com/manufacturers/answer/6124116#productpage.
         # Corresponds to the JSON property `productPageUrl`
         # @return [String]
         attr_accessor :product_page_url
       
-        # The type or category of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#producttype.
+        # The type or category of the product. For more information, see https://support.
+        # google.com/manufacturers/answer/6124116#producttype.
         # Corresponds to the JSON property `productType`
         # @return [Array<String>]
         attr_accessor :product_type
       
-        # The release date of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#release.
+        # The release date of the product. For more information, see https://support.
+        # google.com/manufacturers/answer/6124116#release.
         # Corresponds to the JSON property `releaseDate`
         # @return [String]
         attr_accessor :release_date
       
-        # Rich product content. For more information, see
-        # https://support.google.com/manufacturers/answer/9389865
+        # Rich product content. For more information, see https://support.google.com/
+        # manufacturers/answer/9389865
         # Corresponds to the JSON property `richProductContent`
         # @return [Array<String>]
         attr_accessor :rich_product_content
       
-        # The scent of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#scent.
+        # The scent of the product. For more information, see https://support.google.com/
+        # manufacturers/answer/6124116#scent.
         # Corresponds to the JSON property `scent`
         # @return [String]
         attr_accessor :scent
       
-        # The size of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#size.
+        # The size of the product. For more information, see https://support.google.com/
+        # manufacturers/answer/6124116#size.
         # Corresponds to the JSON property `size`
         # @return [String]
         attr_accessor :size
       
-        # The size system of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#sizesystem.
+        # The size system of the product. For more information, see https://support.
+        # google.com/manufacturers/answer/6124116#sizesystem.
         # Corresponds to the JSON property `sizeSystem`
         # @return [String]
         attr_accessor :size_system
       
-        # The size type of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#sizetype.
+        # The size type of the product. For more information, see https://support.google.
+        # com/manufacturers/answer/6124116#sizetype.
         # Corresponds to the JSON property `sizeType`
         # @return [String]
         attr_accessor :size_type
@@ -216,26 +215,25 @@ module Google
         # @return [Google::Apis::ManufacturersV1::Price]
         attr_accessor :suggested_retail_price
       
-        # The target client id. Should only be used in the accounts of the data
-        # partners.
+        # The target client id. Should only be used in the accounts of the data partners.
         # Corresponds to the JSON property `targetClientId`
         # @return [String]
         attr_accessor :target_client_id
       
-        # The theme of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#theme.
+        # The theme of the product. For more information, see https://support.google.com/
+        # manufacturers/answer/6124116#theme.
         # Corresponds to the JSON property `theme`
         # @return [String]
         attr_accessor :theme
       
-        # The title of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#title.
+        # The title of the product. For more information, see https://support.google.com/
+        # manufacturers/answer/6124116#title.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # The videos of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#video.
+        # The videos of the product. For more information, see https://support.google.
+        # com/manufacturers/answer/6124116#video.
         # Corresponds to the JSON property `videoLink`
         # @return [Array<String>]
         attr_accessor :video_link
@@ -285,8 +283,8 @@ module Google
         end
       end
       
-      # The capacity of a product. For more information, see
-      # https://support.google.com/manufacturers/answer/6124116#capacity.
+      # The capacity of a product. For more information, see https://support.google.
+      # com/manufacturers/answer/6124116#capacity.
       class Capacity
         include Google::Apis::Core::Hashable
       
@@ -311,8 +309,8 @@ module Google
         end
       end
       
-      # The number of products in a single package. For more information, see
-      # https://support.google.com/manufacturers/answer/6124116#count.
+      # The number of products in a single package. For more information, see https://
+      # support.google.com/manufacturers/answer/6124116#count.
       class Count
         include Google::Apis::Core::Hashable
       
@@ -362,13 +360,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -381,8 +377,8 @@ module Google
         end
       end
       
-      # A feature description of the product. For more information, see
-      # https://support.google.com/manufacturers/answer/6124116#featuredesc.
+      # A feature description of the product. For more information, see https://
+      # support.google.com/manufacturers/answer/6124116#featuredesc.
       class FeatureDescription
         include Google::Apis::Core::Hashable
       
@@ -424,14 +420,12 @@ module Google
         # @return [String]
         attr_accessor :image_url
       
-        # The status of the image.
-        # @OutputOnly
+        # The status of the image. @OutputOnly
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
-        # The type of the image, i.e., crawled or uploaded.
-        # @OutputOnly
+        # The type of the image, i.e., crawled or uploaded. @OutputOnly
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -452,9 +446,8 @@ module Google
       class Issue
         include Google::Apis::Core::Hashable
       
-        # If present, the attribute that triggered the issue. For more information
-        # about attributes, see
-        # https://support.google.com/manufacturers/answer/6124116.
+        # If present, the attribute that triggered the issue. For more information about
+        # attributes, see https://support.google.com/manufacturers/answer/6124116.
         # Corresponds to the JSON property `attribute`
         # @return [String]
         attr_accessor :attribute
@@ -489,8 +482,8 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # The server-generated type of the issue, for example,
-        # “INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc.
+        # The server-generated type of the issue, for example, “
+        # INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -566,14 +559,14 @@ module Google
       class Product
         include Google::Apis::Core::Hashable
       
-        # Attributes of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116.
+        # Attributes of the product. For more information, see https://support.google.
+        # com/manufacturers/answer/6124116.
         # Corresponds to the JSON property `attributes`
         # @return [Google::Apis::ManufacturersV1::Attributes]
         attr_accessor :attributes
       
-        # The content language of the product as a two-letter ISO 639-1 language code
-        # (for example, en).
+        # The content language of the product as a two-letter ISO 639-1 language code (
+        # for example, en).
         # Corresponds to the JSON property `contentLanguage`
         # @return [String]
         attr_accessor :content_language
@@ -588,32 +581,29 @@ module Google
         # @return [Array<Google::Apis::ManufacturersV1::Issue>]
         attr_accessor :issues
       
-        # Name in the format ``target_country`:`content_language`:`product_id``.
-        # `target_country`   - The target country of the product as a CLDR territory
-        # code (for example, US).
-        # `content_language` - The content language of the product as a two-letter
-        # ISO 639-1 language code (for example, en).
-        # `product_id`     -   The ID of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#
-        # id.
+        # Name in the format ``target_country`:`content_language`:`product_id``. `
+        # target_country` - The target country of the product as a CLDR territory code (
+        # for example, US). `content_language` - The content language of the product as
+        # a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID
+        # of the product. For more information, see https://support.google.com/
+        # manufacturers/answer/6124116#id.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Parent ID in the format `accounts/`account_id``.
-        # `account_id` - The ID of the Manufacturer Center account.
+        # Parent ID in the format `accounts/`account_id``. `account_id` - The ID of the
+        # Manufacturer Center account.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
-        # The ID of the product. For more information, see
-        # https://support.google.com/manufacturers/answer/6124116#id.
+        # The ID of the product. For more information, see https://support.google.com/
+        # manufacturers/answer/6124116#id.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
       
-        # The target country of the product as a CLDR territory code (for example,
-        # US).
+        # The target country of the product as a CLDR territory code (for example, US).
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
         attr_accessor :target_country
@@ -635,8 +625,8 @@ module Google
         end
       end
       
-      # A product detail of the product. For more information, see
-      # https://support.google.com/manufacturers/answer/6124116#productdetail.
+      # A product detail of the product. For more information, see https://support.
+      # google.com/manufacturers/answer/6124116#productdetail.
       class ProductDetail
         include Google::Apis::Core::Hashable
       

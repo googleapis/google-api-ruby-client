@@ -18,15 +18,16 @@ require 'google/apis/admin_reports_v1/representations.rb'
 
 module Google
   module Apis
-    # Admin Reports API
+    # Admin SDK
     #
-    # Fetches reports for the administrators of G Suite customers about the usage,
-    # collaboration, security, and risk for their users.
+    # Admin SDK lets administrators of enterprise domains to view and manage
+    # resources like user, groups etc. It also provides audit and usage reports of
+    # domain.
     #
-    # @see /admin-sdk/reports/
+    # @see http://developers.google.com/admin-sdk/
     module AdminReportsV1
       VERSION = 'ReportsV1'
-      REVISION = '20191014'
+      REVISION = '20200810'
 
       # View audit reports for your G Suite domain
       AUTH_ADMIN_REPORTS_AUDIT_READONLY = 'https://www.googleapis.com/auth/admin.reports.audit.readonly'

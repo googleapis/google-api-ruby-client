@@ -137,8 +137,8 @@ module Google
         
         # Returns all the authenticated user's task lists.
         # @param [Fixnum] max_results
-        #   Maximum number of task lists returned on one page. Optional. The default is
-        #   20 (max allowed: 100).
+        #   Maximum number of task lists returned on one page. Optional. The default is 20
+        #   (max allowed: 100).
         # @param [String] page_token
         #   Token specifying the result page to return. Optional.
         # @param [String] fields
@@ -338,8 +338,8 @@ module Google
         #   Parent task identifier. If the task is created at the top level, this
         #   parameter is omitted. Optional.
         # @param [String] previous
-        #   Previous sibling task identifier. If the task is created at the first
-        #   position among its siblings, this parameter is omitted. Optional.
+        #   Previous sibling task identifier. If the task is created at the first position
+        #   among its siblings, this parameter is omitted. Optional.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -375,11 +375,11 @@ module Google
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] completed_max
-        #   Upper bound for a task's completion date (as a RFC 3339 timestamp) to
-        #   filter by. Optional. The default is not to filter by completion date.
+        #   Upper bound for a task's completion date (as a RFC 3339 timestamp) to filter
+        #   by. Optional. The default is not to filter by completion date.
         # @param [String] completed_min
-        #   Lower bound for a task's completion date (as a RFC 3339 timestamp) to
-        #   filter by. Optional. The default is not to filter by completion date.
+        #   Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter
+        #   by. Optional. The default is not to filter by completion date.
         # @param [String] due_max
         #   Upper bound for a task's due date (as a RFC 3339 timestamp) to filter by.
         #   Optional. The default is not to filter by due date.
@@ -387,23 +387,22 @@ module Google
         #   Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by.
         #   Optional. The default is not to filter by due date.
         # @param [Fixnum] max_results
-        #   Maximum number of task lists returned on one page. Optional. The default is
-        #   20 (max allowed: 100).
+        #   Maximum number of task lists returned on one page. Optional. The default is 20
+        #   (max allowed: 100).
         # @param [String] page_token
         #   Token specifying the result page to return. Optional.
         # @param [Boolean] show_completed
-        #   Flag indicating whether completed tasks are returned in the result.
-        #   Optional. The default is True.
+        #   Flag indicating whether completed tasks are returned in the result. Optional.
+        #   The default is True.
         # @param [Boolean] show_deleted
         #   Flag indicating whether deleted tasks are returned in the result. Optional.
         #   The default is False.
         # @param [Boolean] show_hidden
-        #   Flag indicating whether hidden tasks are returned in the result. Optional.
-        #   The default is False.
+        #   Flag indicating whether hidden tasks are returned in the result. Optional. The
+        #   default is False.
         # @param [String] updated_min
-        #   Lower bound for a task's last modification time (as a RFC 3339 timestamp)
-        #   to filter by. Optional. The default is not to filter by last modification
-        #   time.
+        #   Lower bound for a task's last modification time (as a RFC 3339 timestamp) to
+        #   filter by. Optional. The default is not to filter by last modification time.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

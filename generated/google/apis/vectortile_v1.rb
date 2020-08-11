@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/maps/contact-sales/
     module VectortileV1
       VERSION = 'V1'
-      REVISION = '20200622'
+      REVISION = '20200808'
     end
   end
 end

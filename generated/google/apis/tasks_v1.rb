@@ -25,7 +25,7 @@ module Google
     # @see 
     module TasksV1
       VERSION = 'V1'
-      REVISION = '20200516'
+      REVISION = '20200809'
 
       # Create, edit, organize, and delete all your tasks
       AUTH_TASKS = 'https://www.googleapis.com/auth/tasks'

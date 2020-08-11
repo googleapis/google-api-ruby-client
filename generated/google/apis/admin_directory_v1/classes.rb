@@ -26,27 +26,27 @@ module Google
       class Alias
         include Google::Apis::Core::Hashable
       
-        # A alias email
+        # 
         # Corresponds to the JSON property `alias`
         # @return [String]
         attr_accessor :alias
       
-        # ETag of the resource.
+        # 
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # Unique id of the group (Read-only) Unique id of the user (Read-only)
+        # 
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Kind of resource this is.
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Group's primary email (Read-only) User's primary email (Read-only)
+        # 
         # Corresponds to the JSON property `primaryEmail`
         # @return [String]
         attr_accessor :primary_email
@@ -69,17 +69,17 @@ module Google
       class Aliases
         include Google::Apis::Core::Hashable
       
-        # List of alias objects.
+        # 
         # Corresponds to the JSON property `aliases`
         # @return [Array<Object>]
         attr_accessor :aliases
       
-        # ETag of the resource.
+        # 
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # Kind of resource this is.
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -96,7 +96,10 @@ module Google
         end
       end
       
-      # The template that returns individual ASP (Access Code) data.
+      # The template that returns individual ASP (Access Code) data. STEPLADDER:
+      # Generated unstable field number for field 'kind'. (See http://go/stepladder-
+      # help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'.
+      # (See http://go/stepladder-help#fieldNumber)
       class Asp
         include Google::Apis::Core::Hashable
       
@@ -152,7 +155,9 @@ module Google
         end
       end
       
-      # 
+      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
+      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
       class Asps
         include Google::Apis::Core::Hashable
       
@@ -183,11 +188,11 @@ module Google
         end
       end
       
-      # JSON template for Building object in Directory API.
+      # Public API: Resources.buildings
       class Building
         include Google::Apis::Core::Hashable
       
-        # JSON template for the postal address of a building in Directory API.
+        # Public API: Resources.buildings
         # Corresponds to the JSON property `address`
         # @return [Google::Apis::AdminDirectoryV1::BuildingAddress]
         attr_accessor :address
@@ -203,7 +208,7 @@ module Google
         # @return [String]
         attr_accessor :building_name
       
-        # JSON template for coordinates of a building in Directory API.
+        # Public API: Resources.buildings
         # Corresponds to the JSON property `coordinates`
         # @return [Google::Apis::AdminDirectoryV1::BuildingCoordinates]
         attr_accessor :coordinates
@@ -247,7 +252,7 @@ module Google
         end
       end
       
-      # JSON template for the postal address of a building in Directory API.
+      # Public API: Resources.buildings
       class BuildingAddress
         include Google::Apis::Core::Hashable
       
@@ -306,7 +311,7 @@ module Google
         end
       end
       
-      # JSON template for coordinates of a building in Directory API.
+      # Public API: Resources.buildings
       class BuildingCoordinates
         include Google::Apis::Core::Hashable
       
@@ -331,7 +336,7 @@ module Google
         end
       end
       
-      # JSON template for Building List Response object in Directory API.
+      # Public API: Resources.buildings
       class Buildings
         include Google::Apis::Core::Hashable
       
@@ -369,7 +374,7 @@ module Google
         end
       end
       
-      # JSON template for Calendar Resource object in Directory API.
+      # Public API: Resources.calendars
       class CalendarResource
         include Google::Apis::Core::Hashable
       
@@ -388,7 +393,7 @@ module Google
         # @return [String]
         attr_accessor :etags
       
-        # 
+        # Instances of features for the calendar resource.
         # Corresponds to the JSON property `featureInstances`
         # @return [Object]
         attr_accessor :feature_instances
@@ -477,7 +482,7 @@ module Google
         end
       end
       
-      # JSON template for Calendar Resource List Response object in Directory API.
+      # Public API: Resources.calendars
       class CalendarResources
         include Google::Apis::Core::Hashable
       
@@ -594,7 +599,9 @@ module Google
         end
       end
       
-      # JSON template for Chrome Os Device resource in Directory API.
+      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
+      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
       class ChromeOsDevice
         include Google::Apis::Core::Hashable
       
@@ -651,11 +658,9 @@ module Google
       
         # (Read-only) Built-in MAC address for the docking station that the device
         # connected to. Factory sets Media access control address (MAC address) assigned
-        # for use by a dock. Currently this is only supported on the Dell Arcada /
-        # Sarien devices and the Dell WD19 / WD19TB Docking Station. It is reserved
-        # specifically for MAC pass through device policy. The format is twelve (12)
-        # hexadecimal digits without any delimiter (uppercase letters). This is only
-        # relevant for Dell devices.
+        # for use by a dock. It is reserved specifically for MAC pass through device
+        # policy. The format is twelve (12) hexadecimal digits without any delimiter (
+        # uppercase letters). This is only relevant for some devices.
         # Corresponds to the JSON property `dockMacAddress`
         # @return [String]
         attr_accessor :dock_mac_address
@@ -693,7 +698,7 @@ module Google
         # @return [DateTime]
         attr_accessor :last_enrollment_time
       
-        # Contains last used network (Read-only)
+        # Contains last known network (Read-only)
         # Corresponds to the JSON property `lastKnownNetwork`
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::LastKnownNetwork>]
         attr_accessor :last_known_network
@@ -1004,16 +1009,16 @@ module Google
           end
         end
         
-        # 
+        # Information for an ip address.
         class LastKnownNetwork
           include Google::Apis::Core::Hashable
         
-          # The IP address
+          # The IP address.
           # Corresponds to the JSON property `ipAddress`
           # @return [String]
           attr_accessor :ip_address
         
-          # The WAN IP address
+          # The WAN IP address.
           # Corresponds to the JSON property `wanIpAddress`
           # @return [String]
           attr_accessor :wan_ip_address
@@ -1129,8 +1134,7 @@ module Google
         end
       end
       
-      # JSON request template for firing actions on ChromeOs Device in Directory
-      # Devices API.
+      # 
       class ChromeOsDeviceAction
         include Google::Apis::Core::Hashable
       
@@ -1155,7 +1159,9 @@ module Google
         end
       end
       
-      # JSON response template for List Chrome OS Devices operation in Directory API.
+      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
+      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
       class ChromeOsDevices
         include Google::Apis::Core::Hashable
       
@@ -1192,8 +1198,7 @@ module Google
         end
       end
       
-      # JSON request template for moving ChromeOs Device to given OU in Directory
-      # Devices API.
+      # 
       class ChromeOsMoveDevicesToOu
         include Google::Apis::Core::Hashable
       
@@ -1212,7 +1217,9 @@ module Google
         end
       end
       
-      # JSON template for Customer Resource object in Directory API.
+      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
+      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
       class Customer
         include Google::Apis::Core::Hashable
       
@@ -1258,7 +1265,10 @@ module Google
         # @return [String]
         attr_accessor :phone_number
       
-        # JSON template for postal address of a customer.
+        # STEPLADDER: Generated unstable field number for field 'address_line2' to avoid
+        # collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated
+        # unstable field number for field 'address_line3' to avoid collision. (See http:/
+        # /go/stepladder-help#fieldNumber)
         # Corresponds to the JSON property `postalAddress`
         # @return [Google::Apis::AdminDirectoryV1::CustomerPostalAddress]
         attr_accessor :postal_address
@@ -1281,7 +1291,10 @@ module Google
         end
       end
       
-      # JSON template for postal address of a customer.
+      # STEPLADDER: Generated unstable field number for field 'address_line2' to avoid
+      # collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated
+      # unstable field number for field 'address_line3' to avoid collision. (See http:/
+      # /go/stepladder-help#fieldNumber)
       class CustomerPostalAddress
         include Google::Apis::Core::Hashable
       
@@ -1324,7 +1337,7 @@ module Google
         attr_accessor :organization_name
       
         # The postal code. A postalCode example is a postal zip code such as 10009. This
-        # is in accordance with - http://portablecontacts.net/draft-spec.html#
+        # is in accordance with - http: //portablecontacts.net/draft-spec.html#
         # address_element.
         # Corresponds to the JSON property `postalCode`
         # @return [String]
@@ -1354,7 +1367,7 @@ module Google
         end
       end
       
-      # JSON template for Domain Alias object in Directory API.
+      # 
       class DomainAlias
         include Google::Apis::Core::Hashable
       
@@ -1405,7 +1418,7 @@ module Google
         end
       end
       
-      # JSON response template to list domain aliases in Directory API.
+      # 
       class DomainAliases
         include Google::Apis::Core::Hashable
       
@@ -1436,7 +1449,7 @@ module Google
         end
       end
       
-      # JSON template for Domain object in Directory API.
+      # 
       class Domains
         include Google::Apis::Core::Hashable
       
@@ -1493,7 +1506,7 @@ module Google
         end
       end
       
-      # JSON response template to list Domains in Directory API.
+      # 
       class Domains2
         include Google::Apis::Core::Hashable
       
@@ -1555,7 +1568,7 @@ module Google
         end
       end
       
-      # JSON template for a "feature instance".
+      # JSON template for a feature instance.
       class FeatureInstance
         include Google::Apis::Core::Hashable
       
@@ -1574,7 +1587,7 @@ module Google
         end
       end
       
-      # JSON request template for renaming a feature.
+      # 
       class FeatureRename
         include Google::Apis::Core::Hashable
       
@@ -1593,7 +1606,7 @@ module Google
         end
       end
       
-      # JSON template for Feature List Response object in Directory API.
+      # Public API: Resources.features
       class Features
         include Google::Apis::Core::Hashable
       
@@ -1631,7 +1644,9 @@ module Google
         end
       end
       
-      # JSON template for Group resource in Directory API.
+      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
+      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
       class Group
         include Google::Apis::Core::Hashable
       
@@ -1705,7 +1720,9 @@ module Google
         end
       end
       
-      # JSON response template for List Groups operation in Directory API.
+      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
+      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
       class Groups
         include Google::Apis::Core::Hashable
       
@@ -1742,7 +1759,7 @@ module Google
         end
       end
       
-      # JSON template for Member resource in Directory API.
+      # 
       class Member
         include Google::Apis::Core::Hashable
       
@@ -1761,9 +1778,9 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Unique identifier of group (Read-only) Unique identifier of member (Read-only)
         # The unique ID of the group member. A member id can be used as a member request
-        # URI's memberKey. Unique identifier of group (Read-only) Unique identifier of
-        # member (Read-only)
+        # URI's memberKey.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1805,7 +1822,7 @@ module Google
         end
       end
       
-      # JSON response template for List Members operation in Directory API.
+      # 
       class Members
         include Google::Apis::Core::Hashable
       
@@ -1846,8 +1863,8 @@ module Google
       class MembersHasMember
         include Google::Apis::Core::Hashable
       
-        # Identifies whether the given user is a member of the group. Membership can be
-        # direct or nested.
+        # Output only. Identifies whether the given user is a member of the group.
+        # Membership can be direct or nested.
         # Corresponds to the JSON property `isMember`
         # @return [Boolean]
         attr_accessor :is_member
@@ -1863,7 +1880,7 @@ module Google
         end
       end
       
-      # JSON template for Mobile Device resource in Directory API.
+      # 
       class MobileDevice
         include Google::Apis::Core::Hashable
       
@@ -2167,8 +2184,7 @@ module Google
         end
       end
       
-      # JSON request template for firing commands on Mobile Device in Directory
-      # Devices API.
+      # 
       class MobileDeviceAction
         include Google::Apis::Core::Hashable
       
@@ -2187,7 +2203,7 @@ module Google
         end
       end
       
-      # JSON response template for List Mobile Devices operation in Directory API.
+      # 
       class MobileDevices
         include Google::Apis::Core::Hashable
       
@@ -2224,112 +2240,10 @@ module Google
         end
       end
       
-      # Template for a notification resource.
-      class Notification
-        include Google::Apis::Core::Hashable
-      
-        # Body of the notification (Read-only)
-        # Corresponds to the JSON property `body`
-        # @return [String]
-        attr_accessor :body
-      
-        # ETag of the resource.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # Address from which the notification is received (Read-only)
-        # Corresponds to the JSON property `fromAddress`
-        # @return [String]
-        attr_accessor :from_address
-      
-        # Boolean indicating whether the notification is unread or not.
-        # Corresponds to the JSON property `isUnread`
-        # @return [Boolean]
-        attr_accessor :is_unread
-        alias_method :is_unread?, :is_unread
-      
-        # The type of the resource.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # 
-        # Corresponds to the JSON property `notificationId`
-        # @return [String]
-        attr_accessor :notification_id
-      
-        # Time at which notification was sent (Read-only)
-        # Corresponds to the JSON property `sendTime`
-        # @return [DateTime]
-        attr_accessor :send_time
-      
-        # Subject of the notification (Read-only)
-        # Corresponds to the JSON property `subject`
-        # @return [String]
-        attr_accessor :subject
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @body = args[:body] if args.key?(:body)
-          @etag = args[:etag] if args.key?(:etag)
-          @from_address = args[:from_address] if args.key?(:from_address)
-          @is_unread = args[:is_unread] if args.key?(:is_unread)
-          @kind = args[:kind] if args.key?(:kind)
-          @notification_id = args[:notification_id] if args.key?(:notification_id)
-          @send_time = args[:send_time] if args.key?(:send_time)
-          @subject = args[:subject] if args.key?(:subject)
-        end
-      end
-      
-      # Template for notifications list response.
-      class Notifications
-        include Google::Apis::Core::Hashable
-      
-        # ETag of the resource.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # List of notifications in this page.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::AdminDirectoryV1::Notification>]
-        attr_accessor :items
-      
-        # The type of the resource.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Token for fetching the next page of notifications.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # Number of unread notification for the domain.
-        # Corresponds to the JSON property `unreadNotificationsCount`
-        # @return [Fixnum]
-        attr_accessor :unread_notifications_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @etag = args[:etag] if args.key?(:etag)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @unread_notifications_count = args[:unread_notifications_count] if args.key?(:unread_notifications_count)
-        end
-      end
-      
-      # JSON template for Org Unit resource in Directory API.
+      # JSON template for Org Unit resource in Directory API. STEPLADDER: Generated
+      # unstable field number for field 'kind'. (See http://go/stepladder-help#
+      # fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (
+      # See http://go/stepladder-help#fieldNumber)
       class OrgUnit
         include Google::Apis::Core::Hashable
       
@@ -2398,6 +2312,9 @@ module Google
       end
       
       # JSON response template for List Organization Units operation in Directory API.
+      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
+      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
       class OrgUnits
         include Google::Apis::Core::Hashable
       
@@ -2428,7 +2345,7 @@ module Google
         end
       end
       
-      # JSON template for privilege resource in Directory API.
+      # 
       class Privilege
         include Google::Apis::Core::Hashable
       
@@ -2487,7 +2404,7 @@ module Google
         end
       end
       
-      # JSON response template for List privileges operation in Directory API.
+      # 
       class Privileges
         include Google::Apis::Core::Hashable
       
@@ -2518,7 +2435,7 @@ module Google
         end
       end
       
-      # JSON template for role resource in Directory API.
+      # 
       class Role
         include Google::Apis::Core::Hashable
       
@@ -2607,7 +2524,7 @@ module Google
         end
       end
       
-      # JSON template for roleAssignment resource in Directory API.
+      # 
       class RoleAssignment
         include Google::Apis::Core::Hashable
       
@@ -2642,9 +2559,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :role_id
       
-        # The scope in which this role is assigned. Possible values are:
-        # - CUSTOMER
-        # - ORG_UNIT
+        # The scope in which this role is assigned. Possible values are: - CUSTOMER -
+        # ORG_UNIT
         # Corresponds to the JSON property `scopeType`
         # @return [String]
         attr_accessor :scope_type
@@ -2665,7 +2581,7 @@ module Google
         end
       end
       
-      # JSON response template for List roleAssignments operation in Directory API.
+      # 
       class RoleAssignments
         include Google::Apis::Core::Hashable
       
@@ -2679,7 +2595,7 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::RoleAssignment>]
         attr_accessor :items
       
-        # The type of the API resource. This is always admin#directory#roleAssignments.
+        # The type of the API resource. This is always admin#directory#roleAssignments .
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2702,7 +2618,7 @@ module Google
         end
       end
       
-      # JSON response template for List roles operation in Directory API.
+      # 
       class Roles
         include Google::Apis::Core::Hashable
       
@@ -2739,7 +2655,10 @@ module Google
         end
       end
       
-      # JSON template for Schema resource in Directory API.
+      # JSON template for Schema resource in Directory API. STEPLADDER: Generated
+      # unstable field number for field 'kind'. (See http://go/stepladder-help#
+      # fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (
+      # See http://go/stepladder-help#fieldNumber)
       class Schema
         include Google::Apis::Core::Hashable
       
@@ -2788,7 +2707,10 @@ module Google
         end
       end
       
-      # JSON template for FieldSpec resource for Schemas in Directory API.
+      # JSON template for FieldSpec resource for Schemas in Directory API. STEPLADDER:
+      # Generated unstable field number for field 'kind'. (See http://go/stepladder-
+      # help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'.
+      # (See http://go/stepladder-help#fieldNumber)
       class SchemaFieldSpec
         include Google::Apis::Core::Hashable
       
@@ -2897,7 +2819,10 @@ module Google
         end
       end
       
-      # JSON response template for List Schema operation in Directory API.
+      # JSON response template for List Schema operation in Directory API. STEPLADDER:
+      # Generated unstable field number for field 'kind'. (See http://go/stepladder-
+      # help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'.
+      # (See http://go/stepladder-help#fieldNumber)
       class Schemas
         include Google::Apis::Core::Hashable
       
@@ -2928,7 +2853,10 @@ module Google
         end
       end
       
-      # JSON template for token resource in Directory API.
+      # JSON template for token resource in Directory API. STEPLADDER: Generated
+      # unstable field number for field 'kind'. (See http://go/stepladder-help#
+      # fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (
+      # See http://go/stepladder-help#fieldNumber)
       class Token
         include Google::Apis::Core::Hashable
       
@@ -2993,7 +2921,10 @@ module Google
         end
       end
       
-      # JSON response template for List tokens operation in Directory API.
+      # JSON response template for List tokens operation in Directory API. STEPLADDER:
+      # Generated unstable field number for field 'kind'. (See http://go/stepladder-
+      # help#fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'.
+      # (See http://go/stepladder-help#fieldNumber)
       class Tokens
         include Google::Apis::Core::Hashable
       
@@ -3024,22 +2955,49 @@ module Google
         end
       end
       
-      # JSON template for User object in Directory API.
+      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
+      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+      # field 'etag'. (See http://go/stepladder-help#fieldNumber) STEPLADDER:
+      # Generated unstable field number for field 'external_ids' to avoid collision. (
+      # See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
+      # field number for field 'relations' to avoid collision. (See http://go/
+      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+      # field 'addresses' to avoid collision. (See http://go/stepladder-help#
+      # fieldNumber) STEPLADDER: Generated unstable field number for field '
+      # organizations' to avoid collision. (See http://go/stepladder-help#fieldNumber)
+      # STEPLADDER: Generated unstable field number for field 'phones' to avoid
+      # collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated
+      # unstable field number for field 'languages' to avoid collision. (See http://go/
+      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+      # field 'posix_accounts' to avoid collision. (See http://go/stepladder-help#
+      # fieldNumber) STEPLADDER: Generated unstable field number for field '
+      # ssh_public_keys' to avoid collision. (See http://go/stepladder-help#
+      # fieldNumber) STEPLADDER: Generated unstable field number for field 'notes' to
+      # avoid collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER:
+      # Generated unstable field number for field 'websites' to avoid collision. (See
+      # http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
+      # number for field 'locations' to avoid collision. (See http://go/stepladder-
+      # help#fieldNumber) STEPLADDER: Generated unstable field number for field '
+      # keywords' to avoid collision. (See http://go/stepladder-help#fieldNumber)
+      # STEPLADDER: Generated unstable field number for field 'gender' to avoid
+      # collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated
+      # unstable field number for field 'thumbnail_photo_etag' to avoid collision. (
+      # See http://go/stepladder-help#fieldNumber)
       class User
         include Google::Apis::Core::Hashable
       
-        # 
+        # Addresses of User
         # Corresponds to the JSON property `addresses`
         # @return [Object]
         attr_accessor :addresses
       
-        # Indicates if user has agreed to terms (Read-only)
+        # Output only. Indicates if user has agreed to terms (Read-only)
         # Corresponds to the JSON property `agreedToTerms`
         # @return [Boolean]
         attr_accessor :agreed_to_terms
         alias_method :agreed_to_terms?, :agreed_to_terms
       
-        # List of aliases (Read-only)
+        # Output only. List of aliases (Read-only)
         # Corresponds to the JSON property `aliases`
         # @return [Array<String>]
         attr_accessor :aliases
@@ -3063,10 +3021,10 @@ module Google
       
         # Custom fields of the user.
         # Corresponds to the JSON property `customSchemas`
-        # @return [Hash<String,Hash<String,Object>>]
+        # @return [Hash<String,Google::Apis::AdminDirectoryV1::UserCustomProperties>]
         attr_accessor :custom_schemas
       
-        # CustomerId of User (Read-only)
+        # Output only. CustomerId of User (Read-only)
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
@@ -3076,22 +3034,22 @@ module Google
         # @return [DateTime]
         attr_accessor :deletion_time
       
-        # 
+        # Emails of User
         # Corresponds to the JSON property `emails`
         # @return [Object]
         attr_accessor :emails
       
-        # ETag of the resource.
+        # Output only. ETag of the resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # 
+        # The external Ids of User *
         # Corresponds to the JSON property `externalIds`
         # @return [Object]
         attr_accessor :external_ids
       
-        # 
+        # Gender of User
         # Corresponds to the JSON property `gender`
         # @return [Object]
         attr_accessor :gender
@@ -3106,7 +3064,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # 
+        # User's Instant Messenger
         # Corresponds to the JSON property `ims`
         # @return [Object]
         attr_accessor :ims
@@ -3123,47 +3081,47 @@ module Google
         attr_accessor :ip_whitelisted
         alias_method :ip_whitelisted?, :ip_whitelisted
       
-        # Boolean indicating if the user is admin (Read-only)
+        # Output only. Boolean indicating if the user is admin (Read-only)
         # Corresponds to the JSON property `isAdmin`
         # @return [Boolean]
         attr_accessor :is_admin
         alias_method :is_admin?, :is_admin
       
-        # Boolean indicating if the user is delegated admin (Read-only)
+        # Output only. Boolean indicating if the user is delegated admin (Read-only)
         # Corresponds to the JSON property `isDelegatedAdmin`
         # @return [Boolean]
         attr_accessor :is_delegated_admin
         alias_method :is_delegated_admin?, :is_delegated_admin
       
-        # Is 2-step verification enforced (Read-only)
+        # Output only. Is 2-step verification enforced (Read-only)
         # Corresponds to the JSON property `isEnforcedIn2Sv`
         # @return [Boolean]
         attr_accessor :is_enforced_in2_sv
         alias_method :is_enforced_in2_sv?, :is_enforced_in2_sv
       
-        # Is enrolled in 2-step verification (Read-only)
+        # Output only. Is enrolled in 2-step verification (Read-only)
         # Corresponds to the JSON property `isEnrolledIn2Sv`
         # @return [Boolean]
         attr_accessor :is_enrolled_in2_sv
         alias_method :is_enrolled_in2_sv?, :is_enrolled_in2_sv
       
-        # Is mailbox setup (Read-only)
+        # Output only. Is mailbox setup (Read-only)
         # Corresponds to the JSON property `isMailboxSetup`
         # @return [Boolean]
         attr_accessor :is_mailbox_setup
         alias_method :is_mailbox_setup?, :is_mailbox_setup
       
-        # 
+        # Keywords of User
         # Corresponds to the JSON property `keywords`
         # @return [Object]
         attr_accessor :keywords
       
-        # Kind of resource this is.
+        # Output only. Kind of resource this is.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # 
+        # Languages of User
         # Corresponds to the JSON property `languages`
         # @return [Object]
         attr_accessor :languages
@@ -3173,22 +3131,22 @@ module Google
         # @return [DateTime]
         attr_accessor :last_login_time
       
-        # 
+        # Locations of User
         # Corresponds to the JSON property `locations`
         # @return [Object]
         attr_accessor :locations
       
-        # JSON template for name of a user in Directory API.
+        # User's name
         # Corresponds to the JSON property `name`
         # @return [Google::Apis::AdminDirectoryV1::UserName]
         attr_accessor :name
       
-        # List of non editable aliases (Read-only)
+        # Output only. List of non editable aliases (Read-only)
         # Corresponds to the JSON property `nonEditableAliases`
         # @return [Array<String>]
         attr_accessor :non_editable_aliases
       
-        # 
+        # Notes of User
         # Corresponds to the JSON property `notes`
         # @return [Object]
         attr_accessor :notes
@@ -3198,7 +3156,7 @@ module Google
         # @return [String]
         attr_accessor :org_unit_path
       
-        # 
+        # Organizations of User
         # Corresponds to the JSON property `organizations`
         # @return [Object]
         attr_accessor :organizations
@@ -3208,12 +3166,12 @@ module Google
         # @return [String]
         attr_accessor :password
       
-        # 
+        # Phone numbers of User
         # Corresponds to the JSON property `phones`
         # @return [Object]
         attr_accessor :phones
       
-        # 
+        # The POSIX accounts of User
         # Corresponds to the JSON property `posixAccounts`
         # @return [Object]
         attr_accessor :posix_accounts
@@ -3229,17 +3187,17 @@ module Google
         attr_accessor :recovery_email
       
         # Recovery phone of the user. The phone number must be in the E.164 format,
-        # starting with the plus sign (+). Example: +16506661212.
+        # starting with the plus sign (+). Example: *+16506661212*.
         # Corresponds to the JSON property `recoveryPhone`
         # @return [String]
         attr_accessor :recovery_phone
       
-        # 
+        # The Relations of User *
         # Corresponds to the JSON property `relations`
         # @return [Object]
         attr_accessor :relations
       
-        # 
+        # The SSH public keys of User
         # Corresponds to the JSON property `sshPublicKeys`
         # @return [Object]
         attr_accessor :ssh_public_keys
@@ -3250,22 +3208,22 @@ module Google
         attr_accessor :suspended
         alias_method :suspended?, :suspended
       
-        # Suspension reason if user is suspended (Read-only)
+        # Output only. Suspension reason if user is suspended (Read-only)
         # Corresponds to the JSON property `suspensionReason`
         # @return [String]
         attr_accessor :suspension_reason
       
-        # ETag of the user's photo (Read-only)
+        # Output only. ETag of the user's photo (Read-only)
         # Corresponds to the JSON property `thumbnailPhotoEtag`
         # @return [String]
         attr_accessor :thumbnail_photo_etag
       
-        # Photo Url of the user (Read-only)
+        # Output only. Photo Url of the user (Read-only)
         # Corresponds to the JSON property `thumbnailPhotoUrl`
         # @return [String]
         attr_accessor :thumbnail_photo_url
       
-        # 
+        # Websites of User
         # Corresponds to the JSON property `websites`
         # @return [Object]
         attr_accessor :websites
@@ -3407,7 +3365,7 @@ module Google
         attr_accessor :region
       
         # User supplied address was structured. Structured addresses are NOT supported
-        # at this time. You might be able to write structured addresses, but any values
+        # at this time. You might be able to write structured addresses but any values
         # will eventually be clobbered.
         # Corresponds to the JSON property `sourceIsStructured`
         # @return [Boolean]
@@ -3420,9 +3378,9 @@ module Google
         attr_accessor :street_address
       
         # Each entry can have a type which indicates standard values of that entry. For
-        # example address could be of home, work etc. In addition to the standard type,
-        # an entry can have a custom type and can take any value. Such type should have
-        # the CUSTOM value as type and also have a customType value.
+        # example address could be of home work etc. In addition to the standard type an
+        # entry can have a custom type and can take any value. Such type should have the
+        # CUSTOM value as type and also have a customType value.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3446,6 +3404,20 @@ module Google
           @source_is_structured = args[:source_is_structured] if args.key?(:source_is_structured)
           @street_address = args[:street_address] if args.key?(:street_address)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # JSON template for a set of custom properties (i.e. all fields in a particular
+      # schema)
+      class UserCustomProperties
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -3526,7 +3498,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # AddressMeAs. A human-readable string containing the proper way to refer to the
-        # profile owner by humans, for example "he/him/his" or "they/them/their".
+        # profile owner by humans for example he/him/his or they/them/their.
         # Corresponds to the JSON property `addressMeAs`
         # @return [String]
         attr_accessor :address_me_as
@@ -3579,15 +3551,15 @@ module Google
         alias_method :primary?, :primary
       
         # Protocol used in the instant messenger. It should be one of the values from
-        # ImProtocolTypes map. Similar to type, it can take a CUSTOM value and specify
+        # ImProtocolTypes map. Similar to type it can take a CUSTOM value and specify
         # the custom name in customProtocol field.
         # Corresponds to the JSON property `protocol`
         # @return [String]
         attr_accessor :protocol
       
         # Each entry can have a type which indicates standard types of that entry. For
-        # example instant messengers could be of home, work etc. In addition to the
-        # standard type, an entry can have a custom type and can take any value. Such
+        # example instant messengers could be of home work etc. In addition to the
+        # standard type an entry can have a custom type and can take any value. Such
         # types should have the CUSTOM value as type and also have a customType value.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -3618,8 +3590,8 @@ module Google
         attr_accessor :custom_type
       
         # Each entry can have a type which indicates standard type of that entry. For
-        # example, keyword could be of type occupation or outlook. In addition to the
-        # standard type, an entry can have a custom type and can give it any name. Such
+        # example keyword could be of type occupation or outlook. In addition to the
+        # standard type an entry can have a custom type and can give it any name. Such
         # types should have the CUSTOM value as type and also have a customType value.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -3675,8 +3647,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Textual location. This is most useful for display purposes to concisely
-        # describe the location. For example, "Mountain View, CA", "Near Seattle", "US-
-        # NYC-9TH 9A209A".
+        # describe the location. For example 'Mountain View, CA', 'Near Seattle', 'US-
+        # NYC-9TH 9A209A.''
         # Corresponds to the JSON property `area`
         # @return [String]
         attr_accessor :area
@@ -3701,17 +3673,17 @@ module Google
         # @return [String]
         attr_accessor :floor_name
       
-        # Floor section. More specific location within the floor. For example, if a
-        # floor is divided into sections "A", "B", and "C", this field would identify
-        # one of those values.
+        # Floor section. More specific location within the floor. For example if a floor
+        # is divided into sections 'A', 'B' and 'C' this field would identify one of
+        # those values.
         # Corresponds to the JSON property `floorSection`
         # @return [String]
         attr_accessor :floor_section
       
         # Each entry can have a type which indicates standard types of that entry. For
         # example location could be of types default and desk. In addition to standard
-        # type, an entry can have a custom type and can give it any name. Such types
-        # should have "custom" as type and also have a customType value.
+        # type an entry can have a custom type and can give it any name. Such types
+        # should have 'custom' as type and also have a customType value.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3732,8 +3704,7 @@ module Google
         end
       end
       
-      # JSON request template for setting/revoking admin status of a user in Directory
-      # API.
+      # 
       class UserMakeAdmin
         include Google::Apis::Core::Hashable
       
@@ -3753,7 +3724,7 @@ module Google
         end
       end
       
-      # JSON template for name of a user in Directory API.
+      # 
       class UserName
         include Google::Apis::Core::Hashable
       
@@ -3845,8 +3816,8 @@ module Google
         attr_accessor :title
       
         # Each entry can have a type which indicates standard types of that entry. For
-        # example organization could be of school, work etc. In addition to the standard
-        # type, an entry can have a custom type and can give it any name. Such types
+        # example organization could be of school work etc. In addition to the standard
+        # type an entry can have a custom type and can give it any name. Such types
         # should have the CUSTOM value as type and also have a CustomType value.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -3889,8 +3860,8 @@ module Google
         alias_method :primary?, :primary
       
         # Each entry can have a type which indicates standard types of that entry. For
-        # example phone could be of home_fax, work, mobile etc. In addition to the
-        # standard type, an entry can have a custom type and can give it any name. Such
+        # example phone could be of home_fax work mobile etc. In addition to the
+        # standard type an entry can have a custom type and can give it any name. Such
         # types should have the CUSTOM value as type and also have a customType value.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -3914,7 +3885,9 @@ module Google
         end
       end
       
-      # JSON template for Photo object in Directory API.
+      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
+      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
       class UserPhoto
         include Google::Apis::Core::Hashable
       
@@ -4060,8 +4033,8 @@ module Google
         # @return [String]
         attr_accessor :custom_type
       
-        # The relation of the user. Some of the possible values are mother, father,
-        # sister, brother, manager, assistant, partner.
+        # The relation of the user. Some of the possible values are mother father sister
+        # brother manager assistant partner.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4114,7 +4087,7 @@ module Google
         end
       end
       
-      # JSON request template to undelete a user in Directory API.
+      # 
       class UserUndelete
         include Google::Apis::Core::Hashable
       
@@ -4149,8 +4122,8 @@ module Google
         alias_method :primary?, :primary
       
         # Each entry can have a type which indicates standard types of that entry. For
-        # example website could be of home, work, blog etc. In addition to the standard
-        # type, an entry can have a custom type and can give it any name. Such types
+        # example website could be of home work blog etc. In addition to the standard
+        # type an entry can have a custom type and can give it any name. Such types
         # should have the CUSTOM value as type and also have a customType value.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -4174,7 +4147,9 @@ module Google
         end
       end
       
-      # JSON response template for List Users operation in Apps Directory API.
+      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
+      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
       class Users
         include Google::Apis::Core::Hashable
       
@@ -4217,7 +4192,10 @@ module Google
         end
       end
       
-      # JSON template for verification codes in Directory API.
+      # JSON template for verification codes in Directory API. STEPLADDER: Generated
+      # unstable field number for field 'kind'. (See http://go/stepladder-help#
+      # fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (
+      # See http://go/stepladder-help#fieldNumber)
       class VerificationCode
         include Google::Apis::Core::Hashable
       
@@ -4256,6 +4234,9 @@ module Google
       end
       
       # JSON response template for List verification codes operation in Directory API.
+      # STEPLADDER: Generated unstable field number for field 'kind'. (See http://go/
+      # stepladder-help#fieldNumber) STEPLADDER: Generated unstable field number for
+      # field 'etag'. (See http://go/stepladder-help#fieldNumber)
       class VerificationCodes
         include Google::Apis::Core::Hashable
       

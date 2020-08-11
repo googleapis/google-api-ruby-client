@@ -49,17 +49,15 @@ module Google
         
         # Deletes the product from a Manufacturer Center account.
         # @param [String] parent
-        #   Parent ID in the format `accounts/`account_id``.
-        #   `account_id` - The ID of the Manufacturer Center account.
+        #   Parent ID in the format `accounts/`account_id``. `account_id` - The ID of the
+        #   Manufacturer Center account.
         # @param [String] name
-        #   Name in the format ``target_country`:`content_language`:`product_id``.
-        #   `target_country`   - The target country of the product as a CLDR territory
-        #   code (for example, US).
-        #   `content_language` - The content language of the product as a two-letter
-        #   ISO 639-1 language code (for example, en).
-        #   `product_id`     -   The ID of the product. For more information, see
-        #   https://support.google.com/manufacturers/answer/6124116#
-        #   id.
+        #   Name in the format ``target_country`:`content_language`:`product_id``. `
+        #   target_country` - The target country of the product as a CLDR territory code (
+        #   for example, US). `content_language` - The content language of the product as
+        #   a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID
+        #   of the product. For more information, see https://support.google.com/
+        #   manufacturers/answer/6124116#id.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -88,27 +86,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the product from a Manufacturer Center account, including product
-        # issues.
+        # Gets the product from a Manufacturer Center account, including product issues.
         # A recently updated product takes around 15 minutes to process. Changes are
-        # only visible after it has been processed. While some issues may be
-        # available once the product has been processed, other issues may take days
-        # to appear.
+        # only visible after it has been processed. While some issues may be available
+        # once the product has been processed, other issues may take days to appear.
         # @param [String] parent
-        #   Parent ID in the format `accounts/`account_id``.
-        #   `account_id` - The ID of the Manufacturer Center account.
+        #   Parent ID in the format `accounts/`account_id``. `account_id` - The ID of the
+        #   Manufacturer Center account.
         # @param [String] name
-        #   Name in the format ``target_country`:`content_language`:`product_id``.
-        #   `target_country`   - The target country of the product as a CLDR territory
-        #   code (for example, US).
-        #   `content_language` - The content language of the product as a two-letter
-        #   ISO 639-1 language code (for example, en).
-        #   `product_id`     -   The ID of the product. For more information, see
-        #   https://support.google.com/manufacturers/answer/6124116#
-        #   id.
+        #   Name in the format ``target_country`:`content_language`:`product_id``. `
+        #   target_country` - The target country of the product as a CLDR territory code (
+        #   for example, US). `content_language` - The content language of the product as
+        #   a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID
+        #   of the product. For more information, see https://support.google.com/
+        #   manufacturers/answer/6124116#id.
         # @param [Array<String>, String] include
-        #   The information to be included in the response. Only sections listed here
-        #   will be returned.
+        #   The information to be included in the response. Only sections listed here will
+        #   be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -140,14 +134,13 @@ module Google
         
         # Lists all the products in a Manufacturer Center account.
         # @param [String] parent
-        #   Parent ID in the format `accounts/`account_id``.
-        #   `account_id` - The ID of the Manufacturer Center account.
+        #   Parent ID in the format `accounts/`account_id``. `account_id` - The ID of the
+        #   Manufacturer Center account.
         # @param [Array<String>, String] include
-        #   The information to be included in the response. Only sections listed here
-        #   will be returned.
+        #   The information to be included in the response. Only sections listed here will
+        #   be returned.
         # @param [Fixnum] page_size
-        #   Maximum number of product statuses to return in the response, used for
-        #   paging.
+        #   Maximum number of product statuses to return in the response, used for paging.
         # @param [String] page_token
         #   The token returned by the previous request.
         # @param [String] fields
@@ -181,30 +174,26 @@ module Google
         end
         
         # Inserts or updates the attributes of the product in a Manufacturer Center
-        # account.
-        # Creates a product with the provided attributes. If the product already
-        # exists, then all attributes are replaced with the new ones. The checks at
-        # upload time are minimal. All required attributes need to be present for a
-        # product to be valid. Issues may show up later after the API has accepted a
-        # new upload for a product and it is possible to overwrite an existing valid
-        # product with an invalid product. To detect this, you should retrieve the
-        # product and check it for issues once the new version is available.
-        # Uploaded attributes first need to be processed before they can be
-        # retrieved. Until then, new products will be unavailable, and retrieval
-        # of previously uploaded products will return the original state of the
-        # product.
+        # account. Creates a product with the provided attributes. If the product
+        # already exists, then all attributes are replaced with the new ones. The checks
+        # at upload time are minimal. All required attributes need to be present for a
+        # product to be valid. Issues may show up later after the API has accepted a new
+        # upload for a product and it is possible to overwrite an existing valid product
+        # with an invalid product. To detect this, you should retrieve the product and
+        # check it for issues once the new version is available. Uploaded attributes
+        # first need to be processed before they can be retrieved. Until then, new
+        # products will be unavailable, and retrieval of previously uploaded products
+        # will return the original state of the product.
         # @param [String] parent
-        #   Parent ID in the format `accounts/`account_id``.
-        #   `account_id` - The ID of the Manufacturer Center account.
+        #   Parent ID in the format `accounts/`account_id``. `account_id` - The ID of the
+        #   Manufacturer Center account.
         # @param [String] name
-        #   Name in the format ``target_country`:`content_language`:`product_id``.
-        #   `target_country`   - The target country of the product as a CLDR territory
-        #   code (for example, US).
-        #   `content_language` - The content language of the product as a two-letter
-        #   ISO 639-1 language code (for example, en).
-        #   `product_id`     -   The ID of the product. For more information, see
-        #   https://support.google.com/manufacturers/answer/6124116#
-        #   id.
+        #   Name in the format ``target_country`:`content_language`:`product_id``. `
+        #   target_country` - The target country of the product as a CLDR territory code (
+        #   for example, US). `content_language` - The content language of the product as
+        #   a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID
+        #   of the product. For more information, see https://support.google.com/
+        #   manufacturers/answer/6124116#id.
         # @param [Google::Apis::ManufacturersV1::Attributes] attributes_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

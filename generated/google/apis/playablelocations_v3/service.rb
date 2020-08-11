@@ -48,9 +48,9 @@ module Google
         end
         
         # Logs new events when playable locations are displayed, and when they are
-        # interacted with.
-        # Impressions are not partially saved; either all impressions are saved and
-        # this request succeeds, or no impressions are saved, and this request fails.
+        # interacted with. Impressions are not partially saved; either all impressions
+        # are saved and this request succeeds, or no impressions are saved, and this
+        # request fails.
         # @param [Google::Apis::PlayablelocationsV3::GoogleMapsPlayablelocationsV3LogImpressionsRequest] google_maps_playablelocations_v3_log_impressions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -80,9 +80,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Logs bad playable location reports submitted by players.
-        # Reports are not partially saved; either all reports are saved and this
-        # request succeeds, or no reports are saved, and this request fails.
+        # Logs bad playable location reports submitted by players. Reports are not
+        # partially saved; either all reports are saved and this request succeeds, or no
+        # reports are saved, and this request fails.
         # @param [Google::Apis::PlayablelocationsV3::GoogleMapsPlayablelocationsV3LogPlayerReportsRequest] google_maps_playablelocations_v3_log_player_reports_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -112,10 +112,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a set of playable locations that lie within a specified area,
-        # that satisfy optional filter criteria.
-        # Note: Identical `SamplePlayableLocations` requests can return different
-        # results as the state of the world changes over time.
+        # Returns a set of playable locations that lie within a specified area, that
+        # satisfy optional filter criteria. Note: Identical `SamplePlayableLocations`
+        # requests can return different results as the state of the world changes over
+        # time.
         # @param [Google::Apis::PlayablelocationsV3::GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest] google_maps_playablelocations_v3_sample_playable_locations_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

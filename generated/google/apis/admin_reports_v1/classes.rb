@@ -22,7 +22,7 @@ module Google
   module Apis
     module AdminReportsV1
       
-      # JSON template for a collection of activites.
+      # JSON template for a collection of activities.
       class Activities
         include Google::Apis::Core::Hashable
       
@@ -166,15 +166,13 @@ module Google
         
           # Name of the event. This is the specific name of the activity reported by the
           # API. And each eventName is related to a specific G Suite service or feature
-          # which the API organizes into types of events.
-          # For eventName request parameters in general:
-          # - If no eventName is given, the report returns all possible instances of an
-          # eventName.
-          # - When you request an eventName, the API's response returns all activities
-          # which contain that eventName. It is possible that the returned activities will
-          # have other eventName properties in addition to the one requested.
-          # For more information about eventName properties, see the list of event names
-          # for various applications above in applicationName.
+          # which the API organizes into types of events. For eventName request parameters
+          # in general: - If no eventName is given, the report returns all possible
+          # instances of an eventName. - When you request an eventName, the API's response
+          # returns all activities which contain that eventName. It is possible that the
+          # returned activities will have other eventName properties in addition to the
+          # one requested. For more information about eventName properties, see the list
+          # of event names for various applications above in applicationName.
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name
@@ -351,7 +349,7 @@ module Google
         end
       end
       
-      # An notification channel used to watch for resource changes.
+      # A notification channel used to watch for resource changes.
       class Channel
         include Google::Apis::Core::Hashable
       
@@ -489,12 +487,12 @@ module Google
       class UsageReport
         include Google::Apis::Core::Hashable
       
-        # The date of the report request.
+        # Output only. The date of the report request.
         # Corresponds to the JSON property `date`
         # @return [String]
         attr_accessor :date
       
-        # Information about the type of the item.
+        # Output only. Information about the type of the item.
         # Corresponds to the JSON property `entity`
         # @return [Google::Apis::AdminReportsV1::UsageReport::Entity]
         attr_accessor :entity
@@ -510,8 +508,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Parameter value pairs for various applications. For the Customers usage report
-        # parameters and values, see the customer usage parameters reference.
+        # Output only. Parameter value pairs for various applications. For the Customers
+        # usage report parameters and values, see the customer usage parameters
+        # reference.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::AdminReportsV1::UsageReport::Parameter>]
         attr_accessor :parameters
@@ -529,32 +528,32 @@ module Google
           @parameters = args[:parameters] if args.key?(:parameters)
         end
         
-        # Information about the type of the item.
+        # Output only. Information about the type of the item.
         class Entity
           include Google::Apis::Core::Hashable
         
-          # The unique identifier of the customer's account.
+          # Output only. The unique identifier of the customer's account.
           # Corresponds to the JSON property `customerId`
           # @return [String]
           attr_accessor :customer_id
         
-          # Object key. Only relevant if entity.type = "OBJECT" Note: external-facing name
-          # of report is "Entities" rather than "Objects".
+          # Output only. Object key. Only relevant if entity.type = "OBJECT" Note:
+          # external-facing name of report is "Entities" rather than "Objects".
           # Corresponds to the JSON property `entityId`
           # @return [String]
           attr_accessor :entity_id
         
-          # The user's immutable G Suite profile identifier.
+          # Output only. The user's immutable G Suite profile identifier.
           # Corresponds to the JSON property `profileId`
           # @return [String]
           attr_accessor :profile_id
         
-          # The type of item. The value is customer.
+          # Output only. The type of item. The value is customer.
           # Corresponds to the JSON property `type`
           # @return [String]
           attr_accessor :type
         
-          # The user's email address. Only relevant if entity.type = "USER"
+          # Output only. The user's email address. Only relevant if entity.type = "USER"
           # Corresponds to the JSON property `userEmail`
           # @return [String]
           attr_accessor :user_email
@@ -577,7 +576,7 @@ module Google
         class Parameter
           include Google::Apis::Core::Hashable
         
-          # Boolean value of the parameter.
+          # Output only. Boolean value of the parameter.
           # Corresponds to the JSON property `boolValue`
           # @return [Boolean]
           attr_accessor :bool_value
@@ -589,22 +588,22 @@ module Google
           # @return [DateTime]
           attr_accessor :datetime_value
         
-          # Integer value of the parameter.
+          # Output only. Integer value of the parameter.
           # Corresponds to the JSON property `intValue`
           # @return [Fixnum]
           attr_accessor :int_value
         
-          # Nested message value of the parameter.
+          # Output only. Nested message value of the parameter.
           # Corresponds to the JSON property `msgValue`
           # @return [Array<Hash<String,Object>>]
           attr_accessor :msg_value
         
-          # 
+          # Name of the parameter.
           # Corresponds to the JSON property `name`
           # @return [String]
           attr_accessor :name
         
-          # String value of the parameter.
+          # Output only. String value of the parameter.
           # Corresponds to the JSON property `stringValue`
           # @return [String]
           attr_accessor :string_value
@@ -684,12 +683,11 @@ module Google
           # @return [Array<Google::Apis::AdminReportsV1::UsageReports::Warning::Datum>]
           attr_accessor :data
         
-          # The human readable messages for a warning are:
-          # - Data is not available warning - Sorry, data for date yyyy-mm-dd for
-          # application "application name" is not available.
-          # - Partial data is available warning - Data for date yyyy-mm-dd for application
-          # "application name" is not available right now, please try again after a few
-          # hours.
+          # The human readable messages for a warning are: - Data is not available warning
+          # - Sorry, data for date yyyy-mm-dd for application "application name" is not
+          # available. - Partial data is available warning - Data for date yyyy-mm-dd for
+          # application "application name" is not available right now, please try again
+          # after a few hours.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message

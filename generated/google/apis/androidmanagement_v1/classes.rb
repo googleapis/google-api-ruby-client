@@ -234,6 +234,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :accessible_track_ids
       
+        # Controls whether the app can communicate with itself across a device’s work
+        # and personal profiles, subject to user consent.
+        # Corresponds to the JSON property `connectedWorkAndPersonalApp`
+        # @return [String]
+        attr_accessor :connected_work_and_personal_app
+      
         # The default policy for all permissions requested by the app. If specified,
         # this overrides the policy-level default_permission_policy which applies to all
         # apps. It does not override the permission_grants which applies to all apps.
@@ -268,13 +274,9 @@ module Google
         # Managed configuration applied to the app. The format for the configuration is
         # dictated by the ManagedProperty values supported by the app. Each field name
         # in the managed configuration must match the key field of the ManagedProperty.
-        # The field value must be compatible with the type of the ManagedProperty: <
-        # table> <tr><td><i>type</i></td><td><i>JSON value</i></td></tr> <tr><td>BOOL</
-        # td><td>true or false</td></tr> <tr><td>STRING</td><td>string</td></tr> <tr><td>
-        # INTEGER</td><td>number</td></tr> <tr><td>CHOICE</td><td>string</td></tr> <tr><
-        # td>MULTISELECT</td><td>array of strings</td></tr> <tr><td>HIDDEN</td><td>
-        # string</td></tr> <tr><td>BUNDLE_ARRAY</td><td>array of objects</td></tr> </
-        # table>
+        # The field value must be compatible with the type of the ManagedProperty: *type*
+        # *JSON value* BOOL true or false STRING string INTEGER number CHOICE string
+        # MULTISELECT array of strings HIDDEN string BUNDLE_ARRAY array of objects
         # Corresponds to the JSON property `managedConfiguration`
         # @return [Hash<String,Object>]
         attr_accessor :managed_configuration
@@ -314,6 +316,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accessible_track_ids = args[:accessible_track_ids] if args.key?(:accessible_track_ids)
+          @connected_work_and_personal_app = args[:connected_work_and_personal_app] if args.key?(:connected_work_and_personal_app)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
           @delegated_scopes = args[:delegated_scopes] if args.key?(:delegated_scopes)
           @disabled = args[:disabled] if args.key?(:disabled)
@@ -617,11 +620,10 @@ module Google
       
       # Represents a whole or partial calendar date, e.g. a birthday. The time of day
       # and time zone are either specified elsewhere or are not significant. The date
-      # is relative to the Proleptic Gregorian Calendar. This can represent:
-      # A full date, with non-zero year, month and day values
-      # A month and day value, with a zero year, e.g. an anniversary
-      # A year on its own, with zero month and day values
-      # A year and month value, with a zero day, e.g. a credit card expiration
+      # is relative to the Proleptic Gregorian Calendar. This can represent: A full
+      # date, with non-zero year, month and day values A month and day value, with a
+      # zero year, e.g. an anniversary A year on its own, with zero month and day
+      # values A year and month value, with a zero day, e.g. a credit card expiration
       # dateRelated types are google.type.TimeOfDay and google.protobuf.Timestamp.
       class Date
         include Google::Apis::Core::Hashable
@@ -1018,11 +1020,9 @@ module Google
       
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
-      # response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for Empty is empty JSON object ``.
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # Empty is empty JSON object ``.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -1248,11 +1248,10 @@ module Google
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # A full date, with non-zero year, month and day values
-        # A month and day value, with a zero year, e.g. an anniversary
-        # A year on its own, with zero month and day values
-        # A year and month value, with a zero day, e.g. a credit card expiration
+        # is relative to the Proleptic Gregorian Calendar. This can represent: A full
+        # date, with non-zero year, month and day values A month and day value, with a
+        # zero year, e.g. an anniversary A year on its own, with zero month and day
+        # values A year and month value, with a zero day, e.g. a credit card expiration
         # dateRelated types are google.type.TimeOfDay and google.protobuf.Timestamp.
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::AndroidmanagementV1::Date]
@@ -1260,11 +1259,10 @@ module Google
       
         # Represents a whole or partial calendar date, e.g. a birthday. The time of day
         # and time zone are either specified elsewhere or are not significant. The date
-        # is relative to the Proleptic Gregorian Calendar. This can represent:
-        # A full date, with non-zero year, month and day values
-        # A month and day value, with a zero year, e.g. an anniversary
-        # A year on its own, with zero month and day values
-        # A year and month value, with a zero day, e.g. a credit card expiration
+        # is relative to the Proleptic Gregorian Calendar. This can represent: A full
+        # date, with non-zero year, month and day values A month and day value, with a
+        # zero year, e.g. an anniversary A year on its own, with zero month and day
+        # values A year and month value, with a zero day, e.g. a credit card expiration
         # dateRelated types are google.type.TimeOfDay and google.protobuf.Timestamp.
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::AndroidmanagementV1::Date]
@@ -1669,8 +1667,8 @@ module Google
       class ManagedConfigurationTemplate
         include Google::Apis::Core::Hashable
       
-        # Optional, a map containing <key, value> configuration variables defined for
-        # the configuration.
+        # Optional, a map containing configuration variables defined for the
+        # configuration.
         # Corresponds to the JSON property `configurationVariables`
         # @return [Hash<String,String>]
         attr_accessor :configuration_variables
@@ -1884,8 +1882,8 @@ module Google
         # compliance, this specifies the full path to the offending field. The path is
         # formatted in the same way the policy JSON field would be referenced in
         # JavaScript, that is: 1) For object-typed fields, the field name is followed by
-        # a dot then by a  subfield name. 2) For array-typed fields, the field name is
-        # followed by the array index  enclosed in brackets. For example, to indicate a
+        # a dot then by a subfield name. 2) For array-typed fields, the field name is
+        # followed by the array index enclosed in brackets. For example, to indicate a
         # problem with the url field in the externalData field in the 3rd application,
         # the path would be applications[2].externalData.url
         # Corresponds to the JSON property `fieldPath`
@@ -1909,7 +1907,7 @@ module Google
         attr_accessor :package_name
       
         # The name of the policy setting. This is the JSON field name of a top-level
-        # Policy  field.
+        # Policy field.
         # Corresponds to the JSON property `settingName`
         # @return [String]
         attr_accessor :setting_name
@@ -3098,13 +3096,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Controls whether personal usage is allowed on a device provisioned with this
-        # enrollment token.For company-owned devices:
-        # Enabling personal usage allows the user to set up a work profile on the device.
-        # Disabling personal usage requires the user provision the device as a fully
-        # managed device.For personally-owned devices:
-        # Enabling personal usage allows the user to set up a work profile on the device.
-        # Disabling personal usage will prevent the device from provisioning. Personal
-        # usage cannot be disabled on personally-owned device.
+        # enrollment token.For company-owned devices: Enabling personal usage allows the
+        # user to set up a work profile on the device. Disabling personal usage requires
+        # the user provision the device as a fully managed device.For personally-owned
+        # devices: Enabling personal usage allows the user to set up a work profile on
+        # the device. Disabling personal usage will prevent the device from provisioning.
+        # Personal usage cannot be disabled on personally-owned device.
         # Corresponds to the JSON property `allowPersonalUsage`
         # @return [String]
         attr_accessor :allow_personal_usage
@@ -3125,9 +3122,9 @@ module Google
       
         # Sign-in URL for authentication when device is provisioned with a sign-in
         # enrollment token. The sign-in endpoint should finish authentication flow with
-        # a URL in the form of https://enterprise.google.com/android/enroll?et=<token>
-        # for a successful login, or https://enterprise.google.com/android/enroll/
-        # invalid for a failed login.
+        # a URL in the form of https://enterprise.google.com/android/enroll?et= for a
+        # successful login, or https://enterprise.google.com/android/enroll/invalid for
+        # a failed login.
         # Corresponds to the JSON property `signinUrl`
         # @return [String]
         attr_accessor :signin_url
@@ -3482,9 +3479,9 @@ module Google
         # @return [String]
         attr_accessor :default_message
       
-        # A map containing <locale, message> pairs, where locale is a well-formed BCP 47
-        # language (https://www.w3.org/International/articles/language-tags/) code, such
-        # as en-US, es-ES, or fr.
+        # A map containing pairs, where locale is a well-formed BCP 47 language (https://
+        # www.w3.org/International/articles/language-tags/) code, such as en-US, es-ES,
+        # or fr.
         # Corresponds to the JSON property `localizedMessages`
         # @return [Hash<String,String>]
         attr_accessor :localized_messages
@@ -3559,9 +3556,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
-        # section 5 "Base 64 Encoding with URL and Filename Safe Alphabet"). <ul> <li>
-        # The image type can be png or jpg. <li>The image should ideally be square. <li>
-        # The image should ideally have a size of 512x512. </ul>
+        # section 5 "Base 64 Encoding with URL and Filename Safe Alphabet"). - The image
+        # type can be png or jpg. - The image should ideally be square. - The image
+        # should ideally have a size of 512x512.
         # Corresponds to the JSON property `imageData`
         # @return [String]
         attr_accessor :image_data
@@ -3582,10 +3579,10 @@ module Google
       
         # The features to enable. Use this if you want to control exactly which feature(
         # s) will be activated; leave empty to allow all features.Restrictions / things
-        # to note: <ul> <li> If no features are listed here, all features are enabled —
-        # this is the  default behavior where you give access to all features to your
-        # admins. <li> This must not contain any FEATURE_UNSPECIFIED values. <li>
-        # Repeated values are ignored </ul>
+        # to note: - If no features are listed here, all features are enabled — this is
+        # the default behavior where you give access to all features to your admins. -
+        # This must not contain any FEATURE_UNSPECIFIED values. - Repeated values are
+        # ignored
         # Corresponds to the JSON property `enabledFeatures`
         # @return [Array<String>]
         attr_accessor :enabled_features

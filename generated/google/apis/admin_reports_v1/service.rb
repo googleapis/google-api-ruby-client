@@ -20,10 +20,11 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AdminReportsV1
-      # Admin Reports API
+      # Admin SDK
       #
-      # Fetches reports for the administrators of G Suite customers about the usage,
-      #  collaboration, security, and risk for their users.
+      # Admin SDK lets administrators of enterprise domains to view and manage
+      #  resources like user, groups etc. It also provides audit and usage reports of
+      #  domain.
       #
       # @example
       #    require 'google/apis/admin_reports_v1'
@@ -31,7 +32,7 @@ module Google
       #    Admin = Google::Apis::AdminReportsV1 # Alias the module
       #    service = Admin::ReportsService.new
       #
-      # @see /admin-sdk/reports/
+      # @see http://developers.google.com/admin-sdk/
       class ReportsService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -39,16 +40,12 @@ module Google
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'admin/reports/v1/')
+          super('https://www.googleapis.com/', '')
           @batch_path = 'batch/admin/reports_v1'
         end
         
@@ -76,15 +73,13 @@ module Google
         #   Sets the end of the range of time shown in the report. The date is in the RFC
         #   3339 format, for example 2010-10-28T10:26:35.000Z. The default value is the
         #   approximate time of the API request. An API report has three basic time
-        #   concepts:
-        #   - Date of the API's request for a report: When the API created and retrieved
-        #   the report.
-        #   - Report's start time: The beginning of the timespan shown in the report. The
-        #   startTime must be before the endTime (if specified) and the current time when
-        #   the request is made, or the API returns an error.
-        #   - Report's end time: The end of the timespan shown in the report. For example,
+        #   concepts: - *Date of the API's request for a report*: When the API created and
+        #   retrieved the report. - *Report's start time*: The beginning of the timespan
+        #   shown in the report. The startTime must be before the endTime (if specified)
+        #   and the current time when the request is made, or the API returns an error. - *
+        #   Report's end time*: The end of the timespan shown in the report. For example,
         #   the timespan of events summarized in a report can start in April and end in
-        #   May. The report itself can be requested in August.  If the endTime is not
+        #   May. The report itself can be requested in August. If the endTime is not
         #   specified, the report returns all activities from the startTime until the
         #   current time or the most recent 180 days if the startTime is more than 180
         #   days in the past.
@@ -101,39 +96,33 @@ module Google
         # @param [String] filters
         #   The filters query string is a comma-separated list. The list is composed of
         #   event parameters that are manipulated by relational operators. Event
-        #   parameters are in the form [parameter1 name][relational operator][parameter1
-        #   value],[parameter2 name][relational operator][parameter2 value],...
-        #   These event parameters are associated with a specific eventName. An empty
-        #   report is returned if the filtered request's parameter does not belong to the
-        #   eventName. For more information about eventName parameters, see the list of
-        #   event names for various applications above in applicationName.
-        #   In the following Admin Activity example, the <> operator is URL-encoded in the
-        #   request's query string (%3C%3E):
-        #   GET...&eventName=CHANGE_CALENDAR_SETTING &filters=NEW_VALUE%3C%
-        #   3EREAD_ONLY_ACCESS
-        #   In the following Drive example, the list can be a view or edit event's doc_id
+        #   parameters are in the form parameter1 name[parameter1 value],parameter2 name[
+        #   parameter2 value],... These event parameters are associated with a specific
+        #   eventName. An empty report is returned if the filtered request's parameter
+        #   does not belong to the eventName. For more information about eventName
+        #   parameters, see the list of event names for various applications above in
+        #   applicationName. In the following Admin Activity example, the <> operator is
+        #   URL-encoded in the request's query string (%3C%3E): GET...&eventName=
+        #   CHANGE_CALENDAR_SETTING &filters=NEW_VALUE%3C%3EREAD_ONLY_ACCESS In the
+        #   following Drive example, the list can be a view or edit event's doc_id
         #   parameter with a value that is manipulated by an 'equal to' (==) or 'not equal
         #   to' (<>) relational operator. In the first example, the report returns each
         #   edited document's doc_id. In the second example, the report returns each
         #   viewed document's doc_id that equals the value 12345 and does not return any
         #   viewed document's which have a doc_id value of 98765. The <> operator is URL-
-        #   encoded in the request's query string (%3C%3E):
-        #   GET...&eventName=edit&filters=doc_id GET...&eventName=view&filters=doc_id==
-        #   12345,doc_id%3C%3E98765
-        #   The relational operators include:
-        #   - == - 'equal to'.
-        #   - <> - 'not equal to'. It is URL-encoded (%3C%3E).
-        #   - < - 'less than'. It is URL-encoded (%3C).
-        #   - <= - 'less than or equal to'. It is URL-encoded (%3C=).
-        #   - > - 'greater than'. It is URL-encoded (%3E).
-        #   - >= - 'greater than or equal to'. It is URL-encoded (%3E=).
-        #   Note: The API doesn't accept multiple values of a parameter. If a particular
+        #   encoded in the request's query string (%3C%3E): GET...&eventName=edit&filters=
+        #   doc_id GET...&eventName=view&filters=doc_id==12345,doc_id%3C%3E98765 The
+        #   relational operators include: - == - 'equal to'. - <> - 'not equal to'. It is
+        #   URL-encoded (%3C%3E). - < - 'less than'. It is URL-encoded (%3C). - <= - 'less
+        #   than or equal to'. It is URL-encoded (%3C=). - > - 'greater than'. It is URL-
+        #   encoded (%3E). - >= - 'greater than or equal to'. It is URL-encoded (%3E=). *
+        #   Note:* The API doesn't accept multiple values of a parameter. If a particular
         #   parameter is supplied more than once in the API request, the API only accepts
-        #   the last value of that request parameter.
-        #   In addition, if an invalid request parameter is supplied in the API request,
-        #   the API ignores that request parameter and returns the response corresponding
-        #   to the remaining valid request parameters. If no parameters are requested, all
-        #   parameters are returned.
+        #   the last value of that request parameter. In addition, if an invalid request
+        #   parameter is supplied in the API request, the API ignores that request
+        #   parameter and returns the response corresponding to the remaining valid
+        #   request parameters. If no parameters are requested, all parameters are
+        #   returned.
         # @param [Fixnum] max_results
         #   Determines how many activity records are shown on each response page. For
         #   example, if the request sets maxResults=1 and the report has two activities,
@@ -158,10 +147,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -174,8 +161,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_activities(user_key, application_name, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, org_unit_id: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'activity/users/{userKey}/applications/{applicationName}', options)
+        def list_activities(user_key, application_name, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, org_unit_id: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'admin/reports/v1/activity/users/{userKey}/applications/{applicationName}', options)
           command.response_representation = Google::Apis::AdminReportsV1::Activities::Representation
           command.response_class = Google::Apis::AdminReportsV1::Activities
           command.params['userKey'] = user_key unless user_key.nil?
@@ -191,7 +178,6 @@ module Google
           command.query['startTime'] = start_time unless start_time.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -217,15 +203,13 @@ module Google
         #   Sets the end of the range of time shown in the report. The date is in the RFC
         #   3339 format, for example 2010-10-28T10:26:35.000Z. The default value is the
         #   approximate time of the API request. An API report has three basic time
-        #   concepts:
-        #   - Date of the API's request for a report: When the API created and retrieved
-        #   the report.
-        #   - Report's start time: The beginning of the timespan shown in the report. The
-        #   startTime must be before the endTime (if specified) and the current time when
-        #   the request is made, or the API returns an error.
-        #   - Report's end time: The end of the timespan shown in the report. For example,
+        #   concepts: - *Date of the API's request for a report*: When the API created and
+        #   retrieved the report. - *Report's start time*: The beginning of the timespan
+        #   shown in the report. The startTime must be before the endTime (if specified)
+        #   and the current time when the request is made, or the API returns an error. - *
+        #   Report's end time*: The end of the timespan shown in the report. For example,
         #   the timespan of events summarized in a report can start in April and end in
-        #   May. The report itself can be requested in August.  If the endTime is not
+        #   May. The report itself can be requested in August. If the endTime is not
         #   specified, the report returns all activities from the startTime until the
         #   current time or the most recent 180 days if the startTime is more than 180
         #   days in the past.
@@ -242,39 +226,33 @@ module Google
         # @param [String] filters
         #   The filters query string is a comma-separated list. The list is composed of
         #   event parameters that are manipulated by relational operators. Event
-        #   parameters are in the form [parameter1 name][relational operator][parameter1
-        #   value],[parameter2 name][relational operator][parameter2 value],...
-        #   These event parameters are associated with a specific eventName. An empty
-        #   report is returned if the filtered request's parameter does not belong to the
-        #   eventName. For more information about eventName parameters, see the list of
-        #   event names for various applications above in applicationName.
-        #   In the following Admin Activity example, the <> operator is URL-encoded in the
-        #   request's query string (%3C%3E):
-        #   GET...&eventName=CHANGE_CALENDAR_SETTING &filters=NEW_VALUE%3C%
-        #   3EREAD_ONLY_ACCESS
-        #   In the following Drive example, the list can be a view or edit event's doc_id
+        #   parameters are in the form parameter1 name[parameter1 value],parameter2 name[
+        #   parameter2 value],... These event parameters are associated with a specific
+        #   eventName. An empty report is returned if the filtered request's parameter
+        #   does not belong to the eventName. For more information about eventName
+        #   parameters, see the list of event names for various applications above in
+        #   applicationName. In the following Admin Activity example, the <> operator is
+        #   URL-encoded in the request's query string (%3C%3E): GET...&eventName=
+        #   CHANGE_CALENDAR_SETTING &filters=NEW_VALUE%3C%3EREAD_ONLY_ACCESS In the
+        #   following Drive example, the list can be a view or edit event's doc_id
         #   parameter with a value that is manipulated by an 'equal to' (==) or 'not equal
         #   to' (<>) relational operator. In the first example, the report returns each
         #   edited document's doc_id. In the second example, the report returns each
         #   viewed document's doc_id that equals the value 12345 and does not return any
         #   viewed document's which have a doc_id value of 98765. The <> operator is URL-
-        #   encoded in the request's query string (%3C%3E):
-        #   GET...&eventName=edit&filters=doc_id GET...&eventName=view&filters=doc_id==
-        #   12345,doc_id%3C%3E98765
-        #   The relational operators include:
-        #   - == - 'equal to'.
-        #   - <> - 'not equal to'. It is URL-encoded (%3C%3E).
-        #   - < - 'less than'. It is URL-encoded (%3C).
-        #   - <= - 'less than or equal to'. It is URL-encoded (%3C=).
-        #   - > - 'greater than'. It is URL-encoded (%3E).
-        #   - >= - 'greater than or equal to'. It is URL-encoded (%3E=).
-        #   Note: The API doesn't accept multiple values of a parameter. If a particular
+        #   encoded in the request's query string (%3C%3E): GET...&eventName=edit&filters=
+        #   doc_id GET...&eventName=view&filters=doc_id==12345,doc_id%3C%3E98765 The
+        #   relational operators include: - == - 'equal to'. - <> - 'not equal to'. It is
+        #   URL-encoded (%3C%3E). - < - 'less than'. It is URL-encoded (%3C). - <= - 'less
+        #   than or equal to'. It is URL-encoded (%3C=). - > - 'greater than'. It is URL-
+        #   encoded (%3E). - >= - 'greater than or equal to'. It is URL-encoded (%3E=). *
+        #   Note:* The API doesn't accept multiple values of a parameter. If a particular
         #   parameter is supplied more than once in the API request, the API only accepts
-        #   the last value of that request parameter.
-        #   In addition, if an invalid request parameter is supplied in the API request,
-        #   the API ignores that request parameter and returns the response corresponding
-        #   to the remaining valid request parameters. If no parameters are requested, all
-        #   parameters are returned.
+        #   the last value of that request parameter. In addition, if an invalid request
+        #   parameter is supplied in the API request, the API ignores that request
+        #   parameter and returns the response corresponding to the remaining valid
+        #   request parameters. If no parameters are requested, all parameters are
+        #   returned.
         # @param [Fixnum] max_results
         #   Determines how many activity records are shown on each response page. For
         #   example, if the request sets maxResults=1 and the report has two activities,
@@ -299,10 +277,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -315,8 +291,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_activity(user_key, application_name, channel_object = nil, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, org_unit_id: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'activity/users/{userKey}/applications/{applicationName}/watch', options)
+        def watch_activity(user_key, application_name, channel_object = nil, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, org_unit_id: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'admin/reports/v1/activity/users/{userKey}/applications/{applicationName}/watch', options)
           command.request_representation = Google::Apis::AdminReportsV1::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::AdminReportsV1::Channel::Representation
@@ -334,19 +310,16 @@ module Google
           command.query['startTime'] = start_time unless start_time.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Stop watching resources through this channel
+        # Stop watching resources through this channel.
         # @param [Google::Apis::AdminReportsV1::Channel] channel_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -359,13 +332,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_channel(channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '/admin/reports_v1/channels/stop', options)
+        def stop_channel(channel_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'admin/reports_v1/channels/stop', options)
           command.request_representation = Google::Apis::AdminReportsV1::Channel::Representation
           command.request_object = channel_object
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -387,24 +359,20 @@ module Google
         #   refine a report's results. The parameter is associated with a specific
         #   application. The application values for the Customers usage report include
         #   accounts, app_maker, apps_scripts, calendar, classroom, cros, docs, gmail,
-        #   gplus, device_management, meet, and sites.
-        #   A parameters query string is in the CSV form of app_name1:param_name1,
-        #   app_name2:param_name2.
-        #   Note: The API doesn't accept multiple values of a parameter. If a particular
-        #   parameter is supplied more than once in the API request, the API only accepts
-        #   the last value of that request parameter.
-        #   In addition, if an invalid request parameter is supplied in the API request,
-        #   the API ignores that request parameter and returns the response corresponding
-        #   to the remaining valid request parameters.
+        #   gplus, device_management, meet, and sites. A parameters query string is in the
+        #   CSV form of app_name1:param_name1, app_name2:param_name2. *Note:* The API
+        #   doesn't accept multiple values of a parameter. If a particular parameter is
+        #   supplied more than once in the API request, the API only accepts the last
+        #   value of that request parameter. In addition, if an invalid request parameter
+        #   is supplied in the API request, the API ignores that request parameter and
+        #   returns the response corresponding to the remaining valid request parameters.
         #   An example of an invalid request parameter is one that does not belong to the
         #   application. If no parameters are requested, all parameters are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -417,8 +385,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_customer_usage_report(date, customer_id: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'usage/dates/{date}', options)
+        def get_customer_usage_report(date, customer_id: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'admin/reports/v1/usage/dates/{date}', options)
           command.response_representation = Google::Apis::AdminReportsV1::UsageReports::Representation
           command.response_class = Google::Apis::AdminReportsV1::UsageReports
           command.params['date'] = date unless date.nil?
@@ -427,7 +395,6 @@ module Google
           command.query['parameters'] = parameters unless parameters.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -449,22 +416,16 @@ module Google
         #   parameters where the parameter's value is manipulated by a relational operator.
         #   The filters query string includes the name of the application whose usage is
         #   returned in the report. The application values for the Entities usage report
-        #   include accounts, docs, and gmail.
-        #   Filters are in the form [application name]:[parameter name][relational
-        #   operator][parameter value],....
-        #   In this example, the <> 'not equal to' operator is URL-encoded in the request'
-        #   s query string (%3C%3E):
-        #   GET https://www.googleapis.com/admin/reports/v1/usage/gplus_communities/all/
-        #   dates/2017-12-01 ?parameters=gplus:community_name,gplus:num_total_members &
-        #   filters=gplus:num_total_members>0
-        #   The relational operators include:
-        #   - == - 'equal to'.
-        #   - <> - 'not equal to'. It is URL-encoded (%3C%3E).
-        #   - < - 'less than'. It is URL-encoded (%3C).
-        #   - <= - 'less than or equal to'. It is URL-encoded (%3C=).
-        #   - > - 'greater than'. It is URL-encoded (%3E).
-        #   - >= - 'greater than or equal to'. It is URL-encoded (%3E=).  Filters can only
-        #   be applied to numeric parameters.
+        #   include accounts, docs, and gmail. Filters are in the form [application name]:
+        #   parameter name[parameter value],.... In this example, the <> 'not equal to'
+        #   operator is URL-encoded in the request's query string (%3C%3E): GET https://
+        #   www.googleapis.com/admin/reports/v1/usage/gplus_communities/all/dates/2017-12-
+        #   01 ?parameters=gplus:community_name,gplus:num_total_members &filters=gplus:
+        #   num_total_members>0 The relational operators include: - == - 'equal to'. - <> -
+        #   'not equal to'. It is URL-encoded (%3C%3E). - < - 'less than'. It is URL-
+        #   encoded (%3C). - <= - 'less than or equal to'. It is URL-encoded (%3C=). - > -
+        #   'greater than'. It is URL-encoded (%3E). - >= - 'greater than or equal to'. It
+        #   is URL-encoded (%3E=). Filters can only be applied to numeric parameters.
         # @param [Fixnum] max_results
         #   Determines how many activity records are shown on each response page. For
         #   example, if the request sets maxResults=1 and the report has two activities,
@@ -478,24 +439,20 @@ module Google
         #   The parameters query string is a comma-separated list of event parameters that
         #   refine a report's results. The parameter is associated with a specific
         #   application. The application values for the Entities usage report are only
-        #   gplus.
-        #   A parameter query string is in the CSV form of [app_name1:param_name1], [
-        #   app_name2:param_name2]....
-        #   Note: The API doesn't accept multiple values of a parameter. If a particular
-        #   parameter is supplied more than once in the API request, the API only accepts
-        #   the last value of that request parameter.
-        #   In addition, if an invalid request parameter is supplied in the API request,
-        #   the API ignores that request parameter and returns the response corresponding
-        #   to the remaining valid request parameters.
-        #   An example of an invalid request parameter is one that does not belong to the
-        #   application. If no parameters are requested, all parameters are returned.
+        #   gplus. A parameter query string is in the CSV form of [app_name1:param_name1],
+        #   [app_name2:param_name2].... *Note:* The API doesn't accept multiple values of
+        #   a parameter. If a particular parameter is supplied more than once in the API
+        #   request, the API only accepts the last value of that request parameter. In
+        #   addition, if an invalid request parameter is supplied in the API request, the
+        #   API ignores that request parameter and returns the response corresponding to
+        #   the remaining valid request parameters. An example of an invalid request
+        #   parameter is one that does not belong to the application. If no parameters are
+        #   requested, all parameters are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -508,8 +465,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_entity_usage_report(entity_type, entity_key, date, customer_id: nil, filters: nil, max_results: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'usage/{entityType}/{entityKey}/dates/{date}', options)
+        def get_entity_usage_report(entity_type, entity_key, date, customer_id: nil, filters: nil, max_results: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'admin/reports/v1/usage/{entityType}/{entityKey}/dates/{date}', options)
           command.response_representation = Google::Apis::AdminReportsV1::UsageReports::Representation
           command.response_class = Google::Apis::AdminReportsV1::UsageReports
           command.params['entityType'] = entity_type unless entity_type.nil?
@@ -522,7 +479,6 @@ module Google
           command.query['parameters'] = parameters unless parameters.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -544,27 +500,21 @@ module Google
         #   parameters where the parameter's value is manipulated by a relational operator.
         #   The filters query string includes the name of the application whose usage is
         #   returned in the report. The application values for the Users Usage Report
-        #   include accounts, docs, and gmail.
-        #   Filters are in the form [application name]:[parameter name][relational
-        #   operator][parameter value],....
-        #   In this example, the <> 'not equal to' operator is URL-encoded in the request'
-        #   s query string (%3C%3E):
-        #   GET https://www.googleapis.com/admin/reports/v1/usage/users/all/dates/2013-03-
-        #   03 ?parameters=accounts:last_login_time &filters=accounts:last_login_time>2010-
-        #   10-28T10:26:35.000Z
-        #   The relational operators include:
-        #   - == - 'equal to'.
-        #   - <> - 'not equal to'. It is URL-encoded (%3C%3E).
-        #   - < - 'less than'. It is URL-encoded (%3C).
-        #   - <= - 'less than or equal to'. It is URL-encoded (%3C=).
-        #   - > - 'greater than'. It is URL-encoded (%3E).
-        #   - >= - 'greater than or equal to'. It is URL-encoded (%3E=).
+        #   include accounts, docs, and gmail. Filters are in the form [application name]:
+        #   parameter name[parameter value],.... In this example, the <> 'not equal to'
+        #   operator is URL-encoded in the request's query string (%3C%3E): GET https://
+        #   www.googleapis.com/admin/reports/v1/usage/users/all/dates/2013-03-03 ?
+        #   parameters=accounts:last_login_time &filters=accounts:last_login_time>2010-10-
+        #   28T10:26:35.000Z The relational operators include: - == - 'equal to'. - <> - '
+        #   not equal to'. It is URL-encoded (%3C%3E). - < - 'less than'. It is URL-
+        #   encoded (%3C). - <= - 'less than or equal to'. It is URL-encoded (%3C=). - > -
+        #   'greater than'. It is URL-encoded (%3E). - >= - 'greater than or equal to'. It
+        #   is URL-encoded (%3E=).
         # @param [Fixnum] max_results
         #   Determines how many activity records are shown on each response page. For
         #   example, if the request sets maxResults=1 and the report has two activities,
         #   the report has two pages. The response's nextPageToken property has the token
-        #   to the second page.
-        #   The maxResults query string is optional.
+        #   to the second page. The maxResults query string is optional.
         # @param [String] org_unit_id
         #   ID of the organizational unit to report on. User activity will be shown only
         #   for users who belong to the specified organizational unit. Data before Dec 17,
@@ -578,24 +528,20 @@ module Google
         #   refine a report's results. The parameter is associated with a specific
         #   application. The application values for the Customers usage report include
         #   accounts, app_maker, apps_scripts, calendar, classroom, cros, docs, gmail,
-        #   gplus, device_management, meet, and sites.
-        #   A parameters query string is in the CSV form of app_name1:param_name1,
-        #   app_name2:param_name2.
-        #   Note: The API doesn't accept multiple values of a parameter.
-        #   If a particular parameter is supplied more than once in the API request, the
-        #   API only accepts the last value of that request parameter. In addition, if an
-        #   invalid request parameter is supplied in the API request, the API ignores that
-        #   request parameter and returns the response corresponding to the remaining
-        #   valid request parameters.
+        #   gplus, device_management, meet, and sites. A parameters query string is in the
+        #   CSV form of app_name1:param_name1, app_name2:param_name2. *Note:* The API
+        #   doesn't accept multiple values of a parameter. If a particular parameter is
+        #   supplied more than once in the API request, the API only accepts the last
+        #   value of that request parameter. In addition, if an invalid request parameter
+        #   is supplied in the API request, the API ignores that request parameter and
+        #   returns the response corresponding to the remaining valid request parameters.
         #   An example of an invalid request parameter is one that does not belong to the
         #   application. If no parameters are requested, all parameters are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -608,8 +554,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user_usage_report(user_key, date, customer_id: nil, filters: nil, max_results: nil, org_unit_id: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'usage/users/{userKey}/dates/{date}', options)
+        def get_user_usage_report(user_key, date, customer_id: nil, filters: nil, max_results: nil, org_unit_id: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'admin/reports/v1/usage/users/{userKey}/dates/{date}', options)
           command.response_representation = Google::Apis::AdminReportsV1::UsageReports::Representation
           command.response_class = Google::Apis::AdminReportsV1::UsageReports
           command.params['userKey'] = user_key unless user_key.nil?
@@ -622,7 +568,6 @@ module Google
           command.query['parameters'] = parameters unless parameters.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -631,7 +576,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end

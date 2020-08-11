@@ -22,21 +22,19 @@ module Google
   module Apis
     module DocsV1
       
-      # A ParagraphElement representing a
-      # spot in the text that is dynamically replaced with content that can change
-      # over time, like a page number.
+      # A ParagraphElement representing a spot in the text that is dynamically
+      # replaced with content that can change over time, like a page number.
       class AutoText
         include Google::Apis::Core::Hashable
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
-        # The suggested insertion IDs. An AutoText
-        # may have multiple insertion IDs if it is a nested suggested change. If
-        # empty, then this is not a suggested insertion.
+        # The suggested insertion IDs. An AutoText may have multiple insertion IDs if it
+        # is a nested suggested change. If empty, then this is not a suggested insertion.
         # Corresponds to the JSON property `suggestedInsertionIds`
         # @return [Array<String>]
         attr_accessor :suggested_insertion_ids
@@ -46,20 +44,16 @@ module Google
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedTextStyle>]
         attr_accessor :suggested_text_style_changes
       
-        # Represents the styling that can be applied to text.
-        # Inherited text styles are represented as unset fields in this message. A
-        # text style's parent depends on where the text style is defined:
-        # * The TextStyle of text in a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The TextStyle on a named style
-        # inherits from the normal text named style.
-        # * The TextStyle of the normal text named style inherits
-        # from the default text style in the Docs editor.
-        # * The TextStyle on a Paragraph element
-        # that is contained in a table may inherit its text style from the table
-        # style.
-        # If the text style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
         # Corresponds to the JSON property `textStyle`
         # @return [Google::Apis::DocsV1::TextStyle]
         attr_accessor :text_style
@@ -103,8 +97,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base Background have been
-      # changed in this suggestion.
-      # For any field set to true, the Backgound has a new suggested value.
+      # changed in this suggestion. For any field set to true, the Backgound has a new
+      # suggested value.
       class BackgroundSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -159,8 +153,8 @@ module Google
         # @return [String]
         attr_accessor :document_id
       
-        # The reply of the updates. This maps 1:1 with the updates, although replies
-        # to some requests may be empty.
+        # The reply of the updates. This maps 1:1 with the updates, although replies to
+        # some requests may be empty.
         # Corresponds to the JSON property `replies`
         # @return [Array<Google::Apis::DocsV1::Response>]
         attr_accessor :replies
@@ -182,15 +176,12 @@ module Google
         end
       end
       
-      # The document body.
-      # The body typically contains the full document contents except for
-      # headers, footers
-      # and footnotes.
+      # The document body. The body typically contains the full document contents
+      # except for headers, footers and footnotes.
       class Body
         include Google::Apis::Core::Hashable
       
-        # The contents of the body.
-        # The indexes for the body's content begin at zero.
+        # The contents of the body. The indexes for the body's content begin at zero.
         # Corresponds to the JSON property `content`
         # @return [Array<Google::Apis::DocsV1::StructuralElement>]
         attr_accessor :content
@@ -219,20 +210,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :nesting_level
       
-        # Represents the styling that can be applied to text.
-        # Inherited text styles are represented as unset fields in this message. A
-        # text style's parent depends on where the text style is defined:
-        # * The TextStyle of text in a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The TextStyle on a named style
-        # inherits from the normal text named style.
-        # * The TextStyle of the normal text named style inherits
-        # from the default text style in the Docs editor.
-        # * The TextStyle on a Paragraph element
-        # that is contained in a table may inherit its text style from the table
-        # style.
-        # If the text style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
         # Corresponds to the JSON property `textStyle`
         # @return [Google::Apis::DocsV1::TextStyle]
         attr_accessor :text_style
@@ -249,29 +236,26 @@ module Google
         end
       end
       
-      # A mask that indicates which of the fields on the base
-      # Bullet have been changed in this suggestion.
-      # For any field set to true, there is a new suggested value.
+      # A mask that indicates which of the fields on the base Bullet have been changed
+      # in this suggestion. For any field set to true, there is a new suggested value.
       class BulletSuggestionState
         include Google::Apis::Core::Hashable
       
-        # Indicates if there was a suggested change to the
-        # list_id.
+        # Indicates if there was a suggested change to the list_id.
         # Corresponds to the JSON property `listIdSuggested`
         # @return [Boolean]
         attr_accessor :list_id_suggested
         alias_method :list_id_suggested?, :list_id_suggested
       
-        # Indicates if there was a suggested change to the
-        # nesting_level.
+        # Indicates if there was a suggested change to the nesting_level.
         # Corresponds to the JSON property `nestingLevelSuggested`
         # @return [Boolean]
         attr_accessor :nesting_level_suggested
         alias_method :nesting_level_suggested?, :nesting_level_suggested
       
         # A mask that indicates which of the fields on the base TextStyle have been
-        # changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `textStyleSuggestionState`
         # @return [Google::Apis::DocsV1::TextStyleSuggestionState]
         attr_accessor :text_style_suggestion_state
@@ -307,46 +291,39 @@ module Google
         end
       end
       
-      # A ParagraphElement representing a
-      # column break. A column break makes the subsequent text start at the top of
-      # the next column.
+      # A ParagraphElement representing a column break. A column break makes the
+      # subsequent text start at the top of the next column.
       class ColumnBreak
         include Google::Apis::Core::Hashable
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
         # The suggested insertion IDs. A ColumnBreak may have multiple insertion IDs if
-        # it is
-        # a nested suggested change. If empty, then this is not a suggested
+        # it is a nested suggested change. If empty, then this is not a suggested
         # insertion.
         # Corresponds to the JSON property `suggestedInsertionIds`
         # @return [Array<String>]
         attr_accessor :suggested_insertion_ids
       
-        # The suggested text style changes to this ColumnBreak, keyed by suggestion
-        # ID.
+        # The suggested text style changes to this ColumnBreak, keyed by suggestion ID.
         # Corresponds to the JSON property `suggestedTextStyleChanges`
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedTextStyle>]
         attr_accessor :suggested_text_style_changes
       
-        # Represents the styling that can be applied to text.
-        # Inherited text styles are represented as unset fields in this message. A
-        # text style's parent depends on where the text style is defined:
-        # * The TextStyle of text in a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The TextStyle on a named style
-        # inherits from the normal text named style.
-        # * The TextStyle of the normal text named style inherits
-        # from the default text style in the Docs editor.
-        # * The TextStyle on a Paragraph element
-        # that is contained in a table may inherit its text style from the table
-        # style.
-        # If the text style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
         # Corresponds to the JSON property `textStyle`
         # @return [Google::Apis::DocsV1::TextStyle]
         attr_accessor :text_style
@@ -364,12 +341,10 @@ module Google
         end
       end
       
-      # Creates a Footer. The new footer is applied to
-      # the SectionStyle at the location of the
-      # SectionBreak if specificed, otherwise
-      # it is applied to the DocumentStyle.
-      # If a footer of the specified type already exists, a 400 bad request error
-      # is returned.
+      # Creates a Footer. The new footer is applied to the SectionStyle at the
+      # location of the SectionBreak if specificed, otherwise it is applied to the
+      # DocumentStyle. If a footer of the specified type already exists, a 400 bad
+      # request error is returned.
       class CreateFooterRequest
         include Google::Apis::Core::Hashable
       
@@ -413,11 +388,9 @@ module Google
         end
       end
       
-      # Creates a Footnote segment
-      # and inserts a new FootnoteReference
-      # to it at the given location.
-      # The new Footnote segment will contain a
-      # space followed by a newline character.
+      # Creates a Footnote segment and inserts a new FootnoteReference to it at the
+      # given location. The new Footnote segment will contain a space followed by a
+      # newline character.
       class CreateFootnoteRequest
         include Google::Apis::Core::Hashable
       
@@ -462,12 +435,10 @@ module Google
         end
       end
       
-      # Creates a Header. The new header is applied to
-      # the SectionStyle at the location of the
-      # SectionBreak if specificed, otherwise
-      # it is applied to the DocumentStyle.
-      # If a header of the specified type already exists, a 400 bad request error
-      # is returned.
+      # Creates a Header. The new header is applied to the SectionStyle at the
+      # location of the SectionBreak if specificed, otherwise it is applied to the
+      # DocumentStyle. If a header of the specified type already exists, a 400 bad
+      # request error is returned.
       class CreateHeaderRequest
         include Google::Apis::Core::Hashable
       
@@ -511,14 +482,13 @@ module Google
         end
       end
       
-      # Creates a NamedRange referencing the given
-      # range.
+      # Creates a NamedRange referencing the given range.
       class CreateNamedRangeRequest
         include Google::Apis::Core::Hashable
       
-        # The name of the NamedRange. Names do not need to be unique.
-        # Names must be at least 1 character and no more than 256 characters,
-        # measured in UTF-16 code units.
+        # The name of the NamedRange. Names do not need to be unique. Names must be at
+        # least 1 character and no more than 256 characters, measured in UTF-16 code
+        # units.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -562,10 +532,9 @@ module Google
       # The nesting level of each paragraph will be determined by counting leading
       # tabs in front of each paragraph. To avoid excess space between the bullet and
       # the corresponding paragraph, these leading tabs are removed by this request.
-      # This may change the indices of parts of the text.
-      # If the paragraph immediately before paragraphs being updated is in a list
-      # with a matching preset, the paragraphs being updated are added to that
-      # preceding list.
+      # This may change the indices of parts of the text. If the paragraph immediately
+      # before paragraphs being updated is in a list with a matching preset, the
+      # paragraphs being updated are added to that preceding list.
       class CreateParagraphBulletsRequest
         include Google::Apis::Core::Hashable
       
@@ -590,14 +559,13 @@ module Google
         end
       end
       
-      # The crop properties of an image.
-      # The crop rectangle is represented using fractional offsets from the original
-      # content's four edges.
-      # - If the offset is in the interval (0, 1), the corresponding edge of crop
-      # rectangle is positioned inside of the image's original bounding rectangle.
-      # - If the offset is negative or greater than 1, the corresponding edge of crop
-      # rectangle is positioned outside of the image's original bounding rectangle.
-      # - If all offsets and rotation angle are 0, the image is not cropped.
+      # The crop properties of an image. The crop rectangle is represented using
+      # fractional offsets from the original content's four edges. - If the offset is
+      # in the interval (0, 1), the corresponding edge of crop rectangle is positioned
+      # inside of the image's original bounding rectangle. - If the offset is negative
+      # or greater than 1, the corresponding edge of crop rectangle is positioned
+      # outside of the image's original bounding rectangle. - If all offsets and
+      # rotation angle are 0, the image is not cropped.
       class CropProperties
         include Google::Apis::Core::Hashable
       
@@ -607,9 +575,9 @@ module Google
         # @return [Float]
         attr_accessor :angle
       
-        # The offset specifies how far inwards the bottom edge of the crop rectangle
-        # is from the bottom edge of the original content as a fraction of the
-        # original content's height.
+        # The offset specifies how far inwards the bottom edge of the crop rectangle is
+        # from the bottom edge of the original content as a fraction of the original
+        # content's height.
         # Corresponds to the JSON property `offsetBottom`
         # @return [Float]
         attr_accessor :offset_bottom
@@ -621,9 +589,9 @@ module Google
         # @return [Float]
         attr_accessor :offset_left
       
-        # The offset specifies how far inwards the right edge of the crop rectangle
-        # is from the right edge of the original content as a fraction of the
-        # original content's width.
+        # The offset specifies how far inwards the right edge of the crop rectangle is
+        # from the right edge of the original content as a fraction of the original
+        # content's width.
         # Corresponds to the JSON property `offsetRight`
         # @return [Float]
         attr_accessor :offset_right
@@ -650,8 +618,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base CropProperties have been
-      # changed in this suggestion.
-      # For any field set to true, there is a new suggested value.
+      # changed in this suggestion. For any field set to true, there is a new
+      # suggested value.
       class CropPropertiesSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -722,13 +690,11 @@ module Google
       class DeleteFooterRequest
         include Google::Apis::Core::Hashable
       
-        # The id of the footer to delete. If this footer is defined on
-        # DocumentStyle, the reference to
-        # this footer is removed, resulting in no footer of that type for
-        # the first section of the document. If this footer is defined on a
-        # SectionStyle, the reference to this
-        # footer is removed and the footer of that type is now continued from
-        # the previous section.
+        # The id of the footer to delete. If this footer is defined on DocumentStyle,
+        # the reference to this footer is removed, resulting in no footer of that type
+        # for the first section of the document. If this footer is defined on a
+        # SectionStyle, the reference to this footer is removed and the footer of that
+        # type is now continued from the previous section.
         # Corresponds to the JSON property `footerId`
         # @return [String]
         attr_accessor :footer_id
@@ -747,13 +713,11 @@ module Google
       class DeleteHeaderRequest
         include Google::Apis::Core::Hashable
       
-        # The id of the header to delete. If this header is defined on
-        # DocumentStyle, the reference to
-        # this header is removed, resulting in no header of that type for
-        # the first section of the document. If this header is defined on a
-        # SectionStyle, the reference to this
-        # header is removed and the header of that type is now continued from
-        # the previous section.
+        # The id of the header to delete. If this header is defined on DocumentStyle,
+        # the reference to this header is removed, resulting in no header of that type
+        # for the first section of the document. If this header is defined on a
+        # SectionStyle, the reference to this header is removed and the header of that
+        # type is now continued from the previous section.
         # Corresponds to the JSON property `headerId`
         # @return [String]
         attr_accessor :header_id
@@ -772,8 +736,8 @@ module Google
       class DeleteNamedRangeRequest
         include Google::Apis::Core::Hashable
       
-        # The name of the range(s) to delete. All named ranges with the given
-        # name will be deleted.
+        # The name of the range(s) to delete. All named ranges with the given name will
+        # be deleted.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -815,8 +779,7 @@ module Google
         end
       end
       
-      # Deletes a PositionedObject from the
-      # document.
+      # Deletes a PositionedObject from the document.
       class DeletePositionedObjectRequest
         include Google::Apis::Core::Hashable
       
@@ -902,10 +865,8 @@ module Google
       class Document
         include Google::Apis::Core::Hashable
       
-        # The document body.
-        # The body typically contains the full document contents except for
-        # headers, footers
-        # and footnotes.
+        # The document body. The body typically contains the full document contents
+        # except for headers, footers and footnotes.
         # Corresponds to the JSON property `body`
         # @return [Google::Apis::DocsV1::Body]
         attr_accessor :body
@@ -950,8 +911,7 @@ module Google
         # @return [Hash<String,Google::Apis::DocsV1::NamedRanges>]
         attr_accessor :named_ranges
       
-        # The named styles. Paragraphs in the document can inherit their
-        # TextStyle and
+        # The named styles. Paragraphs in the document can inherit their TextStyle and
         # ParagraphStyle from these named styles.
         # Corresponds to the JSON property `namedStyles`
         # @return [Google::Apis::DocsV1::NamedStyles]
@@ -962,17 +922,17 @@ module Google
         # @return [Hash<String,Google::Apis::DocsV1::PositionedObject>]
         attr_accessor :positioned_objects
       
-        # Output only. The revision ID of the document. Can be used in update
-        # requests to specify which revision of a document to apply updates to and
-        # how the request should behave if the document has been edited since that
-        # revision. Only populated if the user has edit access to the document.
-        # The format of the revision ID may change over time, so it should be treated
-        # opaquely. A returned revision ID is only guaranteed to be valid for 24
-        # hours after it has been returned and cannot be shared across users. If the
-        # revision ID is unchanged between calls, then the document has not changed.
-        # Conversely, a changed ID (for the same document and user) usually means the
-        # document has been updated; however, a changed ID can also be due to
-        # internal factors such as ID format changes.
+        # Output only. The revision ID of the document. Can be used in update requests
+        # to specify which revision of a document to apply updates to and how the
+        # request should behave if the document has been edited since that revision.
+        # Only populated if the user has edit access to the document. The format of the
+        # revision ID may change over time, so it should be treated opaquely. A returned
+        # revision ID is only guaranteed to be valid for 24 hours after it has been
+        # returned and cannot be shared across users. If the revision ID is unchanged
+        # between calls, then the document has not changed. Conversely, a changed ID (
+        # for the same document and user) usually means the document has been updated;
+        # however, a changed ID can also be due to internal factors such as ID format
+        # changes.
         # Corresponds to the JSON property `revisionId`
         # @return [String]
         attr_accessor :revision_id
@@ -983,14 +943,14 @@ module Google
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedDocumentStyle>]
         attr_accessor :suggested_document_style_changes
       
-        # Output only. The suggested changes to the named styles of the document,
-        # keyed by suggestion ID.
+        # Output only. The suggested changes to the named styles of the document, keyed
+        # by suggestion ID.
         # Corresponds to the JSON property `suggestedNamedStylesChanges`
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedNamedStyles>]
         attr_accessor :suggested_named_styles_changes
       
-        # Output only. The suggestions view mode applied to the document.
-        # Note: When editing a document, changes must be based on a document with
+        # Output only. The suggestions view mode applied to the document. Note: When
+        # editing a document, changes must be based on a document with
         # SUGGESTIONS_INLINE.
         # Corresponds to the JSON property `suggestionsViewMode`
         # @return [String]
@@ -1035,52 +995,48 @@ module Google
         # @return [Google::Apis::DocsV1::Background]
         attr_accessor :background
       
-        # The ID of the default footer. If not set, there is no default footer.
-        # This property is read-only.
+        # The ID of the default footer. If not set, there is no default footer. This
+        # property is read-only.
         # Corresponds to the JSON property `defaultFooterId`
         # @return [String]
         attr_accessor :default_footer_id
       
-        # The ID of the default header. If not set, there is no default header.
-        # This property is read-only.
+        # The ID of the default header. If not set, there is no default header. This
+        # property is read-only.
         # Corresponds to the JSON property `defaultHeaderId`
         # @return [String]
         attr_accessor :default_header_id
       
         # The ID of the footer used only for even pages. The value of
-        # use_even_page_header_footer determines
-        # whether to use the default_footer_id or this value for the
-        # footer on even pages. If not set, there is no even page footer.
-        # This property is read-only.
+        # use_even_page_header_footer determines whether to use the default_footer_id or
+        # this value for the footer on even pages. If not set, there is no even page
+        # footer. This property is read-only.
         # Corresponds to the JSON property `evenPageFooterId`
         # @return [String]
         attr_accessor :even_page_footer_id
       
         # The ID of the header used only for even pages. The value of
-        # use_even_page_header_footer determines
-        # whether to use the default_header_id or this value for the
-        # header on even pages. If not set, there is no even page header.
-        # This property is read-only.
+        # use_even_page_header_footer determines whether to use the default_header_id or
+        # this value for the header on even pages. If not set, there is no even page
+        # header. This property is read-only.
         # Corresponds to the JSON property `evenPageHeaderId`
         # @return [String]
         attr_accessor :even_page_header_id
       
-        # The ID of the footer used only for the first page. If not set then
-        # a unique footer for the first page does not exist. The value of
-        # use_first_page_header_footer determines
-        # whether to use the default_footer_id or this value for the
-        # footer on the first page. If not set, there is no first page footer.
-        # This property is read-only.
+        # The ID of the footer used only for the first page. If not set then a unique
+        # footer for the first page does not exist. The value of
+        # use_first_page_header_footer determines whether to use the default_footer_id
+        # or this value for the footer on the first page. If not set, there is no first
+        # page footer. This property is read-only.
         # Corresponds to the JSON property `firstPageFooterId`
         # @return [String]
         attr_accessor :first_page_footer_id
       
-        # The ID of the header used only for the first page. If not set then
-        # a unique header for the first page does not exist.
-        # The value of use_first_page_header_footer determines
-        # whether to use the default_header_id or this value for the
-        # header on the first page. If not set, there is no first page header.
-        # This property is read-only.
+        # The ID of the header used only for the first page. If not set then a unique
+        # header for the first page does not exist. The value of
+        # use_first_page_header_footer determines whether to use the default_header_id
+        # or this value for the header on the first page. If not set, there is no first
+        # page header. This property is read-only.
         # Corresponds to the JSON property `firstPageHeaderId`
         # @return [String]
         attr_accessor :first_page_header_id
@@ -1125,31 +1081,22 @@ module Google
         # @return [Google::Apis::DocsV1::Size]
         attr_accessor :page_size
       
-        # Indicates whether DocumentStyle
-        # margin_header,
-        # SectionStyle
-        # margin_header and
-        # DocumentStyle
-        # margin_footer,
-        # SectionStyle
-        # margin_footer are
-        # respected. When false, the default values in the Docs editor for header and
-        # footer margin are used.
-        # This property is read-only.
+        # Indicates whether DocumentStyle margin_header, SectionStyle margin_header and
+        # DocumentStyle margin_footer, SectionStyle margin_footer are respected. When
+        # false, the default values in the Docs editor for header and footer margin are
+        # used. This property is read-only.
         # Corresponds to the JSON property `useCustomHeaderFooterMargins`
         # @return [Boolean]
         attr_accessor :use_custom_header_footer_margins
         alias_method :use_custom_header_footer_margins?, :use_custom_header_footer_margins
       
-        # Indicates whether to use the even page header / footer IDs for the even
-        # pages.
+        # Indicates whether to use the even page header / footer IDs for the even pages.
         # Corresponds to the JSON property `useEvenPageHeaderFooter`
         # @return [Boolean]
         attr_accessor :use_even_page_header_footer
         alias_method :use_even_page_header_footer?, :use_even_page_header_footer
       
-        # Indicates whether to use the first page header / footer IDs for the first
-        # page.
+        # Indicates whether to use the first page header / footer IDs for the first page.
         # Corresponds to the JSON property `useFirstPageHeaderFooter`
         # @return [Boolean]
         attr_accessor :use_first_page_header_footer
@@ -1183,14 +1130,14 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base DocumentStyle have been
-      # changed in this suggestion.
-      # For any field set to true, there is a new suggested value.
+      # changed in this suggestion. For any field set to true, there is a new
+      # suggested value.
       class DocumentStyleSuggestionState
         include Google::Apis::Core::Hashable
       
         # A mask that indicates which of the fields on the base Background have been
-        # changed in this suggestion.
-        # For any field set to true, the Backgound has a new suggested value.
+        # changed in this suggestion. For any field set to true, the Backgound has a new
+        # suggested value.
         # Corresponds to the JSON property `backgroundSuggestionState`
         # @return [Google::Apis::DocsV1::BackgroundSuggestionState]
         attr_accessor :background_suggestion_state
@@ -1274,15 +1221,13 @@ module Google
         alias_method :page_number_start_suggested?, :page_number_start_suggested
       
         # A mask that indicates which of the fields on the base Size have been changed
-        # in this suggestion.
-        # For any field set to true, the Size has
-        # a new suggested value.
+        # in this suggestion. For any field set to true, the Size has a new suggested
+        # value.
         # Corresponds to the JSON property `pageSizeSuggestionState`
         # @return [Google::Apis::DocsV1::SizeSuggestionState]
         attr_accessor :page_size_suggestion_state
       
-        # Indicates if there was a suggested change to
-        # use_custom_header_footer_margins.
+        # Indicates if there was a suggested change to use_custom_header_footer_margins.
         # Corresponds to the JSON property `useCustomHeaderFooterMarginsSuggested`
         # @return [Boolean]
         attr_accessor :use_custom_header_footer_margins_suggested
@@ -1341,9 +1286,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base
-      # EmbeddedDrawingProperties
-      # have been changed in this suggestion. For any field set to true, there is a
-      # new suggested value.
+      # EmbeddedDrawingProperties have been changed in this suggestion. For any field
+      # set to true, there is a new suggested value.
       class EmbeddedDrawingPropertiesSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -1360,8 +1304,8 @@ module Google
       class EmbeddedObject
         include Google::Apis::Core::Hashable
       
-        # The description of the embedded object. The `title` and `description` are
-        # both combined to display alt text.
+        # The description of the embedded object. The `title` and `description` are both
+        # combined to display alt text.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1475,8 +1419,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base EmbeddedObjectBorder
-      # have been changed in this
-      # suggestion. For any field set to true, there is a new suggested value.
+      # have been changed in this suggestion. For any field set to true, there is a
+      # new suggested value.
       class EmbeddedObjectBorderSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -1518,8 +1462,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base EmbeddedObject have been
-      # changed in this suggestion.
-      # For any field set to true, there is a new suggested value.
+      # changed in this suggestion. For any field set to true, there is a new
+      # suggested value.
       class EmbeddedObjectSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -1530,31 +1474,29 @@ module Google
         alias_method :description_suggested?, :description_suggested
       
         # A mask that indicates which of the fields on the base
-        # EmbeddedDrawingProperties
-        # have been changed in this suggestion. For any field set to true, there is a
-        # new suggested value.
+        # EmbeddedDrawingProperties have been changed in this suggestion. For any field
+        # set to true, there is a new suggested value.
         # Corresponds to the JSON property `embeddedDrawingPropertiesSuggestionState`
         # @return [Google::Apis::DocsV1::EmbeddedDrawingPropertiesSuggestionState]
         attr_accessor :embedded_drawing_properties_suggestion_state
       
         # A mask that indicates which of the fields on the base EmbeddedObjectBorder
-        # have been changed in this
-        # suggestion. For any field set to true, there is a new suggested value.
+        # have been changed in this suggestion. For any field set to true, there is a
+        # new suggested value.
         # Corresponds to the JSON property `embeddedObjectBorderSuggestionState`
         # @return [Google::Apis::DocsV1::EmbeddedObjectBorderSuggestionState]
         attr_accessor :embedded_object_border_suggestion_state
       
         # A mask that indicates which of the fields on the base ImageProperties have
-        # been changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # been changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `imagePropertiesSuggestionState`
         # @return [Google::Apis::DocsV1::ImagePropertiesSuggestionState]
         attr_accessor :image_properties_suggestion_state
       
-        # A mask that indicates which of the fields on the base
-        # LinkedContentReference have
-        # been changed in this suggestion. For any field set to true, there is a new
-        # suggested value.
+        # A mask that indicates which of the fields on the base LinkedContentReference
+        # have been changed in this suggestion. For any field set to true, there is a
+        # new suggested value.
         # Corresponds to the JSON property `linkedContentReferenceSuggestionState`
         # @return [Google::Apis::DocsV1::LinkedContentReferenceSuggestionState]
         attr_accessor :linked_content_reference_suggestion_state
@@ -1584,9 +1526,8 @@ module Google
         alias_method :margin_top_suggested?, :margin_top_suggested
       
         # A mask that indicates which of the fields on the base Size have been changed
-        # in this suggestion.
-        # For any field set to true, the Size has
-        # a new suggested value.
+        # in this suggestion. For any field set to true, the Size has a new suggested
+        # value.
         # Corresponds to the JSON property `sizeSuggestionState`
         # @return [Google::Apis::DocsV1::SizeSuggestionState]
         attr_accessor :size_suggestion_state
@@ -1622,8 +1563,8 @@ module Google
       class EndOfSegmentLocation
         include Google::Apis::Core::Hashable
       
-        # The ID of the header, footer or footnote the location is in. An empty
-        # segment ID signifies the document's body.
+        # The ID of the header, footer or footnote the location is in. An empty segment
+        # ID signifies the document's body.
         # Corresponds to the JSON property `segmentId`
         # @return [String]
         attr_accessor :segment_id
@@ -1638,20 +1579,18 @@ module Google
         end
       end
       
-      # A ParagraphElement representing an
-      # equation.
+      # A ParagraphElement representing an equation.
       class Equation
         include Google::Apis::Core::Hashable
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
-        # The suggested insertion IDs. A Equation
-        # may have multiple insertion IDs if it is a nested suggested change. If
-        # empty, then this is not a suggested insertion.
+        # The suggested insertion IDs. A Equation may have multiple insertion IDs if it
+        # is a nested suggested change. If empty, then this is not a suggested insertion.
         # Corresponds to the JSON property `suggestedInsertionIds`
         # @return [Array<String>]
         attr_accessor :suggested_insertion_ids
@@ -1671,8 +1610,7 @@ module Google
       class Footer
         include Google::Apis::Core::Hashable
       
-        # The contents of the footer.
-        # The indexes for a footer's content begin at zero.
+        # The contents of the footer. The indexes for a footer's content begin at zero.
         # Corresponds to the JSON property `content`
         # @return [Array<Google::Apis::DocsV1::StructuralElement>]
         attr_accessor :content
@@ -1697,8 +1635,8 @@ module Google
       class Footnote
         include Google::Apis::Core::Hashable
       
-        # The contents of the footnote.
-        # The indexes for a footnote's content begin at zero.
+        # The contents of the footnote. The indexes for a footnote's content begin at
+        # zero.
         # Corresponds to the JSON property `content`
         # @return [Array<Google::Apis::DocsV1::StructuralElement>]
         attr_accessor :content
@@ -1719,14 +1657,12 @@ module Google
         end
       end
       
-      # A ParagraphElement representing a
-      # footnote reference. A footnote reference is the inline content rendered with
-      # a number and is used to identify the footnote.
+      # A ParagraphElement representing a footnote reference. A footnote reference is
+      # the inline content rendered with a number and is used to identify the footnote.
       class FootnoteReference
         include Google::Apis::Core::Hashable
       
-        # The ID of the footnote that
-        # contains the content of this footnote reference.
+        # The ID of the footnote that contains the content of this footnote reference.
         # Corresponds to the JSON property `footnoteId`
         # @return [String]
         attr_accessor :footnote_id
@@ -1736,15 +1672,14 @@ module Google
         # @return [String]
         attr_accessor :footnote_number
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
         # The suggested insertion IDs. A FootnoteReference may have multiple insertion
-        # IDs if
-        # it is a nested suggested change. If empty, then this is not a suggested
+        # IDs if it is a nested suggested change. If empty, then this is not a suggested
         # insertion.
         # Corresponds to the JSON property `suggestedInsertionIds`
         # @return [Array<String>]
@@ -1756,20 +1691,16 @@ module Google
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedTextStyle>]
         attr_accessor :suggested_text_style_changes
       
-        # Represents the styling that can be applied to text.
-        # Inherited text styles are represented as unset fields in this message. A
-        # text style's parent depends on where the text style is defined:
-        # * The TextStyle of text in a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The TextStyle on a named style
-        # inherits from the normal text named style.
-        # * The TextStyle of the normal text named style inherits
-        # from the default text style in the Docs editor.
-        # * The TextStyle on a Paragraph element
-        # that is contained in a table may inherit its text style from the table
-        # style.
-        # If the text style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
         # Corresponds to the JSON property `textStyle`
         # @return [Google::Apis::DocsV1::TextStyle]
         attr_accessor :text_style
@@ -1793,8 +1724,7 @@ module Google
       class Header
         include Google::Apis::Core::Hashable
       
-        # The contents of the header.
-        # The indexes for a header's content begin at zero.
+        # The contents of the header. The indexes for a header's content begin at zero.
         # Corresponds to the JSON property `content`
         # @return [Array<Google::Apis::DocsV1::StructuralElement>]
         attr_accessor :content
@@ -1815,45 +1745,39 @@ module Google
         end
       end
       
-      # A ParagraphElement representing a
-      # horizontal line.
+      # A ParagraphElement representing a horizontal line.
       class HorizontalRule
         include Google::Apis::Core::Hashable
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
         # The suggested insertion IDs. A HorizontalRule may have multiple insertion IDs
-        # if it
-        # is a nested suggested change. If empty, then this is not a suggested
+        # if it is a nested suggested change. If empty, then this is not a suggested
         # insertion.
         # Corresponds to the JSON property `suggestedInsertionIds`
         # @return [Array<String>]
         attr_accessor :suggested_insertion_ids
       
-        # The suggested text style changes to this HorizontalRule, keyed by
-        # suggestion ID.
+        # The suggested text style changes to this HorizontalRule, keyed by suggestion
+        # ID.
         # Corresponds to the JSON property `suggestedTextStyleChanges`
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedTextStyle>]
         attr_accessor :suggested_text_style_changes
       
-        # Represents the styling that can be applied to text.
-        # Inherited text styles are represented as unset fields in this message. A
-        # text style's parent depends on where the text style is defined:
-        # * The TextStyle of text in a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The TextStyle on a named style
-        # inherits from the normal text named style.
-        # * The TextStyle of the normal text named style inherits
-        # from the default text style in the Docs editor.
-        # * The TextStyle on a Paragraph element
-        # that is contained in a table may inherit its text style from the table
-        # style.
-        # If the text style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
         # Corresponds to the JSON property `textStyle`
         # @return [Google::Apis::DocsV1::TextStyle]
         attr_accessor :text_style
@@ -1880,34 +1804,33 @@ module Google
         # @return [Float]
         attr_accessor :angle
       
-        # The brightness effect of the image. The value should be in the interval
-        # [-1.0, 1.0], where 0 means no effect.
+        # The brightness effect of the image. The value should be in the interval [-1.0,
+        # 1.0], where 0 means no effect.
         # Corresponds to the JSON property `brightness`
         # @return [Float]
         attr_accessor :brightness
       
-        # A URI to the image with a default lifetime of 30 minutes.
-        # This URI is tagged with the account of the requester. Anyone with the URI
-        # effectively accesses the image as the original requester. Access to the
-        # image may be lost if the document's sharing settings change.
+        # A URI to the image with a default lifetime of 30 minutes. This URI is tagged
+        # with the account of the requester. Anyone with the URI effectively accesses
+        # the image as the original requester. Access to the image may be lost if the
+        # document's sharing settings change.
         # Corresponds to the JSON property `contentUri`
         # @return [String]
         attr_accessor :content_uri
       
-        # The contrast effect of the image. The value should be in the interval
-        # [-1.0, 1.0], where 0 means no effect.
+        # The contrast effect of the image. The value should be in the interval [-1.0, 1.
+        # 0], where 0 means no effect.
         # Corresponds to the JSON property `contrast`
         # @return [Float]
         attr_accessor :contrast
       
-        # The crop properties of an image.
-        # The crop rectangle is represented using fractional offsets from the original
-        # content's four edges.
-        # - If the offset is in the interval (0, 1), the corresponding edge of crop
-        # rectangle is positioned inside of the image's original bounding rectangle.
-        # - If the offset is negative or greater than 1, the corresponding edge of crop
-        # rectangle is positioned outside of the image's original bounding rectangle.
-        # - If all offsets and rotation angle are 0, the image is not cropped.
+        # The crop properties of an image. The crop rectangle is represented using
+        # fractional offsets from the original content's four edges. - If the offset is
+        # in the interval (0, 1), the corresponding edge of crop rectangle is positioned
+        # inside of the image's original bounding rectangle. - If the offset is negative
+        # or greater than 1, the corresponding edge of crop rectangle is positioned
+        # outside of the image's original bounding rectangle. - If all offsets and
+        # rotation angle are 0, the image is not cropped.
         # Corresponds to the JSON property `cropProperties`
         # @return [Google::Apis::DocsV1::CropProperties]
         attr_accessor :crop_properties
@@ -1918,8 +1841,8 @@ module Google
         # @return [String]
         attr_accessor :source_uri
       
-        # The transparency effect of the image. The value should be in the interval
-        # [0.0, 1.0], where 0 means no effect and 1 means completely transparent.
+        # The transparency effect of the image. The value should be in the interval [0.0,
+        # 1.0], where 0 means no effect and 1 means completely transparent.
         # Corresponds to the JSON property `transparency`
         # @return [Float]
         attr_accessor :transparency
@@ -1941,8 +1864,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base ImageProperties have
-      # been changed in this suggestion.
-      # For any field set to true, there is a new suggested value.
+      # been changed in this suggestion. For any field set to true, there is a new
+      # suggested value.
       class ImagePropertiesSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -1958,8 +1881,7 @@ module Google
         attr_accessor :brightness_suggested
         alias_method :brightness_suggested?, :brightness_suggested
       
-        # Indicates if there was a suggested change to
-        # content_uri.
+        # Indicates if there was a suggested change to content_uri.
         # Corresponds to the JSON property `contentUriSuggested`
         # @return [Boolean]
         attr_accessor :content_uri_suggested
@@ -1972,8 +1894,8 @@ module Google
         alias_method :contrast_suggested?, :contrast_suggested
       
         # A mask that indicates which of the fields on the base CropProperties have been
-        # changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `cropPropertiesSuggestionState`
         # @return [Google::Apis::DocsV1::CropPropertiesSuggestionState]
         attr_accessor :crop_properties_suggestion_state
@@ -2006,8 +1928,8 @@ module Google
         end
       end
       
-      # An object that appears inline with text. An InlineObject contains
-      # an EmbeddedObject such as an image.
+      # An object that appears inline with text. An InlineObject contains an
+      # EmbeddedObject such as an image.
       class InlineObject
         include Google::Apis::Core::Hashable
       
@@ -2021,20 +1943,18 @@ module Google
         # @return [String]
         attr_accessor :object_id_prop
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
-        # The suggested changes to the inline object properties, keyed by suggestion
-        # ID.
+        # The suggested changes to the inline object properties, keyed by suggestion ID.
         # Corresponds to the JSON property `suggestedInlineObjectPropertiesChanges`
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedInlineObjectProperties>]
         attr_accessor :suggested_inline_object_properties_changes
       
-        # The suggested insertion ID. If empty, then this is not a suggested
-        # insertion.
+        # The suggested insertion ID. If empty, then this is not a suggested insertion.
         # Corresponds to the JSON property `suggestedInsertionId`
         # @return [String]
         attr_accessor :suggested_insertion_id
@@ -2053,51 +1973,43 @@ module Google
         end
       end
       
-      # A ParagraphElement that contains
-      # an InlineObject.
+      # A ParagraphElement that contains an InlineObject.
       class InlineObjectElement
         include Google::Apis::Core::Hashable
       
-        # The ID of the InlineObject this
-        # element contains.
+        # The ID of the InlineObject this element contains.
         # Corresponds to the JSON property `inlineObjectId`
         # @return [String]
         attr_accessor :inline_object_id
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
         # The suggested insertion IDs. An InlineObjectElement may have multiple
-        # insertion IDs
-        # if it is a nested suggested change. If empty, then this is not a suggested
-        # insertion.
+        # insertion IDs if it is a nested suggested change. If empty, then this is not a
+        # suggested insertion.
         # Corresponds to the JSON property `suggestedInsertionIds`
         # @return [Array<String>]
         attr_accessor :suggested_insertion_ids
       
-        # The suggested text style changes to this InlineObject, keyed by suggestion
-        # ID.
+        # The suggested text style changes to this InlineObject, keyed by suggestion ID.
         # Corresponds to the JSON property `suggestedTextStyleChanges`
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedTextStyle>]
         attr_accessor :suggested_text_style_changes
       
-        # Represents the styling that can be applied to text.
-        # Inherited text styles are represented as unset fields in this message. A
-        # text style's parent depends on where the text style is defined:
-        # * The TextStyle of text in a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The TextStyle on a named style
-        # inherits from the normal text named style.
-        # * The TextStyle of the normal text named style inherits
-        # from the default text style in the Docs editor.
-        # * The TextStyle on a Paragraph element
-        # that is contained in a table may inherit its text style from the table
-        # style.
-        # If the text style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
         # Corresponds to the JSON property `textStyle`
         # @return [Google::Apis::DocsV1::TextStyle]
         attr_accessor :text_style
@@ -2135,16 +2047,15 @@ module Google
         end
       end
       
-      # A mask that indicates which of the fields on the base
-      # InlineObjectProperties have
-      # been changed in this suggestion. For any field set to true, there is a new
-      # suggested value.
+      # A mask that indicates which of the fields on the base InlineObjectProperties
+      # have been changed in this suggestion. For any field set to true, there is a
+      # new suggested value.
       class InlineObjectPropertiesSuggestionState
         include Google::Apis::Core::Hashable
       
         # A mask that indicates which of the fields on the base EmbeddedObject have been
-        # changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `embeddedObjectSuggestionState`
         # @return [Google::Apis::DocsV1::EmbeddedObjectSuggestionState]
         attr_accessor :embedded_object_suggestion_state
@@ -2159,8 +2070,7 @@ module Google
         end
       end
       
-      # Inserts an InlineObject containing an
-      # image at the given location.
+      # Inserts an InlineObject containing an image at the given location.
       class InsertInlineImageRequest
         include Google::Apis::Core::Hashable
       
@@ -2180,12 +2090,11 @@ module Google
         # @return [Google::Apis::DocsV1::Size]
         attr_accessor :object_size
       
-        # The image URI.
-        # The image is fetched once at insertion time and a copy is stored for
-        # display inside the document. Images must be less than 50MB in size, cannot
-        # exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
-        # The provided URI can be at most 2 kB in length. The URI itself is saved
-        # with the image, and exposed via the ImageProperties.content_uri field.
+        # The image URI. The image is fetched once at insertion time and a copy is
+        # stored for display inside the document. Images must be less than 50MB in size,
+        # cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
+        # The provided URI can be at most 2 kB in length. The URI itself is saved with
+        # the image, and exposed via the ImageProperties.content_uri field.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2267,8 +2176,8 @@ module Google
         end
       end
       
-      # Inserts a section break at the given location.
-      # A newline character will be inserted before the section break.
+      # Inserts a section break at the given location. A newline character will be
+      # inserted before the section break.
       class InsertSectionBreakRequest
         include Google::Apis::Core::Hashable
       
@@ -2304,9 +2213,8 @@ module Google
       class InsertTableColumnRequest
         include Google::Apis::Core::Hashable
       
-        # Whether to insert new column to the right of the reference cell location.
-        # - `True`: insert to the right.
-        # - `False`: insert to the left.
+        # Whether to insert new column to the right of the reference cell location. - `
+        # True`: insert to the right. - `False`: insert to the left.
         # Corresponds to the JSON property `insertRight`
         # @return [Boolean]
         attr_accessor :insert_right
@@ -2328,8 +2236,8 @@ module Google
         end
       end
       
-      # Inserts a table at the specified location.
-      # A newline character will be inserted before the inserted table.
+      # Inserts a table at the specified location. A newline character will be
+      # inserted before the inserted table.
       class InsertTableRequest
         include Google::Apis::Core::Hashable
       
@@ -2371,9 +2279,8 @@ module Google
       class InsertTableRowRequest
         include Google::Apis::Core::Hashable
       
-        # Whether to insert new row below the reference cell location.
-        # - `True`: insert below the cell.
-        # - `False`: insert above the cell.
+        # Whether to insert new row below the reference cell location. - `True`: insert
+        # below the cell. - `False`: insert above the cell.
         # Corresponds to the JSON property `insertBelow`
         # @return [Boolean]
         attr_accessor :insert_below
@@ -2410,18 +2317,15 @@ module Google
         # @return [Google::Apis::DocsV1::Location]
         attr_accessor :location
       
-        # The text to be inserted.
-        # Inserting a newline character will implicitly create a new
-        # Paragraph at that index.
-        # The paragraph style of the new paragraph will be copied from the paragraph
-        # at the current insertion index, including lists and bullets.
-        # Text styles for inserted text will be determined automatically, generally
-        # preserving the styling of neighboring text. In most cases, the text style
-        # for the inserted text will match the text immediately before the insertion
-        # index.
-        # Some control characters (U+0000-U+0008, U+000C-U+001F) and characters
-        # from the Unicode Basic Multilingual Plane Private Use Area (U+E000-U+F8FF)
-        # will be stripped out of the inserted text.
+        # The text to be inserted. Inserting a newline character will implicitly create
+        # a new Paragraph at that index. The paragraph style of the new paragraph will
+        # be copied from the paragraph at the current insertion index, including lists
+        # and bullets. Text styles for inserted text will be determined automatically,
+        # generally preserving the styling of neighboring text. In most cases, the text
+        # style for the inserted text will match the text immediately before the
+        # insertion index. Some control characters (U+0000-U+0008, U+000C-U+001F) and
+        # characters from the Unicode Basic Multilingual Plane Private Use Area (U+E000-
+        # U+F8FF) will be stripped out of the inserted text.
         # Corresponds to the JSON property `text`
         # @return [String]
         attr_accessor :text
@@ -2488,16 +2392,15 @@ module Google
         end
       end
       
-      # A mask that indicates which of the fields on the base
-      # LinkedContentReference have
-      # been changed in this suggestion. For any field set to true, there is a new
-      # suggested value.
+      # A mask that indicates which of the fields on the base LinkedContentReference
+      # have been changed in this suggestion. For any field set to true, there is a
+      # new suggested value.
       class LinkedContentReferenceSuggestionState
         include Google::Apis::Core::Hashable
       
         # A mask that indicates which of the fields on the base SheetsChartReference
-        # have been changed in this
-        # suggestion. For any field set to true, there is a new suggested value.
+        # have been changed in this suggestion. For any field set to true, there is a
+        # new suggested value.
         # Corresponds to the JSON property `sheetsChartReferenceSuggestionState`
         # @return [Google::Apis::DocsV1::SheetsChartReferenceSuggestionState]
         attr_accessor :sheets_chart_reference_suggestion_state
@@ -2513,31 +2416,29 @@ module Google
       end
       
       # A List represents the list attributes for a group of paragraphs that all
-      # belong to the same list. A paragraph that is part of a list has a reference
-      # to the list's ID in its bullet.
+      # belong to the same list. A paragraph that is part of a list has a reference to
+      # the list's ID in its bullet.
       class List
         include Google::Apis::Core::Hashable
       
-        # The properties of a list which describe the look
-        # and feel of bullets belonging to paragraphs associated with a list.
+        # The properties of a list which describe the look and feel of bullets belonging
+        # to paragraphs associated with a list.
         # Corresponds to the JSON property `listProperties`
         # @return [Google::Apis::DocsV1::ListProperties]
         attr_accessor :list_properties
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this list.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this list.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
-        # The suggested insertion ID. If empty, then this is not a suggested
-        # insertion.
+        # The suggested insertion ID. If empty, then this is not a suggested insertion.
         # Corresponds to the JSON property `suggestedInsertionId`
         # @return [String]
         attr_accessor :suggested_insertion_id
       
-        # The suggested changes to the list properties, keyed by suggestion
-        # ID.
+        # The suggested changes to the list properties, keyed by suggestion ID.
         # Corresponds to the JSON property `suggestedListPropertiesChanges`
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedListProperties>]
         attr_accessor :suggested_list_properties_changes
@@ -2555,16 +2456,15 @@ module Google
         end
       end
       
-      # The properties of a list which describe the look
-      # and feel of bullets belonging to paragraphs associated with a list.
+      # The properties of a list which describe the look and feel of bullets belonging
+      # to paragraphs associated with a list.
       class ListProperties
         include Google::Apis::Core::Hashable
       
-        # Describes the properties of the bullets at the associated level.
-        # A list has at most nine levels of nesting with nesting level 0
-        # corresponding to the top-most level and nesting level 8 corresponding to
-        # the most nested level. The nesting levels are returned in ascending order
-        # with the least nested returned first.
+        # Describes the properties of the bullets at the associated level. A list has at
+        # most nine levels of nesting with nesting level 0 corresponding to the top-most
+        # level and nesting level 8 corresponding to the most nested level. The nesting
+        # levels are returned in ascending order with the least nested returned first.
         # Corresponds to the JSON property `nestingLevels`
         # @return [Array<Google::Apis::DocsV1::NestingLevel>]
         attr_accessor :nesting_levels
@@ -2580,16 +2480,15 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base ListProperties have been
-      # changed in this suggestion.
-      # For any field set to true, there is a new suggested value.
+      # changed in this suggestion. For any field set to true, there is a new
+      # suggested value.
       class ListPropertiesSuggestionState
         include Google::Apis::Core::Hashable
       
-        # A mask that indicates which of the fields on the corresponding
-        # NestingLevel in nesting_levels have been changed in
-        # this suggestion.
-        # The nesting level suggestion states are returned in ascending order of the
-        # nesting level with the least nested returned first.
+        # A mask that indicates which of the fields on the corresponding NestingLevel in
+        # nesting_levels have been changed in this suggestion. The nesting level
+        # suggestion states are returned in ascending order of the nesting level with
+        # the least nested returned first.
         # Corresponds to the JSON property `nestingLevelsSuggestionStates`
         # @return [Array<Google::Apis::DocsV1::NestingLevelSuggestionState>]
         attr_accessor :nesting_levels_suggestion_states
@@ -2608,15 +2507,14 @@ module Google
       class Location
         include Google::Apis::Core::Hashable
       
-        # The zero-based index, in UTF-16 code units.
-        # The index is relative to the beginning of the segment specified by
-        # segment_id.
+        # The zero-based index, in UTF-16 code units. The index is relative to the
+        # beginning of the segment specified by segment_id.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
       
-        # The ID of the header, footer or footnote the location is in. An empty
-        # segment ID signifies the document's body.
+        # The ID of the header, footer or footnote the location is in. An empty segment
+        # ID signifies the document's body.
         # Corresponds to the JSON property `segmentId`
         # @return [String]
         attr_accessor :segment_id
@@ -2636,17 +2534,12 @@ module Google
       class MergeTableCellsRequest
         include Google::Apis::Core::Hashable
       
-        # A table range represents a reference to a subset of a table.
-        # It's important to note that the cells specified by a table range do not
-        # necessarily form a rectangle. For example, let's say we have a 3 x 3 table
-        # where all the cells of the last row are merged together. The table looks
-        # like this:
-        # 
-        # [             ]
-        # A table range with table cell location = (table_start_location, row = 0,
-        # column = 0), row span = 3 and column span = 2 specifies the following cells:
-        # x     x
-        # [ x    x    x ]
+        # A table range represents a reference to a subset of a table. It's important to
+        # note that the cells specified by a table range do not necessarily form a
+        # rectangle. For example, let's say we have a 3 x 3 table where all the cells of
+        # the last row are merged together. The table looks like this: [ ] A table range
+        # with table cell location = (table_start_location, row = 0, column = 0), row
+        # span = 3 and column span = 2 specifies the following cells: x x [ x x x ]
         # Corresponds to the JSON property `tableRange`
         # @return [Google::Apis::DocsV1::TableRange]
         attr_accessor :table_range
@@ -2661,16 +2554,13 @@ module Google
         end
       end
       
-      # A collection of Ranges with the same named range
-      # ID.
-      # Named ranges allow developers to associate parts of a document with an
-      # arbitrary user-defined label so their contents can be programmatically read
-      # or edited at a later time. A document can contain multiple named ranges with
-      # the same name, but every named range has a unique ID.
-      # A named range is created with a single Range,
-      # and content inserted inside a named range generally expands that range.
-      # However, certain document changes can cause the range to be split into
-      # multiple ranges.
+      # A collection of Ranges with the same named range ID. Named ranges allow
+      # developers to associate parts of a document with an arbitrary user-defined
+      # label so their contents can be programmatically read or edited at a later time.
+      # A document can contain multiple named ranges with the same name, but every
+      # named range has a unique ID. A named range is created with a single Range, and
+      # content inserted inside a named range generally expands that range. However,
+      # certain document changes can cause the range to be split into multiple ranges.
       # Named ranges are not private. All applications and collaborators that have
       # access to the document can see its named ranges.
       class NamedRange
@@ -2703,8 +2593,7 @@ module Google
         end
       end
       
-      # A collection of all the NamedRanges in the
-      # document that share a given name.
+      # A collection of all the NamedRanges in the document that share a given name.
       class NamedRanges
         include Google::Apis::Core::Hashable
       
@@ -2729,10 +2618,8 @@ module Google
         end
       end
       
-      # A named style. Paragraphs in the document can inherit their
-      # TextStyle and
-      # ParagraphStyle from this named style
-      # when they have the same named style type.
+      # A named style. Paragraphs in the document can inherit their TextStyle and
+      # ParagraphStyle from this named style when they have the same named style type.
       class NamedStyle
         include Google::Apis::Core::Hashable
       
@@ -2741,38 +2628,31 @@ module Google
         # @return [String]
         attr_accessor :named_style_type
       
-        # Styles that apply to a whole paragraph.
-        # Inherited paragraph styles are represented as unset fields in this message.
-        # A paragraph style's parent depends on where the paragraph style is defined:
-        # * The ParagraphStyle on a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The ParagraphStyle on a named style
-        # inherits from the normal text named style.
-        # * The ParagraphStyle of the normal text named style inherits
-        # from the default paragraph style in the Docs editor.
-        # * The ParagraphStyle on a Paragraph
-        # element that is contained in a table may inherit its paragraph style from
-        # the table style.
-        # If the paragraph style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Styles that apply to a whole paragraph. Inherited paragraph styles are
+        # represented as unset fields in this message. A paragraph style's parent
+        # depends on where the paragraph style is defined: * The ParagraphStyle on a
+        # Paragraph inherits from the paragraph's corresponding named style type. * The
+        # ParagraphStyle on a named style inherits from the normal text named style. *
+        # The ParagraphStyle of the normal text named style inherits from the default
+        # paragraph style in the Docs editor. * The ParagraphStyle on a Paragraph
+        # element that is contained in a table may inherit its paragraph style from the
+        # table style. If the paragraph style does not inherit from a parent, unsetting
+        # fields will revert the style to a value matching the defaults in the Docs
+        # editor.
         # Corresponds to the JSON property `paragraphStyle`
         # @return [Google::Apis::DocsV1::ParagraphStyle]
         attr_accessor :paragraph_style
       
-        # Represents the styling that can be applied to text.
-        # Inherited text styles are represented as unset fields in this message. A
-        # text style's parent depends on where the text style is defined:
-        # * The TextStyle of text in a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The TextStyle on a named style
-        # inherits from the normal text named style.
-        # * The TextStyle of the normal text named style inherits
-        # from the default text style in the Docs editor.
-        # * The TextStyle on a Paragraph element
-        # that is contained in a table may inherit its text style from the table
-        # style.
-        # If the text style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
         # Corresponds to the JSON property `textStyle`
         # @return [Google::Apis::DocsV1::TextStyle]
         attr_accessor :text_style
@@ -2793,23 +2673,23 @@ module Google
       class NamedStyleSuggestionState
         include Google::Apis::Core::Hashable
       
-        # The named style type that this suggestion state corresponds to.
-        # This field is provided as a convenience for matching the
-        # NamedStyleSuggestionState with its corresponding NamedStyle.
+        # The named style type that this suggestion state corresponds to. This field is
+        # provided as a convenience for matching the NamedStyleSuggestionState with its
+        # corresponding NamedStyle.
         # Corresponds to the JSON property `namedStyleType`
         # @return [String]
         attr_accessor :named_style_type
       
         # A mask that indicates which of the fields on the base ParagraphStyle have been
-        # changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `paragraphStyleSuggestionState`
         # @return [Google::Apis::DocsV1::ParagraphStyleSuggestionState]
         attr_accessor :paragraph_style_suggestion_state
       
         # A mask that indicates which of the fields on the base TextStyle have been
-        # changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `textStyleSuggestionState`
         # @return [Google::Apis::DocsV1::TextStyleSuggestionState]
         attr_accessor :text_style_suggestion_state
@@ -2826,14 +2706,12 @@ module Google
         end
       end
       
-      # The named styles. Paragraphs in the document can inherit their
-      # TextStyle and
+      # The named styles. Paragraphs in the document can inherit their TextStyle and
       # ParagraphStyle from these named styles.
       class NamedStyles
         include Google::Apis::Core::Hashable
       
-        # The named styles.
-        # There is an entry for each of the possible named style types.
+        # The named styles. There is an entry for each of the possible named style types.
         # Corresponds to the JSON property `styles`
         # @return [Array<Google::Apis::DocsV1::NamedStyle>]
         attr_accessor :styles
@@ -2848,16 +2726,14 @@ module Google
         end
       end
       
-      # The suggestion state of a NamedStyles
-      # message.
+      # The suggestion state of a NamedStyles message.
       class NamedStylesSuggestionState
         include Google::Apis::Core::Hashable
       
         # A mask that indicates which of the fields on the corresponding NamedStyle in
-        # styles have been changed in this
-        # suggestion.
-        # The order of these named style suggestion states match the order of the
-        # corresponding named style within the named styles suggestion.
+        # styles have been changed in this suggestion. The order of these named style
+        # suggestion states match the order of the corresponding named style within the
+        # named styles suggestion.
         # Corresponds to the JSON property `stylesSuggestionStates`
         # @return [Array<Google::Apis::DocsV1::NamedStyleSuggestionState>]
         attr_accessor :styles_suggestion_states
@@ -2877,67 +2753,49 @@ module Google
       class NestingLevel
         include Google::Apis::Core::Hashable
       
-        # The alignment of the bullet within the space allotted for rendering the
-        # bullet.
+        # The alignment of the bullet within the space allotted for rendering the bullet.
         # Corresponds to the JSON property `bulletAlignment`
         # @return [String]
         attr_accessor :bullet_alignment
       
-        # The format string used by bullets at this level of nesting.
-        # The glyph format contains one or more placeholders, and these placeholder
-        # are replaced with the appropriate values depending on the glyph_type or
-        # glyph_symbol. The placeholders follow
-        # the pattern `%[nesting_level]`. Furthermore, placeholders can have prefixes
-        # and suffixes. Thus, the glyph format follows the pattern
-        # `<prefix>%[nesting_level]<suffix>`. Note that the prefix and suffix are
-        # optional and can be arbitrary strings.
-        # For example, the glyph format `%0.` indicates that the rendered glyph will
-        # replace the placeholder with the corresponding glyph for nesting level 0
-        # followed by a period as the suffix. So a list with a glyph type of
-        # UPPER_ALPHA and
-        # glyph format `%0.` at nesting level 0 will result in a list with rendered
-        # glyphs
-        # <p>`A.`
-        # <p>`B.`
-        # <p>`C.`
-        # The glyph format can contain placeholders for the current nesting level as
-        # well as placeholders for parent nesting levels. For example, a
-        # list can have a glyph format of `%0.` at nesting level 0 and a
-        # glyph format of `%0.%1.` at nesting level 1. Assuming both nesting levels
-        # have DECIMAL glyph
-        # types, this would result in a list with rendered glyphs
-        # <p>`1.`
-        # <p>`2.`
-        # <p>`  2.1.`
-        # <p>`  2.2.`
-        # <p>`3.`
-        # For nesting levels that are ordered, the string that replaces a placeholder
-        # in the glyph format for a particular paragraph depends on the paragraph's
-        # order within the list.
+        # The format string used by bullets at this level of nesting. The glyph format
+        # contains one or more placeholders, and these placeholder are replaced with the
+        # appropriate values depending on the glyph_type or glyph_symbol. The
+        # placeholders follow the pattern `%[nesting_level]`. Furthermore, placeholders
+        # can have prefixes and suffixes. Thus, the glyph format follows the pattern `%[
+        # nesting_level]`. Note that the prefix and suffix are optional and can be
+        # arbitrary strings. For example, the glyph format `%0.` indicates that the
+        # rendered glyph will replace the placeholder with the corresponding glyph for
+        # nesting level 0 followed by a period as the suffix. So a list with a glyph
+        # type of UPPER_ALPHA and glyph format `%0.` at nesting level 0 will result in a
+        # list with rendered glyphs `A.` `B.` `C.` The glyph format can contain
+        # placeholders for the current nesting level as well as placeholders for parent
+        # nesting levels. For example, a list can have a glyph format of `%0.` at
+        # nesting level 0 and a glyph format of `%0.%1.` at nesting level 1. Assuming
+        # both nesting levels have DECIMAL glyph types, this would result in a list with
+        # rendered glyphs `1.` `2.` ` 2.1.` ` 2.2.` `3.` For nesting levels that are
+        # ordered, the string that replaces a placeholder in the glyph format for a
+        # particular paragraph depends on the paragraph's order within the list.
         # Corresponds to the JSON property `glyphFormat`
         # @return [String]
         attr_accessor :glyph_format
       
-        # A custom glyph symbol used by bullets when paragraphs at this level of
-        # nesting are unordered.
-        # The glyph symbol replaces placeholders within the glyph_format. For example,
-        # if the
-        # glyph_symbol is the solid circle corresponding to Unicode U+25cf code
-        # point and the glyph_format is `%0`, the rendered
-        # glyph would be the solid circle.
+        # A custom glyph symbol used by bullets when paragraphs at this level of nesting
+        # are unordered. The glyph symbol replaces placeholders within the glyph_format.
+        # For example, if the glyph_symbol is the solid circle corresponding to Unicode
+        # U+25cf code point and the glyph_format is `%0`, the rendered glyph would be
+        # the solid circle.
         # Corresponds to the JSON property `glyphSymbol`
         # @return [String]
         attr_accessor :glyph_symbol
       
-        # The type of glyph used by bullets when paragraphs at this level of
-        # nesting are ordered.
-        # The glyph type determines the type of glyph used to replace placeholders
-        # within the glyph_format
-        # when paragraphs at this level of nesting are ordered. For example, if the
-        # nesting level is 0, the glyph_format is `%0.` and the glyph
-        # type is DECIMAL,
-        # then the rendered glyph would replace the placeholder `%0` in the glyph
-        # format with a number corresponding to list item's order within the list.
+        # The type of glyph used by bullets when paragraphs at this level of nesting are
+        # ordered. The glyph type determines the type of glyph used to replace
+        # placeholders within the glyph_format when paragraphs at this level of nesting
+        # are ordered. For example, if the nesting level is 0, the glyph_format is `%0.`
+        # and the glyph type is DECIMAL, then the rendered glyph would replace the
+        # placeholder `%0` in the glyph format with a number corresponding to list item'
+        # s order within the list.
         # Corresponds to the JSON property `glyphType`
         # @return [String]
         attr_accessor :glyph_type
@@ -2952,29 +2810,25 @@ module Google
         # @return [Google::Apis::DocsV1::Dimension]
         attr_accessor :indent_start
       
-        # The number of the first list item at this nesting level.
-        # A value of 0 is treated as a value of 1 for lettered lists and roman
-        # numeraled lists, i.e. for values of both 0 and 1, lettered and roman
-        # numeraled lists will begin at `a` and `i` respectively.
-        # This value is ignored for nesting levels with unordered glyphs.
+        # The number of the first list item at this nesting level. A value of 0 is
+        # treated as a value of 1 for lettered lists and roman numeraled lists, i.e. for
+        # values of both 0 and 1, lettered and roman numeraled lists will begin at `a`
+        # and `i` respectively. This value is ignored for nesting levels with unordered
+        # glyphs.
         # Corresponds to the JSON property `startNumber`
         # @return [Fixnum]
         attr_accessor :start_number
       
-        # Represents the styling that can be applied to text.
-        # Inherited text styles are represented as unset fields in this message. A
-        # text style's parent depends on where the text style is defined:
-        # * The TextStyle of text in a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The TextStyle on a named style
-        # inherits from the normal text named style.
-        # * The TextStyle of the normal text named style inherits
-        # from the default text style in the Docs editor.
-        # * The TextStyle on a Paragraph element
-        # that is contained in a table may inherit its text style from the table
-        # style.
-        # If the text style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
         # Corresponds to the JSON property `textStyle`
         # @return [Google::Apis::DocsV1::TextStyle]
         attr_accessor :text_style
@@ -2997,63 +2851,56 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base NestingLevel have been
-      # changed in this suggestion. For
-      # any field set to true, there is a new suggested value.
+      # changed in this suggestion. For any field set to true, there is a new
+      # suggested value.
       class NestingLevelSuggestionState
         include Google::Apis::Core::Hashable
       
-        # Indicates if there was a suggested change to
-        # bullet_alignment.
+        # Indicates if there was a suggested change to bullet_alignment.
         # Corresponds to the JSON property `bulletAlignmentSuggested`
         # @return [Boolean]
         attr_accessor :bullet_alignment_suggested
         alias_method :bullet_alignment_suggested?, :bullet_alignment_suggested
       
-        # Indicates if there was a suggested change to
-        # glyph_format.
+        # Indicates if there was a suggested change to glyph_format.
         # Corresponds to the JSON property `glyphFormatSuggested`
         # @return [Boolean]
         attr_accessor :glyph_format_suggested
         alias_method :glyph_format_suggested?, :glyph_format_suggested
       
-        # Indicates if there was a suggested change to
-        # glyph_symbol.
+        # Indicates if there was a suggested change to glyph_symbol.
         # Corresponds to the JSON property `glyphSymbolSuggested`
         # @return [Boolean]
         attr_accessor :glyph_symbol_suggested
         alias_method :glyph_symbol_suggested?, :glyph_symbol_suggested
       
-        # Indicates if there was a suggested change to
-        # glyph_type.
+        # Indicates if there was a suggested change to glyph_type.
         # Corresponds to the JSON property `glyphTypeSuggested`
         # @return [Boolean]
         attr_accessor :glyph_type_suggested
         alias_method :glyph_type_suggested?, :glyph_type_suggested
       
-        # Indicates if there was a suggested change to
-        # indent_first_line.
+        # Indicates if there was a suggested change to indent_first_line.
         # Corresponds to the JSON property `indentFirstLineSuggested`
         # @return [Boolean]
         attr_accessor :indent_first_line_suggested
         alias_method :indent_first_line_suggested?, :indent_first_line_suggested
       
-        # Indicates if there was a suggested change to
-        # indent_start.
+        # Indicates if there was a suggested change to indent_start.
         # Corresponds to the JSON property `indentStartSuggested`
         # @return [Boolean]
         attr_accessor :indent_start_suggested
         alias_method :indent_start_suggested?, :indent_start_suggested
       
-        # Indicates if there was a suggested change to
-        # start_number.
+        # Indicates if there was a suggested change to start_number.
         # Corresponds to the JSON property `startNumberSuggested`
         # @return [Boolean]
         attr_accessor :start_number_suggested
         alias_method :start_number_suggested?, :start_number_suggested
       
         # A mask that indicates which of the fields on the base TextStyle have been
-        # changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `textStyleSuggestionState`
         # @return [Google::Apis::DocsV1::TextStyleSuggestionState]
         attr_accessor :text_style_suggestion_state
@@ -3113,21 +2960,19 @@ module Google
         end
       end
       
-      # A ParagraphElement representing a
-      # page break. A page break makes the subsequent text start at the top of the
-      # next page.
+      # A ParagraphElement representing a page break. A page break makes the
+      # subsequent text start at the top of the next page.
       class PageBreak
         include Google::Apis::Core::Hashable
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
-        # The suggested insertion IDs. A PageBreak
-        # may have multiple insertion IDs if it is a nested suggested change. If
-        # empty, then this is not a suggested insertion.
+        # The suggested insertion IDs. A PageBreak may have multiple insertion IDs if it
+        # is a nested suggested change. If empty, then this is not a suggested insertion.
         # Corresponds to the JSON property `suggestedInsertionIds`
         # @return [Array<String>]
         attr_accessor :suggested_insertion_ids
@@ -3137,20 +2982,16 @@ module Google
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedTextStyle>]
         attr_accessor :suggested_text_style_changes
       
-        # Represents the styling that can be applied to text.
-        # Inherited text styles are represented as unset fields in this message. A
-        # text style's parent depends on where the text style is defined:
-        # * The TextStyle of text in a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The TextStyle on a named style
-        # inherits from the normal text named style.
-        # * The TextStyle of the normal text named style inherits
-        # from the default text style in the Docs editor.
-        # * The TextStyle on a Paragraph element
-        # that is contained in a table may inherit its text style from the table
-        # style.
-        # If the text style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
         # Corresponds to the JSON property `textStyle`
         # @return [Google::Apis::DocsV1::TextStyle]
         attr_accessor :text_style
@@ -3168,9 +3009,8 @@ module Google
         end
       end
       
-      # A StructuralElement representing a
-      # paragraph. A paragraph is a range of content that is terminated with a
-      # newline character.
+      # A StructuralElement representing a paragraph. A paragraph is a range of
+      # content that is terminated with a newline character.
       class Paragraph
         include Google::Apis::Core::Hashable
       
@@ -3184,20 +3024,17 @@ module Google
         # @return [Array<Google::Apis::DocsV1::ParagraphElement>]
         attr_accessor :elements
       
-        # Styles that apply to a whole paragraph.
-        # Inherited paragraph styles are represented as unset fields in this message.
-        # A paragraph style's parent depends on where the paragraph style is defined:
-        # * The ParagraphStyle on a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The ParagraphStyle on a named style
-        # inherits from the normal text named style.
-        # * The ParagraphStyle of the normal text named style inherits
-        # from the default paragraph style in the Docs editor.
-        # * The ParagraphStyle on a Paragraph
-        # element that is contained in a table may inherit its paragraph style from
-        # the table style.
-        # If the paragraph style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Styles that apply to a whole paragraph. Inherited paragraph styles are
+        # represented as unset fields in this message. A paragraph style's parent
+        # depends on where the paragraph style is defined: * The ParagraphStyle on a
+        # Paragraph inherits from the paragraph's corresponding named style type. * The
+        # ParagraphStyle on a named style inherits from the normal text named style. *
+        # The ParagraphStyle of the normal text named style inherits from the default
+        # paragraph style in the Docs editor. * The ParagraphStyle on a Paragraph
+        # element that is contained in a table may inherit its paragraph style from the
+        # table style. If the paragraph style does not inherit from a parent, unsetting
+        # fields will revert the style to a value matching the defaults in the Docs
+        # editor.
         # Corresponds to the JSON property `paragraphStyle`
         # @return [Google::Apis::DocsV1::ParagraphStyle]
         attr_accessor :paragraph_style
@@ -3212,8 +3049,8 @@ module Google
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedBullet>]
         attr_accessor :suggested_bullet_changes
       
-        # The suggested paragraph style changes to this paragraph, keyed by
-        # suggestion ID.
+        # The suggested paragraph style changes to this paragraph, keyed by suggestion
+        # ID.
         # Corresponds to the JSON property `suggestedParagraphStyleChanges`
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedParagraphStyle>]
         attr_accessor :suggested_paragraph_style_changes
@@ -3277,59 +3114,51 @@ module Google
         end
       end
       
-      # A ParagraphElement describes content within a
-      # Paragraph.
+      # A ParagraphElement describes content within a Paragraph.
       class ParagraphElement
         include Google::Apis::Core::Hashable
       
-        # A ParagraphElement representing a
-        # spot in the text that is dynamically replaced with content that can change
-        # over time, like a page number.
+        # A ParagraphElement representing a spot in the text that is dynamically
+        # replaced with content that can change over time, like a page number.
         # Corresponds to the JSON property `autoText`
         # @return [Google::Apis::DocsV1::AutoText]
         attr_accessor :auto_text
       
-        # A ParagraphElement representing a
-        # column break. A column break makes the subsequent text start at the top of
-        # the next column.
+        # A ParagraphElement representing a column break. A column break makes the
+        # subsequent text start at the top of the next column.
         # Corresponds to the JSON property `columnBreak`
         # @return [Google::Apis::DocsV1::ColumnBreak]
         attr_accessor :column_break
       
-        # The zero-base end index of this paragraph element, exclusive, in UTF-16
-        # code units.
+        # The zero-base end index of this paragraph element, exclusive, in UTF-16 code
+        # units.
         # Corresponds to the JSON property `endIndex`
         # @return [Fixnum]
         attr_accessor :end_index
       
-        # A ParagraphElement representing an
-        # equation.
+        # A ParagraphElement representing an equation.
         # Corresponds to the JSON property `equation`
         # @return [Google::Apis::DocsV1::Equation]
         attr_accessor :equation
       
-        # A ParagraphElement representing a
-        # footnote reference. A footnote reference is the inline content rendered with
-        # a number and is used to identify the footnote.
+        # A ParagraphElement representing a footnote reference. A footnote reference is
+        # the inline content rendered with a number and is used to identify the footnote.
         # Corresponds to the JSON property `footnoteReference`
         # @return [Google::Apis::DocsV1::FootnoteReference]
         attr_accessor :footnote_reference
       
-        # A ParagraphElement representing a
-        # horizontal line.
+        # A ParagraphElement representing a horizontal line.
         # Corresponds to the JSON property `horizontalRule`
         # @return [Google::Apis::DocsV1::HorizontalRule]
         attr_accessor :horizontal_rule
       
-        # A ParagraphElement that contains
-        # an InlineObject.
+        # A ParagraphElement that contains an InlineObject.
         # Corresponds to the JSON property `inlineObjectElement`
         # @return [Google::Apis::DocsV1::InlineObjectElement]
         attr_accessor :inline_object_element
       
-        # A ParagraphElement representing a
-        # page break. A page break makes the subsequent text start at the top of the
-        # next page.
+        # A ParagraphElement representing a page break. A page break makes the
+        # subsequent text start at the top of the next page.
         # Corresponds to the JSON property `pageBreak`
         # @return [Google::Apis::DocsV1::PageBreak]
         attr_accessor :page_break
@@ -3339,8 +3168,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :start_index
       
-        # A ParagraphElement that represents a
-        # run of text that all has the same styling.
+        # A ParagraphElement that represents a run of text that all has the same styling.
         # Corresponds to the JSON property `textRun`
         # @return [Google::Apis::DocsV1::TextRun]
         attr_accessor :text_run
@@ -3364,20 +3192,17 @@ module Google
         end
       end
       
-      # Styles that apply to a whole paragraph.
-      # Inherited paragraph styles are represented as unset fields in this message.
-      # A paragraph style's parent depends on where the paragraph style is defined:
-      # * The ParagraphStyle on a Paragraph
-      # inherits from the paragraph's corresponding named style type.
-      # * The ParagraphStyle on a named style
-      # inherits from the normal text named style.
-      # * The ParagraphStyle of the normal text named style inherits
-      # from the default paragraph style in the Docs editor.
-      # * The ParagraphStyle on a Paragraph
-      # element that is contained in a table may inherit its paragraph style from
-      # the table style.
-      # If the paragraph style does not inherit from a parent, unsetting fields will
-      # revert the style to a value matching the defaults in the Docs editor.
+      # Styles that apply to a whole paragraph. Inherited paragraph styles are
+      # represented as unset fields in this message. A paragraph style's parent
+      # depends on where the paragraph style is defined: * The ParagraphStyle on a
+      # Paragraph inherits from the paragraph's corresponding named style type. * The
+      # ParagraphStyle on a named style inherits from the normal text named style. *
+      # The ParagraphStyle of the normal text named style inherits from the default
+      # paragraph style in the Docs editor. * The ParagraphStyle on a Paragraph
+      # element that is contained in a table may inherit its paragraph style from the
+      # table style. If the paragraph style does not inherit from a parent, unsetting
+      # fields will revert the style to a value matching the defaults in the Docs
+      # editor.
       class ParagraphStyle
         include Google::Apis::Core::Hashable
       
@@ -3386,8 +3211,8 @@ module Google
         # @return [String]
         attr_accessor :alignment
       
-        # Whether to avoid widows and orphans for the paragraph. If unset, the value
-        # is inherited from the parent.
+        # Whether to avoid widows and orphans for the paragraph. If unset, the value is
+        # inherited from the parent.
         # Corresponds to the JSON property `avoidWidowAndOrphan`
         # @return [Boolean]
         attr_accessor :avoid_widow_and_orphan
@@ -3419,15 +3244,13 @@ module Google
         attr_accessor :border_top
       
         # The text direction of this paragraph. If unset, the value defaults to
-        # LEFT_TO_RIGHT since
-        # paragraph direction is not inherited.
+        # LEFT_TO_RIGHT since paragraph direction is not inherited.
         # Corresponds to the JSON property `direction`
         # @return [String]
         attr_accessor :direction
       
         # The heading ID of the paragraph. If empty, then this paragraph is not a
-        # heading.
-        # This property is read-only.
+        # heading. This property is read-only.
         # Corresponds to the JSON property `headingId`
         # @return [String]
         attr_accessor :heading_id
@@ -3454,24 +3277,23 @@ module Google
         attr_accessor :keep_lines_together
         alias_method :keep_lines_together?, :keep_lines_together
       
-        # Whether at least a part of this paragraph should be laid out on the same
-        # page or column as the next paragraph if possible. If unset, the value is
-        # inherited from the parent.
+        # Whether at least a part of this paragraph should be laid out on the same page
+        # or column as the next paragraph if possible. If unset, the value is inherited
+        # from the parent.
         # Corresponds to the JSON property `keepWithNext`
         # @return [Boolean]
         attr_accessor :keep_with_next
         alias_method :keep_with_next?, :keep_with_next
       
-        # The amount of space between lines, as a percentage of normal, where normal
-        # is represented as 100.0. If unset, the value is inherited from the parent.
+        # The amount of space between lines, as a percentage of normal, where normal is
+        # represented as 100.0. If unset, the value is inherited from the parent.
         # Corresponds to the JSON property `lineSpacing`
         # @return [Float]
         attr_accessor :line_spacing
       
-        # The named style type of the paragraph.
-        # Since updating the named style type affects other properties within
-        # ParagraphStyle, the named style type is applied before the other properties
-        # are updated.
+        # The named style type of the paragraph. Since updating the named style type
+        # affects other properties within ParagraphStyle, the named style type is
+        # applied before the other properties are updated.
         # Corresponds to the JSON property `namedStyleType`
         # @return [String]
         attr_accessor :named_style_type
@@ -3497,8 +3319,7 @@ module Google
         attr_accessor :spacing_mode
       
         # A list of the tab stops for this paragraph. The list of tab stops is not
-        # inherited.
-        # This property is read-only.
+        # inherited. This property is read-only.
         # Corresponds to the JSON property `tabStops`
         # @return [Array<Google::Apis::DocsV1::TabStop>]
         attr_accessor :tab_stops
@@ -3534,8 +3355,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base ParagraphStyle have been
-      # changed in this suggestion.
-      # For any field set to true, there is a new suggested value.
+      # changed in this suggestion. For any field set to true, there is a new
+      # suggested value.
       class ParagraphStyleSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -3636,8 +3457,8 @@ module Google
         alias_method :named_style_type_suggested?, :named_style_type_suggested
       
         # A mask that indicates which of the fields on the base Shading have been
-        # changed in this
-        # suggested change. For any field set to true, there is a new suggested value.
+        # changed in this suggested change. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `shadingSuggestionState`
         # @return [Google::Apis::DocsV1::ShadingSuggestionState]
         attr_accessor :shading_suggestion_state
@@ -3689,10 +3510,9 @@ module Google
         end
       end
       
-      # An object that is tethered to a Paragraph
-      # and positioned relative to the beginning of the paragraph. A PositionedObject
-      # contains an EmbeddedObject such as an
-      # image.
+      # An object that is tethered to a Paragraph and positioned relative to the
+      # beginning of the paragraph. A PositionedObject contains an EmbeddedObject such
+      # as an image.
       class PositionedObject
         include Google::Apis::Core::Hashable
       
@@ -3706,20 +3526,19 @@ module Google
         # @return [Google::Apis::DocsV1::PositionedObjectProperties]
         attr_accessor :positioned_object_properties
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
-        # The suggested insertion ID. If empty, then this is not a suggested
-        # insertion.
+        # The suggested insertion ID. If empty, then this is not a suggested insertion.
         # Corresponds to the JSON property `suggestedInsertionId`
         # @return [String]
         attr_accessor :suggested_insertion_id
       
-        # The suggested changes to the positioned object properties, keyed by
-        # suggestion ID.
+        # The suggested changes to the positioned object properties, keyed by suggestion
+        # ID.
         # Corresponds to the JSON property `suggestedPositionedObjectPropertiesChanges`
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedPositionedObjectProperties>]
         attr_accessor :suggested_positioned_object_properties_changes
@@ -3739,8 +3558,7 @@ module Google
       end
       
       # The positioning of a PositionedObject. The positioned object is positioned
-      # relative to the beginning of the Paragraph
-      # it is tethered to.
+      # relative to the beginning of the Paragraph it is tethered to.
       class PositionedObjectPositioning
         include Google::Apis::Core::Hashable
       
@@ -3772,8 +3590,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base
-      # PositionedObjectPositioning have been changed in this
-      # suggestion. For any field set to true, there is a new suggested value.
+      # PositionedObjectPositioning have been changed in this suggestion. For any
+      # field set to true, there is a new suggested value.
       class PositionedObjectPositioningSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -3817,8 +3635,7 @@ module Google
         attr_accessor :embedded_object
       
         # The positioning of a PositionedObject. The positioned object is positioned
-        # relative to the beginning of the Paragraph
-        # it is tethered to.
+        # relative to the beginning of the Paragraph it is tethered to.
         # Corresponds to the JSON property `positioning`
         # @return [Google::Apis::DocsV1::PositionedObjectPositioning]
         attr_accessor :positioning
@@ -3835,22 +3652,21 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base
-      # PositionedObjectProperties
-      # have been changed in this suggestion. For any field set to true, there is a
-      # new suggested value.
+      # PositionedObjectProperties have been changed in this suggestion. For any field
+      # set to true, there is a new suggested value.
       class PositionedObjectPropertiesSuggestionState
         include Google::Apis::Core::Hashable
       
         # A mask that indicates which of the fields on the base EmbeddedObject have been
-        # changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `embeddedObjectSuggestionState`
         # @return [Google::Apis::DocsV1::EmbeddedObjectSuggestionState]
         attr_accessor :embedded_object_suggestion_state
       
         # A mask that indicates which of the fields on the base
-        # PositionedObjectPositioning have been changed in this
-        # suggestion. For any field set to true, there is a new suggested value.
+        # PositionedObjectPositioning have been changed in this suggestion. For any
+        # field set to true, there is a new suggested value.
         # Corresponds to the JSON property `positioningSuggestionState`
         # @return [Google::Apis::DocsV1::PositionedObjectPositioningSuggestionState]
         attr_accessor :positioning_suggestion_state
@@ -3870,22 +3686,22 @@ module Google
       class Range
         include Google::Apis::Core::Hashable
       
-        # The zero-based end index of this range, exclusive, in UTF-16 code units.
-        # In all current uses, an end index must be provided. This field is an
-        # Int32Value in order to accommodate future use cases with open-ended ranges.
+        # The zero-based end index of this range, exclusive, in UTF-16 code units. In
+        # all current uses, an end index must be provided. This field is an Int32Value
+        # in order to accommodate future use cases with open-ended ranges.
         # Corresponds to the JSON property `endIndex`
         # @return [Fixnum]
         attr_accessor :end_index
       
-        # The ID of the header, footer or footnote that this range is contained in.
-        # An empty segment ID signifies the document's body.
+        # The ID of the header, footer or footnote that this range is contained in. An
+        # empty segment ID signifies the document's body.
         # Corresponds to the JSON property `segmentId`
         # @return [String]
         attr_accessor :segment_id
       
-        # The zero-based start index of this range, in UTF-16 code units.
-        # In all current uses, a start index must be provided. This field is an
-        # Int32Value in order to accommodate future use cases with open-ended ranges.
+        # The zero-based start index of this range, in UTF-16 code units. In all current
+        # uses, a start index must be provided. This field is an Int32Value in order to
+        # accommodate future use cases with open-ended ranges.
         # Corresponds to the JSON property `startIndex`
         # @return [Fixnum]
         attr_accessor :start_index
@@ -3946,10 +3762,9 @@ module Google
         end
       end
       
-      # Replaces an existing image with a new image.
-      # Replacing an image removes some image effects from the existing image in order
-      # to
-      # mirror the behavior of the Docs editor.
+      # Replaces an existing image with a new image. Replacing an image removes some
+      # image effects from the existing image in order to mirror the behavior of the
+      # Docs editor.
       class ReplaceImageRequest
         include Google::Apis::Core::Hashable
       
@@ -3963,12 +3778,11 @@ module Google
         # @return [String]
         attr_accessor :image_replace_method
       
-        # The URI of the new image.
-        # The image is fetched once at insertion time and a copy is stored for
-        # display inside the document. Images must be less than 50MB in size, cannot
-        # exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
-        # The provided URI can be at most 2 kB in length. The URI itself is saved
-        # with the image, and exposed via the ImageProperties.source_uri field.
+        # The URI of the new image. The image is fetched once at insertion time and a
+        # copy is stored for display inside the document. Images must be less than 50MB
+        # in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
+        # format. The provided URI can be at most 2 kB in length. The URI itself is
+        # saved with the image, and exposed via the ImageProperties.source_uri field.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -3985,32 +3799,25 @@ module Google
         end
       end
       
-      # Replaces the contents of the specified
-      # NamedRange or
-      # NamedRanges with the given replacement
-      # content.
-      # Note that an individual NamedRange may
-      # consist of multiple discontinuous
-      # ranges. In this case, only the
-      # content in the first range will be replaced. The other ranges and their
-      # content will be deleted.
-      # In cases where replacing or deleting any ranges would result in an invalid
+      # Replaces the contents of the specified NamedRange or NamedRanges with the
+      # given replacement content. Note that an individual NamedRange may consist of
+      # multiple discontinuous ranges. In this case, only the content in the first
+      # range will be replaced. The other ranges and their content will be deleted. In
+      # cases where replacing or deleting any ranges would result in an invalid
       # document structure, a 400 bad request error is returned.
       class ReplaceNamedRangeContentRequest
         include Google::Apis::Core::Hashable
       
-        # The ID of the named range whose content will be replaced.
-        # If there is no named range with the given ID a 400 bad request error is
-        # returned.
+        # The ID of the named range whose content will be replaced. If there is no named
+        # range with the given ID a 400 bad request error is returned.
         # Corresponds to the JSON property `namedRangeId`
         # @return [String]
         attr_accessor :named_range_id
       
-        # The name of the NamedRanges whose
-        # content will be replaced.
-        # If there are multiple named ranges with the given name, then
-        # the content of each one will be replaced. If there are no named ranges
-        # with the given name, then the request will be a no-op.
+        # The name of the NamedRanges whose content will be replaced. If there are
+        # multiple named ranges with the given name, then the content of each one will
+        # be replaced. If there are no named ranges with the given name, then the
+        # request will be a no-op.
         # Corresponds to the JSON property `namedRangeName`
         # @return [String]
         attr_accessor :named_range_name
@@ -4036,37 +3843,30 @@ module Google
       class Request
         include Google::Apis::Core::Hashable
       
-        # Creates a Footer. The new footer is applied to
-        # the SectionStyle at the location of the
-        # SectionBreak if specificed, otherwise
-        # it is applied to the DocumentStyle.
-        # If a footer of the specified type already exists, a 400 bad request error
-        # is returned.
+        # Creates a Footer. The new footer is applied to the SectionStyle at the
+        # location of the SectionBreak if specificed, otherwise it is applied to the
+        # DocumentStyle. If a footer of the specified type already exists, a 400 bad
+        # request error is returned.
         # Corresponds to the JSON property `createFooter`
         # @return [Google::Apis::DocsV1::CreateFooterRequest]
         attr_accessor :create_footer
       
-        # Creates a Footnote segment
-        # and inserts a new FootnoteReference
-        # to it at the given location.
-        # The new Footnote segment will contain a
-        # space followed by a newline character.
+        # Creates a Footnote segment and inserts a new FootnoteReference to it at the
+        # given location. The new Footnote segment will contain a space followed by a
+        # newline character.
         # Corresponds to the JSON property `createFootnote`
         # @return [Google::Apis::DocsV1::CreateFootnoteRequest]
         attr_accessor :create_footnote
       
-        # Creates a Header. The new header is applied to
-        # the SectionStyle at the location of the
-        # SectionBreak if specificed, otherwise
-        # it is applied to the DocumentStyle.
-        # If a header of the specified type already exists, a 400 bad request error
-        # is returned.
+        # Creates a Header. The new header is applied to the SectionStyle at the
+        # location of the SectionBreak if specificed, otherwise it is applied to the
+        # DocumentStyle. If a header of the specified type already exists, a 400 bad
+        # request error is returned.
         # Corresponds to the JSON property `createHeader`
         # @return [Google::Apis::DocsV1::CreateHeaderRequest]
         attr_accessor :create_header
       
-        # Creates a NamedRange referencing the given
-        # range.
+        # Creates a NamedRange referencing the given range.
         # Corresponds to the JSON property `createNamedRange`
         # @return [Google::Apis::DocsV1::CreateNamedRangeRequest]
         attr_accessor :create_named_range
@@ -4075,10 +3875,9 @@ module Google
         # The nesting level of each paragraph will be determined by counting leading
         # tabs in front of each paragraph. To avoid excess space between the bullet and
         # the corresponding paragraph, these leading tabs are removed by this request.
-        # This may change the indices of parts of the text.
-        # If the paragraph immediately before paragraphs being updated is in a list
-        # with a matching preset, the paragraphs being updated are added to that
-        # preceding list.
+        # This may change the indices of parts of the text. If the paragraph immediately
+        # before paragraphs being updated is in a list with a matching preset, the
+        # paragraphs being updated are added to that preceding list.
         # Corresponds to the JSON property `createParagraphBullets`
         # @return [Google::Apis::DocsV1::CreateParagraphBulletsRequest]
         attr_accessor :create_paragraph_bullets
@@ -4110,8 +3909,7 @@ module Google
         # @return [Google::Apis::DocsV1::DeleteParagraphBulletsRequest]
         attr_accessor :delete_paragraph_bullets
       
-        # Deletes a PositionedObject from the
-        # document.
+        # Deletes a PositionedObject from the document.
         # Corresponds to the JSON property `deletePositionedObject`
         # @return [Google::Apis::DocsV1::DeletePositionedObjectRequest]
         attr_accessor :delete_positioned_object
@@ -4126,8 +3924,7 @@ module Google
         # @return [Google::Apis::DocsV1::DeleteTableRowRequest]
         attr_accessor :delete_table_row
       
-        # Inserts an InlineObject containing an
-        # image at the given location.
+        # Inserts an InlineObject containing an image at the given location.
         # Corresponds to the JSON property `insertInlineImage`
         # @return [Google::Apis::DocsV1::InsertInlineImageRequest]
         attr_accessor :insert_inline_image
@@ -4137,14 +3934,14 @@ module Google
         # @return [Google::Apis::DocsV1::InsertPageBreakRequest]
         attr_accessor :insert_page_break
       
-        # Inserts a section break at the given location.
-        # A newline character will be inserted before the section break.
+        # Inserts a section break at the given location. A newline character will be
+        # inserted before the section break.
         # Corresponds to the JSON property `insertSectionBreak`
         # @return [Google::Apis::DocsV1::InsertSectionBreakRequest]
         attr_accessor :insert_section_break
       
-        # Inserts a table at the specified location.
-        # A newline character will be inserted before the inserted table.
+        # Inserts a table at the specified location. A newline character will be
+        # inserted before the inserted table.
         # Corresponds to the JSON property `insertTable`
         # @return [Google::Apis::DocsV1::InsertTableRequest]
         attr_accessor :insert_table
@@ -4174,24 +3971,18 @@ module Google
         # @return [Google::Apis::DocsV1::ReplaceAllTextRequest]
         attr_accessor :replace_all_text
       
-        # Replaces an existing image with a new image.
-        # Replacing an image removes some image effects from the existing image in order
-        # to
-        # mirror the behavior of the Docs editor.
+        # Replaces an existing image with a new image. Replacing an image removes some
+        # image effects from the existing image in order to mirror the behavior of the
+        # Docs editor.
         # Corresponds to the JSON property `replaceImage`
         # @return [Google::Apis::DocsV1::ReplaceImageRequest]
         attr_accessor :replace_image
       
-        # Replaces the contents of the specified
-        # NamedRange or
-        # NamedRanges with the given replacement
-        # content.
-        # Note that an individual NamedRange may
-        # consist of multiple discontinuous
-        # ranges. In this case, only the
-        # content in the first range will be replaced. The other ranges and their
-        # content will be deleted.
-        # In cases where replacing or deleting any ranges would result in an invalid
+        # Replaces the contents of the specified NamedRange or NamedRanges with the
+        # given replacement content. Note that an individual NamedRange may consist of
+        # multiple discontinuous ranges. In this case, only the content in the first
+        # range will be replaced. The other ranges and their content will be deleted. In
+        # cases where replacing or deleting any ranges would result in an invalid
         # document structure, a 400 bad request error is returned.
         # Corresponds to the JSON property `replaceNamedRangeContent`
         # @return [Google::Apis::DocsV1::ReplaceNamedRangeContentRequest]
@@ -4222,15 +4013,12 @@ module Google
         # @return [Google::Apis::DocsV1::UpdateTableCellStyleRequest]
         attr_accessor :update_table_cell_style
       
-        # Updates the
-        # TableColumnProperties of columns
-        # in a table.
+        # Updates the TableColumnProperties of columns in a table.
         # Corresponds to the JSON property `updateTableColumnProperties`
         # @return [Google::Apis::DocsV1::UpdateTableColumnPropertiesRequest]
         attr_accessor :update_table_column_properties
       
-        # Updates the TableRowStyle of rows in a
-        # table.
+        # Updates the TableRowStyle of rows in a table.
         # Corresponds to the JSON property `updateTableRowStyle`
         # @return [Google::Apis::DocsV1::UpdateTableRowStyleRequest]
         attr_accessor :update_table_row_style
@@ -4367,12 +4155,10 @@ module Google
         end
       end
       
-      # A StructuralElement representing a
-      # section break. A section is a range of content which has the same
-      # SectionStyle. A section break represents
-      # the start of a new section, and the section style applies to the section
-      # after the section break.
-      # The document body always begins with a section break.
+      # A StructuralElement representing a section break. A section is a range of
+      # content which has the same SectionStyle. A section break represents the start
+      # of a new section, and the section style applies to the section after the
+      # section break. The document body always begins with a section break.
       class SectionBreak
         include Google::Apis::Core::Hashable
       
@@ -4381,15 +4167,14 @@ module Google
         # @return [Google::Apis::DocsV1::SectionStyle]
         attr_accessor :section_style
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
         # The suggested insertion IDs. A SectionBreak may have multiple insertion IDs if
-        # it is
-        # a nested suggested change. If empty, then this is not a suggested
+        # it is a nested suggested change. If empty, then this is not a suggested
         # insertion.
         # Corresponds to the JSON property `suggestedInsertionIds`
         # @return [Array<String>]
@@ -4436,102 +4221,81 @@ module Google
       class SectionStyle
         include Google::Apis::Core::Hashable
       
-        # The section's columns properties.
-        # If empty, the section contains one column with the default properties in
-        # the Docs editor.
-        # A section can be updated to have no more than three columns.
-        # When updating this property, setting a concrete value is required.
-        # Unsetting this property will result in a 400 bad request error.
+        # The section's columns properties. If empty, the section contains one column
+        # with the default properties in the Docs editor. A section can be updated to
+        # have no more than three columns. When updating this property, setting a
+        # concrete value is required. Unsetting this property will result in a 400 bad
+        # request error.
         # Corresponds to the JSON property `columnProperties`
         # @return [Array<Google::Apis::DocsV1::SectionColumnProperties>]
         attr_accessor :column_properties
       
-        # The style of column separators.
-        # This style can be set even when there is one column in the section.
-        # When updating this property, setting a concrete value is required.
-        # Unsetting this property results in a 400 bad request error.
+        # The style of column separators. This style can be set even when there is one
+        # column in the section. When updating this property, setting a concrete value
+        # is required. Unsetting this property results in a 400 bad request error.
         # Corresponds to the JSON property `columnSeparatorStyle`
         # @return [String]
         attr_accessor :column_separator_style
       
         # The content direction of this section. If unset, the value defaults to
-        # LEFT_TO_RIGHT.
-        # When updating this property, setting a concrete value is required.
-        # Unsetting this property results in a 400 bad request error.
+        # LEFT_TO_RIGHT. When updating this property, setting a concrete value is
+        # required. Unsetting this property results in a 400 bad request error.
         # Corresponds to the JSON property `contentDirection`
         # @return [String]
         attr_accessor :content_direction
       
-        # The ID of the default footer. If unset, the value inherits from the
-        # previous SectionBreak's SectionStyle.
-        # If the value is unset in the first SectionBreak, it inherits from
-        # DocumentStyle's default_footer_id.
-        # This property is read-only.
+        # The ID of the default footer. If unset, the value inherits from the previous
+        # SectionBreak's SectionStyle. If the value is unset in the first SectionBreak,
+        # it inherits from DocumentStyle's default_footer_id. This property is read-only.
         # Corresponds to the JSON property `defaultFooterId`
         # @return [String]
         attr_accessor :default_footer_id
       
-        # The ID of the default header. If unset, the value inherits from the
-        # previous SectionBreak's SectionStyle.
-        # If the value is unset in the first SectionBreak, it inherits from
-        # DocumentStyle's default_header_id.
-        # This property is read-only.
+        # The ID of the default header. If unset, the value inherits from the previous
+        # SectionBreak's SectionStyle. If the value is unset in the first SectionBreak,
+        # it inherits from DocumentStyle's default_header_id. This property is read-only.
         # Corresponds to the JSON property `defaultHeaderId`
         # @return [String]
         attr_accessor :default_header_id
       
-        # The ID of the footer used only for even pages. If the value of
-        # DocumentStyle's use_even_page_header_footer is true,
-        # this value is used for the footers on even pages in the section. If it
-        # is false, the footers on even pages uses the default_footer_id. If unset, the
-        # value
-        # inherits from the previous SectionBreak's SectionStyle. If the value is unset
-        # in
-        # the first SectionBreak, it inherits from DocumentStyle's
-        # even_page_footer_id.
-        # This property is read-only.
+        # The ID of the footer used only for even pages. If the value of DocumentStyle's
+        # use_even_page_header_footer is true, this value is used for the footers on
+        # even pages in the section. If it is false, the footers on even pages uses the
+        # default_footer_id. If unset, the value inherits from the previous SectionBreak'
+        # s SectionStyle. If the value is unset in the first SectionBreak, it inherits
+        # from DocumentStyle's even_page_footer_id. This property is read-only.
         # Corresponds to the JSON property `evenPageFooterId`
         # @return [String]
         attr_accessor :even_page_footer_id
       
-        # The ID of the header used only for even pages. If the value of
-        # DocumentStyle's use_even_page_header_footer is true,
-        # this value is used for the headers on even pages in the section. If it
-        # is false, the headers on even pages uses the default_header_id. If unset, the
-        # value
-        # inherits from the previous SectionBreak's SectionStyle. If the value is unset
-        # in
-        # the first SectionBreak, it inherits from DocumentStyle's
-        # even_page_header_id.
-        # This property is read-only.
+        # The ID of the header used only for even pages. If the value of DocumentStyle's
+        # use_even_page_header_footer is true, this value is used for the headers on
+        # even pages in the section. If it is false, the headers on even pages uses the
+        # default_header_id. If unset, the value inherits from the previous SectionBreak'
+        # s SectionStyle. If the value is unset in the first SectionBreak, it inherits
+        # from DocumentStyle's even_page_header_id. This property is read-only.
         # Corresponds to the JSON property `evenPageHeaderId`
         # @return [String]
         attr_accessor :even_page_header_id
       
-        # The ID of the footer used only for the first page of the section.
-        # If use_first_page_header_footer is true,
-        # this value is used for the footer on the first page of the section. If
-        # it is false, the footer on the first page of the section uses the
-        # default_footer_id.
-        # If unset, the value inherits from the previous SectionBreak's SectionStyle. If
-        # the value is unset in
-        # the first SectionBreak, it inherits from DocumentStyle's
-        # first_page_footer_id.
-        # This property is read-only.
+        # The ID of the footer used only for the first page of the section. If
+        # use_first_page_header_footer is true, this value is used for the footer on the
+        # first page of the section. If it is false, the footer on the first page of the
+        # section uses the default_footer_id. If unset, the value inherits from the
+        # previous SectionBreak's SectionStyle. If the value is unset in the first
+        # SectionBreak, it inherits from DocumentStyle's first_page_footer_id. This
+        # property is read-only.
         # Corresponds to the JSON property `firstPageFooterId`
         # @return [String]
         attr_accessor :first_page_footer_id
       
-        # The ID of the header used only for the first page of the section.
-        # If use_first_page_header_footer is true,
-        # this value is used for the header on the first page of the section. If
-        # it is false, the header on the first page of the section uses the
-        # default_header_id.
-        # If unset, the value inherits from the previous SectionBreak's SectionStyle. If
-        # the value is unset in
-        # the first SectionBreak, it inherits from DocumentStyle's
-        # first_page_header_id.
-        # This property is read-only.
+        # The ID of the header used only for the first page of the section. If
+        # use_first_page_header_footer is true, this value is used for the header on the
+        # first page of the section. If it is false, the header on the first page of the
+        # section uses the default_header_id. If unset, the value inherits from the
+        # previous SectionBreak's SectionStyle. If the value is unset in the first
+        # SectionBreak, it inherits from DocumentStyle's first_page_header_id. This
+        # property is read-only.
         # Corresponds to the JSON property `firstPageHeaderId`
         # @return [String]
         attr_accessor :first_page_header_id
@@ -4567,12 +4331,10 @@ module Google
         attr_accessor :margin_top
       
         # The page number from which to start counting the number of pages for this
-        # section. If unset, page numbering continues from the previous section.
-        # If the value is unset in the first
-        # SectionBreak, refer to DocumentStyle's
-        # page_number_start.
-        # When updating this property, setting a concrete value is required.
-        # Unsetting this property results in a 400 bad request error.
+        # section. If unset, page numbering continues from the previous section. If the
+        # value is unset in the first SectionBreak, refer to DocumentStyle's
+        # page_number_start. When updating this property, setting a concrete value is
+        # required. Unsetting this property results in a 400 bad request error.
         # Corresponds to the JSON property `pageNumberStart`
         # @return [Fixnum]
         attr_accessor :page_number_start
@@ -4582,13 +4344,12 @@ module Google
         # @return [String]
         attr_accessor :section_type
       
-        # Indicates whether to use the first page header / footer IDs for the first
-        # page of the section. If unset, it inherits from DocumentStyle's
-        # use_first_page_header_footer for the
-        # first section. If the value is unset for subsequent sectors, it should be
-        # interpreted as false.
-        # When updating this property, setting a concrete value is required.
-        # Unsetting this property results in a 400 bad request error.
+        # Indicates whether to use the first page header / footer IDs for the first page
+        # of the section. If unset, it inherits from DocumentStyle's
+        # use_first_page_header_footer for the first section. If the value is unset for
+        # subsequent sectors, it should be interpreted as false. When updating this
+        # property, setting a concrete value is required. Unsetting this property
+        # results in a 400 bad request error.
         # Corresponds to the JSON property `useFirstPageHeaderFooter`
         # @return [Boolean]
         attr_accessor :use_first_page_header_footer
@@ -4641,8 +4402,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base Shading have been
-      # changed in this
-      # suggested change. For any field set to true, there is a new suggested value.
+      # changed in this suggested change. For any field set to true, there is a new
+      # suggested value.
       class ShadingSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -4666,8 +4427,7 @@ module Google
       class SheetsChartReference
         include Google::Apis::Core::Hashable
       
-        # The ID of the specific chart in the Google Sheets spreadsheet that is
-        # embedded.
+        # The ID of the specific chart in the Google Sheets spreadsheet that is embedded.
         # Corresponds to the JSON property `chartId`
         # @return [Fixnum]
         attr_accessor :chart_id
@@ -4689,8 +4449,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base SheetsChartReference
-      # have been changed in this
-      # suggestion. For any field set to true, there is a new suggested value.
+      # have been changed in this suggestion. For any field set to true, there is a
+      # new suggested value.
       class SheetsChartReferenceSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -4743,9 +4503,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base Size have been changed
-      # in this suggestion.
-      # For any field set to true, the Size has
-      # a new suggested value.
+      # in this suggestion. For any field set to true, the Size has a new suggested
+      # value.
       class SizeSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -4772,48 +4531,41 @@ module Google
         end
       end
       
-      # A StructuralElement describes content that provides structure to the
-      # document.
+      # A StructuralElement describes content that provides structure to the document.
       class StructuralElement
         include Google::Apis::Core::Hashable
       
-        # The zero-based end index of this structural element, exclusive, in UTF-16
-        # code units.
+        # The zero-based end index of this structural element, exclusive, in UTF-16 code
+        # units.
         # Corresponds to the JSON property `endIndex`
         # @return [Fixnum]
         attr_accessor :end_index
       
-        # A StructuralElement representing a
-        # paragraph. A paragraph is a range of content that is terminated with a
-        # newline character.
+        # A StructuralElement representing a paragraph. A paragraph is a range of
+        # content that is terminated with a newline character.
         # Corresponds to the JSON property `paragraph`
         # @return [Google::Apis::DocsV1::Paragraph]
         attr_accessor :paragraph
       
-        # A StructuralElement representing a
-        # section break. A section is a range of content which has the same
-        # SectionStyle. A section break represents
-        # the start of a new section, and the section style applies to the section
-        # after the section break.
-        # The document body always begins with a section break.
+        # A StructuralElement representing a section break. A section is a range of
+        # content which has the same SectionStyle. A section break represents the start
+        # of a new section, and the section style applies to the section after the
+        # section break. The document body always begins with a section break.
         # Corresponds to the JSON property `sectionBreak`
         # @return [Google::Apis::DocsV1::SectionBreak]
         attr_accessor :section_break
       
-        # The zero-based start index of this structural element, in UTF-16 code
-        # units.
+        # The zero-based start index of this structural element, in UTF-16 code units.
         # Corresponds to the JSON property `startIndex`
         # @return [Fixnum]
         attr_accessor :start_index
       
-        # A StructuralElement representing a
-        # table.
+        # A StructuralElement representing a table.
         # Corresponds to the JSON property `table`
         # @return [Google::Apis::DocsV1::Table]
         attr_accessor :table
       
-        # A StructuralElement representing
-        # a table of contents.
+        # A StructuralElement representing a table of contents.
         # Corresponds to the JSON property `tableOfContents`
         # @return [Google::Apis::DocsV1::TableOfContents]
         attr_accessor :table_of_contents
@@ -4837,9 +4589,8 @@ module Google
       class SubstringMatchCriteria
         include Google::Apis::Core::Hashable
       
-        # Indicates whether the search should respect case:
-        # - `True`: the search is case sensitive.
-        # - `False`: the search is case insensitive.
+        # Indicates whether the search should respect case: - `True`: the search is case
+        # sensitive. - `False`: the search is case insensitive.
         # Corresponds to the JSON property `matchCase`
         # @return [Boolean]
         attr_accessor :match_case
@@ -4870,9 +4621,8 @@ module Google
         # @return [Google::Apis::DocsV1::Bullet]
         attr_accessor :bullet
       
-        # A mask that indicates which of the fields on the base
-        # Bullet have been changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # A mask that indicates which of the fields on the base Bullet have been changed
+        # in this suggestion. For any field set to true, there is a new suggested value.
         # Corresponds to the JSON property `bulletSuggestionState`
         # @return [Google::Apis::DocsV1::BulletSuggestionState]
         attr_accessor :bullet_suggestion_state
@@ -4898,8 +4648,8 @@ module Google
         attr_accessor :document_style
       
         # A mask that indicates which of the fields on the base DocumentStyle have been
-        # changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `documentStyleSuggestionState`
         # @return [Google::Apis::DocsV1::DocumentStyleSuggestionState]
         attr_accessor :document_style_suggestion_state
@@ -4924,10 +4674,9 @@ module Google
         # @return [Google::Apis::DocsV1::InlineObjectProperties]
         attr_accessor :inline_object_properties
       
-        # A mask that indicates which of the fields on the base
-        # InlineObjectProperties have
-        # been changed in this suggestion. For any field set to true, there is a new
-        # suggested value.
+        # A mask that indicates which of the fields on the base InlineObjectProperties
+        # have been changed in this suggestion. For any field set to true, there is a
+        # new suggested value.
         # Corresponds to the JSON property `inlineObjectPropertiesSuggestionState`
         # @return [Google::Apis::DocsV1::InlineObjectPropertiesSuggestionState]
         attr_accessor :inline_object_properties_suggestion_state
@@ -4947,15 +4696,15 @@ module Google
       class SuggestedListProperties
         include Google::Apis::Core::Hashable
       
-        # The properties of a list which describe the look
-        # and feel of bullets belonging to paragraphs associated with a list.
+        # The properties of a list which describe the look and feel of bullets belonging
+        # to paragraphs associated with a list.
         # Corresponds to the JSON property `listProperties`
         # @return [Google::Apis::DocsV1::ListProperties]
         attr_accessor :list_properties
       
         # A mask that indicates which of the fields on the base ListProperties have been
-        # changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `listPropertiesSuggestionState`
         # @return [Google::Apis::DocsV1::ListPropertiesSuggestionState]
         attr_accessor :list_properties_suggestion_state
@@ -4975,15 +4724,13 @@ module Google
       class SuggestedNamedStyles
         include Google::Apis::Core::Hashable
       
-        # The named styles. Paragraphs in the document can inherit their
-        # TextStyle and
+        # The named styles. Paragraphs in the document can inherit their TextStyle and
         # ParagraphStyle from these named styles.
         # Corresponds to the JSON property `namedStyles`
         # @return [Google::Apis::DocsV1::NamedStyles]
         attr_accessor :named_styles
       
-        # The suggestion state of a NamedStyles
-        # message.
+        # The suggestion state of a NamedStyles message.
         # Corresponds to the JSON property `namedStylesSuggestionState`
         # @return [Google::Apis::DocsV1::NamedStylesSuggestionState]
         attr_accessor :named_styles_suggestion_state
@@ -4999,32 +4746,28 @@ module Google
         end
       end
       
-      # A suggested change to a
-      # ParagraphStyle.
+      # A suggested change to a ParagraphStyle.
       class SuggestedParagraphStyle
         include Google::Apis::Core::Hashable
       
-        # Styles that apply to a whole paragraph.
-        # Inherited paragraph styles are represented as unset fields in this message.
-        # A paragraph style's parent depends on where the paragraph style is defined:
-        # * The ParagraphStyle on a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The ParagraphStyle on a named style
-        # inherits from the normal text named style.
-        # * The ParagraphStyle of the normal text named style inherits
-        # from the default paragraph style in the Docs editor.
-        # * The ParagraphStyle on a Paragraph
-        # element that is contained in a table may inherit its paragraph style from
-        # the table style.
-        # If the paragraph style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Styles that apply to a whole paragraph. Inherited paragraph styles are
+        # represented as unset fields in this message. A paragraph style's parent
+        # depends on where the paragraph style is defined: * The ParagraphStyle on a
+        # Paragraph inherits from the paragraph's corresponding named style type. * The
+        # ParagraphStyle on a named style inherits from the normal text named style. *
+        # The ParagraphStyle of the normal text named style inherits from the default
+        # paragraph style in the Docs editor. * The ParagraphStyle on a Paragraph
+        # element that is contained in a table may inherit its paragraph style from the
+        # table style. If the paragraph style does not inherit from a parent, unsetting
+        # fields will revert the style to a value matching the defaults in the Docs
+        # editor.
         # Corresponds to the JSON property `paragraphStyle`
         # @return [Google::Apis::DocsV1::ParagraphStyle]
         attr_accessor :paragraph_style
       
         # A mask that indicates which of the fields on the base ParagraphStyle have been
-        # changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `paragraphStyleSuggestionState`
         # @return [Google::Apis::DocsV1::ParagraphStyleSuggestionState]
         attr_accessor :paragraph_style_suggestion_state
@@ -5050,9 +4793,8 @@ module Google
         attr_accessor :positioned_object_properties
       
         # A mask that indicates which of the fields on the base
-        # PositionedObjectProperties
-        # have been changed in this suggestion. For any field set to true, there is a
-        # new suggested value.
+        # PositionedObjectProperties have been changed in this suggestion. For any field
+        # set to true, there is a new suggested value.
         # Corresponds to the JSON property `positionedObjectPropertiesSuggestionState`
         # @return [Google::Apis::DocsV1::PositionedObjectPropertiesSuggestionState]
         attr_accessor :positioned_object_properties_suggestion_state
@@ -5072,16 +4814,15 @@ module Google
       class SuggestedTableCellStyle
         include Google::Apis::Core::Hashable
       
-        # The style of a TableCell.
-        # Inherited table cell styles are represented as unset fields in this message.
-        # A table cell style can inherit from the table's style.
+        # The style of a TableCell. Inherited table cell styles are represented as unset
+        # fields in this message. A table cell style can inherit from the table's style.
         # Corresponds to the JSON property `tableCellStyle`
         # @return [Google::Apis::DocsV1::TableCellStyle]
         attr_accessor :table_cell_style
       
         # A mask that indicates which of the fields on the base TableCellStyle have been
-        # changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `tableCellStyleSuggestionState`
         # @return [Google::Apis::DocsV1::TableCellStyleSuggestionState]
         attr_accessor :table_cell_style_suggestion_state
@@ -5097,8 +4838,7 @@ module Google
         end
       end
       
-      # A suggested change to a
-      # TableRowStyle.
+      # A suggested change to a TableRowStyle.
       class SuggestedTableRowStyle
         include Google::Apis::Core::Hashable
       
@@ -5108,8 +4848,8 @@ module Google
         attr_accessor :table_row_style
       
         # A mask that indicates which of the fields on the base TableRowStyle have been
-        # changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `tableRowStyleSuggestionState`
         # @return [Google::Apis::DocsV1::TableRowStyleSuggestionState]
         attr_accessor :table_row_style_suggestion_state
@@ -5129,27 +4869,23 @@ module Google
       class SuggestedTextStyle
         include Google::Apis::Core::Hashable
       
-        # Represents the styling that can be applied to text.
-        # Inherited text styles are represented as unset fields in this message. A
-        # text style's parent depends on where the text style is defined:
-        # * The TextStyle of text in a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The TextStyle on a named style
-        # inherits from the normal text named style.
-        # * The TextStyle of the normal text named style inherits
-        # from the default text style in the Docs editor.
-        # * The TextStyle on a Paragraph element
-        # that is contained in a table may inherit its text style from the table
-        # style.
-        # If the text style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
         # Corresponds to the JSON property `textStyle`
         # @return [Google::Apis::DocsV1::TextStyle]
         attr_accessor :text_style
       
         # A mask that indicates which of the fields on the base TextStyle have been
-        # changed in this suggestion.
-        # For any field set to true, there is a new suggested value.
+        # changed in this suggestion. For any field set to true, there is a new
+        # suggested value.
         # Corresponds to the JSON property `textStyleSuggestionState`
         # @return [Google::Apis::DocsV1::TextStyleSuggestionState]
         attr_accessor :text_style_suggestion_state
@@ -5190,14 +4926,12 @@ module Google
         end
       end
       
-      # A StructuralElement representing a
-      # table.
+      # A StructuralElement representing a table.
       class Table
         include Google::Apis::Core::Hashable
       
-        # Number of columns in the table.
-        # It is possible for a table to be non-rectangular, so some rows may have a
-        # different number of cells.
+        # Number of columns in the table. It is possible for a table to be non-
+        # rectangular, so some rows may have a different number of cells.
         # Corresponds to the JSON property `columns`
         # @return [Fixnum]
         attr_accessor :columns
@@ -5207,15 +4941,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :rows
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
-        # The suggested insertion IDs. A Table may have
-        # multiple insertion IDs if it is a nested suggested change. If empty, then
-        # this is not a suggested insertion.
+        # The suggested insertion IDs. A Table may have multiple insertion IDs if it is
+        # a nested suggested change. If empty, then this is not a suggested insertion.
         # Corresponds to the JSON property `suggestedInsertionIds`
         # @return [Array<String>]
         attr_accessor :suggested_insertion_ids
@@ -5264,15 +4997,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :start_index
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
-        # The suggested insertion IDs. A TableCell
-        # may have multiple insertion IDs if it is a nested suggested change. If
-        # empty, then this is not a suggested insertion.
+        # The suggested insertion IDs. A TableCell may have multiple insertion IDs if it
+        # is a nested suggested change. If empty, then this is not a suggested insertion.
         # Corresponds to the JSON property `suggestedInsertionIds`
         # @return [Array<String>]
         attr_accessor :suggested_insertion_ids
@@ -5282,9 +5014,8 @@ module Google
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedTableCellStyle>]
         attr_accessor :suggested_table_cell_style_changes
       
-        # The style of a TableCell.
-        # Inherited table cell styles are represented as unset fields in this message.
-        # A table cell style can inherit from the table's style.
+        # The style of a TableCell. Inherited table cell styles are represented as unset
+        # fields in this message. A table cell style can inherit from the table's style.
         # Corresponds to the JSON property `tableCellStyle`
         # @return [Google::Apis::DocsV1::TableCellStyle]
         attr_accessor :table_cell_style
@@ -5305,9 +5036,8 @@ module Google
         end
       end
       
-      # A border around a table cell.
-      # Table cell borders cannot be transparent. To hide a table cell border, make
-      # its width 0.
+      # A border around a table cell. Table cell borders cannot be transparent. To
+      # hide a table cell border, make its width 0.
       class TableCellBorder
         include Google::Apis::Core::Hashable
       
@@ -5342,14 +5072,14 @@ module Google
       class TableCellLocation
         include Google::Apis::Core::Hashable
       
-        # The zero-based column index. For example, the second column in the table
-        # has a column index of 1.
+        # The zero-based column index. For example, the second column in the table has a
+        # column index of 1.
         # Corresponds to the JSON property `columnIndex`
         # @return [Fixnum]
         attr_accessor :column_index
       
-        # The zero-based row index. For example, the second row in the table has a
-        # row index of 1.
+        # The zero-based row index. For example, the second row in the table has a row
+        # index of 1.
         # Corresponds to the JSON property `rowIndex`
         # @return [Fixnum]
         attr_accessor :row_index
@@ -5371,9 +5101,8 @@ module Google
         end
       end
       
-      # The style of a TableCell.
-      # Inherited table cell styles are represented as unset fields in this message.
-      # A table cell style can inherit from the table's style.
+      # The style of a TableCell. Inherited table cell styles are represented as unset
+      # fields in this message. A table cell style can inherit from the table's style.
       class TableCellStyle
         include Google::Apis::Core::Hashable
       
@@ -5382,42 +5111,37 @@ module Google
         # @return [Google::Apis::DocsV1::OptionalColor]
         attr_accessor :background_color
       
-        # A border around a table cell.
-        # Table cell borders cannot be transparent. To hide a table cell border, make
-        # its width 0.
+        # A border around a table cell. Table cell borders cannot be transparent. To
+        # hide a table cell border, make its width 0.
         # Corresponds to the JSON property `borderBottom`
         # @return [Google::Apis::DocsV1::TableCellBorder]
         attr_accessor :border_bottom
       
-        # A border around a table cell.
-        # Table cell borders cannot be transparent. To hide a table cell border, make
-        # its width 0.
+        # A border around a table cell. Table cell borders cannot be transparent. To
+        # hide a table cell border, make its width 0.
         # Corresponds to the JSON property `borderLeft`
         # @return [Google::Apis::DocsV1::TableCellBorder]
         attr_accessor :border_left
       
-        # A border around a table cell.
-        # Table cell borders cannot be transparent. To hide a table cell border, make
-        # its width 0.
+        # A border around a table cell. Table cell borders cannot be transparent. To
+        # hide a table cell border, make its width 0.
         # Corresponds to the JSON property `borderRight`
         # @return [Google::Apis::DocsV1::TableCellBorder]
         attr_accessor :border_right
       
-        # A border around a table cell.
-        # Table cell borders cannot be transparent. To hide a table cell border, make
-        # its width 0.
+        # A border around a table cell. Table cell borders cannot be transparent. To
+        # hide a table cell border, make its width 0.
         # Corresponds to the JSON property `borderTop`
         # @return [Google::Apis::DocsV1::TableCellBorder]
         attr_accessor :border_top
       
-        # The column span of the cell.
-        # This property is read-only.
+        # The column span of the cell. This property is read-only.
         # Corresponds to the JSON property `columnSpan`
         # @return [Fixnum]
         attr_accessor :column_span
       
-        # The alignment of the content in the table cell. The default alignment
-        # matches the alignment for newly created table cells in the Docs editor.
+        # The alignment of the content in the table cell. The default alignment matches
+        # the alignment for newly created table cells in the Docs editor.
         # Corresponds to the JSON property `contentAlignment`
         # @return [String]
         attr_accessor :content_alignment
@@ -5442,8 +5166,7 @@ module Google
         # @return [Google::Apis::DocsV1::Dimension]
         attr_accessor :padding_top
       
-        # The row span of the cell.
-        # This property is read-only.
+        # The row span of the cell. This property is read-only.
         # Corresponds to the JSON property `rowSpan`
         # @return [Fixnum]
         attr_accessor :row_span
@@ -5470,8 +5193,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base TableCellStyle have been
-      # changed in this suggestion.
-      # For any field set to true, there is a new suggested value.
+      # changed in this suggestion. For any field set to true, there is a new
+      # suggested value.
       class TableCellStyleSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -5593,8 +5316,7 @@ module Google
         end
       end
       
-      # A StructuralElement representing
-      # a table of contents.
+      # A StructuralElement representing a table of contents.
       class TableOfContents
         include Google::Apis::Core::Hashable
       
@@ -5603,15 +5325,14 @@ module Google
         # @return [Array<Google::Apis::DocsV1::StructuralElement>]
         attr_accessor :content
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
         # The suggested insertion IDs. A TableOfContents may have multiple insertion IDs
-        # if it
-        # is a nested suggested change. If empty, then this is not a suggested
+        # if it is a nested suggested change. If empty, then this is not a suggested
         # insertion.
         # Corresponds to the JSON property `suggestedInsertionIds`
         # @return [Array<String>]
@@ -5629,17 +5350,12 @@ module Google
         end
       end
       
-      # A table range represents a reference to a subset of a table.
-      # It's important to note that the cells specified by a table range do not
-      # necessarily form a rectangle. For example, let's say we have a 3 x 3 table
-      # where all the cells of the last row are merged together. The table looks
-      # like this:
-      # 
-      # [             ]
-      # A table range with table cell location = (table_start_location, row = 0,
-      # column = 0), row span = 3 and column span = 2 specifies the following cells:
-      # x     x
-      # [ x    x    x ]
+      # A table range represents a reference to a subset of a table. It's important to
+      # note that the cells specified by a table range do not necessarily form a
+      # rectangle. For example, let's say we have a 3 x 3 table where all the cells of
+      # the last row are merged together. The table looks like this: [ ] A table range
+      # with table cell location = (table_start_location, row = 0, column = 0), row
+      # span = 3 and column span = 2 specifies the following cells: x x [ x x x ]
       class TableRange
         include Google::Apis::Core::Hashable
       
@@ -5684,15 +5400,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :start_index
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
-        # The suggested insertion IDs. A TableRow
-        # may have multiple insertion IDs if it is a nested suggested change. If
-        # empty, then this is not a suggested insertion.
+        # The suggested insertion IDs. A TableRow may have multiple insertion IDs if it
+        # is a nested suggested change. If empty, then this is not a suggested insertion.
         # Corresponds to the JSON property `suggestedInsertionIds`
         # @return [Array<String>]
         attr_accessor :suggested_insertion_ids
@@ -5702,9 +5417,9 @@ module Google
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedTableRowStyle>]
         attr_accessor :suggested_table_row_style_changes
       
-        # The contents and style of each cell in this row.
-        # It is possible for a table to be non-rectangular, so some rows may have a
-        # different number of cells than other rows in the same table.
+        # The contents and style of each cell in this row. It is possible for a table to
+        # be non-rectangular, so some rows may have a different number of cells than
+        # other rows in the same table.
         # Corresponds to the JSON property `tableCells`
         # @return [Array<Google::Apis::DocsV1::TableCell>]
         attr_accessor :table_cells
@@ -5750,8 +5465,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base TableRowStyle have been
-      # changed in this suggestion.
-      # For any field set to true, there is a new suggested value.
+      # changed in this suggestion. For any field set to true, there is a new
+      # suggested value.
       class TableRowStyleSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -5775,10 +5490,9 @@ module Google
       class TableStyle
         include Google::Apis::Core::Hashable
       
-        # The properties of each column.
-        # Note that in Docs, tables contain rows and rows contain cells, similar to
-        # HTML. So the properties for a row can be found on the row's
-        # table_row_style.
+        # The properties of each column. Note that in Docs, tables contain rows and rows
+        # contain cells, similar to HTML. So the properties for a row can be found on
+        # the row's table_row_style.
         # Corresponds to the JSON property `tableColumnProperties`
         # @return [Array<Google::Apis::DocsV1::TableColumnProperties>]
         attr_accessor :table_column_properties
@@ -5793,27 +5507,24 @@ module Google
         end
       end
       
-      # A ParagraphElement that represents a
-      # run of text that all has the same styling.
+      # A ParagraphElement that represents a run of text that all has the same styling.
       class TextRun
         include Google::Apis::Core::Hashable
       
-        # The text of this run.
-        # Any non-text elements in the run are replaced with the Unicode character
-        # U+E907.
+        # The text of this run. Any non-text elements in the run are replaced with the
+        # Unicode character U+E907.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
       
-        # The suggested deletion IDs. If empty, then there are no suggested deletions
-        # of this content.
+        # The suggested deletion IDs. If empty, then there are no suggested deletions of
+        # this content.
         # Corresponds to the JSON property `suggestedDeletionIds`
         # @return [Array<String>]
         attr_accessor :suggested_deletion_ids
       
-        # The suggested insertion IDs. A TextRun may
-        # have multiple insertion IDs if it is a nested suggested change. If empty,
-        # then this is not a suggested insertion.
+        # The suggested insertion IDs. A TextRun may have multiple insertion IDs if it
+        # is a nested suggested change. If empty, then this is not a suggested insertion.
         # Corresponds to the JSON property `suggestedInsertionIds`
         # @return [Array<String>]
         attr_accessor :suggested_insertion_ids
@@ -5823,20 +5534,16 @@ module Google
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedTextStyle>]
         attr_accessor :suggested_text_style_changes
       
-        # Represents the styling that can be applied to text.
-        # Inherited text styles are represented as unset fields in this message. A
-        # text style's parent depends on where the text style is defined:
-        # * The TextStyle of text in a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The TextStyle on a named style
-        # inherits from the normal text named style.
-        # * The TextStyle of the normal text named style inherits
-        # from the default text style in the Docs editor.
-        # * The TextStyle on a Paragraph element
-        # that is contained in a table may inherit its text style from the table
-        # style.
-        # If the text style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
         # Corresponds to the JSON property `textStyle`
         # @return [Google::Apis::DocsV1::TextStyle]
         attr_accessor :text_style
@@ -5855,20 +5562,16 @@ module Google
         end
       end
       
-      # Represents the styling that can be applied to text.
-      # Inherited text styles are represented as unset fields in this message. A
-      # text style's parent depends on where the text style is defined:
-      # * The TextStyle of text in a Paragraph
-      # inherits from the paragraph's corresponding named style type.
-      # * The TextStyle on a named style
-      # inherits from the normal text named style.
-      # * The TextStyle of the normal text named style inherits
-      # from the default text style in the Docs editor.
-      # * The TextStyle on a Paragraph element
-      # that is contained in a table may inherit its text style from the table
-      # style.
-      # If the text style does not inherit from a parent, unsetting fields will
-      # revert the style to a value matching the defaults in the Docs editor.
+      # Represents the styling that can be applied to text. Inherited text styles are
+      # represented as unset fields in this message. A text style's parent depends on
+      # where the text style is defined: * The TextStyle of text in a Paragraph
+      # inherits from the paragraph's corresponding named style type. * The TextStyle
+      # on a named style inherits from the normal text named style. * The TextStyle of
+      # the normal text named style inherits from the default text style in the Docs
+      # editor. * The TextStyle on a Paragraph element that is contained in a table
+      # may inherit its text style from the table style. If the text style does not
+      # inherit from a parent, unsetting fields will revert the style to a value
+      # matching the defaults in the Docs editor.
       class TextStyle
         include Google::Apis::Core::Hashable
       
@@ -5877,10 +5580,10 @@ module Google
         # @return [Google::Apis::DocsV1::OptionalColor]
         attr_accessor :background_color
       
-        # The text's vertical offset from its normal position.
-        # Text with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically
-        # rendered in a smaller font size, computed based on the `font_size` field.
-        # The `font_size` itself is not affected by changes in this field.
+        # The text's vertical offset from its normal position. Text with `SUPERSCRIPT`
+        # or `SUBSCRIPT` baseline offsets is automatically rendered in a smaller font
+        # size, computed based on the `font_size` field. The `font_size` itself is not
+        # affected by changes in this field.
         # Corresponds to the JSON property `baselineOffset`
         # @return [String]
         attr_accessor :baseline_offset
@@ -5956,8 +5659,8 @@ module Google
       end
       
       # A mask that indicates which of the fields on the base TextStyle have been
-      # changed in this suggestion.
-      # For any field set to true, there is a new suggested value.
+      # changed in this suggestion. For any field set to true, there is a new
+      # suggested value.
       class TextStyleSuggestionState
         include Google::Apis::Core::Hashable
       
@@ -6051,17 +5754,12 @@ module Google
       class UnmergeTableCellsRequest
         include Google::Apis::Core::Hashable
       
-        # A table range represents a reference to a subset of a table.
-        # It's important to note that the cells specified by a table range do not
-        # necessarily form a rectangle. For example, let's say we have a 3 x 3 table
-        # where all the cells of the last row are merged together. The table looks
-        # like this:
-        # 
-        # [             ]
-        # A table range with table cell location = (table_start_location, row = 0,
-        # column = 0), row span = 3 and column span = 2 specifies the following cells:
-        # x     x
-        # [ x    x    x ]
+        # A table range represents a reference to a subset of a table. It's important to
+        # note that the cells specified by a table range do not necessarily form a
+        # rectangle. For example, let's say we have a 3 x 3 table where all the cells of
+        # the last row are merged together. The table looks like this: [ ] A table range
+        # with table cell location = (table_start_location, row = 0, column = 0), row
+        # span = 3 and column span = 2 specifies the following cells: x x [ x x x ]
         # Corresponds to the JSON property `tableRange`
         # @return [Google::Apis::DocsV1::TableRange]
         attr_accessor :table_range
@@ -6085,11 +5783,10 @@ module Google
         # @return [Google::Apis::DocsV1::DocumentStyle]
         attr_accessor :document_style
       
-        # The fields that should be updated.
-        # At least one field must be specified. The root `document_style` is
-        # implied and should not be specified. A single `"*"` can be used as
-        # short-hand for listing every field.
-        # For example to update the background, set `fields` to `"background"`.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `document_style` is implied and should not be specified. A single `"*"`
+        # can be used as short-hand for listing every field. For example to update the
+        # background, set `fields` to `"background"`.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -6109,31 +5806,26 @@ module Google
       class UpdateParagraphStyleRequest
         include Google::Apis::Core::Hashable
       
-        # The fields that should be updated.
-        # At least one field must be specified. The root `paragraph_style` is implied
-        # and should not be specified.
-        # For example, to update the paragraph style's alignment property, set
-        # `fields` to `"alignment"`.
-        # To reset a property to its default value, include its field name in the
-        # field mask but leave the field itself unset.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `paragraph_style` is implied and should not be specified. For example, to
+        # update the paragraph style's alignment property, set `fields` to `"alignment"`.
+        # To reset a property to its default value, include its field name in the field
+        # mask but leave the field itself unset.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
       
-        # Styles that apply to a whole paragraph.
-        # Inherited paragraph styles are represented as unset fields in this message.
-        # A paragraph style's parent depends on where the paragraph style is defined:
-        # * The ParagraphStyle on a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The ParagraphStyle on a named style
-        # inherits from the normal text named style.
-        # * The ParagraphStyle of the normal text named style inherits
-        # from the default paragraph style in the Docs editor.
-        # * The ParagraphStyle on a Paragraph
-        # element that is contained in a table may inherit its paragraph style from
-        # the table style.
-        # If the paragraph style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Styles that apply to a whole paragraph. Inherited paragraph styles are
+        # represented as unset fields in this message. A paragraph style's parent
+        # depends on where the paragraph style is defined: * The ParagraphStyle on a
+        # Paragraph inherits from the paragraph's corresponding named style type. * The
+        # ParagraphStyle on a named style inherits from the normal text named style. *
+        # The ParagraphStyle of the normal text named style inherits from the default
+        # paragraph style in the Docs editor. * The ParagraphStyle on a Paragraph
+        # element that is contained in a table may inherit its paragraph style from the
+        # table style. If the paragraph style does not inherit from a parent, unsetting
+        # fields will revert the style to a value matching the defaults in the Docs
+        # editor.
         # Corresponds to the JSON property `paragraphStyle`
         # @return [Google::Apis::DocsV1::ParagraphStyle]
         attr_accessor :paragraph_style
@@ -6159,11 +5851,10 @@ module Google
       class UpdateSectionStyleRequest
         include Google::Apis::Core::Hashable
       
-        # The fields that should be updated.
-        # At least one field must be specified. The root `section_style` is
-        # implied and must not be specified. A single `"*"` can be used as
-        # short-hand for listing every field.
-        # For example to update the left margin, set `fields` to `"margin_left"`.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `section_style` is implied and must not be specified. A single `"*"` can
+        # be used as short-hand for listing every field. For example to update the left
+        # margin, set `fields` to `"margin_left"`.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -6194,36 +5885,28 @@ module Google
       class UpdateTableCellStyleRequest
         include Google::Apis::Core::Hashable
       
-        # The fields that should be updated.
-        # At least one field must be specified. The root `tableCellStyle` is implied
-        # and should not be specified. A single `"*"` can be used as short-hand for
-        # listing every field.
-        # For example to update the table cell background color, set `fields` to
-        # `"backgroundColor"`.
-        # To reset a property to its default value, include its field name in the
-        # field mask but leave the field itself unset.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `tableCellStyle` is implied and should not be specified. A single `"*"`
+        # can be used as short-hand for listing every field. For example to update the
+        # table cell background color, set `fields` to `"backgroundColor"`. To reset a
+        # property to its default value, include its field name in the field mask but
+        # leave the field itself unset.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
       
-        # The style of a TableCell.
-        # Inherited table cell styles are represented as unset fields in this message.
-        # A table cell style can inherit from the table's style.
+        # The style of a TableCell. Inherited table cell styles are represented as unset
+        # fields in this message. A table cell style can inherit from the table's style.
         # Corresponds to the JSON property `tableCellStyle`
         # @return [Google::Apis::DocsV1::TableCellStyle]
         attr_accessor :table_cell_style
       
-        # A table range represents a reference to a subset of a table.
-        # It's important to note that the cells specified by a table range do not
-        # necessarily form a rectangle. For example, let's say we have a 3 x 3 table
-        # where all the cells of the last row are merged together. The table looks
-        # like this:
-        # 
-        # [             ]
-        # A table range with table cell location = (table_start_location, row = 0,
-        # column = 0), row span = 3 and column span = 2 specifies the following cells:
-        # x     x
-        # [ x    x    x ]
+        # A table range represents a reference to a subset of a table. It's important to
+        # note that the cells specified by a table range do not necessarily form a
+        # rectangle. For example, let's say we have a 3 x 3 table where all the cells of
+        # the last row are merged together. The table looks like this: [ ] A table range
+        # with table cell location = (table_start_location, row = 0, column = 0), row
+        # span = 3 and column span = 2 specifies the following cells: x x [ x x x ]
         # Corresponds to the JSON property `tableRange`
         # @return [Google::Apis::DocsV1::TableRange]
         attr_accessor :table_range
@@ -6246,23 +5929,20 @@ module Google
         end
       end
       
-      # Updates the
-      # TableColumnProperties of columns
-      # in a table.
+      # Updates the TableColumnProperties of columns in a table.
       class UpdateTableColumnPropertiesRequest
         include Google::Apis::Core::Hashable
       
-        # The list of zero-based column indices whose property should be updated. If
-        # no indices are specified, all columns will be updated.
+        # The list of zero-based column indices whose property should be updated. If no
+        # indices are specified, all columns will be updated.
         # Corresponds to the JSON property `columnIndices`
         # @return [Array<Fixnum>]
         attr_accessor :column_indices
       
-        # The fields that should be updated.
-        # At least one field must be specified. The root `tableColumnProperties` is
-        # implied and should not be specified. A single `"*"` can be used as
-        # short-hand for listing every field.
-        # For example to update the column width, set `fields` to `"width"`.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `tableColumnProperties` is implied and should not be specified. A single `
+        # "*"` can be used as short-hand for listing every field. For example to update
+        # the column width, set `fields` to `"width"`.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -6290,17 +5970,14 @@ module Google
         end
       end
       
-      # Updates the TableRowStyle of rows in a
-      # table.
+      # Updates the TableRowStyle of rows in a table.
       class UpdateTableRowStyleRequest
         include Google::Apis::Core::Hashable
       
-        # The fields that should be updated.
-        # At least one field must be specified. The root `tableRowStyle` is implied
-        # and should not be specified. A single `"*"` can be used as short-hand for
-        # listing every field.
-        # For example to update the minimum row height, set `fields` to
-        # `"min_row_height"`.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `tableRowStyle` is implied and should not be specified. A single `"*"`
+        # can be used as short-hand for listing every field. For example to update the
+        # minimum row height, set `fields` to `"min_row_height"`.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -6338,13 +6015,12 @@ module Google
       class UpdateTextStyleRequest
         include Google::Apis::Core::Hashable
       
-        # The fields that should be updated.
-        # At least one field must be specified. The root `text_style` is implied and
-        # should not be specified. A single `"*"` can be used as short-hand for
-        # listing every field.
-        # For example, to update the text style to bold, set `fields` to `"bold"`.
-        # To reset a property to its default value, include its field name in the
-        # field mask but leave the field itself unset.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `text_style` is implied and should not be specified. A single `"*"` can
+        # be used as short-hand for listing every field. For example, to update the text
+        # style to bold, set `fields` to `"bold"`. To reset a property to its default
+        # value, include its field name in the field mask but leave the field itself
+        # unset.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -6354,20 +6030,16 @@ module Google
         # @return [Google::Apis::DocsV1::Range]
         attr_accessor :range
       
-        # Represents the styling that can be applied to text.
-        # Inherited text styles are represented as unset fields in this message. A
-        # text style's parent depends on where the text style is defined:
-        # * The TextStyle of text in a Paragraph
-        # inherits from the paragraph's corresponding named style type.
-        # * The TextStyle on a named style
-        # inherits from the normal text named style.
-        # * The TextStyle of the normal text named style inherits
-        # from the default text style in the Docs editor.
-        # * The TextStyle on a Paragraph element
-        # that is contained in a table may inherit its text style from the table
-        # style.
-        # If the text style does not inherit from a parent, unsetting fields will
-        # revert the style to a value matching the defaults in the Docs editor.
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that is contained in a table
+        # may inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
         # Corresponds to the JSON property `textStyle`
         # @return [Google::Apis::DocsV1::TextStyle]
         attr_accessor :text_style
@@ -6388,30 +6060,26 @@ module Google
       class WeightedFontFamily
         include Google::Apis::Core::Hashable
       
-        # The font family of the text.
-        # The font family can be any font from the Font menu in Docs or from
-        # [Google Fonts] (https://fonts.google.com/). If the font name is
-        # unrecognized, the text is rendered in `Arial`.
+        # The font family of the text. The font family can be any font from the Font
+        # menu in Docs or from [Google Fonts] (https://fonts.google.com/). If the font
+        # name is unrecognized, the text is rendered in `Arial`.
         # Corresponds to the JSON property `fontFamily`
         # @return [String]
         attr_accessor :font_family
       
-        # The weight of the font. This field can have any value that is a multiple of
-        # `100` between `100` and `900`, inclusive. This range corresponds to the
-        # numerical values described in the CSS 2.1 Specification,
-        # [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with
-        # non-numerical values disallowed.
-        # The default value is `400` ("normal").
-        # The font weight makes up just one component of the rendered font weight.
-        # The rendered weight is determined by a combination of the `weight` and the
-        # text style's resolved `bold` value, after accounting for inheritance:
-        # * If the text is bold and the weight is less than `400`, the rendered
-        # weight is 400.
-        # * If the text is bold and the weight is greater than or equal to `400` but
-        # is less than `700`, the rendered weight is `700`.
-        # * If the weight is greater than or equal to `700`, the rendered weight is
-        # equal to the weight.
-        # * If the text is not bold, the rendered weight is equal to the weight.
+        # The weight of the font. This field can have any value that is a multiple of `
+        # 100` between `100` and `900`, inclusive. This range corresponds to the
+        # numerical values described in the CSS 2.1 Specification, [section 15.6](https:/
+        # /www.w3.org/TR/CSS21/fonts.html#font-boldness), with non-numerical values
+        # disallowed. The default value is `400` ("normal"). The font weight makes up
+        # just one component of the rendered font weight. The rendered weight is
+        # determined by a combination of the `weight` and the text style's resolved `
+        # bold` value, after accounting for inheritance: * If the text is bold and the
+        # weight is less than `400`, the rendered weight is 400. * If the text is bold
+        # and the weight is greater than or equal to `400` but is less than `700`, the
+        # rendered weight is `700`. * If the weight is greater than or equal to `700`,
+        # the rendered weight is equal to the weight. * If the text is not bold, the
+        # rendered weight is equal to the weight.
         # Corresponds to the JSON property `weight`
         # @return [Fixnum]
         attr_accessor :weight
@@ -6431,31 +6099,28 @@ module Google
       class WriteControl
         include Google::Apis::Core::Hashable
       
-        # The revision ID of the
-        # document that the write request will be applied to. If this is not the
-        # latest revision of the document, the request will not be processed and
-        # will return a 400 bad request error.
-        # When a required revision ID is returned in a response, it indicates the
-        # revision ID of the document after the request was applied.
+        # The revision ID of the document that the write request will be applied to. If
+        # this is not the latest revision of the document, the request will not be
+        # processed and will return a 400 bad request error. When a required revision ID
+        # is returned in a response, it indicates the revision ID of the document after
+        # the request was applied.
         # Corresponds to the JSON property `requiredRevisionId`
         # @return [String]
         attr_accessor :required_revision_id
       
-        # The target revision ID of the
-        # document that the write request will be applied to.
-        # If collaborator changes have occurred after the document was read using
+        # The target revision ID of the document that the write request will be applied
+        # to. If collaborator changes have occurred after the document was read using
         # the API, the changes produced by this write request will be transformed
         # against the collaborator changes. This results in a new revision of the
         # document which incorporates both the changes in the request and the
-        # collaborator changes, and the Docs server will resolve conflicting
-        # changes. When using `target_revision_id`, the API client can be thought
-        # of as another collaborator of the document.
-        # The target revision ID may only be used to write to recent versions of a
-        # document. If the target revision is too far behind the latest revision,
-        # the request will not be processed and will return a 400 bad request error
-        # and the request should be retried after reading the latest version of the
-        # document. In most cases a `revision_id` will remain valid for use as a
-        # target revision for several minutes after it is read, but for
+        # collaborator changes, and the Docs server will resolve conflicting changes.
+        # When using `target_revision_id`, the API client can be thought of as another
+        # collaborator of the document. The target revision ID may only be used to write
+        # to recent versions of a document. If the target revision is too far behind the
+        # latest revision, the request will not be processed and will return a 400 bad
+        # request error and the request should be retried after reading the latest
+        # version of the document. In most cases a `revision_id` will remain valid for
+        # use as a target revision for several minutes after it is read, but for
         # frequently-edited documents this window may be shorter.
         # Corresponds to the JSON property `targetRevisionId`
         # @return [String]

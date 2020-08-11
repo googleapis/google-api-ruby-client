@@ -459,6 +459,7 @@ module Google
           property :resource_name, as: 'resourceName'
           property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1p1beta1::GoogleCloudSecuritycenterV1p1beta1SecurityMarks, decorator: Google::Apis::SecuritycenterV1p1beta1::GoogleCloudSecuritycenterV1p1beta1SecurityMarks::Representation
       
+          property :severity, as: 'severity'
           hash :source_properties, as: 'sourceProperties'
           property :state, as: 'state'
         end

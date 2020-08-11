@@ -42,13 +42,13 @@ module Google
         end
       end
       
-      # `UrlNotification` is the resource used in all Indexing API calls.
-      # It describes one event in the life cycle of a Web Document.
+      # `UrlNotification` is the resource used in all Indexing API calls. It describes
+      # one event in the life cycle of a Web Document.
       class UrlNotification
         include Google::Apis::Core::Hashable
       
-        # Creation timestamp for this notification.
-        # Users should _not_ specify it, the field is ignored at the request time.
+        # Creation timestamp for this notification. Users should _not_ specify it, the
+        # field is ignored at the request time.
         # Corresponds to the JSON property `notifyTime`
         # @return [String]
         attr_accessor :notify_time
@@ -58,9 +58,9 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # The object of this notification. The URL must be owned by the publisher
-        # of this notification and, in case of `URL_UPDATED` notifications, it _must_
-        # be crawlable by Google.
+        # The object of this notification. The URL must be owned by the publisher of
+        # this notification and, in case of `URL_UPDATED` notifications, it _must_ be
+        # crawlable by Google.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -82,14 +82,14 @@ module Google
       class UrlNotificationMetadata
         include Google::Apis::Core::Hashable
       
-        # `UrlNotification` is the resource used in all Indexing API calls.
-        # It describes one event in the life cycle of a Web Document.
+        # `UrlNotification` is the resource used in all Indexing API calls. It describes
+        # one event in the life cycle of a Web Document.
         # Corresponds to the JSON property `latestRemove`
         # @return [Google::Apis::IndexingV3::UrlNotification]
         attr_accessor :latest_remove
       
-        # `UrlNotification` is the resource used in all Indexing API calls.
-        # It describes one event in the life cycle of a Web Document.
+        # `UrlNotification` is the resource used in all Indexing API calls. It describes
+        # one event in the life cycle of a Web Document.
         # Corresponds to the JSON property `latestUpdate`
         # @return [Google::Apis::IndexingV3::UrlNotification]
         attr_accessor :latest_update

@@ -49,21 +49,16 @@ module Google
           @batch_path = 'batch'
         end
         
-        # After the client finishes uploading the photo with the returned
-        # UploadRef,
-        # CreatePhoto
-        # publishes the uploaded Photo to
-        # Street View on Google Maps.
+        # After the client finishes uploading the photo with the returned UploadRef,
+        # CreatePhoto publishes the uploaded Photo to Street View on Google Maps.
         # Currently, the only way to set heading, pitch, and roll in CreatePhoto is
-        # through the [Photo Sphere XMP
-        # metadata](https://developers.google.com/streetview/spherical-metadata) in
-        # the photo bytes. CreatePhoto ignores the  `pose.heading`, `pose.pitch`,
-        # `pose.roll`, `pose.altitude`, and `pose.level` fields in Pose.
-        # This method returns the following error codes:
-        # * google.rpc.Code.INVALID_ARGUMENT if the request is malformed or if
-        # the uploaded photo is not a 360 photo.
-        # * google.rpc.Code.NOT_FOUND if the upload reference does not exist.
-        # * google.rpc.Code.RESOURCE_EXHAUSTED if the account has reached the
+        # through the [Photo Sphere XMP metadata](https://developers.google.com/
+        # streetview/spherical-metadata) in the photo bytes. CreatePhoto ignores the `
+        # pose.heading`, `pose.pitch`, `pose.roll`, `pose.altitude`, and `pose.level`
+        # fields in Pose. This method returns the following error codes: * google.rpc.
+        # Code.INVALID_ARGUMENT if the request is malformed or if the uploaded photo is
+        # not a 360 photo. * google.rpc.Code.NOT_FOUND if the upload reference does not
+        # exist. * google.rpc.Code.RESOURCE_EXHAUSTED if the account has reached the
         # storage limit.
         # @param [Google::Apis::StreetviewpublishV1::Photo] photo_object
         # @param [String] fields
@@ -94,11 +89,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Photo and its metadata.
-        # This method returns the following error codes:
-        # * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
-        # create the requested photo.
-        # * google.rpc.Code.NOT_FOUND if the photo ID does not exist.
+        # Deletes a Photo and its metadata. This method returns the following error
+        # codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
+        # create the requested photo. * google.rpc.Code.NOT_FOUND if the photo ID does
+        # not exist.
         # @param [String] photo_id
         #   Required. ID of the Photo.
         # @param [String] fields
@@ -128,27 +122,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the metadata of the specified
-        # Photo.
-        # This method returns the following error codes:
-        # * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
-        # create the requested Photo.
-        # * google.rpc.Code.NOT_FOUND if the requested
-        # Photo does not exist.
-        # * google.rpc.Code.UNAVAILABLE if the requested
-        # Photo is still being indexed.
+        # Gets the metadata of the specified Photo. This method returns the following
+        # error codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did
+        # not create the requested Photo. * google.rpc.Code.NOT_FOUND if the requested
+        # Photo does not exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is
+        # still being indexed.
         # @param [String] photo_id
         #   Required. ID of the Photo.
         # @param [String] language_code
-        #   The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        #   information, see
-        #   http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        #   If language_code is unspecified, the user's language preference for Google
+        #   The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        #   see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
+        #   language_code is unspecified, the user's language preference for Google
         #   services is used.
         # @param [String] view
         #   Required. Specifies if a download URL for the photo bytes should be returned
-        #   in the
-        #   Photo response.
+        #   in the Photo response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -178,23 +166,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an upload session to start uploading photo bytes.  The method uses
-        # the upload URL of the returned
-        # UploadRef to upload the bytes for
-        # the Photo.
-        # In addition to the photo requirements shown in
-        # https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604,
-        # the photo must meet the following requirements:
-        # * Photo Sphere XMP metadata must be included in the photo metadata. See
-        # https://developers.google.com/streetview/spherical-metadata for the
-        # required fields.
-        # * The pixel size of the photo must meet the size requirements listed in
-        # https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604, and
-        # the photo must be a full 360 horizontally.
-        # After the upload completes, the method uses
-        # UploadRef with
-        # CreatePhoto
-        # to create the Photo object entry.
+        # Creates an upload session to start uploading photo bytes. The method uses the
+        # upload URL of the returned UploadRef to upload the bytes for the Photo. In
+        # addition to the photo requirements shown in https://support.google.com/maps/
+        # answer/7012050?hl=en&ref_topic=6275604, the photo must meet the following
+        # requirements: * Photo Sphere XMP metadata must be included in the photo
+        # metadata. See https://developers.google.com/streetview/spherical-metadata for
+        # the required fields. * The pixel size of the photo must meet the size
+        # requirements listed in https://support.google.com/maps/answer/7012050?hl=en&
+        # ref_topic=6275604, and the photo must be a full 360 horizontally. After the
+        # upload completes, the method uses UploadRef with CreatePhoto to create the
+        # Photo object entry.
         # @param [Google::Apis::StreetviewpublishV1::Empty] empty_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -224,46 +206,29 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the metadata of a Photo, such
-        # as pose, place association, connections, etc. Changing the pixels of a
-        # photo is not supported.
-        # Only the fields specified in the
-        # updateMask
-        # field are used. If `updateMask` is not present, the update applies to all
-        # fields.
-        # This method returns the following error codes:
-        # * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
-        # create the requested photo.
-        # * google.rpc.Code.INVALID_ARGUMENT if the request is malformed.
-        # * google.rpc.Code.NOT_FOUND if the requested photo does not exist.
-        # * google.rpc.Code.UNAVAILABLE if the requested
-        # Photo is still being indexed.
+        # Updates the metadata of a Photo, such as pose, place association, connections,
+        # etc. Changing the pixels of a photo is not supported. Only the fields
+        # specified in the updateMask field are used. If `updateMask` is not present,
+        # the update applies to all fields. This method returns the following error
+        # codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
+        # create the requested photo. * google.rpc.Code.INVALID_ARGUMENT if the request
+        # is malformed. * google.rpc.Code.NOT_FOUND if the requested photo does not
+        # exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is still being
+        # indexed.
         # @param [String] id
         #   Required. A unique identifier for a photo.
         # @param [Google::Apis::StreetviewpublishV1::Photo] photo_object
         # @param [String] update_mask
-        #   Required. Mask that identifies fields on the photo metadata to update.
-        #   If not present, the old Photo
-        #   metadata is entirely replaced with the
-        #   new Photo metadata in this request.
-        #   The update fails if invalid fields are specified. Multiple fields can be
-        #   specified in a comma-delimited list.
-        #   The following fields are valid:
-        #   * `pose.heading`
-        #   * `pose.latLngPair`
-        #   * `pose.pitch`
-        #   * `pose.roll`
-        #   * `pose.level`
-        #   * `pose.altitude`
-        #   * `connections`
-        #   * `places`
-        #   <aside class="note"><b>Note:</b> When
-        #   updateMask
-        #   contains repeated fields, the entire set of repeated values get replaced
-        #   with the new contents. For example, if
-        #   updateMask
-        #   contains `connections` and `UpdatePhotoRequest.photo.connections` is empty,
-        #   all connections are removed.</aside>
+        #   Required. Mask that identifies fields on the photo metadata to update. If not
+        #   present, the old Photo metadata is entirely replaced with the new Photo
+        #   metadata in this request. The update fails if invalid fields are specified.
+        #   Multiple fields can be specified in a comma-delimited list. The following
+        #   fields are valid: * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.
+        #   roll` * `pose.level` * `pose.altitude` * `connections` * `places` *Note:* When
+        #   updateMask contains repeated fields, the entire set of repeated values get
+        #   replaced with the new contents. For example, if updateMask contains `
+        #   connections` and `UpdatePhotoRequest.photo.connections` is empty, all
+        #   connections are removed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -294,21 +259,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a list of Photos and their
-        # metadata.
-        # Note that if
-        # BatchDeletePhotos
-        # fails, either critical fields are missing or there is an authentication
-        # error. Even if
-        # BatchDeletePhotos
-        # succeeds, individual photos in the batch may have failures.
-        # These failures are specified in each
-        # PhotoResponse.status
-        # in
-        # BatchDeletePhotosResponse.results.
-        # See
-        # DeletePhoto
-        # for specific failures that can occur per photo.
+        # Deletes a list of Photos and their metadata. Note that if BatchDeletePhotos
+        # fails, either critical fields are missing or there is an authentication error.
+        # Even if BatchDeletePhotos succeeds, individual photos in the batch may have
+        # failures. These failures are specified in each PhotoResponse.status in
+        # BatchDeletePhotosResponse.results. See DeletePhoto for specific failures that
+        # can occur per photo.
         # @param [Google::Apis::StreetviewpublishV1::BatchDeletePhotosRequest] batch_delete_photos_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -338,35 +294,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the metadata of the specified
-        # Photo batch.
-        # Note that if
-        # BatchGetPhotos
-        # fails, either critical fields are missing or there is an authentication
-        # error. Even if
-        # BatchGetPhotos
-        # succeeds, individual photos in the batch may have failures.
-        # These failures are specified in each
-        # PhotoResponse.status
-        # in
-        # BatchGetPhotosResponse.results.
-        # See
-        # GetPhoto
-        # for specific failures that can occur per photo.
+        # Gets the metadata of the specified Photo batch. Note that if BatchGetPhotos
+        # fails, either critical fields are missing or there is an authentication error.
+        # Even if BatchGetPhotos succeeds, individual photos in the batch may have
+        # failures. These failures are specified in each PhotoResponse.status in
+        # BatchGetPhotosResponse.results. See GetPhoto for specific failures that can
+        # occur per photo.
         # @param [String] language_code
-        #   The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        #   information, see
-        #   http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        #   If language_code is unspecified, the user's language preference for Google
+        #   The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        #   see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
+        #   language_code is unspecified, the user's language preference for Google
         #   services is used.
         # @param [Array<String>, String] photo_ids
-        #   Required. IDs of the Photos. For HTTP
-        #   GET requests, the URL query parameter should be
-        #   `photoIds=<id1>&photoIds=<id2>&...`.
+        #   Required. IDs of the Photos. For HTTP GET requests, the URL query parameter
+        #   should be `photoIds=&photoIds=&...`.
         # @param [String] view
         #   Required. Specifies if a download URL for the photo bytes should be returned
-        #   in the
-        #   Photo response.
+        #   in the Photo response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -396,35 +340,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the metadata of Photos, such
-        # as pose, place association, connections, etc. Changing the pixels of photos
-        # is not supported.
-        # Note that if
-        # BatchUpdatePhotos
-        # fails, either critical fields are missing or there is an authentication
-        # error. Even if
-        # BatchUpdatePhotos
-        # succeeds, individual photos in the batch may have failures.
-        # These failures are specified in each
-        # PhotoResponse.status
-        # in
-        # BatchUpdatePhotosResponse.results.
-        # See
-        # UpdatePhoto
-        # for specific failures that can occur per photo.
-        # Only the fields specified in
-        # updateMask
-        # field are used. If `updateMask` is not present, the update applies to all
-        # fields.
-        # The number of
-        # UpdatePhotoRequest
-        # messages in a
-        # BatchUpdatePhotosRequest
-        # must not exceed 20.
-        # <aside class="note"><b>Note:</b> To update
-        # Pose.altitude,
-        # Pose.latLngPair has to be
-        # filled as well. Otherwise, the request will fail.</aside>
+        # Updates the metadata of Photos, such as pose, place association, connections,
+        # etc. Changing the pixels of photos is not supported. Note that if
+        # BatchUpdatePhotos fails, either critical fields are missing or there is an
+        # authentication error. Even if BatchUpdatePhotos succeeds, individual photos in
+        # the batch may have failures. These failures are specified in each
+        # PhotoResponse.status in BatchUpdatePhotosResponse.results. See UpdatePhoto for
+        # specific failures that can occur per photo. Only the fields specified in
+        # updateMask field are used. If `updateMask` is not present, the update applies
+        # to all fields. The number of UpdatePhotoRequest messages in a
+        # BatchUpdatePhotosRequest must not exceed 20. *Note:* To update Pose.altitude,
+        # Pose.latLngPair has to be filled as well. Otherwise, the request will fail.
         # @param [Google::Apis::StreetviewpublishV1::BatchUpdatePhotosRequest] batch_update_photos_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -454,36 +380,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the Photos that belong to
-        # the user.
-        # <aside class="note"><b>Note:</b> Recently created photos that are still
-        # being indexed are not returned in the response.</aside>
+        # Lists all the Photos that belong to the user. *Note:* Recently created photos
+        # that are still being indexed are not returned in the response.
         # @param [String] filter
         #   Required. The filter expression. For example: `placeId=
-        #   ChIJj61dQgK6j4AR4GeTYWZsKWw`.
-        #   The only filter supported at the moment is `placeId`.
+        #   ChIJj61dQgK6j4AR4GeTYWZsKWw`. The only filter supported at the moment is `
+        #   placeId`.
         # @param [String] language_code
-        #   The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        #   information, see
-        #   http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        #   If language_code is unspecified, the user's language preference for Google
+        #   The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        #   see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If
+        #   language_code is unspecified, the user's language preference for Google
         #   services is used.
         # @param [Fixnum] page_size
-        #   The maximum number of photos to return.
-        #   `pageSize` must be non-negative. If `pageSize` is zero or is not provided,
-        #   the default page size of 100 is used.
-        #   The number of photos returned in the response may be less than `pageSize`
-        #   if the number of photos that belong to the user is less than `pageSize`.
+        #   The maximum number of photos to return. `pageSize` must be non-negative. If `
+        #   pageSize` is zero or is not provided, the default page size of 100 is used.
+        #   The number of photos returned in the response may be less than `pageSize` if
+        #   the number of photos that belong to the user is less than `pageSize`.
         # @param [String] page_token
-        #   The
-        #   nextPageToken
-        #   value returned from a previous
-        #   ListPhotos
-        #   request, if any.
+        #   The nextPageToken value returned from a previous ListPhotos request, if any.
         # @param [String] view
         #   Required. Specifies if a download URL for the photos bytes should be returned
-        #   in the
-        #   Photos response.
+        #   in the Photos response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -49,14 +49,12 @@ module Google
         
         # Detects the language of text within a request.
         # @param [String] parent
-        #   Required. Project or location to make a call. Must refer to a caller's
-        #   project.
-        #   Format: `projects/`project-number-or-id`/locations/`location-id`` or
-        #   `projects/`project-number-or-id``.
-        #   For global calls, use `projects/`project-number-or-id`/locations/global` or
-        #   `projects/`project-number-or-id``.
-        #   Only models within the same region (has same location-id) can be used.
-        #   Otherwise an INVALID_ARGUMENT (400) error is returned.
+        #   Required. Project or location to make a call. Must refer to a caller's project.
+        #   Format: `projects/`project-number-or-id`/locations/`location-id`` or `
+        #   projects/`project-number-or-id``. For global calls, use `projects/`project-
+        #   number-or-id`/locations/global` or `projects/`project-number-or-id``. Only
+        #   models within the same region (has same location-id) can be used. Otherwise an
+        #   INVALID_ARGUMENT (400) error is returned.
         # @param [Google::Apis::TranslateV3::DetectLanguageRequest] detect_language_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -89,29 +87,25 @@ module Google
         
         # Returns a list of supported languages for translation.
         # @param [String] parent
-        #   Required. Project or location to make a call. Must refer to a caller's
-        #   project.
-        #   Format: `projects/`project-number-or-id`` or
-        #   `projects/`project-number-or-id`/locations/`location-id``.
-        #   For global calls, use `projects/`project-number-or-id`/locations/global` or
-        #   `projects/`project-number-or-id``.
-        #   Non-global location is required for AutoML models.
-        #   Only models within the same region (have same location-id) can be used,
-        #   otherwise an INVALID_ARGUMENT (400) error is returned.
+        #   Required. Project or location to make a call. Must refer to a caller's project.
+        #   Format: `projects/`project-number-or-id`` or `projects/`project-number-or-id`/
+        #   locations/`location-id``. For global calls, use `projects/`project-number-or-
+        #   id`/locations/global` or `projects/`project-number-or-id``. Non-global
+        #   location is required for AutoML models. Only models within the same region (
+        #   have same location-id) can be used, otherwise an INVALID_ARGUMENT (400) error
+        #   is returned.
         # @param [String] display_language_code
-        #   Optional. The language to use to return localized, human readable names
-        #   of supported languages. If missing, then display names are not returned
-        #   in a response.
+        #   Optional. The language to use to return localized, human readable names of
+        #   supported languages. If missing, then display names are not returned in a
+        #   response.
         # @param [String] model
-        #   Optional. Get supported languages of this model.
-        #   The format depends on model type:
-        #   - AutoML Translation models:
-        #   `projects/`project-number-or-id`/locations/`location-id`/models/`model-id``
-        #   - General (built-in) models:
-        #   `projects/`project-number-or-id`/locations/`location-id`/models/general/nmt`,
-        #   `projects/`project-number-or-id`/locations/`location-id`/models/general/base`
-        #   Returns languages supported by the specified model.
-        #   If missing, we get supported languages of Google general base (PBMT) model.
+        #   Optional. Get supported languages of this model. The format depends on model
+        #   type: - AutoML Translation models: `projects/`project-number-or-id`/locations/`
+        #   location-id`/models/`model-id`` - General (built-in) models: `projects/`
+        #   project-number-or-id`/locations/`location-id`/models/general/nmt`, `projects/`
+        #   project-number-or-id`/locations/`location-id`/models/general/base` Returns
+        #   languages supported by the specified model. If missing, we get supported
+        #   languages of Google general base (PBMT) model.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -143,16 +137,13 @@ module Google
         
         # Translates input text and returns translated text.
         # @param [String] parent
-        #   Required. Project or location to make a call. Must refer to a caller's
-        #   project.
-        #   Format: `projects/`project-number-or-id`` or
-        #   `projects/`project-number-or-id`/locations/`location-id``.
-        #   For global calls, use `projects/`project-number-or-id`/locations/global` or
-        #   `projects/`project-number-or-id``.
-        #   Non-global location is required for requests using AutoML models or
-        #   custom glossaries.
-        #   Models and glossaries must be within the same region (have same
-        #   location-id), otherwise an INVALID_ARGUMENT (400) error is returned.
+        #   Required. Project or location to make a call. Must refer to a caller's project.
+        #   Format: `projects/`project-number-or-id`` or `projects/`project-number-or-id`/
+        #   locations/`location-id``. For global calls, use `projects/`project-number-or-
+        #   id`/locations/global` or `projects/`project-number-or-id``. Non-global
+        #   location is required for requests using AutoML models or custom glossaries.
+        #   Models and glossaries must be within the same region (have same location-id),
+        #   otherwise an INVALID_ARGUMENT (400) error is returned.
         # @param [Google::Apis::TranslateV3::TranslateTextRequest] translate_text_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -183,19 +174,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Translates a large volume of text in asynchronous batch mode.
-        # This function provides real-time output as the inputs are being processed.
-        # If caller cancels a request, the partial results (for an input file, it's
-        # all or nothing) may still be available on the specified output location.
-        # This call returns immediately and you can
-        # use google.longrunning.Operation.name to poll the status of the call.
+        # Translates a large volume of text in asynchronous batch mode. This function
+        # provides real-time output as the inputs are being processed. If caller cancels
+        # a request, the partial results (for an input file, it's all or nothing) may
+        # still be available on the specified output location. This call returns
+        # immediately and you can use google.longrunning.Operation.name to poll the
+        # status of the call.
         # @param [String] parent
-        #   Required. Location to make a call. Must refer to a caller's project.
-        #   Format: `projects/`project-number-or-id`/locations/`location-id``.
-        #   The `global` location is not supported for batch translation.
-        #   Only AutoML Translation models or glossaries within the same region (have
-        #   the same location-id) can be used, otherwise an INVALID_ARGUMENT (400)
-        #   error is returned.
+        #   Required. Location to make a call. Must refer to a caller's project. Format: `
+        #   projects/`project-number-or-id`/locations/`location-id``. The `global`
+        #   location is not supported for batch translation. Only AutoML Translation
+        #   models or glossaries within the same region (have the same location-id) can be
+        #   used, otherwise an INVALID_ARGUMENT (400) error is returned.
         # @param [Google::Apis::TranslateV3::BatchTranslateTextRequest] batch_translate_text_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -228,14 +218,12 @@ module Google
         
         # Detects the language of text within a request.
         # @param [String] parent
-        #   Required. Project or location to make a call. Must refer to a caller's
-        #   project.
-        #   Format: `projects/`project-number-or-id`/locations/`location-id`` or
-        #   `projects/`project-number-or-id``.
-        #   For global calls, use `projects/`project-number-or-id`/locations/global` or
-        #   `projects/`project-number-or-id``.
-        #   Only models within the same region (has same location-id) can be used.
-        #   Otherwise an INVALID_ARGUMENT (400) error is returned.
+        #   Required. Project or location to make a call. Must refer to a caller's project.
+        #   Format: `projects/`project-number-or-id`/locations/`location-id`` or `
+        #   projects/`project-number-or-id``. For global calls, use `projects/`project-
+        #   number-or-id`/locations/global` or `projects/`project-number-or-id``. Only
+        #   models within the same region (has same location-id) can be used. Otherwise an
+        #   INVALID_ARGUMENT (400) error is returned.
         # @param [Google::Apis::TranslateV3::DetectLanguageRequest] detect_language_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -298,29 +286,25 @@ module Google
         
         # Returns a list of supported languages for translation.
         # @param [String] parent
-        #   Required. Project or location to make a call. Must refer to a caller's
-        #   project.
-        #   Format: `projects/`project-number-or-id`` or
-        #   `projects/`project-number-or-id`/locations/`location-id``.
-        #   For global calls, use `projects/`project-number-or-id`/locations/global` or
-        #   `projects/`project-number-or-id``.
-        #   Non-global location is required for AutoML models.
-        #   Only models within the same region (have same location-id) can be used,
-        #   otherwise an INVALID_ARGUMENT (400) error is returned.
+        #   Required. Project or location to make a call. Must refer to a caller's project.
+        #   Format: `projects/`project-number-or-id`` or `projects/`project-number-or-id`/
+        #   locations/`location-id``. For global calls, use `projects/`project-number-or-
+        #   id`/locations/global` or `projects/`project-number-or-id``. Non-global
+        #   location is required for AutoML models. Only models within the same region (
+        #   have same location-id) can be used, otherwise an INVALID_ARGUMENT (400) error
+        #   is returned.
         # @param [String] display_language_code
-        #   Optional. The language to use to return localized, human readable names
-        #   of supported languages. If missing, then display names are not returned
-        #   in a response.
+        #   Optional. The language to use to return localized, human readable names of
+        #   supported languages. If missing, then display names are not returned in a
+        #   response.
         # @param [String] model
-        #   Optional. Get supported languages of this model.
-        #   The format depends on model type:
-        #   - AutoML Translation models:
-        #   `projects/`project-number-or-id`/locations/`location-id`/models/`model-id``
-        #   - General (built-in) models:
-        #   `projects/`project-number-or-id`/locations/`location-id`/models/general/nmt`,
-        #   `projects/`project-number-or-id`/locations/`location-id`/models/general/base`
-        #   Returns languages supported by the specified model.
-        #   If missing, we get supported languages of Google general base (PBMT) model.
+        #   Optional. Get supported languages of this model. The format depends on model
+        #   type: - AutoML Translation models: `projects/`project-number-or-id`/locations/`
+        #   location-id`/models/`model-id`` - General (built-in) models: `projects/`
+        #   project-number-or-id`/locations/`location-id`/models/general/nmt`, `projects/`
+        #   project-number-or-id`/locations/`location-id`/models/general/base` Returns
+        #   languages supported by the specified model. If missing, we get supported
+        #   languages of Google general base (PBMT) model.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -391,16 +375,13 @@ module Google
         
         # Translates input text and returns translated text.
         # @param [String] parent
-        #   Required. Project or location to make a call. Must refer to a caller's
-        #   project.
-        #   Format: `projects/`project-number-or-id`` or
-        #   `projects/`project-number-or-id`/locations/`location-id``.
-        #   For global calls, use `projects/`project-number-or-id`/locations/global` or
-        #   `projects/`project-number-or-id``.
-        #   Non-global location is required for requests using AutoML models or
-        #   custom glossaries.
-        #   Models and glossaries must be within the same region (have same
-        #   location-id), otherwise an INVALID_ARGUMENT (400) error is returned.
+        #   Required. Project or location to make a call. Must refer to a caller's project.
+        #   Format: `projects/`project-number-or-id`` or `projects/`project-number-or-id`/
+        #   locations/`location-id``. For global calls, use `projects/`project-number-or-
+        #   id`/locations/global` or `projects/`project-number-or-id``. Non-global
+        #   location is required for requests using AutoML models or custom glossaries.
+        #   Models and glossaries must be within the same region (have same location-id),
+        #   otherwise an INVALID_ARGUMENT (400) error is returned.
         # @param [Google::Apis::TranslateV3::TranslateTextRequest] translate_text_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -431,8 +412,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a glossary and returns the long-running operation. Returns
-        # NOT_FOUND, if the project doesn't exist.
+        # Creates a glossary and returns the long-running operation. Returns NOT_FOUND,
+        # if the project doesn't exist.
         # @param [String] parent
         #   Required. The project name.
         # @param [Google::Apis::TranslateV3::Glossary] glossary_object
@@ -465,9 +446,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a glossary, or cancels glossary construction
-        # if the glossary isn't created yet.
-        # Returns NOT_FOUND, if the glossary doesn't exist.
+        # Deletes a glossary, or cancels glossary construction if the glossary isn't
+        # created yet. Returns NOT_FOUND, if the glossary doesn't exist.
         # @param [String] name
         #   Required. The name of the glossary to delete.
         # @param [String] fields
@@ -497,8 +477,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a glossary. Returns NOT_FOUND, if the glossary doesn't
-        # exist.
+        # Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
         # @param [String] name
         #   Required. The name of the glossary to retrieve.
         # @param [String] fields
@@ -528,35 +507,32 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists glossaries in a project. Returns NOT_FOUND, if the project doesn't
-        # exist.
+        # Lists glossaries in a project. Returns NOT_FOUND, if the project doesn't exist.
         # @param [String] parent
         #   Required. The name of the project from which to list all of the glossaries.
         # @param [String] filter
-        #   Optional. Filter specifying constraints of a list operation.
-        #   Specify the constraint by the format of "key=value", where key must be
-        #   "src" or "tgt", and the value must be a valid language code.
-        #   For multiple restrictions, concatenate them by "AND" (uppercase only),
-        #   such as: "src=en-US AND tgt=zh-CN". Notice that the exact match is used
-        #   here, which means using 'en-US' and 'en' can lead to different results,
-        #   which depends on the language code you used when you create the glossary.
-        #   For the unidirectional glossaries, the "src" and "tgt" add restrictions
-        #   on the source and target language code separately.
-        #   For the equivalent term set glossaries, the "src" and/or "tgt" add
-        #   restrictions on the term set.
-        #   For example: "src=en-US AND tgt=zh-CN" will only pick the unidirectional
-        #   glossaries which exactly match the source language code as "en-US" and the
-        #   target language code "zh-CN", but all equivalent term set glossaries which
-        #   contain "en-US" and "zh-CN" in their language set will be picked.
-        #   If missing, no filtering is performed.
+        #   Optional. Filter specifying constraints of a list operation. Specify the
+        #   constraint by the format of "key=value", where key must be "src" or "tgt", and
+        #   the value must be a valid language code. For multiple restrictions,
+        #   concatenate them by "AND" (uppercase only), such as: "src=en-US AND tgt=zh-CN".
+        #   Notice that the exact match is used here, which means using 'en-US' and 'en'
+        #   can lead to different results, which depends on the language code you used
+        #   when you create the glossary. For the unidirectional glossaries, the "src" and
+        #   "tgt" add restrictions on the source and target language code separately. For
+        #   the equivalent term set glossaries, the "src" and/or "tgt" add restrictions on
+        #   the term set. For example: "src=en-US AND tgt=zh-CN" will only pick the
+        #   unidirectional glossaries which exactly match the source language code as "en-
+        #   US" and the target language code "zh-CN", but all equivalent term set
+        #   glossaries which contain "en-US" and "zh-CN" in their language set will be
+        #   picked. If missing, no filtering is performed.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. The server may return fewer glossaries than
         #   requested. If unspecified, the server picks an appropriate default.
         # @param [String] page_token
         #   Optional. A token identifying a page of results the server should return.
         #   Typically, this is the value of [ListGlossariesResponse.next_page_token]
-        #   returned from the previous call to `ListGlossaries` method.
-        #   The first page is returned if `page_token`is empty or missing.
+        #   returned from the previous call to `ListGlossaries` method. The first page is
+        #   returned if `page_token`is empty or missing.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -587,15 +563,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
@@ -629,10 +603,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a long-running operation. This method indicates that the client is
-        # no longer interested in the operation result. It does not cancel the
-        # operation. If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation resource to be deleted.
         # @param [String] fields
@@ -662,9 +636,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -694,15 +667,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
@@ -741,15 +713,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Waits for the specified long-running operation until it is done or reaches
-        # at most a specified timeout, returning the latest state.  If the operation
-        # is already done, the latest state is immediately returned.  If the timeout
-        # specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
-        # timeout is used.  If the server does not support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.
-        # Note that this method is on a best-effort basis.  It may return the latest
-        # state before the specified timeout (including immediately), meaning even an
-        # immediate response is no guarantee that the operation is done.
+        # Waits for the specified long-running operation until it is done or reaches at
+        # most a specified timeout, returning the latest state. If the operation is
+        # already done, the latest state is immediately returned. If the timeout
+        # specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout
+        # is used. If the server does not support this method, it returns `google.rpc.
+        # Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may
+        # return the latest state before the specified timeout (including immediately),
+        # meaning even an immediate response is no guarantee that the operation is done.
         # @param [String] name
         #   The name of the operation resource to wait on.
         # @param [Google::Apis::TranslateV3::WaitOperationRequest] wait_operation_request_object

@@ -489,6 +489,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accessible_track_ids, as: 'accessibleTrackIds'
+          property :connected_work_and_personal_app, as: 'connectedWorkAndPersonalApp'
           property :default_permission_policy, as: 'defaultPermissionPolicy'
           collection :delegated_scopes, as: 'delegatedScopes'
           property :disabled, as: 'disabled'

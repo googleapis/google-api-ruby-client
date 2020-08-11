@@ -286,18 +286,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Notification
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Notifications
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class OrgUnit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -401,6 +389,12 @@ module Google
       end
       
       class UserAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserCustomProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1087,33 +1081,6 @@ module Google
         end
       end
       
-      class Notification
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :body, as: 'body'
-          property :etag, as: 'etag'
-          property :from_address, as: 'fromAddress'
-          property :is_unread, as: 'isUnread'
-          property :kind, as: 'kind'
-          property :notification_id, as: 'notificationId'
-          property :send_time, as: 'sendTime', type: DateTime
-      
-          property :subject, as: 'subject'
-        end
-      end
-      
-      class Notifications
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Notification, decorator: Google::Apis::AdminDirectoryV1::Notification::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          property :unread_notifications_count, as: 'unreadNotificationsCount'
-        end
-      end
-      
       class OrgUnit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1303,7 +1270,8 @@ module Google
           property :change_password_at_next_login, as: 'changePasswordAtNextLogin'
           property :creation_time, as: 'creationTime', type: DateTime
       
-          hash :custom_schemas, as: 'customSchemas'
+          hash :custom_schemas, as: 'customSchemas', class: Google::Apis::AdminDirectoryV1::UserCustomProperties, decorator: Google::Apis::AdminDirectoryV1::UserCustomProperties::Representation
+      
           property :customer_id, as: 'customerId'
           property :deletion_time, as: 'deletionTime', type: DateTime
       
@@ -1373,6 +1341,12 @@ module Google
           property :source_is_structured, as: 'sourceIsStructured'
           property :street_address, as: 'streetAddress'
           property :type, as: 'type'
+        end
+      end
+      
+      class UserCustomProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

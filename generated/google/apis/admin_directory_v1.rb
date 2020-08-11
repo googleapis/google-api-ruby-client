@@ -18,15 +18,16 @@ require 'google/apis/admin_directory_v1/representations.rb'
 
 module Google
   module Apis
-    # Admin Directory API
+    # Admin SDK
     #
-    # Manages enterprise resources such as users and groups, administrative
-    # notifications, security features, and more.
+    # Admin SDK lets administrators of enterprise domains to view and manage
+    # resources like user, groups etc. It also provides audit and usage reports of
+    # domain.
     #
-    # @see https://developers.google.com/admin-sdk/directory/
+    # @see http://developers.google.com/admin-sdk/
     module AdminDirectoryV1
       VERSION = 'DirectoryV1'
-      REVISION = '20200605'
+      REVISION = '20200810'
 
       # View and manage customer related information
       AUTH_ADMIN_DIRECTORY_CUSTOMER = 'https://www.googleapis.com/auth/admin.directory.customer'
@@ -66,9 +67,6 @@ module Google
 
       # View groups on your domain
       AUTH_ADMIN_DIRECTORY_GROUP_READONLY = 'https://www.googleapis.com/auth/admin.directory.group.readonly'
-
-      # View and manage notifications received on your domain
-      AUTH_ADMIN_DIRECTORY_NOTIFICATIONS = 'https://www.googleapis.com/auth/admin.directory.notifications'
 
       # View and manage organization units on your domain
       AUTH_ADMIN_DIRECTORY_ORGUNIT = 'https://www.googleapis.com/auth/admin.directory.orgunit'

@@ -50,11 +50,10 @@ module Google
         
         # Deletes all error events of a given project.
         # @param [String] project_name
-        #   Required. The resource name of the Google Cloud Platform project. Written
-        #   as `projects/`projectID``, where ``projectID`` is the
-        #   [Google Cloud Platform project
-        #   ID](https://support.google.com/cloud/answer/6158840).
-        #   Example: `projects/my-project-123`.
+        #   Required. The resource name of the Google Cloud Platform project. Written as `
+        #   projects/`projectID``, where ``projectID`` is the [Google Cloud Platform
+        #   project ID](https://support.google.com/cloud/answer/6158840). Example: `
+        #   projects/my-project-123`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -84,11 +83,10 @@ module Google
         
         # Lists the specified events.
         # @param [String] project_name
-        #   Required. The resource name of the Google Cloud Platform project. Written
-        #   as `projects/`projectID``, where ``projectID`` is the
-        #   [Google Cloud Platform project
-        #   ID](https://support.google.com/cloud/answer/6158840).
-        #   Example: `projects/my-project-123`.
+        #   Required. The resource name of the Google Cloud Platform project. Written as `
+        #   projects/`projectID``, where ``projectID`` is the [Google Cloud Platform
+        #   project ID](https://support.google.com/cloud/answer/6158840). Example: `
+        #   projects/my-project-123`.
         # @param [String] group_id
         #   Required. The group for which events shall be returned.
         # @param [Fixnum] page_size
@@ -96,17 +94,14 @@ module Google
         # @param [String] page_token
         #   Optional. A `next_page_token` provided by a previous response.
         # @param [String] service_filter_resource_type
-        #   Optional. The exact value to match against
-        #   [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/
-        #   ServiceContext#FIELDS.resource_type).
+        #   Optional. The exact value to match against [`ServiceContext.resource_type`](/
+        #   error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
         # @param [String] service_filter_service
-        #   Optional. The exact value to match against
-        #   [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/
-        #   ServiceContext#FIELDS.service).
+        #   Optional. The exact value to match against [`ServiceContext.service`](/error-
+        #   reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
         # @param [String] service_filter_version
-        #   Optional. The exact value to match against
-        #   [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/
-        #   ServiceContext#FIELDS.version).
+        #   Optional. The exact value to match against [`ServiceContext.version`](/error-
+        #   reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
         # @param [String] time_range_period
         #   Restricts the query to the specified time range.
         # @param [String] fields
@@ -143,20 +138,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Report an individual error event.
-        # This endpoint accepts **either** an OAuth token,
-        # **or** an [API key](https://support.google.com/cloud/answer/6158862)
-        # for authentication. To use an API key, append it to the URL as the value of
-        # a `key` parameter. For example:
-        # `POST
-        # https://clouderrorreporting.googleapis.com/v1beta1/`projectName`/events:report?
-        # key=123ABC456`
+        # Report an individual error event. This endpoint accepts **either** an OAuth
+        # token, **or** an [API key](https://support.google.com/cloud/answer/6158862)
+        # for authentication. To use an API key, append it to the URL as the value of a `
+        # key` parameter. For example: `POST https://clouderrorreporting.googleapis.com/
+        # v1beta1/`projectName`/events:report?key=123ABC456`
         # @param [String] project_name
-        #   Required. The resource name of the Google Cloud Platform project. Written
-        #   as `projects/`projectId``, where ``projectId`` is the
-        #   [Google Cloud Platform project
-        #   ID](https://support.google.com/cloud/answer/6158840).
-        #   Example: // `projects/my-project-123`.
+        #   Required. The resource name of the Google Cloud Platform project. Written as `
+        #   projects/`projectId``, where ``projectId`` is the [Google Cloud Platform
+        #   project ID](https://support.google.com/cloud/answer/6158840). Example: // `
+        #   projects/my-project-123`.
         # @param [Google::Apis::ClouderrorreportingV1beta1::ReportedErrorEvent] reported_error_event_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -189,46 +180,41 @@ module Google
         
         # Lists the specified groups.
         # @param [String] project_name
-        #   Required. The resource name of the Google Cloud Platform project. Written
-        #   as `projects/`projectID``, where ``projectID`` is the
-        #   [Google Cloud Platform project
-        #   ID](https://support.google.com/cloud/answer/6158840).
-        #   Example: `projects/my-project-123`.
+        #   Required. The resource name of the Google Cloud Platform project. Written as `
+        #   projects/`projectID``, where ``projectID`` is the [Google Cloud Platform
+        #   project ID](https://support.google.com/cloud/answer/6158840). Example: `
+        #   projects/my-project-123`.
         # @param [String] alignment
-        #   Optional. The alignment of the timed counts to be returned.
-        #   Default is `ALIGNMENT_EQUAL_AT_END`.
+        #   Optional. The alignment of the timed counts to be returned. Default is `
+        #   ALIGNMENT_EQUAL_AT_END`.
         # @param [String] alignment_time
-        #   Optional. Time where the timed counts shall be aligned if rounded
-        #   alignment is chosen. Default is 00:00 UTC.
+        #   Optional. Time where the timed counts shall be aligned if rounded alignment is
+        #   chosen. Default is 00:00 UTC.
         # @param [Array<String>, String] group_id
-        #   Optional. List all <code>ErrorGroupStats</code> with these IDs.
+        #   Optional. List all ErrorGroupStats with these IDs.
         # @param [String] order
-        #   Optional. The sort order in which the results are returned.
-        #   Default is `COUNT_DESC`.
+        #   Optional. The sort order in which the results are returned. Default is `
+        #   COUNT_DESC`.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return per response.
-        #   Default is 20.
+        #   Optional. The maximum number of results to return per response. Default is 20.
         # @param [String] page_token
         #   Optional. A `next_page_token` provided by a previous response. To view
-        #   additional results, pass this token along with the identical query
-        #   parameters as the first request.
+        #   additional results, pass this token along with the identical query parameters
+        #   as the first request.
         # @param [String] service_filter_resource_type
-        #   Optional. The exact value to match against
-        #   [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/
-        #   ServiceContext#FIELDS.resource_type).
+        #   Optional. The exact value to match against [`ServiceContext.resource_type`](/
+        #   error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
         # @param [String] service_filter_service
-        #   Optional. The exact value to match against
-        #   [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/
-        #   ServiceContext#FIELDS.service).
+        #   Optional. The exact value to match against [`ServiceContext.service`](/error-
+        #   reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
         # @param [String] service_filter_version
-        #   Optional. The exact value to match against
-        #   [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/
-        #   ServiceContext#FIELDS.version).
+        #   Optional. The exact value to match against [`ServiceContext.version`](/error-
+        #   reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
         # @param [String] time_range_period
         #   Restricts the query to the specified time range.
         # @param [String] timed_count_duration
-        #   Optional. The preferred duration for a single returned `TimedCount`.
-        #   If not set, no timed counts are returned.
+        #   Optional. The preferred duration for a single returned `TimedCount`. If not
+        #   set, no timed counts are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -269,12 +255,11 @@ module Google
         
         # Get the specified group.
         # @param [String] group_name
-        #   Required. The group resource name. Written as
-        #   `projects/`projectID`/groups/`group_name``. Call
-        #   [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/
-        #   v1beta1/projects.groupStats/list)
-        #   to return a list of groups belonging to this project.
-        #   Example: `projects/my-project-123/groups/my-group`
+        #   Required. The group resource name. Written as `projects/`projectID`/groups/`
+        #   group_name``. Call [`groupStats.list`](https://cloud.google.com/error-
+        #   reporting/reference/rest/v1beta1/projects.groupStats/list) to return a list of
+        #   groups belonging to this project. Example: `projects/my-project-123/groups/my-
+        #   group`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -302,11 +287,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Replace the data for the specified group.
-        # Fails if the group does not exist.
+        # Replace the data for the specified group. Fails if the group does not exist.
         # @param [String] name
-        #   The group resource name.
-        #   Example: <code>projects/my-project-123/groups/CNSgkpnppqKCUw</code>
+        #   The group resource name. Example: projects/my-project-123/groups/
+        #   CNSgkpnppqKCUw
         # @param [Google::Apis::ClouderrorreportingV1beta1::ErrorGroup] error_group_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

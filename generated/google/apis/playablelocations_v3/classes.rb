@@ -26,13 +26,12 @@ module Google
       class GoogleMapsPlayablelocationsV3Impression
         include Google::Apis::Core::Hashable
       
-        # An arbitrary, developer-defined type identifier for each type of game
-        # object used in your game.
-        # Since players interact with differ types of game objects in different ways,
-        # this field allows you to segregate impression data by type for analysis.
-        # You should assign a unique `game_object_type` ID to represent a distinct
-        # type of game object in your game.
-        # For example, 1=monster location, 2=powerup location.
+        # An arbitrary, developer-defined type identifier for each type of game object
+        # used in your game. Since players interact with differ types of game objects in
+        # different ways, this field allows you to segregate impression data by type for
+        # analysis. You should assign a unique `game_object_type` ID to represent a
+        # distinct type of game object in your game. For example, 1=monster location, 2=
+        # powerup location.
         # Corresponds to the JSON property `gameObjectType`
         # @return [Fixnum]
         attr_accessor :game_object_type
@@ -69,19 +68,16 @@ module Google
         attr_accessor :client_info
       
         # Required. Impression event details. The maximum number of impression reports
-        # that you
-        # can log at once is 50.
+        # that you can log at once is 50.
         # Corresponds to the JSON property `impressions`
         # @return [Array<Google::Apis::PlayablelocationsV3::GoogleMapsPlayablelocationsV3Impression>]
         attr_accessor :impressions
       
         # Required. A string that uniquely identifies the log impressions request. This
-        # allows
-        # you to detect duplicate requests. We recommend that you use UUIDs for this
-        # value. The value must not exceed 50 characters.
-        # You should reuse the `request_id` only when retrying a request in case of
-        # failure. In this case, the request must be identical to the one that
-        # failed.
+        # allows you to detect duplicate requests. We recommend that you use UUIDs for
+        # this value. The value must not exceed 50 characters. You should reuse the `
+        # request_id` only when retrying a request in case of failure. In this case, the
+        # request must be identical to the one that failed.
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -98,8 +94,8 @@ module Google
         end
       end
       
-      # A response for the LogImpressions method.
-      # This method returns no data upon success.
+      # A response for the LogImpressions method. This method returns no data upon
+      # success.
       class GoogleMapsPlayablelocationsV3LogImpressionsResponse
         include Google::Apis::Core::Hashable
       
@@ -122,19 +118,16 @@ module Google
         attr_accessor :client_info
       
         # Required. Player reports. The maximum number of player reports that you can
-        # log at
-        # once is 50.
+        # log at once is 50.
         # Corresponds to the JSON property `playerReports`
         # @return [Array<Google::Apis::PlayablelocationsV3::GoogleMapsPlayablelocationsV3PlayerReport>]
         attr_accessor :player_reports
       
         # Required. A string that uniquely identifies the log player reports request.
-        # This
-        # allows you to detect duplicate requests. We recommend that you use UUIDs
-        # for this value. The value must not exceed 50 characters.
-        # You should reuse the `request_id` only when retrying a request in the case
-        # of a failure. In that case, the request must be identical to the one that
-        # failed.
+        # This allows you to detect duplicate requests. We recommend that you use UUIDs
+        # for this value. The value must not exceed 50 characters. You should reuse the `
+        # request_id` only when retrying a request in the case of a failure. In that
+        # case, the request must be identical to the one that failed.
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -151,9 +144,8 @@ module Google
         end
       end
       
-      # A response for the LogPlayerReports
-      # method.
-      # This method returns no data upon success.
+      # A response for the LogPlayerReports method. This method returns no data upon
+      # success.
       class GoogleMapsPlayablelocationsV3LogPlayerReportsResponse
         include Google::Apis::Core::Hashable
       
@@ -172,9 +164,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Language code (in BCP-47 format) indicating the language of the freeform
-        # description provided in `reason_details`. Examples are "en", "en-US" or
-        # "ja-Latn". For more information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # description provided in `reason_details`. Examples are "en", "en-US" or "ja-
+        # Latn". For more information, see http://www.unicode.org/reports/tr35/#
+        # Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -213,15 +205,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The S2 cell ID of the area you want. This must be between cell level
-        # 11 and
-        # 14 (inclusive).
-        # S2 cells are 64-bit integers that identify areas on the Earth. They are
-        # hierarchical, and can therefore be used for spatial indexing.
-        # The S2 geometry library is available in a number of languages:
-        # * [C++](https://github.com/google/s2geometry)
-        # * [Java](https://github.com/google/s2-geometry-library-java)
-        # * [Go](https://github.com/golang/geo)
-        # * [Python](https://github.com/google/s2geometry/tree/master/src/python)
+        # 11 and 14 (inclusive). S2 cells are 64-bit integers that identify areas on the
+        # Earth. They are hierarchical, and can therefore be used for spatial indexing.
+        # The S2 geometry library is available in a number of languages: * [C++](https://
+        # github.com/google/s2geometry) * [Java](https://github.com/google/s2-geometry-
+        # library-java) * [Go](https://github.com/golang/geo) * [Python](https://github.
+        # com/google/s2geometry/tree/master/src/python)
         # Corresponds to the JSON property `s2CellId`
         # @return [Fixnum]
         attr_accessor :s2_cell_id
@@ -236,19 +225,15 @@ module Google
         end
       end
       
-      # Encapsulates a filter criterion for searching for a set of playable
-      # locations.
+      # Encapsulates a filter criterion for searching for a set of playable locations.
       class GoogleMapsPlayablelocationsV3SampleCriterion
         include Google::Apis::Core::Hashable
       
-        # Specifies which `PlayableLocation` fields are returned.
-        # `name` (which is used for logging impressions), `center_point` and
-        # `place_id` (or `plus_code`) are always returned.
-        # The following fields are omitted unless you specify them here:
-        # * snapped_point
-        # * types
-        # Note: The more fields you include, the more expensive in terms of data and
-        # associated latency your query will be.
+        # Specifies which `PlayableLocation` fields are returned. `name` (which is used
+        # for logging impressions), `center_point` and `place_id` (or `plus_code`) are
+        # always returned. The following fields are omitted unless you specify them here:
+        # * snapped_point * types Note: The more fields you include, the more expensive
+        # in terms of data and associated latency your query will be.
         # Corresponds to the JSON property `fieldsToReturn`
         # @return [String]
         attr_accessor :fields_to_return
@@ -259,13 +244,11 @@ module Google
         attr_accessor :filter
       
         # Required. An arbitrary, developer-defined identifier of the type of game
-        # object that
-        # the playable location is used for. This field allows you to specify
-        # criteria per game object type when searching for playable locations.
-        # You should assign a unique `game_object_type` ID across all
-        # `request_criteria` to represent a distinct type of game object. For
-        # example, 1=monster location, 2=powerup location.
-        # The response contains a map<game_object_type, Response>.
+        # object that the playable location is used for. This field allows you to
+        # specify criteria per game object type when searching for playable locations.
+        # You should assign a unique `game_object_type` ID across all `request_criteria`
+        # to represent a distinct type of game object. For example, 1=monster location,
+        # 2=powerup location. The response contains a map.
         # Corresponds to the JSON property `gameObjectType`
         # @return [Fixnum]
         attr_accessor :game_object_type
@@ -286,15 +269,15 @@ module Google
       class GoogleMapsPlayablelocationsV3SampleFilter
         include Google::Apis::Core::Hashable
       
-        # Restricts the set of playable locations to just the
-        # [types](/maps/documentation/gaming/tt/types) that you want.
+        # Restricts the set of playable locations to just the [types](/maps/
+        # documentation/gaming/tt/types) that you want.
         # Corresponds to the JSON property `includedTypes`
         # @return [Array<String>]
         attr_accessor :included_types
       
-        # Specifies the maximum number of playable locations to return. This value
-        # must not be greater than 1000. The default value is 100.
-        # Only the top-ranking playable locations are returned.
+        # Specifies the maximum number of playable locations to return. This value must
+        # not be greater than 1000. The default value is 100. Only the top-ranking
+        # playable locations are returned.
         # Corresponds to the JSON property `maxLocationCount`
         # @return [Fixnum]
         attr_accessor :max_location_count
@@ -316,16 +299,14 @@ module Google
         end
       end
       
-      # A geographical point suitable for placing game objects in location-based
-      # games.
+      # A geographical point suitable for placing game objects in location-based games.
       class GoogleMapsPlayablelocationsV3SamplePlayableLocation
         include Google::Apis::Core::Hashable
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the
-        # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-        # standard</a>. Values must be within normalized ranges.
+        # specified otherwise, this must conform to the WGS84 standard. Values must be
+        # within normalized ranges.
         # Corresponds to the JSON property `centerPoint`
         # @return [Google::Apis::PlayablelocationsV3::GoogleTypeLatLng]
         attr_accessor :center_point
@@ -347,17 +328,15 @@ module Google
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the
-        # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-        # standard</a>. Values must be within normalized ranges.
+        # specified otherwise, this must conform to the WGS84 standard. Values must be
+        # within normalized ranges.
         # Corresponds to the JSON property `snappedPoint`
         # @return [Google::Apis::PlayablelocationsV3::GoogleTypeLatLng]
         attr_accessor :snapped_point
       
-        # A collection of [Playable Location
-        # Types](/maps/documentation/gaming/tt/types) for this playable location. The
-        # first type in the collection is the primary type.
-        # Type information might not be available for all playable locations.
+        # A collection of [Playable Location Types](/maps/documentation/gaming/tt/types)
+        # for this playable location. The first type in the collection is the primary
+        # type. Type information might not be available for all playable locations.
         # Corresponds to the JSON property `types`
         # @return [Array<String>]
         attr_accessor :types
@@ -396,24 +375,19 @@ module Google
         end
       end
       
-      # Life of a query:
-      # - When a game starts in a new location, your game server issues a
-      # SamplePlayableLocations
-      # request. The request specifies the S2 cell, and contains one or more
-      # "criteria" for filtering:
-      # - Criterion 0: i locations for long-lived bases, or level 0 monsters, or...
-      # - Criterion 1: j locations for short-lived bases, or level 1 monsters, ...
-      # - Criterion 2: k locations for random objects.
-      # - etc (up to 5 criterion may be specified).
-      # `PlayableLocationList` will then contain mutually
-      # exclusive lists of `PlayableLocation` objects that satisfy each of
-      # the criteria. Think of it as a collection of real-world locations that you
-      # can then associate with your game state.
-      # Note: These points are impermanent in nature. E.g, parks can close, and
-      # places can be removed.
-      # The response specifies how long you can expect the playable locations to
-      # last. Once they expire, you should query the `samplePlayableLocations` API
-      # again to get a fresh view of the real world.
+      # Life of a query: - When a game starts in a new location, your game server
+      # issues a SamplePlayableLocations request. The request specifies the S2 cell,
+      # and contains one or more "criteria" for filtering: - Criterion 0: i locations
+      # for long-lived bases, or level 0 monsters, or... - Criterion 1: j locations
+      # for short-lived bases, or level 1 monsters, ... - Criterion 2: k locations for
+      # random objects. - etc (up to 5 criterion may be specified). `
+      # PlayableLocationList` will then contain mutually exclusive lists of `
+      # PlayableLocation` objects that satisfy each of the criteria. Think of it as a
+      # collection of real-world locations that you can then associate with your game
+      # state. Note: These points are impermanent in nature. E.g, parks can close, and
+      # places can be removed. The response specifies how long you can expect the
+      # playable locations to last. Once they expire, you should query the `
+      # samplePlayableLocations` API again to get a fresh view of the real world.
       class GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest
         include Google::Apis::Core::Hashable
       
@@ -422,8 +396,8 @@ module Google
         # @return [Google::Apis::PlayablelocationsV3::GoogleMapsPlayablelocationsV3SampleAreaFilter]
         attr_accessor :area_filter
       
-        # Required. Specifies one or more (up to 5) criteria for filtering the
-        # returned playable locations.
+        # Required. Specifies one or more (up to 5) criteria for filtering the returned
+        # playable locations.
         # Corresponds to the JSON property `criteria`
         # @return [Array<Google::Apis::PlayablelocationsV3::GoogleMapsPlayablelocationsV3SampleCriterion>]
         attr_accessor :criteria
@@ -439,26 +413,22 @@ module Google
         end
       end
       
-      # Response for the
-      # SamplePlayableLocations
-      # method.
+      # Response for the SamplePlayableLocations method.
       class GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse
         include Google::Apis::Core::Hashable
       
-        # Each PlayableLocation object corresponds to a game_object_type specified
-        # in the request.
+        # Each PlayableLocation object corresponds to a game_object_type specified in
+        # the request.
         # Corresponds to the JSON property `locationsPerGameObjectType`
         # @return [Hash<String,Google::Apis::PlayablelocationsV3::GoogleMapsPlayablelocationsV3SamplePlayableLocationList>]
         attr_accessor :locations_per_game_object_type
       
         # Required. Specifies the "time-to-live" for the set of playable locations. You
-        # can use
-        # this value to determine how long to cache the set of playable locations.
-        # After this length of time, your back-end game server should issue a new
-        # SamplePlayableLocations
-        # request to get a fresh set of playable locations (because for example, they
-        # might have been removed, a park might have closed for the day, a
-        # business might have closed permanently).
+        # can use this value to determine how long to cache the set of playable
+        # locations. After this length of time, your back-end game server should issue a
+        # new SamplePlayableLocations request to get a fresh set of playable locations (
+        # because for example, they might have been removed, a park might have closed
+        # for the day, a business might have closed permanently).
         # Corresponds to the JSON property `ttl`
         # @return [String]
         attr_accessor :ttl
@@ -479,42 +449,28 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The minimum spacing between any two playable locations, measured in
-        # meters.
-        # The minimum value is 30.
-        # The maximum value is 1000.
-        # Inputs will be rounded up to the next 10 meter interval.
-        # The default value is 200m.
-        # Set this field to remove tight clusters of playable locations.
-        # Note:
-        # The spacing is a greedy algorithm. It optimizes for selecting the highest
-        # ranking locations first, not to maximize the number of locations selected.
-        # Consider the following scenario:
-        # * Rank: A: 2, B: 1, C: 3.
-        # * Distance: A--200m--B--200m--C
-        # If spacing=250, it will pick the highest ranked location [B], not [A, C].
-        # Note:
+        # meters. The minimum value is 30. The maximum value is 1000. Inputs will be
+        # rounded up to the next 10 meter interval. The default value is 200m. Set this
+        # field to remove tight clusters of playable locations. Note: The spacing is a
+        # greedy algorithm. It optimizes for selecting the highest ranking locations
+        # first, not to maximize the number of locations selected. Consider the
+        # following scenario: * Rank: A: 2, B: 1, C: 3. * Distance: A--200m--B--200m--C
+        # If spacing=250, it will pick the highest ranked location [B], not [A, C]. Note:
         # Spacing works within the game object type itself, as well as the previous
-        # ones.
-        # Suppose three game object types, each with the following spacing:
-        # * X: 400m, Y: undefined, Z: 200m.
-        # 1. Add locations for X, within 400m of each other.
-        # 2. Add locations for Y, without any spacing.
-        # 3. Finally, add locations for Z within 200m of each other as well X and Y.
-        # The distance diagram between those locations end up as:
-        # * From->To.
-        # * X->X: 400m
-        # * Y->X, Y->Y: unspecified.
-        # * Z->X, Z->Y, Z->Z: 200m.
+        # ones. Suppose three game object types, each with the following spacing: * X:
+        # 400m, Y: undefined, Z: 200m. 1. Add locations for X, within 400m of each other.
+        # 2. Add locations for Y, without any spacing. 3. Finally, add locations for Z
+        # within 200m of each other as well X and Y. The distance diagram between those
+        # locations end up as: * From->To. * X->X: 400m * Y->X, Y->Y: unspecified. * Z->
+        # X, Z->Y, Z->Z: 200m.
         # Corresponds to the JSON property `minSpacingMeters`
         # @return [Float]
         attr_accessor :min_spacing_meters
       
-        # Specifies whether the minimum spacing constraint applies to the
-        # center-point or to the snapped point of playable locations. The default
-        # value is `CENTER_POINT`.
-        # If a snapped point is not available for a playable location, its
-        # center-point is used instead.
-        # Set this to the point type used in your game.
+        # Specifies whether the minimum spacing constraint applies to the center-point
+        # or to the snapped point of playable locations. The default value is `
+        # CENTER_POINT`. If a snapped point is not available for a playable location,
+        # its center-point is used instead. Set this to the point type used in your game.
         # Corresponds to the JSON property `pointType`
         # @return [String]
         attr_accessor :point_type
@@ -534,46 +490,44 @@ module Google
       class GoogleMapsUnityClientInfo
         include Google::Apis::Core::Hashable
       
-        # API client name and version. For example, the SDK calling the API. The
-        # exact format is up to the client.
+        # API client name and version. For example, the SDK calling the API. The exact
+        # format is up to the client.
         # Corresponds to the JSON property `apiClient`
         # @return [String]
         attr_accessor :api_client
       
-        # Application ID, such as the package name on Android and the bundle
-        # identifier on iOS platforms.
+        # Application ID, such as the package name on Android and the bundle identifier
+        # on iOS platforms.
         # Corresponds to the JSON property `applicationId`
         # @return [String]
         attr_accessor :application_id
       
-        # Application version number, such as "1.2.3". The exact format is
-        # application-dependent.
+        # Application version number, such as "1.2.3". The exact format is application-
+        # dependent.
         # Corresponds to the JSON property `applicationVersion`
         # @return [String]
         attr_accessor :application_version
       
-        # Device model as reported by the device. The exact format is
-        # platform-dependent.
+        # Device model as reported by the device. The exact format is platform-dependent.
         # Corresponds to the JSON property `deviceModel`
         # @return [String]
         attr_accessor :device_model
       
         # Language code (in BCP-47 format) indicating the UI language of the client.
-        # Examples are "en", "en-US" or "ja-Latn". For more information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Examples are "en", "en-US" or "ja-Latn". For more information, see http://www.
+        # unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
       
-        # Operating system name and version as reported by the OS. For example,
-        # "Mac OS X 10.10.4". The exact format is platform-dependent.
+        # Operating system name and version as reported by the OS. For example, "Mac OS
+        # X 10.10.4". The exact format is platform-dependent.
         # Corresponds to the JSON property `operatingSystem`
         # @return [String]
         attr_accessor :operating_system
       
-        # Build number/version of the operating system. e.g., the contents of
-        # android.os.Build.ID in Android, or the contents of sysctl "kern.osversion"
-        # in iOS.
+        # Build number/version of the operating system. e.g., the contents of android.os.
+        # Build.ID in Android, or the contents of sysctl "kern.osversion" in iOS.
         # Corresponds to the JSON property `operatingSystemBuild`
         # @return [String]
         attr_accessor :operating_system_build
@@ -602,9 +556,8 @@ module Google
       
       # An object representing a latitude/longitude pair. This is expressed as a pair
       # of doubles representing degrees latitude and degrees longitude. Unless
-      # specified otherwise, this must conform to the
-      # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-      # standard</a>. Values must be within normalized ranges.
+      # specified otherwise, this must conform to the WGS84 standard. Values must be
+      # within normalized ranges.
       class GoogleTypeLatLng
         include Google::Apis::Core::Hashable
       
