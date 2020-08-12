@@ -34,8 +34,8 @@ module Google
         attr_accessor :basic
       
         # `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
-        # to represent the necessary conditions for the level to apply to a request.
-        # See CEL spec at: https://github.com/google/cel-spec
+        # to represent the necessary conditions for the level to apply to a request. See
+        # CEL spec at: https://github.com/google/cel-spec
         # Corresponds to the JSON property `custom`
         # @return [Google::Apis::AccesscontextmanagerV1beta::CustomLevel]
         attr_accessor :custom
@@ -45,10 +45,10 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Required. Resource name for the Access Level. The `short_name` component
-        # must begin with a letter and only include alphanumeric and '_'. Format:
-        # `accessPolicies/`policy_id`/accessLevels/`short_name``. The maximum length
-        # // of the `short_name` component is 50 characters.
+        # Required. Resource name for the Access Level. The `short_name` component must
+        # begin with a letter and only include alphanumeric and '_'. Format: `
+        # accessPolicies/`policy_id`/accessLevels/`short_name``. The maximum length //
+        # of the `short_name` component is 50 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -73,22 +73,21 @@ module Google
       end
       
       # `AccessPolicy` is a container for `AccessLevels` (which define the necessary
-      # attributes to use Google Cloud services) and `ServicePerimeters` (which
-      # define regions of services able to freely pass data within a perimeter). An
-      # access policy is globally visible within an organization, and the
-      # restrictions it specifies apply to all projects within an organization.
+      # attributes to use Google Cloud services) and `ServicePerimeters` (which define
+      # regions of services able to freely pass data within a perimeter). An access
+      # policy is globally visible within an organization, and the restrictions it
+      # specifies apply to all projects within an organization.
       class AccessPolicy
         include Google::Apis::Core::Hashable
       
-        # Output only. Resource name of the `AccessPolicy`. Format:
-        # `accessPolicies/`policy_id``
+        # Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/`
+        # policy_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. The parent of this `AccessPolicy` in the Cloud Resource
-        # Hierarchy. Currently immutable once created. Format:
-        # `organizations/`organization_id``
+        # Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
+        # Currently immutable once created. Format: `organizations/`organization_id``
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -115,10 +114,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # How the `conditions` list should be combined to determine if a request is
-        # granted this `AccessLevel`. If AND is used, each `Condition` in
-        # `conditions` must be satisfied for the `AccessLevel` to be applied. If OR
-        # is used, at least one `Condition` in `conditions` must be satisfied for the
-        # `AccessLevel` to be applied. Default behavior is AND.
+        # granted this `AccessLevel`. If AND is used, each `Condition` in `conditions`
+        # must be satisfied for the `AccessLevel` to be applied. If OR is used, at least
+        # one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be
+        # applied. Default behavior is AND.
         # Corresponds to the JSON property `combiningFunction`
         # @return [String]
         attr_accessor :combining_function
@@ -152,54 +151,48 @@ module Google
         # devices to be granted access levels, it does not do any enforcement on the
         # device. `DevicePolicy` acts as an AND over all specified fields, and each
         # repeated field is an OR over its elements. Any unset fields are ignored. For
-        # example, if the proto is ` os_type : DESKTOP_WINDOWS, os_type :
-        # DESKTOP_LINUX, encryption_status: ENCRYPTED`, then the DevicePolicy will be
-        # true for requests originating from encrypted Linux desktops and encrypted
-        # Windows desktops.
+        # example, if the proto is ` os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX,
+        # encryption_status: ENCRYPTED`, then the DevicePolicy will be true for requests
+        # originating from encrypted Linux desktops and encrypted Windows desktops.
         # Corresponds to the JSON property `devicePolicy`
         # @return [Google::Apis::AccesscontextmanagerV1beta::DevicePolicy]
         attr_accessor :device_policy
       
-        # CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for
-        # a CIDR IP address block, the specified IP address portion must be properly
+        # CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a
+        # CIDR IP address block, the specified IP address portion must be properly
         # truncated (i.e. all the host bits must be zero) or the input is considered
-        # malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is
-        # not. Similarly, for IPv6, "2001:db8::/32" is accepted whereas
-        # "2001:db8::1/32" is not. The originating IP of a request must be in one of
-        # the listed subnets in order for this Condition to be true. If empty, all IP
-        # addresses are allowed.
+        # malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not.
+        # Similarly, for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32" is
+        # not. The originating IP of a request must be in one of the listed subnets in
+        # order for this Condition to be true. If empty, all IP addresses are allowed.
         # Corresponds to the JSON property `ipSubnetworks`
         # @return [Array<String>]
         attr_accessor :ip_subnetworks
       
-        # The request must be made by one of the provided user or service
-        # accounts. Groups are not supported.
-        # Syntax:
-        # `user:`emailid``
-        # `serviceAccount:`emailid``
+        # The request must be made by one of the provided user or service accounts.
+        # Groups are not supported. Syntax: `user:`emailid`` `serviceAccount:`emailid``
         # If not specified, a request may come from any user.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
       
         # Whether to negate the Condition. If true, the Condition becomes a NAND over
-        # its non-empty fields, each field must be false for the Condition overall to
-        # be satisfied. Defaults to false.
+        # its non-empty fields, each field must be false for the Condition overall to be
+        # satisfied. Defaults to false.
         # Corresponds to the JSON property `negate`
         # @return [Boolean]
         attr_accessor :negate
         alias_method :negate?, :negate
       
-        # The request must originate from one of the provided countries/regions.
-        # Must be valid ISO 3166-1 alpha-2 codes.
+        # The request must originate from one of the provided countries/regions. Must be
+        # valid ISO 3166-1 alpha-2 codes.
         # Corresponds to the JSON property `regions`
         # @return [Array<String>]
         attr_accessor :regions
       
         # A list of other access levels defined in the same `Policy`, referenced by
-        # resource name. Referencing an `AccessLevel` which does not exist is an
-        # error. All access levels listed must be granted for the Condition
-        # to be true. Example:
+        # resource name. Referencing an `AccessLevel` which does not exist is an error.
+        # All access levels listed must be granted for the Condition to be true. Example:
         # "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
         # Corresponds to the JSON property `requiredAccessLevels`
         # @return [Array<String>]
@@ -221,33 +214,26 @@ module Google
       end
       
       # `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
-      # to represent the necessary conditions for the level to apply to a request.
-      # See CEL spec at: https://github.com/google/cel-spec
+      # to represent the necessary conditions for the level to apply to a request. See
+      # CEL spec at: https://github.com/google/cel-spec
       class CustomLevel
         include Google::Apis::Core::Hashable
       
-        # Represents a textual expression in the Common Expression Language (CEL)
-        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-        # are documented at https://github.com/google/cel-spec.
-        # Example (Comparison):
-        # title: "Summary size limit"
-        # description: "Determines if a summary is less than 100 chars"
-        # expression: "document.summary.size() < 100"
-        # Example (Equality):
-        # title: "Requestor is owner"
-        # description: "Determines if requestor is the document owner"
-        # expression: "document.owner == request.auth.claims.email"
-        # Example (Logic):
-        # title: "Public documents"
-        # description: "Determine whether the document should be publicly visible"
-        # expression: "document.type != 'private' && document.type != 'internal'"
-        # Example (Data Manipulation):
-        # title: "Notification string"
-        # description: "Create a notification string with a timestamp."
-        # expression: "'New message received at ' + string(document.create_time)"
-        # The exact variables and functions that may be referenced within an expression
-        # are determined by the service that evaluates it. See the service
-        # documentation for additional information.
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
         # Corresponds to the JSON property `expr`
         # @return [Google::Apis::AccesscontextmanagerV1beta::Expr]
         attr_accessor :expr
@@ -267,15 +253,13 @@ module Google
       # devices to be granted access levels, it does not do any enforcement on the
       # device. `DevicePolicy` acts as an AND over all specified fields, and each
       # repeated field is an OR over its elements. Any unset fields are ignored. For
-      # example, if the proto is ` os_type : DESKTOP_WINDOWS, os_type :
-      # DESKTOP_LINUX, encryption_status: ENCRYPTED`, then the DevicePolicy will be
-      # true for requests originating from encrypted Linux desktops and encrypted
-      # Windows desktops.
+      # example, if the proto is ` os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX,
+      # encryption_status: ENCRYPTED`, then the DevicePolicy will be true for requests
+      # originating from encrypted Linux desktops and encrypted Windows desktops.
       class DevicePolicy
         include Google::Apis::Core::Hashable
       
-        # Allowed device management levels, an empty list allows all management
-        # levels.
+        # Allowed device management levels, an empty list allows all management levels.
         # Corresponds to the JSON property `allowedDeviceManagementLevels`
         # @return [Array<String>]
         attr_accessor :allowed_device_management_levels
@@ -324,52 +308,43 @@ module Google
         end
       end
       
-      # Represents a textual expression in the Common Expression Language (CEL)
-      # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-      # are documented at https://github.com/google/cel-spec.
-      # Example (Comparison):
-      # title: "Summary size limit"
-      # description: "Determines if a summary is less than 100 chars"
-      # expression: "document.summary.size() < 100"
-      # Example (Equality):
-      # title: "Requestor is owner"
-      # description: "Determines if requestor is the document owner"
-      # expression: "document.owner == request.auth.claims.email"
-      # Example (Logic):
-      # title: "Public documents"
-      # description: "Determine whether the document should be publicly visible"
-      # expression: "document.type != 'private' && document.type != 'internal'"
-      # Example (Data Manipulation):
-      # title: "Notification string"
-      # description: "Create a notification string with a timestamp."
-      # expression: "'New message received at ' + string(document.create_time)"
-      # The exact variables and functions that may be referenced within an expression
-      # are determined by the service that evaluates it. See the service
-      # documentation for additional information.
+      # Represents a textual expression in the Common Expression Language (CEL) syntax.
+      # CEL is a C-like expression language. The syntax and semantics of CEL are
+      # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+      # "Summary size limit" description: "Determines if a summary is less than 100
+      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+      # Requestor is owner" description: "Determines if requestor is the document
+      # owner" expression: "document.owner == request.auth.claims.email" Example (
+      # Logic): title: "Public documents" description: "Determine whether the document
+      # should be publicly visible" expression: "document.type != 'private' &&
+      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+      # string" description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)" The
+      # exact variables and functions that may be referenced within an expression are
+      # determined by the service that evaluates it. See the service documentation for
+      # additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
-        # Optional. Description of the expression. This is a longer text which
-        # describes the expression, e.g. when hovered over it in a UI.
+        # Optional. Description of the expression. This is a longer text which describes
+        # the expression, e.g. when hovered over it in a UI.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Textual representation of an expression in Common Expression Language
-        # syntax.
+        # Textual representation of an expression in Common Expression Language syntax.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # Optional. String indicating the location of the expression for error
-        # reporting, e.g. a file name and a position in the file.
+        # Optional. String indicating the location of the expression for error reporting,
+        # e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # Optional. Title for the expression, i.e. a short string describing
-        # its purpose. This can be used e.g. in UIs which allow to enter the
-        # expression.
+        # Optional. Title for the expression, i.e. a short string describing its purpose.
+        # This can be used e.g. in UIs which allow to enter the expression.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -470,47 +445,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::AccesscontextmanagerV1beta::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -533,9 +506,9 @@ module Google
       class OsConstraint
         include Google::Apis::Core::Hashable
       
-        # The minimum allowed OS version. If not set, any version of this OS
-        # satisfies the constraint. Format: `"major.minor.patch"`.
-        # Examples: `"10.5.301"`, `"9.2.1"`.
+        # The minimum allowed OS version. If not set, any version of this OS satisfies
+        # the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"
+        # `.
         # Corresponds to the JSON property `minimumVersion`
         # @return [String]
         attr_accessor :minimum_version
@@ -545,10 +518,10 @@ module Google
         # @return [String]
         attr_accessor :os_type
       
-        # Only allows requests from devices with a verified Chrome OS.
-        # Verifications includes requirements that the device is enterprise-managed,
-        # conformant to domain policies, and the caller has permission to call
-        # the API targeted by the request.
+        # Only allows requests from devices with a verified Chrome OS. Verifications
+        # includes requirements that the device is enterprise-managed, conformant to
+        # domain policies, and the caller has permission to call the API targeted by the
+        # request.
         # Corresponds to the JSON property `requireVerifiedChromeOs`
         # @return [Boolean]
         attr_accessor :require_verified_chrome_os
@@ -567,37 +540,34 @@ module Google
       end
       
       # `ServicePerimeter` describes a set of Google Cloud resources which can freely
-      # import and export data amongst themselves, but not export outside of the
-      # `ServicePerimeter`. If a request with a source within this `ServicePerimeter`
+      # import and export data amongst themselves, but not export outside of the `
+      # ServicePerimeter`. If a request with a source within this `ServicePerimeter`
       # has a target outside of the `ServicePerimeter`, the request will be blocked.
       # Otherwise the request is allowed. There are two types of Service Perimeter -
-      # Regular and Bridge. Regular Service Perimeters cannot overlap, a single
-      # Google Cloud project can only belong to a single regular Service Perimeter.
-      # Service Perimeter Bridges can contain only Google Cloud projects as members,
-      # a single Google Cloud project may belong to multiple Service Perimeter
-      # Bridges.
+      # Regular and Bridge. Regular Service Perimeters cannot overlap, a single Google
+      # Cloud project can only belong to a single regular Service Perimeter. Service
+      # Perimeter Bridges can contain only Google Cloud projects as members, a single
+      # Google Cloud project may belong to multiple Service Perimeter Bridges.
       class ServicePerimeter
         include Google::Apis::Core::Hashable
       
-        # Description of the `ServicePerimeter` and its use. Does not affect
-        # behavior.
+        # Description of the `ServicePerimeter` and its use. Does not affect behavior.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Required. Resource name for the ServicePerimeter.  The `short_name`
-        # component must begin with a letter and only include alphanumeric and '_'.
-        # Format: `accessPolicies/`policy_id`/servicePerimeters/`short_name``
+        # Required. Resource name for the ServicePerimeter. The `short_name` component
+        # must begin with a letter and only include alphanumeric and '_'. Format: `
+        # accessPolicies/`policy_id`/servicePerimeters/`short_name``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Perimeter type indicator. A single project is
-        # allowed to be a member of single regular perimeter, but multiple service
-        # perimeter bridges. A project cannot be a included in a perimeter bridge
-        # without being included in regular perimeter. For perimeter bridges,
-        # restricted/unrestricted service lists as well as access lists must be
-        # empty.
+        # Perimeter type indicator. A single project is allowed to be a member of single
+        # regular perimeter, but multiple service perimeter bridges. A project cannot be
+        # a included in a perimeter bridge without being included in regular perimeter.
+        # For perimeter bridges, restricted/unrestricted service lists as well as access
+        # lists must be empty.
         # Corresponds to the JSON property `perimeterType`
         # @return [String]
         attr_accessor :perimeter_type
@@ -632,14 +602,13 @@ module Google
       class ServicePerimeterConfig
         include Google::Apis::Core::Hashable
       
-        # A list of `AccessLevel` resource names that allow resources within the
-        # `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed
-        # must be in the same policy as this `ServicePerimeter`. Referencing a
-        # nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are
-        # listed, resources within the perimeter can only be accessed via Google
-        # Cloud calls with request origins within the perimeter. Example:
-        # `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`.
-        # For Service Perimeter Bridge, must be empty.
+        # A list of `AccessLevel` resource names that allow resources within the `
+        # ServicePerimeter` to be accessed from the internet. `AccessLevels` listed must
+        # be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `
+        # AccessLevel` is a syntax error. If no `AccessLevel` names are listed,
+        # resources within the perimeter can only be accessed via Google Cloud calls
+        # with request origins within the perimeter. Example: `"accessPolicies/MY_POLICY/
+        # accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty.
         # Corresponds to the JSON property `accessLevels`
         # @return [Array<String>]
         attr_accessor :access_levels
@@ -650,24 +619,23 @@ module Google
         # @return [Array<String>]
         attr_accessor :resources
       
-        # Google Cloud services that are subject to the Service Perimeter
-        # restrictions. Must contain a list of services. For example, if
-        # `storage.googleapis.com` is specified, access to the storage buckets
-        # inside the perimeter must meet the perimeter's access restrictions.
+        # Google Cloud services that are subject to the Service Perimeter restrictions.
+        # Must contain a list of services. For example, if `storage.googleapis.com` is
+        # specified, access to the storage buckets inside the perimeter must meet the
+        # perimeter's access restrictions.
         # Corresponds to the JSON property `restrictedServices`
         # @return [Array<String>]
         attr_accessor :restricted_services
       
         # Google Cloud services that are not subject to the Service Perimeter
-        # restrictions. Deprecated. Must be set to a single wildcard "*".
-        # The wildcard means that unless explicitly specified by
-        # "restricted_services" list, any service is treated as unrestricted.
+        # restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard
+        # means that unless explicitly specified by "restricted_services" list, any
+        # service is treated as unrestricted.
         # Corresponds to the JSON property `unrestrictedServices`
         # @return [Array<String>]
         attr_accessor :unrestricted_services
       
-        # Specifies how APIs are allowed to communicate within the Service
-        # Perimeter.
+        # Specifies how APIs are allowed to communicate within the Service Perimeter.
         # Corresponds to the JSON property `vpcAccessibleServices`
         # @return [Google::Apis::AccesscontextmanagerV1beta::VpcAccessibleServices]
         attr_accessor :vpc_accessible_services
@@ -686,12 +654,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -700,15 +668,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -725,19 +693,20 @@ module Google
         end
       end
       
-      # Specifies how APIs are allowed to communicate within the Service
-      # Perimeter.
+      # Specifies how APIs are allowed to communicate within the Service Perimeter.
       class VpcAccessibleServices
         include Google::Apis::Core::Hashable
       
-        # The list of APIs usable within the Service Perimeter. Must be empty
-        # unless 'enable_restriction' is True.
+        # The list of APIs usable within the Service Perimeter. Must be empty unless '
+        # enable_restriction' is True. You can specify a list of individual services, as
+        # well as include the 'RESTRICTED-SERVICES' value, which automatically includes
+        # all of the services protected by the perimeter.
         # Corresponds to the JSON property `allowedServices`
         # @return [Array<String>]
         attr_accessor :allowed_services
       
-        # Whether to restrict API calls within the Service Perimeter to the list of
-        # APIs specified in 'allowed_services'.
+        # Whether to restrict API calls within the Service Perimeter to the list of APIs
+        # specified in 'allowed_services'.
         # Corresponds to the JSON property `enableRestriction`
         # @return [Boolean]
         attr_accessor :enable_restriction

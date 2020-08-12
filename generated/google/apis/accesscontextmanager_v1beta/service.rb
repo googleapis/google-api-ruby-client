@@ -47,11 +47,10 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Create an `AccessPolicy`. Fails if this organization already has a
-        # `AccessPolicy`. The longrunning Operation will have a successful status
-        # once the `AccessPolicy` has propagated to long-lasting storage.
-        # Syntactic and basic semantic errors will be returned in `metadata` as a
-        # BadRequest proto.
+        # Create an `AccessPolicy`. Fails if this organization already has a `
+        # AccessPolicy`. The longrunning Operation will have a successful status once
+        # the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic
+        # semantic errors will be returned in `metadata` as a BadRequest proto.
         # @param [Google::Apis::AccesscontextmanagerV1beta::AccessPolicy] access_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -81,13 +80,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete an AccessPolicy by resource
-        # name. The longrunning Operation will have a successful status once the
-        # AccessPolicy
-        # has been removed from long-lasting storage.
+        # Delete an AccessPolicy by resource name. The longrunning Operation will have a
+        # successful status once the AccessPolicy has been removed from long-lasting
+        # storage.
         # @param [String] name
-        #   Required. Resource name for the access policy to delete.
-        #   Format `accessPolicies/`policy_id``
+        #   Required. Resource name for the access policy to delete. Format `
+        #   accessPolicies/`policy_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -117,8 +115,8 @@ module Google
         
         # Get an AccessPolicy by name.
         # @param [String] name
-        #   Required. Resource name for the access policy to get.
-        #   Format `accessPolicies/`policy_id``
+        #   Required. Resource name for the access policy to get. Format `accessPolicies/`
+        #   policy_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -146,18 +144,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all AccessPolicies under a
-        # container.
+        # List all AccessPolicies under a container.
         # @param [Fixnum] page_size
         #   Number of AccessPolicy instances to include in the list. Default 100.
         # @param [String] page_token
-        #   Next page token for the next batch of AccessPolicy instances. Defaults to
-        #   the first page of results.
+        #   Next page token for the next batch of AccessPolicy instances. Defaults to the
+        #   first page of results.
         # @param [String] parent
-        #   Required. Resource name for the container to list AccessPolicy instances
-        #   from.
-        #   Format:
-        #   `organizations/`org_id``
+        #   Required. Resource name for the container to list AccessPolicy instances from.
+        #   Format: `organizations/`org_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -187,14 +182,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update an AccessPolicy. The
-        # longrunning Operation from this RPC will have a successful status once the
-        # changes to the AccessPolicy have propagated
-        # to long-lasting storage. Syntactic and basic semantic errors will be
-        # returned in `metadata` as a BadRequest proto.
+        # Update an AccessPolicy. The longrunning Operation from this RPC will have a
+        # successful status once the changes to the AccessPolicy have propagated to long-
+        # lasting storage. Syntactic and basic semantic errors will be returned in `
+        # metadata` as a BadRequest proto.
         # @param [String] name
-        #   Output only. Resource name of the `AccessPolicy`. Format:
-        #   `accessPolicies/`policy_id``
+        #   Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/`
+        #   policy_id``
         # @param [Google::Apis::AccesscontextmanagerV1beta::AccessPolicy] access_policy_object
         # @param [String] update_mask
         #   Required. Mask to control which fields get updated. Must be non-empty.
@@ -228,14 +222,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create an Access Level. The longrunning
-        # operation from this RPC will have a successful status once the Access
-        # Level has
-        # propagated to long-lasting storage. Access Levels containing
-        # errors will result in an error response for the first error encountered.
+        # Create an Access Level. The longrunning operation from this RPC will have a
+        # successful status once the Access Level has propagated to long-lasting storage.
+        # Access Levels containing errors will result in an error response for the
+        # first error encountered.
         # @param [String] parent
-        #   Required. Resource name for the access policy which owns this Access
-        #   Level.
+        #   Required. Resource name for the access policy which owns this Access Level.
         #   Format: `accessPolicies/`policy_id``
         # @param [Google::Apis::AccesscontextmanagerV1beta::AccessLevel] access_level_object
         # @param [String] fields
@@ -267,14 +259,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete an Access Level by resource
-        # name. The longrunning operation from this RPC will have a successful status
-        # once the Access Level has been removed
-        # from long-lasting storage.
+        # Delete an Access Level by resource name. The longrunning operation from this
+        # RPC will have a successful status once the Access Level has been removed from
+        # long-lasting storage.
         # @param [String] name
-        #   Required. Resource name for the Access Level.
-        #   Format:
-        #   `accessPolicies/`policy_id`/accessLevels/`access_level_id``
+        #   Required. Resource name for the Access Level. Format: `accessPolicies/`
+        #   policy_id`/accessLevels/`access_level_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -302,20 +292,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get an Access Level by resource
-        # name.
+        # Get an Access Level by resource name.
         # @param [String] name
-        #   Required. Resource name for the Access Level.
-        #   Format:
-        #   `accessPolicies/`policy_id`/accessLevels/`access_level_id``
+        #   Required. Resource name for the Access Level. Format: `accessPolicies/`
+        #   policy_id`/accessLevels/`access_level_id``
         # @param [String] access_level_format
-        #   Whether to return `BasicLevels` in the Cloud Common Expression
-        #   Language rather than as `BasicLevels`. Defaults to AS_DEFINED, where
-        #   Access Levels
-        #   are returned as `BasicLevels` or `CustomLevels` based on how they were
-        #   created. If set to CEL, all Access Levels are returned as
-        #   `CustomLevels`. In the CEL case, `BasicLevels` are translated to equivalent
-        #   `CustomLevels`.
+        #   Whether to return `BasicLevels` in the Cloud Common Expression Language rather
+        #   than as `BasicLevels`. Defaults to AS_DEFINED, where Access Levels are
+        #   returned as `BasicLevels` or `CustomLevels` based on how they were created. If
+        #   set to CEL, all Access Levels are returned as `CustomLevels`. In the CEL case,
+        #   `BasicLevels` are translated to equivalent `CustomLevels`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -344,22 +330,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all Access Levels for an access
-        # policy.
+        # List all Access Levels for an access policy.
         # @param [String] parent
         #   Required. Resource name for the access policy to list Access Levels from.
-        #   Format:
-        #   `accessPolicies/`policy_id``
+        #   Format: `accessPolicies/`policy_id``
         # @param [String] access_level_format
-        #   Whether to return `BasicLevels` in the Cloud Common Expression language, as
-        #   `CustomLevels`, rather than as `BasicLevels`. Defaults to returning
-        #   `AccessLevels` in the format they were defined.
+        #   Whether to return `BasicLevels` in the Cloud Common Expression language, as `
+        #   CustomLevels`, rather than as `BasicLevels`. Defaults to returning `
+        #   AccessLevels` in the format they were defined.
         # @param [Fixnum] page_size
-        #   Number of Access Levels to include in
-        #   the list. Default 100.
+        #   Number of Access Levels to include in the list. Default 100.
         # @param [String] page_token
-        #   Next page token for the next batch of Access Level instances.
-        #   Defaults to the first page of results.
+        #   Next page token for the next batch of Access Level instances. Defaults to the
+        #   first page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -390,16 +373,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update an Access Level. The longrunning
-        # operation from this RPC will have a successful status once the changes to
-        # the Access Level have propagated
-        # to long-lasting storage. Access Levels containing
-        # errors will result in an error response for the first error encountered.
+        # Update an Access Level. The longrunning operation from this RPC will have a
+        # successful status once the changes to the Access Level have propagated to long-
+        # lasting storage. Access Levels containing errors will result in an error
+        # response for the first error encountered.
         # @param [String] name
-        #   Required. Resource name for the Access Level. The `short_name` component
-        #   must begin with a letter and only include alphanumeric and '_'. Format:
-        #   `accessPolicies/`policy_id`/accessLevels/`short_name``. The maximum length
-        #   // of the `short_name` component is 50 characters.
+        #   Required. Resource name for the Access Level. The `short_name` component must
+        #   begin with a letter and only include alphanumeric and '_'. Format: `
+        #   accessPolicies/`policy_id`/accessLevels/`short_name``. The maximum length //
+        #   of the `short_name` component is 50 characters.
         # @param [Google::Apis::AccesscontextmanagerV1beta::AccessLevel] access_level_object
         # @param [String] update_mask
         #   Required. Mask to control which fields get updated. Must be non-empty.
@@ -433,15 +415,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a Service Perimeter. The
-        # longrunning operation from this RPC will have a successful status once the
-        # Service Perimeter has
-        # propagated to long-lasting storage. Service Perimeters containing
-        # errors will result in an error response for the first error encountered.
+        # Create a Service Perimeter. The longrunning operation from this RPC will have
+        # a successful status once the Service Perimeter has propagated to long-lasting
+        # storage. Service Perimeters containing errors will result in an error response
+        # for the first error encountered.
         # @param [String] parent
         #   Required. Resource name for the access policy which owns this Service
-        #   Perimeter.
-        #   Format: `accessPolicies/`policy_id``
+        #   Perimeter. Format: `accessPolicies/`policy_id``
         # @param [Google::Apis::AccesscontextmanagerV1beta::ServicePerimeter] service_perimeter_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -472,14 +452,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a Service Perimeter by resource
-        # name. The longrunning operation from this RPC will have a successful status
-        # once the Service Perimeter has been
+        # Delete a Service Perimeter by resource name. The longrunning operation from
+        # this RPC will have a successful status once the Service Perimeter has been
         # removed from long-lasting storage.
         # @param [String] name
-        #   Required. Resource name for the Service Perimeter.
-        #   Format:
-        #   `accessPolicies/`policy_id`/servicePerimeters/`service_perimeter_id``
+        #   Required. Resource name for the Service Perimeter. Format: `accessPolicies/`
+        #   policy_id`/servicePerimeters/`service_perimeter_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -507,12 +485,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a Service Perimeter by resource
-        # name.
+        # Get a Service Perimeter by resource name.
         # @param [String] name
-        #   Required. Resource name for the Service Perimeter.
-        #   Format:
-        #   `accessPolicies/`policy_id`/servicePerimeters/`service_perimeters_id``
+        #   Required. Resource name for the Service Perimeter. Format: `accessPolicies/`
+        #   policy_id`/servicePerimeters/`service_perimeters_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -540,18 +516,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all Service Perimeters for an
-        # access policy.
+        # List all Service Perimeters for an access policy.
         # @param [String] parent
         #   Required. Resource name for the access policy to list Service Perimeters from.
-        #   Format:
-        #   `accessPolicies/`policy_id``
+        #   Format: `accessPolicies/`policy_id``
         # @param [Fixnum] page_size
-        #   Number of Service Perimeters to include
-        #   in the list. Default 100.
+        #   Number of Service Perimeters to include in the list. Default 100.
         # @param [String] page_token
-        #   Next page token for the next batch of Service Perimeter instances.
-        #   Defaults to the first page of results.
+        #   Next page token for the next batch of Service Perimeter instances. Defaults to
+        #   the first page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -581,15 +554,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a Service Perimeter. The
-        # longrunning operation from this RPC will have a successful status once the
-        # changes to the Service Perimeter have
-        # propagated to long-lasting storage. Service Perimeter containing
-        # errors will result in an error response for the first error encountered.
+        # Update a Service Perimeter. The longrunning operation from this RPC will have
+        # a successful status once the changes to the Service Perimeter have propagated
+        # to long-lasting storage. Service Perimeter containing errors will result in an
+        # error response for the first error encountered.
         # @param [String] name
-        #   Required. Resource name for the ServicePerimeter.  The `short_name`
-        #   component must begin with a letter and only include alphanumeric and '_'.
-        #   Format: `accessPolicies/`policy_id`/servicePerimeters/`short_name``
+        #   Required. Resource name for the ServicePerimeter. The `short_name` component
+        #   must begin with a letter and only include alphanumeric and '_'. Format: `
+        #   accessPolicies/`policy_id`/servicePerimeters/`short_name``
         # @param [Google::Apis::AccesscontextmanagerV1beta::ServicePerimeter] service_perimeter_object
         # @param [String] update_mask
         #   Required. Mask to control which fields get updated. Must be non-empty.
@@ -623,9 +595,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields

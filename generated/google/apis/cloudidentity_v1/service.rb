@@ -80,9 +80,8 @@ module Google
         # Deletes a Group.
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the
-        #   Group in the format: `groups/`group_id``, where `group_id` is the unique ID
-        #   assigned to the Group.
+        #   of the Group in the format: `groups/`group_id``, where `group_id` is the
+        #   unique ID assigned to the Group.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -113,9 +112,8 @@ module Google
         # Retrieves a Group.
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the
-        #   Group in the format: `groups/`group_id``, where `group_id` is the unique ID
-        #   assigned to the Group.
+        #   of the Group in the format: `groups/`group_id``, where `group_id` is the
+        #   unique ID assigned to the Group.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -145,8 +143,8 @@ module Google
         
         # Lists groups within a customer or a domain.
         # @param [Fixnum] page_size
-        #   The default page size is 200 (max 1000) for the BASIC view, and 50
-        #   (max 500) for the FULL view.
+        #   The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500)
+        #   for the FULL view.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] parent
@@ -183,18 +181,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up [resource
-        # name](https://cloud.google.com/apis/design/resource_names) of a Group by
-        # its EntityKey.
+        # Looks up [resource name](https://cloud.google.com/apis/design/resource_names)
+        # of a Group by its EntityKey.
         # @param [String] group_key_id
-        #   The ID of the entity within the given namespace. The ID must be unique
-        #   within its namespace.
+        #   The ID of the entity within the given namespace. The ID must be unique within
+        #   its namespace.
         # @param [String] group_key_namespace
-        #   Namespaces provide isolation for IDs, so an ID only needs to be unique
-        #   within its namespace.
-        #   Namespaces are currently only created as part of IdentitySource creation
-        #   from Admin Console. A namespace `"identitysources/`identity_source_id`"` is
-        #   created corresponding to every Identity Source `identity_source_id`.
+        #   Namespaces provide isolation for IDs, so an ID only needs to be unique within
+        #   its namespace. Namespaces are currently only created as part of IdentitySource
+        #   creation from Admin Console. A namespace `"identitysources/`identity_source_id`
+        #   "` is created corresponding to every Identity Source `identity_source_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -226,10 +222,9 @@ module Google
         # Updates a Group.
         # @param [String] name
         #   Output only. [Resource name](https://cloud.google.com/apis/design/
-        #   resource_names) of the
-        #   Group in the format: `groups/`group_id``, where group_id is the unique ID
-        #   assigned to the Group.
-        #   Must be left blank while creating a Group.
+        #   resource_names) of the Group in the format: `groups/`group_id``, where
+        #   group_id is the unique ID assigned to the Group. Must be left blank while
+        #   creating a Group.
         # @param [Google::Apis::CloudidentityV1::Group] group_object
         # @param [String] update_mask
         #   Required. Editable fields: `display_name`, `description`
@@ -265,16 +260,14 @@ module Google
         
         # Searches for Groups.
         # @param [Fixnum] page_size
-        #   The default page size is 200 (max 1000) for the BASIC view, and 50
-        #   (max 500) for the FULL view.
+        #   The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500)
+        #   for the FULL view.
         # @param [String] page_token
         #   The next_page_token value returned from a previous search request, if any.
         # @param [String] query
         #   Required. `Required`. Query string for performing search on groups. Users can
-        #   search
-        #   on parent and label attributes of groups.
-        #   EXACT match ('==') is supported on parent, and CONTAINS match ('in') is
-        #   supported on labels.
+        #   search on parent and label attributes of groups. EXACT match ('==') is
+        #   supported on parent, and CONTAINS match ('in') is supported on labels.
         # @param [String] view
         #   Group resource view to be returned. Defaults to [View.BASIC]().
         # @param [String] fields
@@ -310,9 +303,8 @@ module Google
         # Creates a Membership.
         # @param [String] parent
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the
-        #   Group to create Membership within. Format: `groups/`group_id``, where
-        #   `group_id` is the unique ID assigned to the Group.
+        #   of the Group to create Membership within. Format: `groups/`group_id``, where `
+        #   group_id` is the unique ID assigned to the Group.
         # @param [Google::Apis::CloudidentityV1::Membership] membership_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -346,11 +338,9 @@ module Google
         # Deletes a Membership.
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the
-        #   Membership to be deleted.
-        #   Format: `groups/`group_id`/memberships/`member_id``, where `group_id` is
-        #   the unique ID assigned to the Group to which Membership belongs to, and
-        #   member_id is the unique ID assigned to the member.
+        #   of the Membership to be deleted. Format: `groups/`group_id`/memberships/`
+        #   member_id``, where `group_id` is the unique ID assigned to the Group to which
+        #   Membership belongs to, and member_id is the unique ID assigned to the member.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -381,11 +371,9 @@ module Google
         # Retrieves a Membership.
         # @param [String] name
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the
-        #   Membership to be retrieved.
-        #   Format: `groups/`group_id`/memberships/`member_id``, where `group_id` is
-        #   the unique id assigned to the Group to which Membership belongs to, and
-        #   `member_id` is the unique ID assigned to the member.
+        #   of the Membership to be retrieved. Format: `groups/`group_id`/memberships/`
+        #   member_id``, where `group_id` is the unique id assigned to the Group to which
+        #   Membership belongs to, and `member_id` is the unique ID assigned to the member.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -416,13 +404,11 @@ module Google
         # Lists Memberships within a Group.
         # @param [String] parent
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the
-        #   Group to list Memberships within.
-        #   Format: `groups/`group_id``, where `group_id` is the unique ID assigned to
-        #   the Group.
+        #   of the Group to list Memberships within. Format: `groups/`group_id``, where `
+        #   group_id` is the unique ID assigned to the Group.
         # @param [Fixnum] page_size
-        #   The default page size is 200 (max 1000) for the BASIC view, and 50
-        #   (max 500) for the FULL view.
+        #   The default page size is 200 (max 1000) for the BASIC view, and 50 (max 500)
+        #   for the FULL view.
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] view
@@ -457,24 +443,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up [resource
-        # name](https://cloud.google.com/apis/design/resource_names) of a Membership
-        # within a Group by member's EntityKey.
+        # Looks up [resource name](https://cloud.google.com/apis/design/resource_names)
+        # of a Membership within a Group by member's EntityKey.
         # @param [String] parent
         #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
-        #   of the
-        #   Group to lookup Membership within.
-        #   Format: `groups/`group_id``, where `group_id` is the unique ID assigned to
-        #   the Group.
+        #   of the Group to lookup Membership within. Format: `groups/`group_id``, where `
+        #   group_id` is the unique ID assigned to the Group.
         # @param [String] member_key_id
-        #   The ID of the entity within the given namespace. The ID must be unique
-        #   within its namespace.
+        #   The ID of the entity within the given namespace. The ID must be unique within
+        #   its namespace.
         # @param [String] member_key_namespace
-        #   Namespaces provide isolation for IDs, so an ID only needs to be unique
-        #   within its namespace.
-        #   Namespaces are currently only created as part of IdentitySource creation
-        #   from Admin Console. A namespace `"identitysources/`identity_source_id`"` is
-        #   created corresponding to every Identity Source `identity_source_id`.
+        #   Namespaces provide isolation for IDs, so an ID only needs to be unique within
+        #   its namespace. Namespaces are currently only created as part of IdentitySource
+        #   creation from Admin Console. A namespace `"identitysources/`identity_source_id`
+        #   "` is created corresponding to every Identity Source `identity_source_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

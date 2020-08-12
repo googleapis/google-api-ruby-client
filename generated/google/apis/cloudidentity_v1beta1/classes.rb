@@ -32,9 +32,9 @@ module Google
         attr_accessor :enabled_unknown_sources
         alias_method :enabled_unknown_sources?, :enabled_unknown_sources
       
-        # Whether this account is on an owner/primary profile.
-        # For phones, only true for owner profiles. Android 4+ devices
-        # can have secondary or restricted user profiles.
+        # Whether this account is on an owner/primary profile. For phones, only true for
+        # owner profiles. Android 4+ devices can have secondary or restricted user
+        # profiles.
         # Corresponds to the JSON property `ownerProfileAccount`
         # @return [Boolean]
         attr_accessor :owner_profile_account
@@ -45,9 +45,9 @@ module Google
         # @return [String]
         attr_accessor :ownership_privilege
       
-        # Whether device supports Android work profiles. If false, this service
-        # will not block access to corp data even if an administrator turns on the
-        # "Enforce Work Profile" policy.
+        # Whether device supports Android work profiles. If false, this service will not
+        # block access to corp data even if an administrator turns on the "Enforce Work
+        # Profile" policy.
         # Corresponds to the JSON property `supportsWorkProfile`
         # @return [Boolean]
         attr_accessor :supports_work_profile
@@ -66,11 +66,35 @@ module Google
         end
       end
       
+      # Request message for approving the device to access user data.
+      class ApproveDeviceUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+        end
+      end
+      
       # Response message for approving the device to access user data.
       class ApproveDeviceUserResponse
         include Google::Apis::Core::Hashable
       
-        # A DeviceUser is a resource representing a user's use of a Device
+        # Represents a user's use of a Device in the Cloud Identity Devices API. A
+        # DeviceUser is a resource representing a user's use of a Device
         # Corresponds to the JSON property `deviceUser`
         # @return [Google::Apis::CloudidentityV1beta1::DeviceUser]
         attr_accessor :device_user
@@ -82,6 +106,29 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_user = args[:device_user] if args.key?(:device_user)
+        end
+      end
+      
+      # Request message for blocking account on device.
+      class BlockDeviceUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
         end
       end
       
@@ -89,7 +136,8 @@ module Google
       class BlockDeviceUserResponse
         include Google::Apis::Core::Hashable
       
-        # A DeviceUser is a resource representing a user's use of a Device
+        # Represents a user's use of a Device in the Cloud Identity Devices API. A
+        # DeviceUser is a resource representing a user's use of a Device
         # Corresponds to the JSON property `deviceUser`
         # @return [Google::Apis::CloudidentityV1beta1::DeviceUser]
         attr_accessor :device_user
@@ -104,12 +152,36 @@ module Google
         end
       end
       
+      # Request message for cancelling an unfinished device wipe.
+      class CancelWipeDeviceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+        end
+      end
+      
       # Response message for cancelling an unfinished device wipe.
       class CancelWipeDeviceResponse
         include Google::Apis::Core::Hashable
       
-        # Represents a Device known to Google Cloud, independent of the device
-        # ownership, type, and whether it is assigned or in use by a user.
+        # A Device within the Cloud Identity Devices API. Represents a Device known to
+        # Google Cloud, independent of the device ownership, type, and whether it is
+        # assigned or in use by a user.
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::CloudidentityV1beta1::Device]
         attr_accessor :device
@@ -124,11 +196,35 @@ module Google
         end
       end
       
+      # Request message for cancelling an unfinished user account wipe.
+      class CancelWipeDeviceUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+        end
+      end
+      
       # Response message for cancelling an unfinished user account wipe.
       class CancelWipeDeviceUserResponse
         include Google::Apis::Core::Hashable
       
-        # A DeviceUser is a resource representing a user's use of a Device
+        # Represents a user's use of a Device in the Cloud Identity Devices API. A
+        # DeviceUser is a resource representing a user's use of a Device
         # Corresponds to the JSON property `deviceUser`
         # @return [Google::Apis::CloudidentityV1beta1::DeviceUser]
         attr_accessor :device_user
@@ -143,6 +239,7 @@ module Google
         end
       end
       
+      # Represents the state associated with an API client calling the Devices API.
       # Resource representing ClientState and supports updates from API users
       class ClientState
         include Google::Apis::Core::Hashable
@@ -168,9 +265,8 @@ module Google
         # @return [String]
         attr_accessor :custom_id
       
-        # The token that needs to be passed back for
-        # concurrency control in updates. Token needs to be passed back
-        # in UpdateRequest
+        # The token that needs to be passed back for concurrency control in updates.
+        # Token needs to be passed back in UpdateRequest
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -180,9 +276,9 @@ module Google
         # @return [String]
         attr_accessor :health_score
       
-        # The map of key-value attributes stored by callers specific to a
-        # device. The total serialized length of this map may not exceed 10KB. No
-        # limit is placed on the number of attributes in a map.
+        # The map of key-value attributes stored by callers specific to a device. The
+        # total serialized length of this map may not exceed 10KB. No limit is placed on
+        # the number of attributes in a map.
         # Corresponds to the JSON property `keyValuePairs`
         # @return [Hash<String,Google::Apis::CloudidentityV1beta1::CustomAttributeValue>]
         attr_accessor :key_value_pairs
@@ -198,10 +294,9 @@ module Google
         attr_accessor :managed
       
         # Output only. [Resource name](https://cloud.google.com/apis/design/
-        # resource_names) of
-        # the ClientState in format:
-        # `devices/`device_id`/deviceUsers/`device_user_id`/clientState/`partner_id``,
-        # where partner_id corresponds to the partner storing the data.
+        # resource_names) of the ClientState in format: `devices/`device_id`/deviceUsers/
+        # `device_user_id`/clientState/`partner_id``, where partner_id corresponds to
+        # the partner storing the data.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -237,6 +332,37 @@ module Google
         end
       end
       
+      # Request message for creating a Company Owned device.
+      class CreateDeviceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        # A Device within the Cloud Identity Devices API. Represents a Device known to
+        # Google Cloud, independent of the device ownership, type, and whether it is
+        # assigned or in use by a user.
+        # Corresponds to the JSON property `device`
+        # @return [Google::Apis::CloudidentityV1beta1::Device]
+        attr_accessor :device
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+          @device = args[:device] if args.key?(:device)
+        end
+      end
+      
       # Additional custom attribute values may be one of these types
       class CustomAttributeValue
         include Google::Apis::Core::Hashable
@@ -269,8 +395,9 @@ module Google
         end
       end
       
-      # Represents a Device known to Google Cloud, independent of the device
-      # ownership, type, and whether it is assigned or in use by a user.
+      # A Device within the Cloud Identity Devices API. Represents a Device known to
+      # Google Cloud, independent of the device ownership, type, and whether it is
+      # assigned or in use by a user.
       class Device
         include Google::Apis::Core::Hashable
       
@@ -310,8 +437,7 @@ module Google
         attr_accessor :compromised_state
       
         # Output only. When the Company-Owned device was imported. This field is empty
-        # for BYOD
-        # devices.
+        # for BYOD devices.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -374,9 +500,8 @@ module Google
         attr_accessor :model
       
         # Output only. [Resource name](https://cloud.google.com/apis/design/
-        # resource_names)
-        # of the Device in format: `devices/`device_id``, where device_id is
-        # the unique id assigned to the Device.
+        # resource_names) of the Device in format: `devices/`device_id``, where
+        # device_id is the unique id assigned to the Device.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -392,9 +517,8 @@ module Google
         attr_accessor :os_version
       
         # Output only. Domain name for Google accounts on device. Type for other
-        # accounts on
-        # device. On Android, will only be populated if |ownership_privilege| is
-        # |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in
+        # accounts on device. On Android, will only be populated if |ownership_privilege|
+        # is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in
         # to the device policy app if that account's domain has only one account.
         # Examples: "com.example", "xyz.com".
         # Corresponds to the JSON property `otherAccounts`
@@ -463,7 +587,8 @@ module Google
         end
       end
       
-      # A DeviceUser is a resource representing a user's use of a Device
+      # Represents a user's use of a Device in the Cloud Identity Devices API. A
+      # DeviceUser is a resource representing a user's use of a Device
       class DeviceUser
         include Google::Apis::Core::Hashable
       
@@ -498,9 +623,9 @@ module Google
         attr_accessor :management_state
       
         # Output only. [Resource name](https://cloud.google.com/apis/design/
-        # resource_names) of
-        # the DeviceUser in format: `devices/`device_id`/deviceUsers/`user_id``,
-        # where user_id is the ID of the user associated with the user session.
+        # resource_names) of the DeviceUser in format: `devices/`device_id`/deviceUsers/`
+        # user_id``, where user_id is the ID of the user associated with the user
+        # session.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -539,82 +664,26 @@ module Google
         end
       end
       
-      # An EndpointApp represents an app that is installed on a device
-      class EndpointApp
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Name of the app displayed to the user
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Output only. [Resource name](https://cloud.google.com/apis/design/
-        # resource_names) of
-        # the EndpointApp in format:
-        # `devices/`device`/deviceUsers/`device_user`/endpointApps/`endpoint_app``,
-        # where client_app_id is the ID of the app associated with the Device.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. Full package name of the installed app
-        # Corresponds to the JSON property `packageName`
-        # @return [String]
-        attr_accessor :package_name
-      
-        # Output only. Names of all permissions granted to the installed app
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        # Output only. Version code of the installed app
-        # Corresponds to the JSON property `versionCode`
-        # @return [Fixnum]
-        attr_accessor :version_code
-      
-        # Output only. Version name of the installed app
-        # Corresponds to the JSON property `versionName`
-        # @return [String]
-        attr_accessor :version_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @name = args[:name] if args.key?(:name)
-          @package_name = args[:package_name] if args.key?(:package_name)
-          @permissions = args[:permissions] if args.key?(:permissions)
-          @version_code = args[:version_code] if args.key?(:version_code)
-          @version_name = args[:version_name] if args.key?(:version_name)
-        end
-      end
-      
-      # A unique identifier for an entity in the Cloud Identity Groups API.
-      # An entity can represent either a group with an optional `namespace` or a user
-      # without a `namespace`. The combination of `id` and `namespace` must be
-      # unique; however, the same `id` can be used with different `namespace`s.
+      # A unique identifier for an entity in the Cloud Identity Groups API. An entity
+      # can represent either a group with an optional `namespace` or a user without a `
+      # namespace`. The combination of `id` and `namespace` must be unique; however,
+      # the same `id` can be used with different `namespace`s.
       class EntityKey
         include Google::Apis::Core::Hashable
       
-        # The ID of the entity.
-        # For Google-managed entities, the `id` must be the email address of an
-        # existing group or user.
-        # For external-identity-mapped entities, the `id` must be a string conforming
-        # to the Identity Source's requirements.
+        # The ID of the entity. For Google-managed entities, the `id` must be the email
+        # address of an existing group or user. For external-identity-mapped entities,
+        # the `id` must be a string conforming to the Identity Source's requirements.
         # Must be unique within a `namespace`.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # The namespace in which the entity exists.
-        # If not specified, the `EntityKey` represents a Google-managed entity such
-        # as a Google user or a Google Group.
-        # If specified, the `EntityKey` represents an external-identity-mapped group.
-        # The namespace must correspond to an identity source created in Admin
-        # Console and must be in the form of `identitysources/`identity_source_id`.
+        # The namespace in which the entity exists. If not specified, the `EntityKey`
+        # represents a Google-managed entity such as a Google user or a Google Group. If
+        # specified, the `EntityKey` represents an external-identity-mapped group. The
+        # namespace must correspond to an identity source created in Admin Console and
+        # must be in the form of `identitysources/`identity_source_id`.
         # Corresponds to the JSON property `namespace`
         # @return [String]
         attr_accessor :namespace
@@ -658,9 +727,9 @@ module Google
         # @return [Array<Google::Apis::CloudidentityV1beta1::MembershipAdjacencyList>]
         attr_accessor :adjacency_list
       
-        # The resources representing each group in the adjacency list. Each
-        # group in this list can be correlated to a 'group' of the
-        # MembershipAdjacencyList using the 'name' of the Group resource.
+        # The resources representing each group in the adjacency list. Each group in
+        # this list can be correlated to a 'group' of the MembershipAdjacencyList using
+        # the 'name' of the Group resource.
         # Corresponds to the JSON property `groups`
         # @return [Array<Google::Apis::CloudidentityV1beta1::Group>]
         attr_accessor :groups
@@ -676,9 +745,9 @@ module Google
         end
       end
       
-      # A group within the Cloud Identity Groups API.
-      # A `Group` is a collection of entities, where each entity is either a user,
-      # another group or a service account.
+      # A group within the Cloud Identity Groups API. A `Group` is a collection of
+      # entities, where each entity is either a user, another group, or a service
+      # account.
       class Group
         include Google::Apis::Core::Hashable
       
@@ -692,8 +761,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # An extended description to help users determine the purpose of a `Group`.
-        # Must not be longer than 4,096 characters.
+        # An extended description to help users determine the purpose of a `Group`. Must
+        # not be longer than 4,096 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -703,36 +772,39 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A unique identifier for an entity in the Cloud Identity Groups API.
-        # An entity can represent either a group with an optional `namespace` or a user
-        # without a `namespace`. The combination of `id` and `namespace` must be
-        # unique; however, the same `id` can be used with different `namespace`s.
+        # A unique identifier for an entity in the Cloud Identity Groups API. An entity
+        # can represent either a group with an optional `namespace` or a user without a `
+        # namespace`. The combination of `id` and `namespace` must be unique; however,
+        # the same `id` can be used with different `namespace`s.
         # Corresponds to the JSON property `groupKey`
         # @return [Google::Apis::CloudidentityV1beta1::EntityKey]
         attr_accessor :group_key
       
-        # Required. The labels that apply to the `Group`.
-        # Must not contain more than one entry. Must contain the entry
-        # `'cloudidentity.googleapis.com/groups.discussion_forum': ''` if the `Group`
-        # is a Google Group or `'system/groups/external': ''` if the `Group` is an
-        # external-identity-mapped group.
+        # Required. One or more label entries that apply to the Group. Currently
+        # supported labels contain a key with an empty value. Google Groups are the
+        # default type of group and have a label with a key of 'cloudidentity.googleapis.
+        # com/groups.discussion_forum' and an empty value. Existing Google Groups can
+        # have an additional label with a key of 'cloudidentity.googleapis.com/groups.
+        # security' and an empty value added to them. **This is an immutable change and
+        # the security label cannot be removed once added.** Dynamic groups have a label
+        # with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped
+        # groups for Cloud Search have a label with a key of 'system/groups/external'
+        # and an empty value. Examples: `"cloudidentity.googleapis.com/groups.
+        # discussion_forum": ""` or `"system/groups/external": ""`.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
         # Output only. The [resource name](https://cloud.google.com/apis/design/
-        # resource_names) of
-        # the `Group`.
-        # Shall be of the form `groups/`group_id``.
+        # resource_names) of the `Group`. Shall be of the form `groups/`group_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Required. Immutable. The resource name of the entity under which this `Group`
-        # resides in the
-        # Cloud Identity resource hierarchy.
-        # Must be of the form `identitysources/`identity_source_id`` for external-
-        # identity-mapped groups or `customers/`customer_id`` for Google Groups.
+        # resides in the Cloud Identity resource hierarchy. Must be of the form `
+        # identitysources/`identity_source_id`` for external- identity-mapped groups or `
+        # customers/`customer_id`` for Google Groups.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -760,8 +832,7 @@ module Google
         end
       end
       
-      # Response message that is returned in LRO result of ListClientStates
-      # Operation.
+      # Response message that is returned in LRO result of ListClientStates Operation.
       class ListClientStatesResponse
         include Google::Apis::Core::Hashable
       
@@ -770,8 +841,7 @@ module Google
         # @return [Array<Google::Apis::CloudidentityV1beta1::ClientState>]
         attr_accessor :client_states
       
-        # Token to retrieve the next page of results. Empty if there are no more
-        # results.
+        # Token to retrieve the next page of results. Empty if there are no more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -787,7 +857,7 @@ module Google
         end
       end
       
-      # Response message that is returned in LRO result of ListDeviceUsers Operation.
+      # Response message that is returned from the ListDeviceUsers method.
       class ListDeviceUsersResponse
         include Google::Apis::Core::Hashable
       
@@ -796,8 +866,7 @@ module Google
         # @return [Array<Google::Apis::CloudidentityV1beta1::DeviceUser>]
         attr_accessor :device_users
       
-        # Token to retrieve the next page of results. Empty if there are no more
-        # results.
+        # Token to retrieve the next page of results. Empty if there are no more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -813,7 +882,7 @@ module Google
         end
       end
       
-      # Response message that is returned in LRO result of ListDevices Operation.
+      # Response message that is returned from the ListDevices method.
       class ListDevicesResponse
         include Google::Apis::Core::Hashable
       
@@ -822,8 +891,7 @@ module Google
         # @return [Array<Google::Apis::CloudidentityV1beta1::Device>]
         attr_accessor :devices
       
-        # Token to retrieve the next page of results. Empty if there are no more
-        # results.
+        # Token to retrieve the next page of results. Empty if there are no more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -839,32 +907,6 @@ module Google
         end
       end
       
-      # Response message for listing all apps on the device.
-      class ListEndpointAppsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of matching EndpointApps found as a result of the request.
-        # Corresponds to the JSON property `endpointApps`
-        # @return [Array<Google::Apis::CloudidentityV1beta1::EndpointApp>]
-        attr_accessor :endpoint_apps
-      
-        # Token to retrieve the next page of results. Empty if there are no more
-        # results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @endpoint_apps = args[:endpoint_apps] if args.key?(:endpoint_apps)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # The response message for GroupsService.ListGroups.
       class ListGroupsResponse
         include Google::Apis::Core::Hashable
@@ -874,8 +916,8 @@ module Google
         # @return [Array<Google::Apis::CloudidentityV1beta1::Group>]
         attr_accessor :groups
       
-        # A continuation token to retrieve the next page of results, or empty if
-        # there are no more results available.
+        # A continuation token to retrieve the next page of results, or empty if there
+        # are no more results available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -900,8 +942,8 @@ module Google
         # @return [Array<Google::Apis::CloudidentityV1beta1::Membership>]
         attr_accessor :memberships
       
-        # A continuation token to retrieve the next page of results, or empty if
-        # there are no more results available.
+        # A continuation token to retrieve the next page of results, or empty if there
+        # are no more results available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -922,8 +964,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The [resource name](https://cloud.google.com/apis/design/
-        # resource_names) of
-        # the looked-up `Group`.
+        # resource_names) of the looked-up `Group`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -943,8 +984,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The [resource name](https://cloud.google.com/apis/design/resource_names) of
-        # the looked-up `Membership`.
-        # Must be of the form `groups/`group_id`/memberships/`membership_id``.
+        # the looked-up `Membership`. Must be of the form `groups/`group_id`/memberships/
+        # `membership_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -964,23 +1005,21 @@ module Google
       class LookupSelfDeviceUsersResponse
         include Google::Apis::Core::Hashable
       
-        # The obfuscated customer Id that may be passed back to other
-        # Devices API methods such as List, Get, etc.
+        # The obfuscated customer Id that may be passed back to other Devices API
+        # methods such as List, Get, etc.
         # Corresponds to the JSON property `customer`
         # @return [String]
         attr_accessor :customer
       
-        # [Resource names](https://cloud.google.com/apis/design/resource_names) of
-        # the DeviceUsers in the format:
-        # `devices/`device_id`/deviceUsers/`user_resource_id``, where
-        # device_id is the unique ID assigned to a Device and
-        # user_resource_id is the unique user ID
+        # [Resource names](https://cloud.google.com/apis/design/resource_names) of the
+        # DeviceUsers in the format: `devices/`device_id`/deviceUsers/`user_resource_id``
+        # , where device_id is the unique ID assigned to a Device and user_resource_id
+        # is the unique user ID
         # Corresponds to the JSON property `names`
         # @return [Array<String>]
         attr_accessor :names
       
-        # Token to retrieve the next page of results. Empty if there are no more
-        # results.
+        # Token to retrieve the next page of results. Empty if there are no more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -997,9 +1036,9 @@ module Google
         end
       end
       
-      # A membership within the Cloud Identity Groups API.
-      # A `Membership` defines a relationship between a `Group` and an entity
-      # belonging to that `Group`, referred to as a "member".
+      # A membership within the Cloud Identity Groups API. A `Membership` defines a
+      # relationship between a `Group` and an entity belonging to that `Group`,
+      # referred to as a "member".
       class Membership
         include Google::Apis::Core::Hashable
       
@@ -1008,33 +1047,32 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # A unique identifier for an entity in the Cloud Identity Groups API.
-        # An entity can represent either a group with an optional `namespace` or a user
-        # without a `namespace`. The combination of `id` and `namespace` must be
-        # unique; however, the same `id` can be used with different `namespace`s.
+        # A unique identifier for an entity in the Cloud Identity Groups API. An entity
+        # can represent either a group with an optional `namespace` or a user without a `
+        # namespace`. The combination of `id` and `namespace` must be unique; however,
+        # the same `id` can be used with different `namespace`s.
         # Corresponds to the JSON property `memberKey`
         # @return [Google::Apis::CloudidentityV1beta1::EntityKey]
         attr_accessor :member_key
       
         # Output only. The [resource name](https://cloud.google.com/apis/design/
-        # resource_names) of
-        # the `Membership`.
-        # Shall be of the form `groups/`group_id`/memberships/`membership_id``.
+        # resource_names) of the `Membership`. Shall be of the form `groups/`group_id`/
+        # memberships/`membership_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # A unique identifier for an entity in the Cloud Identity Groups API.
-        # An entity can represent either a group with an optional `namespace` or a user
-        # without a `namespace`. The combination of `id` and `namespace` must be
-        # unique; however, the same `id` can be used with different `namespace`s.
+        # A unique identifier for an entity in the Cloud Identity Groups API. An entity
+        # can represent either a group with an optional `namespace` or a user without a `
+        # namespace`. The combination of `id` and `namespace` must be unique; however,
+        # the same `id` can be used with different `namespace`s.
         # Corresponds to the JSON property `preferredMemberKey`
         # @return [Google::Apis::CloudidentityV1beta1::EntityKey]
         attr_accessor :preferred_member_key
       
-        # The `MembershipRole`s that apply to the `Membership`.
-        # If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`.
-        # Must not contain duplicate `MembershipRole`s with the same `name`.
+        # The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults
+        # to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `
+        # MembershipRole`s with the same `name`.
         # Corresponds to the JSON property `roles`
         # @return [Array<Google::Apis::CloudidentityV1beta1::MembershipRole>]
         attr_accessor :roles
@@ -1090,8 +1128,8 @@ module Google
         end
       end
       
-      # A membership role within the Cloud Identity Groups API.
-      # A `MembershipRole` defines the privileges granted to a `Membership`.
+      # A membership role within the Cloud Identity Groups API. A `MembershipRole`
+      # defines the privileges granted to a `Membership`.
       class MembershipRole
         include Google::Apis::Core::Hashable
       
@@ -1100,8 +1138,7 @@ module Google
         # @return [Google::Apis::CloudidentityV1beta1::ExpiryDetail]
         attr_accessor :expiry_detail
       
-        # The name of the `MembershipRole`.
-        # Must be one of `OWNER`, `MANAGER`, `MEMBER`.
+        # The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1121,29 +1158,25 @@ module Google
       class ModifyMembershipRolesRequest
         include Google::Apis::Core::Hashable
       
-        # The `MembershipRole`s to be added.
-        # Adding or removing roles in the same request as updating roles is not
-        # supported.
-        # Must not be set if `update_roles_params` is set.
+        # The `MembershipRole`s to be added. Adding or removing roles in the same
+        # request as updating roles is not supported. Must not be set if `
+        # update_roles_params` is set.
         # Corresponds to the JSON property `addRoles`
         # @return [Array<Google::Apis::CloudidentityV1beta1::MembershipRole>]
         attr_accessor :add_roles
       
-        # The `name`s of the `MembershipRole`s to be removed.
-        # Adding or removing roles in the same request as updating roles is not
-        # supported.
-        # It is not possible to remove the `MEMBER` `MembershipRole`. If you wish to
-        # delete a `Membership`, call MembershipsService.DeleteMembership
-        # instead.
-        # Must not contain `MEMBER`. Must not be set if `update_roles_params` is set.
+        # The `name`s of the `MembershipRole`s to be removed. Adding or removing roles
+        # in the same request as updating roles is not supported. It is not possible to
+        # remove the `MEMBER` `MembershipRole`. If you wish to delete a `Membership`,
+        # call MembershipsService.DeleteMembership instead. Must not contain `MEMBER`.
+        # Must not be set if `update_roles_params` is set.
         # Corresponds to the JSON property `removeRoles`
         # @return [Array<String>]
         attr_accessor :remove_roles
       
-        # The `MembershipRole`s to be updated.
-        # Updating roles in the same request as adding or removing roles is not
-        # supported.
-        # Must not be set if either `add_roles` or `remove_roles` is set.
+        # The `MembershipRole`s to be updated. Updating roles in the same request as
+        # adding or removing roles is not supported. Must not be set if either `
+        # add_roles` or `remove_roles` is set.
         # Corresponds to the JSON property `updateRolesParams`
         # @return [Array<Google::Apis::CloudidentityV1beta1::UpdateMembershipRolesParams>]
         attr_accessor :update_roles_params
@@ -1164,9 +1197,9 @@ module Google
       class ModifyMembershipRolesResponse
         include Google::Apis::Core::Hashable
       
-        # A membership within the Cloud Identity Groups API.
-        # A `Membership` defines a relationship between a `Group` and an entity
-        # belonging to that `Group`, referred to as a "member".
+        # A membership within the Cloud Identity Groups API. A `Membership` defines a
+        # relationship between a `Group` and an entity belonging to that `Group`,
+        # referred to as a "member".
         # Corresponds to the JSON property `membership`
         # @return [Google::Apis::CloudidentityV1beta1::Membership]
         attr_accessor :membership
@@ -1186,47 +1219,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::CloudidentityV1beta1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -1254,8 +1285,8 @@ module Google
         # @return [Array<Google::Apis::CloudidentityV1beta1::Group>]
         attr_accessor :groups
       
-        # A continuation token to retrieve the next page of results, or empty if
-        # there are no more results available.
+        # A continuation token to retrieve the next page of results, or empty if there
+        # are no more results available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1271,12 +1302,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -1285,15 +1316,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -1314,14 +1345,14 @@ module Google
       class UpdateMembershipRolesParams
         include Google::Apis::Core::Hashable
       
-        # The fully-qualified names of fields to update.
-        # May only contain the field `expiry_detail`.
+        # The fully-qualified names of fields to update. May only contain the field `
+        # expiry_detail`.
         # Corresponds to the JSON property `fieldMask`
         # @return [String]
         attr_accessor :field_mask
       
-        # A membership role within the Cloud Identity Groups API.
-        # A `MembershipRole` defines the privileges granted to a `Membership`.
+        # A membership role within the Cloud Identity Groups API. A `MembershipRole`
+        # defines the privileges granted to a `Membership`.
         # Corresponds to the JSON property `membershipRole`
         # @return [Google::Apis::CloudidentityV1beta1::MembershipRole]
         attr_accessor :membership_role
@@ -1337,12 +1368,36 @@ module Google
         end
       end
       
+      # Request message for wiping all data on the device.
+      class WipeDeviceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+        end
+      end
+      
       # Response message for wiping all data on the device.
       class WipeDeviceResponse
         include Google::Apis::Core::Hashable
       
-        # Represents a Device known to Google Cloud, independent of the device
-        # ownership, type, and whether it is assigned or in use by a user.
+        # A Device within the Cloud Identity Devices API. Represents a Device known to
+        # Google Cloud, independent of the device ownership, type, and whether it is
+        # assigned or in use by a user.
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::CloudidentityV1beta1::Device]
         attr_accessor :device
@@ -1357,11 +1412,35 @@ module Google
         end
       end
       
+      # Request message for starting an account wipe on device.
+      class WipeDeviceUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        # of the customer. If you're using this API for your own organization, use `
+        # customers/my_customer` If you're using this API to manage another organization,
+        # use `customers/`customer_id``, where customer_id is the customer to whom the
+        # device belongs.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+        end
+      end
+      
       # Response message for wiping the user's account from the device.
       class WipeDeviceUserResponse
         include Google::Apis::Core::Hashable
       
-        # A DeviceUser is a resource representing a user's use of a Device
+        # Represents a user's use of a Device in the Cloud Identity Devices API. A
+        # DeviceUser is a resource representing a user's use of a Device
         # Corresponds to the JSON property `deviceUser`
         # @return [Google::Apis::CloudidentityV1beta1::DeviceUser]
         attr_accessor :device_user

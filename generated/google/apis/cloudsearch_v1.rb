@@ -20,13 +20,13 @@ module Google
   module Apis
     # Cloud Search API
     #
-    # Cloud Search provides cloud-based search capabilities over G Suite data.  The
+    # Cloud Search provides cloud-based search capabilities over G Suite data. The
     # Cloud Search API allows indexing of non-G Suite data into Cloud Search.
     #
     # @see https://developers.google.com/cloud-search/docs/guides/
     module CloudsearchV1
       VERSION = 'V1'
-      REVISION = '20200721'
+      REVISION = '20200803'
 
       # Index and serve your organization's data with Cloud Search
       AUTH_CLOUD_SEARCH = 'https://www.googleapis.com/auth/cloud_search'

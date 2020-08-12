@@ -22,7 +22,10 @@ module Google
   module Apis
     module AdminDatatransferV1
       
-      # The JSON template for an Application resource.
+      # The JSON template for an Application resource. STEPLADDER: Generated unstable
+      # field number for field 'kind'. (See http://go/stepladder-help#fieldNumber)
+      # STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/
+      # stepladder-help#fieldNumber)
       class Application
         include Google::Apis::Core::Hashable
       
@@ -124,7 +127,10 @@ module Google
         end
       end
       
-      # Template for a collection of Applications.
+      # Template for a collection of Applications. STEPLADDER: Generated unstable
+      # field number for field 'kind'. (See http://go/stepladder-help#fieldNumber)
+      # STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/
+      # stepladder-help#fieldNumber)
       class ApplicationsListResponse
         include Google::Apis::Core::Hashable
       
@@ -162,7 +168,10 @@ module Google
         end
       end
       
-      # The JSON template for a DataTransfer resource.
+      # The JSON template for a DataTransfer resource. STEPLADDER: Generated unstable
+      # field number for field 'kind'. (See http://go/stepladder-help#fieldNumber)
+      # STEPLADDER: Generated unstable field number for field 'etag'. (See http://go/
+      # stepladder-help#fieldNumber)
       class DataTransfer
         include Google::Apis::Core::Hashable
       
@@ -226,7 +235,10 @@ module Google
         end
       end
       
-      # Template for a collection of DataTransfer resources.
+      # Template for a collection of DataTransfer resources. STEPLADDER: Generated
+      # unstable field number for field 'kind'. (See http://go/stepladder-help#
+      # fieldNumber) STEPLADDER: Generated unstable field number for field 'etag'. (
+      # See http://go/stepladder-help#fieldNumber)
       class DataTransfersListResponse
         include Google::Apis::Core::Hashable
       

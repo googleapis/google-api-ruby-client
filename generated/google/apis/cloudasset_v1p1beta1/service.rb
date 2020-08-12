@@ -47,36 +47,30 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Searches all the IAM policies within a given accessible CRM scope
-        # (project/folder/organization). This RPC gives callers especially
-        # administrators the ability to search all the IAM policies within a scope,
-        # even if they don't have `.getIamPolicy` permission of all the IAM policies.
-        # Callers should have `cloud.assets.SearchAllIamPolicies` permission on the
-        # requested scope, otherwise the request will be rejected.
+        # Searches all the IAM policies within a given accessible CRM scope (project/
+        # folder/organization). This RPC gives callers especially administrators the
+        # ability to search all the IAM policies within a scope, even if they don't have
+        # `.getIamPolicy` permission of all the IAM policies. Callers should have `cloud.
+        # assets.SearchAllIamPolicies` permission on the requested scope, otherwise the
+        # request will be rejected.
         # @param [String] scope
         #   Required. The relative name of an asset. The search is limited to the
-        #   resources
-        #   within the `scope`. The allowed value must be:
-        #   * Organization number (such as "organizations/123")
-        #   * Folder number(such as "folders/1234")
-        #   * Project number (such as "projects/12345")
-        #   * Project id (such as "projects/abc")
+        #   resources within the `scope`. The allowed value must be: * Organization number
+        #   (such as "organizations/123") * Folder number(such as "folders/1234") *
+        #   Project number (such as "projects/12345") * Project id (such as "projects/abc")
         # @param [Fixnum] page_size
         #   Optional. The page size for search result pagination. Page size is capped at
-        #   500 even
-        #   if a larger value is given. If set to zero, server will pick an appropriate
-        #   default. Returned results may be fewer than requested. When this happens,
-        #   there could be more results as long as `next_page_token` is returned.
+        #   500 even if a larger value is given. If set to zero, server will pick an
+        #   appropriate default. Returned results may be fewer than requested. When this
+        #   happens, there could be more results as long as `next_page_token` is returned.
         # @param [String] page_token
         #   Optional. If present, retrieve the next batch of results from the preceding
-        #   call to
-        #   this method. `page_token` must be the value of `next_page_token` from the
-        #   previous response. The values of all other method parameters must be
+        #   call to this method. `page_token` must be the value of `next_page_token` from
+        #   the previous response. The values of all other method parameters must be
         #   identical to those in the previous call.
         # @param [String] query
-        #   Optional. The query statement. Examples:
-        #   * "policy:myuser@mydomain.com"
-        #   * "policy:(myuser@mydomain.com viewer)"
+        #   Optional. The query statement. Examples: * "policy:myuser@mydomain.com" * "
+        #   policy:(myuser@mydomain.com viewer)"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -107,41 +101,35 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Searches all the resources within a given accessible CRM scope
-        # (project/folder/organization). This RPC gives callers especially
-        # administrators the ability to search all the resources within a scope, even
-        # if they don't have `.get` permission of all the resources. Callers should
-        # have `cloud.assets.SearchAllResources` permission on the requested scope,
-        # otherwise the request will be rejected.
+        # Searches all the resources within a given accessible CRM scope (project/folder/
+        # organization). This RPC gives callers especially administrators the ability to
+        # search all the resources within a scope, even if they don't have `.get`
+        # permission of all the resources. Callers should have `cloud.assets.
+        # SearchAllResources` permission on the requested scope, otherwise the request
+        # will be rejected.
         # @param [String] scope
         #   Required. The relative name of an asset. The search is limited to the
-        #   resources
-        #   within the `scope`. The allowed value must be:
-        #   * Organization number (such as "organizations/123")
-        #   * Folder number(such as "folders/1234")
-        #   * Project number (such as "projects/12345")
-        #   * Project id (such as "projects/abc")
+        #   resources within the `scope`. The allowed value must be: * Organization number
+        #   (such as "organizations/123") * Folder number(such as "folders/1234") *
+        #   Project number (such as "projects/12345") * Project id (such as "projects/abc")
         # @param [Array<String>, String] asset_types
         #   Optional. A list of asset types that this request searches for. If empty, it
-        #   will
-        #   search all the supported asset types.
+        #   will search all the supported asset types.
         # @param [String] order_by
         #   Optional. A comma separated list of fields specifying the sorting order of the
-        #   results. The default order is ascending. Add ` DESC` after the field name
-        #   to indicate descending order. Redundant space characters are ignored. For
-        #   example, `  location DESC ,  name  `.
+        #   results. The default order is ascending. Add ` DESC` after the field name to
+        #   indicate descending order. Redundant space characters are ignored. For example,
+        #   ` location DESC , name `.
         # @param [Fixnum] page_size
         #   Optional. The page size for search result pagination. Page size is capped at
-        #   500 even
-        #   if a larger value is given. If set to zero, server will pick an appropriate
-        #   default. Returned results may be fewer than requested. When this happens,
-        #   there could be more results as long as `next_page_token` is returned.
+        #   500 even if a larger value is given. If set to zero, server will pick an
+        #   appropriate default. Returned results may be fewer than requested. When this
+        #   happens, there could be more results as long as `next_page_token` is returned.
         # @param [String] page_token
         #   Optional. If present, then retrieve the next batch of results from the
-        #   preceding call
-        #   to this method.  `page_token` must be the value of `next_page_token` from
-        #   the previous response. The values of all other method parameters, must be
-        #   identical to those in the previous call.
+        #   preceding call to this method. `page_token` must be the value of `
+        #   next_page_token` from the previous response. The values of all other method
+        #   parameters, must be identical to those in the previous call.
         # @param [String] query
         #   Optional. The query statement.
         # @param [String] fields

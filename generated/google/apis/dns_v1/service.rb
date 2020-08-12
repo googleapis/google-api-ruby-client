@@ -51,13 +51,12 @@ module Google
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
-        #   Identifies the managed zone addressed by this request. Can be the managed
-        #   zone name or id.
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
         # @param [Google::Apis::DnsV1::Change] change_object
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -93,15 +92,14 @@ module Google
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
-        #   Identifies the managed zone addressed by this request. Can be the managed
-        #   zone name or id.
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
         # @param [String] change_id
         #   The identifier of the requested change, from a previous
         #   ResourceRecordSetsChangeResponse.
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -136,14 +134,14 @@ module Google
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
-        #   Identifies the managed zone addressed by this request. Can be the managed
-        #   zone name or id.
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
         # @param [Fixnum] max_results
-        #   Optional. Maximum number of results to be returned. If unspecified, the
-        #   server will decide how many results to return.
+        #   Optional. Maximum number of results to be returned. If unspecified, the server
+        #   will decide how many results to return.
         # @param [String] page_token
-        #   Optional. A tag returned by a previous list request that was truncated.
-        #   Use this parameter to continue a previous list request.
+        #   Optional. A tag returned by a previous list request that was truncated. Use
+        #   this parameter to continue a previous list request.
         # @param [String] sort_by
         #   Sorting criterion. The only supported value is change sequence.
         # @param [String] sort_order
@@ -184,18 +182,17 @@ module Google
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
-        #   Identifies the managed zone addressed by this request. Can be the managed
-        #   zone name or id.
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
         # @param [String] dns_key_id
         #   The identifier of the requested DnsKey.
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] digest_type
-        #   An optional comma-separated list of digest types to compute and display
-        #   for key signing keys. If omitted, the recommended digest type will be
-        #   computed and displayed.
+        #   An optional comma-separated list of digest types to compute and display for
+        #   key signing keys. If omitted, the recommended digest type will be computed and
+        #   displayed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -231,18 +228,18 @@ module Google
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
-        #   Identifies the managed zone addressed by this request. Can be the managed
-        #   zone name or id.
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
         # @param [String] digest_type
-        #   An optional comma-separated list of digest types to compute and display
-        #   for key signing keys. If omitted, the recommended digest type will be
-        #   computed and displayed.
+        #   An optional comma-separated list of digest types to compute and display for
+        #   key signing keys. If omitted, the recommended digest type will be computed and
+        #   displayed.
         # @param [Fixnum] max_results
-        #   Optional. Maximum number of results to be returned. If unspecified, the
-        #   server will decide how many results to return.
+        #   Optional. Maximum number of results to be returned. If unspecified, the server
+        #   will decide how many results to return.
         # @param [String] page_token
-        #   Optional. A tag returned by a previous list request that was truncated.
-        #   Use this parameter to continue a previous list request.
+        #   Optional. A tag returned by a previous list request that was truncated. Use
+        #   this parameter to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -282,9 +279,8 @@ module Google
         # @param [String] operation
         #   Identifies the operation addressed by this request.
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -321,11 +317,11 @@ module Google
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request.
         # @param [Fixnum] max_results
-        #   Optional. Maximum number of results to be returned. If unspecified, the
-        #   server will decide how many results to return.
+        #   Optional. Maximum number of results to be returned. If unspecified, the server
+        #   will decide how many results to return.
         # @param [String] page_token
-        #   Optional. A tag returned by a previous list request that was truncated.
-        #   Use this parameter to continue a previous list request.
+        #   Optional. A tag returned by a previous list request that was truncated. Use
+        #   this parameter to continue a previous list request.
         # @param [String] sort_by
         #   Sorting criterion. The only supported values are START_TIME and ID.
         # @param [String] fields
@@ -364,9 +360,8 @@ module Google
         #   Identifies the project addressed by this request.
         # @param [Google::Apis::DnsV1::ManagedZone] managed_zone_object
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -401,12 +396,11 @@ module Google
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
-        #   Identifies the managed zone addressed by this request. Can be the managed
-        #   zone name or id.
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -438,12 +432,11 @@ module Google
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
-        #   Identifies the managed zone addressed by this request. Can be the managed
-        #   zone name or id.
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -479,11 +472,11 @@ module Google
         # @param [String] dns_name
         #   Restricts the list to return only zones with this domain name.
         # @param [Fixnum] max_results
-        #   Optional. Maximum number of results to be returned. If unspecified, the
-        #   server will decide how many results to return.
+        #   Optional. Maximum number of results to be returned. If unspecified, the server
+        #   will decide how many results to return.
         # @param [String] page_token
-        #   Optional. A tag returned by a previous list request that was truncated.
-        #   Use this parameter to continue a previous list request.
+        #   Optional. A tag returned by a previous list request that was truncated. Use
+        #   this parameter to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -518,13 +511,12 @@ module Google
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
-        #   Identifies the managed zone addressed by this request. Can be the managed
-        #   zone name or id.
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
         # @param [Google::Apis::DnsV1::ManagedZone] managed_zone_object
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -560,13 +552,12 @@ module Google
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
-        #   Identifies the managed zone addressed by this request. Can be the managed
-        #   zone name or id.
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
         # @param [Google::Apis::DnsV1::ManagedZone] managed_zone_object
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -603,9 +594,8 @@ module Google
         #   Identifies the project addressed by this request.
         # @param [Google::Apis::DnsV1::Policy] policy_object
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -643,9 +633,8 @@ module Google
         # @param [String] policy
         #   User given friendly name of the policy addressed by this request.
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -679,9 +668,8 @@ module Google
         # @param [String] policy
         #   User given friendly name of the policy addressed by this request.
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -715,11 +703,11 @@ module Google
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [Fixnum] max_results
-        #   Optional. Maximum number of results to be returned. If unspecified, the
-        #   server will decide how many results to return.
+        #   Optional. Maximum number of results to be returned. If unspecified, the server
+        #   will decide how many results to return.
         # @param [String] page_token
-        #   Optional. A tag returned by a previous list request that was truncated.
-        #   Use this parameter to continue a previous list request.
+        #   Optional. A tag returned by a previous list request that was truncated. Use
+        #   this parameter to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -756,9 +744,8 @@ module Google
         #   User given friendly name of the policy addressed by this request.
         # @param [Google::Apis::DnsV1::Policy] policy_object
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -797,9 +784,8 @@ module Google
         #   User given friendly name of the policy addressed by this request.
         # @param [Google::Apis::DnsV1::Policy] policy_object
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -835,9 +821,8 @@ module Google
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier
-        #   specified by the client. Must be unique for operation resources in the
-        #   Operations collection.
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -870,20 +855,20 @@ module Google
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
-        #   Identifies the managed zone addressed by this request. Can be the managed
-        #   zone name or id.
+        #   Identifies the managed zone addressed by this request. Can be the managed zone
+        #   name or id.
         # @param [Fixnum] max_results
-        #   Optional. Maximum number of results to be returned. If unspecified, the
-        #   server will decide how many results to return.
+        #   Optional. Maximum number of results to be returned. If unspecified, the server
+        #   will decide how many results to return.
         # @param [String] name
         #   Restricts the list to return only records with this fully qualified domain
         #   name.
         # @param [String] page_token
-        #   Optional. A tag returned by a previous list request that was truncated.
-        #   Use this parameter to continue a previous list request.
+        #   Optional. A tag returned by a previous list request that was truncated. Use
+        #   this parameter to continue a previous list request.
         # @param [String] type
-        #   Restricts the list to return only records of this type. If present, the
-        #   "name" parameter must also be present.
+        #   Restricts the list to return only records of this type. If present, the "name"
+        #   parameter must also be present.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

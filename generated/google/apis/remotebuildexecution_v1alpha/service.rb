@@ -47,13 +47,13 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a new instance in the specified region.
-        # Returns a long running operation which contains an instance on completion.
-        # While the long running operation is in progress, any call to `GetInstance`
-        # returns an instance in state `CREATING`.
+        # Creates a new instance in the specified region. Returns a long running
+        # operation which contains an instance on completion. While the long running
+        # operation is in progress, any call to `GetInstance` returns an instance in
+        # state `CREATING`.
         # @param [String] parent
-        #   Resource name of the project containing the instance.
-        #   Format: `projects/[PROJECT_ID]`.
+        #   Resource name of the project containing the instance. Format: `projects/[
+        #   PROJECT_ID]`.
         # @param [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest] google_devtools_remotebuildexecution_admin_v1alpha_create_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -84,14 +84,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified instance.
-        # Returns a long running operation which contains a `google.protobuf.Empty`
-        # response on completion.
-        # Deleting an instance with worker pools in it will delete these worker
-        # pools.
+        # Deletes the specified instance. Returns a long running operation which
+        # contains a `google.protobuf.Empty` response on completion. Deleting an
+        # instance with worker pools in it will delete these worker pools.
         # @param [String] name
-        #   Name of the instance to delete.
-        #   Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+        #   Name of the instance to delete. Format: `projects/[PROJECT_ID]/instances/[
+        #   INSTANCE_ID]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -121,8 +119,8 @@ module Google
         
         # Returns the specified instance.
         # @param [String] name
-        #   Name of the instance to retrieve.
-        #   Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+        #   Name of the instance to retrieve. Format: `projects/[PROJECT_ID]/instances/[
+        #   INSTANCE_ID]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -152,8 +150,7 @@ module Google
         
         # Lists instances in a project.
         # @param [String] parent
-        #   Resource name of the project.
-        #   Format: `projects/[PROJECT_ID]`.
+        #   Resource name of the project. Format: `projects/[PROJECT_ID]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -181,13 +178,65 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new worker pool with a specified size and configuration.
-        # Returns a long running operation which contains a worker pool on
-        # completion. While the long running operation is in progress, any call to
-        # `GetWorkerPool` returns a worker pool in state `CREATING`.
+        # Updates the specified instance. Returns a long running operation which
+        # contains the updated instance in the response on completion.
+        # @param [String] name
+        #   Output only. Instance resource name formatted as: `projects/[PROJECT_ID]/
+        #   instances/[INSTANCE_ID]`. Name should not be populated when creating an
+        #   instance since it is provided in the `instance_id` field.
+        # @param [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance] google_devtools_remotebuildexecution_admin_v1alpha_instance_object
+        # @param [Boolean] logging_enabled
+        #   Deprecated, use instance.logging_enabled instead. Whether to enable
+        #   Stackdriver logging for this instance.
+        # @param [String] name1
+        #   Deprecated, use instance.Name instead. Name of the instance to update. Format:
+        #   `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+        # @param [String] update_mask
+        #   The update mask applies to instance. For the `FieldMask` definition, see https:
+        #   //developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask If an empty update_mask is provided, only the non-default valued
+        #   field in the worker pool field will be updated. Note that in order to update a
+        #   field to the default value (zero, false, empty string) an explicit update_mask
+        #   must be provided.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RemotebuildexecutionV1alpha::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_instance(name, google_devtools_remotebuildexecution_admin_v1alpha_instance_object = nil, logging_enabled: nil, name1: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance::Representation
+          command.request_object = google_devtools_remotebuildexecution_admin_v1alpha_instance_object
+          command.response_representation = Google::Apis::RemotebuildexecutionV1alpha::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RemotebuildexecutionV1alpha::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['loggingEnabled'] = logging_enabled unless logging_enabled.nil?
+          command.query['name1'] = name1 unless name1.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new worker pool with a specified size and configuration. Returns a
+        # long running operation which contains a worker pool on completion. While the
+        # long running operation is in progress, any call to `GetWorkerPool` returns a
+        # worker pool in state `CREATING`.
         # @param [String] parent
-        #   Resource name of the instance in which to create the new worker pool.
-        #   Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+        #   Resource name of the instance in which to create the new worker pool. Format: `
+        #   projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
         # @param [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest] google_devtools_remotebuildexecution_admin_v1alpha_create_worker_pool_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -218,15 +267,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified worker pool.
-        # Returns a long running operation, which contains a `google.protobuf.Empty`
-        # response on completion.
-        # While the long running operation is in progress, any call to
-        # `GetWorkerPool` returns a worker pool in state `DELETING`.
+        # Deletes the specified worker pool. Returns a long running operation, which
+        # contains a `google.protobuf.Empty` response on completion. While the long
+        # running operation is in progress, any call to `GetWorkerPool` returns a worker
+        # pool in state `DELETING`.
         # @param [String] name
-        #   Name of the worker pool to delete.
-        #   Format:
-        #   `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
+        #   Name of the worker pool to delete. Format: `projects/[PROJECT_ID]/instances/[
+        #   INSTANCE_ID]/workerpools/[POOL_ID]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -256,9 +303,8 @@ module Google
         
         # Returns the specified worker pool.
         # @param [String] name
-        #   Name of the worker pool to retrieve.
-        #   Format:
-        #   `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
+        #   Name of the worker pool to retrieve. Format: `projects/[PROJECT_ID]/instances/[
+        #   INSTANCE_ID]/workerpools/[POOL_ID]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -288,28 +334,22 @@ module Google
         
         # Lists worker pools in an instance.
         # @param [String] parent
-        #   Resource name of the instance.
-        #   Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+        #   Resource name of the instance. Format: `projects/[PROJECT_ID]/instances/[
+        #   INSTANCE_ID]`.
         # @param [String] filter
-        #   Optional. A filter expression that filters resources listed in
-        #   the response. The expression must specify the field name, a comparison
-        #   operator, and the value that you want to use for filtering. The value
-        #   must be a string, a number, or a boolean. String values are
-        #   case-insensitive.
-        #   The comparison operator must be either `:`, `=`, `!=`, `>`, `>=`, `<=` or
-        #   `<`.
-        #   The `:` operator can be used with string fields to match substrings.
-        #   For non-string fields it is equivalent to the `=` operator.
-        #   The `:*` comparison can be used to test  whether a key has been defined.
-        #   You can also filter on nested fields.
-        #   To filter on multiple expressions, you can separate expression using
-        #   `AND` and `OR` operators, using parentheses to specify precedence. If
-        #   neither operator is specified, `AND` is assumed.
-        #   Examples:
-        #   Include only pools with more than 100 reserved workers:
-        #   `(worker_count > 100) (worker_config.reserved = true)`
-        #   Include only pools with a certain label or machines of the n1-standard
-        #   family:
+        #   Optional. A filter expression that filters resources listed in the response.
+        #   The expression must specify the field name, a comparison operator, and the
+        #   value that you want to use for filtering. The value must be a string, a number,
+        #   or a boolean. String values are case-insensitive. The comparison operator
+        #   must be either `:`, `=`, `!=`, `>`, `>=`, `<=` or `<`. The `:` operator can be
+        #   used with string fields to match substrings. For non-string fields it is
+        #   equivalent to the `=` operator. The `:*` comparison can be used to test
+        #   whether a key has been defined. You can also filter on nested fields. To
+        #   filter on multiple expressions, you can separate expression using `AND` and `
+        #   OR` operators, using parentheses to specify precedence. If neither operator is
+        #   specified, `AND` is assumed. Examples: Include only pools with more than 100
+        #   reserved workers: `(worker_count > 100) (worker_config.reserved = true)`
+        #   Include only pools with a certain label or machines of the n1-standard family:
         #   `worker_config.labels.key1 : * OR worker_config.machine_type: n1-standard`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -340,14 +380,13 @@ module Google
         end
         
         # Updates an existing worker pool with a specified size and/or configuration.
-        # Returns a long running operation, which contains a worker pool on
-        # completion. While the long running operation is in progress, any call to
-        # `GetWorkerPool` returns a worker pool in state `UPDATING`.
+        # Returns a long running operation, which contains a worker pool on completion.
+        # While the long running operation is in progress, any call to `GetWorkerPool`
+        # returns a worker pool in state `UPDATING`.
         # @param [String] name
-        #   WorkerPool resource name formatted as:
-        #   `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
-        #   name should not be populated when creating a worker pool since it is
-        #   provided in the `poolId` field.
+        #   WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[
+        #   INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when
+        #   creating a worker pool since it is provided in the `poolId` field.
         # @param [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest] google_devtools_remotebuildexecution_admin_v1alpha_update_worker_pool_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -378,9 +417,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields

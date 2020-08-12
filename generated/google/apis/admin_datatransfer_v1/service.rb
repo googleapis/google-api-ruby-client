@@ -20,9 +20,11 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AdminDatatransferV1
-      # Admin Data Transfer API
+      # Admin SDK
       #
-      # Transfers user data from one user to another.
+      # Admin SDK lets administrators of enterprise domains to view and manage
+      #  resources like user, groups etc. It also provides audit and usage reports of
+      #  domain.
       #
       # @example
       #    require 'google/apis/admin_datatransfer_v1'
@@ -30,7 +32,7 @@ module Google
       #    Admin = Google::Apis::AdminDatatransferV1 # Alias the module
       #    service = Admin::DataTransferService.new
       #
-      # @see https://developers.google.com/admin-sdk/data-transfer/
+      # @see http://developers.google.com/admin-sdk/
       class DataTransferService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -38,16 +40,12 @@ module Google
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'admin/datatransfer/v1/')
+          super('https://www.googleapis.com/', '')
           @batch_path = 'batch/admin/datatransfer_v1'
         end
         
@@ -57,10 +55,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -73,20 +69,19 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_application(application_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'applications/{applicationId}', options)
+        def get_application(application_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'admin/datatransfer/v1/applications/{applicationId}', options)
           command.response_representation = Google::Apis::AdminDatatransferV1::Application::Representation
           command.response_class = Google::Apis::AdminDatatransferV1::Application
           command.params['applicationId'] = application_id unless application_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Lists the applications available for data transfer for a customer.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Apps account.
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Default is 100.
         # @param [String] page_token
@@ -94,10 +89,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -110,8 +103,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_applications(customer_id: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'applications', options)
+        def list_applications(customer_id: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'admin/datatransfer/v1/applications', options)
           command.response_representation = Google::Apis::AdminDatatransferV1::ApplicationsListResponse::Representation
           command.response_class = Google::Apis::AdminDatatransferV1::ApplicationsListResponse
           command.query['customerId'] = customer_id unless customer_id.nil?
@@ -119,7 +112,6 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -130,10 +122,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -146,14 +136,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_transfer(data_transfer_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'transfers/{dataTransferId}', options)
+        def get_transfer(data_transfer_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'admin/datatransfer/v1/transfers/{dataTransferId}', options)
           command.response_representation = Google::Apis::AdminDatatransferV1::DataTransfer::Representation
           command.response_class = Google::Apis::AdminDatatransferV1::DataTransfer
           command.params['dataTransferId'] = data_transfer_id unless data_transfer_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -162,10 +151,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -178,21 +165,20 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_transfer(data_transfer_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'transfers', options)
+        def insert_transfer(data_transfer_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'admin/datatransfer/v1/transfers', options)
           command.request_representation = Google::Apis::AdminDatatransferV1::DataTransfer::Representation
           command.request_object = data_transfer_object
           command.response_representation = Google::Apis::AdminDatatransferV1::DataTransfer::Representation
           command.response_class = Google::Apis::AdminDatatransferV1::DataTransfer
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Lists the transfers for a customer by source user, destination user, or status.
         # @param [String] customer_id
-        #   Immutable ID of the G Suite account.
+        #   Immutable ID of the Google Apps account.
         # @param [Fixnum] max_results
         #   Maximum number of results to return. Default is 100.
         # @param [String] new_owner_user_id
@@ -206,10 +192,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -222,8 +206,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_transfers(customer_id: nil, max_results: nil, new_owner_user_id: nil, old_owner_user_id: nil, page_token: nil, status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'transfers', options)
+        def list_transfers(customer_id: nil, max_results: nil, new_owner_user_id: nil, old_owner_user_id: nil, page_token: nil, status: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'admin/datatransfer/v1/transfers', options)
           command.response_representation = Google::Apis::AdminDatatransferV1::DataTransfersListResponse::Representation
           command.response_class = Google::Apis::AdminDatatransferV1::DataTransfersListResponse
           command.query['customerId'] = customer_id unless customer_id.nil?
@@ -234,7 +218,6 @@ module Google
           command.query['status'] = status unless status.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -243,7 +226,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end

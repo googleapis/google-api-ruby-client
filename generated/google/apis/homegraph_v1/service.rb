@@ -47,14 +47,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Unlinks the given third-party user from your smart home Action.
-        # All data related to this user will be deleted.
-        # For more details on how users link their accounts, see
-        # [fulfillment and
-        # authentication](https://developers.google.com/assistant/smarthome/concepts/
-        # fulfillment-authentication).
-        # The third-party user's identity is passed in via the `agent_user_id`
-        # (see DeleteAgentUserRequest).
+        # Unlinks the given third-party user from your smart home Action. All data
+        # related to this user will be deleted. For more details on how users link their
+        # accounts, see [fulfillment and authentication](https://developers.google.com/
+        # assistant/smarthome/concepts/fulfillment-authentication). The third-party user'
+        # s identity is passed in via the `agent_user_id` (see DeleteAgentUserRequest).
         # This request must be authorized using service account credentials from your
         # Actions console project.
         # @param [String] agent_user_id
@@ -90,11 +87,9 @@ module Google
         end
         
         # Gets the current states in Home Graph for the given set of the third-party
-        # user's devices.
-        # The third-party user's identity is passed in via the `agent_user_id`
-        # (see QueryRequest).
-        # This request must be authorized using service account credentials from your
-        # Actions console project.
+        # user's devices. The third-party user's identity is passed in via the `
+        # agent_user_id` (see QueryRequest). This request must be authorized using
+        # service account credentials from your Actions console project.
         # @param [Google::Apis::HomegraphV1::QueryRequest] query_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -124,19 +119,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Reports device state and optionally sends device notifications.
-        # Called by your smart home Action when the state of a third-party device
-        # changes or you need to send a notification about the device.
-        # See [Implement Report
-        # State](https://developers.google.com/assistant/smarthome/develop/report-state)
-        # for more information.
-        # This method updates the device state according to its declared
-        # [traits](https://developers.google.com/assistant/smarthome/concepts/devices-
-        # traits).
-        # Publishing a new state value outside of these traits will result in an
-        # `INVALID_ARGUMENT` error response.
-        # The third-party user's identity is passed in via the `agent_user_id`
-        # (see ReportStateAndNotificationRequest).
+        # Reports device state and optionally sends device notifications. Called by your
+        # smart home Action when the state of a third-party device changes or you need
+        # to send a notification about the device. See [Implement Report State](https://
+        # developers.google.com/assistant/smarthome/develop/report-state) for more
+        # information. This method updates the device state according to its declared [
+        # traits](https://developers.google.com/assistant/smarthome/concepts/devices-
+        # traits). Publishing a new state value outside of these traits will result in
+        # an `INVALID_ARGUMENT` error response. The third-party user's identity is
+        # passed in via the `agent_user_id` (see ReportStateAndNotificationRequest).
         # This request must be authorized using service account credentials from your
         # Actions console project.
         # @param [Google::Apis::HomegraphV1::ReportStateAndNotificationRequest] report_state_and_notification_request_object
@@ -168,12 +159,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Requests Google to send an `action.devices.SYNC`
-        # [intent](https://developers.google.com/assistant/smarthome/reference/intent/
-        # sync)
-        # to your smart home Action to update device metadata for the given user.
-        # The third-party user's identity is passed via the `agent_user_id`
-        # (see RequestSyncDevicesRequest).
+        # Requests Google to send an `action.devices.SYNC` [intent](https://developers.
+        # google.com/assistant/smarthome/reference/intent/sync) to your smart home
+        # Action to update device metadata for the given user. The third-party user's
+        # identity is passed via the `agent_user_id` (see RequestSyncDevicesRequest).
         # This request must be authorized using service account credentials from your
         # Actions console project.
         # @param [Google::Apis::HomegraphV1::RequestSyncDevicesRequest] request_sync_devices_request_object
@@ -205,9 +194,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets all the devices associated with the given third-party user.
-        # The third-party user's identity is passed in via the `agent_user_id`
-        # (see SyncRequest).
+        # Gets all the devices associated with the given third-party user. The third-
+        # party user's identity is passed in via the `agent_user_id` (see SyncRequest).
         # This request must be authorized using service account credentials from your
         # Actions console project.
         # @param [Google::Apis::HomegraphV1::SyncRequest] sync_request_object

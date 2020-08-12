@@ -22,6 +22,12 @@ module Google
   module Apis
     module DialogflowV2beta1
       
+      class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowCxV3beta1ExportAgentResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1126,6 +1132,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV3alpha1CreateVersionOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV3alpha1ExportAgentResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1160,6 +1172,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
+        end
       end
       
       class GoogleCloudDialogflowCxV3beta1ExportAgentResponse
@@ -3072,6 +3091,13 @@ module Google
           collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
       
           property :source, as: 'source'
+        end
+      end
+      
+      class GoogleCloudDialogflowV3alpha1CreateVersionOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
         end
       end
       

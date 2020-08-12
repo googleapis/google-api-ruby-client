@@ -55,12 +55,9 @@ module Google
         # @param [Google::Apis::OsconfigV1::PatchDeployment] patch_deployment_object
         # @param [String] patch_deployment_id
         #   Required. A name for the patch deployment in the project. When creating a name
-        #   the following rules apply:
-        #   * Must contain only lowercase letters, numbers, and hyphens.
-        #   * Must start with a letter.
-        #   * Must be between 1-63 characters.
-        #   * Must end with a number or a letter.
-        #   * Must be unique within the project.
+        #   the following rules apply: * Must contain only lowercase letters, numbers, and
+        #   hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must
+        #   end with a number or a letter. * Must be unique within the project.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -93,8 +90,8 @@ module Google
         
         # Delete an OS Config patch deployment.
         # @param [String] name
-        #   Required. The resource name of the patch deployment in the form
-        #   `projects/*/patchDeployments/*`.
+        #   Required. The resource name of the patch deployment in the form `projects/*/
+        #   patchDeployments/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -124,8 +121,8 @@ module Google
         
         # Get an OS Config patch deployment.
         # @param [String] name
-        #   Required. The resource name of the patch deployment in the form
-        #   `projects/*/patchDeployments/*`.
+        #   Required. The resource name of the patch deployment in the form `projects/*/
+        #   patchDeployments/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -160,8 +157,7 @@ module Google
         #   Optional. The maximum number of patch deployments to return. Default is 100.
         # @param [String] page_token
         #   Optional. A pagination token returned from a previous call to
-        #   ListPatchDeployments
-        #   that indicates where this listing should continue from.
+        #   ListPatchDeployments that indicates where this listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -191,8 +187,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancel a patch job. The patch job must be active. Canceled patch jobs
-        # cannot be restarted.
+        # Cancel a patch job. The patch job must be active. Canceled patch jobs cannot
+        # be restarted.
         # @param [String] name
         #   Required. Name of the patch in the form `projects/*/patchJobs/*`
         # @param [Google::Apis::OsconfigV1::CancelPatchJobRequest] cancel_patch_job_request_object
@@ -258,8 +254,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the patch job. This can be used to track the progress of an
-        # ongoing patch job or review the details of completed jobs.
+        # Get the patch job. This can be used to track the progress of an ongoing patch
+        # job or review the details of completed jobs.
         # @param [String] name
         #   Required. Name of the patch in the form `projects/*/patchJobs/*`
         # @param [String] fields
@@ -293,14 +289,14 @@ module Google
         # @param [String] parent
         #   Required. In the form of `projects/*`
         # @param [String] filter
-        #   If provided, this field specifies the criteria that must be met by patch
-        #   jobs to be included in the response.
-        #   Currently, filtering is only available on the patch_deployment field.
+        #   If provided, this field specifies the criteria that must be met by patch jobs
+        #   to be included in the response. Currently, filtering is only available on the
+        #   patch_deployment field.
         # @param [Fixnum] page_size
         #   The maximum number of instance status to return.
         # @param [String] page_token
-        #   A pagination token returned from a previous call
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call that indicates where this
+        #   listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -336,14 +332,13 @@ module Google
         #   Required. The parent for the instances are in the form of `projects/*/
         #   patchJobs/*`.
         # @param [String] filter
-        #   A filter expression that filters results listed in the response. This
-        #   field supports filtering results by instance zone, name, state, or
-        #   `failure_reason`.
+        #   A filter expression that filters results listed in the response. This field
+        #   supports filtering results by instance zone, name, state, or `failure_reason`.
         # @param [Fixnum] page_size
-        #   The maximum number of instance details records to return.  Default is 100.
+        #   The maximum number of instance details records to return. Default is 100.
         # @param [String] page_token
-        #   A pagination token returned from a previous call
-        #   that indicates where this listing should continue from.
+        #   A pagination token returned from a previous call that indicates where this
+        #   listing should continue from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

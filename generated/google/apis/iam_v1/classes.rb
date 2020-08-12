@@ -23,8 +23,8 @@ module Google
     module IamV1
       
       # Audit log information specific to Cloud IAM admin APIs. This message is
-      # serialized as an `Any` type in the `ServiceData` message of an
-      # `AuditLog` message.
+      # serialized as an `Any` type in the `ServiceData` message of an `AuditLog`
+      # message.
       class AdminAuditData
         include Google::Apis::Core::Hashable
       
@@ -44,53 +44,21 @@ module Google
         end
       end
       
-      # Specifies the audit configuration for a service.
-      # The configuration determines which permission types are logged, and what
-      # identities, if any, are exempted from logging.
-      # An AuditConfig must have one or more AuditLogConfigs.
-      # If there are AuditConfigs for both `allServices` and a specific service,
-      # the union of the two AuditConfigs is used for that service: the log_types
-      # specified in each AuditConfig are enabled, and the exempted_members in each
-      # AuditLogConfig are exempted.
-      # Example Policy with multiple AuditConfigs:
-      # `
-      # "audit_configs": [
-      # `
-      # "service": "allServices",
-      # "audit_log_configs": [
-      # `
-      # "log_type": "DATA_READ",
-      # "exempted_members": [
-      # "user:jose@example.com"
-      # ]
-      # `,
-      # `
-      # "log_type": "DATA_WRITE"
-      # `,
-      # `
-      # "log_type": "ADMIN_READ"
-      # `
-      # ]
-      # `,
-      # `
-      # "service": "sampleservice.googleapis.com",
-      # "audit_log_configs": [
-      # `
-      # "log_type": "DATA_READ"
-      # `,
-      # `
-      # "log_type": "DATA_WRITE",
-      # "exempted_members": [
-      # "user:aliya@example.com"
-      # ]
-      # `
-      # ]
-      # `
-      # ]
-      # `
-      # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-      # logging. It also exempts jose@example.com from DATA_READ logging, and
-      # aliya@example.com from DATA_WRITE logging.
+      # Specifies the audit configuration for a service. The configuration determines
+      # which permission types are logged, and what identities, if any, are exempted
+      # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
+      # are AuditConfigs for both `allServices` and a specific service, the union of
+      # the two AuditConfigs is used for that service: the log_types specified in each
+      # AuditConfig are enabled, and the exempted_members in each AuditLogConfig are
+      # exempted. Example Policy with multiple AuditConfigs: ` "audit_configs": [ ` "
+      # service": "allServices", "audit_log_configs": [ ` "log_type": "DATA_READ", "
+      # exempted_members": [ "user:jose@example.com" ] `, ` "log_type": "DATA_WRITE" `,
+      # ` "log_type": "ADMIN_READ" ` ] `, ` "service": "sampleservice.googleapis.com",
+      # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
+      # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
+      # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
+      # exempts jose@example.com from DATA_READ logging, and aliya@example.com from
+      # DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -99,9 +67,9 @@ module Google
         # @return [Array<Google::Apis::IamV1::AuditLogConfig>]
         attr_accessor :audit_log_configs
       
-        # Specifies a service that will be enabled for audit logging.
-        # For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-        # `allServices` is a special value that covers all services.
+        # Specifies a service that will be enabled for audit logging. For example, `
+        # storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special
+        # value that covers all services.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -117,9 +85,8 @@ module Google
         end
       end
       
-      # Audit log information specific to Cloud IAM. This message is serialized
-      # as an `Any` type in the `ServiceData` message of an
-      # `AuditLog` message.
+      # Audit log information specific to Cloud IAM. This message is serialized as an `
+      # Any` type in the `ServiceData` message of an `AuditLog` message.
       class AuditData
         include Google::Apis::Core::Hashable
       
@@ -138,28 +105,15 @@ module Google
         end
       end
       
-      # Provides the configuration for logging a type of permissions.
-      # Example:
-      # `
-      # "audit_log_configs": [
-      # `
-      # "log_type": "DATA_READ",
-      # "exempted_members": [
-      # "user:jose@example.com"
-      # ]
-      # `,
-      # `
-      # "log_type": "DATA_WRITE"
-      # `
-      # ]
-      # `
-      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-      # jose@example.com from DATA_READ logging.
+      # Provides the configuration for logging a type of permissions. Example: ` "
+      # audit_log_configs": [ ` "log_type": "DATA_READ", "exempted_members": [ "user:
+      # jose@example.com" ] `, ` "log_type": "DATA_WRITE" ` ] ` This enables '
+      # DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
+      # DATA_READ logging.
       class AuditLogConfig
         include Google::Apis::Core::Hashable
       
-        # Specifies the identities that do not cause logging for this type of
-        # permission.
+        # Specifies the identities that do not cause logging for this type of permission.
         # Follows the same format of Binding.members.
         # Corresponds to the JSON property `exemptedMembers`
         # @return [Array<String>]
@@ -185,8 +139,8 @@ module Google
       class AuditableService
         include Google::Apis::Core::Hashable
       
-        # Public name of the service.
-        # For example, the service name for Cloud IAM is 'iam.googleapis.com'.
+        # Public name of the service. For example, the service name for Cloud IAM is '
+        # iam.googleapis.com'.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -205,69 +159,57 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # Represents a textual expression in the Common Expression Language (CEL)
-        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-        # are documented at https://github.com/google/cel-spec.
-        # Example (Comparison):
-        # title: "Summary size limit"
-        # description: "Determines if a summary is less than 100 chars"
-        # expression: "document.summary.size() < 100"
-        # Example (Equality):
-        # title: "Requestor is owner"
-        # description: "Determines if requestor is the document owner"
-        # expression: "document.owner == request.auth.claims.email"
-        # Example (Logic):
-        # title: "Public documents"
-        # description: "Determine whether the document should be publicly visible"
-        # expression: "document.type != 'private' && document.type != 'internal'"
-        # Example (Data Manipulation):
-        # title: "Notification string"
-        # description: "Create a notification string with a timestamp."
-        # expression: "'New message received at ' + string(document.create_time)"
-        # The exact variables and functions that may be referenced within an expression
-        # are determined by the service that evaluates it. See the service
-        # documentation for additional information.
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::IamV1::Expr]
         attr_accessor :condition
       
-        # Specifies the identities requesting access for a Cloud Platform resource.
-        # `members` can have the following values:
-        # * `allUsers`: A special identifier that represents anyone who is
-        # on the internet; with or without a Google account.
-        # * `allAuthenticatedUsers`: A special identifier that represents anyone
-        # who is authenticated with a Google account or a service account.
-        # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@example.com` .
-        # * `serviceAccount:`emailid``: An email address that represents a service
-        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
-        # * `group:`emailid``: An email address that represents a Google group.
-        # For example, `admins@example.com`.
-        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For
-        # example, `alice@example.com?uid=123456789012345678901`. If the user is
-        # recovered, this value reverts to `user:`emailid`` and the recovered user
-        # retains the role in the binding.
-        # * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus
-        # unique identifier) representing a service account that has been recently
-        # deleted. For example,
-        # `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to
-        # `serviceAccount:`emailid`` and the undeleted service account retains the
-        # role in the binding.
-        # * `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently
-        # deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-        # the group is recovered, this value reverts to `group:`emailid`` and the
-        # recovered group retains the role in the binding.
-        # * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`.
+        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # members` can have the following values: * `allUsers`: A special identifier
+        # that represents anyone who is on the internet; with or without a Google
+        # account. * `allAuthenticatedUsers`: A special identifier that represents
+        # anyone who is authenticated with a Google account or a service account. * `
+        # user:`emailid``: An email address that represents a specific Google account.
+        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
+        # address that represents a service account. For example, `my-other-app@appspot.
+        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
+        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
+        # `uniqueid``: An email address (plus unique identifier) representing a user
+        # that has been recently deleted. For example, `alice@example.com?uid=
+        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
+        # emailid`` and the recovered user retains the role in the binding. * `deleted:
+        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a service account that has been recently deleted. For
+        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+        # If the service account is undeleted, this value reverts to `serviceAccount:`
+        # emailid`` and the undeleted service account retains the role in the binding. *
+        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a Google group that has been recently deleted. For
+        # example, `admins@example.com?uid=123456789012345678901`. If the group is
+        # recovered, this value reverts to `group:`emailid`` and the recovered group
+        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
+        # primary) that represents all the users of that domain. For example, `google.
+        # com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
       
-        # Role that is assigned to `members`.
-        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
+        # , or `roles/owner`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -289,48 +231,38 @@ module Google
       class BindingDelta
         include Google::Apis::Core::Hashable
       
-        # The action that was performed on a Binding.
-        # Required
+        # The action that was performed on a Binding. Required
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
       
-        # Represents a textual expression in the Common Expression Language (CEL)
-        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-        # are documented at https://github.com/google/cel-spec.
-        # Example (Comparison):
-        # title: "Summary size limit"
-        # description: "Determines if a summary is less than 100 chars"
-        # expression: "document.summary.size() < 100"
-        # Example (Equality):
-        # title: "Requestor is owner"
-        # description: "Determines if requestor is the document owner"
-        # expression: "document.owner == request.auth.claims.email"
-        # Example (Logic):
-        # title: "Public documents"
-        # description: "Determine whether the document should be publicly visible"
-        # expression: "document.type != 'private' && document.type != 'internal'"
-        # Example (Data Manipulation):
-        # title: "Notification string"
-        # description: "Create a notification string with a timestamp."
-        # expression: "'New message received at ' + string(document.create_time)"
-        # The exact variables and functions that may be referenced within an expression
-        # are determined by the service that evaluates it. See the service
-        # documentation for additional information.
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::IamV1::Expr]
         attr_accessor :condition
       
-        # A single identity requesting access for a Cloud Platform resource.
-        # Follows the same format of Binding.members.
-        # Required
+        # A single identity requesting access for a Cloud Platform resource. Follows the
+        # same format of Binding.members. Required
         # Corresponds to the JSON property `member`
         # @return [String]
         attr_accessor :member
       
-        # Role that is assigned to `members`.
-        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-        # Required
+        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
+        # , or `roles/owner`. Required
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -357,10 +289,9 @@ module Google
         # @return [Google::Apis::IamV1::Role]
         attr_accessor :role
       
-        # The role ID to use for this role.
-        # A role ID may contain alphanumeric characters, underscores (`_`), and
-        # periods (`.`). It must contain a minimum of 3 characters and a maximum of
-        # 64 characters.
+        # The role ID to use for this role. A role ID may contain alphanumeric
+        # characters, underscores (`_`), and periods (`.`). It must contain a minimum of
+        # 3 characters and a maximum of 64 characters.
         # Corresponds to the JSON property `roleId`
         # @return [String]
         attr_accessor :role_id
@@ -380,16 +311,14 @@ module Google
       class CreateServiceAccountKeyRequest
         include Google::Apis::Core::Hashable
       
-        # Which type of key and algorithm to use for the key.
-        # The default is currently a 2K RSA key.  However this may change in the
-        # future.
+        # Which type of key and algorithm to use for the key. The default is currently a
+        # 2K RSA key. However this may change in the future.
         # Corresponds to the JSON property `keyAlgorithm`
         # @return [String]
         attr_accessor :key_algorithm
       
-        # The output format of the private key. The default value is
-        # `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File
-        # format.
+        # The output format of the private key. The default value is `
+        # TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
         # Corresponds to the JSON property `privateKeyType`
         # @return [String]
         attr_accessor :private_key_type
@@ -409,23 +338,21 @@ module Google
       class CreateServiceAccountRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The account id that is used to generate the service account
-        # email address and a stable unique id. It is unique within a project,
-        # must be 6-30 characters long, and match the regular expression
-        # `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
+        # Required. The account id that is used to generate the service account email
+        # address and a stable unique id. It is unique within a project, must be 6-30
+        # characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])`
+        # to comply with RFC1035.
         # Corresponds to the JSON property `accountId`
         # @return [String]
         attr_accessor :account_id
       
-        # An IAM service account.
-        # A service account is an account for an application or a virtual machine (VM)
-        # instance, not a person. You can use a service account to call Google APIs. To
-        # learn more, read the [overview of service
-        # accounts](https://cloud.google.com/iam/help/service-accounts/overview).
-        # When you create a service account, you specify the project ID that owns the
-        # service account, as well as a name that must be unique within the project.
-        # IAM uses these values to create an email address that identifies the service
-        # account.
+        # An IAM service account. A service account is an account for an application or
+        # a virtual machine (VM) instance, not a person. You can use a service account
+        # to call Google APIs. To learn more, read the [overview of service accounts](
+        # https://cloud.google.com/iam/help/service-accounts/overview). When you create
+        # a service account, you specify the project ID that owns the service account,
+        # as well as a name that must be unique within the project. IAM uses these
+        # values to create an email address that identifies the service account.
         # Corresponds to the JSON property `serviceAccount`
         # @return [Google::Apis::IamV1::ServiceAccount]
         attr_accessor :service_account
@@ -454,13 +381,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -486,52 +411,43 @@ module Google
         end
       end
       
-      # Represents a textual expression in the Common Expression Language (CEL)
-      # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-      # are documented at https://github.com/google/cel-spec.
-      # Example (Comparison):
-      # title: "Summary size limit"
-      # description: "Determines if a summary is less than 100 chars"
-      # expression: "document.summary.size() < 100"
-      # Example (Equality):
-      # title: "Requestor is owner"
-      # description: "Determines if requestor is the document owner"
-      # expression: "document.owner == request.auth.claims.email"
-      # Example (Logic):
-      # title: "Public documents"
-      # description: "Determine whether the document should be publicly visible"
-      # expression: "document.type != 'private' && document.type != 'internal'"
-      # Example (Data Manipulation):
-      # title: "Notification string"
-      # description: "Create a notification string with a timestamp."
-      # expression: "'New message received at ' + string(document.create_time)"
-      # The exact variables and functions that may be referenced within an expression
-      # are determined by the service that evaluates it. See the service
-      # documentation for additional information.
+      # Represents a textual expression in the Common Expression Language (CEL) syntax.
+      # CEL is a C-like expression language. The syntax and semantics of CEL are
+      # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+      # "Summary size limit" description: "Determines if a summary is less than 100
+      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+      # Requestor is owner" description: "Determines if requestor is the document
+      # owner" expression: "document.owner == request.auth.claims.email" Example (
+      # Logic): title: "Public documents" description: "Determine whether the document
+      # should be publicly visible" expression: "document.type != 'private' &&
+      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+      # string" description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)" The
+      # exact variables and functions that may be referenced within an expression are
+      # determined by the service that evaluates it. See the service documentation for
+      # additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
-        # Optional. Description of the expression. This is a longer text which
-        # describes the expression, e.g. when hovered over it in a UI.
+        # Optional. Description of the expression. This is a longer text which describes
+        # the expression, e.g. when hovered over it in a UI.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Textual representation of an expression in Common Expression Language
-        # syntax.
+        # Textual representation of an expression in Common Expression Language syntax.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # Optional. String indicating the location of the expression for error
-        # reporting, e.g. a file name and a position in the file.
+        # Optional. String indicating the location of the expression for error reporting,
+        # e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # Optional. Title for the expression, i.e. a short string describing
-        # its purpose. This can be used e.g. in UIs which allow to enter the
-        # expression.
+        # Optional. Title for the expression, i.e. a short string describing its purpose.
+        # This can be used e.g. in UIs which allow to enter the expression.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -553,39 +469,31 @@ module Google
       class LintPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # Represents a textual expression in the Common Expression Language (CEL)
-        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-        # are documented at https://github.com/google/cel-spec.
-        # Example (Comparison):
-        # title: "Summary size limit"
-        # description: "Determines if a summary is less than 100 chars"
-        # expression: "document.summary.size() < 100"
-        # Example (Equality):
-        # title: "Requestor is owner"
-        # description: "Determines if requestor is the document owner"
-        # expression: "document.owner == request.auth.claims.email"
-        # Example (Logic):
-        # title: "Public documents"
-        # description: "Determine whether the document should be publicly visible"
-        # expression: "document.type != 'private' && document.type != 'internal'"
-        # Example (Data Manipulation):
-        # title: "Notification string"
-        # description: "Create a notification string with a timestamp."
-        # expression: "'New message received at ' + string(document.create_time)"
-        # The exact variables and functions that may be referenced within an expression
-        # are determined by the service that evaluates it. See the service
-        # documentation for additional information.
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::IamV1::Expr]
         attr_accessor :condition
       
-        # The full resource name of the policy this lint request is about.
-        # The name follows the Google Cloud Platform (GCP) resource format.
-        # For example, a GCP project with ID `my-project` will be named
-        # `//cloudresourcemanager.googleapis.com/projects/my-project`.
-        # The resource name is not used to read the policy instance from the Cloud
-        # IAM database. The candidate policy for lint has to be provided in the same
-        # request object.
+        # The full resource name of the policy this lint request is about. The name
+        # follows the Google Cloud Platform (GCP) resource format. For example, a GCP
+        # project with ID `my-project` will be named `//cloudresourcemanager.googleapis.
+        # com/projects/my-project`. The resource name is not used to read the policy
+        # instance from the Cloud IAM database. The candidate policy for lint has to be
+        # provided in the same request object.
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
@@ -601,8 +509,8 @@ module Google
         end
       end
       
-      # The response of a lint operation. An empty response indicates
-      # the operation was able to fully execute and no lint issue was found.
+      # The response of a lint operation. An empty response indicates the operation
+      # was able to fully execute and no lint issue was found.
       class LintPolicyResponse
         include Google::Apis::Core::Hashable
       
@@ -630,12 +538,11 @@ module Google
         # @return [String]
         attr_accessor :debug_message
       
-        # The name of the field for which this lint result is about.
-        # For nested messages `field_name` consists of names of the embedded fields
-        # separated by period character. The top-level qualifier is the input object
-        # to lint in the request. For example, the `field_name` value
-        # `condition.expression` identifies a lint result for the `expression` field
-        # of the provided condition.
+        # The name of the field for which this lint result is about. For nested messages
+        # `field_name` consists of names of the embedded fields separated by period
+        # character. The top-level qualifier is the input object to lint in the request.
+        # For example, the `field_name` value `condition.expression` identifies a lint
+        # result for the `expression` field of the provided condition.
         # Corresponds to the JSON property `fieldName`
         # @return [String]
         attr_accessor :field_name
@@ -657,8 +564,8 @@ module Google
         # @return [String]
         attr_accessor :severity
       
-        # The validation unit name, for instance
-        # "lintValidationUnits/ConditionComplexityCheck".
+        # The validation unit name, for instance "lintValidationUnits/
+        # ConditionComplexityCheck".
         # Corresponds to the JSON property `validationUnitName`
         # @return [String]
         attr_accessor :validation_unit_name
@@ -682,8 +589,8 @@ module Google
       class ListRolesResponse
         include Google::Apis::Core::Hashable
       
-        # To retrieve the next page of results, set
-        # `ListRolesRequest.page_token` to this value.
+        # To retrieve the next page of results, set `ListRolesRequest.page_token` to
+        # this value.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -732,9 +639,8 @@ module Google
         # @return [Array<Google::Apis::IamV1::ServiceAccount>]
         attr_accessor :accounts
       
-        # To retrieve the next page of results, set
-        # ListServiceAccountsRequest.page_token
-        # to this value.
+        # To retrieve the next page of results, set ListServiceAccountsRequest.
+        # page_token to this value.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -750,24 +656,21 @@ module Google
         end
       end
       
-      # The request for
-      # PatchServiceAccount.
-      # You can patch only the `display_name` and `description` fields. You must use
-      # the `update_mask` field to specify which of these fields you want to patch.
-      # Only the fields specified in the request are guaranteed to be returned in
-      # the response. Other fields may be empty in the response.
+      # The request for PatchServiceAccount. You can patch only the `display_name` and
+      # `description` fields. You must use the `update_mask` field to specify which of
+      # these fields you want to patch. Only the fields specified in the request are
+      # guaranteed to be returned in the response. Other fields may be empty in the
+      # response.
       class PatchServiceAccountRequest
         include Google::Apis::Core::Hashable
       
-        # An IAM service account.
-        # A service account is an account for an application or a virtual machine (VM)
-        # instance, not a person. You can use a service account to call Google APIs. To
-        # learn more, read the [overview of service
-        # accounts](https://cloud.google.com/iam/help/service-accounts/overview).
-        # When you create a service account, you specify the project ID that owns the
-        # service account, as well as a name that must be unique within the project.
-        # IAM uses these values to create an email address that identifies the service
-        # account.
+        # An IAM service account. A service account is an account for an application or
+        # a virtual machine (VM) instance, not a person. You can use a service account
+        # to call Google APIs. To learn more, read the [overview of service accounts](
+        # https://cloud.google.com/iam/help/service-accounts/overview). When you create
+        # a service account, you specify the project ID that owns the service account,
+        # as well as a name that must be unique within the project. IAM uses these
+        # values to create an email address that identifies the service account.
         # Corresponds to the JSON property `serviceAccount`
         # @return [Google::Apis::IamV1::ServiceAccount]
         attr_accessor :service_account
@@ -803,8 +706,8 @@ module Google
         # @return [String]
         attr_accessor :custom_roles_support_level
       
-        # A brief description of what this Permission is used for.
-        # This permission can ONLY be used in predefined roles.
+        # A brief description of what this Permission is used for. This permission can
+        # ONLY be used in predefined roles.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -820,8 +723,8 @@ module Google
         attr_accessor :only_in_predefined_roles
         alias_method :only_in_predefined_roles?, :only_in_predefined_roles
       
-        # The preferred name for this permission. If present, then this permission is
-        # an alias of, and equivalent to, the listed primary_permission.
+        # The preferred name for this permission. If present, then this permission is an
+        # alias of, and equivalent to, the listed primary_permission.
         # Corresponds to the JSON property `primaryPermission`
         # @return [String]
         attr_accessor :primary_permission
@@ -880,66 +783,32 @@ module Google
       end
       
       # An Identity and Access Management (IAM) policy, which specifies access
-      # controls for Google Cloud resources.
-      # A `Policy` is a collection of `bindings`. A `binding` binds one or more
-      # `members` to a single `role`. Members can be user accounts, service accounts,
-      # Google groups, and domains (such as G Suite). A `role` is a named list of
-      # permissions; each `role` can be an IAM predefined role or a user-created
-      # custom role.
-      # For some types of Google Cloud resources, a `binding` can also specify a
-      # `condition`, which is a logical expression that allows access to a resource
-      # only if the expression evaluates to `true`. A condition can add constraints
-      # based on attributes of the request, the resource, or both. To learn which
-      # resources support conditions in their IAM policies, see the
-      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-      # policies).
-      # **JSON example:**
-      # `
-      # "bindings": [
-      # `
-      # "role": "roles/resourcemanager.organizationAdmin",
-      # "members": [
-      # "user:mike@example.com",
-      # "group:admins@example.com",
-      # "domain:google.com",
-      # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-      # ]
-      # `,
-      # `
-      # "role": "roles/resourcemanager.organizationViewer",
-      # "members": [
-      # "user:eve@example.com"
-      # ],
-      # "condition": `
-      # "title": "expirable access",
-      # "description": "Does not grant access after Sep 2020",
-      # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
-      # ",
-      # `
-      # `
-      # ],
-      # "etag": "BwWWja0YfJA=",
-      # "version": 3
-      # `
-      # **YAML example:**
-      # bindings:
-      # - members:
-      # - user:mike@example.com
-      # - group:admins@example.com
-      # - domain:google.com
-      # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin
-      # - members:
-      # - user:eve@example.com
-      # role: roles/resourcemanager.organizationViewer
-      # condition:
-      # title: expirable access
-      # description: Does not grant access after Sep 2020
-      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-      # - etag: BwWWja0YfJA=
-      # - version: 3
-      # For a description of IAM and its features, see the
-      # [IAM documentation](https://cloud.google.com/iam/docs/).
+      # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+      # A `binding` binds one or more `members` to a single `role`. Members can be
+      # user accounts, service accounts, Google groups, and domains (such as G Suite).
+      # A `role` is a named list of permissions; each `role` can be an IAM predefined
+      # role or a user-created custom role. For some types of Google Cloud resources,
+      # a `binding` can also specify a `condition`, which is a logical expression that
+      # allows access to a resource only if the expression evaluates to `true`. A
+      # condition can add constraints based on attributes of the request, the resource,
+      # or both. To learn which resources support conditions in their IAM policies,
+      # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+      # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+      # title": "expirable access", "description": "Does not grant access after Sep
+      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+      # members: - user:mike@example.com - group:admins@example.com - domain:google.
+      # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+      # roles/resourcemanager.organizationViewer condition: title: expirable access
+      # description: Does not grant access after Sep 2020 expression: request.time <
+      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # description of IAM and its features, see the [IAM documentation](https://cloud.
+      # google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -948,48 +817,44 @@ module Google
         # @return [Array<Google::Apis::IamV1::AuditConfig>]
         attr_accessor :audit_configs
       
-        # Associates a list of `members` to a `role`. Optionally, may specify a
-        # `condition` that determines how and when the `bindings` are applied. Each
-        # of the `bindings` must contain at least one member.
+        # Associates a list of `members` to a `role`. Optionally, may specify a `
+        # condition` that determines how and when the `bindings` are applied. Each of
+        # the `bindings` must contain at least one member.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::IamV1::Binding>]
         attr_accessor :bindings
       
-        # `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of a policy from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform policy updates in order to avoid race
-        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
-        # systems are expected to put that etag in the request to `setIamPolicy` to
-        # ensure that their change will be applied to the same version of the policy.
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-        # you to overwrite a version `3` policy with a version `1` policy, and all of
-        # the conditions in the version `3` policy are lost.
+        # `etag` is used for optimistic concurrency control as a way to help prevent
+        # simultaneous updates of a policy from overwriting each other. It is strongly
+        # suggested that systems make use of the `etag` in the read-modify-write cycle
+        # to perform policy updates in order to avoid race conditions: An `etag` is
+        # returned in the response to `getIamPolicy`, and systems are expected to put
+        # that etag in the request to `setIamPolicy` to ensure that their change will be
+        # applied to the same version of the policy. **Important:** If you use IAM
+        # Conditions, you must include the `etag` field whenever you call `setIamPolicy`.
+        # If you omit this field, then IAM allows you to overwrite a version `3` policy
+        # with a version `1` policy, and all of the conditions in the version `3` policy
+        # are lost.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
-        # Specifies the format of the policy.
-        # Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-        # are rejected.
-        # Any operation that affects conditional role bindings must specify version
-        # `3`. This requirement applies to the following operations:
-        # * Getting a policy that includes a conditional role binding
-        # * Adding a conditional role binding to a policy
-        # * Changing a conditional role binding in a policy
-        # * Removing any role binding, with or without a condition, from a policy
-        # that includes conditions
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-        # you to overwrite a version `3` policy with a version `1` policy, and all of
-        # the conditions in the version `3` policy are lost.
-        # If a policy does not include any conditions, operations on that policy may
-        # specify any valid version or leave the field unset.
-        # To learn which resources support conditions in their IAM policies, see the
-        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-        # policies).
+        # Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+        # Requests that specify an invalid value are rejected. Any operation that
+        # affects conditional role bindings must specify version `3`. This requirement
+        # applies to the following operations: * Getting a policy that includes a
+        # conditional role binding * Adding a conditional role binding to a policy *
+        # Changing a conditional role binding in a policy * Removing any role binding,
+        # with or without a condition, from a policy that includes conditions **
+        # Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows you
+        # to overwrite a version `3` policy with a version `1` policy, and all of the
+        # conditions in the version `3` policy are lost. If a policy does not include
+        # any conditions, operations on that policy may specify any valid version or
+        # leave the field unset. To learn which resources support conditions in their
+        # IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/
+        # conditions/resource-policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -1030,11 +895,10 @@ module Google
       class QueryAuditableServicesRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The full resource name to query from the list of auditable
-        # services.
-        # The name follows the Google Cloud Platform resource format.
-        # For example, a Cloud Platform project with id `my-project` will be named
-        # `//cloudresourcemanager.googleapis.com/projects/my-project`.
+        # Required. The full resource name to query from the list of auditable services.
+        # The name follows the Google Cloud Platform resource format. For example, a
+        # Cloud Platform project with id `my-project` will be named `//
+        # cloudresourcemanager.googleapis.com/projects/my-project`.
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
@@ -1073,21 +937,20 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The full resource name to query from the list of grantable roles.
-        # The name follows the Google Cloud Platform resource format.
-        # For example, a Cloud Platform project with id `my-project` will be named
-        # `//cloudresourcemanager.googleapis.com/projects/my-project`.
+        # The name follows the Google Cloud Platform resource format. For example, a
+        # Cloud Platform project with id `my-project` will be named `//
+        # cloudresourcemanager.googleapis.com/projects/my-project`.
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
       
-        # Optional limit on the number of roles to include in the response.
-        # The default is 300, and the maximum is 1,000.
+        # Optional limit on the number of roles to include in the response. The default
+        # is 300, and the maximum is 1,000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # Optional pagination token returned in an earlier
-        # QueryGrantableRolesResponse.
+        # Optional pagination token returned in an earlier QueryGrantableRolesResponse.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -1114,8 +977,8 @@ module Google
       class QueryGrantableRolesResponse
         include Google::Apis::Core::Hashable
       
-        # To retrieve the next page of results, set
-        # `QueryGrantableRolesRequest.page_token` to this value.
+        # To retrieve the next page of results, set `QueryGrantableRolesRequest.
+        # page_token` to this value.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1141,16 +1004,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The full resource name to query from the list of testable
-        # permissions.
-        # The name follows the Google Cloud Platform resource format.
-        # For example, a Cloud Platform project with id `my-project` will be named
-        # `//cloudresourcemanager.googleapis.com/projects/my-project`.
+        # permissions. The name follows the Google Cloud Platform resource format. For
+        # example, a Cloud Platform project with id `my-project` will be named `//
+        # cloudresourcemanager.googleapis.com/projects/my-project`.
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
       
-        # Optional limit on the number of permissions to include in the response.
-        # The default is 100, and the maximum is 1,000.
+        # Optional limit on the number of permissions to include in the response. The
+        # default is 100, and the maximum is 1,000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
@@ -1177,8 +1039,8 @@ module Google
       class QueryTestablePermissionsResponse
         include Google::Apis::Core::Hashable
       
-        # To retrieve the next page of results, set
-        # `QueryTestableRolesRequest.page_token` to this value.
+        # To retrieve the next page of results, set `QueryTestableRolesRequest.
+        # page_token` to this value.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1203,8 +1065,8 @@ module Google
       class Role
         include Google::Apis::Core::Hashable
       
-        # The current deleted state of the role. This field is read only.
-        # It will be ignored in calls to CreateRole and UpdateRole.
+        # The current deleted state of the role. This field is read only. It will be
+        # ignored in calls to CreateRole and UpdateRole.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
@@ -1226,24 +1088,24 @@ module Google
         # @return [Array<String>]
         attr_accessor :included_permissions
       
-        # The name of the role.
-        # When Role is used in CreateRole, the role name must not be set.
-        # When Role is used in output and other input such as UpdateRole, the role
-        # name is the complete path, e.g., roles/logging.viewer for predefined roles
-        # and organizations/`ORGANIZATION_ID`/roles/logging.viewer for custom roles.
+        # The name of the role. When Role is used in CreateRole, the role name must not
+        # be set. When Role is used in output and other input such as UpdateRole, the
+        # role name is the complete path, e.g., roles/logging.viewer for predefined
+        # roles and organizations/`ORGANIZATION_ID`/roles/logging.viewer for custom
+        # roles.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # The current launch stage of the role. If the `ALPHA` launch stage has been
-        # selected for a role, the `stage` field will not be included in the
-        # returned definition for the role.
+        # selected for a role, the `stage` field will not be included in the returned
+        # definition for the role.
         # Corresponds to the JSON property `stage`
         # @return [String]
         attr_accessor :stage
       
-        # Optional. A human-readable title for the role.  Typically this
-        # is limited to 100 UTF-8 bytes.
+        # Optional. A human-readable title for the role. Typically this is limited to
+        # 100 UTF-8 bytes.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -1264,21 +1126,18 @@ module Google
         end
       end
       
-      # An IAM service account.
-      # A service account is an account for an application or a virtual machine (VM)
-      # instance, not a person. You can use a service account to call Google APIs. To
-      # learn more, read the [overview of service
-      # accounts](https://cloud.google.com/iam/help/service-accounts/overview).
-      # When you create a service account, you specify the project ID that owns the
-      # service account, as well as a name that must be unique within the project.
-      # IAM uses these values to create an email address that identifies the service
-      # account.
+      # An IAM service account. A service account is an account for an application or
+      # a virtual machine (VM) instance, not a person. You can use a service account
+      # to call Google APIs. To learn more, read the [overview of service accounts](
+      # https://cloud.google.com/iam/help/service-accounts/overview). When you create
+      # a service account, you specify the project ID that owns the service account,
+      # as well as a name that must be unique within the project. IAM uses these
+      # values to create an email address that identifies the service account.
       class ServiceAccount
         include Google::Apis::Core::Hashable
       
         # Optional. A user-specified, human-readable description of the service account.
-        # The
-        # maximum length is 256 UTF-8 bytes.
+        # The maximum length is 256 UTF-8 bytes.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1290,8 +1149,7 @@ module Google
         alias_method :disabled?, :disabled
       
         # Optional. A user-specified, human-readable name for the service account. The
-        # maximum
-        # length is 100 UTF-8 bytes.
+        # maximum length is 100 UTF-8 bytes.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -1307,19 +1165,15 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The resource name of the service account.
-        # Use one of the following formats:
-        # * `projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS``
-        # * `projects/`PROJECT_ID`/serviceAccounts/`UNIQUE_ID``
-        # As an alternative, you can use the `-` wildcard character instead of the
-        # project ID:
-        # * `projects/-/serviceAccounts/`EMAIL_ADDRESS``
-        # * `projects/-/serviceAccounts/`UNIQUE_ID``
-        # When possible, avoid using the `-` wildcard character, because it can cause
-        # response messages to contain misleading error codes. For example, if you
-        # try to get the service account
-        # `projects/-/serviceAccounts/fake@example.com`, which does not exist, the
-        # response contains an HTTP `403 Forbidden` error instead of a `404 Not
+        # The resource name of the service account. Use one of the following formats: * `
+        # projects/`PROJECT_ID`/serviceAccounts/`EMAIL_ADDRESS`` * `projects/`PROJECT_ID`
+        # /serviceAccounts/`UNIQUE_ID`` As an alternative, you can use the `-` wildcard
+        # character instead of the project ID: * `projects/-/serviceAccounts/`
+        # EMAIL_ADDRESS`` * `projects/-/serviceAccounts/`UNIQUE_ID`` When possible,
+        # avoid using the `-` wildcard character, because it can cause response messages
+        # to contain misleading error codes. For example, if you try to get the service
+        # account `projects/-/serviceAccounts/fake@example.com`, which does not exist,
+        # the response contains an HTTP `403 Forbidden` error instead of a `404 Not
         # Found` error.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1335,11 +1189,11 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
-        # Output only. The unique, stable numeric ID for the service account.
-        # Each service account retains its unique ID even if you delete the service
-        # account. For example, if you delete a service account, then create a new
-        # service account with the same name, the new service account has a different
-        # unique ID than the deleted service account.
+        # Output only. The unique, stable numeric ID for the service account. Each
+        # service account retains its unique ID even if you delete the service account.
+        # For example, if you delete a service account, then create a new service
+        # account with the same name, the new service account has a different unique ID
+        # than the deleted service account.
         # Corresponds to the JSON property `uniqueId`
         # @return [String]
         attr_accessor :unique_id
@@ -1362,20 +1216,17 @@ module Google
         end
       end
       
-      # Represents a service account key.
-      # A service account has two sets of key-pairs: user-managed, and
-      # system-managed.
-      # User-managed key-pairs can be created and deleted by users.  Users are
-      # responsible for rotating these keys periodically to ensure security of
-      # their service accounts.  Users retain the private key of these key-pairs,
-      # and Google retains ONLY the public key.
-      # System-managed keys are automatically rotated by Google, and are used for
-      # signing for a maximum of two weeks. The rotation process is probabilistic,
-      # and usage of the new key will gradually ramp up and down over the key's
-      # lifetime. We recommend caching the public key set for a service account for
-      # no more than 24 hours to ensure you have access to the latest keys.
-      # Public keys for all service accounts are also published at the OAuth2
-      # Service Account API.
+      # Represents a service account key. A service account has two sets of key-pairs:
+      # user-managed, and system-managed. User-managed key-pairs can be created and
+      # deleted by users. Users are responsible for rotating these keys periodically
+      # to ensure security of their service accounts. Users retain the private key of
+      # these key-pairs, and Google retains ONLY the public key. System-managed keys
+      # are automatically rotated by Google, and are used for signing for a maximum of
+      # two weeks. The rotation process is probabilistic, and usage of the new key
+      # will gradually ramp up and down over the key's lifetime. We recommend caching
+      # the public key set for a service account for no more than 24 hours to ensure
+      # you have access to the latest keys. Public keys for all service accounts are
+      # also published at the OAuth2 Service Account API.
       class ServiceAccountKey
         include Google::Apis::Core::Hashable
       
@@ -1394,29 +1245,26 @@ module Google
         # @return [String]
         attr_accessor :key_type
       
-        # The resource name of the service account key in the following format
-        # `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``.
+        # The resource name of the service account key in the following format `projects/
+        # `PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The private key data. Only provided in `CreateServiceAccountKey`
-        # responses. Make sure to keep the private key data secure because it
-        # allows for the assertion of the service account identity.
-        # When base64 decoded, the private key data can be used to authenticate with
-        # Google API client libraries and with
-        # <a href="/sdk/gcloud/reference/auth/activate-service-account">gcloud
-        # auth activate-service-account</a>.
+        # The private key data. Only provided in `CreateServiceAccountKey` responses.
+        # Make sure to keep the private key data secure because it allows for the
+        # assertion of the service account identity. When base64 decoded, the private
+        # key data can be used to authenticate with Google API client libraries and with
+        # gcloud auth activate-service-account.
         # Corresponds to the JSON property `privateKeyData`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :private_key_data
       
-        # The output format for the private key.
-        # Only provided in `CreateServiceAccountKey` responses, not
-        # in `GetServiceAccountKey` or `ListServiceAccountKey` responses.
-        # Google never exposes system-managed private keys, and never retains
-        # user-managed private keys.
+        # The output format for the private key. Only provided in `
+        # CreateServiceAccountKey` responses, not in `GetServiceAccountKey` or `
+        # ListServiceAccountKey` responses. Google never exposes system-managed private
+        # keys, and never retains user-managed private keys.
         # Corresponds to the JSON property `privateKeyType`
         # @return [String]
         attr_accessor :private_key_type
@@ -1432,10 +1280,9 @@ module Google
         # @return [String]
         attr_accessor :valid_after_time
       
-        # The key can be used before this timestamp.
-        # For system-managed key pairs, this timestamp is the end time for the
-        # private key signing operation. The public key could still be used
-        # for verification for a few hours after this time.
+        # The key can be used before this timestamp. For system-managed key pairs, this
+        # timestamp is the end time for the private key signing operation. The public
+        # key could still be used for verification for a few hours after this time.
         # Corresponds to the JSON property `validBeforeTime`
         # @return [String]
         attr_accessor :valid_before_time
@@ -1463,74 +1310,39 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An Identity and Access Management (IAM) policy, which specifies access
-        # controls for Google Cloud resources.
-        # A `Policy` is a collection of `bindings`. A `binding` binds one or more
-        # `members` to a single `role`. Members can be user accounts, service accounts,
-        # Google groups, and domains (such as G Suite). A `role` is a named list of
-        # permissions; each `role` can be an IAM predefined role or a user-created
-        # custom role.
-        # For some types of Google Cloud resources, a `binding` can also specify a
-        # `condition`, which is a logical expression that allows access to a resource
-        # only if the expression evaluates to `true`. A condition can add constraints
-        # based on attributes of the request, the resource, or both. To learn which
-        # resources support conditions in their IAM policies, see the
-        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-        # policies).
-        # **JSON example:**
-        # `
-        # "bindings": [
-        # `
-        # "role": "roles/resourcemanager.organizationAdmin",
-        # "members": [
-        # "user:mike@example.com",
-        # "group:admins@example.com",
-        # "domain:google.com",
-        # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-        # ]
-        # `,
-        # `
-        # "role": "roles/resourcemanager.organizationViewer",
-        # "members": [
-        # "user:eve@example.com"
-        # ],
-        # "condition": `
-        # "title": "expirable access",
-        # "description": "Does not grant access after Sep 2020",
-        # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
-        # ",
-        # `
-        # `
-        # ],
-        # "etag": "BwWWja0YfJA=",
-        # "version": 3
-        # `
-        # **YAML example:**
-        # bindings:
-        # - members:
-        # - user:mike@example.com
-        # - group:admins@example.com
-        # - domain:google.com
-        # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin
-        # - members:
-        # - user:eve@example.com
-        # role: roles/resourcemanager.organizationViewer
-        # condition:
-        # title: expirable access
-        # description: Does not grant access after Sep 2020
-        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-        # - etag: BwWWja0YfJA=
-        # - version: 3
-        # For a description of IAM and its features, see the
-        # [IAM documentation](https://cloud.google.com/iam/docs/).
+        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+        # A `binding` binds one or more `members` to a single `role`. Members can be
+        # user accounts, service accounts, Google groups, and domains (such as G Suite).
+        # A `role` is a named list of permissions; each `role` can be an IAM predefined
+        # role or a user-created custom role. For some types of Google Cloud resources,
+        # a `binding` can also specify a `condition`, which is a logical expression that
+        # allows access to a resource only if the expression evaluates to `true`. A
+        # condition can add constraints based on attributes of the request, the resource,
+        # or both. To learn which resources support conditions in their IAM policies,
+        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+        # title": "expirable access", "description": "Does not grant access after Sep
+        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+        # members: - user:mike@example.com - group:admins@example.com - domain:google.
+        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+        # roles/resourcemanager.organizationViewer condition: title: expirable access
+        # description: Does not grant access after Sep 2020 expression: request.time <
+        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # description of IAM and its features, see the [IAM documentation](https://cloud.
+        # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::IamV1::Policy]
         attr_accessor :policy
       
         # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
-        # the fields in the mask will be modified. If no mask is provided, the
-        # following default mask is used:
-        # `paths: "bindings, etag"`
+        # the fields in the mask will be modified. If no mask is provided, the following
+        # default mask is used: `paths: "bindings, etag"`
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -1546,15 +1358,13 @@ module Google
         end
       end
       
-      # Deprecated. [Migrate to Service Account Credentials
-      # API](https://cloud.google.com/iam/help/credentials/migrate-api).
-      # The service account sign blob request.
+      # Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.
+      # com/iam/help/credentials/migrate-api). The service account sign blob request.
       class SignBlobRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. [Migrate to Service Account Credentials
-        # API](https://cloud.google.com/iam/help/credentials/migrate-api).
-        # The bytes to sign.
+        # Required. Deprecated. [Migrate to Service Account Credentials API](https://
+        # cloud.google.com/iam/help/credentials/migrate-api). The bytes to sign.
         # Corresponds to the JSON property `bytesToSign`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1570,22 +1380,19 @@ module Google
         end
       end
       
-      # Deprecated. [Migrate to Service Account Credentials
-      # API](https://cloud.google.com/iam/help/credentials/migrate-api).
-      # The service account sign blob response.
+      # Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.
+      # com/iam/help/credentials/migrate-api). The service account sign blob response.
       class SignBlobResponse
         include Google::Apis::Core::Hashable
       
-        # Deprecated. [Migrate to Service Account Credentials
-        # API](https://cloud.google.com/iam/help/credentials/migrate-api).
-        # The id of the key used to sign the blob.
+        # Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.
+        # com/iam/help/credentials/migrate-api). The id of the key used to sign the blob.
         # Corresponds to the JSON property `keyId`
         # @return [String]
         attr_accessor :key_id
       
-        # Deprecated. [Migrate to Service Account Credentials
-        # API](https://cloud.google.com/iam/help/credentials/migrate-api).
-        # The signed blob.
+        # Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.
+        # com/iam/help/credentials/migrate-api). The signed blob.
         # Corresponds to the JSON property `signature`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1602,22 +1409,19 @@ module Google
         end
       end
       
-      # Deprecated. [Migrate to Service Account Credentials
-      # API](https://cloud.google.com/iam/help/credentials/migrate-api).
-      # The service account sign JWT request.
+      # Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.
+      # com/iam/help/credentials/migrate-api). The service account sign JWT request.
       class SignJwtRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Deprecated. [Migrate to Service Account Credentials
-        # API](https://cloud.google.com/iam/help/credentials/migrate-api).
-        # The JWT payload to sign. Must be a serialized JSON object that contains a
-        # JWT Claims Set. For example: ``"sub": "user@example.com", "iat": 313435``
-        # If the JWT Claims Set contains an expiration time (`exp`) claim, it must be
-        # an integer timestamp that is not in the past and no more than 1 hour in the
-        # future.
-        # If the JWT Claims Set does not contain an expiration time (`exp`) claim,
-        # this claim is added automatically, with a timestamp that is 1 hour in the
-        # future.
+        # Required. Deprecated. [Migrate to Service Account Credentials API](https://
+        # cloud.google.com/iam/help/credentials/migrate-api). The JWT payload to sign.
+        # Must be a serialized JSON object that contains a JWT Claims Set. For example: `
+        # `"sub": "user@example.com", "iat": 313435`` If the JWT Claims Set contains an
+        # expiration time (`exp`) claim, it must be an integer timestamp that is not in
+        # the past and no more than 1 hour in the future. If the JWT Claims Set does not
+        # contain an expiration time (`exp`) claim, this claim is added automatically,
+        # with a timestamp that is 1 hour in the future.
         # Corresponds to the JSON property `payload`
         # @return [String]
         attr_accessor :payload
@@ -1632,22 +1436,19 @@ module Google
         end
       end
       
-      # Deprecated. [Migrate to Service Account Credentials
-      # API](https://cloud.google.com/iam/help/credentials/migrate-api).
-      # The service account sign JWT response.
+      # Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.
+      # com/iam/help/credentials/migrate-api). The service account sign JWT response.
       class SignJwtResponse
         include Google::Apis::Core::Hashable
       
-        # Deprecated. [Migrate to Service Account Credentials
-        # API](https://cloud.google.com/iam/help/credentials/migrate-api).
-        # The id of the key used to sign the JWT.
+        # Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.
+        # com/iam/help/credentials/migrate-api). The id of the key used to sign the JWT.
         # Corresponds to the JSON property `keyId`
         # @return [String]
         attr_accessor :key_id
       
-        # Deprecated. [Migrate to Service Account Credentials
-        # API](https://cloud.google.com/iam/help/credentials/migrate-api).
-        # The signed JWT.
+        # Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.
+        # com/iam/help/credentials/migrate-api). The signed JWT.
         # Corresponds to the JSON property `signedJwt`
         # @return [String]
         attr_accessor :signed_jwt
@@ -1667,10 +1468,9 @@ module Google
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
       
-        # The set of permissions to check for the `resource`. Permissions with
-        # wildcards (such as '*' or 'storage.*') are not allowed. For more
-        # information see
-        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        # The set of permissions to check for the `resource`. Permissions with wildcards
+        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -1689,8 +1489,7 @@ module Google
       class TestIamPermissionsResponse
         include Google::Apis::Core::Hashable
       
-        # A subset of `TestPermissionsRequest.permissions` that the caller is
-        # allowed.
+        # A subset of `TestPermissionsRequest.permissions` that the caller is allowed.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -1742,15 +1541,13 @@ module Google
       class UndeleteServiceAccountResponse
         include Google::Apis::Core::Hashable
       
-        # An IAM service account.
-        # A service account is an account for an application or a virtual machine (VM)
-        # instance, not a person. You can use a service account to call Google APIs. To
-        # learn more, read the [overview of service
-        # accounts](https://cloud.google.com/iam/help/service-accounts/overview).
-        # When you create a service account, you specify the project ID that owns the
-        # service account, as well as a name that must be unique within the project.
-        # IAM uses these values to create an email address that identifies the service
-        # account.
+        # An IAM service account. A service account is an account for an application or
+        # a virtual machine (VM) instance, not a person. You can use a service account
+        # to call Google APIs. To learn more, read the [overview of service accounts](
+        # https://cloud.google.com/iam/help/service-accounts/overview). When you create
+        # a service account, you specify the project ID that owns the service account,
+        # as well as a name that must be unique within the project. IAM uses these
+        # values to create an email address that identifies the service account.
         # Corresponds to the JSON property `restoredAccount`
         # @return [Google::Apis::IamV1::ServiceAccount]
         attr_accessor :restored_account
@@ -1769,9 +1566,8 @@ module Google
       class UploadServiceAccountKeyRequest
         include Google::Apis::Core::Hashable
       
-        # A field that allows clients to upload their own public key. If set,
-        # use this public key data to create a service account key for given
-        # service account.
+        # A field that allows clients to upload their own public key. If set, use this
+        # public key data to create a service account key for given service account.
         # Please note, the expected format for this field is X509_PEM.
         # Corresponds to the JSON property `publicKeyData`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.

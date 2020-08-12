@@ -47,18 +47,17 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Exports assets with time and resource types to a given Cloud Storage
-        # location. The output format is newline-delimited JSON.
-        # This API implements the google.longrunning.Operation API allowing you
-        # to keep track of the export. We recommend intervals of at least 2 seconds
-        # with exponential retry to poll the export operation result. For
-        # regular-size resource parent, the export operation usually finishes within
-        # 5 minutes.
+        # Exports assets with time and resource types to a given Cloud Storage location.
+        # The output format is newline-delimited JSON. This API implements the google.
+        # longrunning.Operation API allowing you to keep track of the export. We
+        # recommend intervals of at least 2 seconds with exponential retry to poll the
+        # export operation result. For regular-size resource parent, the export
+        # operation usually finishes within 5 minutes.
         # @param [String] parent
         #   Required. The relative name of the root asset. This can only be an
-        #   organization number (such as "organizations/123"), a project ID (such as
-        #   "projects/my-project-id"), a project number (such as "projects/12345"), or
-        #   a folder number (such as "folders/123").
+        #   organization number (such as "organizations/123"), a project ID (such as "
+        #   projects/my-project-id"), a project number (such as "projects/12345"), or a
+        #   folder number (such as "folders/123").
         # @param [Google::Apis::CloudassetV1beta1::ExportAssetsRequest] export_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -89,9 +88,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -121,26 +119,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Batch gets the update history of assets that overlap a time window.
-        # For IAM_POLICY content, this API outputs history when the asset and its
-        # attached IAM POLICY both exist. This can create gaps in the output history.
-        # Otherwise, this API outputs history with asset in both non-delete or
-        # deleted status.
-        # If a specified asset does not exist, this API returns an INVALID_ARGUMENT
-        # error.
+        # Batch gets the update history of assets that overlap a time window. For
+        # IAM_POLICY content, this API outputs history when the asset and its attached
+        # IAM POLICY both exist. This can create gaps in the output history. Otherwise,
+        # this API outputs history with asset in both non-delete or deleted status. If a
+        # specified asset does not exist, this API returns an INVALID_ARGUMENT error.
         # @param [String] parent
-        #   Required. The relative name of the root asset. It can only be an
-        #   organization number (such as "organizations/123"), a project ID (such as
-        #   "projects/my-project-id")", or a project number (such as "projects/12345").
+        #   Required. The relative name of the root asset. It can only be an organization
+        #   number (such as "organizations/123"), a project ID (such as "projects/my-
+        #   project-id")", or a project number (such as "projects/12345").
         # @param [Array<String>, String] asset_names
-        #   A list of the full names of the assets. For example:
-        #   `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/
-        #   instance1`.
-        #   See [Resource
-        #   Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-        #   for more info.
-        #   The request becomes a no-op if the asset name list is empty, and the max
-        #   size of the asset name list is 100 in one request.
+        #   A list of the full names of the assets. For example: `//compute.googleapis.com/
+        #   projects/my_project_123/zones/zone1/instances/instance1`. See [Resource Names](
+        #   https://cloud.google.com/apis/design/resource_names#full_resource_name) for
+        #   more info. The request becomes a no-op if the asset name list is empty, and
+        #   the max size of the asset name list is 100 in one request.
         # @param [String] content_type
         #   Optional. The content type.
         # @param [String] read_time_window_end_time
@@ -179,18 +172,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports assets with time and resource types to a given Cloud Storage
-        # location. The output format is newline-delimited JSON.
-        # This API implements the google.longrunning.Operation API allowing you
-        # to keep track of the export. We recommend intervals of at least 2 seconds
-        # with exponential retry to poll the export operation result. For
-        # regular-size resource parent, the export operation usually finishes within
-        # 5 minutes.
+        # Exports assets with time and resource types to a given Cloud Storage location.
+        # The output format is newline-delimited JSON. This API implements the google.
+        # longrunning.Operation API allowing you to keep track of the export. We
+        # recommend intervals of at least 2 seconds with exponential retry to poll the
+        # export operation result. For regular-size resource parent, the export
+        # operation usually finishes within 5 minutes.
         # @param [String] parent
         #   Required. The relative name of the root asset. This can only be an
-        #   organization number (such as "organizations/123"), a project ID (such as
-        #   "projects/my-project-id"), a project number (such as "projects/12345"), or
-        #   a folder number (such as "folders/123").
+        #   organization number (such as "organizations/123"), a project ID (such as "
+        #   projects/my-project-id"), a project number (such as "projects/12345"), or a
+        #   folder number (such as "folders/123").
         # @param [Google::Apis::CloudassetV1beta1::ExportAssetsRequest] export_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -221,9 +213,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -253,26 +244,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Batch gets the update history of assets that overlap a time window.
-        # For IAM_POLICY content, this API outputs history when the asset and its
-        # attached IAM POLICY both exist. This can create gaps in the output history.
-        # Otherwise, this API outputs history with asset in both non-delete or
-        # deleted status.
-        # If a specified asset does not exist, this API returns an INVALID_ARGUMENT
-        # error.
+        # Batch gets the update history of assets that overlap a time window. For
+        # IAM_POLICY content, this API outputs history when the asset and its attached
+        # IAM POLICY both exist. This can create gaps in the output history. Otherwise,
+        # this API outputs history with asset in both non-delete or deleted status. If a
+        # specified asset does not exist, this API returns an INVALID_ARGUMENT error.
         # @param [String] parent
-        #   Required. The relative name of the root asset. It can only be an
-        #   organization number (such as "organizations/123"), a project ID (such as
-        #   "projects/my-project-id")", or a project number (such as "projects/12345").
+        #   Required. The relative name of the root asset. It can only be an organization
+        #   number (such as "organizations/123"), a project ID (such as "projects/my-
+        #   project-id")", or a project number (such as "projects/12345").
         # @param [Array<String>, String] asset_names
-        #   A list of the full names of the assets. For example:
-        #   `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/
-        #   instance1`.
-        #   See [Resource
-        #   Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-        #   for more info.
-        #   The request becomes a no-op if the asset name list is empty, and the max
-        #   size of the asset name list is 100 in one request.
+        #   A list of the full names of the assets. For example: `//compute.googleapis.com/
+        #   projects/my_project_123/zones/zone1/instances/instance1`. See [Resource Names](
+        #   https://cloud.google.com/apis/design/resource_names#full_resource_name) for
+        #   more info. The request becomes a no-op if the asset name list is empty, and
+        #   the max size of the asset name list is 100 in one request.
         # @param [String] content_type
         #   Optional. The content type.
         # @param [String] read_time_window_end_time
@@ -311,18 +297,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports assets with time and resource types to a given Cloud Storage
-        # location. The output format is newline-delimited JSON.
-        # This API implements the google.longrunning.Operation API allowing you
-        # to keep track of the export. We recommend intervals of at least 2 seconds
-        # with exponential retry to poll the export operation result. For
-        # regular-size resource parent, the export operation usually finishes within
-        # 5 minutes.
+        # Exports assets with time and resource types to a given Cloud Storage location.
+        # The output format is newline-delimited JSON. This API implements the google.
+        # longrunning.Operation API allowing you to keep track of the export. We
+        # recommend intervals of at least 2 seconds with exponential retry to poll the
+        # export operation result. For regular-size resource parent, the export
+        # operation usually finishes within 5 minutes.
         # @param [String] parent
         #   Required. The relative name of the root asset. This can only be an
-        #   organization number (such as "organizations/123"), a project ID (such as
-        #   "projects/my-project-id"), a project number (such as "projects/12345"), or
-        #   a folder number (such as "folders/123").
+        #   organization number (such as "organizations/123"), a project ID (such as "
+        #   projects/my-project-id"), a project number (such as "projects/12345"), or a
+        #   folder number (such as "folders/123").
         # @param [Google::Apis::CloudassetV1beta1::ExportAssetsRequest] export_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -353,9 +338,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields

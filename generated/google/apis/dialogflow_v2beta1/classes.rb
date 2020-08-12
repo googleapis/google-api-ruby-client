@@ -22,6 +22,26 @@ module Google
   module Apis
     module DialogflowV2beta1
       
+      # Metadata associated with the long running operation for Versions.CreateVersion.
+      class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Name of the created version. Format: `projects//locations//agents//flows//
+        # versions/`.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # The response message for Agents.ExportAgent.
       class GoogleCloudDialogflowCxV3beta1ExportAgentResponse
         include Google::Apis::Core::Hashable
@@ -372,8 +392,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment
         include Google::Apis::Core::Hashable
       
-        # Whether the playback of this segment can be interrupted by the end user's
-        # speech and the client should then start the next Dialogflow request.
+        # Output only. Whether the playback of this segment can be interrupted by the
+        # end user's speech and the client should then start the next Dialogflow request.
         # Corresponds to the JSON property `allowPlaybackInterruption`
         # @return [Boolean]
         attr_accessor :allow_playback_interruption
@@ -435,8 +455,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio
         include Google::Apis::Core::Hashable
       
-        # Whether the playback of this message can be interrupted by the end user's
-        # speech and the client can then starts the next Dialogflow request.
+        # Output only. Whether the playback of this message can be interrupted by the
+        # end user's speech and the client can then starts the next Dialogflow request.
         # Corresponds to the JSON property `allowPlaybackInterruption`
         # @return [Boolean]
         attr_accessor :allow_playback_interruption
@@ -463,8 +483,8 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ResponseMessageText
         include Google::Apis::Core::Hashable
       
-        # Whether the playback of this message can be interrupted by the end user's
-        # speech and the client can then starts the next Dialogflow request.
+        # Output only. Whether the playback of this message can be interrupted by the
+        # end user's speech and the client can then starts the next Dialogflow request.
         # Corresponds to the JSON property `allowPlaybackInterruption`
         # @return [Boolean]
         attr_accessor :allow_playback_interruption
@@ -7128,6 +7148,26 @@ module Google
           @payload = args[:payload] if args.key?(:payload)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
           @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # Metadata associated with the long running operation for Versions.CreateVersion.
+      class GoogleCloudDialogflowV3alpha1CreateVersionOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Name of the created version. Format: `projects//locations//agents//flows//
+        # versions/`.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
         end
       end
       

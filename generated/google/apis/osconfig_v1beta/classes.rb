@@ -22,9 +22,8 @@ module Google
   module Apis
     module OsconfigV1beta
       
-      # Represents a single Apt package repository. This repository is added to
-      # a repo file that is stored at
-      # `/etc/apt/sources.list.d/google_osconfig.list`.
+      # Represents a single Apt package repository. This repository is added to a repo
+      # file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
       class AptRepository
         include Google::Apis::Core::Hashable
       
@@ -44,9 +43,9 @@ module Google
         # @return [String]
         attr_accessor :distribution
       
-        # URI of the key file for this repository. The agent maintains
-        # a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing
-        # all the keys in any applied guest policy.
+        # URI of the key file for this repository. The agent maintains a keyring at `/
+        # etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in
+        # any applied guest policy.
         # Corresponds to the JSON property `gpgKey`
         # @return [String]
         attr_accessor :gpg_key
@@ -70,8 +69,8 @@ module Google
         end
       end
       
-      # Apt patching is completed by executing `apt-get update && apt-get
-      # upgrade`. Additional options can be set to control how this is executed.
+      # Apt patching is completed by executing `apt-get update && apt-get upgrade`.
+      # Additional options can be set to control how this is executed.
       class AptSettings
         include Google::Apis::Core::Hashable
       
@@ -80,16 +79,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :excludes
       
-        # An exclusive list of packages to be updated. These are the only packages
-        # that will be updated. If these packages are not installed, they will be
-        # ignored. This field cannot be specified with any other patch configuration
-        # fields.
+        # An exclusive list of packages to be updated. These are the only packages that
+        # will be updated. If these packages are not installed, they will be ignored.
+        # This field cannot be specified with any other patch configuration fields.
         # Corresponds to the JSON property `exclusivePackages`
         # @return [Array<String>]
         attr_accessor :exclusive_packages
       
-        # By changing the type to DIST, the patching is performed
-        # using `apt-get dist-upgrade` instead.
+        # By changing the type to DIST, the patching is performed using `apt-get dist-
+        # upgrade` instead.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -107,51 +105,45 @@ module Google
       end
       
       # An assignment represents the group or groups of VM instances that the policy
-      # applies to.
-      # If an assignment is empty, it applies to all VM instances. Otherwise, the
-      # targeted VM instances must meet all the criteria specified. So if both
-      # labels and zones are specified, the policy applies to VM instances with those
-      # labels and in those zones.
+      # applies to. If an assignment is empty, it applies to all VM instances.
+      # Otherwise, the targeted VM instances must meet all the criteria specified. So
+      # if both labels and zones are specified, the policy applies to VM instances
+      # with those labels and in those zones.
       class Assignment
         include Google::Apis::Core::Hashable
       
-        # Targets instances matching at least one of these label sets. This allows
-        # an assignment to target disparate groups, for example "env=prod or
-        # env=staging".
+        # Targets instances matching at least one of these label sets. This allows an
+        # assignment to target disparate groups, for example "env=prod or env=staging".
         # Corresponds to the JSON property `groupLabels`
         # @return [Array<Google::Apis::OsconfigV1beta::AssignmentGroupLabel>]
         attr_accessor :group_labels
       
-        # Targets VM instances whose name starts with one of these prefixes.
-        # Like labels, this is another way to group VM instances when targeting
-        # configs, for example prefix="prod-".
-        # Only supported for project-level policies.
+        # Targets VM instances whose name starts with one of these prefixes. Like labels,
+        # this is another way to group VM instances when targeting configs, for example
+        # prefix="prod-". Only supported for project-level policies.
         # Corresponds to the JSON property `instanceNamePrefixes`
         # @return [Array<String>]
         attr_accessor :instance_name_prefixes
       
-        # Targets any of the instances specified. Instances are specified by their
-        # URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`.
-        # Instance targeting is uncommon and is supported to facilitate the
-        # management of changes by the instance or to target specific VM instances
-        # for development and testing.
-        # Only supported for project-level policies and must reference instances
-        # within this project.
+        # Targets any of the instances specified. Instances are specified by their URI
+        # in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`. Instance targeting is
+        # uncommon and is supported to facilitate the management of changes by the
+        # instance or to target specific VM instances for development and testing. Only
+        # supported for project-level policies and must reference instances within this
+        # project.
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
       
-        # Targets VM instances matching at least one of the following OS types.
-        # VM instances must match all supplied criteria for a given OsType to be
-        # included.
+        # Targets VM instances matching at least one of the following OS types. VM
+        # instances must match all supplied criteria for a given OsType to be included.
         # Corresponds to the JSON property `osTypes`
         # @return [Array<Google::Apis::OsconfigV1beta::AssignmentOsType>]
         attr_accessor :os_types
       
-        # Targets instances in any of these zones. Leave empty to target instances
-        # in any zone.
-        # Zonal targeting is uncommon and is supported to facilitate the management
-        # of changes by zone.
+        # Targets instances in any of these zones. Leave empty to target instances in
+        # any zone. Zonal targeting is uncommon and is supported to facilitate the
+        # management of changes by zone.
         # Corresponds to the JSON property `zones`
         # @return [Array<String>]
         attr_accessor :zones
@@ -170,13 +162,13 @@ module Google
         end
       end
       
-      # Represents a group of VM intances that can be identified as having all
-      # these labels, for example "env=prod and app=web".
+      # Represents a group of VM intances that can be identified as having all these
+      # labels, for example "env=prod and app=web".
       class AssignmentGroupLabel
         include Google::Apis::Core::Hashable
       
-        # Google Compute Engine instance labels that must be present for an
-        # instance to be included in this assignment group.
+        # Google Compute Engine instance labels that must be present for an instance to
+        # be included in this assignment group.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -195,14 +187,14 @@ module Google
       class AssignmentOsType
         include Google::Apis::Core::Hashable
       
-        # Targets VM instances with OS Inventory enabled and having the following
-        # OS architecture.
+        # Targets VM instances with OS Inventory enabled and having the following OS
+        # architecture.
         # Corresponds to the JSON property `osArchitecture`
         # @return [String]
         attr_accessor :os_architecture
       
-        # Targets VM instances with OS Inventory enabled and having the following
-        # OS short name, for example "debian" or "windows".
+        # Targets VM instances with OS Inventory enabled and having the following OS
+        # short name, for example "debian" or "windows".
         # Corresponds to the JSON property `osShortName`
         # @return [String]
         attr_accessor :os_short_name
@@ -273,23 +265,16 @@ module Google
       class EffectiveGuestPolicySourcedPackage
         include Google::Apis::Core::Hashable
       
-        # Package is a reference to the software package to be installed or removed.
-        # The agent on the VM instance uses the system package manager to apply the
-        # config.
-        # These are the commands that the agent uses to install or remove
-        # packages.
-        # Apt
+        # Package is a reference to the software package to be installed or removed. The
+        # agent on the VM instance uses the system package manager to apply the config.
+        # These are the commands that the agent uses to install or remove packages. Apt
         # install: `apt-get update && apt-get -y install package1 package2 package3`
-        # remove: `apt-get -y remove package1 package2 package3`
-        # Yum
-        # install: `yum -y install package1 package2 package3`
-        # remove: `yum -y remove package1 package2 package3`
-        # Zypper
-        # install: `zypper install package1 package2 package3`
-        # remove: `zypper rm package1 package2`
-        # Googet
-        # install: `googet -noconfirm install package1 package2 package3`
-        # remove: `googet -noconfirm remove package1 package2 package3`
+        # remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y
+        # install package1 package2 package3` remove: `yum -y remove package1 package2
+        # package3` Zypper install: `zypper install package1 package2 package3` remove: `
+        # zypper rm package1 package2` Googet install: `googet -noconfirm install
+        # package1 package2 package3` remove: `googet -noconfirm remove package1
+        # package2 package3`
         # Corresponds to the JSON property `package`
         # @return [Google::Apis::OsconfigV1beta::Package]
         attr_accessor :package
@@ -340,22 +325,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A software recipe is a set of instructions for installing and configuring a
-        # piece of software. It consists of a set of artifacts that are
-        # downloaded, and a set of steps that install, configure, and/or update the
-        # software.
-        # Recipes support installing and updating software from artifacts in the
-        # following formats:
-        # Zip archive, Tar archive, Windows MSI, Debian package, and RPM package.
-        # Additionally, recipes support executing a script (either defined in a file or
-        # directly in this api) in bash, sh, cmd, and powershell.
-        # Updating a software recipe
-        # If a recipe is assigned to an instance and there is a recipe with the same
-        # name but a lower version already installed and the assigned state
-        # of the recipe is `UPDATED`, then the recipe is updated to
-        # the new version.
-        # Script Working Directories
-        # Each script or execution step is run in its own temporary directory which
-        # is deleted after completing the step.
+        # piece of software. It consists of a set of artifacts that are downloaded, and
+        # a set of steps that install, configure, and/or update the software. Recipes
+        # support installing and updating software from artifacts in the following
+        # formats: Zip archive, Tar archive, Windows MSI, Debian package, and RPM
+        # package. Additionally, recipes support executing a script (either defined in a
+        # file or directly in this api) in bash, sh, cmd, and powershell. Updating a
+        # software recipe If a recipe is assigned to an instance and there is a recipe
+        # with the same name but a lower version already installed and the assigned
+        # state of the recipe is `UPDATED`, then the recipe is updated to the new
+        # version. Script Working Directories Each script or execution step is run in
+        # its own temporary directory which is deleted after completing the step.
         # Corresponds to the JSON property `softwareRecipe`
         # @return [Google::Apis::OsconfigV1beta::SoftwareRecipe]
         attr_accessor :software_recipe
@@ -376,13 +356,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -492,8 +470,8 @@ module Google
       class ExecStepConfig
         include Google::Apis::Core::Hashable
       
-        # Defaults to [0]. A list of possible return values that the
-        # execution can return to indicate a success.
+        # Defaults to [0]. A list of possible return values that the execution can
+        # return to indicate a success.
         # Corresponds to the JSON property `allowedSuccessCodes`
         # @return [Array<Fixnum>]
         attr_accessor :allowed_success_codes
@@ -504,9 +482,9 @@ module Google
         attr_accessor :gcs_object
       
         # The script interpreter to use to run the script. If no interpreter is
-        # specified the script will be executed directly, which will likely
-        # only succeed for scripts with [shebang lines]
-        # (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+        # specified the script will be executed directly, which will likely only succeed
+        # for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\
+        # )).
         # Corresponds to the JSON property `interpreter`
         # @return [String]
         attr_accessor :interpreter
@@ -533,8 +511,8 @@ module Google
       class ExecutePatchJobRequest
         include Google::Apis::Core::Hashable
       
-        # Description of the patch job. Length of the description is limited
-        # to 1024 characters.
+        # Description of the patch job. Length of the description is limited to 1024
+        # characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -544,29 +522,26 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # If this patch is a dry-run only, instances are contacted but
-        # will do nothing.
+        # If this patch is a dry-run only, instances are contacted but will do nothing.
         # Corresponds to the JSON property `dryRun`
         # @return [Boolean]
         attr_accessor :dry_run
         alias_method :dry_run?, :dry_run
       
-        # Duration of the patch job. After the duration ends, the patch job
-        # times out.
+        # Duration of the patch job. After the duration ends, the patch job times out.
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
       
-        # A filter to target VM instances for patching. The targeted
-        # VMs must meet all criteria specified. So if both labels and zones are
-        # specified, the patch job targets only VMs with those labels and in those
-        # zones.
+        # A filter to target VM instances for patching. The targeted VMs must meet all
+        # criteria specified. So if both labels and zones are specified, the patch job
+        # targets only VMs with those labels and in those zones.
         # Corresponds to the JSON property `instanceFilter`
         # @return [Google::Apis::OsconfigV1beta::PatchInstanceFilter]
         attr_accessor :instance_filter
       
-        # Patch configuration specifications. Contains details on how to apply the
-        # patch(es) to a VM instance.
+        # Patch configuration specifications. Contains details on how to apply the patch(
+        # es) to a VM instance.
         # Corresponds to the JSON property `patchConfig`
         # @return [Google::Apis::OsconfigV1beta::PatchConfig]
         attr_accessor :patch_config
@@ -597,9 +572,8 @@ module Google
       class ExtractArchiveResource
         include Google::Apis::Core::Hashable
       
-        # Local file path that signals this resource is in the desired state.
-        # The absence of this file will indicate whether the archive needs to be
-        # extracted.
+        # Local file path that signals this resource is in the desired state. The
+        # absence of this file will indicate whether the archive needs to be extracted.
         # Corresponds to the JSON property `creates`
         # @return [String]
         attr_accessor :creates
@@ -609,9 +583,9 @@ module Google
         # @return [String]
         attr_accessor :destination
       
-        # Whether to overwrite existing files during extraction. If this is set to
-        # true, any existing files in the destination location will be overwritten by
-        # the extraction.
+        # Whether to overwrite existing files during extraction. If this is set to true,
+        # any existing files in the destination location will be overwritten by the
+        # extraction.
         # Corresponds to the JSON property `overwrite`
         # @return [Boolean]
         attr_accessor :overwrite
@@ -645,10 +619,9 @@ module Google
       class File
         include Google::Apis::Core::Hashable
       
-        # Defaults to false. When false, files will be subject to validations
-        # based on the file type:
-        # Remote: A checksum must be specified.
-        # GCS:    An object generation number must be specified.
+        # Defaults to false. When false, files will be subject to validations based on
+        # the file type: Remote: A checksum must be specified. GCS: An object generation
+        # number must be specified.
         # Corresponds to the JSON property `allowInsecure`
         # @return [Boolean]
         attr_accessor :allow_insecure
@@ -722,8 +695,8 @@ module Google
         # @return [String]
         attr_accessor :sha256_checksum
       
-        # URI from which to fetch the object. It should contain both the protocol
-        # and path following the format `protocol`://`location`.
+        # URI from which to fetch the object. It should contain both the protocol and
+        # path following the format `protocol`://`location`.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -758,18 +731,14 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Consists of three octal digits which represent, in
-        # order, the permissions of the owner, group, and other users for the
-        # file (similarly to the numeric mode used in the linux chmod utility).
-        # Each digit represents a three bit number with the 4 bit
-        # corresponding to the read permissions, the 2 bit corresponds to the
-        # write bit, and the one bit corresponds to the execute permission.
-        # Default behavior is 755.
-        # Below are some examples of permissions and their associated values:
-        # read, write, and execute: 7
-        # read and execute: 5
-        # read and write: 6
-        # read only: 4
+        # Consists of three octal digits which represent, in order, the permissions of
+        # the owner, group, and other users for the file (similarly to the numeric mode
+        # used in the linux chmod utility). Each digit represents a three bit number
+        # with the 4 bit corresponding to the read permissions, the 2 bit corresponds to
+        # the write bit, and the one bit corresponds to the execute permission. Default
+        # behavior is 755. Below are some examples of permissions and their associated
+        # values: read, write, and execute: 7 read and execute: 5 read and write: 6 read
+        # only: 4
         # Corresponds to the JSON property `permissions`
         # @return [String]
         attr_accessor :permissions
@@ -803,8 +772,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :fixed
       
-        # Specifies the relative value defined as a percentage, which will be
-        # multiplied by a reference value.
+        # Specifies the relative value defined as a percentage, which will be multiplied
+        # by a reference value.
         # Corresponds to the JSON property `percent`
         # @return [Fixnum]
         attr_accessor :percent
@@ -830,8 +799,7 @@ module Google
         attr_accessor :bucket
       
         # Required. Generation number of the Google Cloud Storage object. This is used
-        # to
-        # ensure that the ExecStep specified by this PatchJob does not change.
+        # to ensure that the ExecStep specified by this PatchJob does not change.
         # Corresponds to the JSON property `generationNumber`
         # @return [Fixnum]
         attr_accessor :generation_number
@@ -853,8 +821,8 @@ module Google
         end
       end
       
-      # Represents a Goo package repository. These is added to a repo file
-      # that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
+      # Represents a Goo package repository. These is added to a repo file that is
+      # stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
       class GooRepository
         include Google::Apis::Core::Hashable
       
@@ -900,11 +868,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An assignment represents the group or groups of VM instances that the policy
-        # applies to.
-        # If an assignment is empty, it applies to all VM instances. Otherwise, the
-        # targeted VM instances must meet all the criteria specified. So if both
-        # labels and zones are specified, the policy applies to VM instances with those
-        # labels and in those zones.
+        # applies to. If an assignment is empty, it applies to all VM instances.
+        # Otherwise, the targeted VM instances must meet all the criteria specified. So
+        # if both labels and zones are specified, the policy applies to VM instances
+        # with those labels and in those zones.
         # Corresponds to the JSON property `assignment`
         # @return [Google::Apis::OsconfigV1beta::Assignment]
         attr_accessor :assignment
@@ -914,30 +881,28 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Description of the guest policy. Length of the description is limited
-        # to 1024 characters.
+        # Description of the guest policy. Length of the description is limited to 1024
+        # characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # The etag for this guest policy.
-        # If this is provided on update, it must match the server's etag.
+        # The etag for this guest policy. If this is provided on update, it must match
+        # the server's etag.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
         # Required. Unique name of the resource in this project using one of the
-        # following
-        # forms:
-        # `projects/`project_number`/guestPolicies/`guest_policy_id``.
+        # following forms: `projects/`project_number`/guestPolicies/`guest_policy_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # A list of package repositories to configure on the VM instance. This is
-        # done before any other configs are applied so they can use these repos.
-        # Package repositories are only configured if the corresponding package
-        # manager(s) are available.
+        # A list of package repositories to configure on the VM instance. This is done
+        # before any other configs are applied so they can use these repos. Package
+        # repositories are only configured if the corresponding package manager(s) are
+        # available.
         # Corresponds to the JSON property `packageRepositories`
         # @return [Array<Google::Apis::OsconfigV1beta::PackageRepository>]
         attr_accessor :package_repositories
@@ -984,8 +949,7 @@ module Google
         # @return [Array<Google::Apis::OsconfigV1beta::GuestPolicy>]
         attr_accessor :guest_policies
       
-        # A pagination token that can be used to get the next page
-        # of guest policies.
+        # A pagination token that can be used to get the next page of guest policies.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1005,8 +969,7 @@ module Google
       class ListPatchDeploymentsResponse
         include Google::Apis::Core::Hashable
       
-        # A pagination token that can be used to get the next page of patch
-        # deployments.
+        # A pagination token that can be used to get the next page of patch deployments.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1082,23 +1045,20 @@ module Google
       class LookupEffectiveGuestPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # Architecture of OS running on the instance. The OS Config agent only
-        # provides this field for targeting if OS Inventory is enabled for that
-        # instance.
+        # Architecture of OS running on the instance. The OS Config agent only provides
+        # this field for targeting if OS Inventory is enabled for that instance.
         # Corresponds to the JSON property `osArchitecture`
         # @return [String]
         attr_accessor :os_architecture
       
         # Short name of the OS running on the instance. The OS Config agent only
-        # provides this field for targeting if OS Inventory is enabled for that
-        # instance.
+        # provides this field for targeting if OS Inventory is enabled for that instance.
         # Corresponds to the JSON property `osShortName`
         # @return [String]
         attr_accessor :os_short_name
       
-        # Version of the OS running on the instance. The OS Config agent only
-        # provides this field for targeting if OS Inventory is enabled for that
-        # VM instance.
+        # Version of the OS running on the instance. The OS Config agent only provides
+        # this field for targeting if OS Inventory is enabled for that VM instance.
         # Corresponds to the JSON property `osVersion`
         # @return [String]
         attr_accessor :os_version
@@ -1115,15 +1075,15 @@ module Google
         end
       end
       
-      # Represents a monthly schedule. An example of a valid monthly schedule is
-      # "on the third Tuesday of the month" or "on the 15th of the month".
+      # Represents a monthly schedule. An example of a valid monthly schedule is "on
+      # the third Tuesday of the month" or "on the 15th of the month".
       class MonthlySchedule
         include Google::Apis::Core::Hashable
       
         # Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1
-        # indicates the last day of the month.
-        # Months without the target day will be skipped. For example, a schedule to
-        # run "every month on the 31st" will not run in February, April, June, etc.
+        # indicates the last day of the month. Months without the target day will be
+        # skipped. For example, a schedule to run "every month on the 31st" will not run
+        # in February, April, June, etc.
         # Corresponds to the JSON property `monthDay`
         # @return [Fixnum]
         attr_accessor :month_day
@@ -1144,8 +1104,8 @@ module Google
         end
       end
       
-      # Sets the time for a one time patch deployment. Timestamp is in
-      # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+      # Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https:
+      # //www.ietf.org/rfc/rfc3339.txt) text format.
       class OneTimeSchedule
         include Google::Apis::Core::Hashable
       
@@ -1164,47 +1124,37 @@ module Google
         end
       end
       
-      # Package is a reference to the software package to be installed or removed.
-      # The agent on the VM instance uses the system package manager to apply the
-      # config.
-      # These are the commands that the agent uses to install or remove
-      # packages.
-      # Apt
+      # Package is a reference to the software package to be installed or removed. The
+      # agent on the VM instance uses the system package manager to apply the config.
+      # These are the commands that the agent uses to install or remove packages. Apt
       # install: `apt-get update && apt-get -y install package1 package2 package3`
-      # remove: `apt-get -y remove package1 package2 package3`
-      # Yum
-      # install: `yum -y install package1 package2 package3`
-      # remove: `yum -y remove package1 package2 package3`
-      # Zypper
-      # install: `zypper install package1 package2 package3`
-      # remove: `zypper rm package1 package2`
-      # Googet
-      # install: `googet -noconfirm install package1 package2 package3`
-      # remove: `googet -noconfirm remove package1 package2 package3`
+      # remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y
+      # install package1 package2 package3` remove: `yum -y remove package1 package2
+      # package3` Zypper install: `zypper install package1 package2 package3` remove: `
+      # zypper rm package1 package2` Googet install: `googet -noconfirm install
+      # package1 package2 package3` remove: `googet -noconfirm remove package1
+      # package2 package3`
       class Package
         include Google::Apis::Core::Hashable
       
-        # The desired_state the agent should maintain for this package. The
-        # default is to ensure the package is installed.
+        # The desired_state the agent should maintain for this package. The default is
+        # to ensure the package is installed.
         # Corresponds to the JSON property `desiredState`
         # @return [String]
         attr_accessor :desired_state
       
-        # Type of package manager that can be used to install this package.
-        # If a system does not have the package manager, the package is not
-        # installed or removed no error message is returned. By default,
-        # or if you specify `ANY`,
-        # the agent attempts to install and remove this package using the default
-        # package manager. This is useful when creating a policy that applies to
-        # different types of systems.
-        # The default behavior is ANY.
+        # Type of package manager that can be used to install this package. If a system
+        # does not have the package manager, the package is not installed or removed no
+        # error message is returned. By default, or if you specify `ANY`, the agent
+        # attempts to install and remove this package using the default package manager.
+        # This is useful when creating a policy that applies to different types of
+        # systems. The default behavior is ANY.
         # Corresponds to the JSON property `manager`
         # @return [String]
         attr_accessor :manager
       
         # Required. The name of the package. A package is uniquely identified for
-        # conflict
-        # validation by checking the package name and the manager(s) that the
+        # conflict validation by checking the package name and the manager(s) that the
         # package targets.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1226,21 +1176,20 @@ module Google
       class PackageRepository
         include Google::Apis::Core::Hashable
       
-        # Represents a single Apt package repository. This repository is added to
-        # a repo file that is stored at
-        # `/etc/apt/sources.list.d/google_osconfig.list`.
+        # Represents a single Apt package repository. This repository is added to a repo
+        # file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
         # Corresponds to the JSON property `apt`
         # @return [Google::Apis::OsconfigV1beta::AptRepository]
         attr_accessor :apt
       
-        # Represents a Goo package repository. These is added to a repo file
-        # that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
+        # Represents a Goo package repository. These is added to a repo file that is
+        # stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
         # Corresponds to the JSON property `goo`
         # @return [Google::Apis::OsconfigV1beta::GooRepository]
         attr_accessor :goo
       
-        # Represents a single Yum package repository. This repository is added to a
-        # repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
+        # Represents a single Yum package repository. This repository is added to a repo
+        # file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
         # Corresponds to the JSON property `yum`
         # @return [Google::Apis::OsconfigV1beta::YumRepository]
         attr_accessor :yum
@@ -1268,9 +1217,8 @@ module Google
       class PackageResource
         include Google::Apis::Core::Hashable
       
-        # A package managed by APT.
-        # install: `apt-get update && apt-get -y install [name]`
-        # remove: `apt-get -y remove [name]`
+        # A package managed by APT. install: `apt-get update && apt-get -y install [name]
+        # ` remove: `apt-get -y remove [name]`
         # Corresponds to the JSON property `apt`
         # @return [Google::Apis::OsconfigV1beta::PackageResourceApt]
         attr_accessor :apt
@@ -1280,21 +1228,20 @@ module Google
         # @return [Google::Apis::OsconfigV1beta::PackageResourceDeb]
         attr_accessor :deb
       
-        # The desired_state the agent should maintain for this package. The
-        # default is to ensure the package is installed.
+        # The desired_state the agent should maintain for this package. The default is
+        # to ensure the package is installed.
         # Corresponds to the JSON property `desiredState`
         # @return [String]
         attr_accessor :desired_state
       
-        # A package managed by GooGet.
-        # install: `googet -noconfirm install package`
+        # A package managed by GooGet. install: `googet -noconfirm install package`
         # remove: `googet -noconfirm remove package`
         # Corresponds to the JSON property `googet`
         # @return [Google::Apis::OsconfigV1beta::PackageResourceGooGet]
         attr_accessor :googet
       
-        # An MSI package. MSI packages only support INSTALLED state.
-        # Install msiexec /i /qn /norestart
+        # An MSI package. MSI packages only support INSTALLED state. Install msiexec /i /
+        # qn /norestart
         # Corresponds to the JSON property `msi`
         # @return [Google::Apis::OsconfigV1beta::PackageResourceMsi]
         attr_accessor :msi
@@ -1304,16 +1251,14 @@ module Google
         # @return [Google::Apis::OsconfigV1beta::PackageResourceRpm]
         attr_accessor :rpm
       
-        # A package managed by YUM.
-        # install: `yum -y install package`
-        # remove: `yum -y remove package`
+        # A package managed by YUM. install: `yum -y install package` remove: `yum -y
+        # remove package`
         # Corresponds to the JSON property `yum`
         # @return [Google::Apis::OsconfigV1beta::PackageResourceYum]
         attr_accessor :yum
       
-        # A package managed by Zypper.
-        # install: `zypper -y install package`
-        # remove: `zypper -y rm package`
+        # A package managed by Zypper. install: `zypper -y install package` remove: `
+        # zypper -y rm package`
         # Corresponds to the JSON property `zypper`
         # @return [Google::Apis::OsconfigV1beta::PackageResourceZypper]
         attr_accessor :zypper
@@ -1335,9 +1280,8 @@ module Google
         end
       end
       
-      # A package managed by APT.
-      # install: `apt-get update && apt-get -y install [name]`
-      # remove: `apt-get -y remove [name]`
+      # A package managed by APT. install: `apt-get update && apt-get -y install [name]
+      # ` remove: `apt-get -y remove [name]`
       class PackageResourceApt
         include Google::Apis::Core::Hashable
       
@@ -1360,9 +1304,8 @@ module Google
       class PackageResourceDeb
         include Google::Apis::Core::Hashable
       
-        # Whether dependencies should also be installed.
-        # install when false: `dpkg -i package`
-        # install when true: `apt-get update && apt-get -y install package.deb`
+        # Whether dependencies should also be installed. install when false: `dpkg -i
+        # package` install when true: `apt-get update && apt-get -y install package.deb`
         # Corresponds to the JSON property `pullDeps`
         # @return [Boolean]
         attr_accessor :pull_deps
@@ -1384,8 +1327,7 @@ module Google
         end
       end
       
-      # A package managed by GooGet.
-      # install: `googet -noconfirm install package`
+      # A package managed by GooGet. install: `googet -noconfirm install package`
       # remove: `googet -noconfirm remove package`
       class PackageResourceGooGet
         include Google::Apis::Core::Hashable
@@ -1405,19 +1347,19 @@ module Google
         end
       end
       
-      # An MSI package. MSI packages only support INSTALLED state.
-      # Install msiexec /i /qn /norestart
+      # An MSI package. MSI packages only support INSTALLED state. Install msiexec /i /
+      # qn /norestart
       class PackageResourceMsi
         include Google::Apis::Core::Hashable
       
-        # Return codes that indicate that the software installed or updated
-        # successfully. Behaviour defaults to [0]
+        # Return codes that indicate that the software installed or updated successfully.
+        # Behaviour defaults to [0]
         # Corresponds to the JSON property `allowedSuccessCodes`
         # @return [Array<Fixnum>]
         attr_accessor :allowed_success_codes
       
-        # Flags to use during package install.
-        # Appended to the defalts of "/i /qn /norestart"
+        # Flags to use during package install. Appended to the defalts of "/i /qn /
+        # norestart"
         # Corresponds to the JSON property `flags`
         # @return [Array<String>]
         attr_accessor :flags
@@ -1443,10 +1385,9 @@ module Google
       class PackageResourceRpm
         include Google::Apis::Core::Hashable
       
-        # Whether dependencies should also be installed.
-        # install when false: `rpm --upgrade --replacepkgs package.rpm`
-        # install when true: `yum -y install package.rpm` or
-        # `zypper -y install package.rpm`
+        # Whether dependencies should also be installed. install when false: `rpm --
+        # upgrade --replacepkgs package.rpm` install when true: `yum -y install package.
+        # rpm` or `zypper -y install package.rpm`
         # Corresponds to the JSON property `pullDeps`
         # @return [Boolean]
         attr_accessor :pull_deps
@@ -1468,9 +1409,8 @@ module Google
         end
       end
       
-      # A package managed by YUM.
-      # install: `yum -y install package`
-      # remove: `yum -y remove package`
+      # A package managed by YUM. install: `yum -y install package` remove: `yum -y
+      # remove package`
       class PackageResourceYum
         include Google::Apis::Core::Hashable
       
@@ -1489,9 +1429,8 @@ module Google
         end
       end
       
-      # A package managed by Zypper.
-      # install: `zypper -y install package`
-      # remove: `zypper -y rm package`
+      # A package managed by Zypper. install: `zypper -y install package` remove: `
+      # zypper -y rm package`
       class PackageResourceZypper
         include Google::Apis::Core::Hashable
       
@@ -1510,13 +1449,13 @@ module Google
         end
       end
       
-      # Patch configuration specifications. Contains details on how to apply the
-      # patch(es) to a VM instance.
+      # Patch configuration specifications. Contains details on how to apply the patch(
+      # es) to a VM instance.
       class PatchConfig
         include Google::Apis::Core::Hashable
       
-        # Apt patching is completed by executing `apt-get update && apt-get
-        # upgrade`. Additional options can be set to control how this is executed.
+        # Apt patching is completed by executing `apt-get update && apt-get upgrade`.
+        # Additional options can be set to control how this is executed.
         # Corresponds to the JSON property `apt`
         # @return [Google::Apis::OsconfigV1beta::AptSettings]
         attr_accessor :apt
@@ -1546,15 +1485,15 @@ module Google
         # @return [Google::Apis::OsconfigV1beta::WindowsUpdateSettings]
         attr_accessor :windows_update
       
-        # Yum patching is performed by executing `yum update`. Additional options
-        # can be set to control how this is executed.
-        # Note that not all settings are supported on all platforms.
+        # Yum patching is performed by executing `yum update`. Additional options can be
+        # set to control how this is executed. Note that not all settings are supported
+        # on all platforms.
         # Corresponds to the JSON property `yum`
         # @return [Google::Apis::OsconfigV1beta::YumSettings]
         attr_accessor :yum
       
-        # Zypper patching is performed by running `zypper patch`.
-        # See also https://en.opensuse.org/SDB:Zypper_manual.
+        # Zypper patching is performed by running `zypper patch`. See also https://en.
+        # opensuse.org/SDB:Zypper_manual.
         # Corresponds to the JSON property `zypper`
         # @return [Google::Apis::OsconfigV1beta::ZypperSettings]
         attr_accessor :zypper
@@ -1579,21 +1518,19 @@ module Google
       # Patch deployments are configurations that individual patch jobs use to
       # complete a patch. These configurations include instance filter, package
       # repository settings, and a schedule. For more information about creating and
-      # managing patch deployments, see [Scheduling patch
-      # jobs](https://cloud.google.com/compute/docs/os-patch-management/schedule-patch-
-      # jobs).
+      # managing patch deployments, see [Scheduling patch jobs](https://cloud.google.
+      # com/compute/docs/os-patch-management/schedule-patch-jobs).
       class PatchDeployment
         include Google::Apis::Core::Hashable
       
-        # Output only. Time the patch deployment was created. Timestamp is in
-        # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        # Output only. Time the patch deployment was created. Timestamp is in [RFC3339](
+        # https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
         # Optional. Description of the patch deployment. Length of the description is
-        # limited
-        # to 1024 characters.
+        # limited to 1024 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1603,37 +1540,35 @@ module Google
         # @return [String]
         attr_accessor :duration
       
-        # A filter to target VM instances for patching. The targeted
-        # VMs must meet all criteria specified. So if both labels and zones are
-        # specified, the patch job targets only VMs with those labels and in those
-        # zones.
+        # A filter to target VM instances for patching. The targeted VMs must meet all
+        # criteria specified. So if both labels and zones are specified, the patch job
+        # targets only VMs with those labels and in those zones.
         # Corresponds to the JSON property `instanceFilter`
         # @return [Google::Apis::OsconfigV1beta::PatchInstanceFilter]
         attr_accessor :instance_filter
       
         # Output only. The last time a patch job was started by this deployment.
-        # Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text
-        # format.
+        # Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `lastExecuteTime`
         # @return [String]
         attr_accessor :last_execute_time
       
         # Unique name for the patch deployment resource in a project. The patch
-        # deployment name is in the form:
-        # `projects/`project_id`/patchDeployments/`patch_deployment_id``.
-        # This field is ignored when you create a new patch deployment.
+        # deployment name is in the form: `projects/`project_id`/patchDeployments/`
+        # patch_deployment_id``. This field is ignored when you create a new patch
+        # deployment.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Sets the time for a one time patch deployment. Timestamp is in
-        # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        # Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https:
+        # //www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `oneTimeSchedule`
         # @return [Google::Apis::OsconfigV1beta::OneTimeSchedule]
         attr_accessor :one_time_schedule
       
-        # Patch configuration specifications. Contains details on how to apply the
-        # patch(es) to a VM instance.
+        # Patch configuration specifications. Contains details on how to apply the patch(
+        # es) to a VM instance.
         # Corresponds to the JSON property `patchConfig`
         # @return [Google::Apis::OsconfigV1beta::PatchConfig]
         attr_accessor :patch_config
@@ -1649,8 +1584,8 @@ module Google
         # @return [Google::Apis::OsconfigV1beta::PatchRollout]
         attr_accessor :rollout
       
-        # Output only. Time the patch deployment was last updated. Timestamp is in
-        # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        # Output only. Time the patch deployment was last updated. Timestamp is in [
+        # RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1675,10 +1610,9 @@ module Google
         end
       end
       
-      # A filter to target VM instances for patching. The targeted
-      # VMs must meet all criteria specified. So if both labels and zones are
-      # specified, the patch job targets only VMs with those labels and in those
-      # zones.
+      # A filter to target VM instances for patching. The targeted VMs must meet all
+      # criteria specified. So if both labels and zones are specified, the patch job
+      # targets only VMs with those labels and in those zones.
       class PatchInstanceFilter
         include Google::Apis::Core::Hashable
       
@@ -1695,24 +1629,24 @@ module Google
         # @return [Array<Google::Apis::OsconfigV1beta::PatchInstanceFilterGroupLabel>]
         attr_accessor :group_labels
       
-        # Targets VMs whose name starts with one of these prefixes. Similar to
-        # labels, this is another way to group VMs when targeting configs, for
-        # example prefix="prod-".
+        # Targets VMs whose name starts with one of these prefixes. Similar to labels,
+        # this is another way to group VMs when targeting configs, for example prefix="
+        # prod-".
         # Corresponds to the JSON property `instanceNamePrefixes`
         # @return [Array<String>]
         attr_accessor :instance_name_prefixes
       
         # Targets any of the VM instances specified. Instances are specified by their
-        # URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`,
-        # `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or
-        # `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/
-        # instances/[INSTANCE_NAME]`
+        # URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[
+        # PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.
+        # googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[
+        # INSTANCE_NAME]`
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
       
-        # Targets VM instances in ANY of these zones. Leave empty to target VM
-        # instances in any zone.
+        # Targets VM instances in ANY of these zones. Leave empty to target VM instances
+        # in any zone.
         # Corresponds to the JSON property `zones`
         # @return [Array<String>]
         attr_accessor :zones
@@ -1731,13 +1665,13 @@ module Google
         end
       end
       
-      # Represents a group of VMs that can be identified as having all these
-      # labels, for example "env=prod and app=web".
+      # Represents a group of VMs that can be identified as having all these labels,
+      # for example "env=prod and app=web".
       class PatchInstanceFilterGroupLabel
         include Google::Apis::Core::Hashable
       
-        # Compute Engine instance labels that must be present for a VM instance to
-        # be targeted by this filter.
+        # Compute Engine instance labels that must be present for a VM instance to be
+        # targeted by this filter.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1752,14 +1686,11 @@ module Google
         end
       end
       
-      # A high level representation of a patch job that is either in progress
-      # or has completed.
-      # Instance details are not included in the job. To paginate through instance
-      # details, use `ListPatchJobInstanceDetails`.
-      # For more information about patch jobs, see
-      # [Creating patch
-      # jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-
-      # job).
+      # A high level representation of a patch job that is either in progress or has
+      # completed. Instance details are not included in the job. To paginate through
+      # instance details, use `ListPatchJobInstanceDetails`. For more information
+      # about patch jobs, see [Creating patch jobs](https://cloud.google.com/compute/
+      # docs/os-patch-management/create-patch-job).
       class PatchJob
         include Google::Apis::Core::Hashable
       
@@ -1768,8 +1699,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Description of the patch job. Length of the description is limited
-        # to 1024 characters.
+        # Description of the patch job. Length of the description is limited to 1024
+        # characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1779,49 +1710,45 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # If this patch job is a dry run, the agent reports that it has
-        # finished without running any updates on the VM instance.
+        # If this patch job is a dry run, the agent reports that it has finished without
+        # running any updates on the VM instance.
         # Corresponds to the JSON property `dryRun`
         # @return [Boolean]
         attr_accessor :dry_run
         alias_method :dry_run?, :dry_run
       
-        # Duration of the patch job. After the duration ends, the
-        # patch job times out.
+        # Duration of the patch job. After the duration ends, the patch job times out.
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
       
-        # If this patch job failed, this message provides information about the
-        # failure.
+        # If this patch job failed, this message provides information about the failure.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
         attr_accessor :error_message
       
-        # A summary of the current patch state across all instances that this patch
-        # job affects. Contains counts of instances in different states. These states
-        # map to `InstancePatchState`. List patch job instance details to see the
-        # specific states of each instance.
+        # A summary of the current patch state across all instances that this patch job
+        # affects. Contains counts of instances in different states. These states map to
+        # `InstancePatchState`. List patch job instance details to see the specific
+        # states of each instance.
         # Corresponds to the JSON property `instanceDetailsSummary`
         # @return [Google::Apis::OsconfigV1beta::PatchJobInstanceDetailsSummary]
         attr_accessor :instance_details_summary
       
-        # A filter to target VM instances for patching. The targeted
-        # VMs must meet all criteria specified. So if both labels and zones are
-        # specified, the patch job targets only VMs with those labels and in those
-        # zones.
+        # A filter to target VM instances for patching. The targeted VMs must meet all
+        # criteria specified. So if both labels and zones are specified, the patch job
+        # targets only VMs with those labels and in those zones.
         # Corresponds to the JSON property `instanceFilter`
         # @return [Google::Apis::OsconfigV1beta::PatchInstanceFilter]
         attr_accessor :instance_filter
       
-        # Unique identifier for this patch job in the form
-        # `projects/*/patchJobs/*`
+        # Unique identifier for this patch job in the form `projects/*/patchJobs/*`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Patch configuration specifications. Contains details on how to apply the
-        # patch(es) to a VM instance.
+        # Patch configuration specifications. Contains details on how to apply the patch(
+        # es) to a VM instance.
         # Corresponds to the JSON property `patchConfig`
         # @return [Google::Apis::OsconfigV1beta::PatchConfig]
         attr_accessor :patch_config
@@ -1831,8 +1758,8 @@ module Google
         # @return [String]
         attr_accessor :patch_deployment
       
-        # Reflects the overall progress of the patch job in the range of
-        # 0.0 being no progress to 100.0 being complete.
+        # Reflects the overall progress of the patch job in the range of 0.0 being no
+        # progress to 100.0 being complete.
         # Corresponds to the JSON property `percentComplete`
         # @return [Float]
         attr_accessor :percent_complete
@@ -1878,8 +1805,7 @@ module Google
       end
       
       # Patch details for a VM instance. For more information about reviewing VM
-      # instance details, see
-      # [Listing all VM instance details for a specific patch
+      # instance details, see [Listing all VM instance details for a specific patch
       # job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-
       # jobs#list-instance-details).
       class PatchJobInstanceDetails
@@ -1895,8 +1821,8 @@ module Google
         # @return [String]
         attr_accessor :failure_reason
       
-        # The unique identifier for the instance. This identifier is
-        # defined by the server.
+        # The unique identifier for the instance. This identifier is defined by the
+        # server.
         # Corresponds to the JSON property `instanceSystemId`
         # @return [String]
         attr_accessor :instance_system_id
@@ -1925,10 +1851,10 @@ module Google
         end
       end
       
-      # A summary of the current patch state across all instances that this patch
-      # job affects. Contains counts of instances in different states. These states
-      # map to `InstancePatchState`. List patch job instance details to see the
-      # specific states of each instance.
+      # A summary of the current patch state across all instances that this patch job
+      # affects. Contains counts of instances in different states. These states map to
+      # `InstancePatchState`. List patch job instance details to see the specific
+      # states of each instance.
       class PatchJobInstanceDetailsSummary
         include Google::Apis::Core::Hashable
       
@@ -1958,8 +1884,8 @@ module Google
         attr_accessor :inactive_instance_count
       
         # Number of instances that do not appear to be running the agent. Check to
-        # ensure that the agent is installed, running, and able to communicate with
-        # the service.
+        # ensure that the agent is installed, running, and able to communicate with the
+        # service.
         # Corresponds to the JSON property `noAgentDetectedInstanceCount`
         # @return [Fixnum]
         attr_accessor :no_agent_detected_instance_count
@@ -2065,8 +1991,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The end time at which a recurring patch deployment schedule is no
-        # longer
-        # active.
+        # longer active.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -2081,8 +2006,8 @@ module Google
         # @return [String]
         attr_accessor :last_execute_time
       
-        # Represents a monthly schedule. An example of a valid monthly schedule is
-        # "on the third Tuesday of the month" or "on the 15th of the month".
+        # Represents a monthly schedule. An example of a valid monthly schedule is "on
+        # the third Tuesday of the month" or "on the 15th of the month".
         # Corresponds to the JSON property `monthly`
         # @return [Google::Apis::OsconfigV1beta::MonthlySchedule]
         attr_accessor :monthly
@@ -2092,21 +2017,21 @@ module Google
         # @return [String]
         attr_accessor :next_execute_time
       
-        # Optional. The time that the recurring schedule becomes effective.
-        # Defaults to `create_time` of the patch deployment.
+        # Optional. The time that the recurring schedule becomes effective. Defaults to `
+        # create_time` of the patch deployment.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Represents a time of day. The date and time zone are either not significant
-        # or are specified elsewhere. An API may choose to allow leap seconds. Related
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
         # types are google.type.Date and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `timeOfDay`
         # @return [Google::Apis::OsconfigV1beta::TimeOfDay]
         attr_accessor :time_of_day
       
-        # Represents a time zone from the
-        # [IANA Time Zone Database](https://www.iana.org/time-zones).
+        # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+        # time-zones).
         # Corresponds to the JSON property `timeZone`
         # @return [Google::Apis::OsconfigV1beta::TimeZone]
         attr_accessor :time_zone
@@ -2138,26 +2063,26 @@ module Google
       class RepositoryResource
         include Google::Apis::Core::Hashable
       
-        # Represents a single apt package repository. These will be added to a repo
-        # file that will be managed at /etc/apt/sources.list.d/google_osconfig.list.
+        # Represents a single apt package repository. These will be added to a repo file
+        # that will be managed at /etc/apt/sources.list.d/google_osconfig.list.
         # Corresponds to the JSON property `apt`
         # @return [Google::Apis::OsconfigV1beta::RepositoryResourceAptRepository]
         attr_accessor :apt
       
-        # Represents a Goo package repository. These will be added to a repo file
-        # that will be managed at C:/ProgramData/GooGet/repos/google_osconfig.repo.
+        # Represents a Goo package repository. These will be added to a repo file that
+        # will be managed at C:/ProgramData/GooGet/repos/google_osconfig.repo.
         # Corresponds to the JSON property `goo`
         # @return [Google::Apis::OsconfigV1beta::RepositoryResourceGooRepository]
         attr_accessor :goo
       
-        # Represents a single yum package repository. These will be added to a repo
-        # file that will be managed at /etc/yum.repos.d/google_osconfig.repo.
+        # Represents a single yum package repository. These will be added to a repo file
+        # that will be managed at /etc/yum.repos.d/google_osconfig.repo.
         # Corresponds to the JSON property `yum`
         # @return [Google::Apis::OsconfigV1beta::RepositoryResourceYumRepository]
         attr_accessor :yum
       
-        # Represents a single zypper package repository. These will be added to a
-        # repo file that will be managed at /etc/zypp/repos.d/google_osconfig.repo.
+        # Represents a single zypper package repository. These will be added to a repo
+        # file that will be managed at /etc/zypp/repos.d/google_osconfig.repo.
         # Corresponds to the JSON property `zypper`
         # @return [Google::Apis::OsconfigV1beta::RepositoryResourceZypperRepository]
         attr_accessor :zypper
@@ -2175,8 +2100,8 @@ module Google
         end
       end
       
-      # Represents a single apt package repository. These will be added to a repo
-      # file that will be managed at /etc/apt/sources.list.d/google_osconfig.list.
+      # Represents a single apt package repository. These will be added to a repo file
+      # that will be managed at /etc/apt/sources.list.d/google_osconfig.list.
       class RepositoryResourceAptRepository
         include Google::Apis::Core::Hashable
       
@@ -2195,8 +2120,8 @@ module Google
         # @return [String]
         attr_accessor :distribution
       
-        # URI of the key file for this repository. The agent will maintain
-        # a keyring at /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg.
+        # URI of the key file for this repository. The agent will maintain a keyring at /
+        # etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg.
         # Corresponds to the JSON property `gpgKey`
         # @return [String]
         attr_accessor :gpg_key
@@ -2220,8 +2145,8 @@ module Google
         end
       end
       
-      # Represents a Goo package repository. These will be added to a repo file
-      # that will be managed at C:/ProgramData/GooGet/repos/google_osconfig.repo.
+      # Represents a Goo package repository. These will be added to a repo file that
+      # will be managed at C:/ProgramData/GooGet/repos/google_osconfig.repo.
       class RepositoryResourceGooRepository
         include Google::Apis::Core::Hashable
       
@@ -2246,8 +2171,8 @@ module Google
         end
       end
       
-      # Represents a single yum package repository. These will be added to a repo
-      # file that will be managed at /etc/yum.repos.d/google_osconfig.repo.
+      # Represents a single yum package repository. These will be added to a repo file
+      # that will be managed at /etc/yum.repos.d/google_osconfig.repo.
       class RepositoryResourceYumRepository
         include Google::Apis::Core::Hashable
       
@@ -2266,10 +2191,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :gpg_keys
       
-        # A one word, unique name for this repository. This will be
-        # the `repo id` in the yum config file and also the `display_name` if
-        # `display_name` is omitted. This id is also used as the unique identifier
-        # when checking for resource conflicts.
+        # A one word, unique name for this repository. This will be the `repo id` in the
+        # yum config file and also the `display_name` if `display_name` is omitted. This
+        # id is also used as the unique identifier when checking for resource conflicts.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2287,8 +2211,8 @@ module Google
         end
       end
       
-      # Represents a single zypper package repository. These will be added to a
-      # repo file that will be managed at /etc/zypp/repos.d/google_osconfig.repo.
+      # Represents a single zypper package repository. These will be added to a repo
+      # file that will be managed at /etc/zypp/repos.d/google_osconfig.repo.
       class RepositoryResourceZypperRepository
         include Google::Apis::Core::Hashable
       
@@ -2307,10 +2231,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :gpg_keys
       
-        # A one word, unique name for this repository. This will be
-        # the `repo id` in the zypper config file and also the `display_name` if
-        # `display_name` is omitted. This id is also used as the unique identifier
-        # when checking for GuestPolicy conflicts.
+        # A one word, unique name for this repository. This will be the `repo id` in the
+        # zypper config file and also the `display_name` if `display_name` is omitted.
+        # This id is also used as the unique identifier when checking for GuestPolicy
+        # conflicts.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2342,22 +2266,17 @@ module Google
       end
       
       # A software recipe is a set of instructions for installing and configuring a
-      # piece of software. It consists of a set of artifacts that are
-      # downloaded, and a set of steps that install, configure, and/or update the
-      # software.
-      # Recipes support installing and updating software from artifacts in the
-      # following formats:
-      # Zip archive, Tar archive, Windows MSI, Debian package, and RPM package.
-      # Additionally, recipes support executing a script (either defined in a file or
-      # directly in this api) in bash, sh, cmd, and powershell.
-      # Updating a software recipe
-      # If a recipe is assigned to an instance and there is a recipe with the same
-      # name but a lower version already installed and the assigned state
-      # of the recipe is `UPDATED`, then the recipe is updated to
-      # the new version.
-      # Script Working Directories
-      # Each script or execution step is run in its own temporary directory which
-      # is deleted after completing the step.
+      # piece of software. It consists of a set of artifacts that are downloaded, and
+      # a set of steps that install, configure, and/or update the software. Recipes
+      # support installing and updating software from artifacts in the following
+      # formats: Zip archive, Tar archive, Windows MSI, Debian package, and RPM
+      # package. Additionally, recipes support executing a script (either defined in a
+      # file or directly in this api) in bash, sh, cmd, and powershell. Updating a
+      # software recipe If a recipe is assigned to an instance and there is a recipe
+      # with the same name but a lower version already installed and the assigned
+      # state of the recipe is `UPDATED`, then the recipe is updated to the new
+      # version. Script Working Directories Each script or execution step is run in
+      # its own temporary directory which is deleted after completing the step.
       class SoftwareRecipe
         include Google::Apis::Core::Hashable
       
@@ -2367,45 +2286,41 @@ module Google
         attr_accessor :artifacts
       
         # Default is INSTALLED. The desired state the agent should maintain for this
-        # recipe.
-        # INSTALLED: The software recipe is installed on the instance but
-        # won't be updated to new versions.
-        # UPDATED: The software recipe is installed on the instance. The recipe is
-        # updated to a higher version, if a higher version of the recipe is
-        # assigned to this instance.
-        # REMOVE: Remove is unsupported for software recipes and attempts to
-        # create or update a recipe to the REMOVE state is rejected.
+        # recipe. INSTALLED: The software recipe is installed on the instance but won't
+        # be updated to new versions. UPDATED: The software recipe is installed on the
+        # instance. The recipe is updated to a higher version, if a higher version of
+        # the recipe is assigned to this instance. REMOVE: Remove is unsupported for
+        # software recipes and attempts to create or update a recipe to the REMOVE state
+        # is rejected.
         # Corresponds to the JSON property `desiredState`
         # @return [String]
         attr_accessor :desired_state
       
-        # Actions to be taken for installing this recipe. On failure it stops
-        # executing steps and does not attempt another installation. Any steps taken
-        # (including partially completed steps) are not rolled back.
+        # Actions to be taken for installing this recipe. On failure it stops executing
+        # steps and does not attempt another installation. Any steps taken (including
+        # partially completed steps) are not rolled back.
         # Corresponds to the JSON property `installSteps`
         # @return [Array<Google::Apis::OsconfigV1beta::SoftwareRecipeStep>]
         attr_accessor :install_steps
       
         # Required. Unique identifier for the recipe. Only one recipe with a given name
-        # is
-        # installed on an instance.
-        # Names are also used to identify resources which helps to determine whether
-        # guest policies have conflicts. This means that requests to create multiple
-        # recipes with the same name and version are rejected since they
-        # could potentially have conflicting assignments.
+        # is installed on an instance. Names are also used to identify resources which
+        # helps to determine whether guest policies have conflicts. This means that
+        # requests to create multiple recipes with the same name and version are
+        # rejected since they could potentially have conflicting assignments.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Actions to be taken for updating this recipe. On failure it stops
-        # executing steps and  does not attempt another update for this recipe. Any
-        # steps taken (including partially completed steps) are not rolled back.
+        # Actions to be taken for updating this recipe. On failure it stops executing
+        # steps and does not attempt another update for this recipe. Any steps taken (
+        # including partially completed steps) are not rolled back.
         # Corresponds to the JSON property `updateSteps`
         # @return [Array<Google::Apis::OsconfigV1beta::SoftwareRecipeStep>]
         attr_accessor :update_steps
       
-        # The version of this software recipe. Version can be up to 4 period
-        # separated numbers (e.g. 12.34.56.78).
+        # The version of this software recipe. Version can be up to 4 period separated
+        # numbers (e.g. 12.34.56.78).
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -2429,11 +2344,10 @@ module Google
       class SoftwareRecipeArtifact
         include Google::Apis::Core::Hashable
       
-        # Defaults to false. When false, recipes are subject to validations
-        # based on the artifact type:
-        # Remote: A checksum must be specified, and only protocols with
-        # transport-layer security are permitted.
-        # GCS:    An object generation number must be specified.
+        # Defaults to false. When false, recipes are subject to validations based on the
+        # artifact type: Remote: A checksum must be specified, and only protocols with
+        # transport-layer security are permitted. GCS: An object generation number must
+        # be specified.
         # Corresponds to the JSON property `allowInsecure`
         # @return [Boolean]
         attr_accessor :allow_insecure
@@ -2472,28 +2386,24 @@ module Google
       class SoftwareRecipeArtifactGcs
         include Google::Apis::Core::Hashable
       
-        # Bucket of the Google Cloud Storage object.
-        # Given an example URL:
-        # `https://storage.googleapis.com/my-bucket/foo/bar#1234567`
-        # this value would be `my-bucket`.
+        # Bucket of the Google Cloud Storage object. Given an example URL: `https://
+        # storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `my-
+        # bucket`.
         # Corresponds to the JSON property `bucket`
         # @return [String]
         attr_accessor :bucket
       
-        # Must be provided if allow_insecure is false.
-        # Generation number of the Google Cloud Storage object.
-        # `https://storage.googleapis.com/my-bucket/foo/bar#1234567`
-        # this value would be `1234567`.
+        # Must be provided if allow_insecure is false. Generation number of the Google
+        # Cloud Storage object. `https://storage.googleapis.com/my-bucket/foo/bar#
+        # 1234567` this value would be `1234567`.
         # Corresponds to the JSON property `generation`
         # @return [Fixnum]
         attr_accessor :generation
       
-        # Name of the Google Cloud Storage object.
-        # As specified [here]
-        # (https://cloud.google.com/storage/docs/naming#objectnames)
-        # Given an example URL:
-        # `https://storage.googleapis.com/my-bucket/foo/bar#1234567`
-        # this value would be `foo/bar`.
+        # Name of the Google Cloud Storage object. As specified [here] (https://cloud.
+        # google.com/storage/docs/naming#objectnames) Given an example URL: `https://
+        # storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `foo/bar`
+        # .
         # Corresponds to the JSON property `object`
         # @return [String]
         attr_accessor :object
@@ -2514,17 +2424,16 @@ module Google
       class SoftwareRecipeArtifactRemote
         include Google::Apis::Core::Hashable
       
-        # Must be provided if `allow_insecure` is `false`.
-        # SHA256 checksum in hex format, to compare to the checksum of the
-        # artifact. If the checksum is not empty and it doesn't match the
-        # artifact then the recipe installation fails before running any of the
-        # steps.
+        # Must be provided if `allow_insecure` is `false`. SHA256 checksum in hex format,
+        # to compare to the checksum of the artifact. If the checksum is not empty and
+        # it doesn't match the artifact then the recipe installation fails before
+        # running any of the steps.
         # Corresponds to the JSON property `checksum`
         # @return [String]
         attr_accessor :checksum
       
-        # URI from which to fetch the object. It should contain both the protocol
-        # and path following the format `protocol`://`location`.
+        # URI from which to fetch the object. It should contain both the protocol and
+        # path following the format `protocol`://`location`.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2609,26 +2518,22 @@ module Google
         # @return [String]
         attr_accessor :destination
       
-        # Whether to allow this step to overwrite existing files. If this is
-        # false and the file already exists the file is not overwritten
-        # and the step is considered a success. Defaults to false.
+        # Whether to allow this step to overwrite existing files. If this is false and
+        # the file already exists the file is not overwritten and the step is considered
+        # a success. Defaults to false.
         # Corresponds to the JSON property `overwrite`
         # @return [Boolean]
         attr_accessor :overwrite
         alias_method :overwrite?, :overwrite
       
-        # Consists of three octal digits which represent, in
-        # order, the permissions of the owner, group, and other users for the
-        # file (similarly to the numeric mode used in the linux chmod utility).
-        # Each digit represents a three bit number with the 4 bit
-        # corresponding to the read permissions, the 2 bit corresponds to the
-        # write bit, and the one bit corresponds to the execute permission.
-        # Default behavior is 755.
-        # Below are some examples of permissions and their associated values:
-        # read, write, and execute: 7
-        # read and execute: 5
-        # read and write: 6
-        # read only: 4
+        # Consists of three octal digits which represent, in order, the permissions of
+        # the owner, group, and other users for the file (similarly to the numeric mode
+        # used in the linux chmod utility). Each digit represents a three bit number
+        # with the 4 bit corresponding to the read permissions, the 2 bit corresponds to
+        # the write bit, and the one bit corresponds to the execute permission. Default
+        # behavior is 755. Below are some examples of permissions and their associated
+        # values: read, write, and execute: 7 read and execute: 5 read and write: 6 read
+        # only: 4
         # Corresponds to the JSON property `permissions`
         # @return [String]
         attr_accessor :permissions
@@ -2650,8 +2555,8 @@ module Google
       class SoftwareRecipeStepExecFile
         include Google::Apis::Core::Hashable
       
-        # Defaults to [0]. A list of possible return values that the program
-        # can return to indicate a success.
+        # Defaults to [0]. A list of possible return values that the program can return
+        # to indicate a success.
         # Corresponds to the JSON property `allowedExitCodes`
         # @return [Array<Fixnum>]
         attr_accessor :allowed_exit_codes
@@ -2693,8 +2598,7 @@ module Google
         # @return [String]
         attr_accessor :artifact_id
       
-        # Directory to extract archive to.
-        # Defaults to `/` on Linux or `C:\` on Windows.
+        # Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
@@ -2739,8 +2643,8 @@ module Google
       class SoftwareRecipeStepInstallMsi
         include Google::Apis::Core::Hashable
       
-        # Return codes that indicate that the software installed or updated
-        # successfully. Behaviour defaults to [0]
+        # Return codes that indicate that the software installed or updated successfully.
+        # Behaviour defaults to [0]
         # Corresponds to the JSON property `allowedExitCodes`
         # @return [Array<Fixnum>]
         attr_accessor :allowed_exit_codes
@@ -2750,8 +2654,8 @@ module Google
         # @return [String]
         attr_accessor :artifact_id
       
-        # The flags to use when installing the MSI
-        # defaults to ["/i"] (i.e. the install flag).
+        # The flags to use when installing the MSI defaults to ["/i"] (i.e. the install
+        # flag).
         # Corresponds to the JSON property `flags`
         # @return [Array<String>]
         attr_accessor :flags
@@ -2791,16 +2695,15 @@ module Google
       class SoftwareRecipeStepRunScript
         include Google::Apis::Core::Hashable
       
-        # Return codes that indicate that the software installed or updated
-        # successfully. Behaviour defaults to [0]
+        # Return codes that indicate that the software installed or updated successfully.
+        # Behaviour defaults to [0]
         # Corresponds to the JSON property `allowedExitCodes`
         # @return [Array<Fixnum>]
         attr_accessor :allowed_exit_codes
       
         # The script interpreter to use to run the script. If no interpreter is
-        # specified the script is executed directly, which likely
-        # only succeed for scripts with
-        # [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+        # specified the script is executed directly, which likely only succeed for
+        # scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
         # Corresponds to the JSON property `interpreter`
         # @return [String]
         attr_accessor :interpreter
@@ -2822,14 +2725,14 @@ module Google
         end
       end
       
-      # Represents a time of day. The date and time zone are either not significant
-      # or are specified elsewhere. An API may choose to allow leap seconds. Related
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
       # types are google.type.Date and `google.protobuf.Timestamp`.
       class TimeOfDay
         include Google::Apis::Core::Hashable
       
-        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
-        # to allow the value "24:00:00" for scenarios like business closing time.
+        # Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to
+        # allow the value "24:00:00" for scenarios like business closing time.
         # Corresponds to the JSON property `hours`
         # @return [Fixnum]
         attr_accessor :hours
@@ -2863,8 +2766,8 @@ module Google
         end
       end
       
-      # Represents a time zone from the
-      # [IANA Time Zone Database](https://www.iana.org/time-zones).
+      # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+      # time-zones).
       class TimeZone
         include Google::Apis::Core::Hashable
       
@@ -2899,8 +2802,7 @@ module Google
         attr_accessor :day_of_week
       
         # Required. Week number in a month. 1-4 indicates the 1st to 4th week of the
-        # month. -1
-        # indicates the last week of the month.
+        # month. -1 indicates the last week of the month.
         # Corresponds to the JSON property `weekOrdinal`
         # @return [Fixnum]
         attr_accessor :week_ordinal
@@ -2950,9 +2852,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :excludes
       
-        # An exclusive list of kbs to be updated. These are the only patches
-        # that will be updated. This field must not be used with other
-        # patch configurations.
+        # An exclusive list of kbs to be updated. These are the only patches that will
+        # be updated. This field must not be used with other patch configurations.
         # Corresponds to the JSON property `exclusivePatches`
         # @return [Array<String>]
         attr_accessor :exclusive_patches
@@ -2969,8 +2870,8 @@ module Google
         end
       end
       
-      # Represents a single Yum package repository. This repository is added to a
-      # repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
+      # Represents a single Yum package repository. This repository is added to a repo
+      # file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
       class YumRepository
         include Google::Apis::Core::Hashable
       
@@ -2989,10 +2890,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :gpg_keys
       
-        # Required. A one word, unique name for this repository. This is
-        # the `repo id` in the Yum config file and also the `display_name` if
-        # `display_name` is omitted. This id is also used as the unique identifier
-        # when checking for guest policy conflicts.
+        # Required. A one word, unique name for this repository. This is the `repo id`
+        # in the Yum config file and also the `display_name` if `display_name` is
+        # omitted. This id is also used as the unique identifier when checking for guest
+        # policy conflicts.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -3010,22 +2911,21 @@ module Google
         end
       end
       
-      # Yum patching is performed by executing `yum update`. Additional options
-      # can be set to control how this is executed.
-      # Note that not all settings are supported on all platforms.
+      # Yum patching is performed by executing `yum update`. Additional options can be
+      # set to control how this is executed. Note that not all settings are supported
+      # on all platforms.
       class YumSettings
         include Google::Apis::Core::Hashable
       
-        # List of packages to exclude from update. These packages are excluded by
-        # using the yum `--exclude` flag.
+        # List of packages to exclude from update. These packages are excluded by using
+        # the yum `--exclude` flag.
         # Corresponds to the JSON property `excludes`
         # @return [Array<String>]
         attr_accessor :excludes
       
-        # An exclusive list of packages to be updated. These are the only packages
-        # that will be updated. If these packages are not installed, they will be
-        # ignored. This field must not be specified with any other patch
-        # configuration fields.
+        # An exclusive list of packages to be updated. These are the only packages that
+        # will be updated. If these packages are not installed, they will be ignored.
+        # This field must not be specified with any other patch configuration fields.
         # Corresponds to the JSON property `exclusivePackages`
         # @return [Array<String>]
         attr_accessor :exclusive_packages
@@ -3036,8 +2936,7 @@ module Google
         attr_accessor :minimal
         alias_method :minimal?, :minimal
       
-        # Adds the `--security` flag to `yum update`. Not supported on
-        # all platforms.
+        # Adds the `--security` flag to `yum update`. Not supported on all platforms.
         # Corresponds to the JSON property `security`
         # @return [Boolean]
         attr_accessor :security
@@ -3076,10 +2975,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :gpg_keys
       
-        # Required. A one word, unique name for this repository. This is
-        # the `repo id` in the zypper config file and also the `display_name` if
-        # `display_name` is omitted. This id is also used as the unique identifier
-        # when checking for guest policy conflicts.
+        # Required. A one word, unique name for this repository. This is the `repo id`
+        # in the zypper config file and also the `display_name` if `display_name` is
+        # omitted. This id is also used as the unique identifier when checking for guest
+        # policy conflicts.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -3097,13 +2996,13 @@ module Google
         end
       end
       
-      # Zypper patching is performed by running `zypper patch`.
-      # See also https://en.opensuse.org/SDB:Zypper_manual.
+      # Zypper patching is performed by running `zypper patch`. See also https://en.
+      # opensuse.org/SDB:Zypper_manual.
       class ZypperSettings
         include Google::Apis::Core::Hashable
       
-        # Install only patches with these categories.
-        # Common categories include security, recommended, and feature.
+        # Install only patches with these categories. Common categories include security,
+        # recommended, and feature.
         # Corresponds to the JSON property `categories`
         # @return [Array<String>]
         attr_accessor :categories
@@ -3113,15 +3012,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :excludes
       
-        # An exclusive list of patches to be updated. These are the only patches
-        # that will be installed using 'zypper patch patch:<patch_name>' command.
-        # This field must not be used with any other patch configuration fields.
+        # An exclusive list of patches to be updated. These are the only patches that
+        # will be installed using 'zypper patch patch:' command. This field must not be
+        # used with any other patch configuration fields.
         # Corresponds to the JSON property `exclusivePatches`
         # @return [Array<String>]
         attr_accessor :exclusive_patches
       
-        # Install only patches with these severities.
-        # Common severities include critical, important, moderate, and low.
+        # Install only patches with these severities. Common severities include critical,
+        # important, moderate, and low.
         # Corresponds to the JSON property `severities`
         # @return [Array<String>]
         attr_accessor :severities

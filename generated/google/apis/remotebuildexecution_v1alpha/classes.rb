@@ -23,120 +23,107 @@ module Google
     module RemotebuildexecutionV1alpha
       
       # An `Action` captures all the information about an execution which is required
-      # to reproduce it.
-      # `Action`s are the core component of the [Execution] service. A single
-      # `Action` represents a repeatable action that can be performed by the
+      # to reproduce it. `Action`s are the core component of the [Execution] service.
+      # A single `Action` represents a repeatable action that can be performed by the
       # execution service. `Action`s can be succinctly identified by the digest of
       # their wire format encoding and, once an `Action` has been executed, will be
       # cached in the action cache. Future requests can then use the cached result
-      # rather than needing to run afresh.
-      # When a server completes execution of an
-      # Action, it MAY choose to
-      # cache the result in
-      # the ActionCache unless
-      # `do_not_cache` is `true`. Clients SHOULD expect the server to do so. By
-      # default, future calls to
-      # Execute the same
-      # `Action` will also serve their results from the cache. Clients must take care
-      # to understand the caching behaviour. Ideally, all `Action`s will be
-      # reproducible so that serving a result from cache is always desirable and
-      # correct.
+      # rather than needing to run afresh. When a server completes execution of an
+      # Action, it MAY choose to cache the result in the ActionCache unless `
+      # do_not_cache` is `true`. Clients SHOULD expect the server to do so. By default,
+      # future calls to Execute the same `Action` will also serve their results from
+      # the cache. Clients must take care to understand the caching behaviour. Ideally,
+      # all `Action`s will be reproducible so that serving a result from cache is
+      # always desirable and correct.
       class BuildBazelRemoteExecutionV2Action
         include Google::Apis::Core::Hashable
       
         # A content digest. A digest for a given blob consists of the size of the blob
-        # and its hash. The hash algorithm to use is defined by the server.
-        # The size is considered to be an integral part of the digest and cannot be
-        # separated. That is, even if the `hash` field is correctly specified but
-        # `size_bytes` is not, the server MUST reject the request.
-        # The reason for including the size in the digest is as follows: in a great
-        # many cases, the server needs to know the size of the blob it is about to work
-        # with prior to starting an operation with it, such as flattening Merkle tree
-        # structures or streaming it to a worker. Technically, the server could
-        # implement a separate metadata store, but this results in a significantly more
-        # complicated implementation as opposed to having the client specify the size
-        # up-front (or storing the size along with the digest in every message where
-        # digests are embedded). This does mean that the API leaks some implementation
-        # details of (what we consider to be) a reasonable server implementation, but
-        # we consider this to be a worthwhile tradeoff.
-        # When a `Digest` is used to refer to a proto message, it always refers to the
-        # message in binary encoded form. To ensure consistent hashing, clients and
-        # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message:
-        # * Fields are serialized in tag order.
-        # * There are no unknown fields.
-        # * There are no duplicate fields.
-        # * Fields are serialized according to the default semantics for their type.
-        # Most protocol buffer implementations will always follow these rules when
-        # serializing, but care should be taken to avoid shortcuts. For instance,
-        # concatenating two messages to merge them may produce duplicate fields.
+        # and its hash. The hash algorithm to use is defined by the server. The size is
+        # considered to be an integral part of the digest and cannot be separated. That
+        # is, even if the `hash` field is correctly specified but `size_bytes` is not,
+        # the server MUST reject the request. The reason for including the size in the
+        # digest is as follows: in a great many cases, the server needs to know the size
+        # of the blob it is about to work with prior to starting an operation with it,
+        # such as flattening Merkle tree structures or streaming it to a worker.
+        # Technically, the server could implement a separate metadata store, but this
+        # results in a significantly more complicated implementation as opposed to
+        # having the client specify the size up-front (or storing the size along with
+        # the digest in every message where digests are embedded). This does mean that
+        # the API leaks some implementation details of (what we consider to be) a
+        # reasonable server implementation, but we consider this to be a worthwhile
+        # tradeoff. When a `Digest` is used to refer to a proto message, it always
+        # refers to the message in binary encoded form. To ensure consistent hashing,
+        # clients and servers MUST ensure that they serialize messages according to the
+        # following rules, even if there are alternate valid encodings for the same
+        # message: * Fields are serialized in tag order. * There are no unknown fields. *
+        # There are no duplicate fields. * Fields are serialized according to the
+        # default semantics for their type. Most protocol buffer implementations will
+        # always follow these rules when serializing, but care should be taken to avoid
+        # shortcuts. For instance, concatenating two messages to merge them may produce
+        # duplicate fields.
         # Corresponds to the JSON property `commandDigest`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :command_digest
       
-        # If true, then the `Action`'s result cannot be cached, and in-flight
-        # requests for the same `Action` may not be merged.
+        # If true, then the `Action`'s result cannot be cached, and in-flight requests
+        # for the same `Action` may not be merged.
         # Corresponds to the JSON property `doNotCache`
         # @return [Boolean]
         attr_accessor :do_not_cache
         alias_method :do_not_cache?, :do_not_cache
       
         # A content digest. A digest for a given blob consists of the size of the blob
-        # and its hash. The hash algorithm to use is defined by the server.
-        # The size is considered to be an integral part of the digest and cannot be
-        # separated. That is, even if the `hash` field is correctly specified but
-        # `size_bytes` is not, the server MUST reject the request.
-        # The reason for including the size in the digest is as follows: in a great
-        # many cases, the server needs to know the size of the blob it is about to work
-        # with prior to starting an operation with it, such as flattening Merkle tree
-        # structures or streaming it to a worker. Technically, the server could
-        # implement a separate metadata store, but this results in a significantly more
-        # complicated implementation as opposed to having the client specify the size
-        # up-front (or storing the size along with the digest in every message where
-        # digests are embedded). This does mean that the API leaks some implementation
-        # details of (what we consider to be) a reasonable server implementation, but
-        # we consider this to be a worthwhile tradeoff.
-        # When a `Digest` is used to refer to a proto message, it always refers to the
-        # message in binary encoded form. To ensure consistent hashing, clients and
-        # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message:
-        # * Fields are serialized in tag order.
-        # * There are no unknown fields.
-        # * There are no duplicate fields.
-        # * Fields are serialized according to the default semantics for their type.
-        # Most protocol buffer implementations will always follow these rules when
-        # serializing, but care should be taken to avoid shortcuts. For instance,
-        # concatenating two messages to merge them may produce duplicate fields.
+        # and its hash. The hash algorithm to use is defined by the server. The size is
+        # considered to be an integral part of the digest and cannot be separated. That
+        # is, even if the `hash` field is correctly specified but `size_bytes` is not,
+        # the server MUST reject the request. The reason for including the size in the
+        # digest is as follows: in a great many cases, the server needs to know the size
+        # of the blob it is about to work with prior to starting an operation with it,
+        # such as flattening Merkle tree structures or streaming it to a worker.
+        # Technically, the server could implement a separate metadata store, but this
+        # results in a significantly more complicated implementation as opposed to
+        # having the client specify the size up-front (or storing the size along with
+        # the digest in every message where digests are embedded). This does mean that
+        # the API leaks some implementation details of (what we consider to be) a
+        # reasonable server implementation, but we consider this to be a worthwhile
+        # tradeoff. When a `Digest` is used to refer to a proto message, it always
+        # refers to the message in binary encoded form. To ensure consistent hashing,
+        # clients and servers MUST ensure that they serialize messages according to the
+        # following rules, even if there are alternate valid encodings for the same
+        # message: * Fields are serialized in tag order. * There are no unknown fields. *
+        # There are no duplicate fields. * Fields are serialized according to the
+        # default semantics for their type. Most protocol buffer implementations will
+        # always follow these rules when serializing, but care should be taken to avoid
+        # shortcuts. For instance, concatenating two messages to merge them may produce
+        # duplicate fields.
         # Corresponds to the JSON property `inputRootDigest`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :input_root_digest
       
-        # List of required supported NodeProperty
-        # keys. In order to ensure that equivalent `Action`s always hash to the same
-        # value, the supported node properties MUST be lexicographically sorted by name.
-        # Sorting of strings is done by code point, equivalently, by the UTF-8 bytes.
-        # The interpretation of these properties is server-dependent. If a property is
-        # not recognized by the server, the server will return an `INVALID_ARGUMENT`
-        # error.
+        # List of required supported NodeProperty keys. In order to ensure that
+        # equivalent `Action`s always hash to the same value, the supported node
+        # properties MUST be lexicographically sorted by name. Sorting of strings is
+        # done by code point, equivalently, by the UTF-8 bytes. The interpretation of
+        # these properties is server-dependent. If a property is not recognized by the
+        # server, the server will return an `INVALID_ARGUMENT` error.
         # Corresponds to the JSON property `outputNodeProperties`
         # @return [Array<String>]
         attr_accessor :output_node_properties
       
-        # A timeout after which the execution should be killed. If the timeout is
-        # absent, then the client is specifying that the execution should continue
-        # as long as the server will let it. The server SHOULD impose a timeout if
-        # the client does not specify one, however, if the client does specify a
-        # timeout that is longer than the server's maximum timeout, the server MUST
-        # reject the request.
-        # The timeout is a part of the
-        # Action message, and
-        # therefore two `Actions` with different timeouts are different, even if they
-        # are otherwise identical. This is because, if they were not, running an
-        # `Action` with a lower timeout than is required might result in a cache hit
-        # from an execution run with a longer timeout, hiding the fact that the
-        # timeout is too short. By encoding it directly in the `Action`, a lower
-        # timeout will result in a cache miss and the execution timeout will fail
-        # immediately, rather than whenever the cache entry gets evicted.
+        # A timeout after which the execution should be killed. If the timeout is absent,
+        # then the client is specifying that the execution should continue as long as
+        # the server will let it. The server SHOULD impose a timeout if the client does
+        # not specify one, however, if the client does specify a timeout that is longer
+        # than the server's maximum timeout, the server MUST reject the request. The
+        # timeout is a part of the Action message, and therefore two `Actions` with
+        # different timeouts are different, even if they are otherwise identical. This
+        # is because, if they were not, running an `Action` with a lower timeout than is
+        # required might result in a cache hit from an execution run with a longer
+        # timeout, hiding the fact that the timeout is too short. By encoding it
+        # directly in the `Action`, a lower timeout will result in a cache miss and the
+        # execution timeout will fail immediately, rather than whenever the cache entry
+        # gets evicted.
         # Corresponds to the JSON property `timeout`
         # @return [String]
         attr_accessor :timeout
@@ -155,8 +142,7 @@ module Google
         end
       end
       
-      # An ActionResult represents the result of an
-      # Action being run.
+      # An ActionResult represents the result of an Action being run.
       class BuildBazelRemoteExecutionV2ActionResult
         include Google::Apis::Core::Hashable
       
@@ -170,84 +156,41 @@ module Google
         # @return [Fixnum]
         attr_accessor :exit_code
       
-        # The output directories of the action. For each output directory requested
-        # in the `output_directories` or `output_paths` field of the Action, if the
+        # The output directories of the action. For each output directory requested in
+        # the `output_directories` or `output_paths` field of the Action, if the
         # corresponding directory existed after the action completed, a single entry
-        # will be present in the output list, which will contain the digest of a
-        # Tree message containing the
-        # directory tree, and the path equal exactly to the corresponding Action
-        # output_directories member.
-        # As an example, suppose the Action had an output directory `a/b/dir` and the
-        # execution produced the following contents in `a/b/dir`: a file named `bar`
-        # and a directory named `foo` with an executable file named `baz`. Then,
-        # output_directory will contain (hashes shortened for readability):
-        # ```json
-        # // OutputDirectory proto:
-        # `
-        # path: "a/b/dir"
-        # tree_digest: `
-        # hash: "4a73bc9d03...",
-        # size: 55
-        # `
-        # `
-        # // Tree proto with hash "4a73bc9d03..." and size 55:
-        # `
-        # root: `
-        # files: [
-        # `
-        # name: "bar",
-        # digest: `
-        # hash: "4a73bc9d03...",
-        # size: 65534
-        # `
-        # `
-        # ],
-        # directories: [
-        # `
-        # name: "foo",
-        # digest: `
-        # hash: "4cf2eda940...",
-        # size: 43
-        # `
-        # `
-        # ]
-        # `
-        # children : `
-        # // (Directory proto with hash "4cf2eda940..." and size 43)
-        # files: [
-        # `
-        # name: "baz",
-        # digest: `
-        # hash: "b2c941073e...",
-        # size: 1294,
-        # `,
-        # is_executable: true
-        # `
-        # ]
-        # `
-        # `
-        # ```
-        # If an output of the same name as listed in `output_files` of
-        # the Command was found in `output_directories`, but was not a directory, the
-        # server will return a FAILED_PRECONDITION.
+        # will be present in the output list, which will contain the digest of a Tree
+        # message containing the directory tree, and the path equal exactly to the
+        # corresponding Action output_directories member. As an example, suppose the
+        # Action had an output directory `a/b/dir` and the execution produced the
+        # following contents in `a/b/dir`: a file named `bar` and a directory named `foo`
+        # with an executable file named `baz`. Then, output_directory will contain (
+        # hashes shortened for readability): ```json // OutputDirectory proto: ` path: "
+        # a/b/dir" tree_digest: ` hash: "4a73bc9d03...", size: 55 ` ` // Tree proto with
+        # hash "4a73bc9d03..." and size 55: ` root: ` files: [ ` name: "bar", digest: `
+        # hash: "4a73bc9d03...", size: 65534 ` ` ], directories: [ ` name: "foo", digest:
+        # ` hash: "4cf2eda940...", size: 43 ` ` ] ` children : ` // (Directory proto
+        # with hash "4cf2eda940..." and size 43) files: [ ` name: "baz", digest: ` hash:
+        # "b2c941073e...", size: 1294, `, is_executable: true ` ] ` ` ``` If an output
+        # of the same name as listed in `output_files` of the Command was found in `
+        # output_directories`, but was not a directory, the server will return a
+        # FAILED_PRECONDITION.
         # Corresponds to the JSON property `outputDirectories`
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2OutputDirectory>]
         attr_accessor :output_directories
       
         # The output directories of the action that are symbolic links to other
         # directories. Those may be links to other output directories, or input
-        # directories, or even absolute paths outside of the working directory,
-        # if the server supports
-        # SymlinkAbsolutePathStrategy.ALLOWED.
-        # For each output directory requested in the `output_directories` field of
-        # the Action, if the directory existed after the action completed, a
-        # single entry will be present either in this field, or in the
-        # `output_directories` field, if the directory was not a symbolic link.
-        # If an output of the same name was found, but was a symbolic link to a file
-        # instead of a directory, the server will return a FAILED_PRECONDITION.
-        # If the action does not produce the requested output, then that output
-        # will be omitted from the list. The server is free to arrange the output
-        # list as desired; clients MUST NOT assume that the output list is sorted.
+        # directories, or even absolute paths outside of the working directory, if the
+        # server supports SymlinkAbsolutePathStrategy.ALLOWED. For each output directory
+        # requested in the `output_directories` field of the Action, if the directory
+        # existed after the action completed, a single entry will be present either in
+        # this field, or in the `output_directories` field, if the directory was not a
+        # symbolic link. If an output of the same name was found, but was a symbolic
+        # link to a file instead of a directory, the server will return a
+        # FAILED_PRECONDITION. If the action does not produce the requested output, then
+        # that output will be omitted from the list. The server is free to arrange the
+        # output list as desired; clients MUST NOT assume that the output list is sorted.
         # DEPRECATED as of v2.1. Servers that wish to be compatible with v2.0 API
         # should still populate this field in addition to `output_symlinks`.
         # Corresponds to the JSON property `outputDirectorySymlinks`
@@ -257,131 +200,119 @@ module Google
         # The output files of the action that are symbolic links to other files. Those
         # may be links to other output files, or input files, or even absolute paths
         # outside of the working directory, if the server supports
-        # SymlinkAbsolutePathStrategy.ALLOWED.
-        # For each output file requested in the `output_files` or `output_paths`
-        # field of the Action, if the corresponding file existed after
-        # the action completed, a single entry will be present either in this field,
-        # or in the `output_files` field, if the file was not a symbolic link.
-        # If an output symbolic link of the same name as listed in `output_files` of
-        # the Command was found, but its target type was not a regular file, the
-        # server will return a FAILED_PRECONDITION.
-        # If the action does not produce the requested output, then that output
-        # will be omitted from the list. The server is free to arrange the output
-        # list as desired; clients MUST NOT assume that the output list is sorted.
-        # DEPRECATED as of v2.1. Servers that wish to be compatible with v2.0 API
-        # should still populate this field in addition to `output_symlinks`.
+        # SymlinkAbsolutePathStrategy.ALLOWED. For each output file requested in the `
+        # output_files` or `output_paths` field of the Action, if the corresponding file
+        # existed after the action completed, a single entry will be present either in
+        # this field, or in the `output_files` field, if the file was not a symbolic
+        # link. If an output symbolic link of the same name as listed in `output_files`
+        # of the Command was found, but its target type was not a regular file, the
+        # server will return a FAILED_PRECONDITION. If the action does not produce the
+        # requested output, then that output will be omitted from the list. The server
+        # is free to arrange the output list as desired; clients MUST NOT assume that
+        # the output list is sorted. DEPRECATED as of v2.1. Servers that wish to be
+        # compatible with v2.0 API should still populate this field in addition to `
+        # output_symlinks`.
         # Corresponds to the JSON property `outputFileSymlinks`
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2OutputSymlink>]
         attr_accessor :output_file_symlinks
       
-        # The output files of the action. For each output file requested in the
-        # `output_files` or `output_paths` field of the Action, if the corresponding
-        # file existed after the action completed, a single entry will be present
-        # either in this field, or the `output_file_symlinks` field if the file was
-        # a symbolic link to another file (`output_symlinks` field after v2.1).
-        # If an output listed in `output_files` was found, but was a directory rather
-        # than a regular file, the server will return a FAILED_PRECONDITION.
-        # If the action does not produce the requested output, then that output
-        # will be omitted from the list. The server is free to arrange the output
-        # list as desired; clients MUST NOT assume that the output list is sorted.
+        # The output files of the action. For each output file requested in the `
+        # output_files` or `output_paths` field of the Action, if the corresponding file
+        # existed after the action completed, a single entry will be present either in
+        # this field, or the `output_file_symlinks` field if the file was a symbolic
+        # link to another file (`output_symlinks` field after v2.1). If an output listed
+        # in `output_files` was found, but was a directory rather than a regular file,
+        # the server will return a FAILED_PRECONDITION. If the action does not produce
+        # the requested output, then that output will be omitted from the list. The
+        # server is free to arrange the output list as desired; clients MUST NOT assume
+        # that the output list is sorted.
         # Corresponds to the JSON property `outputFiles`
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2OutputFile>]
         attr_accessor :output_files
       
-        # New in v2.1: this field will only be populated if the command
-        # `output_paths` field was used, and not the pre v2.1 `output_files` or
-        # `output_directories` fields.
-        # The output paths of the action that are symbolic links to other paths. Those
-        # may be links to other outputs, or inputs, or even absolute paths
-        # outside of the working directory, if the server supports
-        # SymlinkAbsolutePathStrategy.ALLOWED.
-        # A single entry for each output requested in `output_paths`
-        # field of the Action, if the corresponding path existed after
-        # the action completed and was a symbolic link.
-        # If the action does not produce a requested output, then that output
-        # will be omitted from the list. The server is free to arrange the output
-        # list as desired; clients MUST NOT assume that the output list is sorted.
+        # New in v2.1: this field will only be populated if the command `output_paths`
+        # field was used, and not the pre v2.1 `output_files` or `output_directories`
+        # fields. The output paths of the action that are symbolic links to other paths.
+        # Those may be links to other outputs, or inputs, or even absolute paths outside
+        # of the working directory, if the server supports SymlinkAbsolutePathStrategy.
+        # ALLOWED. A single entry for each output requested in `output_paths` field of
+        # the Action, if the corresponding path existed after the action completed and
+        # was a symbolic link. If the action does not produce a requested output, then
+        # that output will be omitted from the list. The server is free to arrange the
+        # output list as desired; clients MUST NOT assume that the output list is sorted.
         # Corresponds to the JSON property `outputSymlinks`
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2OutputSymlink>]
         attr_accessor :output_symlinks
       
         # A content digest. A digest for a given blob consists of the size of the blob
-        # and its hash. The hash algorithm to use is defined by the server.
-        # The size is considered to be an integral part of the digest and cannot be
-        # separated. That is, even if the `hash` field is correctly specified but
-        # `size_bytes` is not, the server MUST reject the request.
-        # The reason for including the size in the digest is as follows: in a great
-        # many cases, the server needs to know the size of the blob it is about to work
-        # with prior to starting an operation with it, such as flattening Merkle tree
-        # structures or streaming it to a worker. Technically, the server could
-        # implement a separate metadata store, but this results in a significantly more
-        # complicated implementation as opposed to having the client specify the size
-        # up-front (or storing the size along with the digest in every message where
-        # digests are embedded). This does mean that the API leaks some implementation
-        # details of (what we consider to be) a reasonable server implementation, but
-        # we consider this to be a worthwhile tradeoff.
-        # When a `Digest` is used to refer to a proto message, it always refers to the
-        # message in binary encoded form. To ensure consistent hashing, clients and
-        # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message:
-        # * Fields are serialized in tag order.
-        # * There are no unknown fields.
-        # * There are no duplicate fields.
-        # * Fields are serialized according to the default semantics for their type.
-        # Most protocol buffer implementations will always follow these rules when
-        # serializing, but care should be taken to avoid shortcuts. For instance,
-        # concatenating two messages to merge them may produce duplicate fields.
+        # and its hash. The hash algorithm to use is defined by the server. The size is
+        # considered to be an integral part of the digest and cannot be separated. That
+        # is, even if the `hash` field is correctly specified but `size_bytes` is not,
+        # the server MUST reject the request. The reason for including the size in the
+        # digest is as follows: in a great many cases, the server needs to know the size
+        # of the blob it is about to work with prior to starting an operation with it,
+        # such as flattening Merkle tree structures or streaming it to a worker.
+        # Technically, the server could implement a separate metadata store, but this
+        # results in a significantly more complicated implementation as opposed to
+        # having the client specify the size up-front (or storing the size along with
+        # the digest in every message where digests are embedded). This does mean that
+        # the API leaks some implementation details of (what we consider to be) a
+        # reasonable server implementation, but we consider this to be a worthwhile
+        # tradeoff. When a `Digest` is used to refer to a proto message, it always
+        # refers to the message in binary encoded form. To ensure consistent hashing,
+        # clients and servers MUST ensure that they serialize messages according to the
+        # following rules, even if there are alternate valid encodings for the same
+        # message: * Fields are serialized in tag order. * There are no unknown fields. *
+        # There are no duplicate fields. * Fields are serialized according to the
+        # default semantics for their type. Most protocol buffer implementations will
+        # always follow these rules when serializing, but care should be taken to avoid
+        # shortcuts. For instance, concatenating two messages to merge them may produce
+        # duplicate fields.
         # Corresponds to the JSON property `stderrDigest`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :stderr_digest
       
-        # The standard error buffer of the action. The server SHOULD NOT inline
-        # stderr unless requested by the client in the
-        # GetActionResultRequest
-        # message. The server MAY omit inlining, even if requested, and MUST do so if
-        # inlining
-        # would cause the response to exceed message size limits.
+        # The standard error buffer of the action. The server SHOULD NOT inline stderr
+        # unless requested by the client in the GetActionResultRequest message. The
+        # server MAY omit inlining, even if requested, and MUST do so if inlining would
+        # cause the response to exceed message size limits.
         # Corresponds to the JSON property `stderrRaw`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :stderr_raw
       
         # A content digest. A digest for a given blob consists of the size of the blob
-        # and its hash. The hash algorithm to use is defined by the server.
-        # The size is considered to be an integral part of the digest and cannot be
-        # separated. That is, even if the `hash` field is correctly specified but
-        # `size_bytes` is not, the server MUST reject the request.
-        # The reason for including the size in the digest is as follows: in a great
-        # many cases, the server needs to know the size of the blob it is about to work
-        # with prior to starting an operation with it, such as flattening Merkle tree
-        # structures or streaming it to a worker. Technically, the server could
-        # implement a separate metadata store, but this results in a significantly more
-        # complicated implementation as opposed to having the client specify the size
-        # up-front (or storing the size along with the digest in every message where
-        # digests are embedded). This does mean that the API leaks some implementation
-        # details of (what we consider to be) a reasonable server implementation, but
-        # we consider this to be a worthwhile tradeoff.
-        # When a `Digest` is used to refer to a proto message, it always refers to the
-        # message in binary encoded form. To ensure consistent hashing, clients and
-        # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message:
-        # * Fields are serialized in tag order.
-        # * There are no unknown fields.
-        # * There are no duplicate fields.
-        # * Fields are serialized according to the default semantics for their type.
-        # Most protocol buffer implementations will always follow these rules when
-        # serializing, but care should be taken to avoid shortcuts. For instance,
-        # concatenating two messages to merge them may produce duplicate fields.
+        # and its hash. The hash algorithm to use is defined by the server. The size is
+        # considered to be an integral part of the digest and cannot be separated. That
+        # is, even if the `hash` field is correctly specified but `size_bytes` is not,
+        # the server MUST reject the request. The reason for including the size in the
+        # digest is as follows: in a great many cases, the server needs to know the size
+        # of the blob it is about to work with prior to starting an operation with it,
+        # such as flattening Merkle tree structures or streaming it to a worker.
+        # Technically, the server could implement a separate metadata store, but this
+        # results in a significantly more complicated implementation as opposed to
+        # having the client specify the size up-front (or storing the size along with
+        # the digest in every message where digests are embedded). This does mean that
+        # the API leaks some implementation details of (what we consider to be) a
+        # reasonable server implementation, but we consider this to be a worthwhile
+        # tradeoff. When a `Digest` is used to refer to a proto message, it always
+        # refers to the message in binary encoded form. To ensure consistent hashing,
+        # clients and servers MUST ensure that they serialize messages according to the
+        # following rules, even if there are alternate valid encodings for the same
+        # message: * Fields are serialized in tag order. * There are no unknown fields. *
+        # There are no duplicate fields. * Fields are serialized according to the
+        # default semantics for their type. Most protocol buffer implementations will
+        # always follow these rules when serializing, but care should be taken to avoid
+        # shortcuts. For instance, concatenating two messages to merge them may produce
+        # duplicate fields.
         # Corresponds to the JSON property `stdoutDigest`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :stdout_digest
       
-        # The standard output buffer of the action. The server SHOULD NOT inline
-        # stdout unless requested by the client in the
-        # GetActionResultRequest
-        # message. The server MAY omit inlining, even if requested, and MUST do so if
-        # inlining
-        # would cause the response to exceed message size limits.
+        # The standard output buffer of the action. The server SHOULD NOT inline stdout
+        # unless requested by the client in the GetActionResultRequest message. The
+        # server MAY omit inlining, even if requested, and MUST do so if inlining would
+        # cause the response to exceed message size limits.
         # Corresponds to the JSON property `stdoutRaw`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -407,12 +338,11 @@ module Google
         end
       end
       
-      # A `Command` is the actual command executed by a worker running an
-      # Action and specifications of its
-      # environment.
-      # Except as otherwise required, the environment (such as which system
-      # libraries or binaries are available, and what filesystems are mounted where)
-      # is defined by and specific to the implementation of the remote execution API.
+      # A `Command` is the actual command executed by a worker running an Action and
+      # specifications of its environment. Except as otherwise required, the
+      # environment (such as which system libraries or binaries are available, and
+      # what filesystems are mounted where) is defined by and specific to the
+      # implementation of the remote execution API.
       class BuildBazelRemoteExecutionV2Command
         include Google::Apis::Core::Hashable
       
@@ -425,105 +355,90 @@ module Google
       
         # The environment variables to set when running the program. The worker may
         # provide its own default environment variables; these defaults can be
-        # overridden using this field. Additional variables can also be specified.
-        # In order to ensure that equivalent
-        # Commands always hash to the same
-        # value, the environment variables MUST be lexicographically sorted by name.
-        # Sorting of strings is done by code point, equivalently, by the UTF-8 bytes.
+        # overridden using this field. Additional variables can also be specified. In
+        # order to ensure that equivalent Commands always hash to the same value, the
+        # environment variables MUST be lexicographically sorted by name. Sorting of
+        # strings is done by code point, equivalently, by the UTF-8 bytes.
         # Corresponds to the JSON property `environmentVariables`
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2CommandEnvironmentVariable>]
         attr_accessor :environment_variables
       
-        # A list of the output directories that the client expects to retrieve from
-        # the action. Only the listed directories will be returned (an entire
-        # directory structure will be returned as a
-        # Tree message digest, see
-        # OutputDirectory), as
-        # well as files listed in `output_files`. Other files or directories that
-        # may be created during command execution are discarded.
-        # The paths are relative to the working directory of the action execution.
-        # The paths are specified using a single forward slash (`/`) as a path
-        # separator, even if the execution platform natively uses a different
-        # separator. The path MUST NOT include a trailing slash, nor a leading slash,
-        # being a relative path. The special value of empty string is allowed,
-        # although not recommended, and can be used to capture the entire working
-        # directory tree, including inputs.
-        # In order to ensure consistent hashing of the same Action, the output paths
-        # MUST be sorted lexicographically by code point (or, equivalently, by UTF-8
-        # bytes).
-        # An output directory cannot be duplicated or have the same path as any of
-        # the listed output files. An output directory is allowed to be a parent of
-        # another output directory.
+        # A list of the output directories that the client expects to retrieve from the
+        # action. Only the listed directories will be returned (an entire directory
+        # structure will be returned as a Tree message digest, see OutputDirectory), as
+        # well as files listed in `output_files`. Other files or directories that may be
+        # created during command execution are discarded. The paths are relative to the
+        # working directory of the action execution. The paths are specified using a
+        # single forward slash (`/`) as a path separator, even if the execution platform
+        # natively uses a different separator. The path MUST NOT include a trailing
+        # slash, nor a leading slash, being a relative path. The special value of empty
+        # string is allowed, although not recommended, and can be used to capture the
+        # entire working directory tree, including inputs. In order to ensure consistent
+        # hashing of the same Action, the output paths MUST be sorted lexicographically
+        # by code point (or, equivalently, by UTF-8 bytes). An output directory cannot
+        # be duplicated or have the same path as any of the listed output files. An
+        # output directory is allowed to be a parent of another output directory.
         # Directories leading up to the output directories (but not the output
-        # directories themselves) are created by the worker prior to execution, even
-        # if they are not explicitly part of the input root.
-        # DEPRECATED since 2.1: Use `output_paths` instead.
+        # directories themselves) are created by the worker prior to execution, even if
+        # they are not explicitly part of the input root. DEPRECATED since 2.1: Use `
+        # output_paths` instead.
         # Corresponds to the JSON property `outputDirectories`
         # @return [Array<String>]
         attr_accessor :output_directories
       
-        # A list of the output files that the client expects to retrieve from the
-        # action. Only the listed files, as well as directories listed in
-        # `output_directories`, will be returned to the client as output.
-        # Other files or directories that may be created during command execution
-        # are discarded.
-        # The paths are relative to the working directory of the action execution.
-        # The paths are specified using a single forward slash (`/`) as a path
-        # separator, even if the execution platform natively uses a different
-        # separator. The path MUST NOT include a trailing slash, nor a leading slash,
-        # being a relative path.
-        # In order to ensure consistent hashing of the same Action, the output paths
-        # MUST be sorted lexicographically by code point (or, equivalently, by UTF-8
-        # bytes).
-        # An output file cannot be duplicated, be a parent of another output file, or
-        # have the same path as any of the listed output directories.
-        # Directories leading up to the output files are created by the worker prior
-        # to execution, even if they are not explicitly part of the input root.
-        # DEPRECATED since v2.1: Use `output_paths` instead.
+        # A list of the output files that the client expects to retrieve from the action.
+        # Only the listed files, as well as directories listed in `output_directories`,
+        # will be returned to the client as output. Other files or directories that may
+        # be created during command execution are discarded. The paths are relative to
+        # the working directory of the action execution. The paths are specified using a
+        # single forward slash (`/`) as a path separator, even if the execution platform
+        # natively uses a different separator. The path MUST NOT include a trailing
+        # slash, nor a leading slash, being a relative path. In order to ensure
+        # consistent hashing of the same Action, the output paths MUST be sorted
+        # lexicographically by code point (or, equivalently, by UTF-8 bytes). An output
+        # file cannot be duplicated, be a parent of another output file, or have the
+        # same path as any of the listed output directories. Directories leading up to
+        # the output files are created by the worker prior to execution, even if they
+        # are not explicitly part of the input root. DEPRECATED since v2.1: Use `
+        # output_paths` instead.
         # Corresponds to the JSON property `outputFiles`
         # @return [Array<String>]
         attr_accessor :output_files
       
-        # A list of the output paths that the client expects to retrieve from the
-        # action. Only the listed paths will be returned to the client as output.
-        # The type of the output (file or directory) is not specified, and will be
-        # determined by the server after action execution. If the resulting path is
-        # a file, it will be returned in an
-        # OutputFile) typed field.
-        # If the path is a directory, the entire directory structure will be returned
-        # as a Tree message digest, see
-        # OutputDirectory)
-        # Other files or directories that may be created during command execution
-        # are discarded.
-        # The paths are relative to the working directory of the action execution.
-        # The paths are specified using a single forward slash (`/`) as a path
-        # separator, even if the execution platform natively uses a different
-        # separator. The path MUST NOT include a trailing slash, nor a leading slash,
-        # being a relative path.
-        # In order to ensure consistent hashing of the same Action, the output paths
-        # MUST be deduplicated and sorted lexicographically by code point (or,
-        # equivalently, by UTF-8 bytes).
-        # Directories leading up to the output paths are created by the worker prior
-        # to execution, even if they are not explicitly part of the input root.
-        # New in v2.1: this field supersedes the DEPRECATED `output_files` and
-        # `output_directories` fields. If `output_paths` is used, `output_files` and
-        # `output_directories` will be ignored!
+        # A list of the output paths that the client expects to retrieve from the action.
+        # Only the listed paths will be returned to the client as output. The type of
+        # the output (file or directory) is not specified, and will be determined by the
+        # server after action execution. If the resulting path is a file, it will be
+        # returned in an OutputFile) typed field. If the path is a directory, the entire
+        # directory structure will be returned as a Tree message digest, see
+        # OutputDirectory) Other files or directories that may be created during command
+        # execution are discarded. The paths are relative to the working directory of
+        # the action execution. The paths are specified using a single forward slash (`/`
+        # ) as a path separator, even if the execution platform natively uses a
+        # different separator. The path MUST NOT include a trailing slash, nor a leading
+        # slash, being a relative path. In order to ensure consistent hashing of the
+        # same Action, the output paths MUST be deduplicated and sorted
+        # lexicographically by code point (or, equivalently, by UTF-8 bytes).
+        # Directories leading up to the output paths are created by the worker prior to
+        # execution, even if they are not explicitly part of the input root. New in v2.1:
+        # this field supersedes the DEPRECATED `output_files` and `output_directories`
+        # fields. If `output_paths` is used, `output_files` and `output_directories`
+        # will be ignored!
         # Corresponds to the JSON property `outputPaths`
         # @return [Array<String>]
         attr_accessor :output_paths
       
         # A `Platform` is a set of requirements, such as hardware, operating system, or
-        # compiler toolchain, for an
-        # Action's execution
-        # environment. A `Platform` is represented as a series of key-value pairs
-        # representing the properties that are required of the platform.
+        # compiler toolchain, for an Action's execution environment. A `Platform` is
+        # represented as a series of key-value pairs representing the properties that
+        # are required of the platform.
         # Corresponds to the JSON property `platform`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Platform]
         attr_accessor :platform
       
-        # The working directory, relative to the input root, for the command to run
-        # in. It must be a directory which exists in the input tree. If it is left
-        # empty, then the action is run in the input root.
+        # The working directory, relative to the input root, for the command to run in.
+        # It must be a directory which exists in the input tree. If it is left empty,
+        # then the action is run in the input root.
         # Corresponds to the JSON property `workingDirectory`
         # @return [String]
         attr_accessor :working_directory
@@ -571,31 +486,29 @@ module Google
       end
       
       # A content digest. A digest for a given blob consists of the size of the blob
-      # and its hash. The hash algorithm to use is defined by the server.
-      # The size is considered to be an integral part of the digest and cannot be
-      # separated. That is, even if the `hash` field is correctly specified but
-      # `size_bytes` is not, the server MUST reject the request.
-      # The reason for including the size in the digest is as follows: in a great
-      # many cases, the server needs to know the size of the blob it is about to work
-      # with prior to starting an operation with it, such as flattening Merkle tree
-      # structures or streaming it to a worker. Technically, the server could
-      # implement a separate metadata store, but this results in a significantly more
-      # complicated implementation as opposed to having the client specify the size
-      # up-front (or storing the size along with the digest in every message where
-      # digests are embedded). This does mean that the API leaks some implementation
-      # details of (what we consider to be) a reasonable server implementation, but
-      # we consider this to be a worthwhile tradeoff.
-      # When a `Digest` is used to refer to a proto message, it always refers to the
-      # message in binary encoded form. To ensure consistent hashing, clients and
-      # servers MUST ensure that they serialize messages according to the following
-      # rules, even if there are alternate valid encodings for the same message:
-      # * Fields are serialized in tag order.
-      # * There are no unknown fields.
-      # * There are no duplicate fields.
-      # * Fields are serialized according to the default semantics for their type.
-      # Most protocol buffer implementations will always follow these rules when
-      # serializing, but care should be taken to avoid shortcuts. For instance,
-      # concatenating two messages to merge them may produce duplicate fields.
+      # and its hash. The hash algorithm to use is defined by the server. The size is
+      # considered to be an integral part of the digest and cannot be separated. That
+      # is, even if the `hash` field is correctly specified but `size_bytes` is not,
+      # the server MUST reject the request. The reason for including the size in the
+      # digest is as follows: in a great many cases, the server needs to know the size
+      # of the blob it is about to work with prior to starting an operation with it,
+      # such as flattening Merkle tree structures or streaming it to a worker.
+      # Technically, the server could implement a separate metadata store, but this
+      # results in a significantly more complicated implementation as opposed to
+      # having the client specify the size up-front (or storing the size along with
+      # the digest in every message where digests are embedded). This does mean that
+      # the API leaks some implementation details of (what we consider to be) a
+      # reasonable server implementation, but we consider this to be a worthwhile
+      # tradeoff. When a `Digest` is used to refer to a proto message, it always
+      # refers to the message in binary encoded form. To ensure consistent hashing,
+      # clients and servers MUST ensure that they serialize messages according to the
+      # following rules, even if there are alternate valid encodings for the same
+      # message: * Fields are serialized in tag order. * There are no unknown fields. *
+      # There are no duplicate fields. * Fields are serialized according to the
+      # default semantics for their type. Most protocol buffer implementations will
+      # always follow these rules when serializing, but care should be taken to avoid
+      # shortcuts. For instance, concatenating two messages to merge them may produce
+      # duplicate fields.
       class BuildBazelRemoteExecutionV2Digest
         include Google::Apis::Core::Hashable
       
@@ -622,75 +535,31 @@ module Google
       end
       
       # A `Directory` represents a directory node in a file tree, containing zero or
-      # more children FileNodes,
-      # DirectoryNodes and
-      # SymlinkNodes.
-      # Each `Node` contains its name in the directory, either the digest of its
-      # content (either a file blob or a `Directory` proto) or a symlink target, as
-      # well as possibly some metadata about the file or directory.
-      # In order to ensure that two equivalent directory trees hash to the same
-      # value, the following restrictions MUST be obeyed when constructing a
-      # a `Directory`:
-      # * Every child in the directory must have a path of exactly one segment.
-      # Multiple levels of directory hierarchy may not be collapsed.
-      # * Each child in the directory must have a unique path segment (file name).
-      # Note that while the API itself is case-sensitive, the environment where
-      # the Action is executed may or may not be case-sensitive. That is, it is
-      # legal to call the API with a Directory that has both "Foo" and "foo" as
-      # children, but the Action may be rejected by the remote system upon
-      # execution.
-      # * The files, directories and symlinks in the directory must each be sorted
-      # in lexicographical order by path. The path strings must be sorted by code
-      # point, equivalently, by UTF-8 bytes.
-      # * The NodeProperties of files,
-      # directories, and symlinks must be sorted in lexicographical order by
-      # property name.
-      # A `Directory` that obeys the restrictions is said to be in canonical form.
-      # As an example, the following could be used for a file named `bar` and a
+      # more children FileNodes, DirectoryNodes and SymlinkNodes. Each `Node` contains
+      # its name in the directory, either the digest of its content (either a file
+      # blob or a `Directory` proto) or a symlink target, as well as possibly some
+      # metadata about the file or directory. In order to ensure that two equivalent
+      # directory trees hash to the same value, the following restrictions MUST be
+      # obeyed when constructing a a `Directory`: * Every child in the directory must
+      # have a path of exactly one segment. Multiple levels of directory hierarchy may
+      # not be collapsed. * Each child in the directory must have a unique path
+      # segment (file name). Note that while the API itself is case-sensitive, the
+      # environment where the Action is executed may or may not be case-sensitive.
+      # That is, it is legal to call the API with a Directory that has both "Foo" and "
+      # foo" as children, but the Action may be rejected by the remote system upon
+      # execution. * The files, directories and symlinks in the directory must each be
+      # sorted in lexicographical order by path. The path strings must be sorted by
+      # code point, equivalently, by UTF-8 bytes. * The NodeProperties of files,
+      # directories, and symlinks must be sorted in lexicographical order by property
+      # name. A `Directory` that obeys the restrictions is said to be in canonical
+      # form. As an example, the following could be used for a file named `bar` and a
       # directory named `foo` with an executable file named `baz` (hashes shortened
-      # for readability):
-      # ```json
-      # // (Directory proto)
-      # `
-      # files: [
-      # `
-      # name: "bar",
-      # digest: `
-      # hash: "4a73bc9d03...",
-      # size: 65534
-      # `,
-      # node_properties: [
-      # `
-      # "name": "MTime",
-      # "value": "2017-01-15T01:30:15.01Z"
-      # `
-      # ]
-      # `
-      # ],
-      # directories: [
-      # `
-      # name: "foo",
-      # digest: `
-      # hash: "4cf2eda940...",
-      # size: 43
-      # `
-      # `
-      # ]
-      # `
-      # // (Directory proto with hash "4cf2eda940..." and size 43)
-      # `
-      # files: [
-      # `
-      # name: "baz",
-      # digest: `
-      # hash: "b2c941073e...",
-      # size: 1294,
-      # `,
-      # is_executable: true
-      # `
-      # ]
-      # `
-      # ```
+      # for readability): ```json // (Directory proto) ` files: [ ` name: "bar",
+      # digest: ` hash: "4a73bc9d03...", size: 65534 `, node_properties: [ ` "name": "
+      # MTime", "value": "2017-01-15T01:30:15.01Z" ` ] ` ], directories: [ ` name: "
+      # foo", digest: ` hash: "4cf2eda940...", size: 43 ` ` ] ` // (Directory proto
+      # with hash "4cf2eda940..." and size 43) ` files: [ ` name: "baz", digest: `
+      # hash: "b2c941073e...", size: 1294, `, is_executable: true ` ] ` ```
       class BuildBazelRemoteExecutionV2Directory
         include Google::Apis::Core::Hashable
       
@@ -727,38 +596,35 @@ module Google
         end
       end
       
-      # A `DirectoryNode` represents a child of a
-      # Directory which is itself
-      # a `Directory` and its associated metadata.
+      # A `DirectoryNode` represents a child of a Directory which is itself a `
+      # Directory` and its associated metadata.
       class BuildBazelRemoteExecutionV2DirectoryNode
         include Google::Apis::Core::Hashable
       
         # A content digest. A digest for a given blob consists of the size of the blob
-        # and its hash. The hash algorithm to use is defined by the server.
-        # The size is considered to be an integral part of the digest and cannot be
-        # separated. That is, even if the `hash` field is correctly specified but
-        # `size_bytes` is not, the server MUST reject the request.
-        # The reason for including the size in the digest is as follows: in a great
-        # many cases, the server needs to know the size of the blob it is about to work
-        # with prior to starting an operation with it, such as flattening Merkle tree
-        # structures or streaming it to a worker. Technically, the server could
-        # implement a separate metadata store, but this results in a significantly more
-        # complicated implementation as opposed to having the client specify the size
-        # up-front (or storing the size along with the digest in every message where
-        # digests are embedded). This does mean that the API leaks some implementation
-        # details of (what we consider to be) a reasonable server implementation, but
-        # we consider this to be a worthwhile tradeoff.
-        # When a `Digest` is used to refer to a proto message, it always refers to the
-        # message in binary encoded form. To ensure consistent hashing, clients and
-        # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message:
-        # * Fields are serialized in tag order.
-        # * There are no unknown fields.
-        # * There are no duplicate fields.
-        # * Fields are serialized according to the default semantics for their type.
-        # Most protocol buffer implementations will always follow these rules when
-        # serializing, but care should be taken to avoid shortcuts. For instance,
-        # concatenating two messages to merge them may produce duplicate fields.
+        # and its hash. The hash algorithm to use is defined by the server. The size is
+        # considered to be an integral part of the digest and cannot be separated. That
+        # is, even if the `hash` field is correctly specified but `size_bytes` is not,
+        # the server MUST reject the request. The reason for including the size in the
+        # digest is as follows: in a great many cases, the server needs to know the size
+        # of the blob it is about to work with prior to starting an operation with it,
+        # such as flattening Merkle tree structures or streaming it to a worker.
+        # Technically, the server could implement a separate metadata store, but this
+        # results in a significantly more complicated implementation as opposed to
+        # having the client specify the size up-front (or storing the size along with
+        # the digest in every message where digests are embedded). This does mean that
+        # the API leaks some implementation details of (what we consider to be) a
+        # reasonable server implementation, but we consider this to be a worthwhile
+        # tradeoff. When a `Digest` is used to refer to a proto message, it always
+        # refers to the message in binary encoded form. To ensure consistent hashing,
+        # clients and servers MUST ensure that they serialize messages according to the
+        # following rules, even if there are alternate valid encodings for the same
+        # message: * Fields are serialized in tag order. * There are no unknown fields. *
+        # There are no duplicate fields. * Fields are serialized according to the
+        # default semantics for their type. Most protocol buffer implementations will
+        # always follow these rules when serializing, but care should be taken to avoid
+        # shortcuts. For instance, concatenating two messages to merge them may produce
+        # duplicate fields.
         # Corresponds to the JSON property `digest`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :digest
@@ -779,40 +645,35 @@ module Google
         end
       end
       
-      # Metadata about an ongoing
-      # execution, which
-      # will be contained in the metadata
-      # field of the
-      # Operation.
+      # Metadata about an ongoing execution, which will be contained in the metadata
+      # field of the Operation.
       class BuildBazelRemoteExecutionV2ExecuteOperationMetadata
         include Google::Apis::Core::Hashable
       
         # A content digest. A digest for a given blob consists of the size of the blob
-        # and its hash. The hash algorithm to use is defined by the server.
-        # The size is considered to be an integral part of the digest and cannot be
-        # separated. That is, even if the `hash` field is correctly specified but
-        # `size_bytes` is not, the server MUST reject the request.
-        # The reason for including the size in the digest is as follows: in a great
-        # many cases, the server needs to know the size of the blob it is about to work
-        # with prior to starting an operation with it, such as flattening Merkle tree
-        # structures or streaming it to a worker. Technically, the server could
-        # implement a separate metadata store, but this results in a significantly more
-        # complicated implementation as opposed to having the client specify the size
-        # up-front (or storing the size along with the digest in every message where
-        # digests are embedded). This does mean that the API leaks some implementation
-        # details of (what we consider to be) a reasonable server implementation, but
-        # we consider this to be a worthwhile tradeoff.
-        # When a `Digest` is used to refer to a proto message, it always refers to the
-        # message in binary encoded form. To ensure consistent hashing, clients and
-        # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message:
-        # * Fields are serialized in tag order.
-        # * There are no unknown fields.
-        # * There are no duplicate fields.
-        # * Fields are serialized according to the default semantics for their type.
-        # Most protocol buffer implementations will always follow these rules when
-        # serializing, but care should be taken to avoid shortcuts. For instance,
-        # concatenating two messages to merge them may produce duplicate fields.
+        # and its hash. The hash algorithm to use is defined by the server. The size is
+        # considered to be an integral part of the digest and cannot be separated. That
+        # is, even if the `hash` field is correctly specified but `size_bytes` is not,
+        # the server MUST reject the request. The reason for including the size in the
+        # digest is as follows: in a great many cases, the server needs to know the size
+        # of the blob it is about to work with prior to starting an operation with it,
+        # such as flattening Merkle tree structures or streaming it to a worker.
+        # Technically, the server could implement a separate metadata store, but this
+        # results in a significantly more complicated implementation as opposed to
+        # having the client specify the size up-front (or storing the size along with
+        # the digest in every message where digests are embedded). This does mean that
+        # the API leaks some implementation details of (what we consider to be) a
+        # reasonable server implementation, but we consider this to be a worthwhile
+        # tradeoff. When a `Digest` is used to refer to a proto message, it always
+        # refers to the message in binary encoded form. To ensure consistent hashing,
+        # clients and servers MUST ensure that they serialize messages according to the
+        # following rules, even if there are alternate valid encodings for the same
+        # message: * Fields are serialized in tag order. * There are no unknown fields. *
+        # There are no duplicate fields. * Fields are serialized according to the
+        # default semantics for their type. Most protocol buffer implementations will
+        # always follow these rules when serializing, but care should be taken to avoid
+        # shortcuts. For instance, concatenating two messages to merge them may produce
+        # duplicate fields.
         # Corresponds to the JSON property `actionDigest`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :action_digest
@@ -822,15 +683,13 @@ module Google
         # @return [String]
         attr_accessor :stage
       
-        # If set, the client can use this name with
-        # ByteStream.Read to stream the
+        # If set, the client can use this name with ByteStream.Read to stream the
         # standard error.
         # Corresponds to the JSON property `stderrStreamName`
         # @return [String]
         attr_accessor :stderr_stream_name
       
-        # If set, the client can use this name with
-        # ByteStream.Read to stream the
+        # If set, the client can use this name with ByteStream.Read to stream the
         # standard output.
         # Corresponds to the JSON property `stdoutStreamName`
         # @return [String]
@@ -849,11 +708,8 @@ module Google
         end
       end
       
-      # The response message for
-      # Execution.Execute,
-      # which will be contained in the response
-      # field of the
-      # Operation.
+      # The response message for Execution.Execute, which will be contained in the
+      # response field of the Operation.
       class BuildBazelRemoteExecutionV2ExecuteResponse
         include Google::Apis::Core::Hashable
       
@@ -869,29 +725,27 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # An ActionResult represents the result of an
-        # Action being run.
+        # An ActionResult represents the result of an Action being run.
         # Corresponds to the JSON property `result`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2ActionResult]
         attr_accessor :result
       
         # An optional list of additional log outputs the server wishes to provide. A
-        # server can use this to return execution-specific logs however it wishes.
-        # This is intended primarily to make it easier for users to debug issues that
-        # may be outside of the actual job execution, such as by identifying the
-        # worker executing the action or by providing logs from the worker's setup
-        # phase. The keys SHOULD be human readable so that a client can display them
-        # to a user.
+        # server can use this to return execution-specific logs however it wishes. This
+        # is intended primarily to make it easier for users to debug issues that may be
+        # outside of the actual job execution, such as by identifying the worker
+        # executing the action or by providing logs from the worker's setup phase. The
+        # keys SHOULD be human readable so that a client can display them to a user.
         # Corresponds to the JSON property `serverLogs`
         # @return [Hash<String,Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2LogFile>]
         attr_accessor :server_logs
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleRpcStatus]
         attr_accessor :status
@@ -988,31 +842,29 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A content digest. A digest for a given blob consists of the size of the blob
-        # and its hash. The hash algorithm to use is defined by the server.
-        # The size is considered to be an integral part of the digest and cannot be
-        # separated. That is, even if the `hash` field is correctly specified but
-        # `size_bytes` is not, the server MUST reject the request.
-        # The reason for including the size in the digest is as follows: in a great
-        # many cases, the server needs to know the size of the blob it is about to work
-        # with prior to starting an operation with it, such as flattening Merkle tree
-        # structures or streaming it to a worker. Technically, the server could
-        # implement a separate metadata store, but this results in a significantly more
-        # complicated implementation as opposed to having the client specify the size
-        # up-front (or storing the size along with the digest in every message where
-        # digests are embedded). This does mean that the API leaks some implementation
-        # details of (what we consider to be) a reasonable server implementation, but
-        # we consider this to be a worthwhile tradeoff.
-        # When a `Digest` is used to refer to a proto message, it always refers to the
-        # message in binary encoded form. To ensure consistent hashing, clients and
-        # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message:
-        # * Fields are serialized in tag order.
-        # * There are no unknown fields.
-        # * There are no duplicate fields.
-        # * Fields are serialized according to the default semantics for their type.
-        # Most protocol buffer implementations will always follow these rules when
-        # serializing, but care should be taken to avoid shortcuts. For instance,
-        # concatenating two messages to merge them may produce duplicate fields.
+        # and its hash. The hash algorithm to use is defined by the server. The size is
+        # considered to be an integral part of the digest and cannot be separated. That
+        # is, even if the `hash` field is correctly specified but `size_bytes` is not,
+        # the server MUST reject the request. The reason for including the size in the
+        # digest is as follows: in a great many cases, the server needs to know the size
+        # of the blob it is about to work with prior to starting an operation with it,
+        # such as flattening Merkle tree structures or streaming it to a worker.
+        # Technically, the server could implement a separate metadata store, but this
+        # results in a significantly more complicated implementation as opposed to
+        # having the client specify the size up-front (or storing the size along with
+        # the digest in every message where digests are embedded). This does mean that
+        # the API leaks some implementation details of (what we consider to be) a
+        # reasonable server implementation, but we consider this to be a worthwhile
+        # tradeoff. When a `Digest` is used to refer to a proto message, it always
+        # refers to the message in binary encoded form. To ensure consistent hashing,
+        # clients and servers MUST ensure that they serialize messages according to the
+        # following rules, even if there are alternate valid encodings for the same
+        # message: * Fields are serialized in tag order. * There are no unknown fields. *
+        # There are no duplicate fields. * Fields are serialized according to the
+        # default semantics for their type. Most protocol buffer implementations will
+        # always follow these rules when serializing, but care should be taken to avoid
+        # shortcuts. For instance, concatenating two messages to merge them may produce
+        # duplicate fields.
         # Corresponds to the JSON property `digest`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :digest
@@ -1051,40 +903,38 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A content digest. A digest for a given blob consists of the size of the blob
-        # and its hash. The hash algorithm to use is defined by the server.
-        # The size is considered to be an integral part of the digest and cannot be
-        # separated. That is, even if the `hash` field is correctly specified but
-        # `size_bytes` is not, the server MUST reject the request.
-        # The reason for including the size in the digest is as follows: in a great
-        # many cases, the server needs to know the size of the blob it is about to work
-        # with prior to starting an operation with it, such as flattening Merkle tree
-        # structures or streaming it to a worker. Technically, the server could
-        # implement a separate metadata store, but this results in a significantly more
-        # complicated implementation as opposed to having the client specify the size
-        # up-front (or storing the size along with the digest in every message where
-        # digests are embedded). This does mean that the API leaks some implementation
-        # details of (what we consider to be) a reasonable server implementation, but
-        # we consider this to be a worthwhile tradeoff.
-        # When a `Digest` is used to refer to a proto message, it always refers to the
-        # message in binary encoded form. To ensure consistent hashing, clients and
-        # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message:
-        # * Fields are serialized in tag order.
-        # * There are no unknown fields.
-        # * There are no duplicate fields.
-        # * Fields are serialized according to the default semantics for their type.
-        # Most protocol buffer implementations will always follow these rules when
-        # serializing, but care should be taken to avoid shortcuts. For instance,
-        # concatenating two messages to merge them may produce duplicate fields.
+        # and its hash. The hash algorithm to use is defined by the server. The size is
+        # considered to be an integral part of the digest and cannot be separated. That
+        # is, even if the `hash` field is correctly specified but `size_bytes` is not,
+        # the server MUST reject the request. The reason for including the size in the
+        # digest is as follows: in a great many cases, the server needs to know the size
+        # of the blob it is about to work with prior to starting an operation with it,
+        # such as flattening Merkle tree structures or streaming it to a worker.
+        # Technically, the server could implement a separate metadata store, but this
+        # results in a significantly more complicated implementation as opposed to
+        # having the client specify the size up-front (or storing the size along with
+        # the digest in every message where digests are embedded). This does mean that
+        # the API leaks some implementation details of (what we consider to be) a
+        # reasonable server implementation, but we consider this to be a worthwhile
+        # tradeoff. When a `Digest` is used to refer to a proto message, it always
+        # refers to the message in binary encoded form. To ensure consistent hashing,
+        # clients and servers MUST ensure that they serialize messages according to the
+        # following rules, even if there are alternate valid encodings for the same
+        # message: * Fields are serialized in tag order. * There are no unknown fields. *
+        # There are no duplicate fields. * Fields are serialized according to the
+        # default semantics for their type. Most protocol buffer implementations will
+        # always follow these rules when serializing, but care should be taken to avoid
+        # shortcuts. For instance, concatenating two messages to merge them may produce
+        # duplicate fields.
         # Corresponds to the JSON property `digest`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :digest
       
-        # This is a hint as to the purpose of the log, and is set to true if the log
-        # is human-readable text that can be usefully displayed to a user, and false
-        # otherwise. For instance, if a command-line client wishes to print the
-        # server logs to the terminal for a failed action, this allows it to avoid
-        # displaying a binary file.
+        # This is a hint as to the purpose of the log, and is set to true if the log is
+        # human-readable text that can be usefully displayed to a user, and false
+        # otherwise. For instance, if a command-line client wishes to print the server
+        # logs to the terminal for a failed action, this allows it to avoid displaying a
+        # binary file.
         # Corresponds to the JSON property `humanReadable`
         # @return [Boolean]
         attr_accessor :human_readable
@@ -1101,10 +951,8 @@ module Google
         end
       end
       
-      # A single property for FileNodes,
-      # DirectoryNodes, and
-      # SymlinkNodes. The server is
-      # responsible for specifying the property `name`s that it accepts. If
+      # A single property for FileNodes, DirectoryNodes, and SymlinkNodes. The server
+      # is responsible for specifying the property `name`s that it accepts. If
       # permitted by the server, the same `name` may occur multiple times.
       class BuildBazelRemoteExecutionV2NodeProperty
         include Google::Apis::Core::Hashable
@@ -1136,39 +984,37 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The full path of the directory relative to the working directory. The path
-        # separator is a forward slash `/`. Since this is a relative path, it MUST
-        # NOT begin with a leading forward slash. The empty string value is allowed,
-        # and it denotes the entire working directory.
+        # separator is a forward slash `/`. Since this is a relative path, it MUST NOT
+        # begin with a leading forward slash. The empty string value is allowed, and it
+        # denotes the entire working directory.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
       
         # A content digest. A digest for a given blob consists of the size of the blob
-        # and its hash. The hash algorithm to use is defined by the server.
-        # The size is considered to be an integral part of the digest and cannot be
-        # separated. That is, even if the `hash` field is correctly specified but
-        # `size_bytes` is not, the server MUST reject the request.
-        # The reason for including the size in the digest is as follows: in a great
-        # many cases, the server needs to know the size of the blob it is about to work
-        # with prior to starting an operation with it, such as flattening Merkle tree
-        # structures or streaming it to a worker. Technically, the server could
-        # implement a separate metadata store, but this results in a significantly more
-        # complicated implementation as opposed to having the client specify the size
-        # up-front (or storing the size along with the digest in every message where
-        # digests are embedded). This does mean that the API leaks some implementation
-        # details of (what we consider to be) a reasonable server implementation, but
-        # we consider this to be a worthwhile tradeoff.
-        # When a `Digest` is used to refer to a proto message, it always refers to the
-        # message in binary encoded form. To ensure consistent hashing, clients and
-        # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message:
-        # * Fields are serialized in tag order.
-        # * There are no unknown fields.
-        # * There are no duplicate fields.
-        # * Fields are serialized according to the default semantics for their type.
-        # Most protocol buffer implementations will always follow these rules when
-        # serializing, but care should be taken to avoid shortcuts. For instance,
-        # concatenating two messages to merge them may produce duplicate fields.
+        # and its hash. The hash algorithm to use is defined by the server. The size is
+        # considered to be an integral part of the digest and cannot be separated. That
+        # is, even if the `hash` field is correctly specified but `size_bytes` is not,
+        # the server MUST reject the request. The reason for including the size in the
+        # digest is as follows: in a great many cases, the server needs to know the size
+        # of the blob it is about to work with prior to starting an operation with it,
+        # such as flattening Merkle tree structures or streaming it to a worker.
+        # Technically, the server could implement a separate metadata store, but this
+        # results in a significantly more complicated implementation as opposed to
+        # having the client specify the size up-front (or storing the size along with
+        # the digest in every message where digests are embedded). This does mean that
+        # the API leaks some implementation details of (what we consider to be) a
+        # reasonable server implementation, but we consider this to be a worthwhile
+        # tradeoff. When a `Digest` is used to refer to a proto message, it always
+        # refers to the message in binary encoded form. To ensure consistent hashing,
+        # clients and servers MUST ensure that they serialize messages according to the
+        # following rules, even if there are alternate valid encodings for the same
+        # message: * Fields are serialized in tag order. * There are no unknown fields. *
+        # There are no duplicate fields. * Fields are serialized according to the
+        # default semantics for their type. Most protocol buffer implementations will
+        # always follow these rules when serializing, but care should be taken to avoid
+        # shortcuts. For instance, concatenating two messages to merge them may produce
+        # duplicate fields.
         # Corresponds to the JSON property `treeDigest`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :tree_digest
@@ -1184,51 +1030,45 @@ module Google
         end
       end
       
-      # An `OutputFile` is similar to a
-      # FileNode, but it is used as an
-      # output in an `ActionResult`. It allows a full file path rather than
-      # only a name.
+      # An `OutputFile` is similar to a FileNode, but it is used as an output in an `
+      # ActionResult`. It allows a full file path rather than only a name.
       class BuildBazelRemoteExecutionV2OutputFile
         include Google::Apis::Core::Hashable
       
         # The contents of the file if inlining was requested. The server SHOULD NOT
-        # inline
-        # file contents unless requested by the client in the
-        # GetActionResultRequest
-        # message. The server MAY omit inlining, even if requested, and MUST do so if
-        # inlining
-        # would cause the response to exceed message size limits.
+        # inline file contents unless requested by the client in the
+        # GetActionResultRequest message. The server MAY omit inlining, even if
+        # requested, and MUST do so if inlining would cause the response to exceed
+        # message size limits.
         # Corresponds to the JSON property `contents`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :contents
       
         # A content digest. A digest for a given blob consists of the size of the blob
-        # and its hash. The hash algorithm to use is defined by the server.
-        # The size is considered to be an integral part of the digest and cannot be
-        # separated. That is, even if the `hash` field is correctly specified but
-        # `size_bytes` is not, the server MUST reject the request.
-        # The reason for including the size in the digest is as follows: in a great
-        # many cases, the server needs to know the size of the blob it is about to work
-        # with prior to starting an operation with it, such as flattening Merkle tree
-        # structures or streaming it to a worker. Technically, the server could
-        # implement a separate metadata store, but this results in a significantly more
-        # complicated implementation as opposed to having the client specify the size
-        # up-front (or storing the size along with the digest in every message where
-        # digests are embedded). This does mean that the API leaks some implementation
-        # details of (what we consider to be) a reasonable server implementation, but
-        # we consider this to be a worthwhile tradeoff.
-        # When a `Digest` is used to refer to a proto message, it always refers to the
-        # message in binary encoded form. To ensure consistent hashing, clients and
-        # servers MUST ensure that they serialize messages according to the following
-        # rules, even if there are alternate valid encodings for the same message:
-        # * Fields are serialized in tag order.
-        # * There are no unknown fields.
-        # * There are no duplicate fields.
-        # * Fields are serialized according to the default semantics for their type.
-        # Most protocol buffer implementations will always follow these rules when
-        # serializing, but care should be taken to avoid shortcuts. For instance,
-        # concatenating two messages to merge them may produce duplicate fields.
+        # and its hash. The hash algorithm to use is defined by the server. The size is
+        # considered to be an integral part of the digest and cannot be separated. That
+        # is, even if the `hash` field is correctly specified but `size_bytes` is not,
+        # the server MUST reject the request. The reason for including the size in the
+        # digest is as follows: in a great many cases, the server needs to know the size
+        # of the blob it is about to work with prior to starting an operation with it,
+        # such as flattening Merkle tree structures or streaming it to a worker.
+        # Technically, the server could implement a separate metadata store, but this
+        # results in a significantly more complicated implementation as opposed to
+        # having the client specify the size up-front (or storing the size along with
+        # the digest in every message where digests are embedded). This does mean that
+        # the API leaks some implementation details of (what we consider to be) a
+        # reasonable server implementation, but we consider this to be a worthwhile
+        # tradeoff. When a `Digest` is used to refer to a proto message, it always
+        # refers to the message in binary encoded form. To ensure consistent hashing,
+        # clients and servers MUST ensure that they serialize messages according to the
+        # following rules, even if there are alternate valid encodings for the same
+        # message: * Fields are serialized in tag order. * There are no unknown fields. *
+        # There are no duplicate fields. * Fields are serialized according to the
+        # default semantics for their type. Most protocol buffer implementations will
+        # always follow these rules when serializing, but care should be taken to avoid
+        # shortcuts. For instance, concatenating two messages to merge them may produce
+        # duplicate fields.
         # Corresponds to the JSON property `digest`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest]
         attr_accessor :digest
@@ -1245,8 +1085,8 @@ module Google
         attr_accessor :node_properties
       
         # The full path of the file relative to the working directory, including the
-        # filename. The path separator is a forward slash `/`. Since this is a
-        # relative path, it MUST NOT begin with a leading forward slash.
+        # filename. The path separator is a forward slash `/`. Since this is a relative
+        # path, it MUST NOT begin with a leading forward slash.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -1265,32 +1105,29 @@ module Google
         end
       end
       
-      # An `OutputSymlink` is similar to a
-      # Symlink, but it is used as an
-      # output in an `ActionResult`.
-      # `OutputSymlink` is binary-compatible with `SymlinkNode`.
+      # An `OutputSymlink` is similar to a Symlink, but it is used as an output in an `
+      # ActionResult`. `OutputSymlink` is binary-compatible with `SymlinkNode`.
       class BuildBazelRemoteExecutionV2OutputSymlink
         include Google::Apis::Core::Hashable
       
-        # The supported node properties of the OutputSymlink, if requested by the
-        # Action.
+        # The supported node properties of the OutputSymlink, if requested by the Action.
         # Corresponds to the JSON property `nodeProperties`
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty>]
         attr_accessor :node_properties
       
         # The full path of the symlink relative to the working directory, including the
-        # filename. The path separator is a forward slash `/`. Since this is a
-        # relative path, it MUST NOT begin with a leading forward slash.
+        # filename. The path separator is a forward slash `/`. Since this is a relative
+        # path, it MUST NOT begin with a leading forward slash.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
       
-        # The target path of the symlink. The path separator is a forward slash `/`.
-        # The target path can be relative to the parent directory of the symlink or
-        # it can be an absolute path starting with `/`. Support for absolute paths
-        # can be checked using the Capabilities
-        # API. The canonical form forbids the substrings `/./` and `//` in the target
-        # path. `..` components are allowed anywhere in the target path.
+        # The target path of the symlink. The path separator is a forward slash `/`. The
+        # target path can be relative to the parent directory of the symlink or it can
+        # be an absolute path starting with `/`. Support for absolute paths can be
+        # checked using the Capabilities API. The canonical form forbids the substrings `
+        # /./` and `//` in the target path. `..` components are allowed anywhere in the
+        # target path.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -1308,17 +1145,16 @@ module Google
       end
       
       # A `Platform` is a set of requirements, such as hardware, operating system, or
-      # compiler toolchain, for an
-      # Action's execution
-      # environment. A `Platform` is represented as a series of key-value pairs
-      # representing the properties that are required of the platform.
+      # compiler toolchain, for an Action's execution environment. A `Platform` is
+      # represented as a series of key-value pairs representing the properties that
+      # are required of the platform.
       class BuildBazelRemoteExecutionV2Platform
         include Google::Apis::Core::Hashable
       
-        # The properties that make up this platform. In order to ensure that
-        # equivalent `Platform`s always hash to the same value, the properties MUST
-        # be lexicographically sorted by name, and then by value. Sorting of strings
-        # is done by code point, equivalently, by the UTF-8 bytes.
+        # The properties that make up this platform. In order to ensure that equivalent `
+        # Platform`s always hash to the same value, the properties MUST be
+        # lexicographically sorted by name, and then by value. Sorting of strings is
+        # done by code point, equivalently, by the UTF-8 bytes.
         # Corresponds to the JSON property `properties`
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2PlatformProperty>]
         attr_accessor :properties
@@ -1335,19 +1171,16 @@ module Google
       
       # A single property for the environment. The server is responsible for
       # specifying the property `name`s that it accepts. If an unknown `name` is
-      # provided in the requirements for an
-      # Action, the server SHOULD
-      # reject the execution request. If permitted by the server, the same `name`
-      # may occur multiple times.
-      # The server is also responsible for specifying the interpretation of
-      # property `value`s. For instance, a property describing how much RAM must be
-      # available may be interpreted as allowing a worker with 16GB to fulfill a
-      # request for 8GB, while a property describing the OS environment on which
-      # the action must be performed may require an exact match with the worker's
-      # OS.
-      # The server MAY use the `value` of one or more properties to determine how
-      # it sets up the execution environment, such as by making specific system
-      # files available to the worker.
+      # provided in the requirements for an Action, the server SHOULD reject the
+      # execution request. If permitted by the server, the same `name` may occur
+      # multiple times. The server is also responsible for specifying the
+      # interpretation of property `value`s. For instance, a property describing how
+      # much RAM must be available may be interpreted as allowing a worker with 16GB
+      # to fulfill a request for 8GB, while a property describing the OS environment
+      # on which the action must be performed may require an exact match with the
+      # worker's OS. The server MAY use the `value` of one or more properties to
+      # determine how it sets up the execution environment, such as by making specific
+      # system files available to the worker.
       class BuildBazelRemoteExecutionV2PlatformProperty
         include Google::Apis::Core::Hashable
       
@@ -1375,27 +1208,25 @@ module Google
       # An optional Metadata to attach to any RPC request to tell the server about an
       # external context of the request. The server may use this for logging or other
       # purposes. To use it, the client attaches the header to the call using the
-      # canonical proto serialization:
-      # * name: `build.bazel.remote.execution.v2.requestmetadata-bin`
-      # * contents: the base64 encoded binary `RequestMetadata` message.
-      # Note: the gRPC library serializes binary headers encoded in base 64 by
-      # default (https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#
-      # requests).
-      # Therefore, if the gRPC library is used to pass/retrieve this
+      # canonical proto serialization: * name: `build.bazel.remote.execution.v2.
+      # requestmetadata-bin` * contents: the base64 encoded binary `RequestMetadata`
+      # message. Note: the gRPC library serializes binary headers encoded in base 64
+      # by default (https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#
+      # requests). Therefore, if the gRPC library is used to pass/retrieve this
       # metadata, the user may ignore the base64 encoding and assume it is simply
       # serialized as a binary message.
       class BuildBazelRemoteExecutionV2RequestMetadata
         include Google::Apis::Core::Hashable
       
-        # An identifier that ties multiple requests to the same action.
-        # For example, multiple requests to the CAS, Action Cache, and Execution
-        # API are used in order to compile foo.cc.
+        # An identifier that ties multiple requests to the same action. For example,
+        # multiple requests to the CAS, Action Cache, and Execution API are used in
+        # order to compile foo.cc.
         # Corresponds to the JSON property `actionId`
         # @return [String]
         attr_accessor :action_id
       
-        # An identifier to tie multiple tool invocations together. For example,
-        # runs of foo_test, bar_test and baz_test on a post-submit of a given patch.
+        # An identifier to tie multiple tool invocations together. For example, runs of
+        # foo_test, bar_test and baz_test on a post-submit of a given patch.
         # Corresponds to the JSON property `correlatedInvocationsId`
         # @return [String]
         attr_accessor :correlated_invocations_id
@@ -1405,8 +1236,8 @@ module Google
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2ToolDetails]
         attr_accessor :tool_details
       
-        # An identifier that ties multiple actions together to a final result.
-        # For example, multiple actions are required to build and run foo_test.
+        # An identifier that ties multiple actions together to a final result. For
+        # example, multiple actions are required to build and run foo_test.
         # Corresponds to the JSON property `toolInvocationId`
         # @return [String]
         attr_accessor :tool_invocation_id
@@ -1438,12 +1269,12 @@ module Google
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty>]
         attr_accessor :node_properties
       
-        # The target path of the symlink. The path separator is a forward slash `/`.
-        # The target path can be relative to the parent directory of the symlink or
-        # it can be an absolute path starting with `/`. Support for absolute paths
-        # can be checked using the Capabilities
-        # API. The canonical form forbids the substrings `/./` and `//` in the target
-        # path. `..` components are allowed anywhere in the target path.
+        # The target path of the symlink. The path separator is a forward slash `/`. The
+        # target path can be relative to the parent directory of the symlink or it can
+        # be an absolute path starting with `/`. Support for absolute paths can be
+        # checked using the Capabilities API. The canonical form forbids the substrings `
+        # /./` and `//` in the target path. `..` components are allowed anywhere in the
+        # target path.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -1485,90 +1316,45 @@ module Google
         end
       end
       
-      # A `Tree` contains all the
-      # Directory protos in a
-      # single directory Merkle tree, compressed into one message.
+      # A `Tree` contains all the Directory protos in a single directory Merkle tree,
+      # compressed into one message.
       class BuildBazelRemoteExecutionV2Tree
         include Google::Apis::Core::Hashable
       
         # All the child directories: the directories referred to by the root and,
-        # recursively, all its children. In order to reconstruct the directory tree,
-        # the client must take the digests of each of the child directories and then
-        # build up a tree starting from the `root`.
+        # recursively, all its children. In order to reconstruct the directory tree, the
+        # client must take the digests of each of the child directories and then build
+        # up a tree starting from the `root`.
         # Corresponds to the JSON property `children`
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Directory>]
         attr_accessor :children
       
         # A `Directory` represents a directory node in a file tree, containing zero or
-        # more children FileNodes,
-        # DirectoryNodes and
-        # SymlinkNodes.
-        # Each `Node` contains its name in the directory, either the digest of its
-        # content (either a file blob or a `Directory` proto) or a symlink target, as
-        # well as possibly some metadata about the file or directory.
-        # In order to ensure that two equivalent directory trees hash to the same
-        # value, the following restrictions MUST be obeyed when constructing a
-        # a `Directory`:
-        # * Every child in the directory must have a path of exactly one segment.
-        # Multiple levels of directory hierarchy may not be collapsed.
-        # * Each child in the directory must have a unique path segment (file name).
-        # Note that while the API itself is case-sensitive, the environment where
-        # the Action is executed may or may not be case-sensitive. That is, it is
-        # legal to call the API with a Directory that has both "Foo" and "foo" as
-        # children, but the Action may be rejected by the remote system upon
-        # execution.
-        # * The files, directories and symlinks in the directory must each be sorted
-        # in lexicographical order by path. The path strings must be sorted by code
-        # point, equivalently, by UTF-8 bytes.
-        # * The NodeProperties of files,
-        # directories, and symlinks must be sorted in lexicographical order by
-        # property name.
-        # A `Directory` that obeys the restrictions is said to be in canonical form.
-        # As an example, the following could be used for a file named `bar` and a
+        # more children FileNodes, DirectoryNodes and SymlinkNodes. Each `Node` contains
+        # its name in the directory, either the digest of its content (either a file
+        # blob or a `Directory` proto) or a symlink target, as well as possibly some
+        # metadata about the file or directory. In order to ensure that two equivalent
+        # directory trees hash to the same value, the following restrictions MUST be
+        # obeyed when constructing a a `Directory`: * Every child in the directory must
+        # have a path of exactly one segment. Multiple levels of directory hierarchy may
+        # not be collapsed. * Each child in the directory must have a unique path
+        # segment (file name). Note that while the API itself is case-sensitive, the
+        # environment where the Action is executed may or may not be case-sensitive.
+        # That is, it is legal to call the API with a Directory that has both "Foo" and "
+        # foo" as children, but the Action may be rejected by the remote system upon
+        # execution. * The files, directories and symlinks in the directory must each be
+        # sorted in lexicographical order by path. The path strings must be sorted by
+        # code point, equivalently, by UTF-8 bytes. * The NodeProperties of files,
+        # directories, and symlinks must be sorted in lexicographical order by property
+        # name. A `Directory` that obeys the restrictions is said to be in canonical
+        # form. As an example, the following could be used for a file named `bar` and a
         # directory named `foo` with an executable file named `baz` (hashes shortened
-        # for readability):
-        # ```json
-        # // (Directory proto)
-        # `
-        # files: [
-        # `
-        # name: "bar",
-        # digest: `
-        # hash: "4a73bc9d03...",
-        # size: 65534
-        # `,
-        # node_properties: [
-        # `
-        # "name": "MTime",
-        # "value": "2017-01-15T01:30:15.01Z"
-        # `
-        # ]
-        # `
-        # ],
-        # directories: [
-        # `
-        # name: "foo",
-        # digest: `
-        # hash: "4cf2eda940...",
-        # size: 43
-        # `
-        # `
-        # ]
-        # `
-        # // (Directory proto with hash "4cf2eda940..." and size 43)
-        # `
-        # files: [
-        # `
-        # name: "baz",
-        # digest: `
-        # hash: "b2c941073e...",
-        # size: 1294,
-        # `,
-        # is_executable: true
-        # `
-        # ]
-        # `
-        # ```
+        # for readability): ```json // (Directory proto) ` files: [ ` name: "bar",
+        # digest: ` hash: "4a73bc9d03...", size: 65534 `, node_properties: [ ` "name": "
+        # MTime", "value": "2017-01-15T01:30:15.01Z" ` ] ` ], directories: [ ` name: "
+        # foo", digest: ` hash: "4cf2eda940...", size: 43 ` ` ] ` // (Directory proto
+        # with hash "4cf2eda940..." and size 43) ` files: [ ` name: "baz", digest: `
+        # hash: "b2c941073e...", size: 1294, `, is_executable: true ` ] ` ```
         # Corresponds to the JSON property `root`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Directory]
         attr_accessor :root
@@ -1589,8 +1375,8 @@ module Google
       class GoogleDevtoolsRemotebuildbotCommandDurations
         include Google::Apis::Core::Hashable
       
-        # The time spent preparing the command to be run in a Docker container
-        # (includes pulling the Docker image, if necessary).
+        # The time spent preparing the command to be run in a Docker container (includes
+        # pulling the Docker image, if necessary).
         # Corresponds to the JSON property `dockerPrep`
         # @return [String]
         attr_accessor :docker_prep
@@ -1666,13 +1452,13 @@ module Google
         end
       end
       
-      # CommandEvents contains counters for the number of warnings and errors
-      # that occurred during the execution of a command.
+      # CommandEvents contains counters for the number of warnings and errors that
+      # occurred during the execution of a command.
       class GoogleDevtoolsRemotebuildbotCommandEvents
         include Google::Apis::Core::Hashable
       
-        # Indicates whether we are using a cached Docker image (true) or had to pull
-        # the Docker image (false) for this command.
+        # Indicates whether we are using a cached Docker image (true) or had to pull the
+        # Docker image (false) for this command.
         # Corresponds to the JSON property `dockerCacheHit`
         # @return [Boolean]
         attr_accessor :docker_cache_hit
@@ -1842,28 +1628,24 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # Instance conceptually encapsulates all Remote Build Execution resources
-        # for remote builds.
-        # An instance consists of storage and compute resources (for example,
-        # `ContentAddressableStorage`, `ActionCache`, `WorkerPools`) used for
-        # running remote builds.
-        # All Remote Build Execution API calls are scoped to an instance.
+        # Instance conceptually encapsulates all Remote Build Execution resources for
+        # remote builds. An instance consists of storage and compute resources (for
+        # example, `ContentAddressableStorage`, `ActionCache`, `WorkerPools`) used for
+        # running remote builds. All Remote Build Execution API calls are scoped to an
+        # instance.
         # Corresponds to the JSON property `instance`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance]
         attr_accessor :instance
       
-        # ID of the created instance.
-        # A valid `instance_id` must:
-        # be 6-50 characters long,
-        # contain only lowercase letters, digits, hyphens and underscores,
-        # start with a lowercase letter, and
-        # end with a lowercase letter or a digit.
+        # ID of the created instance. A valid `instance_id` must: be 6-50 characters
+        # long, contain only lowercase letters, digits, hyphens and underscores, start
+        # with a lowercase letter, and end with a lowercase letter or a digit.
         # Corresponds to the JSON property `instanceId`
         # @return [String]
         attr_accessor :instance_id
       
-        # Resource name of the project containing the instance.
-        # Format: `projects/[PROJECT_ID]`.
+        # Resource name of the project containing the instance. Format: `projects/[
+        # PROJECT_ID]`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1884,18 +1666,15 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest
         include Google::Apis::Core::Hashable
       
-        # Resource name of the instance in which to create the new worker pool.
-        # Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+        # Resource name of the instance in which to create the new worker pool. Format: `
+        # projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
-        # ID of the created worker pool.
-        # A valid pool ID must:
-        # be 6-50 characters long,
-        # contain only lowercase letters, digits, hyphens and underscores,
-        # start with a lowercase letter, and
-        # end with a lowercase letter or a digit.
+        # ID of the created worker pool. A valid pool ID must: be 6-50 characters long,
+        # contain only lowercase letters, digits, hyphens and underscores, start with a
+        # lowercase letter, and end with a lowercase letter or a digit.
         # Corresponds to the JSON property `poolId`
         # @return [String]
         attr_accessor :pool_id
@@ -1921,8 +1700,8 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # Name of the instance to delete.
-        # Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+        # Name of the instance to delete. Format: `projects/[PROJECT_ID]/instances/[
+        # INSTANCE_ID]`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1941,9 +1720,8 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest
         include Google::Apis::Core::Hashable
       
-        # Name of the worker pool to delete.
-        # Format:
-        # `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
+        # Name of the worker pool to delete. Format: `projects/[PROJECT_ID]/instances/[
+        # INSTANCE_ID]/workerpools/[POOL_ID]`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1958,12 +1736,107 @@ module Google
         end
       end
       
+      # FeaturePolicy defines features allowed to be used on RBE instances, as well as
+      # instance-wide behavior changes that take effect without opt-in or opt-out at
+      # usage time.
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Defines whether a feature can be used or what values are accepted.
+        # Corresponds to the JSON property `containerImageSources`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature]
+        attr_accessor :container_image_sources
+      
+        # Defines whether a feature can be used or what values are accepted.
+        # Corresponds to the JSON property `dockerAddCapabilities`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature]
+        attr_accessor :docker_add_capabilities
+      
+        # Defines whether a feature can be used or what values are accepted.
+        # Corresponds to the JSON property `dockerChrootPath`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature]
+        attr_accessor :docker_chroot_path
+      
+        # Defines whether a feature can be used or what values are accepted.
+        # Corresponds to the JSON property `dockerNetwork`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature]
+        attr_accessor :docker_network
+      
+        # Defines whether a feature can be used or what values are accepted.
+        # Corresponds to the JSON property `dockerPrivileged`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature]
+        attr_accessor :docker_privileged
+      
+        # Defines whether a feature can be used or what values are accepted.
+        # Corresponds to the JSON property `dockerRunAsRoot`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature]
+        attr_accessor :docker_run_as_root
+      
+        # Defines whether a feature can be used or what values are accepted.
+        # Corresponds to the JSON property `dockerRuntime`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature]
+        attr_accessor :docker_runtime
+      
+        # Defines whether a feature can be used or what values are accepted.
+        # Corresponds to the JSON property `dockerSiblingContainers`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature]
+        attr_accessor :docker_sibling_containers
+      
+        # linux_isolation allows overriding the docker runtime used for containers
+        # started on Linux.
+        # Corresponds to the JSON property `linuxIsolation`
+        # @return [String]
+        attr_accessor :linux_isolation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_image_sources = args[:container_image_sources] if args.key?(:container_image_sources)
+          @docker_add_capabilities = args[:docker_add_capabilities] if args.key?(:docker_add_capabilities)
+          @docker_chroot_path = args[:docker_chroot_path] if args.key?(:docker_chroot_path)
+          @docker_network = args[:docker_network] if args.key?(:docker_network)
+          @docker_privileged = args[:docker_privileged] if args.key?(:docker_privileged)
+          @docker_run_as_root = args[:docker_run_as_root] if args.key?(:docker_run_as_root)
+          @docker_runtime = args[:docker_runtime] if args.key?(:docker_runtime)
+          @docker_sibling_containers = args[:docker_sibling_containers] if args.key?(:docker_sibling_containers)
+          @linux_isolation = args[:linux_isolation] if args.key?(:linux_isolation)
+        end
+      end
+      
+      # Defines whether a feature can be used or what values are accepted.
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
+        include Google::Apis::Core::Hashable
+      
+        # A list of acceptable values. Only effective when the policy is `RESTRICTED`.
+        # Corresponds to the JSON property `allowedValues`
+        # @return [Array<String>]
+        attr_accessor :allowed_values
+      
+        # The policy of the feature.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_values = args[:allowed_values] if args.key?(:allowed_values)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
       # The request used for `GetInstance`.
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # Name of the instance to retrieve.
-        # Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+        # Name of the instance to retrieve. Format: `projects/[PROJECT_ID]/instances/[
+        # INSTANCE_ID]`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1982,9 +1855,8 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest
         include Google::Apis::Core::Hashable
       
-        # Name of the worker pool to retrieve.
-        # Format:
-        # `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
+        # Name of the worker pool to retrieve. Format: `projects/[PROJECT_ID]/instances/[
+        # INSTANCE_ID]/workerpools/[POOL_ID]`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1999,14 +1871,20 @@ module Google
         end
       end
       
-      # Instance conceptually encapsulates all Remote Build Execution resources
-      # for remote builds.
-      # An instance consists of storage and compute resources (for example,
-      # `ContentAddressableStorage`, `ActionCache`, `WorkerPools`) used for
-      # running remote builds.
-      # All Remote Build Execution API calls are scoped to an instance.
+      # Instance conceptually encapsulates all Remote Build Execution resources for
+      # remote builds. An instance consists of storage and compute resources (for
+      # example, `ContentAddressableStorage`, `ActionCache`, `WorkerPools`) used for
+      # running remote builds. All Remote Build Execution API calls are scoped to an
+      # instance.
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance
         include Google::Apis::Core::Hashable
+      
+        # FeaturePolicy defines features allowed to be used on RBE instances, as well as
+        # instance-wide behavior changes that take effect without opt-in or opt-out at
+        # usage time.
+        # Corresponds to the JSON property `featurePolicy`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy]
+        attr_accessor :feature_policy
       
         # The location is a GCP region. Currently only `us-central1` is supported.
         # Corresponds to the JSON property `location`
@@ -2019,10 +1897,9 @@ module Google
         attr_accessor :logging_enabled
         alias_method :logging_enabled?, :logging_enabled
       
-        # Output only. Instance resource name formatted as:
-        # `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
-        # Name should not be populated when creating an instance since it is provided
-        # in the `instance_id` field.
+        # Output only. Instance resource name formatted as: `projects/[PROJECT_ID]/
+        # instances/[INSTANCE_ID]`. Name should not be populated when creating an
+        # instance since it is provided in the `instance_id` field.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2038,6 +1915,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @feature_policy = args[:feature_policy] if args.key?(:feature_policy)
           @location = args[:location] if args.key?(:location)
           @logging_enabled = args[:logging_enabled] if args.key?(:logging_enabled)
           @name = args[:name] if args.key?(:name)
@@ -2049,8 +1927,7 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest
         include Google::Apis::Core::Hashable
       
-        # Resource name of the project.
-        # Format: `projects/[PROJECT_ID]`.
+        # Resource name of the project. Format: `projects/[PROJECT_ID]`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -2088,32 +1965,26 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. A filter expression that filters resources listed in
-        # the response. The expression must specify the field name, a comparison
-        # operator, and the value that you want to use for filtering. The value
-        # must be a string, a number, or a boolean. String values are
-        # case-insensitive.
-        # The comparison operator must be either `:`, `=`, `!=`, `>`, `>=`, `<=` or
-        # `<`.
-        # The `:` operator can be used with string fields to match substrings.
-        # For non-string fields it is equivalent to the `=` operator.
-        # The `:*` comparison can be used to test  whether a key has been defined.
-        # You can also filter on nested fields.
-        # To filter on multiple expressions, you can separate expression using
-        # `AND` and `OR` operators, using parentheses to specify precedence. If
-        # neither operator is specified, `AND` is assumed.
-        # Examples:
-        # Include only pools with more than 100 reserved workers:
-        # `(worker_count > 100) (worker_config.reserved = true)`
-        # Include only pools with a certain label or machines of the n1-standard
-        # family:
+        # Optional. A filter expression that filters resources listed in the response.
+        # The expression must specify the field name, a comparison operator, and the
+        # value that you want to use for filtering. The value must be a string, a number,
+        # or a boolean. String values are case-insensitive. The comparison operator
+        # must be either `:`, `=`, `!=`, `>`, `>=`, `<=` or `<`. The `:` operator can be
+        # used with string fields to match substrings. For non-string fields it is
+        # equivalent to the `=` operator. The `:*` comparison can be used to test
+        # whether a key has been defined. You can also filter on nested fields. To
+        # filter on multiple expressions, you can separate expression using `AND` and `
+        # OR` operators, using parentheses to specify precedence. If neither operator is
+        # specified, `AND` is assumed. Examples: Include only pools with more than 100
+        # reserved workers: `(worker_count > 100) (worker_config.reserved = true)`
+        # Include only pools with a certain label or machines of the n1-standard family:
         # `worker_config.labels.key1 : * OR worker_config.machine_type: n1-standard`
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # Resource name of the instance.
-        # Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+        # Resource name of the instance. Format: `projects/[PROJECT_ID]/instances/[
+        # INSTANCE_ID]`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -2152,36 +2023,33 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # Instance conceptually encapsulates all Remote Build Execution resources
-        # for remote builds.
-        # An instance consists of storage and compute resources (for example,
-        # `ContentAddressableStorage`, `ActionCache`, `WorkerPools`) used for
-        # running remote builds.
-        # All Remote Build Execution API calls are scoped to an instance.
+        # Instance conceptually encapsulates all Remote Build Execution resources for
+        # remote builds. An instance consists of storage and compute resources (for
+        # example, `ContentAddressableStorage`, `ActionCache`, `WorkerPools`) used for
+        # running remote builds. All Remote Build Execution API calls are scoped to an
+        # instance.
         # Corresponds to the JSON property `instance`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance]
         attr_accessor :instance
       
-        # Deprecated, use instance.logging_enabled instead.
-        # Whether to enable Stackdriver logging for this instance.
+        # Deprecated, use instance.logging_enabled instead. Whether to enable
+        # Stackdriver logging for this instance.
         # Corresponds to the JSON property `loggingEnabled`
         # @return [Boolean]
         attr_accessor :logging_enabled
         alias_method :logging_enabled?, :logging_enabled
       
-        # Deprecated, use instance.Name instead.
-        # Name of the instance to update.
-        # Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+        # Deprecated, use instance.Name instead. Name of the instance to update. Format:
+        # `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The update mask applies to instance. For the `FieldMask` definition, see
-        # https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        # fieldmask
-        # If an empty update_mask is provided, only the non-default valued field in
-        # the worker pool field will be updated. Note that in order to update a field
-        # to the default value (zero, false, empty string) an explicit update_mask
+        # The update mask applies to instance. For the `FieldMask` definition, see https:
+        # //developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        # fieldmask If an empty update_mask is provided, only the non-default valued
+        # field in the worker pool field will be updated. Note that in order to update a
+        # field to the default value (zero, false, empty string) an explicit update_mask
         # must be provided.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
@@ -2204,13 +2072,11 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest
         include Google::Apis::Core::Hashable
       
-        # The update mask applies to worker_pool. For the `FieldMask` definition,
-        # see
+        # The update mask applies to worker_pool. For the `FieldMask` definition, see
         # https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        # fieldmask
-        # If an empty update_mask is provided, only the non-default valued field in
-        # the worker pool field will be updated. Note that in order to update a field
-        # to the default value (zero, false, empty string) an explicit update_mask
+        # fieldmask If an empty update_mask is provided, only the non-default valued
+        # field in the worker pool field will be updated. Note that in order to update a
+        # field to the default value (zero, false, empty string) an explicit update_mask
         # must be provided.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
@@ -2232,8 +2098,7 @@ module Google
         end
       end
       
-      # Defines the configuration to be used for a creating workers in
-      # the worker pool.
+      # Defines the configuration to be used for a creating workers in the worker pool.
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig
         include Google::Apis::Core::Hashable
       
@@ -2242,34 +2107,31 @@ module Google
         # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig]
         attr_accessor :accelerator
       
-        # Required. Size of the disk attached to the worker, in GB.
-        # See https://cloud.google.com/compute/docs/disks/
+        # Required. Size of the disk attached to the worker, in GB. See https://cloud.
+        # google.com/compute/docs/disks/
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
-        # Required. Disk Type to use for the worker.
-        # See [Storage
-        # options](https://cloud.google.com/compute/docs/disks/#introduction).
-        # Currently only `pd-standard` and `pd-ssd` are supported.
+        # Required. Disk Type to use for the worker. See [Storage options](https://cloud.
+        # google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and
+        # `pd-ssd` are supported.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
       
-        # Labels associated with the workers.
-        # Label keys and values can be no longer than 63 characters, can only contain
-        # lowercase letters, numeric characters, underscores and dashes.
-        # International letters are permitted. Label keys must start with a letter.
-        # Label values are optional.
-        # There can not be more than 64 labels per resource.
+        # Labels associated with the workers. Label keys and values can be no longer
+        # than 63 characters, can only contain lowercase letters, numeric characters,
+        # underscores and dashes. International letters are permitted. Label keys must
+        # start with a letter. Label values are optional. There can not be more than 64
+        # labels per resource.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Machine type of the worker, such as `n1-standard-2`.
-        # See https://cloud.google.com/compute/docs/machine-types for a list of
-        # supported machine types. Note that `f1-micro` and `g1-small` are not yet
-        # supported.
+        # Required. Machine type of the worker, such as `n1-standard-2`. See https://
+        # cloud.google.com/compute/docs/machine-types for a list of supported machine
+        # types. Note that `f1-micro` and `g1-small` are not yet supported.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -2279,25 +2141,24 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_concurrent_actions
       
-        # Minimum CPU platform to use when creating the worker.
-        # See [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
+        # Minimum CPU platform to use when creating the worker. See [CPU Platforms](
+        # https://cloud.google.com/compute/docs/cpu-platforms).
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
       
-        # Determines the type of network access granted to workers. Possible values:
-        # - "public": Workers can connect to the public internet.
-        # - "private": Workers can only connect to Google APIs and services.
-        # - "restricted-private": Workers can only connect to Google APIs that are
-        # reachable through `restricted.googleapis.com` (`199.36.153.4/30`).
+        # Determines the type of network access granted to workers. Possible values: - "
+        # public": Workers can connect to the public internet. - "private": Workers can
+        # only connect to Google APIs and services. - "restricted-private": Workers can
+        # only connect to Google APIs that are reachable through `restricted.googleapis.
+        # com` (`199.36.153.4/30`).
         # Corresponds to the JSON property `networkAccess`
         # @return [String]
         attr_accessor :network_access
       
-        # Determines whether the worker is reserved (equivalent to a Compute Engine
-        # on-demand VM and therefore won't be preempted).
-        # See [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more
-        # details.
+        # Determines whether the worker is reserved (equivalent to a Compute Engine on-
+        # demand VM and therefore won't be preempted). See [Preemptible VMs](https://
+        # cloud.google.com/preemptible-vms/) for more details.
         # Corresponds to the JSON property `reserved`
         # @return [Boolean]
         attr_accessor :reserved
@@ -2341,10 +2202,9 @@ module Google
         # @return [String]
         attr_accessor :channel
       
-        # WorkerPool resource name formatted as:
-        # `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
-        # name should not be populated when creating a worker pool since it is
-        # provided in the `poolId` field.
+        # WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[
+        # INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when
+        # creating a worker pool since it is provided in the `poolId` field.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2354,14 +2214,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Defines the configuration to be used for a creating workers in
-        # the worker pool.
+        # Defines the configuration to be used for a creating workers in the worker pool.
         # Corresponds to the JSON property `workerConfig`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig]
         attr_accessor :worker_config
       
-        # The desired number of workers in the worker pool. Must be a value between
-        # 0 and 15000.
+        # The desired number of workers in the worker pool. Must be a value between 0
+        # and 15000.
         # Corresponds to the JSON property `workerCount`
         # @return [Fixnum]
         attr_accessor :worker_count
@@ -2383,14 +2242,13 @@ module Google
       
       # AdminTemp is a prelimiary set of administration tasks. It's called "Temp"
       # because we do not yet know the best way to represent admin tasks; it's
-      # possible that this will be entirely replaced in later versions of this API.
-      # If this message proves to be sufficient, it will be renamed in the alpha or
-      # beta release of this API.
-      # This message (suitably marshalled into a protobuf.Any) can be used as the
-      # inline_assignment field in a lease; the lease assignment field should simply
-      # be `"admin"` in these cases.
-      # This message is heavily based on Swarming administration tasks from the LUCI
-      # project (http://github.com/luci/luci-py/appengine/swarming).
+      # possible that this will be entirely replaced in later versions of this API. If
+      # this message proves to be sufficient, it will be renamed in the alpha or beta
+      # release of this API. This message (suitably marshalled into a protobuf.Any)
+      # can be used as the inline_assignment field in a lease; the lease assignment
+      # field should simply be `"admin"` in these cases. This message is heavily based
+      # on Swarming administration tasks from the LUCI project (http://github.com/luci/
+      # luci-py/appengine/swarming).
       class GoogleDevtoolsRemoteworkersV1test2AdminTemp
         include Google::Apis::Core::Hashable
       
@@ -2426,13 +2284,12 @@ module Google
         attr_accessor :contents
       
         # The CommandTask and CommandResult messages assume the existence of a service
-        # that can serve blobs of content, identified by a hash and size known as a
-        # "digest." The method by which these blobs may be retrieved is not specified
-        # here, but a model implementation is in the Remote Execution API's
-        # "ContentAddressibleStorage" interface.
-        # In the context of the RWAPI, a Digest will virtually always refer to the
-        # contents of a file or a directory. The latter is represented by the
-        # byte-encoded Directory message.
+        # that can serve blobs of content, identified by a hash and size known as a "
+        # digest." The method by which these blobs may be retrieved is not specified
+        # here, but a model implementation is in the Remote Execution API's "
+        # ContentAddressibleStorage" interface. In the context of the RWAPI, a Digest
+        # will virtually always refer to the contents of a file or a directory. The
+        # latter is represented by the byte-encoded Directory message.
         # Corresponds to the JSON property `digest`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemoteworkersV1test2Digest]
         attr_accessor :digest
@@ -2448,27 +2305,26 @@ module Google
         end
       end
       
-      # DEPRECATED - use CommandResult instead.
-      # Describes the actual outputs from the task.
+      # DEPRECATED - use CommandResult instead. Describes the actual outputs from the
+      # task.
       class GoogleDevtoolsRemoteworkersV1test2CommandOutputs
         include Google::Apis::Core::Hashable
       
         # exit_code is only fully reliable if the status' code is OK. If the task
-        # exceeded its deadline or was cancelled, the process may still produce an
-        # exit code as it is cancelled, and this will be populated, but a successful
-        # (zero) is unlikely to be correct unless the status code is OK.
+        # exceeded its deadline or was cancelled, the process may still produce an exit
+        # code as it is cancelled, and this will be populated, but a successful (zero)
+        # is unlikely to be correct unless the status code is OK.
         # Corresponds to the JSON property `exitCode`
         # @return [Fixnum]
         attr_accessor :exit_code
       
         # The CommandTask and CommandResult messages assume the existence of a service
-        # that can serve blobs of content, identified by a hash and size known as a
-        # "digest." The method by which these blobs may be retrieved is not specified
-        # here, but a model implementation is in the Remote Execution API's
-        # "ContentAddressibleStorage" interface.
-        # In the context of the RWAPI, a Digest will virtually always refer to the
-        # contents of a file or a directory. The latter is represented by the
-        # byte-encoded Directory message.
+        # that can serve blobs of content, identified by a hash and size known as a "
+        # digest." The method by which these blobs may be retrieved is not specified
+        # here, but a model implementation is in the Remote Execution API's "
+        # ContentAddressibleStorage" interface. In the context of the RWAPI, a Digest
+        # will virtually always refer to the contents of a file or a directory. The
+        # latter is represented by the byte-encoded Directory message.
         # Corresponds to the JSON property `outputs`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemoteworkersV1test2Digest]
         attr_accessor :outputs
@@ -2484,9 +2340,8 @@ module Google
         end
       end
       
-      # DEPRECATED - use CommandResult instead.
-      # Can be used as part of CompleteRequest.metadata, or are part of a more
-      # sophisticated message.
+      # DEPRECATED - use CommandResult instead. Can be used as part of CompleteRequest.
+      # metadata, or are part of a more sophisticated message.
       class GoogleDevtoolsRemoteworkersV1test2CommandOverhead
         include Google::Apis::Core::Hashable
       
@@ -2497,8 +2352,8 @@ module Google
         # @return [String]
         attr_accessor :duration
       
-        # The amount of time *not* spent executing the command (ie
-        # uploading/downloading files).
+        # The amount of time *not* spent executing the command (ie uploading/downloading
+        # files).
         # Corresponds to the JSON property `overhead`
         # @return [String]
         attr_accessor :overhead
@@ -2526,46 +2381,44 @@ module Google
         # @return [String]
         attr_accessor :duration
       
-        # The exit code of the process. An exit code of "0" should only be trusted if
-        # `status` has a code of OK (otherwise it may simply be unset).
+        # The exit code of the process. An exit code of "0" should only be trusted if `
+        # status` has a code of OK (otherwise it may simply be unset).
         # Corresponds to the JSON property `exitCode`
         # @return [Fixnum]
         attr_accessor :exit_code
       
-        # Implementation-dependent metadata about the task. Both servers and bots
-        # may define messages which can be encoded here; bots are free to provide
-        # metadata in multiple formats, and servers are free to choose one or more
-        # of the values to process and ignore others. In particular, it is *not*
-        # considered an error for the bot to provide the server with a field that it
-        # doesn't know about.
+        # Implementation-dependent metadata about the task. Both servers and bots may
+        # define messages which can be encoded here; bots are free to provide metadata
+        # in multiple formats, and servers are free to choose one or more of the values
+        # to process and ignore others. In particular, it is *not* considered an error
+        # for the bot to provide the server with a field that it doesn't know about.
         # Corresponds to the JSON property `metadata`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :metadata
       
         # The CommandTask and CommandResult messages assume the existence of a service
-        # that can serve blobs of content, identified by a hash and size known as a
-        # "digest." The method by which these blobs may be retrieved is not specified
-        # here, but a model implementation is in the Remote Execution API's
-        # "ContentAddressibleStorage" interface.
-        # In the context of the RWAPI, a Digest will virtually always refer to the
-        # contents of a file or a directory. The latter is represented by the
-        # byte-encoded Directory message.
+        # that can serve blobs of content, identified by a hash and size known as a "
+        # digest." The method by which these blobs may be retrieved is not specified
+        # here, but a model implementation is in the Remote Execution API's "
+        # ContentAddressibleStorage" interface. In the context of the RWAPI, a Digest
+        # will virtually always refer to the contents of a file or a directory. The
+        # latter is represented by the byte-encoded Directory message.
         # Corresponds to the JSON property `outputs`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemoteworkersV1test2Digest]
         attr_accessor :outputs
       
-        # The amount of time *not* spent executing the command (ie
-        # uploading/downloading files).
+        # The amount of time *not* spent executing the command (ie uploading/downloading
+        # files).
         # Corresponds to the JSON property `overhead`
         # @return [String]
         attr_accessor :overhead
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleRpcStatus]
         attr_accessor :status
@@ -2621,14 +2474,13 @@ module Google
       class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs
         include Google::Apis::Core::Hashable
       
-        # The command itself to run (e.g., argv).
-        # This field should be passed directly to the underlying operating system,
-        # and so it must be sensible to that operating system. For example, on
-        # Windows, the first argument might be "C:\Windows\System32\ping.exe" -
-        # that is, using drive letters and backslashes. A command for a *nix
-        # system, on the other hand, would use forward slashes.
-        # All other fields in the RWAPI must consistently use forward slashes,
-        # since those fields may be interpretted by both the service and the bot.
+        # The command itself to run (e.g., argv). This field should be passed directly
+        # to the underlying operating system, and so it must be sensible to that
+        # operating system. For example, on Windows, the first argument might be "C:\
+        # Windows\System32\ping.exe" - that is, using drive letters and backslashes. A
+        # command for a *nix system, on the other hand, would use forward slashes. All
+        # other fields in the RWAPI must consistently use forward slashes, since those
+        # fields may be interpretted by both the service and the bot.
         # Corresponds to the JSON property `arguments`
         # @return [Array<String>]
         attr_accessor :arguments
@@ -2638,31 +2490,29 @@ module Google
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable>]
         attr_accessor :environment_variables
       
-        # The input filesystem to be set up prior to the task beginning. The
-        # contents should be a repeated set of FileMetadata messages though other
-        # formats are allowed if better for the implementation (eg, a LUCI-style
-        # .isolated file).
-        # This field is repeated since implementations might want to cache the
-        # metadata, in which case it may be useful to break up portions of the
-        # filesystem that change frequently (eg, specific input files) from those
-        # that don't (eg, standard header files).
+        # The input filesystem to be set up prior to the task beginning. The contents
+        # should be a repeated set of FileMetadata messages though other formats are
+        # allowed if better for the implementation (eg, a LUCI-style .isolated file).
+        # This field is repeated since implementations might want to cache the metadata,
+        # in which case it may be useful to break up portions of the filesystem that
+        # change frequently (eg, specific input files) from those that don't (eg,
+        # standard header files).
         # Corresponds to the JSON property `files`
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemoteworkersV1test2Digest>]
         attr_accessor :files
       
-        # Inline contents for blobs expected to be needed by the bot to execute the
-        # task. For example, contents of entries in `files` or blobs that are
-        # indirectly referenced by an entry there.
-        # The bot should check against this list before downloading required task
-        # inputs to reduce the number of communications between itself and the
-        # remote CAS server.
+        # Inline contents for blobs expected to be needed by the bot to execute the task.
+        # For example, contents of entries in `files` or blobs that are indirectly
+        # referenced by an entry there. The bot should check against this list before
+        # downloading required task inputs to reduce the number of communications
+        # between itself and the remote CAS server.
         # Corresponds to the JSON property `inlineBlobs`
         # @return [Array<Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemoteworkersV1test2Blob>]
         attr_accessor :inline_blobs
       
-        # Directory from which a command is executed. It is a relative directory
-        # with respect to the bot's working directory (i.e., "./"). If it is
-        # non-empty, then it must exist under "./". Otherwise, "./" will be used.
+        # Directory from which a command is executed. It is a relative directory with
+        # respect to the bot's working directory (i.e., "./"). If it is non-empty, then
+        # it must exist under "./". Otherwise, "./" will be used.
         # Corresponds to the JSON property `workingDirectory`
         # @return [String]
         attr_accessor :working_directory
@@ -2710,32 +2560,32 @@ module Google
       class GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs
         include Google::Apis::Core::Hashable
       
-        # A list of expected directories, relative to the execution root. All paths
-        # MUST be delimited by forward slashes.
+        # A list of expected directories, relative to the execution root. All paths MUST
+        # be delimited by forward slashes.
         # Corresponds to the JSON property `directories`
         # @return [Array<String>]
         attr_accessor :directories
       
-        # A list of expected files, relative to the execution root. All paths
-        # MUST be delimited by forward slashes.
+        # A list of expected files, relative to the execution root. All paths MUST be
+        # delimited by forward slashes.
         # Corresponds to the JSON property `files`
         # @return [Array<String>]
         attr_accessor :files
       
-        # The destination to which any stderr should be sent. The method by which
-        # the bot should send the stream contents to that destination is not
-        # defined in this API. As examples, the destination could be a file
-        # referenced in the `files` field in this message, or it could be a URI
-        # that must be written via the ByteStream API.
+        # The destination to which any stderr should be sent. The method by which the
+        # bot should send the stream contents to that destination is not defined in this
+        # API. As examples, the destination could be a file referenced in the `files`
+        # field in this message, or it could be a URI that must be written via the
+        # ByteStream API.
         # Corresponds to the JSON property `stderrDestination`
         # @return [String]
         attr_accessor :stderr_destination
       
-        # The destination to which any stdout should be sent. The method by which
-        # the bot should send the stream contents to that destination is not
-        # defined in this API. As examples, the destination could be a file
-        # referenced in the `files` field in this message, or it could be a URI
-        # that must be written via the ByteStream API.
+        # The destination to which any stdout should be sent. The method by which the
+        # bot should send the stream contents to that destination is not defined in this
+        # API. As examples, the destination could be a file referenced in the `files`
+        # field in this message, or it could be a URI that must be written via the
+        # ByteStream API.
         # Corresponds to the JSON property `stdoutDestination`
         # @return [String]
         attr_accessor :stdout_destination
@@ -2757,27 +2607,26 @@ module Google
       class GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts
         include Google::Apis::Core::Hashable
       
-        # This specifies the maximum time that the task can run, excluding the
-        # time required to download inputs or upload outputs. That is, the worker
-        # will terminate the task if it runs longer than this.
+        # This specifies the maximum time that the task can run, excluding the time
+        # required to download inputs or upload outputs. That is, the worker will
+        # terminate the task if it runs longer than this.
         # Corresponds to the JSON property `execution`
         # @return [String]
         attr_accessor :execution
       
-        # This specifies the maximum amount of time the task can be idle - that is,
-        # go without generating some output in either stdout or stderr. If the
-        # process is silent for more than the specified time, the worker will
-        # terminate the task.
+        # This specifies the maximum amount of time the task can be idle - that is, go
+        # without generating some output in either stdout or stderr. If the process is
+        # silent for more than the specified time, the worker will terminate the task.
         # Corresponds to the JSON property `idle`
         # @return [String]
         attr_accessor :idle
       
         # If the execution or IO timeouts are exceeded, the worker will try to
-        # gracefully terminate the task and return any existing logs. However,
-        # tasks may be hard-frozen in which case this process will fail. This
-        # timeout specifies how long to wait for a terminated task to shut down
-        # gracefully (e.g. via SIGTERM) before we bring down the hammer (e.g.
-        # SIGKILL on *nix, CTRL_BREAK_EVENT on Windows).
+        # gracefully terminate the task and return any existing logs. However, tasks may
+        # be hard-frozen in which case this process will fail. This timeout specifies
+        # how long to wait for a terminated task to shut down gracefully (e.g. via
+        # SIGTERM) before we bring down the hammer (e.g. SIGKILL on *nix,
+        # CTRL_BREAK_EVENT on Windows).
         # Corresponds to the JSON property `shutdown`
         # @return [String]
         attr_accessor :shutdown
@@ -2795,13 +2644,12 @@ module Google
       end
       
       # The CommandTask and CommandResult messages assume the existence of a service
-      # that can serve blobs of content, identified by a hash and size known as a
-      # "digest." The method by which these blobs may be retrieved is not specified
-      # here, but a model implementation is in the Remote Execution API's
-      # "ContentAddressibleStorage" interface.
-      # In the context of the RWAPI, a Digest will virtually always refer to the
-      # contents of a file or a directory. The latter is represented by the
-      # byte-encoded Directory message.
+      # that can serve blobs of content, identified by a hash and size known as a "
+      # digest." The method by which these blobs may be retrieved is not specified
+      # here, but a model implementation is in the Remote Execution API's "
+      # ContentAddressibleStorage" interface. In the context of the RWAPI, a Digest
+      # will virtually always refer to the contents of a file or a directory. The
+      # latter is represented by the byte-encoded Directory message.
       class GoogleDevtoolsRemoteworkersV1test2Digest
         include Google::Apis::Core::Hashable
       
@@ -2812,9 +2660,9 @@ module Google
         attr_accessor :hash_prop
       
         # The size of the contents. While this is not strictly required as part of an
-        # identifier (after all, any given hash will have exactly one canonical
-        # size), it's useful in almost all cases when one might want to send or
-        # retrieve blobs of content and is included here for this reason.
+        # identifier (after all, any given hash will have exactly one canonical size),
+        # it's useful in almost all cases when one might want to send or retrieve blobs
+        # of content and is included here for this reason.
         # Corresponds to the JSON property `sizeBytes`
         # @return [Fixnum]
         attr_accessor :size_bytes
@@ -2862,13 +2710,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The CommandTask and CommandResult messages assume the existence of a service
-        # that can serve blobs of content, identified by a hash and size known as a
-        # "digest." The method by which these blobs may be retrieved is not specified
-        # here, but a model implementation is in the Remote Execution API's
-        # "ContentAddressibleStorage" interface.
-        # In the context of the RWAPI, a Digest will virtually always refer to the
-        # contents of a file or a directory. The latter is represented by the
-        # byte-encoded Directory message.
+        # that can serve blobs of content, identified by a hash and size known as a "
+        # digest." The method by which these blobs may be retrieved is not specified
+        # here, but a model implementation is in the Remote Execution API's "
+        # ContentAddressibleStorage" interface. In the context of the RWAPI, a Digest
+        # will virtually always refer to the contents of a file or a directory. The
+        # latter is represented by the byte-encoded Directory message.
         # Corresponds to the JSON property `digest`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemoteworkersV1test2Digest]
         attr_accessor :digest
@@ -2894,21 +2741,20 @@ module Google
       class GoogleDevtoolsRemoteworkersV1test2FileMetadata
         include Google::Apis::Core::Hashable
       
-        # If the file is small enough, its contents may also or alternatively be
-        # listed here.
+        # If the file is small enough, its contents may also or alternatively be listed
+        # here.
         # Corresponds to the JSON property `contents`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :contents
       
         # The CommandTask and CommandResult messages assume the existence of a service
-        # that can serve blobs of content, identified by a hash and size known as a
-        # "digest." The method by which these blobs may be retrieved is not specified
-        # here, but a model implementation is in the Remote Execution API's
-        # "ContentAddressibleStorage" interface.
-        # In the context of the RWAPI, a Digest will virtually always refer to the
-        # contents of a file or a directory. The latter is represented by the
-        # byte-encoded Directory message.
+        # that can serve blobs of content, identified by a hash and size known as a "
+        # digest." The method by which these blobs may be retrieved is not specified
+        # here, but a model implementation is in the Remote Execution API's "
+        # ContentAddressibleStorage" interface. In the context of the RWAPI, a Digest
+        # will virtually always refer to the contents of a file or a directory. The
+        # latter is represented by the byte-encoded Directory message.
         # Corresponds to the JSON property `digest`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemoteworkersV1test2Digest]
         attr_accessor :digest
@@ -2919,11 +2765,11 @@ module Google
         attr_accessor :is_executable
         alias_method :is_executable?, :is_executable
       
-        # The path of this file. If this message is part of the
-        # CommandOutputs.outputs fields, the path is relative to the execution root
-        # and must correspond to an entry in CommandTask.outputs.files. If this
-        # message is part of a Directory message, then the path is relative to the
-        # root of that directory. All paths MUST be delimited by forward slashes.
+        # The path of this file. If this message is part of the CommandOutputs.outputs
+        # fields, the path is relative to the execution root and must correspond to an
+        # entry in CommandTask.outputs.files. If this message is part of a Directory
+        # message, then the path is relative to the root of that directory. All paths
+        # MUST be delimited by forward slashes.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
@@ -2946,47 +2792,45 @@ module Google
       class GoogleLongrunningOperation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleRpcStatus]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -3005,12 +2849,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class GoogleRpcStatus
         include Google::Apis::Core::Hashable
       
@@ -3019,15 +2863,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message

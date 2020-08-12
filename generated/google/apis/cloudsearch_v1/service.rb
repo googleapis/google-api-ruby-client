@@ -22,7 +22,7 @@ module Google
     module CloudsearchV1
       # Cloud Search API
       #
-      # Cloud Search provides cloud-based search capabilities over G Suite data.  The
+      # Cloud Search provides cloud-based search capabilities over G Suite data. The
       #  Cloud Search API allows indexing of non-G Suite data into Cloud Search.
       #
       # @example
@@ -48,15 +48,14 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Checks whether an item is accessible by specified principal.
-        # **Note:** This API requires an admin account to execute.
+        # Checks whether an item is accessible by specified principal. **Note:** This
+        # API requires an admin account to execute.
         # @param [String] name
-        #   Item name, format:
-        #   datasources/`source_id`/items/`item_id`
+        #   Item name, format: datasources/`source_id`/items/`item_id`
         # @param [Google::Apis::CloudsearchV1::Principal] principal_object
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -87,12 +86,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetches the item whose viewUrl exactly matches that of the URL provided
-        # in the request.
-        # **Note:** This API requires an admin account to execute.
+        # Fetches the item whose viewUrl exactly matches that of the URL provided in the
+        # request. **Note:** This API requires an admin account to execute.
         # @param [String] name
-        #   Source name, format:
-        #   datasources/`source_id`
+        #   Source name, format: datasources/`source_id`
         # @param [Google::Apis::CloudsearchV1::SearchItemsByViewUrlRequest] search_items_by_view_url_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -123,17 +120,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all unmapped identities for a specific item.
-        # **Note:** This API requires an admin account to execute.
+        # List all unmapped identities for a specific item. **Note:** This API requires
+        # an admin account to execute.
         # @param [String] parent
-        #   The name of the item, in the following format:
-        #   datasources/`source_id`/items/`ID`
+        #   The name of the item, in the following format: datasources/`source_id`/items/`
+        #   ID`
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [Fixnum] page_size
-        #   Maximum number of items to fetch in a request.
-        #   Defaults to 100.
+        #   Maximum number of items to fetch in a request. Defaults to 100.
         # @param [String] page_token
         #   The next_page_token value returned from a previous List request, if any.
         # @param [String] fields
@@ -166,18 +162,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists names of items associated with an unmapped identity.
-        # **Note:** This API requires an admin account to execute.
+        # Lists names of items associated with an unmapped identity. **Note:** This API
+        # requires an admin account to execute.
         # @param [String] parent
-        #   The name of the identity source, in the following format:
-        #   identitysources/`source_id``
+        #   The name of the identity source, in the following format: identitysources/`
+        #   source_id``
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [String] group_resource_name
         # @param [Fixnum] page_size
-        #   Maximum number of items to fetch in a request.
-        #   Defaults to 100.
+        #   Maximum number of items to fetch in a request. Defaults to 100.
         # @param [String] page_token
         #   The next_page_token value returned from a previous List request, if any.
         # @param [String] user_resource_name
@@ -213,17 +208,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists unmapped user identities for an identity source.
-        # **Note:** This API requires an admin account to execute.
+        # Lists unmapped user identities for an identity source. **Note:** This API
+        # requires an admin account to execute.
         # @param [String] parent
-        #   The name of the identity source, in the following format:
-        #   identitysources/`source_id`
+        #   The name of the identity source, in the following format: identitysources/`
+        #   source_id`
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [Fixnum] page_size
-        #   Maximum number of items to fetch in a request.
-        #   Defaults to 100.
+        #   Maximum number of items to fetch in a request. Defaults to 100.
         # @param [String] page_token
         #   The next_page_token value returned from a previous List request, if any.
         # @param [String] resolution_status_code
@@ -259,14 +253,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the schema of a data source.
-        # **Note:** This API requires an admin or service account to execute.
+        # Deletes the schema of a data source. **Note:** This API requires an admin or
+        # service account to execute.
         # @param [String] name
-        #   Name of the data source to delete Schema.  Format:
-        #   datasources/`source_id`
+        #   Name of the data source to delete Schema. Format: datasources/`source_id`
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -295,14 +288,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the schema of a data source.
-        # **Note:** This API requires an admin or service account to execute.
+        # Gets the schema of a data source. **Note:** This API requires an admin or
+        # service account to execute.
         # @param [String] name
-        #   Name of the data source to get Schema.  Format:
-        #   datasources/`source_id`
+        #   Name of the data source to get Schema. Format: datasources/`source_id`
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -331,13 +323,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the schema of a data source. This method does not perform
-        # incremental updates to the schema. Instead, this method updates the schema
-        # by overwriting the entire schema.
-        # **Note:** This API requires an admin or service account to execute.
+        # Updates the schema of a data source. This method does not perform incremental
+        # updates to the schema. Instead, this method updates the schema by overwriting
+        # the entire schema. **Note:** This API requires an admin or service account to
+        # execute.
         # @param [String] name
-        #   Name of the data source to update Schema.  Format:
-        #   datasources/`source_id`
+        #   Name of the data source to update Schema. Format: datasources/`source_id`
         # @param [Google::Apis::CloudsearchV1::UpdateSchemaRequest] update_schema_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -368,31 +359,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes Item resource for the
-        # specified resource name. This API requires an admin or service account
-        # to execute. The service account used is the one whitelisted in the
-        # corresponding data source.
+        # Deletes Item resource for the specified resource name. This API requires an
+        # admin or service account to execute. The service account used is the one
+        # whitelisted in the corresponding data source.
         # @param [String] name
-        #   Required. Name of the item to delete.
-        #   Format: datasources/`source_id`/items/`item_id`
+        #   Required. Name of the item to delete. Format: datasources/`source_id`/items/`
+        #   item_id`
         # @param [String] connector_name
-        #   Name of connector making this call.
-        #   <br />Format: datasources/`source_id`/connectors/`ID`
+        #   Name of connector making this call. Format: datasources/`source_id`/connectors/
+        #   `ID`
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [String] mode
         #   Required. The RequestMode for this request.
         # @param [String] version
-        #   Required. The incremented version of the item to delete from the index.
-        #   The indexing system stores the version from the datasource as a
-        #   byte string and compares the Item version in the index
-        #   to the version of the queued Item using lexical ordering.
-        #   <br /><br />
-        #   Cloud Search Indexing won't delete any queued item with
-        #   a version value that is less than or equal to
-        #   the version of the currently indexed item.
-        #   The maximum length for this field is 1024 bytes.
+        #   Required. The incremented version of the item to delete from the index. The
+        #   indexing system stores the version from the datasource as a byte string and
+        #   compares the Item version in the index to the version of the queued Item using
+        #   lexical ordering. Cloud Search Indexing won't delete any queued item with a
+        #   version value that is less than or equal to the version of the currently
+        #   indexed item. The maximum length for this field is 1024 bytes.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -424,13 +411,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes all items in a queue. This method is useful for deleting stale
-        # items.
-        # This API requires an admin or service account to execute. The service
-        # account used is the one whitelisted in the corresponding data source.
+        # Deletes all items in a queue. This method is useful for deleting stale items.
+        # This API requires an admin or service account to execute. The service account
+        # used is the one whitelisted in the corresponding data source.
         # @param [String] name
-        #   Name of the Data Source to delete items in a queue.
-        #   Format: datasources/`source_id`
+        #   Name of the Data Source to delete items in a queue. Format: datasources/`
+        #   source_id`
         # @param [Google::Apis::CloudsearchV1::DeleteQueueItemsRequest] delete_queue_items_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -461,18 +447,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets Item resource by item name.
-        # This API requires an admin or service account to execute.  The service
-        # account used is the one whitelisted in the corresponding data source.
+        # Gets Item resource by item name. This API requires an admin or service account
+        # to execute. The service account used is the one whitelisted in the
+        # corresponding data source.
         # @param [String] name
-        #   Name of the item to get info.
-        #   Format: datasources/`source_id`/items/`item_id`
+        #   Name of the item to get info. Format: datasources/`source_id`/items/`item_id`
         # @param [String] connector_name
-        #   Name of connector making this call.
-        #   <br />Format: datasources/`source_id`/connectors/`ID`
+        #   Name of connector making this call. Format: datasources/`source_id`/connectors/
+        #   `ID`
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -502,18 +487,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates Item ACL, metadata, and
-        # content. It will insert the Item if it
-        # does not exist.
-        # This method does not support partial updates.  Fields with no provided
-        # values are cleared out in the Cloud Search index.
-        # This API requires an admin or service account to execute. The service
-        # account used is the one whitelisted in the corresponding data source.
+        # Updates Item ACL, metadata, and content. It will insert the Item if it does
+        # not exist. This method does not support partial updates. Fields with no
+        # provided values are cleared out in the Cloud Search index. This API requires
+        # an admin or service account to execute. The service account used is the one
+        # whitelisted in the corresponding data source.
         # @param [String] name
-        #   Name of the Item. Format:
-        #   datasources/`source_id`/items/`item_id`
-        #   <br />This is a required field.
-        #   The maximum length is 1536 characters.
+        #   Name of the Item. Format: datasources/`source_id`/items/`item_id` This is a
+        #   required field. The maximum length is 1536 characters.
         # @param [Google::Apis::CloudsearchV1::IndexItemRequest] index_item_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -544,43 +525,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all or a subset of Item resources.
-        # This API requires an admin or service account to execute. The service
-        # account used is the one whitelisted in the corresponding data source.
+        # Lists all or a subset of Item resources. This API requires an admin or service
+        # account to execute. The service account used is the one whitelisted in the
+        # corresponding data source.
         # @param [String] name
-        #   Name of the Data Source to list Items.  Format:
-        #   datasources/`source_id`
+        #   Name of the Data Source to list Items. Format: datasources/`source_id`
         # @param [Boolean] brief
         #   When set to true, the indexing system only populates the following fields:
-        #   name,
-        #   version,
-        #   queue.
-        #   metadata.hash,
-        #   metadata.title,
-        #   metadata.sourceRepositoryURL,
-        #   metadata.objectType,
-        #   metadata.createTime,
-        #   metadata.updateTime,
-        #   metadata.contentLanguage,
-        #   metadata.mimeType,
-        #   structured_data.hash,
-        #   content.hash,
-        #   itemType,
-        #   itemStatus.code,
-        #   itemStatus.processingError.code,
-        #   itemStatus.repositoryError.type,
-        #   <br />If this value is false, then all the fields are populated in Item.
+        #   name, version, queue. metadata.hash, metadata.title, metadata.
+        #   sourceRepositoryURL, metadata.objectType, metadata.createTime, metadata.
+        #   updateTime, metadata.contentLanguage, metadata.mimeType, structured_data.hash,
+        #   content.hash, itemType, itemStatus.code, itemStatus.processingError.code,
+        #   itemStatus.repositoryError.type, If this value is false, then all the fields
+        #   are populated in Item.
         # @param [String] connector_name
-        #   Name of connector making this call.
-        #   <br />Format: datasources/`source_id`/connectors/`ID`
+        #   Name of connector making this call. Format: datasources/`source_id`/connectors/
+        #   `ID`
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [Fixnum] page_size
-        #   Maximum number of items to fetch in a request.
-        #   The max value is 1000 when brief is true.  The max value is 10 if brief
-        #   is false.
-        #   <br />The default value is 10
+        #   Maximum number of items to fetch in a request. The max value is 1000 when
+        #   brief is true. The max value is 10 if brief is false. The default value is 10
         # @param [String] page_token
         #   The next_page_token value returned from a previous List request, if any.
         # @param [String] fields
@@ -615,34 +581,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Polls for unreserved items from the indexing queue and marks a
-        # set as reserved, starting with items that have
-        # the oldest timestamp from the highest priority
-        # ItemStatus.
-        # The priority order is as follows: <br />
-        # ERROR
-        # <br />
-        # MODIFIED
-        # <br />
-        # NEW_ITEM
-        # <br />
-        # ACCEPTED
-        # <br />
-        # Reserving items ensures that polling from other threads
-        # cannot create overlapping sets.
-        # After handling the reserved items, the client should put items back
-        # into the unreserved state, either by calling
-        # index,
-        # or by calling
-        # push with
-        # the type REQUEUE.
-        # Items automatically become available (unreserved) after 4 hours even if no
-        # update or push method is called.
-        # This API requires an admin or service account to execute. The service
-        # account used is the one whitelisted in the corresponding data source.
+        # Polls for unreserved items from the indexing queue and marks a set as reserved,
+        # starting with items that have the oldest timestamp from the highest priority
+        # ItemStatus. The priority order is as follows: ERROR MODIFIED NEW_ITEM ACCEPTED
+        # Reserving items ensures that polling from other threads cannot create
+        # overlapping sets. After handling the reserved items, the client should put
+        # items back into the unreserved state, either by calling index, or by calling
+        # push with the type REQUEUE. Items automatically become available (unreserved)
+        # after 4 hours even if no update or push method is called. This API requires an
+        # admin or service account to execute. The service account used is the one
+        # whitelisted in the corresponding data source.
         # @param [String] name
-        #   Name of the Data Source to poll items.
-        #   Format: datasources/`source_id`
+        #   Name of the Data Source to poll items. Format: datasources/`source_id`
         # @param [Google::Apis::CloudsearchV1::PollItemsRequest] poll_items_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -673,15 +623,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Pushes an item onto a queue for later polling and updating.
-        # This API requires an admin or service account to execute. The service
-        # account used is the one whitelisted in the corresponding data source.
+        # Pushes an item onto a queue for later polling and updating. This API requires
+        # an admin or service account to execute. The service account used is the one
+        # whitelisted in the corresponding data source.
         # @param [String] name
-        #   Name of the item to
-        #   push into the indexing queue.<br />
-        #   Format: datasources/`source_id`/items/`ID`
-        #   <br />This is a required field.
-        #   The maximum length is 1536 characters.
+        #   Name of the item to push into the indexing queue. Format: datasources/`
+        #   source_id`/items/`ID` This is a required field. The maximum length is 1536
+        #   characters.
         # @param [Google::Apis::CloudsearchV1::PushItemRequest] push_item_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -712,14 +660,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Unreserves all items from a queue, making them all eligible to be
-        # polled.  This method is useful for resetting the indexing queue
-        # after a connector has been restarted.
-        # This API requires an admin or service account to execute. The service
-        # account used is the one whitelisted in the corresponding data source.
+        # Unreserves all items from a queue, making them all eligible to be polled. This
+        # method is useful for resetting the indexing queue after a connector has been
+        # restarted. This API requires an admin or service account to execute. The
+        # service account used is the one whitelisted in the corresponding data source.
         # @param [String] name
-        #   Name of the Data Source to unreserve all items.
-        #   Format: datasources/`source_id`
+        #   Name of the Data Source to unreserve all items. Format: datasources/`source_id`
         # @param [Google::Apis::CloudsearchV1::UnreserveItemsRequest] unreserve_items_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -750,16 +696,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an upload session for uploading item content. For items smaller
-        # than 100 KB, it's easier to embed the content
-        # inline within
-        # an index request.
-        # This API requires an admin or service account to execute. The service
-        # account used is the one whitelisted in the corresponding data source.
+        # Creates an upload session for uploading item content. For items smaller than
+        # 100 KB, it's easier to embed the content inline within an index request. This
+        # API requires an admin or service account to execute. The service account used
+        # is the one whitelisted in the corresponding data source.
         # @param [String] name
-        #   Name of the Item to start a resumable upload.
-        #   Format: datasources/`source_id`/items/`item_id`.
-        #   The maximum length is 1536 bytes.
+        #   Name of the Item to start a resumable upload. Format: datasources/`source_id`/
+        #   items/`item_id`. The maximum length is 1536 bytes.
         # @param [Google::Apis::CloudsearchV1::StartUploadItemRequest] start_upload_item_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -790,30 +733,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads media for indexing.
-        # The upload endpoint supports direct and resumable upload protocols and
-        # is intended for large items that can not be
-        # [inlined during index requests](https://developers.google.com/cloud-search/
-        # docs/reference/rest/v1/indexing.datasources.items#itemcontent).
-        # To index large content:
-        # 1. Call
-        # indexing.datasources.items.upload
-        # with the resource name to begin an upload session and retrieve the
-        # UploadItemRef.
-        # 1. Call media.upload to upload the content using the same resource name from
-        # step 1.
-        # 1. Call indexing.datasources.items.index
-        # to index the item. Populate the
-        # [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.
-        # items#ItemContent)
-        # with the UploadItemRef from step 1.
-        # For additional information, see
-        # [Create a content connector using the REST API](https://developers.google.com/
-        # cloud-search/docs/guides/content-connector#rest).
-        # **Note:** This API requires a service account to execute.
+        # Uploads media for indexing. The upload endpoint supports direct and resumable
+        # upload protocols and is intended for large items that can not be [inlined
+        # during index requests](https://developers.google.com/cloud-search/docs/
+        # reference/rest/v1/indexing.datasources.items#itemcontent). To index large
+        # content: 1. Call indexing.datasources.items.upload with the resource name to
+        # begin an upload session and retrieve the UploadItemRef. 1. Call media.upload
+        # to upload the content using the same resource name from step 1. 1. Call
+        # indexing.datasources.items.index to index the item. Populate the [ItemContent](
+        # /cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)
+        # with the UploadItemRef from step 1. For additional information, see [Create a
+        # content connector using the REST API](https://developers.google.com/cloud-
+        # search/docs/guides/content-connector#rest). **Note:** This API requires a
+        # service account to execute.
         # @param [String] resource_name
-        #   Name of the media that is being downloaded.  See
-        #   ReadRequest.resource_name.
+        #   Name of the media that is being downloaded. See ReadRequest.resource_name.
         # @param [Google::Apis::CloudsearchV1::Media] media_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -854,9 +788,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -886,15 +819,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # The Cloud Search Query API provides the search method, which returns
-        # the most relevant results from a user query.  The results can come from
-        # G Suite Apps, such as Gmail or Google Drive, or they can come from data
-        # that you have indexed from a third party.
-        # **Note:** This API requires a standard end user account to execute.
-        # A service account can't perform Query API requests directly; to use a
-        # service account to perform queries, set up [G Suite domain-wide delegation
-        # of
-        # authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        # The Cloud Search Query API provides the search method, which returns the most
+        # relevant results from a user query. The results can come from G Suite Apps,
+        # such as Gmail or Google Drive, or they can come from data that you have
+        # indexed from a third party. **Note:** This API requires a standard end user
+        # account to execute. A service account can't perform Query API requests
+        # directly; to use a service account to perform queries, set up [G Suite domain-
+        # wide delegation of authority](https://developers.google.com/cloud-search/docs/
+        # guides/delegation/).
         # @param [Google::Apis::CloudsearchV1::SearchRequest] search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -924,12 +856,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Provides suggestions for autocompleting the query.
-        # **Note:** This API requires a standard end user account to execute.
-        # A service account can't perform Query API requests directly; to use a
-        # service account to perform queries, set up [G Suite domain-wide delegation
-        # of
-        # authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        # Provides suggestions for autocompleting the query. **Note:** This API requires
+        # a standard end user account to execute. A service account can't perform Query
+        # API requests directly; to use a service account to perform queries, set up [G
+        # Suite domain-wide delegation of authority](https://developers.google.com/cloud-
+        # search/docs/guides/delegation/).
         # @param [Google::Apis::CloudsearchV1::SuggestRequest] suggest_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -959,40 +890,35 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns list of sources that user can use for Search and Suggest APIs.
-        # **Note:** This API requires a standard end user account to execute.
-        # A service account can't perform Query API requests directly; to use a
-        # service account to perform queries, set up [G Suite domain-wide delegation
-        # of
-        # authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        # Returns list of sources that user can use for Search and Suggest APIs. **Note:*
+        # * This API requires a standard end user account to execute. A service account
+        # can't perform Query API requests directly; to use a service account to perform
+        # queries, set up [G Suite domain-wide delegation of authority](https://
+        # developers.google.com/cloud-search/docs/guides/delegation/).
         # @param [String] page_token
         #   Number of sources to return in the response.
         # @param [Boolean] request_options_debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [String] request_options_language_code
-        #   The BCP-47 language code, such as "en-US" or "sr-Latn".
-        #   For more information, see
-        #   http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        #   For translations.
-        #   Set this field using the language set in browser or for the page. In the
-        #   event that the user's language preference is known, set this field to the
-        #   known user language.
-        #   When specified, the documents in search results are biased towards the
-        #   specified language.
-        #   The suggest API does not use this parameter. Instead, suggest autocompletes
-        #   only based on characters in the query.
+        #   The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        #   see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For
+        #   translations. Set this field using the language set in browser or for the page.
+        #   In the event that the user's language preference is known, set this field to
+        #   the known user language. When specified, the documents in search results are
+        #   biased towards the specified language. The suggest API does not use this
+        #   parameter. Instead, suggest autocompletes only based on characters in the
+        #   query.
         # @param [String] request_options_search_application_id
-        #   The ID generated when you create a search application using the
-        #   [admin console](https://support.google.com/a/answer/9043922).
+        #   The ID generated when you create a search application using the [admin console]
+        #   (https://support.google.com/a/answer/9043922).
         # @param [String] request_options_time_zone
-        #   Current user's time zone id, such as "America/Los_Angeles" or
-        #   "Australia/Sydney". These IDs are defined by
-        #   [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/)
-        #   project, and currently available in the file
-        #   [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml).
-        #   This field is used to correctly interpret date and time queries.
-        #   If this field is not specified, the default time zone (UTC) is used.
+        #   Current user's time zone id, such as "America/Los_Angeles" or "Australia/
+        #   Sydney". These IDs are defined by [Unicode Common Locale Data Repository (CLDR)
+        #   ](http://cldr.unicode.org/) project, and currently available in the file [
+        #   timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml).
+        #   This field is used to correctly interpret date and time queries. If this field
+        #   is not specified, the default time zone (UTC) is used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1024,8 +950,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a datasource.
-        # **Note:** This API requires an admin account to execute.
+        # Creates a datasource. **Note:** This API requires an admin account to execute.
         # @param [Google::Apis::CloudsearchV1::DataSource] data_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1055,14 +980,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a datasource.
-        # **Note:** This API requires an admin account to execute.
+        # Deletes a datasource. **Note:** This API requires an admin account to execute.
         # @param [String] name
-        #   Name of the datasource.
-        #   Format: datasources/`source_id`.
+        #   Name of the datasource. Format: datasources/`source_id`.
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1091,14 +1014,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a datasource.
-        # **Note:** This API requires an admin account to execute.
+        # Gets a datasource. **Note:** This API requires an admin account to execute.
         # @param [String] name
-        #   Name of the datasource resource.
-        #   Format: datasources/`source_id`.
+        #   Name of the datasource resource. Format: datasources/`source_id`.
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1127,15 +1048,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists datasources.
-        # **Note:** This API requires an admin account to execute.
+        # Lists datasources. **Note:** This API requires an admin account to execute.
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [Fixnum] page_size
-        #   Maximum number of datasources to fetch in a request.
-        #   The max value is 100.
-        #   <br />The default value is 10
+        #   Maximum number of datasources to fetch in a request. The max value is 100. The
+        #   default value is 10
         # @param [String] page_token
         #   Starting index of the results.
         # @param [String] fields
@@ -1167,12 +1086,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a datasource.
-        # **Note:** This API requires an admin account to execute.
+        # Updates a datasource. **Note:** This API requires an admin account to execute.
         # @param [String] name
-        #   Name of the datasource resource.
-        #   Format: datasources/`source_id`.
-        #   <br />The name is ignored when creating a datasource.
+        #   Name of the datasource resource. Format: datasources/`source_id`. The name is
+        #   ignored when creating a datasource.
         # @param [Google::Apis::CloudsearchV1::UpdateDataSourceRequest] update_data_source_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1203,8 +1120,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a search application.
-        # **Note:** This API requires an admin account to execute.
+        # Creates a search application. **Note:** This API requires an admin account to
+        # execute.
         # @param [Google::Apis::CloudsearchV1::SearchApplication] search_application_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1234,14 +1151,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a search application.
-        # **Note:** This API requires an admin account to execute.
+        # Deletes a search application. **Note:** This API requires an admin account to
+        # execute.
         # @param [String] name
-        #   The name of the search application to be deleted.
-        #   <br />Format: applications/`application_id`.
+        #   The name of the search application to be deleted. Format: applications/`
+        #   application_id`.
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1270,14 +1187,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified search application.
-        # **Note:** This API requires an admin account to execute.
+        # Gets the specified search application. **Note:** This API requires an admin
+        # account to execute.
         # @param [String] name
-        #   Name of the search application.
-        #   <br />Format: searchapplications/`application_id`.
+        #   Name of the search application. Format: searchapplications/`application_id`.
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1306,16 +1222,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all search applications.
-        # **Note:** This API requires an admin account to execute.
+        # Lists all search applications. **Note:** This API requires an admin account to
+        # execute.
         # @param [Boolean] debug_options_enable_debugging
-        #   If you are asked by Google to help with debugging, set this field.
-        #   Otherwise, ignore this field.
+        #   If you are asked by Google to help with debugging, set this field. Otherwise,
+        #   ignore this field.
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token
-        #   The next_page_token value returned from a previous List request, if any.
-        #   <br/> The default value is 10
+        #   The next_page_token value returned from a previous List request, if any. The
+        #   default value is 10
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1346,11 +1262,10 @@ module Google
         end
         
         # Resets a search application to default settings. This will return an empty
-        # response.
-        # **Note:** This API requires an admin account to execute.
+        # response. **Note:** This API requires an admin account to execute.
         # @param [String] name
-        #   The name of the search application to be reset.
-        #   <br />Format: applications/`application_id`.
+        #   The name of the search application to be reset. Format: applications/`
+        #   application_id`.
         # @param [Google::Apis::CloudsearchV1::ResetSearchApplicationRequest] reset_search_application_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1381,11 +1296,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a search application.
-        # **Note:** This API requires an admin account to execute.
+        # Updates a search application. **Note:** This API requires an admin account to
+        # execute.
         # @param [String] name
-        #   Name of the Search Application.
-        #   <br />Format: searchapplications/`application_id`.
+        #   Name of the Search Application. Format: searchapplications/`application_id`.
         # @param [Google::Apis::CloudsearchV1::SearchApplication] search_application_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1416,10 +1330,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets indexed item statistics aggreggated across all data sources. This
-        # API only returns statistics for previous dates; it doesn't return
-        # statistics for the current day.
-        # **Note:** This API requires a standard end user account to execute.
+        # Gets indexed item statistics aggreggated across all data sources. This API
+        # only returns statistics for previous dates; it doesn't return statistics for
+        # the current day. **Note:** This API requires a standard end user account to
+        # execute.
         # @param [Fixnum] from_date_day
         #   Day of month. Must be from 1 to 31 and valid for the year and month.
         # @param [Fixnum] from_date_month
@@ -1464,8 +1378,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the query statistics for customer.
-        # **Note:** This API requires a standard end user account to execute.
+        # Get the query statistics for customer. **Note:** This API requires a standard
+        # end user account to execute.
         # @param [Fixnum] from_date_day
         #   Day of month. Must be from 1 to 31 and valid for the year and month.
         # @param [Fixnum] from_date_month
@@ -1511,8 +1425,8 @@ module Google
         end
         
         # Get the # of search sessions, % of successful sessions with a click query
-        # statistics for customer.
-        # **Note:** This API requires a standard end user account to execute.
+        # statistics for customer. **Note:** This API requires a standard end user
+        # account to execute.
         # @param [Fixnum] from_date_day
         #   Day of month. Must be from 1 to 31 and valid for the year and month.
         # @param [Fixnum] from_date_month
@@ -1557,8 +1471,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the users statistics for customer.
-        # **Note:** This API requires a standard end user account to execute.
+        # Get the users statistics for customer. **Note:** This API requires a standard
+        # end user account to execute.
         # @param [Fixnum] from_date_day
         #   Day of month. Must be from 1 to 31 and valid for the year and month.
         # @param [Fixnum] from_date_month
@@ -1603,11 +1517,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets indexed item statistics for a single data source.
-        # **Note:** This API requires a standard end user account to execute.
+        # Gets indexed item statistics for a single data source. **Note:** This API
+        # requires a standard end user account to execute.
         # @param [String] name
-        #   The resource id of the data source to retrieve statistics for,
-        #   in the following format: "datasources/`source_id`"
+        #   The resource id of the data source to retrieve statistics for, in the
+        #   following format: "datasources/`source_id`"
         # @param [Fixnum] from_date_day
         #   Day of month. Must be from 1 to 31 and valid for the year and month.
         # @param [Fixnum] from_date_month
@@ -1653,11 +1567,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the query statistics for search application.
-        # **Note:** This API requires a standard end user account to execute.
+        # Get the query statistics for search application. **Note:** This API requires a
+        # standard end user account to execute.
         # @param [String] name
-        #   The resource id of the search application query stats, in the following
-        #   format: searchapplications/`application_id`
+        #   The resource id of the search application query stats, in the following format:
+        #   searchapplications/`application_id`
         # @param [Fixnum] from_date_day
         #   Day of month. Must be from 1 to 31 and valid for the year and month.
         # @param [Fixnum] from_date_month
@@ -1704,8 +1618,8 @@ module Google
         end
         
         # Get the # of search sessions, % of successful sessions with a click query
-        # statistics for search application.
-        # **Note:** This API requires a standard end user account to execute.
+        # statistics for search application. **Note:** This API requires a standard end
+        # user account to execute.
         # @param [String] name
         #   The resource id of the search application session stats, in the following
         #   format: searchapplications/`application_id`
@@ -1754,8 +1668,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the users statistics for search application.
-        # **Note:** This API requires a standard end user account to execute.
+        # Get the users statistics for search application. **Note:** This API requires a
+        # standard end user account to execute.
         # @param [String] name
         #   The resource id of the search application session stats, in the following
         #   format: searchapplications/`application_id`

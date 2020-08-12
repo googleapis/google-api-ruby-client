@@ -35,13 +35,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -58,8 +56,8 @@ module Google
       class FileShareConfig
         include Google::Apis::Core::Hashable
       
-        # File share capacity in gigabytes (GB).
-        # Cloud Filestore defines 1 GB as 1024^3 bytes.
+        # File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3
+        # bytes.
         # Corresponds to the JSON property `capacityGb`
         # @return [Fixnum]
         attr_accessor :capacity_gb
@@ -69,8 +67,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Nfs Export Options.
-        # There is a limit of 10 export options per file share.
+        # Nfs Export Options. There is a limit of 10 export options per file share.
         # Corresponds to the JSON property `nfsExportOptions`
         # @return [Array<Google::Apis::FileV1beta1::NfsExportOptions>]
         attr_accessor :nfs_export_options
@@ -92,10 +89,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # consumer_defined_name is the name that is set by the consumer. On the other
-        # hand Name field represents system-assigned id of an instance so consumers
-        # are not necessarily aware of it.
-        # consumer_defined_name is used for notification/UI purposes for consumer to
-        # recognize their instances.
+        # hand Name field represents system-assigned id of an instance so consumers are
+        # not necessarily aware of it. consumer_defined_name is used for notification/UI
+        # purposes for consumer to recognize their instances.
         # Corresponds to the JSON property `consumerDefinedName`
         # @return [String]
         attr_accessor :consumer_defined_name
@@ -105,18 +101,17 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Resource labels to represent user provided metadata. Each label
-        # is a key-value pair, where both the key and the value are arbitrary strings
+        # Optional. Resource labels to represent user provided metadata. Each label is a
+        # key-value pair, where both the key and the value are arbitrary strings
         # provided by the user.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The MaintenancePolicies that have been attached to the instance.
-        # The key must be of the type name of the oneof policy name defined in
-        # MaintenancePolicy, and the referenced policy must define the same policy
-        # type. For complete details of MaintenancePolicy, please refer to
-        # go/cloud-saas-mw-ug.
+        # The MaintenancePolicies that have been attached to the instance. The key must
+        # be of the type name of the oneof policy name defined in MaintenancePolicy, and
+        # the referenced policy must define the same policy type. For complete details
+        # of MaintenancePolicy, please refer to go/cloud-saas-mw-ug.
         # Corresponds to the JSON property `maintenancePolicyNames`
         # @return [Hash<String,String>]
         attr_accessor :maintenance_policy_names
@@ -133,29 +128,28 @@ module Google
         # @return [Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings]
         attr_accessor :maintenance_settings
       
-        # Unique name of the resource. It uses the form:
-        # `projects/`project_id`/locations/`location_id`/instances/`instance_id``
+        # Unique name of the resource. It uses the form: `projects/`project_id`/
+        # locations/`location_id`/instances/`instance_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. Custom string attributes used primarily to expose
-        # producer-specific information in monitoring dashboards.
-        # See go/get-instance-metadata.
+        # Output only. Custom string attributes used primarily to expose producer-
+        # specific information in monitoring dashboards. See go/get-instance-metadata.
         # Corresponds to the JSON property `producerMetadata`
         # @return [Hash<String,String>]
         attr_accessor :producer_metadata
       
-        # Output only. The list of data plane resources provisioned for this
-        # instance, e.g. compute VMs. See go/get-instance-metadata.
+        # Output only. The list of data plane resources provisioned for this instance, e.
+        # g. compute VMs. See go/get-instance-metadata.
         # Corresponds to the JSON property `provisionedResources`
         # @return [Array<Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>]
         attr_accessor :provisioned_resources
       
-        # Link to the SLM instance template. Only populated when updating SLM
-        # instances via SSA's Actuation service adaptor.
-        # Service producers with custom control plane (e.g. Cloud SQL) doesn't
-        # need to populate this field. Instead they should use software_versions.
+        # Link to the SLM instance template. Only populated when updating SLM instances
+        # via SSA's Actuation service adaptor. Service producers with custom control
+        # plane (e.g. Cloud SQL) doesn't need to populate this field. Instead they
+        # should use software_versions.
         # Corresponds to the JSON property `slmInstanceTemplate`
         # @return [String]
         attr_accessor :slm_instance_template
@@ -166,8 +160,8 @@ module Google
         # @return [Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata]
         attr_accessor :slo_metadata
       
-        # Software versions that are used to deploy this instance. This can be
-        # mutated by rollout services.
+        # Software versions that are used to deploy this instance. This can be mutated
+        # by rollout services.
         # Corresponds to the JSON property `softwareVersions`
         # @return [Hash<String,String>]
         attr_accessor :software_versions
@@ -178,8 +172,8 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. ID of the associated GCP tenant project.
-        # See go/get-instance-metadata.
+        # Output only. ID of the associated GCP tenant project. See go/get-instance-
+        # metadata.
         # Corresponds to the JSON property `tenantProjectId`
         # @return [String]
         attr_accessor :tenant_project_id
@@ -218,9 +212,9 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
         include Google::Apis::Core::Hashable
       
-        # Can this scheduled update be rescheduled?
-        # By default, it's true and API needs to do explicitly check whether it's
-        # set, if it's set as false explicitly, it's false
+        # Can this scheduled update be rescheduled? By default, it's true and API needs
+        # to do explicitly check whether it's set, if it's set as false explicitly, it's
+        # false
         # Corresponds to the JSON property `canReschedule`
         # @return [Boolean]
         attr_accessor :can_reschedule
@@ -231,9 +225,9 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # The rollout management policy this maintenance schedule is associated
-        # with. When doing reschedule update request, the reschedule should be
-        # against this given policy.
+        # The rollout management policy this maintenance schedule is associated with.
+        # When doing reschedule update request, the reschedule should be against this
+        # given policy.
         # Corresponds to the JSON property `rolloutManagementPolicy`
         # @return [String]
         attr_accessor :rollout_management_policy
@@ -262,8 +256,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Exclude instance from maintenance. When true, rollout service will
-        # not
-        # attempt maintenance on the instance. Rollout service will include the
+        # not attempt maintenance on the instance. Rollout service will include the
         # instance in reported rollout progress as not attempted.
         # Corresponds to the JSON property `exclude`
         # @return [Boolean]
@@ -280,18 +273,17 @@ module Google
         end
       end
       
-      # Node information for custom per-node SLO implementations.
-      # SSA does not support per-node SLO, but producers can populate per-node
-      # information in SloMetadata for custom precomputations.
-      # SSA Eligibility Exporter will emit per-node metric based on this information.
+      # Node information for custom per-node SLO implementations. SSA does not support
+      # per-node SLO, but producers can populate per-node information in SloMetadata
+      # for custom precomputations. SSA Eligibility Exporter will emit per-node metric
+      # based on this information.
       class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
         include Google::Apis::Core::Hashable
       
-        # By default node is eligible if instance is eligible.
-        # But individual node might be excluded from SLO by adding entry here.
-        # For semantic see SloMetadata.exclusions.
-        # If both instance and node level exclusions are present for time period,
-        # the node level's reason will be reported by Eligibility Exporter.
+        # By default node is eligible if instance is eligible. But individual node might
+        # be excluded from SLO by adding entry here. For semantic see SloMetadata.
+        # exclusions. If both instance and node level exclusions are present for time
+        # period, the node level's reason will be reported by Eligibility Exporter.
         # Corresponds to the JSON property `exclusions`
         # @return [Array<Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>]
         attr_accessor :exclusions
@@ -301,8 +293,7 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # The id of the node.
-        # This should be equal to SaasInstanceNode.node_id.
+        # The id of the node. This should be equal to SaasInstanceNode.node_id.
         # Corresponds to the JSON property `nodeId`
         # @return [String]
         attr_accessor :node_id
@@ -323,18 +314,17 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
         include Google::Apis::Core::Hashable
       
-        # Type of the resource. This can be either a GCP resource or a custom one
-        # (e.g. another cloud provider's VM). For GCP compute resources use singular
-        # form of the names listed in GCP compute API documentation
-        # (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with
-        # 'compute-', for example: 'compute-instance', 'compute-disk',
-        # 'compute-autoscaler'.
+        # Type of the resource. This can be either a GCP resource or a custom one (e.g.
+        # another cloud provider's VM). For GCP compute resources use singular form of
+        # the names listed in GCP compute API documentation (https://cloud.google.com/
+        # compute/docs/reference/rest/v1/), prefixed with 'compute-', for example: '
+        # compute-instance', 'compute-disk', 'compute-autoscaler'.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
       
-        # URL identifying the resource, e.g.
-        # "https://www.googleapis.com/compute/v1/projects/...)".
+        # URL identifying the resource, e.g. "https://www.googleapis.com/compute/v1/
+        # projects/...)".
         # Corresponds to the JSON property `resourceUrl`
         # @return [String]
         attr_accessor :resource_url
@@ -350,9 +340,9 @@ module Google
         end
       end
       
-      # SloEligibility is a tuple containing eligibility value: true if an instance
-      # is eligible for SLO calculation or false if it should be excluded from all
-      # SLO-related calculations along with a user-defined reason.
+      # SloEligibility is a tuple containing eligibility value: true if an instance is
+      # eligible for SLO calculation or false if it should be excluded from all SLO-
+      # related calculations along with a user-defined reason.
       class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
         include Google::Apis::Core::Hashable
       
@@ -363,8 +353,7 @@ module Google
         alias_method :eligible?, :eligible
       
         # User-defined reason for the current value of instance eligibility. Usually,
-        # this can be directly mapped to the internal state. An empty reason is
-        # allowed.
+        # this can be directly mapped to the internal state. An empty reason is allowed.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -384,28 +373,27 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
         include Google::Apis::Core::Hashable
       
-        # Exclusion duration. No restrictions on the possible values.
-        # When an ongoing operation is taking longer than initially expected,
-        # an existing entry in the exclusion list can be updated by extending the
-        # duration. This is supported by the subsystem exporting eligibility data
-        # as long as such extension is committed at least 10 minutes before the
-        # original exclusion expiration - otherwise it is possible that there will
-        # be "gaps" in the exclusion application in the exported timeseries.
+        # Exclusion duration. No restrictions on the possible values. When an ongoing
+        # operation is taking longer than initially expected, an existing entry in the
+        # exclusion list can be updated by extending the duration. This is supported by
+        # the subsystem exporting eligibility data as long as such extension is
+        # committed at least 10 minutes before the original exclusion expiration -
+        # otherwise it is possible that there will be "gaps" in the exclusion
+        # application in the exported timeseries.
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
       
-        # Human-readable reason for the exclusion.
-        # This should be a static string (e.g. "Disruptive update in progress")
-        # and should not contain dynamically generated data (e.g. instance name).
-        # Can be left empty.
+        # Human-readable reason for the exclusion. This should be a static string (e.g. "
+        # Disruptive update in progress") and should not contain dynamically generated
+        # data (e.g. instance name). Can be left empty.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
       
-        # Name of an SLI that this exclusion applies to. Can be left empty,
-        # signaling that the instance should be excluded from all SLIs defined
-        # in the service SLO configuration.
+        # Name of an SLI that this exclusion applies to. Can be left empty, signaling
+        # that the instance should be excluded from all SLIs defined in the service SLO
+        # configuration.
         # Corresponds to the JSON property `sliName`
         # @return [String]
         attr_accessor :sli_name
@@ -433,40 +421,38 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
         include Google::Apis::Core::Hashable
       
-        # SloEligibility is a tuple containing eligibility value: true if an instance
-        # is eligible for SLO calculation or false if it should be excluded from all
-        # SLO-related calculations along with a user-defined reason.
+        # SloEligibility is a tuple containing eligibility value: true if an instance is
+        # eligible for SLO calculation or false if it should be excluded from all SLO-
+        # related calculations along with a user-defined reason.
         # Corresponds to the JSON property `eligibility`
         # @return [Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility]
         attr_accessor :eligibility
       
-        # List of SLO exclusion windows. When multiple entries in the list match
-        # (matching the exclusion time-window against current time point)
-        # the exclusion reason used in the first matching entry will be published.
-        # It is not needed to include expired exclusion in this list, as only the
-        # currently applicable exclusions are taken into account by the eligibility
-        # exporting subsystem (the historical state of exclusions will be reflected
-        # in the historically produced timeseries regardless of the current state).
-        # This field can be used to mark the instance as temporary ineligible
-        # for the purpose of SLO calculation. For permanent instance SLO exclusion,
-        # use of custom instance eligibility is recommended. See 'eligibility' field
-        # below.
+        # List of SLO exclusion windows. When multiple entries in the list match (
+        # matching the exclusion time-window against current time point) the exclusion
+        # reason used in the first matching entry will be published. It is not needed to
+        # include expired exclusion in this list, as only the currently applicable
+        # exclusions are taken into account by the eligibility exporting subsystem (the
+        # historical state of exclusions will be reflected in the historically produced
+        # timeseries regardless of the current state). This field can be used to mark
+        # the instance as temporary ineligible for the purpose of SLO calculation. For
+        # permanent instance SLO exclusion, use of custom instance eligibility is
+        # recommended. See 'eligibility' field below.
         # Corresponds to the JSON property `exclusions`
         # @return [Array<Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>]
         attr_accessor :exclusions
       
-        # Optional. List of nodes.
-        # Some producers need to use per-node metadata to calculate SLO.
-        # This field allows such producers to publish per-node SLO meta data,
-        # which will be consumed by SSA Eligibility Exporter and published in the
+        # Optional. List of nodes. Some producers need to use per-node metadata to
+        # calculate SLO. This field allows such producers to publish per-node SLO meta
+        # data, which will be consumed by SSA Eligibility Exporter and published in the
         # form of per node metric to Monarch.
         # Corresponds to the JSON property `nodes`
         # @return [Array<Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>]
         attr_accessor :nodes
       
         # Name of the SLO tier the Instance belongs to. This name will be expected to
-        # match the tiers specified in the service SLO configuration.
-        # Field is mandatory and must not be empty.
+        # match the tiers specified in the service SLO configuration. Field is mandatory
+        # and must not be empty.
         # Corresponds to the JSON property `tier`
         # @return [String]
         attr_accessor :tier
@@ -504,8 +490,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # File system shares on the instance.
-        # For this version, only a single file share is supported.
+        # File system shares on the instance. For this version, only a single file share
+        # is supported.
         # Corresponds to the JSON property `fileShares`
         # @return [Array<Google::Apis::FileV1beta1::FileShareConfig>]
         attr_accessor :file_shares
@@ -515,14 +501,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The resource name of the instance, in the format
-        # projects/`project_id`/locations/`location_id`/instances/`instance_id`.
+        # Output only. The resource name of the instance, in the format projects/`
+        # project_id`/locations/`location_id`/instances/`instance_id`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # VPC networks to which the instance is connected.
-        # For this version, only a single network is supported.
+        # VPC networks to which the instance is connected. For this version, only a
+        # single network is supported.
         # Corresponds to the JSON property `networks`
         # @return [Array<Google::Apis::FileV1beta1::NetworkConfig>]
         attr_accessor :networks
@@ -565,17 +551,17 @@ module Google
       class ListInstancesResponse
         include Google::Apis::Core::Hashable
       
-        # A list of instances in the project for the specified location.
-        # If the `location` value in the request is "-", the response contains a list
-        # of instances from all locations. If any location is unreachable, the
-        # response will only return instances in reachable locations and the
-        # "unreachable" field will be populated with a list of unreachable locations.
+        # A list of instances in the project for the specified location. If the `
+        # location` value in the request is "-", the response contains a list of
+        # instances from all locations. If any location is unreachable, the response
+        # will only return instances in reachable locations and the "unreachable" field
+        # will be populated with a list of unreachable locations.
         # Corresponds to the JSON property `instances`
         # @return [Array<Google::Apis::FileV1beta1::Instance>]
         attr_accessor :instances
       
-        # The token you can use to retrieve the next page of results. Not returned
-        # if there are no more results in the list.
+        # The token you can use to retrieve the next page of results. Not returned if
+        # there are no more results in the list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -651,14 +637,14 @@ module Google
       class Location
         include Google::Apis::Core::Hashable
       
-        # The friendly name for this location, typically a nearby city name.
-        # For example, "Tokyo".
+        # The friendly name for this location, typically a nearby city name. For example,
+        # "Tokyo".
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Cross-service attributes for the location. For example
-        # `"cloud.googleapis.com/region": "us-east1"`
+        # Cross-service attributes for the location. For example `"cloud.googleapis.com/
+        # region": "us-east1"`
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -674,8 +660,8 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # Resource name for the location, which may vary between implementations.
-        # For example: `"projects/example-project/locations/us-east1"`
+        # Resource name for the location, which may vary between implementations. For
+        # example: `"projects/example-project/locations/us-east1"`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -698,34 +684,31 @@ module Google
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. IPv4 addresses in the format
-        # `octet 1`.`octet 2`.`octet 3`.`octet 4` or IPv6 addresses in the format
-        # `block 1`:`block 2`:`block 3`:`block 4`:`block 5`:`block 6`:`block
-        # 7`:`block 8`.
+        # Output only. IPv4 addresses in the format `octet 1`.`octet 2`.`octet 3`.`octet
+        # 4` or IPv6 addresses in the format `block 1`:`block 2`:`block 3`:`block 4`:`
+        # block 5`:`block 6`:`block 7`:`block 8`.
         # Corresponds to the JSON property `ipAddresses`
         # @return [Array<String>]
         attr_accessor :ip_addresses
       
-        # Internet protocol versions for which the instance has IP addresses
-        # assigned. For this version, only MODE_IPV4 is supported.
+        # Internet protocol versions for which the instance has IP addresses assigned.
+        # For this version, only MODE_IPV4 is supported.
         # Corresponds to the JSON property `modes`
         # @return [Array<String>]
         attr_accessor :modes
       
-        # The name of the Google Compute Engine
-        # [VPC network](/compute/docs/networks-and-firewalls#networks) to which the
-        # instance is connected.
+        # The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-
+        # firewalls#networks) to which the instance is connected.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # A /29 CIDR block for Basic or a /23 CIDR block for High Scale in one of the
-        # [internal IP address
-        # ranges](https://www.arin.net/knowledge/address_filters.html) that
-        # identifies the range of IP addresses reserved for this instance. For
-        # example, 10.0.0.0/29 or 192.168.0.0/23. The range you specify can't overlap
-        # with either existing subnets or assigned IP address ranges for other Cloud
-        # Filestore instances in the selected VPC network.
+        # A /29 CIDR block for Basic or a /23 CIDR block for High Scale in one of the [
+        # internal IP address ranges](https://www.arin.net/knowledge/address_filters.
+        # html) that identifies the range of IP addresses reserved for this instance.
+        # For example, 10.0.0.0/29 or 192.168.0.0/23. The range you specify can't
+        # overlap with either existing subnets or assigned IP address ranges for other
+        # Cloud Filestore instances in the selected VPC network.
         # Corresponds to the JSON property `reservedIpRange`
         # @return [String]
         attr_accessor :reserved_ip_range
@@ -747,44 +730,39 @@ module Google
       class NfsExportOptions
         include Google::Apis::Core::Hashable
       
-        # Either READ_ONLY, for allowing only read requests on the exported
-        # directory, or READ_WRITE, for allowing both read and write requests.
-        # The default is READ_WRITE.
+        # Either READ_ONLY, for allowing only read requests on the exported directory,
+        # or READ_WRITE, for allowing both read and write requests. The default is
+        # READ_WRITE.
         # Corresponds to the JSON property `accessMode`
         # @return [String]
         attr_accessor :access_mode
       
-        # An integer representing the anonymous group id with a default value of
-        # 65534.
-        # Anon_gid may only be set with squash_mode of ROOT_SQUASH.  An error will be
+        # An integer representing the anonymous group id with a default value of 65534.
+        # Anon_gid may only be set with squash_mode of ROOT_SQUASH. An error will be
         # returned if this field is specified for other squash_mode settings.
         # Corresponds to the JSON property `anonGid`
         # @return [Fixnum]
         attr_accessor :anon_gid
       
-        # An integer representing the anonymous user id with a default value of
-        # 65534.
-        # Anon_uid may only be set with squash_mode of ROOT_SQUASH.  An error will be
+        # An integer representing the anonymous user id with a default value of 65534.
+        # Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be
         # returned if this field is specified for other squash_mode settings.
         # Corresponds to the JSON property `anonUid`
         # @return [Fixnum]
         attr_accessor :anon_uid
       
-        # List of either an IPv4 addresses in the format
-        # `octet 1`.`octet 2`.`octet 3`.`octet 4` or CIDR ranges in the format
-        # `octet 1`.`octet 2`.`octet 3`.`octet 4`/`mask size` which may mount the
-        # file share.
-        # Overlapping IP ranges are not allowed, both within and across
-        # NfsExportOptions. An error will be returned.
+        # List of either an IPv4 addresses in the format `octet 1`.`octet 2`.`octet 3`.`
+        # octet 4` or CIDR ranges in the format `octet 1`.`octet 2`.`octet 3`.`octet 4`/`
+        # mask size` which may mount the file share. Overlapping IP ranges are not
+        # allowed, both within and across NfsExportOptions. An error will be returned.
         # The limit is 64 IP ranges/addresses for each FileShareConfig among all
         # NfsExportOptions.
         # Corresponds to the JSON property `ipRanges`
         # @return [Array<String>]
         attr_accessor :ip_ranges
       
-        # Either NO_ROOT_SQUASH, for allowing root access on the exported directory,
-        # or ROOT_SQUASH, for not allowing root access. The default is
-        # NO_ROOT_SQUASH.
+        # Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or
+        # ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
         # Corresponds to the JSON property `squashMode`
         # @return [String]
         attr_accessor :squash_mode
@@ -808,47 +786,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::FileV1beta1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -876,10 +852,10 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # [Output only] Identifies whether the user has requested cancellation
-        # of the operation. Operations that have successfully been cancelled
-        # have Operation.error value with a google.rpc.Status.code of 1,
-        # corresponding to `Code.CANCELLED`.
+        # [Output only] Identifies whether the user has requested cancellation of the
+        # operation. Operations that have successfully been cancelled have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
         # Corresponds to the JSON property `cancelRequested`
         # @return [Boolean]
         attr_accessor :cancel_requested
@@ -926,12 +902,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -940,15 +916,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message

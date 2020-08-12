@@ -47,14 +47,13 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a feed in a parent project/folder/organization to listen to its
-        # asset updates.
+        # Creates a feed in a parent project/folder/organization to listen to its asset
+        # updates.
         # @param [String] parent
-        #   Required. The name of the project/folder/organization where this feed
-        #   should be created in. It can only be an organization number (such as
-        #   "organizations/123"), a folder number (such as "folders/123"), a project ID
-        #   (such as "projects/my-project-id")", or a project number (such as
-        #   "projects/12345").
+        #   Required. The name of the project/folder/organization where this feed should
+        #   be created in. It can only be an organization number (such as "organizations/
+        #   123"), a folder number (such as "folders/123"), a project ID (such as "
+        #   projects/my-project-id")", or a project number (such as "projects/12345").
         # @param [Google::Apis::CloudassetV1::CreateFeedRequest] create_feed_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -87,10 +86,9 @@ module Google
         
         # Deletes an asset feed.
         # @param [String] name
-        #   Required. The name of the feed and it must be in the format of:
-        #   projects/project_number/feeds/feed_id
-        #   folders/folder_number/feeds/feed_id
-        #   organizations/organization_number/feeds/feed_id
+        #   Required. The name of the feed and it must be in the format of: projects/
+        #   project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/
+        #   organization_number/feeds/feed_id
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -120,10 +118,9 @@ module Google
         
         # Gets details about an asset feed.
         # @param [String] name
-        #   Required. The name of the Feed and it must be in the format of:
-        #   projects/project_number/feeds/feed_id
-        #   folders/folder_number/feeds/feed_id
-        #   organizations/organization_number/feeds/feed_id
+        #   Required. The name of the Feed and it must be in the format of: projects/
+        #   project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/
+        #   organization_number/feeds/feed_id
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -153,9 +150,9 @@ module Google
         
         # Lists all asset feeds in a parent project/folder/organization.
         # @param [String] parent
-        #   Required. The parent project/folder/organization whose feeds are to be
-        #   listed. It can only be using project/folder/organization number (such as
-        #   "folders/12345")", or a project ID (such as "projects/my-project-id").
+        #   Required. The parent project/folder/organization whose feeds are to be listed.
+        #   It can only be using project/folder/organization number (such as "folders/
+        #   12345")", or a project ID (such as "projects/my-project-id").
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -185,12 +182,11 @@ module Google
         
         # Updates an asset feed configuration.
         # @param [String] name
-        #   Required. The format will be
-        #   projects/`project_number`/feeds/`client-assigned_feed_identifier` or
-        #   folders/`folder_number`/feeds/`client-assigned_feed_identifier` or
-        #   organizations/`organization_number`/feeds/`client-assigned_feed_identifier`
-        #   The client-assigned feed identifier must be unique within the parent
-        #   project/folder/organization.
+        #   Required. The format will be projects/`project_number`/feeds/`client-
+        #   assigned_feed_identifier` or folders/`folder_number`/feeds/`client-
+        #   assigned_feed_identifier` or organizations/`organization_number`/feeds/`client-
+        #   assigned_feed_identifier` The client-assigned feed identifier must be unique
+        #   within the parent project/folder/organization.
         # @param [Google::Apis::CloudassetV1::UpdateFeedRequest] update_feed_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -221,9 +217,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -253,25 +248,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Batch gets the update history of assets that overlap a time window.
-        # For IAM_POLICY content, this API outputs history when the asset and its
-        # attached IAM POLICY both exist. This can create gaps in the output history.
-        # Otherwise, this API outputs history with asset in both non-delete or
-        # deleted status.
-        # If a specified asset does not exist, this API returns an INVALID_ARGUMENT
-        # error.
+        # Batch gets the update history of assets that overlap a time window. For
+        # IAM_POLICY content, this API outputs history when the asset and its attached
+        # IAM POLICY both exist. This can create gaps in the output history. Otherwise,
+        # this API outputs history with asset in both non-delete or deleted status. If a
+        # specified asset does not exist, this API returns an INVALID_ARGUMENT error.
         # @param [String] parent
-        #   Required. The relative name of the root asset. It can only be an
-        #   organization number (such as "organizations/123"), a project ID (such as
-        #   "projects/my-project-id")", or a project number (such as "projects/12345").
+        #   Required. The relative name of the root asset. It can only be an organization
+        #   number (such as "organizations/123"), a project ID (such as "projects/my-
+        #   project-id")", or a project number (such as "projects/12345").
         # @param [Array<String>, String] asset_names
-        #   A list of the full names of the assets.
-        #   See: https://cloud.google.com/asset-inventory/docs/resource-name-format
-        #   Example:
-        #   `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/
-        #   instance1`.
-        #   The request becomes a no-op if the asset name list is empty, and the max
-        #   size of the asset name list is 100 in one request.
+        #   A list of the full names of the assets. See: https://cloud.google.com/asset-
+        #   inventory/docs/resource-name-format Example: `//compute.googleapis.com/
+        #   projects/my_project_123/zones/zone1/instances/instance1`. The request becomes
+        #   a no-op if the asset name list is empty, and the max size of the asset name
+        #   list is 100 in one request.
         # @param [String] content_type
         #   Optional. The content type.
         # @param [String] read_time_window_end_time
@@ -310,21 +301,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports assets with time and resource types to a given Cloud Storage
-        # location/BigQuery table. For Cloud Storage location destinations, the
-        # output format is newline-delimited JSON. Each line represents a
-        # google.cloud.asset.v1.Asset in the JSON format; for BigQuery table
-        # destinations, the output table stores the fields in asset proto as columns.
-        # This API implements the google.longrunning.Operation API
-        # , which allows you to keep track of the export. We recommend intervals of
-        # at least 2 seconds with exponential retry to poll the export operation
-        # result. For regular-size resource parent, the export operation usually
-        # finishes within 5 minutes.
+        # Exports assets with time and resource types to a given Cloud Storage location/
+        # BigQuery table. For Cloud Storage location destinations, the output format is
+        # newline-delimited JSON. Each line represents a google.cloud.asset.v1.Asset in
+        # the JSON format; for BigQuery table destinations, the output table stores the
+        # fields in asset proto as columns. This API implements the google.longrunning.
+        # Operation API , which allows you to keep track of the export. We recommend
+        # intervals of at least 2 seconds with exponential retry to poll the export
+        # operation result. For regular-size resource parent, the export operation
+        # usually finishes within 5 minutes.
         # @param [String] parent
         #   Required. The relative name of the root asset. This can only be an
-        #   organization number (such as "organizations/123"), a project ID (such as
-        #   "projects/my-project-id"), or a project number (such as "projects/12345"),
-        #   or a folder number (such as "folders/123").
+        #   organization number (such as "organizations/123"), a project ID (such as "
+        #   projects/my-project-id"), or a project number (such as "projects/12345"), or a
+        #   folder number (such as "folders/123").
         # @param [Google::Apis::CloudassetV1::ExportAssetsRequest] export_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -356,60 +346,47 @@ module Google
         end
         
         # Searches all IAM policies within the specified scope, such as a project,
-        # folder, or organization. The caller must be granted the
-        # `cloudasset.assets.searchAllIamPolicies` permission on the desired scope,
-        # otherwise the request will be rejected.
+        # folder, or organization. The caller must be granted the `cloudasset.assets.
+        # searchAllIamPolicies` permission on the desired scope, otherwise the request
+        # will be rejected.
         # @param [String] scope
         #   Required. A scope can be a project, a folder, or an organization. The search
-        #   is
-        #   limited to the IAM policies within the `scope`. The caller must be granted
-        #   the
-        #   [`cloudasset.assets.searchAllIamPolicies`](http://cloud.google.com/asset-
-        #   inventory/docs/access-control#required_permissions)
-        #   permission on the desired scope.
-        #   The allowed values are:
-        #   * projects/`PROJECT_ID` (e.g., "projects/foo-bar")
-        #   * projects/`PROJECT_NUMBER` (e.g., "projects/12345678")
-        #   * folders/`FOLDER_NUMBER` (e.g., "folders/1234567")
-        #   * organizations/`ORGANIZATION_NUMBER` (e.g., "organizations/123456")
+        #   is limited to the IAM policies within the `scope`. The caller must be granted
+        #   the [`cloudasset.assets.searchAllIamPolicies`](http://cloud.google.com/asset-
+        #   inventory/docs/access-control#required_permissions) permission on the desired
+        #   scope. The allowed values are: * projects/`PROJECT_ID` (e.g., "projects/foo-
+        #   bar") * projects/`PROJECT_NUMBER` (e.g., "projects/12345678") * folders/`
+        #   FOLDER_NUMBER` (e.g., "folders/1234567") * organizations/`ORGANIZATION_NUMBER`
+        #   (e.g., "organizations/123456")
         # @param [Fixnum] page_size
         #   Optional. The page size for search result pagination. Page size is capped at
-        #   500 even
-        #   if a larger value is given. If set to zero, server will pick an appropriate
-        #   default. Returned results may be fewer than requested. When this happens,
-        #   there could be more results as long as `next_page_token` is returned.
+        #   500 even if a larger value is given. If set to zero, server will pick an
+        #   appropriate default. Returned results may be fewer than requested. When this
+        #   happens, there could be more results as long as `next_page_token` is returned.
         # @param [String] page_token
         #   Optional. If present, retrieve the next batch of results from the preceding
-        #   call to
-        #   this method. `page_token` must be the value of `next_page_token` from the
-        #   previous response. The values of all other method parameters must be
+        #   call to this method. `page_token` must be the value of `next_page_token` from
+        #   the previous response. The values of all other method parameters must be
         #   identical to those in the previous call.
         # @param [String] query
-        #   Optional. The query statement. See [how to construct a
-        #   query](https://cloud.google.com/asset-inventory/docs/searching-iam-policies#
-        #   how_to_construct_a_query)
-        #   for more information. If not specified or empty, it will search all the
-        #   IAM policies within the specified `scope`.
-        #   Examples:
-        #   * `policy : "amy@gmail.com"` to find IAM policy bindings that specify user
-        #   "amy@gmail.com".
-        #   * `policy : "roles/compute.admin"` to find IAM policy bindings that specify
-        #   the Compute Admin role.
-        #   * `policy.role.permissions : "storage.buckets.update"` to find IAM policy
-        #   bindings that specify a role containing "storage.buckets.update"
-        #   permission. Note that if callers don't have `iam.roles.get` access to a
-        #   role's included permissions, policy bindings that specify this role will
-        #   be dropped from the search results.
-        #   * `resource : "organizations/123456"` to find IAM policy bindings
-        #   that are set on "organizations/123456".
-        #   * `"Important"` to find IAM policy bindings that contain "Important" as a
-        #   word in any of the searchable fields (except for the included
-        #   permissions).
-        #   * `"*por*"` to find IAM policy bindings which contain "por" as a substring
-        #   in any of the searchable fields (except for the included permissions).
-        #   * `(resource : ("instance1" OR "instance2") AND policy : "amy")` to find
-        #   IAM policy bindings that are set on resources "instance1" or
-        #   "instance2" and also specify user "amy".
+        #   Optional. The query statement. See [how to construct a query](https://cloud.
+        #   google.com/asset-inventory/docs/searching-iam-policies#
+        #   how_to_construct_a_query) for more information. If not specified or empty, it
+        #   will search all the IAM policies within the specified `scope`. Examples: * `
+        #   policy:amy@gmail.com` to find IAM policy bindings that specify user "amy@gmail.
+        #   com". * `policy:roles/compute.admin` to find IAM policy bindings that specify
+        #   the Compute Admin role. * `policy.role.permissions:storage.buckets.update` to
+        #   find IAM policy bindings that specify a role containing "storage.buckets.
+        #   update" permission. Note that if callers don't have `iam.roles.get` access to
+        #   a role's included permissions, policy bindings that specify this role will be
+        #   dropped from the search results. * `resource:organizations/123456` to find IAM
+        #   policy bindings that are set on "organizations/123456". * `Important` to find
+        #   IAM policy bindings that contain "Important" as a word in any of the
+        #   searchable fields (except for the included permissions). * `*por*` to find IAM
+        #   policy bindings that contain "por" as a substring in any of the searchable
+        #   fields (except for the included permissions). * `resource:(instance1 OR
+        #   instance2) policy:amy` to find IAM policy bindings that are set on resources "
+        #   instance1" or "instance2" and also specify user "amy".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -441,83 +418,64 @@ module Google
         end
         
         # Searches all Cloud resources within the specified scope, such as a project,
-        # folder, or organization. The caller must be granted the
-        # `cloudasset.assets.searchAllResources` permission on the desired scope,
-        # otherwise the request will be rejected.
+        # folder, or organization. The caller must be granted the `cloudasset.assets.
+        # searchAllResources` permission on the desired scope, otherwise the request
+        # will be rejected.
         # @param [String] scope
         #   Required. A scope can be a project, a folder, or an organization. The search
-        #   is
-        #   limited to the resources within the `scope`. The caller must be granted the
+        #   is limited to the resources within the `scope`. The caller must be granted the
         #   [`cloudasset.assets.searchAllResources`](http://cloud.google.com/asset-
-        #   inventory/docs/access-control#required_permissions)
-        #   permission on the desired scope.
-        #   The allowed values are:
-        #   * projects/`PROJECT_ID` (e.g., "projects/foo-bar")
-        #   * projects/`PROJECT_NUMBER` (e.g., "projects/12345678")
-        #   * folders/`FOLDER_NUMBER` (e.g., "folders/1234567")
-        #   * organizations/`ORGANIZATION_NUMBER` (e.g., "organizations/123456")
+        #   inventory/docs/access-control#required_permissions) permission on the desired
+        #   scope. The allowed values are: * projects/`PROJECT_ID` (e.g., "projects/foo-
+        #   bar") * projects/`PROJECT_NUMBER` (e.g., "projects/12345678") * folders/`
+        #   FOLDER_NUMBER` (e.g., "folders/1234567") * organizations/`ORGANIZATION_NUMBER`
+        #   (e.g., "organizations/123456")
         # @param [Array<String>, String] asset_types
         #   Optional. A list of asset types that this request searches for. If empty, it
-        #   will
-        #   search all the [searchable asset
-        #   types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#
-        #   searchable_asset_types).
+        #   will search all the [searchable asset types](https://cloud.google.com/asset-
+        #   inventory/docs/supported-asset-types#searchable_asset_types).
         # @param [String] order_by
         #   Optional. A comma separated list of fields specifying the sorting order of the
-        #   results. The default order is ascending. Add " DESC" after the field name
-        #   to indicate descending order. Redundant space characters are ignored.
-        #   Example: "location DESC, name". Only string fields in the response are
-        #   sortable, including `name`, `displayName`, `description`, `location`. All
-        #   the other fields such as repeated fields (e.g., `networkTags`), map
-        #   fields (e.g., `labels`) and struct fields (e.g., `additionalAttributes`)
-        #   are not supported.
+        #   results. The default order is ascending. Add " DESC" after the field name to
+        #   indicate descending order. Redundant space characters are ignored. Example: "
+        #   location DESC, name". Only string fields in the response are sortable,
+        #   including `name`, `displayName`, `description`, `location`. All the other
+        #   fields such as repeated fields (e.g., `networkTags`), map fields (e.g., `
+        #   labels`) and struct fields (e.g., `additionalAttributes`) are not supported.
         # @param [Fixnum] page_size
         #   Optional. The page size for search result pagination. Page size is capped at
-        #   500 even
-        #   if a larger value is given. If set to zero, server will pick an appropriate
-        #   default. Returned results may be fewer than requested. When this happens,
-        #   there could be more results as long as `next_page_token` is returned.
+        #   500 even if a larger value is given. If set to zero, server will pick an
+        #   appropriate default. Returned results may be fewer than requested. When this
+        #   happens, there could be more results as long as `next_page_token` is returned.
         # @param [String] page_token
         #   Optional. If present, then retrieve the next batch of results from the
-        #   preceding call
-        #   to this method. `page_token` must be the value of `next_page_token` from
-        #   the previous response. The values of all other method parameters, must be
-        #   identical to those in the previous call.
+        #   preceding call to this method. `page_token` must be the value of `
+        #   next_page_token` from the previous response. The values of all other method
+        #   parameters, must be identical to those in the previous call.
         # @param [String] query
-        #   Optional. The query statement. See [how to construct a
-        #   query](http://cloud.google.com/asset-inventory/docs/searching-resources#
-        #   how_to_construct_a_query)
+        #   Optional. The query statement. See [how to construct a query](http://cloud.
+        #   google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query)
         #   for more information. If not specified or empty, it will search all the
-        #   resources within the specified `scope`. Note that the query string is
-        #   compared against each Cloud IAM policy binding, including its members,
-        #   roles, and Cloud IAM conditions. The returned Cloud IAM policies will only
-        #   contain the bindings that match your query. To learn more about the IAM
-        #   policy structure, see [IAM policy
-        #   doc](https://cloud.google.com/iam/docs/policies#structure).
-        #   Examples:
-        #   * `name : "Important"` to find Cloud resources whose name contains
-        #   "Important" as a word.
-        #   * `displayName : "Impor*"` to find Cloud resources whose display name
-        #   contains "Impor" as a prefix.
-        #   * `description : "*por*"` to find Cloud resources whose description
-        #   contains "por" as a substring.
-        #   * `location : "us-west*"` to find Cloud resources whose location is
-        #   prefixed with "us-west".
-        #   * `labels : "prod"` to find Cloud resources whose labels contain "prod" as
-        #   a key or value.
-        #   * `labels.env : "prod"` to find Cloud resources which have a label "env"
-        #   and its value is "prod".
-        #   * `labels.env : *` to find Cloud resources which have a label "env".
-        #   * `"Important"` to find Cloud resources which contain "Important" as a word
-        #   in any of the searchable fields.
-        #   * `"Impor*"` to find Cloud resources which contain "Impor" as a prefix
-        #   in any of the searchable fields.
-        #   * `"*por*"` to find Cloud resources which contain "por" as a substring in
-        #   any of the searchable fields.
-        #   * `("Important" AND location : ("us-west1" OR "global"))` to find Cloud
-        #   resources which contain "Important" as a word in any of the searchable
-        #   fields and are also located in the "us-west1" region or the "global"
-        #   location.
+        #   resources within the specified `scope`. Note that the query string is compared
+        #   against each Cloud IAM policy binding, including its members, roles, and Cloud
+        #   IAM conditions. The returned Cloud IAM policies will only contain the bindings
+        #   that match your query. To learn more about the IAM policy structure, see [IAM
+        #   policy doc](https://cloud.google.com/iam/docs/policies#structure). Examples: *
+        #   `name:Important` to find Cloud resources whose name contains "Important" as a
+        #   word. * `displayName:Impor*` to find Cloud resources whose display name
+        #   contains "Impor" as a prefix. * `description:*por*` to find Cloud resources
+        #   whose description contains "por" as a substring. * `location:us-west*` to find
+        #   Cloud resources whose location is prefixed with "us-west". * `labels:prod` to
+        #   find Cloud resources whose labels contain "prod" as a key or value. * `labels.
+        #   env:prod` to find Cloud resources that have a label "env" and its value is "
+        #   prod". * `labels.env:*` to find Cloud resources that have a label "env". * `
+        #   Important` to find Cloud resources that contain "Important" as a word in any
+        #   of the searchable fields. * `Impor*` to find Cloud resources that contain "
+        #   Impor" as a prefix in any of the searchable fields. * `*por*` to find Cloud
+        #   resources that contain "por" as a substring in any of the searchable fields. *
+        #   `Important location:(us-west1 OR global)` to find Cloud resources that contain
+        #   "Important" as a word in any of the searchable fields and are also located in
+        #   the "us-west1" region or the "global" location.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

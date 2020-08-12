@@ -119,17 +119,16 @@ module Google
         
         # Creates a namespace, and returns the new Namespace.
         # @param [String] parent
-        #   Required. The resource name of the project and location the namespace
-        #   will be created in.
+        #   Required. The resource name of the project and location the namespace will be
+        #   created in.
         # @param [Google::Apis::ServicedirectoryV1beta1::Namespace] namespace_object
         # @param [String] namespace_id
         #   Required. The Resource ID must be 1-63 characters long, and comply with
-        #   <a href="https://www.ietf.org/rfc/rfc1035.txt" target="_blank">RFC1035</a>.
-        #   Specifically, the name must be 1-63 characters long and match the regular
-        #   expression `[a-z](?:[-a-z0-9]`0,61`[a-z0-9])?` which means the first
-        #   character must be a lowercase letter, and all following characters must
-        #   be a dash, lowercase letter, or digit, except the last character, which
-        #   cannot be a dash.
+        #   RFC1035. Specifically, the name must be 1-63 characters long and match the
+        #   regular expression `[a-z](?:[-a-z0-9]`0,61`[a-z0-9])?` which means the first
+        #   character must be a lowercase letter, and all following characters must be a
+        #   dash, lowercase letter, or digit, except the last character, which cannot be a
+        #   dash.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -160,8 +159,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a namespace. This also deletes all services and endpoints in
-        # the namespace.
+        # Deletes a namespace. This also deletes all services and endpoints in the
+        # namespace.
         # @param [String] name
         #   Required. The name of the namespace to delete.
         # @param [String] fields
@@ -223,8 +222,8 @@ module Google
         
         # Gets the IAM Policy for a resource (namespace or service only).
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ServicedirectoryV1beta1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -258,39 +257,27 @@ module Google
         # Lists all namespaces.
         # @param [String] parent
         #   Required. The resource name of the project and location whose namespaces we'd
-        #   like to
-        #   list.
+        #   like to list.
         # @param [String] filter
-        #   Optional. The filter to list result by.
-        #   General filter string syntax:
-        #   <field> <operator> <value> (<logical connector>)
-        #   <field> can be "name", or "labels.<key>" for map field.
-        #   <operator> can be "<, >, <=, >=, !=, =, :". Of which ":" means HAS, and
-        #   is roughly the same as "=".
-        #   <value> must be the same data type as field.
-        #   <logical connector> can be "AND, OR, NOT".
-        #   Examples of valid filters:
-        #   * "labels.owner" returns Namespaces that have a label with the key "owner"
-        #   this is the same as "labels:owner".
-        #   * "labels.protocol=gRPC" returns Namespaces that have key/value
-        #   "protocol=gRPC".
-        #   * "name>projects/my-project/locations/us-east/namespaces/namespace-c"
-        #   returns Namespaces that have name that is alphabetically later than the
-        #   string, so "namespace-e" will be returned but "namespace-a" will not be.
-        #   * "labels.owner!=sd AND labels.foo=bar" returns Namespaces that have
-        #   "owner" in label key but value is not "sd" AND have key/value foo=bar.
-        #   * "doesnotexist.foo=bar" returns an empty list. Note that Namespace doesn't
-        #   have a field called "doesnotexist". Since the filter does not match any
-        #   Namespaces, it returns no results.
+        #   Optional. The filter to list result by. General filter string syntax: () can
+        #   be "name", or "labels." for map field. can be "<, >, <=, >=, !=, =, :". Of
+        #   which ":" means HAS, and is roughly the same as "=". must be the same data
+        #   type as field. can be "AND, OR, NOT". Examples of valid filters: * "labels.
+        #   owner" returns Namespaces that have a label with the key "owner" this is the
+        #   same as "labels:owner". * "labels.protocol=gRPC" returns Namespaces that have
+        #   key/value "protocol=gRPC". * "name>projects/my-project/locations/us-east/
+        #   namespaces/namespace-c" returns Namespaces that have name that is
+        #   alphabetically later than the string, so "namespace-e" will be returned but "
+        #   namespace-a" will not be. * "labels.owner!=sd AND labels.foo=bar" returns
+        #   Namespaces that have "owner" in label key but value is not "sd" AND have key/
+        #   value foo=bar. * "doesnotexist.foo=bar" returns an empty list. Note that
+        #   Namespace doesn't have a field called "doesnotexist". Since the filter does
+        #   not match any Namespaces, it returns no results.
         # @param [String] order_by
-        #   Optional. The order to list result by.
-        #   General order by string syntax:
-        #   <field> (<asc|desc>) (,)
-        #   <field> allows values `"name"`
-        #   <asc/desc> ascending or descending order by <field>. If this is left
-        #   blank, "asc" is used.
-        #   Note that an empty order_by string result in default order, which is order
-        #   by name in ascending order.
+        #   Optional. The order to list result by. General order by string syntax: () (,)
+        #   allows values `"name"` ascending or descending order by . If this is left
+        #   blank, "asc" is used. Note that an empty order_by string result in default
+        #   order, which is order by name in ascending order.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return.
         # @param [String] page_token
@@ -329,8 +316,8 @@ module Google
         
         # Updates a namespace.
         # @param [String] name
-        #   Immutable. The resource name for the namespace in the format
-        #   'projects/*/locations/*/namespaces/*'.
+        #   Immutable. The resource name for the namespace in the format 'projects/*/
+        #   locations/*/namespaces/*'.
         # @param [Google::Apis::ServicedirectoryV1beta1::Namespace] namespace_object
         # @param [String] update_mask
         #   Required. List of fields to be updated in this request.
@@ -366,8 +353,8 @@ module Google
         
         # Sets the IAM Policy for a resource (namespace or service only).
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ServicedirectoryV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -400,8 +387,8 @@ module Google
         
         # Tests IAM permissions for a resource (namespace or service only).
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ServicedirectoryV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -438,12 +425,11 @@ module Google
         # @param [Google::Apis::ServicedirectoryV1beta1::Service] service_object
         # @param [String] service_id
         #   Required. The Resource ID must be 1-63 characters long, and comply with
-        #   <a href="https://www.ietf.org/rfc/rfc1035.txt" target="_blank">RFC1035</a>.
-        #   Specifically, the name must be 1-63 characters long and match the regular
-        #   expression `[a-z](?:[-a-z0-9]`0,61`[a-z0-9])?` which means the first
-        #   character must be a lowercase letter, and all following characters must
-        #   be a dash, lowercase letter, or digit, except the last character, which
-        #   cannot be a dash.
+        #   RFC1035. Specifically, the name must be 1-63 characters long and match the
+        #   regular expression `[a-z](?:[-a-z0-9]`0,61`[a-z0-9])?` which means the first
+        #   character must be a lowercase letter, and all following characters must be a
+        #   dash, lowercase letter, or digit, except the last character, which cannot be a
+        #   dash.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -474,8 +460,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a service. This also deletes all endpoints associated with
-        # the service.
+        # Deletes a service. This also deletes all endpoints associated with the service.
         # @param [String] name
         #   Required. The name of the service to delete.
         # @param [String] fields
@@ -537,8 +522,8 @@ module Google
         
         # Gets the IAM Policy for a resource (namespace or service only).
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ServicedirectoryV1beta1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -571,38 +556,29 @@ module Google
         
         # Lists all services belonging to a namespace.
         # @param [String] parent
-        #   Required. The resource name of the namespace whose services we'd
-        #   like to list.
+        #   Required. The resource name of the namespace whose services we'd like to list.
         # @param [String] filter
-        #   Optional. The filter to list result by.
-        #   General filter string syntax:
-        #   <field> <operator> <value> (<logical connector>)
-        #   <field> can be "name", or "metadata.<key>" for map field.
-        #   <operator> can be "<, >, <=, >=, !=, =, :". Of which ":" means HAS, and
-        #   is roughly the same as "=".
-        #   <value> must be the same data type as field.
-        #   <logical connector> can be "AND, OR, NOT".
-        #   Examples of valid filters:
-        #   * "metadata.owner" returns Services that have a label with the key "owner"
-        #   this is the same as "metadata:owner".
-        #   * "metadata.protocol=gRPC" returns Services that have key/value
-        #   "protocol=gRPC".
-        #   * "name>projects/my-project/locations/us-east/namespaces/my-namespace/services/
-        #   service-c"
-        #   returns Services that have name that is alphabetically later than the
-        #   string, so "service-e" will be returned but "service-a" will not be.
-        #   * "metadata.owner!=sd AND metadata.foo=bar" returns Services that have
-        #   "owner" in label key but value is not "sd" AND have key/value foo=bar.
-        #   * "doesnotexist.foo=bar" returns an empty list. Note that Service doesn't
-        #   have a field called "doesnotexist". Since the filter does not match any
-        #   Services, it returns no results.
+        #   Optional. The filter to list result by. General filter string syntax: () can
+        #   be "name", or "metadata." for map field. can be "<, >, <=, >=, !=, =, :". Of
+        #   which ":" means HAS, and is roughly the same as "=". must be the same data
+        #   type as field. can be "AND, OR, NOT". Examples of valid filters: * "metadata.
+        #   owner" returns Services that have a label with the key "owner" this is the
+        #   same as "metadata:owner". * "metadata.protocol=gRPC" returns Services that
+        #   have key/value "protocol=gRPC". * "name>projects/my-project/locations/us-east/
+        #   namespaces/my-namespace/services/service-c" returns Services that have name
+        #   that is alphabetically later than the string, so "service-e" will be returned
+        #   but "service-a" will not be. * "metadata.owner!=sd AND metadata.foo=bar"
+        #   returns Services that have "owner" in label key but value is not "sd" AND have
+        #   key/value foo=bar. * "doesnotexist.foo=bar" returns an empty list. Note that
+        #   Service doesn't have a field called "doesnotexist". Since the filter does not
+        #   match any Services, it returns no results.
         # @param [String] order_by
         #   Optional. The order to list result by.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return.
         # @param [String] page_token
-        #   Optional. The next_page_token value returned from a previous List request,
-        #   if any.
+        #   Optional. The next_page_token value returned from a previous List request, if
+        #   any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -636,8 +612,8 @@ module Google
         
         # Updates a service.
         # @param [String] name
-        #   Immutable. The resource name for the service in the format
-        #   'projects/*/locations/*/namespaces/*/services/*'.
+        #   Immutable. The resource name for the service in the format 'projects/*/
+        #   locations/*/namespaces/*/services/*'.
         # @param [Google::Apis::ServicedirectoryV1beta1::Service] service_object
         # @param [String] update_mask
         #   Required. List of fields to be updated in this request.
@@ -671,9 +647,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a service and its
-        # associated endpoints.
-        # Resolving a service is not considered an active developer method.
+        # Returns a service and its associated endpoints. Resolving a service is not
+        # considered an active developer method.
         # @param [String] name
         #   Required. The name of the service to resolve.
         # @param [Google::Apis::ServicedirectoryV1beta1::ResolveServiceRequest] resolve_service_request_object
@@ -708,8 +683,8 @@ module Google
         
         # Sets the IAM Policy for a resource (namespace or service only).
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ServicedirectoryV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -742,8 +717,8 @@ module Google
         
         # Tests IAM permissions for a resource (namespace or service only).
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ServicedirectoryV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -780,12 +755,11 @@ module Google
         # @param [Google::Apis::ServicedirectoryV1beta1::Endpoint] endpoint_object
         # @param [String] endpoint_id
         #   Required. The Resource ID must be 1-63 characters long, and comply with
-        #   <a href="https://www.ietf.org/rfc/rfc1035.txt" target="_blank">RFC1035</a>.
-        #   Specifically, the name must be 1-63 characters long and match the regular
-        #   expression `[a-z](?:[-a-z0-9]`0,61`[a-z0-9])?` which means the first
-        #   character must be a lowercase letter, and all following characters must
-        #   be a dash, lowercase letter, or digit, except the last character, which
-        #   cannot be a dash.
+        #   RFC1035. Specifically, the name must be 1-63 characters long and match the
+        #   regular expression `[a-z](?:[-a-z0-9]`0,61`[a-z0-9])?` which means the first
+        #   character must be a lowercase letter, and all following characters must be a
+        #   dash, lowercase letter, or digit, except the last character, which cannot be a
+        #   dash.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -878,40 +852,31 @@ module Google
         
         # Lists all endpoints.
         # @param [String] parent
-        #   Required. The resource name of the service whose endpoints we'd like to
-        #   list.
+        #   Required. The resource name of the service whose endpoints we'd like to list.
         # @param [String] filter
-        #   Optional. The filter to list result by.
-        #   General filter string syntax:
-        #   <field> <operator> <value> (<logical connector>)
-        #   <field> can be "name", "address", "port" or "metadata.<key>" for map field.
-        #   <operator> can be "<, >, <=, >=, !=, =, :". Of which ":" means HAS, and
-        #   is roughly the same as "=".
-        #   <value> must be the same data type as field.
-        #   <logical connector> can be "AND, OR, NOT".
-        #   Examples of valid filters:
+        #   Optional. The filter to list result by. General filter string syntax: () can
+        #   be "name", "address", "port" or "metadata." for map field. can be "<, >, <=, >=
+        #   , !=, =, :". Of which ":" means HAS, and is roughly the same as "=". must be
+        #   the same data type as field. can be "AND, OR, NOT". Examples of valid filters:
         #   * "metadata.owner" returns Endpoints that have a label with the key "owner"
-        #   this is the same as "metadata:owner".
-        #   * "metadata.protocol=gRPC" returns Endpoints that have key/value
-        #   "protocol=gRPC".
-        #   * "address=192.108.1.105" returns Endpoints that have this address.
-        #   * "port>8080" returns Endpoints that have port number larger than 8080.
-        #   * "name>projects/my-project/locations/us-east/namespaces/my-namespace/services/
-        #   my-service/endpoints/endpoint-c"
-        #   returns Endpoints that have name that is alphabetically later than the
-        #   string, so "endpoint-e" will be returned but "endpoint-a" will not be.
-        #   * "metadata.owner!=sd AND metadata.foo=bar" returns Endpoints that have
-        #   "owner" in label key but value is not "sd" AND have key/value foo=bar.
-        #   * "doesnotexist.foo=bar" returns an empty list. Note that Endpoint doesn't
-        #   have a field called "doesnotexist". Since the filter does not match any
-        #   Endpoints, it returns no results.
+        #   this is the same as "metadata:owner". * "metadata.protocol=gRPC" returns
+        #   Endpoints that have key/value "protocol=gRPC". * "address=192.108.1.105"
+        #   returns Endpoints that have this address. * "port>8080" returns Endpoints that
+        #   have port number larger than 8080. * "name>projects/my-project/locations/us-
+        #   east/namespaces/my-namespace/services/my-service/endpoints/endpoint-c" returns
+        #   Endpoints that have name that is alphabetically later than the string, so "
+        #   endpoint-e" will be returned but "endpoint-a" will not be. * "metadata.owner!=
+        #   sd AND metadata.foo=bar" returns Endpoints that have "owner" in label key but
+        #   value is not "sd" AND have key/value foo=bar. * "doesnotexist.foo=bar" returns
+        #   an empty list. Note that Endpoint doesn't have a field called "doesnotexist".
+        #   Since the filter does not match any Endpoints, it returns no results.
         # @param [String] order_by
         #   Optional. The order to list result by.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return.
         # @param [String] page_token
-        #   Optional. The next_page_token value returned from a previous List request,
-        #   if any.
+        #   Optional. The next_page_token value returned from a previous List request, if
+        #   any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -945,8 +910,8 @@ module Google
         
         # Updates a endpoint.
         # @param [String] name
-        #   Immutable. The resource name for the endpoint in the format
-        #   'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        #   Immutable. The resource name for the endpoint in the format 'projects/*/
+        #   locations/*/namespaces/*/services/*/endpoints/*'.
         # @param [Google::Apis::ServicedirectoryV1beta1::Endpoint] endpoint_object
         # @param [String] update_mask
         #   Required. List of fields to be updated in this request.

@@ -346,6 +346,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1054,6 +1066,37 @@ module Google
         end
       end
       
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_image_sources, as: 'containerImageSources', class: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature, decorator: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature::Representation
+      
+          property :docker_add_capabilities, as: 'dockerAddCapabilities', class: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature, decorator: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature::Representation
+      
+          property :docker_chroot_path, as: 'dockerChrootPath', class: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature, decorator: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature::Representation
+      
+          property :docker_network, as: 'dockerNetwork', class: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature, decorator: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature::Representation
+      
+          property :docker_privileged, as: 'dockerPrivileged', class: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature, decorator: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature::Representation
+      
+          property :docker_run_as_root, as: 'dockerRunAsRoot', class: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature, decorator: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature::Representation
+      
+          property :docker_runtime, as: 'dockerRuntime', class: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature, decorator: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature::Representation
+      
+          property :docker_sibling_containers, as: 'dockerSiblingContainers', class: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature, decorator: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature::Representation
+      
+          property :linux_isolation, as: 'linuxIsolation'
+        end
+      end
+      
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_values, as: 'allowedValues'
+          property :policy, as: 'policy'
+        end
+      end
+      
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1071,6 +1114,8 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :feature_policy, as: 'featurePolicy', class: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy, decorator: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy::Representation
+      
           property :location, as: 'location'
           property :logging_enabled, as: 'loggingEnabled'
           property :name, as: 'name'

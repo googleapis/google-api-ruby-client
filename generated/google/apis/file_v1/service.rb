@@ -83,8 +83,7 @@ module Google
         # @param [String] filter
         #   The standard list filter.
         # @param [Boolean] include_unrevealed_locations
-        #   If true, the returned list will include locations which are not yet
-        #   revealed.
+        #   If true, the returned list will include locations which are not yet revealed.
         # @param [Fixnum] page_size
         #   The standard list page size.
         # @param [String] page_token
@@ -122,13 +121,13 @@ module Google
         
         # Creates an instance.
         # @param [String] parent
-        #   Required. The instance's project and location, in the format
-        #   projects/`project_id`/locations/`location`. In Cloud Filestore,
-        #   locations map to GCP zones, for example **us-west1-b**.
+        #   Required. The instance's project and location, in the format projects/`
+        #   project_id`/locations/`location`. In Cloud Filestore, locations map to GCP
+        #   zones, for example **us-west1-b**.
         # @param [Google::Apis::FileV1::Instance] instance_object
         # @param [String] instance_id
-        #   Required. The name of the instance to create.
-        #   The name must be unique for the specified project and location.
+        #   Required. The name of the instance to create. The name must be unique for the
+        #   specified project and location.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -161,8 +160,8 @@ module Google
         
         # Deletes an instance.
         # @param [String] name
-        #   Required. The instance resource name, in the format
-        #   projects/`project_id`/locations/`location`/instances/`instance_id`
+        #   Required. The instance resource name, in the format projects/`project_id`/
+        #   locations/`location`/instances/`instance_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -192,8 +191,8 @@ module Google
         
         # Gets the details of a specific instance.
         # @param [String] name
-        #   Required. The instance resource name, in the format
-        #   projects/`project_id`/locations/`location`/instances/`instance_id`.
+        #   Required. The instance resource name, in the format projects/`project_id`/
+        #   locations/`location`/instances/`instance_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -221,14 +220,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all instances in a project for either a specified location
-        # or for all locations.
+        # Lists all instances in a project for either a specified location or for all
+        # locations.
         # @param [String] parent
         #   Required. The project and location for which to retrieve instance information,
-        #   in the format projects/`project_id`/locations/`location`. In Cloud
-        #   Filestore, locations map to GCP zones, for example **us-west1-b**. To
-        #   retrieve instance information for all locations, use "-" for the `location`
-        #   value.
+        #   in the format projects/`project_id`/locations/`location`. In Cloud Filestore,
+        #   locations map to GCP zones, for example **us-west1-b**. To retrieve instance
+        #   information for all locations, use "-" for the `location` value.
         # @param [String] filter
         #   List filter.
         # @param [String] order_by
@@ -236,8 +234,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token
-        #   The next_page_token value to use if there are additional
-        #   results to retrieve for this list request.
+        #   The next_page_token value to use if there are additional results to retrieve
+        #   for this list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -271,16 +269,13 @@ module Google
         
         # Updates the settings of a specific instance.
         # @param [String] name
-        #   Output only. The resource name of the instance, in the format
-        #   projects/`project`/locations/`location`/instances/`instance`.
+        #   Output only. The resource name of the instance, in the format projects/`
+        #   project`/locations/`location`/instances/`instance`.
         # @param [Google::Apis::FileV1::Instance] instance_object
         # @param [String] update_mask
-        #   Mask of fields to update.  At least one path must be supplied in this
-        #   field.  The elements of the repeated paths field may only include these
-        #   fields:
-        #   * "description"
-        #   * "file_shares"
-        #   * "labels"
+        #   Mask of fields to update. At least one path must be supplied in this field.
+        #   The elements of the repeated paths field may only include these fields: * "
+        #   description" * "file_shares" * "labels"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -311,15 +306,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
@@ -353,10 +346,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a long-running operation. This method indicates that the client is
-        # no longer interested in the operation result. It does not cancel the
-        # operation. If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation resource to be deleted.
         # @param [String] fields
@@ -386,9 +379,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -418,15 +410,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter

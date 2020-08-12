@@ -117,11 +117,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new SecretVersion containing secret data and attaches
-        # it to an existing Secret.
+        # Creates a new SecretVersion containing secret data and attaches it to an
+        # existing Secret.
         # @param [String] parent
-        #   Required. The resource name of the Secret to associate with the
-        #   SecretVersion in the format `projects/*/secrets/*`.
+        #   Required. The resource name of the Secret to associate with the SecretVersion
+        #   in the format `projects/*/secrets/*`.
         # @param [Google::Apis::SecretmanagerV1::AddSecretVersionRequest] add_secret_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -154,14 +154,13 @@ module Google
         
         # Creates a new Secret containing no SecretVersions.
         # @param [String] parent
-        #   Required. The resource name of the project to associate with the
-        #   Secret, in the format `projects/*`.
+        #   Required. The resource name of the project to associate with the Secret, in
+        #   the format `projects/*`.
         # @param [Google::Apis::SecretmanagerV1::Secret] secret_object
         # @param [String] secret_id
-        #   Required. This must be unique within the project.
-        #   A secret ID is a string with a maximum length of 255 characters and can
-        #   contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and
-        #   underscore (`_`) characters.
+        #   Required. This must be unique within the project. A secret ID is a string with
+        #   a maximum length of 255 characters and can contain uppercase and lowercase
+        #   letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -194,8 +193,8 @@ module Google
         
         # Deletes a Secret.
         # @param [String] name
-        #   Required. The resource name of the Secret to delete in the format
-        #   `projects/*/secrets/*`.
+        #   Required. The resource name of the Secret to delete in the format `projects/*/
+        #   secrets/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -254,21 +253,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a secret.
-        # Returns empty policy if the secret exists and does not have a policy set.
+        # Gets the access control policy for a secret. Returns empty policy if the
+        # secret exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -299,15 +296,15 @@ module Google
         
         # Lists Secrets.
         # @param [String] parent
-        #   Required. The resource name of the project associated with the
-        #   Secrets, in the format `projects/*`.
+        #   Required. The resource name of the project associated with the Secrets, in the
+        #   format `projects/*`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to be returned in a single page. If
-        #   set to 0, the server decides the number of results to return. If the
-        #   number is greater than 25000, it is capped at 25000.
+        #   set to 0, the server decides the number of results to return. If the number is
+        #   greater than 25000, it is capped at 25000.
         # @param [String] page_token
-        #   Optional. Pagination token, returned earlier via
-        #   ListSecretsResponse.next_page_token.
+        #   Optional. Pagination token, returned earlier via ListSecretsResponse.
+        #   next_page_token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -374,13 +371,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on the specified secret. Replaces any
-        # existing policy.
-        # Permissions on SecretVersions are enforced according
-        # to the policy set on the associated Secret.
+        # Sets the access control policy on the specified secret. Replaces any existing
+        # policy. Permissions on SecretVersions are enforced according to the policy set
+        # on the associated Secret.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::SecretmanagerV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -411,15 +407,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has for the specified secret.
-        # If the secret does not exist, this call returns an empty set of
-        # permissions, not a NOT_FOUND error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has for the specified secret. If the secret
+        # does not exist, this call returns an empty set of permissions, not a NOT_FOUND
+        # error. Note: This operation is designed to be used for building permission-
+        # aware UIs and command-line tools, not for authorization checking. This
+        # operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::SecretmanagerV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -450,12 +445,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Accesses a SecretVersion. This call returns the secret data.
-        # `projects/*/secrets/*/versions/latest` is an alias to the `latest`
-        # SecretVersion.
+        # Accesses a SecretVersion. This call returns the secret data. `projects/*/
+        # secrets/*/versions/latest` is an alias to the `latest` SecretVersion.
         # @param [String] name
-        #   Required. The resource name of the SecretVersion in the format
-        #   `projects/*/secrets/*/versions/*`.
+        #   Required. The resource name of the SecretVersion in the format `projects/*/
+        #   secrets/*/versions/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -483,13 +477,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Destroys a SecretVersion.
-        # Sets the state of the SecretVersion to
-        # DESTROYED and irrevocably destroys the
-        # secret data.
+        # Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and
+        # irrevocably destroys the secret data.
         # @param [String] name
-        #   Required. The resource name of the SecretVersion to destroy in the format
-        #   `projects/*/secrets/*/versions/*`.
+        #   Required. The resource name of the SecretVersion to destroy in the format `
+        #   projects/*/secrets/*/versions/*`.
         # @param [Google::Apis::SecretmanagerV1::DestroySecretVersionRequest] destroy_secret_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -520,12 +512,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Disables a SecretVersion.
-        # Sets the state of the SecretVersion to
-        # DISABLED.
+        # Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.
         # @param [String] name
-        #   Required. The resource name of the SecretVersion to disable in the format
-        #   `projects/*/secrets/*/versions/*`.
+        #   Required. The resource name of the SecretVersion to disable in the format `
+        #   projects/*/secrets/*/versions/*`.
         # @param [Google::Apis::SecretmanagerV1::DisableSecretVersionRequest] disable_secret_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -556,12 +546,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enables a SecretVersion.
-        # Sets the state of the SecretVersion to
-        # ENABLED.
+        # Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.
         # @param [String] name
-        #   Required. The resource name of the SecretVersion to enable in the format
-        #   `projects/*/secrets/*/versions/*`.
+        #   Required. The resource name of the SecretVersion to enable in the format `
+        #   projects/*/secrets/*/versions/*`.
         # @param [Google::Apis::SecretmanagerV1::EnableSecretVersionRequest] enable_secret_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -592,14 +580,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets metadata for a SecretVersion.
-        # `projects/*/secrets/*/versions/latest` is an alias to the `latest`
-        # SecretVersion.
+        # Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is
+        # an alias to the `latest` SecretVersion.
         # @param [String] name
-        #   Required. The resource name of the SecretVersion in the format
-        #   `projects/*/secrets/*/versions/*`.
-        #   `projects/*/secrets/*/versions/latest` is an alias to the `latest`
-        #   SecretVersion.
+        #   Required. The resource name of the SecretVersion in the format `projects/*/
+        #   secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` is an alias to
+        #   the `latest` SecretVersion.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -627,19 +613,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists SecretVersions. This call does not return secret
-        # data.
+        # Lists SecretVersions. This call does not return secret data.
         # @param [String] parent
-        #   Required. The resource name of the Secret associated with the
-        #   SecretVersions to list, in the format
-        #   `projects/*/secrets/*`.
+        #   Required. The resource name of the Secret associated with the SecretVersions
+        #   to list, in the format `projects/*/secrets/*`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to be returned in a single page. If
-        #   set to 0, the server decides the number of results to return. If the
-        #   number is greater than 25000, it is capped at 25000.
+        #   set to 0, the server decides the number of results to return. If the number is
+        #   greater than 25000, it is capped at 25000.
         # @param [String] page_token
-        #   Optional. Pagination token, returned earlier via
-        #   ListSecretVersionsResponse.next_page_token][].
+        #   Optional. Pagination token, returned earlier via ListSecretVersionsResponse.
+        #   next_page_token][].
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

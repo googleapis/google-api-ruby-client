@@ -18,14 +18,16 @@ require 'google/apis/admin_datatransfer_v1/representations.rb'
 
 module Google
   module Apis
-    # Admin Data Transfer API
+    # Admin SDK
     #
-    # Transfers user data from one user to another.
+    # Admin SDK lets administrators of enterprise domains to view and manage
+    # resources like user, groups etc. It also provides audit and usage reports of
+    # domain.
     #
-    # @see https://developers.google.com/admin-sdk/data-transfer/
+    # @see http://developers.google.com/admin-sdk/
     module AdminDatatransferV1
       VERSION = 'DatatransferV1'
-      REVISION = '20190829'
+      REVISION = '20200810'
 
       # View and manage data transfers between users in your organization
       AUTH_ADMIN_DATATRANSFER = 'https://www.googleapis.com/auth/admin.datatransfer'
