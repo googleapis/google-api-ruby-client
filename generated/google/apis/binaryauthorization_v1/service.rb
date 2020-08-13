@@ -48,15 +48,14 @@ module Google
           @batch_path = 'batch'
         end
         
-        # A policy specifies the attestors that must attest to
-        # a container image, before the project is allowed to deploy that
-        # image. There is at most one policy per project. All image admission
-        # requests are permitted if a project has no policy.
-        # Gets the policy for this project. Returns a default
-        # policy if the project does not have one.
+        # A policy specifies the attestors that must attest to a container image, before
+        # the project is allowed to deploy that image. There is at most one policy per
+        # project. All image admission requests are permitted if a project has no policy.
+        # Gets the policy for this project. Returns a default policy if the project
+        # does not have one.
         # @param [String] name
-        #   Required. The resource name of the policy to retrieve,
-        #   in the format `projects/*/policy`.
+        #   Required. The resource name of the policy to retrieve, in the format `projects/
+        #   */policy`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -84,14 +83,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates or updates a project's policy, and returns a copy of the
-        # new policy. A policy is always updated as a whole, to avoid race
-        # conditions with concurrent policy enforcement (or management!)
-        # requests. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT
-        # if the request is malformed.
+        # Creates or updates a project's policy, and returns a copy of the new policy. A
+        # policy is always updated as a whole, to avoid race conditions with concurrent
+        # policy enforcement (or management!) requests. Returns NOT_FOUND if the project
+        # does not exist, INVALID_ARGUMENT if the request is malformed.
         # @param [String] name
-        #   Output only. The resource name, in the format `projects/*/policy`. There is
-        #   at most one policy per project.
+        #   Output only. The resource name, in the format `projects/*/policy`. There is at
+        #   most one policy per project.
         # @param [Google::Apis::BinaryauthorizationV1::Policy] policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -122,10 +120,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an attestor, and returns a copy of the new
-        # attestor. Returns NOT_FOUND if the project does not exist,
-        # INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the
-        # attestor already exists.
+        # Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND
+        # if the project does not exist, INVALID_ARGUMENT if the request is malformed,
+        # ALREADY_EXISTS if the attestor already exists.
         # @param [String] parent
         #   Required. The parent of this attestor.
         # @param [Google::Apis::BinaryauthorizationV1::Attestor] attestor_object
@@ -161,11 +158,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an attestor. Returns NOT_FOUND if the
-        # attestor does not exist.
+        # Deletes an attestor. Returns NOT_FOUND if the attestor does not exist.
         # @param [String] name
-        #   Required. The name of the attestors to delete, in the format
-        #   `projects/*/attestors/*`.
+        #   Required. The name of the attestors to delete, in the format `projects/*/
+        #   attestors/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -193,11 +189,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an attestor.
-        # Returns NOT_FOUND if the attestor does not exist.
+        # Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
         # @param [String] name
-        #   Required. The name of the attestor to retrieve, in the format
-        #   `projects/*/attestors/*`.
+        #   Required. The name of the attestor to retrieve, in the format `projects/*/
+        #   attestors/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -225,22 +220,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -269,18 +261,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists attestors.
-        # Returns INVALID_ARGUMENT if the project does not exist.
+        # Lists attestors. Returns INVALID_ARGUMENT if the project does not exist.
         # @param [String] parent
-        #   Required. The resource name of the project associated with the
-        #   attestors, in the format `projects/*`.
+        #   Required. The resource name of the project associated with the attestors, in
+        #   the format `projects/*`.
         # @param [Fixnum] page_size
         #   Requested page size. The server may return fewer results than requested. If
         #   unspecified, the server will pick an appropriate default.
         # @param [String] page_token
         #   A token identifying a page of results the server should return. Typically,
-        #   this is the value of ListAttestorsResponse.next_page_token returned
-        #   from the previous call to the `ListAttestors` method.
+        #   this is the value of ListAttestorsResponse.next_page_token returned from the
+        #   previous call to the `ListAttestors` method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -311,11 +302,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::BinaryauthorizationV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -346,15 +337,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::BinaryauthorizationV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -385,11 +375,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an attestor.
-        # Returns NOT_FOUND if the attestor does not exist.
+        # Updates an attestor. Returns NOT_FOUND if the attestor does not exist.
         # @param [String] name
-        #   Required. The resource name, in the format:
-        #   `projects/*/attestors/*`. This field may not be updated.
+        #   Required. The resource name, in the format: `projects/*/attestors/*`. This
+        #   field may not be updated.
         # @param [Google::Apis::BinaryauthorizationV1::Attestor] attestor_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -420,22 +409,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -465,11 +451,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::BinaryauthorizationV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -500,15 +486,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::BinaryauthorizationV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

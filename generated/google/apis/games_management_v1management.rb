@@ -21,13 +21,12 @@ module Google
     # Google Play Game Management
     #
     # The Google Play Game Management API allows developers to manage resources from
-    # the Google
-    # Play Game service.
+    # the Google Play Game service.
     #
     # @see https://developers.google.com/games/
     module GamesManagementV1management
       VERSION = 'V1management'
-      REVISION = '20200720'
+      REVISION = '20200811'
 
       # Create, edit, and delete your Google Play Games activity
       AUTH_GAMES = 'https://www.googleapis.com/auth/games'

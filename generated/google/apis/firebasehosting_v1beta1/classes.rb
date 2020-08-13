@@ -324,6 +324,26 @@ module Google
         end
       end
       
+      # If provided, i18n rewrites are enabled.
+      class I18nConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The user-supplied path where country and language specific content
+        # will be looked for within the public directory.
+        # Corresponds to the JSON property `root`
+        # @return [String]
+        attr_accessor :root
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @root = args[:root] if args.key?(:root)
+        end
+      end
+      
       # The response to listing Domains.
       class ListDomainsResponse
         include Google::Apis::Core::Hashable
@@ -752,6 +772,11 @@ module Google
         # @return [Array<Google::Apis::FirebasehostingV1beta1::Header>]
         attr_accessor :headers
       
+        # If provided, i18n rewrites are enabled.
+        # Corresponds to the JSON property `i18n`
+        # @return [Google::Apis::FirebasehostingV1beta1::I18nConfig]
+        attr_accessor :i18n
+      
         # An array of objects (called redirect rules), where each rule specifies a URL
         # pattern that, if matched to the request URL path, triggers Hosting to respond
         # with a redirect to the specified destination path.
@@ -780,6 +805,7 @@ module Google
           @app_association = args[:app_association] if args.key?(:app_association)
           @clean_urls = args[:clean_urls] if args.key?(:clean_urls)
           @headers = args[:headers] if args.key?(:headers)
+          @i18n = args[:i18n] if args.key?(:i18n)
           @redirects = args[:redirects] if args.key?(:redirects)
           @rewrites = args[:rewrites] if args.key?(:rewrites)
           @trailing_slash_behavior = args[:trailing_slash_behavior] if args.key?(:trailing_slash_behavior)

@@ -21,13 +21,12 @@ module Google
     # Google Play Game Services
     #
     # The Google Play games service allows developers to enhance games with social
-    # leaderboards,
-    # achievements, game state, sign-in with Google, and more.
+    # leaderboards, achievements, game state, sign-in with Google, and more.
     #
     # @see https://developers.google.com/games/
     module GamesV1
       VERSION = 'V1'
-      REVISION = '20200720'
+      REVISION = '20200811'
 
       # View and manage its own configuration data in your Google Drive
       AUTH_DRIVE_APPDATA = 'https://www.googleapis.com/auth/drive.appdata'

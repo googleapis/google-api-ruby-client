@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/binary-authorization/
     module BinaryauthorizationV1
       VERSION = 'V1'
-      REVISION = '20200731'
+      REVISION = '20200807'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

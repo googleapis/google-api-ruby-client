@@ -892,6 +892,8 @@ module Google
       class PlayerLeaderboardScore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :friends_rank, as: 'friendsRank', class: Google::Apis::GamesV1::LeaderboardScoreRank, decorator: Google::Apis::GamesV1::LeaderboardScoreRank::Representation
+      
           property :kind, as: 'kind'
           property :leaderboard_id, as: 'leaderboard_id'
           property :public_rank, as: 'publicRank', class: Google::Apis::GamesV1::LeaderboardScoreRank, decorator: Google::Apis::GamesV1::LeaderboardScoreRank::Representation

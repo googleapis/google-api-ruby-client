@@ -48,17 +48,16 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Returns the Google service account that is used by Storage Transfer
-        # Service to access buckets in the project where transfers
-        # run or in other projects. Each Google service account is associated
-        # with one Google Cloud Platform Console project. Users
-        # should add this service account to the Google Cloud Storage bucket
-        # ACLs to grant access to Storage Transfer Service. This service
-        # account is created and owned by Storage Transfer Service and can
-        # only be used by Storage Transfer Service.
+        # Returns the Google service account that is used by Storage Transfer Service to
+        # access buckets in the project where transfers run or in other projects. Each
+        # Google service account is associated with one Google Cloud Platform Console
+        # project. Users should add this service account to the Google Cloud Storage
+        # bucket ACLs to grant access to Storage Transfer Service. This service account
+        # is created and owned by Storage Transfer Service and can only be used by
+        # Storage Transfer Service.
         # @param [String] project_id
-        #   Required. The ID of the Google Cloud Platform Console project that the
-        #   Google service account is associated with.
+        #   Required. The ID of the Google Cloud Platform Console project that the Google
+        #   service account is associated with.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -152,16 +151,12 @@ module Google
         
         # Lists transfer jobs.
         # @param [String] filter
-        #   Required. A list of query parameters specified as JSON text in the form of:
-        #   `"project<span>_</span>id":"my_project_id",
-        #   "job_names":["jobid1","jobid2",...],
-        #   "job_statuses":["status1","status2",...]`.
-        #   Since `job_names` and `job_statuses` support multiple values, their values
-        #   must be specified with array notation. `project`<span>`_`</span>`id` is
-        #   required.  `job_names` and `job_statuses` are optional.  The valid values
-        #   for `job_statuses` are case-insensitive:
-        #   ENABLED,
-        #   DISABLED, and
+        #   Required. A list of query parameters specified as JSON text in the form of: `"
+        #   project_id":"my_project_id", "job_names":["jobid1","jobid2",...], "
+        #   job_statuses":["status1","status2",...]`. Since `job_names` and `job_statuses`
+        #   support multiple values, their values must be specified with array notation. `
+        #   project``_``id` is required. `job_names` and `job_statuses` are optional. The
+        #   valid values for `job_statuses` are case-insensitive: ENABLED, DISABLED, and
         #   DELETED.
         # @param [Fixnum] page_size
         #   The list page size. The max allowed value is 256.
@@ -197,13 +192,9 @@ module Google
         end
         
         # Updates a transfer job. Updating a job's transfer spec does not affect
-        # transfer operations that are running already. Updating a job's schedule
-        # is not allowed.
-        # **Note:** The job's status field can be modified
-        # using this RPC (for example, to set a job's status to
-        # DELETED,
-        # DISABLED, or
-        # ENABLED).
+        # transfer operations that are running already. Updating a job's schedule is not
+        # allowed. **Note:** The job's status field can be modified using this RPC (for
+        # example, to set a job's status to DELETED, DISABLED, or ENABLED).
         # @param [String] job_name
         #   Required. The name of job to update.
         # @param [Google::Apis::StoragetransferV1::UpdateTransferJobRequest] update_transfer_job_request_object
@@ -236,32 +227,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels a transfer. Use the
-        # transferOperations.get method to
-        # check if the cancellation succeeded or if the operation completed despite
-        # the `cancel` request.
-        # When you cancel an operation, the currently running transfer is
-        # interrupted.  For recurring transfer jobs, the next instance of the transfer
-        # job
-        # will still run.  For example, if your job is configured to run every day
-        # at 1pm and you cancel Monday's operation at 1:05pm, Monday's transfer
-        # will stop. However, a transfer job will still be attempted on Tuesday.
-        # This applies only to currently running operations. If an operation is
-        # not currently running, `cancel` does nothing.
-        # <aside class="caution">
-        # <b>Caution:</b> Canceling a transfer job can leave your data in an unknown
-        # state. We recommend that you restore the state at both the destination and the
-        # source after the `cancel` request completes so that your data is in a
-        # consistent
-        # state.
-        # </aside>
-        # When you cancel a job, the next job computes a delta of files and may repair
-        # any
-        # inconsistent state. For instance, if you run a job every day, and today's job
-        # found 10 new files and transferred five files before you canceled the job,
-        # tomorrow's transfer operation will compute a new delta with the five files
-        # that
-        # were not copied today plus any new files discovered tomorrow.
+        # Cancels a transfer. Use the transferOperations.get method to check if the
+        # cancellation succeeded or if the operation completed despite the `cancel`
+        # request. When you cancel an operation, the currently running transfer is
+        # interrupted. For recurring transfer jobs, the next instance of the transfer
+        # job will still run. For example, if your job is configured to run every day at
+        # 1pm and you cancel Monday's operation at 1:05pm, Monday's transfer will stop.
+        # However, a transfer job will still be attempted on Tuesday. This applies only
+        # to currently running operations. If an operation is not currently running, `
+        # cancel` does nothing. *Caution:* Canceling a transfer job can leave your data
+        # in an unknown state. We recommend that you restore the state at both the
+        # destination and the source after the `cancel` request completes so that your
+        # data is in a consistent state. When you cancel a job, the next job computes a
+        # delta of files and may repair any inconsistent state. For instance, if you run
+        # a job every day, and today's job found 10 new files and transferred five files
+        # before you canceled the job, tomorrow's transfer operation will compute a new
+        # delta with the five files that were not copied today plus any new files
+        # discovered tomorrow.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [String] fields
@@ -291,9 +273,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -328,14 +309,12 @@ module Google
         #   Required. The value `transferOperations`.
         # @param [String] filter
         #   Required. A list of query parameters specified as JSON text in the form of: `"
-        #   project<span>_</span>id":"my_project_id",
-        #   "job_names":["jobid1","jobid2",...],
-        #   "operation_names":["opid1","opid2",...],
-        #   "transfer_statuses":["status1","status2",...]`.
-        #   Since `job_names`, `operation_names`, and `transfer_statuses` support multiple
-        #   values, they must be specified with array notation. `project`<span>`_`</span>`
-        #   id` is required. `job_names`, `operation_names`, and `transfer_statuses` are
-        #   optional. The valid values for `transfer_statuses` are case-insensitive:
+        #   project_id":"my_project_id", "job_names":["jobid1","jobid2",...], "
+        #   operation_names":["opid1","opid2",...], "transfer_statuses":["status1","
+        #   status2",...]`. Since `job_names`, `operation_names`, and `transfer_statuses`
+        #   support multiple values, they must be specified with array notation. `project``
+        #   _``id` is required. `job_names`, `operation_names`, and `transfer_statuses`
+        #   are optional. The valid values for `transfer_statuses` are case-insensitive:
         #   IN_PROGRESS, PAUSED, SUCCESS, FAILED, and ABORTED.
         # @param [Fixnum] page_size
         #   The list page size. The max allowed value is 256.

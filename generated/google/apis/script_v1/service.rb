@@ -47,23 +47,22 @@ module Google
           @batch_path = 'batch'
         end
         
-        # List information about processes made by or on behalf of a user,
-        # such as process type and current status.
+        # List information about processes made by or on behalf of a user, such as
+        # process type and current status.
         # @param [Fixnum] page_size
-        #   The maximum number of returned processes per page of results. Defaults to
-        #   50.
+        #   The maximum number of returned processes per page of results. Defaults to 50.
         # @param [String] page_token
-        #   The token for continuing a previous list request on the next page. This
-        #   should be set to the value of `nextPageToken` from a previous response.
+        #   The token for continuing a previous list request on the next page. This should
+        #   be set to the value of `nextPageToken` from a previous response.
         # @param [String] user_process_filter_deployment_id
         #   Optional field used to limit returned processes to those originating from
         #   projects with a specific deployment ID.
         # @param [String] user_process_filter_end_time
-        #   Optional field used to limit returned processes to those that completed
-        #   on or before the given timestamp.
+        #   Optional field used to limit returned processes to those that completed on or
+        #   before the given timestamp.
         # @param [String] user_process_filter_function_name
-        #   Optional field used to limit returned processes to those originating from
-        #   a script function with the given function name.
+        #   Optional field used to limit returned processes to those originating from a
+        #   script function with the given function name.
         # @param [String] user_process_filter_project_name
         #   Optional field used to limit returned processes to those originating from
         #   projects with project names containing a specific string.
@@ -71,17 +70,17 @@ module Google
         #   Optional field used to limit returned processes to those originating from
         #   projects with a specific script ID.
         # @param [String] user_process_filter_start_time
-        #   Optional field used to limit returned processes to those that were
-        #   started on or after the given timestamp.
+        #   Optional field used to limit returned processes to those that were started on
+        #   or after the given timestamp.
         # @param [Array<String>, String] user_process_filter_statuses
-        #   Optional field used to limit returned processes to those having one of
-        #   the specified process statuses.
+        #   Optional field used to limit returned processes to those having one of the
+        #   specified process statuses.
         # @param [Array<String>, String] user_process_filter_types
-        #   Optional field used to limit returned processes to those having one of
-        #   the specified process types.
+        #   Optional field used to limit returned processes to those having one of the
+        #   specified process types.
         # @param [Array<String>, String] user_process_filter_user_access_levels
-        #   Optional field used to limit returned processes to those having one of
-        #   the specified user access levels.
+        #   Optional field used to limit returned processes to those having one of the
+        #   specified user access levels.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -119,37 +118,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List information about a script's executed processes, such as process type
-        # and current status.
+        # List information about a script's executed processes, such as process type and
+        # current status.
         # @param [Fixnum] page_size
-        #   The maximum number of returned processes per page of results. Defaults to
-        #   50.
+        #   The maximum number of returned processes per page of results. Defaults to 50.
         # @param [String] page_token
-        #   The token for continuing a previous list request on the next page. This
-        #   should be set to the value of `nextPageToken` from a previous response.
+        #   The token for continuing a previous list request on the next page. This should
+        #   be set to the value of `nextPageToken` from a previous response.
         # @param [String] script_id
         #   The script ID of the project whose processes are listed.
         # @param [String] script_process_filter_deployment_id
         #   Optional field used to limit returned processes to those originating from
         #   projects with a specific deployment ID.
         # @param [String] script_process_filter_end_time
-        #   Optional field used to limit returned processes to those that completed
-        #   on or before the given timestamp.
+        #   Optional field used to limit returned processes to those that completed on or
+        #   before the given timestamp.
         # @param [String] script_process_filter_function_name
-        #   Optional field used to limit returned processes to those originating from
-        #   a script function with the given function name.
+        #   Optional field used to limit returned processes to those originating from a
+        #   script function with the given function name.
         # @param [String] script_process_filter_start_time
-        #   Optional field used to limit returned processes to those that were
-        #   started on or after the given timestamp.
+        #   Optional field used to limit returned processes to those that were started on
+        #   or after the given timestamp.
         # @param [Array<String>, String] script_process_filter_statuses
-        #   Optional field used to limit returned processes to those having one of
-        #   the specified process statuses.
+        #   Optional field used to limit returned processes to those having one of the
+        #   specified process statuses.
         # @param [Array<String>, String] script_process_filter_types
-        #   Optional field used to limit returned processes to those having one of
-        #   the specified process types.
+        #   Optional field used to limit returned processes to those having one of the
+        #   specified process types.
         # @param [Array<String>, String] script_process_filter_user_access_levels
-        #   Optional field used to limit returned processes to those having one of
-        #   the specified user access levels.
+        #   Optional field used to limit returned processes to those having one of the
+        #   specified user access levels.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -186,8 +184,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new, empty script project with no script files and a base
-        # manifest file.
+        # Creates a new, empty script project with no script files and a base manifest
+        # file.
         # @param [Google::Apis::ScriptV1::CreateProjectRequest] create_project_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -247,13 +245,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the content of the script project, including the code source and
-        # metadata for each script file.
+        # Gets the content of the script project, including the code source and metadata
+        # for each script file.
         # @param [String] script_id
         #   The script project's Drive ID.
         # @param [Fixnum] version_number
-        #   The version number of the project to retrieve. If not provided, the
-        #   project's HEAD version is returned.
+        #   The version number of the project to retrieve. If not provided, the project's
+        #   HEAD version is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -282,8 +280,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get metrics data for scripts, such as number of executions and
-        # active users.
+        # Get metrics data for scripts, such as number of executions and active users.
         # @param [String] script_id
         #   Required field indicating the script to get metrics for.
         # @param [String] metrics_filter_deployment_id
@@ -319,11 +316,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the content of the specified script project.
-        # This content is stored as the HEAD version, and is used when the script is
-        # executed as a trigger, in the script editor, in add-on preview mode, or as
-        # a web app or Apps Script API in development mode. This clears all the
-        # existing files in the project.
+        # Updates the content of the specified script project. This content is stored as
+        # the HEAD version, and is used when the script is executed as a trigger, in the
+        # script editor, in add-on preview mode, or as a web app or Apps Script API in
+        # development mode. This clears all the existing files in the project.
         # @param [String] script_id
         #   The script project's Drive ID.
         # @param [Google::Apis::ScriptV1::Content] content_object
@@ -461,8 +457,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of deployments on each returned page. Defaults to 50.
         # @param [String] page_token
-        #   The token for continuing a previous list request on the next page. This
-        #   should be set to the value of `nextPageToken` from a previous response.
+        #   The token for continuing a previous list request on the next page. This should
+        #   be set to the value of `nextPageToken` from a previous response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -528,8 +524,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new immutable version using the current code, with a unique
-        # version number.
+        # Creates a new immutable version using the current code, with a unique version
+        # number.
         # @param [String] script_id
         #   The script project's Drive ID.
         # @param [Google::Apis::ScriptV1::Version] version_object
@@ -601,8 +597,8 @@ module Google
         # @param [Fixnum] page_size
         #   The maximum number of versions on each returned page. Defaults to 50.
         # @param [String] page_token
-        #   The token for continuing a previous list request on the next page. This
-        #   should be set to the value of `nextPageToken` from a previous response.
+        #   The token for continuing a previous list request on the next page. This should
+        #   be set to the value of `nextPageToken` from a previous response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -632,22 +628,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Runs a function in an Apps Script project. The script project must be
-        # deployed for use with the Apps Script API and the calling application must
-        # share the same Cloud Platform project.
-        # This method requires authorization with an OAuth 2.0 token that includes at
-        # least one of the scopes listed in the
-        # [Authorization](#authorization-scopes) section; script projects that do not
-        # require authorization cannot be executed through this API. To find the
-        # correct scopes to include in the authentication token, open the project in
-        # the script editor, then select **File > Project properties** and click the
-        # **Scopes** tab.
+        # Runs a function in an Apps Script project. The script project must be deployed
+        # for use with the Apps Script API and the calling application must share the
+        # same Cloud Platform project. This method requires authorization with an OAuth
+        # 2.0 token that includes at least one of the scopes listed in the [
+        # Authorization](#authorization-scopes) section; script projects that do not
+        # require authorization cannot be executed through this API. To find the correct
+        # scopes to include in the authentication token, open the project in the script
+        # editor, then select **File > Project properties** and click the **Scopes** tab.
         # The error `403, PERMISSION_DENIED: The caller does not have permission`
-        # indicates that the Cloud Platform project used to authorize the request is
-        # not the same as the one used by the script.
+        # indicates that the Cloud Platform project used to authorize the request is not
+        # the same as the one used by the script.
         # @param [String] script_id
-        #   The script ID of the script to be executed. To find the script ID, open
-        #   the project in the script editor and select **File > Project properties**.
+        #   The script ID of the script to be executed. To find the script ID, open the
+        #   project in the script editor and select **File > Project properties**.
         # @param [Google::Apis::ScriptV1::ExecutionRequest] execution_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

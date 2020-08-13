@@ -50,13 +50,11 @@ module Google
         
         # Creates a new `Note`.
         # @param [String] parent
-        #   This field contains the project Id for example:
-        #   "projects/`project_id`
+        #   This field contains the project Id for example: "projects/`project_id`
         # @param [Google::Apis::ContaineranalysisV1alpha1::Note] note_object
         # @param [String] name
-        #   The name of the project.
-        #   Should be of the form "providers/`provider_id`".
-        #   @Deprecated
+        #   The name of the project. Should be of the form "providers/`provider_id`". @
+        #   Deprecated
         # @param [String] note_id
         #   The ID to use for this note.
         # @param [String] fields
@@ -92,8 +90,7 @@ module Google
         
         # Deletes the given `Note` from the system.
         # @param [String] name
-        #   The name of the note in the form of
-        #   "providers/`provider_id`/notes/`NOTE_ID`"
+        #   The name of the note in the form of "providers/`provider_id`/notes/`NOTE_ID`"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -123,8 +120,7 @@ module Google
         
         # Returns the requested `Note`.
         # @param [String] name
-        #   The name of the note in the form of
-        #   "providers/`provider_id`/notes/`NOTE_ID`"
+        #   The name of the note in the form of "providers/`provider_id`/notes/`NOTE_ID`"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -153,19 +149,18 @@ module Google
         end
         
         # Gets the access control policy for a note or an `Occurrence` resource.
-        # Requires `containeranalysis.notes.setIamPolicy` or
-        # `containeranalysis.occurrences.setIamPolicy` permission if the resource is
-        # a note or occurrence, respectively.
-        # Attempting to call this method on a resource without the required
-        # permission will result in a `PERMISSION_DENIED` error. Attempting to call
-        # this method on a non-existent resource will result in a `NOT_FOUND` error
-        # if the user has list permission on the project, or a `PERMISSION_DENIED`
-        # error otherwise. The resource takes the following formats:
-        # `projects/`PROJECT_ID`/occurrences/`OCCURRENCE_ID`` for occurrences and
-        # projects/`PROJECT_ID`/notes/`NOTE_ID` for notes
+        # Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.
+        # occurrences.setIamPolicy` permission if the resource is a note or occurrence,
+        # respectively. Attempting to call this method on a resource without the
+        # required permission will result in a `PERMISSION_DENIED` error. Attempting to
+        # call this method on a non-existent resource will result in a `NOT_FOUND` error
+        # if the user has list permission on the project, or a `PERMISSION_DENIED` error
+        # otherwise. The resource takes the following formats: `projects/`PROJECT_ID`/
+        # occurrences/`OCCURRENCE_ID`` for occurrences and projects/`PROJECT_ID`/notes/`
+        # NOTE_ID` for notes
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -202,9 +197,8 @@ module Google
         # @param [String] filter
         #   The filter expression.
         # @param [String] name
-        #   The name field will contain the project Id for example:
-        #   "providers/`provider_id`
-        #   @Deprecated
+        #   The name field will contain the project Id for example: "providers/`
+        #   provider_id` @Deprecated
         # @param [Fixnum] page_size
         #   Number of notes to return in the list.
         # @param [String] page_token
@@ -242,8 +236,8 @@ module Google
         
         # Updates an existing `Note`.
         # @param [String] name
-        #   The name of the note.
-        #   Should be of the form "projects/`provider_id`/notes/`note_id`".
+        #   The name of the note. Should be of the form "projects/`provider_id`/notes/`
+        #   note_id`".
         # @param [Google::Apis::ContaineranalysisV1alpha1::Note] note_object
         # @param [String] update_mask
         #   The fields to update.
@@ -278,20 +272,19 @@ module Google
         end
         
         # Sets the access control policy on the specified `Note` or `Occurrence`.
-        # Requires `containeranalysis.notes.setIamPolicy` or
-        # `containeranalysis.occurrences.setIamPolicy` permission if the resource is
-        # a `Note` or an `Occurrence`, respectively.
-        # Attempting to call this method without these permissions will result in a `
-        # `PERMISSION_DENIED` error.
-        # Attempting to call this method on a non-existent resource will result in a
-        # `NOT_FOUND` error if the user has `containeranalysis.notes.list` permission
-        # on a `Note` or `containeranalysis.occurrences.list` on an `Occurrence`, or
-        # a `PERMISSION_DENIED` error otherwise. The resource takes the following
-        # formats: `projects/`projectid`/occurrences/`occurrenceid`` for occurrences
-        # and projects/`projectid`/notes/`noteid` for notes
+        # Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.
+        # occurrences.setIamPolicy` permission if the resource is a `Note` or an `
+        # Occurrence`, respectively. Attempting to call this method without these
+        # permissions will result in a ` `PERMISSION_DENIED` error. Attempting to call
+        # this method on a non-existent resource will result in a `NOT_FOUND` error if
+        # the user has `containeranalysis.notes.list` permission on a `Note` or `
+        # containeranalysis.occurrences.list` on an `Occurrence`, or a `
+        # PERMISSION_DENIED` error otherwise. The resource takes the following formats: `
+        # projects/`projectid`/occurrences/`occurrenceid`` for occurrences and projects/`
+        # projectid`/notes/`noteid` for notes
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -322,17 +315,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the permissions that a caller has on the specified note or
-        # occurrence resource. Requires list permission on the project (for example,
-        # "storage.objects.list" on the containing bucket for testing permission of
-        # an object). Attempting to call this method on a non-existent resource will
-        # result in a `NOT_FOUND` error if the user has list permission on the
-        # project, or a `PERMISSION_DENIED` error otherwise. The resource takes the
-        # following formats: `projects/`PROJECT_ID`/occurrences/`OCCURRENCE_ID`` for
-        # `Occurrences` and `projects/`PROJECT_ID`/notes/`NOTE_ID`` for `Notes`
+        # Returns the permissions that a caller has on the specified note or occurrence
+        # resource. Requires list permission on the project (for example, "storage.
+        # objects.list" on the containing bucket for testing permission of an object).
+        # Attempting to call this method on a non-existent resource will result in a `
+        # NOT_FOUND` error if the user has list permission on the project, or a `
+        # PERMISSION_DENIED` error otherwise. The resource takes the following formats: `
+        # projects/`PROJECT_ID`/occurrences/`OCCURRENCE_ID`` for `Occurrences` and `
+        # projects/`PROJECT_ID`/notes/`NOTE_ID`` for `Notes`
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -363,12 +356,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists `Occurrences` referencing the specified `Note`. Use this method to
-        # get all occurrences referencing your `Note` across all your customer
-        # projects.
+        # Lists `Occurrences` referencing the specified `Note`. Use this method to get
+        # all occurrences referencing your `Note` across all your customer projects.
         # @param [String] name
-        #   The name field will contain the note name for example:
-        #   "provider/`provider_id`/notes/`note_id`"
+        #   The name field will contain the note name for example: "provider/`provider_id`/
+        #   notes/`note_id`"
         # @param [String] filter
         #   The filter expression.
         # @param [Fixnum] page_size
@@ -405,14 +397,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new `Occurrence`. Use this method to create `Occurrences`
-        # for a resource.
+        # Creates a new `Occurrence`. Use this method to create `Occurrences` for a
+        # resource.
         # @param [String] parent
         #   This field contains the project Id for example: "projects/`project_id`"
         # @param [Google::Apis::ContaineranalysisV1alpha1::Occurrence] occurrence_object
         # @param [String] name
-        #   The name of the project.  Should be of the form "projects/`project_id`".
-        #   @Deprecated
+        #   The name of the project. Should be of the form "projects/`project_id`". @
+        #   Deprecated
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -443,11 +435,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the given `Occurrence` from the system. Use this when
-        # an `Occurrence` is no longer applicable for the given resource.
+        # Deletes the given `Occurrence` from the system. Use this when an `Occurrence`
+        # is no longer applicable for the given resource.
         # @param [String] name
-        #   The name of the occurrence in the form of
-        #   "projects/`project_id`/occurrences/`OCCURRENCE_ID`"
+        #   The name of the occurrence in the form of "projects/`project_id`/occurrences/`
+        #   OCCURRENCE_ID`"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -477,8 +469,8 @@ module Google
         
         # Returns the requested `Occurrence`.
         # @param [String] name
-        #   The name of the occurrence of the form
-        #   "projects/`project_id`/occurrences/`OCCURRENCE_ID`"
+        #   The name of the occurrence of the form "projects/`project_id`/occurrences/`
+        #   OCCURRENCE_ID`"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -507,19 +499,18 @@ module Google
         end
         
         # Gets the access control policy for a note or an `Occurrence` resource.
-        # Requires `containeranalysis.notes.setIamPolicy` or
-        # `containeranalysis.occurrences.setIamPolicy` permission if the resource is
-        # a note or occurrence, respectively.
-        # Attempting to call this method on a resource without the required
-        # permission will result in a `PERMISSION_DENIED` error. Attempting to call
-        # this method on a non-existent resource will result in a `NOT_FOUND` error
-        # if the user has list permission on the project, or a `PERMISSION_DENIED`
-        # error otherwise. The resource takes the following formats:
-        # `projects/`PROJECT_ID`/occurrences/`OCCURRENCE_ID`` for occurrences and
-        # projects/`PROJECT_ID`/notes/`NOTE_ID` for notes
+        # Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.
+        # occurrences.setIamPolicy` permission if the resource is a note or occurrence,
+        # respectively. Attempting to call this method on a resource without the
+        # required permission will result in a `PERMISSION_DENIED` error. Attempting to
+        # call this method on a non-existent resource will result in a `NOT_FOUND` error
+        # if the user has list permission on the project, or a `PERMISSION_DENIED` error
+        # otherwise. The resource takes the following formats: `projects/`PROJECT_ID`/
+        # occurrences/`OCCURRENCE_ID`` for occurrences and projects/`PROJECT_ID`/notes/`
+        # NOTE_ID` for notes
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -552,8 +543,8 @@ module Google
         
         # Gets the `Note` attached to the given `Occurrence`.
         # @param [String] name
-        #   The name of the occurrence in the form
-        #   "projects/`project_id`/occurrences/`OCCURRENCE_ID`"
+        #   The name of the occurrence in the form "projects/`project_id`/occurrences/`
+        #   OCCURRENCE_ID`"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -622,9 +613,8 @@ module Google
         # @param [String] kind
         #   The kind of occurrences to filter on.
         # @param [String] name
-        #   The name field contains the project Id. For example:
-        #   "projects/`project_id`
-        #   @Deprecated
+        #   The name field contains the project Id. For example: "projects/`project_id` @
+        #   Deprecated
         # @param [Fixnum] page_size
         #   Number of occurrences to return in the list.
         # @param [String] page_token
@@ -663,8 +653,8 @@ module Google
         
         # Updates an existing occurrence.
         # @param [String] name
-        #   The name of the occurrence.
-        #   Should be of the form "projects/`project_id`/occurrences/`OCCURRENCE_ID`".
+        #   The name of the occurrence. Should be of the form "projects/`project_id`/
+        #   occurrences/`OCCURRENCE_ID`".
         # @param [Google::Apis::ContaineranalysisV1alpha1::Occurrence] occurrence_object
         # @param [String] update_mask
         #   The fields to update.
@@ -699,20 +689,19 @@ module Google
         end
         
         # Sets the access control policy on the specified `Note` or `Occurrence`.
-        # Requires `containeranalysis.notes.setIamPolicy` or
-        # `containeranalysis.occurrences.setIamPolicy` permission if the resource is
-        # a `Note` or an `Occurrence`, respectively.
-        # Attempting to call this method without these permissions will result in a `
-        # `PERMISSION_DENIED` error.
-        # Attempting to call this method on a non-existent resource will result in a
-        # `NOT_FOUND` error if the user has `containeranalysis.notes.list` permission
-        # on a `Note` or `containeranalysis.occurrences.list` on an `Occurrence`, or
-        # a `PERMISSION_DENIED` error otherwise. The resource takes the following
-        # formats: `projects/`projectid`/occurrences/`occurrenceid`` for occurrences
-        # and projects/`projectid`/notes/`noteid` for notes
+        # Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.
+        # occurrences.setIamPolicy` permission if the resource is a `Note` or an `
+        # Occurrence`, respectively. Attempting to call this method without these
+        # permissions will result in a ` `PERMISSION_DENIED` error. Attempting to call
+        # this method on a non-existent resource will result in a `NOT_FOUND` error if
+        # the user has `containeranalysis.notes.list` permission on a `Note` or `
+        # containeranalysis.occurrences.list` on an `Occurrence`, or a `
+        # PERMISSION_DENIED` error otherwise. The resource takes the following formats: `
+        # projects/`projectid`/occurrences/`occurrenceid`` for occurrences and projects/`
+        # projectid`/notes/`noteid` for notes
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -743,17 +732,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the permissions that a caller has on the specified note or
-        # occurrence resource. Requires list permission on the project (for example,
-        # "storage.objects.list" on the containing bucket for testing permission of
-        # an object). Attempting to call this method on a non-existent resource will
-        # result in a `NOT_FOUND` error if the user has list permission on the
-        # project, or a `PERMISSION_DENIED` error otherwise. The resource takes the
-        # following formats: `projects/`PROJECT_ID`/occurrences/`OCCURRENCE_ID`` for
-        # `Occurrences` and `projects/`PROJECT_ID`/notes/`NOTE_ID`` for `Notes`
+        # Returns the permissions that a caller has on the specified note or occurrence
+        # resource. Requires list permission on the project (for example, "storage.
+        # objects.list" on the containing bucket for testing permission of an object).
+        # Attempting to call this method on a non-existent resource will result in a `
+        # NOT_FOUND` error if the user has list permission on the project, or a `
+        # PERMISSION_DENIED` error otherwise. The resource takes the following formats: `
+        # projects/`PROJECT_ID`/occurrences/`OCCURRENCE_ID`` for `Occurrences` and `
+        # projects/`PROJECT_ID`/notes/`NOTE_ID`` for `Notes`
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -817,12 +806,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing operation returns an error if operation
-        # does not exist. The only valid operations are to update mark the done bit
-        # change the result.
+        # Updates an existing operation returns an error if operation does not exist.
+        # The only valid operations are to update mark the done bit change the result.
         # @param [String] name
-        #   The name of the Operation.
-        #   Should be of the form "projects/`provider_id`/operations/`operation_id`".
+        #   The name of the Operation. Should be of the form "projects/`provider_id`/
+        #   operations/`operation_id`".
         # @param [Google::Apis::ContaineranalysisV1alpha1::UpdateOperationRequest] update_operation_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -855,8 +843,8 @@ module Google
         
         # Gets a specific scan configuration for a project.
         # @param [String] name
-        #   The name of the ScanConfig in the form
-        #   projects/`project_id`/scanConfigs/`scan_config_id`
+        #   The name of the ScanConfig in the form projects/`project_id`/scanConfigs/`
+        #   scan_config_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -925,8 +913,8 @@ module Google
         
         # Updates the scan configuration to a new value.
         # @param [String] name
-        #   The scan config to update of the form
-        #   projects/`project_id`/scanConfigs/`scan_config_id`.
+        #   The scan config to update of the form projects/`project_id`/scanConfigs/`
+        #   scan_config_id`.
         # @param [Google::Apis::ContaineranalysisV1alpha1::ScanConfig] scan_config_object
         # @param [String] update_mask
         #   The fields to update.
@@ -962,15 +950,13 @@ module Google
         
         # Creates a new `Note`.
         # @param [String] name
-        #   The name of the project.
-        #   Should be of the form "providers/`provider_id`".
-        #   @Deprecated
+        #   The name of the project. Should be of the form "providers/`provider_id`". @
+        #   Deprecated
         # @param [Google::Apis::ContaineranalysisV1alpha1::Note] note_object
         # @param [String] note_id
         #   The ID to use for this note.
         # @param [String] parent
-        #   This field contains the project Id for example:
-        #   "projects/`project_id`
+        #   This field contains the project Id for example: "projects/`project_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1004,8 +990,7 @@ module Google
         
         # Deletes the given `Note` from the system.
         # @param [String] name
-        #   The name of the note in the form of
-        #   "providers/`provider_id`/notes/`NOTE_ID`"
+        #   The name of the note in the form of "providers/`provider_id`/notes/`NOTE_ID`"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1035,8 +1020,7 @@ module Google
         
         # Returns the requested `Note`.
         # @param [String] name
-        #   The name of the note in the form of
-        #   "providers/`provider_id`/notes/`NOTE_ID`"
+        #   The name of the note in the form of "providers/`provider_id`/notes/`NOTE_ID`"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1065,19 +1049,18 @@ module Google
         end
         
         # Gets the access control policy for a note or an `Occurrence` resource.
-        # Requires `containeranalysis.notes.setIamPolicy` or
-        # `containeranalysis.occurrences.setIamPolicy` permission if the resource is
-        # a note or occurrence, respectively.
-        # Attempting to call this method on a resource without the required
-        # permission will result in a `PERMISSION_DENIED` error. Attempting to call
-        # this method on a non-existent resource will result in a `NOT_FOUND` error
-        # if the user has list permission on the project, or a `PERMISSION_DENIED`
-        # error otherwise. The resource takes the following formats:
-        # `projects/`PROJECT_ID`/occurrences/`OCCURRENCE_ID`` for occurrences and
-        # projects/`PROJECT_ID`/notes/`NOTE_ID` for notes
+        # Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.
+        # occurrences.setIamPolicy` permission if the resource is a note or occurrence,
+        # respectively. Attempting to call this method on a resource without the
+        # required permission will result in a `PERMISSION_DENIED` error. Attempting to
+        # call this method on a non-existent resource will result in a `NOT_FOUND` error
+        # if the user has list permission on the project, or a `PERMISSION_DENIED` error
+        # otherwise. The resource takes the following formats: `projects/`PROJECT_ID`/
+        # occurrences/`OCCURRENCE_ID`` for occurrences and projects/`PROJECT_ID`/notes/`
+        # NOTE_ID` for notes
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1110,9 +1093,8 @@ module Google
         
         # Lists all `Notes` for a given project.
         # @param [String] name
-        #   The name field will contain the project Id for example:
-        #   "providers/`provider_id`
-        #   @Deprecated
+        #   The name field will contain the project Id for example: "providers/`
+        #   provider_id` @Deprecated
         # @param [String] filter
         #   The filter expression.
         # @param [Fixnum] page_size
@@ -1154,8 +1136,8 @@ module Google
         
         # Updates an existing `Note`.
         # @param [String] name
-        #   The name of the note.
-        #   Should be of the form "projects/`provider_id`/notes/`note_id`".
+        #   The name of the note. Should be of the form "projects/`provider_id`/notes/`
+        #   note_id`".
         # @param [Google::Apis::ContaineranalysisV1alpha1::Note] note_object
         # @param [String] update_mask
         #   The fields to update.
@@ -1190,20 +1172,19 @@ module Google
         end
         
         # Sets the access control policy on the specified `Note` or `Occurrence`.
-        # Requires `containeranalysis.notes.setIamPolicy` or
-        # `containeranalysis.occurrences.setIamPolicy` permission if the resource is
-        # a `Note` or an `Occurrence`, respectively.
-        # Attempting to call this method without these permissions will result in a `
-        # `PERMISSION_DENIED` error.
-        # Attempting to call this method on a non-existent resource will result in a
-        # `NOT_FOUND` error if the user has `containeranalysis.notes.list` permission
-        # on a `Note` or `containeranalysis.occurrences.list` on an `Occurrence`, or
-        # a `PERMISSION_DENIED` error otherwise. The resource takes the following
-        # formats: `projects/`projectid`/occurrences/`occurrenceid`` for occurrences
-        # and projects/`projectid`/notes/`noteid` for notes
+        # Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.
+        # occurrences.setIamPolicy` permission if the resource is a `Note` or an `
+        # Occurrence`, respectively. Attempting to call this method without these
+        # permissions will result in a ` `PERMISSION_DENIED` error. Attempting to call
+        # this method on a non-existent resource will result in a `NOT_FOUND` error if
+        # the user has `containeranalysis.notes.list` permission on a `Note` or `
+        # containeranalysis.occurrences.list` on an `Occurrence`, or a `
+        # PERMISSION_DENIED` error otherwise. The resource takes the following formats: `
+        # projects/`projectid`/occurrences/`occurrenceid`` for occurrences and projects/`
+        # projectid`/notes/`noteid` for notes
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1234,17 +1215,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the permissions that a caller has on the specified note or
-        # occurrence resource. Requires list permission on the project (for example,
-        # "storage.objects.list" on the containing bucket for testing permission of
-        # an object). Attempting to call this method on a non-existent resource will
-        # result in a `NOT_FOUND` error if the user has list permission on the
-        # project, or a `PERMISSION_DENIED` error otherwise. The resource takes the
-        # following formats: `projects/`PROJECT_ID`/occurrences/`OCCURRENCE_ID`` for
-        # `Occurrences` and `projects/`PROJECT_ID`/notes/`NOTE_ID`` for `Notes`
+        # Returns the permissions that a caller has on the specified note or occurrence
+        # resource. Requires list permission on the project (for example, "storage.
+        # objects.list" on the containing bucket for testing permission of an object).
+        # Attempting to call this method on a non-existent resource will result in a `
+        # NOT_FOUND` error if the user has list permission on the project, or a `
+        # PERMISSION_DENIED` error otherwise. The resource takes the following formats: `
+        # projects/`PROJECT_ID`/occurrences/`OCCURRENCE_ID`` for `Occurrences` and `
+        # projects/`PROJECT_ID`/notes/`NOTE_ID`` for `Notes`
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ContaineranalysisV1alpha1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1275,12 +1256,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists `Occurrences` referencing the specified `Note`. Use this method to
-        # get all occurrences referencing your `Note` across all your customer
-        # projects.
+        # Lists `Occurrences` referencing the specified `Note`. Use this method to get
+        # all occurrences referencing your `Note` across all your customer projects.
         # @param [String] name
-        #   The name field will contain the note name for example:
-        #   "provider/`provider_id`/notes/`note_id`"
+        #   The name field will contain the note name for example: "provider/`provider_id`/
+        #   notes/`note_id`"
         # @param [String] filter
         #   The filter expression.
         # @param [Fixnum] page_size

@@ -204,6 +204,9 @@ module Google
         #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account.
+        # @param [String] view
+        #   Controls which fields will be populated. Acceptable values are: "merchant" and
+        #   "css". The default value is "merchant".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -223,12 +226,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account(merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account(merchant_id, account_id, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{merchantId}/accounts/{accountId}', options)
           command.response_representation = Google::Apis::ContentV2_1::Account::Representation
           command.response_class = Google::Apis::ContentV2_1::Account
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['accountId'] = account_id unless account_id.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -316,10 +320,16 @@ module Google
         # Lists the sub-accounts in your Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. This must be a multi-client account.
+        # @param [Fixnum] label
+        #   If view is set to "css", only return accounts that are assigned label with
+        #   given ID.
         # @param [Fixnum] max_results
         #   The maximum number of accounts to return in the response, used for paging.
         # @param [String] page_token
         #   The token returned by the previous request.
+        # @param [String] view
+        #   Controls which fields will be populated. Acceptable values are: "merchant" and
+        #   "css". The default value is "merchant".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -339,13 +349,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_accounts(merchant_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_accounts(merchant_id, label: nil, max_results: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{merchantId}/accounts', options)
           command.response_representation = Google::Apis::ContentV2_1::AccountsListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::AccountsListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['label'] = label unless label.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -430,6 +442,45 @@ module Google
           command.request_object = account_object
           command.response_representation = Google::Apis::ContentV2_1::Account::Representation
           command.response_class = Google::Apis::ContentV2_1::Account
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates labels that are assigned to the Merchant Center account by CSS user.
+        # @param [Fixnum] merchant_id
+        #   The ID of the managing account.
+        # @param [Fixnum] account_id
+        #   The ID of the account whose labels are updated.
+        # @param [Google::Apis::ContentV2_1::AccountsUpdateLabelsRequest] accounts_update_labels_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::AccountsUpdateLabelsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::AccountsUpdateLabelsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def updatelabels_account(merchant_id, account_id, accounts_update_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/accounts/{accountId}/updatelabels', options)
+          command.request_representation = Google::Apis::ContentV2_1::AccountsUpdateLabelsRequest::Representation
+          command.request_object = accounts_update_labels_request_object
+          command.response_representation = Google::Apis::ContentV2_1::AccountsUpdateLabelsResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::AccountsUpdateLabelsResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?

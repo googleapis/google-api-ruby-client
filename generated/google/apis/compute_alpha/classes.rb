@@ -1174,18 +1174,6 @@ module Google
         # @return [String]
         attr_accessor :location_hint
       
-        # DEPRECATED, please use maintenance_freeze_duration_hours. TODO(b/154158138):
-        # Remove this field. Compute Engine Long Term Release. When specified, VMs that
-        # have this policy become long term release (internal: stable fleet) VMs.
-        # For all VM shapes, this should result in fewer disruptions due to software
-        # updates and greater predictability via 1 week extended notifications.
-        # For GPU VMs, this should also result in an 2 week uptime guarantee. See go/
-        # stable-fleet-gpus-design for more details.
-        # Corresponds to the JSON property `longTermRelease`
-        # @return [Boolean]
-        attr_accessor :long_term_release
-        alias_method :long_term_release?, :long_term_release
-      
         # Specifies type of machine (name only) which has fixed number of vCPUs and
         # fixed amount of memory. This also includes specifying custom machine type
         # following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
@@ -1220,7 +1208,6 @@ module Google
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @local_ssds = args[:local_ssds] if args.key?(:local_ssds)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
-          @long_term_release = args[:long_term_release] if args.key?(:long_term_release)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
           @maintenance_interval = args[:maintenance_interval] if args.key?(:maintenance_interval)
@@ -2837,6 +2824,11 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # Headers that the HTTP/S load balancer should add to proxied responses.
+        # Corresponds to the JSON property `customResponseHeaders`
+        # @return [Array<String>]
+        attr_accessor :custom_response_headers
+      
         # An optional textual description of the resource; provided by the client when
         # the resource is created.
         # Corresponds to the JSON property `description`
@@ -2888,6 +2880,7 @@ module Google
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
           @cdn_policy = args[:cdn_policy] if args.key?(:cdn_policy)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @custom_response_headers = args[:custom_response_headers] if args.key?(:custom_response_headers)
           @description = args[:description] if args.key?(:description)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
           @id = args[:id] if args.key?(:id)
@@ -2901,6 +2894,66 @@ module Google
       # Message containing Cloud CDN configuration for a backend bucket.
       class BackendBucketCdnPolicy
         include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `cacheMode`
+        # @return [String]
+        attr_accessor :cache_mode
+      
+        # Specifies a separate client (e.g. browser client) TTL, separate from the TTL
+        # for Cloud CDN?s edge caches. Leaving this empty will use the same cache TTL
+        # for both Cloud CDN and the client-facing response. The maximum allowed value
+        # is 86400s (1 day).
+        # Corresponds to the JSON property `clientTtl`
+        # @return [Fixnum]
+        attr_accessor :client_ttl
+      
+        # Specifies the default TTL for cached content served by this origin for
+        # responses that do not have an existing valid TTL (max-age or s-max-age).
+        # Setting a TTL of ?0? means ?always revalidate? and a value of ?-1? disables
+        # caching for that status code. The value of defaultTTL cannot be set to a value
+        # greater than that of maxTTL, but can be equal. When the cacheMode is set to
+        # FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
+        # The maximum allowed value is 31,622,400s (1 year), noting that infrequently
+        # accessed objects may be evicted from the cache before the defined TTL.
+        # Corresponds to the JSON property `defaultTtl`
+        # @return [Fixnum]
+        attr_accessor :default_ttl
+      
+        # Specifies the maximum allowed TTL for cached content served by this origin.
+        # Cache directives that attempt to set a max-age or s-maxage higher than this,
+        # or an Expires header more than maxTTL seconds in the future will be capped at
+        # the value of maxTTL, as if it were the value of an s-maxage Cache-Control
+        # directive. Setting a TTL of ?0? means ?always revalidate? and a value of ?-1?
+        # disables caching for that status code. The maximum allowed value is 31,622,
+        # 400s (1 year), noting that infrequently accessed objects may be evicted from
+        # the cache before the defined TTL.
+        # Corresponds to the JSON property `maxTtl`
+        # @return [Fixnum]
+        attr_accessor :max_ttl
+      
+        # Negative caching allows per-status code TTLs to be set, in order to apply fine-
+        # grained caching for common errors or redirects. This can reduce the load on
+        # your origin and improve end-user experience by reducing response latency. By
+        # default, Cloud CDN will apply the following default TTLs to these status codes:
+        # HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not
+        # Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method
+        # Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s These defaults can
+        # be overridden in negative_caching_policy
+        # Corresponds to the JSON property `negativeCaching`
+        # @return [Boolean]
+        attr_accessor :negative_caching
+        alias_method :negative_caching?, :negative_caching
+      
+        # Sets a cache TTL for the specified HTTP status code. negative_caching must be
+        # enabled to configure negative_caching_policy. Omitting the policy and leaving
+        # negative_caching enabled will use Cloud CDN?s default cache TTLs. Note that
+        # when specifying an explicit negative_caching_policy, you should take care to
+        # specify a cache TTL for all response codes that you wish to cache. Cloud CDN
+        # will not apply any default negative caching when a policy exists.
+        # Corresponds to the JSON property `negativeCachingPolicys`
+        # @return [Array<Google::Apis::ComputeAlpha::BackendBucketCdnPolicyNegativeCachingPolicy>]
+        attr_accessor :negative_caching_policys
       
         # If true then Cloud CDN will combine multiple concurrent cache fill requests
         # into a small number of requests to the origin.
@@ -2931,9 +2984,46 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cache_mode = args[:cache_mode] if args.key?(:cache_mode)
+          @client_ttl = args[:client_ttl] if args.key?(:client_ttl)
+          @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
+          @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
+          @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
+          @negative_caching_policys = args[:negative_caching_policys] if args.key?(:negative_caching_policys)
           @request_coalescing = args[:request_coalescing] if args.key?(:request_coalescing)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
+        end
+      end
+      
+      # Specify CDN TTLs for response error codes.
+      class BackendBucketCdnPolicyNegativeCachingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP status code to define a TTL against. Only HTTP status codes 300, 301,
+        # 308, 404, 405, 410, 414, 451 and 501 are can be specified as values, and you
+        # cannot specify a status code more than once.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # The TTL (in seconds) to cache responses with the corresponding status code for.
+        # A TTL of ?0? means ?always revalidate? and a value of ?-1? disables caching
+        # for that status code. The maximum allowed value is 1800s (30 minutes), noting
+        # that infrequently accessed objects may be evicted from the cache before the
+        # defined TTL.
+        # Corresponds to the JSON property `ttl`
+        # @return [Fixnum]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
@@ -3111,6 +3201,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :custom_request_headers
       
+        # Headers that the HTTP/S load balancer should add to proxied responses.
+        # Corresponds to the JSON property `customResponseHeaders`
+        # @return [Array<String>]
+        attr_accessor :custom_response_headers
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
@@ -3150,10 +3245,10 @@ module Google
         # The list of URLs to the healthChecks, httpHealthChecks (legacy), or
         # httpsHealthChecks (legacy) resource for health checking this backend service.
         # Not all backend services support legacy health checks. See  Load balancer
-        # guide. Currently at most one health check can be specified. Backend services
-        # with instance group or zonal NEG backends must have a health check. Backend
-        # services with internet NEG backends must not have a health check. A health
-        # check must
+        # guide. Currently, at most one health check can be specified for each backend
+        # service. Backend services with instance group or zonal NEG backends must have
+        # a health check. Backend services with internet or serverless NEG backends must
+        # not have a health check.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<String>]
         attr_accessor :health_checks
@@ -3262,8 +3357,8 @@ module Google
         attr_accessor :port_name
       
         # The protocol this BackendService uses to communicate with backends.
-        # Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, or UDP. depending on the
-        # chosen load balancer or Traffic Director configuration. Refer to the
+        # Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on
+        # the chosen load balancer or Traffic Director configuration. Refer to the
         # documentation for the load balancer or for Traffic Director for more
         # information.
         # Corresponds to the JSON property `protocol`
@@ -3334,6 +3429,7 @@ module Google
           @consistent_hash = args[:consistent_hash] if args.key?(:consistent_hash)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @custom_request_headers = args[:custom_request_headers] if args.key?(:custom_request_headers)
+          @custom_response_headers = args[:custom_response_headers] if args.key?(:custom_response_headers)
           @description = args[:description] if args.key?(:description)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
           @failover_policy = args[:failover_policy] if args.key?(:failover_policy)
@@ -3494,6 +3590,66 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CacheKeyPolicy]
         attr_accessor :cache_key_policy
       
+        # 
+        # Corresponds to the JSON property `cacheMode`
+        # @return [String]
+        attr_accessor :cache_mode
+      
+        # Specifies a separate client (e.g. browser client) TTL, separate from the TTL
+        # for Cloud CDN?s edge caches. Leaving this empty will use the same cache TTL
+        # for both Cloud CDN and the client-facing response. The maximum allowed value
+        # is 86400s (1 day).
+        # Corresponds to the JSON property `clientTtl`
+        # @return [Fixnum]
+        attr_accessor :client_ttl
+      
+        # Specifies the default TTL for cached content served by this origin for
+        # responses that do not have an existing valid TTL (max-age or s-max-age).
+        # Setting a TTL of ?0? means ?always revalidate? and a value of ?-1? disables
+        # caching for that status code. The value of defaultTTL cannot be set to a value
+        # greater than that of maxTTL, but can be equal. When the cacheMode is set to
+        # FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
+        # The maximum allowed value is 31,622,400s (1 year), noting that infrequently
+        # accessed objects may be evicted from the cache before the defined TTL.
+        # Corresponds to the JSON property `defaultTtl`
+        # @return [Fixnum]
+        attr_accessor :default_ttl
+      
+        # Specifies the maximum allowed TTL for cached content served by this origin.
+        # Cache directives that attempt to set a max-age or s-maxage higher than this,
+        # or an Expires header more than maxTTL seconds in the future will be capped at
+        # the value of maxTTL, as if it were the value of an s-maxage Cache-Control
+        # directive. Setting a TTL of ?0? means ?always revalidate? and a value of ?-1?
+        # disables caching for that status code. The maximum allowed value is 31,622,
+        # 400s (1 year), noting that infrequently accessed objects may be evicted from
+        # the cache before the defined TTL.
+        # Corresponds to the JSON property `maxTtl`
+        # @return [Fixnum]
+        attr_accessor :max_ttl
+      
+        # Negative caching allows per-status code TTLs to be set, in order to apply fine-
+        # grained caching for common errors or redirects. This can reduce the load on
+        # your origin and improve end-user experience by reducing response latency. By
+        # default, Cloud CDN will apply the following default TTLs to these status codes:
+        # HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not
+        # Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method
+        # Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s These defaults can
+        # be overridden in negative_caching_policy
+        # Corresponds to the JSON property `negativeCaching`
+        # @return [Boolean]
+        attr_accessor :negative_caching
+        alias_method :negative_caching?, :negative_caching
+      
+        # Sets a cache TTL for the specified HTTP status code. negative_caching must be
+        # enabled to configure negative_caching_policy. Omitting the policy and leaving
+        # negative_caching enabled will use Cloud CDN?s default cache TTLs. Note that
+        # when specifying an explicit negative_caching_policy, you should take care to
+        # specify a cache TTL for all response codes that you wish to cache. Cloud CDN
+        # will not apply any default negative caching when a policy exists.
+        # Corresponds to the JSON property `negativeCachingPolicys`
+        # @return [Array<Google::Apis::ComputeAlpha::BackendServiceCdnPolicyNegativeCachingPolicy>]
+        attr_accessor :negative_caching_policys
+      
         # If true then Cloud CDN will combine multiple concurrent cache fill requests
         # into a small number of requests to the origin.
         # Corresponds to the JSON property `requestCoalescing`
@@ -3524,9 +3680,46 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cache_key_policy = args[:cache_key_policy] if args.key?(:cache_key_policy)
+          @cache_mode = args[:cache_mode] if args.key?(:cache_mode)
+          @client_ttl = args[:client_ttl] if args.key?(:client_ttl)
+          @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
+          @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
+          @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
+          @negative_caching_policys = args[:negative_caching_policys] if args.key?(:negative_caching_policys)
           @request_coalescing = args[:request_coalescing] if args.key?(:request_coalescing)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
+        end
+      end
+      
+      # Specify CDN TTLs for response error codes.
+      class BackendServiceCdnPolicyNegativeCachingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP status code to define a TTL against. Only HTTP status codes 300, 301,
+        # 308, 404, 405, 410, 414, 451 and 501 are can be specified as values, and you
+        # cannot specify a status code more than once.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # The TTL (in seconds) to cache responses with the corresponding status code for.
+        # A TTL of ?0? means ?always revalidate? and a value of ?-1? disables caching
+        # for that status code. The maximum allowed value is 1800s (30 minutes), noting
+        # that infrequently accessed objects may be evicted from the cache before the
+        # defined TTL.
+        # Corresponds to the JSON property `ttl`
+        # @return [Fixnum]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
@@ -5628,12 +5821,11 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # Size of the persistent disk, specified in GB. You can specify this field when
-        # creating a persistent disk using the sourceImage or sourceSnapshot parameter,
-        # or specify it alone to create an empty persistent disk.
-        # If you specify this field along with sourceImage or sourceSnapshot, the value
-        # of sizeGb must not be less than the size of the sourceImage or the size of the
-        # snapshot. Acceptable values are 1 to 65536, inclusive.
+        # Size, in GB, of the persistent disk. You can specify this field when creating
+        # a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk
+        # parameter, or specify it alone to create an empty persistent disk.
+        # If you specify this field along with a source, the value of sizeGb must not be
+        # less than the size of the source. Acceptable values are 1 to 65536, inclusive.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
@@ -5689,9 +5881,9 @@ module Google
         # @return [String]
         attr_accessor :source_image_id
       
-        # The source in-place snapshot used to create this disk. You can provide this as
-        # a partial or full URL to the resource. For example, the following are valid
-        # values:
+        # [Deprecated] The source in-place snapshot used to create this disk. You can
+        # provide this as a partial or full URL to the resource. For example, the
+        # following are valid values:
         # - https://www.googleapis.com/compute/v1/projects/project/global/
         # inPlaceSnapshots/inPlaceSnapshots
         # - projects/project/global/inPlaceSnapshots/inPlaceSnapshots
@@ -5700,12 +5892,12 @@ module Google
         # @return [String]
         attr_accessor :source_in_place_snapshot
       
-        # [Output Only] The unique ID of the in-place snapshot used to create this disk.
-        # This value identifies the exact in-place snapshot that was used to create this
-        # persistent disk. For example, if you created the persistent disk from an in-
-        # place snapshot that was later deleted and recreated under the same name, the
-        # source in-place snapshot ID would identify the exact version of the in-place
-        # snapshot that was used.
+        # [Deprecated] [Output Only] The unique ID of the in-place snapshot used to
+        # create this disk. This value identifies the exact in-place snapshot that was
+        # used to create this persistent disk. For example, if you created the
+        # persistent disk from an in-place snapshot that was later deleted and recreated
+        # under the same name, the source in-place snapshot ID would identify the exact
+        # version of the in-place snapshot that was used.
         # Corresponds to the JSON property `sourceInPlaceSnapshotId`
         # @return [String]
         attr_accessor :source_in_place_snapshot_id
@@ -8439,13 +8631,14 @@ module Google
         # that points to a target proxy or a target pool. Do not use with a forwarding
         # rule that points to a backend service. This field is used along with the
         # target field for TargetHttpProxy, TargetHttpsProxy, TargetSslProxy,
-        # TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.
+        # TargetTcpProxy, TargetGrpcProxy, TargetVpnGateway, TargetPool, TargetInstance.
         # Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed
         # to ports in the specified range will be forwarded to target. Forwarding rules
         # with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.
         # Some types of forwarding target have constraints on the acceptable ports:
         # - TargetHttpProxy: 80, 8080
         # - TargetHttpsProxy: 443
+        # - TargetGrpcProxy: Any ports
         # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
         # 1883, 5222
         # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
@@ -8520,8 +8713,8 @@ module Google
         # forwarding rules, this target must live in the same region as the forwarding
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
-        # object. For INTERNAL_SELF_MANAGED load balancing, only targetHttpProxy is
-        # valid, not targetHttpsProxy.
+        # object. For INTERNAL_SELF_MANAGED load balancing, only targetHttpProxy and
+        # targetGrpcProxy are valid, not targetHttpsProxy.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -11269,7 +11462,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::HttpFilterConfig>]
         attr_accessor :http_filter_metadata
       
-        # 
+        # The list of criteria for matching attributes of a request to this routeRule.
+        # This list has OR semantics: the request matches this routeRule when any of the
+        # matchRules are satisfied. However predicates within a given matchRule have AND
+        # semantics. All predicates within a matchRule must match for the request to
+        # match the rule.
         # Corresponds to the JSON property `matchRules`
         # @return [Array<Google::Apis::ComputeAlpha::HttpRouteRuleMatch>]
         attr_accessor :match_rules
@@ -11297,6 +11494,8 @@ module Google
         # routeAction cannot contain any  weightedBackendServices.
         # Only one of urlRedirect, service or routeAction.weightedBackendService must be
         # set.
+        # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
+        # within a routeRule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeAlpha::HttpRouteAction]
         attr_accessor :route_action
@@ -20057,10 +20256,11 @@ module Google
       # Represents a collection of network endpoints.
       # A network endpoint group (NEG) defines how a set of endpoints should be
       # reached, whether they are reachable, and where they are located. For more
-      # information about using NEGs, see  Setting up internet NEGs or  Setting up
-      # zonal NEGs. (== resource_for `$api_version`.networkEndpointGroups ==) (==
-      # resource_for `$api_version`.globalNetworkEndpointGroups ==) (== resource_for `$
-      # api_version`.regionNetworkEndpointGroups ==)
+      # information about using NEGs, see  Setting up internet NEGs,  Setting up zonal
+      # NEGs, or  Setting up serverless NEGs. (== resource_for `$api_version`.
+      # networkEndpointGroups ==) (== resource_for `$api_version`.
+      # globalNetworkEndpointGroups ==) (== resource_for `$api_version`.
+      # regionNetworkEndpointGroups ==)
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -20146,7 +20346,9 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Type of network endpoints in this network endpoint group.
+        # Type of network endpoints in this network endpoint group. Can be one of
+        # GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT,
+        # or SERVERLESS.
         # Corresponds to the JSON property `networkEndpointType`
         # @return [String]
         attr_accessor :network_endpoint_type
@@ -25953,9 +26155,9 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # The status of the public delegated prefix. Possible values are: ACTIVE: The
-        # public delegated prefix is active DRAINED: The public delegated prefix is
-        # drained.
+        # The status of the public delegated prefix. Possible values are: INITIALIZING:
+        # The public delegated prefix is being initialized and addresses cannot be
+        # created yet. ANNOUNCED: The public delegated prefix is active.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -31553,18 +31755,6 @@ module Google
         # @return [String]
         attr_accessor :location_hint
       
-        # DEPRECATED, please use maintenance_freeze_duration_hours. TODO(b/154158138):
-        # Remove this field. Compute Engine Long Term Release. When specified, VMs that
-        # have this policy become long term release (internal: stable fleet) VMs.
-        # For all VM shapes, this should result in fewer disruptions due to software
-        # updates and greater predictability via 1 week extended notifications.
-        # For GPU VMs, this should also result in an 2 week uptime guarantee. See go/
-        # stable-fleet-gpus-design for more details.
-        # Corresponds to the JSON property `longTermRelease`
-        # @return [Boolean]
-        attr_accessor :long_term_release
-        alias_method :long_term_release?, :long_term_release
-      
         # Specifies the number of hours after instance creation where the instance won't
         # be scheduled for maintenance.
         # Corresponds to the JSON property `maintenanceFreezeDurationHours`
@@ -31609,7 +31799,6 @@ module Google
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
           @latency_tolerant = args[:latency_tolerant] if args.key?(:latency_tolerant)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
-          @long_term_release = args[:long_term_release] if args.key?(:long_term_release)
           @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
           @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
@@ -37032,7 +37221,7 @@ module Google
       
         # The URL of the HttpHealthCheck resource. A member instance in this pool is
         # considered healthy if and only if the health checks pass. An empty list means
-        # all member instances will be considered healthy at all times. Only
+        # all member instances will be considered healthy at all times. Only legacy
         # HttpHealthChecks are supported. Only one health check may be specified.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<String>]

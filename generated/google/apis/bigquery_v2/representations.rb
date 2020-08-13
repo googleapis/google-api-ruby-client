@@ -2376,6 +2376,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_arima, as: 'autoArima'
+          property :auto_arima_max_order, :numeric_string => true, as: 'autoArimaMaxOrder'
           property :batch_size, :numeric_string => true, as: 'batchSize'
           property :data_frequency, as: 'dataFrequency'
           property :data_split_column, as: 'dataSplitColumn'

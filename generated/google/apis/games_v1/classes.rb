@@ -56,15 +56,15 @@ module Google
         # @return [String]
         attr_accessor :initial_state
       
-        # Indicates whether the revealed icon image being returned is a default
-        # image, or is provided by the game.
+        # Indicates whether the revealed icon image being returned is a default image,
+        # or is provided by the game.
         # Corresponds to the JSON property `isRevealedIconUrlDefault`
         # @return [Boolean]
         attr_accessor :is_revealed_icon_url_default
         alias_method :is_revealed_icon_url_default?, :is_revealed_icon_url_default
       
-        # Indicates whether the unlocked icon image being returned is a default
-        # image, or is game-provided.
+        # Indicates whether the unlocked icon image being returned is a default image,
+        # or is game-provided.
         # Corresponds to the JSON property `isUnlockedIconUrlDefault`
         # @return [Boolean]
         attr_accessor :is_unlocked_icon_url_default
@@ -165,8 +165,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Whether the current steps for the achievement has reached the number of
-        # steps required to unlock.
+        # Whether the current steps for the achievement has reached the number of steps
+        # required to unlock.
         # Corresponds to the JSON property `newlyUnlocked`
         # @return [Boolean]
         attr_accessor :newly_unlocked
@@ -226,8 +226,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Whether the current steps for the achievement has reached the number of
-        # steps required to unlock.
+        # Whether the current steps for the achievement has reached the number of steps
+        # required to unlock.
         # Corresponds to the JSON property `newlyUnlocked`
         # @return [Boolean]
         attr_accessor :newly_unlocked
@@ -334,8 +334,7 @@ module Google
         # @return [String]
         attr_accessor :achievement_id
       
-        # The payload to request to increment an
-        # achievement.
+        # The payload to request to increment an achievement.
         # Corresponds to the JSON property `incrementPayload`
         # @return [Google::Apis::GamesV1::GamesAchievementIncrement]
         attr_accessor :increment_payload
@@ -346,8 +345,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The payload to request to increment an
-        # achievement.
+        # The payload to request to increment an achievement.
         # Corresponds to the JSON property `setStepsAtLeastPayload`
         # @return [Google::Apis::GamesV1::GamesAchievementSetStepsAtLeast]
         attr_accessor :set_steps_at_least_payload
@@ -733,8 +731,8 @@ module Google
         # @return [String]
         attr_accessor :image_url
       
-        # Indicates whether the icon image being returned is a default image, or is
-        # game-provided.
+        # Indicates whether the icon image being returned is a default image, or is game-
+        # provided.
         # Corresponds to the JSON property `isDefaultImageUrl`
         # @return [Boolean]
         attr_accessor :is_default_image_url
@@ -810,14 +808,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The time when this update period ends, in millis, since 1970 UTC (Unix
-        # Epoch).
+        # The time when this update period ends, in millis, since 1970 UTC (Unix Epoch).
         # Corresponds to the JSON property `periodEndMillis`
         # @return [Fixnum]
         attr_accessor :period_end_millis
       
-        # The time when this update period begins, in millis, since 1970 UTC (Unix
-        # Epoch).
+        # The time when this update period begins, in millis, since 1970 UTC (Unix Epoch)
+        # .
         # Corresponds to the JSON property `periodStartMillis`
         # @return [Fixnum]
         attr_accessor :period_start_millis
@@ -902,8 +899,8 @@ module Google
       class EventRecordRequest
         include Google::Apis::Core::Hashable
       
-        # The current time when this update was sent, in milliseconds, since 1970 UTC
-        # (Unix Epoch).
+        # The current time when this update was sent, in milliseconds, since 1970 UTC (
+        # Unix Epoch).
         # Corresponds to the JSON property `currentTimeMillis`
         # @return [Fixnum]
         attr_accessor :current_time_millis
@@ -1007,8 +1004,7 @@ module Google
         end
       end
       
-      # The payload to request to increment an
-      # achievement.
+      # The payload to request to increment an achievement.
       class GamesAchievementIncrement
         include Google::Apis::Core::Hashable
       
@@ -1040,8 +1036,7 @@ module Google
         end
       end
       
-      # The payload to request to increment an
-      # achievement.
+      # The payload to request to increment an achievement.
       class GamesAchievementSetStepsAtLeast
         include Google::Apis::Core::Hashable
       
@@ -1330,8 +1325,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Indicates whether the icon image being returned is a default image, or is
-        # game-provided.
+        # Indicates whether the icon image being returned is a default image, or is game-
+        # provided.
         # Corresponds to the JSON property `isIconUrlDefault`
         # @return [Boolean]
         attr_accessor :is_icon_url_default
@@ -1398,8 +1393,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :score_rank
       
-        # Additional information about the score.  Values must contain no more than
-        # 64 URI-safe characters as defined by section 2.3 of RFC 3986.
+        # Additional information about the score. Values must contain no more than 64
+        # URI-safe characters as defined by section 2.3 of RFC 3986.
         # Corresponds to the JSON property `scoreTag`
         # @return [String]
         attr_accessor :score_tag
@@ -1568,8 +1563,8 @@ module Google
       class MetagameConfig
         include Google::Apis::Core::Hashable
       
-        # Current version of the metagame configuration data. When this data is
-        # updated, the version number will be increased by one.
+        # Current version of the metagame configuration data. When this data is updated,
+        # the version number will be increased by one.
         # Corresponds to the JSON property `currentVersion`
         # @return [Fixnum]
         attr_accessor :current_version
@@ -1644,9 +1639,9 @@ module Google
         attr_accessor :name
       
         # The player ID that was used for this player the first time they signed into
-        # the game in question. This is only populated for calls to player.get for
-        # the requesting player, only if the player ID has subsequently changed, and
-        # only to clients that support remapping player IDs.
+        # the game in question. This is only populated for calls to player.get for the
+        # requesting player, only if the player ID has subsequently changed, and only to
+        # clients that support remapping player IDs.
         # Corresponds to the JSON property `originalPlayerId`
         # @return [String]
         attr_accessor :original_player_id
@@ -1690,14 +1685,12 @@ module Google
         class Name
           include Google::Apis::Core::Hashable
         
-          # The family name of this player. In some places, this is known as the last
-          # name.
+          # The family name of this player. In some places, this is known as the last name.
           # Corresponds to the JSON property `familyName`
           # @return [String]
           attr_accessor :family_name
         
-          # The given name of this player. In some places, this is known as the first
-          # name.
+          # The given name of this player. In some places, this is known as the first name.
           # Corresponds to the JSON property `givenName`
           # @return [String]
           attr_accessor :given_name
@@ -1729,8 +1722,8 @@ module Google
         attr_accessor :current_steps
       
         # Experience points earned for the achievement. This field is absent for
-        # achievements that have not yet been unlocked and 0 for achievements that
-        # have been unlocked by testers but that are unpublished.
+        # achievements that have not yet been unlocked and 0 for achievements that have
+        # been unlocked by testers but that are unpublished.
         # Corresponds to the JSON property `experiencePoints`
         # @return [Fixnum]
         attr_accessor :experience_points
@@ -1902,8 +1895,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The timestamp when the player was leveled up, in millis since Unix epoch
-        # UTC.
+        # The timestamp when the player was leveled up, in millis since Unix epoch UTC.
         # Corresponds to the JSON property `lastLevelUpTimestampMillis`
         # @return [Fixnum]
         attr_accessor :last_level_up_timestamp_millis
@@ -1931,6 +1923,11 @@ module Google
       class PlayerLeaderboardScore
         include Google::Apis::Core::Hashable
       
+        # A score rank in a leaderboard.
+        # Corresponds to the JSON property `friendsRank`
+        # @return [Google::Apis::GamesV1::LeaderboardScoreRank]
+        attr_accessor :friends_rank
+      
         # Uniquely identifies the type of this resource. Value is always the fixed
         # string `games#playerLeaderboardScore`.
         # Corresponds to the JSON property `kind`
@@ -1952,8 +1949,8 @@ module Google
         # @return [String]
         attr_accessor :score_string
       
-        # Additional information about the score.  Values must contain no more than
-        # 64 URI-safe characters as defined by section 2.3 of RFC 3986.
+        # Additional information about the score. Values must contain no more than 64
+        # URI-safe characters as defined by section 2.3 of RFC 3986.
         # Corresponds to the JSON property `scoreTag`
         # @return [String]
         attr_accessor :score_tag
@@ -1985,6 +1982,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @friends_rank = args[:friends_rank] if args.key?(:friends_rank)
           @kind = args[:kind] if args.key?(:kind)
           @leaderboard_id = args[:leaderboard_id] if args.key?(:leaderboard_id)
           @public_rank = args[:public_rank] if args.key?(:public_rank)
@@ -2125,8 +2123,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :score
       
-        # Additional information about this score.  Values will contain no more than
-        # 64 URI-safe characters as defined by section 2.3 of RFC 3986.
+        # Additional information about this score. Values will contain no more than 64
+        # URI-safe characters as defined by section 2.3 of RFC 3986.
         # Corresponds to the JSON property `scoreTag`
         # @return [String]
         attr_accessor :score_tag
@@ -2180,8 +2178,8 @@ module Google
       class PlayerScoreResponse
         include Google::Apis::Core::Hashable
       
-        # The time spans where the submitted score is better than the existing score
-        # for that time span.
+        # The time spans where the submitted score is better than the existing score for
+        # that time span.
         # Corresponds to the JSON property `beatenScoreTimeSpans`
         # @return [Array<String>]
         attr_accessor :beaten_score_time_spans
@@ -2202,16 +2200,15 @@ module Google
         # @return [String]
         attr_accessor :leaderboard_id
       
-        # Additional information about this score.  Values will contain no more than
-        # 64 URI-safe characters as defined by section 2.3 of RFC 3986.
+        # Additional information about this score. Values will contain no more than 64
+        # URI-safe characters as defined by section 2.3 of RFC 3986.
         # Corresponds to the JSON property `scoreTag`
         # @return [String]
         attr_accessor :score_tag
       
-        # The scores in time spans that have not been beaten.  As an example, the
-        # submitted score may be better than the
-        # player's `DAILY` score, but not better than the player's scores
-        # for the `WEEKLY` or `ALL_TIME` time spans.
+        # The scores in time spans that have not been beaten. As an example, the
+        # submitted score may be better than the player's `DAILY` score, but not better
+        # than the player's scores for the `WEEKLY` or `ALL_TIME` time spans.
         # Corresponds to the JSON property `unbeatenScores`
         # @return [Array<Google::Apis::GamesV1::PlayerScore>]
         attr_accessor :unbeaten_scores
@@ -2343,14 +2340,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :score
       
-        # Additional information about this score.  Values will contain no more than
-        # 64 URI-safe characters as defined by section 2.3 of RFC 3986.
+        # Additional information about this score. Values will contain no more than 64
+        # URI-safe characters as defined by section 2.3 of RFC 3986.
         # Corresponds to the JSON property `scoreTag`
         # @return [String]
         attr_accessor :score_tag
       
-        # Signature Values will contain URI-safe characters as defined by section 2.3
-        # of RFC 3986.
+        # Signature Values will contain URI-safe characters as defined by section 2.3 of
+        # RFC 3986.
         # Corresponds to the JSON property `signature`
         # @return [String]
         attr_accessor :signature
@@ -2383,9 +2380,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The ID of the file underlying this snapshot in the Drive API.  Only present
-        # if the snapshot is a view on a Drive file and the file is owned by the
-        # caller.
+        # The ID of the file underlying this snapshot in the Drive API. Only present if
+        # the snapshot is a view on a Drive file and the file is owned by the caller.
         # Corresponds to the JSON property `driveId`
         # @return [String]
         attr_accessor :drive_id
@@ -2473,8 +2469,8 @@ module Google
         # @return [String]
         attr_accessor :mime_type
       
-        # The URL of the image. This URL may be invalidated at any time and should
-        # not be cached.
+        # The URL of the image. This URL may be invalidated at any time and should not
+        # be cached.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -2513,8 +2509,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Token corresponding to the next page of results. If there are no more
-        # results, the token is omitted.
+        # Token corresponding to the next page of results. If there are no more results,
+        # the token is omitted.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2541,15 +2537,14 @@ module Google
         # @return [Float]
         attr_accessor :avg_session_length_minutes
       
-        # The probability of the player not returning to play the game in the next
-        # day. E.g., 0, 0.1, 0.5, ..., 1.0. Not populated if there is not enough
-        # information.
+        # The probability of the player not returning to play the game in the next day.
+        # E.g., 0, 0.1, 0.5, ..., 1.0. Not populated if there is not enough information.
         # Corresponds to the JSON property `churn_probability`
         # @return [Float]
         attr_accessor :churn_probability
       
-        # Number of days since the player last played this game. E.g., 0, 1, 5, 10,
-        # ... . Not populated if there is not enough information.
+        # Number of days since the player last played this game. E.g., 0, 1, 5, 10, ... .
+        # Not populated if there is not enough information.
         # Corresponds to the JSON property `days_since_last_played`
         # @return [Fixnum]
         attr_accessor :days_since_last_played
@@ -2567,44 +2562,42 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Number of in-app purchases made by the player in this game. E.g., 0, 1, 5,
-        # 10, ... . Not populated if there is not enough information.
+        # Number of in-app purchases made by the player in this game. E.g., 0, 1, 5, 10,
+        # ... . Not populated if there is not enough information.
         # Corresponds to the JSON property `num_purchases`
         # @return [Fixnum]
         attr_accessor :num_purchases
       
         # The approximate number of sessions of the player within the last 28 days,
-        # where a session begins when the player is connected to Play Games Services
-        # and ends when they are disconnected. E.g., 0, 1, 5, 10, ... . Not populated
-        # if there is not enough information.
+        # where a session begins when the player is connected to Play Games Services and
+        # ends when they are disconnected. E.g., 0, 1, 5, 10, ... . Not populated if
+        # there is not enough information.
         # Corresponds to the JSON property `num_sessions`
         # @return [Fixnum]
         attr_accessor :num_sessions
       
-        # The approximation of the sessions percentile of the player within the last
-        # 30 days, where a session begins when the player is connected to Play Games
+        # The approximation of the sessions percentile of the player within the last 30
+        # days, where a session begins when the player is connected to Play Games
         # Services and ends when they are disconnected. E.g., 0, 0.25, 0.5, 0.75. Not
         # populated if there is not enough information.
         # Corresponds to the JSON property `num_sessions_percentile`
         # @return [Float]
         attr_accessor :num_sessions_percentile
       
-        # The approximate spend percentile of the player in this game. E.g., 0, 0.25,
-        # 0.5, 0.75. Not populated if there is not enough information.
+        # The approximate spend percentile of the player in this game. E.g., 0, 0.25, 0.
+        # 5, 0.75. Not populated if there is not enough information.
         # Corresponds to the JSON property `spend_percentile`
         # @return [Float]
         attr_accessor :spend_percentile
       
-        # The probability of the player going to spend the game in the next seven
-        # days. E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough
-        # information.
+        # The probability of the player going to spend the game in the next seven days.
+        # E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough information.
         # Corresponds to the JSON property `spend_probability`
         # @return [Float]
         attr_accessor :spend_probability
       
         # The predicted amount of money that the player going to spend in the next 28
-        # days. E.g., 1, 30, 60, ... . Not populated if there is not enough
-        # information.
+        # days. E.g., 1, 30, 60, ... . Not populated if there is not enough information.
         # Corresponds to the JSON property `total_spend_next_28_days`
         # @return [Float]
         attr_accessor :total_spend_next_28_days

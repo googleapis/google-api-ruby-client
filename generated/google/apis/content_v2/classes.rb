@@ -5829,7 +5829,9 @@ module Google
       class OrderShipmentScheduledDeliveryDetails
         include Google::Apis::Core::Hashable
       
-        # The phone number of the carrier fulfilling the delivery.
+        # The phone number of the carrier fulfilling the delivery. The phone number is
+        # formatted as the international notation in ITU-T Recommendation E.123 (e.g., "+
+        # 41 44 668 1800").
         # Corresponds to the JSON property `carrierPhoneNumber`
         # @return [String]
         attr_accessor :carrier_phone_number

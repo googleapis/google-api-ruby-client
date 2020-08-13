@@ -47,12 +47,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Deletes the settings associated with a project, folder, or organization.
-        # This will have the effect of disabling Access Approval for the project,
-        # folder, or organization, but only if all ancestors also have Access
-        # Approval disabled. If Access Approval is enabled at a higher level of the
-        # hierarchy, then Access Approval will still be enabled at this level as
-        # the settings are inherited.
+        # Deletes the settings associated with a project, folder, or organization. This
+        # will have the effect of disabling Access Approval for the project, folder, or
+        # organization, but only if all ancestors also have Access Approval disabled. If
+        # Access Approval is enabled at a higher level of the hierarchy, then Access
+        # Approval will still be enabled at this level as the settings are inherited.
         # @param [String] name
         #   Name of the AccessApprovalSettings to delete.
         # @param [String] fields
@@ -115,24 +114,18 @@ module Google
         # Updates the settings associated with a project, folder, or organization.
         # Settings to update are determined by the value of field_mask.
         # @param [String] name
-        #   The resource name of the settings. Format is one of:
-        #   <ol>
-        #   <li>"projects/`project_id`/accessApprovalSettings"</li>
-        #   <li>"folders/`folder_id`/accessApprovalSettings"</li>
-        #   <li>"organizations/`organization_id`/accessApprovalSettings"</li>
-        #   <ol>
+        #   The resource name of the settings. Format is one of: 1. "projects/`project_id`/
+        #   accessApprovalSettings" 2. "folders/`folder_id`/accessApprovalSettings" 3. "
+        #   organizations/`organization_id`/accessApprovalSettings"
         # @param [Google::Apis::AccessapprovalV1::AccessApprovalSettings] access_approval_settings_object
         # @param [String] update_mask
         #   The update mask applies to the settings. Only the top level fields of
-        #   AccessApprovalSettings (notification_emails & enrolled_services) are
-        #   supported. For each field, if it is included, the currently stored value
-        #   will be entirely overwritten with the value of the field passed in this
-        #   request.
-        #   For the `FieldMask` definition, see
-        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   fieldmask
-        #   If this field is left unset, only the notification_emails field will be
-        #   updated.
+        #   AccessApprovalSettings (notification_emails & enrolled_services) are supported.
+        #   For each field, if it is included, the currently stored value will be
+        #   entirely overwritten with the value of the field passed in this request. For
+        #   the `FieldMask` definition, see https://developers.google.com/protocol-buffers/
+        #   docs/reference/google.protobuf#fieldmask If this field is left unset, only the
+        #   notification_emails field will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -163,9 +156,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Approves a request and returns the updated ApprovalRequest.
-        # Returns NOT_FOUND if the request does not exist. Returns
-        # FAILED_PRECONDITION if the request exists but is not in a pending state.
+        # Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND
+        # if the request does not exist. Returns FAILED_PRECONDITION if the request
+        # exists but is not in a pending state.
         # @param [String] name
         #   Name of the approval request to approve.
         # @param [Google::Apis::AccessapprovalV1::ApproveApprovalRequestMessage] approve_approval_request_message_object
@@ -198,13 +191,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Dismisses a request. Returns the updated ApprovalRequest.
-        # NOTE: This does not deny access to the resource if another request has been
-        # made and approved. It is equivalent in effect to ignoring the request
-        # altogether.
-        # Returns NOT_FOUND if the request does not exist.
-        # Returns FAILED_PRECONDITION if the request exists but is not in a pending
-        # state.
+        # Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not
+        # deny access to the resource if another request has been made and approved. It
+        # is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND
+        # if the request does not exist. Returns FAILED_PRECONDITION if the request
+        # exists but is not in a pending state.
         # @param [String] name
         #   Name of the ApprovalRequest to dismiss.
         # @param [Google::Apis::AccessapprovalV1::DismissApprovalRequestMessage] dismiss_approval_request_message_object
@@ -268,22 +259,18 @@ module Google
         end
         
         # Lists approval requests associated with a project, folder, or organization.
-        # Approval requests can be filtered by state (pending, active, dismissed).
-        # The order is reverse chronological.
+        # Approval requests can be filtered by state (pending, active, dismissed). The
+        # order is reverse chronological.
         # @param [String] parent
-        #   The parent resource. This may be "projects/`project_id`",
-        #   "folders/`folder_id`", or "organizations/`organization_id`".
+        #   The parent resource. This may be "projects/`project_id`", "folders/`folder_id`"
+        #   , or "organizations/`organization_id`".
         # @param [String] filter
         #   A filter on the type of approval requests to retrieve. Must be one of the
-        #   following values:
-        #   <ol>
-        #   <li>[not set]: Requests that are pending or have active approvals.</li>
-        #   <li>ALL: All requests.</li>
-        #   <li>PENDING: Only pending requests.</li>
-        #   <li>ACTIVE: Only active (i.e. currently approved) requests.</li>
-        #   <li>DISMISSED: Only dismissed (including expired) requests.</li>
-        #   <li>HISTORY: Active and dismissed (including expired) requests.</li>
-        #   </ol>
+        #   following values: 1. [not set]: Requests that are pending or have active
+        #   approvals. 2. ALL: All requests. 3. PENDING: Only pending requests. 4. ACTIVE:
+        #   Only active (i.e. currently approved) requests. 5. DISMISSED: Only dismissed (
+        #   including expired) requests. 6. HISTORY: Active and dismissed (including
+        #   expired) requests.
         # @param [Fixnum] page_size
         #   Requested page size.
         # @param [String] page_token
@@ -318,12 +305,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the settings associated with a project, folder, or organization.
-        # This will have the effect of disabling Access Approval for the project,
-        # folder, or organization, but only if all ancestors also have Access
-        # Approval disabled. If Access Approval is enabled at a higher level of the
-        # hierarchy, then Access Approval will still be enabled at this level as
-        # the settings are inherited.
+        # Deletes the settings associated with a project, folder, or organization. This
+        # will have the effect of disabling Access Approval for the project, folder, or
+        # organization, but only if all ancestors also have Access Approval disabled. If
+        # Access Approval is enabled at a higher level of the hierarchy, then Access
+        # Approval will still be enabled at this level as the settings are inherited.
         # @param [String] name
         #   Name of the AccessApprovalSettings to delete.
         # @param [String] fields
@@ -386,24 +372,18 @@ module Google
         # Updates the settings associated with a project, folder, or organization.
         # Settings to update are determined by the value of field_mask.
         # @param [String] name
-        #   The resource name of the settings. Format is one of:
-        #   <ol>
-        #   <li>"projects/`project_id`/accessApprovalSettings"</li>
-        #   <li>"folders/`folder_id`/accessApprovalSettings"</li>
-        #   <li>"organizations/`organization_id`/accessApprovalSettings"</li>
-        #   <ol>
+        #   The resource name of the settings. Format is one of: 1. "projects/`project_id`/
+        #   accessApprovalSettings" 2. "folders/`folder_id`/accessApprovalSettings" 3. "
+        #   organizations/`organization_id`/accessApprovalSettings"
         # @param [Google::Apis::AccessapprovalV1::AccessApprovalSettings] access_approval_settings_object
         # @param [String] update_mask
         #   The update mask applies to the settings. Only the top level fields of
-        #   AccessApprovalSettings (notification_emails & enrolled_services) are
-        #   supported. For each field, if it is included, the currently stored value
-        #   will be entirely overwritten with the value of the field passed in this
-        #   request.
-        #   For the `FieldMask` definition, see
-        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   fieldmask
-        #   If this field is left unset, only the notification_emails field will be
-        #   updated.
+        #   AccessApprovalSettings (notification_emails & enrolled_services) are supported.
+        #   For each field, if it is included, the currently stored value will be
+        #   entirely overwritten with the value of the field passed in this request. For
+        #   the `FieldMask` definition, see https://developers.google.com/protocol-buffers/
+        #   docs/reference/google.protobuf#fieldmask If this field is left unset, only the
+        #   notification_emails field will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -434,9 +414,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Approves a request and returns the updated ApprovalRequest.
-        # Returns NOT_FOUND if the request does not exist. Returns
-        # FAILED_PRECONDITION if the request exists but is not in a pending state.
+        # Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND
+        # if the request does not exist. Returns FAILED_PRECONDITION if the request
+        # exists but is not in a pending state.
         # @param [String] name
         #   Name of the approval request to approve.
         # @param [Google::Apis::AccessapprovalV1::ApproveApprovalRequestMessage] approve_approval_request_message_object
@@ -469,13 +449,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Dismisses a request. Returns the updated ApprovalRequest.
-        # NOTE: This does not deny access to the resource if another request has been
-        # made and approved. It is equivalent in effect to ignoring the request
-        # altogether.
-        # Returns NOT_FOUND if the request does not exist.
-        # Returns FAILED_PRECONDITION if the request exists but is not in a pending
-        # state.
+        # Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not
+        # deny access to the resource if another request has been made and approved. It
+        # is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND
+        # if the request does not exist. Returns FAILED_PRECONDITION if the request
+        # exists but is not in a pending state.
         # @param [String] name
         #   Name of the ApprovalRequest to dismiss.
         # @param [Google::Apis::AccessapprovalV1::DismissApprovalRequestMessage] dismiss_approval_request_message_object
@@ -539,22 +517,18 @@ module Google
         end
         
         # Lists approval requests associated with a project, folder, or organization.
-        # Approval requests can be filtered by state (pending, active, dismissed).
-        # The order is reverse chronological.
+        # Approval requests can be filtered by state (pending, active, dismissed). The
+        # order is reverse chronological.
         # @param [String] parent
-        #   The parent resource. This may be "projects/`project_id`",
-        #   "folders/`folder_id`", or "organizations/`organization_id`".
+        #   The parent resource. This may be "projects/`project_id`", "folders/`folder_id`"
+        #   , or "organizations/`organization_id`".
         # @param [String] filter
         #   A filter on the type of approval requests to retrieve. Must be one of the
-        #   following values:
-        #   <ol>
-        #   <li>[not set]: Requests that are pending or have active approvals.</li>
-        #   <li>ALL: All requests.</li>
-        #   <li>PENDING: Only pending requests.</li>
-        #   <li>ACTIVE: Only active (i.e. currently approved) requests.</li>
-        #   <li>DISMISSED: Only dismissed (including expired) requests.</li>
-        #   <li>HISTORY: Active and dismissed (including expired) requests.</li>
-        #   </ol>
+        #   following values: 1. [not set]: Requests that are pending or have active
+        #   approvals. 2. ALL: All requests. 3. PENDING: Only pending requests. 4. ACTIVE:
+        #   Only active (i.e. currently approved) requests. 5. DISMISSED: Only dismissed (
+        #   including expired) requests. 6. HISTORY: Active and dismissed (including
+        #   expired) requests.
         # @param [Fixnum] page_size
         #   Requested page size.
         # @param [String] page_token
@@ -589,12 +563,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the settings associated with a project, folder, or organization.
-        # This will have the effect of disabling Access Approval for the project,
-        # folder, or organization, but only if all ancestors also have Access
-        # Approval disabled. If Access Approval is enabled at a higher level of the
-        # hierarchy, then Access Approval will still be enabled at this level as
-        # the settings are inherited.
+        # Deletes the settings associated with a project, folder, or organization. This
+        # will have the effect of disabling Access Approval for the project, folder, or
+        # organization, but only if all ancestors also have Access Approval disabled. If
+        # Access Approval is enabled at a higher level of the hierarchy, then Access
+        # Approval will still be enabled at this level as the settings are inherited.
         # @param [String] name
         #   Name of the AccessApprovalSettings to delete.
         # @param [String] fields
@@ -657,24 +630,18 @@ module Google
         # Updates the settings associated with a project, folder, or organization.
         # Settings to update are determined by the value of field_mask.
         # @param [String] name
-        #   The resource name of the settings. Format is one of:
-        #   <ol>
-        #   <li>"projects/`project_id`/accessApprovalSettings"</li>
-        #   <li>"folders/`folder_id`/accessApprovalSettings"</li>
-        #   <li>"organizations/`organization_id`/accessApprovalSettings"</li>
-        #   <ol>
+        #   The resource name of the settings. Format is one of: 1. "projects/`project_id`/
+        #   accessApprovalSettings" 2. "folders/`folder_id`/accessApprovalSettings" 3. "
+        #   organizations/`organization_id`/accessApprovalSettings"
         # @param [Google::Apis::AccessapprovalV1::AccessApprovalSettings] access_approval_settings_object
         # @param [String] update_mask
         #   The update mask applies to the settings. Only the top level fields of
-        #   AccessApprovalSettings (notification_emails & enrolled_services) are
-        #   supported. For each field, if it is included, the currently stored value
-        #   will be entirely overwritten with the value of the field passed in this
-        #   request.
-        #   For the `FieldMask` definition, see
-        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   fieldmask
-        #   If this field is left unset, only the notification_emails field will be
-        #   updated.
+        #   AccessApprovalSettings (notification_emails & enrolled_services) are supported.
+        #   For each field, if it is included, the currently stored value will be
+        #   entirely overwritten with the value of the field passed in this request. For
+        #   the `FieldMask` definition, see https://developers.google.com/protocol-buffers/
+        #   docs/reference/google.protobuf#fieldmask If this field is left unset, only the
+        #   notification_emails field will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -705,9 +672,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Approves a request and returns the updated ApprovalRequest.
-        # Returns NOT_FOUND if the request does not exist. Returns
-        # FAILED_PRECONDITION if the request exists but is not in a pending state.
+        # Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND
+        # if the request does not exist. Returns FAILED_PRECONDITION if the request
+        # exists but is not in a pending state.
         # @param [String] name
         #   Name of the approval request to approve.
         # @param [Google::Apis::AccessapprovalV1::ApproveApprovalRequestMessage] approve_approval_request_message_object
@@ -740,13 +707,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Dismisses a request. Returns the updated ApprovalRequest.
-        # NOTE: This does not deny access to the resource if another request has been
-        # made and approved. It is equivalent in effect to ignoring the request
-        # altogether.
-        # Returns NOT_FOUND if the request does not exist.
-        # Returns FAILED_PRECONDITION if the request exists but is not in a pending
-        # state.
+        # Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not
+        # deny access to the resource if another request has been made and approved. It
+        # is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND
+        # if the request does not exist. Returns FAILED_PRECONDITION if the request
+        # exists but is not in a pending state.
         # @param [String] name
         #   Name of the ApprovalRequest to dismiss.
         # @param [Google::Apis::AccessapprovalV1::DismissApprovalRequestMessage] dismiss_approval_request_message_object
@@ -810,22 +775,18 @@ module Google
         end
         
         # Lists approval requests associated with a project, folder, or organization.
-        # Approval requests can be filtered by state (pending, active, dismissed).
-        # The order is reverse chronological.
+        # Approval requests can be filtered by state (pending, active, dismissed). The
+        # order is reverse chronological.
         # @param [String] parent
-        #   The parent resource. This may be "projects/`project_id`",
-        #   "folders/`folder_id`", or "organizations/`organization_id`".
+        #   The parent resource. This may be "projects/`project_id`", "folders/`folder_id`"
+        #   , or "organizations/`organization_id`".
         # @param [String] filter
         #   A filter on the type of approval requests to retrieve. Must be one of the
-        #   following values:
-        #   <ol>
-        #   <li>[not set]: Requests that are pending or have active approvals.</li>
-        #   <li>ALL: All requests.</li>
-        #   <li>PENDING: Only pending requests.</li>
-        #   <li>ACTIVE: Only active (i.e. currently approved) requests.</li>
-        #   <li>DISMISSED: Only dismissed (including expired) requests.</li>
-        #   <li>HISTORY: Active and dismissed (including expired) requests.</li>
-        #   </ol>
+        #   following values: 1. [not set]: Requests that are pending or have active
+        #   approvals. 2. ALL: All requests. 3. PENDING: Only pending requests. 4. ACTIVE:
+        #   Only active (i.e. currently approved) requests. 5. DISMISSED: Only dismissed (
+        #   including expired) requests. 6. HISTORY: Active and dismissed (including
+        #   expired) requests.
         # @param [Fixnum] page_size
         #   Requested page size.
         # @param [String] page_token

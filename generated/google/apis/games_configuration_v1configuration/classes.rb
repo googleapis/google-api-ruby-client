@@ -57,7 +57,7 @@ module Google
         # @return [Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationDetail]
         attr_accessor :published
       
-        # Steps to unlock.  Only applicable to incremental achievements.
+        # Steps to unlock. Only applicable to incremental achievements.
         # Corresponds to the JSON property `stepsToUnlock`
         # @return [Fixnum]
         attr_accessor :steps_to_unlock
@@ -406,8 +406,7 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string
-        # `gamesConfiguration#leaderboardConfigurationListResponse`.
+        # string `gamesConfiguration#leaderboardConfigurationListResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

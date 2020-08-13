@@ -22,12 +22,11 @@ module Google
   module Apis
     module BigqueryV2
       
-      # Aggregate metrics for classification/classifier models. For multi-class
-      # models, the metrics are either macro-averaged or micro-averaged. When
-      # macro-averaged, the metrics are calculated for each label and then an
-      # unweighted average is taken of those values. When micro-averaged, the
-      # metric is calculated globally by counting the total number of correctly
-      # predicted rows.
+      # Aggregate metrics for classification/classifier models. For multi-class models,
+      # the metrics are either macro-averaged or micro-averaged. When macro-averaged,
+      # the metrics are calculated for each label and then an unweighted average is
+      # taken of those values. When micro-averaged, the metric is calculated globally
+      # by counting the total number of correctly predicted rows.
       class AggregateClassificationMetrics
         include Google::Apis::Core::Hashable
       
@@ -37,8 +36,8 @@ module Google
         # @return [Float]
         attr_accessor :accuracy
       
-        # The F1 score is an average of recall and precision. For multiclass
-        # this is a macro-averaged metric.
+        # The F1 score is an average of recall and precision. For multiclass this is a
+        # macro-averaged metric.
         # Corresponds to the JSON property `f1Score`
         # @return [Float]
         attr_accessor :f1_score
@@ -48,29 +47,27 @@ module Google
         # @return [Float]
         attr_accessor :log_loss
       
-        # Precision is the fraction of actual positive predictions that had
-        # positive actual labels. For multiclass this is a macro-averaged
-        # metric treating each class as a binary classifier.
+        # Precision is the fraction of actual positive predictions that had positive
+        # actual labels. For multiclass this is a macro-averaged metric treating each
+        # class as a binary classifier.
         # Corresponds to the JSON property `precision`
         # @return [Float]
         attr_accessor :precision
       
-        # Recall is the fraction of actual positive labels that were given a
-        # positive prediction. For multiclass this is a macro-averaged metric.
+        # Recall is the fraction of actual positive labels that were given a positive
+        # prediction. For multiclass this is a macro-averaged metric.
         # Corresponds to the JSON property `recall`
         # @return [Float]
         attr_accessor :recall
       
-        # Area Under a ROC Curve. For multiclass this is a macro-averaged
-        # metric.
+        # Area Under a ROC Curve. For multiclass this is a macro-averaged metric.
         # Corresponds to the JSON property `rocAuc`
         # @return [Float]
         attr_accessor :roc_auc
       
-        # Threshold at which the metrics are computed. For binary
-        # classification models this is the positive class threshold.
-        # For multi-class classfication models this is the confidence
-        # threshold.
+        # Threshold at which the metrics are computed. For binary classification models
+        # this is the positive class threshold. For multi-class classfication models
+        # this is the confidence threshold.
         # Corresponds to the JSON property `threshold`
         # @return [Float]
         attr_accessor :threshold
@@ -100,22 +97,16 @@ module Google
         # @return [String]
         attr_accessor :argument_kind
       
-        # The type of a variable, e.g., a function argument.
-        # Examples:
-        # INT64: `type_kind="INT64"`
-        # ARRAY<STRING>: `type_kind="ARRAY", array_element_type="STRING"`
-        # STRUCT<x STRING, y ARRAY<DATE>>:
-        # `type_kind="STRUCT",
-        # struct_type=`fields=[
-        # `name="x", type=`type_kind="STRING"``,
-        # `name="y", type=`type_kind="ARRAY", array_element_type="DATE"``
-        # ]``
+        # The type of a variable, e.g., a function argument. Examples: INT64: `type_kind=
+        # "INT64"` ARRAY: `type_kind="ARRAY", array_element_type="STRING"` STRUCT>: `
+        # type_kind="STRUCT", struct_type=`fields=[ `name="x", type=`type_kind="STRING"``
+        # , `name="y", type=`type_kind="ARRAY", array_element_type="DATE"`` ]``
         # Corresponds to the JSON property `dataType`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :data_type
       
-        # Optional. Specifies whether the argument is input or output.
-        # Can be set for procedures only.
+        # Optional. Specifies whether the argument is input or output. Can be set for
+        # procedures only.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -210,14 +201,14 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::ArimaFittingMetrics>]
         attr_accessor :arima_fitting_metrics
       
-        # Repeated as there can be many metric sets (one for each model) in
-        # auto-arima and the large-scale case.
+        # Repeated as there can be many metric sets (one for each model) in auto-arima
+        # and the large-scale case.
         # Corresponds to the JSON property `arimaSingleModelForecastingMetrics`
         # @return [Array<Google::Apis::BigqueryV2::ArimaSingleModelForecastingMetrics>]
         attr_accessor :arima_single_model_forecasting_metrics
       
-        # Whether Arima model fitted with drift or not. It is always false when d
-        # is not 1.
+        # Whether Arima model fitted with drift or not. It is always false when d is not
+        # 1.
         # Corresponds to the JSON property `hasDrift`
         # @return [Array<Boolean>]
         attr_accessor :has_drift
@@ -227,8 +218,8 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::ArimaOrder>]
         attr_accessor :non_seasonal_order
       
-        # Seasonal periods. Repeated because multiple periods are supported for one
-        # time series.
+        # Seasonal periods. Repeated because multiple periods are supported for one time
+        # series.
         # Corresponds to the JSON property `seasonalPeriods`
         # @return [Array<String>]
         attr_accessor :seasonal_periods
@@ -267,8 +258,8 @@ module Google
         # @return [Google::Apis::BigqueryV2::ArimaFittingMetrics]
         attr_accessor :arima_fitting_metrics
       
-        # Whether Arima model fitted with drift or not. It is always false
-        # when d is not 1.
+        # Whether Arima model fitted with drift or not. It is always false when d is not
+        # 1.
         # Corresponds to the JSON property `hasDrift`
         # @return [Boolean]
         attr_accessor :has_drift
@@ -279,8 +270,8 @@ module Google
         # @return [Google::Apis::BigqueryV2::ArimaOrder]
         attr_accessor :non_seasonal_order
       
-        # Seasonal periods. Repeated because multiple periods are supported
-        # for one time series.
+        # Seasonal periods. Repeated because multiple periods are supported for one time
+        # series.
         # Corresponds to the JSON property `seasonalPeriods`
         # @return [Array<String>]
         attr_accessor :seasonal_periods
@@ -341,14 +332,14 @@ module Google
       class ArimaResult
         include Google::Apis::Core::Hashable
       
-        # This message is repeated because there are multiple arima models
-        # fitted in auto-arima. For non-auto-arima model, its size is one.
+        # This message is repeated because there are multiple arima models fitted in
+        # auto-arima. For non-auto-arima model, its size is one.
         # Corresponds to the JSON property `arimaModelInfo`
         # @return [Array<Google::Apis::BigqueryV2::ArimaModelInfo>]
         attr_accessor :arima_model_info
       
-        # Seasonal periods. Repeated because multiple periods are supported for
-        # one time series.
+        # Seasonal periods. Repeated because multiple periods are supported for one time
+        # series.
         # Corresponds to the JSON property `seasonalPeriods`
         # @return [Array<String>]
         attr_accessor :seasonal_periods
@@ -373,8 +364,7 @@ module Google
         # @return [Google::Apis::BigqueryV2::ArimaFittingMetrics]
         attr_accessor :arima_fitting_metrics
       
-        # Is arima model fitted with drift or not. It is always false when d
-        # is not 1.
+        # Is arima model fitted with drift or not. It is always false when d is not 1.
         # Corresponds to the JSON property `hasDrift`
         # @return [Boolean]
         attr_accessor :has_drift
@@ -385,8 +375,8 @@ module Google
         # @return [Google::Apis::BigqueryV2::ArimaOrder]
         attr_accessor :non_seasonal_order
       
-        # Seasonal periods. Repeated because multiple periods are supported
-        # for one time series.
+        # Seasonal periods. Repeated because multiple periods are supported for one time
+        # series.
         # Corresponds to the JSON property `seasonalPeriods`
         # @return [Array<String>]
         attr_accessor :seasonal_periods
@@ -410,53 +400,21 @@ module Google
         end
       end
       
-      # Specifies the audit configuration for a service.
-      # The configuration determines which permission types are logged, and what
-      # identities, if any, are exempted from logging.
-      # An AuditConfig must have one or more AuditLogConfigs.
-      # If there are AuditConfigs for both `allServices` and a specific service,
-      # the union of the two AuditConfigs is used for that service: the log_types
-      # specified in each AuditConfig are enabled, and the exempted_members in each
-      # AuditLogConfig are exempted.
-      # Example Policy with multiple AuditConfigs:
-      # `
-      # "audit_configs": [
-      # `
-      # "service": "allServices",
-      # "audit_log_configs": [
-      # `
-      # "log_type": "DATA_READ",
-      # "exempted_members": [
-      # "user:jose@example.com"
-      # ]
-      # `,
-      # `
-      # "log_type": "DATA_WRITE"
-      # `,
-      # `
-      # "log_type": "ADMIN_READ"
-      # `
-      # ]
-      # `,
-      # `
-      # "service": "sampleservice.googleapis.com",
-      # "audit_log_configs": [
-      # `
-      # "log_type": "DATA_READ"
-      # `,
-      # `
-      # "log_type": "DATA_WRITE",
-      # "exempted_members": [
-      # "user:aliya@example.com"
-      # ]
-      # `
-      # ]
-      # `
-      # ]
-      # `
-      # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-      # logging. It also exempts jose@example.com from DATA_READ logging, and
-      # aliya@example.com from DATA_WRITE logging.
+      # Specifies the audit configuration for a service. The configuration determines
+      # which permission types are logged, and what identities, if any, are exempted
+      # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
+      # are AuditConfigs for both `allServices` and a specific service, the union of
+      # the two AuditConfigs is used for that service: the log_types specified in each
+      # AuditConfig are enabled, and the exempted_members in each AuditLogConfig are
+      # exempted. Example Policy with multiple AuditConfigs: ` "audit_configs": [ ` "
+      # service": "allServices", "audit_log_configs": [ ` "log_type": "DATA_READ", "
+      # exempted_members": [ "user:jose@example.com" ] `, ` "log_type": "DATA_WRITE" `,
+      # ` "log_type": "ADMIN_READ" ` ] `, ` "service": "sampleservice.googleapis.com",
+      # "audit_log_configs": [ ` "log_type": "DATA_READ" `, ` "log_type": "DATA_WRITE"
+      # , "exempted_members": [ "user:aliya@example.com" ] ` ] ` ] ` For sampleservice,
+      # this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also
+      # exempts jose@example.com from DATA_READ logging, and aliya@example.com from
+      # DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -465,9 +423,9 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::AuditLogConfig>]
         attr_accessor :audit_log_configs
       
-        # Specifies a service that will be enabled for audit logging.
-        # For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-        # `allServices` is a special value that covers all services.
+        # Specifies a service that will be enabled for audit logging. For example, `
+        # storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special
+        # value that covers all services.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -483,28 +441,15 @@ module Google
         end
       end
       
-      # Provides the configuration for logging a type of permissions.
-      # Example:
-      # `
-      # "audit_log_configs": [
-      # `
-      # "log_type": "DATA_READ",
-      # "exempted_members": [
-      # "user:jose@example.com"
-      # ]
-      # `,
-      # `
-      # "log_type": "DATA_WRITE"
-      # `
-      # ]
-      # `
-      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-      # jose@example.com from DATA_READ logging.
+      # Provides the configuration for logging a type of permissions. Example: ` "
+      # audit_log_configs": [ ` "log_type": "DATA_READ", "exempted_members": [ "user:
+      # jose@example.com" ] `, ` "log_type": "DATA_WRITE" ` ] ` This enables '
+      # DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from
+      # DATA_READ logging.
       class AuditLogConfig
         include Google::Apis::Core::Hashable
       
-        # Specifies the identities that do not cause logging for this type of
-        # permission.
+        # Specifies the identities that do not cause logging for this type of permission.
         # Follows the same format of Binding.members.
         # Corresponds to the JSON property `exemptedMembers`
         # @return [Array<String>]
@@ -731,12 +676,11 @@ module Google
       class BinaryClassificationMetrics
         include Google::Apis::Core::Hashable
       
-        # Aggregate metrics for classification/classifier models. For multi-class
-        # models, the metrics are either macro-averaged or micro-averaged. When
-        # macro-averaged, the metrics are calculated for each label and then an
-        # unweighted average is taken of those values. When micro-averaged, the
-        # metric is calculated globally by counting the total number of correctly
-        # predicted rows.
+        # Aggregate metrics for classification/classifier models. For multi-class models,
+        # the metrics are either macro-averaged or micro-averaged. When macro-averaged,
+        # the metrics are calculated for each label and then an unweighted average is
+        # taken of those values. When micro-averaged, the metric is calculated globally
+        # by counting the total number of correctly predicted rows.
         # Corresponds to the JSON property `aggregateClassificationMetrics`
         # @return [Google::Apis::BigqueryV2::AggregateClassificationMetrics]
         attr_accessor :aggregate_classification_metrics
@@ -798,14 +742,12 @@ module Google
         # @return [Float]
         attr_accessor :positive_class_threshold
       
-        # The fraction of actual positive predictions that had positive actual
-        # labels.
+        # The fraction of actual positive predictions that had positive actual labels.
         # Corresponds to the JSON property `precision`
         # @return [Float]
         attr_accessor :precision
       
-        # The fraction of actual positive labels that were given a positive
-        # prediction.
+        # The fraction of actual positive labels that were given a positive prediction.
         # Corresponds to the JSON property `recall`
         # @return [Float]
         attr_accessor :recall
@@ -842,69 +784,57 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # Represents a textual expression in the Common Expression Language (CEL)
-        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-        # are documented at https://github.com/google/cel-spec.
-        # Example (Comparison):
-        # title: "Summary size limit"
-        # description: "Determines if a summary is less than 100 chars"
-        # expression: "document.summary.size() < 100"
-        # Example (Equality):
-        # title: "Requestor is owner"
-        # description: "Determines if requestor is the document owner"
-        # expression: "document.owner == request.auth.claims.email"
-        # Example (Logic):
-        # title: "Public documents"
-        # description: "Determine whether the document should be publicly visible"
-        # expression: "document.type != 'private' && document.type != 'internal'"
-        # Example (Data Manipulation):
-        # title: "Notification string"
-        # description: "Create a notification string with a timestamp."
-        # expression: "'New message received at ' + string(document.create_time)"
-        # The exact variables and functions that may be referenced within an expression
-        # are determined by the service that evaluates it. See the service
-        # documentation for additional information.
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::BigqueryV2::Expr]
         attr_accessor :condition
       
-        # Specifies the identities requesting access for a Cloud Platform resource.
-        # `members` can have the following values:
-        # * `allUsers`: A special identifier that represents anyone who is
-        # on the internet; with or without a Google account.
-        # * `allAuthenticatedUsers`: A special identifier that represents anyone
-        # who is authenticated with a Google account or a service account.
-        # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@example.com` .
-        # * `serviceAccount:`emailid``: An email address that represents a service
-        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
-        # * `group:`emailid``: An email address that represents a Google group.
-        # For example, `admins@example.com`.
-        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For
-        # example, `alice@example.com?uid=123456789012345678901`. If the user is
-        # recovered, this value reverts to `user:`emailid`` and the recovered user
-        # retains the role in the binding.
-        # * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus
-        # unique identifier) representing a service account that has been recently
-        # deleted. For example,
-        # `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to
-        # `serviceAccount:`emailid`` and the undeleted service account retains the
-        # role in the binding.
-        # * `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently
-        # deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-        # the group is recovered, this value reverts to `group:`emailid`` and the
-        # recovered group retains the role in the binding.
-        # * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`.
+        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # members` can have the following values: * `allUsers`: A special identifier
+        # that represents anyone who is on the internet; with or without a Google
+        # account. * `allAuthenticatedUsers`: A special identifier that represents
+        # anyone who is authenticated with a Google account or a service account. * `
+        # user:`emailid``: An email address that represents a specific Google account.
+        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
+        # address that represents a service account. For example, `my-other-app@appspot.
+        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
+        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
+        # `uniqueid``: An email address (plus unique identifier) representing a user
+        # that has been recently deleted. For example, `alice@example.com?uid=
+        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
+        # emailid`` and the recovered user retains the role in the binding. * `deleted:
+        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a service account that has been recently deleted. For
+        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+        # If the service account is undeleted, this value reverts to `serviceAccount:`
+        # emailid`` and the undeleted service account retains the role in the binding. *
+        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a Google group that has been recently deleted. For
+        # example, `admins@example.com?uid=123456789012345678901`. If the group is
+        # recovered, this value reverts to `group:`emailid`` and the recovered group
+        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
+        # primary) that represents all the users of that domain. For example, `google.
+        # com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
       
-        # Role that is assigned to `members`.
-        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
+        # , or `roles/owner`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1091,10 +1021,9 @@ module Google
       class CategoricalValue
         include Google::Apis::Core::Hashable
       
-        # Counts of all categories for the categorical feature. If there are
-        # more than ten categories, we return top ten (by count) and return
-        # one more CategoryCount with category "_OTHER_" and count as
-        # aggregate counts of remaining categories.
+        # Counts of all categories for the categorical feature. If there are more than
+        # ten categories, we return top ten (by count) and return one more CategoryCount
+        # with category "_OTHER_" and count as aggregate counts of remaining categories.
         # Corresponds to the JSON property `categoryCounts`
         # @return [Array<Google::Apis::BigqueryV2::CategoryCount>]
         attr_accessor :category_counts
@@ -1118,8 +1047,7 @@ module Google
         # @return [String]
         attr_accessor :category
       
-        # The count of training samples matching the category within the
-        # cluster.
+        # The count of training samples matching the category within the cluster.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
@@ -1175,8 +1103,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :centroid_id
       
-        # Cluster radius, the average distance from centroid
-        # to each point assigned to the cluster.
+        # Cluster radius, the average distance from centroid to each point assigned to
+        # the cluster.
         # Corresponds to the JSON property `clusterRadius`
         # @return [Float]
         attr_accessor :cluster_radius
@@ -1255,8 +1183,7 @@ module Google
       class ConfusionMatrix
         include Google::Apis::Core::Hashable
       
-        # Confidence threshold used when computing the entries of the
-        # confusion matrix.
+        # Confidence threshold used when computing the entries of the confusion matrix.
         # Corresponds to the JSON property `confidenceThreshold`
         # @return [Float]
         attr_accessor :confidence_threshold
@@ -1807,9 +1734,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :item_count
       
-        # The predicted label. For confidence_threshold > 0, we will
-        # also add an entry indicating the number of items under the
-        # confidence threshold.
+        # The predicted label. For confidence_threshold > 0, we will also add an entry
+        # indicating the number of items under the confidence threshold.
         # Corresponds to the JSON property `predictedLabel`
         # @return [String]
         attr_accessor :predicted_label
@@ -1863,9 +1789,9 @@ module Google
         end
       end
       
-      # Evaluation metrics of a model. These are either computed on all training
-      # data or just the eval data based on whether eval data was used during
-      # training. These are not present for imported models.
+      # Evaluation metrics of a model. These are either computed on all training data
+      # or just the eval data based on whether eval data was used during training.
+      # These are not present for imported models.
       class EvaluationMetrics
         include Google::Apis::Core::Hashable
       
@@ -1889,8 +1815,8 @@ module Google
         # @return [Google::Apis::BigqueryV2::MultiClassClassificationMetrics]
         attr_accessor :multi_class_classification_metrics
       
-        # Evaluation metrics used by weighted-ALS models specified by
-        # feedback_type=implicit.
+        # Evaluation metrics used by weighted-ALS models specified by feedback_type=
+        # implicit.
         # Corresponds to the JSON property `rankingMetrics`
         # @return [Google::Apis::BigqueryV2::RankingMetrics]
         attr_accessor :ranking_metrics
@@ -2135,52 +2061,43 @@ module Google
         end
       end
       
-      # Represents a textual expression in the Common Expression Language (CEL)
-      # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-      # are documented at https://github.com/google/cel-spec.
-      # Example (Comparison):
-      # title: "Summary size limit"
-      # description: "Determines if a summary is less than 100 chars"
-      # expression: "document.summary.size() < 100"
-      # Example (Equality):
-      # title: "Requestor is owner"
-      # description: "Determines if requestor is the document owner"
-      # expression: "document.owner == request.auth.claims.email"
-      # Example (Logic):
-      # title: "Public documents"
-      # description: "Determine whether the document should be publicly visible"
-      # expression: "document.type != 'private' && document.type != 'internal'"
-      # Example (Data Manipulation):
-      # title: "Notification string"
-      # description: "Create a notification string with a timestamp."
-      # expression: "'New message received at ' + string(document.create_time)"
-      # The exact variables and functions that may be referenced within an expression
-      # are determined by the service that evaluates it. See the service
-      # documentation for additional information.
+      # Represents a textual expression in the Common Expression Language (CEL) syntax.
+      # CEL is a C-like expression language. The syntax and semantics of CEL are
+      # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+      # "Summary size limit" description: "Determines if a summary is less than 100
+      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+      # Requestor is owner" description: "Determines if requestor is the document
+      # owner" expression: "document.owner == request.auth.claims.email" Example (
+      # Logic): title: "Public documents" description: "Determine whether the document
+      # should be publicly visible" expression: "document.type != 'private' &&
+      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+      # string" description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)" The
+      # exact variables and functions that may be referenced within an expression are
+      # determined by the service that evaluates it. See the service documentation for
+      # additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
-        # Optional. Description of the expression. This is a longer text which
-        # describes the expression, e.g. when hovered over it in a UI.
+        # Optional. Description of the expression. This is a longer text which describes
+        # the expression, e.g. when hovered over it in a UI.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Textual representation of an expression in Common Expression Language
-        # syntax.
+        # Textual representation of an expression in Common Expression Language syntax.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # Optional. String indicating the location of the expression for error
-        # reporting, e.g. a file name and a position in the file.
+        # Optional. String indicating the location of the expression for error reporting,
+        # e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # Optional. Title for the expression, i.e. a short string describing
-        # its purpose. This can be used e.g. in UIs which allow to enter the
-        # expression.
+        # Optional. Title for the expression, i.e. a short string describing its purpose.
+        # This can be used e.g. in UIs which allow to enter the expression.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -2327,8 +2244,7 @@ module Google
         # @return [String]
         attr_accessor :feature_column
       
-        # The numerical feature value. This is the centroid value for this
-        # feature.
+        # The numerical feature value. This is the centroid value for this feature.
         # Corresponds to the JSON property `numericalValue`
         # @return [Float]
         attr_accessor :numerical_value
@@ -2368,15 +2284,13 @@ module Google
       class GetPolicyOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. The policy format version to be returned.
-        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        # rejected.
-        # Requests for policies with any conditional bindings must specify version 3.
-        # Policies without any conditional bindings may specify any valid value or
-        # leave the field unset.
-        # To learn which resources support conditions in their IAM policies, see the
-        # [IAM
-        # documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        # Optional. The policy format version to be returned. Valid values are 0, 1, and
+        # 3. Requests specifying an invalid value will be rejected. Requests for
+        # policies with any conditional bindings must specify version 3. Policies
+        # without any conditional bindings may specify any valid value or leave the
+        # field unset. To learn which resources support conditions in their IAM policies,
+        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        # resource-policies).
         # Corresponds to the JSON property `requestedPolicyVersion`
         # @return [Fixnum]
         attr_accessor :requested_policy_version
@@ -4059,8 +3973,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Models in the requested dataset. Only the following fields are populated:
-        # model_reference, model_type, creation_time, last_modified_time and
-        # labels.
+        # model_reference, model_type, creation_time, last_modified_time and labels.
         # Corresponds to the JSON property `models`
         # @return [Array<Google::Apis::BigqueryV2::Model>]
         attr_accessor :models
@@ -4091,9 +4004,8 @@ module Google
         attr_accessor :next_page_token
       
         # Routines in the requested dataset. Unless read_mask is set in the request,
-        # only the following fields are populated:
-        # etag, project_id, dataset_id, routine_id, routine_type, creation_time,
-        # last_modified_time, and language.
+        # only the following fields are populated: etag, project_id, dataset_id,
+        # routine_id, routine_type, creation_time, last_modified_time, and language.
         # Corresponds to the JSON property `routines`
         # @return [Array<Google::Apis::BigqueryV2::Routine>]
         attr_accessor :routines
@@ -4109,14 +4021,13 @@ module Google
         end
       end
       
-      # BigQuery-specific metadata about a location. This will be set on
-      # google.cloud.location.Location.metadata in Cloud Location API
-      # responses.
+      # BigQuery-specific metadata about a location. This will be set on google.cloud.
+      # location.Location.metadata in Cloud Location API responses.
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
-        # The legacy BigQuery location ID, e.g. “EU” for the “europe” location.
-        # This is for any API consumers that need the legacy “US” and “EU” locations.
+        # The legacy BigQuery location ID, e.g. “EU” for the “europe” location. This is
+        # for any API consumers that need the legacy “US” and “EU” locations.
         # Corresponds to the JSON property `legacyLocationId`
         # @return [String]
         attr_accessor :legacy_location_id
@@ -4188,9 +4099,9 @@ module Google
         attr_accessor :description
       
         # Custom encryption configuration (e.g., Cloud KMS keys). This shows the
-        # encryption configuration of the model data while stored in BigQuery
-        # storage. This field can be used with PatchModel to update encryption key
-        # for an already encrypted model.
+        # encryption configuration of the model data while stored in BigQuery storage.
+        # This field can be used with PatchModel to update encryption key for an already
+        # encrypted model.
         # Corresponds to the JSON property `encryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :encryption_configuration
@@ -4201,10 +4112,10 @@ module Google
         attr_accessor :etag
       
         # Optional. The time when this model expires, in milliseconds since the epoch.
-        # If not present, the model will persist indefinitely. Expired models
-        # will be deleted and their storage reclaimed.  The defaultTableExpirationMs
-        # property of the encapsulating dataset can be used to set a default
-        # expirationTime on newly created models.
+        # If not present, the model will persist indefinitely. Expired models will be
+        # deleted and their storage reclaimed. The defaultTableExpirationMs property of
+        # the encapsulating dataset can be used to set a default expirationTime on newly
+        # created models.
         # Corresponds to the JSON property `expirationTime`
         # @return [Fixnum]
         attr_accessor :expiration_time
@@ -4219,18 +4130,17 @@ module Google
         # @return [String]
         attr_accessor :friendly_name
       
-        # Output only. Label columns that were used to train this model.
-        # The output of the model will have a "predicted_" prefix to these columns.
+        # Output only. Label columns that were used to train this model. The output of
+        # the model will have a "predicted_" prefix to these columns.
         # Corresponds to the JSON property `labelColumns`
         # @return [Array<Google::Apis::BigqueryV2::StandardSqlField>]
         attr_accessor :label_columns
       
-        # The labels associated with this model. You can use these to organize
-        # and group your models. Label keys and values can be no longer
-        # than 63 characters, can only contain lowercase letters, numeric
-        # characters, underscores and dashes. International characters are allowed.
-        # Label values are optional. Label keys must start with a letter and each
-        # label in the list must have a different key.
+        # The labels associated with this model. You can use these to organize and group
+        # your models. Label keys and values can be no longer than 63 characters, can
+        # only contain lowercase letters, numeric characters, underscores and dashes.
+        # International characters are allowed. Label values are optional. Label keys
+        # must start with a letter and each label in the list must have a different key.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -4241,8 +4151,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_time
       
-        # Output only. The geographic location where the model resides. This value
-        # is inherited from the dataset.
+        # Output only. The geographic location where the model resides. This value is
+        # inherited from the dataset.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -4385,12 +4295,11 @@ module Google
       class MultiClassClassificationMetrics
         include Google::Apis::Core::Hashable
       
-        # Aggregate metrics for classification/classifier models. For multi-class
-        # models, the metrics are either macro-averaged or micro-averaged. When
-        # macro-averaged, the metrics are calculated for each label and then an
-        # unweighted average is taken of those values. When micro-averaged, the
-        # metric is calculated globally by counting the total number of correctly
-        # predicted rows.
+        # Aggregate metrics for classification/classifier models. For multi-class models,
+        # the metrics are either macro-averaged or micro-averaged. When macro-averaged,
+        # the metrics are calculated for each label and then an unweighted average is
+        # taken of those values. When micro-averaged, the metric is calculated globally
+        # by counting the total number of correctly predicted rows.
         # Corresponds to the JSON property `aggregateClassificationMetrics`
         # @return [Google::Apis::BigqueryV2::AggregateClassificationMetrics]
         attr_accessor :aggregate_classification_metrics
@@ -4412,66 +4321,32 @@ module Google
       end
       
       # An Identity and Access Management (IAM) policy, which specifies access
-      # controls for Google Cloud resources.
-      # A `Policy` is a collection of `bindings`. A `binding` binds one or more
-      # `members` to a single `role`. Members can be user accounts, service accounts,
-      # Google groups, and domains (such as G Suite). A `role` is a named list of
-      # permissions; each `role` can be an IAM predefined role or a user-created
-      # custom role.
-      # For some types of Google Cloud resources, a `binding` can also specify a
-      # `condition`, which is a logical expression that allows access to a resource
-      # only if the expression evaluates to `true`. A condition can add constraints
-      # based on attributes of the request, the resource, or both. To learn which
-      # resources support conditions in their IAM policies, see the
-      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-      # policies).
-      # **JSON example:**
-      # `
-      # "bindings": [
-      # `
-      # "role": "roles/resourcemanager.organizationAdmin",
-      # "members": [
-      # "user:mike@example.com",
-      # "group:admins@example.com",
-      # "domain:google.com",
-      # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-      # ]
-      # `,
-      # `
-      # "role": "roles/resourcemanager.organizationViewer",
-      # "members": [
-      # "user:eve@example.com"
-      # ],
-      # "condition": `
-      # "title": "expirable access",
-      # "description": "Does not grant access after Sep 2020",
-      # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
-      # ",
-      # `
-      # `
-      # ],
-      # "etag": "BwWWja0YfJA=",
-      # "version": 3
-      # `
-      # **YAML example:**
-      # bindings:
-      # - members:
-      # - user:mike@example.com
-      # - group:admins@example.com
-      # - domain:google.com
-      # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin
-      # - members:
-      # - user:eve@example.com
-      # role: roles/resourcemanager.organizationViewer
-      # condition:
-      # title: expirable access
-      # description: Does not grant access after Sep 2020
-      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-      # - etag: BwWWja0YfJA=
-      # - version: 3
-      # For a description of IAM and its features, see the
-      # [IAM documentation](https://cloud.google.com/iam/docs/).
+      # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+      # A `binding` binds one or more `members` to a single `role`. Members can be
+      # user accounts, service accounts, Google groups, and domains (such as G Suite).
+      # A `role` is a named list of permissions; each `role` can be an IAM predefined
+      # role or a user-created custom role. For some types of Google Cloud resources,
+      # a `binding` can also specify a `condition`, which is a logical expression that
+      # allows access to a resource only if the expression evaluates to `true`. A
+      # condition can add constraints based on attributes of the request, the resource,
+      # or both. To learn which resources support conditions in their IAM policies,
+      # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+      # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+      # title": "expirable access", "description": "Does not grant access after Sep
+      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+      # members: - user:mike@example.com - group:admins@example.com - domain:google.
+      # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+      # roles/resourcemanager.organizationViewer condition: title: expirable access
+      # description: Does not grant access after Sep 2020 expression: request.time <
+      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # description of IAM and its features, see the [IAM documentation](https://cloud.
+      # google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -4480,48 +4355,44 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::AuditConfig>]
         attr_accessor :audit_configs
       
-        # Associates a list of `members` to a `role`. Optionally, may specify a
-        # `condition` that determines how and when the `bindings` are applied. Each
-        # of the `bindings` must contain at least one member.
+        # Associates a list of `members` to a `role`. Optionally, may specify a `
+        # condition` that determines how and when the `bindings` are applied. Each of
+        # the `bindings` must contain at least one member.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::BigqueryV2::Binding>]
         attr_accessor :bindings
       
-        # `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of a policy from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform policy updates in order to avoid race
-        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
-        # systems are expected to put that etag in the request to `setIamPolicy` to
-        # ensure that their change will be applied to the same version of the policy.
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-        # you to overwrite a version `3` policy with a version `1` policy, and all of
-        # the conditions in the version `3` policy are lost.
+        # `etag` is used for optimistic concurrency control as a way to help prevent
+        # simultaneous updates of a policy from overwriting each other. It is strongly
+        # suggested that systems make use of the `etag` in the read-modify-write cycle
+        # to perform policy updates in order to avoid race conditions: An `etag` is
+        # returned in the response to `getIamPolicy`, and systems are expected to put
+        # that etag in the request to `setIamPolicy` to ensure that their change will be
+        # applied to the same version of the policy. **Important:** If you use IAM
+        # Conditions, you must include the `etag` field whenever you call `setIamPolicy`.
+        # If you omit this field, then IAM allows you to overwrite a version `3` policy
+        # with a version `1` policy, and all of the conditions in the version `3` policy
+        # are lost.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
-        # Specifies the format of the policy.
-        # Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-        # are rejected.
-        # Any operation that affects conditional role bindings must specify version
-        # `3`. This requirement applies to the following operations:
-        # * Getting a policy that includes a conditional role binding
-        # * Adding a conditional role binding to a policy
-        # * Changing a conditional role binding in a policy
-        # * Removing any role binding, with or without a condition, from a policy
-        # that includes conditions
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-        # you to overwrite a version `3` policy with a version `1` policy, and all of
-        # the conditions in the version `3` policy are lost.
-        # If a policy does not include any conditions, operations on that policy may
-        # specify any valid version or leave the field unset.
-        # To learn which resources support conditions in their IAM policies, see the
-        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-        # policies).
+        # Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+        # Requests that specify an invalid value are rejected. Any operation that
+        # affects conditional role bindings must specify version `3`. This requirement
+        # applies to the following operations: * Getting a policy that includes a
+        # conditional role binding * Adding a conditional role binding to a policy *
+        # Changing a conditional role binding in a policy * Removing any role binding,
+        # with or without a condition, from a policy that includes conditions **
+        # Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows you
+        # to overwrite a version `3` policy with a version `1` policy, and all of the
+        # conditions in the version `3` policy are lost. If a policy does not include
+        # any conditions, operations on that policy may specify any valid version or
+        # leave the field unset. To learn which resources support conditions in their
+        # IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/
+        # conditions/resource-policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -5129,34 +5000,33 @@ module Google
         end
       end
       
-      # Evaluation metrics used by weighted-ALS models specified by
-      # feedback_type=implicit.
+      # Evaluation metrics used by weighted-ALS models specified by feedback_type=
+      # implicit.
       class RankingMetrics
         include Google::Apis::Core::Hashable
       
-        # Determines the goodness of a ranking by computing the percentile rank
-        # from the predicted confidence and dividing it by the original rank.
+        # Determines the goodness of a ranking by computing the percentile rank from the
+        # predicted confidence and dividing it by the original rank.
         # Corresponds to the JSON property `averageRank`
         # @return [Float]
         attr_accessor :average_rank
       
-        # Calculates a precision per user for all the items by ranking them and
-        # then averages all the precisions across all the users.
+        # Calculates a precision per user for all the items by ranking them and then
+        # averages all the precisions across all the users.
         # Corresponds to the JSON property `meanAveragePrecision`
         # @return [Float]
         attr_accessor :mean_average_precision
       
         # Similar to the mean squared error computed in regression and explicit
-        # recommendation models except instead of computing the rating directly,
-        # the output from evaluate is computed against a preference which is 1 or 0
+        # recommendation models except instead of computing the rating directly, the
+        # output from evaluate is computed against a preference which is 1 or 0
         # depending on if the rating exists or not.
         # Corresponds to the JSON property `meanSquaredError`
         # @return [Float]
         attr_accessor :mean_squared_error
       
-        # A metric to determine the goodness of a ranking calculated from the
-        # predicted confidence by comparing it to an ideal rank measured by the
-        # original ratings.
+        # A metric to determine the goodness of a ranking calculated from the predicted
+        # confidence by comparing it to an ideal rank measured by the original ratings.
         # Corresponds to the JSON property `normalizedDiscountedCumulativeGain`
         # @return [Float]
         attr_accessor :normalized_discounted_cumulative_gain
@@ -5227,26 +5097,22 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::Argument>]
         attr_accessor :arguments
       
-        # Output only. The time when this routine was created, in milliseconds since
-        # the epoch.
+        # Output only. The time when this routine was created, in milliseconds since the
+        # epoch.
         # Corresponds to the JSON property `creationTime`
         # @return [Fixnum]
         attr_accessor :creation_time
       
-        # Required. The body of the routine.
-        # For functions, this is the expression in the AS clause.
-        # If language=SQL, it is the substring inside (but excluding) the
+        # Required. The body of the routine. For functions, this is the expression in
+        # the AS clause. If language=SQL, it is the substring inside (but excluding) the
         # parentheses. For example, for the function created with the following
-        # statement:
-        # `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))`
-        # The definition_body is `concat(x, "\n", y)` (\n is not replaced with
-        # linebreak).
-        # If language=JAVASCRIPT, it is the evaluated string in the AS clause.
-        # For example, for the function created with the following statement:
-        # `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'`
-        # The definition_body is
-        # `return "\n";\n`
-        # Note that both \n are replaced with linebreaks.
+        # statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n",
+        # y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with
+        # linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS
+        # clause. For example, for the function created with the following statement: `
+        # CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The
+        # definition_body is `return "\n";\n` Note that both \n are replaced with
+        # linebreaks.
         # Corresponds to the JSON property `definitionBody`
         # @return [String]
         attr_accessor :definition_body
@@ -5284,16 +5150,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_time
       
-        # The type of a variable, e.g., a function argument.
-        # Examples:
-        # INT64: `type_kind="INT64"`
-        # ARRAY<STRING>: `type_kind="ARRAY", array_element_type="STRING"`
-        # STRUCT<x STRING, y ARRAY<DATE>>:
-        # `type_kind="STRUCT",
-        # struct_type=`fields=[
-        # `name="x", type=`type_kind="STRING"``,
-        # `name="y", type=`type_kind="ARRAY", array_element_type="DATE"``
-        # ]``
+        # The type of a variable, e.g., a function argument. Examples: INT64: `type_kind=
+        # "INT64"` ARRAY: `type_kind="ARRAY", array_element_type="STRING"` STRUCT>: `
+        # type_kind="STRUCT", struct_type=`fields=[ `name="x", type=`type_kind="STRING"``
+        # , `name="y", type=`type_kind="ARRAY", array_element_type="DATE"`` ]``
         # Corresponds to the JSON property `returnType`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :return_type
@@ -5527,74 +5387,39 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An Identity and Access Management (IAM) policy, which specifies access
-        # controls for Google Cloud resources.
-        # A `Policy` is a collection of `bindings`. A `binding` binds one or more
-        # `members` to a single `role`. Members can be user accounts, service accounts,
-        # Google groups, and domains (such as G Suite). A `role` is a named list of
-        # permissions; each `role` can be an IAM predefined role or a user-created
-        # custom role.
-        # For some types of Google Cloud resources, a `binding` can also specify a
-        # `condition`, which is a logical expression that allows access to a resource
-        # only if the expression evaluates to `true`. A condition can add constraints
-        # based on attributes of the request, the resource, or both. To learn which
-        # resources support conditions in their IAM policies, see the
-        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-        # policies).
-        # **JSON example:**
-        # `
-        # "bindings": [
-        # `
-        # "role": "roles/resourcemanager.organizationAdmin",
-        # "members": [
-        # "user:mike@example.com",
-        # "group:admins@example.com",
-        # "domain:google.com",
-        # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-        # ]
-        # `,
-        # `
-        # "role": "roles/resourcemanager.organizationViewer",
-        # "members": [
-        # "user:eve@example.com"
-        # ],
-        # "condition": `
-        # "title": "expirable access",
-        # "description": "Does not grant access after Sep 2020",
-        # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
-        # ",
-        # `
-        # `
-        # ],
-        # "etag": "BwWWja0YfJA=",
-        # "version": 3
-        # `
-        # **YAML example:**
-        # bindings:
-        # - members:
-        # - user:mike@example.com
-        # - group:admins@example.com
-        # - domain:google.com
-        # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin
-        # - members:
-        # - user:eve@example.com
-        # role: roles/resourcemanager.organizationViewer
-        # condition:
-        # title: expirable access
-        # description: Does not grant access after Sep 2020
-        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-        # - etag: BwWWja0YfJA=
-        # - version: 3
-        # For a description of IAM and its features, see the
-        # [IAM documentation](https://cloud.google.com/iam/docs/).
+        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+        # A `binding` binds one or more `members` to a single `role`. Members can be
+        # user accounts, service accounts, Google groups, and domains (such as G Suite).
+        # A `role` is a named list of permissions; each `role` can be an IAM predefined
+        # role or a user-created custom role. For some types of Google Cloud resources,
+        # a `binding` can also specify a `condition`, which is a logical expression that
+        # allows access to a resource only if the expression evaluates to `true`. A
+        # condition can add constraints based on attributes of the request, the resource,
+        # or both. To learn which resources support conditions in their IAM policies,
+        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+        # title": "expirable access", "description": "Does not grant access after Sep
+        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+        # members: - user:mike@example.com - group:admins@example.com - domain:google.
+        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+        # roles/resourcemanager.organizationViewer condition: title: expirable access
+        # description: Does not grant access after Sep 2020 expression: request.time <
+        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # description of IAM and its features, see the [IAM documentation](https://cloud.
+        # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::BigqueryV2::Policy]
         attr_accessor :policy
       
         # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
-        # the fields in the mask will be modified. If no mask is provided, the
-        # following default mask is used:
-        # `paths: "bindings, etag"`
+        # the fields in the mask will be modified. If no mask is provided, the following
+        # default mask is used: `paths: "bindings, etag"`
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -5635,29 +5460,17 @@ module Google
         end
       end
       
-      # The type of a variable, e.g., a function argument.
-      # Examples:
-      # INT64: `type_kind="INT64"`
-      # ARRAY<STRING>: `type_kind="ARRAY", array_element_type="STRING"`
-      # STRUCT<x STRING, y ARRAY<DATE>>:
-      # `type_kind="STRUCT",
-      # struct_type=`fields=[
-      # `name="x", type=`type_kind="STRING"``,
-      # `name="y", type=`type_kind="ARRAY", array_element_type="DATE"``
-      # ]``
+      # The type of a variable, e.g., a function argument. Examples: INT64: `type_kind=
+      # "INT64"` ARRAY: `type_kind="ARRAY", array_element_type="STRING"` STRUCT>: `
+      # type_kind="STRUCT", struct_type=`fields=[ `name="x", type=`type_kind="STRING"``
+      # , `name="y", type=`type_kind="ARRAY", array_element_type="DATE"`` ]``
       class StandardSqlDataType
         include Google::Apis::Core::Hashable
       
-        # The type of a variable, e.g., a function argument.
-        # Examples:
-        # INT64: `type_kind="INT64"`
-        # ARRAY<STRING>: `type_kind="ARRAY", array_element_type="STRING"`
-        # STRUCT<x STRING, y ARRAY<DATE>>:
-        # `type_kind="STRUCT",
-        # struct_type=`fields=[
-        # `name="x", type=`type_kind="STRING"``,
-        # `name="y", type=`type_kind="ARRAY", array_element_type="DATE"``
-        # ]``
+        # The type of a variable, e.g., a function argument. Examples: INT64: `type_kind=
+        # "INT64"` ARRAY: `type_kind="ARRAY", array_element_type="STRING"` STRUCT>: `
+        # type_kind="STRUCT", struct_type=`fields=[ `name="x", type=`type_kind="STRING"``
+        # , `name="y", type=`type_kind="ARRAY", array_element_type="DATE"`` ]``
         # Corresponds to the JSON property `arrayElementType`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :array_element_type
@@ -5667,8 +5480,8 @@ module Google
         # @return [Google::Apis::BigqueryV2::StandardSqlStructType]
         attr_accessor :struct_type
       
-        # Required. The top level type of this field.
-        # Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+        # Required. The top level type of this field. Can be any standard SQL data type (
+        # e.g., "INT64", "DATE", "ARRAY").
         # Corresponds to the JSON property `typeKind`
         # @return [String]
         attr_accessor :type_kind
@@ -5694,16 +5507,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The type of a variable, e.g., a function argument.
-        # Examples:
-        # INT64: `type_kind="INT64"`
-        # ARRAY<STRING>: `type_kind="ARRAY", array_element_type="STRING"`
-        # STRUCT<x STRING, y ARRAY<DATE>>:
-        # `type_kind="STRUCT",
-        # struct_type=`fields=[
-        # `name="x", type=`type_kind="STRING"``,
-        # `name="y", type=`type_kind="ARRAY", array_element_type="DATE"``
-        # ]``
+        # The type of a variable, e.g., a function argument. Examples: INT64: `type_kind=
+        # "INT64"` ARRAY: `type_kind="ARRAY", array_element_type="STRING"` STRUCT>: `
+        # type_kind="STRUCT", struct_type=`fields=[ `name="x", type=`type_kind="STRING"``
+        # , `name="y", type=`type_kind="ARRAY", array_element_type="DATE"`` ]``
         # Corresponds to the JSON property `type`
         # @return [Google::Apis::BigqueryV2::StandardSqlDataType]
         attr_accessor :type
@@ -6517,10 +6324,9 @@ module Google
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
       
-        # The set of permissions to check for the `resource`. Permissions with
-        # wildcards (such as '*' or 'storage.*') are not allowed. For more
-        # information see
-        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        # The set of permissions to check for the `resource`. Permissions with wildcards
+        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -6539,8 +6345,7 @@ module Google
       class TestIamPermissionsResponse
         include Google::Apis::Core::Hashable
       
-        # A subset of `TestPermissionsRequest.permissions` that the caller is
-        # allowed.
+        # A subset of `TestPermissionsRequest.permissions` that the caller is allowed.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -6610,6 +6415,11 @@ module Google
         attr_accessor :auto_arima
         alias_method :auto_arima?, :auto_arima
       
+        # The max value of non-seasonal p and q.
+        # Corresponds to the JSON property `autoArimaMaxOrder`
+        # @return [Fixnum]
+        attr_accessor :auto_arima_max_order
+      
         # Batch size for dnn models.
         # Corresponds to the JSON property `batchSize`
         # @return [Fixnum]
@@ -6620,25 +6430,21 @@ module Google
         # @return [String]
         attr_accessor :data_frequency
       
-        # The column to split data with. This column won't be used as a
-        # feature.
-        # 1. When data_split_method is CUSTOM, the corresponding column should
-        # be boolean. The rows with true value tag are eval data, and the false
-        # are training data.
-        # 2. When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION
-        # rows (from smallest to largest) in the corresponding column are used
-        # as training data, and the rest are eval data. It respects the order
-        # in Orderable data types:
+        # The column to split data with. This column won't be used as a feature. 1. When
+        # data_split_method is CUSTOM, the corresponding column should be boolean. The
+        # rows with true value tag are eval data, and the false are training data. 2.
+        # When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION rows (from
+        # smallest to largest) in the corresponding column are used as training data,
+        # and the rest are eval data. It respects the order in Orderable data types:
         # https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-
         # type-properties
         # Corresponds to the JSON property `dataSplitColumn`
         # @return [String]
         attr_accessor :data_split_column
       
-        # The fraction of evaluation data over the whole input data. The rest
-        # of data will be used as training data. The format should be double.
-        # Accurate to two decimal places.
-        # Default value is 0.2.
+        # The fraction of evaluation data over the whole input data. The rest of data
+        # will be used as training data. The format should be double. Accurate to two
+        # decimal places. Default value is 0.2.
         # Corresponds to the JSON property `dataSplitEvalFraction`
         # @return [Float]
         attr_accessor :data_split_eval_fraction
@@ -6658,16 +6464,15 @@ module Google
         # @return [Float]
         attr_accessor :dropout
       
-        # Whether to stop early when the loss doesn't improve significantly
-        # any more (compared to min_relative_progress). Used only for iterative
-        # training algorithms.
+        # Whether to stop early when the loss doesn't improve significantly any more (
+        # compared to min_relative_progress). Used only for iterative training
+        # algorithms.
         # Corresponds to the JSON property `earlyStop`
         # @return [Boolean]
         attr_accessor :early_stop
         alias_method :early_stop?, :early_stop
       
-        # Feedback type that specifies which algorithm to run for matrix
-        # factorization.
+        # Feedback type that specifies which algorithm to run for matrix factorization.
         # Corresponds to the JSON property `feedbackType`
         # @return [String]
         attr_accessor :feedback_type
@@ -6677,9 +6482,9 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :hidden_units
       
-        # The geographical region based on which the holidays are considered in
-        # time series modeling. If a valid value is specified, then holiday
-        # effects modeling is enabled.
+        # The geographical region based on which the holidays are considered in time
+        # series modeling. If a valid value is specified, then holiday effects modeling
+        # is enabled.
         # Corresponds to the JSON property `holidayRegion`
         # @return [String]
         attr_accessor :holiday_region
@@ -6695,8 +6500,7 @@ module Google
         attr_accessor :include_drift
         alias_method :include_drift?, :include_drift
       
-        # Specifies the initial learning rate for the line search learn rate
-        # strategy.
+        # Specifies the initial learning rate for the line search learn rate strategy.
         # Corresponds to the JSON property `initialLearnRate`
         # @return [Float]
         attr_accessor :initial_learn_rate
@@ -6711,8 +6515,8 @@ module Google
         # @return [String]
         attr_accessor :item_column
       
-        # The column used to provide the initial centroids for kmeans algorithm
-        # when kmeans_initialization_method is CUSTOM.
+        # The column used to provide the initial centroids for kmeans algorithm when
+        # kmeans_initialization_method is CUSTOM.
         # Corresponds to the JSON property `kmeansInitializationColumn`
         # @return [String]
         attr_accessor :kmeans_initialization_column
@@ -6732,8 +6536,8 @@ module Google
         # @return [Float]
         attr_accessor :l2_regularization
       
-        # Weights associated with each label class, for rebalancing the
-        # training data. Only applicable for classification models.
+        # Weights associated with each label class, for rebalancing the training data.
+        # Only applicable for classification models.
         # Corresponds to the JSON property `labelClassWeights`
         # @return [Hash<String,Float>]
         attr_accessor :label_class_weights
@@ -6753,8 +6557,8 @@ module Google
         # @return [String]
         attr_accessor :loss_type
       
-        # The maximum number of iterations in training. Used only for iterative
-        # training algorithms.
+        # The maximum number of iterations in training. Used only for iterative training
+        # algorithms.
         # Corresponds to the JSON property `maxIterations`
         # @return [Fixnum]
         attr_accessor :max_iterations
@@ -6764,9 +6568,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_tree_depth
       
-        # When early_stop is true, stops training when accuracy improvement is
-        # less than 'min_relative_progress'. Used only for iterative training
-        # algorithms.
+        # When early_stop is true, stops training when accuracy improvement is less than
+        # 'min_relative_progress'. Used only for iterative training algorithms.
         # Corresponds to the JSON property `minRelativeProgress`
         # @return [Float]
         attr_accessor :min_relative_progress
@@ -6802,17 +6605,16 @@ module Google
         # @return [String]
         attr_accessor :optimization_strategy
       
-        # Whether to preserve the input structs in output feature names.
-        # Suppose there is a struct A with field b.
-        # When false (default), the output feature name is A_b.
-        # When true, the output feature name is A.b.
+        # Whether to preserve the input structs in output feature names. Suppose there
+        # is a struct A with field b. When false (default), the output feature name is
+        # A_b. When true, the output feature name is A.b.
         # Corresponds to the JSON property `preserveInputStructs`
         # @return [Boolean]
         attr_accessor :preserve_input_structs
         alias_method :preserve_input_structs?, :preserve_input_structs
       
-        # Subsample fraction of the training data to grow tree to prevent
-        # overfitting for boosted tree models.
+        # Subsample fraction of the training data to grow tree to prevent overfitting
+        # for boosted tree models.
         # Corresponds to the JSON property `subsample`
         # @return [Float]
         attr_accessor :subsample
@@ -6822,8 +6624,8 @@ module Google
         # @return [String]
         attr_accessor :time_series_data_column
       
-        # The id column that will be used to indicate different time series to
-        # forecast in parallel.
+        # The id column that will be used to indicate different time series to forecast
+        # in parallel.
         # Corresponds to the JSON property `timeSeriesIdColumn`
         # @return [String]
         attr_accessor :time_series_id_column
@@ -6838,8 +6640,7 @@ module Google
         # @return [String]
         attr_accessor :user_column
       
-        # Hyperparameter for matrix factoration when implicit feedback type is
-        # specified.
+        # Hyperparameter for matrix factoration when implicit feedback type is specified.
         # Corresponds to the JSON property `walsAlpha`
         # @return [Float]
         attr_accessor :wals_alpha
@@ -6857,6 +6658,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_arima = args[:auto_arima] if args.key?(:auto_arima)
+          @auto_arima_max_order = args[:auto_arima_max_order] if args.key?(:auto_arima_max_order)
           @batch_size = args[:batch_size] if args.key?(:batch_size)
           @data_frequency = args[:data_frequency] if args.key?(:data_frequency)
           @data_split_column = args[:data_split_column] if args.key?(:data_split_column)
@@ -6911,9 +6713,9 @@ module Google
         # @return [Google::Apis::BigqueryV2::DataSplitResult]
         attr_accessor :data_split_result
       
-        # Evaluation metrics of a model. These are either computed on all training
-        # data or just the eval data based on whether eval data was used during
-        # training. These are not present for imported models.
+        # Evaluation metrics of a model. These are either computed on all training data
+        # or just the eval data based on whether eval data was used during training.
+        # These are not present for imported models.
         # Corresponds to the JSON property `evaluationMetrics`
         # @return [Google::Apis::BigqueryV2::EvaluationMetrics]
         attr_accessor :evaluation_metrics
@@ -6928,8 +6730,8 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # Options that were used for this training run, includes
-        # user specified and default options that were used.
+        # Options that were used for this training run, includes user specified and
+        # default options that were used.
         # Corresponds to the JSON property `trainingOptions`
         # @return [Google::Apis::BigqueryV2::TrainingOptions]
         attr_accessor :training_options

@@ -47,13 +47,12 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets the access control policy for an Identity-Aware Proxy protected
-        # resource.
-        # More information about managing access via IAP can be found at:
-        # https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
+        # Gets the access control policy for an Identity-Aware Proxy protected resource.
+        # More information about managing access via IAP can be found at: https://cloud.
+        # google.com/iap/docs/managing-access#managing_access_via_the_api
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::IapV1beta1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -84,13 +83,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy for an Identity-Aware Proxy protected
-        # resource. Replaces any existing policy.
-        # More information about managing access via IAP can be found at:
-        # https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
+        # Sets the access control policy for an Identity-Aware Proxy protected resource.
+        # Replaces any existing policy. More information about managing access via IAP
+        # can be found at: https://cloud.google.com/iap/docs/managing-access#
+        # managing_access_via_the_api
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::IapV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -122,14 +121,13 @@ module Google
         end
         
         # Returns permissions that a caller has on the Identity-Aware Proxy protected
-        # resource. If the resource does not exist or the caller does not have
-        # Identity-Aware Proxy permissions a [google.rpc.Code.PERMISSION_DENIED]
-        # will be returned.
-        # More information about managing access via IAP can be found at:
-        # https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
+        # resource. If the resource does not exist or the caller does not have Identity-
+        # Aware Proxy permissions a [google.rpc.Code.PERMISSION_DENIED] will be returned.
+        # More information about managing access via IAP can be found at: https://cloud.
+        # google.com/iap/docs/managing-access#managing_access_via_the_api
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::IapV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

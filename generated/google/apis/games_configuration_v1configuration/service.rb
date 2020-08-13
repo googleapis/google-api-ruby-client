@@ -143,9 +143,9 @@ module Google
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
         # @param [Fixnum] max_results
-        #   The maximum number of resource configurations to return in the response,
-        #   used for paging. For any response, the actual number of resources returned
-        #   may be less than the specified `maxResults`.
+        #   The maximum number of resource configurations to return in the response, used
+        #   for paging. For any response, the actual number of resources returned may be
+        #   less than the specified `maxResults`.
         # @param [String] page_token
         #   The token returned by the previous request.
         # @param [String] fields
@@ -348,9 +348,9 @@ module Google
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
         # @param [Fixnum] max_results
-        #   The maximum number of resource configurations to return in the response,
-        #   used for paging. For any response, the actual number of resources returned
-        #   may be less than the specified `maxResults`.
+        #   The maximum number of resource configurations to return in the response, used
+        #   for paging. For any response, the actual number of resources returned may be
+        #   less than the specified `maxResults`.
         # @param [String] page_token
         #   The token returned by the previous request.
         # @param [String] fields

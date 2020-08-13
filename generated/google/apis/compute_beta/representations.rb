@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBucketCdnPolicyNegativeCachingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendBucketList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -371,6 +377,12 @@ module Google
       end
       
       class BackendServiceCdnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceCdnPolicyNegativeCachingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2021,6 +2033,12 @@ module Google
       end
       
       class LicenseCodeLicenseAlias
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LicenseResourceCommitment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5539,6 +5557,7 @@ module Google
           property :cdn_policy, as: 'cdnPolicy', class: Google::Apis::ComputeBeta::BackendBucketCdnPolicy, decorator: Google::Apis::ComputeBeta::BackendBucketCdnPolicy::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
+          collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
           property :enable_cdn, as: 'enableCdn'
           property :id, :numeric_string => true, as: 'id'
@@ -5551,8 +5570,23 @@ module Google
       class BackendBucketCdnPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_mode, as: 'cacheMode'
+          property :client_ttl, as: 'clientTtl'
+          property :default_ttl, as: 'defaultTtl'
+          property :max_ttl, as: 'maxTtl'
+          property :negative_caching, as: 'negativeCaching'
+          collection :negative_caching_policys, as: 'negativeCachingPolicys', class: Google::Apis::ComputeBeta::BackendBucketCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeBeta::BackendBucketCdnPolicyNegativeCachingPolicy::Representation
+      
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
+        end
+      end
+      
+      class BackendBucketCdnPolicyNegativeCachingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :ttl, as: 'ttl'
         end
       end
       
@@ -5604,6 +5638,7 @@ module Google
       
           property :creation_timestamp, as: 'creationTimestamp'
           collection :custom_request_headers, as: 'customRequestHeaders'
+          collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
           property :enable_cdn, as: 'enableCDN'
           property :failover_policy, as: 'failoverPolicy', class: Google::Apis::ComputeBeta::BackendServiceFailoverPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceFailoverPolicy::Representation
@@ -5672,8 +5707,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeBeta::CacheKeyPolicy, decorator: Google::Apis::ComputeBeta::CacheKeyPolicy::Representation
       
+          property :cache_mode, as: 'cacheMode'
+          property :client_ttl, as: 'clientTtl'
+          property :default_ttl, as: 'defaultTtl'
+          property :max_ttl, as: 'maxTtl'
+          property :negative_caching, as: 'negativeCaching'
+          collection :negative_caching_policys, as: 'negativeCachingPolicys', class: Google::Apis::ComputeBeta::BackendServiceCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceCdnPolicyNegativeCachingPolicy::Representation
+      
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
+        end
+      end
+      
+      class BackendServiceCdnPolicyNegativeCachingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :ttl, as: 'ttl'
         end
       end
       
@@ -5878,11 +5928,14 @@ module Google
       class Commitment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :end_timestamp, as: 'endTimestamp'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :license_resource, as: 'licenseResource', class: Google::Apis::ComputeBeta::LicenseResourceCommitment, decorator: Google::Apis::ComputeBeta::LicenseResourceCommitment::Representation
+      
           property :name, as: 'name'
           property :plan, as: 'plan'
           property :region, as: 'region'
@@ -8796,6 +8849,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class LicenseResourceCommitment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, :numeric_string => true, as: 'amount'
+          property :cores_per_license, as: 'coresPerLicense'
+          property :license, as: 'license'
         end
       end
       

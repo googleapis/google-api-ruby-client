@@ -23,8 +23,7 @@ module Google
       # Google Play Game Management
       #
       # The Google Play Game Management API allows developers to manage resources from
-      #  the Google
-      #  Play Game service.
+      #  the Google Play Game service.
       #
       # @example
       #    require 'google/apis/games_management_v1management'
@@ -50,8 +49,8 @@ module Google
         end
         
         # Resets the achievement with the given ID for the currently authenticated
-        # player. This method is only accessible to whitelisted tester accounts for
-        # your application.
+        # player. This method is only accessible to whitelisted tester accounts for your
+        # application.
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
         # @param [String] fields
@@ -82,8 +81,8 @@ module Google
         end
         
         # Resets all achievements for the currently authenticated player for your
-        # application. This method is only accessible to whitelisted tester accounts
-        # for your application.
+        # application. This method is only accessible to whitelisted tester accounts for
+        # your application.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -110,8 +109,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resets all draft achievements for all players. This method is only
-        # available to user accounts for your developer console.
+        # Resets all draft achievements for all players. This method is only available
+        # to user accounts for your developer console.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -136,9 +135,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resets the achievement with the given ID for all players. This method is
-        # only available to user accounts for your developer console. Only draft
-        # achievements can be reset.
+        # Resets the achievement with the given ID for all players. This method is only
+        # available to user accounts for your developer console. Only draft achievements
+        # can be reset.
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
         # @param [String] fields
@@ -167,8 +166,8 @@ module Google
         end
         
         # Resets achievements with the given IDs for all players. This method is only
-        # available to user accounts for your developer console. Only draft
-        # achievements may be reset.
+        # available to user accounts for your developer console. Only draft achievements
+        # may be reset.
         # @param [Google::Apis::GamesManagementV1management::AchievementResetMultipleForAllRequest] achievement_reset_multiple_for_all_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -196,14 +195,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the list of players hidden from the given application. This method is
-        # only available to user accounts for your developer console.
+        # Get the list of players hidden from the given application. This method is only
+        # available to user accounts for your developer console.
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
         # @param [Fixnum] max_results
         #   The maximum number of player resources to return in the response, used for
-        #   paging. For any response, the actual number of player resources returned
-        #   may be less than the specified `maxResults`.
+        #   paging. For any response, the actual number of player resources returned may
+        #   be less than the specified `maxResults`.
         # @param [String] page_token
         #   The token returned by the previous request.
         # @param [String] fields
@@ -266,8 +265,8 @@ module Google
         end
         
         # Resets all player progress on all events for the currently authenticated
-        # player. This method is only accessible to whitelisted tester accounts for
-        # your application.
+        # player. This method is only accessible to whitelisted tester accounts for your
+        # application.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -292,8 +291,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resets all draft events for all players. This method is only available to
-        # user accounts for your developer console.
+        # Resets all draft events for all players. This method is only available to user
+        # accounts for your developer console.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -319,8 +318,8 @@ module Google
         end
         
         # Resets the event with the given ID for all players. This method is only
-        # available to user accounts for your developer console. Only draft events
-        # can be reset.
+        # available to user accounts for your developer console. Only draft events can
+        # be reset.
         # @param [String] event_id
         #   The ID of the event.
         # @param [String] fields
@@ -349,8 +348,8 @@ module Google
         end
         
         # Resets events with the given IDs for all players. This method is only
-        # available to user accounts for your developer console. Only draft events
-        # may be reset.
+        # available to user accounts for your developer console. Only draft events may
+        # be reset.
         # @param [Google::Apis::GamesManagementV1management::EventsResetMultipleForAllRequest] events_reset_multiple_for_all_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -383,8 +382,8 @@ module Google
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
         # @param [String] player_id
-        #   A player ID. A value of `me` may be used in place of the
-        #   authenticated player's ID.
+        #   A player ID. A value of `me` may be used in place of the authenticated player'
+        #   s ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -411,13 +410,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Unhide the given player's leaderboard scores from the given application.
-        # This method is only available to user accounts for your developer console.
+        # Unhide the given player's leaderboard scores from the given application. This
+        # method is only available to user accounts for your developer console.
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
         # @param [String] player_id
-        #   A player ID. A value of `me` may be used in place of the
-        #   authenticated player's ID.
+        #   A player ID. A value of `me` may be used in place of the authenticated player'
+        #   s ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -476,9 +475,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resets all scores for all leaderboards for the currently authenticated
-        # players. This method is only accessible to whitelisted tester accounts for
-        # your application.
+        # Resets all scores for all leaderboards for the currently authenticated players.
+        # This method is only accessible to whitelisted tester accounts for your
+        # application.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -505,8 +504,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resets scores for all draft leaderboards for all players. This method is
-        # only available to user accounts for your developer console.
+        # Resets scores for all draft leaderboards for all players. This method is only
+        # available to user accounts for your developer console.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

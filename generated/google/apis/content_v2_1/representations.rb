@@ -184,6 +184,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountsUpdateLabelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccountsUpdateLabelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountstatusesCustomBatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1800,10 +1812,12 @@ module Google
           property :adult_content, as: 'adultContent'
           property :business_information, as: 'businessInformation', class: Google::Apis::ContentV2_1::AccountBusinessInformation, decorator: Google::Apis::ContentV2_1::AccountBusinessInformation::Representation
       
+          property :css_id, :numeric_string => true, as: 'cssId'
           property :google_my_business_link, as: 'googleMyBusinessLink', class: Google::Apis::ContentV2_1::AccountGoogleMyBusinessLink, decorator: Google::Apis::ContentV2_1::AccountGoogleMyBusinessLink::Representation
       
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          collection :label_ids, as: 'labelIds'
           property :name, as: 'name'
           property :seller_id, as: 'sellerId'
           collection :users, as: 'users', class: Google::Apis::ContentV2_1::AccountUser, decorator: Google::Apis::ContentV2_1::AccountUser::Representation
@@ -2011,6 +2025,7 @@ module Google
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :method_prop, as: 'method'
           property :overwrite, as: 'overwrite'
+          property :view, as: 'view'
         end
       end
       
@@ -2079,6 +2094,20 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::ContentV2_1::Account, decorator: Google::Apis::ContentV2_1::Account::Representation
       
+        end
+      end
+      
+      class AccountsUpdateLabelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :label_ids, as: 'labelIds'
+        end
+      end
+      
+      class AccountsUpdateLabelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
         end
       end
       
@@ -4215,7 +4244,10 @@ module Google
       class ProductStatusDestinationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :approved_countrys, as: 'approvedCountrys'
           property :destination, as: 'destination'
+          collection :disapproved_countrys, as: 'disapprovedCountrys'
+          collection :pending_countrys, as: 'pendingCountrys'
           property :status, as: 'status'
         end
       end
@@ -4223,6 +4255,7 @@ module Google
       class ProductStatusItemLevelIssue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applicable_countrys, as: 'applicableCountrys'
           property :attribute_name, as: 'attributeName'
           property :code, as: 'code'
           property :description, as: 'description'

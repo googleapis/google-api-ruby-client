@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendBucketCdnPolicyNegativeCachingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendBucketList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -395,6 +401,12 @@ module Google
       end
       
       class BackendServiceCdnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceCdnPolicyNegativeCachingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5801,7 +5813,6 @@ module Google
           collection :local_ssds, as: 'localSsds', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk::Representation
       
           property :location_hint, as: 'locationHint'
-          property :long_term_release, as: 'longTermRelease'
           property :machine_type, as: 'machineType'
           property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
           property :maintenance_interval, as: 'maintenanceInterval'
@@ -6144,6 +6155,7 @@ module Google
           property :cdn_policy, as: 'cdnPolicy', class: Google::Apis::ComputeAlpha::BackendBucketCdnPolicy, decorator: Google::Apis::ComputeAlpha::BackendBucketCdnPolicy::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
+          collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
           property :enable_cdn, as: 'enableCdn'
           property :id, :numeric_string => true, as: 'id'
@@ -6157,9 +6169,24 @@ module Google
       class BackendBucketCdnPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_mode, as: 'cacheMode'
+          property :client_ttl, as: 'clientTtl'
+          property :default_ttl, as: 'defaultTtl'
+          property :max_ttl, as: 'maxTtl'
+          property :negative_caching, as: 'negativeCaching'
+          collection :negative_caching_policys, as: 'negativeCachingPolicys', class: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyNegativeCachingPolicy::Representation
+      
           property :request_coalescing, as: 'requestCoalescing'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
+        end
+      end
+      
+      class BackendBucketCdnPolicyNegativeCachingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :ttl, as: 'ttl'
         end
       end
       
@@ -6211,6 +6238,7 @@ module Google
       
           property :creation_timestamp, as: 'creationTimestamp'
           collection :custom_request_headers, as: 'customRequestHeaders'
+          collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
           property :enable_cdn, as: 'enableCDN'
           property :failover_policy, as: 'failoverPolicy', class: Google::Apis::ComputeAlpha::BackendServiceFailoverPolicy, decorator: Google::Apis::ComputeAlpha::BackendServiceFailoverPolicy::Representation
@@ -6281,9 +6309,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cache_key_policy, as: 'cacheKeyPolicy', class: Google::Apis::ComputeAlpha::CacheKeyPolicy, decorator: Google::Apis::ComputeAlpha::CacheKeyPolicy::Representation
       
+          property :cache_mode, as: 'cacheMode'
+          property :client_ttl, as: 'clientTtl'
+          property :default_ttl, as: 'defaultTtl'
+          property :max_ttl, as: 'maxTtl'
+          property :negative_caching, as: 'negativeCaching'
+          collection :negative_caching_policys, as: 'negativeCachingPolicys', class: Google::Apis::ComputeAlpha::BackendServiceCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeAlpha::BackendServiceCdnPolicyNegativeCachingPolicy::Representation
+      
           property :request_coalescing, as: 'requestCoalescing'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
+        end
+      end
+      
+      class BackendServiceCdnPolicyNegativeCachingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :ttl, as: 'ttl'
         end
       end
       
@@ -13203,7 +13246,6 @@ module Google
           property :automatic_restart, as: 'automaticRestart'
           property :latency_tolerant, as: 'latencyTolerant'
           property :location_hint, as: 'locationHint'
-          property :long_term_release, as: 'longTermRelease'
           property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
           property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeAlpha::SchedulingNodeAffinity, decorator: Google::Apis::ComputeAlpha::SchedulingNodeAffinity::Representation

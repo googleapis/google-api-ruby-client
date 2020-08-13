@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class I18nConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDomainsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +263,13 @@ module Google
         end
       end
       
+      class I18nConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :root, as: 'root'
+        end
+      end
+      
       class ListDomainsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -371,6 +384,8 @@ module Google
           property :app_association, as: 'appAssociation'
           property :clean_urls, as: 'cleanUrls'
           collection :headers, as: 'headers', class: Google::Apis::FirebasehostingV1beta1::Header, decorator: Google::Apis::FirebasehostingV1beta1::Header::Representation
+      
+          property :i18n, as: 'i18n', class: Google::Apis::FirebasehostingV1beta1::I18nConfig, decorator: Google::Apis::FirebasehostingV1beta1::I18nConfig::Representation
       
           collection :redirects, as: 'redirects', class: Google::Apis::FirebasehostingV1beta1::Redirect, decorator: Google::Apis::FirebasehostingV1beta1::Redirect::Representation
       

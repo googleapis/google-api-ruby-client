@@ -116,23 +116,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a queue.
-        # Queues created with this method allow tasks to live for a maximum of 31
-        # days. After a task is 31 days old, the task will be deleted regardless of
-        # whether
-        # it was dispatched or not.
-        # WARNING: Using this method may have unintended side effects if you are
-        # using an App Engine `queue.yaml` or `queue.xml` file to manage your queues.
-        # Read
-        # [Overview of Queue Management and
-        # queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using
-        # this method.
+        # Creates a queue. Queues created with this method allow tasks to live for a
+        # maximum of 31 days. After a task is 31 days old, the task will be deleted
+        # regardless of whether it was dispatched or not. WARNING: Using this method may
+        # have unintended side effects if you are using an App Engine `queue.yaml` or `
+        # queue.xml` file to manage your queues. Read [Overview of Queue Management and
+        # queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this
+        # method.
         # @param [String] parent
-        #   Required. The location name in which the queue will be created.
-        #   For example: `projects/PROJECT_ID/locations/LOCATION_ID`
-        #   The list of allowed locations can be obtained by calling Cloud
-        #   Tasks' implementation of
-        #   ListLocations.
+        #   Required. The location name in which the queue will be created. For example: `
+        #   projects/PROJECT_ID/locations/LOCATION_ID` The list of allowed locations can
+        #   be obtained by calling Cloud Tasks' implementation of ListLocations.
         # @param [Google::Apis::CloudtasksV2beta2::Queue] queue_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -163,19 +157,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a queue.
-        # This command will delete the queue even if it has tasks in it.
-        # Note: If you delete a queue, a queue with the same name can't be created
-        # for 7 days.
-        # WARNING: Using this method may have unintended side effects if you are
+        # Deletes a queue. This command will delete the queue even if it has tasks in it.
+        # Note: If you delete a queue, a queue with the same name can't be created for
+        # 7 days. WARNING: Using this method may have unintended side effects if you are
         # using an App Engine `queue.yaml` or `queue.xml` file to manage your queues.
-        # Read
-        # [Overview of Queue Management and
-        # queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using
-        # this method.
+        # Read [Overview of Queue Management and queue.yaml](https://cloud.google.com/
+        # tasks/docs/queue-yaml) before using this method.
         # @param [String] name
-        #   Required. The queue name. For example:
-        #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+        #   Required. The queue name. For example: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID/queues/QUEUE_ID`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -205,12 +195,11 @@ module Google
         
         # Gets a queue.
         # @param [String] name
-        #   Required. The resource name of the queue. For example:
-        #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+        #   Required. The resource name of the queue. For example: `projects/PROJECT_ID/
+        #   locations/LOCATION_ID/queues/QUEUE_ID`
         # @param [String] read_mask
         #   Optional. Read mask is used for a more granular control over what the API
-        #   returns. By
-        #   it includes all fields in Queue except for stats.
+        #   returns. By it includes all fields in Queue except for stats.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -239,16 +228,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a Queue.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
-        # Authorization requires the following
-        # [Google IAM](https://cloud.google.com/iam) permission on the specified
-        # resource parent:
-        # * `cloudtasks.queues.getIamPolicy`
+        # Gets the access control policy for a Queue. Returns an empty policy if the
+        # resource exists and does not have a policy set. Authorization requires the
+        # following [Google IAM](https://cloud.google.com/iam) permission on the
+        # specified resource parent: * `cloudtasks.queues.getIamPolicy`
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudtasksV2beta2::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -279,36 +265,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists queues.
-        # Queues are returned in lexicographical order.
+        # Lists queues. Queues are returned in lexicographical order.
         # @param [String] parent
-        #   Required. The location name.
-        #   For example: `projects/PROJECT_ID/locations/LOCATION_ID`
+        #   Required. The location name. For example: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID`
         # @param [String] filter
-        #   `filter` can be used to specify a subset of queues. Any Queue
-        #   field can be used as a filter and several operators as supported.
-        #   For example: `<=, <, >=, >, !=, =, :`. The filter syntax is the same as
-        #   described in
-        #   [Stackdriver's Advanced Logs
-        #   Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
-        #   Sample filter "app_engine_http_target: *".
-        #   Note that using filters might cause fewer queues than the
-        #   requested_page size to be returned.
+        #   `filter` can be used to specify a subset of queues. Any Queue field can be
+        #   used as a filter and several operators as supported. For example: `<=, <, >=, >
+        #   , !=, =, :`. The filter syntax is the same as described in [Stackdriver's
+        #   Advanced Logs Filters](https://cloud.google.com/logging/docs/view/
+        #   advanced_filters). Sample filter "app_engine_http_target: *". Note that using
+        #   filters might cause fewer queues than the requested_page size to be returned.
         # @param [Fixnum] page_size
-        #   Requested page size.
-        #   The maximum page size is 9800. If unspecified, the page size will
-        #   be the maximum. Fewer queues than requested might be returned,
-        #   even if more queues exist; use the
-        #   next_page_token in the
-        #   response to determine if more queues exist.
+        #   Requested page size. The maximum page size is 9800. If unspecified, the page
+        #   size will be the maximum. Fewer queues than requested might be returned, even
+        #   if more queues exist; use the next_page_token in the response to determine if
+        #   more queues exist.
         # @param [String] page_token
-        #   A token identifying the page of results to return.
-        #   To request the first page results, page_token must be empty. To
-        #   request the next page of results, page_token must be the value of
-        #   next_page_token returned
-        #   from the previous call to ListQueues
-        #   method. It is an error to switch the value of the
-        #   filter while iterating through pages.
+        #   A token identifying the page of results to return. To request the first page
+        #   results, page_token must be empty. To request the next page of results,
+        #   page_token must be the value of next_page_token returned from the previous
+        #   call to ListQueues method. It is an error to switch the value of the filter
+        #   while iterating through pages.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -339,41 +317,30 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a queue.
-        # This method creates the queue if it does not exist and updates
-        # the queue if it does exist.
-        # Queues created with this method allow tasks to live for a maximum of 31
-        # days. After a task is 31 days old, the task will be deleted regardless of
-        # whether
-        # it was dispatched or not.
-        # WARNING: Using this method may have unintended side effects if you are
-        # using an App Engine `queue.yaml` or `queue.xml` file to manage your queues.
-        # Read
-        # [Overview of Queue Management and
-        # queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using
-        # this method.
+        # Updates a queue. This method creates the queue if it does not exist and
+        # updates the queue if it does exist. Queues created with this method allow
+        # tasks to live for a maximum of 31 days. After a task is 31 days old, the task
+        # will be deleted regardless of whether it was dispatched or not. WARNING: Using
+        # this method may have unintended side effects if you are using an App Engine `
+        # queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue
+        # Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml)
+        # before using this method.
         # @param [String] name
-        #   Caller-specified and required in CreateQueue,
-        #   after which it becomes output only.
-        #   The queue name.
-        #   The queue name must have the following format:
-        #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-        #   * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
-        #   hyphens (-), colons (:), or periods (.).
-        #   For more information, see
-        #   [Identifying
-        #   projects](https://cloud.google.com/resource-manager/docs/creating-managing-
-        #   projects#identifying_projects)
-        #   * `LOCATION_ID` is the canonical ID for the queue's location.
-        #   The list of available locations can be obtained by calling
-        #   ListLocations.
-        #   For more information, see https://cloud.google.com/about/locations/.
-        #   * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
-        #   hyphens (-). The maximum length is 100 characters.
+        #   Caller-specified and required in CreateQueue, after which it becomes output
+        #   only. The queue name. The queue name must have the following format: `projects/
+        #   PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain
+        #   letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.).
+        #   For more information, see [Identifying projects](https://cloud.google.com/
+        #   resource-manager/docs/creating-managing-projects#identifying_projects) * `
+        #   LOCATION_ID` is the canonical ID for the queue's location. The list of
+        #   available locations can be obtained by calling ListLocations. For more
+        #   information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can
+        #   contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum
+        #   length is 100 characters.
         # @param [Google::Apis::CloudtasksV2beta2::Queue] queue_object
         # @param [String] update_mask
-        #   A mask used to specify which fields of the queue are being updated.
-        #   If empty, then all fields will be updated.
+        #   A mask used to specify which fields of the queue are being updated. If empty,
+        #   then all fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -404,15 +371,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Pauses the queue.
-        # If a queue is paused then the system will stop dispatching tasks
-        # until the queue is resumed via
-        # ResumeQueue. Tasks can still be added
-        # when the queue is paused. A queue is paused if its
-        # state is PAUSED.
+        # Pauses the queue. If a queue is paused then the system will stop dispatching
+        # tasks until the queue is resumed via ResumeQueue. Tasks can still be added
+        # when the queue is paused. A queue is paused if its state is PAUSED.
         # @param [String] name
-        #   Required. The queue name. For example:
-        #   `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
+        #   Required. The queue name. For example: `projects/PROJECT_ID/location/
+        #   LOCATION_ID/queues/QUEUE_ID`
         # @param [Google::Apis::CloudtasksV2beta2::PauseQueueRequest] pause_queue_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -443,13 +407,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Purges a queue by deleting all of its tasks.
-        # All tasks created before this method is called are permanently deleted.
-        # Purge operations can take up to one minute to take effect. Tasks
-        # might be dispatched before the purge takes effect. A purge is irreversible.
+        # Purges a queue by deleting all of its tasks. All tasks created before this
+        # method is called are permanently deleted. Purge operations can take up to one
+        # minute to take effect. Tasks might be dispatched before the purge takes effect.
+        # A purge is irreversible.
         # @param [String] name
-        #   Required. The queue name. For example:
-        #   `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
+        #   Required. The queue name. For example: `projects/PROJECT_ID/location/
+        #   LOCATION_ID/queues/QUEUE_ID`
         # @param [Google::Apis::CloudtasksV2beta2::PurgeQueueRequest] purge_queue_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -480,20 +444,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resume a queue.
-        # This method resumes a queue after it has been
-        # PAUSED or
-        # DISABLED. The state of a queue is stored
-        # in the queue's state; after calling this method it
-        # will be set to RUNNING.
-        # WARNING: Resuming many high-QPS queues at the same time can
-        # lead to target overloading. If you are resuming high-QPS
-        # queues, follow the 500/50/5 pattern described in
-        # [Managing Cloud Tasks Scaling
+        # Resume a queue. This method resumes a queue after it has been PAUSED or
+        # DISABLED. The state of a queue is stored in the queue's state; after calling
+        # this method it will be set to RUNNING. WARNING: Resuming many high-QPS queues
+        # at the same time can lead to target overloading. If you are resuming high-QPS
+        # queues, follow the 500/50/5 pattern described in [Managing Cloud Tasks Scaling
         # Risks](https://cloud.google.com/tasks/docs/manage-cloud-task-scaling).
         # @param [String] name
-        #   Required. The queue name. For example:
-        #   `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
+        #   Required. The queue name. For example: `projects/PROJECT_ID/location/
+        #   LOCATION_ID/queues/QUEUE_ID`
         # @param [Google::Apis::CloudtasksV2beta2::ResumeQueueRequest] resume_queue_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -524,17 +483,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy for a Queue. Replaces any existing
-        # policy.
-        # Note: The Cloud Console does not check queue-level IAM permissions yet.
-        # Project-level permissions are required to use the Cloud Console.
-        # Authorization requires the following
-        # [Google IAM](https://cloud.google.com/iam) permission on the specified
-        # resource parent:
-        # * `cloudtasks.queues.setIamPolicy`
+        # Sets the access control policy for a Queue. Replaces any existing policy. Note:
+        # The Cloud Console does not check queue-level IAM permissions yet. Project-
+        # level permissions are required to use the Cloud Console. Authorization
+        # requires the following [Google IAM](https://cloud.google.com/iam) permission
+        # on the specified resource parent: * `cloudtasks.queues.setIamPolicy`
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudtasksV2beta2::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -565,15 +521,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on a Queue.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a NOT_FOUND error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on a Queue. If the resource does not
+        # exist, this will return an empty set of permissions, not a NOT_FOUND error.
+        # Note: This operation is designed to be used for building permission-aware UIs
+        # and command-line tools, not for authorization checking. This operation may "
+        # fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudtasksV2beta2::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -604,20 +559,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Acknowledges a pull task.
-        # The worker, that is, the entity that
-        # leased this task must call this method
-        # to indicate that the work associated with the task has finished.
-        # The worker must acknowledge a task within the
-        # lease_duration or the lease
-        # will expire and the task will become available to be leased
-        # again. After the task is acknowledged, it will not be returned
-        # by a later LeaseTasks,
-        # GetTask, or
-        # ListTasks.
+        # Acknowledges a pull task. The worker, that is, the entity that leased this
+        # task must call this method to indicate that the work associated with the task
+        # has finished. The worker must acknowledge a task within the lease_duration or
+        # the lease will expire and the task will become available to be leased again.
+        # After the task is acknowledged, it will not be returned by a later LeaseTasks,
+        # GetTask, or ListTasks.
         # @param [String] name
-        #   Required. The task name. For example:
-        #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
+        #   Required. The task name. For example: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         # @param [Google::Apis::CloudtasksV2beta2::AcknowledgeTaskRequest] acknowledge_task_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -648,14 +598,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancel a pull task's lease.
-        # The worker can use this method to cancel a task's lease by
-        # setting its schedule_time to now. This will
-        # make the task available to be leased to the next caller of
-        # LeaseTasks.
+        # Cancel a pull task's lease. The worker can use this method to cancel a task's
+        # lease by setting its schedule_time to now. This will make the task available
+        # to be leased to the next caller of LeaseTasks.
         # @param [String] name
-        #   Required. The task name. For example:
-        #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
+        #   Required. The task name. For example: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         # @param [Google::Apis::CloudtasksV2beta2::CancelLeaseRequest] cancel_lease_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -686,15 +634,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a task and adds it to a queue.
-        # Tasks cannot be updated after creation; there is no UpdateTask command.
-        # * For App Engine queues, the maximum task size is
-        # 100KB.
-        # * For pull queues, the maximum task size is 1MB.
+        # Creates a task and adds it to a queue. Tasks cannot be updated after creation;
+        # there is no UpdateTask command. * For App Engine queues, the maximum task size
+        # is 100KB. * For pull queues, the maximum task size is 1MB.
         # @param [String] parent
-        #   Required. The queue name. For example:
-        #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-        #   The queue must already exist.
+        #   Required. The queue name. For example: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID/queues/QUEUE_ID` The queue must already exist.
         # @param [Google::Apis::CloudtasksV2beta2::CreateTaskRequest] create_task_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -725,13 +670,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a task.
-        # A task can be deleted if it is scheduled or dispatched. A task
-        # cannot be deleted if it has completed successfully or permanently
-        # failed.
+        # Deletes a task. A task can be deleted if it is scheduled or dispatched. A task
+        # cannot be deleted if it has completed successfully or permanently failed.
         # @param [String] name
-        #   Required. The task name. For example:
-        #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
+        #   Required. The task name. For example: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -761,19 +704,15 @@ module Google
         
         # Gets a task.
         # @param [String] name
-        #   Required. The task name. For example:
-        #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
+        #   Required. The task name. For example: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         # @param [String] response_view
-        #   The response_view specifies which subset of the Task will be
-        #   returned.
-        #   By default response_view is BASIC; not all
-        #   information is retrieved by default because some data, such as
-        #   payloads, might be desirable to return only when needed because
-        #   of its large size or because of the sensitivity of data that it
-        #   contains.
-        #   Authorization for FULL requires
-        #   `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
-        #   permission on the Task resource.
+        #   The response_view specifies which subset of the Task will be returned. By
+        #   default response_view is BASIC; not all information is retrieved by default
+        #   because some data, such as payloads, might be desirable to return only when
+        #   needed because of its large size or because of the sensitivity of data that it
+        #   contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google
+        #   IAM](https://cloud.google.com/iam/) permission on the Task resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -802,28 +741,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Leases tasks from a pull queue for
-        # lease_duration.
-        # This method is invoked by the worker to obtain a lease. The
-        # worker must acknowledge the task via
-        # AcknowledgeTask after they have
-        # performed the work associated with the task.
-        # The payload is intended to store data that
-        # the worker needs to perform the work associated with the task. To
-        # return the payloads in the response, set
-        # response_view to
-        # FULL.
-        # A maximum of 10 qps of LeaseTasks
-        # requests are allowed per
-        # queue. RESOURCE_EXHAUSTED
-        # is returned when this limit is
-        # exceeded. RESOURCE_EXHAUSTED
-        # is also returned when
-        # max_tasks_dispatched_per_second
-        # is exceeded.
+        # Leases tasks from a pull queue for lease_duration. This method is invoked by
+        # the worker to obtain a lease. The worker must acknowledge the task via
+        # AcknowledgeTask after they have performed the work associated with the task.
+        # The payload is intended to store data that the worker needs to perform the
+        # work associated with the task. To return the payloads in the response, set
+        # response_view to FULL. A maximum of 10 qps of LeaseTasks requests are allowed
+        # per queue. RESOURCE_EXHAUSTED is returned when this limit is exceeded.
+        # RESOURCE_EXHAUSTED is also returned when max_tasks_dispatched_per_second is
+        # exceeded.
         # @param [String] parent
-        #   Required. The queue name. For example:
-        #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+        #   Required. The queue name. For example: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID/queues/QUEUE_ID`
         # @param [Google::Apis::CloudtasksV2beta2::LeaseTasksRequest] lease_tasks_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -854,42 +783,30 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the tasks in a queue.
-        # By default, only the BASIC view is retrieved
-        # due to performance considerations;
-        # response_view controls the
-        # subset of information which is returned.
-        # The tasks may be returned in any order. The ordering may change at any
-        # time.
+        # Lists the tasks in a queue. By default, only the BASIC view is retrieved due
+        # to performance considerations; response_view controls the subset of
+        # information which is returned. The tasks may be returned in any order. The
+        # ordering may change at any time.
         # @param [String] parent
-        #   Required. The queue name. For example:
-        #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+        #   Required. The queue name. For example: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID/queues/QUEUE_ID`
         # @param [Fixnum] page_size
-        #   Maximum page size.
-        #   Fewer tasks than requested might be returned, even if more tasks exist; use
-        #   next_page_token in the response to
-        #   determine if more tasks exist.
-        #   The maximum page size is 1000. If unspecified, the page size will be the
-        #   maximum.
+        #   Maximum page size. Fewer tasks than requested might be returned, even if more
+        #   tasks exist; use next_page_token in the response to determine if more tasks
+        #   exist. The maximum page size is 1000. If unspecified, the page size will be
+        #   the maximum.
         # @param [String] page_token
-        #   A token identifying the page of results to return.
-        #   To request the first page results, page_token must be empty. To
-        #   request the next page of results, page_token must be the value of
-        #   next_page_token returned
-        #   from the previous call to ListTasks
-        #   method.
-        #   The page token is valid for only 2 hours.
+        #   A token identifying the page of results to return. To request the first page
+        #   results, page_token must be empty. To request the next page of results,
+        #   page_token must be the value of next_page_token returned from the previous
+        #   call to ListTasks method. The page token is valid for only 2 hours.
         # @param [String] response_view
-        #   The response_view specifies which subset of the Task will be
-        #   returned.
-        #   By default response_view is BASIC; not all
-        #   information is retrieved by default because some data, such as
-        #   payloads, might be desirable to return only when needed because
-        #   of its large size or because of the sensitivity of data that it
-        #   contains.
-        #   Authorization for FULL requires
-        #   `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
-        #   permission on the Task resource.
+        #   The response_view specifies which subset of the Task will be returned. By
+        #   default response_view is BASIC; not all information is retrieved by default
+        #   because some data, such as payloads, might be desirable to return only when
+        #   needed because of its large size or because of the sensitivity of data that it
+        #   contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google
+        #   IAM](https://cloud.google.com/iam/) permission on the Task resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -920,13 +837,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Renew the current lease of a pull task.
-        # The worker can use this method to extend the lease by a new
-        # duration, starting from now. The new task lease will be
-        # returned in the task's schedule_time.
+        # Renew the current lease of a pull task. The worker can use this method to
+        # extend the lease by a new duration, starting from now. The new task lease will
+        # be returned in the task's schedule_time.
         # @param [String] name
-        #   Required. The task name. For example:
-        #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
+        #   Required. The task name. For example: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         # @param [Google::Apis::CloudtasksV2beta2::RenewLeaseRequest] renew_lease_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -957,30 +873,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Forces a task to run now.
-        # When this method is called, Cloud Tasks will dispatch the task, even if
-        # the task is already running, the queue has reached its RateLimits or
-        # is PAUSED.
-        # This command is meant to be used for manual debugging. For
-        # example, RunTask can be used to retry a failed
-        # task after a fix has been made or to manually force a task to be
-        # dispatched now.
-        # The dispatched task is returned. That is, the task that is returned
-        # contains the status after the task is dispatched but
-        # before the task is received by its target.
-        # If Cloud Tasks receives a successful response from the task's
-        # target, then the task will be deleted; otherwise the task's
-        # schedule_time will be reset to the time that
-        # RunTask was called plus the retry delay specified
-        # in the queue's RetryConfig.
-        # RunTask returns
-        # NOT_FOUND when it is called on a
-        # task that has already succeeded or permanently failed.
-        # RunTask cannot be called on a
-        # pull task.
+        # Forces a task to run now. When this method is called, Cloud Tasks will
+        # dispatch the task, even if the task is already running, the queue has reached
+        # its RateLimits or is PAUSED. This command is meant to be used for manual
+        # debugging. For example, RunTask can be used to retry a failed task after a fix
+        # has been made or to manually force a task to be dispatched now. The dispatched
+        # task is returned. That is, the task that is returned contains the status after
+        # the task is dispatched but before the task is received by its target. If Cloud
+        # Tasks receives a successful response from the task's target, then the task
+        # will be deleted; otherwise the task's schedule_time will be reset to the time
+        # that RunTask was called plus the retry delay specified in the queue's
+        # RetryConfig. RunTask returns NOT_FOUND when it is called on a task that has
+        # already succeeded or permanently failed. RunTask cannot be called on a pull
+        # task.
         # @param [String] name
-        #   Required. The task name. For example:
-        #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
+        #   Required. The task name. For example: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         # @param [Google::Apis::CloudtasksV2beta2::RunTaskRequest] run_task_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

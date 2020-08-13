@@ -50,8 +50,8 @@ module Google
         
         # Associates the device with the gateway.
         # @param [String] parent
-        #   Required. The name of the registry. For example,
-        #   `projects/example-project/locations/us-central1/registries/my-registry`.
+        #   Required. The name of the registry. For example, `projects/example-project/
+        #   locations/us-central1/registries/my-registry`.
         # @param [Google::Apis::CloudiotV1::BindDeviceToGatewayRequest] bind_device_to_gateway_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -85,8 +85,7 @@ module Google
         # Creates a device registry that contains devices.
         # @param [String] parent
         #   Required. The project and cloud region where this device registry must be
-        #   created.
-        #   For example, `projects/example-project/locations/us-central1`.
+        #   created. For example, `projects/example-project/locations/us-central1`.
         # @param [Google::Apis::CloudiotV1::DeviceRegistry] device_registry_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -119,8 +118,8 @@ module Google
         
         # Deletes a device registry configuration.
         # @param [String] name
-        #   Required. The name of the device registry. For example,
-        #   `projects/example-project/locations/us-central1/registries/my-registry`.
+        #   Required. The name of the device registry. For example, `projects/example-
+        #   project/locations/us-central1/registries/my-registry`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -150,8 +149,8 @@ module Google
         
         # Gets a device registry configuration.
         # @param [String] name
-        #   Required. The name of the device registry. For example,
-        #   `projects/example-project/locations/us-central1/registries/my-registry`.
+        #   Required. The name of the device registry. For example, `projects/example-
+        #   project/locations/us-central1/registries/my-registry`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -179,12 +178,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudiotV1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -217,17 +215,17 @@ module Google
         
         # Lists device registries.
         # @param [String] parent
-        #   Required. The project and cloud region path. For example,
-        #   `projects/example-project/locations/us-central1`.
+        #   Required. The project and cloud region path. For example, `projects/example-
+        #   project/locations/us-central1`.
         # @param [Fixnum] page_size
-        #   The maximum number of registries to return in the response. If this value
-        #   is zero, the service will select a default size. A call may return fewer
-        #   objects than requested. A non-empty `next_page_token` in the response
-        #   indicates that more data is available.
+        #   The maximum number of registries to return in the response. If this value is
+        #   zero, the service will select a default size. A call may return fewer objects
+        #   than requested. A non-empty `next_page_token` in the response indicates that
+        #   more data is available.
         # @param [String] page_token
-        #   The value returned by the last `ListDeviceRegistriesResponse`; indicates
-        #   that this is a continuation of a prior `ListDeviceRegistries` call and
-        #   the system should return the next page of data.
+        #   The value returned by the last `ListDeviceRegistriesResponse`; indicates that
+        #   this is a continuation of a prior `ListDeviceRegistries` call and the system
+        #   should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -259,15 +257,15 @@ module Google
         
         # Updates a device registry configuration.
         # @param [String] name
-        #   The resource path name. For example,
-        #   `projects/example-project/locations/us-central1/registries/my-registry`.
+        #   The resource path name. For example, `projects/example-project/locations/us-
+        #   central1/registries/my-registry`.
         # @param [Google::Apis::CloudiotV1::DeviceRegistry] device_registry_object
         # @param [String] update_mask
         #   Required. Only updates the `device_registry` fields indicated by this mask.
-        #   The field mask must not be empty, and it must not contain fields that
-        #   are immutable or only set by the server.
-        #   Mutable top-level fields: `event_notification_config`, `http_config`,
-        #   `mqtt_config`, and `state_notification_config`.
+        #   The field mask must not be empty, and it must not contain fields that are
+        #   immutable or only set by the server. Mutable top-level fields: `
+        #   event_notification_config`, `http_config`, `mqtt_config`, and `
+        #   state_notification_config`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -301,8 +299,8 @@ module Google
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudiotV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -333,12 +331,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a NOT_FOUND error.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a
+        # NOT_FOUND error.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudiotV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -371,8 +369,8 @@ module Google
         
         # Deletes the association between the device and the gateway.
         # @param [String] parent
-        #   Required. The name of the registry. For example,
-        #   `projects/example-project/locations/us-central1/registries/my-registry`.
+        #   Required. The name of the registry. For example, `projects/example-project/
+        #   locations/us-central1/registries/my-registry`.
         # @param [Google::Apis::CloudiotV1::UnbindDeviceFromGatewayRequest] unbind_device_from_gateway_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -406,8 +404,8 @@ module Google
         # Creates a device in a device registry.
         # @param [String] parent
         #   Required. The name of the device registry where this device should be created.
-        #   For example,
-        #   `projects/example-project/locations/us-central1/registries/my-registry`.
+        #   For example, `projects/example-project/locations/us-central1/registries/my-
+        #   registry`.
         # @param [Google::Apis::CloudiotV1::Device] device_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -440,9 +438,9 @@ module Google
         
         # Deletes a device.
         # @param [String] name
-        #   Required. The name of the device. For example,
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
+        #   Required. The name of the device. For example, `projects/p0/locations/us-
+        #   central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+        #   central1/registries/registry0/devices/`num_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -472,9 +470,9 @@ module Google
         
         # Gets details about a device.
         # @param [String] name
-        #   Required. The name of the device. For example,
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
+        #   Required. The name of the device. For example, `projects/p0/locations/us-
+        #   central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+        #   central1/registries/registry0/devices/`num_id``.
         # @param [String] field_mask
         #   The fields of the `Device` resource to be returned in the response. If the
         #   field mask is unset or empty, all fields are returned.
@@ -508,41 +506,40 @@ module Google
         
         # List devices in a device registry.
         # @param [String] parent
-        #   Required. The device registry path. Required. For example,
-        #   `projects/my-project/locations/us-central1/registries/my-registry`.
+        #   Required. The device registry path. Required. For example, `projects/my-
+        #   project/locations/us-central1/registries/my-registry`.
         # @param [Array<String>, String] device_ids
-        #   A list of device string IDs. For example, `['device0', 'device12']`.
-        #   If empty, this field is ignored. Maximum IDs: 10,000
+        #   A list of device string IDs. For example, `['device0', 'device12']`. If empty,
+        #   this field is ignored. Maximum IDs: 10,000
         # @param [Array<Fixnum>, Fixnum] device_num_ids
-        #   A list of device numeric IDs. If empty, this field is ignored. Maximum
-        #   IDs: 10,000.
+        #   A list of device numeric IDs. If empty, this field is ignored. Maximum IDs: 10,
+        #   000.
         # @param [String] field_mask
-        #   The fields of the `Device` resource to be returned in the response. The
-        #   fields `id` and `num_id` are always returned, along with any
-        #   other fields specified.
+        #   The fields of the `Device` resource to be returned in the response. The fields
+        #   `id` and `num_id` are always returned, along with any other fields specified.
         # @param [String] gateway_list_options_associations_device_id
         #   If set, returns only the gateways with which the specified device is
-        #   associated. The device ID can be numeric (`num_id`) or the user-defined
-        #   string (`id`). For example, if `456` is specified, returns only the
-        #   gateways to which the device with `num_id` 456 is bound.
+        #   associated. The device ID can be numeric (`num_id`) or the user-defined string
+        #   (`id`). For example, if `456` is specified, returns only the gateways to which
+        #   the device with `num_id` 456 is bound.
         # @param [String] gateway_list_options_associations_gateway_id
-        #   If set, only devices associated with the specified gateway are returned.
-        #   The gateway ID can be numeric (`num_id`) or the user-defined string
-        #   (`id`). For example, if `123` is specified, only devices bound to the
-        #   gateway with `num_id` 123 are returned.
+        #   If set, only devices associated with the specified gateway are returned. The
+        #   gateway ID can be numeric (`num_id`) or the user-defined string (`id`). For
+        #   example, if `123` is specified, only devices bound to the gateway with `num_id`
+        #   123 are returned.
         # @param [String] gateway_list_options_gateway_type
-        #   If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY`
-        #   is specified, only non-gateway devices are returned. If
-        #   `GATEWAY_TYPE_UNSPECIFIED` is specified, all devices are returned.
+        #   If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY` is
+        #   specified, only non-gateway devices are returned. If `GATEWAY_TYPE_UNSPECIFIED`
+        #   is specified, all devices are returned.
         # @param [Fixnum] page_size
-        #   The maximum number of devices to return in the response. If this value
-        #   is zero, the service will select a default size. A call may return fewer
-        #   objects than requested. A non-empty `next_page_token` in the response
-        #   indicates that more data is available.
+        #   The maximum number of devices to return in the response. If this value is zero,
+        #   the service will select a default size. A call may return fewer objects than
+        #   requested. A non-empty `next_page_token` in the response indicates that more
+        #   data is available.
         # @param [String] page_token
-        #   The value returned by the last `ListDevicesResponse`; indicates
-        #   that this is a continuation of a prior `ListDevices` call and
-        #   the system should return the next page of data.
+        #   The value returned by the last `ListDevicesResponse`; indicates that this is a
+        #   continuation of a prior `ListDevices` call and the system should return the
+        #   next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -578,13 +575,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the configuration for the device, which is eventually sent from
-        # the Cloud IoT Core servers. Returns the modified configuration version and
-        # its metadata.
+        # Modifies the configuration for the device, which is eventually sent from the
+        # Cloud IoT Core servers. Returns the modified configuration version and its
+        # metadata.
         # @param [String] name
-        #   Required. The name of the device. For example,
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
+        #   Required. The name of the device. For example, `projects/p0/locations/us-
+        #   central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+        #   central1/registries/registry0/devices/`num_id``.
         # @param [Google::Apis::CloudiotV1::ModifyCloudToDeviceConfigRequest] modify_cloud_to_device_config_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -617,17 +614,16 @@ module Google
         
         # Updates a device.
         # @param [String] name
-        #   The resource path name. For example,
-        #   `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or
-        #   `projects/p1/locations/us-central1/registries/registry0/devices/`num_id``.
-        #   When `name` is populated as a response from the service, it always ends
-        #   in the device numeric ID.
+        #   The resource path name. For example, `projects/p1/locations/us-central1/
+        #   registries/registry0/devices/dev0` or `projects/p1/locations/us-central1/
+        #   registries/registry0/devices/`num_id``. When `name` is populated as a response
+        #   from the service, it always ends in the device numeric ID.
         # @param [Google::Apis::CloudiotV1::Device] device_object
         # @param [String] update_mask
-        #   Required. Only updates the `device` fields indicated by this mask.
-        #   The field mask must not be empty, and it must not contain fields that
-        #   are immutable or only set by the server.
-        #   Mutable top-level fields: `credentials`, `blocked`, and `metadata`
+        #   Required. Only updates the `device` fields indicated by this mask. The field
+        #   mask must not be empty, and it must not contain fields that are immutable or
+        #   only set by the server. Mutable top-level fields: `credentials`, `blocked`,
+        #   and `metadata`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -658,23 +654,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sends a command to the specified device. In order for a device to be able
-        # to receive commands, it must:
-        # 1) be connected to Cloud IoT Core using the MQTT protocol, and
-        # 2) be subscribed to the group of MQTT topics specified by
-        # /devices/`device-id`/commands/#. This subscription will receive commands
-        # at the top-level topic /devices/`device-id`/commands as well as commands
-        # for subfolders, like /devices/`device-id`/commands/subfolder.
-        # Note that subscribing to specific subfolders is not supported.
-        # If the command could not be delivered to the device, this method will
-        # return an error; in particular, if the device is not subscribed, this
-        # method will return FAILED_PRECONDITION. Otherwise, this method will
-        # return OK. If the subscription is QoS 1, at least once delivery will be
-        # guaranteed; for QoS 0, no acknowledgment will be expected from the device.
+        # Sends a command to the specified device. In order for a device to be able to
+        # receive commands, it must: 1) be connected to Cloud IoT Core using the MQTT
+        # protocol, and 2) be subscribed to the group of MQTT topics specified by /
+        # devices/`device-id`/commands/#. This subscription will receive commands at the
+        # top-level topic /devices/`device-id`/commands as well as commands for
+        # subfolders, like /devices/`device-id`/commands/subfolder. Note that
+        # subscribing to specific subfolders is not supported. If the command could not
+        # be delivered to the device, this method will return an error; in particular,
+        # if the device is not subscribed, this method will return FAILED_PRECONDITION.
+        # Otherwise, this method will return OK. If the subscription is QoS 1, at least
+        # once delivery will be guaranteed; for QoS 0, no acknowledgment will be
+        # expected from the device.
         # @param [String] name
-        #   Required. The name of the device. For example,
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
+        #   Required. The name of the device. For example, `projects/p0/locations/us-
+        #   central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+        #   central1/registries/registry0/devices/`num_id``.
         # @param [Google::Apis::CloudiotV1::SendCommandToDeviceRequest] send_command_to_device_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -705,16 +700,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the last few versions of the device configuration in descending
-        # order (i.e.: newest first).
+        # Lists the last few versions of the device configuration in descending order (i.
+        # e.: newest first).
         # @param [String] name
-        #   Required. The name of the device. For example,
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
+        #   Required. The name of the device. For example, `projects/p0/locations/us-
+        #   central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+        #   central1/registries/registry0/devices/`num_id``.
         # @param [Fixnum] num_versions
-        #   The number of versions to list. Versions are listed in decreasing order of
-        #   the version number. The maximum number of versions retained is 10. If this
-        #   value is zero, it will return all the versions available.
+        #   The number of versions to list. Versions are listed in decreasing order of the
+        #   version number. The maximum number of versions retained is 10. If this value
+        #   is zero, it will return all the versions available.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -746,13 +741,13 @@ module Google
         # Lists the last few versions of the device state in descending order (i.e.:
         # newest first).
         # @param [String] name
-        #   Required. The name of the device. For example,
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
-        #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
+        #   Required. The name of the device. For example, `projects/p0/locations/us-
+        #   central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+        #   central1/registries/registry0/devices/`num_id``.
         # @param [Fixnum] num_states
-        #   The number of states to list. States are listed in descending order of
-        #   update time. The maximum number of states retained is 10. If this
-        #   value is zero, it will return all the states available.
+        #   The number of states to list. States are listed in descending order of update
+        #   time. The maximum number of states retained is 10. If this value is zero, it
+        #   will return all the states available.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -781,12 +776,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudiotV1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -820,8 +814,8 @@ module Google
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudiotV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -852,12 +846,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a NOT_FOUND error.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a
+        # NOT_FOUND error.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudiotV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -890,41 +884,40 @@ module Google
         
         # List devices in a device registry.
         # @param [String] parent
-        #   Required. The device registry path. Required. For example,
-        #   `projects/my-project/locations/us-central1/registries/my-registry`.
+        #   Required. The device registry path. Required. For example, `projects/my-
+        #   project/locations/us-central1/registries/my-registry`.
         # @param [Array<String>, String] device_ids
-        #   A list of device string IDs. For example, `['device0', 'device12']`.
-        #   If empty, this field is ignored. Maximum IDs: 10,000
+        #   A list of device string IDs. For example, `['device0', 'device12']`. If empty,
+        #   this field is ignored. Maximum IDs: 10,000
         # @param [Array<Fixnum>, Fixnum] device_num_ids
-        #   A list of device numeric IDs. If empty, this field is ignored. Maximum
-        #   IDs: 10,000.
+        #   A list of device numeric IDs. If empty, this field is ignored. Maximum IDs: 10,
+        #   000.
         # @param [String] field_mask
-        #   The fields of the `Device` resource to be returned in the response. The
-        #   fields `id` and `num_id` are always returned, along with any
-        #   other fields specified.
+        #   The fields of the `Device` resource to be returned in the response. The fields
+        #   `id` and `num_id` are always returned, along with any other fields specified.
         # @param [String] gateway_list_options_associations_device_id
         #   If set, returns only the gateways with which the specified device is
-        #   associated. The device ID can be numeric (`num_id`) or the user-defined
-        #   string (`id`). For example, if `456` is specified, returns only the
-        #   gateways to which the device with `num_id` 456 is bound.
+        #   associated. The device ID can be numeric (`num_id`) or the user-defined string
+        #   (`id`). For example, if `456` is specified, returns only the gateways to which
+        #   the device with `num_id` 456 is bound.
         # @param [String] gateway_list_options_associations_gateway_id
-        #   If set, only devices associated with the specified gateway are returned.
-        #   The gateway ID can be numeric (`num_id`) or the user-defined string
-        #   (`id`). For example, if `123` is specified, only devices bound to the
-        #   gateway with `num_id` 123 are returned.
+        #   If set, only devices associated with the specified gateway are returned. The
+        #   gateway ID can be numeric (`num_id`) or the user-defined string (`id`). For
+        #   example, if `123` is specified, only devices bound to the gateway with `num_id`
+        #   123 are returned.
         # @param [String] gateway_list_options_gateway_type
-        #   If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY`
-        #   is specified, only non-gateway devices are returned. If
-        #   `GATEWAY_TYPE_UNSPECIFIED` is specified, all devices are returned.
+        #   If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY` is
+        #   specified, only non-gateway devices are returned. If `GATEWAY_TYPE_UNSPECIFIED`
+        #   is specified, all devices are returned.
         # @param [Fixnum] page_size
-        #   The maximum number of devices to return in the response. If this value
-        #   is zero, the service will select a default size. A call may return fewer
-        #   objects than requested. A non-empty `next_page_token` in the response
-        #   indicates that more data is available.
+        #   The maximum number of devices to return in the response. If this value is zero,
+        #   the service will select a default size. A call may return fewer objects than
+        #   requested. A non-empty `next_page_token` in the response indicates that more
+        #   data is available.
         # @param [String] page_token
-        #   The value returned by the last `ListDevicesResponse`; indicates
-        #   that this is a continuation of a prior `ListDevices` call and
-        #   the system should return the next page of data.
+        #   The value returned by the last `ListDevicesResponse`; indicates that this is a
+        #   continuation of a prior `ListDevices` call and the system should return the
+        #   next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

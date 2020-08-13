@@ -2473,9 +2473,10 @@ module Google
         end
         
         # Creates a persistent disk in the specified project using the data in the
-        # request. You can create a disk with a sourceImage, a sourceSnapshot, or create
-        # an empty 500 GB data disk by omitting all properties. You can also create a
-        # disk that is larger than the default size by specifying the sizeGb property.
+        # request. You can create a disk from a source (sourceImage, sourceSnapshot, or
+        # sourceDisk) or create an empty 500 GB data disk by omitting all properties.
+        # You can also create a disk that is larger than the default size by specifying
+        # the sizeGb property.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6859,6 +6860,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes selected per-instance configs for the managed instance group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone where the managed instance group is located. It should
+        #   conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It should conform to RFC1035.
+        # @param [Google::Apis::ComputeV1::InstanceGroupManagersDeletePerInstanceConfigsReq] instance_group_managers_delete_per_instance_configs_req_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_instance_group_manager_per_instance_configs(project, zone, instance_group_manager, instance_group_managers_delete_per_instance_configs_req_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deletePerInstanceConfigs', options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupManagersDeletePerInstanceConfigsReq::Representation
+          command.request_object = instance_group_managers_delete_per_instance_configs_req_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns all of the details about the specified managed instance group. Gets a
         # list of available managed instance groups by making a list() request.
         # @param [String] project
@@ -7195,6 +7239,85 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists all of the per-instance configs defined for the managed instance group.
+        # The orderBy query parameter is not supported.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone where the managed instance group is located. It should
+        #   conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It should conform to RFC1035.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::InstanceGroupManagersListPerInstanceConfigsResp] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagersListPerInstanceConfigsResp]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_instance_group_manager_per_instance_configs(project, zone, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listPerInstanceConfigs', options)
+          command.response_representation = Google::Apis::ComputeV1::InstanceGroupManagersListPerInstanceConfigsResp::Representation
+          command.response_class = Google::Apis::ComputeV1::InstanceGroupManagersListPerInstanceConfigsResp
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates a managed instance group using the information that you specify in the
         # request. This operation is marked as DONE when the group is patched even if
         # the instances in the group are still in the process of being patched. You must
@@ -7242,6 +7365,63 @@ module Google
           command = make_simple_command(:patch, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
           command.request_representation = Google::Apis::ComputeV1::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts or patches per-instance configs for the managed instance group.
+        # perInstanceConfig.name serves as a key used to distinguish whether to perform
+        # insert or patch.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone where the managed instance group is located. It should
+        #   conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It should conform to RFC1035.
+        # @param [Google::Apis::ComputeV1::InstanceGroupManagersPatchPerInstanceConfigsReq] instance_group_managers_patch_per_instance_configs_req_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_instance_group_manager_per_instance_configs(project, zone, instance_group_manager, instance_group_managers_patch_per_instance_configs_req_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/patchPerInstanceConfigs', options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupManagersPatchPerInstanceConfigsReq::Representation
+          command.request_object = instance_group_managers_patch_per_instance_configs_req_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -7491,6 +7671,63 @@ module Google
           command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setTargetPools', options)
           command.request_representation = Google::Apis::ComputeV1::InstanceGroupManagersSetTargetPoolsRequest::Representation
           command.request_object = instance_group_managers_set_target_pools_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts or updates per-instance configs for the managed instance group.
+        # perInstanceConfig.name serves as a key used to distinguish whether to perform
+        # insert or patch.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone where the managed instance group is located. It should
+        #   conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It should conform to RFC1035.
+        # @param [Google::Apis::ComputeV1::InstanceGroupManagersUpdatePerInstanceConfigsReq] instance_group_managers_update_per_instance_configs_req_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_instance_group_manager_per_instance_configs(project, zone, instance_group_manager, instance_group_managers_update_per_instance_configs_req_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updatePerInstanceConfigs', options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupManagersUpdatePerInstanceConfigsReq::Representation
+          command.request_object = instance_group_managers_update_per_instance_configs_req_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -17930,6 +18167,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes selected per-instance configs for the managed instance group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request, should conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It should conform to RFC1035.
+        # @param [Google::Apis::ComputeV1::RegionInstanceGroupManagerDeleteInstanceConfigReq] region_instance_group_manager_delete_instance_config_req_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_region_instance_group_manager_per_instance_configs(project, region, instance_group_manager, region_instance_group_manager_delete_instance_config_req_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/deletePerInstanceConfigs', options)
+          command.request_representation = Google::Apis::ComputeV1::RegionInstanceGroupManagerDeleteInstanceConfigReq::Representation
+          command.request_object = region_instance_group_manager_delete_instance_config_req_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns all of the details about the specified managed instance group.
         # @param [String] project
         #   Project ID for this request.
@@ -18260,6 +18539,84 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists all of the per-instance configs defined for the managed instance group.
+        # The orderBy query parameter is not supported.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request, should conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It should conform to RFC1035.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::RegionInstanceGroupManagersListInstanceConfigsResp] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::RegionInstanceGroupManagersListInstanceConfigsResp]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_region_instance_group_manager_per_instance_configs(project, region, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listPerInstanceConfigs', options)
+          command.response_representation = Google::Apis::ComputeV1::RegionInstanceGroupManagersListInstanceConfigsResp::Representation
+          command.response_class = Google::Apis::ComputeV1::RegionInstanceGroupManagersListInstanceConfigsResp
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates a managed instance group using the information that you specify in the
         # request. This operation is marked as DONE when the group is patched even if
         # the instances in the group are still in the process of being patched. You must
@@ -18307,6 +18664,62 @@ module Google
           command = make_simple_command(:patch, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}', options)
           command.request_representation = Google::Apis::ComputeV1::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Insert or patch (for the ones that already exist) per-instance configs for the
+        # managed instance group. perInstanceConfig.instance serves as a key used to
+        # distinguish whether to perform insert or patch.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request, should conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It should conform to RFC1035.
+        # @param [Google::Apis::ComputeV1::RegionInstanceGroupManagerPatchInstanceConfigReq] region_instance_group_manager_patch_instance_config_req_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_region_instance_group_manager_per_instance_configs(project, region, instance_group_manager, region_instance_group_manager_patch_instance_config_req_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/patchPerInstanceConfigs', options)
+          command.request_representation = Google::Apis::ComputeV1::RegionInstanceGroupManagerPatchInstanceConfigReq::Representation
+          command.request_object = region_instance_group_manager_patch_instance_config_req_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -18542,6 +18955,62 @@ module Google
           command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setTargetPools', options)
           command.request_representation = Google::Apis::ComputeV1::RegionInstanceGroupManagersSetTargetPoolsRequest::Representation
           command.request_object = region_instance_group_managers_set_target_pools_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Insert or update (for the ones that already exist) per-instance configs for
+        # the managed instance group. perInstanceConfig.instance serves as a key used to
+        # distinguish whether to perform insert or patch.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request, should conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It should conform to RFC1035.
+        # @param [Google::Apis::ComputeV1::RegionInstanceGroupManagerUpdateInstanceConfigReq] region_instance_group_manager_update_instance_config_req_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_region_instance_group_manager_per_instance_configs(project, region, instance_group_manager, region_instance_group_manager_update_instance_config_req_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/updatePerInstanceConfigs', options)
+          command.request_representation = Google::Apis::ComputeV1::RegionInstanceGroupManagerUpdateInstanceConfigReq::Representation
+          command.request_object = region_instance_group_manager_update_instance_config_req_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -18799,6 +19268,230 @@ module Google
           command.params['region'] = region unless region.nil?
           command.params['instanceGroup'] = instance_group unless instance_group.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified network endpoint group. Note that the NEG cannot be
+        # deleted if it is configured as a backend of a backend service.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region where the network endpoint group is located. It should
+        #   comply with RFC1035.
+        # @param [String] network_endpoint_group
+        #   The name of the network endpoint group to delete. It should comply with
+        #   RFC1035.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_region_network_endpoint_group(project, region, network_endpoint_group, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, '{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['networkEndpointGroup'] = network_endpoint_group unless network_endpoint_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified network endpoint group. Gets a list of available network
+        # endpoint groups by making a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region where the network endpoint group is located. It should
+        #   comply with RFC1035.
+        # @param [String] network_endpoint_group
+        #   The name of the network endpoint group. It should comply with RFC1035.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::NetworkEndpointGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::NetworkEndpointGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_region_network_endpoint_group(project, region, network_endpoint_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}', options)
+          command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroup::Representation
+          command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroup
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['networkEndpointGroup'] = network_endpoint_group unless network_endpoint_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a network endpoint group in the specified project using the parameters
+        # that are included in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region where you want to create the network endpoint group. It
+        #   should comply with RFC1035.
+        # @param [Google::Apis::ComputeV1::NetworkEndpointGroup] network_endpoint_group_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_region_network_endpoint_group(project, region, network_endpoint_group_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/regions/{region}/networkEndpointGroups', options)
+          command.request_representation = Google::Apis::ComputeV1::NetworkEndpointGroup::Representation
+          command.request_object = network_endpoint_group_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of regional network endpoint groups available to the
+        # specified project in the given region.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region where the network endpoint group is located. It should
+        #   comply with RFC1035.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::NetworkEndpointGroupList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::NetworkEndpointGroupList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_region_network_endpoint_groups(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/regions/{region}/networkEndpointGroups', options)
+          command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroupList::Representation
+          command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroupList
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

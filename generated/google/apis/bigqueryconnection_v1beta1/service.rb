@@ -49,8 +49,8 @@ module Google
         
         # Creates a new connection.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   Must be in the format `projects/`project_id`/locations/`location_id``
+        #   Required. Parent resource name. Must be in the format `projects/`project_id`/
+        #   locations/`location_id``
         # @param [Google::Apis::BigqueryconnectionV1beta1::Connection] connection_object
         # @param [String] connection_id
         #   Optional. Connection id that should be assigned to the created connection.
@@ -86,8 +86,8 @@ module Google
         
         # Deletes connection and associated credential.
         # @param [String] name
-        #   Required. Name of the deleted connection, for example:
-        #   `projects/`project_id`/locations/`location_id`/connections/`connection_id``
+        #   Required. Name of the deleted connection, for example: `projects/`project_id`/
+        #   locations/`location_id`/connections/`connection_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -117,8 +117,8 @@ module Google
         
         # Returns specified connection.
         # @param [String] name
-        #   Required. Name of the requested connection, for example:
-        #   `projects/`project_id`/locations/`location_id`/connections/`connection_id``
+        #   Required. Name of the requested connection, for example: `projects/`project_id`
+        #   /locations/`location_id`/connections/`connection_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -146,12 +146,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::BigqueryconnectionV1beta1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -184,8 +183,8 @@ module Google
         
         # Returns a list of connections in the given project.
         # @param [String] parent
-        #   Required. Parent resource name.
-        #   Must be in the form: `projects/`project_id`/locations/`location_id``
+        #   Required. Parent resource name. Must be in the form: `projects/`project_id`/
+        #   locations/`location_id``
         # @param [Fixnum] max_results
         #   Required. Maximum number of results per page.
         # @param [String] page_token
@@ -219,11 +218,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified connection. For security reasons, also resets
-        # credential if connection properties are in the update field mask.
+        # Updates the specified connection. For security reasons, also resets credential
+        # if connection properties are in the update field mask.
         # @param [String] name
-        #   Required. Name of the connection to update, for example:
-        #   `projects/`project_id`/locations/`location_id`/connections/`connection_id``
+        #   Required. Name of the connection to update, for example: `projects/`project_id`
+        #   /locations/`location_id`/connections/`connection_id``
         # @param [Google::Apis::BigqueryconnectionV1beta1::Connection] connection_object
         # @param [String] update_mask
         #   Required. Update mask for the connection fields to be updated.
@@ -258,11 +257,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::BigqueryconnectionV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -293,15 +292,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::BigqueryconnectionV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -334,9 +332,8 @@ module Google
         
         # Sets the credential for the specified connection.
         # @param [String] name
-        #   Required. Name of the connection, for example:
-        #   `projects/`project_id`/locations/`location_id`/connections/`connection_id`/
-        #   credential`
+        #   Required. Name of the connection, for example: `projects/`project_id`/
+        #   locations/`location_id`/connections/`connection_id`/credential`
         # @param [Google::Apis::BigqueryconnectionV1beta1::ConnectionCredential] connection_credential_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

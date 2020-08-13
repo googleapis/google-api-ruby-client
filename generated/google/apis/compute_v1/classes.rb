@@ -2726,10 +2726,10 @@ module Google
         # The list of URLs to the healthChecks, httpHealthChecks (legacy), or
         # httpsHealthChecks (legacy) resource for health checking this backend service.
         # Not all backend services support legacy health checks. See  Load balancer
-        # guide. Currently at most one health check can be specified. Backend services
-        # with instance group or zonal NEG backends must have a health check. Backend
-        # services with internet NEG backends must not have a health check. A health
-        # check must
+        # guide. Currently, at most one health check can be specified for each backend
+        # service. Backend services with instance group or zonal NEG backends must have
+        # a health check. Backend services with internet or serverless NEG backends must
+        # not have a health check.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<String>]
         attr_accessor :health_checks
@@ -2838,8 +2838,8 @@ module Google
         attr_accessor :port_name
       
         # The protocol this BackendService uses to communicate with backends.
-        # Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, or UDP. depending on the
-        # chosen load balancer or Traffic Director configuration. Refer to the
+        # Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on
+        # the chosen load balancer or Traffic Director configuration. Refer to the
         # documentation for the load balancer or for Traffic Director for more
         # information.
         # Corresponds to the JSON property `protocol`
@@ -3685,6 +3685,15 @@ module Google
       class Commitment
         include Google::Apis::Core::Hashable
       
+        # The category of the commitment. Category MACHINE specifies commitments
+        # composed of machine resources such as VCPU or MEMORY, listed in resources.
+        # Category LICENSE specifies commitments composed of software licenses, listed
+        # in licenseResources. Note that only MACHINE commitments should have a Type
+        # specified.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -3711,6 +3720,11 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # Commitment for a particular license resource.
+        # Corresponds to the JSON property `licenseResource`
+        # @return [Google::Apis::ComputeV1::LicenseResourceCommitment]
+        attr_accessor :license_resource
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -3773,11 +3787,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @category = args[:category] if args.key?(:category)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @end_timestamp = args[:end_timestamp] if args.key?(:end_timestamp)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @license_resource = args[:license_resource] if args.key?(:license_resource)
           @name = args[:name] if args.key?(:name)
           @plan = args[:plan] if args.key?(:plan)
           @region = args[:region] if args.key?(:region)
@@ -4583,12 +4599,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Size of the persistent disk, specified in GB. You can specify this field when
-        # creating a persistent disk using the sourceImage or sourceSnapshot parameter,
-        # or specify it alone to create an empty persistent disk.
-        # If you specify this field along with sourceImage or sourceSnapshot, the value
-        # of sizeGb must not be less than the size of the sourceImage or the size of the
-        # snapshot. Acceptable values are 1 to 65536, inclusive.
+        # Size, in GB, of the persistent disk. You can specify this field when creating
+        # a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk
+        # parameter, or specify it alone to create an empty persistent disk.
+        # If you specify this field along with a source, the value of sizeGb must not be
+        # less than the size of the source. Acceptable values are 1 to 65536, inclusive.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
@@ -6864,13 +6879,14 @@ module Google
         # that points to a target proxy or a target pool. Do not use with a forwarding
         # rule that points to a backend service. This field is used along with the
         # target field for TargetHttpProxy, TargetHttpsProxy, TargetSslProxy,
-        # TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.
+        # TargetTcpProxy, TargetGrpcProxy, TargetVpnGateway, TargetPool, TargetInstance.
         # Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed
         # to ports in the specified range will be forwarded to target. Forwarding rules
         # with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.
         # Some types of forwarding target have constraints on the acceptable ports:
         # - TargetHttpProxy: 80, 8080
         # - TargetHttpsProxy: 443
+        # - TargetGrpcProxy: Any ports
         # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
         # 1883, 5222
         # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
@@ -6940,8 +6956,8 @@ module Google
         # forwarding rules, this target must live in the same region as the forwarding
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
-        # object. For INTERNAL_SELF_MANAGED load balancing, only targetHttpProxy is
-        # valid, not targetHttpsProxy.
+        # object. For INTERNAL_SELF_MANAGED load balancing, only targetHttpProxy and
+        # targetGrpcProxy are valid, not targetHttpsProxy.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -9501,7 +9517,11 @@ module Google
         # @return [Google::Apis::ComputeV1::HttpHeaderAction]
         attr_accessor :header_action
       
-        # 
+        # The list of criteria for matching attributes of a request to this routeRule.
+        # This list has OR semantics: the request matches this routeRule when any of the
+        # matchRules are satisfied. However predicates within a given matchRule have AND
+        # semantics. All predicates within a matchRule must match for the request to
+        # match the rule.
         # Corresponds to the JSON property `matchRules`
         # @return [Array<Google::Apis::ComputeV1::HttpRouteRuleMatch>]
         attr_accessor :match_rules
@@ -9529,6 +9549,8 @@ module Google
         # routeAction cannot contain any  weightedBackendServices.
         # Only one of urlRedirect, service or routeAction.weightedBackendService must be
         # set.
+        # UrlMaps for external HTTP(S) load balancers support only the urlRewrite action
+        # within a routeRule's routeAction.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeV1::HttpRouteAction]
         attr_accessor :route_action
@@ -11159,6 +11181,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Stateful configuration for this Instanced Group Manager
+        # Corresponds to the JSON property `statefulPolicy`
+        # @return [Google::Apis::ComputeV1::StatefulPolicy]
+        attr_accessor :stateful_policy
+      
         # [Output Only] The status of this managed instance group.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::ComputeV1::InstanceGroupManagerStatus]
@@ -11222,6 +11249,7 @@ module Google
           @named_ports = args[:named_ports] if args.key?(:named_ports)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @stateful_policy = args[:stateful_policy] if args.key?(:stateful_policy)
           @status = args[:status] if args.key?(:status)
           @target_pools = args[:target_pools] if args.key?(:target_pools)
           @target_size = args[:target_size] if args.key?(:target_size)
@@ -11606,6 +11634,11 @@ module Google
         attr_accessor :is_stable
         alias_method :is_stable?, :is_stable
       
+        # [Output Only] Stateful status of the given Instance Group Manager.
+        # Corresponds to the JSON property `stateful`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerStatusStateful]
+        attr_accessor :stateful
+      
         # [Output Only] A status of consistency of Instances' versions with their target
         # version specified by version field on Instance Group Manager.
         # Corresponds to the JSON property `versionTarget`
@@ -11620,7 +11653,60 @@ module Google
         def update!(**args)
           @autoscaler = args[:autoscaler] if args.key?(:autoscaler)
           @is_stable = args[:is_stable] if args.key?(:is_stable)
+          @stateful = args[:stateful] if args.key?(:stateful)
           @version_target = args[:version_target] if args.key?(:version_target)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatusStateful
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A bit indicating whether the managed instance group has stateful
+        # configuration, that is, if you have configured any items in a stateful policy
+        # or in per-instance configs. The group might report that it has no stateful
+        # config even when there is still some preserved state on a managed instance,
+        # for example, if you have deleted all PICs but not yet applied those deletions.
+        # Corresponds to the JSON property `hasStatefulConfig`
+        # @return [Boolean]
+        attr_accessor :has_stateful_config
+        alias_method :has_stateful_config?, :has_stateful_config
+      
+        # [Output Only] Status of per-instance configs on the instance.
+        # Corresponds to the JSON property `perInstanceConfigs`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerStatusStatefulPerInstanceConfigs]
+        attr_accessor :per_instance_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @has_stateful_config = args[:has_stateful_config] if args.key?(:has_stateful_config)
+          @per_instance_configs = args[:per_instance_configs] if args.key?(:per_instance_configs)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatusStatefulPerInstanceConfigs
+        include Google::Apis::Core::Hashable
+      
+        # A bit indicating if all of the group's per-instance configs (listed in the
+        # output of a listPerInstanceConfigs API call) have status EFFECTIVE or there
+        # are no per-instance-configs.
+        # Corresponds to the JSON property `allEffective`
+        # @return [Boolean]
+        attr_accessor :all_effective
+        alias_method :all_effective?, :all_effective
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_effective = args[:all_effective] if args.key?(:all_effective)
         end
       end
       
@@ -11849,6 +11935,26 @@ module Google
         end
       end
       
+      # InstanceGroupManagers.deletePerInstanceConfigs
+      class InstanceGroupManagersDeletePerInstanceConfigsReq
+        include Google::Apis::Core::Hashable
+      
+        # The list of instance names for which we want to delete per-instance configs on
+        # this managed instance group.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
       # 
       class InstanceGroupManagersListErrorsResponse
         include Google::Apis::Core::Hashable
@@ -11904,6 +12010,125 @@ module Google
         def update!(**args)
           @managed_instances = args[:managed_instances] if args.key?(:managed_instances)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagersListPerInstanceConfigsResp
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The list of PerInstanceConfig.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
+        attr_accessor :items
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagersListPerInstanceConfigsResp::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagersListPerInstanceConfigsResp::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # InstanceGroupManagers.patchPerInstanceConfigs
+      class InstanceGroupManagersPatchPerInstanceConfigsReq
+        include Google::Apis::Core::Hashable
+      
+        # The list of per-instance configs to insert or patch on this managed instance
+        # group.
+        # Corresponds to the JSON property `perInstanceConfigs`
+        # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
+        attr_accessor :per_instance_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @per_instance_configs = args[:per_instance_configs] if args.key?(:per_instance_configs)
         end
       end
       
@@ -12070,6 +12295,26 @@ module Google
         def update!(**args)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @target_pools = args[:target_pools] if args.key?(:target_pools)
+        end
+      end
+      
+      # InstanceGroupManagers.updatePerInstanceConfigs
+      class InstanceGroupManagersUpdatePerInstanceConfigsReq
+        include Google::Apis::Core::Hashable
+      
+        # The list of per-instance configs to insert or patch on this managed instance
+        # group.
+        # Corresponds to the JSON property `perInstanceConfigs`
+        # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
+        attr_accessor :per_instance_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @per_instance_configs = args[:per_instance_configs] if args.key?(:per_instance_configs)
         end
       end
       
@@ -15128,6 +15373,37 @@ module Google
         end
       end
       
+      # Commitment for a particular license resource.
+      class LicenseResourceCommitment
+        include Google::Apis::Core::Hashable
+      
+        # The number of licenses purchased.
+        # Corresponds to the JSON property `amount`
+        # @return [Fixnum]
+        attr_accessor :amount
+      
+        # Specifies the core range of the instance for which this license applies.
+        # Corresponds to the JSON property `coresPerLicense`
+        # @return [String]
+        attr_accessor :cores_per_license
+      
+        # Any applicable license URI.
+        # Corresponds to the JSON property `license`
+        # @return [String]
+        attr_accessor :license
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @cores_per_license = args[:cores_per_license] if args.key?(:cores_per_license)
+          @license = args[:license] if args.key?(:license)
+        end
+      end
+      
       # 
       class LicenseResourceRequirements
         include Google::Apis::Core::Hashable
@@ -15974,6 +16250,16 @@ module Google
         # @return [Google::Apis::ComputeV1::ManagedInstanceLastAttempt]
         attr_accessor :last_attempt
       
+        # Preserved state for a given instance.
+        # Corresponds to the JSON property `preservedStateFromConfig`
+        # @return [Google::Apis::ComputeV1::PreservedState]
+        attr_accessor :preserved_state_from_config
+      
+        # Preserved state for a given instance.
+        # Corresponds to the JSON property `preservedStateFromPolicy`
+        # @return [Google::Apis::ComputeV1::PreservedState]
+        attr_accessor :preserved_state_from_policy
+      
         # [Output Only] Intended version of this instance.
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::ComputeV1::ManagedInstanceVersion]
@@ -15991,6 +16277,8 @@ module Google
           @instance_health = args[:instance_health] if args.key?(:instance_health)
           @instance_status = args[:instance_status] if args.key?(:instance_status)
           @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
+          @preserved_state_from_config = args[:preserved_state_from_config] if args.key?(:preserved_state_from_config)
+          @preserved_state_from_policy = args[:preserved_state_from_policy] if args.key?(:preserved_state_from_policy)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -16455,10 +16743,11 @@ module Google
       # Represents a collection of network endpoints.
       # A network endpoint group (NEG) defines how a set of endpoints should be
       # reached, whether they are reachable, and where they are located. For more
-      # information about using NEGs, see  Setting up internet NEGs or  Setting up
-      # zonal NEGs. (== resource_for `$api_version`.networkEndpointGroups ==) (==
-      # resource_for `$api_version`.globalNetworkEndpointGroups ==) (== resource_for `$
-      # api_version`.regionNetworkEndpointGroups ==)
+      # information about using NEGs, see  Setting up internet NEGs,  Setting up zonal
+      # NEGs, or  Setting up serverless NEGs. (== resource_for `$api_version`.
+      # networkEndpointGroups ==) (== resource_for `$api_version`.
+      # globalNetworkEndpointGroups ==) (== resource_for `$api_version`.
+      # regionNetworkEndpointGroups ==)
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -16466,6 +16755,33 @@ module Google
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
+      
+        # Configuration for an App Engine network endpoint group (NEG). The service is
+        # optional, may be provided explicitly or in the URL mask. The version is
+        # optional and can only be provided explicitly or in the URL mask when service
+        # is present.
+        # Note: App Engine service must be in the same project and located in the same
+        # region as the Serverless NEG.
+        # Corresponds to the JSON property `appEngine`
+        # @return [Google::Apis::ComputeV1::NetworkEndpointGroupAppEngine]
+        attr_accessor :app_engine
+      
+        # Configuration for a Cloud Function network endpoint group (NEG). The function
+        # must be provided explicitly or in the URL mask.
+        # Note: Cloud Function must be in the same project and located in the same
+        # region as the Serverless NEG.
+        # Corresponds to the JSON property `cloudFunction`
+        # @return [Google::Apis::ComputeV1::NetworkEndpointGroupCloudFunction]
+        attr_accessor :cloud_function
+      
+        # Configuration for a Cloud Run network endpoint group (NEG). The service must
+        # be provided explicitly or in the URL mask. The tag is optional, may be
+        # provided explicitly or in the URL mask.
+        # Note: Cloud Run service must be in the same project and located in the same
+        # region as the Serverless NEG.
+        # Corresponds to the JSON property `cloudRun`
+        # @return [Google::Apis::ComputeV1::NetworkEndpointGroupCloudRun]
+        attr_accessor :cloud_run
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -16512,10 +16828,18 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Type of network endpoints in this network endpoint group.
+        # Type of network endpoints in this network endpoint group. Can be one of
+        # GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT,
+        # or SERVERLESS.
         # Corresponds to the JSON property `networkEndpointType`
         # @return [String]
         attr_accessor :network_endpoint_type
+      
+        # [Output Only] The URL of the region where the network endpoint group is
+        # located.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
       
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
@@ -16545,6 +16869,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @app_engine = args[:app_engine] if args.key?(:app_engine)
+          @cloud_function = args[:cloud_function] if args.key?(:cloud_function)
+          @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @default_port = args[:default_port] if args.key?(:default_port)
           @description = args[:description] if args.key?(:description)
@@ -16553,6 +16880,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_endpoint_type = args[:network_endpoint_type] if args.key?(:network_endpoint_type)
+          @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @size = args[:size] if args.key?(:size)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
@@ -16676,6 +17004,134 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Configuration for an App Engine network endpoint group (NEG). The service is
+      # optional, may be provided explicitly or in the URL mask. The version is
+      # optional and can only be provided explicitly or in the URL mask when service
+      # is present.
+      # Note: App Engine service must be in the same project and located in the same
+      # region as the Serverless NEG.
+      class NetworkEndpointGroupAppEngine
+        include Google::Apis::Core::Hashable
+      
+        # Optional serving service.
+        # The service name must be 1-63 characters long, and comply with RFC1035.
+        # Example value: "default", "my-service".
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # A template to parse service and version fields from a request URL. URL mask
+        # allows for routing to multiple App Engine services without having to create
+        # multiple Network Endpoint Groups and backend services.
+        # For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-
+        # appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask
+        # "-dot-appname.appspot.com/". The URL mask will parse them to ` service = "foo1"
+        # , version = "v1" ` and ` service = "foo1", version = "v2" ` respectively.
+        # Corresponds to the JSON property `urlMask`
+        # @return [String]
+        attr_accessor :url_mask
+      
+        # Optional serving version.
+        # The version must be 1-63 characters long, and comply with RFC1035.
+        # Example value: "v1", "v2".
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+          @url_mask = args[:url_mask] if args.key?(:url_mask)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for a Cloud Function network endpoint group (NEG). The function
+      # must be provided explicitly or in the URL mask.
+      # Note: Cloud Function must be in the same project and located in the same
+      # region as the Serverless NEG.
+      class NetworkEndpointGroupCloudFunction
+        include Google::Apis::Core::Hashable
+      
+        # A user-defined name of the Cloud Function.
+        # The function name is case-sensitive and must be 1-63 characters long.
+        # Example value: "func1".
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
+        # A template to parse function field from a request URL. URL mask allows for
+        # routing to multiple Cloud Functions without having to create multiple Network
+        # Endpoint Groups and backend services.
+        # For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+        # can be backed by the same Serverless NEG with URL mask "/". The URL mask will
+        # parse them to ` function = "function1" ` and ` function = "function2" `
+        # respectively.
+        # Corresponds to the JSON property `urlMask`
+        # @return [String]
+        attr_accessor :url_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @function = args[:function] if args.key?(:function)
+          @url_mask = args[:url_mask] if args.key?(:url_mask)
+        end
+      end
+      
+      # Configuration for a Cloud Run network endpoint group (NEG). The service must
+      # be provided explicitly or in the URL mask. The tag is optional, may be
+      # provided explicitly or in the URL mask.
+      # Note: Cloud Run service must be in the same project and located in the same
+      # region as the Serverless NEG.
+      class NetworkEndpointGroupCloudRun
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Run service is the main resource of Cloud Run.
+        # The service must be 1-63 characters long, and comply with RFC1035.
+        # Example value: "run-service".
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # Optional Cloud Run tag represents the "named-revision" to provide additional
+        # fine-grained traffic routing information.
+        # The tag must be 1-63 characters long, and comply with RFC1035.
+        # Example value: "revision-0010".
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        # A template to parse service and tag fields from a request URL. URL mask allows
+        # for routing to multiple Run services without having to create multiple network
+        # endpoint groups and backend services.
+        # For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2"
+        # can be backed by the same Serverless Network Endpoint Group (NEG) with URL
+        # mask ".domain.com/". The URL mask will parse them to ` service="bar1", tag="
+        # foo1" ` and ` service="bar2", tag="foo2" ` respectively.
+        # Corresponds to the JSON property `urlMask`
+        # @return [String]
+        attr_accessor :url_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+          @tag = args[:tag] if args.key?(:tag)
+          @url_mask = args[:url_mask] if args.key?(:url_mask)
         end
       end
       
@@ -17892,6 +18348,11 @@ module Google
       class NodeGroupNode
         include Google::Apis::Core::Hashable
       
+        # CPU overcommit.
+        # Corresponds to the JSON property `cpuOvercommitType`
+        # @return [String]
+        attr_accessor :cpu_overcommit_type
+      
         # Instances scheduled on this node.
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
@@ -17928,6 +18389,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cpu_overcommit_type = args[:cpu_overcommit_type] if args.key?(:cpu_overcommit_type)
           @instances = args[:instances] if args.key?(:instances)
           @name = args[:name] if args.key?(:name)
           @node_type = args[:node_type] if args.key?(:node_type)
@@ -18211,6 +18673,11 @@ module Google
       class NodeTemplate
         include Google::Apis::Core::Hashable
       
+        # CPU overcommit.
+        # Corresponds to the JSON property `cpuOvercommitType`
+        # @return [String]
+        attr_accessor :cpu_overcommit_type
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -18301,6 +18768,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cpu_overcommit_type = args[:cpu_overcommit_type] if args.key?(:cpu_overcommit_type)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
@@ -20876,6 +21344,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Preserved state for a given instance.
+        # Corresponds to the JSON property `preservedState`
+        # @return [Google::Apis::ComputeV1::PreservedState]
+        attr_accessor :preserved_state
+      
+        # The status of applying this per-instance config on the corresponding managed
+        # instance.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20884,6 +21363,8 @@ module Google
         def update!(**args)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @name = args[:name] if args.key?(:name)
+          @preserved_state = args[:preserved_state] if args.key?(:preserved_state)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -21018,6 +21499,69 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expression_sets = args[:expression_sets] if args.key?(:expression_sets)
+        end
+      end
+      
+      # Preserved state for a given instance.
+      class PreservedState
+        include Google::Apis::Core::Hashable
+      
+        # Preserved disks defined for this instance. This map is keyed with the device
+        # names of the disks.
+        # Corresponds to the JSON property `disks`
+        # @return [Hash<String,Google::Apis::ComputeV1::PreservedStatePreservedDisk>]
+        attr_accessor :disks
+      
+        # Preserved metadata defined for this instance.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # 
+      class PreservedStatePreservedDisk
+        include Google::Apis::Core::Hashable
+      
+        # These stateful disks will never be deleted during autohealing, update,
+        # instance recreate operations. This flag is used to configure if the disk
+        # should be deleted after it is no longer used by the group, e.g. when the given
+        # instance or the whole MIG is deleted. Note: disks attached in READ_ONLY mode
+        # cannot be auto-deleted.
+        # Corresponds to the JSON property `autoDelete`
+        # @return [String]
+        attr_accessor :auto_delete
+      
+        # The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not
+        # specified, the default is to attach the disk in READ_WRITE mode.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # The URL of the disk resource that is stateful and should be attached to the VM
+        # instance.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
+          @mode = args[:mode] if args.key?(:mode)
+          @source = args[:source] if args.key?(:source)
         end
       end
       
@@ -21801,6 +22345,26 @@ module Google
         end
       end
       
+      # RegionInstanceGroupManagers.deletePerInstanceConfigs
+      class RegionInstanceGroupManagerDeleteInstanceConfigReq
+        include Google::Apis::Core::Hashable
+      
+        # The list of instance names for which we want to delete per-instance configs on
+        # this managed instance group.
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
       # Contains a list of managed instance groups.
       class RegionInstanceGroupManagerList
         include Google::Apis::Core::Hashable
@@ -21917,6 +22481,46 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # RegionInstanceGroupManagers.patchPerInstanceConfigs
+      class RegionInstanceGroupManagerPatchInstanceConfigReq
+        include Google::Apis::Core::Hashable
+      
+        # The list of per-instance configs to insert or patch on this managed instance
+        # group.
+        # Corresponds to the JSON property `perInstanceConfigs`
+        # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
+        attr_accessor :per_instance_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @per_instance_configs = args[:per_instance_configs] if args.key?(:per_instance_configs)
+        end
+      end
+      
+      # RegionInstanceGroupManagers.updatePerInstanceConfigs
+      class RegionInstanceGroupManagerUpdateInstanceConfigReq
+        include Google::Apis::Core::Hashable
+      
+        # The list of per-instance configs to insert or patch on this managed instance
+        # group.
+        # Corresponds to the JSON property `perInstanceConfigs`
+        # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
+        attr_accessor :per_instance_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @per_instance_configs = args[:per_instance_configs] if args.key?(:per_instance_configs)
         end
       end
       
@@ -22052,6 +22656,105 @@ module Google
         def update!(**args)
           @items = args[:items] if args.key?(:items)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
+      class RegionInstanceGroupManagersListInstanceConfigsResp
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The list of PerInstanceConfig.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
+        attr_accessor :items
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::RegionInstanceGroupManagersListInstanceConfigsResp::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::RegionInstanceGroupManagersListInstanceConfigsResp::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -25392,6 +26095,12 @@ module Google
         attr_accessor :automatic_restart
         alias_method :automatic_restart?, :automatic_restart
       
+        # The minimum number of virtual CPUs this instance will consume when running on
+        # a sole-tenant node.
+        # Corresponds to the JSON property `minNodeCpus`
+        # @return [Fixnum]
+        attr_accessor :min_node_cpus
+      
         # A set of node affinity and anti-affinity configurations. Refer to Configuring
         # node affinity for more information. Overrides reservationAffinity.
         # Corresponds to the JSON property `nodeAffinities`
@@ -25422,6 +26131,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
+          @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
@@ -27237,6 +27947,68 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ssl_policy = args[:ssl_policy] if args.key?(:ssl_policy)
+        end
+      end
+      
+      # 
+      class StatefulPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of preserved resources.
+        # Corresponds to the JSON property `preservedState`
+        # @return [Google::Apis::ComputeV1::StatefulPolicyPreservedState]
+        attr_accessor :preserved_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @preserved_state = args[:preserved_state] if args.key?(:preserved_state)
+        end
+      end
+      
+      # Configuration of preserved resources.
+      class StatefulPolicyPreservedState
+        include Google::Apis::Core::Hashable
+      
+        # Disks created on the instances that will be preserved on instance delete,
+        # update, etc. This map is keyed with the device names of the disks.
+        # Corresponds to the JSON property `disks`
+        # @return [Hash<String,Google::Apis::ComputeV1::StatefulPolicyPreservedStateDiskDevice>]
+        attr_accessor :disks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
+        end
+      end
+      
+      # 
+      class StatefulPolicyPreservedStateDiskDevice
+        include Google::Apis::Core::Hashable
+      
+        # These stateful disks will never be deleted during autohealing, update or VM
+        # instance recreate operations. This flag is used to configure if the disk
+        # should be deleted after it is no longer used by the group, e.g. when the given
+        # instance or the whole group is deleted. Note: disks attached in READ_ONLY mode
+        # cannot be auto-deleted.
+        # Corresponds to the JSON property `autoDelete`
+        # @return [String]
+        attr_accessor :auto_delete
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_delete = args[:auto_delete] if args.key?(:auto_delete)
         end
       end
       
@@ -29492,7 +30264,7 @@ module Google
       
         # The URL of the HttpHealthCheck resource. A member instance in this pool is
         # considered healthy if and only if the health checks pass. An empty list means
-        # all member instances will be considered healthy at all times. Only
+        # all member instances will be considered healthy at all times. Only legacy
         # HttpHealthChecks are supported. Only one health check may be specified.
         # Corresponds to the JSON property `healthChecks`
         # @return [Array<String>]

@@ -48,6 +48,11 @@ module Google
         # @return [Google::Apis::ContentV2_1::AccountBusinessInformation]
         attr_accessor :business_information
       
+        # ID of CSS the account belongs to.
+        # Corresponds to the JSON property `cssId`
+        # @return [Fixnum]
+        attr_accessor :css_id
+      
         # The GMB account which is linked or in the process of being linked with the
         # Merchant Center account.
         # Corresponds to the JSON property `googleMyBusinessLink`
@@ -64,6 +69,11 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # List of label IDs that are assigned to the account by CSS.
+        # Corresponds to the JSON property `labelIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :label_ids
       
         # Required. Display name for the account.
         # Corresponds to the JSON property `name`
@@ -104,9 +114,11 @@ module Google
           @ads_links = args[:ads_links] if args.key?(:ads_links)
           @adult_content = args[:adult_content] if args.key?(:adult_content)
           @business_information = args[:business_information] if args.key?(:business_information)
+          @css_id = args[:css_id] if args.key?(:css_id)
           @google_my_business_link = args[:google_my_business_link] if args.key?(:google_my_business_link)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @label_ids = args[:label_ids] if args.key?(:label_ids)
           @name = args[:name] if args.key?(:name)
           @seller_id = args[:seller_id] if args.key?(:seller_id)
           @users = args[:users] if args.key?(:users)
@@ -862,6 +874,11 @@ module Google
         attr_accessor :overwrite
         alias_method :overwrite?, :overwrite
       
+        # Controls which fields are visible. Only applicable if the method is 'get'.
+        # Corresponds to the JSON property `view`
+        # @return [String]
+        attr_accessor :view
+      
         def initialize(**args)
            update!(**args)
         end
@@ -877,6 +894,7 @@ module Google
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @method_prop = args[:method_prop] if args.key?(:method_prop)
           @overwrite = args[:overwrite] if args.key?(:overwrite)
+          @view = args[:view] if args.key?(:view)
         end
       end
       
@@ -1117,6 +1135,45 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # 
+      class AccountsUpdateLabelsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The IDs of labels that should be assigned to the account.
+        # Corresponds to the JSON property `labelIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :label_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_ids = args[:label_ids] if args.key?(:label_ids)
+        end
+      end
+      
+      # 
+      class AccountsUpdateLabelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # accountsUpdateLabelsResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -5625,7 +5682,9 @@ module Google
       class OrderShipmentScheduledDeliveryDetails
         include Google::Apis::Core::Hashable
       
-        # The phone number of the carrier fulfilling the delivery.
+        # The phone number of the carrier fulfilling the delivery. The phone number is
+        # formatted as the international notation in ITU-T Recommendation E.123 (e.g., "+
+        # 41 44 668 1800").
         # Corresponds to the JSON property `carrierPhoneNumber`
         # @return [String]
         attr_accessor :carrier_phone_number
@@ -9312,10 +9371,25 @@ module Google
       class ProductStatusDestinationStatus
         include Google::Apis::Core::Hashable
       
+        # List of country codes (ISO 3166-1 alpha-2) where the offer is approved.
+        # Corresponds to the JSON property `approvedCountrys`
+        # @return [Array<String>]
+        attr_accessor :approved_countrys
+      
         # The name of the destination
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
+      
+        # List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved.
+        # Corresponds to the JSON property `disapprovedCountrys`
+        # @return [Array<String>]
+        attr_accessor :disapproved_countrys
+      
+        # List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval.
+        # Corresponds to the JSON property `pendingCountrys`
+        # @return [Array<String>]
+        attr_accessor :pending_countrys
       
         # Destination approval status in `targetCountry` of the offer.
         # Corresponds to the JSON property `status`
@@ -9328,7 +9402,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @approved_countrys = args[:approved_countrys] if args.key?(:approved_countrys)
           @destination = args[:destination] if args.key?(:destination)
+          @disapproved_countrys = args[:disapproved_countrys] if args.key?(:disapproved_countrys)
+          @pending_countrys = args[:pending_countrys] if args.key?(:pending_countrys)
           @status = args[:status] if args.key?(:status)
         end
       end
@@ -9336,6 +9413,11 @@ module Google
       # 
       class ProductStatusItemLevelIssue
         include Google::Apis::Core::Hashable
+      
+        # List of country codes (ISO 3166-1 alpha-2) where issue applies to the offer.
+        # Corresponds to the JSON property `applicableCountrys`
+        # @return [Array<String>]
+        attr_accessor :applicable_countrys
       
         # The attribute's name, if the issue is caused by a single attribute.
         # Corresponds to the JSON property `attributeName`
@@ -9383,6 +9465,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @applicable_countrys = args[:applicable_countrys] if args.key?(:applicable_countrys)
           @attribute_name = args[:attribute_name] if args.key?(:attribute_name)
           @code = args[:code] if args.key?(:code)
           @description = args[:description] if args.key?(:description)
@@ -10069,7 +10152,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :price
       
-        # The ID (name) of the region.
+        # The ID uniquely identifying each region.
         # Corresponds to the JSON property `regionId`
         # @return [String]
         attr_accessor :region_id

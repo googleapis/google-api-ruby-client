@@ -49,12 +49,12 @@ module Google
           @batch_path = 'batch'
         end
         
-        # LRO endpoint to batch process many documents. The output is written
-        # to Cloud Storage as JSON in the [Document] format.
+        # LRO endpoint to batch process many documents. The output is written to Cloud
+        # Storage as JSON in the [Document] format.
         # @param [String] parent
-        #   Target project and location to make a call.
-        #   Format: `projects/`project-id`/locations/`location-id``.
-        #   If no location is specified, a region will be chosen automatically.
+        #   Target project and location to make a call. Format: `projects/`project-id`/
+        #   locations/`location-id``. If no location is specified, a region will be chosen
+        #   automatically.
         # @param [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest] google_cloud_documentai_v1beta2_batch_process_documents_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -87,10 +87,10 @@ module Google
         
         # Processes a single document.
         # @param [String] parent
-        #   Target project and location to make a call.
-        #   Format: `projects/`project-id`/locations/`location-id``.
-        #   If no location is specified, a region will be chosen automatically.
-        #   This field is only populated when used in ProcessDocument method.
+        #   Target project and location to make a call. Format: `projects/`project-id`/
+        #   locations/`location-id``. If no location is specified, a region will be chosen
+        #   automatically. This field is only populated when used in ProcessDocument
+        #   method.
         # @param [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2ProcessDocumentRequest] google_cloud_documentai_v1beta2_process_document_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -121,12 +121,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # LRO endpoint to batch process many documents. The output is written
-        # to Cloud Storage as JSON in the [Document] format.
+        # LRO endpoint to batch process many documents. The output is written to Cloud
+        # Storage as JSON in the [Document] format.
         # @param [String] parent
-        #   Target project and location to make a call.
-        #   Format: `projects/`project-id`/locations/`location-id``.
-        #   If no location is specified, a region will be chosen automatically.
+        #   Target project and location to make a call. Format: `projects/`project-id`/
+        #   locations/`location-id``. If no location is specified, a region will be chosen
+        #   automatically.
         # @param [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest] google_cloud_documentai_v1beta2_batch_process_documents_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -159,10 +159,10 @@ module Google
         
         # Processes a single document.
         # @param [String] parent
-        #   Target project and location to make a call.
-        #   Format: `projects/`project-id`/locations/`location-id``.
-        #   If no location is specified, a region will be chosen automatically.
-        #   This field is only populated when used in ProcessDocument method.
+        #   Target project and location to make a call. Format: `projects/`project-id`/
+        #   locations/`location-id``. If no location is specified, a region will be chosen
+        #   automatically. This field is only populated when used in ProcessDocument
+        #   method.
         # @param [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2ProcessDocumentRequest] google_cloud_documentai_v1beta2_process_document_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -193,9 +193,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -225,9 +224,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields

@@ -26,10 +26,9 @@ module Google
       class Content
         include Google::Apis::Core::Hashable
       
-        # The list of script project files.
-        # One of the files is a script manifest; it must be named "appsscript",
-        # must have type of JSON, and include the manifest configurations for the
-        # project.
+        # The list of script project files. One of the files is a script manifest; it
+        # must be named "appsscript", must have type of JSON, and include the manifest
+        # configurations for the project.
         # Corresponds to the JSON property `files`
         # @return [Array<Google::Apis::ScriptV1::File>]
         attr_accessor :files
@@ -55,8 +54,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The Drive ID of a parent file that the created script project is bound to.
-        # This is usually the ID of a Google Doc, Google Sheet, Google Form, or
-        # Google Slides file. If not set, a standalone script project is created.
+        # This is usually the ID of a Google Doc, Google Sheet, Google Form, or Google
+        # Slides file. If not set, a standalone script project is created.
         # Corresponds to the JSON property `parentId`
         # @return [String]
         attr_accessor :parent_id
@@ -151,13 +150,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -227,13 +224,11 @@ module Google
       end
       
       # An object that provides information about the nature of an error resulting
-      # from an attempted execution of a script function using the Apps Script API.
-      # If a run call
-      # succeeds but the script function (or Apps Script itself) throws an exception,
-      # the response body's error field
-      # contains a
-      # Status object. The `Status` object's `details` field
-      # contains an array with a single one of these `ExecutionError` objects.
+      # from an attempted execution of a script function using the Apps Script API. If
+      # a run call succeeds but the script function (or Apps Script itself) throws an
+      # exception, the response body's error field contains a Status object. The `
+      # Status` object's `details` field contains an array with a single one of these `
+      # ExecutionError` objects.
       class ExecutionError
         include Google::Apis::Core::Hashable
       
@@ -243,8 +238,8 @@ module Google
         # @return [String]
         attr_accessor :error_message
       
-        # The error type, for example `TypeError` or `ReferenceError`. If the error
-        # type is unavailable, this field is not included.
+        # The error type, for example `TypeError` or `ReferenceError`. If the error type
+        # is unavailable, this field is not included.
         # Corresponds to the JSON property `errorType`
         # @return [String]
         attr_accessor :error_type
@@ -268,47 +263,44 @@ module Google
       end
       
       # A request to run the function in a script. The script is identified by the
-      # specified `script_id`. Executing a function on a script returns results
-      # based on the implementation of the script.
+      # specified `script_id`. Executing a function on a script returns results based
+      # on the implementation of the script.
       class ExecutionRequest
         include Google::Apis::Core::Hashable
       
-        # If `true` and the user is an owner of the script, the script runs at the
-        # most recently saved version rather than the version deployed for use with
-        # the Apps Script API. Optional; default is `false`.
+        # If `true` and the user is an owner of the script, the script runs at the most
+        # recently saved version rather than the version deployed for use with the Apps
+        # Script API. Optional; default is `false`.
         # Corresponds to the JSON property `devMode`
         # @return [Boolean]
         attr_accessor :dev_mode
         alias_method :dev_mode?, :dev_mode
       
         # The name of the function to execute in the given script. The name does not
-        # include parentheses or parameters. It can reference a function in an
-        # included library such as `Library.libFunction1`.
+        # include parentheses or parameters. It can reference a function in an included
+        # library such as `Library.libFunction1`.
         # Corresponds to the JSON property `function`
         # @return [String]
         attr_accessor :function
       
         # The parameters to be passed to the function being executed. The object type
-        # for each parameter should match the expected type in Apps Script.
-        # Parameters cannot be Apps Script-specific object types (such as a
-        # `Document` or a `Calendar`); they can only be primitive types such as
-        # `string`, `number`, `array`, `object`, or `boolean`. Optional.
+        # for each parameter should match the expected type in Apps Script. Parameters
+        # cannot be Apps Script-specific object types (such as a `Document` or a `
+        # Calendar`); they can only be primitive types such as `string`, `number`, `
+        # array`, `object`, or `boolean`. Optional.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Object>]
         attr_accessor :parameters
       
-        # <b>Deprecated</b>. For use with Android add-ons only. An ID that represents
-        # the user's current session in the Android app for Google Docs or Sheets,
-        # included as extra data in the
-        # [Intent](https://developer.android.com/guide/components/intents-filters.html)
-        # that launches the add-on. When an Android add-on is run with a session
-        # state, it gains the privileges of a
-        # [bound](https://developers.google.com/apps-script/guides/bound)
-        # script&mdash;that is, it can access information like the user's current
-        # cursor position (in Docs) or selected cell (in Sheets). To retrieve the
-        # state, call
-        # `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`.
-        # Optional.
+        # *Deprecated*. For use with Android add-ons only. An ID that represents the
+        # user's current session in the Android app for Google Docs or Sheets, included
+        # as extra data in the [Intent](https://developer.android.com/guide/components/
+        # intents-filters.html) that launches the add-on. When an Android add-on is run
+        # with a session state, it gains the privileges of a [bound](https://developers.
+        # google.com/apps-script/guides/bound) script—that is, it can access information
+        # like the user's current cursor position (in Docs) or selected cell (in Sheets).
+        # To retrieve the state, call `Intent.getStringExtra("com.google.android.apps.
+        # docs.addons.SessionState")`. Optional.
         # Corresponds to the JSON property `sessionState`
         # @return [String]
         attr_accessor :session_state
@@ -326,18 +318,17 @@ module Google
         end
       end
       
-      # An object that provides the return value of a function executed using the
-      # Apps Script API. If the script function returns successfully, the response
-      # body's response field contains this
-      # `ExecutionResponse` object.
+      # An object that provides the return value of a function executed using the Apps
+      # Script API. If the script function returns successfully, the response body's
+      # response field contains this `ExecutionResponse` object.
       class ExecutionResponse
         include Google::Apis::Core::Hashable
       
         # The return value of the script function. The type matches the object type
         # returned in Apps Script. Functions called using the Apps Script API cannot
         # return Apps Script-specific objects (such as a `Document` or a `Calendar`);
-        # they can only return primitive types such as a `string`, `number`, `array`,
-        # `object`, or `boolean`.
+        # they can only return primitive types such as a `string`, `number`, `array`, `
+        # object`, or `boolean`.
         # Corresponds to the JSON property `result`
         # @return [Object]
         attr_accessor :result
@@ -352,16 +343,14 @@ module Google
         end
       end
       
-      # An individual file within a script project.
-      # A file is a third-party source code created by one or more
-      # developers. It can be a server-side JS code, HTML, or a
-      # configuration file. Each script project can contain multiple files.
+      # An individual file within a script project. A file is a third-party source
+      # code created by one or more developers. It can be a server-side JS code, HTML,
+      # or a configuration file. Each script project can contain multiple files.
       class File
         include Google::Apis::Core::Hashable
       
-        # Creation date timestamp.
-        # This read-only field is only visible to users who have WRITER
-        # permission for the script project.
+        # Creation date timestamp. This read-only field is only visible to users who
+        # have WRITER permission for the script project.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -376,8 +365,8 @@ module Google
         # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeUser]
         attr_accessor :last_modify_user
       
-        # The name of the file. The file extension is not part of the file
-        # name, which can be identified from the type field.
+        # The name of the file. The file extension is not part of the file name, which
+        # can be identified from the type field.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -392,9 +381,8 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Last modified date timestamp.
-        # This read-only field is only visible to users who have WRITER
-        # permission for the script project.
+        # Last modified date timestamp. This read-only field is only visible to users
+        # who have WRITER permission for the script project.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -540,10 +528,10 @@ module Google
         end
       end
       
-      # Representation of a single script process execution that was started from
-      # the script editor, a trigger, an application, or using the Apps Script API.
-      # This is distinct from the `Operation`
-      # resource, which only represents executions started via the Apps Script API.
+      # Representation of a single script process execution that was started from the
+      # script editor, a trigger, an application, or using the Apps Script API. This
+      # is distinct from the `Operation` resource, which only represents executions
+      # started via the Apps Script API.
       class GoogleAppsScriptTypeProcess
         include Google::Apis::Core::Hashable
       
@@ -694,8 +682,7 @@ module Google
         # @return [Array<Google::Apis::ScriptV1::Deployment>]
         attr_accessor :deployments
       
-        # The token that can be used in the next call to get the next page of
-        # results.
+        # The token that can be used in the next call to get the next page of results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -711,8 +698,7 @@ module Google
         end
       end
       
-      # Response with the list of
-      # Process resources.
+      # Response with the list of Process resources.
       class ListScriptProcessesResponse
         include Google::Apis::Core::Hashable
       
@@ -738,8 +724,7 @@ module Google
         end
       end
       
-      # Response with the list of
-      # Process resources.
+      # Response with the list of Process resources.
       class ListUserProcessesResponse
         include Google::Apis::Core::Hashable
       
@@ -788,8 +773,8 @@ module Google
       class ListVersionsResponse
         include Google::Apis::Core::Hashable
       
-        # The token use to fetch the next page of records. if not exist in the
-        # response, that means no more versions to list.
+        # The token use to fetch the next page of records. if not exist in the response,
+        # that means no more versions to list.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -876,27 +861,19 @@ module Google
       # A representation of an execution of an Apps Script function started with run.
       # The execution response does not arrive until the function finishes executing.
       # The maximum execution runtime is listed in the [Apps Script quotas guide](/
-      # apps-script/guides/services/quotas#current_limitations). <p>After execution
-      # has started, it can have one of four outcomes:</p> <ul> <li> If the script
-      # function returns successfully, the
-      # response field contains an
-      # ExecutionResponse object
-      # with the function's return value in the object's `result` field.</li>
-      # <li> If the script function (or Apps Script itself) throws an exception, the
-      # error field contains a
-      # Status object. The `Status` object's `details`
-      # field contains an array with a single
-      # ExecutionError object that
-      # provides information about the nature of the error.</li>
-      # <li> If the execution has not yet completed,
-      # the done field is `false` and
-      # the neither the `response` nor `error` fields are present.</li>
-      # <li> If the `run` call itself fails (for example, because of a
-      # malformed request or an authorization error), the method returns an HTTP
-      # response code in the 4XX range with a different format for the response
-      # body. Client libraries automatically convert a 4XX response into an
-      # exception class.</li>
-      # </ul>
+      # apps-script/guides/services/quotas#current_limitations). After execution has
+      # started, it can have one of four outcomes: - If the script function returns
+      # successfully, the response field contains an ExecutionResponse object with the
+      # function's return value in the object's `result` field. - If the script
+      # function (or Apps Script itself) throws an exception, the error field contains
+      # a Status object. The `Status` object's `details` field contains an array with
+      # a single ExecutionError object that provides information about the nature of
+      # the error. - If the execution has not yet completed, the done field is `false`
+      # and the neither the `response` nor `error` fields are present. - If the `run`
+      # call itself fails (for example, because of a malformed request or an
+      # authorization error), the method returns an HTTP response code in the 4XX
+      # range with a different format for the response body. Client libraries
+      # automatically convert a 4XX response into an exception class.
       class Operation
         include Google::Apis::Core::Hashable
       
@@ -952,9 +929,9 @@ module Google
         # @return [Google::Apis::ScriptV1::GoogleAppsScriptTypeUser]
         attr_accessor :last_modify_user
       
-        # The parent's Drive ID that the script will be attached to. This is usually
-        # the ID of a Google Document or Google Sheet. This filed is optional, and
-        # if not set, a stand-alone script will be created.
+        # The parent's Drive ID that the script will be attached to. This is usually the
+        # ID of a Google Document or Google Sheet. This filed is optional, and if not
+        # set, a stand-alone script will be created.
         # Corresponds to the JSON property `parentId`
         # @return [String]
         attr_accessor :parent_id
@@ -1041,9 +1018,9 @@ module Google
       class Status
         include Google::Apis::Core::Hashable
       
-        # The status code. For this API, this value either: <ul> <li> 10, indicating a `
-        # SCRIPT_TIMEOUT` error,</li> <li> 3, indicating an `INVALID_ARGUMENT` error, or<
-        # /li> <li> 1, indicating a `CANCELLED` execution.</li> </ul>
+        # The status code. For this API, this value either: - 10, indicating a `
+        # SCRIPT_TIMEOUT` error, - 3, indicating an `INVALID_ARGUMENT` error, or - 1,
+        # indicating a `CANCELLED` execution.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
@@ -1072,8 +1049,8 @@ module Google
         end
       end
       
-      # `Struct` represents a structured data value, consisting of fields which map
-      # to dynamically typed values.
+      # `Struct` represents a structured data value, consisting of fields which map to
+      # dynamically typed values.
       class Struct
         include Google::Apis::Core::Hashable
       
@@ -1158,8 +1135,8 @@ module Google
         # @return [String]
         attr_accessor :string_value
       
-        # `Struct` represents a structured data value, consisting of fields which map
-        # to dynamically typed values.
+        # `Struct` represents a structured data value, consisting of fields which map to
+        # dynamically typed values.
         # Corresponds to the JSON property `structValue`
         # @return [Google::Apis::ScriptV1::Struct]
         attr_accessor :struct_value
@@ -1182,9 +1159,9 @@ module Google
         end
       end
       
-      # A resource representing a script project version. A version is a "snapshot"
-      # of a script project and is similar to a read-only branched release. When
-      # creating deployments, the version to use must be specified.
+      # A resource representing a script project version. A version is a "snapshot" of
+      # a script project and is similar to a read-only branched release. When creating
+      # deployments, the version to use must be specified.
       class Version
         include Google::Apis::Core::Hashable
       
@@ -1203,8 +1180,8 @@ module Google
         # @return [String]
         attr_accessor :script_id
       
-        # The incremental ID that is created by Apps Script when a version is
-        # created. This is system assigned number and is immutable once created.
+        # The incremental ID that is created by Apps Script when a version is created.
+        # This is system assigned number and is immutable once created.
         # Corresponds to the JSON property `versionNumber`
         # @return [Fixnum]
         attr_accessor :version_number

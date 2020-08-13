@@ -22,6 +22,60 @@ module Google
   module Apis
     module DocumentaiV1beta2
       
+      class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -41,6 +95,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta1DocumentEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -251,6 +311,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta2DocumentEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -478,7 +544,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3BatchProcessMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3BatchProcessResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleProtobufEmpty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -494,6 +584,111 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeDate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeDateTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeMoney
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleTypeTimeZone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+          property :state_message, as: 'stateMessage'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+          property :state_message, as: 'stateMessage'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+          property :state_message, as: 'stateMessage'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+          property :state_message, as: 'stateMessage'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+          property :state_message, as: 'stateMessage'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :state, as: 'state'
+          property :state_message, as: 'stateMessage'
+          property :update_time, as: 'updateTime'
+        end
       end
       
       class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse
@@ -544,9 +739,25 @@ module Google
           property :confidence, as: 'confidence'
           property :mention_id, as: 'mentionId'
           property :mention_text, as: 'mentionText'
+          property :normalized_value, as: 'normalizedValue', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue::Representation
+      
+          property :redacted, as: 'redacted'
           property :text_anchor, as: 'textAnchor', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentTextAnchor, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentTextAnchor::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_value, as: 'dateValue', class: Google::Apis::DocumentaiV1beta2::GoogleTypeDate, decorator: Google::Apis::DocumentaiV1beta2::GoogleTypeDate::Representation
+      
+          property :datetime_value, as: 'datetimeValue', class: Google::Apis::DocumentaiV1beta2::GoogleTypeDateTime, decorator: Google::Apis::DocumentaiV1beta2::GoogleTypeDateTime::Representation
+      
+          property :money_value, as: 'moneyValue', class: Google::Apis::DocumentaiV1beta2::GoogleTypeMoney, decorator: Google::Apis::DocumentaiV1beta2::GoogleTypeMoney::Representation
+      
+          property :text, as: 'text'
         end
       end
       
@@ -916,9 +1127,25 @@ module Google
           property :confidence, as: 'confidence'
           property :mention_id, as: 'mentionId'
           property :mention_text, as: 'mentionText'
+          property :normalized_value, as: 'normalizedValue', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue::Representation
+      
+          property :redacted, as: 'redacted'
           property :text_anchor, as: 'textAnchor', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentTextAnchor, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentTextAnchor::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_value, as: 'dateValue', class: Google::Apis::DocumentaiV1beta2::GoogleTypeDate, decorator: Google::Apis::DocumentaiV1beta2::GoogleTypeDate::Representation
+      
+          property :datetime_value, as: 'datetimeValue', class: Google::Apis::DocumentaiV1beta2::GoogleTypeDateTime, decorator: Google::Apis::DocumentaiV1beta2::GoogleTypeDateTime::Representation
+      
+          property :money_value, as: 'moneyValue', class: Google::Apis::DocumentaiV1beta2::GoogleTypeMoney, decorator: Google::Apis::DocumentaiV1beta2::GoogleTypeMoney::Representation
+      
+          property :text, as: 'text'
         end
       end
       
@@ -1309,6 +1536,34 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3BatchProcessMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          collection :individual_process_statuses, as: 'individualProcessStatuses', class: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus, decorator: Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus::Representation
+      
+          property :state, as: 'state'
+          property :state_message, as: 'stateMessage'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_gcs_source, as: 'inputGcsSource'
+          property :output_gcs_destination, as: 'outputGcsDestination'
+          property :status, as: 'status', class: Google::Apis::DocumentaiV1beta2::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1beta2::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3BatchProcessResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleLongrunningOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1318,6 +1573,12 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class GoogleProtobufEmpty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1337,6 +1598,48 @@ module Google
           property :blue, as: 'blue'
           property :green, as: 'green'
           property :red, as: 'red'
+        end
+      end
+      
+      class GoogleTypeDate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
+      class GoogleTypeDateTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :month, as: 'month'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+          property :time_zone, as: 'timeZone', class: Google::Apis::DocumentaiV1beta2::GoogleTypeTimeZone, decorator: Google::Apis::DocumentaiV1beta2::GoogleTypeTimeZone::Representation
+      
+          property :utc_offset, as: 'utcOffset'
+          property :year, as: 'year'
+        end
+      end
+      
+      class GoogleTypeMoney
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+          property :nanos, as: 'nanos'
+          property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
+      class GoogleTypeTimeZone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :version, as: 'version'
         end
       end
     end

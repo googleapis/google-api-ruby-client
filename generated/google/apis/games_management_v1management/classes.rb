@@ -78,11 +78,10 @@ module Google
       class AchievementResetResponse
         include Google::Apis::Core::Hashable
       
-        # The current state of the achievement.  This is the same as the initial
-        # state of the achievement. <br/>Possible values are: <ul>
-        # <li>"`HIDDEN`"- Achievement is hidden.</li>
-        # <li>"`REVEALED`" - Achievement is revealed.</li>
-        # <li>"`UNLOCKED`" - Achievement is unlocked.</li> </ul>
+        # The current state of the achievement. This is the same as the initial state of
+        # the achievement. Possible values are: - "`HIDDEN`"- Achievement is hidden. - "`
+        # REVEALED`" - Achievement is revealed. - "`UNLOCKED`" - Achievement is unlocked.
+        # 
         # Corresponds to the JSON property `currentState`
         # @return [String]
         attr_accessor :current_state
@@ -157,8 +156,7 @@ module Google
         # @return [Google::Apis::GamesManagementV1management::GamesPlayerLevelResource]
         attr_accessor :current_level
       
-        # The timestamp when the player was leveled up, in millis since Unix epoch
-        # UTC.
+        # The timestamp when the player was leveled up, in millis since Unix epoch UTC.
         # Corresponds to the JSON property `lastLevelUpTimestampMillis`
         # @return [Fixnum]
         attr_accessor :last_level_up_timestamp_millis
@@ -222,8 +220,7 @@ module Google
         attr_accessor :hidden_time_millis
       
         # Output only. Uniquely identifies the type of this resource. Value is always
-        # the fixed
-        # string `gamesManagement#hiddenPlayer`.
+        # the fixed string `gamesManagement#hiddenPlayer`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -319,9 +316,9 @@ module Google
         attr_accessor :name
       
         # The player ID that was used for this player the first time they signed into
-        # the game in question. This is only populated for calls to player.get for
-        # the requesting player, only if the player ID has subsequently changed, and
-        # only to clients that support remapping player IDs.
+        # the game in question. This is only populated for calls to player.get for the
+        # requesting player, only if the player ID has subsequently changed, and only to
+        # clients that support remapping player IDs.
         # Corresponds to the JSON property `originalPlayerId`
         # @return [String]
         attr_accessor :original_player_id
@@ -365,14 +362,12 @@ module Google
         class Name
           include Google::Apis::Core::Hashable
         
-          # The family name of this player. In some places, this is known as the last
-          # name.
+          # The family name of this player. In some places, this is known as the last name.
           # Corresponds to the JSON property `familyName`
           # @return [String]
           attr_accessor :family_name
         
-          # The given name of this player. In some places, this is known as the first
-          # name.
+          # The given name of this player. In some places, this is known as the first name.
           # Corresponds to the JSON property `givenName`
           # @return [String]
           attr_accessor :given_name
@@ -430,10 +425,9 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The time spans of the updated score. <br/>Possible values are: <ul>
-        # <li>"`ALL_TIME`" - The score is an all-time score.</li>
-        # <li>"`WEEKLY`" - The score is a weekly score.</li>
-        # <li>"`DAILY`" - The score is a daily score.</li> </ul>
+        # The time spans of the updated score. Possible values are: - "`ALL_TIME`" - The
+        # score is an all-time score. - "`WEEKLY`" - The score is a weekly score. - "`
+        # DAILY`" - The score is a daily score.
         # Corresponds to the JSON property `resetScoreTimeSpans`
         # @return [Array<String>]
         attr_accessor :reset_score_time_spans

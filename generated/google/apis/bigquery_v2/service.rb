@@ -657,18 +657,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all models in the specified dataset. Requires the READER dataset
-        # role.
+        # Lists all models in the specified dataset. Requires the READER dataset role.
         # @param [String] project_id
         #   Required. Project ID of the models to list.
         # @param [String] dataset_id
         #   Required. Dataset ID of the models to list.
         # @param [Fixnum] max_results
-        #   The maximum number of results to return in a single response page.
-        #   Leverage the page tokens to iterate through the entire collection.
+        #   The maximum number of results to return in a single response page. Leverage
+        #   the page tokens to iterate through the entire collection.
         # @param [String] page_token
-        #   Page token, returned by a previous call to request the next page of
-        #   results
+        #   Page token, returned by a previous call to request the next page of results
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -859,8 +857,8 @@ module Google
         # @param [String] routine_id
         #   Required. Routine ID of the requested routine
         # @param [String] read_mask
-        #   If set, only the Routine fields in the field mask are returned in the
-        #   response. If unset, all Routine fields are returned.
+        #   If set, only the Routine fields in the field mask are returned in the response.
+        #   If unset, all Routine fields are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -933,29 +931,25 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all routines in the specified dataset. Requires the READER dataset
-        # role.
+        # Lists all routines in the specified dataset. Requires the READER dataset role.
         # @param [String] project_id
         #   Required. Project ID of the routines to list
         # @param [String] dataset_id
         #   Required. Dataset ID of the routines to list
         # @param [String] filter
-        #   If set, then only the Routines matching this filter are returned.
-        #   The current supported form is either "routine_type:<RoutineType>" or
-        #   "routineType:<RoutineType>", where <RoutineType> is a RoutineType enum.
-        #   Example: "routineType:SCALAR_FUNCTION".
+        #   If set, then only the Routines matching this filter are returned. The current
+        #   supported form is either "routine_type:" or "routineType:", where is a
+        #   RoutineType enum. Example: "routineType:SCALAR_FUNCTION".
         # @param [Fixnum] max_results
-        #   The maximum number of results to return in a single response page.
-        #   Leverage the page tokens to iterate through the entire collection.
+        #   The maximum number of results to return in a single response page. Leverage
+        #   the page tokens to iterate through the entire collection.
         # @param [String] page_token
-        #   Page token, returned by a previous call, to request the next page of
-        #   results
+        #   Page token, returned by a previous call, to request the next page of results
         # @param [String] read_mask
-        #   If set, then only the Routine fields in the field mask, as well as
-        #   project_id, dataset_id and routine_id, are returned in the response.
-        #   If unset, then the following Routine fields are returned:
-        #   etag, project_id, dataset_id, routine_id, routine_type, creation_time,
-        #   last_modified_time, and language.
+        #   If set, then only the Routine fields in the field mask, as well as project_id,
+        #   dataset_id and routine_id, are returned in the response. If unset, then the
+        #   following Routine fields are returned: etag, project_id, dataset_id,
+        #   routine_id, routine_type, creation_time, last_modified_time, and language.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1213,12 +1207,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::BigqueryV2::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1378,11 +1371,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::BigqueryV2::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1416,15 +1409,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::BigqueryV2::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

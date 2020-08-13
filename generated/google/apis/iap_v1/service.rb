@@ -47,16 +47,16 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Constructs a new OAuth brand for the project if one does not exist.
-        # The created brand is "internal only", meaning that OAuth clients created
-        # under it only accept requests from users who belong to the same G Suite
-        # organization as the project. The brand is created in an un-reviewed status.
-        # NOTE: The "internal only" status can be manually changed in the Google
-        # Cloud console. Requires that a brand does not already exist for the
-        # project, and that the specified support email is owned by the caller.
+        # Constructs a new OAuth brand for the project if one does not exist. The
+        # created brand is "internal only", meaning that OAuth clients created under it
+        # only accept requests from users who belong to the same G Suite organization as
+        # the project. The brand is created in an un-reviewed status. NOTE: The "
+        # internal only" status can be manually changed in the Google Cloud console.
+        # Requires that a brand does not already exist for the project, and that the
+        # specified support email is owned by the caller.
         # @param [String] parent
-        #   Required. GCP Project number/id under which the brand is to be created.
-        #   In the following format: projects/`project_number/id`.
+        #   Required. GCP Project number/id under which the brand is to be created. In the
+        #   following format: projects/`project_number/id`.
         # @param [Google::Apis::IapV1::Brand] brand_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -89,8 +89,8 @@ module Google
         
         # Retrieves the OAuth brand of the project.
         # @param [String] name
-        #   Required. Name of the brand to be fetched.
-        #   In the following format: projects/`project_number/id`/brands/`brand`.
+        #   Required. Name of the brand to be fetched. In the following format: projects/`
+        #   project_number/id`/brands/`brand`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -120,8 +120,8 @@ module Google
         
         # Lists the existing brands for the project.
         # @param [String] parent
-        #   Required. GCP Project number/id.
-        #   In the following format: projects/`project_number/id`.
+        #   Required. GCP Project number/id. In the following format: projects/`
+        #   project_number/id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -149,14 +149,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned
-        # by IAP. Requires that the brand for the project exists and that it is
-        # set for internal-only use.
+        # Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP.
+        # Requires that the brand for the project exists and that it is set for
+        # internal-only use.
         # @param [String] parent
-        #   Required. Path to create the client in.
-        #   In the following format:
-        #   projects/`project_number/id`/brands/`brand`.
-        #   The project must belong to a G Suite account.
+        #   Required. Path to create the client in. In the following format: projects/`
+        #   project_number/id`/brands/`brand`. The project must belong to a G Suite
+        #   account.
         # @param [Google::Apis::IapV1::IdentityAwareProxyClient] identity_aware_proxy_client_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -191,10 +190,9 @@ module Google
         # obsolete clients, managing the number of clients in a given project, and
         # cleaning up after tests. Requires that the client is owned by IAP.
         # @param [String] name
-        #   Required. Name of the Identity Aware Proxy client to be deleted.
-        #   In the following format:
-        #   projects/`project_number/id`/brands/`brand`/identityAwareProxyClients/`
-        #   client_id`.
+        #   Required. Name of the Identity Aware Proxy client to be deleted. In the
+        #   following format: projects/`project_number/id`/brands/`brand`/
+        #   identityAwareProxyClients/`client_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -222,13 +220,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an Identity Aware Proxy (IAP) OAuth client.
-        # Requires that the client is owned by IAP.
+        # Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client
+        # is owned by IAP.
         # @param [String] name
-        #   Required. Name of the Identity Aware Proxy client to be fetched.
-        #   In the following format:
-        #   projects/`project_number/id`/brands/`brand`/identityAwareProxyClients/`
-        #   client_id`.
+        #   Required. Name of the Identity Aware Proxy client to be fetched. In the
+        #   following format: projects/`project_number/id`/brands/`brand`/
+        #   identityAwareProxyClients/`client_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -258,19 +255,17 @@ module Google
         
         # Lists the existing clients for the brand.
         # @param [String] parent
-        #   Required. Full brand path.
-        #   In the following format: projects/`project_number/id`/brands/`brand`.
+        #   Required. Full brand path. In the following format: projects/`project_number/
+        #   id`/brands/`brand`.
         # @param [Fixnum] page_size
         #   The maximum number of clients to return. The service may return fewer than
-        #   this value.
-        #   If unspecified, at most 100 clients will be returned.
-        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        #   this value. If unspecified, at most 100 clients will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListIdentityAwareProxyClients`
-        #   call. Provide this to retrieve the subsequent page.
-        #   When paginating, all other parameters provided to
-        #   `ListIdentityAwareProxyClients` must match the call that provided the page
-        #   token.
+        #   A page token, received from a previous `ListIdentityAwareProxyClients` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListIdentityAwareProxyClients` must match the call
+        #   that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -300,13 +295,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful if the
-        # secret was compromised. Requires that the client is owned by IAP.
+        # Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful if the secret
+        # was compromised. Requires that the client is owned by IAP.
         # @param [String] name
-        #   Required. Name of the Identity Aware Proxy client to that will have its
-        #   secret reset. In the following format:
-        #   projects/`project_number/id`/brands/`brand`/identityAwareProxyClients/`
-        #   client_id`.
+        #   Required. Name of the Identity Aware Proxy client to that will have its secret
+        #   reset. In the following format: projects/`project_number/id`/brands/`brand`/
+        #   identityAwareProxyClients/`client_id`.
         # @param [Google::Apis::IapV1::ResetIdentityAwareProxyClientSecretRequest] reset_identity_aware_proxy_client_secret_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -337,13 +331,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for an Identity-Aware Proxy protected
-        # resource.
-        # More information about managing access via IAP can be found at:
-        # https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
+        # Gets the access control policy for an Identity-Aware Proxy protected resource.
+        # More information about managing access via IAP can be found at: https://cloud.
+        # google.com/iap/docs/managing-access#managing_access_via_the_api
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::IapV1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -376,9 +369,8 @@ module Google
         
         # Gets the IAP settings on a particular IAP protected resource.
         # @param [String] name
-        #   Required. The resource name for which to retrieve the settings.
-        #   Authorization: Requires the `getSettings` permission for the associated
-        #   resource.
+        #   Required. The resource name for which to retrieve the settings. Authorization:
+        #   Requires the `getSettings` permission for the associated resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -406,13 +398,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy for an Identity-Aware Proxy protected
-        # resource. Replaces any existing policy.
-        # More information about managing access via IAP can be found at:
-        # https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
+        # Sets the access control policy for an Identity-Aware Proxy protected resource.
+        # Replaces any existing policy. More information about managing access via IAP
+        # can be found at: https://cloud.google.com/iap/docs/managing-access#
+        # managing_access_via_the_api
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::IapV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -444,12 +436,11 @@ module Google
         end
         
         # Returns permissions that a caller has on the Identity-Aware Proxy protected
-        # resource.
-        # More information about managing access via IAP can be found at:
+        # resource. More information about managing access via IAP can be found at:
         # https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::IapV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -480,16 +471,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the IAP settings on a particular IAP protected resource. It
-        # replaces all fields unless the `update_mask` is set.
+        # Updates the IAP settings on a particular IAP protected resource. It replaces
+        # all fields unless the `update_mask` is set.
         # @param [String] name
         #   Required. The resource name of the IAP protected resource.
         # @param [Google::Apis::IapV1::IapSettings] iap_settings_object
         # @param [String] update_mask
-        #   The field mask specifying which IAP settings should be updated.
-        #   If omitted, the all of the settings are updated. See
-        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
-        #   fieldmask
+        #   The field mask specifying which IAP settings should be updated. If omitted,
+        #   the all of the settings are updated. See https://developers.google.com/
+        #   protocol-buffers/docs/reference/google.protobuf#fieldmask
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

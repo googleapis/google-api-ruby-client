@@ -22,8 +22,295 @@ module Google
   module Apis
     module DocumentaiV1beta2
       
-      # Response to an batch document processing request. This is returned in
-      # the LRO Operation after the operation is complete.
+      # The long running operation metadata for CreateLabelerPool.
+      class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the operation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Used only when Operation.done is false.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A message providing more details about the current state of processing. For
+        # example, the error message if the operation is failed.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # The last update time of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The metadata that represents a processor version being created.
+      class GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the operation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The state of the current disable processor operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The last update time of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The long running operation metadata for DeleteLabelerPool.
+      class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the operation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Used only when Operation.done is false.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A message providing more details about the current state of processing. For
+        # example, the error message if the operation is failed.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # The last update time of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The long running operation metadata for delete processor method.
+      class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the operation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The state of the current delete processor operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A message providing more details about the current state of processing. For
+        # example, the error message if the operation is failed.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # The last update time of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The long running operation metadata for disable processor method.
+      class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the operation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The state of the current disable processor operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A message providing more details about the current state of processing. For
+        # example, the error message if the operation is failed.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # The last update time of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for the disable processor method. Intentionally empty proto
+      # for adding fields in future.
+      class GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The long running operation metadata for enable processor method.
+      class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the operation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The state of the current enable processor operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A message providing more details about the current state of processing. For
+        # example, the error message if the operation is failed.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # The last update time of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message for the enable processor method. Intentionally empty proto
+      # for adding fields in future.
+      class GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The long running operation metadata for UpdateLabelerPool.
+      class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the operation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Used only when Operation.done is false.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A message providing more details about the current state of processing. For
+        # example, the error message if the operation is failed.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # The last update time of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response to an batch document processing request. This is returned in the LRO
+      # Operation after the operation is complete.
       class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse
         include Google::Apis::Core::Hashable
       
@@ -68,23 +355,22 @@ module Google
       end
       
       # Document represents the canonical document resource in Document Understanding
-      # AI.
-      # It is an interchange format that provides insights into documents and allows
-      # for collaboration between users and Document Understanding AI to iterate and
-      # optimize for quality.
+      # AI. It is an interchange format that provides insights into documents and
+      # allows for collaboration between users and Document Understanding AI to
+      # iterate and optimize for quality.
       class GoogleCloudDocumentaiV1beta1Document
         include Google::Apis::Core::Hashable
       
-        # Inline document content, represented as a stream of bytes.
-        # Note: As with all `bytes` fields, protobuffers use a pure binary
-        # representation, whereas JSON representations use base64.
+        # Inline document content, represented as a stream of bytes. Note: As with all `
+        # bytes` fields, protobuffers use a pure binary representation, whereas JSON
+        # representations use base64.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :content
       
-        # A list of entities detected on Document.text. For document shards,
-        # entities in this list may cross shard boundaries.
+        # A list of entities detected on Document.text. For document shards, entities in
+        # this list may cross shard boundaries.
         # Corresponds to the JSON property `entities`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentEntity>]
         attr_accessor :entities
@@ -94,19 +380,19 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentEntityRelation>]
         attr_accessor :entity_relations
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleRpcStatus]
         attr_accessor :error
       
         # An IANA published MIME type (also referred to as media type). For more
-        # information, see
-        # https://www.iana.org/assignments/media-types/media-types.xhtml.
+        # information, see https://www.iana.org/assignments/media-types/media-types.
+        # xhtml.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -116,9 +402,8 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPage>]
         attr_accessor :pages
       
-        # For a large document, sharding may be performed to produce several
-        # document shards. Each document shard contains this field to detail which
-        # shard it is.
+        # For a large document, sharding may be performed to produce several document
+        # shards. Each document shard contains this field to detail which shard it is.
         # Corresponds to the JSON property `shardInfo`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentShardInfo]
         attr_accessor :shard_info
@@ -133,16 +418,15 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentStyle>]
         attr_accessor :text_styles
       
-        # A list of translations on Document.text. For document shards,
-        # translations in this list may cross shard boundaries.
+        # A list of translations on Document.text. For document shards, translations in
+        # this list may cross shard boundaries.
         # Corresponds to the JSON property `translations`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentTranslation>]
         attr_accessor :translations
       
-        # Currently supports Google Cloud Storage URI of the form
-        # `gs://bucket_name/object_name`. Object versioning is not supported.
-        # See [Google Cloud Storage Request
-        # URIs](https://cloud.google.com/storage/docs/reference-uris) for more
+        # Currently supports Google Cloud Storage URI of the form `gs://bucket_name/
+        # object_name`. Object versioning is not supported. See [Google Cloud Storage
+        # Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more
         # info.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -178,7 +462,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Deprecated.  Use `id` field instead.
+        # Deprecated. Use `id` field instead.
         # Corresponds to the JSON property `mentionId`
         # @return [String]
         attr_accessor :mention_id
@@ -187,6 +471,17 @@ module Google
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text
+      
+        # Parsed and normalized entity value.
+        # Corresponds to the JSON property `normalizedValue`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue]
+        attr_accessor :normalized_value
+      
+        # Optional. Whether the entity will be redacted for de-identification purposes.
+        # Corresponds to the JSON property `redacted`
+        # @return [Boolean]
+        attr_accessor :redacted
+        alias_method :redacted?, :redacted
       
         # Text reference indexing into the Document.text.
         # Corresponds to the JSON property `textAnchor`
@@ -207,8 +502,67 @@ module Google
           @confidence = args[:confidence] if args.key?(:confidence)
           @mention_id = args[:mention_id] if args.key?(:mention_id)
           @mention_text = args[:mention_text] if args.key?(:mention_text)
+          @normalized_value = args[:normalized_value] if args.key?(:normalized_value)
+          @redacted = args[:redacted] if args.key?(:redacted)
           @text_anchor = args[:text_anchor] if args.key?(:text_anchor)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Parsed and normalized entity value.
+      class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
+        # Corresponds to the JSON property `dateValue`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeDate]
+        attr_accessor :date_value
+      
+        # Represents civil time in one of a few possible ways: * When utc_offset is set
+        # and time_zone is unset: a civil time on a calendar day with a particular
+        # offset from UTC. * When time_zone is set and utc_offset is unset: a civil time
+        # on a calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
+        # considered not to have a specific year. month and day must have valid, non-
+        # zero values. This type is more flexible than some applications may want. Make
+        # sure to document and validate your application's limitations.
+        # Corresponds to the JSON property `datetimeValue`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeDateTime]
+        attr_accessor :datetime_value
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `moneyValue`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeMoney]
+        attr_accessor :money_value
+      
+        # Required. Normalized entity value stored as a string. This field is populated
+        # for supported document type (e.g. Invoice). For some entity types, one of
+        # respective 'structured_value' fields may also be populated. - Money/Currency
+        # type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`)
+        # is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the
+        # ISO 8601 text format.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_value = args[:date_value] if args.key?(:date_value)
+          @datetime_value = args[:datetime_value] if args.key?(:datetime_value)
+          @money_value = args[:money_value] if args.key?(:money_value)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -247,9 +601,9 @@ module Google
       class GoogleCloudDocumentaiV1beta1DocumentPage
         include Google::Apis::Core::Hashable
       
-        # A list of visually detected text blocks on the page.
-        # A block has a set of lines (collected into paragraphs) that have a common
-        # line-spacing and orientation.
+        # A list of visually detected text blocks on the page. A block has a set of
+        # lines (collected into paragraphs) that have a common line-spacing and
+        # orientation.
         # Corresponds to the JSON property `blocks`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageBlock>]
         attr_accessor :blocks
@@ -274,21 +628,20 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageLayout]
         attr_accessor :layout
       
-        # A list of visually detected text lines on the page.
-        # A collection of tokens that a human would perceive as a line.
+        # A list of visually detected text lines on the page. A collection of tokens
+        # that a human would perceive as a line.
         # Corresponds to the JSON property `lines`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageLine>]
         attr_accessor :lines
       
-        # 1-based index for current Page in a parent Document.
-        # Useful when a page is taken out of a Document for individual
-        # processing.
+        # 1-based index for current Page in a parent Document. Useful when a page is
+        # taken out of a Document for individual processing.
         # Corresponds to the JSON property `pageNumber`
         # @return [Fixnum]
         attr_accessor :page_number
       
-        # A list of visually detected text paragraphs on the page.
-        # A collection of lines that a human would perceive as a paragraph.
+        # A list of visually detected text paragraphs on the page. A collection of lines
+        # that a human would perceive as a paragraph.
         # Corresponds to the JSON property `paragraphs`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageParagraph>]
         attr_accessor :paragraphs
@@ -303,8 +656,8 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageToken>]
         attr_accessor :tokens
       
-        # A list of detected non-text visual elements e.g. checkbox,
-        # signature etc. on the page.
+        # A list of detected non-text visual elements e.g. checkbox, signature etc. on
+        # the page.
         # Corresponds to the JSON property `visualElements`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentPageVisualElement>]
         attr_accessor :visual_elements
@@ -329,8 +682,8 @@ module Google
         end
       end
       
-      # A block has a set of lines (collected into paragraphs) that have a
-      # common line-spacing and orientation.
+      # A block has a set of lines (collected into paragraphs) that have a common line-
+      # spacing and orientation.
       class GoogleCloudDocumentaiV1beta1DocumentPageBlock
         include Google::Apis::Core::Hashable
       
@@ -364,9 +717,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -459,9 +811,9 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1BoundingPoly]
         attr_accessor :bounding_poly
       
-        # Confidence of the current Layout within context of the object this
-        # layout is for. e.g. confidence can be for a single token, a table,
-        # a visual element, etc. depending on context. Range [0, 1].
+        # Confidence of the current Layout within context of the object this layout is
+        # for. e.g. confidence can be for a single token, a table, a visual element, etc.
+        # depending on context. Range [0, 1].
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -489,8 +841,8 @@ module Google
         end
       end
       
-      # A collection of tokens that a human would perceive as a line.
-      # Does not cross column boundaries, can be horizontal, vertical, etc.
+      # A collection of tokens that a human would perceive as a line. Does not cross
+      # column boundaries, can be horizontal, vertical, etc.
       class GoogleCloudDocumentaiV1beta1DocumentPageLine
         include Google::Apis::Core::Hashable
       
@@ -683,8 +1035,7 @@ module Google
         end
       end
       
-      # Detected non-text visual elements e.g. checkbox, signature etc. on the
-      # page.
+      # Detected non-text visual elements e.g. checkbox, signature etc. on the page.
       class GoogleCloudDocumentaiV1beta1DocumentPageVisualElement
         include Google::Apis::Core::Hashable
       
@@ -715,9 +1066,8 @@ module Google
         end
       end
       
-      # For a large document, sharding may be performed to produce several
-      # document shards. Each document shard contains this field to detail which
-      # shard it is.
+      # For a large document, sharding may be performed to produce several document
+      # shards. Each document shard contains this field to detail which shard it is.
       class GoogleCloudDocumentaiV1beta1DocumentShardInfo
         include Google::Apis::Core::Hashable
       
@@ -731,8 +1081,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :shard_index
       
-        # The index of the first character in Document.text in the overall
-        # document global text.
+        # The index of the first character in Document.text in the overall document
+        # global text.
         # Corresponds to the JSON property `textOffset`
         # @return [Fixnum]
         attr_accessor :text_offset
@@ -749,227 +1099,105 @@ module Google
         end
       end
       
-      # Annotation for common text style attributes. This adheres to CSS
-      # conventions as much as possible.
+      # Annotation for common text style attributes. This adheres to CSS conventions
+      # as much as possible.
       class GoogleCloudDocumentaiV1beta1DocumentStyle
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `backgroundColor`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeColor]
         attr_accessor :background_color
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `color`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeColor]
         attr_accessor :color
@@ -979,8 +1207,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentStyleFontSize]
         attr_accessor :font_size
       
-        # Font weight. Possible values are normal, bold, bolder, and lighter.
-        # https://www.w3schools.com/cssref/pr_font_weight.asp
+        # Font weight. Possible values are normal, bold, bolder, and lighter. https://
+        # www.w3schools.com/cssref/pr_font_weight.asp
         # Corresponds to the JSON property `fontWeight`
         # @return [String]
         attr_accessor :font_weight
@@ -990,15 +1218,14 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta1DocumentTextAnchor]
         attr_accessor :text_anchor
       
-        # Text decoration. Follows CSS standard.
-        # <text-decoration-line> <text-decoration-color> <text-decoration-style>
-        # https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+        # Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/
+        # pr_text_text-decoration.asp
         # Corresponds to the JSON property `textDecoration`
         # @return [String]
         attr_accessor :text_decoration
       
-        # Text style. Possible values are normal, italic, and oblique.
-        # https://www.w3schools.com/cssref/pr_font_font-style.asp
+        # Text style. Possible values are normal, italic, and oblique. https://www.
+        # w3schools.com/cssref/pr_font_font-style.asp
         # Corresponds to the JSON property `textStyle`
         # @return [String]
         attr_accessor :text_style
@@ -1063,14 +1290,13 @@ module Google
         end
       end
       
-      # A text segment in the Document.text. The indices may be out of bounds
-      # which indicate that the text extends into another document shard for
-      # large sharded documents. See ShardInfo.text_offset
+      # A text segment in the Document.text. The indices may be out of bounds which
+      # indicate that the text extends into another document shard for large sharded
+      # documents. See ShardInfo.text_offset
       class GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment
         include Google::Apis::Core::Hashable
       
-        # TextSegment half open end UTF-8 char index in the
-        # Document.text.
+        # TextSegment half open end UTF-8 char index in the Document.text.
         # Corresponds to the JSON property `endIndex`
         # @return [Fixnum]
         attr_accessor :end_index
@@ -1095,9 +1321,8 @@ module Google
       class GoogleCloudDocumentaiV1beta1DocumentTranslation
         include Google::Apis::Core::Hashable
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -1172,11 +1397,9 @@ module Google
         attr_accessor :gcs_source
       
         # Required. Mimetype of the input. Current supported mimetypes are application/
-        # pdf,
-        # image/tiff, and image/gif.
-        # In addition, application/json type is supported for requests with
-        # ProcessDocumentRequest.automl_params field set. The JSON file needs to
-        # be in Document format.
+        # pdf, image/tiff, and image/gif. In addition, application/json type is
+        # supported for requests with ProcessDocumentRequest.automl_params field set.
+        # The JSON file needs to be in Document format.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -1192,9 +1415,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the normalized vertex coordinates are relative to the original image
-      # and range from 0 to 1.
+      # A vertex represents a 2D point in the image. NOTE: the normalized vertex
+      # coordinates are relative to the original image and range from 0 to 1.
       class GoogleCloudDocumentaiV1beta1NormalizedVertex
         include Google::Apis::Core::Hashable
       
@@ -1266,18 +1488,14 @@ module Google
         attr_accessor :gcs_destination
       
         # The max number of pages to include into each output Document shard JSON on
-        # Google Cloud Storage.
-        # The valid range is [1, 100]. If not specified, the default value is 20.
-        # For example, for one pdf file with 100 pages, 100 parsed pages will be
-        # produced. If `pages_per_shard` = 20, then 5 Document shard JSON files each
-        # containing 20 parsed pages will be written under the prefix
-        # OutputConfig.gcs_destination.uri and suffix pages-x-to-y.json where
-        # x and y are 1-indexed page numbers.
-        # Example GCS outputs with 157 pages and pages_per_shard = 50:
-        # <prefix>pages-001-to-050.json
-        # <prefix>pages-051-to-100.json
-        # <prefix>pages-101-to-150.json
-        # <prefix>pages-151-to-157.json
+        # Google Cloud Storage. The valid range is [1, 100]. If not specified, the
+        # default value is 20. For example, for one pdf file with 100 pages, 100 parsed
+        # pages will be produced. If `pages_per_shard` = 20, then 5 Document shard JSON
+        # files each containing 20 parsed pages will be written under the prefix
+        # OutputConfig.gcs_destination.uri and suffix pages-x-to-y.json where x and y
+        # are 1-indexed page numbers. Example GCS outputs with 157 pages and
+        # pages_per_shard = 50: pages-001-to-050.json pages-051-to-100.json pages-101-to-
+        # 150.json pages-151-to-157.json
         # Corresponds to the JSON property `pagesPerShard`
         # @return [Fixnum]
         attr_accessor :pages_per_shard
@@ -1318,8 +1536,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the vertex coordinates are in the same scale as the original image.
+      # A vertex represents a 2D point in the image. NOTE: the vertex coordinates are
+      # in the same scale as the original image.
       class GoogleCloudDocumentaiV1beta1Vertex
         include Google::Apis::Core::Hashable
       
@@ -1348,8 +1566,8 @@ module Google
       class GoogleCloudDocumentaiV1beta2AutoMlParams
         include Google::Apis::Core::Hashable
       
-        # Resource name of the AutoML model.
-        # Format: `projects/`project-id`/locations/`location-id`/models/`model-id``.
+        # Resource name of the AutoML model. Format: `projects/`project-id`/locations/`
+        # location-id`/models/`model-id``.
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -1364,8 +1582,8 @@ module Google
         end
       end
       
-      # Request to batch process documents as an asynchronous operation. The output
-      # is written to Cloud Storage as JSON in the [Document] format.
+      # Request to batch process documents as an asynchronous operation. The output is
+      # written to Cloud Storage as JSON in the [Document] format.
       class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsRequest
         include Google::Apis::Core::Hashable
       
@@ -1384,8 +1602,8 @@ module Google
         end
       end
       
-      # Response to an batch document processing request. This is returned in
-      # the LRO Operation after the operation is complete.
+      # Response to an batch document processing request. This is returned in the LRO
+      # Operation after the operation is complete.
       class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse
         include Google::Apis::Core::Hashable
       
@@ -1430,23 +1648,22 @@ module Google
       end
       
       # Document represents the canonical document resource in Document Understanding
-      # AI.
-      # It is an interchange format that provides insights into documents and allows
-      # for collaboration between users and Document Understanding AI to iterate and
-      # optimize for quality.
+      # AI. It is an interchange format that provides insights into documents and
+      # allows for collaboration between users and Document Understanding AI to
+      # iterate and optimize for quality.
       class GoogleCloudDocumentaiV1beta2Document
         include Google::Apis::Core::Hashable
       
-        # Inline document content, represented as a stream of bytes.
-        # Note: As with all `bytes` fields, protobuffers use a pure binary
-        # representation, whereas JSON representations use base64.
+        # Inline document content, represented as a stream of bytes. Note: As with all `
+        # bytes` fields, protobuffers use a pure binary representation, whereas JSON
+        # representations use base64.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :content
       
-        # A list of entities detected on Document.text. For document shards,
-        # entities in this list may cross shard boundaries.
+        # A list of entities detected on Document.text. For document shards, entities in
+        # this list may cross shard boundaries.
         # Corresponds to the JSON property `entities`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentEntity>]
         attr_accessor :entities
@@ -1456,12 +1673,12 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentEntityRelation>]
         attr_accessor :entity_relations
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleRpcStatus]
         attr_accessor :error
@@ -1472,8 +1689,8 @@ module Google
         attr_accessor :labels
       
         # An IANA published MIME type (also referred to as media type). For more
-        # information, see
-        # https://www.iana.org/assignments/media-types/media-types.xhtml.
+        # information, see https://www.iana.org/assignments/media-types/media-types.
+        # xhtml.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -1483,9 +1700,8 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPage>]
         attr_accessor :pages
       
-        # For a large document, sharding may be performed to produce several
-        # document shards. Each document shard contains this field to detail which
-        # shard it is.
+        # For a large document, sharding may be performed to produce several document
+        # shards. Each document shard contains this field to detail which shard it is.
         # Corresponds to the JSON property `shardInfo`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentShardInfo]
         attr_accessor :shard_info
@@ -1500,16 +1716,15 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentStyle>]
         attr_accessor :text_styles
       
-        # A list of translations on Document.text. For document shards,
-        # translations in this list may cross shard boundaries.
+        # A list of translations on Document.text. For document shards, translations in
+        # this list may cross shard boundaries.
         # Corresponds to the JSON property `translations`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentTranslation>]
         attr_accessor :translations
       
-        # Currently supports Google Cloud Storage URI of the form
-        # `gs://bucket_name/object_name`. Object versioning is not supported.
-        # See [Google Cloud Storage Request
-        # URIs](https://cloud.google.com/storage/docs/reference-uris) for more
+        # Currently supports Google Cloud Storage URI of the form `gs://bucket_name/
+        # object_name`. Object versioning is not supported. See [Google Cloud Storage
+        # Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more
         # info.
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -1546,7 +1761,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Deprecated.  Use `id` field instead.
+        # Deprecated. Use `id` field instead.
         # Corresponds to the JSON property `mentionId`
         # @return [String]
         attr_accessor :mention_id
@@ -1555,6 +1770,17 @@ module Google
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text
+      
+        # Parsed and normalized entity value.
+        # Corresponds to the JSON property `normalizedValue`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue]
+        attr_accessor :normalized_value
+      
+        # Optional. Whether the entity will be redacted for de-identification purposes.
+        # Corresponds to the JSON property `redacted`
+        # @return [Boolean]
+        attr_accessor :redacted
+        alias_method :redacted?, :redacted
       
         # Text reference indexing into the Document.text.
         # Corresponds to the JSON property `textAnchor`
@@ -1575,8 +1801,67 @@ module Google
           @confidence = args[:confidence] if args.key?(:confidence)
           @mention_id = args[:mention_id] if args.key?(:mention_id)
           @mention_text = args[:mention_text] if args.key?(:mention_text)
+          @normalized_value = args[:normalized_value] if args.key?(:normalized_value)
+          @redacted = args[:redacted] if args.key?(:redacted)
           @text_anchor = args[:text_anchor] if args.key?(:text_anchor)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Parsed and normalized entity value.
+      class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+        # date, with non-zero year, month and day values * A month and day value, with a
+        # zero year, e.g. an anniversary * A year on its own, with zero month and day
+        # values * A year and month value, with a zero day, e.g. a credit card
+        # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+        # Timestamp`.
+        # Corresponds to the JSON property `dateValue`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeDate]
+        attr_accessor :date_value
+      
+        # Represents civil time in one of a few possible ways: * When utc_offset is set
+        # and time_zone is unset: a civil time on a calendar day with a particular
+        # offset from UTC. * When time_zone is set and utc_offset is unset: a civil time
+        # on a calendar day in a particular time zone. * When neither time_zone nor
+        # utc_offset is set: a civil time on a calendar day in local time. The date is
+        # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
+        # considered not to have a specific year. month and day must have valid, non-
+        # zero values. This type is more flexible than some applications may want. Make
+        # sure to document and validate your application's limitations.
+        # Corresponds to the JSON property `datetimeValue`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeDateTime]
+        attr_accessor :datetime_value
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `moneyValue`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeMoney]
+        attr_accessor :money_value
+      
+        # Required. Normalized entity value stored as a string. This field is populated
+        # for supported document type (e.g. Invoice). For some entity types, one of
+        # respective 'structured_value' fields may also be populated. - Money/Currency
+        # type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`)
+        # is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the
+        # ISO 8601 text format.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_value = args[:date_value] if args.key?(:date_value)
+          @datetime_value = args[:datetime_value] if args.key?(:datetime_value)
+          @money_value = args[:money_value] if args.key?(:money_value)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -1611,17 +1896,16 @@ module Google
         end
       end
       
-      # Label attaches schema information and/or other metadata to segments within
-      # a Document. Multiple Labels on a single field can denote either
-      # different labels, different instances of the same label created at
-      # different times, or some combination of both.
+      # Label attaches schema information and/or other metadata to segments within a
+      # Document. Multiple Labels on a single field can denote either different labels,
+      # different instances of the same label created at different times, or some
+      # combination of both.
       class GoogleCloudDocumentaiV1beta2DocumentLabel
         include Google::Apis::Core::Hashable
       
-        # Label is generated AutoML model. This field stores the full resource
-        # name of the AutoML model.
-        # Format:
-        # `projects/`project-id`/locations/`location-id`/models/`model-id``
+        # Label is generated AutoML model. This field stores the full resource name of
+        # the AutoML model. Format: `projects/`project-id`/locations/`location-id`/
+        # models/`model-id``
         # Corresponds to the JSON property `automlModel`
         # @return [String]
         attr_accessor :automl_model
@@ -1631,9 +1915,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Name of the label.
-        # When the label is generated from AutoML Text Classification model, this
-        # field represents the name of the category.
+        # Name of the label. When the label is generated from AutoML Text Classification
+        # model, this field represents the name of the category.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1654,9 +1937,9 @@ module Google
       class GoogleCloudDocumentaiV1beta2DocumentPage
         include Google::Apis::Core::Hashable
       
-        # A list of visually detected text blocks on the page.
-        # A block has a set of lines (collected into paragraphs) that have a common
-        # line-spacing and orientation.
+        # A list of visually detected text blocks on the page. A block has a set of
+        # lines (collected into paragraphs) that have a common line-spacing and
+        # orientation.
         # Corresponds to the JSON property `blocks`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageBlock>]
         attr_accessor :blocks
@@ -1681,21 +1964,20 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageLayout]
         attr_accessor :layout
       
-        # A list of visually detected text lines on the page.
-        # A collection of tokens that a human would perceive as a line.
+        # A list of visually detected text lines on the page. A collection of tokens
+        # that a human would perceive as a line.
         # Corresponds to the JSON property `lines`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageLine>]
         attr_accessor :lines
       
-        # 1-based index for current Page in a parent Document.
-        # Useful when a page is taken out of a Document for individual
-        # processing.
+        # 1-based index for current Page in a parent Document. Useful when a page is
+        # taken out of a Document for individual processing.
         # Corresponds to the JSON property `pageNumber`
         # @return [Fixnum]
         attr_accessor :page_number
       
-        # A list of visually detected text paragraphs on the page.
-        # A collection of lines that a human would perceive as a paragraph.
+        # A list of visually detected text paragraphs on the page. A collection of lines
+        # that a human would perceive as a paragraph.
         # Corresponds to the JSON property `paragraphs`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageParagraph>]
         attr_accessor :paragraphs
@@ -1710,8 +1992,8 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageToken>]
         attr_accessor :tokens
       
-        # A list of detected non-text visual elements e.g. checkbox,
-        # signature etc. on the page.
+        # A list of detected non-text visual elements e.g. checkbox, signature etc. on
+        # the page.
         # Corresponds to the JSON property `visualElements`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageVisualElement>]
         attr_accessor :visual_elements
@@ -1736,8 +2018,8 @@ module Google
         end
       end
       
-      # A block has a set of lines (collected into paragraphs) that have a
-      # common line-spacing and orientation.
+      # A block has a set of lines (collected into paragraphs) that have a common line-
+      # spacing and orientation.
       class GoogleCloudDocumentaiV1beta2DocumentPageBlock
         include Google::Apis::Core::Hashable
       
@@ -1771,9 +2053,8 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -1844,11 +2125,9 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>]
         attr_accessor :value_detected_languages
       
-        # If the value is non-textual, this field represents the type. Current
-        # valid values are:
-        # - blank (this indicates the field_value is normal text)
-        # - "unfilled_checkbox"
-        # - "filled_checkbox"
+        # If the value is non-textual, this field represents the type. Current valid
+        # values are: - blank (this indicates the field_value is normal text) - "
+        # unfilled_checkbox" - "filled_checkbox"
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type
@@ -1876,9 +2155,9 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2BoundingPoly]
         attr_accessor :bounding_poly
       
-        # Confidence of the current Layout within context of the object this
-        # layout is for. e.g. confidence can be for a single token, a table,
-        # a visual element, etc. depending on context. Range [0, 1].
+        # Confidence of the current Layout within context of the object this layout is
+        # for. e.g. confidence can be for a single token, a table, a visual element, etc.
+        # depending on context. Range [0, 1].
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -1906,8 +2185,8 @@ module Google
         end
       end
       
-      # A collection of tokens that a human would perceive as a line.
-      # Does not cross column boundaries, can be horizontal, vertical, etc.
+      # A collection of tokens that a human would perceive as a line. Does not cross
+      # column boundaries, can be horizontal, vertical, etc.
       class GoogleCloudDocumentaiV1beta2DocumentPageLine
         include Google::Apis::Core::Hashable
       
@@ -2100,8 +2379,7 @@ module Google
         end
       end
       
-      # Detected non-text visual elements e.g. checkbox, signature etc. on the
-      # page.
+      # Detected non-text visual elements e.g. checkbox, signature etc. on the page.
       class GoogleCloudDocumentaiV1beta2DocumentPageVisualElement
         include Google::Apis::Core::Hashable
       
@@ -2132,9 +2410,8 @@ module Google
         end
       end
       
-      # For a large document, sharding may be performed to produce several
-      # document shards. Each document shard contains this field to detail which
-      # shard it is.
+      # For a large document, sharding may be performed to produce several document
+      # shards. Each document shard contains this field to detail which shard it is.
       class GoogleCloudDocumentaiV1beta2DocumentShardInfo
         include Google::Apis::Core::Hashable
       
@@ -2148,8 +2425,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :shard_index
       
-        # The index of the first character in Document.text in the overall
-        # document global text.
+        # The index of the first character in Document.text in the overall document
+        # global text.
         # Corresponds to the JSON property `textOffset`
         # @return [Fixnum]
         attr_accessor :text_offset
@@ -2166,227 +2443,105 @@ module Google
         end
       end
       
-      # Annotation for common text style attributes. This adheres to CSS
-      # conventions as much as possible.
+      # Annotation for common text style attributes. This adheres to CSS conventions
+      # as much as possible.
       class GoogleCloudDocumentaiV1beta2DocumentStyle
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `backgroundColor`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeColor]
         attr_accessor :background_color
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `color`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeColor]
         attr_accessor :color
@@ -2396,8 +2551,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentStyleFontSize]
         attr_accessor :font_size
       
-        # Font weight. Possible values are normal, bold, bolder, and lighter.
-        # https://www.w3schools.com/cssref/pr_font_weight.asp
+        # Font weight. Possible values are normal, bold, bolder, and lighter. https://
+        # www.w3schools.com/cssref/pr_font_weight.asp
         # Corresponds to the JSON property `fontWeight`
         # @return [String]
         attr_accessor :font_weight
@@ -2407,15 +2562,14 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2DocumentTextAnchor]
         attr_accessor :text_anchor
       
-        # Text decoration. Follows CSS standard.
-        # <text-decoration-line> <text-decoration-color> <text-decoration-style>
-        # https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+        # Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/
+        # pr_text_text-decoration.asp
         # Corresponds to the JSON property `textDecoration`
         # @return [String]
         attr_accessor :text_decoration
       
-        # Text style. Possible values are normal, italic, and oblique.
-        # https://www.w3schools.com/cssref/pr_font_font-style.asp
+        # Text style. Possible values are normal, italic, and oblique. https://www.
+        # w3schools.com/cssref/pr_font_font-style.asp
         # Corresponds to the JSON property `textStyle`
         # @return [String]
         attr_accessor :text_style
@@ -2480,14 +2634,13 @@ module Google
         end
       end
       
-      # A text segment in the Document.text. The indices may be out of bounds
-      # which indicate that the text extends into another document shard for
-      # large sharded documents. See ShardInfo.text_offset
+      # A text segment in the Document.text. The indices may be out of bounds which
+      # indicate that the text extends into another document shard for large sharded
+      # documents. See ShardInfo.text_offset
       class GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment
         include Google::Apis::Core::Hashable
       
-        # TextSegment half open end UTF-8 char index in the
-        # Document.text.
+        # TextSegment half open end UTF-8 char index in the Document.text.
         # Corresponds to the JSON property `endIndex`
         # @return [Fixnum]
         attr_accessor :end_index
@@ -2512,9 +2665,8 @@ module Google
       class GoogleCloudDocumentaiV1beta2DocumentTranslation
         include Google::Apis::Core::Hashable
       
-        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
-        # information, see
-        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more information,
+        # see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -2551,8 +2703,8 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # Model version of the entity extraction. Default is
-        # "builtin/stable". Specify "builtin/latest" for the latest model.
+        # Model version of the entity extraction. Default is "builtin/stable". Specify "
+        # builtin/latest" for the latest model.
         # Corresponds to the JSON property `modelVersion`
         # @return [String]
         attr_accessor :model_version
@@ -2583,11 +2735,11 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2KeyValuePairHint>]
         attr_accessor :key_value_pair_hints
       
-        # Model version of the form extraction system. Default is
-        # "builtin/stable". Specify "builtin/latest" for the latest model.
-        # For custom form models, specify: “custom/`model_name`". Model name
-        # format is "bucket_name/path/to/modeldir" corresponding to
-        # "gs://bucket_name/path/to/modeldir" where annotated examples are stored.
+        # Model version of the form extraction system. Default is "builtin/stable".
+        # Specify "builtin/latest" for the latest model. For custom form models, specify:
+        # “custom/`model_name`". Model name format is "bucket_name/path/to/modeldir"
+        # corresponding to "gs://bucket_name/path/to/modeldir" where annotated examples
+        # are stored.
         # Corresponds to the JSON property `modelVersion`
         # @return [String]
         attr_accessor :model_version
@@ -2646,10 +2798,10 @@ module Google
       class GoogleCloudDocumentaiV1beta2InputConfig
         include Google::Apis::Core::Hashable
       
-        # Content in bytes, represented as a stream of bytes.
-        # Note: As with all `bytes` fields, proto buffer messages use a pure binary
-        # representation, whereas JSON representations use base64.
-        # This field only works for synchronous ProcessDocument method.
+        # Content in bytes, represented as a stream of bytes. Note: As with all `bytes`
+        # fields, proto buffer messages use a pure binary representation, whereas JSON
+        # representations use base64. This field only works for synchronous
+        # ProcessDocument method.
         # Corresponds to the JSON property `contents`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2661,11 +2813,9 @@ module Google
         attr_accessor :gcs_source
       
         # Required. Mimetype of the input. Current supported mimetypes are application/
-        # pdf,
-        # image/tiff, and image/gif.
-        # In addition, application/json type is supported for requests with
-        # ProcessDocumentRequest.automl_params field set. The JSON file needs to
-        # be in Document format.
+        # pdf, image/tiff, and image/gif. In addition, application/json type is
+        # supported for requests with ProcessDocumentRequest.automl_params field set.
+        # The JSON file needs to be in Document format.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -2691,10 +2841,9 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # Type of the value. This is case-insensitive, and could be one of:
-        # ADDRESS, LOCATION, ORGANIZATION, PERSON, PHONE_NUMBER,
-        # ID, NUMBER, EMAIL, PRICE, TERMS, DATE, NAME. Types not in this list will
-        # be ignored.
+        # Type of the value. This is case-insensitive, and could be one of: ADDRESS,
+        # LOCATION, ORGANIZATION, PERSON, PHONE_NUMBER, ID, NUMBER, EMAIL, PRICE, TERMS,
+        # DATE, NAME. Types not in this list will be ignored.
         # Corresponds to the JSON property `valueTypes`
         # @return [Array<String>]
         attr_accessor :value_types
@@ -2710,9 +2859,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the normalized vertex coordinates are relative to the original image
-      # and range from 0 to 1.
+      # A vertex represents a 2D point in the image. NOTE: the normalized vertex
+      # coordinates are relative to the original image and range from 0 to 1.
       class GoogleCloudDocumentaiV1beta2NormalizedVertex
         include Google::Apis::Core::Hashable
       
@@ -2741,14 +2889,13 @@ module Google
       class GoogleCloudDocumentaiV1beta2OcrParams
         include Google::Apis::Core::Hashable
       
-        # List of languages to use for OCR. In most cases, an empty value
-        # yields the best results since it enables automatic language detection. For
-        # languages based on the Latin alphabet, setting `language_hints` is not
-        # needed. In rare cases, when the language of the text in the image is known,
-        # setting a hint will help get better results (although it will be a
-        # significant hindrance if the hint is wrong). Document processing returns an
-        # error if one or more of the specified languages is not one of the
-        # supported languages.
+        # List of languages to use for OCR. In most cases, an empty value yields the
+        # best results since it enables automatic language detection. For languages
+        # based on the Latin alphabet, setting `language_hints` is not needed. In rare
+        # cases, when the language of the text in the image is known, setting a hint
+        # will help get better results (although it will be a significant hindrance if
+        # the hint is wrong). Document processing returns an error if one or more of the
+        # specified languages is not one of the supported languages.
         # Corresponds to the JSON property `languageHints`
         # @return [Array<String>]
         attr_accessor :language_hints
@@ -2810,18 +2957,14 @@ module Google
         attr_accessor :gcs_destination
       
         # The max number of pages to include into each output Document shard JSON on
-        # Google Cloud Storage.
-        # The valid range is [1, 100]. If not specified, the default value is 20.
-        # For example, for one pdf file with 100 pages, 100 parsed pages will be
-        # produced. If `pages_per_shard` = 20, then 5 Document shard JSON files each
-        # containing 20 parsed pages will be written under the prefix
-        # OutputConfig.gcs_destination.uri and suffix pages-x-to-y.json where
-        # x and y are 1-indexed page numbers.
-        # Example GCS outputs with 157 pages and pages_per_shard = 50:
-        # <prefix>pages-001-to-050.json
-        # <prefix>pages-051-to-100.json
-        # <prefix>pages-101-to-150.json
-        # <prefix>pages-151-to-157.json
+        # Google Cloud Storage. The valid range is [1, 100]. If not specified, the
+        # default value is 20. For example, for one pdf file with 100 pages, 100 parsed
+        # pages will be produced. If `pages_per_shard` = 20, then 5 Document shard JSON
+        # files each containing 20 parsed pages will be written under the prefix
+        # OutputConfig.gcs_destination.uri and suffix pages-x-to-y.json where x and y
+        # are 1-indexed page numbers. Example GCS outputs with 157 pages and
+        # pages_per_shard = 50: pages-001-to-050.json pages-051-to-100.json pages-101-to-
+        # 150.json pages-151-to-157.json
         # Corresponds to the JSON property `pagesPerShard`
         # @return [Fixnum]
         attr_accessor :pages_per_shard
@@ -2846,9 +2989,9 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2AutoMlParams]
         attr_accessor :automl_params
       
-        # Specifies a known document type for deeper structure detection. Valid
-        # values are currently "general" and "invoice". If not provided, "general"\
-        # is used as default. If any other value is given, the request is rejected.
+        # Specifies a known document type for deeper structure detection. Valid values
+        # are currently "general" and "invoice". If not provided, "general"\ is used as
+        # default. If any other value is given, the request is rejected.
         # Corresponds to the JSON property `documentType`
         # @return [String]
         attr_accessor :document_type
@@ -2878,10 +3021,10 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2OutputConfig]
         attr_accessor :output_config
       
-        # Target project and location to make a call.
-        # Format: `projects/`project-id`/locations/`location-id``.
-        # If no location is specified, a region will be chosen automatically.
-        # This field is only populated when used in ProcessDocument method.
+        # Target project and location to make a call. Format: `projects/`project-id`/
+        # locations/`location-id``. If no location is specified, a region will be chosen
+        # automatically. This field is only populated when used in ProcessDocument
+        # method.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -2944,8 +3087,7 @@ module Google
         attr_accessor :bounding_box
       
         # Optional. Page number for multi-paged inputs this hint applies to. If not
-        # provided, this hint will apply to all pages by default. This value is
-        # 1-based.
+        # provided, this hint will apply to all pages by default. This value is 1-based.
         # Corresponds to the JSON property `pageNumber`
         # @return [Fixnum]
         attr_accessor :page_number
@@ -2982,8 +3124,8 @@ module Google
         # @return [String]
         attr_accessor :model_version
       
-        # Optional. Table bounding box hints that can be provided to complex cases
-        # which our algorithm cannot locate the table(s) in.
+        # Optional. Table bounding box hints that can be provided to complex cases which
+        # our algorithm cannot locate the table(s) in.
         # Corresponds to the JSON property `tableBoundHints`
         # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta2TableBoundHint>]
         attr_accessor :table_bound_hints
@@ -3001,8 +3143,8 @@ module Google
         end
       end
       
-      # A vertex represents a 2D point in the image.
-      # NOTE: the vertex coordinates are in the same scale as the original image.
+      # A vertex represents a 2D point in the image. NOTE: the vertex coordinates are
+      # in the same scale as the original image.
       class GoogleCloudDocumentaiV1beta2Vertex
         include Google::Apis::Core::Hashable
       
@@ -3027,52 +3169,147 @@ module Google
         end
       end
       
+      # The long running operation metadata for batch process method.
+      class GoogleCloudDocumentaiV1beta3BatchProcessMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the operation.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The list of response details of each document.
+        # Corresponds to the JSON property `individualProcessStatuses`
+        # @return [Array<Google::Apis::DocumentaiV1beta2::GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus>]
+        attr_accessor :individual_process_statuses
+      
+        # The state of the current batch processing.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A message providing more details about the current state of processing. For
+        # example, the error message if the operation is failed.
+        # Corresponds to the JSON property `stateMessage`
+        # @return [String]
+        attr_accessor :state_message
+      
+        # The last update time of the operation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @individual_process_statuses = args[:individual_process_statuses] if args.key?(:individual_process_statuses)
+          @state = args[:state] if args.key?(:state)
+          @state_message = args[:state_message] if args.key?(:state_message)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The status of a each individual document in the batch process.
+      class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus
+        include Google::Apis::Core::Hashable
+      
+        # The source of the document, same as the [input_gcs_source] field in the
+        # request when the batch process started. The batch process is started by take
+        # snapshot of that document, since a user can move or change that document
+        # during the process.
+        # Corresponds to the JSON property `inputGcsSource`
+        # @return [String]
+        attr_accessor :input_gcs_source
+      
+        # The output_gcs_destination (in the request as 'output_gcs_destination') of the
+        # processed document if it was successful, otherwise empty.
+        # Corresponds to the JSON property `outputGcsDestination`
+        # @return [String]
+        attr_accessor :output_gcs_destination
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_gcs_source = args[:input_gcs_source] if args.key?(:input_gcs_source)
+          @output_gcs_destination = args[:output_gcs_destination] if args.key?(:output_gcs_destination)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Response message for batch process document method.
+      class GoogleCloudDocumentaiV1beta3BatchProcessResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class GoogleLongrunningOperation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::DocumentaiV1beta2::GoogleRpcStatus]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -3091,12 +3328,29 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
+      class GoogleProtobufEmpty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class GoogleRpcStatus
         include Google::Apis::Core::Hashable
       
@@ -3105,15 +3359,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -3132,122 +3386,61 @@ module Google
       
       # Represents a color in the RGBA color space. This representation is designed
       # for simplicity of conversion to/from color representations in various
-      # languages over compactness; for example, the fields of this representation
-      # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-      # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-      # method in iOS; and, with just a little work, it can be easily formatted into
-      # a CSS "rgba()" string in JavaScript, as well.
-      # Note: this proto does not carry information about the absolute color space
-      # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-      # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-      # space.
-      # Note: when color equality needs to be decided, implementations, unless
-      # documented otherwise, will treat two colors to be equal if all their red,
-      # green, blue and alpha values each differ by at most 1e-5.
-      # Example (Java):
-      # import com.google.type.Color;
-      # // ...
-      # public static java.awt.Color fromProto(Color protocolor) `
-      # float alpha = protocolor.hasAlpha()
-      # ? protocolor.getAlpha().getValue()
-      # : 1.0;
-      # return new java.awt.Color(
-      # protocolor.getRed(),
-      # protocolor.getGreen(),
-      # protocolor.getBlue(),
-      # alpha);
-      # `
-      # public static Color toProto(java.awt.Color color) `
-      # float red = (float) color.getRed();
-      # float green = (float) color.getGreen();
-      # float blue = (float) color.getBlue();
-      # float denominator = 255.0;
-      # Color.Builder resultBuilder =
-      # Color
-      # .newBuilder()
-      # .setRed(red / denominator)
-      # .setGreen(green / denominator)
-      # .setBlue(blue / denominator);
-      # int alpha = color.getAlpha();
-      # if (alpha != 255) `
-      # result.setAlpha(
-      # FloatValue
-      # .newBuilder()
-      # .setValue(((float) alpha) / denominator)
-      # .build());
-      # `
-      # return resultBuilder.build();
-      # `
-      # // ...
-      # Example (iOS / Obj-C):
-      # // ...
-      # static UIColor* fromProto(Color* protocolor) `
-      # float red = [protocolor red];
-      # float green = [protocolor green];
-      # float blue = [protocolor blue];
-      # FloatValue* alpha_wrapper = [protocolor alpha];
-      # float alpha = 1.0;
-      # if (alpha_wrapper != nil) `
-      # alpha = [alpha_wrapper value];
-      # `
-      # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-      # `
-      # static Color* toProto(UIColor* color) `
-      # CGFloat red, green, blue, alpha;
-      # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-      # return nil;
-      # `
-      # Color* result = [[Color alloc] init];
-      # [result setRed:red];
-      # [result setGreen:green];
-      # [result setBlue:blue];
-      # if (alpha <= 0.9999) `
-      # [result setAlpha:floatWrapperWithValue(alpha)];
-      # `
-      # [result autorelease];
-      # return result;
-      # `
-      # // ...
-      # Example (JavaScript):
-      # // ...
-      # var protoToCssColor = function(rgb_color) `
-      # var redFrac = rgb_color.red || 0.0;
-      # var greenFrac = rgb_color.green || 0.0;
-      # var blueFrac = rgb_color.blue || 0.0;
-      # var red = Math.floor(redFrac * 255);
-      # var green = Math.floor(greenFrac * 255);
-      # var blue = Math.floor(blueFrac * 255);
-      # if (!('alpha' in rgb_color)) `
-      # return rgbToCssColor_(red, green, blue);
-      # `
-      # var alphaFrac = rgb_color.alpha.value || 0.0;
-      # var rgbParams = [red, green, blue].join(',');
-      # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-      # `;
-      # var rgbToCssColor_ = function(red, green, blue) `
-      # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-      # var hexString = rgbNumber.toString(16);
-      # var missingZeros = 6 - hexString.length;
-      # var resultBuilder = ['#'];
-      # for (var i = 0; i < missingZeros; i++) `
-      # resultBuilder.push('0');
-      # `
-      # resultBuilder.push(hexString);
-      # return resultBuilder.join('');
-      # `;
-      # // ...
+      # languages over compactness; for example, the fields of this representation can
+      # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+      # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+      # method in iOS; and, with just a little work, it can be easily formatted into a
+      # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+      # information about the absolute color space that should be used to interpret
+      # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+      # applications SHOULD assume the sRGB color space. Note: when color equality
+      # needs to be decided, implementations, unless documented otherwise, will treat
+      # two colors to be equal if all their red, green, blue and alpha values each
+      # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+      # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+      # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+      # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+      # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+      # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+      # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+      # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+      # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+      # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+      # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+      # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+      # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+      # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+      # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+      # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+      # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+      # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+      # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+      # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+      # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+      # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+      # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+      # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+      # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+      # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+      # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+      # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+      # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+      # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+      # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+      # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+      # join(''); `; // ...
       class GoogleTypeColor
         include Google::Apis::Core::Hashable
       
-        # The fraction of this color that should be applied to the pixel. That is,
-        # the final pixel color is defined by the equation:
-        # pixel color = alpha * (this color) + (1.0 - alpha) * (background color)
-        # This means that a value of 1.0 corresponds to a solid color, whereas
-        # a value of 0.0 corresponds to a completely transparent color. This
-        # uses a wrapper message rather than a simple float scalar so that it is
-        # possible to distinguish between a default value and the value being unset.
-        # If omitted, this color object is to be rendered as a solid color
-        # (as if the alpha value had been explicitly given with a value of 1.0).
+        # The fraction of this color that should be applied to the pixel. That is, the
+        # final pixel color is defined by the equation: pixel color = alpha * (this
+        # color) + (1.0 - alpha) * (background color) This means that a value of 1.0
+        # corresponds to a solid color, whereas a value of 0.0 corresponds to a
+        # completely transparent color. This uses a wrapper message rather than a simple
+        # float scalar so that it is possible to distinguish between a default value and
+        # the value being unset. If omitted, this color object is to be rendered as a
+        # solid color (as if the alpha value had been explicitly given with a value of 1.
+        # 0).
         # Corresponds to the JSON property `alpha`
         # @return [Float]
         attr_accessor :alpha
@@ -3277,6 +3470,189 @@ module Google
           @blue = args[:blue] if args.key?(:blue)
           @green = args[:green] if args.key?(:green)
           @red = args[:red] if args.key?(:red)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, e.g. a birthday. The time of day
+      # and time zone are either specified elsewhere or are not significant. The date
+      # is relative to the Proleptic Gregorian Calendar. This can represent: * A full
+      # date, with non-zero year, month and day values * A month and day value, with a
+      # zero year, e.g. an anniversary * A year on its own, with zero month and day
+      # values * A year and month value, with a zero day, e.g. a credit card
+      # expiration date Related types are google.type.TimeOfDay and `google.protobuf.
+      # Timestamp`.
+      class GoogleTypeDate
+        include Google::Apis::Core::Hashable
+      
+        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+        # specifying a year by itself or a year and month where the day is not
+        # significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # Represents civil time in one of a few possible ways: * When utc_offset is set
+      # and time_zone is unset: a civil time on a calendar day with a particular
+      # offset from UTC. * When time_zone is set and utc_offset is unset: a civil time
+      # on a calendar day in a particular time zone. * When neither time_zone nor
+      # utc_offset is set: a civil time on a calendar day in local time. The date is
+      # relative to the Proleptic Gregorian Calendar. If year is 0, the DateTime is
+      # considered not to have a specific year. month and day must have valid, non-
+      # zero values. This type is more flexible than some applications may want. Make
+      # sure to document and validate your application's limitations.
+      class GoogleTypeDateTime
+        include Google::Apis::Core::Hashable
+      
+        # Required. Day of month. Must be from 1 to 31 and valid for the year and month.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Required. Hours of day in 24 hour format. Should be from 0 to 23. An API may
+        # choose to allow the value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Required. Minutes of hour of day. Must be from 0 to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Required. Month of year. Must be from 1 to 12.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Required. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Required. Seconds of minutes of the time. Must normally be from 0 to 59. An
+        # API may allow the value 60 if it allows leap-seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+        # time-zones).
+        # Corresponds to the JSON property `timeZone`
+        # @return [Google::Apis::DocumentaiV1beta2::GoogleTypeTimeZone]
+        attr_accessor :time_zone
+      
+        # UTC offset. Must be whole seconds, between -18 hours and +18 hours. For
+        # example, a UTC offset of -4:00 would be represented as ` seconds: -14400 `.
+        # Corresponds to the JSON property `utcOffset`
+        # @return [String]
+        attr_accessor :utc_offset
+      
+        # Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime
+        # without a year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @month = args[:month] if args.key?(:month)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @utc_offset = args[:utc_offset] if args.key?(:utc_offset)
+          @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # Represents an amount of money with its currency type.
+      class GoogleTypeMoney
+        include Google::Apis::Core::Hashable
+      
+        # The 3-letter currency code defined in ISO 4217.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Number of nano (10^-9) units of the amount. The value must be between -999,999,
+        # 999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be
+        # positive or zero. If `units` is zero, `nanos` can be positive, zero, or
+        # negative. If `units` is negative, `nanos` must be negative or zero. For
+        # example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # The whole units of the amount. For example if `currencyCode` is `"USD"`, then
+        # 1 unit is one US dollar.
+        # Corresponds to the JSON property `units`
+        # @return [Fixnum]
+        attr_accessor :units
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @units = args[:units] if args.key?(:units)
+        end
+      end
+      
+      # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/
+      # time-zones).
+      class GoogleTypeTimeZone
+        include Google::Apis::Core::Hashable
+      
+        # IANA Time Zone Database time zone, e.g. "America/New_York".
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. IANA Time Zone Database version number, e.g. "2019a".
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @version = args[:version] if args.key?(:version)
         end
       end
     end

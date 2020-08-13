@@ -32,28 +32,28 @@ module Google
         # @return [String]
         attr_accessor :checksum
       
-        # Artifact ID, if any; for container images, this will be a URL by digest
-        # like gcr.io/projectID/imagename@sha256:123456
+        # Artifact ID, if any; for container images, this will be a URL by digest like
+        # gcr.io/projectID/imagename@sha256:123456
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Name of the artifact. This may be the path to a binary or jar file, or in
-        # the case of a container build, the name used to push the container image to
-        # Google Container Registry, as presented to `docker push`.
-        # This field is deprecated in favor of the plural `names` field; it continues
-        # to exist here to allow existing BuildProvenance serialized to json in
-        # google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to
-        # deserialize back into proto.
+        # Name of the artifact. This may be the path to a binary or jar file, or in the
+        # case of a container build, the name used to push the container image to Google
+        # Container Registry, as presented to `docker push`. This field is deprecated in
+        # favor of the plural `names` field; it continues to exist here to allow
+        # existing BuildProvenance serialized to json in google.devtools.
+        # containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back
+        # into proto.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Related artifact names. This may be the path to a binary or jar file, or in
         # the case of a container build, the name used to push the container image to
-        # Google Container Registry, as presented to `docker push`. Note that a
-        # single Artifact ID can have multiple names, for example if two tags are
-        # applied to one image.
+        # Google Container Registry, as presented to `docker push`. Note that a single
+        # Artifact ID can have multiple names, for example if two tags are applied to
+        # one image.
         # Corresponds to the JSON property `names`
         # @return [Array<String>]
         attr_accessor :names
@@ -71,20 +71,20 @@ module Google
         end
       end
       
-      # Occurrence that represents a single "attestation".  The authenticity of an
+      # Occurrence that represents a single "attestation". The authenticity of an
       # Attestation can be verified using the attached signature. If the verifier
       # trusts the public key of the signer, then verifying the signature is
-      # sufficient to establish trust.  In this circumstance, the
-      # AttestationAuthority to which this Attestation is attached is primarily
-      # useful for look-up (how to find this Attestation if you already know the
-      # Authority and artifact to be verified) and intent (which authority was this
-      # attestation intended to sign for).
+      # sufficient to establish trust. In this circumstance, the AttestationAuthority
+      # to which this Attestation is attached is primarily useful for look-up (how to
+      # find this Attestation if you already know the Authority and artifact to be
+      # verified) and intent (which authority was this attestation intended to sign
+      # for).
       class Attestation
         include Google::Apis::Core::Hashable
       
-        # An attestation wrapper with a PGP-compatible signature.
-        # This message only supports `ATTACHED` signatures, where the payload that is
-        # signed is included alongside the signature itself in the same file.
+        # An attestation wrapper with a PGP-compatible signature. This message only
+        # supports `ATTACHED` signatures, where the payload that is signed is included
+        # alongside the signature itself in the same file.
         # Corresponds to the JSON property `pgpSignedAttestation`
         # @return [Google::Apis::ContaineranalysisV1alpha1::PgpSignedAttestation]
         attr_accessor :pgp_signed_attestation
@@ -99,24 +99,24 @@ module Google
         end
       end
       
-      # Note kind that represents a logical attestation "role" or "authority".  For
+      # Note kind that represents a logical attestation "role" or "authority". For
       # example, an organization might have one `AttestationAuthority` for "QA" and
-      # one for "build".  This Note is intended to act strictly as a grouping
-      # mechanism for the attached Occurrences (Attestations).  This grouping
-      # mechanism also provides a security boundary, since IAM ACLs gate the ability
-      # for a principle to attach an Occurrence to a given Note.  It also provides a
-      # single point of lookup to find all attached Attestation Occurrences, even if
-      # they don't all live in the same project.
+      # one for "build". This Note is intended to act strictly as a grouping mechanism
+      # for the attached Occurrences (Attestations). This grouping mechanism also
+      # provides a security boundary, since IAM ACLs gate the ability for a principle
+      # to attach an Occurrence to a given Note. It also provides a single point of
+      # lookup to find all attached Attestation Occurrences, even if they don't all
+      # live in the same project.
       class AttestationAuthority
         include Google::Apis::Core::Hashable
       
         # This submessage provides human-readable hints about the purpose of the
-        # AttestationAuthority.  Because the name of a Note acts as its resource
-        # reference, it is important to disambiguate the canonical name of the Note
-        # (which might be a UUID for security purposes) from "readable" names more
-        # suitable for debug output.  Note that these hints should NOT be used to
-        # look up AttestationAuthorities in security sensitive contexts, such as when
-        # looking up Attestations to verify.
+        # AttestationAuthority. Because the name of a Note acts as its resource
+        # reference, it is important to disambiguate the canonical name of the Note (
+        # which might be a UUID for security purposes) from "readable" names more
+        # suitable for debug output. Note that these hints should NOT be used to look up
+        # AttestationAuthorities in security sensitive contexts, such as when looking up
+        # Attestations to verify.
         # Corresponds to the JSON property `hint`
         # @return [Google::Apis::ContaineranalysisV1alpha1::AttestationAuthorityHint]
         attr_accessor :hint
@@ -132,12 +132,12 @@ module Google
       end
       
       # This submessage provides human-readable hints about the purpose of the
-      # AttestationAuthority.  Because the name of a Note acts as its resource
-      # reference, it is important to disambiguate the canonical name of the Note
-      # (which might be a UUID for security purposes) from "readable" names more
-      # suitable for debug output.  Note that these hints should NOT be used to
-      # look up AttestationAuthorities in security sensitive contexts, such as when
-      # looking up Attestations to verify.
+      # AttestationAuthority. Because the name of a Note acts as its resource
+      # reference, it is important to disambiguate the canonical name of the Note (
+      # which might be a UUID for security purposes) from "readable" names more
+      # suitable for debug output. Note that these hints should NOT be used to look up
+      # AttestationAuthorities in security sensitive contexts, such as when looking up
+      # Attestations to verify.
       class AttestationAuthorityHint
         include Google::Apis::Core::Hashable
       
@@ -156,11 +156,9 @@ module Google
         end
       end
       
-      # Basis describes the base image portion (Note) of the DockerImage
-      # relationship.  Linked occurrences are derived from this or an
-      # equivalent image via:
-      # FROM <Basis.resource_url>
-      # Or an equivalent reference, e.g. a tag of the resource_url.
+      # Basis describes the base image portion (Note) of the DockerImage relationship.
+      # Linked occurrences are derived from this or an equivalent image via: FROM Or
+      # an equivalent reference, e.g. a tag of the resource_url.
       class Basis
         include Google::Apis::Core::Hashable
       
@@ -169,8 +167,8 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::Fingerprint]
         attr_accessor :fingerprint
       
-        # The resource_url for the resource representing the basis of
-        # associated occurrence images.
+        # The resource_url for the resource representing the basis of associated
+        # occurrence images.
         # Corresponds to the JSON property `resourceUrl`
         # @return [String]
         attr_accessor :resource_url
@@ -190,69 +188,57 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # Represents a textual expression in the Common Expression Language (CEL)
-        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-        # are documented at https://github.com/google/cel-spec.
-        # Example (Comparison):
-        # title: "Summary size limit"
-        # description: "Determines if a summary is less than 100 chars"
-        # expression: "document.summary.size() < 100"
-        # Example (Equality):
-        # title: "Requestor is owner"
-        # description: "Determines if requestor is the document owner"
-        # expression: "document.owner == request.auth.claims.email"
-        # Example (Logic):
-        # title: "Public documents"
-        # description: "Determine whether the document should be publicly visible"
-        # expression: "document.type != 'private' && document.type != 'internal'"
-        # Example (Data Manipulation):
-        # title: "Notification string"
-        # description: "Create a notification string with a timestamp."
-        # expression: "'New message received at ' + string(document.create_time)"
-        # The exact variables and functions that may be referenced within an expression
-        # are determined by the service that evaluates it. See the service
-        # documentation for additional information.
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Expr]
         attr_accessor :condition
       
-        # Specifies the identities requesting access for a Cloud Platform resource.
-        # `members` can have the following values:
-        # * `allUsers`: A special identifier that represents anyone who is
-        # on the internet; with or without a Google account.
-        # * `allAuthenticatedUsers`: A special identifier that represents anyone
-        # who is authenticated with a Google account or a service account.
-        # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@example.com` .
-        # * `serviceAccount:`emailid``: An email address that represents a service
-        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
-        # * `group:`emailid``: An email address that represents a Google group.
-        # For example, `admins@example.com`.
-        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For
-        # example, `alice@example.com?uid=123456789012345678901`. If the user is
-        # recovered, this value reverts to `user:`emailid`` and the recovered user
-        # retains the role in the binding.
-        # * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus
-        # unique identifier) representing a service account that has been recently
-        # deleted. For example,
-        # `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to
-        # `serviceAccount:`emailid`` and the undeleted service account retains the
-        # role in the binding.
-        # * `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently
-        # deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-        # the group is recovered, this value reverts to `group:`emailid`` and the
-        # recovered group retains the role in the binding.
-        # * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`.
+        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # members` can have the following values: * `allUsers`: A special identifier
+        # that represents anyone who is on the internet; with or without a Google
+        # account. * `allAuthenticatedUsers`: A special identifier that represents
+        # anyone who is authenticated with a Google account or a service account. * `
+        # user:`emailid``: An email address that represents a specific Google account.
+        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
+        # address that represents a service account. For example, `my-other-app@appspot.
+        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
+        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
+        # `uniqueid``: An email address (plus unique identifier) representing a user
+        # that has been recently deleted. For example, `alice@example.com?uid=
+        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
+        # emailid`` and the recovered user retains the role in the binding. * `deleted:
+        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a service account that has been recently deleted. For
+        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+        # If the service account is undeleted, this value reverts to `serviceAccount:`
+        # emailid`` and the undeleted service account retains the role in the binding. *
+        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a Google group that has been recently deleted. For
+        # example, `admins@example.com?uid=123456789012345678901`. If the group is
+        # recovered, this value reverts to `group:`emailid`` and the recovered group
+        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
+        # primary) that represents all the users of that domain. For example, `google.
+        # com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
       
-        # Role that is assigned to `members`.
-        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
+        # , or `roles/owner`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -279,16 +265,14 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::BuildProvenance]
         attr_accessor :provenance
       
-        # Serialized JSON representation of the provenance, used in generating the
-        # `BuildSignature` in the corresponding Result. After verifying the
-        # signature, `provenance_bytes` can be unmarshalled and compared to the
-        # provenance to confirm that it is unchanged. A base64-encoded string
-        # representation of the provenance bytes is used for the signature in order
-        # to interoperate with openssl which expects this format for signature
-        # verification.
-        # The serialized form is captured both to avoid ambiguity in how the
-        # provenance is marshalled to json as well to prevent incompatibilities with
-        # future changes.
+        # Serialized JSON representation of the provenance, used in generating the `
+        # BuildSignature` in the corresponding Result. After verifying the signature, `
+        # provenance_bytes` can be unmarshalled and compared to the provenance to
+        # confirm that it is unchanged. A base64-encoded string representation of the
+        # provenance bytes is used for the signature in order to interoperate with
+        # openssl which expects this format for signature verification. The serialized
+        # form is captured both to avoid ambiguity in how the provenance is marshalled
+        # to json as well to prevent incompatibilities with future changes.
         # Corresponds to the JSON property `provenanceBytes`
         # @return [String]
         attr_accessor :provenance_bytes
@@ -309,8 +293,8 @@ module Google
       class BuildProvenance
         include Google::Apis::Core::Hashable
       
-        # Special options applied to this build. This is a catch-all field where
-        # build providers can enter any desired additional details.
+        # Special options applied to this build. This is a catch-all field where build
+        # providers can enter any desired additional details.
         # Corresponds to the JSON property `buildOptions`
         # @return [Hash<String,String>]
         attr_accessor :build_options
@@ -403,31 +387,29 @@ module Google
       class BuildSignature
         include Google::Apis::Core::Hashable
       
-        # An Id for the key used to sign. This could be either an Id for the key
-        # stored in `public_key` (such as the Id or fingerprint for a PGP key, or the
-        # CN for a cert), or a reference to an external key (such as a reference to a
-        # key in Cloud Key Management Service).
+        # An Id for the key used to sign. This could be either an Id for the key stored
+        # in `public_key` (such as the Id or fingerprint for a PGP key, or the CN for a
+        # cert), or a reference to an external key (such as a reference to a key in
+        # Cloud Key Management Service).
         # Corresponds to the JSON property `keyId`
         # @return [String]
         attr_accessor :key_id
       
-        # The type of the key, either stored in `public_key` or referenced in
-        # `key_id`
+        # The type of the key, either stored in `public_key` or referenced in `key_id`
         # Corresponds to the JSON property `keyType`
         # @return [String]
         attr_accessor :key_type
       
         # Public key of the builder which can be used to verify that the related
-        # findings are valid and unchanged. If `key_type` is empty, this defaults
-        # to PEM encoded public keys.
-        # This field may be empty if `key_id` references an external key.
-        # For Cloud Build based signatures, this is a PEM encoded public
-        # key. To verify the Cloud Build signature, place the contents of
-        # this field into a file (public.pem). The signature field is base64-decoded
-        # into its binary representation in signature.bin, and the provenance bytes
-        # from `BuildDetails` are base64-decoded into a binary representation in
-        # signed.bin. OpenSSL can then verify the signature:
-        # `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
+        # findings are valid and unchanged. If `key_type` is empty, this defaults to PEM
+        # encoded public keys. This field may be empty if `key_id` references an
+        # external key. For Cloud Build based signatures, this is a PEM encoded public
+        # key. To verify the Cloud Build signature, place the contents of this field
+        # into a file (public.pem). The signature field is base64-decoded into its
+        # binary representation in signature.bin, and the provenance bytes from `
+        # BuildDetails` are base64-decoded into a binary representation in signed.bin.
+        # OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -
+        # signature signature.bin signed.bin`
         # Corresponds to the JSON property `publicKey`
         # @return [String]
         attr_accessor :public_key
@@ -450,8 +432,8 @@ module Google
         end
       end
       
-      # Note holding the version of the provider's builder and the signature of
-      # the provenance message in linked BuildDetails.
+      # Note holding the version of the provider's builder and the signature of the
+      # provenance message in linked BuildDetails.
       class BuildType
         include Google::Apis::Core::Hashable
       
@@ -485,8 +467,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :args
       
-        # Working directory (relative to project source root) used when running
-        # this Command.
+        # Working directory (relative to project source root) used when running this
+        # Command.
         # Corresponds to the JSON property `dir`
         # @return [String]
         attr_accessor :dir
@@ -629,14 +611,12 @@ module Google
         end
       end
       
-      # Derived describes the derived image portion (Occurrence) of the
-      # DockerImage relationship.  This image would be produced from a Dockerfile
-      # with FROM <DockerImage.Basis in attached Note>.
+      # Derived describes the derived image portion (Occurrence) of the DockerImage
+      # relationship. This image would be produced from a Dockerfile with FROM .
       class Derived
         include Google::Apis::Core::Hashable
       
-        # Output only. This contains the base image URL for the derived image
-        # occurrence.
+        # Output only. This contains the base image URL for the derived image occurrence.
         # Corresponds to the JSON property `baseResourceUrl`
         # @return [String]
         attr_accessor :base_resource_url
@@ -652,9 +632,9 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::Fingerprint]
         attr_accessor :fingerprint
       
-        # This contains layer-specific metadata, if populated it has length
-        # "distance" and is ordered with [distance] being the layer immediately
-        # following the base image and [1] being the final layer.
+        # This contains layer-specific metadata, if populated it has length "distance"
+        # and is ordered with [distance] being the layer immediately following the base
+        # image and [1] being the final layer.
         # Corresponds to the JSON property `layerInfo`
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::Layer>]
         attr_accessor :layer_info
@@ -672,16 +652,15 @@ module Google
         end
       end
       
-      # Identifies all occurrences of this vulnerability in the package for a
-      # specific distro/location
-      # For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
+      # Identifies all occurrences of this vulnerability in the package for a specific
+      # distro/location For example: glibc in cpe:/o:debian:debian_linux:8 for
+      # versions 2.1 - 2.2
       class Detail
         include Google::Apis::Core::Hashable
       
-        # The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in
-        # which the vulnerability manifests.  Examples include distro or storage
-        # location for vulnerable jar.
-        # This field can be used as a filter in list requests.
+        # The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which
+        # the vulnerability manifests. Examples include distro or storage location for
+        # vulnerable jar. This field can be used as a filter in list requests.
         # Corresponds to the JSON property `cpeUri`
         # @return [String]
         attr_accessor :cpe_uri
@@ -703,32 +682,30 @@ module Google
         attr_accessor :is_obsolete
         alias_method :is_obsolete?, :is_obsolete
       
-        # Version contains structured information about the version of the package.
-        # For a discussion of this in Debian/Ubuntu:
-        # http://serverfault.com/questions/604541/debian-packages-version-convention
-        # For a discussion of this in Redhat/Fedora/Centos:
-        # http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+        # Version contains structured information about the version of the package. For
+        # a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/
+        # debian-packages-version-convention For a discussion of this in Redhat/Fedora/
+        # Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
         # Corresponds to the JSON property `maxAffectedVersion`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Version]
         attr_accessor :max_affected_version
       
-        # Version contains structured information about the version of the package.
-        # For a discussion of this in Debian/Ubuntu:
-        # http://serverfault.com/questions/604541/debian-packages-version-convention
-        # For a discussion of this in Redhat/Fedora/Centos:
-        # http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+        # Version contains structured information about the version of the package. For
+        # a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/
+        # debian-packages-version-convention For a discussion of this in Redhat/Fedora/
+        # Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
         # Corresponds to the JSON property `minAffectedVersion`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Version]
         attr_accessor :min_affected_version
       
-        # The name of the package where the vulnerability was found.
-        # This field can be used as a filter in list requests.
+        # The name of the package where the vulnerability was found. This field can be
+        # used as a filter in list requests.
         # Corresponds to the JSON property `package`
         # @return [String]
         attr_accessor :package
       
-        # The type of package; whether native or non native(ruby gems,
-        # node.js packages etc)
+        # The type of package; whether native or non native(ruby gems, node.js packages
+        # etc)
         # Corresponds to the JSON property `packageType`
         # @return [String]
         attr_accessor :package_type
@@ -765,12 +742,12 @@ module Google
         # @return [String]
         attr_accessor :analysis_status
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `analysisStatusError`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Status]
         attr_accessor :analysis_status_error
@@ -828,19 +805,19 @@ module Google
         end
       end
       
-      # This represents a particular channel of distribution for a given package.
-      # e.g. Debian's jessie-backports dpkg mirror
+      # This represents a particular channel of distribution for a given package. e.g.
+      # Debian's jessie-backports dpkg mirror
       class Distribution
         include Google::Apis::Core::Hashable
       
-        # The CPU architecture for which packages in this distribution
-        # channel were built
+        # The CPU architecture for which packages in this distribution channel were
+        # built
         # Corresponds to the JSON property `architecture`
         # @return [String]
         attr_accessor :architecture
       
-        # The cpe_uri in [cpe format](https://cpe.mitre.org/specification/)
-        # denoting the package manager version distributing a package.
+        # The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the
+        # package manager version distributing a package.
         # Corresponds to the JSON property `cpeUri`
         # @return [String]
         attr_accessor :cpe_uri
@@ -850,11 +827,10 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Version contains structured information about the version of the package.
-        # For a discussion of this in Debian/Ubuntu:
-        # http://serverfault.com/questions/604541/debian-packages-version-convention
-        # For a discussion of this in Redhat/Fedora/Centos:
-        # http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+        # Version contains structured information about the version of the package. For
+        # a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/
+        # debian-packages-version-convention For a discussion of this in Redhat/Fedora/
+        # Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
         # Corresponds to the JSON property `latestVersion`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Version]
         attr_accessor :latest_version
@@ -884,13 +860,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -903,52 +877,43 @@ module Google
         end
       end
       
-      # Represents a textual expression in the Common Expression Language (CEL)
-      # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-      # are documented at https://github.com/google/cel-spec.
-      # Example (Comparison):
-      # title: "Summary size limit"
-      # description: "Determines if a summary is less than 100 chars"
-      # expression: "document.summary.size() < 100"
-      # Example (Equality):
-      # title: "Requestor is owner"
-      # description: "Determines if requestor is the document owner"
-      # expression: "document.owner == request.auth.claims.email"
-      # Example (Logic):
-      # title: "Public documents"
-      # description: "Determine whether the document should be publicly visible"
-      # expression: "document.type != 'private' && document.type != 'internal'"
-      # Example (Data Manipulation):
-      # title: "Notification string"
-      # description: "Create a notification string with a timestamp."
-      # expression: "'New message received at ' + string(document.create_time)"
-      # The exact variables and functions that may be referenced within an expression
-      # are determined by the service that evaluates it. See the service
-      # documentation for additional information.
+      # Represents a textual expression in the Common Expression Language (CEL) syntax.
+      # CEL is a C-like expression language. The syntax and semantics of CEL are
+      # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+      # "Summary size limit" description: "Determines if a summary is less than 100
+      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+      # Requestor is owner" description: "Determines if requestor is the document
+      # owner" expression: "document.owner == request.auth.claims.email" Example (
+      # Logic): title: "Public documents" description: "Determine whether the document
+      # should be publicly visible" expression: "document.type != 'private' &&
+      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+      # string" description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)" The
+      # exact variables and functions that may be referenced within an expression are
+      # determined by the service that evaluates it. See the service documentation for
+      # additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
-        # Optional. Description of the expression. This is a longer text which
-        # describes the expression, e.g. when hovered over it in a UI.
+        # Optional. Description of the expression. This is a longer text which describes
+        # the expression, e.g. when hovered over it in a UI.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Textual representation of an expression in Common Expression Language
-        # syntax.
+        # Textual representation of an expression in Common Expression Language syntax.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # Optional. String indicating the location of the expression for error
-        # reporting, e.g. a file name and a position in the file.
+        # Optional. String indicating the location of the expression for error reporting,
+        # e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # Optional. Title for the expression, i.e. a short string describing
-        # its purpose. This can be used e.g. in UIs which allow to enter the
-        # expression.
+        # Optional. Title for the expression, i.e. a short string describing its purpose.
+        # This can be used e.g. in UIs which allow to enter the expression.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -966,8 +931,8 @@ module Google
         end
       end
       
-      # Container message for hashes of byte content of files, used in Source
-      # messages to verify integrity of source input to the build.
+      # Container message for hashes of byte content of files, used in Source messages
+      # to verify integrity of source input to the build.
       class FileHashes
         include Google::Apis::Core::Hashable
       
@@ -990,9 +955,8 @@ module Google
       class Fingerprint
         include Google::Apis::Core::Hashable
       
-        # The layer-id of the final layer in the Docker image's v1
-        # representation.
-        # This field can be used as a filter in list requests.
+        # The layer-id of the final layer in the Docker image's v1 representation. This
+        # field can be used as a filter in list requests.
         # Corresponds to the JSON property `v1Name`
         # @return [String]
         attr_accessor :v1_name
@@ -1002,10 +966,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :v2_blob
       
-        # Output only. The name of the image's v2 blobs computed via:
-        # [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1])
-        # Only the name of the final blob is kept.
-        # This field can be used as a filter in list requests.
+        # Output only. The name of the image's v2 blobs computed via: [bottom] :=
+        # v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the
+        # final blob is kept. This field can be used as a filter in list requests.
         # Corresponds to the JSON property `v2Name`
         # @return [String]
         attr_accessor :v2_name
@@ -1045,15 +1008,13 @@ module Google
       class GetPolicyOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. The policy format version to be returned.
-        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        # rejected.
-        # Requests for policies with any conditional bindings must specify version 3.
-        # Policies without any conditional bindings may specify any valid value or
-        # leave the field unset.
-        # To learn which resources support conditions in their IAM policies, see the
-        # [IAM
-        # documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        # Optional. The policy format version to be returned. Valid values are 0, 1, and
+        # 3. Requests specifying an invalid value will be rejected. Requests for
+        # policies with any conditional bindings must specify version 3. Policies
+        # without any conditional bindings may specify any valid value or leave the
+        # field unset. To learn which resources support conditions in their IAM policies,
+        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        # resource-policies).
         # Corresponds to the JSON property `requestedPolicyVersion`
         # @return [Fixnum]
         attr_accessor :requested_policy_version
@@ -1068,9 +1029,8 @@ module Google
         end
       end
       
-      # A summary of how many vulnz occurrences there are per severity type.
-      # counts by groups, or if we should have different summary messages
-      # like this.
+      # A summary of how many vulnz occurrences there are per severity type. counts by
+      # groups, or if we should have different summary messages like this.
       class GetVulnzOccurrencesSummaryResponse
         include Google::Apis::Core::Hashable
       
@@ -1155,9 +1115,8 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::GoogleDevtoolsContaineranalysisV1alpha1AliasContext]
         attr_accessor :alias_context
       
-        # The full project name within the host. Projects may be nested, so
-        # "project/subproject" is a valid project name. The "repo name" is
-        # the hostURI/project.
+        # The full project name within the host. Projects may be nested, so "project/
+        # subproject" is a valid project name. The "repo name" is the hostURI/project.
         # Corresponds to the JSON property `gerritProject`
         # @return [String]
         attr_accessor :gerrit_project
@@ -1211,8 +1170,8 @@ module Google
         end
       end
       
-      # Metadata for all operations used and required for all operations
-      # that created by Container Analysis Providers
+      # Metadata for all operations used and required for all operations that created
+      # by Container Analysis Providers
       class GoogleDevtoolsContaineranalysisV1alpha1OperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -1237,8 +1196,8 @@ module Google
         end
       end
       
-      # Selects a repo using a Google Cloud Platform project ID (e.g.,
-      # winged-cargo-31) and a repo name within that project.
+      # Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31)
+      # and a repo name within that project.
       class GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId
         include Google::Apis::Core::Hashable
       
@@ -1267,8 +1226,8 @@ module Google
       class GoogleDevtoolsContaineranalysisV1alpha1RepoId
         include Google::Apis::Core::Hashable
       
-        # Selects a repo using a Google Cloud Platform project ID (e.g.,
-        # winged-cargo-31) and a repo name within that project.
+        # Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31)
+        # and a repo name within that project.
         # Corresponds to the JSON property `projectRepoId`
         # @return [Google::Apis::ContaineranalysisV1alpha1::GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId]
         attr_accessor :project_repo_id
@@ -1355,13 +1314,12 @@ module Google
         end
       end
       
-      # This represents how a particular software package may be installed on
-      # a system.
+      # This represents how a particular software package may be installed on a system.
       class Installation
         include Google::Apis::Core::Hashable
       
-        # All of the places within the filesystem versions of this package
-        # have been found.
+        # All of the places within the filesystem versions of this package have been
+        # found.
         # Corresponds to the JSON property `location`
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::Location>]
         attr_accessor :location
@@ -1462,9 +1420,8 @@ module Google
       class ListOccurrencesResponse
         include Google::Apis::Core::Hashable
       
-        # The next pagination token in the list response. It should be used as
-        # `page_token` for the following request. An empty value means no more
-        # results.
+        # The next pagination token in the list response. It should be used as `
+        # page_token` for the following request. An empty value means no more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1510,14 +1467,13 @@ module Google
         end
       end
       
-      # An occurrence of a particular package installation found within a
-      # system's filesystem.
-      # e.g. glibc was found in /var/lib/dpkg/status
+      # An occurrence of a particular package installation found within a system's
+      # filesystem. e.g. glibc was found in /var/lib/dpkg/status
       class Location
         include Google::Apis::Core::Hashable
       
-        # The cpe_uri in [cpe format](https://cpe.mitre.org/specification/)
-        # denoting the package manager version distributing a package.
+        # The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the
+        # package manager version distributing a package.
         # Corresponds to the JSON property `cpeUri`
         # @return [String]
         attr_accessor :cpe_uri
@@ -1527,11 +1483,10 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # Version contains structured information about the version of the package.
-        # For a discussion of this in Debian/Ubuntu:
-        # http://serverfault.com/questions/604541/debian-packages-version-convention
-        # For a discussion of this in Redhat/Fedora/Centos:
-        # http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+        # Version contains structured information about the version of the package. For
+        # a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/
+        # debian-packages-version-convention For a discussion of this in Redhat/Fedora/
+        # Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Version]
         attr_accessor :version
@@ -1552,29 +1507,27 @@ module Google
       class Note
         include Google::Apis::Core::Hashable
       
-        # Note kind that represents a logical attestation "role" or "authority".  For
+        # Note kind that represents a logical attestation "role" or "authority". For
         # example, an organization might have one `AttestationAuthority` for "QA" and
-        # one for "build".  This Note is intended to act strictly as a grouping
-        # mechanism for the attached Occurrences (Attestations).  This grouping
-        # mechanism also provides a security boundary, since IAM ACLs gate the ability
-        # for a principle to attach an Occurrence to a given Note.  It also provides a
-        # single point of lookup to find all attached Attestation Occurrences, even if
-        # they don't all live in the same project.
+        # one for "build". This Note is intended to act strictly as a grouping mechanism
+        # for the attached Occurrences (Attestations). This grouping mechanism also
+        # provides a security boundary, since IAM ACLs gate the ability for a principle
+        # to attach an Occurrence to a given Note. It also provides a single point of
+        # lookup to find all attached Attestation Occurrences, even if they don't all
+        # live in the same project.
         # Corresponds to the JSON property `attestationAuthority`
         # @return [Google::Apis::ContaineranalysisV1alpha1::AttestationAuthority]
         attr_accessor :attestation_authority
       
-        # Basis describes the base image portion (Note) of the DockerImage
-        # relationship.  Linked occurrences are derived from this or an
-        # equivalent image via:
-        # FROM <Basis.resource_url>
-        # Or an equivalent reference, e.g. a tag of the resource_url.
+        # Basis describes the base image portion (Note) of the DockerImage relationship.
+        # Linked occurrences are derived from this or an equivalent image via: FROM Or
+        # an equivalent reference, e.g. a tag of the resource_url.
         # Corresponds to the JSON property `baseImage`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Basis]
         attr_accessor :base_image
       
-        # Note holding the version of the provider's builder and the signature of
-        # the provenance message in linked BuildDetails.
+        # Note holding the version of the provider's builder and the signature of the
+        # provenance message in linked BuildDetails.
         # Corresponds to the JSON property `buildType`
         # @return [Google::Apis::ContaineranalysisV1alpha1::BuildType]
         attr_accessor :build_type
@@ -1615,14 +1568,13 @@ module Google
         # @return [String]
         attr_accessor :long_description
       
-        # The name of the note in the form
-        # "projects/`provider_project_id`/notes/`NOTE_ID`"
+        # The name of the note in the form "projects/`provider_project_id`/notes/`
+        # NOTE_ID`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # This represents a particular package that is distributed over
-        # various channels.
+        # This represents a particular package that is distributed over various channels.
         # e.g. glibc (aka libc6) is distributed by many, at various versions.
         # Corresponds to the JSON property `package`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Package]
@@ -1638,15 +1590,15 @@ module Google
         # @return [String]
         attr_accessor :short_description
       
-        # Output only. The time this note was last updated. This field can be used as
-        # a filter in list requests.
+        # Output only. The time this note was last updated. This field can be used as a
+        # filter in list requests.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # An Upgrade Note represents a potential upgrade of a package to a given
-        # version. For each package version combination (i.e. bash 4.0, bash 4.1,
-        # bash 4.1.2), there will be a Upgrade Note.
+        # An Upgrade Note represents a potential upgrade of a package to a given version.
+        # For each package version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2),
+        # there will be a Upgrade Note.
         # Corresponds to the JSON property `upgrade`
         # @return [Google::Apis::ContaineranalysisV1alpha1::UpgradeNote]
         attr_accessor :upgrade
@@ -1685,14 +1637,14 @@ module Google
       class Occurrence
         include Google::Apis::Core::Hashable
       
-        # Occurrence that represents a single "attestation".  The authenticity of an
+        # Occurrence that represents a single "attestation". The authenticity of an
         # Attestation can be verified using the attached signature. If the verifier
         # trusts the public key of the signer, then verifying the signature is
-        # sufficient to establish trust.  In this circumstance, the
-        # AttestationAuthority to which this Attestation is attached is primarily
-        # useful for look-up (how to find this Attestation if you already know the
-        # Authority and artifact to be verified) and intent (which authority was this
-        # attestation intended to sign for).
+        # sufficient to establish trust. In this circumstance, the AttestationAuthority
+        # to which this Attestation is attached is primarily useful for look-up (how to
+        # find this Attestation if you already know the Authority and artifact to be
+        # verified) and intent (which authority was this attestation intended to sign
+        # for).
         # Corresponds to the JSON property `attestation`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Attestation]
         attr_accessor :attestation
@@ -1712,9 +1664,8 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::Deployment]
         attr_accessor :deployment
       
-        # Derived describes the derived image portion (Occurrence) of the
-        # DockerImage relationship.  This image would be produced from a Dockerfile
-        # with FROM <DockerImage.Basis in attached Note>.
+        # Derived describes the derived image portion (Occurrence) of the DockerImage
+        # relationship. This image would be produced from a Dockerfile with FROM .
         # Corresponds to the JSON property `derivedImage`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Derived]
         attr_accessor :derived_image
@@ -1724,8 +1675,7 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::Discovered]
         attr_accessor :discovered
       
-        # This represents how a particular software package may be installed on
-        # a system.
+        # This represents how a particular software package may be installed on a system.
         # Corresponds to the JSON property `installation`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Installation]
         attr_accessor :installation
@@ -1736,15 +1686,15 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Output only. The name of the `Occurrence` in the form
-        # "projects/`project_id`/occurrences/`OCCURRENCE_ID`"
+        # Output only. The name of the `Occurrence` in the form "projects/`project_id`/
+        # occurrences/`OCCURRENCE_ID`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # An analysis note associated with this image, in the form
-        # "providers/`provider_id`/notes/`NOTE_ID`"
-        # This field can be used as a filter in list requests.
+        # An analysis note associated with this image, in the form "providers/`
+        # provider_id`/notes/`NOTE_ID`" This field can be used as a filter in list
+        # requests.
         # Corresponds to the JSON property `noteName`
         # @return [String]
         attr_accessor :note_name
@@ -1760,8 +1710,8 @@ module Google
         attr_accessor :resource
       
         # The unique URL of the image or the container for which the `Occurrence`
-        # applies. For example, https://gcr.io/project/image@sha256:foo This field
-        # can be used as a filter in list requests.
+        # applies. For example, https://gcr.io/project/image@sha256:foo This field can
+        # be used as a filter in list requests.
         # Corresponds to the JSON property `resourceUrl`
         # @return [String]
         attr_accessor :resource_url
@@ -1778,8 +1728,8 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1alpha1::UpgradeOccurrence]
         attr_accessor :upgrade
       
-        # Used by Occurrence to point to where the vulnerability exists and how
-        # to fix it.
+        # Used by Occurrence to point to where the vulnerability exists and how to fix
+        # it.
         # Corresponds to the JSON property `vulnerabilityDetails`
         # @return [Google::Apis::ContaineranalysisV1alpha1::VulnerabilityDetails]
         attr_accessor :vulnerability_details
@@ -1814,47 +1764,45 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -1873,8 +1821,7 @@ module Google
         end
       end
       
-      # This represents a particular package that is distributed over
-      # various channels.
+      # This represents a particular package that is distributed over various channels.
       # e.g. glibc (aka libc6) is distributed by many, at various versions.
       class Package
         include Google::Apis::Core::Hashable
@@ -1900,8 +1847,8 @@ module Google
         end
       end
       
-      # This message wraps a location affected by a vulnerability and its
-      # associated fix (if one is available).
+      # This message wraps a location affected by a vulnerability and its associated
+      # fix (if one is available).
       class PackageIssue
         include Google::Apis::Core::Hashable
       
@@ -1932,49 +1879,43 @@ module Google
         end
       end
       
-      # An attestation wrapper with a PGP-compatible signature.
-      # This message only supports `ATTACHED` signatures, where the payload that is
-      # signed is included alongside the signature itself in the same file.
+      # An attestation wrapper with a PGP-compatible signature. This message only
+      # supports `ATTACHED` signatures, where the payload that is signed is included
+      # alongside the signature itself in the same file.
       class PgpSignedAttestation
         include Google::Apis::Core::Hashable
       
-        # Type (for example schema) of the attestation payload that was signed.
-        # The verifier must ensure that the provided type is one that the verifier
-        # supports, and that the attestation payload is a valid instantiation of that
-        # type (for example by validating a JSON schema).
+        # Type (for example schema) of the attestation payload that was signed. The
+        # verifier must ensure that the provided type is one that the verifier supports,
+        # and that the attestation payload is a valid instantiation of that type (for
+        # example by validating a JSON schema).
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
       
-        # The cryptographic fingerprint of the key used to generate the signature,
-        # as output by, e.g. `gpg --list-keys`. This should be the version 4, full
-        # 160-bit fingerprint, expressed as a 40 character hexadecimal string. See
-        # https://tools.ietf.org/html/rfc4880#section-12.2 for details.
-        # Implementations may choose to acknowledge "LONG", "SHORT", or other
-        # abbreviated key IDs, but only the full fingerprint is guaranteed to work.
-        # In gpg, the full fingerprint can be retrieved from the `fpr` field
-        # returned when calling --list-keys with --with-colons.  For example:
-        # ```
-        # gpg --with-colons --with-fingerprint --force-v4-certs \
-        # --list-keys attester@example.com
-        # tru::1:1513631572:0:3:1:5
-        # pub:...<SNIP>...
-        # fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:
-        # ```
-        # Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+        # The cryptographic fingerprint of the key used to generate the signature, as
+        # output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit
+        # fingerprint, expressed as a 40 character hexadecimal string. See https://tools.
+        # ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to
+        # acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full
+        # fingerprint is guaranteed to work. In gpg, the full fingerprint can be
+        # retrieved from the `fpr` field returned when calling --list-keys with --with-
+        # colons. For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs
+        # \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr::::
+        # :::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the fingerprint is `
+        # 24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
         # Corresponds to the JSON property `pgpKeyId`
         # @return [String]
         attr_accessor :pgp_key_id
       
         # The raw content of the signature, as output by GNU Privacy Guard (GPG) or
-        # equivalent.  Since this message only supports attached signatures, the
-        # payload that was signed must be attached. While the signature format
-        # supported is dependent on the verification implementation, currently only
-        # ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than
-        # `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor
-        # --output=signature.gpg payload.json` will create the signature content
-        # expected in this field in `signature.gpg` for the `payload.json`
-        # attestation payload.
+        # equivalent. Since this message only supports attached signatures, the payload
+        # that was signed must be attached. While the signature format supported is
+        # dependent on the verification implementation, currently only ASCII-armored (`--
+        # armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg)
+        # are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.
+        # json` will create the signature content expected in this field in `signature.
+        # gpg` for the `payload.json` attestation payload.
         # Corresponds to the JSON property `signature`
         # @return [String]
         attr_accessor :signature
@@ -1992,111 +1933,73 @@ module Google
       end
       
       # An Identity and Access Management (IAM) policy, which specifies access
-      # controls for Google Cloud resources.
-      # A `Policy` is a collection of `bindings`. A `binding` binds one or more
-      # `members` to a single `role`. Members can be user accounts, service accounts,
-      # Google groups, and domains (such as G Suite). A `role` is a named list of
-      # permissions; each `role` can be an IAM predefined role or a user-created
-      # custom role.
-      # For some types of Google Cloud resources, a `binding` can also specify a
-      # `condition`, which is a logical expression that allows access to a resource
-      # only if the expression evaluates to `true`. A condition can add constraints
-      # based on attributes of the request, the resource, or both. To learn which
-      # resources support conditions in their IAM policies, see the
-      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-      # policies).
-      # **JSON example:**
-      # `
-      # "bindings": [
-      # `
-      # "role": "roles/resourcemanager.organizationAdmin",
-      # "members": [
-      # "user:mike@example.com",
-      # "group:admins@example.com",
-      # "domain:google.com",
-      # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-      # ]
-      # `,
-      # `
-      # "role": "roles/resourcemanager.organizationViewer",
-      # "members": [
-      # "user:eve@example.com"
-      # ],
-      # "condition": `
-      # "title": "expirable access",
-      # "description": "Does not grant access after Sep 2020",
-      # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
-      # ",
-      # `
-      # `
-      # ],
-      # "etag": "BwWWja0YfJA=",
-      # "version": 3
-      # `
-      # **YAML example:**
-      # bindings:
-      # - members:
-      # - user:mike@example.com
-      # - group:admins@example.com
-      # - domain:google.com
-      # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin
-      # - members:
-      # - user:eve@example.com
-      # role: roles/resourcemanager.organizationViewer
-      # condition:
-      # title: expirable access
-      # description: Does not grant access after Sep 2020
-      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-      # - etag: BwWWja0YfJA=
-      # - version: 3
-      # For a description of IAM and its features, see the
-      # [IAM documentation](https://cloud.google.com/iam/docs/).
+      # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+      # A `binding` binds one or more `members` to a single `role`. Members can be
+      # user accounts, service accounts, Google groups, and domains (such as G Suite).
+      # A `role` is a named list of permissions; each `role` can be an IAM predefined
+      # role or a user-created custom role. For some types of Google Cloud resources,
+      # a `binding` can also specify a `condition`, which is a logical expression that
+      # allows access to a resource only if the expression evaluates to `true`. A
+      # condition can add constraints based on attributes of the request, the resource,
+      # or both. To learn which resources support conditions in their IAM policies,
+      # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+      # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+      # title": "expirable access", "description": "Does not grant access after Sep
+      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+      # members: - user:mike@example.com - group:admins@example.com - domain:google.
+      # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+      # roles/resourcemanager.organizationViewer condition: title: expirable access
+      # description: Does not grant access after Sep 2020 expression: request.time <
+      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # description of IAM and its features, see the [IAM documentation](https://cloud.
+      # google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Associates a list of `members` to a `role`. Optionally, may specify a
-        # `condition` that determines how and when the `bindings` are applied. Each
-        # of the `bindings` must contain at least one member.
+        # Associates a list of `members` to a `role`. Optionally, may specify a `
+        # condition` that determines how and when the `bindings` are applied. Each of
+        # the `bindings` must contain at least one member.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::Binding>]
         attr_accessor :bindings
       
-        # `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of a policy from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform policy updates in order to avoid race
-        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
-        # systems are expected to put that etag in the request to `setIamPolicy` to
-        # ensure that their change will be applied to the same version of the policy.
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-        # you to overwrite a version `3` policy with a version `1` policy, and all of
-        # the conditions in the version `3` policy are lost.
+        # `etag` is used for optimistic concurrency control as a way to help prevent
+        # simultaneous updates of a policy from overwriting each other. It is strongly
+        # suggested that systems make use of the `etag` in the read-modify-write cycle
+        # to perform policy updates in order to avoid race conditions: An `etag` is
+        # returned in the response to `getIamPolicy`, and systems are expected to put
+        # that etag in the request to `setIamPolicy` to ensure that their change will be
+        # applied to the same version of the policy. **Important:** If you use IAM
+        # Conditions, you must include the `etag` field whenever you call `setIamPolicy`.
+        # If you omit this field, then IAM allows you to overwrite a version `3` policy
+        # with a version `1` policy, and all of the conditions in the version `3` policy
+        # are lost.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
-        # Specifies the format of the policy.
-        # Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-        # are rejected.
-        # Any operation that affects conditional role bindings must specify version
-        # `3`. This requirement applies to the following operations:
-        # * Getting a policy that includes a conditional role binding
-        # * Adding a conditional role binding to a policy
-        # * Changing a conditional role binding in a policy
-        # * Removing any role binding, with or without a condition, from a policy
-        # that includes conditions
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-        # you to overwrite a version `3` policy with a version `1` policy, and all of
-        # the conditions in the version `3` policy are lost.
-        # If a policy does not include any conditions, operations on that policy may
-        # specify any valid version or leave the field unset.
-        # To learn which resources support conditions in their IAM policies, see the
-        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-        # policies).
+        # Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+        # Requests that specify an invalid value are rejected. Any operation that
+        # affects conditional role bindings must specify version `3`. This requirement
+        # applies to the following operations: * Getting a policy that includes a
+        # conditional role binding * Adding a conditional role binding to a policy *
+        # Changing a conditional role binding in a policy * Removing any role binding,
+        # with or without a condition, from a policy that includes conditions **
+        # Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows you
+        # to overwrite a version `3` policy with a version `1` policy, and all of the
+        # conditions in the version `3` policy are lost. If a policy does not include
+        # any conditions, operations on that policy may specify any valid version or
+        # leave the field unset. To learn which resources support conditions in their
+        # IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/
+        # conditions/resource-policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -2196,8 +2099,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The unique URI of the resource. E.g.,
-        # "https://gcr.io/project/image@sha256:foo" for a Docker image.
+        # The unique URI of the resource. E.g., "https://gcr.io/project/image@sha256:foo"
+        # for a Docker image.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -2234,8 +2137,8 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # Output only. The name of the ScanConfig in the form
-        # “projects/`project_id`/scanConfigs/`scan_config_id`".
+        # Output only. The name of the ScanConfig in the form “projects/`project_id`/
+        # scanConfigs/`scan_config_id`".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2264,66 +2167,32 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An Identity and Access Management (IAM) policy, which specifies access
-        # controls for Google Cloud resources.
-        # A `Policy` is a collection of `bindings`. A `binding` binds one or more
-        # `members` to a single `role`. Members can be user accounts, service accounts,
-        # Google groups, and domains (such as G Suite). A `role` is a named list of
-        # permissions; each `role` can be an IAM predefined role or a user-created
-        # custom role.
-        # For some types of Google Cloud resources, a `binding` can also specify a
-        # `condition`, which is a logical expression that allows access to a resource
-        # only if the expression evaluates to `true`. A condition can add constraints
-        # based on attributes of the request, the resource, or both. To learn which
-        # resources support conditions in their IAM policies, see the
-        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-        # policies).
-        # **JSON example:**
-        # `
-        # "bindings": [
-        # `
-        # "role": "roles/resourcemanager.organizationAdmin",
-        # "members": [
-        # "user:mike@example.com",
-        # "group:admins@example.com",
-        # "domain:google.com",
-        # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-        # ]
-        # `,
-        # `
-        # "role": "roles/resourcemanager.organizationViewer",
-        # "members": [
-        # "user:eve@example.com"
-        # ],
-        # "condition": `
-        # "title": "expirable access",
-        # "description": "Does not grant access after Sep 2020",
-        # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
-        # ",
-        # `
-        # `
-        # ],
-        # "etag": "BwWWja0YfJA=",
-        # "version": 3
-        # `
-        # **YAML example:**
-        # bindings:
-        # - members:
-        # - user:mike@example.com
-        # - group:admins@example.com
-        # - domain:google.com
-        # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin
-        # - members:
-        # - user:eve@example.com
-        # role: roles/resourcemanager.organizationViewer
-        # condition:
-        # title: expirable access
-        # description: Does not grant access after Sep 2020
-        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-        # - etag: BwWWja0YfJA=
-        # - version: 3
-        # For a description of IAM and its features, see the
-        # [IAM documentation](https://cloud.google.com/iam/docs/).
+        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+        # A `binding` binds one or more `members` to a single `role`. Members can be
+        # user accounts, service accounts, Google groups, and domains (such as G Suite).
+        # A `role` is a named list of permissions; each `role` can be an IAM predefined
+        # role or a user-created custom role. For some types of Google Cloud resources,
+        # a `binding` can also specify a `condition`, which is a logical expression that
+        # allows access to a resource only if the expression evaluates to `true`. A
+        # condition can add constraints based on attributes of the request, the resource,
+        # or both. To learn which resources support conditions in their IAM policies,
+        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+        # title": "expirable access", "description": "Does not grant access after Sep
+        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+        # members: - user:mike@example.com - group:admins@example.com - domain:google.
+        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+        # roles/resourcemanager.organizationViewer condition: title: expirable access
+        # description: Does not grant access after Sep 2020 expression: request.time <
+        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # description of IAM and its features, see the [IAM documentation](https://cloud.
+        # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Policy]
         attr_accessor :policy
@@ -2367,10 +2236,10 @@ module Google
       class Source
         include Google::Apis::Core::Hashable
       
-        # If provided, some of the source code used for the build may be found in
-        # these locations, in the case where the source repository had multiple
-        # remotes or submodules. This list will not include the context specified in
-        # the context field.
+        # If provided, some of the source code used for the build may be found in these
+        # locations, in the case where the source repository had multiple remotes or
+        # submodules. This list will not include the context specified in the context
+        # field.
         # Corresponds to the JSON property `additionalContexts`
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::GoogleDevtoolsContaineranalysisV1alpha1SourceContext>]
         attr_accessor :additional_contexts
@@ -2388,11 +2257,10 @@ module Google
         attr_accessor :context
       
         # Hash(es) of the build source, which can be used to verify that the original
-        # source integrity was maintained in the build.
-        # The keys to this map are file paths used as build source and the values
-        # contain the hash values for those files.
-        # If the build source came in a single package such as a gzipped tarfile
-        # (.tar.gz), the FileHash will be for the single path to that file.
+        # source integrity was maintained in the build. The keys to this map are file
+        # paths used as build source and the values contain the hash values for those
+        # files. If the build source came in a single package such as a gzipped tarfile (
+        # .tar.gz), the FileHash will be for the single path to that file.
         # Corresponds to the JSON property `fileHashes`
         # @return [Hash<String,Google::Apis::ContaineranalysisV1alpha1::FileHashes>]
         attr_accessor :file_hashes
@@ -2424,12 +2292,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -2438,15 +2306,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -2468,9 +2336,8 @@ module Google
       class StorageSource
         include Google::Apis::Core::Hashable
       
-        # Google Cloud Storage bucket containing source (see [Bucket Name
-        # Requirements]
-        # (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        # Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (
+        # https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         # Corresponds to the JSON property `bucket`
         # @return [String]
         attr_accessor :bucket
@@ -2501,10 +2368,9 @@ module Google
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
       
-        # The set of permissions to check for the `resource`. Permissions with
-        # wildcards (such as '*' or 'storage.*') are not allowed. For more
-        # information see
-        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        # The set of permissions to check for the `resource`. Permissions with wildcards
+        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -2523,8 +2389,7 @@ module Google
       class TestIamPermissionsResponse
         include Google::Apis::Core::Hashable
       
-        # A subset of `TestPermissionsRequest.permissions` that the caller is
-        # allowed.
+        # A subset of `TestPermissionsRequest.permissions` that the caller is allowed.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -2577,8 +2442,8 @@ module Google
         # @return [String]
         attr_accessor :classification
       
-        # Required - The specific operating system this metadata applies to. See
-        # https://cpe.mitre.org/specification/.
+        # Required - The specific operating system this metadata applies to. See https://
+        # cpe.mitre.org/specification/.
         # Corresponds to the JSON property `cpeUri`
         # @return [String]
         attr_accessor :cpe_uri
@@ -2606,9 +2471,9 @@ module Google
         end
       end
       
-      # An Upgrade Note represents a potential upgrade of a package to a given
-      # version. For each package version combination (i.e. bash 4.0, bash 4.1,
-      # bash 4.1.2), there will be a Upgrade Note.
+      # An Upgrade Note represents a potential upgrade of a package to a given version.
+      # For each package version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2),
+      # there will be a Upgrade Note.
       class UpgradeNote
         include Google::Apis::Core::Hashable
       
@@ -2622,11 +2487,10 @@ module Google
         # @return [String]
         attr_accessor :package
       
-        # Version contains structured information about the version of the package.
-        # For a discussion of this in Debian/Ubuntu:
-        # http://serverfault.com/questions/604541/debian-packages-version-convention
-        # For a discussion of this in Redhat/Fedora/Centos:
-        # http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+        # Version contains structured information about the version of the package. For
+        # a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/
+        # debian-packages-version-convention For a discussion of this in Redhat/Fedora/
+        # Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Version]
         attr_accessor :version
@@ -2661,11 +2525,10 @@ module Google
         # @return [String]
         attr_accessor :package
       
-        # Version contains structured information about the version of the package.
-        # For a discussion of this in Debian/Ubuntu:
-        # http://serverfault.com/questions/604541/debian-packages-version-convention
-        # For a discussion of this in Redhat/Fedora/Centos:
-        # http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+        # Version contains structured information about the version of the package. For
+        # a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/
+        # debian-packages-version-convention For a discussion of this in Redhat/Fedora/
+        # Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
         # Corresponds to the JSON property `parsedVersion`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Version]
         attr_accessor :parsed_version
@@ -2682,11 +2545,10 @@ module Google
         end
       end
       
-      # Version contains structured information about the version of the package.
-      # For a discussion of this in Debian/Ubuntu:
-      # http://serverfault.com/questions/604541/debian-packages-version-convention
-      # For a discussion of this in Redhat/Fedora/Centos:
-      # http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+      # Version contains structured information about the version of the package. For
+      # a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/
+      # debian-packages-version-convention For a discussion of this in Redhat/Fedora/
+      # Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
       class Version
         include Google::Apis::Core::Hashable
       
@@ -2695,8 +2557,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :epoch
       
-        # Distinguish between sentinel MIN/MAX versions and normal versions.
-        # If kind is not NORMAL, then the other fields are ignored.
+        # Distinguish between sentinel MIN/MAX versions and normal versions. If kind is
+        # not NORMAL, then the other fields are ignored.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2724,27 +2586,26 @@ module Google
         end
       end
       
-      # Used by Occurrence to point to where the vulnerability exists and how
-      # to fix it.
+      # Used by Occurrence to point to where the vulnerability exists and how to fix
+      # it.
       class VulnerabilityDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. The CVSS score of this vulnerability. CVSS score is on a
-        # scale of 0-10 where 0 indicates low severity and 10 indicates high
-        # severity.
+        # Output only. The CVSS score of this vulnerability. CVSS score is on a scale of
+        # 0-10 where 0 indicates low severity and 10 indicates high severity.
         # Corresponds to the JSON property `cvssScore`
         # @return [Float]
         attr_accessor :cvss_score
       
-        # The distro assigned severity for this vulnerability when that is
-        # available and note provider assigned severity when distro has not yet
-        # assigned a severity for this vulnerability.
+        # The distro assigned severity for this vulnerability when that is available and
+        # note provider assigned severity when distro has not yet assigned a severity
+        # for this vulnerability.
         # Corresponds to the JSON property `effectiveSeverity`
         # @return [String]
         attr_accessor :effective_severity
       
-        # The set of affected locations and their fixes (if available) within
-        # the associated resource.
+        # The set of affected locations and their fixes (if available) within the
+        # associated resource.
         # Corresponds to the JSON property `packageIssue`
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::PackageIssue>]
         attr_accessor :package_issue
@@ -2754,8 +2615,8 @@ module Google
         # @return [String]
         attr_accessor :severity
       
-        # The type of package; whether native or non native(ruby gems,
-        # node.js packages etc)
+        # The type of package; whether native or non native(ruby gems, node.js packages
+        # etc)
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2778,9 +2639,9 @@ module Google
       class VulnerabilityLocation
         include Google::Apis::Core::Hashable
       
-        # The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/)
-        # format. Examples include distro or storage location for vulnerable jar.
-        # This field can be used as a filter in list requests.
+        # The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) format.
+        # Examples include distro or storage location for vulnerable jar. This field can
+        # be used as a filter in list requests.
         # Corresponds to the JSON property `cpeUri`
         # @return [String]
         attr_accessor :cpe_uri
@@ -2790,11 +2651,10 @@ module Google
         # @return [String]
         attr_accessor :package
       
-        # Version contains structured information about the version of the package.
-        # For a discussion of this in Debian/Ubuntu:
-        # http://serverfault.com/questions/604541/debian-packages-version-convention
-        # For a discussion of this in Redhat/Fedora/Centos:
-        # http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+        # Version contains structured information about the version of the package. For
+        # a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/
+        # debian-packages-version-convention For a discussion of this in Redhat/Fedora/
+        # Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::ContaineranalysisV1alpha1::Version]
         attr_accessor :version
@@ -2820,9 +2680,9 @@ module Google
         # @return [Float]
         attr_accessor :cvss_score
       
-        # All information about the package to specifically identify this
-        # vulnerability. One entry per (version range and cpe_uri) the
-        # package vulnerability has manifested in.
+        # All information about the package to specifically identify this vulnerability.
+        # One entry per (version range and cpe_uri) the package vulnerability has
+        # manifested in.
         # Corresponds to the JSON property `details`
         # @return [Array<Google::Apis::ContaineranalysisV1alpha1::Detail>]
         attr_accessor :details
