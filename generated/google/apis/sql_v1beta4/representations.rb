@@ -670,6 +670,7 @@ module Google
           collection :databases, as: 'databases'
           property :file_type, as: 'fileType'
           property :kind, as: 'kind'
+          property :offload, as: 'offload'
           property :sql_export_options, as: 'sqlExportOptions', class: Google::Apis::SqlV1beta4::ExportContext::SqlExportOptions, decorator: Google::Apis::SqlV1beta4::ExportContext::SqlExportOptions::Representation
       
           property :uri, as: 'uri'
@@ -1200,6 +1201,7 @@ module Google
           property :project, as: 'project'
           property :sqlserver_user_details, as: 'sqlserverUserDetails', class: Google::Apis::SqlV1beta4::SqlServerUserDetails, decorator: Google::Apis::SqlV1beta4::SqlServerUserDetails::Representation
       
+          property :type, as: 'type'
         end
       end
       

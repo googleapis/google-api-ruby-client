@@ -47,12 +47,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Acknowledges the messages associated with the `ack_ids` in the
-        # `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages
-        # from the subscription.
-        # Acknowledging a message whose ack deadline has expired may succeed,
-        # but such a message may be redelivered later. Acknowledging a message more
-        # than once will not result in an error.
+        # Acknowledges the messages associated with the `ack_ids` in the `
+        # AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages from
+        # the subscription. Acknowledging a message whose ack deadline has expired may
+        # succeed, but such a message may be redelivered later. Acknowledging a message
+        # more than once will not result in an error.
         # @param [String] subscription
         #   The subscription whose message is being acknowledged.
         # @param [Google::Apis::PubsubV1beta2::AcknowledgeRequest] acknowledge_request_object
@@ -85,19 +84,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a subscription to a given topic.
-        # If the subscription already exists, returns `ALREADY_EXISTS`.
-        # If the corresponding topic doesn't exist, returns `NOT_FOUND`.
-        # If the name is not provided in the request, the server will assign a random
-        # name for this subscription on the same project as the topic. Note that
-        # for REST API requests, you must specify a name.
+        # Creates a subscription to a given topic. If the subscription already exists,
+        # returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `
+        # NOT_FOUND`. If the name is not provided in the request, the server will assign
+        # a random name for this subscription on the same project as the topic. Note
+        # that for REST API requests, you must specify a name.
         # @param [String] name
-        #   The name of the subscription. It must have the format
-        #   `"projects/`project`/subscriptions/`subscription`"`. ``subscription`` must
-        #   start with a letter, and contain only letters (`[A-Za-z]`), numbers
-        #   (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
-        #   plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
-        #   in length, and it must not start with `"goog"`.
+        #   The name of the subscription. It must have the format `"projects/`project`/
+        #   subscriptions/`subscription`"`. ``subscription`` must start with a letter, and
+        #   contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+        #   underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%
+        #   `). It must be between 3 and 255 characters in length, and it must not start
+        #   with `"goog"`.
         # @param [Google::Apis::PubsubV1beta2::Subscription] subscription_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -128,11 +126,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing subscription. All pending messages in the subscription
-        # are immediately dropped. Calls to `Pull` after deletion will return
-        # `NOT_FOUND`. After a subscription is deleted, a new one may be created with
-        # the same name, but the new one has no association with the old
-        # subscription, or its topic unless the same topic is specified.
+        # Deletes an existing subscription. All pending messages in the subscription are
+        # immediately dropped. Calls to `Pull` after deletion will return `NOT_FOUND`.
+        # After a subscription is deleted, a new one may be created with the same name,
+        # but the new one has no association with the old subscription, or its topic
+        # unless the same topic is specified.
         # @param [String] subscription
         #   The subscription to delete.
         # @param [String] fields
@@ -192,22 +190,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -274,11 +269,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the ack deadline for a specific message. This method is useful
-        # to indicate that more time is needed to process a message by the
-        # subscriber, or to make the message available for redelivery if the
-        # processing was interrupted. Note that this does not modify the
-        # subscription-level `ackDeadlineSeconds` used for subsequent messages.
+        # Modifies the ack deadline for a specific message. This method is useful to
+        # indicate that more time is needed to process a message by the subscriber, or
+        # to make the message available for redelivery if the processing was interrupted.
+        # Note that this does not modify the subscription-level `ackDeadlineSeconds`
+        # used for subsequent messages.
         # @param [String] subscription
         #   The name of the subscription.
         # @param [Google::Apis::PubsubV1beta2::ModifyAckDeadlineRequest] modify_ack_deadline_request_object
@@ -311,11 +306,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the `PushConfig` for a specified subscription.
-        # This may be used to change a push subscription to a pull one (signified by
-        # an empty `PushConfig`) or vice versa, or change the endpoint URL and other
-        # attributes of a push subscription. Messages will accumulate for delivery
-        # continuously through the call regardless of changes to the `PushConfig`.
+        # Modifies the `PushConfig` for a specified subscription. This may be used to
+        # change a push subscription to a pull one (signified by an empty `PushConfig`)
+        # or vice versa, or change the endpoint URL and other attributes of a push
+        # subscription. Messages will accumulate for delivery continuously through the
+        # call regardless of changes to the `PushConfig`.
         # @param [String] subscription
         #   The name of the subscription.
         # @param [Google::Apis::PubsubV1beta2::ModifyPushConfigRequest] modify_push_config_request_object
@@ -348,10 +343,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Pulls messages from the server. Returns an empty list if there are no
-        # messages available in the backlog. The server may return `UNAVAILABLE` if
-        # there are too many concurrent pull requests pending for the given
-        # subscription.
+        # Pulls messages from the server. Returns an empty list if there are no messages
+        # available in the backlog. The server may return `UNAVAILABLE` if there are too
+        # many concurrent pull requests pending for the given subscription.
         # @param [String] subscription
         #   The subscription from which messages should be pulled.
         # @param [Google::Apis::PubsubV1beta2::PullRequest] pull_request_object
@@ -385,11 +379,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::PubsubV1beta2::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -420,15 +414,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::PubsubV1beta2::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -461,12 +454,11 @@ module Google
         
         # Creates the given topic with the given name.
         # @param [String] name
-        #   The name of the topic. It must have the format
-        #   `"projects/`project`/topics/`topic`"`. ``topic`` must start with a letter,
-        #   and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
-        #   underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
-        #   signs (`%`). It must be between 3 and 255 characters in length, and it
-        #   must not start with `"goog"`.
+        #   The name of the topic. It must have the format `"projects/`project`/topics/`
+        #   topic`"`. ``topic`` must start with a letter, and contain only letters (`[A-Za-
+        #   z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`),
+        #   tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255
+        #   characters in length, and it must not start with `"goog"`.
         # @param [Google::Apis::PubsubV1beta2::Topic] topic_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -497,11 +489,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the topic with the given name. Returns `NOT_FOUND` if the topic
-        # does not exist. After a topic is deleted, a new topic may be created with
-        # the same name; this is an entirely new topic with none of the old
-        # configuration or subscriptions. Existing subscriptions to this topic are
-        # not deleted, but their `topic` field is set to `_deleted-topic_`.
+        # Deletes the topic with the given name. Returns `NOT_FOUND` if the topic does
+        # not exist. After a topic is deleted, a new topic may be created with the same
+        # name; this is an entirely new topic with none of the old configuration or
+        # subscriptions. Existing subscriptions to this topic are not deleted, but their
+        # `topic` field is set to `_deleted-topic_`.
         # @param [String] topic
         #   Name of the topic to delete.
         # @param [String] fields
@@ -561,22 +553,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -611,9 +600,9 @@ module Google
         # @param [Fixnum] page_size
         #   Maximum number of topics to return.
         # @param [String] page_token
-        #   The value returned by the last `ListTopicsResponse`; indicates that this is
-        #   a continuation of a prior `ListTopics` call, and that the system should
-        #   return the next page of data.
+        #   The value returned by the last `ListTopicsResponse`; indicates that this is a
+        #   continuation of a prior `ListTopics` call, and that the system should return
+        #   the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -643,9 +632,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic
-        # does not exist. The message payload must not be empty; it must contain
-        # either a non-empty data field, or at least one attribute.
+        # Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic does
+        # not exist. The message payload must not be empty; it must contain either a non-
+        # empty data field, or at least one attribute.
         # @param [String] topic
         #   The messages in the request will be published on this topic.
         # @param [Google::Apis::PubsubV1beta2::PublishRequest] publish_request_object
@@ -679,11 +668,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::PubsubV1beta2::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -714,15 +703,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::PubsubV1beta2::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -760,8 +748,8 @@ module Google
         #   Maximum number of subscription names to return.
         # @param [String] page_token
         #   The value returned by the last `ListTopicSubscriptionsResponse`; indicates
-        #   that this is a continuation of a prior `ListTopicSubscriptions` call, and
-        #   that the system should return the next page of data.
+        #   that this is a continuation of a prior `ListTopicSubscriptions` call, and that
+        #   the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

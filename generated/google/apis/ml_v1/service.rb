@@ -47,11 +47,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Performs explanation on the data in the request.
-        # <div>`% dynamic include "/ai-platform/includes/___explain-request" %`</div>
+        # Performs explanation on the data in the request. `% dynamic include "/ai-
+        # platform/includes/___explain-request" %`
         # @param [String] name
-        #   Required. The resource name of a model or a version.
-        #   Authorization: requires the `predict` permission on the specified resource.
+        #   Required. The resource name of a model or a version. Authorization: requires
+        #   the `predict` permission on the specified resource.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1ExplainRequest] google_cloud_ml_v1__explain_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -83,9 +83,9 @@ module Google
         end
         
         # Get the service account information associated with your project. You need
-        # this information in order to grant the service account permissions for
-        # the Google Cloud Storage location where you put your model training code
-        # for training the model with Google Cloud Machine Learning.
+        # this information in order to grant the service account permissions for the
+        # Google Cloud Storage location where you put your model training code for
+        # training the model with Google Cloud Machine Learning.
         # @param [String] name
         #   Required. The project name.
         # @param [String] fields
@@ -115,11 +115,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Performs online prediction on the data in the request.
-        # <div>`% dynamic include "/ai-platform/includes/___predict-request" %`</div>
+        # Performs online prediction on the data in the request. `% dynamic include "/ai-
+        # platform/includes/___predict-request" %`
         # @param [String] name
-        #   Required. The resource name of a model or a version.
-        #   Authorization: requires the `predict` permission on the specified resource.
+        #   Required. The resource name of a model or a version. Authorization: requires
+        #   the `predict` permission on the specified resource.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1PredictRequest] google_cloud_ml_v1__predict_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -246,22 +246,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -290,30 +287,25 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the jobs in the project.
-        # If there are no jobs that match the request parameters, the list
-        # request returns an empty response body: ``.
+        # Lists the jobs in the project. If there are no jobs that match the request
+        # parameters, the list request returns an empty response body: ``.
         # @param [String] parent
         #   Required. The name of the project for which to list jobs.
         # @param [String] filter
-        #   Optional. Specifies the subset of jobs to retrieve.
-        #   You can filter on the value of one or more attributes of the job object.
-        #   For example, retrieve jobs with a job identifier that starts with 'census':
-        #   <p><code>gcloud ai-platform jobs list --filter='jobId:census*'</code>
-        #   <p>List all failed jobs with names that start with 'rnn':
-        #   <p><code>gcloud ai-platform jobs list --filter='jobId:rnn*
-        #   AND state:FAILED'</code>
-        #   <p>For more examples, see the guide to
-        #   <a href="/ml-engine/docs/tensorflow/monitor-training">monitoring jobs</a>.
+        #   Optional. Specifies the subset of jobs to retrieve. You can filter on the
+        #   value of one or more attributes of the job object. For example, retrieve jobs
+        #   with a job identifier that starts with 'census': gcloud ai-platform jobs list -
+        #   -filter='jobId:census*' List all failed jobs with names that start with 'rnn':
+        #   gcloud ai-platform jobs list --filter='jobId:rnn* AND state:FAILED' For more
+        #   examples, see the guide to monitoring jobs.
         # @param [Fixnum] page_size
-        #   Optional. The number of jobs to retrieve per "page" of results. If there
-        #   are more remaining results than this number, the response message will
-        #   contain a valid value in the `next_page_token` field.
-        #   The default value is 20, and the maximum page size is 100.
+        #   Optional. The number of jobs to retrieve per "page" of results. If there are
+        #   more remaining results than this number, the response message will contain a
+        #   valid value in the `next_page_token` field. The default value is 20, and the
+        #   maximum page size is 100.
         # @param [String] page_token
-        #   Optional. A page token to request the next page of results.
-        #   You get the token from the `next_page_token` field of the response from
-        #   the previous call.
+        #   Optional. A page token to request the next page of results. You get the token
+        #   from the `next_page_token` field of the response from the previous call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -344,28 +336,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a specific job resource.
-        # Currently the only supported fields to update are `labels`.
+        # Updates a specific job resource. Currently the only supported fields to update
+        # are `labels`.
         # @param [String] name
         #   Required. The job name.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1Job] google_cloud_ml_v1__job_object
         # @param [String] update_mask
-        #   Required. Specifies the path, relative to `Job`, of the field to update.
-        #   To adopt etag mechanism, include `etag` field in the mask, and include the
-        #   `etag` value in your job resource.
-        #   For example, to change the labels of a job, the `update_mask` parameter
-        #   would be specified as `labels`, `etag`, and the
-        #   `PATCH` request body would specify the new value, as follows:
-        #   `
-        #   "labels": `
-        #   "owner": "Google",
-        #   "color": "Blue"
-        #   `
-        #   "etag": "33a64df551425fcc55e4d42a148795d9f25f89d4"
-        #   `
+        #   Required. Specifies the path, relative to `Job`, of the field to update. To
+        #   adopt etag mechanism, include `etag` field in the mask, and include the `etag`
+        #   value in your job resource. For example, to change the labels of a job, the `
+        #   update_mask` parameter would be specified as `labels`, `etag`, and the `PATCH`
+        #   request body would specify the new value, as follows: ` "labels": ` "owner": "
+        #   Google", "color": "Blue" ` "etag": "33a64df551425fcc55e4d42a148795d9f25f89d4" `
         #   If `etag` matches the one on the server, the labels of the job will be
-        #   replaced with the given ones, and the server end `etag` will be
-        #   recalculated.
+        #   replaced with the given ones, and the server end `etag` will be recalculated.
         #   Currently the only supported update masks are `labels` and `etag`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -398,11 +382,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::MlV1::GoogleIamV1SetIamPolicyRequest] google_iam_v1__set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -433,15 +417,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::MlV1::GoogleIamV1TestIamPermissionsRequest] google_iam_v1__test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -508,14 +491,13 @@ module Google
         #   Required. The name of the project for which available locations are to be
         #   listed (since some locations might be whitelisted for specific projects).
         # @param [Fixnum] page_size
-        #   Optional. The number of locations to retrieve per "page" of results. If
-        #   there are more remaining results than this number, the response message
-        #   will contain a valid value in the `next_page_token` field.
-        #   The default value is 20, and the maximum page size is 100.
+        #   Optional. The number of locations to retrieve per "page" of results. If there
+        #   are more remaining results than this number, the response message will contain
+        #   a valid value in the `next_page_token` field. The default value is 20, and the
+        #   maximum page size is 100.
         # @param [String] page_token
-        #   Optional. A page token to request the next page of results.
-        #   You get the token from the `next_page_token` field of the response from
-        #   the previous call.
+        #   Optional. A page token to request the next page of results. You get the token
+        #   from the `next_page_token` field of the response from the previous call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -545,15 +527,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
@@ -584,9 +564,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -618,13 +597,12 @@ module Google
         
         # Creates a study.
         # @param [String] parent
-        #   Required. The project and location that the study belongs to.
-        #   Format: projects/`project`/locations/`location`
+        #   Required. The project and location that the study belongs to. Format: projects/
+        #   `project`/locations/`location`
         # @param [Google::Apis::MlV1::GoogleCloudMlV1Study] google_cloud_ml_v1__study_object
         # @param [String] study_id
         #   Required. The ID to use for the study, which will become the final component
-        #   of
-        #   the study's resource name.
+        #   of the study's resource name.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -717,8 +695,8 @@ module Google
         
         # Lists all the studies in a region for an associated project.
         # @param [String] parent
-        #   Required. The project and location that the study belongs to.
-        #   Format: projects/`project`/locations/`location`
+        #   Required. The project and location that the study belongs to. Format: projects/
+        #   `project`/locations/`location`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -746,8 +724,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a measurement of the objective metrics to a trial. This measurement
-        # is assumed to have been taken before the trial is complete.
+        # Adds a measurement of the objective metrics to a trial. This measurement is
+        # assumed to have been taken before the trial is complete.
         # @param [String] name
         #   Required. The trial name.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1AddTrialMeasurementRequest] google_cloud_ml_v1__add_trial_measurement_request_object
@@ -780,9 +758,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Checks  whether a trial should stop or not. Returns a
-        # long-running operation. When the operation is successful,
-        # it will contain a
+        # Checks whether a trial should stop or not. Returns a long-running operation.
+        # When the operation is successful, it will contain a
         # CheckTrialEarlyStoppingStateResponse.
         # @param [String] name
         #   Required. The trial name.
@@ -1005,11 +982,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds one or more trials to a study, with parameter values
-        # suggested by AI Platform Optimizer. Returns a long-running
-        # operation associated with the generation of trial suggestions.
-        # When this long-running operation succeeds, it will contain
-        # a SuggestTrialsResponse.
+        # Adds one or more trials to a study, with parameter values suggested by AI
+        # Platform Optimizer. Returns a long-running operation associated with the
+        # generation of trial suggestions. When this long-running operation succeeds, it
+        # will contain a SuggestTrialsResponse.
         # @param [String] parent
         #   Required. The name of the study that the trial belongs to.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1SuggestTrialsRequest] google_cloud_ml_v1__suggest_trials_request_object
@@ -1042,10 +1018,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a model which will later contain one or more versions.
-        # You must add at least one version before you can request predictions from
-        # the model. Add versions by calling
-        # projects.models.versions.create.
+        # Creates a model which will later contain one or more versions. You must add at
+        # least one version before you can request predictions from the model. Add
+        # versions by calling projects.models.versions.create.
         # @param [String] parent
         #   Required. The project name.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1Model] google_cloud_ml_v1__model_object
@@ -1078,10 +1053,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a model.
-        # You can only delete a model if there are no versions in it. You can delete
-        # versions by calling
-        # projects.models.versions.delete.
+        # Deletes a model. You can only delete a model if there are no versions in it.
+        # You can delete versions by calling projects.models.versions.delete.
         # @param [String] name
         #   Required. The name of the model.
         # @param [String] fields
@@ -1111,9 +1084,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets information about a model, including its name, the description (if
-        # set), and the default version (if at least one version of the model has
-        # been deployed).
+        # Gets information about a model, including its name, the description (if set),
+        # and the default version (if at least one version of the model has been
+        # deployed).
         # @param [String] name
         #   Required. The name of the model.
         # @param [String] fields
@@ -1143,22 +1116,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource.
-        # Returns an empty policy if the resource exists and does not have a policy
-        # set.
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1187,24 +1157,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the models in a project.
-        # Each project can contain multiple models, and each model can have multiple
-        # versions.
-        # If there are no models that match the request parameters, the list request
-        # returns an empty response body: ``.
+        # Lists the models in a project. Each project can contain multiple models, and
+        # each model can have multiple versions. If there are no models that match the
+        # request parameters, the list request returns an empty response body: ``.
         # @param [String] parent
         #   Required. The name of the project whose models are to be listed.
         # @param [String] filter
         #   Optional. Specifies the subset of models to retrieve.
         # @param [Fixnum] page_size
-        #   Optional. The number of models to retrieve per "page" of results. If there
-        #   are more remaining results than this number, the response message will
-        #   contain a valid value in the `next_page_token` field.
-        #   The default value is 20, and the maximum page size is 100.
+        #   Optional. The number of models to retrieve per "page" of results. If there are
+        #   more remaining results than this number, the response message will contain a
+        #   valid value in the `next_page_token` field. The default value is 20, and the
+        #   maximum page size is 100.
         # @param [String] page_token
-        #   Optional. A page token to request the next page of results.
-        #   You get the token from the `next_page_token` field of the response from
-        #   the previous call.
+        #   Optional. A page token to request the next page of results. You get the token
+        #   from the `next_page_token` field of the response from the previous call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1235,26 +1202,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a specific model resource.
-        # Currently the only supported fields to update are `description` and
-        # `default_version.name`.
+        # Updates a specific model resource. Currently the only supported fields to
+        # update are `description` and `default_version.name`.
         # @param [String] name
         #   Required. The project name.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1Model] google_cloud_ml_v1__model_object
         # @param [String] update_mask
-        #   Required. Specifies the path, relative to `Model`, of the field to update.
-        #   For example, to change the description of a model to "foo" and set its
-        #   default version to "version_1", the `update_mask` parameter would be
-        #   specified as `description`, `default_version.name`, and the `PATCH`
-        #   request body would specify the new value, as follows:
-        #   `
-        #   "description": "foo",
-        #   "defaultVersion": `
-        #   "name":"version_1"
-        #   `
-        #   `
-        #   Currently the supported update masks are `description` and
-        #   `default_version.name`.
+        #   Required. Specifies the path, relative to `Model`, of the field to update. For
+        #   example, to change the description of a model to "foo" and set its default
+        #   version to "version_1", the `update_mask` parameter would be specified as `
+        #   description`, `default_version.name`, and the `PATCH` request body would
+        #   specify the new value, as follows: ` "description": "foo", "defaultVersion": `
+        #   "name":"version_1" ` ` Currently the supported update masks are `description`
+        #   and `default_version.name`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1286,11 +1246,11 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
-        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::MlV1::GoogleIamV1SetIamPolicyRequest] google_iam_v1__set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1321,15 +1281,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
-        # If the resource does not exist, this will return an empty set of
-        # permissions, not a `NOT_FOUND` error.
-        # Note: This operation is designed to be used for building permission-aware
-        # UIs and command-line tools, not for authorization checking. This operation
-        # may "fail open" without warning.
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::MlV1::GoogleIamV1TestIamPermissionsRequest] google_iam_v1__test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1360,13 +1319,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new version of a model from a trained TensorFlow model.
-        # If the version created in the cloud by this call is the first deployed
-        # version of the specified model, it will be made the default version of the
-        # model. When you add a version to a model that already has one or more
-        # versions, the default version does not automatically change. If you want a
-        # new version to be the default, you must call
-        # projects.models.versions.setDefault.
+        # Creates a new version of a model from a trained TensorFlow model. If the
+        # version created in the cloud by this call is the first deployed version of the
+        # specified model, it will be made the default version of the model. When you
+        # add a version to a model that already has one or more versions, the default
+        # version does not automatically change. If you want a new version to be the
+        # default, you must call projects.models.versions.setDefault.
         # @param [String] parent
         #   Required. The name of the model.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1Version] google_cloud_ml_v1__version_object
@@ -1399,15 +1357,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a model version.
-        # Each model can have multiple versions deployed and in use at any given
-        # time. Use this method to remove a single version.
-        # Note: You cannot delete the version that is set as the default version
-        # of the model unless it is the only remaining version.
+        # Deletes a model version. Each model can have multiple versions deployed and in
+        # use at any given time. Use this method to remove a single version. Note: You
+        # cannot delete the version that is set as the default version of the model
+        # unless it is the only remaining version.
         # @param [String] name
-        #   Required. The name of the version. You can get the names of all the
-        #   versions of a model by calling
-        #   projects.models.versions.list.
+        #   Required. The name of the version. You can get the names of all the versions
+        #   of a model by calling projects.models.versions.list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1435,11 +1391,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets information about a model version.
-        # Models can have multiple versions. You can call
-        # projects.models.versions.list
-        # to get the same information that this method returns for all of the
-        # versions of a model.
+        # Gets information about a model version. Models can have multiple versions. You
+        # can call projects.models.versions.list to get the same information that this
+        # method returns for all of the versions of a model.
         # @param [String] name
         #   Required. The name of the version.
         # @param [String] fields
@@ -1469,25 +1423,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets basic information about all the versions of a model.
-        # If you expect that a model has many versions, or if you need to handle
-        # only a limited number of results at a time, you can request that the list
-        # be retrieved in batches (called pages).
-        # If there are no versions that match the request parameters, the list
-        # request returns an empty response body: ``.
+        # Gets basic information about all the versions of a model. If you expect that a
+        # model has many versions, or if you need to handle only a limited number of
+        # results at a time, you can request that the list be retrieved in batches (
+        # called pages). If there are no versions that match the request parameters, the
+        # list request returns an empty response body: ``.
         # @param [String] parent
         #   Required. The name of the model for which to list the version.
         # @param [String] filter
         #   Optional. Specifies the subset of versions to retrieve.
         # @param [Fixnum] page_size
-        #   Optional. The number of versions to retrieve per "page" of results. If
-        #   there are more remaining results than this number, the response message
-        #   will contain a valid value in the `next_page_token` field.
-        #   The default value is 20, and the maximum page size is 100.
+        #   Optional. The number of versions to retrieve per "page" of results. If there
+        #   are more remaining results than this number, the response message will contain
+        #   a valid value in the `next_page_token` field. The default value is 20, and the
+        #   maximum page size is 100.
         # @param [String] page_token
-        #   Optional. A page token to request the next page of results.
-        #   You get the token from the `next_page_token` field of the response from
-        #   the previous call.
+        #   Optional. A page token to request the next page of results. You get the token
+        #   from the `next_page_token` field of the response from the previous call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1518,28 +1470,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified Version resource.
-        # Currently the only update-able fields are `description`,
-        # `requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`.
+        # Updates the specified Version resource. Currently the only update-able fields
+        # are `description`, `requestLoggingConfig`, `autoScaling.minNodes`, and `
+        # manualScaling.nodes`.
         # @param [String] name
         #   Required. The name of the model.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1Version] google_cloud_ml_v1__version_object
         # @param [String] update_mask
-        #   Required. Specifies the path, relative to `Version`, of the field to
-        #   update. Must be present and non-empty.
-        #   For example, to change the description of a version to "foo", the
-        #   `update_mask` parameter would be specified as `description`, and the
-        #   `PATCH` request body would specify the new value, as follows:
-        #   ```
-        #   `
-        #   "description": "foo"
-        #   `
-        #   ```
-        #   Currently the only supported update mask fields are `description`,
-        #   `requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`.
-        #   However, you can only update `manualScaling.nodes` if the version uses a
-        #   [Compute Engine (N1)
-        #   machine type](/ml-engine/docs/machine-types-online-prediction).
+        #   Required. Specifies the path, relative to `Version`, of the field to update.
+        #   Must be present and non-empty. For example, to change the description of a
+        #   version to "foo", the `update_mask` parameter would be specified as `
+        #   description`, and the `PATCH` request body would specify the new value, as
+        #   follows: ``` ` "description": "foo" ` ``` Currently the only supported update
+        #   mask fields are `description`, `requestLoggingConfig`, `autoScaling.minNodes`,
+        #   and `manualScaling.nodes`. However, you can only update `manualScaling.nodes`
+        #   if the version uses a [Compute Engine (N1) machine type](/ml-engine/docs/
+        #   machine-types-online-prediction).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1570,16 +1516,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Designates a version to be the default for the model.
-        # The default version is used for prediction requests made against the model
-        # that don't specify a version.
-        # The first version to be created for a model is automatically set as the
-        # default. You must make any subsequent changes to the default version
+        # Designates a version to be the default for the model. The default version is
+        # used for prediction requests made against the model that don't specify a
+        # version. The first version to be created for a model is automatically set as
+        # the default. You must make any subsequent changes to the default version
         # setting manually using this method.
         # @param [String] name
-        #   Required. The name of the version to make the default for the model. You
-        #   can get the names of all the versions of a model by calling
-        #   projects.models.versions.list.
+        #   Required. The name of the version to make the default for the model. You can
+        #   get the names of all the versions of a model by calling projects.models.
+        #   versions.list.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1SetDefaultVersionRequest] google_cloud_ml_v1__set_default_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1610,15 +1555,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
@@ -1649,9 +1592,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -1681,15 +1623,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter

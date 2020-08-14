@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1EndpointMap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1ExplainRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -728,6 +734,15 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1EndpointMap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :explain, as: 'explain'
+          property :health, as: 'health'
+          property :predict, as: 'predict'
+        end
+      end
+      
       class GoogleCloudMlV1ExplainRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1162,6 +1177,8 @@ module Google
           property :create_time, as: 'createTime'
           property :deployment_uri, as: 'deploymentUri'
           property :description, as: 'description'
+          property :endpoints, as: 'endpoints', class: Google::Apis::MlV1::GoogleCloudMlV1EndpointMap, decorator: Google::Apis::MlV1::GoogleCloudMlV1EndpointMap::Representation
+      
           property :error_message, as: 'errorMessage'
           property :etag, :base64 => true, as: 'etag'
           property :explanation_config, as: 'explanationConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ExplanationConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ExplanationConfig::Representation

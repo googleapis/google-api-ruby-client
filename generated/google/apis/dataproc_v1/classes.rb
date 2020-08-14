@@ -178,8 +178,9 @@ module Google
         # for which to remove workers. A scale-down factor of 1 will result in scaling
         # down so that there is no available memory remaining after the update (more
         # aggressive scaling). A scale-down factor of 0 disables removing workers, which
-        # can be beneficial for autoscaling a single job. See How autoscaling works for
-        # more information.Bounds: 0.0, 1.0.
+        # can be beneficial for autoscaling a single job. See How autoscaling works (
+        # https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/
+        # autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
         # Corresponds to the JSON property `scaleDownFactor`
         # @return [Float]
         attr_accessor :scale_down_factor
@@ -197,8 +198,9 @@ module Google
         # for which to add workers. A scale-up factor of 1.0 will result in scaling up
         # so that there is no pending memory remaining after the update (more aggressive
         # scaling). A scale-up factor closer to 0 will result in a smaller magnitude of
-        # scaling up (less aggressive scaling). See How autoscaling works for more
-        # information.Bounds: 0.0, 1.0.
+        # scaling up (less aggressive scaling). See How autoscaling works (https://cloud.
+        # google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#
+        # how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
         # Corresponds to the JSON property `scaleUpFactor`
         # @return [Float]
         attr_accessor :scale_up_factor
@@ -1276,6 +1278,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :instance_names
       
+        # Output only. List of references to Compute Engine instances.
+        # Corresponds to the JSON property `instanceReferences`
+        # @return [Array<Google::Apis::DataprocV1::InstanceReference>]
+        attr_accessor :instance_references
+      
         # Output only. Specifies that this instance group contains preemptible instances.
         # Corresponds to the JSON property `isPreemptible`
         # @return [Boolean]
@@ -1329,12 +1336,38 @@ module Google
           @disk_config = args[:disk_config] if args.key?(:disk_config)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
           @instance_names = args[:instance_names] if args.key?(:instance_names)
+          @instance_references = args[:instance_references] if args.key?(:instance_references)
           @is_preemptible = args[:is_preemptible] if args.key?(:is_preemptible)
           @machine_type_uri = args[:machine_type_uri] if args.key?(:machine_type_uri)
           @managed_group_config = args[:managed_group_config] if args.key?(:managed_group_config)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @num_instances = args[:num_instances] if args.key?(:num_instances)
           @preemptibility = args[:preemptibility] if args.key?(:preemptibility)
+        end
+      end
+      
+      # A reference to a Compute Engine instance.
+      class InstanceReference
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the Compute Engine instance.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # The user-friendly name of the Compute Engine instance.
+        # Corresponds to the JSON property `instanceName`
+        # @return [String]
+        attr_accessor :instance_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @instance_name = args[:instance_name] if args.key?(:instance_name)
         end
       end
       

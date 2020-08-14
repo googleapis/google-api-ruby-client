@@ -26,32 +26,28 @@ module Google
       class GenerateAccessTokenRequest
         include Google::Apis::Core::Hashable
       
-        # The sequence of service accounts in a delegation chain. Each service
-        # account must be granted the `roles/iam.serviceAccountTokenCreator` role
-        # on its next service account in the chain. The last service account in the
-        # chain must be granted the `roles/iam.serviceAccountTokenCreator` role
-        # on the service account that is specified in the `name` field of the
-        # request.
-        # The delegates must have the following format:
-        # `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
-        # character is required; replacing it with a project ID is invalid.
+        # The sequence of service accounts in a delegation chain. Each service account
+        # must be granted the `roles/iam.serviceAccountTokenCreator` role on its next
+        # service account in the chain. The last service account in the chain must be
+        # granted the `roles/iam.serviceAccountTokenCreator` role on the service account
+        # that is specified in the `name` field of the request. The delegates must have
+        # the following format: `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
+        # The `-` wildcard character is required; replacing it with a project ID is
+        # invalid.
         # Corresponds to the JSON property `delegates`
         # @return [Array<String>]
         attr_accessor :delegates
       
-        # The desired lifetime duration of the access token in seconds.
-        # Must be set to a value less than or equal to 3600 (1 hour). If a value is
-        # not specified, the token's lifetime will be set to a default value of one
-        # hour.
+        # The desired lifetime duration of the access token in seconds. Must be set to a
+        # value less than or equal to 3600 (1 hour). If a value is not specified, the
+        # token's lifetime will be set to a default value of one hour.
         # Corresponds to the JSON property `lifetime`
         # @return [String]
         attr_accessor :lifetime
       
         # Required. Code to identify the scopes to be included in the OAuth 2.0 access
-        # token.
-        # See https://developers.google.com/identity/protocols/googlescopes for more
-        # information.
-        # At least one value required.
+        # token. See https://developers.google.com/identity/protocols/googlescopes for
+        # more information. At least one value required.
         # Corresponds to the JSON property `scope`
         # @return [Array<String>]
         attr_accessor :scope
@@ -77,8 +73,7 @@ module Google
         # @return [String]
         attr_accessor :access_token
       
-        # Token expiration time.
-        # The expiration time is always set.
+        # Token expiration time. The expiration time is always set.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
@@ -99,27 +94,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The audience for the token, such as the API or account that this
-        # token
-        # grants access to.
+        # token grants access to.
         # Corresponds to the JSON property `audience`
         # @return [String]
         attr_accessor :audience
       
-        # The sequence of service accounts in a delegation chain. Each service
-        # account must be granted the `roles/iam.serviceAccountTokenCreator` role
-        # on its next service account in the chain. The last service account in the
-        # chain must be granted the `roles/iam.serviceAccountTokenCreator` role
-        # on the service account that is specified in the `name` field of the
-        # request.
-        # The delegates must have the following format:
-        # `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
-        # character is required; replacing it with a project ID is invalid.
+        # The sequence of service accounts in a delegation chain. Each service account
+        # must be granted the `roles/iam.serviceAccountTokenCreator` role on its next
+        # service account in the chain. The last service account in the chain must be
+        # granted the `roles/iam.serviceAccountTokenCreator` role on the service account
+        # that is specified in the `name` field of the request. The delegates must have
+        # the following format: `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
+        # The `-` wildcard character is required; replacing it with a project ID is
+        # invalid.
         # Corresponds to the JSON property `delegates`
         # @return [Array<String>]
         attr_accessor :delegates
       
-        # Include the service account email in the token. If set to `true`, the
-        # token will contain `email` and `email_verified` claims.
+        # Include the service account email in the token. If set to `true`, the token
+        # will contain `email` and `email_verified` claims.
         # Corresponds to the JSON property `includeEmail`
         # @return [Boolean]
         attr_accessor :include_email
@@ -160,15 +153,14 @@ module Google
       class SignBlobRequest
         include Google::Apis::Core::Hashable
       
-        # The sequence of service accounts in a delegation chain. Each service
-        # account must be granted the `roles/iam.serviceAccountTokenCreator` role
-        # on its next service account in the chain. The last service account in the
-        # chain must be granted the `roles/iam.serviceAccountTokenCreator` role
-        # on the service account that is specified in the `name` field of the
-        # request.
-        # The delegates must have the following format:
-        # `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
-        # character is required; replacing it with a project ID is invalid.
+        # The sequence of service accounts in a delegation chain. Each service account
+        # must be granted the `roles/iam.serviceAccountTokenCreator` role on its next
+        # service account in the chain. The last service account in the chain must be
+        # granted the `roles/iam.serviceAccountTokenCreator` role on the service account
+        # that is specified in the `name` field of the request. The delegates must have
+        # the following format: `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
+        # The `-` wildcard character is required; replacing it with a project ID is
+        # invalid.
         # Corresponds to the JSON property `delegates`
         # @return [Array<String>]
         attr_accessor :delegates
@@ -194,24 +186,22 @@ module Google
       class SignBlobResponse
         include Google::Apis::Core::Hashable
       
-        # The ID of the key used to sign the blob. The key used for signing will
-        # remain valid for at least 12 hours after the blob is signed. To verify the
-        # signature, you can retrieve the public key in several formats from the
-        # following endpoints:
-        # - RSA public key wrapped in an X.509 v3 certificate:
-        # `https://www.googleapis.com/service_accounts/v1/metadata/x509/`ACCOUNT_EMAIL``
-        # - Raw key in JSON format:
-        # `https://www.googleapis.com/service_accounts/v1/metadata/raw/`ACCOUNT_EMAIL``
-        # - JSON Web Key (JWK):
-        # `https://www.googleapis.com/service_accounts/v1/metadata/jwk/`ACCOUNT_EMAIL``
+        # The ID of the key used to sign the blob. The key used for signing will remain
+        # valid for at least 12 hours after the blob is signed. To verify the signature,
+        # you can retrieve the public key in several formats from the following
+        # endpoints: - RSA public key wrapped in an X.509 v3 certificate: `https://www.
+        # googleapis.com/service_accounts/v1/metadata/x509/`ACCOUNT_EMAIL`` - Raw key in
+        # JSON format: `https://www.googleapis.com/service_accounts/v1/metadata/raw/`
+        # ACCOUNT_EMAIL`` - JSON Web Key (JWK): `https://www.googleapis.com/
+        # service_accounts/v1/metadata/jwk/`ACCOUNT_EMAIL``
         # Corresponds to the JSON property `keyId`
         # @return [String]
         attr_accessor :key_id
       
-        # The signature for the blob. Does not include the original blob.
-        # After the key pair referenced by the `key_id` response field expires,
-        # Google no longer exposes the public key that can be used to verify the
-        # blob. As a result, the receiver can no longer verify the signature.
+        # The signature for the blob. Does not include the original blob. After the key
+        # pair referenced by the `key_id` response field expires, Google no longer
+        # exposes the public key that can be used to verify the blob. As a result, the
+        # receiver can no longer verify the signature.
         # Corresponds to the JSON property `signedBlob`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -232,25 +222,23 @@ module Google
       class SignJwtRequest
         include Google::Apis::Core::Hashable
       
-        # The sequence of service accounts in a delegation chain. Each service
-        # account must be granted the `roles/iam.serviceAccountTokenCreator` role
-        # on its next service account in the chain. The last service account in the
-        # chain must be granted the `roles/iam.serviceAccountTokenCreator` role
-        # on the service account that is specified in the `name` field of the
-        # request.
-        # The delegates must have the following format:
-        # `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
-        # character is required; replacing it with a project ID is invalid.
+        # The sequence of service accounts in a delegation chain. Each service account
+        # must be granted the `roles/iam.serviceAccountTokenCreator` role on its next
+        # service account in the chain. The last service account in the chain must be
+        # granted the `roles/iam.serviceAccountTokenCreator` role on the service account
+        # that is specified in the `name` field of the request. The delegates must have
+        # the following format: `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``.
+        # The `-` wildcard character is required; replacing it with a project ID is
+        # invalid.
         # Corresponds to the JSON property `delegates`
         # @return [Array<String>]
         attr_accessor :delegates
       
         # Required. The JWT payload to sign. Must be a serialized JSON object that
-        # contains a
-        # JWT Claims Set. For example: ``"sub": "user@example.com", "iat": 313435``
-        # If the JWT Claims Set contains an expiration time (`exp`) claim, it must be
-        # an integer timestamp that is not in the past and no more than 12 hours in
-        # the future.
+        # contains a JWT Claims Set. For example: ``"sub": "user@example.com", "iat":
+        # 313435`` If the JWT Claims Set contains an expiration time (`exp`) claim, it
+        # must be an integer timestamp that is not in the past and no more than 12 hours
+        # in the future.
         # Corresponds to the JSON property `payload`
         # @return [String]
         attr_accessor :payload
@@ -270,26 +258,24 @@ module Google
       class SignJwtResponse
         include Google::Apis::Core::Hashable
       
-        # The ID of the key used to sign the JWT. The key used for signing will
-        # remain valid for at least 12 hours after the JWT is signed. To verify the
-        # signature, you can retrieve the public key in several formats from the
-        # following endpoints:
-        # - RSA public key wrapped in an X.509 v3 certificate:
-        # `https://www.googleapis.com/service_accounts/v1/metadata/x509/`ACCOUNT_EMAIL``
-        # - Raw key in JSON format:
-        # `https://www.googleapis.com/service_accounts/v1/metadata/raw/`ACCOUNT_EMAIL``
-        # - JSON Web Key (JWK):
-        # `https://www.googleapis.com/service_accounts/v1/metadata/jwk/`ACCOUNT_EMAIL``
+        # The ID of the key used to sign the JWT. The key used for signing will remain
+        # valid for at least 12 hours after the JWT is signed. To verify the signature,
+        # you can retrieve the public key in several formats from the following
+        # endpoints: - RSA public key wrapped in an X.509 v3 certificate: `https://www.
+        # googleapis.com/service_accounts/v1/metadata/x509/`ACCOUNT_EMAIL`` - Raw key in
+        # JSON format: `https://www.googleapis.com/service_accounts/v1/metadata/raw/`
+        # ACCOUNT_EMAIL`` - JSON Web Key (JWK): `https://www.googleapis.com/
+        # service_accounts/v1/metadata/jwk/`ACCOUNT_EMAIL``
         # Corresponds to the JSON property `keyId`
         # @return [String]
         attr_accessor :key_id
       
-        # The signed JWT. Contains the automatically generated header; the
-        # client-supplied payload; and the signature, which is generated using the
-        # key referenced by the `kid` field in the header.
-        # After the key pair referenced by the `key_id` response field expires,
-        # Google no longer exposes the public key that can be used to verify the JWT.
-        # As a result, the receiver can no longer verify the signature.
+        # The signed JWT. Contains the automatically generated header; the client-
+        # supplied payload; and the signature, which is generated using the key
+        # referenced by the `kid` field in the header. After the key pair referenced by
+        # the `key_id` response field expires, Google no longer exposes the public key
+        # that can be used to verify the JWT. As a result, the receiver can no longer
+        # verify the signature.
         # Corresponds to the JSON property `signedJwt`
         # @return [String]
         attr_accessor :signed_jwt

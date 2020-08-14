@@ -1307,6 +1307,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :instance_names
       
+        # Output only. List of references to Compute Engine instances.
+        # Corresponds to the JSON property `instanceReferences`
+        # @return [Array<Google::Apis::DataprocV1beta2::InstanceReference>]
+        attr_accessor :instance_references
+      
         # Output only. Specifies that this instance group contains preemptible instances.
         # Corresponds to the JSON property `isPreemptible`
         # @return [Boolean]
@@ -1360,12 +1365,38 @@ module Google
           @disk_config = args[:disk_config] if args.key?(:disk_config)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
           @instance_names = args[:instance_names] if args.key?(:instance_names)
+          @instance_references = args[:instance_references] if args.key?(:instance_references)
           @is_preemptible = args[:is_preemptible] if args.key?(:is_preemptible)
           @machine_type_uri = args[:machine_type_uri] if args.key?(:machine_type_uri)
           @managed_group_config = args[:managed_group_config] if args.key?(:managed_group_config)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @num_instances = args[:num_instances] if args.key?(:num_instances)
           @preemptibility = args[:preemptibility] if args.key?(:preemptibility)
+        end
+      end
+      
+      # A reference to a Compute Engine instance.
+      class InstanceReference
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the Compute Engine instance.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # The user-friendly name of the Compute Engine instance.
+        # Corresponds to the JSON property `instanceName`
+        # @return [String]
+        attr_accessor :instance_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @instance_name = args[:instance_name] if args.key?(:instance_name)
         end
       end
       

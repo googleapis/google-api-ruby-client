@@ -47,11 +47,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Acknowledges a particular received message: the Pub/Sub system can remove
-        # the given message from the subscription. Acknowledging a message whose
-        # Ack deadline has expired may succeed, but the message could have been
-        # already redelivered. Acknowledging a message more than once will not
-        # result in an error. This is only used for messages received via pull.
+        # Acknowledges a particular received message: the Pub/Sub system can remove the
+        # given message from the subscription. Acknowledging a message whose Ack
+        # deadline has expired may succeed, but the message could have been already
+        # redelivered. Acknowledging a message more than once will not result in an
+        # error. This is only used for messages received via pull.
         # @param [Google::Apis::PubsubV1beta1a::AcknowledgeRequest] acknowledge_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -81,11 +81,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a subscription on a given topic for a given subscriber.
-        # If the subscription already exists, returns ALREADY_EXISTS.
-        # If the corresponding topic doesn't exist, returns NOT_FOUND.
-        # If the name is not provided in the request, the server will assign a random
-        # name for this subscription on the same project as the topic.
+        # Creates a subscription on a given topic for a given subscriber. If the
+        # subscription already exists, returns ALREADY_EXISTS. If the corresponding
+        # topic doesn't exist, returns NOT_FOUND. If the name is not provided in the
+        # request, the server will assign a random name for this subscription on the
+        # same project as the topic.
         # @param [Google::Apis::PubsubV1beta1a::Subscription] subscription_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -115,9 +115,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing subscription. All pending messages in the subscription
-        # are immediately dropped. Calls to Pull after deletion will return
-        # NOT_FOUND.
+        # Deletes an existing subscription. All pending messages in the subscription are
+        # immediately dropped. Calls to Pull after deletion will return NOT_FOUND.
         # @param [String] subscription
         #   The subscription to delete.
         # @param [String] fields
@@ -181,8 +180,7 @@ module Google
         # @param [Fixnum] max_results
         #   Maximum number of subscriptions to return.
         # @param [String] page_token
-        #   The value obtained in the last <code>ListSubscriptionsResponse</code>
-        #   for continuation.
+        #   The value obtained in the last ListSubscriptionsResponse for continuation.
         # @param [String] query
         #   A valid label query expression.
         # @param [String] fields
@@ -244,11 +242,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the <code>PushConfig</code> for a specified subscription.
-        # This method can be used to suspend the flow of messages to an endpoint
-        # by clearing the <code>PushConfig</code> field in the request. Messages
-        # will be accumulated for delivery even if no push configuration is
-        # defined or while the configuration is modified.
+        # Modifies the PushConfig for a specified subscription. This method can be used
+        # to suspend the flow of messages to an endpoint by clearing the PushConfig
+        # field in the request. Messages will be accumulated for delivery even if no
+        # push configuration is defined or while the configuration is modified.
         # @param [Google::Apis::PubsubV1beta1a::ModifyPushConfigRequest] modify_push_config_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -278,11 +275,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Pulls a single message from the server.
-        # If return_immediately is true, and no messages are available in the
-        # subscription, this method returns FAILED_PRECONDITION. The system is free
-        # to return an UNAVAILABLE error if no messages are available in a
-        # reasonable amount of time (to reduce system load).
+        # Pulls a single message from the server. If return_immediately is true, and no
+        # messages are available in the subscription, this method returns
+        # FAILED_PRECONDITION. The system is free to return an UNAVAILABLE error if no
+        # messages are available in a reasonable amount of time (to reduce system load).
         # @param [Google::Apis::PubsubV1beta1a::PullRequest] pull_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -312,9 +308,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Pulls messages from the server. Returns an empty list if there are no
-        # messages available in the backlog. The system is free to return UNAVAILABLE
-        # if there are too many pull requests outstanding for the given subscription.
+        # Pulls messages from the server. Returns an empty list if there are no messages
+        # available in the backlog. The system is free to return UNAVAILABLE if there
+        # are too many pull requests outstanding for the given subscription.
         # @param [Google::Apis::PubsubV1beta1a::PullBatchRequest] pull_batch_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -374,9 +370,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the topic with the given name. Returns NOT_FOUND if the topic does
-        # not exist. After a topic is deleted, a new topic may be created with the
-        # same name.
+        # Deletes the topic with the given name. Returns NOT_FOUND if the topic does not
+        # exist. After a topic is deleted, a new topic may be created with the same name.
         # @param [String] topic
         #   Name of the topic to delete.
         # @param [String] fields
@@ -406,9 +401,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the configuration of a topic. Since the topic only has the name
-        # attribute, this method is only useful to check the existence of a topic.
-        # If other attributes are added in the future, they will be returned here.
+        # Gets the configuration of a topic. Since the topic only has the name attribute,
+        # this method is only useful to check the existence of a topic. If other
+        # attributes are added in the future, they will be returned here.
         # @param [String] topic
         #   The name of the topic to get.
         # @param [String] fields
@@ -442,8 +437,7 @@ module Google
         # @param [Fixnum] max_results
         #   Maximum number of topics to return.
         # @param [String] page_token
-        #   The value obtained in the last <code>ListTopicsResponse</code>
-        #   for continuation.
+        #   The value obtained in the last ListTopicsResponse for continuation.
         # @param [String] query
         #   A valid label query expression.
         # @param [String] fields
@@ -475,8 +469,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a message to the topic.  Returns NOT_FOUND if the topic does not
-        # exist.
+        # Adds a message to the topic. Returns NOT_FOUND if the topic does not exist.
         # @param [Google::Apis::PubsubV1beta1a::PublishRequest] publish_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

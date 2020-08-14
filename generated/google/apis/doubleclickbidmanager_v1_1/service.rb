@@ -44,7 +44,7 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
+          super('https://www.googleapis.com/', 'doubleclickbidmanager/v1.1/')
           @batch_path = 'batch/doubleclickbidmanager'
         end
         
@@ -69,7 +69,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def downloadlineitems_lineitem(download_line_items_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'doubleclickbidmanager/v1.1/lineitems/downloadlineitems', options)
+          command = make_simple_command(:post, 'lineitems/downloadlineitems', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::DownloadLineItemsRequest::Representation
           command.request_object = download_line_items_request_object
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::DownloadLineItemsResponse::Representation
@@ -100,7 +100,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def uploadlineitems_lineitem(upload_line_items_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'doubleclickbidmanager/v1.1/lineitems/uploadlineitems', options)
+          command = make_simple_command(:post, 'lineitems/uploadlineitems', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::UploadLineItemsRequest::Representation
           command.request_object = upload_line_items_request_object
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::UploadLineItemsResponse::Representation
@@ -113,8 +113,8 @@ module Google
         # Creates a query.
         # @param [Google::Apis::DoubleclickbidmanagerV1_1::Query] query_object
         # @param [Boolean] asynchronous
-        #   If true, tries to run the query asynchronously. Only applicable when
-        #   the frequency is <code>ONE_TIME</code>.
+        #   If true, tries to run the query asynchronously. Only applicable when the
+        #   frequency is ONE_TIME.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -133,7 +133,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def createquery_query(query_object = nil, asynchronous: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'doubleclickbidmanager/v1.1/query', options)
+          command = make_simple_command(:post, 'query', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::Query::Representation
           command.request_object = query_object
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::Query::Representation
@@ -165,7 +165,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def deletequery_query(query_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'doubleclickbidmanager/v1.1/query/{queryId}', options)
+          command = make_simple_command(:delete, 'query/{queryId}', options)
           command.params['queryId'] = query_id unless query_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -193,7 +193,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def getquery_query(query_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'doubleclickbidmanager/v1.1/query/{queryId}', options)
+          command = make_simple_command(:get, 'query/{queryId}', options)
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::Query::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1_1::Query
           command.params['queryId'] = query_id unless query_id.nil?
@@ -204,8 +204,8 @@ module Google
         
         # Retrieves stored queries.
         # @param [Fixnum] page_size
-        #   Maximum number of results per page. Must be between <code>1</code> and
-        #   <code>100</code>. Defaults to <code>100</code> if unspecified.
+        #   Maximum number of results per page. Must be between 1 and 100. Defaults to 100
+        #   if unspecified.
         # @param [String] page_token
         #   Optional pagination token.
         # @param [String] fields
@@ -226,7 +226,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def listqueries_query(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'doubleclickbidmanager/v1.1/queries', options)
+          command = make_simple_command(:get, 'queries', options)
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::ListQueriesResponse::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1_1::ListQueriesResponse
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -260,7 +260,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def runquery_query(query_id, run_query_request_object = nil, asynchronous: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'doubleclickbidmanager/v1.1/query/{queryId}', options)
+          command = make_simple_command(:post, 'query/{queryId}', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::RunQueryRequest::Representation
           command.request_object = run_query_request_object
           command.params['queryId'] = query_id unless query_id.nil?
@@ -274,8 +274,8 @@ module Google
         # @param [Fixnum] query_id
         #   Query ID with which the reports are associated.
         # @param [Fixnum] page_size
-        #   Maximum number of results per page. Must be between <code>1</code> and
-        #   <code>100</code>. Defaults to <code>100</code> if unspecified.
+        #   Maximum number of results per page. Must be between 1 and 100. Defaults to 100
+        #   if unspecified.
         # @param [String] page_token
         #   Optional pagination token.
         # @param [String] fields
@@ -296,7 +296,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def listreports_report(query_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'doubleclickbidmanager/v1.1/queries/{queryId}/reports', options)
+          command = make_simple_command(:get, 'queries/{queryId}/reports', options)
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::ListReportsResponse::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1_1::ListReportsResponse
           command.params['queryId'] = query_id unless query_id.nil?
@@ -327,7 +327,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def download_sdf(download_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'doubleclickbidmanager/v1.1/sdf/download', options)
+          command = make_simple_command(:post, 'sdf/download', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::DownloadRequest::Representation
           command.request_object = download_request_object
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::DownloadResponse::Representation

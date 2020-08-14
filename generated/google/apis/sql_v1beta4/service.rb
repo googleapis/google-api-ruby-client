@@ -53,8 +53,7 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Fixnum] id
-        #   The ID of the Backup Run to delete. To find a Backup Run ID, use the <a
-        #   href="/sql/docs/db_path/admin-api/rest/v1beta4/backupRuns/list">list</a>
+        #   The ID of the Backup Run to delete. To find a Backup Run ID, use the list
         #   method.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -121,8 +120,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new backup run on demand. This method is applicable only to
-        # Second Generation instances.
+        # Creates a new backup run on demand. This method is applicable only to Second
+        # Generation instances.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -272,8 +271,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Inserts a resource containing information about a database inside a Cloud
-        # SQL instance.
+        # Inserts a resource containing information about a database inside a Cloud SQL
+        # instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -342,8 +341,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Partially updates a resource containing information about a database inside
-        # a Cloud SQL instance. This method supports patch semantics.
+        # Partially updates a resource containing information about a database inside a
+        # Cloud SQL instance. This method supports patch semantics.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -382,8 +381,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a resource containing information about a database inside a Cloud
-        # SQL instance.
+        # Updates a resource containing information about a database inside a Cloud SQL
+        # instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -454,10 +453,10 @@ module Google
         end
         
         # Add a new trusted Certificate Authority (CA) version for the specified
-        # instance. Required to prepare for a certificate rotation. If a CA version
-        # was previously added but never used in a certificate rotation, this
-        # operation replaces that version. There cannot be more than one CA version
-        # waiting to be rotated in.
+        # instance. Required to prepare for a certificate rotation. If a CA version was
+        # previously added but never used in a certificate rotation, this operation
+        # replaces that version. There cannot be more than one CA version waiting to be
+        # rotated in.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -495,8 +494,8 @@ module Google
         # @param [String] project
         #   Project ID of the source as well as the clone Cloud SQL instance.
         # @param [String] instance
-        #   The ID of the Cloud SQL instance to be cloned (source). This does not
-        #   include the project ID.
+        #   The ID of the Cloud SQL instance to be cloned (source). This does not include
+        #   the project ID.
         # @param [Google::Apis::SqlV1beta4::InstancesCloneRequest] instances_clone_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -598,8 +597,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL
-        # dump or CSV file.
+        # Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL dump
+        # or CSV file.
         # @param [String] project
         #   Project ID of the project that contains the instance to be exported.
         # @param [String] instance
@@ -635,8 +634,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Failover the instance to its failover replica instance. Using this
-        # operation might cause your instance to restart.
+        # Failover the instance to its failover replica instance. Using this operation
+        # might cause your instance to restart.
         # @param [String] project
         #   ID of the project that contains the read replica.
         # @param [String] instance
@@ -705,8 +704,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Imports data into a Cloud SQL instance from a SQL dump  or CSV file in
-        # Cloud Storage.
+        # Imports data into a Cloud SQL instance from a SQL dump or CSV file in Cloud
+        # Storage.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -780,14 +779,13 @@ module Google
         # @param [String] project
         #   Project ID of the project for which to list Cloud SQL instances.
         # @param [String] filter
-        #   A filter expression that filters resources listed in the response.
-        #   The expression is in the form of field:value. For example,
-        #   'instanceType:CLOUD_SQL_INSTANCE'. Fields can be nested as needed as per
-        #   their JSON representation, such as 'settings.userLabels.auto_start:true'.
-        #   Multiple filter queries are space-separated. For example.
-        #   'state:RUNNABLE instanceType:CLOUD_SQL_INSTANCE'. By default, each
-        #   expression is an AND expression. However, you can include AND and OR
-        #   expressions explicitly.
+        #   A filter expression that filters resources listed in the response. The
+        #   expression is in the form of field:value. For example, 'instanceType:
+        #   CLOUD_SQL_INSTANCE'. Fields can be nested as needed as per their JSON
+        #   representation, such as 'settings.userLabels.auto_start:true'. Multiple filter
+        #   queries are space-separated. For example. 'state:RUNNABLE instanceType:
+        #   CLOUD_SQL_INSTANCE'. By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly.
         # @param [Fixnum] max_results
         #   The maximum number of results to return per response.
         # @param [String] page_token
@@ -825,9 +823,9 @@ module Google
         
         # Lists all of the trusted Certificate Authorities (CAs) for the specified
         # instance. There can be up to three CAs listed: the CA that was used to sign
-        # the certificate that is currently in use, a CA that has been added but not
-        # yet used to sign a certificate, and a CA used to sign a certificate that
-        # has previously rotated out.
+        # the certificate that is currently in use, a CA that has been added but not yet
+        # used to sign a certificate, and a CA used to sign a certificate that has
+        # previously rotated out.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -860,8 +858,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates settings of a Cloud SQL instance.
-        # This method supports patch semantics.
+        # Updates settings of a Cloud SQL instance. This method supports patch semantics.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -931,8 +928,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes all client certificates and generates a new server SSL certificate
-        # for the instance.
+        # Deletes all client certificates and generates a new server SSL certificate for
+        # the instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -1035,8 +1032,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rotates the server certificate to one signed by the Certificate Authority
-        # (CA) version previously added with the addServerCA method.
+        # Rotates the server certificate to one signed by the Certificate Authority (CA)
+        # version previously added with the addServerCA method.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -1244,8 +1241,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all instance operations that have been performed on the given Cloud
-        # SQL instance in the reverse chronological order of the start time.
+        # Lists all instance operations that have been performed on the given Cloud SQL
+        # instance in the reverse chronological order of the start time.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -1397,9 +1394,8 @@ module Google
         end
         
         # Generates a short-lived X509 certificate containing the provided public key
-        # and signed by a private key specific to the target instance. Users may use
-        # the certificate to authenticate as themselves when connecting to the
-        # database.
+        # and signed by a private key specific to the target instance. Users may use the
+        # certificate to authenticate as themselves when connecting to the database.
         # @param [String] project
         #   Project ID of the Cloud SQL project.
         # @param [String] instance
@@ -1435,8 +1431,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the SSL certificate. For First Generation instances, the
-        # certificate remains valid until the instance is restarted.
+        # Deletes the SSL certificate. For First Generation instances, the certificate
+        # remains valid until the instance is restarted.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -1472,8 +1468,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a particular SSL certificate.  Does not include the private key
-        # (required for usage).  The private key must be saved from the response to
+        # Retrieves a particular SSL certificate. Does not include the private key (
+        # required for usage). The private key must be saved from the response to
         # initial creation.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -1511,8 +1507,8 @@ module Google
         end
         
         # Creates an SSL certificate and returns it along with the private key and
-        # server certificate authority.  The new certificate will not be usable until
-        # the instance is restarted.
+        # server certificate authority. The new certificate will not be usable until the
+        # instance is restarted.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -1581,9 +1577,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all available machine types (tiers) for Cloud SQL, for example,
-        # db-n1-standard-1. For related information, see <a
-        # href="/sql/pricing">Pricing</a>.
+        # Lists all available machine types (tiers) for Cloud SQL, for example, db-n1-
+        # standard-1. For related information, see Pricing.
         # @param [String] project
         #   Project ID of the project for which to list tiers.
         # @param [String] fields

@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstantiateWorkflowTemplateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -818,6 +824,8 @@ module Google
       
           property :image_uri, as: 'imageUri'
           collection :instance_names, as: 'instanceNames'
+          collection :instance_references, as: 'instanceReferences', class: Google::Apis::DataprocV1beta2::InstanceReference, decorator: Google::Apis::DataprocV1beta2::InstanceReference::Representation
+      
           property :is_preemptible, as: 'isPreemptible'
           property :machine_type_uri, as: 'machineTypeUri'
           property :managed_group_config, as: 'managedGroupConfig', class: Google::Apis::DataprocV1beta2::ManagedGroupConfig, decorator: Google::Apis::DataprocV1beta2::ManagedGroupConfig::Representation
@@ -825,6 +833,14 @@ module Google
           property :min_cpu_platform, as: 'minCpuPlatform'
           property :num_instances, as: 'numInstances'
           property :preemptibility, as: 'preemptibility'
+        end
+      end
+      
+      class InstanceReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_id, as: 'instanceId'
+          property :instance_name, as: 'instanceName'
         end
       end
       

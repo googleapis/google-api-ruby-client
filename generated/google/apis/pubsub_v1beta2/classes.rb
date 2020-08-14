@@ -26,8 +26,8 @@ module Google
       class AcknowledgeRequest
         include Google::Apis::Core::Hashable
       
-        # The acknowledgment ID for the messages being acknowledged that was returned
-        # by the Pub/Sub system in the `Pull` response. Must not be empty.
+        # The acknowledgment ID for the messages being acknowledged that was returned by
+        # the Pub/Sub system in the `Pull` response. Must not be empty.
         # Corresponds to the JSON property `ackIds`
         # @return [Array<String>]
         attr_accessor :ack_ids
@@ -46,69 +46,57 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # Represents a textual expression in the Common Expression Language (CEL)
-        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-        # are documented at https://github.com/google/cel-spec.
-        # Example (Comparison):
-        # title: "Summary size limit"
-        # description: "Determines if a summary is less than 100 chars"
-        # expression: "document.summary.size() < 100"
-        # Example (Equality):
-        # title: "Requestor is owner"
-        # description: "Determines if requestor is the document owner"
-        # expression: "document.owner == request.auth.claims.email"
-        # Example (Logic):
-        # title: "Public documents"
-        # description: "Determine whether the document should be publicly visible"
-        # expression: "document.type != 'private' && document.type != 'internal'"
-        # Example (Data Manipulation):
-        # title: "Notification string"
-        # description: "Create a notification string with a timestamp."
-        # expression: "'New message received at ' + string(document.create_time)"
-        # The exact variables and functions that may be referenced within an expression
-        # are determined by the service that evaluates it. See the service
-        # documentation for additional information.
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::PubsubV1beta2::Expr]
         attr_accessor :condition
       
-        # Specifies the identities requesting access for a Cloud Platform resource.
-        # `members` can have the following values:
-        # * `allUsers`: A special identifier that represents anyone who is
-        # on the internet; with or without a Google account.
-        # * `allAuthenticatedUsers`: A special identifier that represents anyone
-        # who is authenticated with a Google account or a service account.
-        # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@example.com` .
-        # * `serviceAccount:`emailid``: An email address that represents a service
-        # account. For example, `my-other-app@appspot.gserviceaccount.com`.
-        # * `group:`emailid``: An email address that represents a Google group.
-        # For example, `admins@example.com`.
-        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For
-        # example, `alice@example.com?uid=123456789012345678901`. If the user is
-        # recovered, this value reverts to `user:`emailid`` and the recovered user
-        # retains the role in the binding.
-        # * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus
-        # unique identifier) representing a service account that has been recently
-        # deleted. For example,
-        # `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-        # If the service account is undeleted, this value reverts to
-        # `serviceAccount:`emailid`` and the undeleted service account retains the
-        # role in the binding.
-        # * `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a Google group that has been recently
-        # deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-        # the group is recovered, this value reverts to `group:`emailid`` and the
-        # recovered group retains the role in the binding.
-        # * `domain:`domain``: The G Suite domain (primary) that represents all the
-        # users of that domain. For example, `google.com` or `example.com`.
+        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # members` can have the following values: * `allUsers`: A special identifier
+        # that represents anyone who is on the internet; with or without a Google
+        # account. * `allAuthenticatedUsers`: A special identifier that represents
+        # anyone who is authenticated with a Google account or a service account. * `
+        # user:`emailid``: An email address that represents a specific Google account.
+        # For example, `alice@example.com` . * `serviceAccount:`emailid``: An email
+        # address that represents a service account. For example, `my-other-app@appspot.
+        # gserviceaccount.com`. * `group:`emailid``: An email address that represents a
+        # Google group. For example, `admins@example.com`. * `deleted:user:`emailid`?uid=
+        # `uniqueid``: An email address (plus unique identifier) representing a user
+        # that has been recently deleted. For example, `alice@example.com?uid=
+        # 123456789012345678901`. If the user is recovered, this value reverts to `user:`
+        # emailid`` and the recovered user retains the role in the binding. * `deleted:
+        # serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a service account that has been recently deleted. For
+        # example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+        # If the service account is undeleted, this value reverts to `serviceAccount:`
+        # emailid`` and the undeleted service account retains the role in the binding. *
+        # `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a Google group that has been recently deleted. For
+        # example, `admins@example.com?uid=123456789012345678901`. If the group is
+        # recovered, this value reverts to `group:`emailid`` and the recovered group
+        # retains the role in the binding. * `domain:`domain``: The G Suite domain (
+        # primary) that represents all the users of that domain. For example, `google.
+        # com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
       
-        # Role that is assigned to `members`.
-        # For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
+        # , or `roles/owner`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -125,13 +113,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -144,52 +130,43 @@ module Google
         end
       end
       
-      # Represents a textual expression in the Common Expression Language (CEL)
-      # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
-      # are documented at https://github.com/google/cel-spec.
-      # Example (Comparison):
-      # title: "Summary size limit"
-      # description: "Determines if a summary is less than 100 chars"
-      # expression: "document.summary.size() < 100"
-      # Example (Equality):
-      # title: "Requestor is owner"
-      # description: "Determines if requestor is the document owner"
-      # expression: "document.owner == request.auth.claims.email"
-      # Example (Logic):
-      # title: "Public documents"
-      # description: "Determine whether the document should be publicly visible"
-      # expression: "document.type != 'private' && document.type != 'internal'"
-      # Example (Data Manipulation):
-      # title: "Notification string"
-      # description: "Create a notification string with a timestamp."
-      # expression: "'New message received at ' + string(document.create_time)"
-      # The exact variables and functions that may be referenced within an expression
-      # are determined by the service that evaluates it. See the service
-      # documentation for additional information.
+      # Represents a textual expression in the Common Expression Language (CEL) syntax.
+      # CEL is a C-like expression language. The syntax and semantics of CEL are
+      # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+      # "Summary size limit" description: "Determines if a summary is less than 100
+      # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+      # Requestor is owner" description: "Determines if requestor is the document
+      # owner" expression: "document.owner == request.auth.claims.email" Example (
+      # Logic): title: "Public documents" description: "Determine whether the document
+      # should be publicly visible" expression: "document.type != 'private' &&
+      # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+      # string" description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)" The
+      # exact variables and functions that may be referenced within an expression are
+      # determined by the service that evaluates it. See the service documentation for
+      # additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
-        # Optional. Description of the expression. This is a longer text which
-        # describes the expression, e.g. when hovered over it in a UI.
+        # Optional. Description of the expression. This is a longer text which describes
+        # the expression, e.g. when hovered over it in a UI.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Textual representation of an expression in Common Expression Language
-        # syntax.
+        # Textual representation of an expression in Common Expression Language syntax.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # Optional. String indicating the location of the expression for error
-        # reporting, e.g. a file name and a position in the file.
+        # Optional. String indicating the location of the expression for error reporting,
+        # e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # Optional. Title for the expression, i.e. a short string describing
-        # its purpose. This can be used e.g. in UIs which allow to enter the
-        # expression.
+        # Optional. Title for the expression, i.e. a short string describing its purpose.
+        # This can be used e.g. in UIs which allow to enter the expression.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -211,9 +188,9 @@ module Google
       class ListSubscriptionsResponse
         include Google::Apis::Core::Hashable
       
-        # If not empty, indicates that there may be more subscriptions that match
-        # the request; this value should be passed in a new
-        # `ListSubscriptionsRequest` to get more subscriptions.
+        # If not empty, indicates that there may be more subscriptions that match the
+        # request; this value should be passed in a new `ListSubscriptionsRequest` to
+        # get more subscriptions.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -238,9 +215,9 @@ module Google
       class ListTopicSubscriptionsResponse
         include Google::Apis::Core::Hashable
       
-        # If not empty, indicates that there may be more subscriptions that match
-        # the request; this value should be passed in a new
-        # `ListTopicSubscriptionsRequest` to get more subscriptions.
+        # If not empty, indicates that there may be more subscriptions that match the
+        # request; this value should be passed in a new `ListTopicSubscriptionsRequest`
+        # to get more subscriptions.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -265,8 +242,8 @@ module Google
       class ListTopicsResponse
         include Google::Apis::Core::Hashable
       
-        # If not empty, indicates that there may be more topics that match the
-        # request; this value should be passed in a new `ListTopicsRequest`.
+        # If not empty, indicates that there may be more topics that match the request;
+        # this value should be passed in a new `ListTopicsRequest`.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -291,17 +268,16 @@ module Google
       class ModifyAckDeadlineRequest
         include Google::Apis::Core::Hashable
       
-        # The new ack deadline with respect to the time this request was sent to
-        # the Pub/Sub system. Must be >= 0. For example, if the value is 10, the new
-        # ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
-        # was made. Specifying zero may immediately make the message available for
-        # another pull request.
+        # The new ack deadline with respect to the time this request was sent to the Pub/
+        # Sub system. Must be >= 0. For example, if the value is 10, the new ack
+        # deadline will expire 10 seconds after the `ModifyAckDeadline` call was made.
+        # Specifying zero may immediately make the message available for another pull
+        # request.
         # Corresponds to the JSON property `ackDeadlineSeconds`
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
       
-        # The acknowledgment ID. Either this or ack_ids must be populated, but not
-        # both.
+        # The acknowledgment ID. Either this or ack_ids must be populated, but not both.
         # Corresponds to the JSON property `ackId`
         # @return [String]
         attr_accessor :ack_id
@@ -342,27 +318,25 @@ module Google
         end
       end
       
-      # Contains information needed for generating an
-      # [OpenID Connect
-      # token](https://developers.google.com/identity/protocols/OpenIDConnect).
+      # Contains information needed for generating an [OpenID Connect token](https://
+      # developers.google.com/identity/protocols/OpenIDConnect).
       class OidcToken
         include Google::Apis::Core::Hashable
       
-        # Audience to be used when generating OIDC token. The audience claim
-        # identifies the recipients that the JWT is intended for. The audience
-        # value is a single case-sensitive string. Having multiple values (array)
-        # for the audience field is not supported. More info about the OIDC JWT
-        # token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
-        # Note: if not specified, the Push endpoint URL will be used.
+        # Audience to be used when generating OIDC token. The audience claim identifies
+        # the recipients that the JWT is intended for. The audience value is a single
+        # case-sensitive string. Having multiple values (array) for the audience field
+        # is not supported. More info about the OIDC JWT token audience here: https://
+        # tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push
+        # endpoint URL will be used.
         # Corresponds to the JSON property `audience`
         # @return [String]
         attr_accessor :audience
       
-        # [Service account
-        # email](https://cloud.google.com/iam/docs/service-accounts)
-        # to be used for generating the OIDC token. The caller (for
-        # CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
-        # have the iam.serviceAccounts.actAs permission for the service account.
+        # [Service account email](https://cloud.google.com/iam/docs/service-accounts) to
+        # be used for generating the OIDC token. The caller (for CreateSubscription,
+        # UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.
+        # serviceAccounts.actAs permission for the service account.
         # Corresponds to the JSON property `serviceAccountEmail`
         # @return [String]
         attr_accessor :service_account_email
@@ -379,111 +353,73 @@ module Google
       end
       
       # An Identity and Access Management (IAM) policy, which specifies access
-      # controls for Google Cloud resources.
-      # A `Policy` is a collection of `bindings`. A `binding` binds one or more
-      # `members` to a single `role`. Members can be user accounts, service accounts,
-      # Google groups, and domains (such as G Suite). A `role` is a named list of
-      # permissions; each `role` can be an IAM predefined role or a user-created
-      # custom role.
-      # For some types of Google Cloud resources, a `binding` can also specify a
-      # `condition`, which is a logical expression that allows access to a resource
-      # only if the expression evaluates to `true`. A condition can add constraints
-      # based on attributes of the request, the resource, or both. To learn which
-      # resources support conditions in their IAM policies, see the
-      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-      # policies).
-      # **JSON example:**
-      # `
-      # "bindings": [
-      # `
-      # "role": "roles/resourcemanager.organizationAdmin",
-      # "members": [
-      # "user:mike@example.com",
-      # "group:admins@example.com",
-      # "domain:google.com",
-      # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-      # ]
-      # `,
-      # `
-      # "role": "roles/resourcemanager.organizationViewer",
-      # "members": [
-      # "user:eve@example.com"
-      # ],
-      # "condition": `
-      # "title": "expirable access",
-      # "description": "Does not grant access after Sep 2020",
-      # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
-      # ",
-      # `
-      # `
-      # ],
-      # "etag": "BwWWja0YfJA=",
-      # "version": 3
-      # `
-      # **YAML example:**
-      # bindings:
-      # - members:
-      # - user:mike@example.com
-      # - group:admins@example.com
-      # - domain:google.com
-      # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-      # role: roles/resourcemanager.organizationAdmin
-      # - members:
-      # - user:eve@example.com
-      # role: roles/resourcemanager.organizationViewer
-      # condition:
-      # title: expirable access
-      # description: Does not grant access after Sep 2020
-      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-      # - etag: BwWWja0YfJA=
-      # - version: 3
-      # For a description of IAM and its features, see the
-      # [IAM documentation](https://cloud.google.com/iam/docs/).
+      # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+      # A `binding` binds one or more `members` to a single `role`. Members can be
+      # user accounts, service accounts, Google groups, and domains (such as G Suite).
+      # A `role` is a named list of permissions; each `role` can be an IAM predefined
+      # role or a user-created custom role. For some types of Google Cloud resources,
+      # a `binding` can also specify a `condition`, which is a logical expression that
+      # allows access to a resource only if the expression evaluates to `true`. A
+      # condition can add constraints based on attributes of the request, the resource,
+      # or both. To learn which resources support conditions in their IAM policies,
+      # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+      # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+      # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+      # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+      # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+      # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+      # title": "expirable access", "description": "Does not grant access after Sep
+      # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+      # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+      # members: - user:mike@example.com - group:admins@example.com - domain:google.
+      # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+      # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+      # roles/resourcemanager.organizationViewer condition: title: expirable access
+      # description: Does not grant access after Sep 2020 expression: request.time <
+      # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+      # description of IAM and its features, see the [IAM documentation](https://cloud.
+      # google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Associates a list of `members` to a `role`. Optionally, may specify a
-        # `condition` that determines how and when the `bindings` are applied. Each
-        # of the `bindings` must contain at least one member.
+        # Associates a list of `members` to a `role`. Optionally, may specify a `
+        # condition` that determines how and when the `bindings` are applied. Each of
+        # the `bindings` must contain at least one member.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::PubsubV1beta2::Binding>]
         attr_accessor :bindings
       
-        # `etag` is used for optimistic concurrency control as a way to help
-        # prevent simultaneous updates of a policy from overwriting each other.
-        # It is strongly suggested that systems make use of the `etag` in the
-        # read-modify-write cycle to perform policy updates in order to avoid race
-        # conditions: An `etag` is returned in the response to `getIamPolicy`, and
-        # systems are expected to put that etag in the request to `setIamPolicy` to
-        # ensure that their change will be applied to the same version of the policy.
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-        # you to overwrite a version `3` policy with a version `1` policy, and all of
-        # the conditions in the version `3` policy are lost.
+        # `etag` is used for optimistic concurrency control as a way to help prevent
+        # simultaneous updates of a policy from overwriting each other. It is strongly
+        # suggested that systems make use of the `etag` in the read-modify-write cycle
+        # to perform policy updates in order to avoid race conditions: An `etag` is
+        # returned in the response to `getIamPolicy`, and systems are expected to put
+        # that etag in the request to `setIamPolicy` to ensure that their change will be
+        # applied to the same version of the policy. **Important:** If you use IAM
+        # Conditions, you must include the `etag` field whenever you call `setIamPolicy`.
+        # If you omit this field, then IAM allows you to overwrite a version `3` policy
+        # with a version `1` policy, and all of the conditions in the version `3` policy
+        # are lost.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
-        # Specifies the format of the policy.
-        # Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
-        # are rejected.
-        # Any operation that affects conditional role bindings must specify version
-        # `3`. This requirement applies to the following operations:
-        # * Getting a policy that includes a conditional role binding
-        # * Adding a conditional role binding to a policy
-        # * Changing a conditional role binding in a policy
-        # * Removing any role binding, with or without a condition, from a policy
-        # that includes conditions
-        # **Important:** If you use IAM Conditions, you must include the `etag` field
-        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
-        # you to overwrite a version `3` policy with a version `1` policy, and all of
-        # the conditions in the version `3` policy are lost.
-        # If a policy does not include any conditions, operations on that policy may
-        # specify any valid version or leave the field unset.
-        # To learn which resources support conditions in their IAM policies, see the
-        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-        # policies).
+        # Specifies the format of the policy. Valid values are `0`, `1`, and `3`.
+        # Requests that specify an invalid value are rejected. Any operation that
+        # affects conditional role bindings must specify version `3`. This requirement
+        # applies to the following operations: * Getting a policy that includes a
+        # conditional role binding * Adding a conditional role binding to a policy *
+        # Changing a conditional role binding in a policy * Removing any role binding,
+        # with or without a condition, from a policy that includes conditions **
+        # Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows you
+        # to overwrite a version `3` policy with a version `1` policy, and all of the
+        # conditions in the version `3` policy are lost. If a policy does not include
+        # any conditions, operations on that policy may specify any valid version or
+        # leave the field unset. To learn which resources support conditions in their
+        # IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/
+        # conditions/resource-policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -523,9 +459,8 @@ module Google
       class PublishResponse
         include Google::Apis::Core::Hashable
       
-        # The server-assigned ID of each published message, in the same order as
-        # the messages in the request. IDs are guaranteed to be unique within
-        # the topic.
+        # The server-assigned ID of each published message, in the same order as the
+        # messages in the request. IDs are guaranteed to be unique within the topic.
         # Corresponds to the JSON property `messageIds`
         # @return [Array<String>]
         attr_accessor :message_ids
@@ -540,8 +475,8 @@ module Google
         end
       end
       
-      # A message data and its attributes. The message payload must not be empty;
-      # it must contain either a non-empty data field, or at least one attribute.
+      # A message data and its attributes. The message payload must not be empty; it
+      # must contain either a non-empty data field, or at least one attribute.
       class PubsubMessage
         include Google::Apis::Core::Hashable
       
@@ -550,8 +485,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :attributes
       
-        # The message payload. For JSON requests, the value of this field must be
-        # [base64-encoded](https://tools.ietf.org/html/rfc4648).
+        # The message payload. For JSON requests, the value of this field must be [
+        # base64-encoded](https://tools.ietf.org/html/rfc4648).
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -565,9 +500,9 @@ module Google
         # @return [String]
         attr_accessor :message_id
       
-        # The time at which the message was published, populated by the server when
-        # it receives the `Publish` call. It must not be populated by the
-        # publisher in a `Publish` call.
+        # The time at which the message was published, populated by the server when it
+        # receives the `Publish` call. It must not be populated by the publisher in a `
+        # Publish` call.
         # Corresponds to the JSON property `publishTime`
         # @return [String]
         attr_accessor :publish_time
@@ -589,20 +524,19 @@ module Google
       class PullRequest
         include Google::Apis::Core::Hashable
       
-        # The maximum number of messages returned for this request. The Pub/Sub
-        # system may return fewer than the number specified.
+        # The maximum number of messages returned for this request. The Pub/Sub system
+        # may return fewer than the number specified.
         # Corresponds to the JSON property `maxMessages`
         # @return [Fixnum]
         attr_accessor :max_messages
       
         # Optional. If this is specified as true the system will respond immediately
-        # even if
-        # it is not able to return a message in the `Pull` response. Otherwise the
-        # system is allowed to wait until at least one message is available rather
-        # than returning no messages. The client may cancel the request if it does
-        # not wish to wait any longer for the response. Warning: setting this field
-        # to `true` is discouraged because it adversely impacts the performance of
-        # `Pull` operations. We recommend that users do not set this field.
+        # even if it is not able to return a message in the `Pull` response. Otherwise
+        # the system is allowed to wait until at least one message is available rather
+        # than returning no messages. The client may cancel the request if it does not
+        # wish to wait any longer for the response. Warning: setting this field to `true`
+        # is discouraged because it adversely impacts the performance of `Pull`
+        # operations. We recommend that users do not set this field.
         # Corresponds to the JSON property `returnImmediately`
         # @return [Boolean]
         attr_accessor :return_immediately
@@ -645,36 +579,32 @@ module Google
       class PushConfig
         include Google::Apis::Core::Hashable
       
-        # Endpoint configuration attributes.
-        # Every endpoint has a set of API supported attributes that can be used to
-        # control different aspects of the message delivery.
-        # The currently supported attribute is `x-goog-version`, which you can
-        # use to change the format of the push message. This attribute
-        # indicates the version of the data expected by the endpoint. This
-        # controls the shape of the envelope (i.e. its fields and metadata).
-        # The endpoint version is based on the version of the Pub/Sub
+        # Endpoint configuration attributes. Every endpoint has a set of API supported
+        # attributes that can be used to control different aspects of the message
+        # delivery. The currently supported attribute is `x-goog-version`, which you can
+        # use to change the format of the push message. This attribute indicates the
+        # version of the data expected by the endpoint. This controls the shape of the
+        # envelope (i.e. its fields and metadata). The endpoint version is based on the
+        # version of the Pub/Sub API. If not present during the `CreateSubscription`
+        # call, it will default to the version of the API used to make such call. If not
+        # present during a `ModifyPushConfig` call, its value will not be changed. `
+        # GetSubscription` calls will always return a valid version, even if the
+        # subscription was created without this attribute. The possible values for this
+        # attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/
+        # Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub
         # API.
-        # If not present during the `CreateSubscription` call, it will default to
-        # the version of the API used to make such call. If not present during a
-        # `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
-        # calls will always return a valid version, even if the subscription was
-        # created without this attribute.
-        # The possible values for this attribute are:
-        # * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
-        # * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,String>]
         attr_accessor :attributes
       
-        # Contains information needed for generating an
-        # [OpenID Connect
-        # token](https://developers.google.com/identity/protocols/OpenIDConnect).
+        # Contains information needed for generating an [OpenID Connect token](https://
+        # developers.google.com/identity/protocols/OpenIDConnect).
         # Corresponds to the JSON property `oidcToken`
         # @return [Google::Apis::PubsubV1beta2::OidcToken]
         attr_accessor :oidc_token
       
-        # A URL locating the endpoint to which messages should be pushed.
-        # For example, a Webhook endpoint might use "https://example.com/push".
+        # A URL locating the endpoint to which messages should be pushed. For example, a
+        # Webhook endpoint might use "https://example.com/push".
         # Corresponds to the JSON property `pushEndpoint`
         # @return [String]
         attr_accessor :push_endpoint
@@ -700,8 +630,8 @@ module Google
         # @return [String]
         attr_accessor :ack_id
       
-        # A message data and its attributes. The message payload must not be empty;
-        # it must contain either a non-empty data field, or at least one attribute.
+        # A message data and its attributes. The message payload must not be empty; it
+        # must contain either a non-empty data field, or at least one attribute.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::PubsubV1beta2::PubsubMessage]
         attr_accessor :message
@@ -722,66 +652,32 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An Identity and Access Management (IAM) policy, which specifies access
-        # controls for Google Cloud resources.
-        # A `Policy` is a collection of `bindings`. A `binding` binds one or more
-        # `members` to a single `role`. Members can be user accounts, service accounts,
-        # Google groups, and domains (such as G Suite). A `role` is a named list of
-        # permissions; each `role` can be an IAM predefined role or a user-created
-        # custom role.
-        # For some types of Google Cloud resources, a `binding` can also specify a
-        # `condition`, which is a logical expression that allows access to a resource
-        # only if the expression evaluates to `true`. A condition can add constraints
-        # based on attributes of the request, the resource, or both. To learn which
-        # resources support conditions in their IAM policies, see the
-        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
-        # policies).
-        # **JSON example:**
-        # `
-        # "bindings": [
-        # `
-        # "role": "roles/resourcemanager.organizationAdmin",
-        # "members": [
-        # "user:mike@example.com",
-        # "group:admins@example.com",
-        # "domain:google.com",
-        # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-        # ]
-        # `,
-        # `
-        # "role": "roles/resourcemanager.organizationViewer",
-        # "members": [
-        # "user:eve@example.com"
-        # ],
-        # "condition": `
-        # "title": "expirable access",
-        # "description": "Does not grant access after Sep 2020",
-        # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
-        # ",
-        # `
-        # `
-        # ],
-        # "etag": "BwWWja0YfJA=",
-        # "version": 3
-        # `
-        # **YAML example:**
-        # bindings:
-        # - members:
-        # - user:mike@example.com
-        # - group:admins@example.com
-        # - domain:google.com
-        # - serviceAccount:my-project-id@appspot.gserviceaccount.com
-        # role: roles/resourcemanager.organizationAdmin
-        # - members:
-        # - user:eve@example.com
-        # role: roles/resourcemanager.organizationViewer
-        # condition:
-        # title: expirable access
-        # description: Does not grant access after Sep 2020
-        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
-        # - etag: BwWWja0YfJA=
-        # - version: 3
-        # For a description of IAM and its features, see the
-        # [IAM documentation](https://cloud.google.com/iam/docs/).
+        # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
+        # A `binding` binds one or more `members` to a single `role`. Members can be
+        # user accounts, service accounts, Google groups, and domains (such as G Suite).
+        # A `role` is a named list of permissions; each `role` can be an IAM predefined
+        # role or a user-created custom role. For some types of Google Cloud resources,
+        # a `binding` can also specify a `condition`, which is a logical expression that
+        # allows access to a resource only if the expression evaluates to `true`. A
+        # condition can add constraints based on attributes of the request, the resource,
+        # or both. To learn which resources support conditions in their IAM policies,
+        # see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        # resource-policies). **JSON example:** ` "bindings": [ ` "role": "roles/
+        # resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "
+        # group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@
+        # appspot.gserviceaccount.com" ] `, ` "role": "roles/resourcemanager.
+        # organizationViewer", "members": [ "user:eve@example.com" ], "condition": ` "
+        # title": "expirable access", "description": "Does not grant access after Sep
+        # 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", `
+        # ` ], "etag": "BwWWja0YfJA=", "version": 3 ` **YAML example:** bindings: -
+        # members: - user:mike@example.com - group:admins@example.com - domain:google.
+        # com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/
+        # resourcemanager.organizationAdmin - members: - user:eve@example.com role:
+        # roles/resourcemanager.organizationViewer condition: title: expirable access
+        # description: Does not grant access after Sep 2020 expression: request.time <
+        # timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a
+        # description of IAM and its features, see the [IAM documentation](https://cloud.
+        # google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::PubsubV1beta2::Policy]
         attr_accessor :policy
@@ -800,30 +696,28 @@ module Google
       class Subscription
         include Google::Apis::Core::Hashable
       
-        # This value is the maximum time after a subscriber receives a message
-        # before the subscriber should acknowledge the message. After message
-        # delivery but before the ack deadline expires and before the message is
-        # acknowledged, it is an outstanding message and will not be delivered
-        # again during that time (on a best-effort basis).
-        # For pull subscriptions, this value is used as the initial value for the ack
-        # deadline. To override this value for a given message, call
-        # `ModifyAckDeadline` with the corresponding `ack_id` if using pull.
-        # The maximum custom deadline you can specify is 600 seconds (10 minutes).
-        # For push delivery, this value is also used to set the request timeout for
-        # the call to the push endpoint.
-        # If the subscriber never acknowledges the message, the Pub/Sub
-        # system will eventually redeliver the message.
-        # If this parameter is 0, a default value of 10 seconds is used.
+        # This value is the maximum time after a subscriber receives a message before
+        # the subscriber should acknowledge the message. After message delivery but
+        # before the ack deadline expires and before the message is acknowledged, it is
+        # an outstanding message and will not be delivered again during that time (on a
+        # best-effort basis). For pull subscriptions, this value is used as the initial
+        # value for the ack deadline. To override this value for a given message, call `
+        # ModifyAckDeadline` with the corresponding `ack_id` if using pull. The maximum
+        # custom deadline you can specify is 600 seconds (10 minutes). For push delivery,
+        # this value is also used to set the request timeout for the call to the push
+        # endpoint. If the subscriber never acknowledges the message, the Pub/Sub system
+        # will eventually redeliver the message. If this parameter is 0, a default value
+        # of 10 seconds is used.
         # Corresponds to the JSON property `ackDeadlineSeconds`
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
       
-        # The name of the subscription. It must have the format
-        # `"projects/`project`/subscriptions/`subscription`"`. ``subscription`` must
-        # start with a letter, and contain only letters (`[A-Za-z]`), numbers
-        # (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
-        # plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
-        # in length, and it must not start with `"goog"`.
+        # The name of the subscription. It must have the format `"projects/`project`/
+        # subscriptions/`subscription`"`. ``subscription`` must start with a letter, and
+        # contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+        # underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%
+        # `). It must be between 3 and 255 characters in length, and it must not start
+        # with `"goog"`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -833,9 +727,8 @@ module Google
         # @return [Google::Apis::PubsubV1beta2::PushConfig]
         attr_accessor :push_config
       
-        # The name of the topic from which this subscription is receiving messages.
-        # The value of this field will be `_deleted-topic_` if the topic has been
-        # deleted.
+        # The name of the topic from which this subscription is receiving messages. The
+        # value of this field will be `_deleted-topic_` if the topic has been deleted.
         # Corresponds to the JSON property `topic`
         # @return [String]
         attr_accessor :topic
@@ -857,10 +750,9 @@ module Google
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
       
-        # The set of permissions to check for the `resource`. Permissions with
-        # wildcards (such as '*' or 'storage.*') are not allowed. For more
-        # information see
-        # [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        # The set of permissions to check for the `resource`. Permissions with wildcards
+        # (such as '*' or 'storage.*') are not allowed. For more information see [IAM
+        # Overview](https://cloud.google.com/iam/docs/overview#permissions).
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -879,8 +771,7 @@ module Google
       class TestIamPermissionsResponse
         include Google::Apis::Core::Hashable
       
-        # A subset of `TestPermissionsRequest.permissions` that the caller is
-        # allowed.
+        # A subset of `TestPermissionsRequest.permissions` that the caller is allowed.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions
@@ -899,12 +790,11 @@ module Google
       class Topic
         include Google::Apis::Core::Hashable
       
-        # The name of the topic. It must have the format
-        # `"projects/`project`/topics/`topic`"`. ``topic`` must start with a letter,
-        # and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
-        # underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
-        # signs (`%`). It must be between 3 and 255 characters in length, and it
-        # must not start with `"goog"`.
+        # The name of the topic. It must have the format `"projects/`project`/topics/`
+        # topic`"`. ``topic`` must start with a letter, and contain only letters (`[A-Za-
+        # z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`),
+        # tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255
+        # characters in length, and it must not start with `"goog"`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

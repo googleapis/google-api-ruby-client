@@ -334,6 +334,11 @@ module Google
       class Reservation
         include Google::Apis::Core::Hashable
       
+        # Output only. Creation time of the reservation.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
         # If false, any query using this reservation will use idle slots from other
         # reservations within the same admin project. If true, a query using this
         # reservation will execute with the slot capacity specified above at most.
@@ -359,15 +364,22 @@ module Google
         # @return [Fixnum]
         attr_accessor :slot_capacity
       
+        # Output only. Last update time of the reservation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
           @ignore_idle_slots = args[:ignore_idle_slots] if args.key?(:ignore_idle_slots)
           @name = args[:name] if args.key?(:name)
           @slot_capacity = args[:slot_capacity] if args.key?(:slot_capacity)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       

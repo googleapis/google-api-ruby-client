@@ -1113,7 +1113,7 @@ module Google
         # caller has the `resourcemanager.projects.list` permission on the parent, the
         # results will be drawn from an alternate index which provides more consistent
         # results. In future versions of this API, this List method will be split into
-        # List and Search to properly capture the behavorial difference.
+        # List and Search to properly capture the behavioral difference.
         # @param [String] filter
         #   An expression for filtering the results of the request. Filter rules are case
         #   insensitive. Some eligible fields for filtering are: + `name` + `id` + `labels.

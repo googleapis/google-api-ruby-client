@@ -26,8 +26,8 @@ module Google
       class AcknowledgeRequest
         include Google::Apis::Core::Hashable
       
-        # The acknowledgment ID for the message being acknowledged. This was
-        # returned by the Pub/Sub system in the Pull response.
+        # The acknowledgment ID for the message being acknowledged. This was returned by
+        # the Pub/Sub system in the Pull response.
         # Corresponds to the JSON property `ackId`
         # @return [Array<String>]
         attr_accessor :ack_id
@@ -50,16 +50,11 @@ module Google
       
       # An empty message that you can re-use to avoid defining duplicated empty
       # messages in your project. A typical example is to use it as argument or the
-      # return value of a service API. For instance:
-      # service Foo `
-      # rpc Bar (proto2.Empty) returns (proto2.Empty) ` `;
-      # `;
-      # BEGIN GOOGLE-INTERNAL
-      # The difference between this one and net/rpc/empty-message.proto is that
-      # 1) The generated message here is in proto2 C++ API.
-      # 2) The proto2.Empty has minimum dependencies
-      # (no message_set or net/rpc dependencies)
-      # END GOOGLE-INTERNAL
+      # return value of a service API. For instance: service Foo ` rpc Bar (proto2.
+      # Empty) returns (proto2.Empty) ` `; `; BEGIN GOOGLE-INTERNAL The difference
+      # between this one and net/rpc/empty-message.proto is that 1) The generated
+      # message here is in proto2 C++ API. 2) The proto2.Empty has minimum
+      # dependencies (no message_set or net/rpc dependencies) END GOOGLE-INTERNAL
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -76,20 +71,16 @@ module Google
       class Label
         include Google::Apis::Core::Hashable
       
-        # The key of a label is a syntactically valid URL (as per RFC 1738) with
-        # the "scheme" and initial slashes omitted and with the additional
-        # restrictions noted below.  Each key should be globally unique.  The
-        # "host" portion is called the "namespace" and is not necessarily
-        # resolvable to a network endpoint.  Instead, the namespace indicates what
-        # system or entity defines the semantics of the label.  Namespaces do not
-        # restrict the set of objects to which a label may be associated.
-        # Keys are defined by the following grammar:
-        # key          = hostname "/" kpath
-        # kpath        = ksegment *[ "/" ksegment ]
-        # ksegment     = alphadigit | *[ alphadigit | "-" | "_" | "." ]
-        # where "hostname" and "alphadigit" are defined as in RFC 1738.
-        # Example key:
-        # spanner.google.com/universe
+        # The key of a label is a syntactically valid URL (as per RFC 1738) with the "
+        # scheme" and initial slashes omitted and with the additional restrictions noted
+        # below. Each key should be globally unique. The "host" portion is called the "
+        # namespace" and is not necessarily resolvable to a network endpoint. Instead,
+        # the namespace indicates what system or entity defines the semantics of the
+        # label. Namespaces do not restrict the set of objects to which a label may be
+        # associated. Keys are defined by the following grammar: key = hostname "/"
+        # kpath kpath = ksegment *[ "/" ksegment ] ksegment = alphadigit | *[ alphadigit
+        # | "-" | "_" | "." ] where "hostname" and "alphadigit" are defined as in RFC
+        # 1738. Example key: spanner.google.com/universe
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -121,8 +112,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If not empty, indicates that there are more subscriptions that match the
-        # request and this value should be passed to the next
-        # <code>ListSubscriptionsRequest</code> to continue.
+        # request and this value should be passed to the next ListSubscriptionsRequest
+        # to continue.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -147,9 +138,8 @@ module Google
       class ListTopicsResponse
         include Google::Apis::Core::Hashable
       
-        # If not empty, indicates that there are more topics that match the request,
-        # and this value should be passed to the next <code>ListTopicsRequest</code>
-        # to continue.
+        # If not empty, indicates that there are more topics that match the request, and
+        # this value should be passed to the next ListTopicsRequest to continue.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -174,8 +164,8 @@ module Google
       class ModifyAckDeadlineRequest
         include Google::Apis::Core::Hashable
       
-        # The new ack deadline with respect to the time this request was sent to the
-        # Pub/Sub system. Must be >= 0. For example, if the value is 10, the new ack
+        # The new ack deadline with respect to the time this request was sent to the Pub/
+        # Sub system. Must be >= 0. For example, if the value is 10, the new ack
         # deadline will expire 10 seconds after the ModifyAckDeadline call was made.
         # Specifying zero may immediately make the message available for another pull
         # request.
@@ -183,20 +173,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
       
-        # The acknowledgment ID. Either this or ack_ids must be populated,
-        # not both.
+        # The acknowledgment ID. Either this or ack_ids must be populated, not both.
         # Corresponds to the JSON property `ackId`
         # @return [String]
         attr_accessor :ack_id
       
-        # List of acknowledgment IDs. Either this field or ack_id
-        # should be populated, not both.
+        # List of acknowledgment IDs. Either this field or ack_id should be populated,
+        # not both.
         # Corresponds to the JSON property `ackIds`
         # @return [Array<String>]
         attr_accessor :ack_ids
       
-        # Next Index: 5
-        # The name of the subscription from which messages are being pulled.
+        # Next Index: 5 The name of the subscription from which messages are being
+        # pulled.
         # Corresponds to the JSON property `subscription`
         # @return [String]
         attr_accessor :subscription
@@ -268,9 +257,8 @@ module Google
       class PublishBatchResponse
         include Google::Apis::Core::Hashable
       
-        # The server-assigned ID of each published message, in the same order as
-        # the messages in the request. IDs are guaranteed to be unique within
-        # the topic.
+        # The server-assigned ID of each published message, in the same order as the
+        # messages in the request. IDs are guaranteed to be unique within the topic.
         # Corresponds to the JSON property `messageIds`
         # @return [Array<String>]
         attr_accessor :message_ids
@@ -314,9 +302,9 @@ module Google
       class PubsubEvent
         include Google::Apis::Core::Hashable
       
-        # Indicates that this subscription has been deleted. (Note that pull
-        # subscribers will always receive NOT_FOUND in response in their pull
-        # request on the subscription, rather than seeing this boolean.)
+        # Indicates that this subscription has been deleted. (Note that pull subscribers
+        # will always receive NOT_FOUND in response in their pull request on the
+        # subscription, rather than seeing this boolean.)
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
@@ -361,22 +349,22 @@ module Google
         # @return [String]
         attr_accessor :data
       
-        # Optional list of labels for this message. Keys in this collection must
-        # be unique.
+        # Optional list of labels for this message. Keys in this collection must be
+        # unique.
         # Corresponds to the JSON property `label`
         # @return [Array<Google::Apis::PubsubV1beta1a::Label>]
         attr_accessor :label
       
-        # ID of this message assigned by the server at publication time. Guaranteed
-        # to be unique within the topic. This value may be read by a subscriber
-        # that receives a PubsubMessage via a Pull call or a push delivery. It must
-        # not be populated by a publisher in a Publish call.
+        # ID of this message assigned by the server at publication time. Guaranteed to
+        # be unique within the topic. This value may be read by a subscriber that
+        # receives a PubsubMessage via a Pull call or a push delivery. It must not be
+        # populated by a publisher in a Publish call.
         # Corresponds to the JSON property `messageId`
         # @return [String]
         attr_accessor :message_id
       
-        # The time at which the message was published.
-        # The time is milliseconds since the UNIX epoch.
+        # The time at which the message was published. The time is milliseconds since
+        # the UNIX epoch.
         # Corresponds to the JSON property `publishTime`
         # @return [Fixnum]
         attr_accessor :publish_time
@@ -404,11 +392,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_events
       
-        # If this is specified as true the system will respond immediately even if
-        # it is not able to return a message in the Pull response. Otherwise the
-        # system is allowed to wait until at least one message is available rather
-        # than returning no messages. The client may cancel the request if it does
-        # not wish to wait any longer for the response.
+        # If this is specified as true the system will respond immediately even if it is
+        # not able to return a message in the Pull response. Otherwise the system is
+        # allowed to wait until at least one message is available rather than returning
+        # no messages. The client may cancel the request if it does not wish to wait any
+        # longer for the response.
         # Corresponds to the JSON property `returnImmediately`
         # @return [Boolean]
         attr_accessor :return_immediately
@@ -436,9 +424,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Received Pub/Sub messages or status events. The Pub/Sub system will return
-        # zero messages if there are no more messages available in the backlog. The
-        # Pub/Sub system may return fewer than the max_events requested even if
-        # there are more messages available in the backlog.
+        # zero messages if there are no more messages available in the backlog. The Pub/
+        # Sub system may return fewer than the max_events requested even if there are
+        # more messages available in the backlog.
         # Corresponds to the JSON property `pullResponses`
         # @return [Array<Google::Apis::PubsubV1beta1a::PullResponse>]
         attr_accessor :pull_responses
@@ -457,11 +445,11 @@ module Google
       class PullRequest
         include Google::Apis::Core::Hashable
       
-        # If this is specified as true the system will respond immediately even if
-        # it is not able to return a message in the Pull response. Otherwise the
-        # system is allowed to wait until at least one message is available rather
-        # than returning FAILED_PRECONDITION. The client may cancel the request if
-        # it does not wish to wait any longer for the response.
+        # If this is specified as true the system will respond immediately even if it is
+        # not able to return a message in the Pull response. Otherwise the system is
+        # allowed to wait until at least one message is available rather than returning
+        # FAILED_PRECONDITION. The client may cancel the request if it does not wish to
+        # wait any longer for the response.
         # Corresponds to the JSON property `returnImmediately`
         # @return [Boolean]
         attr_accessor :return_immediately
@@ -483,8 +471,8 @@ module Google
         end
       end
       
-      # Either a <code>PubsubMessage</code> or a truncation event. One of these two
-      # must be populated.
+      # Either a PubsubMessage or a truncation event. One of these two must be
+      # populated.
       class PullResponse
         include Google::Apis::Core::Hashable
       
@@ -513,8 +501,8 @@ module Google
       class PushConfig
         include Google::Apis::Core::Hashable
       
-        # A URL locating the endpoint to which messages should be pushed.
-        # For example, a Webhook endpoint might use "https://example.com/push".
+        # A URL locating the endpoint to which messages should be pushed. For example, a
+        # Webhook endpoint might use "https://example.com/push".
         # Corresponds to the JSON property `pushEndpoint`
         # @return [String]
         attr_accessor :push_endpoint
@@ -534,22 +522,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # For either push or pull delivery, the value is the maximum time after a
-        # subscriber receives a message before the subscriber should acknowledge or
-        # Nack the message. If the Ack deadline for a message passes without an
-        # Ack or a Nack, the Pub/Sub system will eventually redeliver the message.
-        # If a subscriber acknowledges after the deadline, the Pub/Sub system may
-        # accept the Ack, but it is possible that the message has been already
-        # delivered again. Multiple Acks to the message are allowed and will
-        # succeed.
-        # For push delivery, this value is used to set the request timeout for
-        # the call to the push endpoint.
-        # For pull delivery, this value is used as the initial value for the Ack
-        # deadline. It may be overridden for each message using its corresponding
-        # ack_id with <code>ModifyAckDeadline</code>.
-        # While a message is outstanding (i.e. it has been delivered to a pull
-        # subscriber and the subscriber has not yet Acked or Nacked), the Pub/Sub
-        # system will not deliver that message to another pull subscriber
-        # (on a best-effort basis).
+        # subscriber receives a message before the subscriber should acknowledge or Nack
+        # the message. If the Ack deadline for a message passes without an Ack or a Nack,
+        # the Pub/Sub system will eventually redeliver the message. If a subscriber
+        # acknowledges after the deadline, the Pub/Sub system may accept the Ack, but it
+        # is possible that the message has been already delivered again. Multiple Acks
+        # to the message are allowed and will succeed. For push delivery, this value is
+        # used to set the request timeout for the call to the push endpoint. For pull
+        # delivery, this value is used as the initial value for the Ack deadline. It may
+        # be overridden for each message using its corresponding ack_id with
+        # ModifyAckDeadline. While a message is outstanding (i.e. it has been delivered
+        # to a pull subscriber and the subscriber has not yet Acked or Nacked), the Pub/
+        # Sub system will not deliver that message to another pull subscriber (on a best-
+        # effort basis).
         # Corresponds to the JSON property `ackDeadlineSeconds`
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
