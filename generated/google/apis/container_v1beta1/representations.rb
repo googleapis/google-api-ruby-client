@@ -394,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NotificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,6 +425,12 @@ module Google
       end
       
       class PrivateClusterMasterGlobalAccessConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubSub
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -568,6 +580,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StatusCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -599,6 +617,12 @@ module Google
       end
       
       class UpdateNodePoolRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -818,6 +842,8 @@ module Google
           property :node_ipv4_cidr_size, as: 'nodeIpv4CidrSize'
           collection :node_pools, as: 'nodePools', class: Google::Apis::ContainerV1beta1::NodePool, decorator: Google::Apis::ContainerV1beta1::NodePool::Representation
       
+          property :notification_config, as: 'notificationConfig', class: Google::Apis::ContainerV1beta1::NotificationConfig, decorator: Google::Apis::ContainerV1beta1::NotificationConfig::Representation
+      
           property :pod_security_policy_config, as: 'podSecurityPolicyConfig', class: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig, decorator: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig::Representation
       
           property :private_cluster, as: 'privateCluster'
@@ -879,6 +905,7 @@ module Google
       
           property :desired_database_encryption, as: 'desiredDatabaseEncryption', class: Google::Apis::ContainerV1beta1::DatabaseEncryption, decorator: Google::Apis::ContainerV1beta1::DatabaseEncryption::Representation
       
+          property :desired_datapath_provider, as: 'desiredDatapathProvider'
           property :desired_default_snat_status, as: 'desiredDefaultSnatStatus', class: Google::Apis::ContainerV1beta1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1beta1::DefaultSnatStatus::Representation
       
           property :desired_image_type, as: 'desiredImageType'
@@ -896,6 +923,8 @@ module Google
       
           property :desired_node_pool_id, as: 'desiredNodePoolId'
           property :desired_node_version, as: 'desiredNodeVersion'
+          property :desired_notification_config, as: 'desiredNotificationConfig', class: Google::Apis::ContainerV1beta1::NotificationConfig, decorator: Google::Apis::ContainerV1beta1::NotificationConfig::Representation
+      
           property :desired_pod_security_policy_config, as: 'desiredPodSecurityPolicyConfig', class: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig, decorator: Google::Apis::ContainerV1beta1::PodSecurityPolicyConfig::Representation
       
           property :desired_private_cluster_config, as: 'desiredPrivateClusterConfig', class: Google::Apis::ContainerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1beta1::PrivateClusterConfig::Representation
@@ -1253,6 +1282,7 @@ module Google
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :datapath_provider, as: 'datapathProvider'
           property :default_snat_status, as: 'defaultSnatStatus', class: Google::Apis::ContainerV1beta1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1beta1::DefaultSnatStatus::Representation
       
           property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
@@ -1377,6 +1407,14 @@ module Google
         end
       end
       
+      class NotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pubsub, as: 'pubsub', class: Google::Apis::ContainerV1beta1::PubSub, decorator: Google::Apis::ContainerV1beta1::PubSub::Representation
+      
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1384,6 +1422,8 @@ module Google
       
           property :detail, as: 'detail'
           property :end_time, as: 'endTime'
+          property :error, as: 'error', class: Google::Apis::ContainerV1beta1::Status, decorator: Google::Apis::ContainerV1beta1::Status::Representation
+      
           property :location, as: 'location'
           property :name, as: 'name'
           collection :nodepool_conditions, as: 'nodepoolConditions', class: Google::Apis::ContainerV1beta1::StatusCondition, decorator: Google::Apis::ContainerV1beta1::StatusCondition::Representation
@@ -1437,6 +1477,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class PubSub
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :topic, as: 'topic'
         end
       end
       
@@ -1697,9 +1745,19 @@ module Google
         end
       end
       
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
       class StatusCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_code, as: 'canonicalCode'
           property :code, as: 'code'
           property :message, as: 'message'
         end
@@ -1764,6 +1822,18 @@ module Google
           property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig::Representation
       
           property :zone, as: 'zone'
+        end
+      end
+      
+      class UpgradeEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_version, as: 'currentVersion'
+          property :operation, as: 'operation'
+          property :operation_start_time, as: 'operationStartTime'
+          property :resource, as: 'resource'
+          property :resource_type, as: 'resourceType'
+          property :target_version, as: 'targetVersion'
         end
       end
       

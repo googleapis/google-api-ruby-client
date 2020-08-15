@@ -22,9 +22,9 @@ module Google
   module Apis
     module ServicecontrolV2
       
-      # This message defines attributes associated with API operations, such as
-      # a network API request. The terminology is based on the conventions used
-      # by Google APIs, Istio, and OpenAPI.
+      # This message defines attributes associated with API operations, such as a
+      # network API request. The terminology is based on the conventions used by
+      # Google APIs, Istio, and OpenAPI.
       class Api
         include Google::Apis::Core::Hashable
       
@@ -35,21 +35,21 @@ module Google
         # @return [String]
         attr_accessor :operation
       
-        # The API protocol used for sending the request, such as "http", "https",
-        # "grpc", or "internal".
+        # The API protocol used for sending the request, such as "http", "https", "grpc",
+        # or "internal".
         # Corresponds to the JSON property `protocol`
         # @return [String]
         attr_accessor :protocol
       
-        # The API service name. It is a logical identifier for a networked API,
-        # such as "pubsub.googleapis.com". The naming syntax depends on the
-        # API management system being used for handling the request.
+        # The API service name. It is a logical identifier for a networked API, such as "
+        # pubsub.googleapis.com". The naming syntax depends on the API management system
+        # being used for handling the request.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
-        # The API version associated with the API operation above, such as "v1" or
-        # "v1alpha1".
+        # The API version associated with the API operation above, such as "v1" or "
+        # v1alpha1".
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -67,33 +67,31 @@ module Google
         end
       end
       
-      # This message defines the standard attribute vocabulary for Google APIs.
-      # An attribute is a piece of metadata that describes an activity on a network
-      # service. For example, the size of an HTTP request, or the status code of
-      # an HTTP response.
-      # Each attribute has a type and a name, which is logically defined as
-      # a proto message field in `AttributeContext`. The field type becomes the
-      # attribute type, and the field path becomes the attribute name. For example,
-      # the attribute `source.ip` maps to field `AttributeContext.source.ip`.
-      # This message definition is guaranteed not to have any wire breaking change.
-      # So you can use it directly for passing attributes across different systems.
-      # NOTE: Different system may generate different subset of attributes. Please
-      # verify the system specification before relying on an attribute generated
-      # a system.
+      # This message defines the standard attribute vocabulary for Google APIs. An
+      # attribute is a piece of metadata that describes an activity on a network
+      # service. For example, the size of an HTTP request, or the status code of an
+      # HTTP response. Each attribute has a type and a name, which is logically
+      # defined as a proto message field in `AttributeContext`. The field type becomes
+      # the attribute type, and the field path becomes the attribute name. For example,
+      # the attribute `source.ip` maps to field `AttributeContext.source.ip`. This
+      # message definition is guaranteed not to have any wire breaking change. So you
+      # can use it directly for passing attributes across different systems. NOTE:
+      # Different system may generate different subset of attributes. Please verify
+      # the system specification before relying on an attribute generated a system.
       class AttributeContext
         include Google::Apis::Core::Hashable
       
-        # This message defines attributes associated with API operations, such as
-        # a network API request. The terminology is based on the conventions used
-        # by Google APIs, Istio, and OpenAPI.
+        # This message defines attributes associated with API operations, such as a
+        # network API request. The terminology is based on the conventions used by
+        # Google APIs, Istio, and OpenAPI.
         # Corresponds to the JSON property `api`
         # @return [Google::Apis::ServicecontrolV2::Api]
         attr_accessor :api
       
-        # This message defines attributes for a node that handles a network request.
-        # The node can be either a service or an application that sends, forwards,
-        # or receives the request. Service peers should fill in
-        # `principal` and `labels` as appropriate.
+        # This message defines attributes for a node that handles a network request. The
+        # node can be either a service or an application that sends, forwards, or
+        # receives the request. Service peers should fill in `principal` and `labels` as
+        # appropriate.
         # Corresponds to the JSON property `destination`
         # @return [Google::Apis::ServicecontrolV2::Peer]
         attr_accessor :destination
@@ -103,38 +101,38 @@ module Google
         # @return [Array<Hash<String,Object>>]
         attr_accessor :extensions
       
-        # This message defines attributes for a node that handles a network request.
-        # The node can be either a service or an application that sends, forwards,
-        # or receives the request. Service peers should fill in
-        # `principal` and `labels` as appropriate.
+        # This message defines attributes for a node that handles a network request. The
+        # node can be either a service or an application that sends, forwards, or
+        # receives the request. Service peers should fill in `principal` and `labels` as
+        # appropriate.
         # Corresponds to the JSON property `origin`
         # @return [Google::Apis::ServicecontrolV2::Peer]
         attr_accessor :origin
       
-        # This message defines attributes for an HTTP request. If the actual
-        # request is not an HTTP request, the runtime system should try to map
-        # the actual request to an equivalent HTTP request.
+        # This message defines attributes for an HTTP request. If the actual request is
+        # not an HTTP request, the runtime system should try to map the actual request
+        # to an equivalent HTTP request.
         # Corresponds to the JSON property `request`
         # @return [Google::Apis::ServicecontrolV2::Request]
         attr_accessor :request
       
         # This message defines core attributes for a resource. A resource is an
-        # addressable (named) entity provided by the destination service. For
-        # example, a file stored on a network storage service.
+        # addressable (named) entity provided by the destination service. For example, a
+        # file stored on a network storage service.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ServicecontrolV2::Resource]
         attr_accessor :resource
       
-        # This message defines attributes for a typical network response. It
-        # generally models semantics of an HTTP response.
+        # This message defines attributes for a typical network response. It generally
+        # models semantics of an HTTP response.
         # Corresponds to the JSON property `response`
         # @return [Google::Apis::ServicecontrolV2::Response]
         attr_accessor :response
       
-        # This message defines attributes for a node that handles a network request.
-        # The node can be either a service or an application that sends, forwards,
-        # or receives the request. Service peers should fill in
-        # `principal` and `labels` as appropriate.
+        # This message defines attributes for a node that handles a network request. The
+        # node can be either a service or an application that sends, forwards, or
+        # receives the request. Service peers should fill in `principal` and `labels` as
+        # appropriate.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::ServicecontrolV2::Peer]
         attr_accessor :source
@@ -165,40 +163,36 @@ module Google
         # @return [Google::Apis::ServicecontrolV2::AuthenticationInfo]
         attr_accessor :authentication_info
       
-        # Authorization information. If there are multiple
-        # resources or permissions involved, then there is
-        # one AuthorizationInfo element for each `resource, permission` tuple.
+        # Authorization information. If there are multiple resources or permissions
+        # involved, then there is one AuthorizationInfo element for each `resource,
+        # permission` tuple.
         # Corresponds to the JSON property `authorizationInfo`
         # @return [Array<Google::Apis::ServicecontrolV2::AuthorizationInfo>]
         attr_accessor :authorization_info
       
-        # Other service-specific data about the request, response, and other
-        # information associated with the current audited event.
+        # Other service-specific data about the request, response, and other information
+        # associated with the current audited event.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # The name of the service method or operation.
-        # For API calls, this should be the name of the API method.
-        # For example,
-        # "google.cloud.bigquery.v2.TableService.InsertTable"
-        # "google.logging.v2.ConfigServiceV2.CreateSink"
+        # The name of the service method or operation. For API calls, this should be the
+        # name of the API method. For example, "google.cloud.bigquery.v2.TableService.
+        # InsertTable" "google.logging.v2.ConfigServiceV2.CreateSink"
         # Corresponds to the JSON property `methodName`
         # @return [String]
         attr_accessor :method_name
       
-        # The number of items returned from a List or Query API method,
-        # if applicable.
+        # The number of items returned from a List or Query API method, if applicable.
         # Corresponds to the JSON property `numResponseItems`
         # @return [Fixnum]
         attr_accessor :num_response_items
       
-        # The operation request. This may not include all request parameters,
-        # such as those that are too large, privacy-sensitive, or duplicated
-        # elsewhere in the log record.
-        # It should never include user-generated data, such as file contents.
-        # When the JSON object represented here has a proto equivalent, the proto
-        # name will be indicated in the `@type` property.
+        # The operation request. This may not include all request parameters, such as
+        # those that are too large, privacy-sensitive, or duplicated elsewhere in the
+        # log record. It should never include user-generated data, such as file contents.
+        # When the JSON object represented here has a proto equivalent, the proto name
+        # will be indicated in the `@type` property.
         # Corresponds to the JSON property `request`
         # @return [Hash<String,Object>]
         attr_accessor :request
@@ -213,55 +207,51 @@ module Google
         # @return [Google::Apis::ServicecontrolV2::ResourceLocation]
         attr_accessor :resource_location
       
-        # The resource or collection that is the target of the operation.
-        # The name is a scheme-less URI, not including the API service name.
-        # For example:
-        # "projects/PROJECT_ID/zones/us-central1-a/instances"
-        # "projects/PROJECT_ID/datasets/DATASET_ID"
+        # The resource or collection that is the target of the operation. The name is a
+        # scheme-less URI, not including the API service name. For example: "projects/
+        # PROJECT_ID/zones/us-central1-a/instances" "projects/PROJECT_ID/datasets/
+        # DATASET_ID"
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
       
-        # The resource's original state before mutation. Present only for
-        # operations which have successfully modified the targeted resource(s).
-        # In general, this field should contain all changed fields, except those
-        # that are already been included in `request`, `response`, `metadata` or
-        # `service_data` fields.
-        # When the JSON object represented here has a proto equivalent,
-        # the proto name will be indicated in the `@type` property.
+        # The resource's original state before mutation. Present only for operations
+        # which have successfully modified the targeted resource(s). In general, this
+        # field should contain all changed fields, except those that are already been
+        # included in `request`, `response`, `metadata` or `service_data` fields. When
+        # the JSON object represented here has a proto equivalent, the proto name will
+        # be indicated in the `@type` property.
         # Corresponds to the JSON property `resourceOriginalState`
         # @return [Hash<String,Object>]
         attr_accessor :resource_original_state
       
-        # The operation response. This may not include all response elements,
-        # such as those that are too large, privacy-sensitive, or duplicated
-        # elsewhere in the log record.
-        # It should never include user-generated data, such as file contents.
-        # When the JSON object represented here has a proto equivalent, the proto
-        # name will be indicated in the `@type` property.
+        # The operation response. This may not include all response elements, such as
+        # those that are too large, privacy-sensitive, or duplicated elsewhere in the
+        # log record. It should never include user-generated data, such as file contents.
+        # When the JSON object represented here has a proto equivalent, the proto name
+        # will be indicated in the `@type` property.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
       
-        # Deprecated. Use the `metadata` field instead.
-        # Other service-specific data about the request, response, and other
-        # activities.
+        # Deprecated. Use the `metadata` field instead. Other service-specific data
+        # about the request, response, and other activities.
         # Corresponds to the JSON property `serviceData`
         # @return [Hash<String,Object>]
         attr_accessor :service_data
       
-        # The name of the API service performing the operation. For example,
-        # `"compute.googleapis.com"`.
+        # The name of the API service performing the operation. For example, `"compute.
+        # googleapis.com"`.
         # Corresponds to the JSON property `serviceName`
         # @return [String]
         attr_accessor :service_name
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::ServicecontrolV2::Status]
         attr_accessor :status
@@ -289,69 +279,59 @@ module Google
         end
       end
       
-      # This message defines request authentication attributes. Terminology is
-      # based on the JSON Web Token (JWT) standard, but the terms also
-      # correlate to concepts in other standards.
+      # This message defines request authentication attributes. Terminology is based
+      # on the JSON Web Token (JWT) standard, but the terms also correlate to concepts
+      # in other standards.
       class Auth
         include Google::Apis::Core::Hashable
       
-        # A list of access level resource names that allow resources to be
-        # accessed by authenticated requester. It is part of Secure GCP processing
-        # for the incoming request. An access level string has the format:
-        # "//`api_service_name`/accessPolicies/`policy_id`/accessLevels/`short_name`"
-        # Example:
-        # "//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/
-        # accessLevels/MY_LEVEL"
+        # A list of access level resource names that allow resources to be accessed by
+        # authenticated requester. It is part of Secure GCP processing for the incoming
+        # request. An access level string has the format: "//`api_service_name`/
+        # accessPolicies/`policy_id`/accessLevels/`short_name`" Example: "//
+        # accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/
+        # MY_LEVEL"
         # Corresponds to the JSON property `accessLevels`
         # @return [Array<String>]
         attr_accessor :access_levels
       
-        # The intended audience(s) for this authentication information. Reflects
-        # the audience (`aud`) claim within a JWT. The audience
-        # value(s) depends on the `issuer`, but typically include one or more of
-        # the following pieces of information:
-        # *  The services intended to receive the credential. For example,
-        # ["https://pubsub.googleapis.com/", "https://storage.googleapis.com/"].
-        # *  A set of service-based scopes. For example,
-        # ["https://www.googleapis.com/auth/cloud-platform"].
-        # *  The client id of an app, such as the Firebase project id for JWTs
-        # from Firebase Auth.
-        # Consult the documentation for the credential issuer to determine the
-        # information provided.
+        # The intended audience(s) for this authentication information. Reflects the
+        # audience (`aud`) claim within a JWT. The audience value(s) depends on the `
+        # issuer`, but typically include one or more of the following pieces of
+        # information: * The services intended to receive the credential. For example, ["
+        # https://pubsub.googleapis.com/", "https://storage.googleapis.com/"]. * A set
+        # of service-based scopes. For example, ["https://www.googleapis.com/auth/cloud-
+        # platform"]. * The client id of an app, such as the Firebase project id for
+        # JWTs from Firebase Auth. Consult the documentation for the credential issuer
+        # to determine the information provided.
         # Corresponds to the JSON property `audiences`
         # @return [Array<String>]
         attr_accessor :audiences
       
-        # Structured claims presented with the credential. JWTs include
-        # ``key: value`` pairs for standard and private claims. The following
-        # is a subset of the standard required and optional claims that would
-        # typically be presented for a Google-based JWT:
-        # `'iss': 'accounts.google.com',
-        # 'sub': '113289723416554971153',
-        # 'aud': ['123456789012', 'pubsub.googleapis.com'],
-        # 'azp': '123456789012.apps.googleusercontent.com',
-        # 'email': 'jsmith@example.com',
-        # 'iat': 1353601026,
-        # 'exp': 1353604926`
-        # SAML assertions are similarly specified, but with an identity provider
-        # dependent structure.
+        # Structured claims presented with the credential. JWTs include ``key: value``
+        # pairs for standard and private claims. The following is a subset of the
+        # standard required and optional claims that would typically be presented for a
+        # Google-based JWT: `'iss': 'accounts.google.com', 'sub': '113289723416554971153'
+        # , 'aud': ['123456789012', 'pubsub.googleapis.com'], 'azp': '123456789012.apps.
+        # googleusercontent.com', 'email': 'jsmith@example.com', 'iat': 1353601026, 'exp'
+        # : 1353604926` SAML assertions are similarly specified, but with an identity
+        # provider dependent structure.
         # Corresponds to the JSON property `claims`
         # @return [Hash<String,Object>]
         attr_accessor :claims
       
-        # The authorized presenter of the credential. Reflects the optional
-        # Authorized Presenter (`azp`) claim within a JWT or the
-        # OAuth client id. For example, a Google Cloud Platform client id looks
-        # as follows: "123456789012.apps.googleusercontent.com".
+        # The authorized presenter of the credential. Reflects the optional Authorized
+        # Presenter (`azp`) claim within a JWT or the OAuth client id. For example, a
+        # Google Cloud Platform client id looks as follows: "123456789012.apps.
+        # googleusercontent.com".
         # Corresponds to the JSON property `presenter`
         # @return [String]
         attr_accessor :presenter
       
-        # The authenticated principal. Reflects the issuer (`iss`) and subject
-        # (`sub`) claims within a JWT. The issuer and subject should be `/`
-        # delimited, with `/` percent-encoded within the subject fragment. For
-        # Google accounts, the principal format is:
-        # "https://accounts.google.com/`id`"
+        # The authenticated principal. Reflects the issuer (`iss`) and subject (`sub`)
+        # claims within a JWT. The issuer and subject should be `/` delimited, with `/`
+        # percent-encoded within the subject fragment. For Google accounts, the
+        # principal format is: "https://accounts.google.com/`id`"
         # Corresponds to the JSON property `principal`
         # @return [String]
         attr_accessor :principal
@@ -374,48 +354,46 @@ module Google
       class AuthenticationInfo
         include Google::Apis::Core::Hashable
       
-        # The authority selector specified by the requestor, if any.
-        # It is not guaranteed that the principal was allowed to use this authority.
+        # The authority selector specified by the requestor, if any. It is not
+        # guaranteed that the principal was allowed to use this authority.
         # Corresponds to the JSON property `authoritySelector`
         # @return [String]
         attr_accessor :authority_selector
       
-        # The email address of the authenticated user (or service account on behalf
-        # of third party principal) making the request. For privacy reasons, the
-        # principal email address is redacted for all read-only operations that fail
-        # with a "permission denied" error.
+        # The email address of the authenticated user (or service account on behalf of
+        # third party principal) making the request. For privacy reasons, the principal
+        # email address is redacted for all read-only operations that fail with a "
+        # permission denied" error.
         # Corresponds to the JSON property `principalEmail`
         # @return [String]
         attr_accessor :principal_email
       
-        # String representation of identity of requesting party.
-        # Populated for both first and third party identities.
+        # String representation of identity of requesting party. Populated for both
+        # first and third party identities.
         # Corresponds to the JSON property `principalSubject`
         # @return [String]
         attr_accessor :principal_subject
       
-        # Identity delegation history of an authenticated service account that makes
-        # the request. It contains information on the real authorities that try to
-        # access GCP resources by delegating on a service account. When multiple
-        # authorities present, they are guaranteed to be sorted based on the original
-        # ordering of the identity delegation events.
+        # Identity delegation history of an authenticated service account that makes the
+        # request. It contains information on the real authorities that try to access
+        # GCP resources by delegating on a service account. When multiple authorities
+        # present, they are guaranteed to be sorted based on the original ordering of
+        # the identity delegation events.
         # Corresponds to the JSON property `serviceAccountDelegationInfo`
         # @return [Array<Google::Apis::ServicecontrolV2::ServiceAccountDelegationInfo>]
         attr_accessor :service_account_delegation_info
       
-        # The name of the service account key used to create or exchange
-        # credentials for authenticating the service account making the request.
-        # This is a scheme-less URI full resource name. For example:
-        # "//iam.googleapis.com/projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`
-        # key`"
+        # The name of the service account key used to create or exchange credentials for
+        # authenticating the service account making the request. This is a scheme-less
+        # URI full resource name. For example: "//iam.googleapis.com/projects/`
+        # PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key`"
         # Corresponds to the JSON property `serviceAccountKeyName`
         # @return [String]
         attr_accessor :service_account_key_name
       
-        # The third party identification (if any) of the authenticated user making
-        # the request.
-        # When the JSON object represented here has a proto equivalent, the proto
-        # name will be indicated in the `@type` property.
+        # The third party identification (if any) of the authenticated user making the
+        # request. When the JSON object represented here has a proto equivalent, the
+        # proto name will be indicated in the `@type` property.
         # Corresponds to the JSON property `thirdPartyPrincipal`
         # @return [Hash<String,Object>]
         attr_accessor :third_party_principal
@@ -439,8 +417,7 @@ module Google
       class AuthorizationInfo
         include Google::Apis::Core::Hashable
       
-        # Whether or not authorization for `resource` and `permission`
-        # was granted.
+        # Whether or not authorization for `resource` and `permission` was granted.
         # Corresponds to the JSON property `granted`
         # @return [Boolean]
         attr_accessor :granted
@@ -451,15 +428,15 @@ module Google
         # @return [String]
         attr_accessor :permission
       
-        # The resource being accessed, as a REST-style string. For example:
-        # bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID
+        # The resource being accessed, as a REST-style string. For example: bigquery.
+        # googleapis.com/projects/PROJECTID/datasets/DATASETID
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
       
         # This message defines core attributes for a resource. A resource is an
-        # addressable (named) entity provided by the destination service. For
-        # example, a file stored on a network storage service.
+        # addressable (named) entity provided by the destination service. For example, a
+        # file stored on a network storage service.
         # Corresponds to the JSON property `resourceAttributes`
         # @return [Google::Apis::ServicecontrolV2::Resource]
         attr_accessor :resource_attributes
@@ -481,19 +458,17 @@ module Google
       class CheckRequest
         include Google::Apis::Core::Hashable
       
-        # This message defines the standard attribute vocabulary for Google APIs.
-        # An attribute is a piece of metadata that describes an activity on a network
-        # service. For example, the size of an HTTP request, or the status code of
-        # an HTTP response.
-        # Each attribute has a type and a name, which is logically defined as
-        # a proto message field in `AttributeContext`. The field type becomes the
-        # attribute type, and the field path becomes the attribute name. For example,
-        # the attribute `source.ip` maps to field `AttributeContext.source.ip`.
-        # This message definition is guaranteed not to have any wire breaking change.
-        # So you can use it directly for passing attributes across different systems.
-        # NOTE: Different system may generate different subset of attributes. Please
-        # verify the system specification before relying on an attribute generated
-        # a system.
+        # This message defines the standard attribute vocabulary for Google APIs. An
+        # attribute is a piece of metadata that describes an activity on a network
+        # service. For example, the size of an HTTP request, or the status code of an
+        # HTTP response. Each attribute has a type and a name, which is logically
+        # defined as a proto message field in `AttributeContext`. The field type becomes
+        # the attribute type, and the field path becomes the attribute name. For example,
+        # the attribute `source.ip` maps to field `AttributeContext.source.ip`. This
+        # message definition is guaranteed not to have any wire breaking change. So you
+        # can use it directly for passing attributes across different systems. NOTE:
+        # Different system may generate different subset of attributes. Please verify
+        # the system specification before relying on an attribute generated a system.
         # Corresponds to the JSON property `attributes`
         # @return [Google::Apis::ServicecontrolV2::AttributeContext]
         attr_accessor :attributes
@@ -504,8 +479,8 @@ module Google
         attr_accessor :resources
       
         # Specifies the version of the service configuration that should be used to
-        # process the request. Must not be empty. Set this field to 'latest' to
-        # specify using the latest configuration.
+        # process the request. Must not be empty. Set this field to 'latest' to specify
+        # using the latest configuration.
         # Corresponds to the JSON property `serviceConfigId`
         # @return [String]
         attr_accessor :service_config_id
@@ -531,12 +506,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :headers
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::ServicecontrolV2::Status]
         attr_accessor :status
@@ -556,14 +531,12 @@ module Google
       class FirstPartyPrincipal
         include Google::Apis::Core::Hashable
       
-        # The email address of a Google account.
-        # .
+        # The email address of a Google account. .
         # Corresponds to the JSON property `principalEmail`
         # @return [String]
         attr_accessor :principal_email
       
-        # Metadata about the service that uses the service account.
-        # .
+        # Metadata about the service that uses the service account. .
         # Corresponds to the JSON property `serviceMetadata`
         # @return [Hash<String,Object>]
         attr_accessor :service_metadata
@@ -579,10 +552,10 @@ module Google
         end
       end
       
-      # This message defines attributes for a node that handles a network request.
-      # The node can be either a service or an application that sends, forwards,
-      # or receives the request. Service peers should fill in
-      # `principal` and `labels` as appropriate.
+      # This message defines attributes for a node that handles a network request. The
+      # node can be either a service or an application that sends, forwards, or
+      # receives the request. Service peers should fill in `principal` and `labels` as
+      # appropriate.
       class Peer
         include Google::Apis::Core::Hashable
       
@@ -601,16 +574,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
-        # The identity of this peer. Similar to `Request.auth.principal`, but
-        # relative to the peer instead of the request. For example, the
-        # idenity associated with a load balancer that forwared the request.
+        # The identity of this peer. Similar to `Request.auth.principal`, but relative
+        # to the peer instead of the request. For example, the idenity associated with a
+        # load balancer that forwared the request.
         # Corresponds to the JSON property `principal`
         # @return [String]
         attr_accessor :principal
       
-        # The CLDR country/region code associated with the above IP address.
-        # If the IP address is private, the `region_code` should reflect the
-        # physical location where this peer is running.
+        # The CLDR country/region code associated with the above IP address. If the IP
+        # address is private, the `region_code` should reflect the physical location
+        # where this peer is running.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
         attr_accessor :region_code
@@ -633,16 +606,15 @@ module Google
       class ReportRequest
         include Google::Apis::Core::Hashable
       
-        # Describes the list of operations to be reported. Each operation is
-        # represented as an AttributeContext, and contains all attributes around an
-        # API access.
+        # Describes the list of operations to be reported. Each operation is represented
+        # as an AttributeContext, and contains all attributes around an API access.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::ServicecontrolV2::AttributeContext>]
         attr_accessor :operations
       
         # Specifies the version of the service configuration that should be used to
-        # process the request. Must not be empty. Set this field to 'latest' to
-        # specify using the latest configuration.
+        # process the request. Must not be empty. Set this field to 'latest' to specify
+        # using the latest configuration.
         # Corresponds to the JSON property `serviceConfigId`
         # @return [String]
         attr_accessor :service_config_id
@@ -658,8 +630,8 @@ module Google
         end
       end
       
-      # Response message for the Report method.
-      # If the request contains any invalid data, the server returns an RPC error.
+      # Response message for the Report method. If the request contains any invalid
+      # data, the server returns an RPC error.
       class ReportResponse
         include Google::Apis::Core::Hashable
       
@@ -672,22 +644,22 @@ module Google
         end
       end
       
-      # This message defines attributes for an HTTP request. If the actual
-      # request is not an HTTP request, the runtime system should try to map
-      # the actual request to an equivalent HTTP request.
+      # This message defines attributes for an HTTP request. If the actual request is
+      # not an HTTP request, the runtime system should try to map the actual request
+      # to an equivalent HTTP request.
       class Request
         include Google::Apis::Core::Hashable
       
-        # This message defines request authentication attributes. Terminology is
-        # based on the JSON Web Token (JWT) standard, but the terms also
-        # correlate to concepts in other standards.
+        # This message defines request authentication attributes. Terminology is based
+        # on the JSON Web Token (JWT) standard, but the terms also correlate to concepts
+        # in other standards.
         # Corresponds to the JSON property `auth`
         # @return [Google::Apis::ServicecontrolV2::Auth]
         attr_accessor :auth
       
-        # The HTTP request headers. If multiple headers share the same key, they
-        # must be merged according to the HTTP spec. All header keys must be
-        # lowercased, because HTTP header keys are case-insensitive.
+        # The HTTP request headers. If multiple headers share the same key, they must be
+        # merged according to the HTTP spec. All header keys must be lowercased, because
+        # HTTP header keys are case-insensitive.
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,String>]
         attr_accessor :headers
@@ -697,9 +669,9 @@ module Google
         # @return [String]
         attr_accessor :host
       
-        # The unique ID for a request, which can be propagated to downstream
-        # systems. The ID should have low probability of collision
-        # within a single day for a specific service.
+        # The unique ID for a request, which can be propagated to downstream systems.
+        # The ID should have low probability of collision within a single day for a
+        # specific service.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -714,23 +686,22 @@ module Google
         # @return [String]
         attr_accessor :path
       
-        # The network protocol used with the request, such as "http/1.1",
-        # "spdy/3", "h2", "h2c", "webrtc", "tcp", "udp", "quic". See
-        # https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-
-        # values.xhtml#alpn-protocol-ids
-        # for details.
+        # The network protocol used with the request, such as "http/1.1", "spdy/3", "h2",
+        # "h2c", "webrtc", "tcp", "udp", "quic". See https://www.iana.org/assignments/
+        # tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for
+        # details.
         # Corresponds to the JSON property `protocol`
         # @return [String]
         attr_accessor :protocol
       
-        # The HTTP URL query in the format of `name1=value1&name2=value2`, as it
-        # appears in the first line of the HTTP request. No decoding is performed.
+        # The HTTP URL query in the format of `name1=value1&name2=value2`, as it appears
+        # in the first line of the HTTP request. No decoding is performed.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
       
-        # A special parameter for request reason. It is used by security systems
-        # to associate auditing information with a request.
+        # A special parameter for request reason. It is used by security systems to
+        # associate auditing information with a request.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -745,8 +716,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :size
       
-        # The timestamp when the `destination` service receives the first byte of
-        # the request.
+        # The timestamp when the `destination` service receives the first byte of the
+        # request.
         # Corresponds to the JSON property `time`
         # @return [String]
         attr_accessor :time
@@ -776,55 +747,48 @@ module Google
       class RequestMetadata
         include Google::Apis::Core::Hashable
       
-        # The IP address of the caller.
-        # For caller from internet, this will be public IPv4 or IPv6 address.
-        # For caller from a Compute Engine VM with external IP address, this
-        # will be the VM's external IP address. For caller from a Compute
-        # Engine VM without external IP address, if the VM is in the same
-        # organization (or project) as the accessed resource, `caller_ip` will
-        # be the VM's internal IPv4 address, otherwise the `caller_ip` will be
-        # redacted to "gce-internal-ip".
+        # The IP address of the caller. For caller from internet, this will be public
+        # IPv4 or IPv6 address. For caller from a Compute Engine VM with external IP
+        # address, this will be the VM's external IP address. For caller from a Compute
+        # Engine VM without external IP address, if the VM is in the same organization (
+        # or project) as the accessed resource, `caller_ip` will be the VM's internal
+        # IPv4 address, otherwise the `caller_ip` will be redacted to "gce-internal-ip".
         # See https://cloud.google.com/compute/docs/vpc/ for more information.
         # Corresponds to the JSON property `callerIp`
         # @return [String]
         attr_accessor :caller_ip
       
-        # The network of the caller.
-        # Set only if the network host project is part of the same GCP organization
-        # (or project) as the accessed resource.
-        # See https://cloud.google.com/compute/docs/vpc/ for more information.
-        # This is a scheme-less URI full resource name. For example:
-        # "//compute.googleapis.com/projects/PROJECT_ID/global/networks/NETWORK_ID"
+        # The network of the caller. Set only if the network host project is part of the
+        # same GCP organization (or project) as the accessed resource. See https://cloud.
+        # google.com/compute/docs/vpc/ for more information. This is a scheme-less URI
+        # full resource name. For example: "//compute.googleapis.com/projects/PROJECT_ID/
+        # global/networks/NETWORK_ID"
         # Corresponds to the JSON property `callerNetwork`
         # @return [String]
         attr_accessor :caller_network
       
-        # The user agent of the caller.
-        # This information is not authenticated and should be treated accordingly.
-        # For example:
-        # +   `google-api-python-client/1.4.0`:
-        # The request was made by the Google API client for Python.
-        # +   `Cloud SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`:
-        # The request was made by the Google Cloud SDK CLI (gcloud).
-        # +   `AppEngine-Google; (+http://code.google.com/appengine; appid:
-        # s~my-project`:
-        # The request was made from the `my-project` App Engine app.
-        # NOLINT
+        # The user agent of the caller. This information is not authenticated and should
+        # be treated accordingly. For example: + `google-api-python-client/1.4.0`: The
+        # request was made by the Google API client for Python. + `Cloud SDK Command
+        # Line Tool apitools-client/1.0 gcloud/0.9.62`: The request was made by the
+        # Google Cloud SDK CLI (gcloud). + `AppEngine-Google; (+http://code.google.com/
+        # appengine; appid: s~my-project`: The request was made from the `my-project`
+        # App Engine app. NOLINT
         # Corresponds to the JSON property `callerSuppliedUserAgent`
         # @return [String]
         attr_accessor :caller_supplied_user_agent
       
-        # This message defines attributes for a node that handles a network request.
-        # The node can be either a service or an application that sends, forwards,
-        # or receives the request. Service peers should fill in
-        # `principal` and `labels` as appropriate.
+        # This message defines attributes for a node that handles a network request. The
+        # node can be either a service or an application that sends, forwards, or
+        # receives the request. Service peers should fill in `principal` and `labels` as
+        # appropriate.
         # Corresponds to the JSON property `destinationAttributes`
         # @return [Google::Apis::ServicecontrolV2::Peer]
         attr_accessor :destination_attributes
       
-        # This message defines attributes for an HTTP request. If the actual
-        # request is not an HTTP request, the runtime system should try to map
-        # the actual request to an equivalent HTTP request.
+        # This message defines attributes for an HTTP request. If the actual request is
+        # not an HTTP request, the runtime system should try to map the actual request
+        # to an equivalent HTTP request.
         # Corresponds to the JSON property `requestAttributes`
         # @return [Google::Apis::ServicecontrolV2::Request]
         attr_accessor :request_attributes
@@ -844,41 +808,40 @@ module Google
       end
       
       # This message defines core attributes for a resource. A resource is an
-      # addressable (named) entity provided by the destination service. For
-      # example, a file stored on a network storage service.
+      # addressable (named) entity provided by the destination service. For example, a
+      # file stored on a network storage service.
       class Resource
         include Google::Apis::Core::Hashable
       
-        # The labels or tags on the resource, such as AWS resource tags and
-        # Kubernetes resource labels.
+        # The labels or tags on the resource, such as AWS resource tags and Kubernetes
+        # resource labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The stable identifier (name) of a resource on the `service`. A resource
-        # can be logically identified as "//`resource.service`/`resource.name`".
-        # The differences between a resource name and a URI are:
-        # *   Resource name is a logical identifier, independent of network
-        # protocol and API version. For example,
-        # `//pubsub.googleapis.com/projects/123/topics/news-feed`.
-        # *   URI often includes protocol and version information, so it can
-        # be used directly by applications. For example,
-        # `https://pubsub.googleapis.com/v1/projects/123/topics/news-feed`.
-        # See https://cloud.google.com/apis/design/resource_names for details.
+        # The stable identifier (name) of a resource on the `service`. A resource can be
+        # logically identified as "//`resource.service`/`resource.name`". The
+        # differences between a resource name and a URI are: * Resource name is a
+        # logical identifier, independent of network protocol and API version. For
+        # example, `//pubsub.googleapis.com/projects/123/topics/news-feed`. * URI often
+        # includes protocol and version information, so it can be used directly by
+        # applications. For example, `https://pubsub.googleapis.com/v1/projects/123/
+        # topics/news-feed`. See https://cloud.google.com/apis/design/resource_names for
+        # details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The name of the service that this resource belongs to, such as
-        # `pubsub.googleapis.com`. The service may be different from the DNS
-        # hostname that actually serves the request.
+        # The name of the service that this resource belongs to, such as `pubsub.
+        # googleapis.com`. The service may be different from the DNS hostname that
+        # actually serves the request.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
-        # The type of the resource. The syntax is platform-specific because
-        # different platforms define their resources differently.
-        # For Google APIs, the type format must be "`service`/`kind`".
+        # The type of the resource. The syntax is platform-specific because different
+        # platforms define their resources differently. For Google APIs, the type format
+        # must be "`service`/`kind`".
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -905,8 +868,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The resource permission needed for this request.
-        # The format must be "`service`/`plural`.`verb`".
+        # The resource permission needed for this request. The format must be "`service`/
+        # `plural`.`verb`".
         # Corresponds to the JSON property `permission`
         # @return [String]
         attr_accessor :permission
@@ -932,24 +895,18 @@ module Google
       class ResourceLocation
         include Google::Apis::Core::Hashable
       
-        # The locations of a resource after the execution of the operation.
-        # Requests to create or delete a location based resource must populate
-        # the 'current_locations' field and not the 'original_locations' field.
-        # For example:
-        # "europe-west1-a"
-        # "us-east1"
-        # "nam3"
+        # The locations of a resource after the execution of the operation. Requests to
+        # create or delete a location based resource must populate the '
+        # current_locations' field and not the 'original_locations' field. For example: "
+        # europe-west1-a" "us-east1" "nam3"
         # Corresponds to the JSON property `currentLocations`
         # @return [Array<String>]
         attr_accessor :current_locations
       
-        # The locations of a resource prior to the execution of the operation.
-        # Requests that mutate the resource's location must populate both the
-        # 'original_locations' as well as the 'current_locations' fields.
-        # For example:
-        # "europe-west1-a"
-        # "us-east1"
-        # "nam3"
+        # The locations of a resource prior to the execution of the operation. Requests
+        # that mutate the resource's location must populate both the 'original_locations'
+        # as well as the 'current_locations' fields. For example: "europe-west1-a" "us-
+        # east1" "nam3"
         # Corresponds to the JSON property `originalLocations`
         # @return [Array<String>]
         attr_accessor :original_locations
@@ -965,8 +922,8 @@ module Google
         end
       end
       
-      # This message defines attributes for a typical network response. It
-      # generally models semantics of an HTTP response.
+      # This message defines attributes for a typical network response. It generally
+      # models semantics of an HTTP response.
       class Response
         include Google::Apis::Core::Hashable
       
@@ -975,9 +932,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # The HTTP response headers. If multiple headers share the same key, they
-        # must be merged according to HTTP spec. All header keys must be
-        # lowercased, because HTTP header keys are case-insensitive.
+        # The HTTP response headers. If multiple headers share the same key, they must
+        # be merged according to HTTP spec. All header keys must be lowercased, because
+        # HTTP header keys are case-insensitive.
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,String>]
         attr_accessor :headers
@@ -987,8 +944,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :size
       
-        # The timestamp when the `destination` service generates the first byte of
-        # the response.
+        # The timestamp when the `destination` service generates the first byte of the
+        # response.
         # Corresponds to the JSON property `time`
         # @return [String]
         attr_accessor :time
@@ -1031,20 +988,17 @@ module Google
         end
       end
       
-      # The context of a span, attached to
-      # Exemplars
-      # in Distribution values during aggregation.
-      # It contains the name of a span with format:
-      # projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+      # The context of a span, attached to Exemplars in Distribution values during
+      # aggregation. It contains the name of a span with format: projects/[
+      # PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
       class SpanContext
         include Google::Apis::Core::Hashable
       
-        # The resource name of the span. The format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
-        # `[TRACE_ID]` is a unique identifier for a trace within a project;
-        # it is a 32-character hexadecimal encoding of a 16-byte array.
-        # `[SPAN_ID]` is a unique identifier for a span within a trace; it
-        # is a 16-character hexadecimal encoding of an 8-byte array.
+        # The resource name of the span. The format is: projects/[PROJECT_ID_OR_NUMBER]/
+        # traces/[TRACE_ID]/spans/[SPAN_ID] `[TRACE_ID]` is a unique identifier for a
+        # trace within a project; it is a 32-character hexadecimal encoding of a 16-byte
+        # array. `[SPAN_ID]` is a unique identifier for a span within a trace; it is a
+        # 16-character hexadecimal encoding of an 8-byte array.
         # Corresponds to the JSON property `spanName`
         # @return [String]
         attr_accessor :span_name
@@ -1059,12 +1013,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -1073,15 +1027,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message

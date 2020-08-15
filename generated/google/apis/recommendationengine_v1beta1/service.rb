@@ -92,8 +92,9 @@ module Google
         #   The fully qualified resource name of the catalog.
         # @param [Google::Apis::RecommendationengineV1beta1::GoogleCloudRecommendationengineV1beta1Catalog] google_cloud_recommendationengine_v1beta1_catalog_object
         # @param [String] update_mask
-        #   Optional. Indicates which fields in the provided 'recommendation_model' to
-        #   update. If not set, will only update the catalog_item_level_config field.
+        #   Optional. Indicates which fields in the provided 'catalog' to update. If not
+        #   set, will only update the catalog_item_level_config field. Currently only
+        #   fields that can be updated are catalog_item_level_config.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

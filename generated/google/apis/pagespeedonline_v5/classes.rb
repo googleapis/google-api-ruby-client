@@ -55,8 +55,7 @@ module Google
       end
       
       # A proportion of data in the total distribution, bucketed by a min/max
-      # percentage. Each bucket's range is bounded by min <= x < max, In
-      # millisecond.
+      # percentage. Each bucket's range is bounded by min <= x < max, In millisecond.
       class Bucket
         include Google::Apis::Core::Hashable
       
@@ -159,8 +158,7 @@ module Google
       class ConfigSettings
         include Google::Apis::Core::Hashable
       
-        # How Lighthouse was run, e.g. from the Chrome extension or from the npm
-        # module.
+        # How Lighthouse was run, e.g. from the Chrome extension or from the npm module.
         # Corresponds to the JSON property `channel`
         # @return [String]
         attr_accessor :channel
@@ -277,9 +275,9 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A numeric value that has a meaning specific to the audit, e.g. the number
-        # of nodes in the DOM or the timestamp of a specific load event. More
-        # information can be found in the audit details, if present.
+        # A numeric value that has a meaning specific to the audit, e.g. the number of
+        # nodes in the DOM or the timestamp of a specific load event. More information
+        # can be found in the audit details, if present.
         # Corresponds to the JSON property `numericValue`
         # @return [Float]
         attr_accessor :numeric_value
@@ -348,8 +346,8 @@ module Google
         # @return [String]
         attr_accessor :manual_description
       
-        # The overall score of the category, the weighted average of all its audits.
-        # (The category's score, can be null.)
+        # The overall score of the category, the weighted average of all its audits. (
+        # The category's score, can be null.)
         # Corresponds to the JSON property `score`
         # @return [Object]
         attr_accessor :score
@@ -428,7 +426,7 @@ module Google
         # @return [String]
         attr_accessor :requested_url
       
-        # List of all run warnings in the LHR.  Will always output to at least `[]`.
+        # List of all run warnings in the LHR. Will always output to at least `[]`.
         # Corresponds to the JSON property `runWarnings`
         # @return [Array<Object>]
         attr_accessor :run_warnings
@@ -491,7 +489,7 @@ module Google
         # @return [String]
         attr_accessor :initial_url
       
-        # The map of <metrics, data>.
+        # The map of .
         # Corresponds to the JSON property `metrics`
         # @return [Hash<String,Google::Apis::PagespeedonlineV5::UserPageLoadMetricV5>]
         attr_accessor :metrics
@@ -535,8 +533,8 @@ module Google
         # @return [String]
         attr_accessor :captcha_result
       
-        # Canonicalized and final URL for the document, after following page
-        # redirects (if any).
+        # Canonicalized and final URL for the document, after following page redirects (
+        # if any).
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -642,14 +640,12 @@ module Google
         # @return [String]
         attr_accessor :lab_data_title
       
-        # The disclaimer shown under performance explaning that the network can
-        # vary.
+        # The disclaimer shown under performance explaning that the network can vary.
         # Corresponds to the JSON property `lsPerformanceCategoryDescription`
         # @return [String]
         attr_accessor :ls_performance_category_description
       
-        # The heading shown above a list of audits that were not computerd in the
-        # run.
+        # The heading shown above a list of audits that were not computerd in the run.
         # Corresponds to the JSON property `manualAuditsGroupTitle`
         # @return [String]
         attr_accessor :manual_audits_group_title
@@ -659,8 +655,7 @@ module Google
         # @return [String]
         attr_accessor :not_applicable_audits_group_title
       
-        # The heading for the estimated page load savings opportunity of an
-        # audit.
+        # The heading for the estimated page load savings opportunity of an audit.
         # Corresponds to the JSON property `opportunityResourceColumnLabel`
         # @return [String]
         attr_accessor :opportunity_resource_column_label
@@ -680,8 +675,8 @@ module Google
         # @return [String]
         attr_accessor :scorescale_label
       
-        # The label shown preceding important warnings that may have invalidated
-        # an entire report.
+        # The label shown preceding important warnings that may have invalidated an
+        # entire report.
         # Corresponds to the JSON property `toplevelWarningsMessage`
         # @return [String]
         attr_accessor :toplevel_warnings_message
@@ -831,9 +826,8 @@ module Google
         # @return [String]
         attr_accessor :metric_id
       
-        # We use this field to store certain percentile value for this metric.
-        # For v4, this field contains pc50.
-        # For v5, this field contains pc90.
+        # We use this field to store certain percentile value for this metric. For v4,
+        # this field contains pc50. For v5, this field contains pc90.
         # Corresponds to the JSON property `percentile`
         # @return [Fixnum]
         attr_accessor :percentile

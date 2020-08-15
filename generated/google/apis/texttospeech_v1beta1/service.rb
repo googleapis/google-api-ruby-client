@@ -47,8 +47,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Synthesizes speech synchronously: receive results after all text input
-        # has been processed.
+        # Synthesizes speech synchronously: receive results after all text input has
+        # been processed.
         # @param [Google::Apis::TexttospeechV1beta1::SynthesizeSpeechRequest] synthesize_speech_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -80,13 +80,12 @@ module Google
         
         # Returns a list of Voice supported for synthesis.
         # @param [String] language_code
-        #   Optional. Recommended.
-        #   [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If
-        #   specified, the ListVoices call will only return voices that can be used to
-        #   synthesize this language_code. E.g. when specifying "en-NZ", you will get
-        #   supported "en-*" voices; when specifying "no", you will get supported
-        #   "no-*" (Norwegian) and "nb-*" (Norwegian Bokmal) voices; specifying "zh"
-        #   will also get supported "cmn-*" voices; specifying "zh-hk" will also get
+        #   Optional. Recommended. [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+        #   language tag. If specified, the ListVoices call will only return voices that
+        #   can be used to synthesize this language_code. E.g. when specifying "en-NZ",
+        #   you will get supported "en-*" voices; when specifying "no", you will get
+        #   supported "no-*" (Norwegian) and "nb-*" (Norwegian Bokmal) voices; specifying "
+        #   zh" will also get supported "cmn-*" voices; specifying "zh-hk" will also get
         #   supported "yue-*" voices.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -23,7 +23,7 @@ module Google
       # PageSpeed Insights API
       #
       # The PageSpeed Insights API lets you analyze the performance of your website
-      #  with a simple API.  It offers tailored suggestions for how you can optimize
+      #  with a simple API. It offers tailored suggestions for how you can optimize
       #  your site, and lets you easily integrate PageSpeed Insights analysis into your
       #  development tools and workflow.
       #
@@ -61,10 +61,9 @@ module Google
         # @param [String] locale
         #   The locale used to localize formatted results
         # @param [String] strategy
-        #   The analysis strategy (desktop or mobile) to use, and desktop is the
-        #   default
+        #   The analysis strategy (desktop or mobile) to use, and desktop is the default
         # @param [String] url
-        #   The URL to fetch and analyze
+        #   Required. The URL to fetch and analyze
         # @param [String] utm_campaign
         #   Campaign name for analytics.
         # @param [String] utm_source

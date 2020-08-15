@@ -47,9 +47,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -79,30 +78,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] filter
-        #   Required. A filter for matching the requested operations.<br><br> The
-        #   supported formats of <b>filter</b> are:<br> To query for a specific function: <
-        #   code>project:*,location:*,function:*</code><br> To query for all of the latest
-        #   operations for a project: <code>project:*,latest:true</code>
+        #   Required. A filter for matching the requested operations. The supported
+        #   formats of *filter* are: To query for a specific function: project:*,location:*
+        #   ,function:* To query for all of the latest operations for a project: project:*,
+        #   latest:true
         # @param [String] name
         #   Must not be set.
         # @param [Fixnum] page_size
-        #   The maximum number of records that should be returned.<br> Requested page size
-        #   cannot exceed 100. If not set, the default page size is 100.<br><br>
-        #   Pagination is only supported when querying for a specific function.
+        #   The maximum number of records that should be returned. Requested page size
+        #   cannot exceed 100. If not set, the default page size is 100. Pagination is
+        #   only supported when querying for a specific function.
         # @param [String] page_token
         #   Token identifying which result to start with, which is returned by a previous
-        #   list call.<br><br> Pagination is only supported when querying for a specific
-        #   function.
+        #   list call. Pagination is only supported when querying for a specific function.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -173,9 +170,9 @@ module Google
         end
         
         # Synchronously invokes a deployed Cloud Function. To be used for testing
-        # purposes as very limited traffic is allowed. For more information on
-        # the actual limits, refer to
-        # [Rate Limits](https://cloud.google.com/functions/quotas#rate_limits).
+        # purposes as very limited traffic is allowed. For more information on the
+        # actual limits, refer to [Rate Limits](https://cloud.google.com/functions/
+        # quotas#rate_limits).
         # @param [String] name
         #   Required. The name of the function to be called.
         # @param [Google::Apis::CloudfunctionsV1::CallFunctionRequest] call_function_request_object
@@ -209,12 +206,11 @@ module Google
         end
         
         # Creates a new function. If a function with the given name already exists in
-        # the specified project, the long running operation will return
-        # `ALREADY_EXISTS` error.
+        # the specified project, the long running operation will return `ALREADY_EXISTS`
+        # error.
         # @param [String] location
         #   Required. The project and location in which the function should be created,
-        #   specified
-        #   in the format `projects/*/locations/*`
+        #   specified in the format `projects/*/locations/*`
         # @param [Google::Apis::CloudfunctionsV1::CloudFunction] cloud_function_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -246,8 +242,8 @@ module Google
         end
         
         # Deletes a function with the given name from the specified project. If the
-        # given function is used by some trigger, the trigger will be updated to
-        # remove this function.
+        # given function is used by some trigger, the trigger will be updated to remove
+        # this function.
         # @param [String] name
         #   Required. The name of the function which should be deleted.
         # @param [String] fields
@@ -277,14 +273,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a signed URL for downloading deployed function source code.
-        # The URL is only valid for a limited period and should be used within
-        # minutes after generation.
-        # For more information about the signed URL usage see:
-        # https://cloud.google.com/storage/docs/access-control/signed-urls
+        # Returns a signed URL for downloading deployed function source code. The URL is
+        # only valid for a limited period and should be used within minutes after
+        # generation. For more information about the signed URL usage see: https://cloud.
+        # google.com/storage/docs/access-control/signed-urls
         # @param [String] name
-        #   The name of function for which source code Google Cloud Storage signed
-        #   URL should be generated.
+        #   The name of function for which source code Google Cloud Storage signed URL
+        #   should be generated.
         # @param [Google::Apis::CloudfunctionsV1::GenerateDownloadUrlRequest] generate_download_url_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -315,28 +310,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a signed URL for uploading a function source code.
-        # For more information about the signed URL usage see:
-        # https://cloud.google.com/storage/docs/access-control/signed-urls.
-        # Once the function source code upload is complete, the used signed
-        # URL should be provided in CreateFunction or UpdateFunction request
-        # as a reference to the function source code.
-        # When uploading source code to the generated signed URL, please follow
-        # these restrictions:
-        # * Source file type should be a zip file.
-        # * Source file size should not exceed 100MB limit.
-        # * No credentials should be attached - the signed URLs provide access to the
-        # target bucket using internal service identity; if credentials were
-        # attached, the identity from the credentials would be used, but that
-        # identity does not have permissions to upload files to the URL.
-        # When making a HTTP PUT request, these two headers need to be specified:
-        # * `content-type: application/zip`
-        # * `x-goog-content-length-range: 0,104857600`
-        # And this header SHOULD NOT be specified:
-        # * `Authorization: Bearer YOUR_TOKEN`
+        # Returns a signed URL for uploading a function source code. For more
+        # information about the signed URL usage see: https://cloud.google.com/storage/
+        # docs/access-control/signed-urls. Once the function source code upload is
+        # complete, the used signed URL should be provided in CreateFunction or
+        # UpdateFunction request as a reference to the function source code. When
+        # uploading source code to the generated signed URL, please follow these
+        # restrictions: * Source file type should be a zip file. * Source file size
+        # should not exceed 100MB limit. * No credentials should be attached - the
+        # signed URLs provide access to the target bucket using internal service
+        # identity; if credentials were attached, the identity from the credentials
+        # would be used, but that identity does not have permissions to upload files to
+        # the URL. When making a HTTP PUT request, these two headers need to be
+        # specified: * `content-type: application/zip` * `x-goog-content-length-range: 0,
+        # 104857600` And this header SHOULD NOT be specified: * `Authorization: Bearer
+        # YOUR_TOKEN`
         # @param [String] parent
-        #   The project and location in which the Google Cloud Storage signed URL
-        #   should be generated, specified in the format `projects/*/locations/*`.
+        #   The project and location in which the Google Cloud Storage signed URL should
+        #   be generated, specified in the format `projects/*/locations/*`.
         # @param [Google::Apis::CloudfunctionsV1::GenerateUploadUrlRequest] generate_upload_url_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -397,22 +388,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the IAM access control policy for a function.
-        # Returns an empty policy if the function exists and does not have a policy
-        # set.
+        # Gets the IAM access control policy for a function. Returns an empty policy if
+        # the function exists and does not have a policy set.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -443,19 +431,18 @@ module Google
         
         # Returns a list of functions that belong to the requested project.
         # @param [String] parent
-        #   The project and location from which the function should be listed,
-        #   specified in the format `projects/*/locations/*`
-        #   If you want to list functions in all locations, use "-" in place of a
-        #   location. When listing functions in all locations, if one or more
-        #   location(s) are unreachable, the response will contain functions from all
-        #   reachable locations along with the names of any unreachable locations.
+        #   The project and location from which the function should be listed, specified
+        #   in the format `projects/*/locations/*` If you want to list functions in all
+        #   locations, use "-" in place of a location. When listing functions in all
+        #   locations, if one or more location(s) are unreachable, the response will
+        #   contain functions from all reachable locations along with the names of any
+        #   unreachable locations.
         # @param [Fixnum] page_size
         #   Maximum number of functions to return per call.
         # @param [String] page_token
-        #   The value returned by the last
-        #   `ListFunctionsResponse`; indicates that
-        #   this is a continuation of a prior `ListFunctions` call, and that the
-        #   system should return the next page of data.
+        #   The value returned by the last `ListFunctionsResponse`; indicates that this is
+        #   a continuation of a prior `ListFunctions` call, and that the system should
+        #   return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -487,8 +474,8 @@ module Google
         
         # Updates existing function.
         # @param [String] name
-        #   A user-defined name of the function. Function names must be unique
-        #   globally and match pattern `projects/*/locations/*/functions/*`
+        #   A user-defined name of the function. Function names must be unique globally
+        #   and match pattern `projects/*/locations/*/functions/*`
         # @param [Google::Apis::CloudfunctionsV1::CloudFunction] cloud_function_object
         # @param [String] update_mask
         #   Required list of fields to be updated in this request.
@@ -522,11 +509,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the IAM access control policy on the specified function.
-        # Replaces any existing policy.
+        # Sets the IAM access control policy on the specified function. Replaces any
+        # existing policy.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudfunctionsV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -557,13 +544,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Tests the specified permissions against the IAM access control policy
-        # for a function.
-        # If the function does not exist, this will return an empty set of
+        # Tests the specified permissions against the IAM access control policy for a
+        # function. If the function does not exist, this will return an empty set of
         # permissions, not a NOT_FOUND error.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudfunctionsV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

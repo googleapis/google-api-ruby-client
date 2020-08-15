@@ -147,7 +147,8 @@ module Google
         # com/recommendations-ai/docs/upload-catalog#mc Supported values for user event
         # imports: 1: "user_events_recommendations_ai" using https://cloud.google.com/
         # recommendations-ai/docs/manage-user-events#import (Default for userEvents.
-        # import)
+        # import) 2. "user_events_ga360" using https://support.google.com/analytics/
+        # answer/3437719?hl=en
         # Corresponds to the JSON property `dataSchema`
         # @return [String]
         attr_accessor :data_schema
@@ -564,7 +565,8 @@ module Google
         # com/recommendations-ai/docs/upload-catalog#mc Supported values for user events
         # imports: 1: "user_events_recommendations_ai" using https://cloud.google.com/
         # recommendations-ai/docs/manage-user-events#import (Default for userEvents.
-        # import)
+        # import) 2. "user_events_ga360" using https://support.google.com/analytics/
+        # answer/3437719?hl=en
         # Corresponds to the JSON property `jsonSchema`
         # @return [String]
         attr_accessor :json_schema

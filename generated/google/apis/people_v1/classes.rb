@@ -502,9 +502,9 @@ module Google
         # the copy mask with metadata and membership fields if not set. Valid values are:
         # * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData
         # * coverPhotos * emailAddresses * events * externalIds * genders * imClients *
-        # interests * locales * memberships * metadata * miscKeywords * names *
-        # nicknames * occupations * organizations * phoneNumbers * photos * relations *
-        # residences * sipAddresses * skills * urls * userDefined
+        # interests * locales * locations * memberships * metadata * miscKeywords *
+        # names * nicknames * occupations * organizations * phoneNumbers * photos *
+        # relations * sipAddresses * skills * urls * userDefined
         # Corresponds to the JSON property `readMask`
         # @return [String]
         attr_accessor :read_mask
@@ -1187,6 +1187,69 @@ module Google
         end
       end
       
+      # A person's location.
+      class Location
+        include Google::Apis::Core::Hashable
+      
+        # The building identifier.
+        # Corresponds to the JSON property `buildingId`
+        # @return [String]
+        attr_accessor :building_id
+      
+        # Whether the location is the current location.
+        # Corresponds to the JSON property `current`
+        # @return [Boolean]
+        attr_accessor :current
+        alias_method :current?, :current
+      
+        # The individual desk location.
+        # Corresponds to the JSON property `deskCode`
+        # @return [String]
+        attr_accessor :desk_code
+      
+        # The floor name or number.
+        # Corresponds to the JSON property `floor`
+        # @return [String]
+        attr_accessor :floor
+      
+        # The floor section in `floor_name`.
+        # Corresponds to the JSON property `floorSection`
+        # @return [String]
+        attr_accessor :floor_section
+      
+        # Metadata about a field.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::PeopleV1::FieldMetadata]
+        attr_accessor :metadata
+      
+        # The type of the location. The type can be custom or one of these predefined
+        # values: * `desk` * `grewUp`
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The free-form value of the location.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @building_id = args[:building_id] if args.key?(:building_id)
+          @current = args[:current] if args.key?(:current)
+          @desk_code = args[:desk_code] if args.key?(:desk_code)
+          @floor = args[:floor] if args.key?(:floor)
+          @floor_section = args[:floor_section] if args.key?(:floor_section)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A person's membership in a group. Only contact group memberships can be
       # modified.
       class Membership
@@ -1689,6 +1752,11 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Locale>]
         attr_accessor :locales
       
+        # The person's locations.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::PeopleV1::Location>]
+        attr_accessor :locations
+      
         # The person's group memberships.
         # Corresponds to the JSON property `memberships`
         # @return [Array<Google::Apis::PeopleV1::Membership>]
@@ -1751,7 +1819,8 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::RelationshipStatus>]
         attr_accessor :relationship_statuses
       
-        # The person's residences.
+        # **DEPRECATED**: (Please use `person.locations` instead) The person's
+        # residences.
         # Corresponds to the JSON property `residences`
         # @return [Array<Google::Apis::PeopleV1::Residence>]
         attr_accessor :residences
@@ -1811,6 +1880,7 @@ module Google
           @im_clients = args[:im_clients] if args.key?(:im_clients)
           @interests = args[:interests] if args.key?(:interests)
           @locales = args[:locales] if args.key?(:locales)
+          @locations = args[:locations] if args.key?(:locations)
           @memberships = args[:memberships] if args.key?(:memberships)
           @metadata = args[:metadata] if args.key?(:metadata)
           @misc_keywords = args[:misc_keywords] if args.key?(:misc_keywords)
@@ -2154,7 +2224,8 @@ module Google
         end
       end
       
-      # A person's past or current residence.
+      # **DEPRECATED**: Please use `person.locations` instead. A person's past or
+      # current residence.
       class Residence
         include Google::Apis::Core::Hashable
       
@@ -2426,9 +2497,9 @@ module Google
         # empty if not set, which will skip the post mutate get. Valid values are: *
         # addresses * ageRanges * biographies * birthdays * calendarUrls * clientData *
         # coverPhotos * emailAddresses * events * externalIds * genders * imClients *
-        # interests * locales * memberships * metadata * miscKeywords * names *
-        # nicknames * occupations * organizations * phoneNumbers * photos * relations *
-        # residences * sipAddresses * skills * urls * userDefined
+        # interests * locales * locations * memberships * metadata * miscKeywords *
+        # names * nicknames * occupations * organizations * phoneNumbers * photos *
+        # relations * sipAddresses * skills * urls * userDefined
         # Corresponds to the JSON property `personFields`
         # @return [String]
         attr_accessor :person_fields

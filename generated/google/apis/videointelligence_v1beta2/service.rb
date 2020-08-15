@@ -49,10 +49,10 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Performs asynchronous video annotation. Progress and results can be
-        # retrieved through the `google.longrunning.Operations` interface.
-        # `Operation.metadata` contains `AnnotateVideoProgress` (progress).
-        # `Operation.response` contains `AnnotateVideoResponse` (results).
+        # Performs asynchronous video annotation. Progress and results can be retrieved
+        # through the `google.longrunning.Operations` interface. `Operation.metadata`
+        # contains `AnnotateVideoProgress` (progress). `Operation.response` contains `
+        # AnnotateVideoResponse` (results).
         # @param [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2AnnotateVideoRequest] google_cloud_videointelligence_v1beta2_annotate_video_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

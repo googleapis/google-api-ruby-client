@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/recommendations-ai/docs
     module RecommendationengineV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20200803'
+      REVISION = '20200810'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

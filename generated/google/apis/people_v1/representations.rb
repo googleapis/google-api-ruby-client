@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Membership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -727,6 +733,21 @@ module Google
         end
       end
       
+      class Location
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :building_id, as: 'buildingId'
+          property :current, as: 'current'
+          property :desk_code, as: 'deskCode'
+          property :floor, as: 'floor'
+          property :floor_section, as: 'floorSection'
+          property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
+      
+          property :type, as: 'type'
+          property :value, as: 'value'
+        end
+      end
+      
       class Membership
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -866,6 +887,8 @@ module Google
           collection :interests, as: 'interests', class: Google::Apis::PeopleV1::Interest, decorator: Google::Apis::PeopleV1::Interest::Representation
       
           collection :locales, as: 'locales', class: Google::Apis::PeopleV1::Locale, decorator: Google::Apis::PeopleV1::Locale::Representation
+      
+          collection :locations, as: 'locations', class: Google::Apis::PeopleV1::Location, decorator: Google::Apis::PeopleV1::Location::Representation
       
           collection :memberships, as: 'memberships', class: Google::Apis::PeopleV1::Membership, decorator: Google::Apis::PeopleV1::Membership::Representation
       
