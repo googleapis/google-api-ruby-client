@@ -1827,7 +1827,7 @@ module Google
         # call out to that shell. Exit status of 0 is treated as live/healthy and non-
         # zero is unhealthy. +optional
         # Corresponds to the JSON property `command`
-        # @return [String]
+        # @return [Array<String>]
         attr_accessor :command
       
         def initialize(**args)

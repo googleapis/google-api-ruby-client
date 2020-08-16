@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DefaultSnatStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DnsCacheConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrivateClusterMasterGlobalAccessConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RecurringTimeWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +527,12 @@ module Google
       end
       
       class UpdateNodePoolRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -760,6 +778,8 @@ module Google
       
           property :desired_database_encryption, as: 'desiredDatabaseEncryption', class: Google::Apis::ContainerV1::DatabaseEncryption, decorator: Google::Apis::ContainerV1::DatabaseEncryption::Representation
       
+          property :desired_default_snat_status, as: 'desiredDefaultSnatStatus', class: Google::Apis::ContainerV1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1::DefaultSnatStatus::Representation
+      
           property :desired_image_type, as: 'desiredImageType'
           property :desired_intra_node_visibility_config, as: 'desiredIntraNodeVisibilityConfig', class: Google::Apis::ContainerV1::IntraNodeVisibilityConfig, decorator: Google::Apis::ContainerV1::IntraNodeVisibilityConfig::Representation
       
@@ -773,6 +793,8 @@ module Google
       
           property :desired_node_pool_id, as: 'desiredNodePoolId'
           property :desired_node_version, as: 'desiredNodeVersion'
+          property :desired_private_cluster_config, as: 'desiredPrivateClusterConfig', class: Google::Apis::ContainerV1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1::PrivateClusterConfig::Representation
+      
           property :desired_release_channel, as: 'desiredReleaseChannel', class: Google::Apis::ContainerV1::ReleaseChannel, decorator: Google::Apis::ContainerV1::ReleaseChannel::Representation
       
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1::ResourceUsageExportConfig::Representation
@@ -846,6 +868,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key_name, as: 'keyName'
           property :state, as: 'state'
+        end
+      end
+      
+      class DefaultSnatStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
         end
       end
       
@@ -925,6 +954,7 @@ module Google
           property :subnetwork_name, as: 'subnetworkName'
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :use_ip_aliases, as: 'useIpAliases'
+          property :use_routes, as: 'useRoutes'
         end
       end
       
@@ -1062,6 +1092,8 @@ module Google
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_snat_status, as: 'defaultSnatStatus', class: Google::Apis::ContainerV1::DefaultSnatStatus, decorator: Google::Apis::ContainerV1::DefaultSnatStatus::Representation
+      
           property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
           property :network, as: 'network'
           property :subnetwork, as: 'subnetwork'
@@ -1211,10 +1243,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_private_endpoint, as: 'enablePrivateEndpoint'
           property :enable_private_nodes, as: 'enablePrivateNodes'
+          property :master_global_access_config, as: 'masterGlobalAccessConfig', class: Google::Apis::ContainerV1::PrivateClusterMasterGlobalAccessConfig, decorator: Google::Apis::ContainerV1::PrivateClusterMasterGlobalAccessConfig::Representation
+      
           property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
           property :peering_name, as: 'peeringName'
           property :private_endpoint, as: 'privateEndpoint'
           property :public_endpoint, as: 'publicEndpoint'
+        end
+      end
+      
+      class PrivateClusterMasterGlobalAccessConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -1526,6 +1567,18 @@ module Google
           property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1::WorkloadMetadataConfig::Representation
       
           property :zone, as: 'zone'
+        end
+      end
+      
+      class UpgradeEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_version, as: 'currentVersion'
+          property :operation, as: 'operation'
+          property :operation_start_time, as: 'operationStartTime'
+          property :resource, as: 'resource'
+          property :resource_type, as: 'resourceType'
+          property :target_version, as: 'targetVersion'
         end
       end
       

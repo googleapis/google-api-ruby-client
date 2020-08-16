@@ -1108,7 +1108,7 @@ module Google
       class ExecAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :command, as: 'command'
+          collection :command, as: 'command'
         end
       end
       

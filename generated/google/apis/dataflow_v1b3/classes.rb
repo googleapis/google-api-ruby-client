@@ -31,9 +31,9 @@ module Google
         # @return [Float]
         attr_accessor :percent_complete
       
-        # Position defines a position within a collection of data.  The value
-        # can be either the end position, a key (used with ordered
-        # collections), a byte offset, or a record index.
+        # Position defines a position within a collection of data. The value can be
+        # either the end position, a key (used with ordered collections), a byte offset,
+        # or a record index.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::DataflowV1b3::Position]
         attr_accessor :position
@@ -59,8 +59,8 @@ module Google
       class ApproximateReportedProgress
         include Google::Apis::Core::Hashable
       
-        # Represents the level of parallelism in a WorkItem's input,
-        # reported by the worker.
+        # Represents the level of parallelism in a WorkItem's input, reported by the
+        # worker.
         # Corresponds to the JSON property `consumedParallelism`
         # @return [Google::Apis::DataflowV1b3::ReportedParallelism]
         attr_accessor :consumed_parallelism
@@ -71,15 +71,15 @@ module Google
         # @return [Float]
         attr_accessor :fraction_consumed
       
-        # Position defines a position within a collection of data.  The value
-        # can be either the end position, a key (used with ordered
-        # collections), a byte offset, or a record index.
+        # Position defines a position within a collection of data. The value can be
+        # either the end position, a key (used with ordered collections), a byte offset,
+        # or a record index.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::DataflowV1b3::Position]
         attr_accessor :position
       
-        # Represents the level of parallelism in a WorkItem's input,
-        # reported by the worker.
+        # Represents the level of parallelism in a WorkItem's input, reported by the
+        # worker.
         # Corresponds to the JSON property `remainingParallelism`
         # @return [Google::Apis::DataflowV1b3::ReportedParallelism]
         attr_accessor :remaining_parallelism
@@ -101,21 +101,21 @@ module Google
       class ApproximateSplitRequest
         include Google::Apis::Core::Hashable
       
-        # A fraction at which to split the work item, from 0.0 (beginning of the
-        # input) to 1.0 (end of the input).
+        # A fraction at which to split the work item, from 0.0 (beginning of the input)
+        # to 1.0 (end of the input).
         # Corresponds to the JSON property `fractionConsumed`
         # @return [Float]
         attr_accessor :fraction_consumed
       
-        # The fraction of the remainder of work to split the work item at, from 0.0
-        # (split at the current position) to 1.0 (end of the input).
+        # The fraction of the remainder of work to split the work item at, from 0.0 (
+        # split at the current position) to 1.0 (end of the input).
         # Corresponds to the JSON property `fractionOfRemainder`
         # @return [Float]
         attr_accessor :fraction_of_remainder
       
-        # Position defines a position within a collection of data.  The value
-        # can be either the end position, a key (used with ordered
-        # collections), a byte offset, or a record index.
+        # Position defines a position within a collection of data. The value can be
+        # either the end position, a key (used with ordered collections), a byte offset,
+        # or a record index.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::DataflowV1b3::Position]
         attr_accessor :position
@@ -196,8 +196,8 @@ module Google
         # @return [String]
         attr_accessor :time
       
-        # A short and friendly name for the worker pool this event refers to,
-        # populated from the value of PoolStageRelation::user_pool_name.
+        # A short and friendly name for the worker pool this event refers to, populated
+        # from the value of PoolStageRelation::user_pool_name.
         # Corresponds to the JSON property `workerPool`
         # @return [String]
         attr_accessor :worker_pool
@@ -314,8 +314,7 @@ module Google
       class CpuTime
         include Google::Apis::Core::Hashable
       
-        # Average CPU utilization rate (% non-idle cpu / second) since previous
-        # sample.
+        # Average CPU utilization rate (% non-idle cpu / second) since previous sample.
         # Corresponds to the JSON property `rate`
         # @return [Float]
         attr_accessor :rate
@@ -325,8 +324,8 @@ module Google
         # @return [String]
         attr_accessor :timestamp
       
-        # Total active CPU time across all cores (ie., non-idle) in milliseconds
-        # since start-up.
+        # Total active CPU time across all cores (ie., non-idle) in milliseconds since
+        # start-up.
         # Corresponds to the JSON property `totalMs`
         # @return [Fixnum]
         attr_accessor :total_ms
@@ -347,15 +346,14 @@ module Google
       class CommitTemplateVersionRequest
         include Google::Apis::Core::Hashable
       
-        # /////////////////////////////////////////////////////////////////////////////
-        # //// Template Catalog is used to organize user TemplateVersions.
-        # //// TemplateVersions that have the same project_id and display_name are
-        # //// belong to the same Template.
-        # //// Templates with the same project_id belong to the same Project.
-        # //// TemplateVersion may have labels and multiple labels are allowed.
-        # //// Duplicated labels in the same `TemplateVersion` are not allowed.
-        # //// TemplateVersion may have tags and multiple tags are allowed. Duplicated
-        # //// tags in the same `Template` are not allowed!
+        # ///////////////////////////////////////////////////////////////////////////// /
+        # /// Template Catalog is used to organize user TemplateVersions. ////
+        # TemplateVersions that have the same project_id and display_name are ////
+        # belong to the same Template. //// Templates with the same project_id belong to
+        # the same Project. //// TemplateVersion may have labels and multiple labels are
+        # allowed. //// Duplicated labels in the same `TemplateVersion` are not allowed.
+        # //// TemplateVersion may have tags and multiple tags are allowed. Duplicated //
+        # // tags in the same `Template` are not allowed!
         # Corresponds to the JSON property `templateVersion`
         # @return [Google::Apis::DataflowV1b3::TemplateVersion]
         attr_accessor :template_version
@@ -370,8 +368,7 @@ module Google
         end
       end
       
-      # Description of an interstitial value between transforms in an execution
-      # stage.
+      # Description of an interstitial value between transforms in an execution stage.
       class ComponentSource
         include Google::Apis::Core::Hashable
       
@@ -380,8 +377,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # User name for the original user transform or collection with which this
-        # source is most closely associated.
+        # User name for the original user transform or collection with which this source
+        # is most closely associated.
         # Corresponds to the JSON property `originalTransformOrCollection`
         # @return [String]
         attr_accessor :original_transform_or_collection
@@ -412,8 +409,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # User name for the original user transform with which this transform is
-        # most closely associated.
+        # User name for the original user transform with which this transform is most
+        # closely associated.
         # Corresponds to the JSON property `originalTransform`
         # @return [String]
         attr_accessor :original_transform
@@ -495,9 +492,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :index
       
-        # Position defines a position within a collection of data.  The value
-        # can be either the end position, a key (used with ordered
-        # collections), a byte offset, or a record index.
+        # Position defines a position within a collection of data. The value can be
+        # either the end position, a key (used with ordered collections), a byte offset,
+        # or a record index.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::DataflowV1b3::Position]
         attr_accessor :position
@@ -596,19 +593,17 @@ module Google
         # @return [String]
         attr_accessor :execution_step_name
       
-        # Index of an input collection that's being read from/written to as a side
-        # input.
-        # The index identifies a step's side inputs starting by 1 (e.g. the first
-        # side input has input_index 1, the third has input_index 3).
-        # Side inputs are identified by a pair of (original_step_name, input_index).
-        # This field helps uniquely identify them.
+        # Index of an input collection that's being read from/written to as a side input.
+        # The index identifies a step's side inputs starting by 1 (e.g. the first side
+        # input has input_index 1, the third has input_index 3). Side inputs are
+        # identified by a pair of (original_step_name, input_index). This field helps
+        # uniquely identify them.
         # Corresponds to the JSON property `inputIndex`
         # @return [Fixnum]
         attr_accessor :input_index
       
-        # Counter name. Not necessarily globally-unique, but unique within the
-        # context of the other fields.
-        # Required.
+        # Counter name. Not necessarily globally-unique, but unique within the context
+        # of the other fields. Required.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -623,9 +618,8 @@ module Google
         # @return [String]
         attr_accessor :origin_namespace
       
-        # The step name requesting an operation, such as GBK.
-        # I.e. the ParDo causing a read/write from shuffle to occur, or a
-        # read from side inputs.
+        # The step name requesting an operation, such as GBK. I.e. the ParDo causing a
+        # read/write from shuffle to occur, or a read from side inputs.
         # Corresponds to the JSON property `originalRequestingStepName`
         # @return [String]
         attr_accessor :original_requesting_step_name
@@ -702,10 +696,9 @@ module Google
         attr_accessor :boolean
         alias_method :boolean?, :boolean
       
-        # True if this counter is reported as the total cumulative aggregate
-        # value accumulated since the worker started working on this WorkItem.
-        # By default this is false, indicating that this counter is reported
-        # as a delta.
+        # True if this counter is reported as the total cumulative aggregate value
+        # accumulated since the worker started working on this WorkItem. By default this
+        # is false, indicating that this counter is reported as a delta.
         # Corresponds to the JSON property `cumulative`
         # @return [Boolean]
         attr_accessor :cumulative
@@ -731,8 +724,8 @@ module Google
         # @return [Google::Apis::DataflowV1b3::FloatingPointMean]
         attr_accessor :floating_point_mean
       
-        # A representation of an int64, n, that is immune to precision loss when
-        # encoded in JSON.
+        # A representation of an int64, n, that is immune to precision loss when encoded
+        # in JSON.
         # Corresponds to the JSON property `integer`
         # @return [Google::Apis::DataflowV1b3::SplitInt64]
         attr_accessor :integer
@@ -762,9 +755,8 @@ module Google
         # @return [Google::Apis::DataflowV1b3::NameAndKind]
         attr_accessor :name_and_kind
       
-        # The service-generated short identifier for this counter.
-        # The short_id -> (name, metadata) mapping is constant for the lifetime of
-        # a job.
+        # The service-generated short identifier for this counter. The short_id -> (name,
+        # metadata) mapping is constant for the lifetime of a job.
         # Corresponds to the JSON property `shortId`
         # @return [Fixnum]
         attr_accessor :short_id
@@ -813,8 +805,7 @@ module Google
         # @return [Google::Apis::DataflowV1b3::RuntimeEnvironment]
         attr_accessor :environment
       
-        # Required. A Cloud Storage path to the template from which to
-        # create the job.
+        # Required. A Cloud Storage path to the template from which to create the job.
         # Must be a valid Cloud Storage URL, beginning with `gs://`.
         # Corresponds to the JSON property `gcsPath`
         # @return [String]
@@ -825,9 +816,8 @@ module Google
         # @return [String]
         attr_accessor :job_name
       
-        # The [regional endpoint]
-        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
-        # which to direct the request.
+        # The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
+        # regional-endpoints) to which to direct the request.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -855,15 +845,14 @@ module Google
       class CreateTemplateVersionRequest
         include Google::Apis::Core::Hashable
       
-        # /////////////////////////////////////////////////////////////////////////////
-        # //// Template Catalog is used to organize user TemplateVersions.
-        # //// TemplateVersions that have the same project_id and display_name are
-        # //// belong to the same Template.
-        # //// Templates with the same project_id belong to the same Project.
-        # //// TemplateVersion may have labels and multiple labels are allowed.
-        # //// Duplicated labels in the same `TemplateVersion` are not allowed.
-        # //// TemplateVersion may have tags and multiple tags are allowed. Duplicated
-        # //// tags in the same `Template` are not allowed!
+        # ///////////////////////////////////////////////////////////////////////////// /
+        # /// Template Catalog is used to organize user TemplateVersions. ////
+        # TemplateVersions that have the same project_id and display_name are ////
+        # belong to the same Template. //// Templates with the same project_id belong to
+        # the same Project. //// TemplateVersion may have labels and multiple labels are
+        # allowed. //// Duplicated labels in the same `TemplateVersion` are not allowed.
+        # //// TemplateVersion may have tags and multiple tags are allowed. Duplicated //
+        # // tags in the same `Template` are not allowed!
         # Corresponds to the JSON property `templateVersion`
         # @return [Google::Apis::DataflowV1b3::TemplateVersion]
         attr_accessor :template_version
@@ -902,16 +891,16 @@ module Google
       class DataDiskAssignment
         include Google::Apis::Core::Hashable
       
-        # Mounted data disks. The order is important a data disk's 0-based index in
-        # this list defines which persistent directory the disk is mounted to, for
-        # example the list of ` "myproject-1014-104817-4c2-harness-0-disk-0" `,
-        # ` "myproject-1014-104817-4c2-harness-0-disk-1" `.
+        # Mounted data disks. The order is important a data disk's 0-based index in this
+        # list defines which persistent directory the disk is mounted to, for example
+        # the list of ` "myproject-1014-104817-4c2-harness-0-disk-0" `, ` "myproject-
+        # 1014-104817-4c2-harness-0-disk-1" `.
         # Corresponds to the JSON property `dataDisks`
         # @return [Array<String>]
         attr_accessor :data_disks
       
-        # VM instance name the data disks mounted to, for example
-        # "myproject-1014-104817-4c2-harness-0".
+        # VM instance name the data disks mounted to, for example "myproject-1014-104817-
+        # 4c2-harness-0".
         # Corresponds to the JSON property `vmInstance`
         # @return [String]
         attr_accessor :vm_instance
@@ -965,10 +954,9 @@ module Google
         end
       end
       
-      # Specification of one of the bundles produced as a result of splitting
-      # a Source (e.g. when executing a SourceSplitRequest, or when
-      # splitting an active task using WorkItemStatus.dynamic_source_split),
-      # relative to the source being split.
+      # Specification of one of the bundles produced as a result of splitting a Source
+      # (e.g. when executing a SourceSplitRequest, or when splitting an active task
+      # using WorkItemStatus.dynamic_source_split), relative to the source being split.
       class DerivedSource
         include Google::Apis::Core::Hashable
       
@@ -997,20 +985,17 @@ module Google
       class Disk
         include Google::Apis::Core::Hashable
       
-        # Disk storage type, as defined by Google Compute Engine.  This
-        # must be a disk type appropriate to the project and zone in which
-        # the workers will run.  If unknown or unspecified, the service
-        # will attempt to choose a reasonable default.
-        # For example, the standard persistent disk type is a resource name
-        # typically ending in "pd-standard".  If SSD persistent disks are
-        # available, the resource name typically ends with "pd-ssd".  The
-        # actual valid values are defined the Google Compute Engine API,
-        # not by the Cloud Dataflow API; consult the Google Compute Engine
-        # documentation for more information about determining the set of
-        # available disk types for a particular project and zone.
-        # Google Compute Engine Disk types are local to a particular
-        # project in a particular zone, and so the resource name will
-        # typically look something like this:
+        # Disk storage type, as defined by Google Compute Engine. This must be a disk
+        # type appropriate to the project and zone in which the workers will run. If
+        # unknown or unspecified, the service will attempt to choose a reasonable
+        # default. For example, the standard persistent disk type is a resource name
+        # typically ending in "pd-standard". If SSD persistent disks are available, the
+        # resource name typically ends with "pd-ssd". The actual valid values are
+        # defined the Google Compute Engine API, not by the Cloud Dataflow API; consult
+        # the Google Compute Engine documentation for more information about determining
+        # the set of available disk types for a particular project and zone. Google
+        # Compute Engine Disk types are local to a particular project in a particular
+        # zone, and so the resource name will typically look something like this:
         # compute.googleapis.com/projects/project-id/zones/zone/diskTypes/pd-standard
         # Corresponds to the JSON property `diskType`
         # @return [String]
@@ -1021,8 +1006,8 @@ module Google
         # @return [String]
         attr_accessor :mount_point
       
-        # Size of disk in GB.  If zero or unspecified, the service will
-        # attempt to choose a reasonable default.
+        # Size of disk in GB. If zero or unspecified, the service will attempt to choose
+        # a reasonable default.
         # Corresponds to the JSON property `sizeGb`
         # @return [Fixnum]
         attr_accessor :size_gb
@@ -1069,9 +1054,8 @@ module Google
         # @return [String]
         attr_accessor :java_class_value
       
-        # The key identifying the display data.
-        # This is intended to be used as a label for the display data
-        # when viewed in a dax monitoring system.
+        # The key identifying the display data. This is intended to be used as a label
+        # for the display data when viewed in a dax monitoring system.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -1082,19 +1066,18 @@ module Google
         attr_accessor :label
       
         # The namespace for the key. This is usually a class name or programming
-        # language namespace (i.e. python module) which defines the display data.
-        # This allows a dax monitoring system to specially handle the data
-        # and perform custom rendering.
+        # language namespace (i.e. python module) which defines the display data. This
+        # allows a dax monitoring system to specially handle the data and perform custom
+        # rendering.
         # Corresponds to the JSON property `namespace`
         # @return [String]
         attr_accessor :namespace
       
-        # A possible additional shorter value to display.
-        # For example a java_class_name_value of com.mypackage.MyDoFn
-        # will be stored with MyDoFn as the short_str_value and
-        # com.mypackage.MyDoFn as the java_class_name value.
-        # short_str_value can be displayed and java_class_name_value
-        # will be displayed as a tooltip.
+        # A possible additional shorter value to display. For example a
+        # java_class_name_value of com.mypackage.MyDoFn will be stored with MyDoFn as
+        # the short_str_value and com.mypackage.MyDoFn as the java_class_name value.
+        # short_str_value can be displayed and java_class_name_value will be displayed
+        # as a tooltip.
         # Corresponds to the JSON property `shortStrValue`
         # @return [String]
         attr_accessor :short_str_value
@@ -1139,36 +1122,35 @@ module Google
       class DistributionUpdate
         include Google::Apis::Core::Hashable
       
-        # A representation of an int64, n, that is immune to precision loss when
-        # encoded in JSON.
+        # A representation of an int64, n, that is immune to precision loss when encoded
+        # in JSON.
         # Corresponds to the JSON property `count`
         # @return [Google::Apis::DataflowV1b3::SplitInt64]
         attr_accessor :count
       
-        # Histogram of value counts for a distribution.
-        # Buckets have an inclusive lower bound and exclusive upper bound and use
-        # "1,2,5 bucketing": The first bucket range is from [0,1) and all subsequent
-        # bucket boundaries are powers of ten multiplied by 1, 2, or 5. Thus, bucket
-        # boundaries are 0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, ...
-        # Negative values are not supported.
+        # Histogram of value counts for a distribution. Buckets have an inclusive lower
+        # bound and exclusive upper bound and use "1,2,5 bucketing": The first bucket
+        # range is from [0,1) and all subsequent bucket boundaries are powers of ten
+        # multiplied by 1, 2, or 5. Thus, bucket boundaries are 0, 1, 2, 5, 10, 20, 50,
+        # 100, 200, 500, 1000, ... Negative values are not supported.
         # Corresponds to the JSON property `histogram`
         # @return [Google::Apis::DataflowV1b3::Histogram]
         attr_accessor :histogram
       
-        # A representation of an int64, n, that is immune to precision loss when
-        # encoded in JSON.
+        # A representation of an int64, n, that is immune to precision loss when encoded
+        # in JSON.
         # Corresponds to the JSON property `max`
         # @return [Google::Apis::DataflowV1b3::SplitInt64]
         attr_accessor :max
       
-        # A representation of an int64, n, that is immune to precision loss when
-        # encoded in JSON.
+        # A representation of an int64, n, that is immune to precision loss when encoded
+        # in JSON.
         # Corresponds to the JSON property `min`
         # @return [Google::Apis::DataflowV1b3::SplitInt64]
         attr_accessor :min
       
-        # A representation of an int64, n, that is immune to precision loss when
-        # encoded in JSON.
+        # A representation of an int64, n, that is immune to precision loss when encoded
+        # in JSON.
         # Corresponds to the JSON property `sum`
         # @return [Google::Apis::DataflowV1b3::SplitInt64]
         attr_accessor :sum
@@ -1193,24 +1175,22 @@ module Google
         end
       end
       
-      # When a task splits using WorkItemStatus.dynamic_source_split, this
-      # message describes the two parts of the split relative to the
-      # description of the current task's input.
+      # When a task splits using WorkItemStatus.dynamic_source_split, this message
+      # describes the two parts of the split relative to the description of the
+      # current task's input.
       class DynamicSourceSplit
         include Google::Apis::Core::Hashable
       
-        # Specification of one of the bundles produced as a result of splitting
-        # a Source (e.g. when executing a SourceSplitRequest, or when
-        # splitting an active task using WorkItemStatus.dynamic_source_split),
-        # relative to the source being split.
+        # Specification of one of the bundles produced as a result of splitting a Source
+        # (e.g. when executing a SourceSplitRequest, or when splitting an active task
+        # using WorkItemStatus.dynamic_source_split), relative to the source being split.
         # Corresponds to the JSON property `primary`
         # @return [Google::Apis::DataflowV1b3::DerivedSource]
         attr_accessor :primary
       
-        # Specification of one of the bundles produced as a result of splitting
-        # a Source (e.g. when executing a SourceSplitRequest, or when
-        # splitting an active task using WorkItemStatus.dynamic_source_split),
-        # relative to the source being split.
+        # Specification of one of the bundles produced as a result of splitting a Source
+        # (e.g. when executing a SourceSplitRequest, or when splitting an active task
+        # using WorkItemStatus.dynamic_source_split), relative to the source being split.
         # Corresponds to the JSON property `residual`
         # @return [Google::Apis::DataflowV1b3::DerivedSource]
         attr_accessor :residual
@@ -1226,13 +1206,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -1249,19 +1227,16 @@ module Google
       class Environment
         include Google::Apis::Core::Hashable
       
-        # The type of cluster manager API to use.  If unknown or
-        # unspecified, the service will attempt to choose a reasonable
-        # default.  This should be in the form of the API service name,
-        # e.g. "compute.googleapis.com".
+        # The type of cluster manager API to use. If unknown or unspecified, the service
+        # will attempt to choose a reasonable default. This should be in the form of the
+        # API service name, e.g. "compute.googleapis.com".
         # Corresponds to the JSON property `clusterManagerApiService`
         # @return [String]
         attr_accessor :cluster_manager_api_service
       
-        # The dataset for the current project where various workflow
-        # related tables are stored.
-        # The supported resource type is:
-        # Google BigQuery:
-        # bigquery.googleapis.com/`dataset`
+        # The dataset for the current project where various workflow related tables are
+        # stored. The supported resource type is: Google BigQuery: bigquery.googleapis.
+        # com/`dataset`
         # Corresponds to the JSON property `dataset`
         # @return [String]
         attr_accessor :dataset
@@ -1281,10 +1256,9 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :internal_experiments
       
-        # The Cloud Dataflow SDK pipeline options specified by the user. These
-        # options are passed through the service and are used to recreate the
-        # SDK pipeline options on the worker in a language agnostic and platform
-        # independent way.
+        # The Cloud Dataflow SDK pipeline options specified by the user. These options
+        # are passed through the service and are used to recreate the SDK pipeline
+        # options on the worker in a language agnostic and platform independent way.
         # Corresponds to the JSON property `sdkPipelineOptions`
         # @return [Hash<String,Object>]
         attr_accessor :sdk_pipeline_options
@@ -1294,25 +1268,20 @@ module Google
         # @return [String]
         attr_accessor :service_account_email
       
-        # If set, contains the Cloud KMS key identifier used to encrypt data
-        # at rest, AKA a Customer Managed Encryption Key (CMEK).
-        # Format:
-        # projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+        # If set, contains the Cloud KMS key identifier used to encrypt data at rest,
+        # AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/
+        # locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
         # Corresponds to the JSON property `serviceKmsKeyName`
         # @return [String]
         attr_accessor :service_kms_key_name
       
-        # The prefix of the resources the system should use for temporary
-        # storage.  The system will append the suffix "/temp-`JOBNAME` to
-        # this resource prefix, where `JOBNAME` is the value of the
-        # job_name field.  The resulting bucket and object prefix is used
-        # as the prefix of the resources used to store temporary data
-        # needed during the job execution.  NOTE: This will override the
-        # value in taskrunner_settings.
-        # The supported resource type is:
-        # Google Cloud Storage:
-        # storage.googleapis.com/`bucket`/`object`
-        # bucket.storage.googleapis.com/`object`
+        # The prefix of the resources the system should use for temporary storage. The
+        # system will append the suffix "/temp-`JOBNAME` to this resource prefix, where `
+        # JOBNAME` is the value of the job_name field. The resulting bucket and object
+        # prefix is used as the prefix of the resources used to store temporary data
+        # needed during the job execution. NOTE: This will override the value in
+        # taskrunner_settings. The supported resource type is: Google Cloud Storage:
+        # storage.googleapis.com/`bucket`/`object` bucket.storage.googleapis.com/`object`
         # Corresponds to the JSON property `tempStoragePrefix`
         # @return [String]
         attr_accessor :temp_storage_prefix
@@ -1322,32 +1291,31 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :user_agent
       
-        # A structure describing which components and their versions of the service
-        # are required in order to run the job.
+        # A structure describing which components and their versions of the service are
+        # required in order to run the job.
         # Corresponds to the JSON property `version`
         # @return [Hash<String,Object>]
         attr_accessor :version
       
-        # The worker pools. At least one "harness" worker pool must be
-        # specified in order for the job to have workers.
+        # The worker pools. At least one "harness" worker pool must be specified in
+        # order for the job to have workers.
         # Corresponds to the JSON property `workerPools`
         # @return [Array<Google::Apis::DataflowV1b3::WorkerPool>]
         attr_accessor :worker_pools
       
-        # The Compute Engine region
-        # (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-        # which worker processing should occur, e.g. "us-west1". Mutually exclusive
-        # with worker_zone. If neither worker_region nor worker_zone is specified,
-        # default to the control plane's region.
+        # The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/
+        # regions-zones) in which worker processing should occur, e.g. "us-west1".
+        # Mutually exclusive with worker_zone. If neither worker_region nor worker_zone
+        # is specified, default to the control plane's region.
         # Corresponds to the JSON property `workerRegion`
         # @return [String]
         attr_accessor :worker_region
       
-        # The Compute Engine zone
-        # (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-        # which worker processing should occur, e.g. "us-west1-a". Mutually exclusive
-        # with worker_region. If neither worker_region nor worker_zone is specified,
-        # a zone in the control plane's region is chosen based on available capacity.
+        # The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/
+        # regions-zones) in which worker processing should occur, e.g. "us-west1-a".
+        # Mutually exclusive with worker_region. If neither worker_region nor
+        # worker_zone is specified, a zone in the control plane's region is chosen based
+        # on available capacity.
         # Corresponds to the JSON property `workerZone`
         # @return [String]
         attr_accessor :worker_zone
@@ -1407,7 +1375,7 @@ module Google
       end
       
       # Description of the composing transforms, names/ids, and input/outputs of a
-      # stage of execution.  Some composing transforms and sources may have been
+      # stage of execution. Some composing transforms and sources may have been
       # generated by the Dataflow service during execution planning.
       class ExecutionStageSummary
         include Google::Apis::Core::Hashable
@@ -1463,15 +1431,13 @@ module Google
         end
       end
       
-      # Indicates which [regional endpoint]
-      # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) failed
-      # to respond to a request for data.
+      # Indicates which [regional endpoint] (https://cloud.google.com/dataflow/docs/
+      # concepts/regional-endpoints) failed to respond to a request for data.
       class FailedLocation
         include Google::Apis::Core::Hashable
       
-        # The name of the [regional endpoint]
-        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        # failed to respond.
+        # The name of the [regional endpoint] (https://cloud.google.com/dataflow/docs/
+        # concepts/regional-endpoints) that failed to respond.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1547,8 +1513,8 @@ module Google
       class FloatingPointMean
         include Google::Apis::Core::Hashable
       
-        # A representation of an int64, n, that is immune to precision loss when
-        # encoded in JSON.
+        # A representation of an int64, n, that is immune to precision loss when encoded
+        # in JSON.
         # Corresponds to the JSON property `count`
         # @return [Google::Apis::DataflowV1b3::SplitInt64]
         attr_accessor :count
@@ -1573,15 +1539,13 @@ module Google
       class GetDebugConfigRequest
         include Google::Apis::Core::Hashable
       
-        # The internal component id for which debug configuration is
-        # requested.
+        # The internal component id for which debug configuration is requested.
         # Corresponds to the JSON property `componentId`
         # @return [String]
         attr_accessor :component_id
       
-        # The [regional endpoint]
-        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        # contains the job specified by job_id.
+        # The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
+        # regional-endpoints) that contains the job specified by job_id.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -1636,12 +1600,12 @@ module Google
         # @return [Google::Apis::DataflowV1b3::RuntimeMetadata]
         attr_accessor :runtime_metadata
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::DataflowV1b3::Status]
         attr_accessor :status
@@ -1664,26 +1628,25 @@ module Google
         end
       end
       
-      # Histogram of value counts for a distribution.
-      # Buckets have an inclusive lower bound and exclusive upper bound and use
-      # "1,2,5 bucketing": The first bucket range is from [0,1) and all subsequent
-      # bucket boundaries are powers of ten multiplied by 1, 2, or 5. Thus, bucket
-      # boundaries are 0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, ...
-      # Negative values are not supported.
+      # Histogram of value counts for a distribution. Buckets have an inclusive lower
+      # bound and exclusive upper bound and use "1,2,5 bucketing": The first bucket
+      # range is from [0,1) and all subsequent bucket boundaries are powers of ten
+      # multiplied by 1, 2, or 5. Thus, bucket boundaries are 0, 1, 2, 5, 10, 20, 50,
+      # 100, 200, 500, 1000, ... Negative values are not supported.
       class Histogram
         include Google::Apis::Core::Hashable
       
-        # Counts of values in each bucket. For efficiency, prefix and trailing
-        # buckets with count = 0 are elided. Buckets can store the full range of
-        # values of an unsigned long, with ULLONG_MAX falling into the 59th bucket
-        # with range [1e19, 2e19).
+        # Counts of values in each bucket. For efficiency, prefix and trailing buckets
+        # with count = 0 are elided. Buckets can store the full range of values of an
+        # unsigned long, with ULLONG_MAX falling into the 59th bucket with range [1e19,
+        # 2e19).
         # Corresponds to the JSON property `bucketCounts`
         # @return [Array<Fixnum>]
         attr_accessor :bucket_counts
       
-        # Starting index of first stored bucket. The non-inclusive upper-bound of
-        # the ith bucket is given by:
-        # pow(10,(i-first_bucket_offset)/3) * (1,2,5)[(i-first_bucket_offset)%3]
+        # Starting index of first stored bucket. The non-inclusive upper-bound of the
+        # ith bucket is given by: pow(10,(i-first_bucket_offset)/3) * (1,2,5)[(i-
+        # first_bucket_offset)%3]
         # Corresponds to the JSON property `firstBucketOffset`
         # @return [Fixnum]
         attr_accessor :first_bucket_offset
@@ -1708,8 +1671,8 @@ module Google
         # @return [String]
         attr_accessor :hot_key_age
       
-        # System-defined name of the step containing this hot key.
-        # Unique across the workflow.
+        # System-defined name of the step containing this hot key. Unique across the
+        # workflow.
         # Corresponds to the JSON property `systemName`
         # @return [String]
         attr_accessor :system_name
@@ -1731,8 +1694,8 @@ module Google
         end
       end
       
-      # An input of an instruction, as a reference to an output of a
-      # producer instruction.
+      # An input of an instruction, as a reference to an output of a producer
+      # instruction.
       class InstructionInput
         include Google::Apis::Core::Hashable
       
@@ -1741,10 +1704,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :output_num
       
-        # The index (origin zero) of the parallel instruction that produces
-        # the output to be consumed by this input.  This index is relative
-        # to the list of instructions in this input's instruction's
-        # containing MapTask.
+        # The index (origin zero) of the parallel instruction that produces the output
+        # to be consumed by this input. This index is relative to the list of
+        # instructions in this input's instruction's containing MapTask.
         # Corresponds to the JSON property `producerInstructionIndex`
         # @return [Fixnum]
         attr_accessor :producer_instruction_index
@@ -1774,28 +1736,27 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # For system-generated byte and mean byte metrics, certain instructions
-        # should only report the key size.
+        # For system-generated byte and mean byte metrics, certain instructions should
+        # only report the key size.
         # Corresponds to the JSON property `onlyCountKeyBytes`
         # @return [Boolean]
         attr_accessor :only_count_key_bytes
         alias_method :only_count_key_bytes?, :only_count_key_bytes
       
-        # For system-generated byte and mean byte metrics, certain instructions
-        # should only report the value size.
+        # For system-generated byte and mean byte metrics, certain instructions should
+        # only report the value size.
         # Corresponds to the JSON property `onlyCountValueBytes`
         # @return [Boolean]
         attr_accessor :only_count_value_bytes
         alias_method :only_count_value_bytes?, :only_count_value_bytes
       
-        # System-defined name for this output in the original workflow graph.
-        # Outputs that do not contribute to an original instruction do not set this.
+        # System-defined name for this output in the original workflow graph. Outputs
+        # that do not contribute to an original instruction do not set this.
         # Corresponds to the JSON property `originalName`
         # @return [String]
         attr_accessor :original_name
       
-        # System-defined name of this output.
-        # Unique across the workflow.
+        # System-defined name of this output. Unique across the workflow.
         # Corresponds to the JSON property `systemName`
         # @return [String]
         attr_accessor :system_name
@@ -1824,8 +1785,8 @@ module Google
         # @return [String]
         attr_accessor :timestamp
       
-        # A representation of an int64, n, that is immune to precision loss when
-        # encoded in JSON.
+        # A representation of an int64, n, that is immune to precision loss when encoded
+        # in JSON.
         # Corresponds to the JSON property `value`
         # @return [Google::Apis::DataflowV1b3::SplitInt64]
         attr_accessor :value
@@ -1864,14 +1825,14 @@ module Google
       class IntegerMean
         include Google::Apis::Core::Hashable
       
-        # A representation of an int64, n, that is immune to precision loss when
-        # encoded in JSON.
+        # A representation of an int64, n, that is immune to precision loss when encoded
+        # in JSON.
         # Corresponds to the JSON property `count`
         # @return [Google::Apis::DataflowV1b3::SplitInt64]
         attr_accessor :count
       
-        # A representation of an int64, n, that is immune to precision loss when
-        # encoded in JSON.
+        # A representation of an int64, n, that is immune to precision loss when encoded
+        # in JSON.
         # Corresponds to the JSON property `sum`
         # @return [Google::Apis::DataflowV1b3::SplitInt64]
         attr_accessor :sum
@@ -1891,13 +1852,12 @@ module Google
       class Job
         include Google::Apis::Core::Hashable
       
-        # The client's unique identifier of the job, re-used across retried attempts.
-        # If this field is set, the service will ensure its uniqueness.
-        # The request to create a job will fail if the service has knowledge of a
-        # previously submitted job with the same client's ID and job name.
-        # The caller may use this field to ensure idempotence of job
-        # creation across retried attempts to create a job.
-        # By default, the field is empty and, in that case, the service ignores it.
+        # The client's unique identifier of the job, re-used across retried attempts. If
+        # this field is set, the service will ensure its uniqueness. The request to
+        # create a job will fail if the service has knowledge of a previously submitted
+        # job with the same client's ID and job name. The caller may use this field to
+        # ensure idempotence of job creation across retried attempts to create a job. By
+        # default, the field is empty and, in that case, the service ignores it.
         # Corresponds to the JSON property `clientRequestId`
         # @return [String]
         attr_accessor :client_request_id
@@ -1914,14 +1874,11 @@ module Google
         # @return [String]
         attr_accessor :created_from_snapshot_id
       
-        # The current state of the job.
-        # Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise
-        # specified.
-        # A job in the `JOB_STATE_RUNNING` state may asynchronously enter a
-        # terminal state. After a job has reached a terminal state, no
-        # further state updates may be made.
-        # This field may be mutated by the Cloud Dataflow service;
-        # callers cannot mutate it.
+        # The current state of the job. Jobs are created in the `JOB_STATE_STOPPED`
+        # state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may
+        # asynchronously enter a terminal state. After a job has reached a terminal
+        # state, no further state updates may be made. This field may be mutated by the
+        # Cloud Dataflow service; callers cannot mutate it.
         # Corresponds to the JSON property `currentState`
         # @return [String]
         attr_accessor :current_state
@@ -1942,9 +1899,8 @@ module Google
         # @return [Google::Apis::DataflowV1b3::JobExecutionInfo]
         attr_accessor :execution_info
       
-        # The unique ID of this job.
-        # This field is set by the Cloud Dataflow service when the Job is
-        # created, and is immutable for the life of the job.
+        # The unique ID of this job. This field is set by the Cloud Dataflow service
+        # when the Job is created, and is immutable for the life of the job.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1955,37 +1911,32 @@ module Google
         # @return [Google::Apis::DataflowV1b3::JobMetadata]
         attr_accessor :job_metadata
       
-        # User-defined labels for this job.
-        # The labels map can contain no more than 64 entries.  Entries of the labels
-        # map are UTF8 strings that comply with the following restrictions:
-        # * Keys must conform to regexp:  \p`Ll`\p`Lo``0,62`
-        # * Values must conform to regexp:  [\p`Ll`\p`Lo`\p`N`_-]`0,63`
-        # * Both keys and values are additionally constrained to be <= 128 bytes in
-        # size.
+        # User-defined labels for this job. The labels map can contain no more than 64
+        # entries. Entries of the labels map are UTF8 strings that comply with the
+        # following restrictions: * Keys must conform to regexp: \p`Ll`\p`Lo``0,62` *
+        # Values must conform to regexp: [\p`Ll`\p`Lo`\p`N`_-]`0,63` * Both keys and
+        # values are additionally constrained to be <= 128 bytes in size.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The [regional endpoint]
-        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        # contains this job.
+        # The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
+        # regional-endpoints) that contains this job.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # The user-specified Cloud Dataflow job name.
-        # Only one Job with a given name may exist in a project at any
-        # given time. If a caller attempts to create a Job with the same
-        # name as an already-existing Job, the attempt returns the
-        # existing Job.
-        # The name must match the regular expression
-        # `[a-z]([-a-z0-9]`0,38`[a-z0-9])?`
+        # The user-specified Cloud Dataflow job name. Only one Job with a given name may
+        # exist in a project at any given time. If a caller attempts to create a Job
+        # with the same name as an already-existing Job, the attempt returns the
+        # existing Job. The name must match the regular expression `[a-z]([-a-z0-9]`0,38`
+        # [a-z0-9])?`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # A descriptive representation of submitted pipeline as well as the executed
-        # form.  This data is provided by the Dataflow service for ease of visualizing
+        # form. This data is provided by the Dataflow service for ease of visualizing
         # the pipeline and interpreting Dataflow provided metrics.
         # Corresponds to the JSON property `pipelineDescription`
         # @return [Google::Apis::DataflowV1b3::PipelineDescription]
@@ -1996,50 +1947,46 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
-        # If this job is an update of an existing job, this field is the job ID
-        # of the job it replaced.
-        # When sending a `CreateJobRequest`, you can update a job by specifying it
-        # here. The job named here is stopped, and its intermediate state is
-        # transferred to this job.
+        # If this job is an update of an existing job, this field is the job ID of the
+        # job it replaced. When sending a `CreateJobRequest`, you can update a job by
+        # specifying it here. The job named here is stopped, and its intermediate state
+        # is transferred to this job.
         # Corresponds to the JSON property `replaceJobId`
         # @return [String]
         attr_accessor :replace_job_id
       
-        # If another job is an update of this job (and thus, this job is in
-        # `JOB_STATE_UPDATED`), this field contains the ID of that job.
+        # If another job is an update of this job (and thus, this job is in `
+        # JOB_STATE_UPDATED`), this field contains the ID of that job.
         # Corresponds to the JSON property `replacedByJobId`
         # @return [String]
         attr_accessor :replaced_by_job_id
       
-        # The job's requested state.
-        # `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and
-        # `JOB_STATE_RUNNING` states, by setting requested_state.  `UpdateJob` may
-        # also be used to directly set a job's requested state to
-        # `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the
-        # job if it has not already reached a terminal state.
+        # The job's requested state. `UpdateJob` may be used to switch between the `
+        # JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state.
+        # `UpdateJob` may also be used to directly set a job's requested state to `
+        # JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if
+        # it has not already reached a terminal state.
         # Corresponds to the JSON property `requestedState`
         # @return [String]
         attr_accessor :requested_state
       
-        # This field may be mutated by the Cloud Dataflow service;
-        # callers cannot mutate it.
+        # This field may be mutated by the Cloud Dataflow service; callers cannot mutate
+        # it.
         # Corresponds to the JSON property `stageStates`
         # @return [Array<Google::Apis::DataflowV1b3::ExecutionStageState>]
         attr_accessor :stage_states
       
         # The timestamp when the job was started (transitioned to JOB_STATE_PENDING).
         # Flexible resource scheduling jobs are started with some delay after job
-        # creation, so start_time is unset before start and is updated when the
-        # job is started by the Cloud Dataflow service. For other jobs, start_time
-        # always equals to create_time and is immutable and set by the Cloud Dataflow
-        # service.
+        # creation, so start_time is unset before start and is updated when the job is
+        # started by the Cloud Dataflow service. For other jobs, start_time always
+        # equals to create_time and is immutable and set by the Cloud Dataflow service.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # Exactly one of step or steps_location should be specified.
-        # The top-level steps that constitute the entire job. Only retrieved with
-        # JOB_VIEW_ALL.
+        # Exactly one of step or steps_location should be specified. The top-level steps
+        # that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
         # Corresponds to the JSON property `steps`
         # @return [Array<Google::Apis::DataflowV1b3::Step>]
         attr_accessor :steps
@@ -2049,15 +1996,11 @@ module Google
         # @return [String]
         attr_accessor :steps_location
       
-        # A set of files the system should be aware of that are used
-        # for temporary storage. These temporary files will be
-        # removed on job completion.
-        # No duplicates are allowed.
-        # No file patterns are supported.
-        # The supported files are:
-        # Google Cloud Storage:
-        # storage.googleapis.com/`bucket`/`object`
-        # bucket.storage.googleapis.com/`object`
+        # A set of files the system should be aware of that are used for temporary
+        # storage. These temporary files will be removed on job completion. No
+        # duplicates are allowed. No file patterns are supported. The supported files
+        # are: Google Cloud Storage: storage.googleapis.com/`bucket`/`object` bucket.
+        # storage.googleapis.com/`object`
         # Corresponds to the JSON property `tempFiles`
         # @return [Array<String>]
         attr_accessor :temp_files
@@ -2106,6 +2049,25 @@ module Google
         end
       end
       
+      # Information about the execution of a job.
+      class JobExecutionDetails
+        include Google::Apis::Core::Hashable
+      
+        # The stages of the job execution.
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::DataflowV1b3::StageSummary>]
+        attr_accessor :stages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stages = args[:stages] if args.key?(:stages)
+        end
+      end
+      
       # Additional information about how a Cloud Dataflow job will be executed that
       # isn't contained in the submitted job.
       class JobExecutionInfo
@@ -2126,14 +2088,13 @@ module Google
         end
       end
       
-      # Contains information about how a particular
-      # google.dataflow.v1beta3.Step will be executed.
+      # Contains information about how a particular google.dataflow.v1beta3.Step will
+      # be executed.
       class JobExecutionStageInfo
         include Google::Apis::Core::Hashable
       
-        # The steps associated with the execution stage.
-        # Note that stages may have several steps, and that a given step
-        # might be run by more than one stage.
+        # The steps associated with the execution stage. Note that stages may have
+        # several steps, and that a given step might be run by more than one stage.
         # Corresponds to the JSON property `stepName`
         # @return [Array<String>]
         attr_accessor :step_name
@@ -2243,9 +2204,8 @@ module Google
       
       # JobMetrics contains a collection of metrics describing the detailed progress
       # of a Dataflow job. Metrics correspond to user-defined and system-defined
-      # metrics in the job.
-      # This resource captures only the most recent values of each metric;
-      # time-series data can be queried for them (under the same metric names)
+      # metrics in the job. This resource captures only the most recent values of each
+      # metric; time-series data can be queried for them (under the same metric names)
       # from Cloud Monitoring.
       class JobMetrics
         include Google::Apis::Core::Hashable
@@ -2272,16 +2232,14 @@ module Google
       end
       
       # Data disk assignment information for a specific key-range of a sharded
-      # computation.
-      # Currently we only support UTF-8 character splits to simplify encoding into
-      # JSON.
+      # computation. Currently we only support UTF-8 character splits to simplify
+      # encoding into JSON.
       class KeyRangeDataDiskAssignment
         include Google::Apis::Core::Hashable
       
-        # The name of the data disk where data for this range is stored.
-        # This name is local to the Google Cloud Platform project and uniquely
-        # identifies the disk within that project, for example
-        # "myproject-1014-104817-4c2-harness-0-disk-1".
+        # The name of the data disk where data for this range is stored. This name is
+        # local to the Google Cloud Platform project and uniquely identifies the disk
+        # within that project, for example "myproject-1014-104817-4c2-harness-0-disk-1".
         # Corresponds to the JSON property `dataDisk`
         # @return [String]
         attr_accessor :data_disk
@@ -2314,16 +2272,15 @@ module Google
       class KeyRangeLocation
         include Google::Apis::Core::Hashable
       
-        # The name of the data disk where data for this range is stored.
-        # This name is local to the Google Cloud Platform project and uniquely
-        # identifies the disk within that project, for example
-        # "myproject-1014-104817-4c2-harness-0-disk-1".
+        # The name of the data disk where data for this range is stored. This name is
+        # local to the Google Cloud Platform project and uniquely identifies the disk
+        # within that project, for example "myproject-1014-104817-4c2-harness-0-disk-1".
         # Corresponds to the JSON property `dataDisk`
         # @return [String]
         attr_accessor :data_disk
       
-        # The physical location of this range assignment to be used for
-        # streaming computation cross-worker message delivery.
+        # The physical location of this range assignment to be used for streaming
+        # computation cross-worker message delivery.
         # Corresponds to the JSON property `deliveryEndpoint`
         # @return [String]
         attr_accessor :delivery_endpoint
@@ -2378,14 +2335,12 @@ module Google
         attr_accessor :job_name
       
         # Launch options for this flex template job. This is a common set of options
-        # across languages and templates. This should not be used to pass job
-        # parameters.
+        # across languages and templates. This should not be used to pass job parameters.
         # Corresponds to the JSON property `launchOptions`
         # @return [Hash<String,String>]
         attr_accessor :launch_options
       
-        # The parameters for FlexTemplate.
-        # Ex. `"num_workers":"5"`
+        # The parameters for FlexTemplate. Ex. `"num_workers":"5"`
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters
@@ -2413,8 +2368,7 @@ module Google
         # @return [Google::Apis::DataflowV1b3::LaunchFlexTemplateParameter]
         attr_accessor :launch_parameter
       
-        # If true, the request is validated but not actually executed.
-        # Defaults to false.
+        # If true, the request is validated but not actually executed. Defaults to false.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -2475,8 +2429,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :transform_name_mapping
       
-        # If set, replace the existing pipeline with the name specified by jobName
-        # with this pipeline, preserving state.
+        # If set, replace the existing pipeline with the name specified by jobName with
+        # this pipeline, preserving state.
         # Corresponds to the JSON property `update`
         # @return [Boolean]
         attr_accessor :update
@@ -2524,9 +2478,8 @@ module Google
         # @return [String]
         attr_accessor :current_worker_time
       
-        # The [regional endpoint]
-        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        # contains the WorkItem's job.
+        # The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
+        # regional-endpoints) that contains the WorkItem's job.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -2552,8 +2505,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :worker_capabilities
       
-        # Identifies the worker leasing work -- typically the ID of the
-        # virtual machine running the worker.
+        # Identifies the worker leasing work -- typically the ID of the virtual machine
+        # running the worker.
         # Corresponds to the JSON property `workerId`
         # @return [String]
         attr_accessor :worker_id
@@ -2630,17 +2583,15 @@ module Google
         end
       end
       
-      # Response to a request to list Cloud Dataflow jobs in a project. This might
-      # be a partial response, depending on the page size in the ListJobsRequest.
-      # However, if the project does not have any jobs, an instance of
-      # ListJobsResponse is not returned and the requests's response
-      # body is empty ``.
+      # Response to a request to list Cloud Dataflow jobs in a project. This might be
+      # a partial response, depending on the page size in the ListJobsRequest. However,
+      # if the project does not have any jobs, an instance of ListJobsResponse is not
+      # returned and the requests's response body is empty ``.
       class ListJobsResponse
         include Google::Apis::Core::Hashable
       
-        # Zero or more messages describing the [regional endpoints]
-        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        # failed to respond.
+        # Zero or more messages describing the [regional endpoints] (https://cloud.
+        # google.com/dataflow/docs/concepts/regional-endpoints) that failed to respond.
         # Corresponds to the JSON property `failedLocation`
         # @return [Array<Google::Apis::DataflowV1b3::FailedLocation>]
         attr_accessor :failed_location
@@ -2690,8 +2641,8 @@ module Google
       class ListTemplateVersionsResponse
         include Google::Apis::Core::Hashable
       
-        # A token that can be sent as `page_token` to retrieve the next page.
-        # If this field is omitted, there are no subsequent pages.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2712,11 +2663,10 @@ module Google
         end
       end
       
-      # MapTask consists of an ordered set of instructions, each of which
-      # describes one particular low-level operation for the worker to
-      # perform in order to accomplish the MapTask's WorkItem.
-      # Each instruction must appear in the list before any instructions which
-      # depends on its output.
+      # MapTask consists of an ordered set of instructions, each of which describes
+      # one particular low-level operation for the worker to perform in order to
+      # accomplish the MapTask's WorkItem. Each instruction must appear in the list
+      # before any instructions which depends on its output.
       class MapTask
         include Google::Apis::Core::Hashable
       
@@ -2731,14 +2681,13 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::ParallelInstruction>]
         attr_accessor :instructions
       
-        # System-defined name of the stage containing this MapTask.
-        # Unique across the workflow.
+        # System-defined name of the stage containing this MapTask. Unique across the
+        # workflow.
         # Corresponds to the JSON property `stageName`
         # @return [String]
         attr_accessor :stage_name
       
-        # System-defined name of this MapTask.
-        # Unique across the workflow.
+        # System-defined name of this MapTask. Unique across the workflow.
         # Corresponds to the JSON property `systemName`
         # @return [String]
         attr_accessor :system_name
@@ -2756,8 +2705,7 @@ module Google
         end
       end
       
-      # Information about the memory usage of a worker or a container within a
-      # worker.
+      # Information about the memory usage of a worker or a container within a worker.
       class MemInfo
         include Google::Apis::Core::Hashable
       
@@ -2799,8 +2747,8 @@ module Google
       class MetricShortId
         include Google::Apis::Core::Hashable
       
-        # The index of the corresponding metric in
-        # the ReportWorkItemStatusRequest. Required.
+        # The index of the corresponding metric in the ReportWorkItemStatusRequest.
+        # Required.
         # Corresponds to the JSON property `metricIndex`
         # @return [Fixnum]
         attr_accessor :metric_index
@@ -2821,16 +2769,14 @@ module Google
         end
       end
       
-      # Identifies a metric, by describing the source which generated the
-      # metric.
+      # Identifies a metric, by describing the source which generated the metric.
       class MetricStructuredName
         include Google::Apis::Core::Hashable
       
-        # Zero or more labeled fields which identify the part of the job this
-        # metric is associated with, such as the name of a step or collection.
-        # For example, built-in counters associated with steps will have
-        # context['step'] = <step-name>. Counters associated with PCollections
-        # in the SDK will have context['pcollection'] = <pcollection-name>.
+        # Zero or more labeled fields which identify the part of the job this metric is
+        # associated with, such as the name of a step or collection. For example, built-
+        # in counters associated with steps will have context['step'] = . Counters
+        # associated with PCollections in the SDK will have context['pcollection'] = .
         # Corresponds to the JSON property `context`
         # @return [Hash<String,String>]
         attr_accessor :context
@@ -2840,8 +2786,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Origin (namespace) of metric name. May be blank for user-define metrics;
-        # will be "dataflow" for metrics defined by the Dataflow service or SDK.
+        # Origin (namespace) of metric name. May be blank for user-define metrics; will
+        # be "dataflow" for metrics defined by the Dataflow service or SDK.
         # Corresponds to the JSON property `origin`
         # @return [String]
         attr_accessor :origin
@@ -2862,10 +2808,10 @@ module Google
       class MetricUpdate
         include Google::Apis::Core::Hashable
       
-        # True if this metric is reported as the total cumulative aggregate
-        # value accumulated since the worker started working on this WorkItem.
-        # By default this is false, indicating that this metric is reported
-        # as a delta that is not associated with any WorkItem.
+        # True if this metric is reported as the total cumulative aggregate value
+        # accumulated since the worker started working on this WorkItem. By default this
+        # is false, indicating that this metric is reported as a delta that is not
+        # associated with any WorkItem.
         # Corresponds to the JSON property `cumulative`
         # @return [Boolean]
         attr_accessor :cumulative
@@ -2876,67 +2822,62 @@ module Google
         # @return [Object]
         attr_accessor :distribution
       
-        # A struct value describing properties of a Gauge.
-        # Metrics of gauge type show the value of a metric across time, and is
-        # aggregated based on the newest value.
+        # A struct value describing properties of a Gauge. Metrics of gauge type show
+        # the value of a metric across time, and is aggregated based on the newest value.
         # Corresponds to the JSON property `gauge`
         # @return [Object]
         attr_accessor :gauge
       
-        # Worker-computed aggregate value for internal use by the Dataflow
-        # service.
+        # Worker-computed aggregate value for internal use by the Dataflow service.
         # Corresponds to the JSON property `internal`
         # @return [Object]
         attr_accessor :internal
       
-        # Metric aggregation kind.  The possible metric aggregation kinds are
-        # "Sum", "Max", "Min", "Mean", "Set", "And", "Or", and "Distribution".
-        # The specified aggregation kind is case-insensitive.
-        # If omitted, this is not an aggregated value but instead
-        # a single metric sample value.
+        # Metric aggregation kind. The possible metric aggregation kinds are "Sum", "Max"
+        # , "Min", "Mean", "Set", "And", "Or", and "Distribution". The specified
+        # aggregation kind is case-insensitive. If omitted, this is not an aggregated
+        # value but instead a single metric sample value.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Worker-computed aggregate value for the "Mean" aggregation kind.
-        # This holds the count of the aggregated values and is used in combination
-        # with mean_sum above to obtain the actual mean aggregate value.
-        # The only possible value type is Long.
+        # Worker-computed aggregate value for the "Mean" aggregation kind. This holds
+        # the count of the aggregated values and is used in combination with mean_sum
+        # above to obtain the actual mean aggregate value. The only possible value type
+        # is Long.
         # Corresponds to the JSON property `meanCount`
         # @return [Object]
         attr_accessor :mean_count
       
-        # Worker-computed aggregate value for the "Mean" aggregation kind.
-        # This holds the sum of the aggregated values and is used in combination
-        # with mean_count below to obtain the actual mean aggregate value.
-        # The only possible value types are Long and Double.
+        # Worker-computed aggregate value for the "Mean" aggregation kind. This holds
+        # the sum of the aggregated values and is used in combination with mean_count
+        # below to obtain the actual mean aggregate value. The only possible value types
+        # are Long and Double.
         # Corresponds to the JSON property `meanSum`
         # @return [Object]
         attr_accessor :mean_sum
       
-        # Identifies a metric, by describing the source which generated the
-        # metric.
+        # Identifies a metric, by describing the source which generated the metric.
         # Corresponds to the JSON property `name`
         # @return [Google::Apis::DataflowV1b3::MetricStructuredName]
         attr_accessor :name
       
-        # Worker-computed aggregate value for aggregation kinds "Sum", "Max", "Min",
-        # "And", and "Or".  The possible value types are Long, Double, and Boolean.
+        # Worker-computed aggregate value for aggregation kinds "Sum", "Max", "Min", "
+        # And", and "Or". The possible value types are Long, Double, and Boolean.
         # Corresponds to the JSON property `scalar`
         # @return [Object]
         attr_accessor :scalar
       
-        # Worker-computed aggregate value for the "Set" aggregation kind.  The only
-        # possible value type is a list of Values whose type can be Long, Double,
-        # or String, according to the metric's type.  All Values in the list must
-        # be of the same type.
+        # Worker-computed aggregate value for the "Set" aggregation kind. The only
+        # possible value type is a list of Values whose type can be Long, Double, or
+        # String, according to the metric's type. All Values in the list must be of the
+        # same type.
         # Corresponds to the JSON property `set`
         # @return [Object]
         attr_accessor :set
       
         # Timestamp associated with the metric value. Optional when workers are
-        # reporting work progress; it will be filled in responses from the
-        # metrics API.
+        # reporting work progress; it will be filled in responses from the metrics API.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -2961,8 +2902,7 @@ module Google
         end
       end
       
-      # Either add the label to TemplateVersion or remove it from the
-      # TemplateVersion.
+      # Either add the label to TemplateVersion or remove it from the TemplateVersion.
       class ModifyTemplateVersionLabelRequest
         include Google::Apis::Core::Hashable
       
@@ -2971,8 +2911,7 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # Requests for add label to TemplateVersion or remove label from
-        # TemplateVersion.
+        # Requests for add label to TemplateVersion or remove label from TemplateVersion.
         # Corresponds to the JSON property `op`
         # @return [String]
         attr_accessor :op
@@ -3066,10 +3005,9 @@ module Google
       class MountedDataDisk
         include Google::Apis::Core::Hashable
       
-        # The name of the data disk.
-        # This name is local to the Google Cloud Platform project and uniquely
-        # identifies the disk within that project, for example
-        # "myproject-1014-104817-4c2-harness-0-disk-1".
+        # The name of the data disk. This name is local to the Google Cloud Platform
+        # project and uniquely identifies the disk within that project, for example "
+        # myproject-1014-104817-4c2-harness-0-disk-1".
         # Corresponds to the JSON property `dataDisk`
         # @return [String]
         attr_accessor :data_disk
@@ -3088,8 +3026,8 @@ module Google
       class MultiOutputInfo
         include Google::Apis::Core::Hashable
       
-        # The id of the tag the user code will emit to this output by; this
-        # should correspond to the tag of some SideInputInfo.
+        # The id of the tag the user code will emit to this output by; this should
+        # correspond to the tag of some SideInputInfo.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
@@ -3129,21 +3067,17 @@ module Google
         end
       end
       
-      # The packages that must be installed in order for a worker to run the
-      # steps of the Cloud Dataflow job that will be assigned to its worker
-      # pool.
-      # This is the mechanism by which the Cloud Dataflow SDK causes code to
-      # be loaded onto the workers. For example, the Cloud Dataflow Java SDK
-      # might use this to install jars containing the user's code and all of the
-      # various dependencies (libraries, data files, etc.) required in order
-      # for that code to run.
+      # The packages that must be installed in order for a worker to run the steps of
+      # the Cloud Dataflow job that will be assigned to its worker pool. This is the
+      # mechanism by which the Cloud Dataflow SDK causes code to be loaded onto the
+      # workers. For example, the Cloud Dataflow Java SDK might use this to install
+      # jars containing the user's code and all of the various dependencies (libraries,
+      # data files, etc.) required in order for that code to run.
       class Package
         include Google::Apis::Core::Hashable
       
-        # The resource to read the package from. The supported resource type is:
-        # Google Cloud Storage:
-        # storage.googleapis.com/`bucket`
-        # bucket.storage.googleapis.com/
+        # The resource to read the package from. The supported resource type is: Google
+        # Cloud Storage: storage.googleapis.com/`bucket` bucket.storage.googleapis.com/
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -3164,20 +3098,18 @@ module Google
         end
       end
       
-      # An instruction that does a ParDo operation.
-      # Takes one main input and zero or more side inputs, and produces
-      # zero or more outputs.
-      # Runs user code.
+      # An instruction that does a ParDo operation. Takes one main input and zero or
+      # more side inputs, and produces zero or more outputs. Runs user code.
       class ParDoInstruction
         include Google::Apis::Core::Hashable
       
-        # An input of an instruction, as a reference to an output of a
-        # producer instruction.
+        # An input of an instruction, as a reference to an output of a producer
+        # instruction.
         # Corresponds to the JSON property `input`
         # @return [Google::Apis::DataflowV1b3::InstructionInput]
         attr_accessor :input
       
-        # Information about each of the outputs, if user_fn is a  MultiDoFn.
+        # Information about each of the outputs, if user_fn is a MultiDoFn.
         # Corresponds to the JSON property `multiOutputInfos`
         # @return [Array<Google::Apis::DataflowV1b3::MultiOutputInfo>]
         attr_accessor :multi_output_infos
@@ -3235,34 +3167,28 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::InstructionOutput>]
         attr_accessor :outputs
       
-        # An instruction that does a ParDo operation.
-        # Takes one main input and zero or more side inputs, and produces
-        # zero or more outputs.
-        # Runs user code.
+        # An instruction that does a ParDo operation. Takes one main input and zero or
+        # more side inputs, and produces zero or more outputs. Runs user code.
         # Corresponds to the JSON property `parDo`
         # @return [Google::Apis::DataflowV1b3::ParDoInstruction]
         attr_accessor :par_do
       
-        # An instruction that does a partial group-by-key.
-        # One input and one output.
+        # An instruction that does a partial group-by-key. One input and one output.
         # Corresponds to the JSON property `partialGroupByKey`
         # @return [Google::Apis::DataflowV1b3::PartialGroupByKeyInstruction]
         attr_accessor :partial_group_by_key
       
-        # An instruction that reads records.
-        # Takes no inputs, produces one output.
+        # An instruction that reads records. Takes no inputs, produces one output.
         # Corresponds to the JSON property `read`
         # @return [Google::Apis::DataflowV1b3::ReadInstruction]
         attr_accessor :read
       
-        # System-defined name of this operation.
-        # Unique across the workflow.
+        # System-defined name of this operation. Unique across the workflow.
         # Corresponds to the JSON property `systemName`
         # @return [String]
         attr_accessor :system_name
       
-        # An instruction that writes records.
-        # Takes one input, produces no outputs.
+        # An instruction that writes records. Takes one input, produces no outputs.
         # Corresponds to the JSON property `write`
         # @return [Google::Apis::DataflowV1b3::WriteInstruction]
         attr_accessor :write
@@ -3335,8 +3261,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The type of the parameter.
-        # Used for selecting input picker.
+        # Optional. The type of the parameter. Used for selecting input picker.
         # Corresponds to the JSON property `paramType`
         # @return [String]
         attr_accessor :param_type
@@ -3361,13 +3286,12 @@ module Google
         end
       end
       
-      # An instruction that does a partial group-by-key.
-      # One input and one output.
+      # An instruction that does a partial group-by-key. One input and one output.
       class PartialGroupByKeyInstruction
         include Google::Apis::Core::Hashable
       
-        # An input of an instruction, as a reference to an output of a
-        # producer instruction.
+        # An input of an instruction, as a reference to an output of a producer
+        # instruction.
         # Corresponds to the JSON property `input`
         # @return [Google::Apis::DataflowV1b3::InstructionInput]
         attr_accessor :input
@@ -3415,7 +3339,7 @@ module Google
       end
       
       # A descriptive representation of submitted pipeline as well as the executed
-      # form.  This data is provided by the Dataflow service for ease of visualizing
+      # form. This data is provided by the Dataflow service for ease of visualizing
       # the pipeline and interpreting Dataflow provided metrics.
       class PipelineDescription
         include Google::Apis::Core::Hashable
@@ -3447,9 +3371,34 @@ module Google
         end
       end
       
-      # Position defines a position within a collection of data.  The value
-      # can be either the end position, a key (used with ordered
-      # collections), a byte offset, or a record index.
+      # A point in the timeseries.
+      class Point
+        include Google::Apis::Core::Hashable
+      
+        # The timestamp of the point.
+        # Corresponds to the JSON property `time`
+        # @return [String]
+        attr_accessor :time
+      
+        # The value of the point.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @time = args[:time] if args.key?(:time)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Position defines a position within a collection of data. The value can be
+      # either the end position, a key (used with ordered collections), a byte offset,
+      # or a record index.
       class Position
         include Google::Apis::Core::Hashable
       
@@ -3465,8 +3414,8 @@ module Google
         # @return [Google::Apis::DataflowV1b3::ConcatPosition]
         attr_accessor :concat_position
       
-        # Position is past all other positions. Also useful for the end
-        # position of an unbounded range.
+        # Position is past all other positions. Also useful for the end position of an
+        # unbounded range.
         # Corresponds to the JSON property `end`
         # @return [Boolean]
         attr_accessor :end
@@ -3482,8 +3431,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :record_index
       
-        # CloudPosition is a base64 encoded BatchShufflePosition (with FIXED
-        # sharding).
+        # CloudPosition is a base64 encoded BatchShufflePosition (with FIXED sharding).
         # Corresponds to the JSON property `shufflePosition`
         # @return [String]
         attr_accessor :shuffle_position
@@ -3500,6 +3448,31 @@ module Google
           @key = args[:key] if args.key?(:key)
           @record_index = args[:record_index] if args.key?(:record_index)
           @shuffle_position = args[:shuffle_position] if args.key?(:shuffle_position)
+        end
+      end
+      
+      # Information about the progress of some component of job execution.
+      class ProgressTimeseries
+        include Google::Apis::Core::Hashable
+      
+        # The current progress of the component, in the range [0,1].
+        # Corresponds to the JSON property `currentProgress`
+        # @return [Float]
+        attr_accessor :current_progress
+      
+        # History of progress for the component. Points are sorted by time.
+        # Corresponds to the JSON property `dataPoints`
+        # @return [Array<Google::Apis::DataflowV1b3::Point>]
+        attr_accessor :data_points
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_progress = args[:current_progress] if args.key?(:current_progress)
+          @data_points = args[:data_points] if args.key?(:data_points)
         end
       end
       
@@ -3528,8 +3501,8 @@ module Google
         end
       end
       
-      # Identifies a pubsub location to use for transferring data into or
-      # out of a streaming Dataflow job.
+      # Identifies a pubsub location to use for transferring data into or out of a
+      # streaming Dataflow job.
       class PubsubLocation
         include Google::Apis::Core::Hashable
       
@@ -3539,26 +3512,24 @@ module Google
         attr_accessor :drop_late_data
         alias_method :drop_late_data?, :drop_late_data
       
-        # If set, contains a pubsub label from which to extract record ids.
-        # If left empty, record deduplication will be strictly best effort.
+        # If set, contains a pubsub label from which to extract record ids. If left
+        # empty, record deduplication will be strictly best effort.
         # Corresponds to the JSON property `idLabel`
         # @return [String]
         attr_accessor :id_label
       
-        # A pubsub subscription, in the form of
-        # "pubsub.googleapis.com/subscriptions/<project-id>/<subscription-name>"
+        # A pubsub subscription, in the form of "pubsub.googleapis.com/subscriptions//"
         # Corresponds to the JSON property `subscription`
         # @return [String]
         attr_accessor :subscription
       
-        # If set, contains a pubsub label from which to extract record timestamps.
-        # If left empty, record timestamps will be generated upon arrival.
+        # If set, contains a pubsub label from which to extract record timestamps. If
+        # left empty, record timestamps will be generated upon arrival.
         # Corresponds to the JSON property `timestampLabel`
         # @return [String]
         attr_accessor :timestamp_label
       
-        # A pubsub topic, in the form of
-        # "pubsub.googleapis.com/topics/<project-id>/<topic-name>"
+        # A pubsub topic, in the form of "pubsub.googleapis.com/topics//"
         # Corresponds to the JSON property `topic`
         # @return [String]
         attr_accessor :topic
@@ -3641,8 +3612,7 @@ module Google
         end
       end
       
-      # An instruction that reads records.
-      # Takes no inputs, produces one output.
+      # An instruction that reads records. Takes no inputs, produces one output.
       class ReadInstruction
         include Google::Apis::Core::Hashable
       
@@ -3670,9 +3640,8 @@ module Google
         # @return [String]
         attr_accessor :current_worker_time
       
-        # The [regional endpoint]
-        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        # contains the WorkItem's job.
+        # The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
+        # regional-endpoints) that contains the WorkItem's job.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -3682,17 +3651,16 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :unified_worker_request
       
-        # The order is unimportant, except that the order of the
-        # WorkItemServiceState messages in the ReportWorkItemStatusResponse
-        # corresponds to the order of WorkItemStatus messages here.
+        # The order is unimportant, except that the order of the WorkItemServiceState
+        # messages in the ReportWorkItemStatusResponse corresponds to the order of
+        # WorkItemStatus messages here.
         # Corresponds to the JSON property `workItemStatuses`
         # @return [Array<Google::Apis::DataflowV1b3::WorkItemStatus>]
         attr_accessor :work_item_statuses
       
-        # The ID of the worker reporting the WorkItem status.  If this
-        # does not match the ID of the worker which the Dataflow service
-        # believes currently has the lease on the WorkItem, the report
-        # will be dropped (with an error response).
+        # The ID of the worker reporting the WorkItem status. If this does not match the
+        # ID of the worker which the Dataflow service believes currently has the lease
+        # on the WorkItem, the report will be dropped (with an error response).
         # Corresponds to the JSON property `workerId`
         # @return [String]
         attr_accessor :worker_id
@@ -3720,10 +3688,9 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :unified_worker_response
       
-        # A set of messages indicating the service-side state for each
-        # WorkItem whose status was reported, in the same order as the
-        # WorkItemStatus messages in the ReportWorkItemStatusRequest which
-        # resulting in this response.
+        # A set of messages indicating the service-side state for each WorkItem whose
+        # status was reported, in the same order as the WorkItemStatus messages in the
+        # ReportWorkItemStatusRequest which resulting in this response.
         # Corresponds to the JSON property `workItemServiceStates`
         # @return [Array<Google::Apis::DataflowV1b3::WorkItemServiceState>]
         attr_accessor :work_item_service_states
@@ -3739,17 +3706,16 @@ module Google
         end
       end
       
-      # Represents the level of parallelism in a WorkItem's input,
-      # reported by the worker.
+      # Represents the level of parallelism in a WorkItem's input, reported by the
+      # worker.
       class ReportedParallelism
         include Google::Apis::Core::Hashable
       
-        # Specifies whether the parallelism is infinite. If true, "value" is
-        # ignored.
-        # Infinite parallelism means the service will assume that the work item
-        # can always be split into more non-empty work items by dynamic splitting.
-        # This is a work-around for lack of support for infinity by the current
-        # JSON-based Java RPC stack.
+        # Specifies whether the parallelism is infinite. If true, "value" is ignored.
+        # Infinite parallelism means the service will assume that the work item can
+        # always be split into more non-empty work items by dynamic splitting. This is a
+        # work-around for lack of support for infinity by the current JSON-based Java
+        # RPC stack.
         # Corresponds to the JSON property `isInfinite`
         # @return [Boolean]
         attr_accessor :is_infinite
@@ -3772,13 +3738,12 @@ module Google
       end
       
       # Worker metrics exported from workers. This contains resource utilization
-      # metrics accumulated from a variety of sources. For more information, see
-      # go/df-resource-signals.
+      # metrics accumulated from a variety of sources. For more information, see go/df-
+      # resource-signals.
       class ResourceUtilizationReport
         include Google::Apis::Core::Hashable
       
-        # Per container information.
-        # Key: container name.
+        # Per container information. Key: container name.
         # Corresponds to the JSON property `containers`
         # @return [Hash<String,Google::Apis::DataflowV1b3::ResourceUtilizationReport>]
         attr_accessor :containers
@@ -3827,48 +3792,51 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_experiments
       
-        # Additional user labels to be specified for the job.
-        # Keys and values should follow the restrictions specified in the [labeling
-        # restrictions](https://cloud.google.com/compute/docs/labeling-resources#
-        # restrictions)
-        # page.
+        # Additional user labels to be specified for the job. Keys and values should
+        # follow the restrictions specified in the [labeling restrictions](https://cloud.
+        # google.com/compute/docs/labeling-resources#restrictions) page.
         # Corresponds to the JSON property `additionalUserLabels`
         # @return [Hash<String,String>]
         attr_accessor :additional_user_labels
       
-        # Whether to bypass the safety checks for the job's temporary directory.
-        # Use with caution.
+        # Whether to bypass the safety checks for the job's temporary directory. Use
+        # with caution.
         # Corresponds to the JSON property `bypassTempDirValidation`
         # @return [Boolean]
         attr_accessor :bypass_temp_dir_validation
         alias_method :bypass_temp_dir_validation?, :bypass_temp_dir_validation
+      
+        # Whether to enable Streaming Engine for the job.
+        # Corresponds to the JSON property `enableStreamingEngine`
+        # @return [Boolean]
+        attr_accessor :enable_streaming_engine
+        alias_method :enable_streaming_engine?, :enable_streaming_engine
       
         # Configuration for VM IPs.
         # Corresponds to the JSON property `ipConfiguration`
         # @return [String]
         attr_accessor :ip_configuration
       
-        # Optional. Name for the Cloud KMS key for the job.
-        # Key format is:
-        # projects/<project>/locations/<location>/keyRings/<keyring>/cryptoKeys/<key>
+        # Optional. Name for the Cloud KMS key for the job. Key format is: projects//
+        # locations//keyRings//cryptoKeys/
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
       
-        # The machine type to use for the job. Defaults to the value from the
-        # template if not specified.
+        # The machine type to use for the job. Defaults to the value from the template
+        # if not specified.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
       
-        # The maximum number of Google Compute Engine instances to be made
-        # available to your pipeline during execution, from 1 to 1000.
+        # The maximum number of Google Compute Engine instances to be made available to
+        # your pipeline during execution, from 1 to 1000.
         # Corresponds to the JSON property `maxWorkers`
         # @return [Fixnum]
         attr_accessor :max_workers
       
-        # Network to which VMs will be assigned.  If empty or unspecified,
-        # the service will use the network "default".
+        # Network to which VMs will be assigned. If empty or unspecified, the service
+        # will use the network "default".
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -3883,41 +3851,39 @@ module Google
         # @return [String]
         attr_accessor :service_account_email
       
-        # Subnetwork to which VMs will be assigned, if desired.  Expected to be of
-        # the form "regions/REGION/subnetworks/SUBNETWORK".
+        # Subnetwork to which VMs will be assigned, if desired. Expected to be of the
+        # form "regions/REGION/subnetworks/SUBNETWORK".
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
       
-        # The Cloud Storage path to use for temporary files.
-        # Must be a valid Cloud Storage URL, beginning with `gs://`.
+        # The Cloud Storage path to use for temporary files. Must be a valid Cloud
+        # Storage URL, beginning with `gs://`.
         # Corresponds to the JSON property `tempLocation`
         # @return [String]
         attr_accessor :temp_location
       
-        # The Compute Engine region
-        # (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-        # which worker processing should occur, e.g. "us-west1". Mutually exclusive
-        # with worker_zone. If neither worker_region nor worker_zone is specified,
-        # default to the control plane's region.
+        # The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/
+        # regions-zones) in which worker processing should occur, e.g. "us-west1".
+        # Mutually exclusive with worker_zone. If neither worker_region nor worker_zone
+        # is specified, default to the control plane's region.
         # Corresponds to the JSON property `workerRegion`
         # @return [String]
         attr_accessor :worker_region
       
-        # The Compute Engine zone
-        # (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
-        # which worker processing should occur, e.g. "us-west1-a". Mutually exclusive
-        # with worker_region. If neither worker_region nor worker_zone is specified,
-        # a zone in the control plane's region is chosen based on available capacity.
-        # If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+        # The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/
+        # regions-zones) in which worker processing should occur, e.g. "us-west1-a".
+        # Mutually exclusive with worker_region. If neither worker_region nor
+        # worker_zone is specified, a zone in the control plane's region is chosen based
+        # on available capacity. If both `worker_zone` and `zone` are set, `worker_zone`
+        # takes precedence.
         # Corresponds to the JSON property `workerZone`
         # @return [String]
         attr_accessor :worker_zone
       
-        # The Compute Engine [availability
-        # zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
-        # for launching worker instances to run your pipeline.
-        # In the future, worker_zone will take precedence.
+        # The Compute Engine [availability zone](https://cloud.google.com/compute/docs/
+        # regions-zones/regions-zones) for launching worker instances to run your
+        # pipeline. In the future, worker_zone will take precedence.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3931,6 +3897,7 @@ module Google
           @additional_experiments = args[:additional_experiments] if args.key?(:additional_experiments)
           @additional_user_labels = args[:additional_user_labels] if args.key?(:additional_user_labels)
           @bypass_temp_dir_validation = args[:bypass_temp_dir_validation] if args.key?(:bypass_temp_dir_validation)
+          @enable_streaming_engine = args[:enable_streaming_engine] if args.key?(:enable_streaming_engine)
           @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
@@ -4006,10 +3973,9 @@ module Google
         attr_accessor :container_image
       
         # If true, recommends the Dataflow service to use only one core per SDK
-        # container instance with this image. If false (or unset) recommends using
-        # more than one core per SDK container instance with this image for
-        # efficiency. Note that Dataflow service may choose to override this property
-        # if needed.
+        # container instance with this image. If false (or unset) recommends using more
+        # than one core per SDK container instance with this image for efficiency. Note
+        # that Dataflow service may choose to override this property if needed.
         # Corresponds to the JSON property `useSingleCorePerContainer`
         # @return [Boolean]
         attr_accessor :use_single_core_per_container
@@ -4071,9 +4037,8 @@ module Google
         # @return [String]
         attr_accessor :data
       
-        # The [regional endpoint]
-        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        # contains the job specified by job_id.
+        # The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
+        # regional-endpoints) that contains the job specified by job_id.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -4096,8 +4061,7 @@ module Google
         end
       end
       
-      # Response to a send capture request.
-      # nothing
+      # Response to a send capture request. nothing
       class SendDebugCaptureResponse
         include Google::Apis::Core::Hashable
       
@@ -4114,9 +4078,8 @@ module Google
       class SendWorkerMessagesRequest
         include Google::Apis::Core::Hashable
       
-        # The [regional endpoint]
-        # (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-        # contains the job.
+        # The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
+        # regional-endpoints) that contains the job.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -4175,14 +4138,13 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::SeqMapTaskOutputInfo>]
         attr_accessor :output_infos
       
-        # System-defined name of the stage containing the SeqDo operation.
-        # Unique across the workflow.
+        # System-defined name of the stage containing the SeqDo operation. Unique across
+        # the workflow.
         # Corresponds to the JSON property `stageName`
         # @return [String]
         attr_accessor :stage_name
       
-        # System-defined name of the SeqDo operation.
-        # Unique across the workflow.
+        # System-defined name of the SeqDo operation. Unique across the workflow.
         # Corresponds to the JSON property `systemName`
         # @return [String]
         attr_accessor :system_name
@@ -4266,16 +4228,15 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :kind
       
-        # The source(s) to read element(s) from to get the value of this side input.
-        # If more than one source, then the elements are taken from the
-        # sources, in the specified order if order matters.
-        # At least one source is required.
+        # The source(s) to read element(s) from to get the value of this side input. If
+        # more than one source, then the elements are taken from the sources, in the
+        # specified order if order matters. At least one source is required.
         # Corresponds to the JSON property `sources`
         # @return [Array<Google::Apis::DataflowV1b3::Source>]
         attr_accessor :sources
       
-        # The id of the tag the user code will access this side input by;
-        # this should correspond to the tag of some MultiOutputInfo.
+        # The id of the tag the user code will access this side input by; this should
+        # correspond to the tag of some MultiOutputInfo.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
@@ -4427,13 +4388,12 @@ module Google
       class Source
         include Google::Apis::Core::Hashable
       
-        # While splitting, sources may specify the produced bundles
-        # as differences against another source, in order to save backend-side
-        # memory and allow bigger jobs. For details, see SourceSplitRequest.
-        # To support this use case, the full set of parameters of the source
-        # is logically obtained by taking the latest explicitly specified value
-        # of each parameter in the order:
-        # base_specs (later items win), spec (overrides anything in base_specs).
+        # While splitting, sources may specify the produced bundles as differences
+        # against another source, in order to save backend-side memory and allow bigger
+        # jobs. For details, see SourceSplitRequest. To support this use case, the full
+        # set of parameters of the source is logically obtained by taking the latest
+        # explicitly specified value of each parameter in the order: base_specs (later
+        # items win), spec (overrides anything in base_specs).
         # Corresponds to the JSON property `baseSpecs`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :base_specs
@@ -4443,27 +4403,24 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :codec
       
-        # Setting this value to true hints to the framework that the source
-        # doesn't need splitting, and using SourceSplitRequest on it would
-        # yield SOURCE_SPLIT_OUTCOME_USE_CURRENT.
-        # E.g. a file splitter may set this to true when splitting a single file
-        # into a set of byte ranges of appropriate size, and set this
-        # to false when splitting a filepattern into individual files.
-        # However, for efficiency, a file splitter may decide to produce
-        # file subranges directly from the filepattern to avoid a splitting
-        # round-trip.
-        # See SourceSplitRequest for an overview of the splitting process.
-        # This field is meaningful only in the Source objects populated
-        # by the user (e.g. when filling in a DerivedSource).
-        # Source objects supplied by the framework to the user don't have
-        # this field populated.
+        # Setting this value to true hints to the framework that the source doesn't need
+        # splitting, and using SourceSplitRequest on it would yield
+        # SOURCE_SPLIT_OUTCOME_USE_CURRENT. E.g. a file splitter may set this to true
+        # when splitting a single file into a set of byte ranges of appropriate size,
+        # and set this to false when splitting a filepattern into individual files.
+        # However, for efficiency, a file splitter may decide to produce file subranges
+        # directly from the filepattern to avoid a splitting round-trip. See
+        # SourceSplitRequest for an overview of the splitting process. This field is
+        # meaningful only in the Source objects populated by the user (e.g. when filling
+        # in a DerivedSource). Source objects supplied by the framework to the user don'
+        # t have this field populated.
         # Corresponds to the JSON property `doesNotNeedSplitting`
         # @return [Boolean]
         attr_accessor :does_not_need_splitting
         alias_method :does_not_need_splitting?, :does_not_need_splitting
       
-        # Metadata about a Source useful for automatically optimizing
-        # and tuning the pipeline, etc.
+        # Metadata about a Source useful for automatically optimizing and tuning the
+        # pipeline, etc.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::DataflowV1b3::SourceMetadata]
         attr_accessor :metadata
@@ -4496,10 +4453,9 @@ module Google
         # @return [Google::Apis::DataflowV1b3::SourceSplitShard]
         attr_accessor :primary
       
-        # Specification of one of the bundles produced as a result of splitting
-        # a Source (e.g. when executing a SourceSplitRequest, or when
-        # splitting an active task using WorkItemStatus.dynamic_source_split),
-        # relative to the source being split.
+        # Specification of one of the bundles produced as a result of splitting a Source
+        # (e.g. when executing a SourceSplitRequest, or when splitting an active task
+        # using WorkItemStatus.dynamic_source_split), relative to the source being split.
         # Corresponds to the JSON property `primarySource`
         # @return [Google::Apis::DataflowV1b3::DerivedSource]
         attr_accessor :primary_source
@@ -4509,10 +4465,9 @@ module Google
         # @return [Google::Apis::DataflowV1b3::SourceSplitShard]
         attr_accessor :residual
       
-        # Specification of one of the bundles produced as a result of splitting
-        # a Source (e.g. when executing a SourceSplitRequest, or when
-        # splitting an active task using WorkItemStatus.dynamic_source_split),
-        # relative to the source being split.
+        # Specification of one of the bundles produced as a result of splitting a Source
+        # (e.g. when executing a SourceSplitRequest, or when splitting an active task
+        # using WorkItemStatus.dynamic_source_split), relative to the source being split.
         # Corresponds to the JSON property `residualSource`
         # @return [Google::Apis::DataflowV1b3::DerivedSource]
         attr_accessor :residual_source
@@ -4553,8 +4508,8 @@ module Google
       class SourceGetMetadataResponse
         include Google::Apis::Core::Hashable
       
-        # Metadata about a Source useful for automatically optimizing
-        # and tuning the pipeline, etc.
+        # Metadata about a Source useful for automatically optimizing and tuning the
+        # pipeline, etc.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::DataflowV1b3::SourceMetadata]
         attr_accessor :metadata
@@ -4569,27 +4524,27 @@ module Google
         end
       end
       
-      # Metadata about a Source useful for automatically optimizing
-      # and tuning the pipeline, etc.
+      # Metadata about a Source useful for automatically optimizing and tuning the
+      # pipeline, etc.
       class SourceMetadata
         include Google::Apis::Core::Hashable
       
-        # An estimate of the total size (in bytes) of the data that would be
-        # read from this source.  This estimate is in terms of external storage
-        # size, before any decompression or other processing done by the reader.
+        # An estimate of the total size (in bytes) of the data that would be read from
+        # this source. This estimate is in terms of external storage size, before any
+        # decompression or other processing done by the reader.
         # Corresponds to the JSON property `estimatedSizeBytes`
         # @return [Fixnum]
         attr_accessor :estimated_size_bytes
       
-        # Specifies that the size of this source is known to be infinite
-        # (this is a streaming source).
+        # Specifies that the size of this source is known to be infinite (this is a
+        # streaming source).
         # Corresponds to the JSON property `infinite`
         # @return [Boolean]
         attr_accessor :infinite
         alias_method :infinite?, :infinite
       
-        # Whether this source is known to produce key/value pairs with
-        # the (encoded) keys in lexicographically sorted order.
+        # Whether this source is known to produce key/value pairs with the (encoded)
+        # keys in lexicographically sorted order.
         # Corresponds to the JSON property `producesSortedKeys`
         # @return [Boolean]
         attr_accessor :produces_sorted_keys
@@ -4607,8 +4562,8 @@ module Google
         end
       end
       
-      # A work item that represents the different operations that can be
-      # performed on a user-defined Source specification.
+      # A work item that represents the different operations that can be performed on
+      # a user-defined Source specification.
       class SourceOperationRequest
         include Google::Apis::Core::Hashable
       
@@ -4622,36 +4577,34 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # System-defined name for the Read instruction for this source
-        # in the original workflow graph.
+        # System-defined name for the Read instruction for this source in the original
+        # workflow graph.
         # Corresponds to the JSON property `originalName`
         # @return [String]
         attr_accessor :original_name
       
-        # Represents the operation to split a high-level Source specification
-        # into bundles (parts for parallel processing).
-        # At a high level, splitting of a source into bundles happens as follows:
-        # SourceSplitRequest is applied to the source. If it returns
-        # SOURCE_SPLIT_OUTCOME_USE_CURRENT, no further splitting happens and the source
-        # is used "as is". Otherwise, splitting is applied recursively to each
-        # produced DerivedSource.
-        # As an optimization, for any Source, if its does_not_need_splitting is
-        # true, the framework assumes that splitting this source would return
-        # SOURCE_SPLIT_OUTCOME_USE_CURRENT, and doesn't initiate a SourceSplitRequest.
-        # This applies both to the initial source being split and to bundles
-        # produced from it.
+        # Represents the operation to split a high-level Source specification into
+        # bundles (parts for parallel processing). At a high level, splitting of a
+        # source into bundles happens as follows: SourceSplitRequest is applied to the
+        # source. If it returns SOURCE_SPLIT_OUTCOME_USE_CURRENT, no further splitting
+        # happens and the source is used "as is". Otherwise, splitting is applied
+        # recursively to each produced DerivedSource. As an optimization, for any Source,
+        # if its does_not_need_splitting is true, the framework assumes that splitting
+        # this source would return SOURCE_SPLIT_OUTCOME_USE_CURRENT, and doesn't
+        # initiate a SourceSplitRequest. This applies both to the initial source being
+        # split and to bundles produced from it.
         # Corresponds to the JSON property `split`
         # @return [Google::Apis::DataflowV1b3::SourceSplitRequest]
         attr_accessor :split
       
-        # System-defined name of the stage containing the source operation.
-        # Unique across the workflow.
+        # System-defined name of the stage containing the source operation. Unique
+        # across the workflow.
         # Corresponds to the JSON property `stageName`
         # @return [String]
         attr_accessor :stage_name
       
-        # System-defined name of the Read instruction for this source.
-        # Unique across the workflow.
+        # System-defined name of the Read instruction for this source. Unique across the
+        # workflow.
         # Corresponds to the JSON property `systemName`
         # @return [String]
         attr_accessor :system_name
@@ -4672,8 +4625,7 @@ module Google
       end
       
       # The result of a SourceOperationRequest, specified in
-      # ReportWorkItemStatusRequest.source_operation when the work item
-      # is completed.
+      # ReportWorkItemStatusRequest.source_operation when the work item is completed.
       class SourceOperationResponse
         include Google::Apis::Core::Hashable
       
@@ -4698,13 +4650,13 @@ module Google
         end
       end
       
-      # Hints for splitting a Source into bundles (parts for parallel
-      # processing) using SourceSplitRequest.
+      # Hints for splitting a Source into bundles (parts for parallel processing)
+      # using SourceSplitRequest.
       class SourceSplitOptions
         include Google::Apis::Core::Hashable
       
-        # The source should be split into a set of bundles where the estimated size
-        # of each is approximately this many bytes.
+        # The source should be split into a set of bundles where the estimated size of
+        # each is approximately this many bytes.
         # Corresponds to the JSON property `desiredBundleSizeBytes`
         # @return [Fixnum]
         attr_accessor :desired_bundle_size_bytes
@@ -4725,23 +4677,21 @@ module Google
         end
       end
       
-      # Represents the operation to split a high-level Source specification
-      # into bundles (parts for parallel processing).
-      # At a high level, splitting of a source into bundles happens as follows:
-      # SourceSplitRequest is applied to the source. If it returns
-      # SOURCE_SPLIT_OUTCOME_USE_CURRENT, no further splitting happens and the source
-      # is used "as is". Otherwise, splitting is applied recursively to each
-      # produced DerivedSource.
-      # As an optimization, for any Source, if its does_not_need_splitting is
-      # true, the framework assumes that splitting this source would return
-      # SOURCE_SPLIT_OUTCOME_USE_CURRENT, and doesn't initiate a SourceSplitRequest.
-      # This applies both to the initial source being split and to bundles
-      # produced from it.
+      # Represents the operation to split a high-level Source specification into
+      # bundles (parts for parallel processing). At a high level, splitting of a
+      # source into bundles happens as follows: SourceSplitRequest is applied to the
+      # source. If it returns SOURCE_SPLIT_OUTCOME_USE_CURRENT, no further splitting
+      # happens and the source is used "as is". Otherwise, splitting is applied
+      # recursively to each produced DerivedSource. As an optimization, for any Source,
+      # if its does_not_need_splitting is true, the framework assumes that splitting
+      # this source would return SOURCE_SPLIT_OUTCOME_USE_CURRENT, and doesn't
+      # initiate a SourceSplitRequest. This applies both to the initial source being
+      # split and to bundles produced from it.
       class SourceSplitRequest
         include Google::Apis::Core::Hashable
       
-        # Hints for splitting a Source into bundles (parts for parallel
-        # processing) using SourceSplitRequest.
+        # Hints for splitting a Source into bundles (parts for parallel processing)
+        # using SourceSplitRequest.
         # Corresponds to the JSON property `options`
         # @return [Google::Apis::DataflowV1b3::SourceSplitOptions]
         attr_accessor :options
@@ -4766,18 +4716,18 @@ module Google
       class SourceSplitResponse
         include Google::Apis::Core::Hashable
       
-        # If outcome is SPLITTING_HAPPENED, then this is a list of bundles
-        # into which the source was split. Otherwise this field is ignored.
-        # This list can be empty, which means the source represents an empty input.
+        # If outcome is SPLITTING_HAPPENED, then this is a list of bundles into which
+        # the source was split. Otherwise this field is ignored. This list can be empty,
+        # which means the source represents an empty input.
         # Corresponds to the JSON property `bundles`
         # @return [Array<Google::Apis::DataflowV1b3::DerivedSource>]
         attr_accessor :bundles
       
-        # Indicates whether splitting happened and produced a list of bundles.
-        # If this is USE_CURRENT_SOURCE_AS_IS, the current source should
-        # be processed "as is" without splitting. "bundles" is ignored in this case.
-        # If this is SPLITTING_HAPPENED, then "bundles" contains a list of
-        # bundles into which the source was split.
+        # Indicates whether splitting happened and produced a list of bundles. If this
+        # is USE_CURRENT_SOURCE_AS_IS, the current source should be processed "as is"
+        # without splitting. "bundles" is ignored in this case. If this is
+        # SPLITTING_HAPPENED, then "bundles" contains a list of bundles into which the
+        # source was split.
         # Corresponds to the JSON property `outcome`
         # @return [String]
         attr_accessor :outcome
@@ -4855,8 +4805,8 @@ module Google
         end
       end
       
-      # A representation of an int64, n, that is immune to precision loss when
-      # encoded in JSON.
+      # A representation of an int64, n, that is immune to precision loss when encoded
+      # in JSON.
       class SplitInt64
         include Google::Apis::Core::Hashable
       
@@ -4881,6 +4831,32 @@ module Google
         end
       end
       
+      # Information about the workers and work items within a stage.
+      class StageExecutionDetails
+        include Google::Apis::Core::Hashable
+      
+        # If present, this response does not contain all requested tasks. To obtain the
+        # next page of results, repeat the request with page_token set to this value.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Workers that have done work on the stage.
+        # Corresponds to the JSON property `workers`
+        # @return [Array<Google::Apis::DataflowV1b3::WorkerDetails>]
+        attr_accessor :workers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workers = args[:workers] if args.key?(:workers)
+        end
+      end
+      
       # Description of an input or output of an execution stage.
       class StageSource
         include Google::Apis::Core::Hashable
@@ -4890,8 +4866,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # User name for the original user transform or collection with which this
-        # source is most closely associated.
+        # User name for the original user transform or collection with which this source
+        # is most closely associated.
         # Corresponds to the JSON property `originalTransformOrCollection`
         # @return [String]
         attr_accessor :original_transform_or_collection
@@ -4916,6 +4892,56 @@ module Google
           @original_transform_or_collection = args[:original_transform_or_collection] if args.key?(:original_transform_or_collection)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @user_name = args[:user_name] if args.key?(:user_name)
+        end
+      end
+      
+      # Information about a particular execution stage of a job.
+      class StageSummary
+        include Google::Apis::Core::Hashable
+      
+        # End time of this stage. If the work item is completed, this is the actual end
+        # time of the stage. Otherwise, it is the predicted end time.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Metrics for this stage.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::DataflowV1b3::MetricUpdate>]
+        attr_accessor :metrics
+      
+        # Information about the progress of some component of job execution.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::DataflowV1b3::ProgressTimeseries]
+        attr_accessor :progress
+      
+        # ID of this stage
+        # Corresponds to the JSON property `stageId`
+        # @return [String]
+        attr_accessor :stage_id
+      
+        # Start time of this stage.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # State of this stage.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @progress = args[:progress] if args.key?(:progress)
+          @stage_id = args[:stage_id] if args.key?(:stage_id)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -4945,12 +4971,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -4959,15 +4985,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -4984,23 +5010,17 @@ module Google
         end
       end
       
-      # Defines a particular step within a Cloud Dataflow job.
-      # A job consists of multiple steps, each of which performs some
-      # specific operation as part of the overall job.  Data is typically
-      # passed from one step to another as part of the job.
-      # Here's an example of a sequence of steps which together implement a
-      # Map-Reduce job:
-      # * Read a collection of data from some source, parsing the
-      # collection's elements.
-      # * Validate the elements.
-      # * Apply a user-defined function to map each element to some value
-      # and extract an element-specific key value.
-      # * Group elements with the same key into a single element with
-      # that key, transforming a multiply-keyed collection into a
-      # uniquely-keyed collection.
-      # * Write the elements out to some data sink.
-      # Note that the Cloud Dataflow service may be used to run many different
-      # types of jobs, not just Map-Reduce.
+      # Defines a particular step within a Cloud Dataflow job. A job consists of
+      # multiple steps, each of which performs some specific operation as part of the
+      # overall job. Data is typically passed from one step to another as part of the
+      # job. Here's an example of a sequence of steps which together implement a Map-
+      # Reduce job: * Read a collection of data from some source, parsing the
+      # collection's elements. * Validate the elements. * Apply a user-defined
+      # function to map each element to some value and extract an element-specific key
+      # value. * Group elements with the same key into a single element with that key,
+      # transforming a multiply-keyed collection into a uniquely-keyed collection. *
+      # Write the elements out to some data sink. Note that the Cloud Dataflow service
+      # may be used to run many different types of jobs, not just Map-Reduce.
       class Step
         include Google::Apis::Core::Hashable
       
@@ -5009,15 +5029,15 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The name that identifies the step. This must be unique for each
-        # step with respect to all other steps in the Cloud Dataflow job.
+        # The name that identifies the step. This must be unique for each step with
+        # respect to all other steps in the Cloud Dataflow job.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Named properties associated with the step. Each kind of
-        # predefined step has its own required set of properties.
-        # Must be provided on Create.  Only retrieved with JOB_VIEW_ALL.
+        # Named properties associated with the step. Each kind of predefined step has
+        # its own required set of properties. Must be provided on Create. Only retrieved
+        # with JOB_VIEW_ALL.
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,Object>]
         attr_accessor :properties
@@ -5034,8 +5054,8 @@ module Google
         end
       end
       
-      # Describes a stream of data, either as input to be processed or as
-      # output of a streaming Dataflow job.
+      # Describes a stream of data, either as input to be processed or as output of a
+      # streaming Dataflow job.
       class StreamLocation
         include Google::Apis::Core::Hashable
       
@@ -5044,8 +5064,8 @@ module Google
         # @return [Google::Apis::DataflowV1b3::CustomSourceLocation]
         attr_accessor :custom_source_location
       
-        # Identifies a pubsub location to use for transferring data into or
-        # out of a streaming Dataflow job.
+        # Identifies a pubsub location to use for transferring data into or out of a
+        # streaming Dataflow job.
         # Corresponds to the JSON property `pubsubLocation`
         # @return [Google::Apis::DataflowV1b3::PubsubLocation]
         attr_accessor :pubsub_location
@@ -5055,8 +5075,8 @@ module Google
         # @return [Google::Apis::DataflowV1b3::StreamingSideInputLocation]
         attr_accessor :side_input_location
       
-        # Identifies the location of a streaming computation stage, for
-        # stage-to-stage communication.
+        # Identifies the location of a streaming computation stage, for stage-to-stage
+        # communication.
         # Corresponds to the JSON property `streamingStageLocation`
         # @return [Google::Apis::DataflowV1b3::StreamingStageLocation]
         attr_accessor :streaming_stage_location
@@ -5123,8 +5143,7 @@ module Google
         # @return [String]
         attr_accessor :system_name
       
-        # Map from user name of stateful transforms in this stage to their state
-        # family.
+        # Map from user name of stateful transforms in this stage to their state family.
         # Corresponds to the JSON property `transformUserNameToStateFamily`
         # @return [Hash<String,String>]
         attr_accessor :transform_user_name_to_state_family
@@ -5237,9 +5256,8 @@ module Google
         # @return [String]
         attr_accessor :windmill_service_endpoint
       
-        # If present, the worker must use this port to communicate with Windmill
-        # Service dispatchers. Only applicable when windmill_service_endpoint is
-        # specified.
+        # If present, the worker must use this port to communicate with Windmill Service
+        # dispatchers. Only applicable when windmill_service_endpoint is specified.
         # Corresponds to the JSON property `windmillServicePort`
         # @return [Fixnum]
         attr_accessor :windmill_service_port
@@ -5270,8 +5288,8 @@ module Google
         attr_accessor :drain
         alias_method :drain?, :drain
       
-        # The TCP port on which the worker should listen for messages from
-        # other streaming computation workers.
+        # The TCP port on which the worker should listen for messages from other
+        # streaming computation workers.
         # Corresponds to the JSON property `receiveWorkPort`
         # @return [Fixnum]
         attr_accessor :receive_work_port
@@ -5281,14 +5299,14 @@ module Google
         # @return [Google::Apis::DataflowV1b3::StreamingApplianceSnapshotConfig]
         attr_accessor :snapshot_config
       
-        # Global topology of the streaming Dataflow job, including all
-        # computations and their sharded locations.
+        # Global topology of the streaming Dataflow job, including all computations and
+        # their sharded locations.
         # Corresponds to the JSON property `streamingComputationTopology`
         # @return [Google::Apis::DataflowV1b3::TopologyConfig]
         attr_accessor :streaming_computation_topology
       
-        # The TCP port used by the worker to communicate with the Dataflow
-        # worker harness.
+        # The TCP port used by the worker to communicate with the Dataflow worker
+        # harness.
         # Corresponds to the JSON property `workerHarnessPort`
         # @return [Fixnum]
         attr_accessor :worker_harness_port
@@ -5332,13 +5350,12 @@ module Google
         end
       end
       
-      # Identifies the location of a streaming computation stage, for
-      # stage-to-stage communication.
+      # Identifies the location of a streaming computation stage, for stage-to-stage
+      # communication.
       class StreamingStageLocation
         include Google::Apis::Core::Hashable
       
-        # Identifies the particular stream within the streaming Dataflow
-        # job.
+        # Identifies the particular stream within the streaming Dataflow job.
         # Corresponds to the JSON property `streamId`
         # @return [String]
         attr_accessor :stream_id
@@ -5378,8 +5395,8 @@ module Google
       class StructuredMessage
         include Google::Apis::Core::Hashable
       
-        # Identifier for this message type.  Used by external systems to
-        # internationalize or personalize message.
+        # Identifier for this message type. Used by external systems to internationalize
+        # or personalize message.
         # Corresponds to the JSON property `messageKey`
         # @return [String]
         attr_accessor :message_key
@@ -5421,13 +5438,12 @@ module Google
         # @return [String]
         attr_accessor :base_task_dir
       
-        # The base URL for the taskrunner to use when accessing Google Cloud APIs.
-        # When workers access Google Cloud APIs, they logically do so via
-        # relative URLs.  If this field is specified, it supplies the base
-        # URL to use for resolving these relative URLs.  The normative
-        # algorithm used is defined by RFC 1808, "Relative Uniform Resource
-        # Locators".
-        # If not specified, the default value is "http://www.googleapis.com/"
+        # The base URL for the taskrunner to use when accessing Google Cloud APIs. When
+        # workers access Google Cloud APIs, they logically do so via relative URLs. If
+        # this field is specified, it supplies the base URL to use for resolving these
+        # relative URLs. The normative algorithm used is defined by RFC 1808, "Relative
+        # Uniform Resource Locators". If not specified, the default value is "http://www.
+        # googleapis.com/"
         # Corresponds to the JSON property `baseUrl`
         # @return [String]
         attr_accessor :base_url
@@ -5463,25 +5479,21 @@ module Google
         # @return [String]
         attr_accessor :log_dir
       
-        # Whether to send taskrunner log info to Google Compute Engine VM serial
-        # console.
+        # Whether to send taskrunner log info to Google Compute Engine VM serial console.
         # Corresponds to the JSON property `logToSerialconsole`
         # @return [Boolean]
         attr_accessor :log_to_serialconsole
         alias_method :log_to_serialconsole?, :log_to_serialconsole
       
-        # Indicates where to put logs.  If this is not specified, the logs
-        # will not be uploaded.
-        # The supported resource type is:
-        # Google Cloud Storage:
-        # storage.googleapis.com/`bucket`/`object`
-        # bucket.storage.googleapis.com/`object`
+        # Indicates where to put logs. If this is not specified, the logs will not be
+        # uploaded. The supported resource type is: Google Cloud Storage: storage.
+        # googleapis.com/`bucket`/`object` bucket.storage.googleapis.com/`object`
         # Corresponds to the JSON property `logUploadLocation`
         # @return [String]
         attr_accessor :log_upload_location
       
-        # The OAuth2 scopes to be requested by the taskrunner in order to
-        # access the Cloud Dataflow API.
+        # The OAuth2 scopes to be requested by the taskrunner in order to access the
+        # Cloud Dataflow API.
         # Corresponds to the JSON property `oauthScopes`
         # @return [Array<String>]
         attr_accessor :oauth_scopes
@@ -5496,24 +5508,21 @@ module Google
         # @return [String]
         attr_accessor :streaming_worker_main_class
       
-        # The UNIX group ID on the worker VM to use for tasks launched by
-        # taskrunner; e.g. "wheel".
+        # The UNIX group ID on the worker VM to use for tasks launched by taskrunner; e.
+        # g. "wheel".
         # Corresponds to the JSON property `taskGroup`
         # @return [String]
         attr_accessor :task_group
       
-        # The UNIX user ID on the worker VM to use for tasks launched by
-        # taskrunner; e.g. "root".
+        # The UNIX user ID on the worker VM to use for tasks launched by taskrunner; e.g.
+        # "root".
         # Corresponds to the JSON property `taskUser`
         # @return [String]
         attr_accessor :task_user
       
-        # The prefix of the resources the taskrunner should use for
-        # temporary storage.
-        # The supported resource type is:
-        # Google Cloud Storage:
-        # storage.googleapis.com/`bucket`/`object`
-        # bucket.storage.googleapis.com/`object`
+        # The prefix of the resources the taskrunner should use for temporary storage.
+        # The supported resource type is: Google Cloud Storage: storage.googleapis.com/`
+        # bucket`/`object` bucket.storage.googleapis.com/`object`
         # Corresponds to the JSON property `tempStoragePrefix`
         # @return [String]
         attr_accessor :temp_storage_prefix
@@ -5587,15 +5596,14 @@ module Google
         end
       end
       
-      # /////////////////////////////////////////////////////////////////////////////
-      # //// Template Catalog is used to organize user TemplateVersions.
-      # //// TemplateVersions that have the same project_id and display_name are
-      # //// belong to the same Template.
-      # //// Templates with the same project_id belong to the same Project.
-      # //// TemplateVersion may have labels and multiple labels are allowed.
-      # //// Duplicated labels in the same `TemplateVersion` are not allowed.
-      # //// TemplateVersion may have tags and multiple tags are allowed. Duplicated
-      # //// tags in the same `Template` are not allowed!
+      # ///////////////////////////////////////////////////////////////////////////// /
+      # /// Template Catalog is used to organize user TemplateVersions. ////
+      # TemplateVersions that have the same project_id and display_name are ////
+      # belong to the same Template. //// Templates with the same project_id belong to
+      # the same Project. //// TemplateVersion may have labels and multiple labels are
+      # allowed. //// Duplicated labels in the same `TemplateVersion` are not allowed.
+      # //// TemplateVersion may have tags and multiple tags are allowed. Duplicated //
+      # // tags in the same `Template` are not allowed!
       class TemplateVersion
         include Google::Apis::Core::Hashable
       
@@ -5662,8 +5670,8 @@ module Google
         end
       end
       
-      # Global topology of the streaming Dataflow job, including all
-      # computations and their sharded locations.
+      # Global topology of the streaming Dataflow job, including all computations and
+      # their sharded locations.
       class TopologyConfig
         include Google::Apis::Core::Hashable
       
@@ -5735,7 +5743,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # User  names for all collection outputs to this transform.
+        # User names for all collection outputs to this transform.
         # Corresponds to the JSON property `outputCollectionName`
         # @return [Array<String>]
         attr_accessor :output_collection_name
@@ -5780,8 +5788,8 @@ module Google
         end
       end
       
-      # WorkItem represents basic information about a WorkItem to be executed
-      # in the cloud.
+      # WorkItem represents basic information about a WorkItem to be executed in the
+      # cloud.
       class WorkItem
         include Google::Apis::Core::Hashable
       
@@ -5810,17 +5818,16 @@ module Google
         # @return [String]
         attr_accessor :lease_expire_time
       
-        # MapTask consists of an ordered set of instructions, each of which
-        # describes one particular low-level operation for the worker to
-        # perform in order to accomplish the MapTask's WorkItem.
-        # Each instruction must appear in the list before any instructions which
-        # depends on its output.
+        # MapTask consists of an ordered set of instructions, each of which describes
+        # one particular low-level operation for the worker to perform in order to
+        # accomplish the MapTask's WorkItem. Each instruction must appear in the list
+        # before any instructions which depends on its output.
         # Corresponds to the JSON property `mapTask`
         # @return [Google::Apis::DataflowV1b3::MapTask]
         attr_accessor :map_task
       
-        # Any required packages that need to be fetched in order to execute
-        # this WorkItem.
+        # Any required packages that need to be fetched in order to execute this
+        # WorkItem.
         # Corresponds to the JSON property `packages`
         # @return [Array<Google::Apis::DataflowV1b3::Package>]
         attr_accessor :packages
@@ -5845,8 +5852,8 @@ module Google
         # @return [Google::Apis::DataflowV1b3::ShellTask]
         attr_accessor :shell_task
       
-        # A work item that represents the different operations that can be
-        # performed on a user-defined Source specification.
+        # A work item that represents the different operations that can be performed on
+        # a user-defined Source specification.
         # Corresponds to the JSON property `sourceOperationTask`
         # @return [Google::Apis::DataflowV1b3::SourceOperationRequest]
         attr_accessor :source_operation_task
@@ -5891,23 +5898,78 @@ module Google
         end
       end
       
-      # The Dataflow service's idea of the current state of a WorkItem
-      # being processed by a worker.
+      # Information about an individual work item execution.
+      class WorkItemDetails
+        include Google::Apis::Core::Hashable
+      
+        # Attempt ID of this work item
+        # Corresponds to the JSON property `attemptId`
+        # @return [String]
+        attr_accessor :attempt_id
+      
+        # End time of this work item attempt. If the work item is completed, this is the
+        # actual end time of the work item. Otherwise, it is the predicted end time.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Metrics for this work item.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::DataflowV1b3::MetricUpdate>]
+        attr_accessor :metrics
+      
+        # Information about the progress of some component of job execution.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::DataflowV1b3::ProgressTimeseries]
+        attr_accessor :progress
+      
+        # Start time of this work item attempt.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # State of this work item.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Name of this work item.
+        # Corresponds to the JSON property `taskId`
+        # @return [String]
+        attr_accessor :task_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attempt_id = args[:attempt_id] if args.key?(:attempt_id)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @progress = args[:progress] if args.key?(:progress)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @task_id = args[:task_id] if args.key?(:task_id)
+        end
+      end
+      
+      # The Dataflow service's idea of the current state of a WorkItem being processed
+      # by a worker.
       class WorkItemServiceState
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `completeWorkStatus`
         # @return [Google::Apis::DataflowV1b3::Status]
         attr_accessor :complete_work_status
       
-        # Other data returned by the service, specific to the particular
-        # worker harness.
+        # Other data returned by the service, specific to the particular worker harness.
         # Corresponds to the JSON property `harnessData`
         # @return [Hash<String,Object>]
         attr_accessor :harness_data
@@ -5922,19 +5984,18 @@ module Google
         # @return [String]
         attr_accessor :lease_expire_time
       
-        # The short ids that workers should use in subsequent metric updates.
-        # Workers should strive to use short ids whenever possible, but it is ok
-        # to request the short_id again if a worker lost track of it
-        # (e.g. if the worker is recovering from a crash).
-        # NOTE: it is possible that the response may have short ids for a subset
-        # of the metrics.
+        # The short ids that workers should use in subsequent metric updates. Workers
+        # should strive to use short ids whenever possible, but it is ok to request the
+        # short_id again if a worker lost track of it (e.g. if the worker is recovering
+        # from a crash). NOTE: it is possible that the response may have short ids for a
+        # subset of the metrics.
         # Corresponds to the JSON property `metricShortId`
         # @return [Array<Google::Apis::DataflowV1b3::MetricShortId>]
         attr_accessor :metric_short_id
       
-        # The index value to use for the next report sent by the worker.
-        # Note: If the report call fails for whatever reason, the worker should
-        # reuse this index for subsequent report attempts.
+        # The index value to use for the next report sent by the worker. Note: If the
+        # report call fails for whatever reason, the worker should reuse this index for
+        # subsequent report attempts.
         # Corresponds to the JSON property `nextReportIndex`
         # @return [Fixnum]
         attr_accessor :next_report_index
@@ -5954,9 +6015,9 @@ module Google
         # @return [Google::Apis::DataflowV1b3::ApproximateProgress]
         attr_accessor :suggested_stop_point
       
-        # Position defines a position within a collection of data.  The value
-        # can be either the end position, a key (used with ordered
-        # collections), a byte offset, or a record index.
+        # Position defines a position within a collection of data. The value can be
+        # either the end position, a key (used with ordered collections), a byte offset,
+        # or a record index.
         # Corresponds to the JSON property `suggestedStopPosition`
         # @return [Google::Apis::DataflowV1b3::Position]
         attr_accessor :suggested_stop_position
@@ -5995,16 +6056,15 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::CounterUpdate>]
         attr_accessor :counter_updates
       
-        # When a task splits using WorkItemStatus.dynamic_source_split, this
-        # message describes the two parts of the split relative to the
-        # description of the current task's input.
+        # When a task splits using WorkItemStatus.dynamic_source_split, this message
+        # describes the two parts of the split relative to the description of the
+        # current task's input.
         # Corresponds to the JSON property `dynamicSourceSplit`
         # @return [Google::Apis::DataflowV1b3::DynamicSourceSplit]
         attr_accessor :dynamic_source_split
       
-        # Specifies errors which occurred during processing.  If errors are
-        # provided, and completed = true, then the WorkItem is considered
-        # to have failed.
+        # Specifies errors which occurred during processing. If errors are provided, and
+        # completed = true, then the WorkItem is considered to have failed.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::DataflowV1b3::Status>]
         attr_accessor :errors
@@ -6019,16 +6079,14 @@ module Google
         # @return [Google::Apis::DataflowV1b3::ApproximateProgress]
         attr_accessor :progress
       
-        # The report index.  When a WorkItem is leased, the lease will
-        # contain an initial report index.  When a WorkItem's status is
-        # reported to the system, the report should be sent with
-        # that report index, and the response will contain the index the
-        # worker should use for the next report.  Reports received with
-        # unexpected index values will be rejected by the service.
-        # In order to preserve idempotency, the worker should not alter the
-        # contents of a report, even if the worker must submit the same
-        # report multiple times before getting back a response.  The worker
-        # should not submit a subsequent report until the response for the
+        # The report index. When a WorkItem is leased, the lease will contain an initial
+        # report index. When a WorkItem's status is reported to the system, the report
+        # should be sent with that report index, and the response will contain the index
+        # the worker should use for the next report. Reports received with unexpected
+        # index values will be rejected by the service. In order to preserve idempotency,
+        # the worker should not alter the contents of a report, even if the worker must
+        # submit the same report multiple times before getting back a response. The
+        # worker should not submit a subsequent report until the response for the
         # previous report had been received from the service.
         # Corresponds to the JSON property `reportIndex`
         # @return [Fixnum]
@@ -6050,15 +6108,14 @@ module Google
         attr_accessor :source_fork
       
         # The result of a SourceOperationRequest, specified in
-        # ReportWorkItemStatusRequest.source_operation when the work item
-        # is completed.
+        # ReportWorkItemStatusRequest.source_operation when the work item is completed.
         # Corresponds to the JSON property `sourceOperationResponse`
         # @return [Google::Apis::DataflowV1b3::SourceOperationResponse]
         attr_accessor :source_operation_response
       
-        # Position defines a position within a collection of data.  The value
-        # can be either the end position, a key (used with ordered
-        # collections), a byte offset, or a record index.
+        # Position defines a position within a collection of data. The value can be
+        # either the end position, a key (used with ordered collections), a byte offset,
+        # or a record index.
         # Corresponds to the JSON property `stopPosition`
         # @return [Google::Apis::DataflowV1b3::Position]
         attr_accessor :stop_position
@@ -6096,9 +6153,34 @@ module Google
         end
       end
       
-      # WorkerHealthReport contains information about the health of a worker.
-      # The VM should be identified by the labels attached to the WorkerMessage that
-      # this health ping belongs to.
+      # Information about a worker
+      class WorkerDetails
+        include Google::Apis::Core::Hashable
+      
+        # Work items processed by this worker, sorted by time.
+        # Corresponds to the JSON property `workItems`
+        # @return [Array<Google::Apis::DataflowV1b3::WorkItemDetails>]
+        attr_accessor :work_items
+      
+        # Name of this worker
+        # Corresponds to the JSON property `workerName`
+        # @return [String]
+        attr_accessor :worker_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @work_items = args[:work_items] if args.key?(:work_items)
+          @worker_name = args[:worker_name] if args.key?(:worker_name)
+        end
+      end
+      
+      # WorkerHealthReport contains information about the health of a worker. The VM
+      # should be identified by the labels attached to the WorkerMessage that this
+      # health ping belongs to.
       class WorkerHealthReport
         include Google::Apis::Core::Hashable
       
@@ -6107,24 +6189,22 @@ module Google
         # @return [String]
         attr_accessor :msg
       
-        # The pods running on the worker. See:
-        # http://kubernetes.io/v1.1/docs/api-reference/v1/definitions.html#_v1_pod
-        # This field is used by the worker to send the status of the indvidual
-        # containers running on each worker.
+        # The pods running on the worker. See: http://kubernetes.io/v1.1/docs/api-
+        # reference/v1/definitions.html#_v1_pod This field is used by the worker to send
+        # the status of the indvidual containers running on each worker.
         # Corresponds to the JSON property `pods`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :pods
       
-        # The interval at which the worker is sending health reports.
-        # The default value of 0 should be interpreted as the field is not being
-        # explicitly set by the worker.
+        # The interval at which the worker is sending health reports. The default value
+        # of 0 should be interpreted as the field is not being explicitly set by the
+        # worker.
         # Corresponds to the JSON property `reportInterval`
         # @return [String]
         attr_accessor :report_interval
       
-        # Whether the VM is in a permanently broken state.
-        # Broken VMs should be abandoned or deleted ASAP to avoid assigning or
-        # completing any work.
+        # Whether the VM is in a permanently broken state. Broken VMs should be
+        # abandoned or deleted ASAP to avoid assigning or completing any work.
         # Corresponds to the JSON property `vmIsBroken`
         # @return [Boolean]
         attr_accessor :vm_is_broken
@@ -6156,15 +6236,14 @@ module Google
         end
       end
       
-      # WorkerHealthReportResponse contains information returned to the worker
-      # in response to a health ping.
+      # WorkerHealthReportResponse contains information returned to the worker in
+      # response to a health ping.
       class WorkerHealthReportResponse
         include Google::Apis::Core::Hashable
       
-        # A positive value indicates the worker should change its reporting interval
-        # to the specified value.
-        # The default value of zero means no change in report rate is requested by
-        # the server.
+        # A positive value indicates the worker should change its reporting interval to
+        # the specified value. The default value of zero means no change in report rate
+        # is requested by the server.
         # Corresponds to the JSON property `reportInterval`
         # @return [String]
         attr_accessor :report_interval
@@ -6179,17 +6258,16 @@ module Google
         end
       end
       
-      # A report of an event in a worker's lifecycle.
-      # The proto contains one event, because the worker is expected to
-      # asynchronously send each message immediately after the event.
-      # Due to this asynchrony, messages may arrive out of order (or missing), and it
-      # is up to the consumer to interpret.
-      # The timestamp of the event is in the enclosing WorkerMessage proto.
+      # A report of an event in a worker's lifecycle. The proto contains one event,
+      # because the worker is expected to asynchronously send each message immediately
+      # after the event. Due to this asynchrony, messages may arrive out of order (or
+      # missing), and it is up to the consumer to interpret. The timestamp of the
+      # event is in the enclosing WorkerMessage proto.
       class WorkerLifecycleEvent
         include Google::Apis::Core::Hashable
       
-        # The start time of this container. All events will report this so that
-        # events can be grouped together across container/VM restarts.
+        # The start time of this container. All events will report this so that events
+        # can be grouped together across container/VM restarts.
         # Corresponds to the JSON property `containerStartTime`
         # @return [String]
         attr_accessor :container_start_time
@@ -6199,8 +6277,7 @@ module Google
         # @return [String]
         attr_accessor :event
       
-        # Other stats that can accompany an event. E.g.
-        # ` "downloaded_bytes" : "123456" `
+        # Other stats that can accompany an event. E.g. ` "downloaded_bytes" : "123456" `
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata
@@ -6221,16 +6298,12 @@ module Google
       class WorkerMessage
         include Google::Apis::Core::Hashable
       
-        # Labels are used to group WorkerMessages.
-        # For example, a worker_message about a particular container
-        # might have the labels:
-        # ` "JOB_ID": "2015-04-22",
-        # "WORKER_ID": "wordcount-vm-2015…"
-        # "CONTAINER_TYPE": "worker",
-        # "CONTAINER_ID": "ac1234def"`
-        # Label tags typically correspond to Label enum values. However, for ease
-        # of development other strings can be used as tags. LABEL_UNSPECIFIED should
-        # not be used here.
+        # Labels are used to group WorkerMessages. For example, a worker_message about a
+        # particular container might have the labels: ` "JOB_ID": "2015-04-22", "
+        # WORKER_ID": "wordcount-vm-2015…" "CONTAINER_TYPE": "worker", "CONTAINER_ID": "
+        # ac1234def"` Label tags typically correspond to Label enum values. However, for
+        # ease of development other strings can be used as tags. LABEL_UNSPECIFIED
+        # should not be used here.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -6240,45 +6313,40 @@ module Google
         # @return [String]
         attr_accessor :time
       
-        # WorkerHealthReport contains information about the health of a worker.
-        # The VM should be identified by the labels attached to the WorkerMessage that
-        # this health ping belongs to.
+        # WorkerHealthReport contains information about the health of a worker. The VM
+        # should be identified by the labels attached to the WorkerMessage that this
+        # health ping belongs to.
         # Corresponds to the JSON property `workerHealthReport`
         # @return [Google::Apis::DataflowV1b3::WorkerHealthReport]
         attr_accessor :worker_health_report
       
-        # A report of an event in a worker's lifecycle.
-        # The proto contains one event, because the worker is expected to
-        # asynchronously send each message immediately after the event.
-        # Due to this asynchrony, messages may arrive out of order (or missing), and it
-        # is up to the consumer to interpret.
-        # The timestamp of the event is in the enclosing WorkerMessage proto.
+        # A report of an event in a worker's lifecycle. The proto contains one event,
+        # because the worker is expected to asynchronously send each message immediately
+        # after the event. Due to this asynchrony, messages may arrive out of order (or
+        # missing), and it is up to the consumer to interpret. The timestamp of the
+        # event is in the enclosing WorkerMessage proto.
         # Corresponds to the JSON property `workerLifecycleEvent`
         # @return [Google::Apis::DataflowV1b3::WorkerLifecycleEvent]
         attr_accessor :worker_lifecycle_event
       
-        # A message code is used to report status and error messages to the service.
-        # The message codes are intended to be machine readable. The service will
-        # take care of translating these into user understandable messages if
-        # necessary.
-        # Example use cases:
-        # 1. Worker processes reporting successful startup.
-        # 2. Worker processes reporting specific errors (e.g. package staging
-        # failure).
+        # A message code is used to report status and error messages to the service. The
+        # message codes are intended to be machine readable. The service will take care
+        # of translating these into user understandable messages if necessary. Example
+        # use cases: 1. Worker processes reporting successful startup. 2. Worker
+        # processes reporting specific errors (e.g. package staging failure).
         # Corresponds to the JSON property `workerMessageCode`
         # @return [Google::Apis::DataflowV1b3::WorkerMessageCode]
         attr_accessor :worker_message_code
       
         # Worker metrics exported from workers. This contains resource utilization
-        # metrics accumulated from a variety of sources. For more information, see
-        # go/df-resource-signals.
+        # metrics accumulated from a variety of sources. For more information, see go/df-
+        # resource-signals.
         # Corresponds to the JSON property `workerMetrics`
         # @return [Google::Apis::DataflowV1b3::ResourceUtilizationReport]
         attr_accessor :worker_metrics
       
-        # Shutdown notification from workers. This is to be sent by the shutdown
-        # script of the worker VM so that the backend knows that the VM is being
-        # shut down.
+        # Shutdown notification from workers. This is to be sent by the shutdown script
+        # of the worker VM so that the backend knows that the VM is being shut down.
         # Corresponds to the JSON property `workerShutdownNotice`
         # @return [Google::Apis::DataflowV1b3::WorkerShutdownNotice]
         attr_accessor :worker_shutdown_notice
@@ -6299,46 +6367,35 @@ module Google
         end
       end
       
-      # A message code is used to report status and error messages to the service.
-      # The message codes are intended to be machine readable. The service will
-      # take care of translating these into user understandable messages if
-      # necessary.
-      # Example use cases:
-      # 1. Worker processes reporting successful startup.
-      # 2. Worker processes reporting specific errors (e.g. package staging
-      # failure).
+      # A message code is used to report status and error messages to the service. The
+      # message codes are intended to be machine readable. The service will take care
+      # of translating these into user understandable messages if necessary. Example
+      # use cases: 1. Worker processes reporting successful startup. 2. Worker
+      # processes reporting specific errors (e.g. package staging failure).
       class WorkerMessageCode
         include Google::Apis::Core::Hashable
       
-        # The code is a string intended for consumption by a machine that identifies
-        # the type of message being sent.
-        # Examples:
-        # 1. "HARNESS_STARTED" might be used to indicate the worker harness has
-        # started.
-        # 2. "GCS_DOWNLOAD_ERROR" might be used to indicate an error downloading
-        # a GCS file as part of the boot process of one of the worker containers.
-        # This is a string and not an enum to make it easy to add new codes without
-        # waiting for an API change.
+        # The code is a string intended for consumption by a machine that identifies the
+        # type of message being sent. Examples: 1. "HARNESS_STARTED" might be used to
+        # indicate the worker harness has started. 2. "GCS_DOWNLOAD_ERROR" might be used
+        # to indicate an error downloading a GCS file as part of the boot process of one
+        # of the worker containers. This is a string and not an enum to make it easy to
+        # add new codes without waiting for an API change.
         # Corresponds to the JSON property `code`
         # @return [String]
         attr_accessor :code
       
-        # Parameters contains specific information about the code.
-        # This is a struct to allow parameters of different types.
-        # Examples:
-        # 1. For a "HARNESS_STARTED" message parameters might provide the name
-        # of the worker and additional data like timing information.
-        # 2. For a "GCS_DOWNLOAD_ERROR" parameters might contain fields listing
-        # the GCS objects being downloaded and fields containing errors.
-        # In general complex data structures should be avoided. If a worker
-        # needs to send a specific and complicated data structure then please
-        # consider defining a new proto and adding it to the data oneof in
-        # WorkerMessageResponse.
-        # Conventions:
-        # Parameters should only be used for information that isn't typically passed
-        # as a label.
-        # hostname and other worker identifiers should almost always be passed
-        # as labels since they will be included on most messages.
+        # Parameters contains specific information about the code. This is a struct to
+        # allow parameters of different types. Examples: 1. For a "HARNESS_STARTED"
+        # message parameters might provide the name of the worker and additional data
+        # like timing information. 2. For a "GCS_DOWNLOAD_ERROR" parameters might
+        # contain fields listing the GCS objects being downloaded and fields containing
+        # errors. In general complex data structures should be avoided. If a worker
+        # needs to send a specific and complicated data structure then please consider
+        # defining a new proto and adding it to the data oneof in WorkerMessageResponse.
+        # Conventions: Parameters should only be used for information that isn't
+        # typically passed as a label. hostname and other worker identifiers should
+        # almost always be passed as labels since they will be included on most messages.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -6354,13 +6411,12 @@ module Google
         end
       end
       
-      # A worker_message response allows the server to pass information to the
-      # sender.
+      # A worker_message response allows the server to pass information to the sender.
       class WorkerMessageResponse
         include Google::Apis::Core::Hashable
       
-        # WorkerHealthReportResponse contains information returned to the worker
-        # in response to a health ping.
+        # WorkerHealthReportResponse contains information returned to the worker in
+        # response to a health ping.
         # Corresponds to the JSON property `workerHealthReportResponse`
         # @return [Google::Apis::DataflowV1b3::WorkerHealthReportResponse]
         attr_accessor :worker_health_report_response
@@ -6387,11 +6443,10 @@ module Google
         end
       end
       
-      # Describes one particular pool of Cloud Dataflow workers to be
-      # instantiated by the Cloud Dataflow service in order to perform the
-      # computations required by a job.  Note that a workflow job may use
-      # multiple pools, in order to match the various computational
-      # requirements of the various stages of the job.
+      # Describes one particular pool of Cloud Dataflow workers to be instantiated by
+      # the Cloud Dataflow service in order to perform the computations required by a
+      # job. Note that a workflow job may use multiple pools, in order to match the
+      # various computational requirements of the various stages of the job.
       class WorkerPool
         include Google::Apis::Core::Hashable
       
@@ -6405,14 +6460,14 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::Disk>]
         attr_accessor :data_disks
       
-        # The default package set to install.  This allows the service to
-        # select a default set of packages which are useful to worker
-        # harnesses written in a particular language.
+        # The default package set to install. This allows the service to select a
+        # default set of packages which are useful to worker harnesses written in a
+        # particular language.
         # Corresponds to the JSON property `defaultPackageSet`
         # @return [String]
         attr_accessor :default_package_set
       
-        # Size of root disk for VMs, in GB.  If zero or unspecified, the service will
+        # Size of root disk for VMs, in GB. If zero or unspecified, the service will
         # attempt to choose a reasonable default.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
@@ -6423,8 +6478,8 @@ module Google
         # @return [String]
         attr_accessor :disk_source_image
       
-        # Type of root disk for VMs.  If empty or unspecified, the service will
-        # attempt to choose a reasonable default.
+        # Type of root disk for VMs. If empty or unspecified, the service will attempt
+        # to choose a reasonable default.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -6434,14 +6489,14 @@ module Google
         # @return [String]
         attr_accessor :ip_configuration
       
-        # The kind of the worker pool; currently only `harness` and `shuffle`
-        # are supported.
+        # The kind of the worker pool; currently only `harness` and `shuffle` are
+        # supported.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Machine type (e.g. "n1-standard-1").  If empty or unspecified, the
-        # service will attempt to choose a reasonable default.
+        # Machine type (e.g. "n1-standard-1"). If empty or unspecified, the service will
+        # attempt to choose a reasonable default.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -6451,28 +6506,28 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Network to which VMs will be assigned.  If empty or unspecified,
-        # the service will use the network "default".
+        # Network to which VMs will be assigned. If empty or unspecified, the service
+        # will use the network "default".
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # The number of threads per worker harness. If empty or unspecified, the
-        # service will choose a number of threads (according to the number of cores
-        # on the selected machine type for batch, or 1 by convention for streaming).
+        # The number of threads per worker harness. If empty or unspecified, the service
+        # will choose a number of threads (according to the number of cores on the
+        # selected machine type for batch, or 1 by convention for streaming).
         # Corresponds to the JSON property `numThreadsPerWorker`
         # @return [Fixnum]
         attr_accessor :num_threads_per_worker
       
-        # Number of Google Compute Engine workers in this pool needed to
-        # execute the job.  If zero or unspecified, the service will
-        # attempt to choose a reasonable default.
+        # Number of Google Compute Engine workers in this pool needed to execute the job.
+        # If zero or unspecified, the service will attempt to choose a reasonable
+        # default.
         # Corresponds to the JSON property `numWorkers`
         # @return [Fixnum]
         attr_accessor :num_workers
       
-        # The action to take on host maintenance, as defined by the Google
-        # Compute Engine API.
+        # The action to take on host maintenance, as defined by the Google Compute
+        # Engine API.
         # Corresponds to the JSON property `onHostMaintenance`
         # @return [String]
         attr_accessor :on_host_maintenance
@@ -6487,16 +6542,15 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :pool_args
       
-        # Set of SDK harness containers needed to execute this pipeline. This will
-        # only be set in the Fn API path. For non-cross-language pipelines this
-        # should have only one entry. Cross-language pipelines will have two or more
-        # entries.
+        # Set of SDK harness containers needed to execute this pipeline. This will only
+        # be set in the Fn API path. For non-cross-language pipelines this should have
+        # only one entry. Cross-language pipelines will have two or more entries.
         # Corresponds to the JSON property `sdkHarnessContainerImages`
         # @return [Array<Google::Apis::DataflowV1b3::SdkHarnessContainerImage>]
         attr_accessor :sdk_harness_container_images
       
-        # Subnetwork to which VMs will be assigned, if desired.  Expected to be of
-        # the form "regions/REGION/subnetworks/SUBNETWORK".
+        # Subnetwork to which VMs will be assigned, if desired. Expected to be of the
+        # form "regions/REGION/subnetworks/SUBNETWORK".
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -6506,18 +6560,15 @@ module Google
         # @return [Google::Apis::DataflowV1b3::TaskRunnerSettings]
         attr_accessor :taskrunner_settings
       
-        # Sets the policy for determining when to turndown worker pool.
-        # Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and
-        # `TEARDOWN_NEVER`.
-        # `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether
-        # the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down
-        # if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn
-        # down.
-        # If the workers are not torn down by the service, they will
-        # continue to run and use Google Compute Engine VM resources in the
-        # user's project until they are explicitly terminated by the user.
-        # Because of this, Google recommends using the `TEARDOWN_ALWAYS`
-        # policy except for small, manually supervised test jobs.
+        # Sets the policy for determining when to turndown worker pool. Allowed values
+        # are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `
+        # TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the
+        # job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job
+        # succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the
+        # workers are not torn down by the service, they will continue to run and use
+        # Google Compute Engine VM resources in the user's project until they are
+        # explicitly terminated by the user. Because of this, Google recommends using
+        # the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs.
         # If unknown or unspecified, the service will attempt to choose a reasonable
         # default.
         # Corresponds to the JSON property `teardownPolicy`
@@ -6525,14 +6576,14 @@ module Google
         attr_accessor :teardown_policy
       
         # Required. Docker container image that executes the Cloud Dataflow worker
-        # harness, residing in Google Container Registry.
-        # Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+        # harness, residing in Google Container Registry. Deprecated for the Fn API path.
+        # Use sdk_harness_container_images instead.
         # Corresponds to the JSON property `workerHarnessContainerImage`
         # @return [String]
         attr_accessor :worker_harness_container_image
       
-        # Zone to run the worker pools in.  If empty or unspecified, the service
-        # will attempt to choose a reasonable default.
+        # Zone to run the worker pools in. If empty or unspecified, the service will
+        # attempt to choose a reasonable default.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -6572,12 +6623,10 @@ module Google
       class WorkerSettings
         include Google::Apis::Core::Hashable
       
-        # The base URL for accessing Google Cloud APIs.
-        # When workers access Google Cloud APIs, they logically do so via
-        # relative URLs.  If this field is specified, it supplies the base
-        # URL to use for resolving these relative URLs.  The normative
-        # algorithm used is defined by RFC 1808, "Relative Uniform Resource
-        # Locators".
+        # The base URL for accessing Google Cloud APIs. When workers access Google Cloud
+        # APIs, they logically do so via relative URLs. If this field is specified, it
+        # supplies the base URL to use for resolving these relative URLs. The normative
+        # algorithm used is defined by RFC 1808, "Relative Uniform Resource Locators".
         # If not specified, the default value is "http://www.googleapis.com/"
         # Corresponds to the JSON property `baseUrl`
         # @return [String]
@@ -6589,24 +6638,21 @@ module Google
         attr_accessor :reporting_enabled
         alias_method :reporting_enabled?, :reporting_enabled
       
-        # The Cloud Dataflow service path relative to the root URL, for example,
-        # "dataflow/v1b3/projects".
+        # The Cloud Dataflow service path relative to the root URL, for example, "
+        # dataflow/v1b3/projects".
         # Corresponds to the JSON property `servicePath`
         # @return [String]
         attr_accessor :service_path
       
-        # The Shuffle service path relative to the root URL, for example,
-        # "shuffle/v1beta1".
+        # The Shuffle service path relative to the root URL, for example, "shuffle/
+        # v1beta1".
         # Corresponds to the JSON property `shuffleServicePath`
         # @return [String]
         attr_accessor :shuffle_service_path
       
-        # The prefix of the resources the system should use for temporary
-        # storage.
-        # The supported resource type is:
-        # Google Cloud Storage:
-        # storage.googleapis.com/`bucket`/`object`
-        # bucket.storage.googleapis.com/`object`
+        # The prefix of the resources the system should use for temporary storage. The
+        # supported resource type is: Google Cloud Storage: storage.googleapis.com/`
+        # bucket`/`object` bucket.storage.googleapis.com/`object`
         # Corresponds to the JSON property `tempStoragePrefix`
         # @return [String]
         attr_accessor :temp_storage_prefix
@@ -6631,17 +6677,14 @@ module Google
         end
       end
       
-      # Shutdown notification from workers. This is to be sent by the shutdown
-      # script of the worker VM so that the backend knows that the VM is being
-      # shut down.
+      # Shutdown notification from workers. This is to be sent by the shutdown script
+      # of the worker VM so that the backend knows that the VM is being shut down.
       class WorkerShutdownNotice
         include Google::Apis::Core::Hashable
       
-        # The reason for the worker shutdown.
-        # Current possible values are:
-        # "UNKNOWN": shutdown reason is unknown.
-        # "PREEMPTION": shutdown reason is preemption.
-        # Other possible reasons may be added in the future.
+        # The reason for the worker shutdown. Current possible values are: "UNKNOWN":
+        # shutdown reason is unknown. "PREEMPTION": shutdown reason is preemption. Other
+        # possible reasons may be added in the future.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -6669,13 +6712,12 @@ module Google
         end
       end
       
-      # An instruction that writes records.
-      # Takes one input, produces no outputs.
+      # An instruction that writes records. Takes one input, produces no outputs.
       class WriteInstruction
         include Google::Apis::Core::Hashable
       
-        # An input of an instruction, as a reference to an output of a
-        # producer instruction.
+        # An input of an instruction, as a reference to an output of a producer
+        # instruction.
         # Corresponds to the JSON property `input`
         # @return [Google::Apis::DataflowV1b3::InstructionInput]
         attr_accessor :input

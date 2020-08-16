@@ -322,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JobExecutionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JobExecutionInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -544,7 +550,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Point
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Position
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProgressTimeseries
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -784,7 +802,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StageExecutionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StageSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StageSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -916,6 +946,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkItemDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkItemServiceState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -923,6 +959,12 @@ module Google
       end
       
       class WorkItemStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkerDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1548,6 +1590,14 @@ module Google
         end
       end
       
+      class JobExecutionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :stages, as: 'stages', class: Google::Apis::DataflowV1b3::StageSummary, decorator: Google::Apis::DataflowV1b3::StageSummary::Representation
+      
+        end
+      end
+      
       class JobExecutionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1930,6 +1980,14 @@ module Google
         end
       end
       
+      class Point
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :time, as: 'time'
+          property :value, as: 'value'
+        end
+      end
+      
       class Position
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1940,6 +1998,15 @@ module Google
           property :key, as: 'key'
           property :record_index, :numeric_string => true, as: 'recordIndex'
           property :shuffle_position, as: 'shufflePosition'
+        end
+      end
+      
+      class ProgressTimeseries
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_progress, as: 'currentProgress'
+          collection :data_points, as: 'dataPoints', class: Google::Apis::DataflowV1b3::Point, decorator: Google::Apis::DataflowV1b3::Point::Representation
+      
         end
       end
       
@@ -2041,6 +2108,7 @@ module Google
           collection :additional_experiments, as: 'additionalExperiments'
           hash :additional_user_labels, as: 'additionalUserLabels'
           property :bypass_temp_dir_validation, as: 'bypassTempDirValidation'
+          property :enable_streaming_engine, as: 'enableStreamingEngine'
           property :ip_configuration, as: 'ipConfiguration'
           property :kms_key_name, as: 'kmsKeyName'
           property :machine_type, as: 'machineType'
@@ -2329,6 +2397,15 @@ module Google
         end
       end
       
+      class StageExecutionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workers, as: 'workers', class: Google::Apis::DataflowV1b3::WorkerDetails, decorator: Google::Apis::DataflowV1b3::WorkerDetails::Representation
+      
+        end
+      end
+      
       class StageSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2336,6 +2413,20 @@ module Google
           property :original_transform_or_collection, as: 'originalTransformOrCollection'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :user_name, as: 'userName'
+        end
+      end
+      
+      class StageSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          collection :metrics, as: 'metrics', class: Google::Apis::DataflowV1b3::MetricUpdate, decorator: Google::Apis::DataflowV1b3::MetricUpdate::Representation
+      
+          property :progress, as: 'progress', class: Google::Apis::DataflowV1b3::ProgressTimeseries, decorator: Google::Apis::DataflowV1b3::ProgressTimeseries::Representation
+      
+          property :stage_id, as: 'stageId'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
         end
       end
       
@@ -2594,6 +2685,21 @@ module Google
         end
       end
       
+      class WorkItemDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attempt_id, as: 'attemptId'
+          property :end_time, as: 'endTime'
+          collection :metrics, as: 'metrics', class: Google::Apis::DataflowV1b3::MetricUpdate, decorator: Google::Apis::DataflowV1b3::MetricUpdate::Representation
+      
+          property :progress, as: 'progress', class: Google::Apis::DataflowV1b3::ProgressTimeseries, decorator: Google::Apis::DataflowV1b3::ProgressTimeseries::Representation
+      
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :task_id, as: 'taskId'
+        end
+      end
+      
       class WorkItemServiceState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2642,6 +2748,15 @@ module Google
       
           property :total_throttler_wait_time_seconds, as: 'totalThrottlerWaitTimeSeconds'
           property :work_item_id, as: 'workItemId'
+        end
+      end
+      
+      class WorkerDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :work_items, as: 'workItems', class: Google::Apis::DataflowV1b3::WorkItemDetails, decorator: Google::Apis::DataflowV1b3::WorkItemDetails::Representation
+      
+          property :worker_name, as: 'workerName'
         end
       end
       

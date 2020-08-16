@@ -908,7 +908,7 @@ module Google
         # explicitly call out to that shell. Exit status of 0 is treated as live/healthy
         # and non-zero is unhealthy.
         # Corresponds to the JSON property `command`
-        # @return [String]
+        # @return [Array<String>]
         attr_accessor :command
       
         def initialize(**args)
@@ -1740,8 +1740,9 @@ module Google
         # a resource or set of resources. Clients must treat these values as opaque and
         # passed unmodified back to the server. They may only be valid for a particular
         # resource or set of resources. Populated by the system. Read-only. Value must
-        # be treated as opaque by clients and . More info: https://git.k8s.io/community/
-        # contributors/devel/api-conventions.md#concurrency-control-and-consistency
+        # be treated as opaque by clients. More info: https://git.k8s.io/community/
+        # contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-
+        # consistency
         # Corresponds to the JSON property `resourceVersion`
         # @return [String]
         attr_accessor :resource_version

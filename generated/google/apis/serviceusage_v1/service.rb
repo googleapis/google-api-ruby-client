@@ -389,7 +389,11 @@ module Google
         # services, all services for which the calling user has the `servicemanagement.
         # services.bind` permission, and all services that have already been enabled on
         # the project. The list can be filtered to only include services in a specific
-        # state, for example to only include services enabled on the project.
+        # state, for example to only include services enabled on the project. WARNING:
+        # If you need to query enabled services frequently or across an organization,
+        # you should use [Cloud Asset Inventory API](https://cloud.google.com/asset-
+        # inventory/docs/apis), which provides higher throughput and richer filtering
+        # capability.
         # @param [String] parent
         #   Parent to search for services on. An example name would be: `projects/123`
         #   where `123` is the project number.
