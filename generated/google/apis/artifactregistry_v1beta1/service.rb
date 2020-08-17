@@ -117,9 +117,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -149,15 +148,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
@@ -196,8 +194,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a repository. The returned Operation will finish once the
-        # repository has been created. Its response will be the created Repository.
+        # Creates a repository. The returned Operation will finish once the repository
+        # has been created. Its response will be the created Repository.
         # @param [String] parent
         #   The name of the parent resource where the repository will be created.
         # @param [Google::Apis::ArtifactregistryV1beta1::Repository] repository_object
@@ -297,18 +295,16 @@ module Google
         
         # Gets the IAM policy for a given resource.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -375,12 +371,11 @@ module Google
         
         # Updates a repository.
         # @param [String] name
-        #   The name of the repository, for example:
-        #   "projects/p1/locations/us-central1/repositories/repo1".
+        #   The name of the repository, for example: "projects/p1/locations/us-central1/
+        #   repositories/repo1".
         # @param [Google::Apis::ArtifactregistryV1beta1::Repository] repository_object
         # @param [String] update_mask
-        #   The update mask applies to the resource. For the `FieldMask` definition,
-        #   see
+        #   The update mask applies to the resource. For the `FieldMask` definition, see
         #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
         #   fieldmask
         # @param [String] fields
@@ -415,8 +410,8 @@ module Google
         
         # Updates the IAM policy for a given resource.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ArtifactregistryV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -449,8 +444,8 @@ module Google
         
         # Tests if the caller has a list of permissions on a resource.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::ArtifactregistryV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -515,17 +510,12 @@ module Google
         # @param [String] parent
         #   The name of the parent resource whose files will be listed.
         # @param [String] filter
-        #   An expression for filtering the results of the request. Filter rules are
-        #   case insensitive. The fields eligible for filtering are:
-        #   * `name`
-        #   * `owner`
-        #   An example of using a filter:
-        #   * `name="projects/p1/locations/us-central1/repositories/repo1/files/a/b/*"` -
-        #   -> Files with an
-        #   ID starting with "a/b/".
-        #   * `owner="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/
-        #   versions/1.0"` -->
-        #   Files owned by the version `1.0` in package `pkg1`.
+        #   An expression for filtering the results of the request. Filter rules are case
+        #   insensitive. The fields eligible for filtering are: * `name` * `owner` An
+        #   example of using a filter: * `name="projects/p1/locations/us-central1/
+        #   repositories/repo1/files/a/b/*"` --> Files with an ID starting with "a/b/". * `
+        #   owner="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/
+        #   versions/1.0"` --> Files owned by the version `1.0` in package `pkg1`.
         # @param [Fixnum] page_size
         #   The maximum number of files to return.
         # @param [String] page_token
@@ -757,13 +747,11 @@ module Google
         # @param [String] parent
         #   The name of the parent resource whose tags will be listed.
         # @param [String] filter
-        #   An expression for filtering the results of the request. Filter rules are
-        #   case insensitive. The fields eligible for filtering are:
-        #   * `version`
-        #   An example of using a filter:
-        #   * `version="projects/p1/locations/us-central1/repositories/repo1/packages/
-        #   pkg1/versions/1.0"`
-        #   --> Tags that are applied to the version `1.0` in package `pkg1`.
+        #   An expression for filtering the results of the request. Filter rules are case
+        #   insensitive. The fields eligible for filtering are: * `version` An example of
+        #   using a filter: * `version="projects/p1/locations/us-central1/repositories/
+        #   repo1/packages/pkg1/versions/1.0"` --> Tags that are applied to the version `1.
+        #   0` in package `pkg1`.
         # @param [Fixnum] page_size
         #   The maximum number of tags to return.
         # @param [String] page_token
@@ -800,12 +788,11 @@ module Google
         
         # Updates a tag.
         # @param [String] name
-        #   The name of the tag, for example:
-        #   "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+        #   The name of the tag, for example: "projects/p1/locations/us-central1/
+        #   repositories/repo1/packages/pkg1/tags/tag1".
         # @param [Google::Apis::ArtifactregistryV1beta1::Tag] tag_object
         # @param [String] update_mask
-        #   The update mask applies to the resource. For the `FieldMask` definition,
-        #   see
+        #   The update mask applies to the resource. For the `FieldMask` definition, see
         #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
         #   fieldmask
         # @param [String] fields
@@ -838,8 +825,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a version and all of its content. The returned operation will
-        # complete once the version has been deleted.
+        # Deletes a version and all of its content. The returned operation will complete
+        # once the version has been deleted.
         # @param [String] name
         #   The name of the version to delete.
         # @param [Boolean] force

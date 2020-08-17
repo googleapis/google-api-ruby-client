@@ -48,13 +48,12 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Registers the debuggee with the controller service.
-        # All agents attached to the same application must call this method with
-        # exactly the same request content to get back the same stable `debuggee_id`.
-        # Agents should call this method again whenever `google.rpc.Code.NOT_FOUND`
-        # is returned from any controller method.
-        # This protocol allows the controller service to disable debuggees, recover
-        # from data loss, or change the `debuggee_id` format. Agents must handle
+        # Registers the debuggee with the controller service. All agents attached to the
+        # same application must call this method with exactly the same request content
+        # to get back the same stable `debuggee_id`. Agents should call this method
+        # again whenever `google.rpc.Code.NOT_FOUND` is returned from any controller
+        # method. This protocol allows the controller service to disable debuggees,
+        # recover from data loss, or change the `debuggee_id` format. Agents must handle
         # `debuggee_id` value changing upon re-registration.
         # @param [Google::Apis::ClouddebuggerV2::RegisterDebuggeeRequest] register_debuggee_request_object
         # @param [String] fields
@@ -85,33 +84,29 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the list of all active breakpoints for the debuggee.
-        # The breakpoint specification (`location`, `condition`, and `expressions`
-        # fields) is semantically immutable, although the field values may
-        # change. For example, an agent may update the location line number
-        # to reflect the actual line where the breakpoint was set, but this
-        # doesn't change the breakpoint semantics.
-        # This means that an agent does not need to check if a breakpoint has changed
-        # when it encounters the same breakpoint on a successive call.
-        # Moreover, an agent should remember the breakpoints that are completed
-        # until the controller removes them from the active list to avoid
-        # setting those breakpoints again.
+        # Returns the list of all active breakpoints for the debuggee. The breakpoint
+        # specification (`location`, `condition`, and `expressions` fields) is
+        # semantically immutable, although the field values may change. For example, an
+        # agent may update the location line number to reflect the actual line where the
+        # breakpoint was set, but this doesn't change the breakpoint semantics. This
+        # means that an agent does not need to check if a breakpoint has changed when it
+        # encounters the same breakpoint on a successive call. Moreover, an agent should
+        # remember the breakpoints that are completed until the controller removes them
+        # from the active list to avoid setting those breakpoints again.
         # @param [String] debuggee_id
         #   Required. Identifies the debuggee.
         # @param [String] agent_id
-        #   Identifies the agent.
-        #   This is the ID returned in the RegisterDebuggee response.
+        #   Identifies the agent. This is the ID returned in the RegisterDebuggee response.
         # @param [Boolean] success_on_timeout
-        #   If set to `true` (recommended), returns `google.rpc.Code.OK` status and
-        #   sets the `wait_expired` response field to `true` when the server-selected
-        #   timeout has expired.
-        #   If set to `false` (deprecated), returns `google.rpc.Code.ABORTED` status
-        #   when the server-selected timeout has expired.
+        #   If set to `true` (recommended), returns `google.rpc.Code.OK` status and sets
+        #   the `wait_expired` response field to `true` when the server-selected timeout
+        #   has expired. If set to `false` (deprecated), returns `google.rpc.Code.ABORTED`
+        #   status when the server-selected timeout has expired.
         # @param [String] wait_token
-        #   A token that, if specified, blocks the method call until the list
-        #   of active breakpoints has changed, or a server-selected timeout has
-        #   expired. The value should be set from the `next_wait_token` field in
-        #   the last response. The initial value should be set to `"init"`.
+        #   A token that, if specified, blocks the method call until the list of active
+        #   breakpoints has changed, or a server-selected timeout has expired. The value
+        #   should be set from the `next_wait_token` field in the last response. The
+        #   initial value should be set to `"init"`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -142,13 +137,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the breakpoint state or mutable fields.
-        # The entire Breakpoint message must be sent back to the controller service.
-        # Updates to active breakpoint fields are only allowed if the new value
-        # does not change the breakpoint specification. Updates to the `location`,
-        # `condition` and `expressions` fields should not alter the breakpoint
-        # semantics. These may only make changes such as canonicalizing a value
-        # or snapping the location to the correct line of code.
+        # Updates the breakpoint state or mutable fields. The entire Breakpoint message
+        # must be sent back to the controller service. Updates to active breakpoint
+        # fields are only allowed if the new value does not change the breakpoint
+        # specification. Updates to the `location`, `condition` and `expressions` fields
+        # should not alter the breakpoint semantics. These may only make changes such as
+        # canonicalizing a value or snapping the location to the correct line of code.
         # @param [String] debuggee_id
         #   Required. Identifies the debuggee being debugged.
         # @param [String] id
@@ -186,11 +180,11 @@ module Google
         
         # Lists all the debuggees that the user has access to.
         # @param [String] client_version
-        #   Required. The client version making the call.
-        #   Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
+        #   Required. The client version making the call. Schema: `domain/type/version` (e.
+        #   g., `google.com/intellij/v1`).
         # @param [Boolean] include_inactive
-        #   When set to `true`, the result includes all debuggees. Otherwise, the
-        #   result includes only debuggees that are active.
+        #   When set to `true`, the result includes all debuggees. Otherwise, the result
+        #   includes only debuggees that are active.
         # @param [String] project
         #   Required. Project number of a Google Cloud project whose debuggees to list.
         # @param [String] fields
@@ -228,8 +222,8 @@ module Google
         # @param [String] breakpoint_id
         #   Required. ID of the breakpoint to delete.
         # @param [String] client_version
-        #   Required. The client version making the call.
-        #   Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
+        #   Required. The client version making the call. Schema: `domain/type/version` (e.
+        #   g., `google.com/intellij/v1`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -265,8 +259,8 @@ module Google
         # @param [String] breakpoint_id
         #   Required. ID of the breakpoint to get.
         # @param [String] client_version
-        #   Required. The client version making the call.
-        #   Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
+        #   Required. The client version making the call. Schema: `domain/type/version` (e.
+        #   g., `google.com/intellij/v1`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -302,23 +296,23 @@ module Google
         # @param [String] action_value
         #   Only breakpoints with the specified action will pass the filter.
         # @param [String] client_version
-        #   Required. The client version making the call.
-        #   Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
+        #   Required. The client version making the call. Schema: `domain/type/version` (e.
+        #   g., `google.com/intellij/v1`).
         # @param [Boolean] include_all_users
-        #   When set to `true`, the response includes the list of breakpoints set by
-        #   any user. Otherwise, it includes only breakpoints set by the caller.
+        #   When set to `true`, the response includes the list of breakpoints set by any
+        #   user. Otherwise, it includes only breakpoints set by the caller.
         # @param [Boolean] include_inactive
-        #   When set to `true`, the response includes active and inactive
-        #   breakpoints. Otherwise, it includes only active breakpoints.
+        #   When set to `true`, the response includes active and inactive breakpoints.
+        #   Otherwise, it includes only active breakpoints.
         # @param [Boolean] strip_results
-        #   This field is deprecated. The following fields are always stripped out of
-        #   the result: `stack_frames`, `evaluated_expressions` and `variable_table`.
+        #   This field is deprecated. The following fields are always stripped out of the
+        #   result: `stack_frames`, `evaluated_expressions` and `variable_table`.
         # @param [String] wait_token
-        #   A wait token that, if specified, blocks the call until the breakpoints
-        #   list has changed, or a server selected timeout has expired.  The value
-        #   should be set from the last response. The error code
-        #   `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
-        #   should be called again with the same `wait_token`.
+        #   A wait token that, if specified, blocks the call until the breakpoints list
+        #   has changed, or a server selected timeout has expired. The value should be set
+        #   from the last response. The error code `google.rpc.Code.ABORTED` (RPC) is
+        #   returned on wait timeout, which should be called again with the same `
+        #   wait_token`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -359,8 +353,8 @@ module Google
         # @param [String] canary_option
         #   The canary option set by the user upon setting breakpoint.
         # @param [String] client_version
-        #   Required. The client version making the call.
-        #   Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
+        #   Required. The client version making the call. Schema: `domain/type/version` (e.
+        #   g., `google.com/intellij/v1`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

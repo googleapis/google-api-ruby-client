@@ -232,6 +232,7 @@ module Google
           property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
           property :tensorflow_version, as: 'tensorflowVersion'
+          property :use_service_networking, as: 'useServiceNetworking'
         end
       end
       

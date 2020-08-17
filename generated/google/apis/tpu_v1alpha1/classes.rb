@@ -379,6 +379,16 @@ module Google
         # @return [String]
         attr_accessor :tensorflow_version
       
+        # Whether the VPC peering for the node is set up through Service Networking API.
+        # The VPC Peering should be set up before provisioning the node. If this field
+        # is set, cidr_block field should not be specified. If the network, that you
+        # want to peer the TPU Node to, is Shared VPC networks, the node must be created
+        # with this this field enabled.
+        # Corresponds to the JSON property `useServiceNetworking`
+        # @return [Boolean]
+        attr_accessor :use_service_networking
+        alias_method :use_service_networking?, :use_service_networking
+      
         def initialize(**args)
            update!(**args)
         end
@@ -401,6 +411,7 @@ module Google
           @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
           @tensorflow_version = args[:tensorflow_version] if args.key?(:tensorflow_version)
+          @use_service_networking = args[:use_service_networking] if args.key?(:use_service_networking)
         end
       end
       

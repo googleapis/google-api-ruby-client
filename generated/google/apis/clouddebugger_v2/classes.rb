@@ -48,26 +48,26 @@ module Google
       end
       
       # ------------------------------------------------------------------------------
-      # ## Breakpoint (the resource)
-      # Represents the breakpoint specification, status and results.
+      # ## Breakpoint (the resource) Represents the breakpoint specification, status
+      # and results.
       class Breakpoint
         include Google::Apis::Core::Hashable
       
-        # Action that the agent should perform when the code at the
-        # breakpoint location is hit.
+        # Action that the agent should perform when the code at the breakpoint location
+        # is hit.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
       
-        # The deadline for the breakpoint to stay in CANARY_ACTIVE state. The value
-        # is meaningless when the breakpoint is not in CANARY_ACTIVE state.
+        # The deadline for the breakpoint to stay in CANARY_ACTIVE state. The value is
+        # meaningless when the breakpoint is not in CANARY_ACTIVE state.
         # Corresponds to the JSON property `canaryExpireTime`
         # @return [String]
         attr_accessor :canary_expire_time
       
-        # Condition that triggers the breakpoint.
-        # The condition is a compound boolean expression composed using expressions
-        # in a programming language at the source location.
+        # Condition that triggers the breakpoint. The condition is a compound boolean
+        # expression composed using expressions in a programming language at the source
+        # location.
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
@@ -77,27 +77,25 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Values of evaluated expressions at breakpoint time.
-        # The evaluated expressions appear in exactly the same order they
-        # are listed in the `expressions` field.
-        # The `name` field holds the original expression text, the `value` or
-        # `members` field holds the result of the evaluated expression.
-        # If the expression cannot be evaluated, the `status` inside the `Variable`
-        # will indicate an error and contain the error text.
+        # Values of evaluated expressions at breakpoint time. The evaluated expressions
+        # appear in exactly the same order they are listed in the `expressions` field.
+        # The `name` field holds the original expression text, the `value` or `members`
+        # field holds the result of the evaluated expression. If the expression cannot
+        # be evaluated, the `status` inside the `Variable` will indicate an error and
+        # contain the error text.
         # Corresponds to the JSON property `evaluatedExpressions`
         # @return [Array<Google::Apis::ClouddebuggerV2::Variable>]
         attr_accessor :evaluated_expressions
       
-        # List of read-only expressions to evaluate at the breakpoint location.
-        # The expressions are composed using expressions in the programming language
-        # at the source location. If the breakpoint action is `LOG`, the evaluated
-        # expressions are included in log statements.
+        # List of read-only expressions to evaluate at the breakpoint location. The
+        # expressions are composed using expressions in the programming language at the
+        # source location. If the breakpoint action is `LOG`, the evaluated expressions
+        # are included in log statements.
         # Corresponds to the JSON property `expressions`
         # @return [Array<String>]
         attr_accessor :expressions
       
-        # Time this breakpoint was finalized as seen by the server in seconds
-        # resolution.
+        # Time this breakpoint was finalized as seen by the server in seconds resolution.
         # Corresponds to the JSON property `finalTime`
         # @return [String]
         attr_accessor :final_time
@@ -107,15 +105,15 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # When true, indicates that this is a final result and the
-        # breakpoint state will not change from here on.
+        # When true, indicates that this is a final result and the breakpoint state will
+        # not change from here on.
         # Corresponds to the JSON property `isFinalState`
         # @return [Boolean]
         attr_accessor :is_final_state
         alias_method :is_final_state?, :is_final_state
       
-        # A set of custom breakpoint properties, populated by the agent, to be
-        # displayed to the user.
+        # A set of custom breakpoint properties, populated by the agent, to be displayed
+        # to the user.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -130,13 +128,12 @@ module Google
         # @return [String]
         attr_accessor :log_level
       
-        # Only relevant when action is `LOG`. Defines the message to log when
-        # the breakpoint hits. The message may include parameter placeholders `$0`,
-        # `$1`, etc. These placeholders are replaced with the evaluated value
-        # of the appropriate expression. Expressions not referenced in
-        # `log_message_format` are not logged.
-        # Example: `Message received, id = $0, count = $1` with
-        # `expressions` = `[ message.id, message.count ]`.
+        # Only relevant when action is `LOG`. Defines the message to log when the
+        # breakpoint hits. The message may include parameter placeholders `$0`, `$1`,
+        # etc. These placeholders are replaced with the evaluated value of the
+        # appropriate expression. Expressions not referenced in `log_message_format` are
+        # not logged. Example: `Message received, id = $0, count = $1` with `expressions`
+        # = `[ message.id, message.count ]`.
         # Corresponds to the JSON property `logMessageFormat`
         # @return [String]
         attr_accessor :log_message_format
@@ -152,11 +149,10 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Represents a contextual status message.
-        # The message can indicate an error or informational status, and refer to
-        # specific parts of the containing object.
-        # For example, the `Breakpoint.status` field can indicate an error referring
-        # to the `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.
+        # Represents a contextual status message. The message can indicate an error or
+        # informational status, and refer to specific parts of the containing object.
+        # For example, the `Breakpoint.status` field can indicate an error referring to
+        # the `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::ClouddebuggerV2::StatusMessage]
         attr_accessor :status
@@ -167,16 +163,15 @@ module Google
         attr_accessor :user_email
       
         # The `variable_table` exists to aid with computation, memory and network
-        # traffic optimization.  It enables storing a variable once and reference
-        # it from multiple variables, including variables stored in the
-        # `variable_table` itself.
-        # For example, the same `this` object, which may appear at many levels of
-        # the stack, can have all of its data stored once in this table.  The
-        # stack frame variables then would hold only a reference to it.
-        # The variable `var_table_index` field is an index into this repeated field.
-        # The stored objects are nameless and get their name from the referencing
-        # variable. The effective variable is a merge of the referencing variable
-        # and the referenced variable.
+        # traffic optimization. It enables storing a variable once and reference it from
+        # multiple variables, including variables stored in the `variable_table` itself.
+        # For example, the same `this` object, which may appear at many levels of the
+        # stack, can have all of its data stored once in this table. The stack frame
+        # variables then would hold only a reference to it. The variable `
+        # var_table_index` field is an index into this repeated field. The stored
+        # objects are nameless and get their name from the referencing variable. The
+        # effective variable is a merge of the referencing variable and the referenced
+        # variable.
         # Corresponds to the JSON property `variableTable`
         # @return [Array<Google::Apis::ClouddebuggerV2::Variable>]
         attr_accessor :variable_table
@@ -208,8 +203,8 @@ module Google
         end
       end
       
-      # A CloudRepoSourceContext denotes a particular revision in a cloud
-      # repo (a repo hosted by the Google Cloud Platform).
+      # A CloudRepoSourceContext denotes a particular revision in a cloud repo (a repo
+      # hosted by the Google Cloud Platform).
       class CloudRepoSourceContext
         include Google::Apis::Core::Hashable
       
@@ -246,14 +241,14 @@ module Google
         end
       end
       
-      # A CloudWorkspaceId is a unique identifier for a cloud workspace.
-      # A cloud workspace is a place associated with a repo where modified files
-      # can be stored before they are committed.
+      # A CloudWorkspaceId is a unique identifier for a cloud workspace. A cloud
+      # workspace is a place associated with a repo where modified files can be stored
+      # before they are committed.
       class CloudWorkspaceId
         include Google::Apis::Core::Hashable
       
-        # The unique name of the workspace within the repo.  This is the name
-        # chosen by the client in the Source API's CreateWorkspace method.
+        # The unique name of the workspace within the repo. This is the name chosen by
+        # the client in the Source API's CreateWorkspace method.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -278,15 +273,15 @@ module Google
       class CloudWorkspaceSourceContext
         include Google::Apis::Core::Hashable
       
-        # The ID of the snapshot.
-        # An empty snapshot_id refers to the most recent snapshot.
+        # The ID of the snapshot. An empty snapshot_id refers to the most recent
+        # snapshot.
         # Corresponds to the JSON property `snapshotId`
         # @return [String]
         attr_accessor :snapshot_id
       
-        # A CloudWorkspaceId is a unique identifier for a cloud workspace.
-        # A cloud workspace is a place associated with a repo where modified files
-        # can be stored before they are committed.
+        # A CloudWorkspaceId is a unique identifier for a cloud workspace. A cloud
+        # workspace is a place associated with a repo where modified files can be stored
+        # before they are committed.
         # Corresponds to the JSON property `workspaceId`
         # @return [Google::Apis::ClouddebuggerV2::CloudWorkspaceId]
         attr_accessor :workspace_id
@@ -304,15 +299,14 @@ module Google
       
       # Represents the debugged application. The application may include one or more
       # replicated processes executing the same code. Each of these processes is
-      # attached with a debugger agent, carrying out the debugging commands.
-      # Agents attached to the same debuggee identify themselves as such by using
-      # exactly the same Debuggee message value when registering.
+      # attached with a debugger agent, carrying out the debugging commands. Agents
+      # attached to the same debuggee identify themselves as such by using exactly the
+      # same Debuggee message value when registering.
       class Debuggee
         include Google::Apis::Core::Hashable
       
-        # Version ID of the agent.
-        # Schema: `domain/language-platform/vmajor.minor` (for example
-        # `google.com/java-gcp/v1.1`).
+        # Version ID of the agent. Schema: `domain/language-platform/vmajor.minor` (for
+        # example `google.com/java-gcp/v1.1`).
         # Corresponds to the JSON property `agentVersion`
         # @return [String]
         attr_accessor :agent_version
@@ -322,9 +316,8 @@ module Google
         # @return [String]
         attr_accessor :canary_mode
       
-        # Human readable description of the debuggee.
-        # Including a human-readable project name, environment name and version
-        # information is recommended.
+        # Human readable description of the debuggee. Including a human-readable project
+        # name, environment name and version information is recommended.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -340,8 +333,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # If set to `true`, indicates that the agent should disable itself and
-        # detach from the debuggee.
+        # If set to `true`, indicates that the agent should disable itself and detach
+        # from the debuggee.
         # Corresponds to the JSON property `isDisabled`
         # @return [Boolean]
         attr_accessor :is_disabled
@@ -354,14 +347,14 @@ module Google
         attr_accessor :is_inactive
         alias_method :is_inactive?, :is_inactive
       
-        # A set of custom debuggee properties, populated by the agent, to be
-        # displayed to the user.
+        # A set of custom debuggee properties, populated by the agent, to be displayed
+        # to the user.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Project the debuggee is associated with.
-        # Use project number or id when registering a Google Cloud Platform project.
+        # Project the debuggee is associated with. Use project number or id when
+        # registering a Google Cloud Platform project.
         # Corresponds to the JSON property `project`
         # @return [String]
         attr_accessor :project
@@ -372,21 +365,20 @@ module Google
         # @return [Array<Google::Apis::ClouddebuggerV2::SourceContext>]
         attr_accessor :source_contexts
       
-        # Represents a contextual status message.
-        # The message can indicate an error or informational status, and refer to
-        # specific parts of the containing object.
-        # For example, the `Breakpoint.status` field can indicate an error referring
-        # to the `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.
+        # Represents a contextual status message. The message can indicate an error or
+        # informational status, and refer to specific parts of the containing object.
+        # For example, the `Breakpoint.status` field can indicate an error referring to
+        # the `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::ClouddebuggerV2::StatusMessage]
         attr_accessor :status
       
-        # Uniquifier to further distinguish the application.
-        # It is possible that different applications might have identical values in
-        # the debuggee message, thus, incorrectly identified as a single application
-        # by the Controller service. This field adds salt to further distinguish the
-        # application. Agents should consider seeding this field with value that
-        # identifies the code, binary, configuration and environment.
+        # Uniquifier to further distinguish the application. It is possible that
+        # different applications might have identical values in the debuggee message,
+        # thus, incorrectly identified as a single application by the Controller service.
+        # This field adds salt to further distinguish the application. Agents should
+        # consider seeding this field with value that identifies the code, binary,
+        # configuration and environment.
         # Corresponds to the JSON property `uniquifier`
         # @return [String]
         attr_accessor :uniquifier
@@ -412,13 +404,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -431,8 +421,8 @@ module Google
         end
       end
       
-      # An ExtendedSourceContext is a SourceContext combined with additional
-      # details describing the context.
+      # An ExtendedSourceContext is a SourceContext combined with additional details
+      # describing the context.
       class ExtendedSourceContext
         include Google::Apis::Core::Hashable
       
@@ -462,13 +452,11 @@ module Google
       class FormatMessage
         include Google::Apis::Core::Hashable
       
-        # Format template for the message. The `format` uses placeholders `$0`,
-        # `$1`, etc. to reference parameters. `$$` can be used to denote the `$`
-        # character.
-        # Examples:
-        # *   `Failed to load '$0' which helps debug $1 the first time it
-        # is loaded.  Again, $0 is very important.`
-        # *   `Please pay $$10 to use $0 instead of $1.`
+        # Format template for the message. The `format` uses placeholders `$0`, `$1`,
+        # etc. to reference parameters. `$$` can be used to denote the `$` character.
+        # Examples: * `Failed to load '$0' which helps debug $1 the first time it is
+        # loaded. Again, $0 is very important.` * `Please pay $$10 to use $0 instead of $
+        # 1.`
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
@@ -503,9 +491,8 @@ module Google
         # @return [String]
         attr_accessor :alias_name
       
-        # The full project name within the host. Projects may be nested, so
-        # "project/subproject" is a valid project name.
-        # The "repo name" is hostURI/project.
+        # The full project name within the host. Projects may be nested, so "project/
+        # subproject" is a valid project name. The "repo name" is hostURI/project.
         # Corresponds to the JSON property `gerritProject`
         # @return [String]
         attr_accessor :gerrit_project
@@ -539,8 +526,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # ------------------------------------------------------------------------------
-        # ## Breakpoint (the resource)
-        # Represents the breakpoint specification, status and results.
+        # ## Breakpoint (the resource) Represents the breakpoint specification, status
+        # and results.
         # Corresponds to the JSON property `breakpoint`
         # @return [Google::Apis::ClouddebuggerV2::Breakpoint]
         attr_accessor :breakpoint
@@ -560,8 +547,7 @@ module Google
       class GitSourceContext
         include Google::Apis::Core::Hashable
       
-        # Git commit hash.
-        # required.
+        # Git commit hash. required.
         # Corresponds to the JSON property `revisionId`
         # @return [String]
         attr_accessor :revision_id
@@ -586,21 +572,21 @@ module Google
       class ListActiveBreakpointsResponse
         include Google::Apis::Core::Hashable
       
-        # List of all active breakpoints.
-        # The fields `id` and `location` are guaranteed to be set on each breakpoint.
+        # List of all active breakpoints. The fields `id` and `location` are guaranteed
+        # to be set on each breakpoint.
         # Corresponds to the JSON property `breakpoints`
         # @return [Array<Google::Apis::ClouddebuggerV2::Breakpoint>]
         attr_accessor :breakpoints
       
-        # A token that can be used in the next method call to block until
-        # the list of breakpoints changes.
+        # A token that can be used in the next method call to block until the list of
+        # breakpoints changes.
         # Corresponds to the JSON property `nextWaitToken`
         # @return [String]
         attr_accessor :next_wait_token
       
-        # If set to `true`, indicates that there is no change to the
-        # list of active breakpoints and the server-selected timeout has expired.
-        # The `breakpoints` field would be empty and should be ignored.
+        # If set to `true`, indicates that there is no change to the list of active
+        # breakpoints and the server-selected timeout has expired. The `breakpoints`
+        # field would be empty and should be ignored.
         # Corresponds to the JSON property `waitExpired`
         # @return [Boolean]
         attr_accessor :wait_expired
@@ -622,16 +608,16 @@ module Google
       class ListBreakpointsResponse
         include Google::Apis::Core::Hashable
       
-        # List of breakpoints matching the request.
-        # The fields `id` and `location` are guaranteed to be set on each breakpoint.
-        # The fields: `stack_frames`, `evaluated_expressions` and `variable_table`
-        # are cleared on each breakpoint regardless of its status.
+        # List of breakpoints matching the request. The fields `id` and `location` are
+        # guaranteed to be set on each breakpoint. The fields: `stack_frames`, `
+        # evaluated_expressions` and `variable_table` are cleared on each breakpoint
+        # regardless of its status.
         # Corresponds to the JSON property `breakpoints`
         # @return [Array<Google::Apis::ClouddebuggerV2::Breakpoint>]
         attr_accessor :breakpoints
       
-        # A wait token that can be used in the next call to `list` (REST) or
-        # `ListBreakpoints` (RPC) to block until the list of breakpoints has changes.
+        # A wait token that can be used in the next call to `list` (REST) or `
+        # ListBreakpoints` (RPC) to block until the list of breakpoints has changes.
         # Corresponds to the JSON property `nextWaitToken`
         # @return [String]
         attr_accessor :next_wait_token
@@ -651,10 +637,9 @@ module Google
       class ListDebuggeesResponse
         include Google::Apis::Core::Hashable
       
-        # List of debuggees accessible to the calling user.
-        # The fields `debuggee.id` and `description` are guaranteed to be set.
-        # The `description` field is a human readable field provided by agents and
-        # can be displayed to users.
+        # List of debuggees accessible to the calling user. The fields `debuggee.id` and
+        # `description` are guaranteed to be set. The `description` field is a human
+        # readable field provided by agents and can be displayed to users.
         # Corresponds to the JSON property `debuggees`
         # @return [Array<Google::Apis::ClouddebuggerV2::Debuggee>]
         attr_accessor :debuggees
@@ -669,8 +654,8 @@ module Google
         end
       end
       
-      # Selects a repo using a Google Cloud Platform project ID
-      # (e.g. winged-cargo-31) and a repo name within that project.
+      # Selects a repo using a Google Cloud Platform project ID (e.g. winged-cargo-31)
+      # and a repo name within that project.
       class ProjectRepoId
         include Google::Apis::Core::Hashable
       
@@ -701,9 +686,9 @@ module Google
       
         # Represents the debugged application. The application may include one or more
         # replicated processes executing the same code. Each of these processes is
-        # attached with a debugger agent, carrying out the debugging commands.
-        # Agents attached to the same debuggee identify themselves as such by using
-        # exactly the same Debuggee message value when registering.
+        # attached with a debugger agent, carrying out the debugging commands. Agents
+        # attached to the same debuggee identify themselves as such by using exactly the
+        # same Debuggee message value when registering.
         # Corresponds to the JSON property `debuggee`
         # @return [Google::Apis::ClouddebuggerV2::Debuggee]
         attr_accessor :debuggee
@@ -722,17 +707,17 @@ module Google
       class RegisterDebuggeeResponse
         include Google::Apis::Core::Hashable
       
-        # A unique ID generated for the agent.
-        # Each RegisterDebuggee request will generate a new agent ID.
+        # A unique ID generated for the agent. Each RegisterDebuggee request will
+        # generate a new agent ID.
         # Corresponds to the JSON property `agentId`
         # @return [String]
         attr_accessor :agent_id
       
         # Represents the debugged application. The application may include one or more
         # replicated processes executing the same code. Each of these processes is
-        # attached with a debugger agent, carrying out the debugging commands.
-        # Agents attached to the same debuggee identify themselves as such by using
-        # exactly the same Debuggee message value when registering.
+        # attached with a debugger agent, carrying out the debugging commands. Agents
+        # attached to the same debuggee identify themselves as such by using exactly the
+        # same Debuggee message value when registering.
         # Corresponds to the JSON property `debuggee`
         # @return [Google::Apis::ClouddebuggerV2::Debuggee]
         attr_accessor :debuggee
@@ -752,8 +737,8 @@ module Google
       class RepoId
         include Google::Apis::Core::Hashable
       
-        # Selects a repo using a Google Cloud Platform project ID
-        # (e.g. winged-cargo-31) and a repo name within that project.
+        # Selects a repo using a Google Cloud Platform project ID (e.g. winged-cargo-31)
+        # and a repo name within that project.
         # Corresponds to the JSON property `projectRepoId`
         # @return [Google::Apis::ClouddebuggerV2::ProjectRepoId]
         attr_accessor :project_repo_id
@@ -779,8 +764,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # ------------------------------------------------------------------------------
-        # ## Breakpoint (the resource)
-        # Represents the breakpoint specification, status and results.
+        # ## Breakpoint (the resource) Represents the breakpoint specification, status
+        # and results.
         # Corresponds to the JSON property `breakpoint`
         # @return [Google::Apis::ClouddebuggerV2::Breakpoint]
         attr_accessor :breakpoint
@@ -800,8 +785,8 @@ module Google
       class SourceContext
         include Google::Apis::Core::Hashable
       
-        # A CloudRepoSourceContext denotes a particular revision in a cloud
-        # repo (a repo hosted by the Google Cloud Platform).
+        # A CloudRepoSourceContext denotes a particular revision in a cloud repo (a repo
+        # hosted by the Google Cloud Platform).
         # Corresponds to the JSON property `cloudRepo`
         # @return [Google::Apis::ClouddebuggerV2::CloudRepoSourceContext]
         attr_accessor :cloud_repo
@@ -839,9 +824,8 @@ module Google
       class SourceLocation
         include Google::Apis::Core::Hashable
       
-        # Column within a line. The first column in a line as the value `1`.
-        # Agents that do not support setting breakpoints on specific columns ignore
-        # this field.
+        # Column within a line. The first column in a line as the value `1`. Agents that
+        # do not support setting breakpoints on specific columns ignore this field.
         # Corresponds to the JSON property `column`
         # @return [Fixnum]
         attr_accessor :column
@@ -872,8 +856,8 @@ module Google
       class StackFrame
         include Google::Apis::Core::Hashable
       
-        # Set of arguments passed to this function.
-        # Note that this might not be populated for all stack frames.
+        # Set of arguments passed to this function. Note that this might not be
+        # populated for all stack frames.
         # Corresponds to the JSON property `arguments`
         # @return [Array<Google::Apis::ClouddebuggerV2::Variable>]
         attr_accessor :arguments
@@ -883,8 +867,8 @@ module Google
         # @return [String]
         attr_accessor :function
       
-        # Set of local variables at the stack frame location.
-        # Note that this might not be populated for all stack frames.
+        # Set of local variables at the stack frame location. Note that this might not
+        # be populated for all stack frames.
         # Corresponds to the JSON property `locals`
         # @return [Array<Google::Apis::ClouddebuggerV2::Variable>]
         attr_accessor :locals
@@ -907,11 +891,10 @@ module Google
         end
       end
       
-      # Represents a contextual status message.
-      # The message can indicate an error or informational status, and refer to
-      # specific parts of the containing object.
-      # For example, the `Breakpoint.status` field can indicate an error referring
-      # to the `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.
+      # Represents a contextual status message. The message can indicate an error or
+      # informational status, and refer to specific parts of the containing object.
+      # For example, the `Breakpoint.status` field can indicate an error referring to
+      # the `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.
       class StatusMessage
         include Google::Apis::Core::Hashable
       
@@ -948,8 +931,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # ------------------------------------------------------------------------------
-        # ## Breakpoint (the resource)
-        # Represents the breakpoint specification, status and results.
+        # ## Breakpoint (the resource) Represents the breakpoint specification, status
+        # and results.
         # Corresponds to the JSON property `breakpoint`
         # @return [Google::Apis::ClouddebuggerV2::Breakpoint]
         attr_accessor :breakpoint
@@ -964,8 +947,8 @@ module Google
         end
       end
       
-      # Response for updating an active breakpoint.
-      # The message is defined to allow future extensions.
+      # Response for updating an active breakpoint. The message is defined to allow
+      # future extensions.
       class UpdateActiveBreakpointResponse
         include Google::Apis::Core::Hashable
       
@@ -978,88 +961,39 @@ module Google
         end
       end
       
-      # Represents a variable or an argument possibly of a compound object type.
-      # Note how the following variables are represented:
-      # 1) A simple variable:
-      # int x = 5
-      # ` name: "x", value: "5", type: "int" `  // Captured variable
-      # 2) A compound object:
-      # struct T `
-      # int m1;
-      # int m2;
-      # `;
-      # T x = ` 3, 7 `;
-      # `  // Captured variable
-      # name: "x",
-      # type: "T",
-      # members ` name: "m1", value: "3", type: "int" `,
-      # members ` name: "m2", value: "7", type: "int" `
-      # `
-      # 3) A pointer where the pointee was captured:
-      # T x = ` 3, 7 `;
-      # T* p = &x;
-      # `   // Captured variable
-      # name: "p",
-      # type: "T*",
-      # value: "0x00500500",
-      # members ` name: "m1", value: "3", type: "int" `,
-      # members ` name: "m2", value: "7", type: "int" `
-      # `
-      # 4) A pointer where the pointee was not captured:
-      # T* p = new T;
-      # `   // Captured variable
-      # name: "p",
-      # type: "T*",
-      # value: "0x00400400"
-      # status ` is_error: true, description ` format: "unavailable" ` `
-      # `
-      # The status should describe the reason for the missing value,
-      # such as `<optimized out>`, `<inaccessible>`, `<pointers limit reached>`.
-      # Note that a null pointer should not have members.
-      # 5) An unnamed value:
-      # int* p = new int(7);
-      # `   // Captured variable
-      # name: "p",
-      # value: "0x00500500",
-      # type: "int*",
-      # members ` value: "7", type: "int" ` `
-      # 6) An unnamed pointer where the pointee was not captured:
-      # int* p = new int(7);
-      # int** pp = &p;
-      # `  // Captured variable
-      # name: "pp",
-      # value: "0x00500500",
-      # type: "int**",
-      # members `
-      # value: "0x00400400",
-      # type: "int*"
-      # status `
-      # is_error: true,
-      # description: ` format: "unavailable" ` `
-      # `
-      # `
-      # `
-      # To optimize computation, memory and network traffic, variables that
-      # repeat in the output multiple times can be stored once in a shared
-      # variable table and be referenced using the `var_table_index` field.  The
-      # variables stored in the shared table are nameless and are essentially
-      # a partition of the complete variable. To reconstruct the complete
-      # variable, merge the referencing variable with the referenced variable.
-      # When using the shared variable table, the following variables:
-      # T x = ` 3, 7 `;
-      # T* p = &x;
-      # T& r = x;
-      # ` name: "x", var_table_index: 3, type: "T" `  // Captured variables
-      # ` name: "p", value "0x00500500", type="T*", var_table_index: 3 `
-      # ` name: "r", type="T&", var_table_index: 3 `
-      # `  // Shared variable table entry #3:
-      # members ` name: "m1", value: "3", type: "int" `,
-      # members ` name: "m2", value: "7", type: "int" `
-      # `
-      # Note that the pointer address is stored with the referencing variable
-      # and not with the referenced variable. This allows the referenced variable
-      # to be shared between pointers and references.
-      # The type field is optional. The debugger agent may or may not support it.
+      # Represents a variable or an argument possibly of a compound object type. Note
+      # how the following variables are represented: 1) A simple variable: int x = 5 `
+      # name: "x", value: "5", type: "int" ` // Captured variable 2) A compound object:
+      # struct T ` int m1; int m2; `; T x = ` 3, 7 `; ` // Captured variable name: "x"
+      # , type: "T", members ` name: "m1", value: "3", type: "int" `, members ` name: "
+      # m2", value: "7", type: "int" ` ` 3) A pointer where the pointee was captured:
+      # T x = ` 3, 7 `; T* p = &x; ` // Captured variable name: "p", type: "T*", value:
+      # "0x00500500", members ` name: "m1", value: "3", type: "int" `, members ` name:
+      # "m2", value: "7", type: "int" ` ` 4) A pointer where the pointee was not
+      # captured: T* p = new T; ` // Captured variable name: "p", type: "T*", value: "
+      # 0x00400400" status ` is_error: true, description ` format: "unavailable" ` ` `
+      # The status should describe the reason for the missing value, such as ``, ``, ``
+      # . Note that a null pointer should not have members. 5) An unnamed value: int*
+      # p = new int(7); ` // Captured variable name: "p", value: "0x00500500", type: "
+      # int*", members ` value: "7", type: "int" ` ` 6) An unnamed pointer where the
+      # pointee was not captured: int* p = new int(7); int** pp = &p; ` // Captured
+      # variable name: "pp", value: "0x00500500", type: "int**", members ` value: "
+      # 0x00400400", type: "int*" status ` is_error: true, description: ` format: "
+      # unavailable" ` ` ` ` ` To optimize computation, memory and network traffic,
+      # variables that repeat in the output multiple times can be stored once in a
+      # shared variable table and be referenced using the `var_table_index` field. The
+      # variables stored in the shared table are nameless and are essentially a
+      # partition of the complete variable. To reconstruct the complete variable,
+      # merge the referencing variable with the referenced variable. When using the
+      # shared variable table, the following variables: T x = ` 3, 7 `; T* p = &x; T&
+      # r = x; ` name: "x", var_table_index: 3, type: "T" ` // Captured variables `
+      # name: "p", value "0x00500500", type="T*", var_table_index: 3 ` ` name: "r",
+      # type="T&", var_table_index: 3 ` ` // Shared variable table entry #3: members `
+      # name: "m1", value: "3", type: "int" `, members ` name: "m2", value: "7", type:
+      # "int" ` ` Note that the pointer address is stored with the referencing
+      # variable and not with the referenced variable. This allows the referenced
+      # variable to be shared between pointers and references. The type field is
+      # optional. The debugger agent may or may not support it.
       class Variable
         include Google::Apis::Core::Hashable
       
@@ -1073,19 +1007,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Represents a contextual status message.
-        # The message can indicate an error or informational status, and refer to
-        # specific parts of the containing object.
-        # For example, the `Breakpoint.status` field can indicate an error referring
-        # to the `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.
+        # Represents a contextual status message. The message can indicate an error or
+        # informational status, and refer to specific parts of the containing object.
+        # For example, the `Breakpoint.status` field can indicate an error referring to
+        # the `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::ClouddebuggerV2::StatusMessage]
         attr_accessor :status
       
-        # Variable type (e.g. `MyClass`). If the variable is split with
-        # `var_table_index`, `type` goes next to `value`. The interpretation of
-        # a type is agent specific. It is recommended to include the dynamic type
-        # rather than a static type of an object.
+        # Variable type (e.g. `MyClass`). If the variable is split with `var_table_index`
+        # , `type` goes next to `value`. The interpretation of a type is agent specific.
+        # It is recommended to include the dynamic type rather than a static type of an
+        # object.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1095,9 +1028,9 @@ module Google
         # @return [String]
         attr_accessor :value
       
-        # Reference to a variable in the shared variable table. More than
-        # one variable can reference the same variable in the table. The
-        # `var_table_index` field is an index into `variable_table` in Breakpoint.
+        # Reference to a variable in the shared variable table. More than one variable
+        # can reference the same variable in the table. The `var_table_index` field is
+        # an index into `variable_table` in Breakpoint.
         # Corresponds to the JSON property `varTableIndex`
         # @return [Fixnum]
         attr_accessor :var_table_index
