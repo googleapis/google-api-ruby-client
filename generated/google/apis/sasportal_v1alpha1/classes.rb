@@ -338,6 +338,11 @@ module Google
         # @return [Google::Apis::SasportalV1alpha1::SasPortalFrequencyRange]
         attr_accessor :frequency_range
       
+        # Grant Id.
+        # Corresponds to the JSON property `grantId`
+        # @return [String]
+        attr_accessor :grant_id
+      
         # Maximum Equivalent Isotropically Radiated Power (EIRP) permitted by the grant.
         # The maximum EIRP is in units of dBm/MHz. The value of maxEirp represents the
         # average (RMS) EIRP that would be measured by the procedure defined in FCC part
@@ -370,6 +375,7 @@ module Google
           @channel_type = args[:channel_type] if args.key?(:channel_type)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @frequency_range = args[:frequency_range] if args.key?(:frequency_range)
+          @grant_id = args[:grant_id] if args.key?(:grant_id)
           @max_eirp = args[:max_eirp] if args.key?(:max_eirp)
           @move_list = args[:move_list] if args.key?(:move_list)
           @state = args[:state] if args.key?(:state)

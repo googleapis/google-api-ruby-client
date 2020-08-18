@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GmailpostmastertoolsV1beta1
-      # Postmaster Tools API
+      # Gmail Postmaster Tools API
       #
       # The Postmaster Tools API is a RESTful API that provides programmatic access to
       #  email traffic metrics (like spam reports, delivery errors etc) otherwise

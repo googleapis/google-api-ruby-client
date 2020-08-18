@@ -98,8 +98,8 @@ module Google
         end
       end
       
-      # Adds a new conditional format rule at the given index.
-      # All subsequent rules' indexes are incremented.
+      # Adds a new conditional format rule at the given index. All subsequent rules'
+      # indexes are incremented.
       class AddConditionalFormatRuleRequest
         include Google::Apis::Core::Hashable
       
@@ -124,29 +124,25 @@ module Google
         end
       end
       
-      # Creates a group over the specified range.
-      # If the requested range is a superset of the range of an existing group G,
-      # then the depth of G is incremented and this new group G' has the
-      # depth of that group. For example, a group [C:D, depth 1] + [B:E] results in
-      # groups [B:E, depth 1] and [C:D, depth 2].
-      # If the requested range is a subset of the range of an existing group G,
-      # then the depth of the new group G' becomes one greater than the depth of G.
-      # For example, a group [B:E, depth 1] + [C:D] results in groups [B:E, depth 1]
-      # and [C:D, depth 2].
-      # If the requested range starts before and ends within, or starts within and
-      # ends after, the range of an existing group G, then the range of the existing
-      # group G becomes the union of the ranges, and the new group G' has
+      # Creates a group over the specified range. If the requested range is a superset
+      # of the range of an existing group G, then the depth of G is incremented and
+      # this new group G' has the depth of that group. For example, a group [C:D,
+      # depth 1] + [B:E] results in groups [B:E, depth 1] and [C:D, depth 2]. If the
+      # requested range is a subset of the range of an existing group G, then the
+      # depth of the new group G' becomes one greater than the depth of G. For example,
+      # a group [B:E, depth 1] + [C:D] results in groups [B:E, depth 1] and [C:D,
+      # depth 2]. If the requested range starts before and ends within, or starts
+      # within and ends after, the range of an existing group G, then the range of the
+      # existing group G becomes the union of the ranges, and the new group G' has
       # depth one greater than the depth of G and range as the intersection of the
       # ranges. For example, a group [B:D, depth 1] + [C:E] results in groups [B:E,
       # depth 1] and [C:D, depth 2].
       class AddDimensionGroupRequest
         include Google::Apis::Core::Hashable
       
-        # A range along a single dimension on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open: the start index is inclusive
-        # and the end index is exclusive.
-        # Missing indexes indicate the range is unbounded on that side.
+        # A range along a single dimension on a sheet. All indexes are zero-based.
+        # Indexes are half open: the start index is inclusive and the end index is
+        # exclusive. Missing indexes indicate the range is unbounded on that side.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::DimensionRange]
         attr_accessor :range
@@ -294,12 +290,10 @@ module Google
         end
       end
       
-      # Adds a new sheet.
-      # When a sheet is added at a given index,
-      # all subsequent sheets' indexes are incremented.
-      # To add an object sheet, use AddChartRequest instead and specify
-      # EmbeddedObjectPosition.sheetId or
-      # EmbeddedObjectPosition.newSheet.
+      # Adds a new sheet. When a sheet is added at a given index, all subsequent
+      # sheets' indexes are incremented. To add an object sheet, use AddChartRequest
+      # instead and specify EmbeddedObjectPosition.sheetId or EmbeddedObjectPosition.
+      # newSheet.
       class AddSheetRequest
         include Google::Apis::Core::Hashable
       
@@ -375,15 +369,14 @@ module Google
         end
       end
       
-      # Adds new cells after the last row with data in a sheet,
-      # inserting new rows into the sheet if necessary.
+      # Adds new cells after the last row with data in a sheet, inserting new rows
+      # into the sheet if necessary.
       class AppendCellsRequest
         include Google::Apis::Core::Hashable
       
-        # The fields of CellData that should be updated.
-        # At least one field must be specified.
-        # The root is the CellData; 'row.values.' should not be specified.
-        # A single `"*"` can be used as short-hand for listing every field.
+        # The fields of CellData that should be updated. At least one field must be
+        # specified. The root is the CellData; 'row.values.' should not be specified. A
+        # single `"*"` can be used as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -450,9 +443,8 @@ module Google
         # @return [String]
         attr_accessor :spreadsheet_id
       
-        # The range (in A1 notation) of the table that values are being appended to
-        # (before the values were appended).
-        # Empty if no table was found.
+        # The range (in A1 notation) of the table that values are being appended to (
+        # before the values were appended). Empty if no table was found.
         # Corresponds to the JSON property `tableRange`
         # @return [String]
         attr_accessor :table_range
@@ -478,28 +470,19 @@ module Google
       class AutoFillRequest
         include Google::Apis::Core::Hashable
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -509,8 +492,8 @@ module Google
         # @return [Google::Apis::SheetsV4::SourceAndDestination]
         attr_accessor :source_and_destination
       
-        # True if we should generate data with the "alternate" series.
-        # This differs based on the type and amount of source data.
+        # True if we should generate data with the "alternate" series. This differs
+        # based on the type and amount of source data.
         # Corresponds to the JSON property `useAlternateSeries`
         # @return [Boolean]
         attr_accessor :use_alternate_series
@@ -528,16 +511,14 @@ module Google
         end
       end
       
-      # Automatically resizes one or more dimensions based on the contents
-      # of the cells in that dimension.
+      # Automatically resizes one or more dimensions based on the contents of the
+      # cells in that dimension.
       class AutoResizeDimensionsRequest
         include Google::Apis::Core::Hashable
       
-        # A range along a single dimension on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open: the start index is inclusive
-        # and the end index is exclusive.
-        # Missing indexes indicate the range is unbounded on that side.
+        # A range along a single dimension on a sheet. All indexes are zero-based.
+        # Indexes are half open: the start index is inclusive and the end index is
+        # exclusive. Missing indexes indicate the range is unbounded on that side.
         # Corresponds to the JSON property `dimensions`
         # @return [Google::Apis::SheetsV4::DimensionRange]
         attr_accessor :dimensions
@@ -562,56 +543,45 @@ module Google
         attr_accessor :banded_range_id
       
         # Properties referring a single dimension (either row or column). If both
-        # BandedRange.row_properties and BandedRange.column_properties are
-        # set, the fill colors are applied to cells according to the following rules:
-        # * header_color and footer_color take priority over band colors.
-        # * first_band_color takes priority over second_band_color.
-        # * row_properties takes priority over column_properties.
-        # For example, the first row color takes priority over the first column
-        # color, but the first column color takes priority over the second row color.
-        # Similarly, the row header takes priority over the column header in the
-        # top left cell, but the column header takes priority over the first row
+        # BandedRange.row_properties and BandedRange.column_properties are set, the fill
+        # colors are applied to cells according to the following rules: * header_color
+        # and footer_color take priority over band colors. * first_band_color takes
+        # priority over second_band_color. * row_properties takes priority over
+        # column_properties. For example, the first row color takes priority over the
+        # first column color, but the first column color takes priority over the second
+        # row color. Similarly, the row header takes priority over the column header in
+        # the top left cell, but the column header takes priority over the first row
         # color if the row header is not set.
         # Corresponds to the JSON property `columnProperties`
         # @return [Google::Apis::SheetsV4::BandingProperties]
         attr_accessor :column_properties
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
       
         # Properties referring a single dimension (either row or column). If both
-        # BandedRange.row_properties and BandedRange.column_properties are
-        # set, the fill colors are applied to cells according to the following rules:
-        # * header_color and footer_color take priority over band colors.
-        # * first_band_color takes priority over second_band_color.
-        # * row_properties takes priority over column_properties.
-        # For example, the first row color takes priority over the first column
-        # color, but the first column color takes priority over the second row color.
-        # Similarly, the row header takes priority over the column header in the
-        # top left cell, but the column header takes priority over the first row
+        # BandedRange.row_properties and BandedRange.column_properties are set, the fill
+        # colors are applied to cells according to the following rules: * header_color
+        # and footer_color take priority over band colors. * first_band_color takes
+        # priority over second_band_color. * row_properties takes priority over
+        # column_properties. For example, the first row color takes priority over the
+        # first column color, but the first column color takes priority over the second
+        # row color. Similarly, the row header takes priority over the column header in
+        # the top left cell, but the column header takes priority over the first row
         # color if the row header is not set.
         # Corresponds to the JSON property `rowProperties`
         # @return [Google::Apis::SheetsV4::BandingProperties]
@@ -631,125 +601,63 @@ module Google
       end
       
       # Properties referring a single dimension (either row or column). If both
-      # BandedRange.row_properties and BandedRange.column_properties are
-      # set, the fill colors are applied to cells according to the following rules:
-      # * header_color and footer_color take priority over band colors.
-      # * first_band_color takes priority over second_band_color.
-      # * row_properties takes priority over column_properties.
-      # For example, the first row color takes priority over the first column
-      # color, but the first column color takes priority over the second row color.
-      # Similarly, the row header takes priority over the column header in the
-      # top left cell, but the column header takes priority over the first row
+      # BandedRange.row_properties and BandedRange.column_properties are set, the fill
+      # colors are applied to cells according to the following rules: * header_color
+      # and footer_color take priority over band colors. * first_band_color takes
+      # priority over second_band_color. * row_properties takes priority over
+      # column_properties. For example, the first row color takes priority over the
+      # first column color, but the first column color takes priority over the second
+      # row color. Similarly, the row header takes priority over the column header in
+      # the top left cell, but the column header takes priority over the first row
       # color if the row header is not set.
       class BandingProperties
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `firstBandColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :first_band_color
@@ -761,110 +669,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `footerColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :footer_color
@@ -876,110 +723,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `headerColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :header_color
@@ -991,110 +777,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `secondBandColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :second_band_color
@@ -1130,118 +855,56 @@ module Google
         # @return [String]
         attr_accessor :comparison_type
       
-        # Description which is appended after the baseline value.
-        # This field is optional.
+        # Description which is appended after the baseline value. This field is optional.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `negativeColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :negative_color
@@ -1258,110 +921,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `positiveColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :positive_color
@@ -1371,8 +973,8 @@ module Google
         # @return [Google::Apis::SheetsV4::ColorStyle]
         attr_accessor :positive_color_style
       
-        # The format of a run of text in a cell.
-        # Absent values indicate that the field isn't specified.
+        # The format of a run of text in a cell. Absent values indicate that the field
+        # isn't specified.
         # Corresponds to the JSON property `textFormat`
         # @return [Google::Apis::SheetsV4::TextFormat]
         attr_accessor :text_format
@@ -1394,14 +996,13 @@ module Google
         end
       end
       
-      # An axis of the chart.
-      # A chart may not have more than one axis per
-      # axis position.
+      # An axis of the chart. A chart may not have more than one axis per axis
+      # position.
       class BasicChartAxis
         include Google::Apis::Core::Hashable
       
-        # The format of a run of text in a cell.
-        # Absent values indicate that the field isn't specified.
+        # The format of a run of text in a cell. Absent values indicate that the field
+        # isn't specified.
         # Corresponds to the JSON property `format`
         # @return [Google::Apis::SheetsV4::TextFormat]
         attr_accessor :format
@@ -1411,8 +1012,8 @@ module Google
         # @return [String]
         attr_accessor :position
       
-        # The title of this axis. If set, this overrides any title inferred
-        # from headers of the data.
+        # The title of this axis. If set, this overrides any title inferred from headers
+        # of the data.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -1442,8 +1043,8 @@ module Google
         end
       end
       
-      # The domain of a chart.
-      # For example, if charting stock prices over time, this would be the date.
+      # The domain of a chart. For example, if charting stock prices over time, this
+      # would be the date.
       class BasicChartDomain
         include Google::Apis::Core::Hashable
       
@@ -1469,118 +1070,57 @@ module Google
         end
       end
       
-      # A single series of data in a chart.
-      # For example, if charting stock prices over time, multiple series may exist,
-      # one for the "Open Price", "High Price", "Low Price" and "Close Price".
+      # A single series of data in a chart. For example, if charting stock prices over
+      # time, multiple series may exist, one for the "Open Price", "High Price", "Low
+      # Price" and "Close Price".
       class BasicChartSeries
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `color`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :color
@@ -1600,23 +1140,18 @@ module Google
         # @return [Google::Apis::SheetsV4::ChartData]
         attr_accessor :series
       
-        # The minor axis that will specify the range of values for this series.
-        # For example, if charting stocks over time, the "Volume" series
-        # may want to be pinned to the right with the prices pinned to the left,
-        # because the scale of trading volume is different than the scale of
-        # prices.
-        # It is an error to specify an axis that isn't a valid minor axis
-        # for the chart's type.
+        # The minor axis that will specify the range of values for this series. For
+        # example, if charting stocks over time, the "Volume" series may want to be
+        # pinned to the right with the prices pinned to the left, because the scale of
+        # trading volume is different than the scale of prices. It is an error to
+        # specify an axis that isn't a valid minor axis for the chart's type.
         # Corresponds to the JSON property `targetAxis`
         # @return [String]
         attr_accessor :target_axis
       
-        # The type of this series. Valid only if the
-        # chartType is
-        # COMBO.
-        # Different types will change the way the series is visualized.
-        # Only LINE, AREA,
-        # and COLUMN are supported.
+        # The type of this series. Valid only if the chartType is COMBO. Different types
+        # will change the way the series is visualized. Only LINE, AREA, and COLUMN are
+        # supported.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1636,8 +1171,8 @@ module Google
         end
       end
       
-      # The specification for a basic chart.  See BasicChartType for the list
-      # of charts this supports.
+      # The specification for a basic chart. See BasicChartType for the list of charts
+      # this supports.
       class BasicChartSpec
         include Google::Apis::Core::Hashable
       
@@ -1651,31 +1186,28 @@ module Google
         # @return [String]
         attr_accessor :chart_type
       
-        # The behavior of tooltips and data highlighting when hovering on data and
-        # chart area.
+        # The behavior of tooltips and data highlighting when hovering on data and chart
+        # area.
         # Corresponds to the JSON property `compareMode`
         # @return [String]
         attr_accessor :compare_mode
       
-        # The domain of data this is charting.
-        # Only a single domain is supported.
+        # The domain of data this is charting. Only a single domain is supported.
         # Corresponds to the JSON property `domains`
         # @return [Array<Google::Apis::SheetsV4::BasicChartDomain>]
         attr_accessor :domains
       
-        # The number of rows or columns in the data that are "headers".
-        # If not set, Google Sheets will guess how many rows are headers based
-        # on the data.
-        # (Note that BasicChartAxis.title may override the axis title
-        # inferred from the header values.)
+        # The number of rows or columns in the data that are "headers". If not set,
+        # Google Sheets will guess how many rows are headers based on the data. (Note
+        # that BasicChartAxis.title may override the axis title inferred from the header
+        # values.)
         # Corresponds to the JSON property `headerCount`
         # @return [Fixnum]
         attr_accessor :header_count
       
         # If some values in a series are missing, gaps may appear in the chart (e.g,
-        # segments of lines in a line chart will be missing).  To eliminate these
-        # gaps set this to true.
-        # Applies to Line, Area, and Combo charts.
+        # segments of lines in a line chart will be missing). To eliminate these gaps
+        # set this to true. Applies to Line, Area, and Combo charts.
         # Corresponds to the JSON property `interpolateNulls`
         # @return [Boolean]
         attr_accessor :interpolate_nulls
@@ -1698,14 +1230,13 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::BasicChartSeries>]
         attr_accessor :series
       
-        # The stacked type for charts that support vertical stacking.
-        # Applies to Area, Bar, Column, Combo, and Stepped Area charts.
+        # The stacked type for charts that support vertical stacking. Applies to Area,
+        # Bar, Column, Combo, and Stepped Area charts.
         # Corresponds to the JSON property `stackedType`
         # @return [String]
         attr_accessor :stacked_type
       
-        # True to make the chart 3D.
-        # Applies to Bar and Column charts.
+        # True to make the chart 3D. Applies to Bar and Column charts.
         # Corresponds to the JSON property `threeDimensional`
         # @return [Boolean]
         attr_accessor :three_dimensional
@@ -1735,41 +1266,31 @@ module Google
       class BasicFilter
         include Google::Apis::Core::Hashable
       
-        # The criteria for showing/hiding values per column.
-        # The map's key is the column index, and the value is the criteria for
-        # that column.
+        # The criteria for showing/hiding values per column. The map's key is the column
+        # index, and the value is the criteria for that column.
         # Corresponds to the JSON property `criteria`
         # @return [Hash<String,Google::Apis::SheetsV4::FilterCriteria>]
         attr_accessor :criteria
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
       
-        # The sort order per column. Later specifications are used when values
-        # are equal in the earlier specifications.
+        # The sort order per column. Later specifications are used when values are equal
+        # in the earlier specifications.
         # Corresponds to the JSON property `sortSpecs`
         # @return [Array<Google::Apis::SheetsV4::SortSpec>]
         attr_accessor :sort_specs
@@ -1786,8 +1307,8 @@ module Google
         end
       end
       
-      # The request for clearing more than one range selected by a
-      # DataFilter in a spreadsheet.
+      # The request for clearing more than one range selected by a DataFilter in a
+      # spreadsheet.
       class BatchClearValuesByDataFilterRequest
         include Google::Apis::Core::Hashable
       
@@ -1806,14 +1327,14 @@ module Google
         end
       end
       
-      # The response when clearing a range of values selected with
-      # DataFilters in a spreadsheet.
+      # The response when clearing a range of values selected with DataFilters in a
+      # spreadsheet.
       class BatchClearValuesByDataFilterResponse
         include Google::Apis::Core::Hashable
       
         # The ranges that were cleared, in A1 notation. If the requests are for an
-        # unbounded range or a ranger larger than the bounds of the sheet, this is
-        # the actual ranges that were cleared, bounded to the sheet's limits.
+        # unbounded range or a ranger larger than the bounds of the sheet, this is the
+        # actual ranges that were cleared, bounded to the sheet's limits.
         # Corresponds to the JSON property `clearedRanges`
         # @return [Array<String>]
         attr_accessor :cleared_ranges
@@ -1858,8 +1379,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The ranges that were cleared, in A1 notation. If the requests are for an
-        # unbounded range or a ranger larger than the bounds of the sheet, this is
-        # the actual ranges that were cleared, bounded to the sheet's limits.
+        # unbounded range or a ranger larger than the bounds of the sheet, this is the
+        # actual ranges that were cleared, bounded to the sheet's limits.
         # Corresponds to the JSON property `clearedRanges`
         # @return [Array<String>]
         attr_accessor :cleared_ranges
@@ -1885,31 +1406,29 @@ module Google
       class BatchGetValuesByDataFilterRequest
         include Google::Apis::Core::Hashable
       
-        # The data filters used to match the ranges of values to retrieve. Ranges
-        # that match any of the specified data filters are included in the response.
+        # The data filters used to match the ranges of values to retrieve. Ranges that
+        # match any of the specified data filters are included in the response.
         # Corresponds to the JSON property `dataFilters`
         # @return [Array<Google::Apis::SheetsV4::DataFilter>]
         attr_accessor :data_filters
       
-        # How dates, times, and durations should be represented in the output.
-        # This is ignored if value_render_option is
-        # FORMATTED_VALUE.
-        # The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+        # How dates, times, and durations should be represented in the output. This is
+        # ignored if value_render_option is FORMATTED_VALUE. The default dateTime render
+        # option is [DateTimeRenderOption.SERIAL_NUMBER].
         # Corresponds to the JSON property `dateTimeRenderOption`
         # @return [String]
         attr_accessor :date_time_render_option
       
-        # The major dimension that results should use.
-        # For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-        # then a request that selects that range and sets `majorDimension=ROWS`
-        # returns `[[1,2],[3,4]]`, whereas a request that sets
-        # `majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.
+        # The major dimension that results should use. For example, if the spreadsheet
+        # data is: `A1=1,B1=2,A2=3,B2=4`, then a request that selects that range and
+        # sets `majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas a request that
+        # sets `majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.
         # Corresponds to the JSON property `majorDimension`
         # @return [String]
         attr_accessor :major_dimension
       
-        # How values should be represented in the output.
-        # The default render option is ValueRenderOption.FORMATTED_VALUE.
+        # How values should be represented in the output. The default render option is
+        # ValueRenderOption.FORMATTED_VALUE.
         # Corresponds to the JSON property `valueRenderOption`
         # @return [String]
         attr_accessor :value_render_option
@@ -1962,8 +1481,8 @@ module Google
         # @return [String]
         attr_accessor :spreadsheet_id
       
-        # The requested values. The order of the ValueRanges is the same as the
-        # order of the requested ranges.
+        # The requested values. The order of the ValueRanges is the same as the order of
+        # the requested ranges.
         # Corresponds to the JSON property `valueRanges`
         # @return [Array<Google::Apis::SheetsV4::ValueRange>]
         attr_accessor :value_ranges
@@ -1983,30 +1502,29 @@ module Google
       class BatchUpdateSpreadsheetRequest
         include Google::Apis::Core::Hashable
       
-        # Determines if the update response should include the spreadsheet
-        # resource.
+        # Determines if the update response should include the spreadsheet resource.
         # Corresponds to the JSON property `includeSpreadsheetInResponse`
         # @return [Boolean]
         attr_accessor :include_spreadsheet_in_response
         alias_method :include_spreadsheet_in_response?, :include_spreadsheet_in_response
       
-        # A list of updates to apply to the spreadsheet.
-        # Requests will be applied in the order they are specified.
-        # If any request is not valid, no requests will be applied.
+        # A list of updates to apply to the spreadsheet. Requests will be applied in the
+        # order they are specified. If any request is not valid, no requests will be
+        # applied.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::SheetsV4::Request>]
         attr_accessor :requests
       
         # True if grid data should be returned. Meaningful only if
-        # include_spreadsheet_in_response is 'true'.
-        # This parameter is ignored if a field mask was set in the request.
+        # include_spreadsheet_in_response is 'true'. This parameter is ignored if a
+        # field mask was set in the request.
         # Corresponds to the JSON property `responseIncludeGridData`
         # @return [Boolean]
         attr_accessor :response_include_grid_data
         alias_method :response_include_grid_data?, :response_include_grid_data
       
-        # Limits the ranges included in the response spreadsheet.
-        # Meaningful only if include_spreadsheet_in_response is 'true'.
+        # Limits the ranges included in the response spreadsheet. Meaningful only if
+        # include_spreadsheet_in_response is 'true'.
         # Corresponds to the JSON property `responseRanges`
         # @return [Array<String>]
         attr_accessor :response_ranges
@@ -2028,8 +1546,8 @@ module Google
       class BatchUpdateSpreadsheetResponse
         include Google::Apis::Core::Hashable
       
-        # The reply of the updates.  This maps 1:1 with the updates, although
-        # replies to some requests may be empty.
+        # The reply of the updates. This maps 1:1 with the updates, although replies to
+        # some requests may be empty.
         # Corresponds to the JSON property `replies`
         # @return [Array<Google::Apis::SheetsV4::Response>]
         attr_accessor :replies
@@ -2060,36 +1578,33 @@ module Google
       class BatchUpdateValuesByDataFilterRequest
         include Google::Apis::Core::Hashable
       
-        # The new values to apply to the spreadsheet.  If more than one range is
-        # matched by the specified DataFilter the specified values are applied to
-        # all of those ranges.
+        # The new values to apply to the spreadsheet. If more than one range is matched
+        # by the specified DataFilter the specified values are applied to all of those
+        # ranges.
         # Corresponds to the JSON property `data`
         # @return [Array<Google::Apis::SheetsV4::DataFilterValueRange>]
         attr_accessor :data
       
-        # Determines if the update response should include the values
-        # of the cells that were updated. By default, responses
-        # do not include the updated values. The `updatedData` field within
-        # each of the BatchUpdateValuesResponse.responses contains the updated
-        # values. If the range to write was larger than the range actually written,
-        # the response includes all values in the requested range (excluding trailing
-        # empty rows and columns).
+        # Determines if the update response should include the values of the cells that
+        # were updated. By default, responses do not include the updated values. The `
+        # updatedData` field within each of the BatchUpdateValuesResponse.responses
+        # contains the updated values. If the range to write was larger than the range
+        # actually written, the response includes all values in the requested range (
+        # excluding trailing empty rows and columns).
         # Corresponds to the JSON property `includeValuesInResponse`
         # @return [Boolean]
         attr_accessor :include_values_in_response
         alias_method :include_values_in_response?, :include_values_in_response
       
-        # Determines how dates, times, and durations in the response should be
-        # rendered. This is ignored if response_value_render_option is
-        # FORMATTED_VALUE.
-        # The default dateTime render option is
-        # DateTimeRenderOption.SERIAL_NUMBER.
+        # Determines how dates, times, and durations in the response should be rendered.
+        # This is ignored if response_value_render_option is FORMATTED_VALUE. The
+        # default dateTime render option is DateTimeRenderOption.SERIAL_NUMBER.
         # Corresponds to the JSON property `responseDateTimeRenderOption`
         # @return [String]
         attr_accessor :response_date_time_render_option
       
-        # Determines how values in the response should be rendered.
-        # The default render option is ValueRenderOption.FORMATTED_VALUE.
+        # Determines how values in the response should be rendered. The default render
+        # option is ValueRenderOption.FORMATTED_VALUE.
         # Corresponds to the JSON property `responseValueRenderOption`
         # @return [String]
         attr_accessor :response_value_render_option
@@ -2132,8 +1647,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_updated_cells
       
-        # The total number of columns where at least one cell in the column was
-        # updated.
+        # The total number of columns where at least one cell in the column was updated.
         # Corresponds to the JSON property `totalUpdatedColumns`
         # @return [Fixnum]
         attr_accessor :total_updated_columns
@@ -2143,8 +1657,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_updated_rows
       
-        # The total number of sheets where at least one cell in the sheet was
-        # updated.
+        # The total number of sheets where at least one cell in the sheet was updated.
         # Corresponds to the JSON property `totalUpdatedSheets`
         # @return [Fixnum]
         attr_accessor :total_updated_sheets
@@ -2173,29 +1686,26 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::ValueRange>]
         attr_accessor :data
       
-        # Determines if the update response should include the values
-        # of the cells that were updated. By default, responses
-        # do not include the updated values. The `updatedData` field within
-        # each of the BatchUpdateValuesResponse.responses contains the updated
-        # values. If the range to write was larger than the range actually written,
-        # the response includes all values in the requested range (excluding trailing
-        # empty rows and columns).
+        # Determines if the update response should include the values of the cells that
+        # were updated. By default, responses do not include the updated values. The `
+        # updatedData` field within each of the BatchUpdateValuesResponse.responses
+        # contains the updated values. If the range to write was larger than the range
+        # actually written, the response includes all values in the requested range (
+        # excluding trailing empty rows and columns).
         # Corresponds to the JSON property `includeValuesInResponse`
         # @return [Boolean]
         attr_accessor :include_values_in_response
         alias_method :include_values_in_response?, :include_values_in_response
       
-        # Determines how dates, times, and durations in the response should be
-        # rendered. This is ignored if response_value_render_option is
-        # FORMATTED_VALUE.
-        # The default dateTime render option is
-        # DateTimeRenderOption.SERIAL_NUMBER.
+        # Determines how dates, times, and durations in the response should be rendered.
+        # This is ignored if response_value_render_option is FORMATTED_VALUE. The
+        # default dateTime render option is DateTimeRenderOption.SERIAL_NUMBER.
         # Corresponds to the JSON property `responseDateTimeRenderOption`
         # @return [String]
         attr_accessor :response_date_time_render_option
       
-        # Determines how values in the response should be rendered.
-        # The default render option is ValueRenderOption.FORMATTED_VALUE.
+        # Determines how values in the response should be rendered. The default render
+        # option is ValueRenderOption.FORMATTED_VALUE.
         # Corresponds to the JSON property `responseValueRenderOption`
         # @return [String]
         attr_accessor :response_value_render_option
@@ -2223,8 +1733,8 @@ module Google
       class BatchUpdateValuesResponse
         include Google::Apis::Core::Hashable
       
-        # One UpdateValuesResponse per requested range, in the same order as
-        # the requests appeared.
+        # One UpdateValuesResponse per requested range, in the same order as the
+        # requests appeared.
         # Corresponds to the JSON property `responses`
         # @return [Array<Google::Apis::SheetsV4::UpdateValuesResponse>]
         attr_accessor :responses
@@ -2239,8 +1749,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_updated_cells
       
-        # The total number of columns where at least one cell in the column was
-        # updated.
+        # The total number of columns where at least one cell in the column was updated.
         # Corresponds to the JSON property `totalUpdatedColumns`
         # @return [Fixnum]
         attr_accessor :total_updated_columns
@@ -2250,8 +1759,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_updated_rows
       
-        # The total number of sheets where at least one cell in the sheet was
-        # updated.
+        # The total number of sheets where at least one cell in the sheet was updated.
         # Corresponds to the JSON property `totalUpdatedSheets`
         # @return [Fixnum]
         attr_accessor :total_updated_sheets
@@ -2271,9 +1779,8 @@ module Google
         end
       end
       
-      # A condition that can evaluate to true or false.
-      # BooleanConditions are used by conditional formatting,
-      # data validation, and the criteria in filters.
+      # A condition that can evaluate to true or false. BooleanConditions are used by
+      # conditional formatting, data validation, and the criteria in filters.
       class BooleanCondition
         include Google::Apis::Core::Hashable
       
@@ -2282,10 +1789,9 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # The values of the condition. The number of supported values depends
-        # on the condition type.  Some support zero values,
-        # others one or two values,
-        # and ConditionType.ONE_OF_LIST supports an arbitrary number of values.
+        # The values of the condition. The number of supported values depends on the
+        # condition type. Some support zero values, others one or two values, and
+        # ConditionType.ONE_OF_LIST supports an arbitrary number of values.
         # Corresponds to the JSON property `values`
         # @return [Array<Google::Apis::SheetsV4::ConditionValue>]
         attr_accessor :values
@@ -2305,9 +1811,8 @@ module Google
       class BooleanRule
         include Google::Apis::Core::Hashable
       
-        # A condition that can evaluate to true or false.
-        # BooleanConditions are used by conditional formatting,
-        # data validation, and the criteria in filters.
+        # A condition that can evaluate to true or false. BooleanConditions are used by
+        # conditional formatting, data validation, and the criteria in filters.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::SheetsV4::BooleanCondition]
         attr_accessor :condition
@@ -2334,110 +1839,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `color`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :color
@@ -2452,8 +1896,8 @@ module Google
         # @return [String]
         attr_accessor :style
       
-        # The width of the border, in pixels.
-        # Deprecated; the width is determined by the "style" field.
+        # The width of the border, in pixels. Deprecated; the width is determined by the
+        # "style" field.
         # Corresponds to the JSON property `width`
         # @return [Fixnum]
         attr_accessor :width
@@ -2508,116 +1952,55 @@ module Google
         end
       end
       
-      # A <a href="/chart/interactive/docs/gallery/bubblechart">bubble chart</a>.
+      # A bubble chart.
       class BubbleChartSpec
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `bubbleBorderColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :bubble_border_color
@@ -2632,20 +2015,20 @@ module Google
         # @return [Google::Apis::SheetsV4::ChartData]
         attr_accessor :bubble_labels
       
-        # The max radius size of the bubbles, in pixels.
-        # If specified, the field must be a positive value.
+        # The max radius size of the bubbles, in pixels. If specified, the field must be
+        # a positive value.
         # Corresponds to the JSON property `bubbleMaxRadiusSize`
         # @return [Fixnum]
         attr_accessor :bubble_max_radius_size
       
-        # The minimum radius size of the bubbles, in pixels.
-        # If specific, the field must be a positive value.
+        # The minimum radius size of the bubbles, in pixels. If specific, the field must
+        # be a positive value.
         # Corresponds to the JSON property `bubbleMinRadiusSize`
         # @return [Fixnum]
         attr_accessor :bubble_min_radius_size
       
-        # The opacity of the bubbles between 0 and 1.0.
-        # 0 is fully transparent and 1 is fully opaque.
+        # The opacity of the bubbles between 0 and 1.0. 0 is fully transparent and 1 is
+        # fully opaque.
         # Corresponds to the JSON property `bubbleOpacity`
         # @return [Float]
         attr_accessor :bubble_opacity
@@ -2655,8 +2038,8 @@ module Google
         # @return [Google::Apis::SheetsV4::ChartData]
         attr_accessor :bubble_sizes
       
-        # The format of a run of text in a cell.
-        # Absent values indicate that the field isn't specified.
+        # The format of a run of text in a cell. Absent values indicate that the field
+        # isn't specified.
         # Corresponds to the JSON property `bubbleTextStyle`
         # @return [Google::Apis::SheetsV4::TextFormat]
         attr_accessor :bubble_text_style
@@ -2702,13 +2085,11 @@ module Google
         end
       end
       
-      # A <a href="/chart/interactive/docs/gallery/candlestickchart">candlestick
-      # chart</a>.
+      # A candlestick chart.
       class CandlestickChartSpec
         include Google::Apis::Core::Hashable
       
-        # The Candlestick chart data.
-        # Only one CandlestickData is supported.
+        # The Candlestick chart data. Only one CandlestickData is supported.
         # Corresponds to the JSON property `data`
         # @return [Array<Google::Apis::SheetsV4::CandlestickData>]
         attr_accessor :data
@@ -2831,17 +2212,14 @@ module Google
         # @return [Google::Apis::SheetsV4::ExtendedValue]
         attr_accessor :effective_value
       
-        # The formatted value of the cell.
-        # This is the value as it's shown to the user.
+        # The formatted value of the cell. This is the value as it's shown to the user.
         # This field is read-only.
         # Corresponds to the JSON property `formattedValue`
         # @return [String]
         attr_accessor :formatted_value
       
-        # A hyperlink this cell points to, if any.
-        # This field is read-only.  (To set it, use a `=HYPERLINK` formula
-        # in the userEnteredValue.formulaValue
-        # field.)
+        # A hyperlink this cell points to, if any. This field is read-only. (To set it,
+        # use a `=HYPERLINK` formula in the userEnteredValue.formulaValue field.)
         # Corresponds to the JSON property `hyperlink`
         # @return [String]
         attr_accessor :hyperlink
@@ -2856,14 +2234,13 @@ module Google
         # @return [Google::Apis::SheetsV4::PivotTable]
         attr_accessor :pivot_table
       
-        # Runs of rich text applied to subsections of the cell.  Runs are only valid
-        # on user entered strings, not formulas, bools, or numbers.
-        # Runs start at specific indexes in the text and continue until the next
-        # run. Properties of a run will continue unless explicitly changed
-        # in a subsequent run (and properties of the first run will continue
-        # the properties of the cell unless explicitly changed).
-        # When writing, the new runs will overwrite any prior runs.  When writing a
-        # new user_entered_value, previous runs are erased.
+        # Runs of rich text applied to subsections of the cell. Runs are only valid on
+        # user entered strings, not formulas, bools, or numbers. Runs start at specific
+        # indexes in the text and continue until the next run. Properties of a run will
+        # continue unless explicitly changed in a subsequent run (and properties of the
+        # first run will continue the properties of the cell unless explicitly changed).
+        # When writing, the new runs will overwrite any prior runs. When writing a new
+        # user_entered_value, previous runs are erased.
         # Corresponds to the JSON property `textFormatRuns`
         # @return [Array<Google::Apis::SheetsV4::TextFormatRun>]
         attr_accessor :text_format_runs
@@ -2903,110 +2280,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `backgroundColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :background_color
@@ -3036,8 +2352,8 @@ module Google
         # @return [Google::Apis::SheetsV4::NumberFormat]
         attr_accessor :number_format
       
-        # The amount of padding around the cell, in pixels.
-        # When updating padding, every field must be specified.
+        # The amount of padding around the cell, in pixels. When updating padding, every
+        # field must be specified.
         # Corresponds to the JSON property `padding`
         # @return [Google::Apis::SheetsV4::Padding]
         attr_accessor :padding
@@ -3047,8 +2363,8 @@ module Google
         # @return [String]
         attr_accessor :text_direction
       
-        # The format of a run of text in a cell.
-        # Absent values indicate that the field isn't specified.
+        # The format of a run of text in a cell. Absent values indicate that the field
+        # isn't specified.
         # Corresponds to the JSON property `textFormat`
         # @return [Google::Apis::SheetsV4::TextFormat]
         attr_accessor :text_format
@@ -3127,14 +2443,12 @@ module Google
       class ChartCustomNumberFormatOptions
         include Google::Apis::Core::Hashable
       
-        # Custom prefix to be prepended to the chart attribute.
-        # This field is optional.
+        # Custom prefix to be prepended to the chart attribute. This field is optional.
         # Corresponds to the JSON property `prefix`
         # @return [String]
         attr_accessor :prefix
       
-        # Custom suffix to be appended to the chart attribute.
-        # This field is optional.
+        # Custom suffix to be appended to the chart attribute. This field is optional.
         # Corresponds to the JSON property `suffix`
         # @return [String]
         attr_accessor :suffix
@@ -3173,21 +2487,14 @@ module Google
       class ChartSourceRange
         include Google::Apis::Core::Hashable
       
-        # The ranges of data for a series or domain.
-        # Exactly one dimension must have a length of 1,
-        # and all sources in the list must have the same dimension
-        # with length 1.
-        # The domain (if it exists) & all series must have the same number
-        # of source ranges. If using more than one source range, then the source
-        # range at a given offset must be in order and contiguous across the domain
-        # and series.
-        # For example, these are valid configurations:
-        # domain sources: A1:A5
-        # series1 sources: B1:B5
-        # series2 sources: D6:D10
-        # domain sources: A1:A5, C10:C12
-        # series1 sources: B1:B5, D10:D12
-        # series2 sources: C1:C5, E10:E12
+        # The ranges of data for a series or domain. Exactly one dimension must have a
+        # length of 1, and all sources in the list must have the same dimension with
+        # length 1. The domain (if it exists) & all series must have the same number of
+        # source ranges. If using more than one source range, then the source range at a
+        # given offset must be in order and contiguous across the domain and series. For
+        # example, these are valid configurations: domain sources: A1:A5 series1 sources:
+        # B1:B5 series2 sources: D6:D10 domain sources: A1:A5, C10:C12 series1 sources:
+        # B1:B5, D10:D12 series2 sources: C1:C5, E10:E12
         # Corresponds to the JSON property `sources`
         # @return [Array<Google::Apis::SheetsV4::GridRange>]
         attr_accessor :sources
@@ -3206,118 +2513,57 @@ module Google
       class ChartSpec
         include Google::Apis::Core::Hashable
       
-        # The alternative text that describes the chart.  This is often used
-        # for accessibility.
+        # The alternative text that describes the chart. This is often used for
+        # accessibility.
         # Corresponds to the JSON property `altText`
         # @return [String]
         attr_accessor :alt_text
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `backgroundColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :background_color
@@ -3327,26 +2573,25 @@ module Google
         # @return [Google::Apis::SheetsV4::ColorStyle]
         attr_accessor :background_color_style
       
-        # The specification for a basic chart.  See BasicChartType for the list
-        # of charts this supports.
+        # The specification for a basic chart. See BasicChartType for the list of charts
+        # this supports.
         # Corresponds to the JSON property `basicChart`
         # @return [Google::Apis::SheetsV4::BasicChartSpec]
         attr_accessor :basic_chart
       
-        # A <a href="/chart/interactive/docs/gallery/bubblechart">bubble chart</a>.
+        # A bubble chart.
         # Corresponds to the JSON property `bubbleChart`
         # @return [Google::Apis::SheetsV4::BubbleChartSpec]
         attr_accessor :bubble_chart
       
-        # A <a href="/chart/interactive/docs/gallery/candlestickchart">candlestick
-        # chart</a>.
+        # A candlestick chart.
         # Corresponds to the JSON property `candlestickChart`
         # @return [Google::Apis::SheetsV4::CandlestickChartSpec]
         attr_accessor :candlestick_chart
       
-        # The name of the font to use by default for all chart text (e.g. title,
-        # axis labels, legend).  If a font is specified for a specific part of the
-        # chart it will override this font name.
+        # The name of the font to use by default for all chart text (e.g. title, axis
+        # labels, legend). If a font is specified for a specific part of the chart it
+        # will override this font name.
         # Corresponds to the JSON property `fontName`
         # @return [String]
         attr_accessor :font_name
@@ -3356,49 +2601,45 @@ module Google
         # @return [String]
         attr_accessor :hidden_dimension_strategy
       
-        # A <a href="/chart/interactive/docs/gallery/histogram">histogram chart</a>.
-        # A histogram chart groups data items into bins, displaying each bin as a
-        # column of stacked items.  Histograms are used to display the distribution
-        # of a dataset.  Each column of items represents a range into which those
-        # items fall.  The number of bins can be chosen automatically or specified
+        # A histogram chart. A histogram chart groups data items into bins, displaying
+        # each bin as a column of stacked items. Histograms are used to display the
+        # distribution of a dataset. Each column of items represents a range into which
+        # those items fall. The number of bins can be chosen automatically or specified
         # explicitly.
         # Corresponds to the JSON property `histogramChart`
         # @return [Google::Apis::SheetsV4::HistogramChartSpec]
         attr_accessor :histogram_chart
       
-        # True to make a chart fill the entire space in which it's rendered with
-        # minimum padding.  False to use the default padding.
-        # (Not applicable to Geo and Org charts.)
+        # True to make a chart fill the entire space in which it's rendered with minimum
+        # padding. False to use the default padding. (Not applicable to Geo and Org
+        # charts.)
         # Corresponds to the JSON property `maximized`
         # @return [Boolean]
         attr_accessor :maximized
         alias_method :maximized?, :maximized
       
-        # An <a href="/chart/interactive/docs/gallery/orgchart">org chart</a>.
-        # Org charts require a unique set of labels in labels and may
-        # optionally include parent_labels and tooltips.
-        # parent_labels contain, for each node, the label identifying the parent
-        # node.  tooltips contain, for each node, an optional tooltip.
-        # For example, to describe an OrgChart with Alice as the CEO, Bob as the
-        # President (reporting to Alice) and Cathy as VP of Sales (also reporting to
-        # Alice), have labels contain "Alice", "Bob", "Cathy",
-        # parent_labels contain "", "Alice", "Alice" and tooltips contain
-        # "CEO", "President", "VP Sales".
+        # An org chart. Org charts require a unique set of labels in labels and may
+        # optionally include parent_labels and tooltips. parent_labels contain, for each
+        # node, the label identifying the parent node. tooltips contain, for each node,
+        # an optional tooltip. For example, to describe an OrgChart with Alice as the
+        # CEO, Bob as the President (reporting to Alice) and Cathy as VP of Sales (also
+        # reporting to Alice), have labels contain "Alice", "Bob", "Cathy",
+        # parent_labels contain "", "Alice", "Alice" and tooltips contain "CEO", "
+        # President", "VP Sales".
         # Corresponds to the JSON property `orgChart`
         # @return [Google::Apis::SheetsV4::OrgChartSpec]
         attr_accessor :org_chart
       
-        # A <a href="/chart/interactive/docs/gallery/piechart">pie chart</a>.
+        # A pie chart.
         # Corresponds to the JSON property `pieChart`
         # @return [Google::Apis::SheetsV4::PieChartSpec]
         attr_accessor :pie_chart
       
         # A scorecard chart. Scorecard charts are used to highlight key performance
-        # indicators, known as KPIs, on the spreadsheet. A scorecard chart can
-        # represent things like total sales, average cost, or a top selling item. You
-        # can specify a single data value, or aggregate over a range of data.
-        # Percentage or absolute difference from a baseline value can be highlighted,
-        # like changes over time.
+        # indicators, known as KPIs, on the spreadsheet. A scorecard chart can represent
+        # things like total sales, average cost, or a top selling item. You can specify
+        # a single data value, or aggregate over a range of data. Percentage or absolute
+        # difference from a baseline value can be highlighted, like changes over time.
         # Corresponds to the JSON property `scorecardChart`
         # @return [Google::Apis::SheetsV4::ScorecardChartSpec]
         attr_accessor :scorecard_chart
@@ -3408,8 +2649,8 @@ module Google
         # @return [String]
         attr_accessor :subtitle
       
-        # The format of a run of text in a cell.
-        # Absent values indicate that the field isn't specified.
+        # The format of a run of text in a cell. Absent values indicate that the field
+        # isn't specified.
         # Corresponds to the JSON property `subtitleTextFormat`
         # @return [Google::Apis::SheetsV4::TextFormat]
         attr_accessor :subtitle_text_format
@@ -3424,8 +2665,8 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # The format of a run of text in a cell.
-        # Absent values indicate that the field isn't specified.
+        # The format of a run of text in a cell. Absent values indicate that the field
+        # isn't specified.
         # Corresponds to the JSON property `titleTextFormat`
         # @return [Google::Apis::SheetsV4::TextFormat]
         attr_accessor :title_text_format
@@ -3435,7 +2676,7 @@ module Google
         # @return [Google::Apis::SheetsV4::TextPosition]
         attr_accessor :title_text_position
       
-        # A <a href="/chart/interactive/docs/gallery/treemap">Treemap chart</a>.
+        # A Treemap chart.
         # Corresponds to the JSON property `treemapChart`
         # @return [Google::Apis::SheetsV4::TreemapChartSpec]
         attr_accessor :treemap_chart
@@ -3511,10 +2752,9 @@ module Google
       class ClearValuesResponse
         include Google::Apis::Core::Hashable
       
-        # The range (in A1 notation) that was cleared.
-        # (If the request was for an unbounded range or a ranger larger
-        # than the bounds of the sheet, this will be the actual range
-        # that was cleared, bounded to the sheet's limits.)
+        # The range (in A1 notation) that was cleared. (If the request was for an
+        # unbounded range or a ranger larger than the bounds of the sheet, this will be
+        # the actual range that was cleared, bounded to the sheet's limits.)
         # Corresponds to the JSON property `clearedRange`
         # @return [String]
         attr_accessor :cleared_range
@@ -3537,122 +2777,61 @@ module Google
       
       # Represents a color in the RGBA color space. This representation is designed
       # for simplicity of conversion to/from color representations in various
-      # languages over compactness; for example, the fields of this representation
-      # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-      # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-      # method in iOS; and, with just a little work, it can be easily formatted into
-      # a CSS "rgba()" string in JavaScript, as well.
-      # Note: this proto does not carry information about the absolute color space
-      # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-      # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-      # space.
-      # Note: when color equality needs to be decided, implementations, unless
-      # documented otherwise, will treat two colors to be equal if all their red,
-      # green, blue and alpha values each differ by at most 1e-5.
-      # Example (Java):
-      # import com.google.type.Color;
-      # // ...
-      # public static java.awt.Color fromProto(Color protocolor) `
-      # float alpha = protocolor.hasAlpha()
-      # ? protocolor.getAlpha().getValue()
-      # : 1.0;
-      # return new java.awt.Color(
-      # protocolor.getRed(),
-      # protocolor.getGreen(),
-      # protocolor.getBlue(),
-      # alpha);
-      # `
-      # public static Color toProto(java.awt.Color color) `
-      # float red = (float) color.getRed();
-      # float green = (float) color.getGreen();
-      # float blue = (float) color.getBlue();
-      # float denominator = 255.0;
-      # Color.Builder resultBuilder =
-      # Color
-      # .newBuilder()
-      # .setRed(red / denominator)
-      # .setGreen(green / denominator)
-      # .setBlue(blue / denominator);
-      # int alpha = color.getAlpha();
-      # if (alpha != 255) `
-      # result.setAlpha(
-      # FloatValue
-      # .newBuilder()
-      # .setValue(((float) alpha) / denominator)
-      # .build());
-      # `
-      # return resultBuilder.build();
-      # `
-      # // ...
-      # Example (iOS / Obj-C):
-      # // ...
-      # static UIColor* fromProto(Color* protocolor) `
-      # float red = [protocolor red];
-      # float green = [protocolor green];
-      # float blue = [protocolor blue];
-      # FloatValue* alpha_wrapper = [protocolor alpha];
-      # float alpha = 1.0;
-      # if (alpha_wrapper != nil) `
-      # alpha = [alpha_wrapper value];
-      # `
-      # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-      # `
-      # static Color* toProto(UIColor* color) `
-      # CGFloat red, green, blue, alpha;
-      # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-      # return nil;
-      # `
-      # Color* result = [[Color alloc] init];
-      # [result setRed:red];
-      # [result setGreen:green];
-      # [result setBlue:blue];
-      # if (alpha <= 0.9999) `
-      # [result setAlpha:floatWrapperWithValue(alpha)];
-      # `
-      # [result autorelease];
-      # return result;
-      # `
-      # // ...
-      # Example (JavaScript):
-      # // ...
-      # var protoToCssColor = function(rgb_color) `
-      # var redFrac = rgb_color.red || 0.0;
-      # var greenFrac = rgb_color.green || 0.0;
-      # var blueFrac = rgb_color.blue || 0.0;
-      # var red = Math.floor(redFrac * 255);
-      # var green = Math.floor(greenFrac * 255);
-      # var blue = Math.floor(blueFrac * 255);
-      # if (!('alpha' in rgb_color)) `
-      # return rgbToCssColor_(red, green, blue);
-      # `
-      # var alphaFrac = rgb_color.alpha.value || 0.0;
-      # var rgbParams = [red, green, blue].join(',');
-      # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-      # `;
-      # var rgbToCssColor_ = function(red, green, blue) `
-      # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-      # var hexString = rgbNumber.toString(16);
-      # var missingZeros = 6 - hexString.length;
-      # var resultBuilder = ['#'];
-      # for (var i = 0; i < missingZeros; i++) `
-      # resultBuilder.push('0');
-      # `
-      # resultBuilder.push(hexString);
-      # return resultBuilder.join('');
-      # `;
-      # // ...
+      # languages over compactness; for example, the fields of this representation can
+      # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+      # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+      # method in iOS; and, with just a little work, it can be easily formatted into a
+      # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+      # information about the absolute color space that should be used to interpret
+      # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+      # applications SHOULD assume the sRGB color space. Note: when color equality
+      # needs to be decided, implementations, unless documented otherwise, will treat
+      # two colors to be equal if all their red, green, blue and alpha values each
+      # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+      # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+      # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+      # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+      # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+      # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+      # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+      # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+      # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+      # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+      # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+      # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+      # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+      # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+      # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+      # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+      # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+      # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+      # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+      # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+      # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+      # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+      # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+      # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+      # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+      # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+      # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+      # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+      # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+      # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+      # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+      # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+      # join(''); `; // ...
       class Color
         include Google::Apis::Core::Hashable
       
-        # The fraction of this color that should be applied to the pixel. That is,
-        # the final pixel color is defined by the equation:
-        # pixel color = alpha * (this color) + (1.0 - alpha) * (background color)
-        # This means that a value of 1.0 corresponds to a solid color, whereas
-        # a value of 0.0 corresponds to a completely transparent color. This
-        # uses a wrapper message rather than a simple float scalar so that it is
-        # possible to distinguish between a default value and the value being unset.
-        # If omitted, this color object is to be rendered as a solid color
-        # (as if the alpha value had been explicitly given with a value of 1.0).
+        # The fraction of this color that should be applied to the pixel. That is, the
+        # final pixel color is defined by the equation: pixel color = alpha * (this
+        # color) + (1.0 - alpha) * (background color) This means that a value of 1.0
+        # corresponds to a solid color, whereas a value of 0.0 corresponds to a
+        # completely transparent color. This uses a wrapper message rather than a simple
+        # float scalar so that it is possible to distinguish between a default value and
+        # the value being unset. If omitted, this color object is to be rendered as a
+        # solid color (as if the alpha value had been explicitly given with a value of 1.
+        # 0).
         # Corresponds to the JSON property `alpha`
         # @return [Float]
         attr_accessor :alpha
@@ -3691,110 +2870,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `rgbColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :rgb_color
@@ -3819,22 +2937,16 @@ module Google
       class ConditionValue
         include Google::Apis::Core::Hashable
       
-        # A relative date (based on the current date).
-        # Valid only if the type is
-        # DATE_BEFORE,
-        # DATE_AFTER,
-        # DATE_ON_OR_BEFORE or
-        # DATE_ON_OR_AFTER.
-        # Relative dates are not supported in data validation.
-        # They are supported only in conditional formatting and
-        # conditional filters.
+        # A relative date (based on the current date). Valid only if the type is
+        # DATE_BEFORE, DATE_AFTER, DATE_ON_OR_BEFORE or DATE_ON_OR_AFTER. Relative dates
+        # are not supported in data validation. They are supported only in conditional
+        # formatting and conditional filters.
         # Corresponds to the JSON property `relativeDate`
         # @return [String]
         attr_accessor :relative_date
       
-        # A value the condition is based on.
-        # The value is parsed as if the user typed into a cell.
-        # Formulas are supported (and must begin with an `=` or a '+').
+        # A value the condition is based on. The value is parsed as if the user typed
+        # into a cell. Formulas are supported (and must begin with an `=` or a '+').
         # Corresponds to the JSON property `userEnteredValue`
         # @return [String]
         attr_accessor :user_entered_value
@@ -3859,16 +2971,15 @@ module Google
         # @return [Google::Apis::SheetsV4::BooleanRule]
         attr_accessor :boolean_rule
       
-        # A rule that applies a gradient color scale format, based on
-        # the interpolation points listed. The format of a cell will vary
-        # based on its contents as compared to the values of the interpolation
-        # points.
+        # A rule that applies a gradient color scale format, based on the interpolation
+        # points listed. The format of a cell will vary based on its contents as
+        # compared to the values of the interpolation points.
         # Corresponds to the JSON property `gradientRule`
         # @return [Google::Apis::SheetsV4::GradientRule]
         attr_accessor :gradient_rule
       
-        # The ranges that are formatted if the condition is true.
-        # All the ranges must be on the same grid.
+        # The ranges that are formatted if the condition is true. All the ranges must be
+        # on the same grid.
         # Corresponds to the JSON property `ranges`
         # @return [Array<Google::Apis::SheetsV4::GridRange>]
         attr_accessor :ranges
@@ -3889,28 +3000,19 @@ module Google
       class CopyPasteRequest
         include Google::Apis::Core::Hashable
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `destination`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :destination
@@ -3925,28 +3027,19 @@ module Google
         # @return [String]
         attr_accessor :paste_type
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :source
@@ -3988,13 +3081,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Developer metadata associated with a location or object in a spreadsheet.
-        # Developer metadata may be used to associate arbitrary data with various
-        # parts of a spreadsheet and will remain associated at those locations as they
-        # move around and the spreadsheet is edited.  For example, if developer
-        # metadata is associated with row 5 and another row is then subsequently
-        # inserted above row 5, that original metadata will still be associated with
-        # the row it was first associated with (what is now row 6). If the associated
-        # object is deleted its metadata is deleted too.
+        # Developer metadata may be used to associate arbitrary data with various parts
+        # of a spreadsheet and will remain associated at those locations as they move
+        # around and the spreadsheet is edited. For example, if developer metadata is
+        # associated with row 5 and another row is then subsequently inserted above row
+        # 5, that original metadata will still be associated with the row it was first
+        # associated with (what is now row 6). If the associated object is deleted its
+        # metadata is deleted too.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Google::Apis::SheetsV4::DeveloperMetadata]
         attr_accessor :developer_metadata
@@ -4014,13 +3107,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Developer metadata associated with a location or object in a spreadsheet.
-        # Developer metadata may be used to associate arbitrary data with various
-        # parts of a spreadsheet and will remain associated at those locations as they
-        # move around and the spreadsheet is edited.  For example, if developer
-        # metadata is associated with row 5 and another row is then subsequently
-        # inserted above row 5, that original metadata will still be associated with
-        # the row it was first associated with (what is now row 6). If the associated
-        # object is deleted its metadata is deleted too.
+        # Developer metadata may be used to associate arbitrary data with various parts
+        # of a spreadsheet and will remain associated at those locations as they move
+        # around and the spreadsheet is edited. For example, if developer metadata is
+        # associated with row 5 and another row is then subsequently inserted above row
+        # 5, that original metadata will still be associated with the row it was first
+        # associated with (what is now row 6). If the associated object is deleted its
+        # metadata is deleted too.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Google::Apis::SheetsV4::DeveloperMetadata]
         attr_accessor :developer_metadata
@@ -4039,40 +3132,30 @@ module Google
       class CutPasteRequest
         include Google::Apis::Core::Hashable
       
-        # A coordinate in a sheet.
-        # All indexes are zero-based.
+        # A coordinate in a sheet. All indexes are zero-based.
         # Corresponds to the JSON property `destination`
         # @return [Google::Apis::SheetsV4::GridCoordinate]
         attr_accessor :destination
       
-        # What kind of data to paste.  All the source data will be cut, regardless
-        # of what is pasted.
+        # What kind of data to paste. All the source data will be cut, regardless of
+        # what is pasted.
         # Corresponds to the JSON property `pasteType`
         # @return [String]
         attr_accessor :paste_type
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :source
@@ -4089,8 +3172,7 @@ module Google
         end
       end
       
-      # Filter that describes what data should be selected or returned from a
-      # request.
+      # Filter that describes what data should be selected or returned from a request.
       class DataFilter
         include Google::Apis::Core::Hashable
       
@@ -4099,41 +3181,32 @@ module Google
         # @return [String]
         attr_accessor :a1_range
       
-        # Selects DeveloperMetadata that matches all of the specified fields.  For
+        # Selects DeveloperMetadata that matches all of the specified fields. For
         # example, if only a metadata ID is specified this considers the
         # DeveloperMetadata with that particular unique ID. If a metadata key is
-        # specified, this considers all developer metadata with that key.  If a
-        # key, visibility, and location type are all specified, this considers all
-        # developer metadata with that key and visibility that are associated with a
-        # location of that type.  In general, this
-        # selects all DeveloperMetadata that matches the intersection of all the
-        # specified fields; any field or combination of fields may be specified.
+        # specified, this considers all developer metadata with that key. If a key,
+        # visibility, and location type are all specified, this considers all developer
+        # metadata with that key and visibility that are associated with a location of
+        # that type. In general, this selects all DeveloperMetadata that matches the
+        # intersection of all the specified fields; any field or combination of fields
+        # may be specified.
         # Corresponds to the JSON property `developerMetadataLookup`
         # @return [Google::Apis::SheetsV4::DeveloperMetadataLookup]
         attr_accessor :developer_metadata_lookup
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `gridRange`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :grid_range
@@ -4154,8 +3227,7 @@ module Google
       class DataFilterValueRange
         include Google::Apis::Core::Hashable
       
-        # Filter that describes what data should be selected or returned from a
-        # request.
+        # Filter that describes what data should be selected or returned from a request.
         # Corresponds to the JSON property `dataFilter`
         # @return [Google::Apis::SheetsV4::DataFilter]
         attr_accessor :data_filter
@@ -4165,10 +3237,10 @@ module Google
         # @return [String]
         attr_accessor :major_dimension
       
-        # The data to be written.  If the provided values exceed any of the ranges
-        # matched by the data filter then the request fails.  If the provided values
-        # are less than the matched ranges only the specified values are written,
-        # existing values in the matched ranges remain unaffected.
+        # The data to be written. If the provided values exceed any of the ranges
+        # matched by the data filter then the request fails. If the provided values are
+        # less than the matched ranges only the specified values are written, existing
+        # values in the matched ranges remain unaffected.
         # Corresponds to the JSON property `values`
         # @return [Array<Array<Object>>]
         attr_accessor :values
@@ -4189,9 +3261,8 @@ module Google
       class DataValidationRule
         include Google::Apis::Core::Hashable
       
-        # A condition that can evaluate to true or false.
-        # BooleanConditions are used by conditional formatting,
-        # data validation, and the criteria in filters.
+        # A condition that can evaluate to true or false. BooleanConditions are used by
+        # conditional formatting, data validation, and the criteria in filters.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::SheetsV4::BooleanCondition]
         attr_accessor :condition
@@ -4201,8 +3272,8 @@ module Google
         # @return [String]
         attr_accessor :input_message
       
-        # True if the UI should be customized based on the kind of condition.
-        # If true, "List" conditions will show a dropdown.
+        # True if the UI should be customized based on the kind of condition. If true, "
+        # List" conditions will show a dropdown.
         # Corresponds to the JSON property `showCustomUi`
         # @return [Boolean]
         attr_accessor :show_custom_ui
@@ -4229,25 +3300,14 @@ module Google
       
       # Allows you to organize the date-time values in a source data column into
       # buckets based on selected parts of their date or time values. For example,
-      # consider a pivot table showing sales transactions by date:
-      # +----------+--------------+
-      # | Date     | SUM of Sales |
-      # +----------+--------------+
-      # | 1/1/2017 |      $621.14 |
-      # | 2/3/2017 |      $708.84 |
-      # | 5/8/2017 |      $326.84 |
-      # ...
-      # +----------+--------------+
-      # Applying a date-time group rule with a DateTimeRuleType of YEAR_MONTH
-      # results in the following pivot table.
-      # +--------------+--------------+
-      # | Grouped Date | SUM of Sales |
-      # +--------------+--------------+
-      # | 2017-Jan     |   $53,731.78 |
-      # | 2017-Feb     |   $83,475.32 |
-      # | 2017-Mar     |   $94,385.05 |
-      # ...
-      # +--------------+--------------+
+      # consider a pivot table showing sales transactions by date: +----------+--------
+      # ------+ | Date | SUM of Sales | +----------+--------------+ | 1/1/2017 | $621.
+      # 14 | | 2/3/2017 | $708.84 | | 5/8/2017 | $326.84 | ... +----------+------------
+      # --+ Applying a date-time group rule with a DateTimeRuleType of YEAR_MONTH
+      # results in the following pivot table. +--------------+--------------+ |
+      # Grouped Date | SUM of Sales | +--------------+--------------+ | 2017-Jan | $53,
+      # 731.78 | | 2017-Feb | $83,475.32 | | 2017-Mar | $94,385.05 | ... +-------------
+      # -+--------------+
       class DateTimeRule
         include Google::Apis::Core::Hashable
       
@@ -4285,8 +3345,8 @@ module Google
         end
       end
       
-      # Deletes a conditional format rule at the given index.
-      # All subsequent rules' indexes are decremented.
+      # Deletes a conditional format rule at the given index. All subsequent rules'
+      # indexes are decremented.
       class DeleteConditionalFormatRuleRequest
         include Google::Apis::Core::Hashable
       
@@ -4334,8 +3394,7 @@ module Google
       class DeleteDeveloperMetadataRequest
         include Google::Apis::Core::Hashable
       
-        # Filter that describes what data should be selected or returned from a
-        # request.
+        # Filter that describes what data should be selected or returned from a request.
         # Corresponds to the JSON property `dataFilter`
         # @return [Google::Apis::SheetsV4::DataFilter]
         attr_accessor :data_filter
@@ -4370,18 +3429,15 @@ module Google
       end
       
       # Deletes a group over the specified range by decrementing the depth of the
-      # dimensions in the range.
-      # For example, assume the sheet has a depth-1 group over B:E and a depth-2
-      # group over C:D. Deleting a group over D:E leaves the sheet with a
-      # depth-1 group over B:D and a depth-2 group over C:C.
+      # dimensions in the range. For example, assume the sheet has a depth-1 group
+      # over B:E and a depth-2 group over C:D. Deleting a group over D:E leaves the
+      # sheet with a depth-1 group over B:D and a depth-2 group over C:C.
       class DeleteDimensionGroupRequest
         include Google::Apis::Core::Hashable
       
-        # A range along a single dimension on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open: the start index is inclusive
-        # and the end index is exclusive.
-        # Missing indexes indicate the range is unbounded on that side.
+        # A range along a single dimension on a sheet. All indexes are zero-based.
+        # Indexes are half open: the start index is inclusive and the end index is
+        # exclusive. Missing indexes indicate the range is unbounded on that side.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::DimensionRange]
         attr_accessor :range
@@ -4419,11 +3475,9 @@ module Google
       class DeleteDimensionRequest
         include Google::Apis::Core::Hashable
       
-        # A range along a single dimension on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open: the start index is inclusive
-        # and the end index is exclusive.
-        # Missing indexes indicate the range is unbounded on that side.
+        # A range along a single dimension on a sheet. All indexes are zero-based.
+        # Indexes are half open: the start index is inclusive and the end index is
+        # exclusive. Missing indexes indicate the range is unbounded on that side.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::DimensionRange]
         attr_accessor :range
@@ -4441,12 +3495,11 @@ module Google
       # Removes rows within this range that contain values in the specified columns
       # that are duplicates of values in any previous row. Rows with identical values
       # but different letter cases, formatting, or formulas are considered to be
-      # duplicates.
-      # This request also removes duplicate rows hidden from view (for example, due
-      # to a filter). When removing duplicates, the first instance of each duplicate
-      # row scanning from the top downwards is kept in the resulting range. Content
-      # outside of the specified range isn't removed, and rows considered duplicates
-      # do not have to be adjacent to each other in the range.
+      # duplicates. This request also removes duplicate rows hidden from view (for
+      # example, due to a filter). When removing duplicates, the first instance of
+      # each duplicate row scanning from the top downwards is kept in the resulting
+      # range. Content outside of the specified range isn't removed, and rows
+      # considered duplicates do not have to be adjacent to each other in the range.
       class DeleteDuplicatesRequest
         include Google::Apis::Core::Hashable
       
@@ -4456,28 +3509,19 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::DimensionRange>]
         attr_accessor :comparison_columns
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -4592,36 +3636,26 @@ module Google
       class DeleteRangeRequest
         include Google::Apis::Core::Hashable
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
       
-        # The dimension from which deleted cells will be replaced with.
-        # If ROWS, existing cells will be shifted upward to
-        # replace the deleted cells. If COLUMNS, existing cells
-        # will be shifted left to replace the deleted cells.
+        # The dimension from which deleted cells will be replaced with. If ROWS,
+        # existing cells will be shifted upward to replace the deleted cells. If COLUMNS,
+        # existing cells will be shifted left to replace the deleted cells.
         # Corresponds to the JSON property `shiftDimension`
         # @return [String]
         attr_accessor :shift_dimension
@@ -4657,13 +3691,13 @@ module Google
       end
       
       # Developer metadata associated with a location or object in a spreadsheet.
-      # Developer metadata may be used to associate arbitrary data with various
-      # parts of a spreadsheet and will remain associated at those locations as they
-      # move around and the spreadsheet is edited.  For example, if developer
-      # metadata is associated with row 5 and another row is then subsequently
-      # inserted above row 5, that original metadata will still be associated with
-      # the row it was first associated with (what is now row 6). If the associated
-      # object is deleted its metadata is deleted too.
+      # Developer metadata may be used to associate arbitrary data with various parts
+      # of a spreadsheet and will remain associated at those locations as they move
+      # around and the spreadsheet is edited. For example, if developer metadata is
+      # associated with row 5 and another row is then subsequently inserted above row
+      # 5, that original metadata will still be associated with the row it was first
+      # associated with (what is now row 6). If the associated object is deleted its
+      # metadata is deleted too.
       class DeveloperMetadata
         include Google::Apis::Core::Hashable
       
@@ -4673,14 +3707,14 @@ module Google
         attr_accessor :location
       
         # The spreadsheet-scoped unique ID that identifies the metadata. IDs may be
-        # specified when metadata is created, otherwise one will be randomly
-        # generated and assigned. Must be positive.
+        # specified when metadata is created, otherwise one will be randomly generated
+        # and assigned. Must be positive.
         # Corresponds to the JSON property `metadataId`
         # @return [Fixnum]
         attr_accessor :metadata_id
       
         # The metadata key. There may be multiple metadata in a spreadsheet with the
-        # same key.  Developer metadata must always have a key specified.
+        # same key. Developer metadata must always have a key specified.
         # Corresponds to the JSON property `metadataKey`
         # @return [String]
         attr_accessor :metadata_key
@@ -4690,7 +3724,7 @@ module Google
         # @return [String]
         attr_accessor :metadata_value
       
-        # The metadata visibility.  Developer metadata must always have a visibility
+        # The metadata visibility. Developer metadata must always have a visibility
         # specified.
         # Corresponds to the JSON property `visibility`
         # @return [String]
@@ -4714,16 +3748,14 @@ module Google
       class DeveloperMetadataLocation
         include Google::Apis::Core::Hashable
       
-        # A range along a single dimension on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open: the start index is inclusive
-        # and the end index is exclusive.
-        # Missing indexes indicate the range is unbounded on that side.
+        # A range along a single dimension on a sheet. All indexes are zero-based.
+        # Indexes are half open: the start index is inclusive and the end index is
+        # exclusive. Missing indexes indicate the range is unbounded on that side.
         # Corresponds to the JSON property `dimensionRange`
         # @return [Google::Apis::SheetsV4::DimensionRange]
         attr_accessor :dimension_range
       
-        # The type of location this object represents.  This field is read-only.
+        # The type of location this object represents. This field is read-only.
         # Corresponds to the JSON property `locationType`
         # @return [String]
         attr_accessor :location_type
@@ -4752,43 +3784,38 @@ module Google
         end
       end
       
-      # Selects DeveloperMetadata that matches all of the specified fields.  For
+      # Selects DeveloperMetadata that matches all of the specified fields. For
       # example, if only a metadata ID is specified this considers the
       # DeveloperMetadata with that particular unique ID. If a metadata key is
-      # specified, this considers all developer metadata with that key.  If a
-      # key, visibility, and location type are all specified, this considers all
-      # developer metadata with that key and visibility that are associated with a
-      # location of that type.  In general, this
-      # selects all DeveloperMetadata that matches the intersection of all the
-      # specified fields; any field or combination of fields may be specified.
+      # specified, this considers all developer metadata with that key. If a key,
+      # visibility, and location type are all specified, this considers all developer
+      # metadata with that key and visibility that are associated with a location of
+      # that type. In general, this selects all DeveloperMetadata that matches the
+      # intersection of all the specified fields; any field or combination of fields
+      # may be specified.
       class DeveloperMetadataLookup
         include Google::Apis::Core::Hashable
       
-        # Determines how this lookup matches the location.  If this field is
-        # specified as EXACT, only developer metadata associated on the exact
-        # location specified is matched.  If this field is specified to INTERSECTING,
-        # developer metadata associated on intersecting locations is also
-        # matched.  If left unspecified, this field assumes a default value of
-        # INTERSECTING.
-        # If this field is specified, a metadataLocation
-        # must also be specified.
+        # Determines how this lookup matches the location. If this field is specified as
+        # EXACT, only developer metadata associated on the exact location specified is
+        # matched. If this field is specified to INTERSECTING, developer metadata
+        # associated on intersecting locations is also matched. If left unspecified,
+        # this field assumes a default value of INTERSECTING. If this field is specified,
+        # a metadataLocation must also be specified.
         # Corresponds to the JSON property `locationMatchingStrategy`
         # @return [String]
         attr_accessor :location_matching_strategy
       
-        # Limits the selected developer metadata to those entries which are
-        # associated with locations of the specified type.  For example, when this
-        # field is specified as ROW this lookup
-        # only considers developer metadata associated on rows.  If the field is left
-        # unspecified, all location types are considered.  This field cannot be
-        # specified as SPREADSHEET when
-        # the locationMatchingStrategy
-        # is specified as INTERSECTING or when the
-        # metadataLocation is specified as a
-        # non-spreadsheet location: spreadsheet metadata cannot intersect any other
-        # developer metadata location.  This field also must be left unspecified when
-        # the locationMatchingStrategy
-        # is specified as EXACT.
+        # Limits the selected developer metadata to those entries which are associated
+        # with locations of the specified type. For example, when this field is
+        # specified as ROW this lookup only considers developer metadata associated on
+        # rows. If the field is left unspecified, all location types are considered.
+        # This field cannot be specified as SPREADSHEET when the
+        # locationMatchingStrategy is specified as INTERSECTING or when the
+        # metadataLocation is specified as a non-spreadsheet location: spreadsheet
+        # metadata cannot intersect any other developer metadata location. This field
+        # also must be left unspecified when the locationMatchingStrategy is specified
+        # as EXACT.
         # Corresponds to the JSON property `locationType`
         # @return [String]
         attr_accessor :location_type
@@ -4817,8 +3844,8 @@ module Google
         attr_accessor :metadata_value
       
         # Limits the selected developer metadata to that which has a matching
-        # DeveloperMetadata.visibility.  If left unspecified, all developer
-        # metadata visibile to the requesting project is considered.
+        # DeveloperMetadata.visibility. If left unspecified, all developer metadata
+        # visibile to the requesting project is considered.
         # Corresponds to the JSON property `visibility`
         # @return [String]
         attr_accessor :visibility
@@ -4846,28 +3873,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # This field is true if this group is collapsed. A collapsed group remains
-        # collapsed if an overlapping group at a shallower depth is expanded.
-        # A true value does not imply that all dimensions within the group are
-        # hidden, since a dimension's visibility can change independently from this
-        # group property. However, when this property is updated, all dimensions
-        # within it are set to hidden if this field is true, or set to visible if
-        # this field is false.
+        # collapsed if an overlapping group at a shallower depth is expanded. A true
+        # value does not imply that all dimensions within the group are hidden, since a
+        # dimension's visibility can change independently from this group property.
+        # However, when this property is updated, all dimensions within it are set to
+        # hidden if this field is true, or set to visible if this field is false.
         # Corresponds to the JSON property `collapsed`
         # @return [Boolean]
         attr_accessor :collapsed
         alias_method :collapsed?, :collapsed
       
-        # The depth of the group, representing how many groups have a range that
-        # wholly contains the range of this group.
+        # The depth of the group, representing how many groups have a range that wholly
+        # contains the range of this group.
         # Corresponds to the JSON property `depth`
         # @return [Fixnum]
         attr_accessor :depth
       
-        # A range along a single dimension on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open: the start index is inclusive
-        # and the end index is exclusive.
-        # Missing indexes indicate the range is unbounded on that side.
+        # A range along a single dimension on a sheet. All indexes are zero-based.
+        # Indexes are half open: the start index is inclusive and the end index is
+        # exclusive. Missing indexes indicate the range is unbounded on that side.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::DimensionRange]
         attr_accessor :range
@@ -4893,8 +3917,7 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::DeveloperMetadata>]
         attr_accessor :developer_metadata
       
-        # True if this dimension is being filtered.
-        # This field is read-only.
+        # True if this dimension is being filtered. This field is read-only.
         # Corresponds to the JSON property `hiddenByFilter`
         # @return [Boolean]
         attr_accessor :hidden_by_filter
@@ -4924,11 +3947,9 @@ module Google
         end
       end
       
-      # A range along a single dimension on a sheet.
-      # All indexes are zero-based.
-      # Indexes are half open: the start index is inclusive
-      # and the end index is exclusive.
-      # Missing indexes indicate the range is unbounded on that side.
+      # A range along a single dimension on a sheet. All indexes are zero-based.
+      # Indexes are half open: the start index is inclusive and the end index is
+      # exclusive. Missing indexes indicate the range is unbounded on that side.
       class DimensionRange
         include Google::Apis::Core::Hashable
       
@@ -5007,20 +4028,19 @@ module Google
       class DuplicateSheetRequest
         include Google::Apis::Core::Hashable
       
-        # The zero-based index where the new sheet should be inserted.
-        # The index of all sheets after this are incremented.
+        # The zero-based index where the new sheet should be inserted. The index of all
+        # sheets after this are incremented.
         # Corresponds to the JSON property `insertSheetIndex`
         # @return [Fixnum]
         attr_accessor :insert_sheet_index
       
-        # If set, the ID of the new sheet. If not set, an ID is chosen.
-        # If set, the ID must not conflict with any existing sheet ID.
-        # If set, it must be non-negative.
+        # If set, the ID of the new sheet. If not set, an ID is chosen. If set, the ID
+        # must not conflict with any existing sheet ID. If set, it must be non-negative.
         # Corresponds to the JSON property `newSheetId`
         # @return [Fixnum]
         attr_accessor :new_sheet_id
       
-        # The name of the new sheet.  If empty, a new name is chosen for you.
+        # The name of the new sheet. If empty, a new name is chosen for you.
         # Corresponds to the JSON property `newSheetName`
         # @return [String]
         attr_accessor :new_sheet_name
@@ -5066,8 +4086,8 @@ module Google
       class Editors
         include Google::Apis::Core::Hashable
       
-        # True if anyone in the document's domain has edit access to the protected
-        # range.  Domain protection is only supported on documents within a domain.
+        # True if anyone in the document's domain has edit access to the protected range.
+        # Domain protection is only supported on documents within a domain.
         # Corresponds to the JSON property `domainUsersCanEdit`
         # @return [Boolean]
         attr_accessor :domain_users_can_edit
@@ -5130,8 +4150,8 @@ module Google
       class EmbeddedObjectPosition
         include Google::Apis::Core::Hashable
       
-        # If true, the embedded object is put on a new sheet whose ID
-        # is chosen for you. Used only when writing.
+        # If true, the embedded object is put on a new sheet whose ID is chosen for you.
+        # Used only when writing.
         # Corresponds to the JSON property `newSheet`
         # @return [Boolean]
         attr_accessor :new_sheet
@@ -5142,8 +4162,8 @@ module Google
         # @return [Google::Apis::SheetsV4::OverlayPosition]
         attr_accessor :overlay_position
       
-        # The sheet this is on. Set only if the embedded object
-        # is on its own sheet. Must be non-negative.
+        # The sheet this is on. Set only if the embedded object is on its own sheet.
+        # Must be non-negative.
         # Corresponds to the JSON property `sheetId`
         # @return [Fixnum]
         attr_accessor :sheet_id
@@ -5164,8 +4184,7 @@ module Google
       class ErrorValue
         include Google::Apis::Core::Hashable
       
-        # A message with more information about the error
-        # (in the spreadsheet's locale).
+        # A message with more information about the error (in the spreadsheet's locale).
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -5206,17 +4225,15 @@ module Google
         # @return [String]
         attr_accessor :formula_value
       
-        # Represents a double value.
-        # Note: Dates, Times and DateTimes are represented as doubles in
-        # "serial number" format.
+        # Represents a double value. Note: Dates, Times and DateTimes are represented as
+        # doubles in "serial number" format.
         # Corresponds to the JSON property `numberValue`
         # @return [Float]
         attr_accessor :number_value
       
-        # Represents a string value.
-        # Leading single quotes are not included. For example, if the user typed
-        # `'123` into the UI, this would be represented as a `stringValue` of
-        # `"123"`.
+        # Represents a string value. Leading single quotes are not included. For example,
+        # if the user typed `'123` into the UI, this would be represented as a `
+        # stringValue` of `"123"`.
         # Corresponds to the JSON property `stringValue`
         # @return [String]
         attr_accessor :string_value
@@ -5239,9 +4256,8 @@ module Google
       class FilterCriteria
         include Google::Apis::Core::Hashable
       
-        # A condition that can evaluate to true or false.
-        # BooleanConditions are used by conditional formatting,
-        # data validation, and the criteria in filters.
+        # A condition that can evaluate to true or false. BooleanConditions are used by
+        # conditional formatting, data validation, and the criteria in filters.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::SheetsV4::BooleanCondition]
         attr_accessor :condition
@@ -5253,110 +4269,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `visibleBackgroundColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :visible_background_color
@@ -5368,110 +4323,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `visibleForegroundColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :visible_foreground_color
@@ -5500,9 +4394,8 @@ module Google
       class FilterView
         include Google::Apis::Core::Hashable
       
-        # The criteria for showing/hiding values per column.
-        # The map's key is the column index, and the value is the criteria for
-        # that column.
+        # The criteria for showing/hiding values per column. The map's key is the column
+        # index, and the value is the criteria for that column.
         # Corresponds to the JSON property `criteria`
         # @return [Hash<String,Google::Apis::SheetsV4::FilterCriteria>]
         attr_accessor :criteria
@@ -5512,41 +4405,31 @@ module Google
         # @return [Fixnum]
         attr_accessor :filter_view_id
       
-        # The named range this filter view is backed by, if any.
-        # When writing, only one of range or named_range_id
-        # may be set.
+        # The named range this filter view is backed by, if any. When writing, only one
+        # of range or named_range_id may be set.
         # Corresponds to the JSON property `namedRangeId`
         # @return [String]
         attr_accessor :named_range_id
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
       
-        # The sort order per column. Later specifications are used when values
-        # are equal in the earlier specifications.
+        # The sort order per column. Later specifications are used when values are equal
+        # in the earlier specifications.
         # Corresponds to the JSON property `sortSpecs`
         # @return [Array<Google::Apis::SheetsV4::SortSpec>]
         attr_accessor :sort_specs
@@ -5586,8 +4469,8 @@ module Google
         # @return [String]
         attr_accessor :find
       
-        # True if the search should include cells with formulas.
-        # False to skip cells with formulas.
+        # True if the search should include cells with formulas. False to skip cells
+        # with formulas.
         # Corresponds to the JSON property `includeFormulas`
         # @return [Boolean]
         attr_accessor :include_formulas
@@ -5605,28 +4488,19 @@ module Google
         attr_accessor :match_entire_cell
         alias_method :match_entire_cell?, :match_entire_cell
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -5636,14 +4510,13 @@ module Google
         # @return [String]
         attr_accessor :replacement
       
-        # True if the find value is a regex.
-        # The regular expression and replacement should follow Java regex rules
-        # at https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html.
-        # The replacement string is allowed to refer to capturing groups.
-        # For example, if one cell has the contents `"Google Sheets"` and another
-        # has `"Google Docs"`, then searching for `"o.* (.*)"` with a replacement of
-        # `"$1 Rocks"` would change the contents of the cells to
-        # `"GSheets Rocks"` and `"GDocs Rocks"` respectively.
+        # True if the find value is a regex. The regular expression and replacement
+        # should follow Java regex rules at https://docs.oracle.com/javase/8/docs/api/
+        # java/util/regex/Pattern.html. The replacement string is allowed to refer to
+        # capturing groups. For example, if one cell has the contents `"Google Sheets"`
+        # and another has `"Google Docs"`, then searching for `"o.* (.*)"` with a
+        # replacement of `"$1 Rocks"` would change the contents of the cells to `"
+        # GSheets Rocks"` and `"GDocs Rocks"` respectively.
         # Corresponds to the JSON property `searchByRegex`
         # @return [Boolean]
         attr_accessor :search_by_regex
@@ -5681,9 +4554,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :formulas_changed
       
-        # The number of occurrences (possibly multiple within a cell) changed.
-        # For example, if replacing `"e"` with `"o"` in `"Google Sheets"`, this would
-        # be `"3"` because `"Google Sheets"` -> `"Googlo Shoots"`.
+        # The number of occurrences (possibly multiple within a cell) changed. For
+        # example, if replacing `"e"` with `"o"` in `"Google Sheets"`, this would be `"3"
+        # ` because `"Google Sheets"` -> `"Googlo Shoots"`.
         # Corresponds to the JSON property `occurrencesChanged`
         # @return [Fixnum]
         attr_accessor :occurrences_changed
@@ -5721,14 +4594,13 @@ module Google
       class GetSpreadsheetByDataFilterRequest
         include Google::Apis::Core::Hashable
       
-        # The DataFilters used to select which ranges to retrieve from
-        # the spreadsheet.
+        # The DataFilters used to select which ranges to retrieve from the spreadsheet.
         # Corresponds to the JSON property `dataFilters`
         # @return [Array<Google::Apis::SheetsV4::DataFilter>]
         attr_accessor :data_filters
       
-        # True if grid data should be returned.
-        # This parameter is ignored if a field mask was set in the request.
+        # True if grid data should be returned. This parameter is ignored if a field
+        # mask was set in the request.
         # Corresponds to the JSON property `includeGridData`
         # @return [Boolean]
         attr_accessor :include_grid_data
@@ -5745,30 +4617,26 @@ module Google
         end
       end
       
-      # A rule that applies a gradient color scale format, based on
-      # the interpolation points listed. The format of a cell will vary
-      # based on its contents as compared to the values of the interpolation
-      # points.
+      # A rule that applies a gradient color scale format, based on the interpolation
+      # points listed. The format of a cell will vary based on its contents as
+      # compared to the values of the interpolation points.
       class GradientRule
         include Google::Apis::Core::Hashable
       
-        # A single interpolation point on a gradient conditional format.
-        # These pin the gradient color scale according to the color,
-        # type and value chosen.
+        # A single interpolation point on a gradient conditional format. These pin the
+        # gradient color scale according to the color, type and value chosen.
         # Corresponds to the JSON property `maxpoint`
         # @return [Google::Apis::SheetsV4::InterpolationPoint]
         attr_accessor :maxpoint
       
-        # A single interpolation point on a gradient conditional format.
-        # These pin the gradient color scale according to the color,
-        # type and value chosen.
+        # A single interpolation point on a gradient conditional format. These pin the
+        # gradient color scale according to the color, type and value chosen.
         # Corresponds to the JSON property `midpoint`
         # @return [Google::Apis::SheetsV4::InterpolationPoint]
         attr_accessor :midpoint
       
-        # A single interpolation point on a gradient conditional format.
-        # These pin the gradient color scale according to the color,
-        # type and value chosen.
+        # A single interpolation point on a gradient conditional format. These pin the
+        # gradient color scale according to the color, type and value chosen.
         # Corresponds to the JSON property `minpoint`
         # @return [Google::Apis::SheetsV4::InterpolationPoint]
         attr_accessor :minpoint
@@ -5785,8 +4653,7 @@ module Google
         end
       end
       
-      # A coordinate in a sheet.
-      # All indexes are zero-based.
+      # A coordinate in a sheet. All indexes are zero-based.
       class GridCoordinate
         include Google::Apis::Core::Hashable
       
@@ -5821,22 +4688,20 @@ module Google
       class GridData
         include Google::Apis::Core::Hashable
       
-        # Metadata about the requested columns in the grid, starting with the column
-        # in start_column.
+        # Metadata about the requested columns in the grid, starting with the column in
+        # start_column.
         # Corresponds to the JSON property `columnMetadata`
         # @return [Array<Google::Apis::SheetsV4::DimensionProperties>]
         attr_accessor :column_metadata
       
-        # The data in the grid, one entry per row,
-        # starting with the row in startRow.
-        # The values in RowData will correspond to columns starting
-        # at start_column.
+        # The data in the grid, one entry per row, starting with the row in startRow.
+        # The values in RowData will correspond to columns starting at start_column.
         # Corresponds to the JSON property `rowData`
         # @return [Array<Google::Apis::SheetsV4::RowData>]
         attr_accessor :row_data
       
-        # Metadata about the requested rows in the grid, starting with the row
-        # in start_row.
+        # Metadata about the requested rows in the grid, starting with the row in
+        # start_row.
         # Corresponds to the JSON property `rowMetadata`
         # @return [Array<Google::Apis::SheetsV4::DimensionProperties>]
         attr_accessor :row_metadata
@@ -5923,28 +4788,19 @@ module Google
         end
       end
       
-      # A range on a sheet.
-      # All indexes are zero-based.
-      # Indexes are half open, i.e. the start index is inclusive
-      # and the end index is exclusive -- [start_index, end_index).
-      # Missing indexes indicate the range is unbounded on that side.
-      # For example, if `"Sheet1"` is sheet ID 0, then:
-      # `Sheet1!A1:A1 == sheet_id: 0,
-      # start_row_index: 0, end_row_index: 1,
-      # start_column_index: 0, end_column_index: 1`
-      # `Sheet1!A3:B4 == sheet_id: 0,
-      # start_row_index: 2, end_row_index: 4,
-      # start_column_index: 0, end_column_index: 2`
-      # `Sheet1!A:B == sheet_id: 0,
-      # start_column_index: 0, end_column_index: 2`
-      # `Sheet1!A5:B == sheet_id: 0,
-      # start_row_index: 4,
-      # start_column_index: 0, end_column_index: 2`
-      # `Sheet1 == sheet_id:0`
-      # The start index must always be less than or equal to the end index.
-      # If the start index equals the end index, then the range is empty.
-      # Empty ranges are typically not meaningful and are usually rendered in the
-      # UI as `#REF!`.
+      # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+      # the start index is inclusive and the end index is exclusive -- [start_index,
+      # end_index). Missing indexes indicate the range is unbounded on that side. For
+      # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+      # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+      # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+      # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+      # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+      # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+      # sheet_id:0` The start index must always be less than or equal to the end index.
+      # If the start index equals the end index, then the range is empty. Empty
+      # ranges are typically not meaningful and are usually rendered in the UI as `#
+      # REF!`.
       class GridRange
         include Google::Apis::Core::Hashable
       
@@ -5987,20 +4843,18 @@ module Google
         end
       end
       
-      # A <a href="/chart/interactive/docs/gallery/histogram">histogram chart</a>.
-      # A histogram chart groups data items into bins, displaying each bin as a
-      # column of stacked items.  Histograms are used to display the distribution
-      # of a dataset.  Each column of items represents a range into which those
-      # items fall.  The number of bins can be chosen automatically or specified
+      # A histogram chart. A histogram chart groups data items into bins, displaying
+      # each bin as a column of stacked items. Histograms are used to display the
+      # distribution of a dataset. Each column of items represents a range into which
+      # those items fall. The number of bins can be chosen automatically or specified
       # explicitly.
       class HistogramChartSpec
         include Google::Apis::Core::Hashable
       
-        # By default the bucket size (the range of values stacked in a single
-        # column) is chosen automatically, but it may be overridden here.
-        # E.g., A bucket size of 1.5 results in buckets from 0 - 1.5, 1.5 - 3.0, etc.
-        # Cannot be negative.
-        # This field is optional.
+        # By default the bucket size (the range of values stacked in a single column) is
+        # chosen automatically, but it may be overridden here. E.g., A bucket size of 1.
+        # 5 results in buckets from 0 - 1.5, 1.5 - 3.0, etc. Cannot be negative. This
+        # field is optional.
         # Corresponds to the JSON property `bucketSize`
         # @return [Float]
         attr_accessor :bucket_size
@@ -6010,19 +4864,18 @@ module Google
         # @return [String]
         attr_accessor :legend_position
       
-        # The outlier percentile is used to ensure that outliers do not adversely
-        # affect the calculation of bucket sizes.  For example, setting an outlier
-        # percentile of 0.05 indicates that the top and bottom 5% of values when
-        # calculating buckets.  The values are still included in the chart, they will
-        # be added to the first or last buckets instead of their own buckets.
-        # Must be between 0.0 and 0.5.
+        # The outlier percentile is used to ensure that outliers do not adversely affect
+        # the calculation of bucket sizes. For example, setting an outlier percentile of
+        # 0.05 indicates that the top and bottom 5% of values when calculating buckets.
+        # The values are still included in the chart, they will be added to the first or
+        # last buckets instead of their own buckets. Must be between 0.0 and 0.5.
         # Corresponds to the JSON property `outlierPercentile`
         # @return [Float]
         attr_accessor :outlier_percentile
       
         # The series for a histogram may be either a single series of values to be
-        # bucketed or multiple series, each of the same length, containing the name
-        # of the series followed by the values to be bucketed for that series.
+        # bucketed or multiple series, each of the same length, containing the name of
+        # the series followed by the values to be bucketed for that series.
         # Corresponds to the JSON property `series`
         # @return [Array<Google::Apis::SheetsV4::HistogramSeries>]
         attr_accessor :series
@@ -6048,44 +4901,28 @@ module Google
         end
       end
       
-      # Allows you to organize the numeric values in a source data column into
-      # buckets of a constant size. All values from HistogramRule.start to
-      # HistogramRule.end are placed into groups of size
-      # HistogramRule.interval. In addition, all values below
-      # HistogramRule.start are placed in one group, and all values above
-      # HistogramRule.end are placed in another. Only
-      # HistogramRule.interval is required, though if HistogramRule.start
-      # and HistogramRule.end are both provided, HistogramRule.start must
-      # be less than HistogramRule.end. For example, a pivot table showing
-      # average purchase amount by age that has 50+ rows:
-      # +-----+-------------------+
-      # | Age | AVERAGE of Amount |
-      # +-----+-------------------+
-      # | 16  |            $27.13 |
-      # | 17  |             $5.24 |
-      # | 18  |            $20.15 |
-      # ...
-      # +-----+-------------------+
-      # could be turned into a pivot table that looks like the one below by
-      # applying a histogram group rule with a HistogramRule.start of 25,
-      # an HistogramRule.interval of 20, and an HistogramRule.end
-      # of 65.
-      # +-------------+-------------------+
-      # | Grouped Age | AVERAGE of Amount |
-      # +-------------+-------------------+
-      # | < 25        |            $19.34 |
-      # | 25-45       |            $31.43 |
-      # | 45-65       |            $35.87 |
-      # | > 65        |            $27.55 |
-      # +-------------+-------------------+
-      # | Grand Total |            $29.12 |
-      # +-------------+-------------------+
+      # Allows you to organize the numeric values in a source data column into buckets
+      # of a constant size. All values from HistogramRule.start to HistogramRule.end
+      # are placed into groups of size HistogramRule.interval. In addition, all values
+      # below HistogramRule.start are placed in one group, and all values above
+      # HistogramRule.end are placed in another. Only HistogramRule.interval is
+      # required, though if HistogramRule.start and HistogramRule.end are both
+      # provided, HistogramRule.start must be less than HistogramRule.end. For example,
+      # a pivot table showing average purchase amount by age that has 50+ rows: +-----
+      # +-------------------+ | Age | AVERAGE of Amount | +-----+-------------------+ |
+      # 16 | $27.13 | | 17 | $5.24 | | 18 | $20.15 | ... +-----+-------------------+
+      # could be turned into a pivot table that looks like the one below by applying a
+      # histogram group rule with a HistogramRule.start of 25, an HistogramRule.
+      # interval of 20, and an HistogramRule.end of 65. +-------------+----------------
+      # ---+ | Grouped Age | AVERAGE of Amount | +-------------+-------------------+ |
+      # < 25 | $19.34 | | 25-45 | $31.43 | | 45-65 | $35.87 | | > 65 | $27.55 | +------
+      # -------+-------------------+ | Grand Total | $29.12 | +-------------+----------
+      # ---------+
       class HistogramRule
         include Google::Apis::Core::Hashable
       
-        # The maximum value at which items are placed into buckets
-        # of constant size. Values above end are lumped into a single bucket.
-        # This field is optional.
+        # The maximum value at which items are placed into buckets of constant size.
+        # Values above end are lumped into a single bucket. This field is optional.
         # Corresponds to the JSON property `end`
         # @return [Float]
         attr_accessor :end
@@ -6095,9 +4932,8 @@ module Google
         # @return [Float]
         attr_accessor :interval
       
-        # The minimum value at which items are placed into buckets
-        # of constant size. Values below start are lumped into a single bucket.
-        # This field is optional.
+        # The minimum value at which items are placed into buckets of constant size.
+        # Values below start are lumped into a single bucket. This field is optional.
         # Corresponds to the JSON property `start`
         # @return [Float]
         attr_accessor :start
@@ -6120,110 +4956,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `barColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :bar_color
@@ -6254,27 +5029,23 @@ module Google
       class InsertDimensionRequest
         include Google::Apis::Core::Hashable
       
-        # Whether dimension properties should be extended from the dimensions
-        # before or after the newly inserted dimensions.
-        # True to inherit from the dimensions before (in which case the start
-        # index must be greater than 0), and false to inherit from the dimensions
-        # after.
-        # For example, if row index 0 has red background and row index 1
-        # has a green background, then inserting 2 rows at index 1 can inherit
-        # either the green or red background.  If `inheritFromBefore` is true,
-        # the two new rows will be red (because the row before the insertion point
-        # was red), whereas if `inheritFromBefore` is false, the two new rows will
+        # Whether dimension properties should be extended from the dimensions before or
+        # after the newly inserted dimensions. True to inherit from the dimensions
+        # before (in which case the start index must be greater than 0), and false to
+        # inherit from the dimensions after. For example, if row index 0 has red
+        # background and row index 1 has a green background, then inserting 2 rows at
+        # index 1 can inherit either the green or red background. If `inheritFromBefore`
+        # is true, the two new rows will be red (because the row before the insertion
+        # point was red), whereas if `inheritFromBefore` is false, the two new rows will
         # be green (because the row after the insertion point was green).
         # Corresponds to the JSON property `inheritFromBefore`
         # @return [Boolean]
         attr_accessor :inherit_from_before
         alias_method :inherit_from_before?, :inherit_from_before
       
-        # A range along a single dimension on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open: the start index is inclusive
-        # and the end index is exclusive.
-        # Missing indexes indicate the range is unbounded on that side.
+        # A range along a single dimension on a sheet. All indexes are zero-based.
+        # Indexes are half open: the start index is inclusive and the end index is
+        # exclusive. Missing indexes indicate the range is unbounded on that side.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::DimensionRange]
         attr_accessor :range
@@ -6294,35 +5065,25 @@ module Google
       class InsertRangeRequest
         include Google::Apis::Core::Hashable
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
       
-        # The dimension which will be shifted when inserting cells.
-        # If ROWS, existing cells will be shifted down.
-        # If COLUMNS, existing cells will be shifted right.
+        # The dimension which will be shifted when inserting cells. If ROWS, existing
+        # cells will be shifted down. If COLUMNS, existing cells will be shifted right.
         # Corresponds to the JSON property `shiftDimension`
         # @return [String]
         attr_accessor :shift_dimension
@@ -6338,118 +5099,56 @@ module Google
         end
       end
       
-      # A single interpolation point on a gradient conditional format.
-      # These pin the gradient color scale according to the color,
-      # type and value chosen.
+      # A single interpolation point on a gradient conditional format. These pin the
+      # gradient color scale according to the color, type and value chosen.
       class InterpolationPoint
         include Google::Apis::Core::Hashable
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `color`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :color
@@ -6464,9 +5163,8 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # The value this interpolation point uses.  May be a formula.
-        # Unused if type is MIN or
-        # MAX.
+        # The value this interpolation point uses. May be a formula. Unused if type is
+        # MIN or MAX.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -6489,8 +5187,8 @@ module Google
       class IterativeCalculationSettings
         include Google::Apis::Core::Hashable
       
-        # When iterative calculation is enabled and successive results differ by
-        # less than this threshold value, the calculation rounds stop.
+        # When iterative calculation is enabled and successive results differ by less
+        # than this threshold value, the calculation rounds stop.
         # Corresponds to the JSON property `convergenceThreshold`
         # @return [Float]
         attr_accessor :convergence_threshold
@@ -6521,8 +5219,8 @@ module Google
         # @return [Google::Apis::SheetsV4::TextPosition]
         attr_accessor :position
       
-        # The format of a run of text in a cell.
-        # Absent values indicate that the field isn't specified.
+        # The format of a run of text in a cell. Absent values indicate that the field
+        # isn't specified.
         # Corresponds to the JSON property `textFormat`
         # @return [Google::Apis::SheetsV4::TextFormat]
         attr_accessor :text_format
@@ -6565,33 +5263,21 @@ module Google
       
       # Allows you to manually organize the values in a source data column into
       # buckets with names of your choosing. For example, a pivot table that
-      # aggregates population by state:
-      # +-------+-------------------+
-      # | State | SUM of Population |
-      # +-------+-------------------+
-      # | AK    |               0.7 |
-      # | AL    |               4.8 |
-      # | AR    |               2.9 |
-      # ...
-      # +-------+-------------------+
-      # could be turned into a pivot table that aggregates population by time zone
-      # by providing a list of groups (for example, groupName = 'Central',
-      # items = ['AL', 'AR', 'IA', ...]) to a manual group rule.
-      # Note that a similar effect could be achieved by adding a time zone column
-      # to the source data and adjusting the pivot table.
-      # +-----------+-------------------+
-      # | Time Zone | SUM of Population |
-      # +-----------+-------------------+
-      # | Central   |             106.3 |
-      # | Eastern   |             151.9 |
-      # | Mountain  |              17.4 |
-      # ...
-      # +-----------+-------------------+
+      # aggregates population by state: +-------+-------------------+ | State | SUM of
+      # Population | +-------+-------------------+ | AK | 0.7 | | AL | 4.8 | | AR | 2.
+      # 9 | ... +-------+-------------------+ could be turned into a pivot table that
+      # aggregates population by time zone by providing a list of groups (for example,
+      # groupName = 'Central', items = ['AL', 'AR', 'IA', ...]) to a manual group rule.
+      # Note that a similar effect could be achieved by adding a time zone column to
+      # the source data and adjusting the pivot table. +-----------+-------------------
+      # + | Time Zone | SUM of Population | +-----------+-------------------+ |
+      # Central | 106.3 | | Eastern | 151.9 | | Mountain | 17.4 | ... +-----------+----
+      # ---------------+
       class ManualRule
         include Google::Apis::Core::Hashable
       
-        # The list of group names and the corresponding items from the source data
-        # that map to each group name.
+        # The list of group names and the corresponding items from the source data that
+        # map to each group name.
         # Corresponds to the JSON property `groups`
         # @return [Array<Google::Apis::SheetsV4::ManualRuleGroup>]
         attr_accessor :groups
@@ -6606,8 +5292,8 @@ module Google
         end
       end
       
-      # A group name and a list of items from the source data that should be placed
-      # in the group with this name.
+      # A group name and a list of items from the source data that should be placed in
+      # the group with this name.
       class ManualRuleGroup
         include Google::Apis::Core::Hashable
       
@@ -6616,10 +5302,10 @@ module Google
         # @return [Google::Apis::SheetsV4::ExtendedValue]
         attr_accessor :group_name
       
-        # The items in the source data that should be placed into this group. Each
-        # item may be a string, number, or boolean. Items may appear in at most one
-        # group within a given ManualRule. Items that do not appear in any
-        # group will appear on their own.
+        # The items in the source data that should be placed into this group. Each item
+        # may be a string, number, or boolean. Items may appear in at most one group
+        # within a given ManualRule. Items that do not appear in any group will appear
+        # on their own.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::SheetsV4::ExtendedValue>]
         attr_accessor :items
@@ -6646,13 +5332,13 @@ module Google
         attr_accessor :data_filters
       
         # Developer metadata associated with a location or object in a spreadsheet.
-        # Developer metadata may be used to associate arbitrary data with various
-        # parts of a spreadsheet and will remain associated at those locations as they
-        # move around and the spreadsheet is edited.  For example, if developer
-        # metadata is associated with row 5 and another row is then subsequently
-        # inserted above row 5, that original metadata will still be associated with
-        # the row it was first associated with (what is now row 6). If the associated
-        # object is deleted its metadata is deleted too.
+        # Developer metadata may be used to associate arbitrary data with various parts
+        # of a spreadsheet and will remain associated at those locations as they move
+        # around and the spreadsheet is edited. For example, if developer metadata is
+        # associated with row 5 and another row is then subsequently inserted above row
+        # 5, that original metadata will still be associated with the row it was first
+        # associated with (what is now row 6). If the associated object is deleted its
+        # metadata is deleted too.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Google::Apis::SheetsV4::DeveloperMetadata]
         attr_accessor :developer_metadata
@@ -6672,8 +5358,7 @@ module Google
       class MatchedValueRange
         include Google::Apis::Core::Hashable
       
-        # The DataFilters from the request that matched the range of
-        # values.
+        # The DataFilters from the request that matched the range of values.
         # Corresponds to the JSON property `dataFilters`
         # @return [Array<Google::Apis::SheetsV4::DataFilter>]
         attr_accessor :data_filters
@@ -6703,28 +5388,19 @@ module Google
         # @return [String]
         attr_accessor :merge_type
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -6744,26 +5420,22 @@ module Google
       class MoveDimensionRequest
         include Google::Apis::Core::Hashable
       
-        # The zero-based start index of where to move the source data to,
-        # based on the coordinates *before* the source data is removed
-        # from the grid.  Existing data will be shifted down or right
-        # (depending on the dimension) to make room for the moved dimensions.
-        # The source dimensions are removed from the grid, so the
-        # the data may end up in a different index than specified.
-        # For example, given `A1..A5` of `0, 1, 2, 3, 4` and wanting to move
-        # `"1"` and `"2"` to between `"3"` and `"4"`, the source would be
-        # `ROWS [1..3)`,and the destination index would be `"4"`
-        # (the zero-based index of row 5).
-        # The end result would be `A1..A5` of `0, 3, 1, 2, 4`.
+        # The zero-based start index of where to move the source data to, based on the
+        # coordinates *before* the source data is removed from the grid. Existing data
+        # will be shifted down or right (depending on the dimension) to make room for
+        # the moved dimensions. The source dimensions are removed from the grid, so the
+        # the data may end up in a different index than specified. For example, given `
+        # A1..A5` of `0, 1, 2, 3, 4` and wanting to move `"1"` and `"2"` to between `"3"`
+        # and `"4"`, the source would be `ROWS [1..3)`,and the destination index would
+        # be `"4"` (the zero-based index of row 5). The end result would be `A1..A5` of `
+        # 0, 3, 1, 2, 4`.
         # Corresponds to the JSON property `destinationIndex`
         # @return [Fixnum]
         attr_accessor :destination_index
       
-        # A range along a single dimension on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open: the start index is inclusive
-        # and the end index is exclusive.
-        # Missing indexes indicate the range is unbounded on that side.
+        # A range along a single dimension on a sheet. All indexes are zero-based.
+        # Indexes are half open: the start index is inclusive and the end index is
+        # exclusive. Missing indexes indicate the range is unbounded on that side.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::SheetsV4::DimensionRange]
         attr_accessor :source
@@ -6793,28 +5465,19 @@ module Google
         # @return [String]
         attr_accessor :named_range_id
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -6835,16 +5498,15 @@ module Google
       class NumberFormat
         include Google::Apis::Core::Hashable
       
-        # Pattern string used for formatting.  If not set, a default pattern based on
-        # the user's locale will be used if necessary for the given type.
-        # See the [Date and Number Formats guide](/sheets/api/guides/formats) for
-        # more information about the supported patterns.
+        # Pattern string used for formatting. If not set, a default pattern based on the
+        # user's locale will be used if necessary for the given type. See the [Date and
+        # Number Formats guide](/sheets/api/guides/formats) for more information about
+        # the supported patterns.
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern
       
-        # The type of the number format.
-        # When writing, this field must be set.
+        # The type of the number format. When writing, this field must be set.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -6860,16 +5522,14 @@ module Google
         end
       end
       
-      # An <a href="/chart/interactive/docs/gallery/orgchart">org chart</a>.
-      # Org charts require a unique set of labels in labels and may
-      # optionally include parent_labels and tooltips.
-      # parent_labels contain, for each node, the label identifying the parent
-      # node.  tooltips contain, for each node, an optional tooltip.
-      # For example, to describe an OrgChart with Alice as the CEO, Bob as the
-      # President (reporting to Alice) and Cathy as VP of Sales (also reporting to
-      # Alice), have labels contain "Alice", "Bob", "Cathy",
-      # parent_labels contain "", "Alice", "Alice" and tooltips contain
-      # "CEO", "President", "VP Sales".
+      # An org chart. Org charts require a unique set of labels in labels and may
+      # optionally include parent_labels and tooltips. parent_labels contain, for each
+      # node, the label identifying the parent node. tooltips contain, for each node,
+      # an optional tooltip. For example, to describe an OrgChart with Alice as the
+      # CEO, Bob as the President (reporting to Alice) and Cathy as VP of Sales (also
+      # reporting to Alice), have labels contain "Alice", "Bob", "Cathy",
+      # parent_labels contain "", "Alice", "Alice" and tooltips contain "CEO", "
+      # President", "VP Sales".
       class OrgChartSpec
         include Google::Apis::Core::Hashable
       
@@ -6880,110 +5540,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `nodeColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :node_color
@@ -7005,110 +5604,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `selectedNodeColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :selected_node_color
@@ -7144,8 +5682,7 @@ module Google
       class OverlayPosition
         include Google::Apis::Core::Hashable
       
-        # A coordinate in a sheet.
-        # All indexes are zero-based.
+        # A coordinate in a sheet. All indexes are zero-based.
         # Corresponds to the JSON property `anchorCell`
         # @return [Google::Apis::SheetsV4::GridCoordinate]
         attr_accessor :anchor_cell
@@ -7155,14 +5692,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :height_pixels
       
-        # The horizontal offset, in pixels, that the object is offset
-        # from the anchor cell.
+        # The horizontal offset, in pixels, that the object is offset from the anchor
+        # cell.
         # Corresponds to the JSON property `offsetXPixels`
         # @return [Fixnum]
         attr_accessor :offset_x_pixels
       
-        # The vertical offset, in pixels, that the object is offset
-        # from the anchor cell.
+        # The vertical offset, in pixels, that the object is offset from the anchor cell.
         # Corresponds to the JSON property `offsetYPixels`
         # @return [Fixnum]
         attr_accessor :offset_y_pixels
@@ -7186,8 +5722,8 @@ module Google
         end
       end
       
-      # The amount of padding around the cell, in pixels.
-      # When updating padding, every field must be specified.
+      # The amount of padding around the cell, in pixels. When updating padding, every
+      # field must be specified.
       class Padding
         include Google::Apis::Core::Hashable
       
@@ -7228,8 +5764,7 @@ module Google
       class PasteDataRequest
         include Google::Apis::Core::Hashable
       
-        # A coordinate in a sheet.
-        # All indexes are zero-based.
+        # A coordinate in a sheet. All indexes are zero-based.
         # Corresponds to the JSON property `coordinate`
         # @return [Google::Apis::SheetsV4::GridCoordinate]
         attr_accessor :coordinate
@@ -7269,7 +5804,7 @@ module Google
         end
       end
       
-      # A <a href="/chart/interactive/docs/gallery/piechart">pie chart</a>.
+      # A pie chart.
       class PieChartSpec
         include Google::Apis::Core::Hashable
       
@@ -7317,7 +5852,7 @@ module Google
       class PivotFilterCriteria
         include Google::Apis::Core::Hashable
       
-        # Values that should be included.  Values not listed here are excluded.
+        # Values that should be included. Values not listed here are excluded.
         # Corresponds to the JSON property `visibleValues`
         # @return [Array<String>]
         attr_accessor :visible_values
@@ -7336,50 +5871,37 @@ module Google
       class PivotGroup
         include Google::Apis::Core::Hashable
       
-        # An optional setting on a PivotGroup that defines buckets for the values
-        # in the source data column rather than breaking out each individual value.
-        # Only one PivotGroup with a group rule may be added for each column in
-        # the source data, though on any given column you may add both a
-        # PivotGroup that has a rule and a PivotGroup that does not.
+        # An optional setting on a PivotGroup that defines buckets for the values in the
+        # source data column rather than breaking out each individual value. Only one
+        # PivotGroup with a group rule may be added for each column in the source data,
+        # though on any given column you may add both a PivotGroup that has a rule and a
+        # PivotGroup that does not.
         # Corresponds to the JSON property `groupRule`
         # @return [Google::Apis::SheetsV4::PivotGroupRule]
         attr_accessor :group_rule
       
         # The labels to use for the row/column groups which can be customized. For
-        # example, in the following pivot table, the row label is `Region` (which
-        # could be renamed to `State`) and the column label is `Product` (which
-        # could be renamed `Item`). Pivot tables created before December 2017 do
-        # not have header labels. If you'd like to add header labels to an existing
-        # pivot table, please delete the existing pivot table and then create a new
-        # pivot table with same parameters.
-        # +--------------+---------+-------+
-        # | SUM of Units | Product |       |
-        # | Region       | Pen     | Paper |
-        # +--------------+---------+-------+
-        # | New York     |     345 |    98 |
-        # | Oregon       |     234 |   123 |
-        # | Tennessee    |     531 |   415 |
-        # +--------------+---------+-------+
-        # | Grand Total  |    1110 |   636 |
-        # +--------------+---------+-------+
+        # example, in the following pivot table, the row label is `Region` (which could
+        # be renamed to `State`) and the column label is `Product` (which could be
+        # renamed `Item`). Pivot tables created before December 2017 do not have header
+        # labels. If you'd like to add header labels to an existing pivot table, please
+        # delete the existing pivot table and then create a new pivot table with same
+        # parameters. +--------------+---------+-------+ | SUM of Units | Product | | |
+        # Region | Pen | Paper | +--------------+---------+-------+ | New York | 345 |
+        # 98 | | Oregon | 234 | 123 | | Tennessee | 531 | 415 | +--------------+---------
+        # +-------+ | Grand Total | 1110 | 636 | +--------------+---------+-------+
         # Corresponds to the JSON property `label`
         # @return [String]
         attr_accessor :label
       
-        # True if the headings in this pivot group should be repeated.
-        # This is only valid for row groupings and is ignored by columns.
-        # By default, we minimize repitition of headings by not showing higher
-        # level headings where they are the same. For example, even though the
-        # third row below corresponds to "Q1 Mar", "Q1" is not shown because
-        # it is redundant with previous rows. Setting repeat_headings to true
-        # would cause "Q1" to be repeated for "Feb" and "Mar".
-        # +--------------+
-        # | Q1     | Jan |
-        # |        | Feb |
-        # |        | Mar |
-        # +--------+-----+
-        # | Q1 Total     |
-        # +--------------+
+        # True if the headings in this pivot group should be repeated. This is only
+        # valid for row groupings and is ignored by columns. By default, we minimize
+        # repitition of headings by not showing higher level headings where they are the
+        # same. For example, even though the third row below corresponds to "Q1 Mar", "
+        # Q1" is not shown because it is redundant with previous rows. Setting
+        # repeat_headings to true would cause "Q1" to be repeated for "Feb" and "Mar". +-
+        # -------------+ | Q1 | Jan | | | Feb | | | Mar | +--------+-----+ | Q1 Total | +
+        # --------------+
         # Corresponds to the JSON property `repeatHeadings`
         # @return [Boolean]
         attr_accessor :repeat_headings
@@ -7396,10 +5918,9 @@ module Google
         # @return [String]
         attr_accessor :sort_order
       
-        # The column offset of the source range that this grouping is based on.
-        # For example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`
-        # means this group refers to column `C`, whereas the offset `1` would
-        # refer to column `D`.
+        # The column offset of the source range that this grouping is based on. For
+        # example, if the source was `C10:E15`, a `sourceColumnOffset` of `0` means this
+        # group refers to column `C`, whereas the offset `1` would refer to column `D`.
         # Corresponds to the JSON property `sourceColumnOffset`
         # @return [Fixnum]
         attr_accessor :source_column_offset
@@ -7431,99 +5952,61 @@ module Google
         end
       end
       
-      # An optional setting on a PivotGroup that defines buckets for the values
-      # in the source data column rather than breaking out each individual value.
-      # Only one PivotGroup with a group rule may be added for each column in
-      # the source data, though on any given column you may add both a
-      # PivotGroup that has a rule and a PivotGroup that does not.
+      # An optional setting on a PivotGroup that defines buckets for the values in the
+      # source data column rather than breaking out each individual value. Only one
+      # PivotGroup with a group rule may be added for each column in the source data,
+      # though on any given column you may add both a PivotGroup that has a rule and a
+      # PivotGroup that does not.
       class PivotGroupRule
         include Google::Apis::Core::Hashable
       
         # Allows you to organize the date-time values in a source data column into
         # buckets based on selected parts of their date or time values. For example,
-        # consider a pivot table showing sales transactions by date:
-        # +----------+--------------+
-        # | Date     | SUM of Sales |
-        # +----------+--------------+
-        # | 1/1/2017 |      $621.14 |
-        # | 2/3/2017 |      $708.84 |
-        # | 5/8/2017 |      $326.84 |
-        # ...
-        # +----------+--------------+
-        # Applying a date-time group rule with a DateTimeRuleType of YEAR_MONTH
-        # results in the following pivot table.
-        # +--------------+--------------+
-        # | Grouped Date | SUM of Sales |
-        # +--------------+--------------+
-        # | 2017-Jan     |   $53,731.78 |
-        # | 2017-Feb     |   $83,475.32 |
-        # | 2017-Mar     |   $94,385.05 |
-        # ...
-        # +--------------+--------------+
+        # consider a pivot table showing sales transactions by date: +----------+--------
+        # ------+ | Date | SUM of Sales | +----------+--------------+ | 1/1/2017 | $621.
+        # 14 | | 2/3/2017 | $708.84 | | 5/8/2017 | $326.84 | ... +----------+------------
+        # --+ Applying a date-time group rule with a DateTimeRuleType of YEAR_MONTH
+        # results in the following pivot table. +--------------+--------------+ |
+        # Grouped Date | SUM of Sales | +--------------+--------------+ | 2017-Jan | $53,
+        # 731.78 | | 2017-Feb | $83,475.32 | | 2017-Mar | $94,385.05 | ... +-------------
+        # -+--------------+
         # Corresponds to the JSON property `dateTimeRule`
         # @return [Google::Apis::SheetsV4::DateTimeRule]
         attr_accessor :date_time_rule
       
-        # Allows you to organize the numeric values in a source data column into
-        # buckets of a constant size. All values from HistogramRule.start to
-        # HistogramRule.end are placed into groups of size
-        # HistogramRule.interval. In addition, all values below
-        # HistogramRule.start are placed in one group, and all values above
-        # HistogramRule.end are placed in another. Only
-        # HistogramRule.interval is required, though if HistogramRule.start
-        # and HistogramRule.end are both provided, HistogramRule.start must
-        # be less than HistogramRule.end. For example, a pivot table showing
-        # average purchase amount by age that has 50+ rows:
-        # +-----+-------------------+
-        # | Age | AVERAGE of Amount |
-        # +-----+-------------------+
-        # | 16  |            $27.13 |
-        # | 17  |             $5.24 |
-        # | 18  |            $20.15 |
-        # ...
-        # +-----+-------------------+
-        # could be turned into a pivot table that looks like the one below by
-        # applying a histogram group rule with a HistogramRule.start of 25,
-        # an HistogramRule.interval of 20, and an HistogramRule.end
-        # of 65.
-        # +-------------+-------------------+
-        # | Grouped Age | AVERAGE of Amount |
-        # +-------------+-------------------+
-        # | < 25        |            $19.34 |
-        # | 25-45       |            $31.43 |
-        # | 45-65       |            $35.87 |
-        # | > 65        |            $27.55 |
-        # +-------------+-------------------+
-        # | Grand Total |            $29.12 |
-        # +-------------+-------------------+
+        # Allows you to organize the numeric values in a source data column into buckets
+        # of a constant size. All values from HistogramRule.start to HistogramRule.end
+        # are placed into groups of size HistogramRule.interval. In addition, all values
+        # below HistogramRule.start are placed in one group, and all values above
+        # HistogramRule.end are placed in another. Only HistogramRule.interval is
+        # required, though if HistogramRule.start and HistogramRule.end are both
+        # provided, HistogramRule.start must be less than HistogramRule.end. For example,
+        # a pivot table showing average purchase amount by age that has 50+ rows: +-----
+        # +-------------------+ | Age | AVERAGE of Amount | +-----+-------------------+ |
+        # 16 | $27.13 | | 17 | $5.24 | | 18 | $20.15 | ... +-----+-------------------+
+        # could be turned into a pivot table that looks like the one below by applying a
+        # histogram group rule with a HistogramRule.start of 25, an HistogramRule.
+        # interval of 20, and an HistogramRule.end of 65. +-------------+----------------
+        # ---+ | Grouped Age | AVERAGE of Amount | +-------------+-------------------+ |
+        # < 25 | $19.34 | | 25-45 | $31.43 | | 45-65 | $35.87 | | > 65 | $27.55 | +------
+        # -------+-------------------+ | Grand Total | $29.12 | +-------------+----------
+        # ---------+
         # Corresponds to the JSON property `histogramRule`
         # @return [Google::Apis::SheetsV4::HistogramRule]
         attr_accessor :histogram_rule
       
         # Allows you to manually organize the values in a source data column into
         # buckets with names of your choosing. For example, a pivot table that
-        # aggregates population by state:
-        # +-------+-------------------+
-        # | State | SUM of Population |
-        # +-------+-------------------+
-        # | AK    |               0.7 |
-        # | AL    |               4.8 |
-        # | AR    |               2.9 |
-        # ...
-        # +-------+-------------------+
-        # could be turned into a pivot table that aggregates population by time zone
-        # by providing a list of groups (for example, groupName = 'Central',
-        # items = ['AL', 'AR', 'IA', ...]) to a manual group rule.
-        # Note that a similar effect could be achieved by adding a time zone column
-        # to the source data and adjusting the pivot table.
-        # +-----------+-------------------+
-        # | Time Zone | SUM of Population |
-        # +-----------+-------------------+
-        # | Central   |             106.3 |
-        # | Eastern   |             151.9 |
-        # | Mountain  |              17.4 |
-        # ...
-        # +-----------+-------------------+
+        # aggregates population by state: +-------+-------------------+ | State | SUM of
+        # Population | +-------+-------------------+ | AK | 0.7 | | AL | 4.8 | | AR | 2.
+        # 9 | ... +-------+-------------------+ could be turned into a pivot table that
+        # aggregates population by time zone by providing a list of groups (for example,
+        # groupName = 'Central', items = ['AL', 'AR', 'IA', ...]) to a manual group rule.
+        # Note that a similar effect could be achieved by adding a time zone column to
+        # the source data and adjusting the pivot table. +-----------+-------------------
+        # + | Time Zone | SUM of Population | +-----------+-------------------+ |
+        # Central | 106.3 | | Eastern | 151.9 | | Mountain | 17.4 | ... +-----------+----
+        # ---------------+
         # Corresponds to the JSON property `manualRule`
         # @return [Google::Apis::SheetsV4::ManualRule]
         attr_accessor :manual_rule
@@ -7544,20 +6027,19 @@ module Google
       class PivotGroupSortValueBucket
         include Google::Apis::Core::Hashable
       
-        # Determines the bucket from which values are chosen to sort.
-        # For example, in a pivot table with one row group & two column groups,
-        # the row group can list up to two values. The first value corresponds
-        # to a value within the first column group, and the second value
-        # corresponds to a value in the second column group.  If no values
-        # are listed, this would indicate that the row should be sorted according
-        # to the "Grand Total" over the column groups. If a single value is listed,
-        # this would correspond to using the "Total" of that bucket.
+        # Determines the bucket from which values are chosen to sort. For example, in a
+        # pivot table with one row group & two column groups, the row group can list up
+        # to two values. The first value corresponds to a value within the first column
+        # group, and the second value corresponds to a value in the second column group.
+        # If no values are listed, this would indicate that the row should be sorted
+        # according to the "Grand Total" over the column groups. If a single value is
+        # listed, this would correspond to using the "Total" of that bucket.
         # Corresponds to the JSON property `buckets`
         # @return [Array<Google::Apis::SheetsV4::ExtendedValue>]
         attr_accessor :buckets
       
-        # The offset in the PivotTable.values list which the values in this
-        # grouping should be sorted by.
+        # The offset in the PivotTable.values list which the values in this grouping
+        # should be sorted by.
         # Corresponds to the JSON property `valuesIndex`
         # @return [Fixnum]
         attr_accessor :values_index
@@ -7608,12 +6090,12 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::PivotGroup>]
         attr_accessor :columns
       
-        # An optional mapping of filters per source column offset.
-        # The filters are applied before aggregating data into the pivot table.
-        # The map's key is the column offset of the source range that you want to
-        # filter, and the value is the criteria for that column.
-        # For example, if the source was `C10:E15`, a key of `0` will have the filter
-        # for column `C`, whereas the key `1` is for column `D`.
+        # An optional mapping of filters per source column offset. The filters are
+        # applied before aggregating data into the pivot table. The map's key is the
+        # column offset of the source range that you want to filter, and the value is
+        # the criteria for that column. For example, if the source was `C10:E15`, a key
+        # of `0` will have the filter for column `C`, whereas the key `1` is for column `
+        # D`.
         # Corresponds to the JSON property `criteria`
         # @return [Hash<String,Google::Apis::SheetsV4::PivotFilterCriteria>]
         attr_accessor :criteria
@@ -7623,34 +6105,25 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::PivotGroup>]
         attr_accessor :rows
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :source
       
-        # Whether values should be listed horizontally (as columns)
-        # or vertically (as rows).
+        # Whether values should be listed horizontally (as columns) or vertically (as
+        # rows).
         # Corresponds to the JSON property `valueLayout`
         # @return [String]
         attr_accessor :value_layout
@@ -7679,18 +6152,17 @@ module Google
       class PivotValue
         include Google::Apis::Core::Hashable
       
-        # If specified, indicates that pivot values should be displayed as
-        # the result of a calculation with another pivot value. For example, if
-        # calculated_display_type is specified as PERCENT_OF_GRAND_TOTAL, all the
-        # pivot values are displayed as the percentage of the grand total. In
-        # the Sheets UI, this is referred to as "Show As" in the value section of a
-        # pivot table.
+        # If specified, indicates that pivot values should be displayed as the result of
+        # a calculation with another pivot value. For example, if
+        # calculated_display_type is specified as PERCENT_OF_GRAND_TOTAL, all the pivot
+        # values are displayed as the percentage of the grand total. In the Sheets UI,
+        # this is referred to as "Show As" in the value section of a pivot table.
         # Corresponds to the JSON property `calculatedDisplayType`
         # @return [String]
         attr_accessor :calculated_display_type
       
-        # A custom formula to calculate the value.  The formula must start
-        # with an `=` character.
+        # A custom formula to calculate the value. The formula must start with an `=`
+        # character.
         # Corresponds to the JSON property `formula`
         # @return [String]
         attr_accessor :formula
@@ -7700,20 +6172,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The column offset of the source range that this value reads from.
-        # For example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`
-        # means this value refers to column `C`, whereas the offset `1` would
-        # refer to column `D`.
+        # The column offset of the source range that this value reads from. For example,
+        # if the source was `C10:E15`, a `sourceColumnOffset` of `0` means this value
+        # refers to column `C`, whereas the offset `1` would refer to column `D`.
         # Corresponds to the JSON property `sourceColumnOffset`
         # @return [Fixnum]
         attr_accessor :source_column_offset
       
-        # A function to summarize the value.
-        # If formula is set, the only supported values are
-        # SUM and
-        # CUSTOM.
-        # If sourceColumnOffset is set, then `CUSTOM`
-        # is not supported.
+        # A function to summarize the value. If formula is set, the only supported
+        # values are SUM and CUSTOM. If sourceColumnOffset is set, then `CUSTOM` is not
+        # supported.
         # Corresponds to the JSON property `summarizeFunction`
         # @return [String]
         attr_accessor :summarize_function
@@ -7746,67 +6214,54 @@ module Google
         # @return [Google::Apis::SheetsV4::Editors]
         attr_accessor :editors
       
-        # The named range this protected range is backed by, if any.
-        # When writing, only one of range or named_range_id
-        # may be set.
+        # The named range this protected range is backed by, if any. When writing, only
+        # one of range or named_range_id may be set.
         # Corresponds to the JSON property `namedRangeId`
         # @return [String]
         attr_accessor :named_range_id
       
-        # The ID of the protected range.
-        # This field is read-only.
+        # The ID of the protected range. This field is read-only.
         # Corresponds to the JSON property `protectedRangeId`
         # @return [Fixnum]
         attr_accessor :protected_range_id
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
       
-        # True if the user who requested this protected range can edit the
-        # protected area.
-        # This field is read-only.
+        # True if the user who requested this protected range can edit the protected
+        # area. This field is read-only.
         # Corresponds to the JSON property `requestingUserCanEdit`
         # @return [Boolean]
         attr_accessor :requesting_user_can_edit
         alias_method :requesting_user_can_edit?, :requesting_user_can_edit
       
-        # The list of unprotected ranges within a protected sheet.
-        # Unprotected ranges are only supported on protected sheets.
+        # The list of unprotected ranges within a protected sheet. Unprotected ranges
+        # are only supported on protected sheets.
         # Corresponds to the JSON property `unprotectedRanges`
         # @return [Array<Google::Apis::SheetsV4::GridRange>]
         attr_accessor :unprotected_ranges
       
-        # True if this protected range will show a warning when editing.
-        # Warning-based protection means that every user can edit data in the
-        # protected range, except editing will prompt a warning asking the user
-        # to confirm the edit.
-        # When writing: if this field is true, then editors is ignored.
-        # Additionally, if this field is changed from true to false and the
-        # `editors` field is not set (nor included in the field mask), then
-        # the editors will be set to all the editors in the document.
+        # True if this protected range will show a warning when editing. Warning-based
+        # protection means that every user can edit data in the protected range, except
+        # editing will prompt a warning asking the user to confirm the edit. When
+        # writing: if this field is true, then editors is ignored. Additionally, if this
+        # field is changed from true to false and the `editors` field is not set (nor
+        # included in the field mask), then the editors will be set to all the editors
+        # in the document.
         # Corresponds to the JSON property `warningOnly`
         # @return [Boolean]
         attr_accessor :warning_only
@@ -7833,28 +6288,19 @@ module Google
       class RandomizeRangeRequest
         include Google::Apis::Core::Hashable
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -7869,17 +6315,14 @@ module Google
         end
       end
       
-      # Updates all cells in the range to the values in the given Cell object.
-      # Only the fields listed in the fields field are updated; others are
-      # unchanged.
-      # If writing a cell with a formula, the formula's ranges will automatically
-      # increment for each field in the range.
-      # For example, if writing a cell with formula `=A1` into range B2:C4,
-      # B2 would be `=A1`, B3 would be `=A2`, B4 would be `=A3`,
-      # C2 would be `=B1`, C3 would be `=B2`, C4 would be `=B3`.
-      # To keep the formula's ranges static, use the `$` indicator.
-      # For example, use the formula `=$A$1` to prevent both the row and the
-      # column from incrementing.
+      # Updates all cells in the range to the values in the given Cell object. Only
+      # the fields listed in the fields field are updated; others are unchanged. If
+      # writing a cell with a formula, the formula's ranges will automatically
+      # increment for each field in the range. For example, if writing a cell with
+      # formula `=A1` into range B2:C4, B2 would be `=A1`, B3 would be `=A2`, B4 would
+      # be `=A3`, C2 would be `=B1`, C3 would be `=B2`, C4 would be `=B3`. To keep the
+      # formula's ranges static, use the `$` indicator. For example, use the formula `=
+      # $A$1` to prevent both the row and the column from incrementing.
       class RepeatCellRequest
         include Google::Apis::Core::Hashable
       
@@ -7888,35 +6331,26 @@ module Google
         # @return [Google::Apis::SheetsV4::CellData]
         attr_accessor :cell
       
-        # The fields that should be updated.  At least one field must be specified.
-        # The root `cell` is implied and should not be specified.
-        # A single `"*"` can be used as short-hand for listing every field.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `cell` is implied and should not be specified. A single `"*"` can be used
+        # as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -7947,24 +6381,22 @@ module Google
         # @return [Google::Apis::SheetsV4::AddChartRequest]
         attr_accessor :add_chart
       
-        # Adds a new conditional format rule at the given index.
-        # All subsequent rules' indexes are incremented.
+        # Adds a new conditional format rule at the given index. All subsequent rules'
+        # indexes are incremented.
         # Corresponds to the JSON property `addConditionalFormatRule`
         # @return [Google::Apis::SheetsV4::AddConditionalFormatRuleRequest]
         attr_accessor :add_conditional_format_rule
       
-        # Creates a group over the specified range.
-        # If the requested range is a superset of the range of an existing group G,
-        # then the depth of G is incremented and this new group G' has the
-        # depth of that group. For example, a group [C:D, depth 1] + [B:E] results in
-        # groups [B:E, depth 1] and [C:D, depth 2].
-        # If the requested range is a subset of the range of an existing group G,
-        # then the depth of the new group G' becomes one greater than the depth of G.
-        # For example, a group [B:E, depth 1] + [C:D] results in groups [B:E, depth 1]
-        # and [C:D, depth 2].
-        # If the requested range starts before and ends within, or starts within and
-        # ends after, the range of an existing group G, then the range of the existing
-        # group G becomes the union of the ranges, and the new group G' has
+        # Creates a group over the specified range. If the requested range is a superset
+        # of the range of an existing group G, then the depth of G is incremented and
+        # this new group G' has the depth of that group. For example, a group [C:D,
+        # depth 1] + [B:E] results in groups [B:E, depth 1] and [C:D, depth 2]. If the
+        # requested range is a subset of the range of an existing group G, then the
+        # depth of the new group G' becomes one greater than the depth of G. For example,
+        # a group [B:E, depth 1] + [C:D] results in groups [B:E, depth 1] and [C:D,
+        # depth 2]. If the requested range starts before and ends within, or starts
+        # within and ends after, the range of an existing group G, then the range of the
+        # existing group G becomes the union of the ranges, and the new group G' has
         # depth one greater than the depth of G and range as the intersection of the
         # ranges. For example, a group [B:D, depth 1] + [C:E] results in groups [B:E,
         # depth 1] and [C:D, depth 2].
@@ -7987,12 +6419,10 @@ module Google
         # @return [Google::Apis::SheetsV4::AddProtectedRangeRequest]
         attr_accessor :add_protected_range
       
-        # Adds a new sheet.
-        # When a sheet is added at a given index,
-        # all subsequent sheets' indexes are incremented.
-        # To add an object sheet, use AddChartRequest instead and specify
-        # EmbeddedObjectPosition.sheetId or
-        # EmbeddedObjectPosition.newSheet.
+        # Adds a new sheet. When a sheet is added at a given index, all subsequent
+        # sheets' indexes are incremented. To add an object sheet, use AddChartRequest
+        # instead and specify EmbeddedObjectPosition.sheetId or EmbeddedObjectPosition.
+        # newSheet.
         # Corresponds to the JSON property `addSheet`
         # @return [Google::Apis::SheetsV4::AddSheetRequest]
         attr_accessor :add_sheet
@@ -8002,8 +6432,8 @@ module Google
         # @return [Google::Apis::SheetsV4::AddSlicerRequest]
         attr_accessor :add_slicer
       
-        # Adds new cells after the last row with data in a sheet,
-        # inserting new rows into the sheet if necessary.
+        # Adds new cells after the last row with data in a sheet, inserting new rows
+        # into the sheet if necessary.
         # Corresponds to the JSON property `appendCells`
         # @return [Google::Apis::SheetsV4::AppendCellsRequest]
         attr_accessor :append_cells
@@ -8018,8 +6448,8 @@ module Google
         # @return [Google::Apis::SheetsV4::AutoFillRequest]
         attr_accessor :auto_fill
       
-        # Automatically resizes one or more dimensions based on the contents
-        # of the cells in that dimension.
+        # Automatically resizes one or more dimensions based on the contents of the
+        # cells in that dimension.
         # Corresponds to the JSON property `autoResizeDimensions`
         # @return [Google::Apis::SheetsV4::AutoResizeDimensionsRequest]
         attr_accessor :auto_resize_dimensions
@@ -8049,8 +6479,8 @@ module Google
         # @return [Google::Apis::SheetsV4::DeleteBandingRequest]
         attr_accessor :delete_banding
       
-        # Deletes a conditional format rule at the given index.
-        # All subsequent rules' indexes are decremented.
+        # Deletes a conditional format rule at the given index. All subsequent rules'
+        # indexes are decremented.
         # Corresponds to the JSON property `deleteConditionalFormatRule`
         # @return [Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest]
         attr_accessor :delete_conditional_format_rule
@@ -8066,10 +6496,9 @@ module Google
         attr_accessor :delete_dimension
       
         # Deletes a group over the specified range by decrementing the depth of the
-        # dimensions in the range.
-        # For example, assume the sheet has a depth-1 group over B:E and a depth-2
-        # group over C:D. Deleting a group over D:E leaves the sheet with a
-        # depth-1 group over B:D and a depth-2 group over C:C.
+        # dimensions in the range. For example, assume the sheet has a depth-1 group
+        # over B:E and a depth-2 group over C:D. Deleting a group over D:E leaves the
+        # sheet with a depth-1 group over B:D and a depth-2 group over C:C.
         # Corresponds to the JSON property `deleteDimensionGroup`
         # @return [Google::Apis::SheetsV4::DeleteDimensionGroupRequest]
         attr_accessor :delete_dimension_group
@@ -8077,12 +6506,11 @@ module Google
         # Removes rows within this range that contain values in the specified columns
         # that are duplicates of values in any previous row. Rows with identical values
         # but different letter cases, formatting, or formulas are considered to be
-        # duplicates.
-        # This request also removes duplicate rows hidden from view (for example, due
-        # to a filter). When removing duplicates, the first instance of each duplicate
-        # row scanning from the top downwards is kept in the resulting range. Content
-        # outside of the specified range isn't removed, and rows considered duplicates
-        # do not have to be adjacent to each other in the range.
+        # duplicates. This request also removes duplicate rows hidden from view (for
+        # example, due to a filter). When removing duplicates, the first instance of
+        # each duplicate row scanning from the top downwards is kept in the resulting
+        # range. Content outside of the specified range isn't removed, and rows
+        # considered duplicates do not have to be adjacent to each other in the range.
         # Corresponds to the JSON property `deleteDuplicates`
         # @return [Google::Apis::SheetsV4::DeleteDuplicatesRequest]
         attr_accessor :delete_duplicates
@@ -8162,17 +6590,14 @@ module Google
         # @return [Google::Apis::SheetsV4::RandomizeRangeRequest]
         attr_accessor :randomize_range
       
-        # Updates all cells in the range to the values in the given Cell object.
-        # Only the fields listed in the fields field are updated; others are
-        # unchanged.
-        # If writing a cell with a formula, the formula's ranges will automatically
-        # increment for each field in the range.
-        # For example, if writing a cell with formula `=A1` into range B2:C4,
-        # B2 would be `=A1`, B3 would be `=A2`, B4 would be `=A3`,
-        # C2 would be `=B1`, C3 would be `=B2`, C4 would be `=B3`.
-        # To keep the formula's ranges static, use the `$` indicator.
-        # For example, use the formula `=$A$1` to prevent both the row and the
-        # column from incrementing.
+        # Updates all cells in the range to the values in the given Cell object. Only
+        # the fields listed in the fields field are updated; others are unchanged. If
+        # writing a cell with a formula, the formula's ranges will automatically
+        # increment for each field in the range. For example, if writing a cell with
+        # formula `=A1` into range B2:C4, B2 would be `=A1`, B3 would be `=A2`, B4 would
+        # be `=A3`, C2 would be `=B1`, C3 would be `=B2`, C4 would be `=B3`. To keep the
+        # formula's ranges static, use the `$` indicator. For example, use the formula `=
+        # $A$1` to prevent both the row and the column from incrementing.
         # Corresponds to the JSON property `repeatCell`
         # @return [Google::Apis::SheetsV4::RepeatCellRequest]
         attr_accessor :repeat_cell
@@ -8182,8 +6607,8 @@ module Google
         # @return [Google::Apis::SheetsV4::SetBasicFilterRequest]
         attr_accessor :set_basic_filter
       
-        # Sets a data validation rule to every cell in the range.
-        # To clear validation in a range, call this with no rule specified.
+        # Sets a data validation rule to every cell in the range. To clear validation in
+        # a range, call this with no rule specified.
         # Corresponds to the JSON property `setDataValidation`
         # @return [Google::Apis::SheetsV4::SetDataValidationRequest]
         attr_accessor :set_data_validation
@@ -8193,18 +6618,18 @@ module Google
         # @return [Google::Apis::SheetsV4::SortRangeRequest]
         attr_accessor :sort_range
       
-        # Splits a column of text into multiple columns,
-        # based on a delimiter in each cell.
+        # Splits a column of text into multiple columns, based on a delimiter in each
+        # cell.
         # Corresponds to the JSON property `textToColumns`
         # @return [Google::Apis::SheetsV4::TextToColumnsRequest]
         attr_accessor :text_to_columns
       
-        # Trims the whitespace (such as spaces, tabs, or new lines) in every cell in
-        # the specified range. This request removes all whitespace from the start and
-        # end of each cell's text, and reduces any subsequence of remaining whitespace
+        # Trims the whitespace (such as spaces, tabs, or new lines) in every cell in the
+        # specified range. This request removes all whitespace from the start and end of
+        # each cell's text, and reduces any subsequence of remaining whitespace
         # characters to a single space. If the resulting trimmed text starts with a '+'
-        # or '=' character, the text remains as a string value and isn't interpreted
-        # as a formula.
+        # or '=' character, the text remains as a string value and isn't interpreted as
+        # a formula.
         # Corresponds to the JSON property `trimWhitespace`
         # @return [Google::Apis::SheetsV4::TrimWhitespaceRequest]
         attr_accessor :trim_whitespace
@@ -8219,15 +6644,12 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateBandingRequest]
         attr_accessor :update_banding
       
-        # Updates the borders of a range.
-        # If a field is not set in the request, that means the border remains as-is.
-        # For example, with two subsequent UpdateBordersRequest:
-        # 1. range: A1:A5 `` top: RED, bottom: WHITE ``
-        # 2. range: A1:A5 `` left: BLUE ``
-        # That would result in A1:A5 having a borders of
-        # `` top: RED, bottom: WHITE, left: BLUE ``.
-        # If you want to clear a border, explicitly set the style to
-        # NONE.
+        # Updates the borders of a range. If a field is not set in the request, that
+        # means the border remains as-is. For example, with two subsequent
+        # UpdateBordersRequest: 1. range: A1:A5 `` top: RED, bottom: WHITE `` 2. range:
+        # A1:A5 `` left: BLUE `` That would result in A1:A5 having a borders of `` top:
+        # RED, bottom: WHITE, left: BLUE ``. If you want to clear a border, explicitly
+        # set the style to NONE.
         # Corresponds to the JSON property `updateBorders`
         # @return [Google::Apis::SheetsV4::UpdateBordersRequest]
         attr_accessor :update_borders
@@ -8237,25 +6659,23 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateCellsRequest]
         attr_accessor :update_cells
       
-        # Updates a chart's specifications.
-        # (This does not move or resize a chart. To move or resize a chart, use
-        # UpdateEmbeddedObjectPositionRequest.)
+        # Updates a chart's specifications. (This does not move or resize a chart. To
+        # move or resize a chart, use UpdateEmbeddedObjectPositionRequest.)
         # Corresponds to the JSON property `updateChartSpec`
         # @return [Google::Apis::SheetsV4::UpdateChartSpecRequest]
         attr_accessor :update_chart_spec
       
-        # Updates a conditional format rule at the given index,
-        # or moves a conditional format rule to another index.
+        # Updates a conditional format rule at the given index, or moves a conditional
+        # format rule to another index.
         # Corresponds to the JSON property `updateConditionalFormatRule`
         # @return [Google::Apis::SheetsV4::UpdateConditionalFormatRuleRequest]
         attr_accessor :update_conditional_format_rule
       
-        # A request to update properties of developer metadata.
-        # Updates the properties of the developer metadata selected by the filters to
-        # the values provided in the DeveloperMetadata resource.  Callers must
-        # specify the properties they wish to update in the fields parameter, as well
-        # as specify at least one DataFilter matching the metadata they wish to
-        # update.
+        # A request to update properties of developer metadata. Updates the properties
+        # of the developer metadata selected by the filters to the values provided in
+        # the DeveloperMetadata resource. Callers must specify the properties they wish
+        # to update in the fields parameter, as well as specify at least one DataFilter
+        # matching the metadata they wish to update.
         # Corresponds to the JSON property `updateDeveloperMetadata`
         # @return [Google::Apis::SheetsV4::UpdateDeveloperMetadataRequest]
         attr_accessor :update_developer_metadata
@@ -8270,8 +6690,8 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateDimensionPropertiesRequest]
         attr_accessor :update_dimension_properties
       
-        # Update an embedded object's position (such as a moving or resizing a
-        # chart or image).
+        # Update an embedded object's position (such as a moving or resizing a chart or
+        # image).
         # Corresponds to the JSON property `updateEmbeddedObjectPosition`
         # @return [Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionRequest]
         attr_accessor :update_embedded_object_position
@@ -8281,27 +6701,23 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateFilterViewRequest]
         attr_accessor :update_filter_view
       
-        # Updates properties of the named range with the specified
-        # namedRangeId.
+        # Updates properties of the named range with the specified namedRangeId.
         # Corresponds to the JSON property `updateNamedRange`
         # @return [Google::Apis::SheetsV4::UpdateNamedRangeRequest]
         attr_accessor :update_named_range
       
-        # Updates an existing protected range with the specified
-        # protectedRangeId.
+        # Updates an existing protected range with the specified protectedRangeId.
         # Corresponds to the JSON property `updateProtectedRange`
         # @return [Google::Apis::SheetsV4::UpdateProtectedRangeRequest]
         attr_accessor :update_protected_range
       
-        # Updates properties of the sheet with the specified
-        # sheetId.
+        # Updates properties of the sheet with the specified sheetId.
         # Corresponds to the JSON property `updateSheetProperties`
         # @return [Google::Apis::SheetsV4::UpdateSheetPropertiesRequest]
         attr_accessor :update_sheet_properties
       
-        # Updates a slicer's specifications.
-        # (This does not move or resize a slicer. To move or resize a slicer use
-        # UpdateEmbeddedObjectPositionRequest.
+        # Updates a slicer's specifications. (This does not move or resize a slicer. To
+        # move or resize a slicer use UpdateEmbeddedObjectPositionRequest.
         # Corresponds to the JSON property `updateSlicerSpec`
         # @return [Google::Apis::SheetsV4::UpdateSlicerSpecRequest]
         attr_accessor :update_slicer_spec
@@ -8533,16 +6949,15 @@ module Google
       end
       
       # A scorecard chart. Scorecard charts are used to highlight key performance
-      # indicators, known as KPIs, on the spreadsheet. A scorecard chart can
-      # represent things like total sales, average cost, or a top selling item. You
-      # can specify a single data value, or aggregate over a range of data.
-      # Percentage or absolute difference from a baseline value can be highlighted,
-      # like changes over time.
+      # indicators, known as KPIs, on the spreadsheet. A scorecard chart can represent
+      # things like total sales, average cost, or a top selling item. You can specify
+      # a single data value, or aggregate over a range of data. Percentage or absolute
+      # difference from a baseline value can be highlighted, like changes over time.
       class ScorecardChartSpec
         include Google::Apis::Core::Hashable
       
-        # The aggregation type for key and baseline chart data in scorecard chart.
-        # This field is optional.
+        # The aggregation type for key and baseline chart data in scorecard chart. This
+        # field is optional.
         # Corresponds to the JSON property `aggregateType`
         # @return [String]
         attr_accessor :aggregate_type
@@ -8572,15 +6987,13 @@ module Google
         # @return [Google::Apis::SheetsV4::KeyValueFormat]
         attr_accessor :key_value_format
       
-        # The number format source used in the scorecard chart.
-        # This field is optional.
+        # The number format source used in the scorecard chart. This field is optional.
         # Corresponds to the JSON property `numberFormatSource`
         # @return [String]
         attr_accessor :number_format_source
       
-        # Value to scale scorecard key and baseline value. For example, a factor of
-        # 10 can be used to divide all values in the chart by 10.
-        # This field is optional.
+        # Value to scale scorecard key and baseline value. For example, a factor of 10
+        # can be used to divide all values in the chart by 10. This field is optional.
         # Corresponds to the JSON property `scaleFactor`
         # @return [Float]
         attr_accessor :scale_factor
@@ -8608,7 +7021,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The data filters describing the criteria used to determine which
-        # DeveloperMetadata entries to return.  DeveloperMetadata matching any of the
+        # DeveloperMetadata entries to return. DeveloperMetadata matching any of the
         # specified filters are included in the response.
         # Corresponds to the JSON property `dataFilters`
         # @return [Array<Google::Apis::SheetsV4::DataFilter>]
@@ -8662,33 +7075,24 @@ module Google
         end
       end
       
-      # Sets a data validation rule to every cell in the range.
-      # To clear validation in a range, call this with no rule specified.
+      # Sets a data validation rule to every cell in the range. To clear validation in
+      # a range, call this with no rule specified.
       class SetDataValidationRequest
         include Google::Apis::Core::Hashable
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -8728,8 +7132,8 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::EmbeddedChart>]
         attr_accessor :charts
       
-        # All column groups on this sheet, ordered by increasing range start index,
-        # then by group depth.
+        # All column groups on this sheet, ordered by increasing range start index, then
+        # by group depth.
         # Corresponds to the JSON property `columnGroups`
         # @return [Array<Google::Apis::SheetsV4::DimensionGroup>]
         attr_accessor :column_groups
@@ -8739,14 +7143,12 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::ConditionalFormatRule>]
         attr_accessor :conditional_formats
       
-        # Data in the grid, if this is a grid sheet.
-        # The number of GridData objects returned is dependent on the number of
-        # ranges requested on this sheet. For example, if this is representing
-        # `Sheet1`, and the spreadsheet was requested with ranges
-        # `Sheet1!A1:C10` and `Sheet1!D15:E20`, then the first GridData will have a
-        # startRow/startColumn of `0`,
-        # while the second one will have `startRow 14` (zero-based row 15),
-        # and `startColumn 3` (zero-based column D).
+        # Data in the grid, if this is a grid sheet. The number of GridData objects
+        # returned is dependent on the number of ranges requested on this sheet. For
+        # example, if this is representing `Sheet1`, and the spreadsheet was requested
+        # with ranges `Sheet1!A1:C10` and `Sheet1!D15:E20`, then the first GridData will
+        # have a startRow/startColumn of `0`, while the second one will have `startRow
+        # 14` (zero-based row 15), and `startColumn 3` (zero-based column D).
         # Corresponds to the JSON property `data`
         # @return [Array<Google::Apis::SheetsV4::GridData>]
         attr_accessor :data
@@ -8776,8 +7178,8 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::ProtectedRange>]
         attr_accessor :protected_ranges
       
-        # All row groups on this sheet, ordered by increasing range start index, then
-        # by group depth.
+        # All row groups on this sheet, ordered by increasing range start index, then by
+        # group depth.
         # Corresponds to the JSON property `rowGroups`
         # @return [Array<Google::Apis::SheetsV4::DimensionGroup>]
         attr_accessor :row_groups
@@ -8824,16 +7226,14 @@ module Google
         attr_accessor :hidden
         alias_method :hidden?, :hidden
       
-        # The index of the sheet within the spreadsheet.
-        # When adding or updating sheet properties, if this field
-        # is excluded then the sheet is added or moved to the end
-        # of the sheet list. When updating sheet indices or inserting
-        # sheets, movement is considered in "before the move" indexes.
-        # For example, if there were 3 sheets (S1, S2, S3) in order to
-        # move S1 ahead of S2 the index would have to be set to 2. A sheet
-        # index update request is ignored if the requested index is
-        # identical to the sheets current index or if the requested new
-        # index is equal to the current sheet index + 1.
+        # The index of the sheet within the spreadsheet. When adding or updating sheet
+        # properties, if this field is excluded then the sheet is added or moved to the
+        # end of the sheet list. When updating sheet indices or inserting sheets,
+        # movement is considered in "before the move" indexes. For example, if there
+        # were 3 sheets (S1, S2, S3) in order to move S1 ahead of S2 the index would
+        # have to be set to 2. A sheet index update request is ignored if the requested
+        # index is identical to the sheets current index or if the requested new index
+        # is equal to the current sheet index + 1.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
         attr_accessor :index
@@ -8844,124 +7244,62 @@ module Google
         attr_accessor :right_to_left
         alias_method :right_to_left?, :right_to_left
       
-        # The ID of the sheet. Must be non-negative.
-        # This field cannot be changed once set.
+        # The ID of the sheet. Must be non-negative. This field cannot be changed once
+        # set.
         # Corresponds to the JSON property `sheetId`
         # @return [Fixnum]
         attr_accessor :sheet_id
       
-        # The type of sheet. Defaults to GRID.
-        # This field cannot be changed once set.
+        # The type of sheet. Defaults to GRID. This field cannot be changed once set.
         # Corresponds to the JSON property `sheetType`
         # @return [String]
         attr_accessor :sheet_type
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `tabColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :tab_color
@@ -9029,8 +7367,7 @@ module Google
       class SlicerSpec
         include Google::Apis::Core::Hashable
       
-        # True if the filter should apply to pivot tables.
-        # If not set, default to `True`.
+        # True if the filter should apply to pivot tables. If not set, default to `True`.
         # Corresponds to the JSON property `applyToPivotTables`
         # @return [Boolean]
         attr_accessor :apply_to_pivot_tables
@@ -9038,110 +7375,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `backgroundColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :background_color
@@ -9156,28 +7432,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :column_index
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `dataRange`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :data_range
@@ -9187,14 +7454,14 @@ module Google
         # @return [Google::Apis::SheetsV4::FilterCriteria]
         attr_accessor :filter_criteria
       
-        # The horizontal alignment of title in the slicer.
-        # If unspecified, defaults to `LEFT`
+        # The horizontal alignment of title in the slicer. If unspecified, defaults to `
+        # LEFT`
         # Corresponds to the JSON property `horizontalAlignment`
         # @return [String]
         attr_accessor :horizontal_alignment
       
-        # The format of a run of text in a cell.
-        # Absent values indicate that the field isn't specified.
+        # The format of a run of text in a cell. Absent values indicate that the field
+        # isn't specified.
         # Corresponds to the JSON property `textFormat`
         # @return [Google::Apis::SheetsV4::TextFormat]
         attr_accessor :text_format
@@ -9226,34 +7493,25 @@ module Google
       class SortRangeRequest
         include Google::Apis::Core::Hashable
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
       
-        # The sort order per column. Later specifications are used when values
-        # are equal in the earlier specifications.
+        # The sort order per column. Later specifications are used when values are equal
+        # in the earlier specifications.
         # Corresponds to the JSON property `sortSpecs`
         # @return [Array<Google::Apis::SheetsV4::SortSpec>]
         attr_accessor :sort_specs
@@ -9275,110 +7533,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `backgroundColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :background_color
@@ -9395,110 +7592,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `foregroundColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :foreground_color
@@ -9537,36 +7673,26 @@ module Google
         # @return [String]
         attr_accessor :dimension
       
-        # The number of rows or columns that data should be filled into.
-        # Positive numbers expand beyond the last row or last column
-        # of the source.  Negative numbers expand before the first row
-        # or first column of the source.
+        # The number of rows or columns that data should be filled into. Positive
+        # numbers expand beyond the last row or last column of the source. Negative
+        # numbers expand before the first row or first column of the source.
         # Corresponds to the JSON property `fillLength`
         # @return [Fixnum]
         attr_accessor :fill_length
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :source
@@ -9607,14 +7733,12 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::Sheet>]
         attr_accessor :sheets
       
-        # The ID of the spreadsheet.
-        # This field is read-only.
+        # The ID of the spreadsheet. This field is read-only.
         # Corresponds to the JSON property `spreadsheetId`
         # @return [String]
         attr_accessor :spreadsheet_id
       
-        # The url of the spreadsheet.
-        # This field is read-only.
+        # The url of the spreadsheet. This field is read-only.
         # Corresponds to the JSON property `spreadsheetUrl`
         # @return [String]
         attr_accessor :spreadsheet_url
@@ -9654,11 +7778,11 @@ module Google
         # @return [Google::Apis::SheetsV4::IterativeCalculationSettings]
         attr_accessor :iterative_calculation_settings
       
-        # The locale of the spreadsheet in one of the following formats:
-        # * an ISO 639-1 language code such as `en`
-        # * an ISO 639-2 language code such as `fil`, if no 639-1 code exists
-        # * a combination of the ISO language code and country code, such as `en_US`
-        # Note: when updating this field, not all locales/languages are supported.
+        # The locale of the spreadsheet in one of the following formats: * an ISO 639-1
+        # language code such as `en` * an ISO 639-2 language code such as `fil`, if no
+        # 639-1 code exists * a combination of the ISO language code and country code,
+        # such as `en_US` Note: when updating this field, not all locales/languages are
+        # supported.
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
@@ -9668,9 +7792,9 @@ module Google
         # @return [Google::Apis::SheetsV4::SpreadsheetTheme]
         attr_accessor :spreadsheet_theme
       
-        # The time zone of the spreadsheet, in CLDR format such as
-        # `America/New_York`. If the time zone isn't recognized, this may
-        # be a custom time zone such as `GMT-07:00`.
+        # The time zone of the spreadsheet, in CLDR format such as `America/New_York`.
+        # If the time zone isn't recognized, this may be a custom time zone such as `GMT-
+        # 07:00`.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -9705,8 +7829,8 @@ module Google
         # @return [String]
         attr_accessor :primary_font_family
       
-        # The spreadsheet theme color pairs. To update you must provide all theme
-        # color pairs.
+        # The spreadsheet theme color pairs. To update you must provide all theme color
+        # pairs.
         # Corresponds to the JSON property `themeColors`
         # @return [Array<Google::Apis::SheetsV4::ThemeColorPair>]
         attr_accessor :theme_colors
@@ -9722,8 +7846,8 @@ module Google
         end
       end
       
-      # The format of a run of text in a cell.
-      # Absent values indicate that the field isn't specified.
+      # The format of a run of text in a cell. Absent values indicate that the field
+      # isn't specified.
       class TextFormat
         include Google::Apis::Core::Hashable
       
@@ -9745,110 +7869,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `foregroundColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :foreground_color
@@ -9893,14 +7956,13 @@ module Google
         end
       end
       
-      # A run of a text format. The format of this run continues until the start
-      # index of the next run.
-      # When updating, all fields must be set.
+      # A run of a text format. The format of this run continues until the start index
+      # of the next run. When updating, all fields must be set.
       class TextFormatRun
         include Google::Apis::Core::Hashable
       
-        # The format of a run of text in a cell.
-        # Absent values indicate that the field isn't specified.
+        # The format of a run of text in a cell. Absent values indicate that the field
+        # isn't specified.
         # Corresponds to the JSON property `format`
         # @return [Google::Apis::SheetsV4::TextFormat]
         attr_accessor :format
@@ -9945,25 +8007,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The angle between the standard orientation and the desired orientation.
-        # Measured in degrees. Valid values are between -90 and 90. Positive
-        # angles are angled upwards, negative are angled downwards.
-        # Note: For LTR text direction positive angles are in the
-        # counterclockwise direction, whereas for RTL they are in the clockwise
-        # direction
+        # Measured in degrees. Valid values are between -90 and 90. Positive angles are
+        # angled upwards, negative are angled downwards. Note: For LTR text direction
+        # positive angles are in the counterclockwise direction, whereas for RTL they
+        # are in the clockwise direction
         # Corresponds to the JSON property `angle`
         # @return [Fixnum]
         attr_accessor :angle
       
         # If true, text reads top to bottom, but the orientation of individual
-        # characters is unchanged.
-        # For example:
-        # | V |
-        # | e |
-        # | r |
-        # | t |
-        # | i |
-        # | c |
-        # | a |
+        # characters is unchanged. For example: | V | | e | | r | | t | | i | | c | | a |
         # | l |
         # Corresponds to the JSON property `vertical`
         # @return [Boolean]
@@ -9981,13 +8034,12 @@ module Google
         end
       end
       
-      # Splits a column of text into multiple columns,
-      # based on a delimiter in each cell.
+      # Splits a column of text into multiple columns, based on a delimiter in each
+      # cell.
       class TextToColumnsRequest
         include Google::Apis::Core::Hashable
       
-        # The delimiter to use. Used only if delimiterType is
-        # CUSTOM.
+        # The delimiter to use. Used only if delimiterType is CUSTOM.
         # Corresponds to the JSON property `delimiter`
         # @return [String]
         attr_accessor :delimiter
@@ -9997,28 +8049,19 @@ module Google
         # @return [String]
         attr_accessor :delimiter_type
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :source
@@ -10067,110 +8110,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `maxValueColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :max_value_color
@@ -10182,110 +8164,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `midValueColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :mid_value_color
@@ -10297,110 +8218,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `minValueColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :min_value_color
@@ -10412,110 +8272,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `noDataColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :no_data_color
@@ -10542,7 +8341,7 @@ module Google
         end
       end
       
-      # A <a href="/chart/interactive/docs/gallery/treemap">Treemap chart</a>.
+      # A Treemap chart.
       class TreemapChartSpec
         include Google::Apis::Core::Hashable
       
@@ -10558,110 +8357,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `headerColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :header_color
@@ -10677,9 +8415,9 @@ module Google
         attr_accessor :hide_tooltips
         alias_method :hide_tooltips?, :hide_tooltips
       
-        # The number of additional data levels beyond the labeled levels to be shown
-        # on the treemap chart. These levels are not interactive and are shown
-        # without their labels. Defaults to 0 if not specified.
+        # The number of additional data levels beyond the labeled levels to be shown on
+        # the treemap chart. These levels are not interactive and are shown without
+        # their labels. Defaults to 0 if not specified.
         # Corresponds to the JSON property `hintedLevels`
         # @return [Fixnum]
         attr_accessor :hinted_levels
@@ -10690,24 +8428,23 @@ module Google
         attr_accessor :labels
       
         # The number of data levels to show on the treemap chart. These levels are
-        # interactive and are shown with their labels. Defaults to 2 if not
-        # specified.
+        # interactive and are shown with their labels. Defaults to 2 if not specified.
         # Corresponds to the JSON property `levels`
         # @return [Fixnum]
         attr_accessor :levels
       
-        # The maximum possible data value. Cells with values greater than this will
-        # have the same color as cells with this value. If not specified, defaults
-        # to the actual maximum value from color_data, or the maximum value from
-        # size_data if color_data is not specified.
+        # The maximum possible data value. Cells with values greater than this will have
+        # the same color as cells with this value. If not specified, defaults to the
+        # actual maximum value from color_data, or the maximum value from size_data if
+        # color_data is not specified.
         # Corresponds to the JSON property `maxValue`
         # @return [Float]
         attr_accessor :max_value
       
-        # The minimum possible data value. Cells with values less than this will
-        # have the same color as cells with this value. If not specified, defaults
-        # to the actual minimum value from color_data, or the minimum value from
-        # size_data if color_data is not specified.
+        # The minimum possible data value. Cells with values less than this will have
+        # the same color as cells with this value. If not specified, defaults to the
+        # actual minimum value from color_data, or the minimum value from size_data if
+        # color_data is not specified.
         # Corresponds to the JSON property `minValue`
         # @return [Float]
         attr_accessor :min_value
@@ -10722,8 +8459,8 @@ module Google
         # @return [Google::Apis::SheetsV4::ChartData]
         attr_accessor :size_data
       
-        # The format of a run of text in a cell.
-        # Absent values indicate that the field isn't specified.
+        # The format of a run of text in a cell. Absent values indicate that the field
+        # isn't specified.
         # Corresponds to the JSON property `textFormat`
         # @return [Google::Apis::SheetsV4::TextFormat]
         attr_accessor :text_format
@@ -10750,37 +8487,28 @@ module Google
         end
       end
       
-      # Trims the whitespace (such as spaces, tabs, or new lines) in every cell in
-      # the specified range. This request removes all whitespace from the start and
-      # end of each cell's text, and reduces any subsequence of remaining whitespace
+      # Trims the whitespace (such as spaces, tabs, or new lines) in every cell in the
+      # specified range. This request removes all whitespace from the start and end of
+      # each cell's text, and reduces any subsequence of remaining whitespace
       # characters to a single space. If the resulting trimmed text starts with a '+'
-      # or '=' character, the text remains as a string value and isn't interpreted
-      # as a formula.
+      # or '=' character, the text remains as a string value and isn't interpreted as
+      # a formula.
       class TrimWhitespaceRequest
         include Google::Apis::Core::Hashable
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -10818,28 +8546,19 @@ module Google
       class UnmergeCellsRequest
         include Google::Apis::Core::Hashable
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -10863,9 +8582,9 @@ module Google
         # @return [Google::Apis::SheetsV4::BandedRange]
         attr_accessor :banded_range
       
-        # The fields that should be updated.  At least one field must be specified.
-        # The root `bandedRange` is implied and should not be specified.
-        # A single `"*"` can be used as short-hand for listing every field.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `bandedRange` is implied and should not be specified. A single `"*"` can
+        # be used as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -10881,15 +8600,12 @@ module Google
         end
       end
       
-      # Updates the borders of a range.
-      # If a field is not set in the request, that means the border remains as-is.
-      # For example, with two subsequent UpdateBordersRequest:
-      # 1. range: A1:A5 `` top: RED, bottom: WHITE ``
-      # 2. range: A1:A5 `` left: BLUE ``
-      # That would result in A1:A5 having a borders of
-      # `` top: RED, bottom: WHITE, left: BLUE ``.
-      # If you want to clear a border, explicitly set the style to
-      # NONE.
+      # Updates the borders of a range. If a field is not set in the request, that
+      # means the border remains as-is. For example, with two subsequent
+      # UpdateBordersRequest: 1. range: A1:A5 `` top: RED, bottom: WHITE `` 2. range:
+      # A1:A5 `` left: BLUE `` That would result in A1:A5 having a borders of `` top:
+      # RED, bottom: WHITE, left: BLUE ``. If you want to clear a border, explicitly
+      # set the style to NONE.
       class UpdateBordersRequest
         include Google::Apis::Core::Hashable
       
@@ -10913,28 +8629,19 @@ module Google
         # @return [Google::Apis::SheetsV4::Border]
         attr_accessor :left
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -10969,36 +8676,26 @@ module Google
       class UpdateCellsRequest
         include Google::Apis::Core::Hashable
       
-        # The fields of CellData that should be updated.
-        # At least one field must be specified.
-        # The root is the CellData; 'row.values.' should not be specified.
-        # A single `"*"` can be used as short-hand for listing every field.
+        # The fields of CellData that should be updated. At least one field must be
+        # specified. The root is the CellData; 'row.values.' should not be specified. A
+        # single `"*"` can be used as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
       
-        # A range on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open, i.e. the start index is inclusive
-        # and the end index is exclusive -- [start_index, end_index).
-        # Missing indexes indicate the range is unbounded on that side.
-        # For example, if `"Sheet1"` is sheet ID 0, then:
-        # `Sheet1!A1:A1 == sheet_id: 0,
-        # start_row_index: 0, end_row_index: 1,
-        # start_column_index: 0, end_column_index: 1`
-        # `Sheet1!A3:B4 == sheet_id: 0,
-        # start_row_index: 2, end_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A:B == sheet_id: 0,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1!A5:B == sheet_id: 0,
-        # start_row_index: 4,
-        # start_column_index: 0, end_column_index: 2`
-        # `Sheet1 == sheet_id:0`
-        # The start index must always be less than or equal to the end index.
-        # If the start index equals the end index, then the range is empty.
-        # Empty ranges are typically not meaningful and are usually rendered in the
-        # UI as `#REF!`.
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index:
+        # 1` `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2` `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1 ==
+        # sheet_id:0` The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty. Empty
+        # ranges are typically not meaningful and are usually rendered in the UI as `#
+        # REF!`.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :range
@@ -11008,8 +8705,7 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::RowData>]
         attr_accessor :rows
       
-        # A coordinate in a sheet.
-        # All indexes are zero-based.
+        # A coordinate in a sheet. All indexes are zero-based.
         # Corresponds to the JSON property `start`
         # @return [Google::Apis::SheetsV4::GridCoordinate]
         attr_accessor :start
@@ -11027,9 +8723,8 @@ module Google
         end
       end
       
-      # Updates a chart's specifications.
-      # (This does not move or resize a chart. To move or resize a chart, use
-      # UpdateEmbeddedObjectPositionRequest.)
+      # Updates a chart's specifications. (This does not move or resize a chart. To
+      # move or resize a chart, use UpdateEmbeddedObjectPositionRequest.)
       class UpdateChartSpecRequest
         include Google::Apis::Core::Hashable
       
@@ -11054,8 +8749,8 @@ module Google
         end
       end
       
-      # Updates a conditional format rule at the given index,
-      # or moves a conditional format rule to another index.
+      # Updates a conditional format rule at the given index, or moves a conditional
+      # format rule to another index.
       class UpdateConditionalFormatRuleRequest
         include Google::Apis::Core::Hashable
       
@@ -11074,8 +8769,7 @@ module Google
         # @return [Google::Apis::SheetsV4::ConditionalFormatRule]
         attr_accessor :rule
       
-        # The sheet of the rule to move.  Required if new_index is set,
-        # unused otherwise.
+        # The sheet of the rule to move. Required if new_index is set, unused otherwise.
         # Corresponds to the JSON property `sheetId`
         # @return [Fixnum]
         attr_accessor :sheet_id
@@ -11107,8 +8801,8 @@ module Google
         # @return [Google::Apis::SheetsV4::ConditionalFormatRule]
         attr_accessor :new_rule
       
-        # The old index of the rule. Not set if a rule was replaced
-        # (because it is the same as new_index).
+        # The old index of the rule. Not set if a rule was replaced (because it is the
+        # same as new_index).
         # Corresponds to the JSON property `oldIndex`
         # @return [Fixnum]
         attr_accessor :old_index
@@ -11131,12 +8825,11 @@ module Google
         end
       end
       
-      # A request to update properties of developer metadata.
-      # Updates the properties of the developer metadata selected by the filters to
-      # the values provided in the DeveloperMetadata resource.  Callers must
-      # specify the properties they wish to update in the fields parameter, as well
-      # as specify at least one DataFilter matching the metadata they wish to
-      # update.
+      # A request to update properties of developer metadata. Updates the properties
+      # of the developer metadata selected by the filters to the values provided in
+      # the DeveloperMetadata resource. Callers must specify the properties they wish
+      # to update in the fields parameter, as well as specify at least one DataFilter
+      # matching the metadata they wish to update.
       class UpdateDeveloperMetadataRequest
         include Google::Apis::Core::Hashable
       
@@ -11146,20 +8839,20 @@ module Google
         attr_accessor :data_filters
       
         # Developer metadata associated with a location or object in a spreadsheet.
-        # Developer metadata may be used to associate arbitrary data with various
-        # parts of a spreadsheet and will remain associated at those locations as they
-        # move around and the spreadsheet is edited.  For example, if developer
-        # metadata is associated with row 5 and another row is then subsequently
-        # inserted above row 5, that original metadata will still be associated with
-        # the row it was first associated with (what is now row 6). If the associated
-        # object is deleted its metadata is deleted too.
+        # Developer metadata may be used to associate arbitrary data with various parts
+        # of a spreadsheet and will remain associated at those locations as they move
+        # around and the spreadsheet is edited. For example, if developer metadata is
+        # associated with row 5 and another row is then subsequently inserted above row
+        # 5, that original metadata will still be associated with the row it was first
+        # associated with (what is now row 6). If the associated object is deleted its
+        # metadata is deleted too.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Google::Apis::SheetsV4::DeveloperMetadata]
         attr_accessor :developer_metadata
       
-        # The fields that should be updated.  At least one field must be specified.
-        # The root `developerMetadata` is implied and should not be specified.
-        # A single `"*"` can be used as short-hand for listing every field.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `developerMetadata` is implied and should not be specified. A single `"*"`
+        # can be used as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -11206,9 +8899,9 @@ module Google
         # @return [Google::Apis::SheetsV4::DimensionGroup]
         attr_accessor :dimension_group
       
-        # The fields that should be updated.  At least one field must be specified.
-        # The root `dimensionGroup` is implied and should not be specified.
-        # A single `"*"` can be used as short-hand for listing every field.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `dimensionGroup` is implied and should not be specified. A single `"*"`
+        # can be used as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -11228,9 +8921,9 @@ module Google
       class UpdateDimensionPropertiesRequest
         include Google::Apis::Core::Hashable
       
-        # The fields that should be updated.  At least one field must be specified.
-        # The root `properties` is implied and should not be specified.
-        # A single `"*"` can be used as short-hand for listing every field.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `properties` is implied and should not be specified. A single `"*"` can
+        # be used as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -11240,11 +8933,9 @@ module Google
         # @return [Google::Apis::SheetsV4::DimensionProperties]
         attr_accessor :properties
       
-        # A range along a single dimension on a sheet.
-        # All indexes are zero-based.
-        # Indexes are half open: the start index is inclusive
-        # and the end index is exclusive.
-        # Missing indexes indicate the range is unbounded on that side.
+        # A range along a single dimension on a sheet. All indexes are zero-based.
+        # Indexes are half open: the start index is inclusive and the end index is
+        # exclusive. Missing indexes indicate the range is unbounded on that side.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::SheetsV4::DimensionRange]
         attr_accessor :range
@@ -11261,18 +8952,16 @@ module Google
         end
       end
       
-      # Update an embedded object's position (such as a moving or resizing a
-      # chart or image).
+      # Update an embedded object's position (such as a moving or resizing a chart or
+      # image).
       class UpdateEmbeddedObjectPositionRequest
         include Google::Apis::Core::Hashable
       
-        # The fields of OverlayPosition
-        # that should be updated when setting a new position. Used only if
-        # newPosition.overlayPosition
-        # is set, in which case at least one field must
-        # be specified.  The root `newPosition.overlayPosition` is implied and
-        # should not be specified.
-        # A single `"*"` can be used as short-hand for listing every field.
+        # The fields of OverlayPosition that should be updated when setting a new
+        # position. Used only if newPosition.overlayPosition is set, in which case at
+        # least one field must be specified. The root `newPosition.overlayPosition` is
+        # implied and should not be specified. A single `"*"` can be used as short-hand
+        # for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -11322,9 +9011,9 @@ module Google
       class UpdateFilterViewRequest
         include Google::Apis::Core::Hashable
       
-        # The fields that should be updated.  At least one field must be specified.
-        # The root `filter` is implied and should not be specified.
-        # A single `"*"` can be used as short-hand for listing every field.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `filter` is implied and should not be specified. A single `"*"` can be
+        # used as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -11345,14 +9034,13 @@ module Google
         end
       end
       
-      # Updates properties of the named range with the specified
-      # namedRangeId.
+      # Updates properties of the named range with the specified namedRangeId.
       class UpdateNamedRangeRequest
         include Google::Apis::Core::Hashable
       
-        # The fields that should be updated.  At least one field must be specified.
-        # The root `namedRange` is implied and should not be specified.
-        # A single `"*"` can be used as short-hand for listing every field.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `namedRange` is implied and should not be specified. A single `"*"` can
+        # be used as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -11373,14 +9061,13 @@ module Google
         end
       end
       
-      # Updates an existing protected range with the specified
-      # protectedRangeId.
+      # Updates an existing protected range with the specified protectedRangeId.
       class UpdateProtectedRangeRequest
         include Google::Apis::Core::Hashable
       
-        # The fields that should be updated.  At least one field must be specified.
-        # The root `protectedRange` is implied and should not be specified.
-        # A single `"*"` can be used as short-hand for listing every field.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `protectedRange` is implied and should not be specified. A single `"*"`
+        # can be used as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -11401,14 +9088,13 @@ module Google
         end
       end
       
-      # Updates properties of the sheet with the specified
-      # sheetId.
+      # Updates properties of the sheet with the specified sheetId.
       class UpdateSheetPropertiesRequest
         include Google::Apis::Core::Hashable
       
-        # The fields that should be updated.  At least one field must be specified.
-        # The root `properties` is implied and should not be specified.
-        # A single `"*"` can be used as short-hand for listing every field.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `properties` is implied and should not be specified. A single `"*"` can
+        # be used as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -11429,15 +9115,14 @@ module Google
         end
       end
       
-      # Updates a slicer's specifications.
-      # (This does not move or resize a slicer. To move or resize a slicer use
-      # UpdateEmbeddedObjectPositionRequest.
+      # Updates a slicer's specifications. (This does not move or resize a slicer. To
+      # move or resize a slicer use UpdateEmbeddedObjectPositionRequest.
       class UpdateSlicerSpecRequest
         include Google::Apis::Core::Hashable
       
-        # The fields that should be updated.  At least one field must be specified.
-        # The root `SlicerSpec` is implied and should not be specified. A single "*"`
-        # can be used as short-hand for listing every field.
+        # The fields that should be updated. At least one field must be specified. The
+        # root `SlicerSpec` is implied and should not be specified. A single "*"` can be
+        # used as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -11468,9 +9153,9 @@ module Google
       class UpdateSpreadsheetPropertiesRequest
         include Google::Apis::Core::Hashable
       
-        # The fields that should be updated.  At least one field must be specified.
-        # The root 'properties' is implied and should not be specified.
-        # A single `"*"` can be used as short-hand for listing every field.
+        # The fields that should be updated. At least one field must be specified. The
+        # root 'properties' is implied and should not be specified. A single `"*"` can
+        # be used as short-hand for listing every field.
         # Corresponds to the JSON property `fields`
         # @return [String]
         attr_accessor :fields
@@ -11491,13 +9176,11 @@ module Google
         end
       end
       
-      # The response when updating a range of values by a data filter in a
-      # spreadsheet.
+      # The response when updating a range of values by a data filter in a spreadsheet.
       class UpdateValuesByDataFilterResponse
         include Google::Apis::Core::Hashable
       
-        # Filter that describes what data should be selected or returned from a
-        # request.
+        # Filter that describes what data should be selected or returned from a request.
         # Corresponds to the JSON property `dataFilter`
         # @return [Google::Apis::SheetsV4::DataFilter]
         attr_accessor :data_filter
@@ -11595,37 +9278,31 @@ module Google
       class ValueRange
         include Google::Apis::Core::Hashable
       
-        # The major dimension of the values.
-        # For output, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-        # then requesting `range=A1:B2,majorDimension=ROWS` will return
-        # `[[1,2],[3,4]]`,
-        # whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-        # `[[1,3],[2,4]]`.
-        # For input, with `range=A1:B2,majorDimension=ROWS` then `[[1,2],[3,4]]`
-        # will set `A1=1,B1=2,A2=3,B2=4`. With `range=A1:B2,majorDimension=COLUMNS`
-        # then `[[1,2],[3,4]]` will set `A1=1,B1=3,A2=2,B2=4`.
+        # The major dimension of the values. For output, if the spreadsheet data is: `A1=
+        # 1,B1=2,A2=3,B2=4`, then requesting `range=A1:B2,majorDimension=ROWS` will
+        # return `[[1,2],[3,4]]`, whereas requesting `range=A1:B2,majorDimension=COLUMNS`
+        # will return `[[1,3],[2,4]]`. For input, with `range=A1:B2,majorDimension=ROWS`
+        # then `[[1,2],[3,4]]` will set `A1=1,B1=2,A2=3,B2=4`. With `range=A1:B2,
+        # majorDimension=COLUMNS` then `[[1,2],[3,4]]` will set `A1=1,B1=3,A2=2,B2=4`.
         # When writing, if this field is not set, it defaults to ROWS.
         # Corresponds to the JSON property `majorDimension`
         # @return [String]
         attr_accessor :major_dimension
       
-        # The range the values cover, in A1 notation.
-        # For output, this range indicates the entire requested range,
-        # even though the values will exclude trailing rows and columns.
-        # When appending values, this field represents the range to search for a
-        # table, after which values will be appended.
+        # The range the values cover, in A1 notation. For output, this range indicates
+        # the entire requested range, even though the values will exclude trailing rows
+        # and columns. When appending values, this field represents the range to search
+        # for a table, after which values will be appended.
         # Corresponds to the JSON property `range`
         # @return [String]
         attr_accessor :range
       
-        # The data that was read or to be written.  This is an array of arrays,
-        # the outer array representing all the data and each inner array
-        # representing a major dimension. Each item in the inner array
-        # corresponds with one cell.
-        # For output, empty trailing rows and columns will not be included.
-        # For input, supported value types are: bool, string, and double.
-        # Null values will be skipped.
-        # To set a cell to an empty value, set the string value to an empty string.
+        # The data that was read or to be written. This is an array of arrays, the outer
+        # array representing all the data and each inner array representing a major
+        # dimension. Each item in the inner array corresponds with one cell. For output,
+        # empty trailing rows and columns will not be included. For input, supported
+        # value types are: bool, string, and double. Null values will be skipped. To set
+        # a cell to an empty value, set the string value to an empty string.
         # Corresponds to the JSON property `values`
         # @return [Array<Array<Object>>]
         attr_accessor :values
@@ -11648,110 +9325,49 @@ module Google
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
-        # languages over compactness; for example, the fields of this representation
-        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
-        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
-        # method in iOS; and, with just a little work, it can be easily formatted into
-        # a CSS "rgba()" string in JavaScript, as well.
-        # Note: this proto does not carry information about the absolute color space
-        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
-        # space.
-        # Note: when color equality needs to be decided, implementations, unless
-        # documented otherwise, will treat two colors to be equal if all their red,
-        # green, blue and alpha values each differ by at most 1e-5.
-        # Example (Java):
-        # import com.google.type.Color;
-        # // ...
-        # public static java.awt.Color fromProto(Color protocolor) `
-        # float alpha = protocolor.hasAlpha()
-        # ? protocolor.getAlpha().getValue()
-        # : 1.0;
-        # return new java.awt.Color(
-        # protocolor.getRed(),
-        # protocolor.getGreen(),
-        # protocolor.getBlue(),
-        # alpha);
-        # `
-        # public static Color toProto(java.awt.Color color) `
-        # float red = (float) color.getRed();
-        # float green = (float) color.getGreen();
-        # float blue = (float) color.getBlue();
-        # float denominator = 255.0;
-        # Color.Builder resultBuilder =
-        # Color
-        # .newBuilder()
-        # .setRed(red / denominator)
-        # .setGreen(green / denominator)
-        # .setBlue(blue / denominator);
-        # int alpha = color.getAlpha();
-        # if (alpha != 255) `
-        # result.setAlpha(
-        # FloatValue
-        # .newBuilder()
-        # .setValue(((float) alpha) / denominator)
-        # .build());
-        # `
-        # return resultBuilder.build();
-        # `
-        # // ...
-        # Example (iOS / Obj-C):
-        # // ...
-        # static UIColor* fromProto(Color* protocolor) `
-        # float red = [protocolor red];
-        # float green = [protocolor green];
-        # float blue = [protocolor blue];
-        # FloatValue* alpha_wrapper = [protocolor alpha];
-        # float alpha = 1.0;
-        # if (alpha_wrapper != nil) `
-        # alpha = [alpha_wrapper value];
-        # `
-        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        # `
-        # static Color* toProto(UIColor* color) `
-        # CGFloat red, green, blue, alpha;
-        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
-        # return nil;
-        # `
-        # Color* result = [[Color alloc] init];
-        # [result setRed:red];
-        # [result setGreen:green];
-        # [result setBlue:blue];
-        # if (alpha <= 0.9999) `
-        # [result setAlpha:floatWrapperWithValue(alpha)];
-        # `
-        # [result autorelease];
-        # return result;
-        # `
-        # // ...
-        # Example (JavaScript):
-        # // ...
-        # var protoToCssColor = function(rgb_color) `
-        # var redFrac = rgb_color.red || 0.0;
-        # var greenFrac = rgb_color.green || 0.0;
-        # var blueFrac = rgb_color.blue || 0.0;
-        # var red = Math.floor(redFrac * 255);
-        # var green = Math.floor(greenFrac * 255);
-        # var blue = Math.floor(blueFrac * 255);
-        # if (!('alpha' in rgb_color)) `
-        # return rgbToCssColor_(red, green, blue);
-        # `
-        # var alphaFrac = rgb_color.alpha.value || 0.0;
-        # var rgbParams = [red, green, blue].join(',');
-        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-        # `;
-        # var rgbToCssColor_ = function(red, green, blue) `
-        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-        # var hexString = rgbNumber.toString(16);
-        # var missingZeros = 6 - hexString.length;
-        # var resultBuilder = ['#'];
-        # for (var i = 0; i < missingZeros; i++) `
-        # resultBuilder.push('0');
-        # `
-        # resultBuilder.push(hexString);
-        # return resultBuilder.join('');
-        # `;
-        # // ...
+        # languages over compactness; for example, the fields of this representation can
+        # be trivially provided to the constructor of "java.awt.Color" in Java; it can
+        # also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into a
+        # CSS "rgba()" string in JavaScript, as well. Note: this proto does not carry
+        # information about the absolute color space that should be used to interpret
+        # the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020, etc.). By default,
+        # applications SHOULD assume the sRGB color space. Note: when color equality
+        # needs to be decided, implementations, unless documented otherwise, will treat
+        # two colors to be equal if all their red, green, blue and alpha values each
+        # differ by at most 1e-5. Example (Java): import com.google.type.Color; // ...
+        # public static java.awt.Color fromProto(Color protocolor) ` float alpha =
+        # protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+        # java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(
+        # ), alpha); ` public static Color toProto(java.awt.Color color) ` float red = (
+        # float) color.getRed(); float green = (float) color.getGreen(); float blue = (
+        # float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder
+        # = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator)
+        # .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255)
+        # ` result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) /
+        # denominator) .build()); ` return resultBuilder.build(); ` // ... Example (iOS /
+        # Obj-C): // ... static UIColor* fromProto(Color* protocolor) ` float red = [
+        # protocolor red]; float green = [protocolor green]; float blue = [protocolor
+        # blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (
+        # alpha_wrapper != nil) ` alpha = [alpha_wrapper value]; ` return [UIColor
+        # colorWithRed:red green:green blue:blue alpha:alpha]; ` static Color* toProto(
+        # UIColor* color) ` CGFloat red, green, blue, alpha; if (![color getRed:&red
+        # green:&green blue:&blue alpha:&alpha]) ` return nil; ` Color* result = [[Color
+        # alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:
+        # blue]; if (alpha <= 0.9999) ` [result setAlpha:floatWrapperWithValue(alpha)]; `
+        # [result autorelease]; return result; ` // ... Example (JavaScript): // ...
+        # var protoToCssColor = function(rgb_color) ` var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) ` return
+        # rgbToCssColor_(red, green, blue); ` var alphaFrac = rgb_color.alpha.value || 0.
+        # 0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',
+        # ', alphaFrac, ')'].join(''); `; var rgbToCssColor_ = function(red, green, blue)
+        # ` var rgbNumber = new Number((red << 16) | (green << 8) | blue); var
+        # hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0'); ` resultBuilder.push(hexString); return resultBuilder.
+        # join(''); `; // ...
         # Corresponds to the JSON property `color`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :color
@@ -11782,8 +9398,8 @@ module Google
       class WaterfallChartCustomSubtotal
         include Google::Apis::Core::Hashable
       
-        # True if the data point at subtotal_index is the subtotal. If false,
-        # the subtotal will be computed and appear after the data point.
+        # True if the data point at subtotal_index is the subtotal. If false, the
+        # subtotal will be computed and appear after the data point.
         # Corresponds to the JSON property `dataIsSubtotal`
         # @return [Boolean]
         attr_accessor :data_is_subtotal
@@ -11794,14 +9410,13 @@ module Google
         # @return [String]
         attr_accessor :label
       
-        # The 0-based index of a data point within the series. If
-        # data_is_subtotal is true, the data point at this index is the
-        # subtotal. Otherwise, the subtotal appears after the data point with
-        # this index. A series can have multiple subtotals at arbitrary indices,
-        # but subtotals do not affect the indices of the data points. For
-        # example, if a series has three data points, their indices will always
-        # be 0, 1, and 2, regardless of how many subtotals exist on the series or
-        # what data points they are associated with.
+        # The 0-based index of a data point within the series. If data_is_subtotal is
+        # true, the data point at this index is the subtotal. Otherwise, the subtotal
+        # appears after the data point with this index. A series can have multiple
+        # subtotals at arbitrary indices, but subtotals do not affect the indices of the
+        # data points. For example, if a series has three data points, their indices
+        # will always be 0, 1, and 2, regardless of how many subtotals exist on the
+        # series or what data points they are associated with.
         # Corresponds to the JSON property `subtotalIndex`
         # @return [Fixnum]
         attr_accessor :subtotal_index
@@ -11848,9 +9463,9 @@ module Google
       class WaterfallChartSeries
         include Google::Apis::Core::Hashable
       
-        # Custom subtotal columns appearing in this series. The order in which
-        # subtotals are defined is not significant. Only one subtotal may be
-        # defined for each data point.
+        # Custom subtotal columns appearing in this series. The order in which subtotals
+        # are defined is not significant. Only one subtotal may be defined for each data
+        # point.
         # Corresponds to the JSON property `customSubtotals`
         # @return [Array<Google::Apis::SheetsV4::WaterfallChartCustomSubtotal>]
         attr_accessor :custom_subtotals
@@ -11860,9 +9475,9 @@ module Google
         # @return [Google::Apis::SheetsV4::ChartData]
         attr_accessor :data
       
-        # True to hide the subtotal column from the end of the series. By default,
-        # a subtotal column will appear at the end of each series. Setting this
-        # field to true will hide that subtotal column for this series.
+        # True to hide the subtotal column from the end of the series. By default, a
+        # subtotal column will appear at the end of each series. Setting this field to
+        # true will hide that subtotal column for this series.
         # Corresponds to the JSON property `hideTrailingSubtotal`
         # @return [Boolean]
         attr_accessor :hide_trailing_subtotal

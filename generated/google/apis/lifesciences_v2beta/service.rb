@@ -117,15 +117,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation.
-        # The server makes a best effort to cancel the operation, but success is not
-        # guaranteed. Clients may use Operations.GetOperation
-        # or Operations.ListOperations
-        # to check whether the cancellation succeeded or the operation completed
-        # despite cancellation.
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. Clients
+        # may use Operations.GetOperation or Operations.ListOperations to check whether
+        # the cancellation succeeded or the operation completed despite cancellation.
         # Authorization requires the following [Google IAM](https://cloud.google.com/iam)
-        # permission&#58;
-        # * `lifesciences.operations.cancel`
+        # permission: * `lifesciences.operations.cancel`
         # @param [String] name
         #   The name of the operation resource to be cancelled.
         # @param [Google::Apis::LifesciencesV2beta::CancelOperationRequest] cancel_operation_request_object
@@ -158,12 +155,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.
-        # Clients can use this method to poll the operation result at intervals as
-        # recommended by the API service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # Authorization requires the following [Google IAM](https://cloud.google.com/iam)
-        # permission&#58;
-        # * `lifesciences.operations.get`
+        # permission: * `lifesciences.operations.get`
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -193,24 +188,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request.
-        # Authorization requires the following [Google IAM](https://cloud.google.com/iam)
-        # permission&#58;
-        # * `lifesciences.operations.list`
+        # Lists operations that match the specified filter in the request. Authorization
+        # requires the following [Google IAM](https://cloud.google.com/iam) permission: *
+        # `lifesciences.operations.list`
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter
-        #   A string for filtering Operations.
-        #   The following filter fields are supported&#58;
-        #   * createTime&#58; The time this job was created
-        #   * events&#58; The set of event (names) that have occurred while running
-        #   the pipeline.  The &#58; operator can be used to determine if a
-        #   particular event has occurred.
-        #   * error&#58; If the pipeline is running, this value is NULL.  Once the
-        #   pipeline finishes, the value is the standard Google error code.
-        #   * labels.key or labels."key with space" where key is a label key.
-        #   * done&#58; If the pipeline is running, this value is false. Once the
-        #   pipeline finishes, the value is true.
+        #   A string for filtering Operations. The following filter fields are supported: *
+        #   createTime: The time this job was created * events: The set of event (names)
+        #   that have occurred while running the pipeline. The : operator can be used to
+        #   determine if a particular event has occurred. * error: If the pipeline is
+        #   running, this value is NULL. Once the pipeline finishes, the value is the
+        #   standard Google error code. * labels.key or labels."key with space" where key
+        #   is a label key. * done: If the pipeline is running, this value is false. Once
+        #   the pipeline finishes, the value is true.
         # @param [Fixnum] page_size
         #   The maximum number of results to return. The maximum value is 256.
         # @param [String] page_token
@@ -245,20 +236,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Runs a pipeline.  The returned Operation's metadata field will contain a
-        # google.cloud.lifesciences.v2beta.Metadata object describing the status
-        # of the pipeline execution. The
-        # response field will contain a
-        # google.cloud.lifesciences.v2beta.RunPipelineResponse object if the
-        # pipeline completes successfully.
-        # **Note:** Before you can use this method, the *Life Sciences Service Agent*
-        # must have access to your project. This is done automatically when the
-        # Cloud Life Sciences API is first enabled, but if you delete this permission
-        # you must disable and re-enable the API to grant the Life Sciences
-        # Service Agent the required permissions.
-        # Authorization requires the following [Google
-        # IAM](https://cloud.google.com/iam/) permission:
-        # * `lifesciences.workflows.run`
+        # Runs a pipeline. The returned Operation's metadata field will contain a google.
+        # cloud.lifesciences.v2beta.Metadata object describing the status of the
+        # pipeline execution. The response field will contain a google.cloud.
+        # lifesciences.v2beta.RunPipelineResponse object if the pipeline completes
+        # successfully. **Note:** Before you can use this method, the *Life Sciences
+        # Service Agent* must have access to your project. This is done automatically
+        # when the Cloud Life Sciences API is first enabled, but if you delete this
+        # permission you must disable and re-enable the API to grant the Life Sciences
+        # Service Agent the required permissions. Authorization requires the following [
+        # Google IAM](https://cloud.google.com/iam/) permission: * `lifesciences.
+        # workflows.run`
         # @param [String] parent
         #   The project and location that this request should be executed against.
         # @param [Google::Apis::LifesciencesV2beta::RunPipelineRequest] run_pipeline_request_object

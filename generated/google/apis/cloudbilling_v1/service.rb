@@ -48,16 +48,13 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Creates a billing account.
-        # This method can only be used to create
-        # [billing subaccounts](https://cloud.google.com/billing/docs/concepts)
-        # by GCP resellers.
-        # When creating a subaccount, the current authenticated user must have the
-        # `billing.accounts.update` IAM permission on the master account, which is
-        # typically given to billing account
-        # [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
-        # This method will return an error if the master account has not been
-        # provisioned as a reseller account.
+        # Creates a billing account. This method can only be used to create [billing
+        # subaccounts](https://cloud.google.com/billing/docs/concepts) by Google Cloud
+        # resellers. When creating a subaccount, the current authenticated user must
+        # have the `billing.accounts.update` IAM permission on the master account, which
+        # is typically given to billing account [administrators](https://cloud.google.
+        # com/billing/docs/how-to/billing-access). This method will return an error if
+        # the master account has not been provisioned as a reseller account.
         # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -87,12 +84,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets information about a billing account. The current authenticated user
-        # must be a [viewer of the billing
-        # account](https://cloud.google.com/billing/docs/how-to/billing-access).
+        # Gets information about a billing account. The current authenticated user must
+        # be a [viewer of the billing account](https://cloud.google.com/billing/docs/how-
+        # to/billing-access).
         # @param [String] name
-        #   Required. The resource name of the billing account to retrieve. For example,
-        #   `billingAccounts/012345-567890-ABCDEF`.
+        #   Required. The resource name of the billing account to retrieve. For example, `
+        #   billingAccounts/012345-567890-ABCDEF`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -120,23 +117,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a billing account.
-        # The caller must have the `billing.accounts.getIamPolicy` permission on the
-        # account, which is often given to billing account
-        # [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
+        # Gets the access control policy for a billing account. The caller must have the
+        # `billing.accounts.getIamPolicy` permission on the account, which is often
+        # given to billing account [viewers](https://cloud.google.com/billing/docs/how-
+        # to/billing-access).
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        #   rejected.
-        #   Requests for policies with any conditional bindings must specify version 3.
-        #   Policies without any conditional bindings may specify any valid value or
-        #   leave the field unset.
-        #   To learn which resources support conditions in their IAM policies, see the
-        #   [IAM
-        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        #   Optional. The policy format version to be returned. Valid values are 0, 1, and
+        #   3. Requests specifying an invalid value will be rejected. Requests for
+        #   policies with any conditional bindings must specify version 3. Policies
+        #   without any conditional bindings may specify any valid value or leave the
+        #   field unset. To learn which resources support conditions in their IAM policies,
+        #   see the [IAM documentation](https://cloud.google.com/iam/help/conditions/
+        #   resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -165,23 +160,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the billing accounts that the current authenticated user has
-        # permission to
-        # [view](https://cloud.google.com/billing/docs/how-to/billing-access).
+        # Lists the billing accounts that the current authenticated user has permission
+        # to [view](https://cloud.google.com/billing/docs/how-to/billing-access).
         # @param [String] filter
-        #   Options for how to filter the returned billing accounts.
-        #   Currently this only supports filtering for
-        #   [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
-        #   single provided reseller billing account.
-        #   (e.g. "master_billing_account=billingAccounts/012345-678901-ABCDEF").
-        #   Boolean algebra and other fields are not currently supported.
+        #   Options for how to filter the returned billing accounts. Currently this only
+        #   supports filtering for [subaccounts](https://cloud.google.com/billing/docs/
+        #   concepts) under a single provided reseller billing account. (e.g. "
+        #   master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean algebra
+        #   and other fields are not currently supported.
         # @param [Fixnum] page_size
-        #   Requested page size. The maximum page size is 100; this is also the
-        #   default.
+        #   Requested page size. The maximum page size is 100; this is also the default.
         # @param [String] page_token
-        #   A token identifying a page of results to return. This should be a
-        #   `next_page_token` value returned from a previous `ListBillingAccounts`
-        #   call. If unspecified, the first page of results is returned.
+        #   A token identifying a page of results to return. This should be a `
+        #   next_page_token` value returned from a previous `ListBillingAccounts` call. If
+        #   unspecified, the first page of results is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -211,18 +203,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a billing account's fields.
-        # Currently the only field that can be edited is `display_name`.
-        # The current authenticated user must have the `billing.accounts.update`
-        # IAM permission, which is typically given to the
-        # [administrator](https://cloud.google.com/billing/docs/how-to/billing-access)
-        # of the billing account.
+        # Updates a billing account's fields. Currently the only field that can be
+        # edited is `display_name`. The current authenticated user must have the `
+        # billing.accounts.update` IAM permission, which is typically given to the [
+        # administrator](https://cloud.google.com/billing/docs/how-to/billing-access) of
+        # the billing account.
         # @param [String] name
         #   Required. The name of the billing account resource to be updated.
         # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
         # @param [String] update_mask
-        #   The update mask applied to the resource.
-        #   Only "display_name" is currently supported.
+        #   The update mask applied to the resource. Only "display_name" is currently
+        #   supported.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -254,13 +245,12 @@ module Google
         end
         
         # Sets the access control policy for a billing account. Replaces any existing
-        # policy.
-        # The caller must have the `billing.accounts.setIamPolicy` permission on the
-        # account, which is often given to billing account
-        # [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+        # policy. The caller must have the `billing.accounts.setIamPolicy` permission on
+        # the account, which is often given to billing account [administrators](https://
+        # cloud.google.com/billing/docs/how-to/billing-access).
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy is being specified. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudbillingV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -291,12 +281,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Tests the access control policy for a billing account. This method takes
-        # the resource and a set of permissions as input and returns the subset of
-        # the input permissions that the caller is allowed for that resource.
+        # Tests the access control policy for a billing account. This method takes the
+        # resource and a set of permissions as input and returns the subset of the input
+        # permissions that the caller is allowed for that resource.
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested.
-        #   See the operation documentation for the appropriate value for this field.
+        #   REQUIRED: The resource for which the policy detail is being requested. See the
+        #   operation documentation for the appropriate value for this field.
         # @param [Google::Apis::CloudbillingV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -329,19 +319,18 @@ module Google
         
         # Lists the projects associated with a billing account. The current
         # authenticated user must have the `billing.resourceAssociations.list` IAM
-        # permission, which is often given to billing account
-        # [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
+        # permission, which is often given to billing account [viewers](https://cloud.
+        # google.com/billing/docs/how-to/billing-access).
         # @param [String] name
         #   Required. The resource name of the billing account associated with the
-        #   projects that
-        #   you want to list. For example, `billingAccounts/012345-567890-ABCDEF`.
+        #   projects that you want to list. For example, `billingAccounts/012345-567890-
+        #   ABCDEF`.
         # @param [Fixnum] page_size
-        #   Requested page size. The maximum page size is 100; this is also the
-        #   default.
+        #   Requested page size. The maximum page size is 100; this is also the default.
         # @param [String] page_token
-        #   A token identifying a page of results to be returned. This should be a
-        #   `next_page_token` value returned from a previous `ListProjectBillingInfo`
-        #   call. If unspecified, the first page of results is returned.
+        #   A token identifying a page of results to be returned. This should be a `
+        #   next_page_token` value returned from a previous `ListProjectBillingInfo` call.
+        #   If unspecified, the first page of results is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -372,9 +361,8 @@ module Google
         end
         
         # Gets the billing information for a project. The current authenticated user
-        # must have [permission to view the
-        # project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
-        # ).
+        # must have [permission to view the project](https://cloud.google.com/docs/
+        # permissions-overview#h.bgs0oxofvnoo ).
         # @param [String] name
         #   Required. The resource name of the project for which billing information is
         #   retrieved. For example, `projects/tokyo-rain-123`.
@@ -405,37 +393,32 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets or updates the billing account associated with a project. You specify
-        # the new billing account by setting the `billing_account_name` in the
-        # `ProjectBillingInfo` resource to the resource name of a billing account.
+        # Sets or updates the billing account associated with a project. You specify the
+        # new billing account by setting the `billing_account_name` in the `
+        # ProjectBillingInfo` resource to the resource name of a billing account.
         # Associating a project with an open billing account enables billing on the
         # project and allows charges for resource usage. If the project already had a
         # billing account, this method changes the billing account used for resource
-        # usage charges.
-        # *Note:* Incurred charges that have not yet been reported in the transaction
-        # history of the GCP Console might be billed to the new billing
-        # account, even if the charge occurred before the new billing account was
-        # assigned to the project.
-        # The current authenticated user must have ownership privileges for both the
-        # [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
-        # ) and the [billing
-        # account](https://cloud.google.com/billing/docs/how-to/billing-access).
-        # You can disable billing on the project by setting the
-        # `billing_account_name` field to empty. This action disassociates the
-        # current billing account from the project. Any billable activity of your
-        # in-use services will stop, and your application could stop functioning as
-        # expected. Any unbilled charges to date will be billed to the previously
-        # associated account. The current authenticated user must be either an owner
-        # of the project or an owner of the billing account for the project.
-        # Note that associating a project with a *closed* billing account will have
-        # much the same effect as disabling billing on the project: any paid
-        # resources used by the project will be shut down. Thus, unless you wish to
-        # disable billing, you should always call this method with the name of an
-        # *open* billing account.
+        # usage charges. *Note:* Incurred charges that have not yet been reported in the
+        # transaction history of the Google Cloud Console might be billed to the new
+        # billing account, even if the charge occurred before the new billing account
+        # was assigned to the project. The current authenticated user must have
+        # ownership privileges for both the [project](https://cloud.google.com/docs/
+        # permissions-overview#h.bgs0oxofvnoo ) and the [billing account](https://cloud.
+        # google.com/billing/docs/how-to/billing-access). You can disable billing on the
+        # project by setting the `billing_account_name` field to empty. This action
+        # disassociates the current billing account from the project. Any billable
+        # activity of your in-use services will stop, and your application could stop
+        # functioning as expected. Any unbilled charges to date will be billed to the
+        # previously associated account. The current authenticated user must be either
+        # an owner of the project or an owner of the billing account for the project.
+        # Note that associating a project with a *closed* billing account will have much
+        # the same effect as disabling billing on the project: any paid resources used
+        # by the project will be shut down. Thus, unless you wish to disable billing,
+        # you should always call this method with the name of an *open* billing account.
         # @param [String] name
         #   Required. The resource name of the project associated with the billing
-        #   information
-        #   that you want to update. For example, `projects/tokyo-rain-123`.
+        #   information that you want to update. For example, `projects/tokyo-rain-123`.
         # @param [Google::Apis::CloudbillingV1::ProjectBillingInfo] project_billing_info_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -470,9 +453,9 @@ module Google
         # @param [Fixnum] page_size
         #   Requested page size. Defaults to 5000.
         # @param [String] page_token
-        #   A token identifying a page of results to return. This should be a
-        #   `next_page_token` value returned from a previous `ListServices`
-        #   call. If unspecified, the first page of results is returned.
+        #   A token identifying a page of results to return. This should be a `
+        #   next_page_token` value returned from a previous `ListServices` call. If
+        #   unspecified, the first page of results is returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -503,32 +486,29 @@ module Google
         
         # Lists all publicly available SKUs for a given cloud service.
         # @param [String] parent
-        #   Required. The name of the service.
-        #   Example: "services/DA34-426B-A397"
+        #   Required. The name of the service. Example: "services/DA34-426B-A397"
         # @param [String] currency_code
-        #   The ISO 4217 currency code for the pricing info in the response proto.
-        #   Will use the conversion rate as of start_time.
-        #   Optional. If not specified USD will be used.
+        #   The ISO 4217 currency code for the pricing info in the response proto. Will
+        #   use the conversion rate as of start_time. Optional. If not specified USD will
+        #   be used.
         # @param [String] end_time
-        #   Optional exclusive end time of the time range for which the pricing
-        #   versions will be returned. Timestamps in the future are not allowed.
-        #   The time range has to be within a single calendar month in
-        #   America/Los_Angeles timezone. Time range as a whole is optional. If not
-        #   specified, the latest pricing will be returned (up to 12 hours old at
-        #   most).
+        #   Optional exclusive end time of the time range for which the pricing versions
+        #   will be returned. Timestamps in the future are not allowed. The time range has
+        #   to be within a single calendar month in America/Los_Angeles timezone. Time
+        #   range as a whole is optional. If not specified, the latest pricing will be
+        #   returned (up to 12 hours old at most).
         # @param [Fixnum] page_size
         #   Requested page size. Defaults to 5000.
         # @param [String] page_token
-        #   A token identifying a page of results to return. This should be a
-        #   `next_page_token` value returned from a previous `ListSkus`
-        #   call. If unspecified, the first page of results is returned.
+        #   A token identifying a page of results to return. This should be a `
+        #   next_page_token` value returned from a previous `ListSkus` call. If
+        #   unspecified, the first page of results is returned.
         # @param [String] start_time
-        #   Optional inclusive start time of the time range for which the pricing
-        #   versions will be returned. Timestamps in the future are not allowed.
-        #   The time range has to be within a single calendar month in
-        #   America/Los_Angeles timezone. Time range as a whole is optional. If not
-        #   specified, the latest pricing will be returned (up to 12 hours old at
-        #   most).
+        #   Optional inclusive start time of the time range for which the pricing versions
+        #   will be returned. Timestamps in the future are not allowed. The time range has
+        #   to be within a single calendar month in America/Los_Angeles timezone. Time
+        #   range as a whole is optional. If not specified, the latest pricing will be
+        #   returned (up to 12 hours old at most).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

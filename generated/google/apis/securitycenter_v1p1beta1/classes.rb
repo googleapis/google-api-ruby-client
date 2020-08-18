@@ -1396,7 +1396,7 @@ module Google
         attr_accessor :finding
       
         # Information related to the Google Cloud resource that is associated with this
-        # finding. LINT.IfChange
+        # finding.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::SecuritycenterV1p1beta1::Resource]
         attr_accessor :resource
@@ -1741,7 +1741,7 @@ module Google
       end
       
       # Information related to the Google Cloud resource that is associated with this
-      # finding. LINT.IfChange
+      # finding.
       class Resource
         include Google::Apis::Core::Hashable
       

@@ -43,6 +43,11 @@ module Google
       class ImportSshPublicKeyResponse
         include Google::Apis::Core::Hashable
       
+        # Detailed information about import results.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
         # The user profile information used for logging in to a virtual machine on
         # Google Compute Engine.
         # Corresponds to the JSON property `loginProfile`
@@ -55,6 +60,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @details = args[:details] if args.key?(:details)
           @login_profile = args[:login_profile] if args.key?(:login_profile)
         end
       end

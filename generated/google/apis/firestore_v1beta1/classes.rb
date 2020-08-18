@@ -45,19 +45,18 @@ module Google
       class BatchGetDocumentsRequest
         include Google::Apis::Core::Hashable
       
-        # The names of the documents to retrieve. In the format:
-        # `projects/`project_id`/databases/`database_id`/documents/`document_path``.
-        # The request will fail if any of the document is not a child resource of the
-        # given `database`. Duplicate names will be elided.
+        # The names of the documents to retrieve. In the format: `projects/`project_id`/
+        # databases/`database_id`/documents/`document_path``. The request will fail if
+        # any of the document is not a child resource of the given `database`. Duplicate
+        # names will be elided.
         # Corresponds to the JSON property `documents`
         # @return [Array<String>]
         attr_accessor :documents
       
-        # A set of field paths on a document.
-        # Used to restrict a get or update operation on a document to a subset of its
-        # fields.
-        # This is different from standard field masks, as this is always scoped to a
-        # Document, and takes in account the dynamic nature of Value.
+        # A set of field paths on a document. Used to restrict a get or update operation
+        # on a document to a subset of its fields. This is different from standard field
+        # masks, as this is always scoped to a Document, and takes in account the
+        # dynamic nature of Value.
         # Corresponds to the JSON property `mask`
         # @return [Google::Apis::FirestoreV1beta1::DocumentMask]
         attr_accessor :mask
@@ -67,8 +66,8 @@ module Google
         # @return [Google::Apis::FirestoreV1beta1::TransactionOptions]
         attr_accessor :new_transaction
       
-        # Reads documents as they were at the given time.
-        # This may not be older than 270 seconds.
+        # Reads documents as they were at the given time. This may not be older than 270
+        # seconds.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -97,29 +96,27 @@ module Google
       class BatchGetDocumentsResponse
         include Google::Apis::Core::Hashable
       
-        # A Firestore document.
-        # Must not exceed 1 MiB - 4 bytes.
+        # A Firestore document. Must not exceed 1 MiB - 4 bytes.
         # Corresponds to the JSON property `found`
         # @return [Google::Apis::FirestoreV1beta1::Document]
         attr_accessor :found
       
-        # A document name that was requested but does not exist. In the format:
-        # `projects/`project_id`/databases/`database_id`/documents/`document_path``.
+        # A document name that was requested but does not exist. In the format: `
+        # projects/`project_id`/databases/`database_id`/documents/`document_path``.
         # Corresponds to the JSON property `missing`
         # @return [String]
         attr_accessor :missing
       
-        # The time at which the document was read.
-        # This may be monotically increasing, in this case the previous documents in
-        # the result stream are guaranteed not to have changed between their
-        # read_time and this one.
+        # The time at which the document was read. This may be monotically increasing,
+        # in this case the previous documents in the result stream are guaranteed not to
+        # have changed between their read_time and this one.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
       
-        # The transaction that was started as part of this request.
-        # Will only be set in the first response, and only if
-        # BatchGetDocumentsRequest.new_transaction was set in the request.
+        # The transaction that was started as part of this request. Will only be set in
+        # the first response, and only if BatchGetDocumentsRequest.new_transaction was
+        # set in the request.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -147,10 +144,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The writes to apply.
-        # Method does not apply writes atomically and does not guarantee ordering.
-        # Each write succeeds or fails independently. You cannot write to the same
-        # document more than once per request.
+        # The writes to apply. Method does not apply writes atomically and does not
+        # guarantee ordering. Each write succeeds or fails independently. You cannot
+        # write to the same document more than once per request.
         # Corresponds to the JSON property `writes`
         # @return [Array<Google::Apis::FirestoreV1beta1::Write>]
         attr_accessor :writes
@@ -170,16 +166,14 @@ module Google
       class BatchWriteResponse
         include Google::Apis::Core::Hashable
       
-        # The status of applying the writes.
-        # This i-th write status corresponds to the i-th write in the
-        # request.
+        # The status of applying the writes. This i-th write status corresponds to the i-
+        # th write in the request.
         # Corresponds to the JSON property `status`
         # @return [Array<Google::Apis::FirestoreV1beta1::Status>]
         attr_accessor :status
       
-        # The result of applying the writes.
-        # This i-th write result corresponds to the i-th write in the
-        # request.
+        # The result of applying the writes. This i-th write result corresponds to the i-
+        # th write in the request.
         # Corresponds to the JSON property `writeResults`
         # @return [Array<Google::Apis::FirestoreV1beta1::WriteResult>]
         attr_accessor :write_results
@@ -238,16 +232,15 @@ module Google
       class CollectionSelector
         include Google::Apis::Core::Hashable
       
-        # When false, selects only collections that are immediate children of
-        # the `parent` specified in the containing `RunQueryRequest`.
-        # When true, selects all descendant collections.
+        # When false, selects only collections that are immediate children of the `
+        # parent` specified in the containing `RunQueryRequest`. When true, selects all
+        # descendant collections.
         # Corresponds to the JSON property `allDescendants`
         # @return [Boolean]
         attr_accessor :all_descendants
         alias_method :all_descendants?, :all_descendants
       
-        # The collection ID.
-        # When set, selects only collections with this ID.
+        # The collection ID. When set, selects only collections with this ID.
         # Corresponds to the JSON property `collectionId`
         # @return [String]
         attr_accessor :collection_id
@@ -273,8 +266,7 @@ module Google
         # @return [String]
         attr_accessor :transaction
       
-        # The writes to apply.
-        # Always executed atomically and in order.
+        # The writes to apply. Always executed atomically and in order.
         # Corresponds to the JSON property `writes`
         # @return [Array<Google::Apis::FirestoreV1beta1::Write>]
         attr_accessor :writes
@@ -294,15 +286,14 @@ module Google
       class CommitResponse
         include Google::Apis::Core::Hashable
       
-        # The time at which the commit occurred. Any read with an equal or greater
-        # `read_time` is guaranteed to see the effects of the commit.
+        # The time at which the commit occurred. Any read with an equal or greater `
+        # read_time` is guaranteed to see the effects of the commit.
         # Corresponds to the JSON property `commitTime`
         # @return [String]
         attr_accessor :commit_time
       
-        # The result of applying the writes.
-        # This i-th write result corresponds to the i-th write in the
-        # request.
+        # The result of applying the writes. This i-th write result corresponds to the i-
+        # th write in the request.
         # Corresponds to the JSON property `writeResults`
         # @return [Array<Google::Apis::FirestoreV1beta1::WriteResult>]
         attr_accessor :write_results
@@ -322,8 +313,7 @@ module Google
       class CompositeFilter
         include Google::Apis::Core::Hashable
       
-        # The list of filters to combine.
-        # Must contain at least one filter.
+        # The list of filters to combine. Must contain at least one filter.
         # Corresponds to the JSON property `filters`
         # @return [Array<Google::Apis::FirestoreV1beta1::Filter>]
         attr_accessor :filters
@@ -348,16 +338,16 @@ module Google
       class Cursor
         include Google::Apis::Core::Hashable
       
-        # If the position is just before or just after the given values, relative
-        # to the sort order defined by the query.
+        # If the position is just before or just after the given values, relative to the
+        # sort order defined by the query.
         # Corresponds to the JSON property `before`
         # @return [Boolean]
         attr_accessor :before
         alias_method :before?, :before
       
-        # The values that represent a position, in the order they appear in
-        # the order by clause of a query.
-        # Can contain fewer values than specified in the order by clause.
+        # The values that represent a position, in the order they appear in the order by
+        # clause of a query. Can contain fewer values than specified in the order by
+        # clause.
         # Corresponds to the JSON property `values`
         # @return [Array<Google::Apis::FirestoreV1beta1::Value>]
         attr_accessor :values
@@ -373,52 +363,45 @@ module Google
         end
       end
       
-      # A Firestore document.
-      # Must not exceed 1 MiB - 4 bytes.
+      # A Firestore document. Must not exceed 1 MiB - 4 bytes.
       class Document
         include Google::Apis::Core::Hashable
       
-        # Output only. The time at which the document was created.
-        # This value increases monotonically when a document is deleted then
-        # recreated. It can also be compared to values from other documents and
-        # the `read_time` of a query.
+        # Output only. The time at which the document was created. This value increases
+        # monotonically when a document is deleted then recreated. It can also be
+        # compared to values from other documents and the `read_time` of a query.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # The document's fields.
-        # The map keys represent field names.
-        # A simple field name contains only characters `a` to `z`, `A` to `Z`,
-        # `0` to `9`, or `_`, and must not start with `0` to `9`. For example,
-        # `foo_bar_17`.
-        # Field names matching the regular expression `__.*__` are reserved. Reserved
-        # field names are forbidden except in certain documented contexts. The map
-        # keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be
-        # empty.
-        # Field paths may be used in other contexts to refer to structured fields
-        # defined here. For `map_value`, the field path is represented by the simple
-        # or quoted field names of the containing fields, delimited by `.`. For
-        # example, the structured field
-        # `"foo" : ` map_value: ` "x&y" : ` string_value: "hello" ```` would be
-        # represented by the field path `foo.x&y`.
-        # Within a field path, a quoted field name starts and ends with `` ` `` and
-        # may contain any character. Some characters, including `` ` ``, must be
-        # escaped using a `\`. For example, `` `x&y` `` represents `x&y` and
-        # `` `bak\`tik` `` represents `` bak`tik ``.
+        # The document's fields. The map keys represent field names. A simple field name
+        # contains only characters `a` to `z`, `A` to `Z`, `0` to `9`, or `_`, and must
+        # not start with `0` to `9`. For example, `foo_bar_17`. Field names matching the
+        # regular expression `__.*__` are reserved. Reserved field names are forbidden
+        # except in certain documented contexts. The map keys, represented as UTF-8,
+        # must not exceed 1,500 bytes and cannot be empty. Field paths may be used in
+        # other contexts to refer to structured fields defined here. For `map_value`,
+        # the field path is represented by the simple or quoted field names of the
+        # containing fields, delimited by `.`. For example, the structured field `"foo" :
+        # ` map_value: ` "x&y" : ` string_value: "hello" ```` would be represented by
+        # the field path `foo.x&y`. Within a field path, a quoted field name starts and
+        # ends with `` ` `` and may contain any character. Some characters, including ``
+        # ` ``, must be escaped using a `\`. For example, `` `x&y` `` represents `x&y`
+        # and `` `bak\`tik` `` represents `` bak`tik ``.
         # Corresponds to the JSON property `fields`
         # @return [Hash<String,Google::Apis::FirestoreV1beta1::Value>]
         attr_accessor :fields
       
-        # The resource name of the document, for example
-        # `projects/`project_id`/databases/`database_id`/documents/`document_path``.
+        # The resource name of the document, for example `projects/`project_id`/
+        # databases/`database_id`/documents/`document_path``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The time at which the document was last changed.
-        # This value is initially set to the `create_time` then increases
-        # monotonically with each change to the document. It can also be
-        # compared to values from other documents and the `read_time` of a query.
+        # Output only. The time at which the document was last changed. This value is
+        # initially set to the `create_time` then increases monotonically with each
+        # change to the document. It can also be compared to values from other documents
+        # and the `read_time` of a query.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -436,16 +419,14 @@ module Google
         end
       end
       
-      # A Document has changed.
-      # May be the result of multiple writes, including deletes, that
-      # ultimately resulted in a new value for the Document.
-      # Multiple DocumentChange messages may be returned for the same logical
-      # change, if multiple targets are affected.
+      # A Document has changed. May be the result of multiple writes, including
+      # deletes, that ultimately resulted in a new value for the Document. Multiple
+      # DocumentChange messages may be returned for the same logical change, if
+      # multiple targets are affected.
       class DocumentChange
         include Google::Apis::Core::Hashable
       
-        # A Firestore document.
-        # Must not exceed 1 MiB - 4 bytes.
+        # A Firestore document. Must not exceed 1 MiB - 4 bytes.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::FirestoreV1beta1::Document]
         attr_accessor :document
@@ -472,11 +453,10 @@ module Google
         end
       end
       
-      # A Document has been deleted.
-      # May be the result of multiple writes, including updates, the
-      # last of which deleted the Document.
-      # Multiple DocumentDelete messages may be returned for the same logical
-      # delete, if multiple targets are affected.
+      # A Document has been deleted. May be the result of multiple writes, including
+      # updates, the last of which deleted the Document. Multiple DocumentDelete
+      # messages may be returned for the same logical delete, if multiple targets are
+      # affected.
       class DocumentDelete
         include Google::Apis::Core::Hashable
       
@@ -485,8 +465,8 @@ module Google
         # @return [String]
         attr_accessor :document
       
-        # The read timestamp at which the delete was observed.
-        # Greater or equal to the `commit_time` of the delete.
+        # The read timestamp at which the delete was observed. Greater or equal to the `
+        # commit_time` of the delete.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -508,16 +488,15 @@ module Google
         end
       end
       
-      # A set of field paths on a document.
-      # Used to restrict a get or update operation on a document to a subset of its
-      # fields.
-      # This is different from standard field masks, as this is always scoped to a
-      # Document, and takes in account the dynamic nature of Value.
+      # A set of field paths on a document. Used to restrict a get or update operation
+      # on a document to a subset of its fields. This is different from standard field
+      # masks, as this is always scoped to a Document, and takes in account the
+      # dynamic nature of Value.
       class DocumentMask
         include Google::Apis::Core::Hashable
       
-        # The list of field paths in the mask. See Document.fields for a field
-        # path syntax reference.
+        # The list of field paths in the mask. See Document.fields for a field path
+        # syntax reference.
         # Corresponds to the JSON property `fieldPaths`
         # @return [Array<String>]
         attr_accessor :field_paths
@@ -532,12 +511,11 @@ module Google
         end
       end
       
-      # A Document has been removed from the view of the targets.
-      # Sent if the document is no longer relevant to a target and is out of view.
-      # Can be sent instead of a DocumentDelete or a DocumentChange if the server
-      # can not send the new value of the document.
-      # Multiple DocumentRemove messages may be returned for the same logical
-      # write or delete, if multiple targets are affected.
+      # A Document has been removed from the view of the targets. Sent if the document
+      # is no longer relevant to a target and is out of view. Can be sent instead of a
+      # DocumentDelete or a DocumentChange if the server can not send the new value of
+      # the document. Multiple DocumentRemove messages may be returned for the same
+      # logical write or delete, if multiple targets are affected.
       class DocumentRemove
         include Google::Apis::Core::Hashable
       
@@ -546,8 +524,8 @@ module Google
         # @return [String]
         attr_accessor :document
       
-        # The read timestamp at which the remove was observed.
-        # Greater or equal to the `commit_time` of the change/delete/remove.
+        # The read timestamp at which the remove was observed. Greater or equal to the `
+        # commit_time` of the change/delete/remove.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -578,8 +556,7 @@ module Google
         # @return [String]
         attr_accessor :document
       
-        # The list of transformations to apply to the fields of the document, in
-        # order.
+        # The list of transformations to apply to the fields of the document, in order.
         # This must not be empty.
         # Corresponds to the JSON property `fieldTransforms`
         # @return [Array<Google::Apis::FirestoreV1beta1::FieldTransform>]
@@ -600,10 +577,10 @@ module Google
       class DocumentsTarget
         include Google::Apis::Core::Hashable
       
-        # The names of the documents to retrieve. In the format:
-        # `projects/`project_id`/databases/`database_id`/documents/`document_path``.
-        # The request will fail if any of the document is not a child resource of
-        # the given `database`. Duplicate names will be elided.
+        # The names of the documents to retrieve. In the format: `projects/`project_id`/
+        # databases/`database_id`/documents/`document_path``. The request will fail if
+        # any of the document is not a child resource of the given `database`. Duplicate
+        # names will be elided.
         # Corresponds to the JSON property `documents`
         # @return [Array<String>]
         attr_accessor :documents
@@ -618,13 +595,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -641,9 +616,9 @@ module Google
       class ExistenceFilter
         include Google::Apis::Core::Hashable
       
-        # The total count of documents that match target_id.
-        # If different from the count of documents in the client that match, the
-        # client must manually determine which documents no longer match the target.
+        # The total count of documents that match target_id. If different from the count
+        # of documents in the client that match, the client must manually determine
+        # which documents no longer match the target.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
@@ -723,8 +698,7 @@ module Google
         # @return [Google::Apis::FirestoreV1beta1::ArrayValue]
         attr_accessor :append_missing_elements
       
-        # The path of the field. See Document.fields for the field path syntax
-        # reference.
+        # The path of the field. See Document.fields for the field path syntax reference.
         # Corresponds to the JSON property `fieldPath`
         # @return [String]
         attr_accessor :field_path
@@ -810,8 +784,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :collection_ids
       
-        # The time the operation ended, either successfully or otherwise. Unset if
-        # the operation is still active.
+        # The time the operation ended, either successfully or otherwise. Unset if the
+        # operation is still active.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -866,14 +840,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :collection_ids
       
-        # The output URI. Currently only supports Google Cloud Storage URIs of the
-        # form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name
-        # of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional
-        # Google Cloud Storage namespace path. When
-        # choosing a name, be sure to consider Google Cloud Storage naming
-        # guidelines: https://cloud.google.com/storage/docs/naming.
-        # If the URI is a bucket (without a namespace path), a prefix will be
-        # generated based on the start time.
+        # The output URI. Currently only supports Google Cloud Storage URIs of the form:
+        # `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the
+        # Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional Google Cloud
+        # Storage namespace path. When choosing a name, be sure to consider Google Cloud
+        # Storage naming guidelines: https://cloud.google.com/storage/docs/naming. If
+        # the URI is a bucket (without a namespace path), a prefix will be generated
+        # based on the start time.
         # Corresponds to the JSON property `outputUriPrefix`
         # @return [String]
         attr_accessor :output_uri_prefix
@@ -893,9 +866,9 @@ module Google
       class GoogleFirestoreAdminV1beta1ExportDocumentsResponse
         include Google::Apis::Core::Hashable
       
-        # Location of the output files. This can be used to begin an import
-        # into Cloud Firestore (this project or another project) after the operation
-        # completes successfully.
+        # Location of the output files. This can be used to begin an import into Cloud
+        # Firestore (this project or another project) after the operation completes
+        # successfully.
         # Corresponds to the JSON property `outputUriPrefix`
         # @return [String]
         attr_accessor :output_uri_prefix
@@ -919,8 +892,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :collection_ids
       
-        # The time the operation ended, either successfully or otherwise. Unset if
-        # the operation is still active.
+        # The time the operation ended, either successfully or otherwise. Unset if the
+        # operation is still active.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -970,16 +943,14 @@ module Google
       class GoogleFirestoreAdminV1beta1ImportDocumentsRequest
         include Google::Apis::Core::Hashable
       
-        # Which collection ids to import. Unspecified means all collections included
-        # in the import.
+        # Which collection ids to import. Unspecified means all collections included in
+        # the import.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
       
-        # Location of the exported files.
-        # This must match the output_uri_prefix of an ExportDocumentsResponse from
-        # an export that has completed successfully.
-        # See:
+        # Location of the exported files. This must match the output_uri_prefix of an
+        # ExportDocumentsResponse from an export that has completed successfully. See:
         # google.firestore.admin.v1beta1.ExportDocumentsResponse.output_uri_prefix.
         # Corresponds to the JSON property `inputUriPrefix`
         # @return [String]
@@ -1010,14 +981,12 @@ module Google
         # @return [Array<Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1IndexField>]
         attr_accessor :fields
       
-        # The resource name of the index.
-        # Output only.
+        # The resource name of the index. Output only.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The state of the index.
-        # Output only.
+        # The state of the index. Output only.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -1039,10 +1008,10 @@ module Google
       class GoogleFirestoreAdminV1beta1IndexField
         include Google::Apis::Core::Hashable
       
-        # The path of the field. Must match the field path specification described
-        # by google.firestore.v1beta1.Document.fields.
-        # Special field path `__name__` may be used by itself or at the end of a
-        # path. `__type__` may be used only at the end of path.
+        # The path of the field. Must match the field path specification described by
+        # google.firestore.v1beta1.Document.fields. Special field path `__name__` may be
+        # used by itself or at the end of a path. `__type__` may be used only at the end
+        # of path.
         # Corresponds to the JSON property `fieldPath`
         # @return [String]
         attr_accessor :field_path
@@ -1063,14 +1032,14 @@ module Google
         end
       end
       
-      # Metadata for index operations. This metadata populates
-      # the metadata field of google.longrunning.Operation.
+      # Metadata for index operations. This metadata populates the metadata field of
+      # google.longrunning.Operation.
       class GoogleFirestoreAdminV1beta1IndexOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # True if the [google.longrunning.Operation] was cancelled. If the
-        # cancellation is in progress, cancelled will be true but
-        # google.longrunning.Operation.done will be false.
+        # True if the [google.longrunning.Operation] was cancelled. If the cancellation
+        # is in progress, cancelled will be true but google.longrunning.Operation.done
+        # will be false.
         # Corresponds to the JSON property `cancelled`
         # @return [Boolean]
         attr_accessor :cancelled
@@ -1081,14 +1050,14 @@ module Google
         # @return [Google::Apis::FirestoreV1beta1::GoogleFirestoreAdminV1beta1Progress]
         attr_accessor :document_progress
       
-        # The time the operation ended, either successfully or otherwise. Unset if
-        # the operation is still active.
+        # The time the operation ended, either successfully or otherwise. Unset if the
+        # operation is still active.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # The index resource that this operation is acting on. For example:
-        # `projects/`project_id`/databases/`database_id`/indexes/`index_id``
+        # The index resource that this operation is acting on. For example: `projects/`
+        # project_id`/databases/`database_id`/indexes/`index_id``
         # Corresponds to the JSON property `index`
         # @return [String]
         attr_accessor :index
@@ -1160,14 +1129,14 @@ module Google
       class GoogleFirestoreAdminV1beta1Progress
         include Google::Apis::Core::Hashable
       
-        # An estimate of how much work has been completed. Note that this may be
-        # greater than `work_estimated`.
+        # An estimate of how much work has been completed. Note that this may be greater
+        # than `work_estimated`.
         # Corresponds to the JSON property `workCompleted`
         # @return [Fixnum]
         attr_accessor :work_completed
       
-        # An estimate of how much work needs to be performed. Zero if the
-        # work estimate is unavailable. May change as work progresses.
+        # An estimate of how much work needs to be performed. Zero if the work estimate
+        # is unavailable. May change as work progresses.
         # Corresponds to the JSON property `workEstimated`
         # @return [Fixnum]
         attr_accessor :work_estimated
@@ -1188,47 +1157,45 @@ module Google
       class GoogleLongrunningOperation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::FirestoreV1beta1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -1249,9 +1216,8 @@ module Google
       
       # An object representing a latitude/longitude pair. This is expressed as a pair
       # of doubles representing degrees latitude and degrees longitude. Unless
-      # specified otherwise, this must conform to the
-      # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-      # standard</a>. Values must be within normalized ranges.
+      # specified otherwise, this must conform to the WGS84 standard. Values must be
+      # within normalized ranges.
       class LatLng
         include Google::Apis::Core::Hashable
       
@@ -1285,8 +1251,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # A page token. Must be a value from
-        # ListCollectionIdsResponse.
+        # A page token. Must be a value from ListCollectionIdsResponse.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -1387,30 +1352,27 @@ module Google
       class ListenResponse
         include Google::Apis::Core::Hashable
       
-        # A Document has changed.
-        # May be the result of multiple writes, including deletes, that
-        # ultimately resulted in a new value for the Document.
-        # Multiple DocumentChange messages may be returned for the same logical
-        # change, if multiple targets are affected.
+        # A Document has changed. May be the result of multiple writes, including
+        # deletes, that ultimately resulted in a new value for the Document. Multiple
+        # DocumentChange messages may be returned for the same logical change, if
+        # multiple targets are affected.
         # Corresponds to the JSON property `documentChange`
         # @return [Google::Apis::FirestoreV1beta1::DocumentChange]
         attr_accessor :document_change
       
-        # A Document has been deleted.
-        # May be the result of multiple writes, including updates, the
-        # last of which deleted the Document.
-        # Multiple DocumentDelete messages may be returned for the same logical
-        # delete, if multiple targets are affected.
+        # A Document has been deleted. May be the result of multiple writes, including
+        # updates, the last of which deleted the Document. Multiple DocumentDelete
+        # messages may be returned for the same logical delete, if multiple targets are
+        # affected.
         # Corresponds to the JSON property `documentDelete`
         # @return [Google::Apis::FirestoreV1beta1::DocumentDelete]
         attr_accessor :document_delete
       
-        # A Document has been removed from the view of the targets.
-        # Sent if the document is no longer relevant to a target and is out of view.
-        # Can be sent instead of a DocumentDelete or a DocumentChange if the server
-        # can not send the new value of the document.
-        # Multiple DocumentRemove messages may be returned for the same logical
-        # write or delete, if multiple targets are affected.
+        # A Document has been removed from the view of the targets. Sent if the document
+        # is no longer relevant to a target and is out of view. Can be sent instead of a
+        # DocumentDelete or a DocumentChange if the server can not send the new value of
+        # the document. Multiple DocumentRemove messages may be returned for the same
+        # logical write or delete, if multiple targets are affected.
         # Corresponds to the JSON property `documentRemove`
         # @return [Google::Apis::FirestoreV1beta1::DocumentRemove]
         attr_accessor :document_remove
@@ -1443,11 +1405,10 @@ module Google
       class MapValue
         include Google::Apis::Core::Hashable
       
-        # The map's fields.
-        # The map keys represent field names. Field names matching the regular
-        # expression `__.*__` are reserved. Reserved field names are forbidden except
-        # in certain documented contexts. The map keys, represented as UTF-8, must
-        # not exceed 1,500 bytes and cannot be empty.
+        # The map's fields. The map keys represent field names. Field names matching the
+        # regular expression `__.*__` are reserved. Reserved field names are forbidden
+        # except in certain documented contexts. The map keys, represented as UTF-8,
+        # must not exceed 1,500 bytes and cannot be empty.
         # Corresponds to the JSON property `fields`
         # @return [Hash<String,Google::Apis::FirestoreV1beta1::Value>]
         attr_accessor :fields
@@ -1491,37 +1452,34 @@ module Google
       class PartitionQueryRequest
         include Google::Apis::Core::Hashable
       
-        # The maximum number of partitions to return in this call, subject to
-        # `partition_count`.
-        # For example, if `partition_count` = 10 and `page_size` = 8, the first call
-        # to PartitionQuery will return up to 8 partitions and a `next_page_token`
-        # if more results exist. A second call to PartitionQuery will return up to
-        # 2 partitions, to complete the total of 10 specified in `partition_count`.
+        # The maximum number of partitions to return in this call, subject to `
+        # partition_count`. For example, if `partition_count` = 10 and `page_size` = 8,
+        # the first call to PartitionQuery will return up to 8 partitions and a `
+        # next_page_token` if more results exist. A second call to PartitionQuery will
+        # return up to 2 partitions, to complete the total of 10 specified in `
+        # partition_count`.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # The `next_page_token` value returned from a previous call to
-        # PartitionQuery that may be used to get an additional set of results.
-        # There are no ordering guarantees between sets of results. Thus, using
-        # multiple sets of results will require merging the different result sets.
-        # For example, two subsequent calls using a page_token may return:
-        # * cursor B, cursor M, cursor Q
-        # * cursor A, cursor U, cursor W
-        # To obtain a complete result set ordered with respect to the results of the
-        # query supplied to PartitionQuery, the results sets should be merged:
-        # cursor A, cursor B, cursor M, cursor Q, cursor U, cursor W
+        # The `next_page_token` value returned from a previous call to PartitionQuery
+        # that may be used to get an additional set of results. There are no ordering
+        # guarantees between sets of results. Thus, using multiple sets of results will
+        # require merging the different result sets. For example, two subsequent calls
+        # using a page_token may return: * cursor B, cursor M, cursor Q * cursor A,
+        # cursor U, cursor W To obtain a complete result set ordered with respect to the
+        # results of the query supplied to PartitionQuery, the results sets should be
+        # merged: cursor A, cursor B, cursor M, cursor Q, cursor U, cursor W
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
       
-        # The desired maximum number of partition points.
-        # The partitions may be returned across multiple pages of results.
-        # The number must be strictly positive. The actual number of partitions
-        # returned may be fewer.
-        # For example, this may be set to one fewer than the number of parallel
-        # queries to be run, or in running a data pipeline job, one fewer than the
-        # number of workers or compute instances available.
+        # The desired maximum number of partition points. The partitions may be returned
+        # across multiple pages of results. The number must be positive. The actual
+        # number of partitions returned may be fewer. For example, this may be set to
+        # one fewer than the number of parallel queries to be run, or in running a data
+        # pipeline job, one fewer than the number of workers or compute instances
+        # available.
         # Corresponds to the JSON property `partitionCount`
         # @return [Fixnum]
         attr_accessor :partition_count
@@ -1548,25 +1506,22 @@ module Google
       class PartitionQueryResponse
         include Google::Apis::Core::Hashable
       
-        # A page token that may be used to request an additional set of results, up
-        # to the number specified by `partition_count` in the PartitionQuery request.
-        # If blank, there are no more results.
+        # A page token that may be used to request an additional set of results, up to
+        # the number specified by `partition_count` in the PartitionQuery request. If
+        # blank, there are no more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # Partition results.
-        # Each partition is a split point that can be used by RunQuery as a starting
-        # or end point for the query results. The RunQuery requests must be made with
-        # the same query supplied to this PartitionQuery request. The partition
-        # cursors will be ordered according to same ordering as the results of the
-        # query supplied to PartitionQuery.
-        # For example, if a PartitionQuery request returns partition cursors A and B,
-        # running the following three queries will return the entire result set of
-        # the original query:
-        # * query, end_at A
-        # * query, start_at A, end_at B
-        # * query, start_at B
+        # Partition results. Each partition is a split point that can be used by
+        # RunQuery as a starting or end point for the query results. The RunQuery
+        # requests must be made with the same query supplied to this PartitionQuery
+        # request. The partition cursors will be ordered according to same ordering as
+        # the results of the query supplied to PartitionQuery. For example, if a
+        # PartitionQuery request returns partition cursors A and B, running the
+        # following three queries will return the entire result set of the original
+        # query: * query, end_at A * query, start_at A, end_at B * query, start_at B An
+        # empty result may indicate that the query has too few results to be partitioned.
         # Corresponds to the JSON property `partitions`
         # @return [Array<Google::Apis::FirestoreV1beta1::Cursor>]
         attr_accessor :partitions
@@ -1586,15 +1541,15 @@ module Google
       class Precondition
         include Google::Apis::Core::Hashable
       
-        # When set to `true`, the target document must exist.
-        # When set to `false`, the target document must not exist.
+        # When set to `true`, the target document must exist. When set to `false`, the
+        # target document must not exist.
         # Corresponds to the JSON property `exists`
         # @return [Boolean]
         attr_accessor :exists
         alias_method :exists?, :exists
       
-        # When set, the target document must exist and have been last updated at
-        # that time.
+        # When set, the target document must exist and have been last updated at that
+        # time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1614,9 +1569,8 @@ module Google
       class Projection
         include Google::Apis::Core::Hashable
       
-        # The fields to return.
-        # If empty, all fields are returned. To only return the name
-        # of the document, use `['__name__']`.
+        # The fields to return. If empty, all fields are returned. To only return the
+        # name of the document, use `['__name__']`.
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::FirestoreV1beta1::FieldReference>]
         attr_accessor :fields
@@ -1635,12 +1589,11 @@ module Google
       class QueryTarget
         include Google::Apis::Core::Hashable
       
-        # The parent resource name. In the format:
-        # `projects/`project_id`/databases/`database_id`/documents` or
-        # `projects/`project_id`/databases/`database_id`/documents/`document_path``.
-        # For example:
-        # `projects/my-project/databases/my-database/documents` or
-        # `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+        # The parent resource name. In the format: `projects/`project_id`/databases/`
+        # database_id`/documents` or `projects/`project_id`/databases/`database_id`/
+        # documents/`document_path``. For example: `projects/my-project/databases/my-
+        # database/documents` or `projects/my-project/databases/my-database/documents/
+        # chatrooms/my-chatroom`
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1665,8 +1618,7 @@ module Google
       class ReadOnly
         include Google::Apis::Core::Hashable
       
-        # Reads documents at the given time.
-        # This may not be older than 60 seconds.
+        # Reads documents at the given time. This may not be older than 60 seconds.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -1730,8 +1682,8 @@ module Google
         # @return [Google::Apis::FirestoreV1beta1::TransactionOptions]
         attr_accessor :new_transaction
       
-        # Reads documents as they were at the given time.
-        # This may not be older than 270 seconds.
+        # Reads documents as they were at the given time. This may not be older than 270
+        # seconds.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -1764,32 +1716,29 @@ module Google
       class RunQueryResponse
         include Google::Apis::Core::Hashable
       
-        # A Firestore document.
-        # Must not exceed 1 MiB - 4 bytes.
+        # A Firestore document. Must not exceed 1 MiB - 4 bytes.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::FirestoreV1beta1::Document]
         attr_accessor :document
       
-        # The time at which the document was read. This may be monotonically
-        # increasing; in this case, the previous documents in the result stream are
-        # guaranteed not to have changed between their `read_time` and this one.
-        # If the query returns no results, a response with `read_time` and no
-        # `document` will be sent, and this represents the time at which the query
-        # was run.
+        # The time at which the document was read. This may be monotonically increasing;
+        # in this case, the previous documents in the result stream are guaranteed not
+        # to have changed between their `read_time` and this one. If the query returns
+        # no results, a response with `read_time` and no `document` will be sent, and
+        # this represents the time at which the query was run.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
       
-        # The number of results that have been skipped due to an offset between
-        # the last response and the current response.
+        # The number of results that have been skipped due to an offset between the last
+        # response and the current response.
         # Corresponds to the JSON property `skippedResults`
         # @return [Fixnum]
         attr_accessor :skipped_results
       
-        # The transaction that was started as part of this request.
-        # Can only be set in the first response, and only if
-        # RunQueryRequest.new_transaction was set in the request.
-        # If set, no other fields will be set in this response.
+        # The transaction that was started as part of this request. Can only be set in
+        # the first response, and only if RunQueryRequest.new_transaction was set in the
+        # request. If set, no other fields will be set in this response.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1808,12 +1757,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -1822,15 +1771,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -1861,34 +1810,28 @@ module Google
         # @return [Array<Google::Apis::FirestoreV1beta1::CollectionSelector>]
         attr_accessor :from
       
-        # The maximum number of results to return.
-        # Applies after all other constraints.
+        # The maximum number of results to return. Applies after all other constraints.
         # Must be >= 0 if specified.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
       
-        # The number of results to skip.
-        # Applies before limit, but after all other constraints. Must be >= 0 if
-        # specified.
+        # The number of results to skip. Applies before limit, but after all other
+        # constraints. Must be >= 0 if specified.
         # Corresponds to the JSON property `offset`
         # @return [Fixnum]
         attr_accessor :offset
       
-        # The order to apply to the query results.
-        # Firestore guarantees a stable ordering through the following rules:
-        # * Any field required to appear in `order_by`, that is not already
-        # specified in `order_by`, is appended to the order in field name order
-        # by default.
-        # * If an order on `__name__` is not specified, it is appended by default.
-        # Fields are appended with the same sort direction as the last order
-        # specified, or 'ASCENDING' if no order was specified. For example:
-        # * `SELECT * FROM Foo ORDER BY A` becomes
-        # `SELECT * FROM Foo ORDER BY A, __name__`
-        # * `SELECT * FROM Foo ORDER BY A DESC` becomes
-        # `SELECT * FROM Foo ORDER BY A DESC, __name__ DESC`
-        # * `SELECT * FROM Foo WHERE A > 1` becomes
-        # `SELECT * FROM Foo WHERE A > 1 ORDER BY A, __name__`
+        # The order to apply to the query results. Firestore guarantees a stable
+        # ordering through the following rules: * Any field required to appear in `
+        # order_by`, that is not already specified in `order_by`, is appended to the
+        # order in field name order by default. * If an order on `__name__` is not
+        # specified, it is appended by default. Fields are appended with the same sort
+        # direction as the last order specified, or 'ASCENDING' if no order was
+        # specified. For example: * `SELECT * FROM Foo ORDER BY A` becomes `SELECT *
+        # FROM Foo ORDER BY A, __name__` * `SELECT * FROM Foo ORDER BY A DESC` becomes `
+        # SELECT * FROM Foo ORDER BY A DESC, __name__ DESC` * `SELECT * FROM Foo WHERE A
+        # > 1` becomes `SELECT * FROM Foo WHERE A > 1 ORDER BY A, __name__`
         # Corresponds to the JSON property `orderBy`
         # @return [Array<Google::Apis::FirestoreV1beta1::Order>]
         attr_accessor :order_by
@@ -1945,14 +1888,14 @@ module Google
         # @return [Google::Apis::FirestoreV1beta1::QueryTarget]
         attr_accessor :query
       
-        # Start listening after a specific `read_time`.
-        # The client must know the state of matching documents at this time.
+        # Start listening after a specific `read_time`. The client must know the state
+        # of matching documents at this time.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
       
-        # A resume token from a prior TargetChange for an identical target.
-        # Using a resume token with a different target is unsupported and may fail.
+        # A resume token from a prior TargetChange for an identical target. Using a
+        # resume token with a different target is unsupported and may fail.
         # Corresponds to the JSON property `resumeToken`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1983,31 +1926,29 @@ module Google
       class TargetChange
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `cause`
         # @return [Google::Apis::FirestoreV1beta1::Status]
         attr_accessor :cause
       
         # The consistent `read_time` for the given `target_ids` (omitted when the
-        # target_ids are not at a consistent snapshot).
-        # The stream is guaranteed to send a `read_time` with `target_ids` empty
-        # whenever the entire stream reaches a new consistent snapshot. ADD,
-        # CURRENT, and RESET messages are guaranteed to (eventually) result in a
-        # new consistent snapshot (while NO_CHANGE and REMOVE messages are not).
-        # For a given stream, `read_time` is guaranteed to be monotonically
-        # increasing.
+        # target_ids are not at a consistent snapshot). The stream is guaranteed to send
+        # a `read_time` with `target_ids` empty whenever the entire stream reaches a new
+        # consistent snapshot. ADD, CURRENT, and RESET messages are guaranteed to (
+        # eventually) result in a new consistent snapshot (while NO_CHANGE and REMOVE
+        # messages are not). For a given stream, `read_time` is guaranteed to be
+        # monotonically increasing.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
       
-        # A token that can be used to resume the stream for the given `target_ids`,
-        # or all targets if `target_ids` is empty.
-        # Not set on every target change.
+        # A token that can be used to resume the stream for the given `target_ids`, or
+        # all targets if `target_ids` is empty. Not set on every target change.
         # Corresponds to the JSON property `resumeToken`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2018,9 +1959,8 @@ module Google
         # @return [String]
         attr_accessor :target_change_type
       
-        # The target IDs of targets that have changed.
-        # If empty, the change applies to all targets.
-        # The order of the target IDs is not defined.
+        # The target IDs of targets that have changed. If empty, the change applies to
+        # all targets. The order of the target IDs is not defined.
         # Corresponds to the JSON property `targetIds`
         # @return [Array<Fixnum>]
         attr_accessor :target_ids
@@ -2104,9 +2044,8 @@ module Google
         attr_accessor :boolean_value
         alias_method :boolean_value?, :boolean_value
       
-        # A bytes value.
-        # Must not exceed 1 MiB - 89 bytes.
-        # Only the first 1,500 bytes are considered by queries.
+        # A bytes value. Must not exceed 1 MiB - 89 bytes. Only the first 1,500 bytes
+        # are considered by queries.
         # Corresponds to the JSON property `bytesValue`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2119,9 +2058,8 @@ module Google
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the
-        # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-        # standard</a>. Values must be within normalized ranges.
+        # specified otherwise, this must conform to the WGS84 standard. Values must be
+        # within normalized ranges.
         # Corresponds to the JSON property `geoPointValue`
         # @return [Google::Apis::FirestoreV1beta1::LatLng]
         attr_accessor :geo_point_value
@@ -2141,23 +2079,21 @@ module Google
         # @return [String]
         attr_accessor :null_value
       
-        # A reference to a document. For example:
-        # `projects/`project_id`/databases/`database_id`/documents/`document_path``.
+        # A reference to a document. For example: `projects/`project_id`/databases/`
+        # database_id`/documents/`document_path``.
         # Corresponds to the JSON property `referenceValue`
         # @return [String]
         attr_accessor :reference_value
       
-        # A string value.
-        # The string, represented as UTF-8, must not exceed 1 MiB - 89 bytes.
-        # Only the first 1,500 bytes of the UTF-8 representation are considered by
-        # queries.
+        # A string value. The string, represented as UTF-8, must not exceed 1 MiB - 89
+        # bytes. Only the first 1,500 bytes of the UTF-8 representation are considered
+        # by queries.
         # Corresponds to the JSON property `stringValue`
         # @return [String]
         attr_accessor :string_value
       
-        # A timestamp value.
-        # Precise only to microseconds. When stored, any additional precision is
-        # rounded down.
+        # A timestamp value. Precise only to microseconds. When stored, any additional
+        # precision is rounded down.
         # Corresponds to the JSON property `timestampValue`
         # @return [String]
         attr_accessor :timestamp_value
@@ -2191,8 +2127,8 @@ module Google
         # @return [Google::Apis::FirestoreV1beta1::Precondition]
         attr_accessor :current_document
       
-        # A document name to delete. In the format:
-        # `projects/`project_id`/databases/`database_id`/documents/`document_path``.
+        # A document name to delete. In the format: `projects/`project_id`/databases/`
+        # database_id`/documents/`document_path``.
         # Corresponds to the JSON property `delete`
         # @return [String]
         attr_accessor :delete
@@ -2202,25 +2138,22 @@ module Google
         # @return [Google::Apis::FirestoreV1beta1::DocumentTransform]
         attr_accessor :transform
       
-        # A Firestore document.
-        # Must not exceed 1 MiB - 4 bytes.
+        # A Firestore document. Must not exceed 1 MiB - 4 bytes.
         # Corresponds to the JSON property `update`
         # @return [Google::Apis::FirestoreV1beta1::Document]
         attr_accessor :update
       
-        # A set of field paths on a document.
-        # Used to restrict a get or update operation on a document to a subset of its
-        # fields.
-        # This is different from standard field masks, as this is always scoped to a
-        # Document, and takes in account the dynamic nature of Value.
+        # A set of field paths on a document. Used to restrict a get or update operation
+        # on a document to a subset of its fields. This is different from standard field
+        # masks, as this is always scoped to a Document, and takes in account the
+        # dynamic nature of Value.
         # Corresponds to the JSON property `updateMask`
         # @return [Google::Apis::FirestoreV1beta1::DocumentMask]
         attr_accessor :update_mask
       
-        # The transforms to perform after update.
-        # This field can be set only when the operation is `update`. If present, this
-        # write is equivalent to performing `update` and `transform` to the same
-        # document atomically and in order.
+        # The transforms to perform after update. This field can be set only when the
+        # operation is `update`. If present, this write is equivalent to performing `
+        # update` and `transform` to the same document atomically and in order.
         # Corresponds to the JSON property `updateTransforms`
         # @return [Array<Google::Apis::FirestoreV1beta1::FieldTransform>]
         attr_accessor :update_transforms
@@ -2240,13 +2173,12 @@ module Google
         end
       end
       
-      # The request for Firestore.Write.
-      # The first request creates a stream, or resumes an existing one from a token.
-      # When creating a new stream, the server replies with a response containing
-      # only an ID and a token, to use in the next request.
-      # When resuming a stream, the server first streams any responses later than the
-      # given token, then a response containing only an up-to-date token, to use in
-      # the next request.
+      # The request for Firestore.Write. The first request creates a stream, or
+      # resumes an existing one from a token. When creating a new stream, the server
+      # replies with a response containing only an ID and a token, to use in the next
+      # request. When resuming a stream, the server first streams any responses later
+      # than the given token, then a response containing only an up-to-date token, to
+      # use in the next request.
       class WriteRequest
         include Google::Apis::Core::Hashable
       
@@ -2255,33 +2187,28 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The ID of the write stream to resume.
-        # This may only be set in the first message. When left empty, a new write
-        # stream will be created.
+        # The ID of the write stream to resume. This may only be set in the first
+        # message. When left empty, a new write stream will be created.
         # Corresponds to the JSON property `streamId`
         # @return [String]
         attr_accessor :stream_id
       
-        # A stream token that was previously sent by the server.
-        # The client should set this field to the token from the most recent
-        # WriteResponse it has received. This acknowledges that the client has
-        # received responses up to this token. After sending this token, earlier
-        # tokens may not be used anymore.
-        # The server may close the stream if there are too many unacknowledged
-        # responses.
-        # Leave this field unset when creating a new stream. To resume a stream at
-        # a specific point, set this field and the `stream_id` field.
-        # Leave this field unset when creating a new stream.
+        # A stream token that was previously sent by the server. The client should set
+        # this field to the token from the most recent WriteResponse it has received.
+        # This acknowledges that the client has received responses up to this token.
+        # After sending this token, earlier tokens may not be used anymore. The server
+        # may close the stream if there are too many unacknowledged responses. Leave
+        # this field unset when creating a new stream. To resume a stream at a specific
+        # point, set this field and the `stream_id` field. Leave this field unset when
+        # creating a new stream.
         # Corresponds to the JSON property `streamToken`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :stream_token
       
-        # The writes to apply.
-        # Always executed atomically and in order.
-        # This must be empty on the first request.
-        # This may be empty on the last request.
-        # This must not be empty on all other requests.
+        # The writes to apply. Always executed atomically and in order. This must be
+        # empty on the first request. This may be empty on the last request. This must
+        # not be empty on all other requests.
         # Corresponds to the JSON property `writes`
         # @return [Array<Google::Apis::FirestoreV1beta1::Write>]
         attr_accessor :writes
@@ -2303,29 +2230,28 @@ module Google
       class WriteResponse
         include Google::Apis::Core::Hashable
       
-        # The time at which the commit occurred. Any read with an equal or greater
-        # `read_time` is guaranteed to see the effects of the write.
+        # The time at which the commit occurred. Any read with an equal or greater `
+        # read_time` is guaranteed to see the effects of the write.
         # Corresponds to the JSON property `commitTime`
         # @return [String]
         attr_accessor :commit_time
       
-        # The ID of the stream.
-        # Only set on the first message, when a new stream was created.
+        # The ID of the stream. Only set on the first message, when a new stream was
+        # created.
         # Corresponds to the JSON property `streamId`
         # @return [String]
         attr_accessor :stream_id
       
-        # A token that represents the position of this response in the stream.
-        # This can be used by a client to resume the stream at this point.
-        # This field is always set.
+        # A token that represents the position of this response in the stream. This can
+        # be used by a client to resume the stream at this point. This field is always
+        # set.
         # Corresponds to the JSON property `streamToken`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :stream_token
       
-        # The result of applying the writes.
-        # This i-th write result corresponds to the i-th write in the
-        # request.
+        # The result of applying the writes. This i-th write result corresponds to the i-
+        # th write in the request.
         # Corresponds to the JSON property `writeResults`
         # @return [Array<Google::Apis::FirestoreV1beta1::WriteResult>]
         attr_accessor :write_results
@@ -2347,15 +2273,14 @@ module Google
       class WriteResult
         include Google::Apis::Core::Hashable
       
-        # The results of applying each DocumentTransform.FieldTransform, in the
-        # same order.
+        # The results of applying each DocumentTransform.FieldTransform, in the same
+        # order.
         # Corresponds to the JSON property `transformResults`
         # @return [Array<Google::Apis::FirestoreV1beta1::Value>]
         attr_accessor :transform_results
       
-        # The last update time of the document after applying the write. Not set
-        # after a `delete`.
-        # If the write did not actually change the document, this will be the
+        # The last update time of the document after applying the write. Not set after a
+        # `delete`. If the write did not actually change the document, this will be the
         # previous update_time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]

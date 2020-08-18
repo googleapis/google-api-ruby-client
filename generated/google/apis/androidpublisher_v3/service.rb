@@ -43,8 +43,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/androidpublisher/v3'
+          super('https://androidpublisher.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Commits an app edit.

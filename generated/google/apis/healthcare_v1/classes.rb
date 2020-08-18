@@ -1150,8 +1150,8 @@ module Google
       class GoogleCloudHealthcareV1FhirBigQueryDestination
         include Google::Apis::Core::Hashable
       
-        # BigQuery URI to a dataset, up to 2000 characters long, in the format
-        # `bq://projectId.bqDatasetId`
+        # BigQuery URI to an existing  dataset, up to 2000 characters long, in the
+        # format `bq://projectId.bqDatasetId`.
         # Corresponds to the JSON property `datasetUri`
         # @return [String]
         attr_accessor :dataset_uri

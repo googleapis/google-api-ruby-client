@@ -61,6 +61,7 @@ module Google
       class ImportSshPublicKeyResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
           property :login_profile, as: 'loginProfile', class: Google::Apis::OsloginV1::LoginProfile, decorator: Google::Apis::OsloginV1::LoginProfile::Representation
       
         end

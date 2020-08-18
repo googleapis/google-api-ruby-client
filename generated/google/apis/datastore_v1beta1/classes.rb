@@ -31,14 +31,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # The client-assigned labels which were provided when the operation was
-        # created. May also include additional labels.
+        # The client-assigned labels which were provided when the operation was created.
+        # May also include additional labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The type of the operation. Can be used as a filter in
-        # ListOperationsRequest.
+        # The type of the operation. Can be used as a filter in ListOperationsRequest.
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
@@ -69,18 +68,12 @@ module Google
       
       # Identifies a subset of entities in a project. This is specified as
       # combinations of kinds and namespaces (either or both of which may be all, as
-      # described in the following examples).
-      # Example usage:
-      # Entire project:
-      # kinds=[], namespace_ids=[]
-      # Kinds Foo and Bar in all namespaces:
-      # kinds=['Foo', 'Bar'], namespace_ids=[]
-      # Kinds Foo and Bar only in the default namespace:
-      # kinds=['Foo', 'Bar'], namespace_ids=['']
-      # Kinds Foo and Bar in both the default and Baz namespaces:
-      # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-      # The entire Baz namespace:
-      # kinds=[], namespace_ids=['Baz']
+      # described in the following examples). Example usage: Entire project: kinds=[],
+      # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+      # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+      # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+      # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+      # namespace: kinds=[], namespace_ids=['Baz']
       class GoogleDatastoreAdminV1EntityFilter
         include Google::Apis::Core::Hashable
       
@@ -89,12 +82,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :kinds
       
-        # An empty list represents all namespaces. This is the preferred
-        # usage for projects that don't use namespaces.
-        # An empty string element represents the default namespace. This should be
-        # used if the project has data in non-default namespaces, but doesn't want to
-        # include them.
-        # Each namespace in this list must be unique.
+        # An empty list represents all namespaces. This is the preferred usage for
+        # projects that don't use namespaces. An empty string element represents the
+        # default namespace. This should be used if the project has data in non-default
+        # namespaces, but doesn't want to include them. Each namespace in this list must
+        # be unique.
         # Corresponds to the JSON property `namespaceIds`
         # @return [Array<String>]
         attr_accessor :namespace_ids
@@ -121,27 +113,20 @@ module Google
       
         # Identifies a subset of entities in a project. This is specified as
         # combinations of kinds and namespaces (either or both of which may be all, as
-        # described in the following examples).
-        # Example usage:
-        # Entire project:
-        # kinds=[], namespace_ids=[]
-        # Kinds Foo and Bar in all namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=[]
-        # Kinds Foo and Bar only in the default namespace:
-        # kinds=['Foo', 'Bar'], namespace_ids=['']
-        # Kinds Foo and Bar in both the default and Baz namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-        # The entire Baz namespace:
-        # kinds=[], namespace_ids=['Baz']
+        # described in the following examples). Example usage: Entire project: kinds=[],
+        # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+        # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+        # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+        # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+        # namespace: kinds=[], namespace_ids=['Baz']
         # Corresponds to the JSON property `entityFilter`
         # @return [Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1EntityFilter]
         attr_accessor :entity_filter
       
-        # Location for the export metadata and data files. This will be the same
-        # value as the
-        # google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix
-        # field. The final output location is provided in
-        # google.datastore.admin.v1.ExportEntitiesResponse.output_url.
+        # Location for the export metadata and data files. This will be the same value
+        # as the google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix field.
+        # The final output location is provided in google.datastore.admin.v1.
+        # ExportEntitiesResponse.output_url.
         # Corresponds to the JSON property `outputUrlPrefix`
         # @return [String]
         attr_accessor :output_url_prefix
@@ -170,15 +155,14 @@ module Google
         end
       end
       
-      # The response for
-      # google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
+      # The response for google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
       class GoogleDatastoreAdminV1ExportEntitiesResponse
         include Google::Apis::Core::Hashable
       
-        # Location of the output metadata file. This can be used to begin an import
-        # into Cloud Datastore (this project or another project). See
-        # google.datastore.admin.v1.ImportEntitiesRequest.input_url.
-        # Only present if the operation completed successfully.
+        # Location of the output metadata file. This can be used to begin an import into
+        # Cloud Datastore (this project or another project). See google.datastore.admin.
+        # v1.ImportEntitiesRequest.input_url. Only present if the operation completed
+        # successfully.
         # Corresponds to the JSON property `outputUrl`
         # @return [String]
         attr_accessor :output_url
@@ -204,24 +188,18 @@ module Google
       
         # Identifies a subset of entities in a project. This is specified as
         # combinations of kinds and namespaces (either or both of which may be all, as
-        # described in the following examples).
-        # Example usage:
-        # Entire project:
-        # kinds=[], namespace_ids=[]
-        # Kinds Foo and Bar in all namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=[]
-        # Kinds Foo and Bar only in the default namespace:
-        # kinds=['Foo', 'Bar'], namespace_ids=['']
-        # Kinds Foo and Bar in both the default and Baz namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-        # The entire Baz namespace:
-        # kinds=[], namespace_ids=['Baz']
+        # described in the following examples). Example usage: Entire project: kinds=[],
+        # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+        # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+        # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+        # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+        # namespace: kinds=[], namespace_ids=['Baz']
         # Corresponds to the JSON property `entityFilter`
         # @return [Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1EntityFilter]
         attr_accessor :entity_filter
       
-        # The location of the import metadata file. This will be the same value as
-        # the google.datastore.admin.v1.ExportEntitiesResponse.output_url field.
+        # The location of the import metadata file. This will be the same value as the
+        # google.datastore.admin.v1.ExportEntitiesResponse.output_url field.
         # Corresponds to the JSON property `inputUrl`
         # @return [String]
         attr_accessor :input_url
@@ -285,14 +263,14 @@ module Google
       class GoogleDatastoreAdminV1Progress
         include Google::Apis::Core::Hashable
       
-        # The amount of work that has been completed. Note that this may be greater
-        # than work_estimated.
+        # The amount of work that has been completed. Note that this may be greater than
+        # work_estimated.
         # Corresponds to the JSON property `workCompleted`
         # @return [Fixnum]
         attr_accessor :work_completed
       
-        # An estimate of how much work needs to be performed. May be zero if the
-        # work estimate is unavailable.
+        # An estimate of how much work needs to be performed. May be zero if the work
+        # estimate is unavailable.
         # Corresponds to the JSON property `workEstimated`
         # @return [Fixnum]
         attr_accessor :work_estimated
@@ -317,14 +295,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # The client-assigned labels which were provided when the operation was
-        # created. May also include additional labels.
+        # The client-assigned labels which were provided when the operation was created.
+        # May also include additional labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The type of the operation. Can be used as a filter in
-        # ListOperationsRequest.
+        # The type of the operation. Can be used as a filter in ListOperationsRequest.
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
@@ -355,18 +332,12 @@ module Google
       
       # Identifies a subset of entities in a project. This is specified as
       # combinations of kinds and namespaces (either or both of which may be all, as
-      # described in the following examples).
-      # Example usage:
-      # Entire project:
-      # kinds=[], namespace_ids=[]
-      # Kinds Foo and Bar in all namespaces:
-      # kinds=['Foo', 'Bar'], namespace_ids=[]
-      # Kinds Foo and Bar only in the default namespace:
-      # kinds=['Foo', 'Bar'], namespace_ids=['']
-      # Kinds Foo and Bar in both the default and Baz namespaces:
-      # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-      # The entire Baz namespace:
-      # kinds=[], namespace_ids=['Baz']
+      # described in the following examples). Example usage: Entire project: kinds=[],
+      # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+      # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+      # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+      # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+      # namespace: kinds=[], namespace_ids=['Baz']
       class GoogleDatastoreAdminV1beta1EntityFilter
         include Google::Apis::Core::Hashable
       
@@ -375,12 +346,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :kinds
       
-        # An empty list represents all namespaces. This is the preferred
-        # usage for projects that don't use namespaces.
-        # An empty string element represents the default namespace. This should be
-        # used if the project has data in non-default namespaces, but doesn't want to
-        # include them.
-        # Each namespace in this list must be unique.
+        # An empty list represents all namespaces. This is the preferred usage for
+        # projects that don't use namespaces. An empty string element represents the
+        # default namespace. This should be used if the project has data in non-default
+        # namespaces, but doesn't want to include them. Each namespace in this list must
+        # be unique.
         # Corresponds to the JSON property `namespaceIds`
         # @return [Array<String>]
         attr_accessor :namespace_ids
@@ -407,27 +377,20 @@ module Google
       
         # Identifies a subset of entities in a project. This is specified as
         # combinations of kinds and namespaces (either or both of which may be all, as
-        # described in the following examples).
-        # Example usage:
-        # Entire project:
-        # kinds=[], namespace_ids=[]
-        # Kinds Foo and Bar in all namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=[]
-        # Kinds Foo and Bar only in the default namespace:
-        # kinds=['Foo', 'Bar'], namespace_ids=['']
-        # Kinds Foo and Bar in both the default and Baz namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-        # The entire Baz namespace:
-        # kinds=[], namespace_ids=['Baz']
+        # described in the following examples). Example usage: Entire project: kinds=[],
+        # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+        # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+        # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+        # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+        # namespace: kinds=[], namespace_ids=['Baz']
         # Corresponds to the JSON property `entityFilter`
         # @return [Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1beta1EntityFilter]
         attr_accessor :entity_filter
       
-        # Location for the export metadata and data files. This will be the same
-        # value as the
-        # google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix
-        # field. The final output location is provided in
-        # google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url.
+        # Location for the export metadata and data files. This will be the same value
+        # as the google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix
+        # field. The final output location is provided in google.datastore.admin.v1beta1.
+        # ExportEntitiesResponse.output_url.
         # Corresponds to the JSON property `outputUrlPrefix`
         # @return [String]
         attr_accessor :output_url_prefix
@@ -456,25 +419,18 @@ module Google
         end
       end
       
-      # The request for
-      # google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities.
+      # The request for google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities.
       class GoogleDatastoreAdminV1beta1ExportEntitiesRequest
         include Google::Apis::Core::Hashable
       
         # Identifies a subset of entities in a project. This is specified as
         # combinations of kinds and namespaces (either or both of which may be all, as
-        # described in the following examples).
-        # Example usage:
-        # Entire project:
-        # kinds=[], namespace_ids=[]
-        # Kinds Foo and Bar in all namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=[]
-        # Kinds Foo and Bar only in the default namespace:
-        # kinds=['Foo', 'Bar'], namespace_ids=['']
-        # Kinds Foo and Bar in both the default and Baz namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-        # The entire Baz namespace:
-        # kinds=[], namespace_ids=['Baz']
+        # described in the following examples). Example usage: Entire project: kinds=[],
+        # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+        # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+        # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+        # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+        # namespace: kinds=[], namespace_ids=['Baz']
         # Corresponds to the JSON property `entityFilter`
         # @return [Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1beta1EntityFilter]
         attr_accessor :entity_filter
@@ -484,22 +440,19 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Location for the export metadata and data files.
-        # The full resource URL of the external storage location. Currently, only
-        # Google Cloud Storage is supported. So output_url_prefix should be of the
-        # form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the
-        # name of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud
-        # Storage namespace path (this is not a Cloud Datastore namespace). For more
-        # information about Cloud Storage namespace paths, see
-        # [Object name
-        # considerations](https://cloud.google.com/storage/docs/naming#object-
-        # considerations).
-        # The resulting files will be nested deeper than the specified URL prefix.
-        # The final output URL will be provided in the
-        # google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url
-        # field. That value should be used for subsequent ImportEntities operations.
-        # By nesting the data files deeper, the same Cloud Storage bucket can be used
-        # in multiple ExportEntities operations without conflict.
+        # Location for the export metadata and data files. The full resource URL of the
+        # external storage location. Currently, only Google Cloud Storage is supported.
+        # So output_url_prefix should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`
+        # , where `BUCKET_NAME` is the name of the Cloud Storage bucket and `
+        # NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a
+        # Cloud Datastore namespace). For more information about Cloud Storage namespace
+        # paths, see [Object name considerations](https://cloud.google.com/storage/docs/
+        # naming#object-considerations). The resulting files will be nested deeper than
+        # the specified URL prefix. The final output URL will be provided in the google.
+        # datastore.admin.v1beta1.ExportEntitiesResponse.output_url field. That value
+        # should be used for subsequent ImportEntities operations. By nesting the data
+        # files deeper, the same Cloud Storage bucket can be used in multiple
+        # ExportEntities operations without conflict.
         # Corresponds to the JSON property `outputUrlPrefix`
         # @return [String]
         attr_accessor :output_url_prefix
@@ -516,15 +469,14 @@ module Google
         end
       end
       
-      # The response for
-      # google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities.
+      # The response for google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities.
       class GoogleDatastoreAdminV1beta1ExportEntitiesResponse
         include Google::Apis::Core::Hashable
       
-        # Location of the output metadata file. This can be used to begin an import
-        # into Cloud Datastore (this project or another project). See
-        # google.datastore.admin.v1beta1.ImportEntitiesRequest.input_url.
-        # Only present if the operation completed successfully.
+        # Location of the output metadata file. This can be used to begin an import into
+        # Cloud Datastore (this project or another project). See google.datastore.admin.
+        # v1beta1.ImportEntitiesRequest.input_url. Only present if the operation
+        # completed successfully.
         # Corresponds to the JSON property `outputUrl`
         # @return [String]
         attr_accessor :output_url
@@ -550,25 +502,18 @@ module Google
       
         # Identifies a subset of entities in a project. This is specified as
         # combinations of kinds and namespaces (either or both of which may be all, as
-        # described in the following examples).
-        # Example usage:
-        # Entire project:
-        # kinds=[], namespace_ids=[]
-        # Kinds Foo and Bar in all namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=[]
-        # Kinds Foo and Bar only in the default namespace:
-        # kinds=['Foo', 'Bar'], namespace_ids=['']
-        # Kinds Foo and Bar in both the default and Baz namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-        # The entire Baz namespace:
-        # kinds=[], namespace_ids=['Baz']
+        # described in the following examples). Example usage: Entire project: kinds=[],
+        # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+        # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+        # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+        # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+        # namespace: kinds=[], namespace_ids=['Baz']
         # Corresponds to the JSON property `entityFilter`
         # @return [Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1beta1EntityFilter]
         attr_accessor :entity_filter
       
-        # The location of the import metadata file. This will be the same value as
-        # the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url
-        # field.
+        # The location of the import metadata file. This will be the same value as the
+        # google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field.
         # Corresponds to the JSON property `inputUrl`
         # @return [String]
         attr_accessor :input_url
@@ -597,42 +542,32 @@ module Google
         end
       end
       
-      # The request for
-      # google.datastore.admin.v1beta1.DatastoreAdmin.ImportEntities.
+      # The request for google.datastore.admin.v1beta1.DatastoreAdmin.ImportEntities.
       class GoogleDatastoreAdminV1beta1ImportEntitiesRequest
         include Google::Apis::Core::Hashable
       
         # Identifies a subset of entities in a project. This is specified as
         # combinations of kinds and namespaces (either or both of which may be all, as
-        # described in the following examples).
-        # Example usage:
-        # Entire project:
-        # kinds=[], namespace_ids=[]
-        # Kinds Foo and Bar in all namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=[]
-        # Kinds Foo and Bar only in the default namespace:
-        # kinds=['Foo', 'Bar'], namespace_ids=['']
-        # Kinds Foo and Bar in both the default and Baz namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-        # The entire Baz namespace:
-        # kinds=[], namespace_ids=['Baz']
+        # described in the following examples). Example usage: Entire project: kinds=[],
+        # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+        # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+        # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+        # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+        # namespace: kinds=[], namespace_ids=['Baz']
         # Corresponds to the JSON property `entityFilter`
         # @return [Google::Apis::DatastoreV1beta1::GoogleDatastoreAdminV1beta1EntityFilter]
         attr_accessor :entity_filter
       
-        # The full resource URL of the external storage location. Currently, only
-        # Google Cloud Storage is supported. So input_url should be of the form:
-        # `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where
-        # `BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is
-        # an optional Cloud Storage namespace path (this is not a Cloud Datastore
-        # namespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written
-        # by the ExportEntities operation. For more information about Cloud Storage
-        # namespace paths, see
-        # [Object name
-        # considerations](https://cloud.google.com/storage/docs/naming#object-
-        # considerations).
-        # For more information, see
-        # google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url.
+        # The full resource URL of the external storage location. Currently, only Google
+        # Cloud Storage is supported. So input_url should be of the form: `gs://
+        # BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where `BUCKET_NAME`
+        # is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is an optional
+        # Cloud Storage namespace path (this is not a Cloud Datastore namespace), and `
+        # OVERALL_EXPORT_METADATA_FILE` is the metadata file written by the
+        # ExportEntities operation. For more information about Cloud Storage namespace
+        # paths, see [Object name considerations](https://cloud.google.com/storage/docs/
+        # naming#object-considerations). For more information, see google.datastore.
+        # admin.v1beta1.ExportEntitiesResponse.output_url.
         # Corresponds to the JSON property `inputUrl`
         # @return [String]
         attr_accessor :input_url
@@ -658,14 +593,14 @@ module Google
       class GoogleDatastoreAdminV1beta1Progress
         include Google::Apis::Core::Hashable
       
-        # The amount of work that has been completed. Note that this may be greater
-        # than work_estimated.
+        # The amount of work that has been completed. Note that this may be greater than
+        # work_estimated.
         # Corresponds to the JSON property `workCompleted`
         # @return [Fixnum]
         attr_accessor :work_completed
       
-        # An estimate of how much work needs to be performed. May be zero if the
-        # work estimate is unavailable.
+        # An estimate of how much work needs to be performed. May be zero if the work
+        # estimate is unavailable.
         # Corresponds to the JSON property `workEstimated`
         # @return [Fixnum]
         attr_accessor :work_estimated
@@ -686,47 +621,45 @@ module Google
       class GoogleLongrunningOperation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::DatastoreV1beta1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -745,12 +678,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -759,15 +692,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message

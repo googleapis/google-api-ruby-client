@@ -901,6 +901,17 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::NotificationConfig]
         attr_accessor :notification_config
       
+        # A list of streaming configs used to configure the destination of streaming
+        # exports for every DICOM instance insertion in this DICOM store.
+        # After a new config is added to `stream_configs`, DICOM instance
+        # insertions are streamed to the new destination.
+        # When a config is removed from `stream_configs`, the server stops streaming
+        # to that destination.
+        # Each config must contain a unique destination.
+        # Corresponds to the JSON property `streamConfigs`
+        # @return [Array<Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomStreamConfig>]
+        attr_accessor :stream_configs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -910,6 +921,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
+          @stream_configs = args[:stream_configs] if args.key?(:stream_configs)
         end
       end
       
@@ -1908,12 +1920,31 @@ module Google
         end
       end
       
+      # StreamConfig specifies configuration for a streaming DICOM export.
+      class GoogleCloudHealthcareV1beta1DicomStreamConfig
+        include Google::Apis::Core::Hashable
+      
+        # The BigQuery table where the server writes output.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomBigQueryDestination]
+        attr_accessor :bigquery_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+        end
+      end
+      
       # The configuration for exporting to BigQuery.
       class GoogleCloudHealthcareV1beta1FhirBigQueryDestination
         include Google::Apis::Core::Hashable
       
-        # BigQuery URI to a dataset, up to 2000 characters long, in the format
-        # `bq://projectId.bqDatasetId`
+        # BigQuery URI to an existing  dataset, up to 2000 characters long, in the
+        # format `bq://projectId.bqDatasetId`.
         # Corresponds to the JSON property `datasetUri`
         # @return [String]
         attr_accessor :dataset_uri

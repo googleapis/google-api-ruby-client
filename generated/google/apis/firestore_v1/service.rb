@@ -48,17 +48,16 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Exports a copy of all or a subset of documents from Google Cloud Firestore
-        # to another storage system, such as Google Cloud Storage. Recent updates to
+        # Exports a copy of all or a subset of documents from Google Cloud Firestore to
+        # another storage system, such as Google Cloud Storage. Recent updates to
         # documents may not be reflected in the export. The export occurs in the
-        # background and its progress can be monitored and managed via the
-        # Operation resource that is created. The output of an export may only be
-        # used once the associated operation is done. If an export operation is
-        # cancelled before completion it may leave partial data behind in Google
-        # Cloud Storage.
+        # background and its progress can be monitored and managed via the Operation
+        # resource that is created. The output of an export may only be used once the
+        # associated operation is done. If an export operation is cancelled before
+        # completion it may leave partial data behind in Google Cloud Storage.
         # @param [String] name
-        #   Required. Database to export. Should be of the form:
-        #   `projects/`project_id`/databases/`database_id``.
+        #   Required. Database to export. Should be of the form: `projects/`project_id`/
+        #   databases/`database_id``.
         # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ExportDocumentsRequest] google_firestore_admin_v1_export_documents_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -92,11 +91,11 @@ module Google
         # Imports documents into Google Cloud Firestore. Existing documents with the
         # same name are overwritten. The import occurs in the background and its
         # progress can be monitored and managed via the Operation resource that is
-        # created. If an ImportDocuments operation is cancelled, it is possible
-        # that a subset of the data has already been imported to Cloud Firestore.
+        # created. If an ImportDocuments operation is cancelled, it is possible that a
+        # subset of the data has already been imported to Cloud Firestore.
         # @param [String] name
-        #   Required. Database to import into. Should be of the form:
-        #   `projects/`project_id`/databases/`database_id``.
+        #   Required. Database to import into. Should be of the form: `projects/`
+        #   project_id`/databases/`database_id``.
         # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ImportDocumentsRequest] google_firestore_admin_v1_import_documents_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -129,9 +128,8 @@ module Google
         
         # Gets the metadata and configuration for a Field.
         # @param [String] name
-        #   Required. A name of the form
-        #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
-        #   /fields/`field_id``
+        #   Required. A name of the form `projects/`project_id`/databases/`database_id`/
+        #   collectionGroups/`collection_id`/fields/`field_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -159,27 +157,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the field configuration and metadata for this database.
-        # Currently, FirestoreAdmin.ListFields only supports listing fields
-        # that have been explicitly overridden. To issue this query, call
-        # FirestoreAdmin.ListFields with the filter set to
-        # `indexConfig.usesAncestorConfig:false`.
+        # Lists the field configuration and metadata for this database. Currently,
+        # FirestoreAdmin.ListFields only supports listing fields that have been
+        # explicitly overridden. To issue this query, call FirestoreAdmin.ListFields
+        # with the filter set to `indexConfig.usesAncestorConfig:false`.
         # @param [String] parent
-        #   Required. A parent name of the form
-        #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
-        #   `
+        #   Required. A parent name of the form `projects/`project_id`/databases/`
+        #   database_id`/collectionGroups/`collection_id``
         # @param [String] filter
-        #   The filter to apply to list results. Currently,
-        #   FirestoreAdmin.ListFields only supports listing fields
-        #   that have been explicitly overridden. To issue this query, call
-        #   FirestoreAdmin.ListFields with the filter set to
-        #   `indexConfig.usesAncestorConfig:false`.
+        #   The filter to apply to list results. Currently, FirestoreAdmin.ListFields only
+        #   supports listing fields that have been explicitly overridden. To issue this
+        #   query, call FirestoreAdmin.ListFields with the filter set to `indexConfig.
+        #   usesAncestorConfig:false`.
         # @param [Fixnum] page_size
         #   The number of results to return.
         # @param [String] page_token
-        #   A page token, returned from a previous call to
-        #   FirestoreAdmin.ListFields, that may be used to get the next
-        #   page of results.
+        #   A page token, returned from a previous call to FirestoreAdmin.ListFields, that
+        #   may be used to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -210,47 +204,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a field configuration. Currently, field updates apply only to
-        # single field index configuration. However, calls to
-        # FirestoreAdmin.UpdateField should provide a field mask to avoid
-        # changing any configuration that the caller isn't aware of. The field mask
-        # should be specified as: `` paths: "index_config" ``.
-        # This call returns a google.longrunning.Operation which may be used to
-        # track the status of the field update. The metadata for
-        # the operation will be the type FieldOperationMetadata.
-        # To configure the default field settings for the database, use
-        # the special `Field` with resource name:
-        # `projects/`project_id`/databases/`database_id`/collectionGroups/__default__/
-        # fields/*`.
+        # Updates a field configuration. Currently, field updates apply only to single
+        # field index configuration. However, calls to FirestoreAdmin.UpdateField should
+        # provide a field mask to avoid changing any configuration that the caller isn't
+        # aware of. The field mask should be specified as: `` paths: "index_config" ``.
+        # This call returns a google.longrunning.Operation which may be used to track
+        # the status of the field update. The metadata for the operation will be the
+        # type FieldOperationMetadata. To configure the default field settings for the
+        # database, use the special `Field` with resource name: `projects/`project_id`/
+        # databases/`database_id`/collectionGroups/__default__/fields/*`.
         # @param [String] name
-        #   A field name of the form
-        #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
-        #   /fields/`field_path``
-        #   A field path may be a simple field name, e.g. `address` or a path to fields
-        #   within map_value , e.g. `address.city`,
-        #   or a special field path. The only valid special field is `*`, which
-        #   represents any field.
-        #   Field paths may be quoted using ` (backtick). The only character that needs
-        #   to be escaped within a quoted field path is the backtick character itself,
-        #   escaped using a backslash. Special characters in field paths that
-        #   must be quoted include: `*`, `.`,
-        #   ``` (backtick), `[`, `]`, as well as any ascii symbolic characters.
-        #   Examples:
-        #   (Note: Comments here are written in markdown syntax, so there is an
-        #   additional layer of backticks to represent a code block)
-        #   `\`address.city\`` represents a field named `address.city`, not the map key
-        #   `city` in the field `address`.
-        #   `\`*\`` represents a field named `*`, not any field.
-        #   A special `Field` contains the default indexing settings for all fields.
-        #   This field's resource name is:
-        #   `projects/`project_id`/databases/`database_id`/collectionGroups/__default__/
-        #   fields/*`
+        #   A field name of the form `projects/`project_id`/databases/`database_id`/
+        #   collectionGroups/`collection_id`/fields/`field_path`` A field path may be a
+        #   simple field name, e.g. `address` or a path to fields within map_value , e.g. `
+        #   address.city`, or a special field path. The only valid special field is `*`,
+        #   which represents any field. Field paths may be quoted using ` (backtick). The
+        #   only character that needs to be escaped within a quoted field path is the
+        #   backtick character itself, escaped using a backslash. Special characters in
+        #   field paths that must be quoted include: `*`, `.`, ``` (backtick), `[`, `]`,
+        #   as well as any ascii symbolic characters. Examples: (Note: Comments here are
+        #   written in markdown syntax, so there is an additional layer of backticks to
+        #   represent a code block) `\`address.city\`` represents a field named `address.
+        #   city`, not the map key `city` in the field `address`. `\`*\`` represents a
+        #   field named `*`, not any field. A special `Field` contains the default
+        #   indexing settings for all fields. This field's resource name is: `projects/`
+        #   project_id`/databases/`database_id`/collectionGroups/__default__/fields/*`
         #   Indexes defined on this `Field` will be applied to all fields which do not
         #   have their own `Field` index configuration.
         # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Field] google_firestore_admin_v1_field_object
         # @param [String] update_mask
-        #   A mask, relative to the field. If specified, only configuration specified
-        #   by this field_mask will be updated in the field.
+        #   A mask, relative to the field. If specified, only configuration specified by
+        #   this field_mask will be updated in the field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -281,13 +265,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a composite index. This returns a google.longrunning.Operation
-        # which may be used to track the status of the creation. The metadata for
-        # the operation will be the type IndexOperationMetadata.
+        # Creates a composite index. This returns a google.longrunning.Operation which
+        # may be used to track the status of the creation. The metadata for the
+        # operation will be the type IndexOperationMetadata.
         # @param [String] parent
-        #   Required. A parent name of the form
-        #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
-        #   `
+        #   Required. A parent name of the form `projects/`project_id`/databases/`
+        #   database_id`/collectionGroups/`collection_id``
         # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Index] google_firestore_admin_v1_index_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -320,9 +303,8 @@ module Google
         
         # Deletes a composite index.
         # @param [String] name
-        #   Required. A name of the form
-        #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
-        #   /indexes/`index_id``
+        #   Required. A name of the form `projects/`project_id`/databases/`database_id`/
+        #   collectionGroups/`collection_id`/indexes/`index_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -352,9 +334,8 @@ module Google
         
         # Gets a composite index.
         # @param [String] name
-        #   Required. A name of the form
-        #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
-        #   /indexes/`index_id``
+        #   Required. A name of the form `projects/`project_id`/databases/`database_id`/
+        #   collectionGroups/`collection_id`/indexes/`index_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -384,17 +365,15 @@ module Google
         
         # Lists composite indexes.
         # @param [String] parent
-        #   Required. A parent name of the form
-        #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
-        #   `
+        #   Required. A parent name of the form `projects/`project_id`/databases/`
+        #   database_id`/collectionGroups/`collection_id``
         # @param [String] filter
         #   The filter to apply to list results.
         # @param [Fixnum] page_size
         #   The number of results to return.
         # @param [String] page_token
-        #   A page token, returned from a previous call to
-        #   FirestoreAdmin.ListIndexes, that may be used to get the next
-        #   page of results.
+        #   A page token, returned from a previous call to FirestoreAdmin.ListIndexes,
+        #   that may be used to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -425,12 +404,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets multiple documents.
-        # Documents returned by this method are not guaranteed to be returned in the
-        # same order that they were requested.
+        # Gets multiple documents. Documents returned by this method are not guaranteed
+        # to be returned in the same order that they were requested.
         # @param [String] database
-        #   Required. The database name. In the format:
-        #   `projects/`project_id`/databases/`database_id``.
+        #   Required. The database name. In the format: `projects/`project_id`/databases/`
+        #   database_id``.
         # @param [Google::Apis::FirestoreV1::BatchGetDocumentsRequest] batch_get_documents_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -461,16 +439,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Applies a batch of write operations.
-        # The BatchWrite method does not apply the write operations atomically
-        # and can apply them out of order. Method does not allow more than one write
-        # per document. Each write succeeds or fails independently. See the
-        # BatchWriteResponse for the success status of each write.
-        # If you require an atomically applied set of writes, use
-        # Commit instead.
+        # Applies a batch of write operations. The BatchWrite method does not apply the
+        # write operations atomically and can apply them out of order. Method does not
+        # allow more than one write per document. Each write succeeds or fails
+        # independently. See the BatchWriteResponse for the success status of each write.
+        # If you require an atomically applied set of writes, use Commit instead.
         # @param [String] database
-        #   Required. The database name. In the format:
-        #   `projects/`project_id`/databases/`database_id``.
+        #   Required. The database name. In the format: `projects/`project_id`/databases/`
+        #   database_id``.
         # @param [Google::Apis::FirestoreV1::BatchWriteRequest] batch_write_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -503,8 +479,8 @@ module Google
         
         # Starts a new transaction.
         # @param [String] database
-        #   Required. The database name. In the format:
-        #   `projects/`project_id`/databases/`database_id``.
+        #   Required. The database name. In the format: `projects/`project_id`/databases/`
+        #   database_id``.
         # @param [Google::Apis::FirestoreV1::BeginTransactionRequest] begin_transaction_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -537,8 +513,8 @@ module Google
         
         # Commits a transaction, while optionally updating documents.
         # @param [String] database
-        #   Required. The database name. In the format:
-        #   `projects/`project_id`/databases/`database_id``.
+        #   Required. The database name. In the format: `projects/`project_id`/databases/`
+        #   database_id``.
         # @param [Google::Apis::FirestoreV1::CommitRequest] commit_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -571,20 +547,19 @@ module Google
         
         # Creates a new document.
         # @param [String] parent
-        #   Required. The parent resource. For example:
-        #   `projects/`project_id`/databases/`database_id`/documents` or
-        #   `projects/`project_id`/databases/`database_id`/documents/chatrooms/`
-        #   chatroom_id``
+        #   Required. The parent resource. For example: `projects/`project_id`/databases/`
+        #   database_id`/documents` or `projects/`project_id`/databases/`database_id`/
+        #   documents/chatrooms/`chatroom_id``
         # @param [String] collection_id
         #   Required. The collection ID, relative to `parent`, to list. For example: `
         #   chatrooms`.
         # @param [Google::Apis::FirestoreV1::Document] document_object
         # @param [String] document_id
-        #   The client-assigned document ID to use for this document.
-        #   Optional. If not specified, an ID will be assigned by the service.
+        #   The client-assigned document ID to use for this document. Optional. If not
+        #   specified, an ID will be assigned by the service.
         # @param [Array<String>, String] mask_field_paths
-        #   The list of field paths in the mask. See Document.fields for a field
-        #   path syntax reference.
+        #   The list of field paths in the mask. See Document.fields for a field path
+        #   syntax reference.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -619,14 +594,14 @@ module Google
         
         # Deletes a document.
         # @param [String] name
-        #   Required. The resource name of the Document to delete. In the format:
-        #   `projects/`project_id`/databases/`database_id`/documents/`document_path``.
+        #   Required. The resource name of the Document to delete. In the format: `
+        #   projects/`project_id`/databases/`database_id`/documents/`document_path``.
         # @param [Boolean] current_document_exists
-        #   When set to `true`, the target document must exist.
-        #   When set to `false`, the target document must not exist.
+        #   When set to `true`, the target document must exist. When set to `false`, the
+        #   target document must not exist.
         # @param [String] current_document_update_time
-        #   When set, the target document must exist and have been last updated at
-        #   that time.
+        #   When set, the target document must exist and have been last updated at that
+        #   time.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -658,14 +633,14 @@ module Google
         
         # Gets a single document.
         # @param [String] name
-        #   Required. The resource name of the Document to get. In the format:
-        #   `projects/`project_id`/databases/`database_id`/documents/`document_path``.
+        #   Required. The resource name of the Document to get. In the format: `projects/`
+        #   project_id`/databases/`database_id`/documents/`document_path``.
         # @param [Array<String>, String] mask_field_paths
-        #   The list of field paths in the mask. See Document.fields for a field
-        #   path syntax reference.
+        #   The list of field paths in the mask. See Document.fields for a field path
+        #   syntax reference.
         # @param [String] read_time
-        #   Reads the version of the document at the given time.
-        #   This may not be older than 270 seconds.
+        #   Reads the version of the document at the given time. This may not be older
+        #   than 270 seconds.
         # @param [String] transaction
         #   Reads the document in a transaction.
         # @param [String] fields
@@ -700,19 +675,17 @@ module Google
         
         # Lists documents.
         # @param [String] parent
-        #   Required. The parent resource name. In the format:
-        #   `projects/`project_id`/databases/`database_id`/documents` or
-        #   `projects/`project_id`/databases/`database_id`/documents/`document_path``.
-        #   For example:
-        #   `projects/my-project/databases/my-database/documents` or
-        #   `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+        #   Required. The parent resource name. In the format: `projects/`project_id`/
+        #   databases/`database_id`/documents` or `projects/`project_id`/databases/`
+        #   database_id`/documents/`document_path``. For example: `projects/my-project/
+        #   databases/my-database/documents` or `projects/my-project/databases/my-database/
+        #   documents/chatrooms/my-chatroom`
         # @param [String] collection_id
         #   Required. The collection ID, relative to `parent`, to list. For example: `
-        #   chatrooms`
-        #   or `messages`.
+        #   chatrooms` or `messages`.
         # @param [Array<String>, String] mask_field_paths
-        #   The list of field paths in the mask. See Document.fields for a field
-        #   path syntax reference.
+        #   The list of field paths in the mask. See Document.fields for a field path
+        #   syntax reference.
         # @param [String] order_by
         #   The order to sort results by. For example: `priority desc, name`.
         # @param [Fixnum] page_size
@@ -720,15 +693,14 @@ module Google
         # @param [String] page_token
         #   The `next_page_token` value returned from a previous List request, if any.
         # @param [String] read_time
-        #   Reads documents as they were at the given time.
-        #   This may not be older than 270 seconds.
+        #   Reads documents as they were at the given time. This may not be older than 270
+        #   seconds.
         # @param [Boolean] show_missing
-        #   If the list should show missing documents. A missing document is a
-        #   document that does not exist but has sub-documents. These documents will
-        #   be returned with a key but will not have fields, Document.create_time,
-        #   or Document.update_time set.
-        #   Requests with `show_missing` may not specify `where` or
-        #   `order_by`.
+        #   If the list should show missing documents. A missing document is a document
+        #   that does not exist but has sub-documents. These documents will be returned
+        #   with a key but will not have fields, Document.create_time, or Document.
+        #   update_time set. Requests with `show_missing` may not specify `where` or `
+        #   order_by`.
         # @param [String] transaction
         #   Reads documents in a transaction.
         # @param [String] fields
@@ -768,10 +740,9 @@ module Google
         
         # Lists all the collection IDs underneath a document.
         # @param [String] parent
-        #   Required. The parent document. In the format:
-        #   `projects/`project_id`/databases/`database_id`/documents/`document_path``.
-        #   For example:
-        #   `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+        #   Required. The parent document. In the format: `projects/`project_id`/databases/
+        #   `database_id`/documents/`document_path``. For example: `projects/my-project/
+        #   databases/my-database/documents/chatrooms/my-chatroom`
         # @param [Google::Apis::FirestoreV1::ListCollectionIdsRequest] list_collection_ids_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -804,8 +775,8 @@ module Google
         
         # Listens to changes.
         # @param [String] database
-        #   Required. The database name. In the format:
-        #   `projects/`project_id`/databases/`database_id``.
+        #   Required. The database name. In the format: `projects/`project_id`/databases/`
+        #   database_id``.
         # @param [Google::Apis::FirestoreV1::ListenRequest] listen_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -836,14 +807,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Partitions a query by returning partition cursors that can be used to run
-        # the query in parallel. The returned partition cursors are split points that
-        # can be used by RunQuery as starting/end points for the query results.
+        # Partitions a query by returning partition cursors that can be used to run the
+        # query in parallel. The returned partition cursors are split points that can be
+        # used by RunQuery as starting/end points for the query results.
         # @param [String] parent
-        #   Required. The parent resource name. In the format:
-        #   `projects/`project_id`/databases/`database_id`/documents`.
-        #   Document resource names are not supported; only database resource names
-        #   can be specified.
+        #   Required. The parent resource name. In the format: `projects/`project_id`/
+        #   databases/`database_id`/documents`. Document resource names are not supported;
+        #   only database resource names can be specified.
         # @param [Google::Apis::FirestoreV1::PartitionQueryRequest] partition_query_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -876,21 +846,21 @@ module Google
         
         # Updates or inserts a document.
         # @param [String] name
-        #   The resource name of the document, for example
-        #   `projects/`project_id`/databases/`database_id`/documents/`document_path``.
+        #   The resource name of the document, for example `projects/`project_id`/
+        #   databases/`database_id`/documents/`document_path``.
         # @param [Google::Apis::FirestoreV1::Document] document_object
         # @param [Boolean] current_document_exists
-        #   When set to `true`, the target document must exist.
-        #   When set to `false`, the target document must not exist.
+        #   When set to `true`, the target document must exist. When set to `false`, the
+        #   target document must not exist.
         # @param [String] current_document_update_time
-        #   When set, the target document must exist and have been last updated at
-        #   that time.
+        #   When set, the target document must exist and have been last updated at that
+        #   time.
         # @param [Array<String>, String] mask_field_paths
-        #   The list of field paths in the mask. See Document.fields for a field
-        #   path syntax reference.
+        #   The list of field paths in the mask. See Document.fields for a field path
+        #   syntax reference.
         # @param [Array<String>, String] update_mask_field_paths
-        #   The list of field paths in the mask. See Document.fields for a field
-        #   path syntax reference.
+        #   The list of field paths in the mask. See Document.fields for a field path
+        #   syntax reference.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -926,8 +896,8 @@ module Google
         
         # Rolls back a transaction.
         # @param [String] database
-        #   Required. The database name. In the format:
-        #   `projects/`project_id`/databases/`database_id``.
+        #   Required. The database name. In the format: `projects/`project_id`/databases/`
+        #   database_id``.
         # @param [Google::Apis::FirestoreV1::RollbackRequest] rollback_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -960,12 +930,11 @@ module Google
         
         # Runs a query.
         # @param [String] parent
-        #   Required. The parent resource name. In the format:
-        #   `projects/`project_id`/databases/`database_id`/documents` or
-        #   `projects/`project_id`/databases/`database_id`/documents/`document_path``.
-        #   For example:
-        #   `projects/my-project/databases/my-database/documents` or
-        #   `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+        #   Required. The parent resource name. In the format: `projects/`project_id`/
+        #   databases/`database_id`/documents` or `projects/`project_id`/databases/`
+        #   database_id`/documents/`document_path``. For example: `projects/my-project/
+        #   databases/my-database/documents` or `projects/my-project/databases/my-database/
+        #   documents/chatrooms/my-chatroom`
         # @param [Google::Apis::FirestoreV1::RunQueryRequest] run_query_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -998,9 +967,8 @@ module Google
         
         # Streams batches of document updates and deletes, in order.
         # @param [String] database
-        #   Required. The database name. In the format:
-        #   `projects/`project_id`/databases/`database_id``.
-        #   This is only required in the first message.
+        #   Required. The database name. In the format: `projects/`project_id`/databases/`
+        #   database_id``. This is only required in the first message.
         # @param [Google::Apis::FirestoreV1::WriteRequest] write_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1031,15 +999,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
@@ -1073,10 +1039,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a long-running operation. This method indicates that the client is
-        # no longer interested in the operation result. It does not cancel the
-        # operation. If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation resource to be deleted.
         # @param [String] fields
@@ -1106,9 +1072,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -1138,15 +1103,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter

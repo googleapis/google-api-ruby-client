@@ -46,8 +46,8 @@ module Google
       class AllocateIdsResponse
         include Google::Apis::Core::Hashable
       
-        # The keys specified in the request (in the same order), each with
-        # its key path completed with a newly allocated ID.
+        # The keys specified in the request (in the same order), each with its key path
+        # completed with a newly allocated ID.
         # Corresponds to the JSON property `keys`
         # @return [Array<Google::Apis::DatastoreV1::Key>]
         attr_accessor :keys
@@ -66,9 +66,8 @@ module Google
       class ArrayValue
         include Google::Apis::Core::Hashable
       
-        # Values in the array.
-        # The order of values in an array is preserved as long as all values have
-        # identical settings for 'exclude_from_indexes'.
+        # Values in the array. The order of values in an array is preserved as long as
+        # all values have identical settings for 'exclude_from_indexes'.
         # Corresponds to the JSON property `values`
         # @return [Array<Google::Apis::DatastoreV1::Value>]
         attr_accessor :values
@@ -87,9 +86,8 @@ module Google
       class BeginTransactionRequest
         include Google::Apis::Core::Hashable
       
-        # Options for beginning a new transaction.
-        # Transactions can be created explicitly with calls to
-        # Datastore.BeginTransaction or implicitly by setting
+        # Options for beginning a new transaction. Transactions can be created
+        # explicitly with calls to Datastore.BeginTransaction or implicitly by setting
         # ReadOptions.new_transaction in read requests.
         # Corresponds to the JSON property `transactionOptions`
         # @return [Google::Apis::DatastoreV1::TransactionOptions]
@@ -134,23 +132,18 @@ module Google
         # @return [String]
         attr_accessor :mode
       
-        # The mutations to perform.
-        # When mode is `TRANSACTIONAL`, mutations affecting a single entity are
-        # applied in order. The following sequences of mutations affecting a single
-        # entity are not permitted in a single `Commit` request:
-        # - `insert` followed by `insert`
-        # - `update` followed by `insert`
-        # - `upsert` followed by `insert`
-        # - `delete` followed by `update`
-        # When mode is `NON_TRANSACTIONAL`, no two mutations may affect a single
-        # entity.
+        # The mutations to perform. When mode is `TRANSACTIONAL`, mutations affecting a
+        # single entity are applied in order. The following sequences of mutations
+        # affecting a single entity are not permitted in a single `Commit` request: - `
+        # insert` followed by `insert` - `update` followed by `insert` - `upsert`
+        # followed by `insert` - `delete` followed by `update` When mode is `
+        # NON_TRANSACTIONAL`, no two mutations may affect a single entity.
         # Corresponds to the JSON property `mutations`
         # @return [Array<Google::Apis::DatastoreV1::Mutation>]
         attr_accessor :mutations
       
-        # The identifier of the transaction associated with the commit. A
-        # transaction identifier is returned by a call to
-        # Datastore.BeginTransaction.
+        # The identifier of the transaction associated with the commit. A transaction
+        # identifier is returned by a call to Datastore.BeginTransaction.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -178,8 +171,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :index_updates
       
-        # The result of performing the mutations.
-        # The i-th mutation result corresponds to the i-th mutation in the request.
+        # The result of performing the mutations. The i-th mutation result corresponds
+        # to the i-th mutation in the request.
         # Corresponds to the JSON property `mutationResults`
         # @return [Array<Google::Apis::DatastoreV1::MutationResult>]
         attr_accessor :mutation_results
@@ -199,8 +192,7 @@ module Google
       class CompositeFilter
         include Google::Apis::Core::Hashable
       
-        # The list of filters to combine.
-        # Must contain at least one filter.
+        # The list of filters to combine. Must contain at least one filter.
         # Corresponds to the JSON property `filters`
         # @return [Array<Google::Apis::DatastoreV1::Filter>]
         attr_accessor :filters
@@ -221,13 +213,11 @@ module Google
         end
       end
       
-      # A generic empty message that you can re-use to avoid defining duplicated
-      # empty messages in your APIs. A typical example is to use it as the request
-      # or the response type of an API method. For instance:
-      # service Foo `
-      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-      # `
-      # The JSON representation for `Empty` is empty JSON object ````.
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -240,27 +230,23 @@ module Google
         end
       end
       
-      # A Datastore data object.
-      # An entity is limited to 1 megabyte when stored. That _roughly_
-      # corresponds to a limit of 1 megabyte for the serialized form of this
+      # A Datastore data object. An entity is limited to 1 megabyte when stored. That
+      # _roughly_ corresponds to a limit of 1 megabyte for the serialized form of this
       # message.
       class Entity
         include Google::Apis::Core::Hashable
       
-        # A unique identifier for an entity.
-        # If a key's partition ID or any of its path kinds or names are
-        # reserved/read-only, the key is reserved/read-only.
-        # A reserved/read-only key is forbidden in certain documented contexts.
+        # A unique identifier for an entity. If a key's partition ID or any of its path
+        # kinds or names are reserved/read-only, the key is reserved/read-only. A
+        # reserved/read-only key is forbidden in certain documented contexts.
         # Corresponds to the JSON property `key`
         # @return [Google::Apis::DatastoreV1::Key]
         attr_accessor :key
       
-        # The entity's properties.
-        # The map's keys are property names.
-        # A property name matching regex `__.*__` is reserved.
-        # A reserved property name is forbidden in certain documented contexts.
-        # The name must not contain more than 500 characters.
-        # The name cannot be `""`.
+        # The entity's properties. The map's keys are property names. A property name
+        # matching regex `__.*__` is reserved. A reserved property name is forbidden in
+        # certain documented contexts. The name must not contain more than 500
+        # characters. The name cannot be `""`.
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,Google::Apis::DatastoreV1::Value>]
         attr_accessor :properties
@@ -280,28 +266,25 @@ module Google
       class EntityResult
         include Google::Apis::Core::Hashable
       
-        # A cursor that points to the position after the result entity.
-        # Set only when the `EntityResult` is part of a `QueryResultBatch` message.
+        # A cursor that points to the position after the result entity. Set only when
+        # the `EntityResult` is part of a `QueryResultBatch` message.
         # Corresponds to the JSON property `cursor`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :cursor
       
-        # A Datastore data object.
-        # An entity is limited to 1 megabyte when stored. That _roughly_
-        # corresponds to a limit of 1 megabyte for the serialized form of this
+        # A Datastore data object. An entity is limited to 1 megabyte when stored. That
+        # _roughly_ corresponds to a limit of 1 megabyte for the serialized form of this
         # message.
         # Corresponds to the JSON property `entity`
         # @return [Google::Apis::DatastoreV1::Entity]
         attr_accessor :entity
       
         # The version of the entity, a strictly positive number that monotonically
-        # increases with changes to the entity.
-        # This field is set for `FULL` entity
-        # results.
-        # For missing entities in `LookupResponse`, this
-        # is the version of the snapshot that was used to look up the entity, and it
-        # is always set except for eventually consistent reads.
+        # increases with changes to the entity. This field is set for `FULL` entity
+        # results. For missing entities in `LookupResponse`, this is the version of the
+        # snapshot that was used to look up the entity, and it is always set except for
+        # eventually consistent reads.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -352,14 +335,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # The client-assigned labels which were provided when the operation was
-        # created. May also include additional labels.
+        # The client-assigned labels which were provided when the operation was created.
+        # May also include additional labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The type of the operation. Can be used as a filter in
-        # ListOperationsRequest.
+        # The type of the operation. Can be used as a filter in ListOperationsRequest.
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
@@ -390,18 +372,12 @@ module Google
       
       # Identifies a subset of entities in a project. This is specified as
       # combinations of kinds and namespaces (either or both of which may be all, as
-      # described in the following examples).
-      # Example usage:
-      # Entire project:
-      # kinds=[], namespace_ids=[]
-      # Kinds Foo and Bar in all namespaces:
-      # kinds=['Foo', 'Bar'], namespace_ids=[]
-      # Kinds Foo and Bar only in the default namespace:
-      # kinds=['Foo', 'Bar'], namespace_ids=['']
-      # Kinds Foo and Bar in both the default and Baz namespaces:
-      # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-      # The entire Baz namespace:
-      # kinds=[], namespace_ids=['Baz']
+      # described in the following examples). Example usage: Entire project: kinds=[],
+      # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+      # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+      # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+      # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+      # namespace: kinds=[], namespace_ids=['Baz']
       class GoogleDatastoreAdminV1EntityFilter
         include Google::Apis::Core::Hashable
       
@@ -410,12 +386,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :kinds
       
-        # An empty list represents all namespaces. This is the preferred
-        # usage for projects that don't use namespaces.
-        # An empty string element represents the default namespace. This should be
-        # used if the project has data in non-default namespaces, but doesn't want to
-        # include them.
-        # Each namespace in this list must be unique.
+        # An empty list represents all namespaces. This is the preferred usage for
+        # projects that don't use namespaces. An empty string element represents the
+        # default namespace. This should be used if the project has data in non-default
+        # namespaces, but doesn't want to include them. Each namespace in this list must
+        # be unique.
         # Corresponds to the JSON property `namespaceIds`
         # @return [Array<String>]
         attr_accessor :namespace_ids
@@ -442,27 +417,20 @@ module Google
       
         # Identifies a subset of entities in a project. This is specified as
         # combinations of kinds and namespaces (either or both of which may be all, as
-        # described in the following examples).
-        # Example usage:
-        # Entire project:
-        # kinds=[], namespace_ids=[]
-        # Kinds Foo and Bar in all namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=[]
-        # Kinds Foo and Bar only in the default namespace:
-        # kinds=['Foo', 'Bar'], namespace_ids=['']
-        # Kinds Foo and Bar in both the default and Baz namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-        # The entire Baz namespace:
-        # kinds=[], namespace_ids=['Baz']
+        # described in the following examples). Example usage: Entire project: kinds=[],
+        # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+        # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+        # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+        # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+        # namespace: kinds=[], namespace_ids=['Baz']
         # Corresponds to the JSON property `entityFilter`
         # @return [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1EntityFilter]
         attr_accessor :entity_filter
       
-        # Location for the export metadata and data files. This will be the same
-        # value as the
-        # google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix
-        # field. The final output location is provided in
-        # google.datastore.admin.v1.ExportEntitiesResponse.output_url.
+        # Location for the export metadata and data files. This will be the same value
+        # as the google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix field.
+        # The final output location is provided in google.datastore.admin.v1.
+        # ExportEntitiesResponse.output_url.
         # Corresponds to the JSON property `outputUrlPrefix`
         # @return [String]
         attr_accessor :output_url_prefix
@@ -491,25 +459,18 @@ module Google
         end
       end
       
-      # The request for
-      # google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
+      # The request for google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
       class GoogleDatastoreAdminV1ExportEntitiesRequest
         include Google::Apis::Core::Hashable
       
         # Identifies a subset of entities in a project. This is specified as
         # combinations of kinds and namespaces (either or both of which may be all, as
-        # described in the following examples).
-        # Example usage:
-        # Entire project:
-        # kinds=[], namespace_ids=[]
-        # Kinds Foo and Bar in all namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=[]
-        # Kinds Foo and Bar only in the default namespace:
-        # kinds=['Foo', 'Bar'], namespace_ids=['']
-        # Kinds Foo and Bar in both the default and Baz namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-        # The entire Baz namespace:
-        # kinds=[], namespace_ids=['Baz']
+        # described in the following examples). Example usage: Entire project: kinds=[],
+        # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+        # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+        # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+        # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+        # namespace: kinds=[], namespace_ids=['Baz']
         # Corresponds to the JSON property `entityFilter`
         # @return [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1EntityFilter]
         attr_accessor :entity_filter
@@ -519,22 +480,19 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Location for the export metadata and data files.
-        # The full resource URL of the external storage location. Currently, only
-        # Google Cloud Storage is supported. So output_url_prefix should be of the
-        # form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the
-        # name of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud
-        # Storage namespace path (this is not a Cloud Datastore namespace). For more
-        # information about Cloud Storage namespace paths, see
-        # [Object name
-        # considerations](https://cloud.google.com/storage/docs/naming#object-
-        # considerations).
-        # The resulting files will be nested deeper than the specified URL prefix.
-        # The final output URL will be provided in the
-        # google.datastore.admin.v1.ExportEntitiesResponse.output_url field. That
-        # value should be used for subsequent ImportEntities operations.
-        # By nesting the data files deeper, the same Cloud Storage bucket can be used
-        # in multiple ExportEntities operations without conflict.
+        # Required. Location for the export metadata and data files. The full resource
+        # URL of the external storage location. Currently, only Google Cloud Storage is
+        # supported. So output_url_prefix should be of the form: `gs://BUCKET_NAME[/
+        # NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Cloud Storage bucket
+        # and `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not
+        # a Cloud Datastore namespace). For more information about Cloud Storage
+        # namespace paths, see [Object name considerations](https://cloud.google.com/
+        # storage/docs/naming#object-considerations). The resulting files will be nested
+        # deeper than the specified URL prefix. The final output URL will be provided in
+        # the google.datastore.admin.v1.ExportEntitiesResponse.output_url field. That
+        # value should be used for subsequent ImportEntities operations. By nesting the
+        # data files deeper, the same Cloud Storage bucket can be used in multiple
+        # ExportEntities operations without conflict.
         # Corresponds to the JSON property `outputUrlPrefix`
         # @return [String]
         attr_accessor :output_url_prefix
@@ -551,15 +509,14 @@ module Google
         end
       end
       
-      # The response for
-      # google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
+      # The response for google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
       class GoogleDatastoreAdminV1ExportEntitiesResponse
         include Google::Apis::Core::Hashable
       
-        # Location of the output metadata file. This can be used to begin an import
-        # into Cloud Datastore (this project or another project). See
-        # google.datastore.admin.v1.ImportEntitiesRequest.input_url.
-        # Only present if the operation completed successfully.
+        # Location of the output metadata file. This can be used to begin an import into
+        # Cloud Datastore (this project or another project). See google.datastore.admin.
+        # v1.ImportEntitiesRequest.input_url. Only present if the operation completed
+        # successfully.
         # Corresponds to the JSON property `outputUrl`
         # @return [String]
         attr_accessor :output_url
@@ -585,24 +542,18 @@ module Google
       
         # Identifies a subset of entities in a project. This is specified as
         # combinations of kinds and namespaces (either or both of which may be all, as
-        # described in the following examples).
-        # Example usage:
-        # Entire project:
-        # kinds=[], namespace_ids=[]
-        # Kinds Foo and Bar in all namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=[]
-        # Kinds Foo and Bar only in the default namespace:
-        # kinds=['Foo', 'Bar'], namespace_ids=['']
-        # Kinds Foo and Bar in both the default and Baz namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-        # The entire Baz namespace:
-        # kinds=[], namespace_ids=['Baz']
+        # described in the following examples). Example usage: Entire project: kinds=[],
+        # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+        # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+        # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+        # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+        # namespace: kinds=[], namespace_ids=['Baz']
         # Corresponds to the JSON property `entityFilter`
         # @return [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1EntityFilter]
         attr_accessor :entity_filter
       
-        # The location of the import metadata file. This will be the same value as
-        # the google.datastore.admin.v1.ExportEntitiesResponse.output_url field.
+        # The location of the import metadata file. This will be the same value as the
+        # google.datastore.admin.v1.ExportEntitiesResponse.output_url field.
         # Corresponds to the JSON property `inputUrl`
         # @return [String]
         attr_accessor :input_url
@@ -631,43 +582,32 @@ module Google
         end
       end
       
-      # The request for
-      # google.datastore.admin.v1.DatastoreAdmin.ImportEntities.
+      # The request for google.datastore.admin.v1.DatastoreAdmin.ImportEntities.
       class GoogleDatastoreAdminV1ImportEntitiesRequest
         include Google::Apis::Core::Hashable
       
         # Identifies a subset of entities in a project. This is specified as
         # combinations of kinds and namespaces (either or both of which may be all, as
-        # described in the following examples).
-        # Example usage:
-        # Entire project:
-        # kinds=[], namespace_ids=[]
-        # Kinds Foo and Bar in all namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=[]
-        # Kinds Foo and Bar only in the default namespace:
-        # kinds=['Foo', 'Bar'], namespace_ids=['']
-        # Kinds Foo and Bar in both the default and Baz namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-        # The entire Baz namespace:
-        # kinds=[], namespace_ids=['Baz']
+        # described in the following examples). Example usage: Entire project: kinds=[],
+        # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+        # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+        # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+        # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+        # namespace: kinds=[], namespace_ids=['Baz']
         # Corresponds to the JSON property `entityFilter`
         # @return [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1EntityFilter]
         attr_accessor :entity_filter
       
         # Required. The full resource URL of the external storage location. Currently,
-        # only
-        # Google Cloud Storage is supported. So input_url should be of the form:
-        # `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where
-        # `BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is
-        # an optional Cloud Storage namespace path (this is not a Cloud Datastore
-        # namespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written
-        # by the ExportEntities operation. For more information about Cloud Storage
-        # namespace paths, see
-        # [Object name
-        # considerations](https://cloud.google.com/storage/docs/naming#object-
-        # considerations).
-        # For more information, see
-        # google.datastore.admin.v1.ExportEntitiesResponse.output_url.
+        # only Google Cloud Storage is supported. So input_url should be of the form: `
+        # gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where `
+        # BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is an
+        # optional Cloud Storage namespace path (this is not a Cloud Datastore namespace)
+        # , and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written by the
+        # ExportEntities operation. For more information about Cloud Storage namespace
+        # paths, see [Object name considerations](https://cloud.google.com/storage/docs/
+        # naming#object-considerations). For more information, see google.datastore.
+        # admin.v1.ExportEntitiesResponse.output_url.
         # Corresponds to the JSON property `inputUrl`
         # @return [String]
         attr_accessor :input_url
@@ -693,7 +633,7 @@ module Google
       class GoogleDatastoreAdminV1Index
         include Google::Apis::Core::Hashable
       
-        # Required. The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.
+        # Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
         # Corresponds to the JSON property `ancestor`
         # @return [String]
         attr_accessor :ancestor
@@ -773,7 +713,7 @@ module Google
       class GoogleDatastoreAdminV1IndexedProperty
         include Google::Apis::Core::Hashable
       
-        # Required. The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.
+        # Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
         # Corresponds to the JSON property `direction`
         # @return [String]
         attr_accessor :direction
@@ -794,8 +734,7 @@ module Google
         end
       end
       
-      # The response for
-      # google.datastore.admin.v1.DatastoreAdmin.ListIndexes.
+      # The response for google.datastore.admin.v1.DatastoreAdmin.ListIndexes.
       class GoogleDatastoreAdminV1ListIndexesResponse
         include Google::Apis::Core::Hashable
       
@@ -824,14 +763,14 @@ module Google
       class GoogleDatastoreAdminV1Progress
         include Google::Apis::Core::Hashable
       
-        # The amount of work that has been completed. Note that this may be greater
-        # than work_estimated.
+        # The amount of work that has been completed. Note that this may be greater than
+        # work_estimated.
         # Corresponds to the JSON property `workCompleted`
         # @return [Fixnum]
         attr_accessor :work_completed
       
-        # An estimate of how much work needs to be performed. May be zero if the
-        # work estimate is unavailable.
+        # An estimate of how much work needs to be performed. May be zero if the work
+        # estimate is unavailable.
         # Corresponds to the JSON property `workEstimated`
         # @return [Fixnum]
         attr_accessor :work_estimated
@@ -856,14 +795,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # The client-assigned labels which were provided when the operation was
-        # created. May also include additional labels.
+        # The client-assigned labels which were provided when the operation was created.
+        # May also include additional labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The type of the operation. Can be used as a filter in
-        # ListOperationsRequest.
+        # The type of the operation. Can be used as a filter in ListOperationsRequest.
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
@@ -894,18 +832,12 @@ module Google
       
       # Identifies a subset of entities in a project. This is specified as
       # combinations of kinds and namespaces (either or both of which may be all, as
-      # described in the following examples).
-      # Example usage:
-      # Entire project:
-      # kinds=[], namespace_ids=[]
-      # Kinds Foo and Bar in all namespaces:
-      # kinds=['Foo', 'Bar'], namespace_ids=[]
-      # Kinds Foo and Bar only in the default namespace:
-      # kinds=['Foo', 'Bar'], namespace_ids=['']
-      # Kinds Foo and Bar in both the default and Baz namespaces:
-      # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-      # The entire Baz namespace:
-      # kinds=[], namespace_ids=['Baz']
+      # described in the following examples). Example usage: Entire project: kinds=[],
+      # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+      # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+      # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+      # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+      # namespace: kinds=[], namespace_ids=['Baz']
       class GoogleDatastoreAdminV1beta1EntityFilter
         include Google::Apis::Core::Hashable
       
@@ -914,12 +846,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :kinds
       
-        # An empty list represents all namespaces. This is the preferred
-        # usage for projects that don't use namespaces.
-        # An empty string element represents the default namespace. This should be
-        # used if the project has data in non-default namespaces, but doesn't want to
-        # include them.
-        # Each namespace in this list must be unique.
+        # An empty list represents all namespaces. This is the preferred usage for
+        # projects that don't use namespaces. An empty string element represents the
+        # default namespace. This should be used if the project has data in non-default
+        # namespaces, but doesn't want to include them. Each namespace in this list must
+        # be unique.
         # Corresponds to the JSON property `namespaceIds`
         # @return [Array<String>]
         attr_accessor :namespace_ids
@@ -946,27 +877,20 @@ module Google
       
         # Identifies a subset of entities in a project. This is specified as
         # combinations of kinds and namespaces (either or both of which may be all, as
-        # described in the following examples).
-        # Example usage:
-        # Entire project:
-        # kinds=[], namespace_ids=[]
-        # Kinds Foo and Bar in all namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=[]
-        # Kinds Foo and Bar only in the default namespace:
-        # kinds=['Foo', 'Bar'], namespace_ids=['']
-        # Kinds Foo and Bar in both the default and Baz namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-        # The entire Baz namespace:
-        # kinds=[], namespace_ids=['Baz']
+        # described in the following examples). Example usage: Entire project: kinds=[],
+        # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+        # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+        # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+        # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+        # namespace: kinds=[], namespace_ids=['Baz']
         # Corresponds to the JSON property `entityFilter`
         # @return [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1beta1EntityFilter]
         attr_accessor :entity_filter
       
-        # Location for the export metadata and data files. This will be the same
-        # value as the
-        # google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix
-        # field. The final output location is provided in
-        # google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url.
+        # Location for the export metadata and data files. This will be the same value
+        # as the google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix
+        # field. The final output location is provided in google.datastore.admin.v1beta1.
+        # ExportEntitiesResponse.output_url.
         # Corresponds to the JSON property `outputUrlPrefix`
         # @return [String]
         attr_accessor :output_url_prefix
@@ -995,15 +919,14 @@ module Google
         end
       end
       
-      # The response for
-      # google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities.
+      # The response for google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities.
       class GoogleDatastoreAdminV1beta1ExportEntitiesResponse
         include Google::Apis::Core::Hashable
       
-        # Location of the output metadata file. This can be used to begin an import
-        # into Cloud Datastore (this project or another project). See
-        # google.datastore.admin.v1beta1.ImportEntitiesRequest.input_url.
-        # Only present if the operation completed successfully.
+        # Location of the output metadata file. This can be used to begin an import into
+        # Cloud Datastore (this project or another project). See google.datastore.admin.
+        # v1beta1.ImportEntitiesRequest.input_url. Only present if the operation
+        # completed successfully.
         # Corresponds to the JSON property `outputUrl`
         # @return [String]
         attr_accessor :output_url
@@ -1029,25 +952,18 @@ module Google
       
         # Identifies a subset of entities in a project. This is specified as
         # combinations of kinds and namespaces (either or both of which may be all, as
-        # described in the following examples).
-        # Example usage:
-        # Entire project:
-        # kinds=[], namespace_ids=[]
-        # Kinds Foo and Bar in all namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=[]
-        # Kinds Foo and Bar only in the default namespace:
-        # kinds=['Foo', 'Bar'], namespace_ids=['']
-        # Kinds Foo and Bar in both the default and Baz namespaces:
-        # kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
-        # The entire Baz namespace:
-        # kinds=[], namespace_ids=['Baz']
+        # described in the following examples). Example usage: Entire project: kinds=[],
+        # namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'],
+        # namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo',
+        # 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz
+        # namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz
+        # namespace: kinds=[], namespace_ids=['Baz']
         # Corresponds to the JSON property `entityFilter`
         # @return [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1beta1EntityFilter]
         attr_accessor :entity_filter
       
-        # The location of the import metadata file. This will be the same value as
-        # the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url
-        # field.
+        # The location of the import metadata file. This will be the same value as the
+        # google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field.
         # Corresponds to the JSON property `inputUrl`
         # @return [String]
         attr_accessor :input_url
@@ -1080,14 +996,14 @@ module Google
       class GoogleDatastoreAdminV1beta1Progress
         include Google::Apis::Core::Hashable
       
-        # The amount of work that has been completed. Note that this may be greater
-        # than work_estimated.
+        # The amount of work that has been completed. Note that this may be greater than
+        # work_estimated.
         # Corresponds to the JSON property `workCompleted`
         # @return [Fixnum]
         attr_accessor :work_completed
       
-        # An estimate of how much work needs to be performed. May be zero if the
-        # work estimate is unavailable.
+        # An estimate of how much work needs to be performed. May be zero if the work
+        # estimate is unavailable.
         # Corresponds to the JSON property `workEstimated`
         # @return [Fixnum]
         attr_accessor :work_estimated
@@ -1133,47 +1049,45 @@ module Google
       class GoogleLongrunningOperation
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
         # Corresponds to the JSON property `done`
         # @return [Boolean]
         attr_accessor :done
         alias_method :done?, :done
       
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::DatastoreV1::Status]
         attr_accessor :error
       
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
         # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
+        # The normal response of the operation in case of success. If the original
+        # method returns no data on success, such as `Delete`, the response is `google.
+        # protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`,
+        # the response should be the resource. For other methods, the response should
+        # have the type `XxxResponse`, where `Xxx` is the original method name. For
+        # example, if the original method name is `TakeSnapshot()`, the inferred
+        # response type is `TakeSnapshotResponse`.
         # Corresponds to the JSON property `response`
         # @return [Hash<String,Object>]
         attr_accessor :response
@@ -1192,38 +1106,35 @@ module Google
         end
       end
       
-      # A [GQL
-      # query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
+      # A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
       class GqlQuery
         include Google::Apis::Core::Hashable
       
         # When false, the query string must not contain any literals and instead must
-        # bind all values. For example,
-        # `SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while
-        # `SELECT * FROM Kind WHERE a = @value` is.
+        # bind all values. For example, `SELECT * FROM Kind WHERE a = 'string literal'`
+        # is not allowed, while `SELECT * FROM Kind WHERE a = @value` is.
         # Corresponds to the JSON property `allowLiterals`
         # @return [Boolean]
         attr_accessor :allow_literals
         alias_method :allow_literals?, :allow_literals
       
-        # For each non-reserved named binding site in the query string, there must be
-        # a named parameter with that name, but not necessarily the inverse.
-        # Key must match regex `A-Za-z_$*`, must not match regex
-        # `__.*__`, and must not be `""`.
+        # For each non-reserved named binding site in the query string, there must be a
+        # named parameter with that name, but not necessarily the inverse. Key must
+        # match regex `A-Za-z_$*`, must not match regex `__.*__`, and must not be `""`.
         # Corresponds to the JSON property `namedBindings`
         # @return [Hash<String,Google::Apis::DatastoreV1::GqlQueryParameter>]
         attr_accessor :named_bindings
       
-        # Numbered binding site @1 references the first numbered parameter,
-        # effectively using 1-based indexing, rather than the usual 0.
-        # For each binding site numbered i in `query_string`, there must be an i-th
-        # numbered parameter. The inverse must also be true.
+        # Numbered binding site @1 references the first numbered parameter, effectively
+        # using 1-based indexing, rather than the usual 0. For each binding site
+        # numbered i in `query_string`, there must be an i-th numbered parameter. The
+        # inverse must also be true.
         # Corresponds to the JSON property `positionalBindings`
         # @return [Array<Google::Apis::DatastoreV1::GqlQueryParameter>]
         attr_accessor :positional_bindings
       
-        # A string of the format described
-        # [here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
+        # A string of the format described [here](https://cloud.google.com/datastore/
+        # docs/apis/gql/gql_reference).
         # Corresponds to the JSON property `queryString`
         # @return [String]
         attr_accessor :query_string
@@ -1245,8 +1156,7 @@ module Google
       class GqlQueryParameter
         include Google::Apis::Core::Hashable
       
-        # A query cursor. Query cursors are returned in query
-        # result batches.
+        # A query cursor. Query cursors are returned in query result batches.
         # Corresponds to the JSON property `cursor`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1269,47 +1179,38 @@ module Google
         end
       end
       
-      # A unique identifier for an entity.
-      # If a key's partition ID or any of its path kinds or names are
-      # reserved/read-only, the key is reserved/read-only.
-      # A reserved/read-only key is forbidden in certain documented contexts.
+      # A unique identifier for an entity. If a key's partition ID or any of its path
+      # kinds or names are reserved/read-only, the key is reserved/read-only. A
+      # reserved/read-only key is forbidden in certain documented contexts.
       class Key
         include Google::Apis::Core::Hashable
       
-        # A partition ID identifies a grouping of entities. The grouping is always
-        # by project and namespace, however the namespace ID may be empty.
-        # A partition ID contains several dimensions:
-        # project ID and namespace ID.
-        # Partition dimensions:
-        # - May be `""`.
-        # - Must be valid UTF-8 bytes.
-        # - Must have values that match regex `[A-Za-z\d\.\-_]`1,100``
-        # If the value of any dimension matches regex `__.*__`, the partition is
-        # reserved/read-only.
-        # A reserved/read-only partition ID is forbidden in certain documented
-        # contexts.
-        # Foreign partition IDs (in which the project ID does
-        # not match the context project ID ) are discouraged.
-        # Reads and writes of foreign partition IDs may fail if the project is not in an
+        # A partition ID identifies a grouping of entities. The grouping is always by
+        # project and namespace, however the namespace ID may be empty. A partition ID
+        # contains several dimensions: project ID and namespace ID. Partition dimensions:
+        # - May be `""`. - Must be valid UTF-8 bytes. - Must have values that match
+        # regex `[A-Za-z\d\.\-_]`1,100`` If the value of any dimension matches regex `__.
+        # *__`, the partition is reserved/read-only. A reserved/read-only partition ID
+        # is forbidden in certain documented contexts. Foreign partition IDs (in which
+        # the project ID does not match the context project ID ) are discouraged. Reads
+        # and writes of foreign partition IDs may fail if the project is not in an
         # active state.
         # Corresponds to the JSON property `partitionId`
         # @return [Google::Apis::DatastoreV1::PartitionId]
         attr_accessor :partition_id
       
-        # The entity path.
-        # An entity path consists of one or more elements composed of a kind and a
-        # string or numerical identifier, which identify entities. The first
-        # element identifies a _root entity_, the second element identifies
-        # a _child_ of the root entity, the third element identifies a child of the
-        # second entity, and so forth. The entities identified by all prefixes of
-        # the path are called the element's _ancestors_.
-        # An entity path is always fully complete: *all* of the entity's ancestors
-        # are required to be in the path along with the entity identifier itself.
-        # The only exception is that in some documented cases, the identifier in the
-        # last path element (for the entity) itself may be omitted. For example,
-        # the last path element of the key of `Mutation.insert` may have no
-        # identifier.
-        # A path can never be empty, and a path can have at most 100 elements.
+        # The entity path. An entity path consists of one or more elements composed of a
+        # kind and a string or numerical identifier, which identify entities. The first
+        # element identifies a _root entity_, the second element identifies a _child_ of
+        # the root entity, the third element identifies a child of the second entity,
+        # and so forth. The entities identified by all prefixes of the path are called
+        # the element's _ancestors_. An entity path is always fully complete: *all* of
+        # the entity's ancestors are required to be in the path along with the entity
+        # identifier itself. The only exception is that in some documented cases, the
+        # identifier in the last path element (for the entity) itself may be omitted.
+        # For example, the last path element of the key of `Mutation.insert` may have no
+        # identifier. A path can never be empty, and a path can have at most 100
+        # elements.
         # Corresponds to the JSON property `path`
         # @return [Array<Google::Apis::DatastoreV1::PathElement>]
         attr_accessor :path
@@ -1346,9 +1247,8 @@ module Google
       
       # An object representing a latitude/longitude pair. This is expressed as a pair
       # of doubles representing degrees latitude and degrees longitude. Unless
-      # specified otherwise, this must conform to the
-      # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-      # standard</a>. Values must be within normalized ranges.
+      # specified otherwise, this must conform to the WGS84 standard. Values must be
+      # within normalized ranges.
       class LatLng
         include Google::Apis::Core::Hashable
       
@@ -1402,23 +1302,22 @@ module Google
       class LookupResponse
         include Google::Apis::Core::Hashable
       
-        # A list of keys that were not looked up due to resource constraints. The
-        # order of results in this field is undefined and has no relation to the
-        # order of the keys in the input.
+        # A list of keys that were not looked up due to resource constraints. The order
+        # of results in this field is undefined and has no relation to the order of the
+        # keys in the input.
         # Corresponds to the JSON property `deferred`
         # @return [Array<Google::Apis::DatastoreV1::Key>]
         attr_accessor :deferred
       
         # Entities found as `ResultType.FULL` entities. The order of results in this
-        # field is undefined and has no relation to the order of the keys in the
-        # input.
+        # field is undefined and has no relation to the order of the keys in the input.
         # Corresponds to the JSON property `found`
         # @return [Array<Google::Apis::DatastoreV1::EntityResult>]
         attr_accessor :found
       
-        # Entities not found as `ResultType.KEY_ONLY` entities. The order of results
-        # in this field is undefined and has no relation to the order of the keys
-        # in the input.
+        # Entities not found as `ResultType.KEY_ONLY` entities. The order of results in
+        # this field is undefined and has no relation to the order of the keys in the
+        # input.
         # Corresponds to the JSON property `missing`
         # @return [Array<Google::Apis::DatastoreV1::EntityResult>]
         attr_accessor :missing
@@ -1439,39 +1338,35 @@ module Google
       class Mutation
         include Google::Apis::Core::Hashable
       
-        # The version of the entity that this mutation is being applied to. If this
-        # does not match the current version on the server, the mutation conflicts.
+        # The version of the entity that this mutation is being applied to. If this does
+        # not match the current version on the server, the mutation conflicts.
         # Corresponds to the JSON property `baseVersion`
         # @return [Fixnum]
         attr_accessor :base_version
       
-        # A unique identifier for an entity.
-        # If a key's partition ID or any of its path kinds or names are
-        # reserved/read-only, the key is reserved/read-only.
-        # A reserved/read-only key is forbidden in certain documented contexts.
+        # A unique identifier for an entity. If a key's partition ID or any of its path
+        # kinds or names are reserved/read-only, the key is reserved/read-only. A
+        # reserved/read-only key is forbidden in certain documented contexts.
         # Corresponds to the JSON property `delete`
         # @return [Google::Apis::DatastoreV1::Key]
         attr_accessor :delete
       
-        # A Datastore data object.
-        # An entity is limited to 1 megabyte when stored. That _roughly_
-        # corresponds to a limit of 1 megabyte for the serialized form of this
+        # A Datastore data object. An entity is limited to 1 megabyte when stored. That
+        # _roughly_ corresponds to a limit of 1 megabyte for the serialized form of this
         # message.
         # Corresponds to the JSON property `insert`
         # @return [Google::Apis::DatastoreV1::Entity]
         attr_accessor :insert
       
-        # A Datastore data object.
-        # An entity is limited to 1 megabyte when stored. That _roughly_
-        # corresponds to a limit of 1 megabyte for the serialized form of this
+        # A Datastore data object. An entity is limited to 1 megabyte when stored. That
+        # _roughly_ corresponds to a limit of 1 megabyte for the serialized form of this
         # message.
         # Corresponds to the JSON property `update`
         # @return [Google::Apis::DatastoreV1::Entity]
         attr_accessor :update
       
-        # A Datastore data object.
-        # An entity is limited to 1 megabyte when stored. That _roughly_
-        # corresponds to a limit of 1 megabyte for the serialized form of this
+        # A Datastore data object. An entity is limited to 1 megabyte when stored. That
+        # _roughly_ corresponds to a limit of 1 megabyte for the serialized form of this
         # message.
         # Corresponds to the JSON property `upsert`
         # @return [Google::Apis::DatastoreV1::Entity]
@@ -1502,19 +1397,18 @@ module Google
         attr_accessor :conflict_detected
         alias_method :conflict_detected?, :conflict_detected
       
-        # A unique identifier for an entity.
-        # If a key's partition ID or any of its path kinds or names are
-        # reserved/read-only, the key is reserved/read-only.
-        # A reserved/read-only key is forbidden in certain documented contexts.
+        # A unique identifier for an entity. If a key's partition ID or any of its path
+        # kinds or names are reserved/read-only, the key is reserved/read-only. A
+        # reserved/read-only key is forbidden in certain documented contexts.
         # Corresponds to the JSON property `key`
         # @return [Google::Apis::DatastoreV1::Key]
         attr_accessor :key
       
-        # The version of the entity on the server after processing the mutation. If
-        # the mutation doesn't change anything on the server, then the version will
-        # be the version of the current entity or, if no entity is present, a version
-        # that is strictly greater than the version of any previous entity and less
-        # than the version of any possible future entity.
+        # The version of the entity on the server after processing the mutation. If the
+        # mutation doesn't change anything on the server, then the version will be the
+        # version of the current entity or, if no entity is present, a version that is
+        # strictly greater than the version of any previous entity and less than the
+        # version of any possible future entity.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -1531,21 +1425,15 @@ module Google
         end
       end
       
-      # A partition ID identifies a grouping of entities. The grouping is always
-      # by project and namespace, however the namespace ID may be empty.
-      # A partition ID contains several dimensions:
-      # project ID and namespace ID.
-      # Partition dimensions:
-      # - May be `""`.
-      # - Must be valid UTF-8 bytes.
-      # - Must have values that match regex `[A-Za-z\d\.\-_]`1,100``
-      # If the value of any dimension matches regex `__.*__`, the partition is
-      # reserved/read-only.
-      # A reserved/read-only partition ID is forbidden in certain documented
-      # contexts.
-      # Foreign partition IDs (in which the project ID does
-      # not match the context project ID ) are discouraged.
-      # Reads and writes of foreign partition IDs may fail if the project is not in an
+      # A partition ID identifies a grouping of entities. The grouping is always by
+      # project and namespace, however the namespace ID may be empty. A partition ID
+      # contains several dimensions: project ID and namespace ID. Partition dimensions:
+      # - May be `""`. - Must be valid UTF-8 bytes. - Must have values that match
+      # regex `[A-Za-z\d\.\-_]`1,100`` If the value of any dimension matches regex `__.
+      # *__`, the partition is reserved/read-only. A reserved/read-only partition ID
+      # is forbidden in certain documented contexts. Foreign partition IDs (in which
+      # the project ID does not match the context project ID ) are discouraged. Reads
+      # and writes of foreign partition IDs may fail if the project is not in an
       # active state.
       class PartitionId
         include Google::Apis::Core::Hashable
@@ -1571,31 +1459,26 @@ module Google
         end
       end
       
-      # A (kind, ID/name) pair used to construct a key path.
-      # If either name or ID is set, the element is complete.
-      # If neither is set, the element is incomplete.
+      # A (kind, ID/name) pair used to construct a key path. If either name or ID is
+      # set, the element is complete. If neither is set, the element is incomplete.
       class PathElement
         include Google::Apis::Core::Hashable
       
-        # The auto-allocated ID of the entity.
-        # Never equal to zero. Values less than zero are discouraged and may not
-        # be supported in the future.
+        # The auto-allocated ID of the entity. Never equal to zero. Values less than
+        # zero are discouraged and may not be supported in the future.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # The kind of the entity.
-        # A kind matching regex `__.*__` is reserved/read-only.
-        # A kind must not contain more than 1500 bytes when UTF-8 encoded.
-        # Cannot be `""`.
+        # The kind of the entity. A kind matching regex `__.*__` is reserved/read-only.
+        # A kind must not contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`
+        # .
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The name of the entity.
-        # A name matching regex `__.*__` is reserved/read-only.
-        # A name must not be more than 1500 bytes when UTF-8 encoded.
-        # Cannot be `""`.
+        # The name of the entity. A name matching regex `__.*__` is reserved/read-only.
+        # A name must not be more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1692,8 +1575,8 @@ module Google
       class PropertyReference
         include Google::Apis::Core::Hashable
       
-        # The name of the property.
-        # If name includes "."s, it may be interpreted as a property name path.
+        # The name of the property. If name includes "."s, it may be interpreted as a
+        # property name path.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1713,17 +1596,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The properties to make distinct. The query results will contain the first
-        # result for each distinct combination of values for the given properties
-        # (if empty, all results are returned).
+        # result for each distinct combination of values for the given properties (if
+        # empty, all results are returned).
         # Corresponds to the JSON property `distinctOn`
         # @return [Array<Google::Apis::DatastoreV1::PropertyReference>]
         attr_accessor :distinct_on
       
-        # An ending point for the query results. Query cursors are
-        # returned in query result batches and
-        # [can only be used to limit the same
-        # query](https://cloud.google.com/datastore/docs/concepts/queries#
-        # cursors_limits_and_offsets).
+        # An ending point for the query results. Query cursors are returned in query
+        # result batches and [can only be used to limit the same query](https://cloud.
+        # google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
         # Corresponds to the JSON property `endCursor`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1734,16 +1615,14 @@ module Google
         # @return [Google::Apis::DatastoreV1::Filter]
         attr_accessor :filter
       
-        # The kinds to query (if empty, returns entities of all kinds).
-        # Currently at most 1 kind may be specified.
+        # The kinds to query (if empty, returns entities of all kinds). Currently at
+        # most 1 kind may be specified.
         # Corresponds to the JSON property `kind`
         # @return [Array<Google::Apis::DatastoreV1::KindExpression>]
         attr_accessor :kind
       
-        # The maximum number of results to return. Applies after all other
-        # constraints. Optional.
-        # Unspecified is interpreted as no limit.
-        # Must be >= 0 if specified.
+        # The maximum number of results to return. Applies after all other constraints.
+        # Optional. Unspecified is interpreted as no limit. Must be >= 0 if specified.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
@@ -1764,11 +1643,9 @@ module Google
         # @return [Array<Google::Apis::DatastoreV1::Projection>]
         attr_accessor :projection
       
-        # A starting point for the query results. Query cursors are
-        # returned in query result batches and
-        # [can only be used to continue the same
-        # query](https://cloud.google.com/datastore/docs/concepts/queries#
-        # cursors_limits_and_offsets).
+        # A starting point for the query results. Query cursors are returned in query
+        # result batches and [can only be used to continue the same query](https://cloud.
+        # google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
         # Corresponds to the JSON property `startCursor`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1817,8 +1694,8 @@ module Google
         # @return [String]
         attr_accessor :more_results
       
-        # A cursor that points to the position after the last skipped result.
-        # Will be set when `skipped_results` != 0.
+        # A cursor that points to the position after the last skipped result. Will be
+        # set when `skipped_results` != 0.
         # Corresponds to the JSON property `skippedCursor`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1829,14 +1706,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :skipped_results
       
-        # The version number of the snapshot this batch was returned from.
-        # This applies to the range of results from the query's `start_cursor` (or
-        # the beginning of the query if no cursor was given) to this batch's
-        # `end_cursor` (not the query's `end_cursor`).
-        # In a single transaction, subsequent query result batches for the same query
-        # can have a greater snapshot version number. Each batch's snapshot version
-        # is valid for all preceding batches.
-        # The value will be zero for eventually consistent queries.
+        # The version number of the snapshot this batch was returned from. This applies
+        # to the range of results from the query's `start_cursor` (or the beginning of
+        # the query if no cursor was given) to this batch's `end_cursor` (not the query'
+        # s `end_cursor`). In a single transaction, subsequent query result batches for
+        # the same query can have a greater snapshot version number. Each batch's
+        # snapshot version is valid for all preceding batches. The value will be zero
+        # for eventually consistent queries.
         # Corresponds to the JSON property `snapshotVersion`
         # @return [Fixnum]
         attr_accessor :snapshot_version
@@ -1874,15 +1750,14 @@ module Google
       class ReadOptions
         include Google::Apis::Core::Hashable
       
-        # The non-transactional read consistency to use.
-        # Cannot be set to `STRONG` for global queries.
+        # The non-transactional read consistency to use. Cannot be set to `STRONG` for
+        # global queries.
         # Corresponds to the JSON property `readConsistency`
         # @return [String]
         attr_accessor :read_consistency
       
-        # The identifier of the transaction in which to read. A
-        # transaction identifier is returned by a call to
-        # Datastore.BeginTransaction.
+        # The identifier of the transaction in which to read. A transaction identifier
+        # is returned by a call to Datastore.BeginTransaction.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1929,8 +1804,7 @@ module Google
         attr_accessor :database_id
       
         # Required. A list of keys with complete key paths whose numeric IDs should not
-        # be
-        # auto-allocated.
+        # be auto-allocated.
         # Corresponds to the JSON property `keys`
         # @return [Array<Google::Apis::DatastoreV1::Key>]
         attr_accessor :keys
@@ -1963,8 +1837,8 @@ module Google
       class RollbackRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The transaction identifier, returned by a call to
-        # Datastore.BeginTransaction.
+        # Required. The transaction identifier, returned by a call to Datastore.
+        # BeginTransaction.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1980,8 +1854,7 @@ module Google
         end
       end
       
-      # The response for Datastore.Rollback.
-      # (an empty message).
+      # The response for Datastore.Rollback. (an empty message).
       class RollbackResponse
         include Google::Apis::Core::Hashable
       
@@ -1998,27 +1871,20 @@ module Google
       class RunQueryRequest
         include Google::Apis::Core::Hashable
       
-        # A [GQL
-        # query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
+        # A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
         # Corresponds to the JSON property `gqlQuery`
         # @return [Google::Apis::DatastoreV1::GqlQuery]
         attr_accessor :gql_query
       
-        # A partition ID identifies a grouping of entities. The grouping is always
-        # by project and namespace, however the namespace ID may be empty.
-        # A partition ID contains several dimensions:
-        # project ID and namespace ID.
-        # Partition dimensions:
-        # - May be `""`.
-        # - Must be valid UTF-8 bytes.
-        # - Must have values that match regex `[A-Za-z\d\.\-_]`1,100``
-        # If the value of any dimension matches regex `__.*__`, the partition is
-        # reserved/read-only.
-        # A reserved/read-only partition ID is forbidden in certain documented
-        # contexts.
-        # Foreign partition IDs (in which the project ID does
-        # not match the context project ID ) are discouraged.
-        # Reads and writes of foreign partition IDs may fail if the project is not in an
+        # A partition ID identifies a grouping of entities. The grouping is always by
+        # project and namespace, however the namespace ID may be empty. A partition ID
+        # contains several dimensions: project ID and namespace ID. Partition dimensions:
+        # - May be `""`. - Must be valid UTF-8 bytes. - Must have values that match
+        # regex `[A-Za-z\d\.\-_]`1,100`` If the value of any dimension matches regex `__.
+        # *__`, the partition is reserved/read-only. A reserved/read-only partition ID
+        # is forbidden in certain documented contexts. Foreign partition IDs (in which
+        # the project ID does not match the context project ID ) are discouraged. Reads
+        # and writes of foreign partition IDs may fail if the project is not in an
         # active state.
         # Corresponds to the JSON property `partitionId`
         # @return [Google::Apis::DatastoreV1::PartitionId]
@@ -2072,12 +1938,12 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      # The `Status` type defines a logical error model that is suitable for different
+      # programming environments, including REST APIs and RPC APIs. It is used by [
+      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+      # data: error code, error message, and error details. You can find out more
+      # about this error model and how to work with it in the [API Design Guide](https:
+      # //cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
@@ -2086,15 +1952,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details.  There is a common set of
+        # A list of messages that carry the error details. There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
         # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any user-facing
+        # error message should be localized and sent in the google.rpc.Status.details
+        # field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -2111,9 +1977,8 @@ module Google
         end
       end
       
-      # Options for beginning a new transaction.
-      # Transactions can be created explicitly with calls to
-      # Datastore.BeginTransaction or implicitly by setting
+      # Options for beginning a new transaction. Transactions can be created
+      # explicitly with calls to Datastore.BeginTransaction or implicitly by setting
       # ReadOptions.new_transaction in read requests.
       class TransactionOptions
         include Google::Apis::Core::Hashable
@@ -2149,10 +2014,8 @@ module Google
         # @return [Google::Apis::DatastoreV1::ArrayValue]
         attr_accessor :array_value
       
-        # A blob value.
-        # May have at most 1,000,000 bytes.
-        # When `exclude_from_indexes` is false, may have at most 1500 bytes.
-        # In JSON requests, must be base64-encoded.
+        # A blob value. May have at most 1,000,000 bytes. When `exclude_from_indexes` is
+        # false, may have at most 1500 bytes. In JSON requests, must be base64-encoded.
         # Corresponds to the JSON property `blobValue`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2169,9 +2032,8 @@ module Google
         # @return [Float]
         attr_accessor :double_value
       
-        # A Datastore data object.
-        # An entity is limited to 1 megabyte when stored. That _roughly_
-        # corresponds to a limit of 1 megabyte for the serialized form of this
+        # A Datastore data object. An entity is limited to 1 megabyte when stored. That
+        # _roughly_ corresponds to a limit of 1 megabyte for the serialized form of this
         # message.
         # Corresponds to the JSON property `entityValue`
         # @return [Google::Apis::DatastoreV1::Entity]
@@ -2186,9 +2048,8 @@ module Google
       
         # An object representing a latitude/longitude pair. This is expressed as a pair
         # of doubles representing degrees latitude and degrees longitude. Unless
-        # specified otherwise, this must conform to the
-        # <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
-        # standard</a>. Values must be within normalized ranges.
+        # specified otherwise, this must conform to the WGS84 standard. Values must be
+        # within normalized ranges.
         # Corresponds to the JSON property `geoPointValue`
         # @return [Google::Apis::DatastoreV1::LatLng]
         attr_accessor :geo_point_value
@@ -2198,10 +2059,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :integer_value
       
-        # A unique identifier for an entity.
-        # If a key's partition ID or any of its path kinds or names are
-        # reserved/read-only, the key is reserved/read-only.
-        # A reserved/read-only key is forbidden in certain documented contexts.
+        # A unique identifier for an entity. If a key's partition ID or any of its path
+        # kinds or names are reserved/read-only, the key is reserved/read-only. A
+        # reserved/read-only key is forbidden in certain documented contexts.
         # Corresponds to the JSON property `keyValue`
         # @return [Google::Apis::DatastoreV1::Key]
         attr_accessor :key_value
@@ -2216,16 +2076,14 @@ module Google
         # @return [String]
         attr_accessor :null_value
       
-        # A UTF-8 encoded string value.
-        # When `exclude_from_indexes` is false (it is indexed) , may have at most 1500
-        # bytes.
-        # Otherwise, may be set to at most 1,000,000 bytes.
+        # A UTF-8 encoded string value. When `exclude_from_indexes` is false (it is
+        # indexed) , may have at most 1500 bytes. Otherwise, may be set to at most 1,000,
+        # 000 bytes.
         # Corresponds to the JSON property `stringValue`
         # @return [String]
         attr_accessor :string_value
       
-        # A timestamp value.
-        # When stored in the Datastore, precise only to microseconds;
+        # A timestamp value. When stored in the Datastore, precise only to microseconds;
         # any additional precision is rounded down.
         # Corresponds to the JSON property `timestampValue`
         # @return [String]

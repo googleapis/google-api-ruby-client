@@ -182,8 +182,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Prevents the supplied keys' IDs from being auto-allocated by Cloud
-        # Datastore.
+        # Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
         # @param [String] project_id
         #   Required. The ID of the project against which to make the request.
         # @param [Google::Apis::DatastoreV1beta3::ReserveIdsRequest] reserve_ids_request_object

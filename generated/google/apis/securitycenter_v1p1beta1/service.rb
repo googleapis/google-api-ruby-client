@@ -268,9 +268,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Runs asset discovery. The discovery is tracked with a long-running operation. /
-        # / This API can only be called with limited frequency for an organization. If
-        # it is called too frequently the caller will receive a TOO_MANY_REQUESTS error.
+        # Runs asset discovery. The discovery is tracked with a long-running operation.
+        # This API can only be called with limited frequency for an organization. If it
+        # is called too frequently the caller will receive a TOO_MANY_REQUESTS error.
         # @param [String] parent
         #   Required. Name of the organization to run asset discovery for. Its format is "
         #   organizations/[organization_id]".
@@ -924,8 +924,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a finding. The corresponding source must exist for finding creation
-        # to succeed.
+        # Creates a finding. The corresponding source must exist for finding creation to
+        # succeed.
         # @param [String] parent
         #   Required. Resource name of the new finding's parent. Its format should be "
         #   organizations/[organization_id]/sources/[source_id]".

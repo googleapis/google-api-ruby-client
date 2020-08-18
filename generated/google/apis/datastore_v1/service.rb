@@ -149,14 +149,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Exports a copy of all or a subset of entities from Google Cloud Datastore
-        # to another storage system, such as Google Cloud Storage. Recent updates to
+        # Exports a copy of all or a subset of entities from Google Cloud Datastore to
+        # another storage system, such as Google Cloud Storage. Recent updates to
         # entities may not be reflected in the export. The export occurs in the
-        # background and its progress can be monitored and managed via the
-        # Operation resource that is created. The output of an export may only be
-        # used once the associated operation is done. If an export operation is
-        # cancelled before completion it may leave partial data behind in Google
-        # Cloud Storage.
+        # background and its progress can be monitored and managed via the Operation
+        # resource that is created. The output of an export may only be used once the
+        # associated operation is done. If an export operation is cancelled before
+        # completion it may leave partial data behind in Google Cloud Storage.
         # @param [String] project_id
         #   Required. Project ID against which to make the request.
         # @param [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1ExportEntitiesRequest] google_datastore_admin_v1_export_entities_request_object
@@ -189,11 +188,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Imports entities into Google Cloud Datastore. Existing entities with the
-        # same key are overwritten. The import occurs in the background and its
-        # progress can be monitored and managed via the Operation resource that is
-        # created. If an ImportEntities operation is cancelled, it is possible
-        # that a subset of the data has already been imported to Cloud Datastore.
+        # Imports entities into Google Cloud Datastore. Existing entities with the same
+        # key are overwritten. The import occurs in the background and its progress can
+        # be monitored and managed via the Operation resource that is created. If an
+        # ImportEntities operation is cancelled, it is possible that a subset of the
+        # data has already been imported to Cloud Datastore.
         # @param [String] project_id
         #   Required. Project ID against which to make the request.
         # @param [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1ImportEntitiesRequest] google_datastore_admin_v1_import_entities_request_object
@@ -259,8 +258,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Prevents the supplied keys' IDs from being auto-allocated by Cloud
-        # Datastore.
+        # Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
         # @param [String] project_id
         #   Required. The ID of the project against which to make the request.
         # @param [Google::Apis::DatastoreV1::ReserveIdsRequest] reserve_ids_request_object
@@ -359,17 +357,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates the specified index.
-        # A newly created index's initial state is `CREATING`. On completion of the
-        # returned google.longrunning.Operation, the state will be `READY`.
-        # If the index already exists, the call will return an `ALREADY_EXISTS`
-        # status.
-        # During index creation, the process could result in an error, in which
-        # case the index will move to the `ERROR` state. The process can be recovered
-        # by fixing the data that caused the error, removing the index with
-        # delete, then
-        # re-creating the index with create.
-        # Indexes with a single property cannot be created.
+        # Creates the specified index. A newly created index's initial state is `
+        # CREATING`. On completion of the returned google.longrunning.Operation, the
+        # state will be `READY`. If the index already exists, the call will return an `
+        # ALREADY_EXISTS` status. During index creation, the process could result in an
+        # error, in which case the index will move to the `ERROR` state. The process can
+        # be recovered by fixing the data that caused the error, removing the index with
+        # delete, then re-creating the index with create. Indexes with a single property
+        # cannot be created.
         # @param [String] project_id
         #   Project ID against which to make the request.
         # @param [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1Index] google_datastore_admin_v1_index_object
@@ -402,15 +397,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing index.
-        # An index can only be deleted if it is in a `READY` or `ERROR` state. On
-        # successful execution of the request, the index will be in a `DELETING`
-        # state. And on completion of the
-        # returned google.longrunning.Operation, the index will be removed.
-        # During index deletion, the process could result in an error, in which
-        # case the index will move to the `ERROR` state. The process can be recovered
-        # by fixing the data that caused the error, followed by calling
-        # delete again.
+        # Deletes an existing index. An index can only be deleted if it is in a `READY`
+        # or `ERROR` state. On successful execution of the request, the index will be in
+        # a `DELETING` state. And on completion of the returned google.longrunning.
+        # Operation, the index will be removed. During index deletion, the process could
+        # result in an error, in which case the index will move to the `ERROR` state.
+        # The process can be recovered by fixing the data that caused the error,
+        # followed by calling delete again.
         # @param [String] project_id
         #   Project ID against which to make the request.
         # @param [String] index_id
@@ -476,14 +469,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the indexes that match the specified filters.  Datastore uses an
-        # eventually consistent query to fetch the list of indexes and may
-        # occasionally return stale results.
+        # Lists the indexes that match the specified filters. Datastore uses an
+        # eventually consistent query to fetch the list of indexes and may occasionally
+        # return stale results.
         # @param [String] project_id
         #   Project ID against which to make the request.
         # @param [String] filter
         # @param [Fixnum] page_size
-        #   The maximum number of items to return.  If zero, then all results will be
+        #   The maximum number of items to return. If zero, then all results will be
         #   returned.
         # @param [String] page_token
         #   The next_page_token value returned from a previous List request, if any.
@@ -517,15 +510,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
@@ -556,10 +547,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a long-running operation. This method indicates that the client is
-        # no longer interested in the operation result. It does not cancel the
-        # operation. If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation resource to be deleted.
         # @param [String] fields
@@ -589,9 +580,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -621,15 +611,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter

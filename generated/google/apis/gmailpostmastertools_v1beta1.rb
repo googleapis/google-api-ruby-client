@@ -18,7 +18,7 @@ require 'google/apis/gmailpostmastertools_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Postmaster Tools API
+    # Gmail Postmaster Tools API
     #
     # The Postmaster Tools API is a RESTful API that provides programmatic access to
     # email traffic metrics (like spam reports, delivery errors etc) otherwise
@@ -27,7 +27,7 @@ module Google
     # @see https://developers.google.com/gmail/postmaster
     module GmailpostmastertoolsV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20200811'
+      REVISION = '20200817'
 
       # See email traffic metrics for the domains you have registered in Gmail Postmaster Tools
       AUTH_POSTMASTER_READONLY = 'https://www.googleapis.com/auth/postmaster.readonly'
