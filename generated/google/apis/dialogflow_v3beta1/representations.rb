@@ -70,12 +70,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowCxV3beta1ResponseMessageHumanAgentHandoff
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -948,8 +942,6 @@ module Google
       
           property :end_interaction, as: 'endInteraction', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction::Representation
       
-          property :human_agent_handoff, as: 'humanAgentHandoff', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageHumanAgentHandoff, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageHumanAgentHandoff::Representation
-      
           property :live_agent_handoff, as: 'liveAgentHandoff', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff::Representation
       
           property :mixed_audio, as: 'mixedAudio', class: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio, decorator: Google::Apis::DialogflowV3beta1::GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio::Representation
@@ -974,13 +966,6 @@ module Google
       class GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudDialogflowCxV3beta1ResponseMessageHumanAgentHandoff
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :metadata, as: 'metadata'
         end
       end
       

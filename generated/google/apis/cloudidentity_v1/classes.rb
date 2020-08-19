@@ -22,8 +22,39 @@ module Google
   module Apis
     module CloudidentityV1
       
+      # An EntityKey uniquely identifies an Entity. Namespaces are used to provide
+      # isolation for IDs. A single ID can be reused across namespaces but the
+      # combination of a namespace and an ID must be unique.
+      class EntityKey
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the entity within the given namespace. The ID must be unique within
+        # its namespace.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Namespaces provide isolation for IDs, so an ID only needs to be unique within
+        # its namespace. Namespaces are currently only created as part of IdentitySource
+        # creation from Admin Console. A namespace `"identitysources/`identity_source_id`
+        # "` is created corresponding to every Identity Source `identity_source_id`.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @namespace = args[:namespace] if args.key?(:namespace)
+        end
+      end
+      
       # Resource representing the Android specific attributes of a Device.
-      class AndroidAttributes
+      class GoogleAppsCloudidentityDevicesV1AndroidAttributes
         include Google::Apis::Core::Hashable
       
         # Whether applications from unknown sources can be installed on device.
@@ -67,13 +98,13 @@ module Google
       end
       
       # Response message for approving the device to access user data.
-      class ApproveDeviceUserResponse
+      class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
         include Google::Apis::Core::Hashable
       
         # Represents a user's use of a Device in the Cloud Identity Devices API. A
         # DeviceUser is a resource representing a user's use of a Device
         # Corresponds to the JSON property `deviceUser`
-        # @return [Google::Apis::CloudidentityV1::DeviceUser]
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser]
         attr_accessor :device_user
       
         def initialize(**args)
@@ -87,13 +118,13 @@ module Google
       end
       
       # Response message for blocking the device from accessing user data.
-      class BlockDeviceUserResponse
+      class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse
         include Google::Apis::Core::Hashable
       
         # Represents a user's use of a Device in the Cloud Identity Devices API. A
         # DeviceUser is a resource representing a user's use of a Device
         # Corresponds to the JSON property `deviceUser`
-        # @return [Google::Apis::CloudidentityV1::DeviceUser]
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser]
         attr_accessor :device_user
       
         def initialize(**args)
@@ -107,14 +138,14 @@ module Google
       end
       
       # Response message for cancelling an unfinished device wipe.
-      class CancelWipeDeviceResponse
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse
         include Google::Apis::Core::Hashable
       
         # A Device within the Cloud Identity Devices API. Represents a Device known to
         # Google Cloud, independent of the device ownership, type, and whether it is
         # assigned or in use by a user.
         # Corresponds to the JSON property `device`
-        # @return [Google::Apis::CloudidentityV1::Device]
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device]
         attr_accessor :device
       
         def initialize(**args)
@@ -128,13 +159,13 @@ module Google
       end
       
       # Response message for cancelling an unfinished user account wipe.
-      class CancelWipeDeviceUserResponse
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse
         include Google::Apis::Core::Hashable
       
         # Represents a user's use of a Device in the Cloud Identity Devices API. A
         # DeviceUser is a resource representing a user's use of a Device
         # Corresponds to the JSON property `deviceUser`
-        # @return [Google::Apis::CloudidentityV1::DeviceUser]
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser]
         attr_accessor :device_user
       
         def initialize(**args)
@@ -149,7 +180,7 @@ module Google
       
       # Represents the state associated with an API client calling the Devices API.
       # Resource representing ClientState and supports updates from API users
-      class ClientState
+      class GoogleAppsCloudidentityDevicesV1ClientState
         include Google::Apis::Core::Hashable
       
         # The caller can specify asset tags for this resource
@@ -188,7 +219,7 @@ module Google
         # total serialized length of this map may not exceed 10KB. No limit is placed on
         # the number of attributes in a map.
         # Corresponds to the JSON property `keyValuePairs`
-        # @return [Hash<String,Google::Apis::CloudidentityV1::CustomAttributeValue>]
+        # @return [Hash<String,Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1CustomAttributeValue>]
         attr_accessor :key_value_pairs
       
         # Output only. The time the client state data was last updated.
@@ -241,7 +272,7 @@ module Google
       end
       
       # Additional custom attribute values may be one of these types
-      class CustomAttributeValue
+      class GoogleAppsCloudidentityDevicesV1CustomAttributeValue
         include Google::Apis::Core::Hashable
       
         # Represents a boolean value.
@@ -275,12 +306,12 @@ module Google
       # A Device within the Cloud Identity Devices API. Represents a Device known to
       # Google Cloud, independent of the device ownership, type, and whether it is
       # assigned or in use by a user.
-      class Device
+      class GoogleAppsCloudidentityDevicesV1Device
         include Google::Apis::Core::Hashable
       
         # Resource representing the Android specific attributes of a Device.
         # Corresponds to the JSON property `androidSpecificAttributes`
-        # @return [Google::Apis::CloudidentityV1::AndroidAttributes]
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1AndroidAttributes]
         attr_accessor :android_specific_attributes
       
         # Asset tag of the device.
@@ -466,7 +497,7 @@ module Google
       
       # Represents a user's use of a Device in the Cloud Identity Devices API. A
       # DeviceUser is a resource representing a user's use of a Device
-      class DeviceUser
+      class GoogleAppsCloudidentityDevicesV1DeviceUser
         include Google::Apis::Core::Hashable
       
         # Compromised State of the DeviceUser object
@@ -541,25 +572,16 @@ module Google
         end
       end
       
-      # An EntityKey uniquely identifies an Entity. Namespaces are used to provide
-      # isolation for IDs. A single ID can be reused across namespaces but the
-      # combination of a namespace and an ID must be unique.
-      class EntityKey
+      # Response message for wiping all data on the device.
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse
         include Google::Apis::Core::Hashable
       
-        # The ID of the entity within the given namespace. The ID must be unique within
-        # its namespace.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Namespaces provide isolation for IDs, so an ID only needs to be unique within
-        # its namespace. Namespaces are currently only created as part of IdentitySource
-        # creation from Admin Console. A namespace `"identitysources/`identity_source_id`
-        # "` is created corresponding to every Identity Source `identity_source_id`.
-        # Corresponds to the JSON property `namespace`
-        # @return [String]
-        attr_accessor :namespace
+        # A Device within the Cloud Identity Devices API. Represents a Device known to
+        # Google Cloud, independent of the device ownership, type, and whether it is
+        # assigned or in use by a user.
+        # Corresponds to the JSON property `device`
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1Device]
+        attr_accessor :device
       
         def initialize(**args)
            update!(**args)
@@ -567,8 +589,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @namespace = args[:namespace] if args.key?(:namespace)
+          @device = args[:device] if args.key?(:device)
+        end
+      end
+      
+      # Response message for wiping the user's account from the device.
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a user's use of a Device in the Cloud Identity Devices API. A
+        # DeviceUser is a resource representing a user's use of a Device
+        # Corresponds to the JSON property `deviceUser`
+        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1DeviceUser]
+        attr_accessor :device_user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_user = args[:device_user] if args.key?(:device_user)
         end
       end
       
@@ -934,47 +975,6 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # Response message for wiping all data on the device.
-      class WipeDeviceResponse
-        include Google::Apis::Core::Hashable
-      
-        # A Device within the Cloud Identity Devices API. Represents a Device known to
-        # Google Cloud, independent of the device ownership, type, and whether it is
-        # assigned or in use by a user.
-        # Corresponds to the JSON property `device`
-        # @return [Google::Apis::CloudidentityV1::Device]
-        attr_accessor :device
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @device = args[:device] if args.key?(:device)
-        end
-      end
-      
-      # Response message for wiping the user's account from the device.
-      class WipeDeviceUserResponse
-        include Google::Apis::Core::Hashable
-      
-        # Represents a user's use of a Device in the Cloud Identity Devices API. A
-        # DeviceUser is a resource representing a user's use of a Device
-        # Corresponds to the JSON property `deviceUser`
-        # @return [Google::Apis::CloudidentityV1::DeviceUser]
-        attr_accessor :device_user
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @device_user = args[:device_user] if args.key?(:device_user)
         end
       end
     end

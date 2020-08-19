@@ -22,12 +22,11 @@ module Google
     module ApigeeV1
       # Apigee API
       #
-      # The Apigee API lets you programmatically manage Apigee hybrid with a set of
-      #  RESTful operations, including: - Create, edit, and delete API proxies - Manage
-      #  users - Deploy and undeploy proxy revisions - Configure environments For
-      #  information on using the APIs described in this section, see Get started using
-      #  the APIs. *Note:* This product is available as a free trial for a time period
-      #  of 60 days.
+      # Use the Apigee API to programmatically develop and manage APIs with a set of
+      #  RESTful operations. Develop and secure API proxies, deploy and undeploy API
+      #  proxy revisions, monitor APIs, configure environments, manage users, and more.
+      #  Get started using the APIs. *Note:* This product is available as a free trial
+      #  for a time period of 60 days.
       #
       # @example
       #    require 'google/apis/apigee_v1'
@@ -3582,22 +3581,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undeploys an API proxy revision from an environment. Because multiple
-        # revisions of the same API proxy can be deployed in the same environment if the
-        # base paths are different, you must specify the revision number of the API
-        # proxy.
+        # Deploys a revision of an API proxy. If an API proxy revision is currently
+        # deployed, to ensure seamless deployment with zero downtime set the `override`
+        # parameter to `true`. In this case, hybrid attempts to deploy the new revision
+        # fully before undeploying the existing revision. You cannot invoke an API proxy
+        # until it has been deployed to an environment. After you deploy an API proxy
+        # revision, you cannot edit it. To edit the API proxy, you must create and
+        # deploy a new revision.
         # @param [String] name
         #   Required. Name of the API proxy revision deployment in the following format: `
         #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
+        # @param [String] basepath
+        #   Base path where the API proxy revision should be deployed. Defaults to '/' if
+        #   not provided.
+        # @param [Boolean] override
+        #   Flag that specifies whether the new deployment replaces other deployed
+        #   revisions of the API proxy in the environment. Set override to true to replace
+        #   other deployed revisions. By default, override is false and the deployment is
+        #   rejected if other revisions of the API proxy are deployed in the environment.
         # @param [Boolean] sequenced_rollout
-        #   If true, a best-effort attempt will be made to remove the environment group
-        #   routing rules corresponding to this deployment before removing the deployment
-        #   from the runtime. This is likely to be a rare use case; it is only needed when
-        #   the intended effect of undeploying this proxy is to cause the traffic it
-        #   currently handles to be rerouted to some other existing proxy in the
-        #   environment group. The GenerateUndeployChangeReport API may be used to examine
-        #   routing changes before issuing the undeployment request, and its response will
-        #   indicate if a sequenced rollout is recommended for the undeployment.
+        #   If true, a best-effort attempt will be made to roll out the routing rules
+        #   corresponding to this deployment and the environment changes to add this
+        #   deployment in a safe order. This reduces the risk of downtime that could be
+        #   caused by changing the environment group's routing before the new destination
+        #   for the affected traffic is ready to receive it. This should only be necessary
+        #   if the new deployment will be capturing traffic from another environment under
+        #   a shared environment group or if traffic will be rerouted to a different
+        #   environment due to a basepath removal. The GenerateDeployChangeReport API may
+        #   be used to examine routing changes before issuing the deployment request, and
+        #   its response will indicate if a sequenced rollout is recommended for the
+        #   deployment.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3607,19 +3620,21 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deployments_organization_environment_api_revision(name, sequenced_rollout: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1/{+name}/deployments', options)
-          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+        def deploy_organization_environment_api_revision(name, basepath: nil, override: nil, sequenced_rollout: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}/deployments', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment
           command.params['name'] = name unless name.nil?
+          command.query['basepath'] = basepath unless basepath.nil?
+          command.query['override'] = override unless override.nil?
           command.query['sequencedRollout'] = sequenced_rollout unless sequenced_rollout.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3654,6 +3669,50 @@ module Google
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeploys an API proxy revision from an environment. Because multiple
+        # revisions of the same API proxy can be deployed in the same environment if the
+        # base paths are different, you must specify the revision number of the API
+        # proxy.
+        # @param [String] name
+        #   Required. Name of the API proxy revision deployment in the following format: `
+        #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
+        # @param [Boolean] sequenced_rollout
+        #   If true, a best-effort attempt will be made to remove the environment group
+        #   routing rules corresponding to this deployment before removing the deployment
+        #   from the runtime. This is likely to be a rare use case; it is only needed when
+        #   the intended effect of undeploying this proxy is to cause the traffic it
+        #   currently handles to be rerouted to some other existing proxy in the
+        #   environment group. The GenerateUndeployChangeReport API may be used to examine
+        #   routing changes before issuing the undeployment request, and its response will
+        #   indicate if a sequenced rollout is recommended for the undeployment.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undeploy_organization_environment_api_revision(name, sequenced_rollout: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}/deployments', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['sequencedRollout'] = sequenced_rollout unless sequenced_rollout.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5129,11 +5188,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undeploys a shared flow revision from an environment.
+        # Deploys a revision of a shared flow. If a shared flow revision is currently
+        # deployed, to ensure seamless deployment with zero downtime set the `override`
+        # parameter to `true`. In this case, hybrid attempts to deply the new revision
+        # fully before undeploying the existing revision. You cannot use a shared flows
+        # until it has been deployed to an environment.
         # @param [String] name
-        #   Required. Name of the shared flow revision to undeploy in the following format:
-        #   `organizations/`org`/environments/`env`/sharedflows/`sharedflow`/revisions/`
-        #   rev``
+        #   Required. Name of the shared flow revision to deploy in the following format: `
+        #   organizations/`org`/environments/`env`/sharedflows/`sharedflow`/revisions/`rev`
+        #   `
+        # @param [Boolean] override
+        #   Flag that specifies whether to force the deployment of the new revision over
+        #   the currently deployed revision by overriding conflict checks. If an existing
+        #   shared flow revision is deployed, to ensure seamless deployment with no
+        #   downtime, set this parameter to `true`. In this case, hybrid deploys the new
+        #   revision fully before undeploying the existing revision. If set to `false`,
+        #   you must undeploy the existing revision before deploying the new revision.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5143,19 +5213,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deployments_organization_environment_sharedflow_revision(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1/{+name}/deployments', options)
-          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+        def deploy_organization_environment_sharedflow_revision(name, override: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}/deployments', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment
           command.params['name'] = name unless name.nil?
+          command.query['override'] = override unless override.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5188,6 +5259,38 @@ module Google
           command = make_simple_command(:get, 'v1/{+name}/deployments', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeploys a shared flow revision from an environment.
+        # @param [String] name
+        #   Required. Name of the shared flow revision to undeploy in the following format:
+        #   `organizations/`org`/environments/`env`/sharedflows/`sharedflow`/revisions/`
+        #   rev``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undeploy_organization_environment_sharedflow_revision(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}/deployments', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

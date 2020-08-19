@@ -106,6 +106,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DynamicGroupMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DynamicGroupQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DynamicGroupStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EntityKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +137,72 @@ module Google
       end
       
       class GetMembershipGraphResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1AndroidAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1ClientState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CustomAttributeValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1Device
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1DeviceUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -414,6 +498,32 @@ module Google
         end
       end
       
+      class DynamicGroupMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :queries, as: 'queries', class: Google::Apis::CloudidentityV1beta1::DynamicGroupQuery, decorator: Google::Apis::CloudidentityV1beta1::DynamicGroupQuery::Representation
+      
+          property :status, as: 'status', class: Google::Apis::CloudidentityV1beta1::DynamicGroupStatus, decorator: Google::Apis::CloudidentityV1beta1::DynamicGroupStatus::Representation
+      
+        end
+      end
+      
+      class DynamicGroupQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query, as: 'query'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class DynamicGroupStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status'
+          property :status_time, as: 'statusTime'
+        end
+      end
+      
       class EntityKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -439,6 +549,143 @@ module Google
         end
       end
       
+      class GoogleAppsCloudidentityDevicesV1AndroidAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled_unknown_sources, as: 'enabledUnknownSources'
+          property :owner_profile_account, as: 'ownerProfileAccount'
+          property :ownership_privilege, as: 'ownershipPrivilege'
+          property :supports_work_profile, as: 'supportsWorkProfile'
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_user, as: 'deviceUser', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1DeviceUser, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1DeviceUser::Representation
+      
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_user, as: 'deviceUser', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1DeviceUser, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1DeviceUser::Representation
+      
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device, as: 'device', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1Device, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1Device::Representation
+      
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_user, as: 'deviceUser', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1DeviceUser, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1DeviceUser::Representation
+      
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1ClientState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :asset_tags, as: 'assetTags'
+          property :compliance_state, as: 'complianceState'
+          property :create_time, as: 'createTime'
+          property :custom_id, as: 'customId'
+          property :etag, as: 'etag'
+          property :health_score, as: 'healthScore'
+          hash :key_value_pairs, as: 'keyValuePairs', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1CustomAttributeValue, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1CustomAttributeValue::Representation
+      
+          property :last_update_time, as: 'lastUpdateTime'
+          property :managed, as: 'managed'
+          property :name, as: 'name'
+          property :owner_type, as: 'ownerType'
+          property :score_reason, as: 'scoreReason'
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1CustomAttributeValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :number_value, as: 'numberValue'
+          property :string_value, as: 'stringValue'
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1Device
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_specific_attributes, as: 'androidSpecificAttributes', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1AndroidAttributes, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1AndroidAttributes::Representation
+      
+          property :asset_tag, as: 'assetTag'
+          property :baseband_version, as: 'basebandVersion'
+          property :bootloader_version, as: 'bootloaderVersion'
+          property :brand, as: 'brand'
+          property :build_number, as: 'buildNumber'
+          property :compromised_state, as: 'compromisedState'
+          property :create_time, as: 'createTime'
+          property :device_type, as: 'deviceType'
+          property :enabled_developer_options, as: 'enabledDeveloperOptions'
+          property :enabled_usb_debugging, as: 'enabledUsbDebugging'
+          property :encryption_state, as: 'encryptionState'
+          property :imei, as: 'imei'
+          property :kernel_version, as: 'kernelVersion'
+          property :last_sync_time, as: 'lastSyncTime'
+          property :management_state, as: 'managementState'
+          property :manufacturer, as: 'manufacturer'
+          property :meid, as: 'meid'
+          property :model, as: 'model'
+          property :name, as: 'name'
+          property :network_operator, as: 'networkOperator'
+          property :os_version, as: 'osVersion'
+          collection :other_accounts, as: 'otherAccounts'
+          property :owner_type, as: 'ownerType'
+          property :release_version, as: 'releaseVersion'
+          property :security_patch_time, as: 'securityPatchTime'
+          property :serial_number, as: 'serialNumber'
+          collection :wifi_mac_addresses, as: 'wifiMacAddresses'
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1DeviceUser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compromised_state, as: 'compromisedState'
+          property :create_time, as: 'createTime'
+          property :first_sync_time, as: 'firstSyncTime'
+          property :language_code, as: 'languageCode'
+          property :last_sync_time, as: 'lastSyncTime'
+          property :management_state, as: 'managementState'
+          property :name, as: 'name'
+          property :password_state, as: 'passwordState'
+          property :user_agent, as: 'userAgent'
+          property :user_email, as: 'userEmail'
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device, as: 'device', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1Device, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1Device::Representation
+      
+        end
+      end
+      
+      class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_user, as: 'deviceUser', class: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1DeviceUser, decorator: Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1DeviceUser::Representation
+      
+        end
+      end
+      
       class Group
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -447,6 +694,8 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :dynamic_group_metadata, as: 'dynamicGroupMetadata', class: Google::Apis::CloudidentityV1beta1::DynamicGroupMetadata, decorator: Google::Apis::CloudidentityV1beta1::DynamicGroupMetadata::Representation
+      
           property :group_key, as: 'groupKey', class: Google::Apis::CloudidentityV1beta1::EntityKey, decorator: Google::Apis::CloudidentityV1beta1::EntityKey::Representation
       
           hash :labels, as: 'labels'

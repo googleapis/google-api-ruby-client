@@ -117,12 +117,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ApplyParameters will update current set of Parameters to the set of
-        # specified nodes of the Memcached Instance.
+        # ApplyParameters will update current set of Parameters to the set of specified
+        # nodes of the Memcached Instance.
         # @param [String] name
         #   Required. Resource name of the Memcached instance for which parameter group
-        #   updates
-        #   should be applied.
+        #   updates should be applied.
         # @param [Google::Apis::MemcacheV1beta2::ApplyParametersRequest] apply_parameters_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -155,18 +154,16 @@ module Google
         
         # Creates a new Instance in a given project and location.
         # @param [String] parent
-        #   Required. The resource name of the instance location using the form:
-        #   `projects/`project_id`/locations/`location_id``
-        #   where `location_id` refers to a GCP region
+        #   Required. The resource name of the instance location using the form: `projects/
+        #   `project_id`/locations/`location_id`` where `location_id` refers to a GCP
+        #   region
         # @param [Google::Apis::MemcacheV1beta2::Instance] instance_object
         # @param [String] instance_id
-        #   Required. The logical name of the Memcached instance in the user
-        #   project with the following restrictions:
-        #   * Must contain only lowercase letters, numbers, and hyphens.
-        #   * Must start with a letter.
-        #   * Must be between 1-40 characters.
-        #   * Must end with a number or a letter.
-        #   * Must be unique within the user project / location
+        #   Required. The logical name of the Memcached instance in the user project with
+        #   the following restrictions: * Must contain only lowercase letters, numbers,
+        #   and hyphens. * Must start with a letter. * Must be between 1-40 characters. *
+        #   Must end with a number or a letter. * Must be unique within the user project /
+        #   location
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -199,9 +196,9 @@ module Google
         
         # Deletes a single Instance.
         # @param [String] name
-        #   Required. Memcached instance resource name in the format:
-        #   `projects/`project_id`/locations/`location_id`/instances/`instance_id``
-        #   where `location_id` refers to a GCP region
+        #   Required. Memcached instance resource name in the format: `projects/`
+        #   project_id`/locations/`location_id`/instances/`instance_id`` where `
+        #   location_id` refers to a GCP region
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -231,9 +228,9 @@ module Google
         
         # Gets details of a single Instance.
         # @param [String] name
-        #   Required. Memcached instance resource name in the format:
-        #   `projects/`project_id`/locations/`location_id`/instances/`instance_id``
-        #   where `location_id` refers to a GCP region
+        #   Required. Memcached instance resource name in the format: `projects/`
+        #   project_id`/locations/`location_id`/instances/`instance_id`` where `
+        #   location_id` refers to a GCP region
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -263,24 +260,21 @@ module Google
         
         # Lists Instances in a given project and location.
         # @param [String] parent
-        #   Required. The resource name of the instance location using the form:
-        #   `projects/`project_id`/locations/`location_id``
-        #   where `location_id` refers to a GCP region
+        #   Required. The resource name of the instance location using the form: `projects/
+        #   `project_id`/locations/`location_id`` where `location_id` refers to a GCP
+        #   region
         # @param [String] filter
-        #   List filter. For example, exclude all Memcached instances with name as
-        #   my-instance by specifying "name != my-instance".
+        #   List filter. For example, exclude all Memcached instances with name as my-
+        #   instance by specifying "name != my-instance".
         # @param [String] order_by
         #   Sort results. Supported values are "name", "name desc" or "" (unsorted).
         # @param [Fixnum] page_size
-        #   The maximum number of items to return.
-        #   If not specified, a default value of 1000 will be used by the service.
-        #   Regardless of the page_size value, the response may include a partial list
-        #   and a caller should only rely on response's
-        #   next_page_token
-        #   to determine if there are more instances left to be queried.
+        #   The maximum number of items to return. If not specified, a default value of
+        #   1000 will be used by the service. Regardless of the page_size value, the
+        #   response may include a partial list and a caller should only rely on response'
+        #   s next_page_token to determine if there are more instances left to be queried.
         # @param [String] page_token
-        #   The next_page_token value returned from a previous List request,
-        #   if any.
+        #   The next_page_token value returned from a previous List request, if any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -315,16 +309,14 @@ module Google
         # Updates an existing Instance in a given project and location.
         # @param [String] name
         #   Required. Unique name of the resource in this scope including project and
-        #   location using the form:
-        #   `projects/`project_id`/locations/`location_id`/instances/`instance_id``
-        #   Note: Memcached instances are managed and addressed at regional level so
-        #   location_id here refers to a GCP region; however, users may choose which
-        #   zones Memcached nodes within an instances should be provisioned in.
-        #   Refer to [zones] field for more details.
+        #   location using the form: `projects/`project_id`/locations/`location_id`/
+        #   instances/`instance_id`` Note: Memcached instances are managed and addressed
+        #   at regional level so location_id here refers to a GCP region; however, users
+        #   may choose which zones Memcached nodes within an instances should be
+        #   provisioned in. Refer to [zones] field for more details.
         # @param [Google::Apis::MemcacheV1beta2::Instance] instance_object
         # @param [String] update_mask
-        #   Required. Mask of fields to update.
-        #   *   `displayName`
+        #   Required. Mask of fields to update. * `displayName`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -355,13 +347,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the defined Memcached Parameters for an existing Instance.
-        # This method only stages the parameters, it must be followed by
-        # ApplyParameters to apply the parameters to nodes of the Memcached Instance.
+        # Updates the defined Memcached Parameters for an existing Instance. This method
+        # only stages the parameters, it must be followed by ApplyParameters to apply
+        # the parameters to nodes of the Memcached Instance.
         # @param [String] name
         #   Required. Resource name of the Memcached instance for which the parameters
-        #   should be
-        #   updated.
+        #   should be updated.
         # @param [Google::Apis::MemcacheV1beta2::UpdateParametersRequest] update_parameters_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -392,15 +383,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation.  The server
-        # makes a best effort to cancel the operation, but success is not
-        # guaranteed.  If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-        # Operations.GetOperation or
-        # other methods to check whether the cancellation succeeded or whether the
-        # operation completed despite cancellation. On successful cancellation,
-        # the operation is not deleted; instead, it becomes an operation with
-        # an Operation.error value with a google.rpc.Status.code of 1,
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
         # @param [String] name
         #   The name of the operation resource to be cancelled.
@@ -434,10 +423,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a long-running operation. This method indicates that the client is
-        # no longer interested in the operation result. It does not cancel the
-        # operation. If the server doesn't support this method, it returns
-        # `google.rpc.Code.UNIMPLEMENTED`.
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
         # @param [String] name
         #   The name of the operation resource to be deleted.
         # @param [String] fields
@@ -467,9 +456,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation.  Clients can use this
-        # method to poll the operation result at intervals as recommended by the API
-        # service.
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
         #   The name of the operation resource.
         # @param [String] fields
@@ -499,15 +487,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the
-        # server doesn't support this method, it returns `UNIMPLEMENTED`.
-        # NOTE: the `name` binding allows API services to override the binding
-        # to use different resource name schemes, such as `users/*/operations`. To
-        # override the binding, API services can add a binding such as
-        # `"/v1/`name=users/*`/operations"` to their service configuration.
-        # For backwards compatibility, the default name includes the operations
-        # collection id, however overriding users must ensure the name binding
-        # is the parent resource, without the operations collection id.
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
         # @param [String] name
         #   The name of the operation's parent resource.
         # @param [String] filter

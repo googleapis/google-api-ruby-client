@@ -20,17 +20,16 @@ module Google
   module Apis
     # Apigee API
     #
-    # The Apigee API lets you programmatically manage Apigee hybrid with a set of
-    # RESTful operations, including: - Create, edit, and delete API proxies - Manage
-    # users - Deploy and undeploy proxy revisions - Configure environments For
-    # information on using the APIs described in this section, see Get started using
-    # the APIs. *Note:* This product is available as a free trial for a time period
-    # of 60 days.
+    # Use the Apigee API to programmatically develop and manage APIs with a set of
+    # RESTful operations. Develop and secure API proxies, deploy and undeploy API
+    # proxy revisions, monitor APIs, configure environments, manage users, and more.
+    # Get started using the APIs. *Note:* This product is available as a free trial
+    # for a time period of 60 days.
     #
     # @see https://cloud.google.com/apigee-api-management/
     module ApigeeV1
       VERSION = 'V1'
-      REVISION = '20200801'
+      REVISION = '20200813'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

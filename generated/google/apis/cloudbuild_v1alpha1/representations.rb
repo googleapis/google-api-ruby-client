@@ -280,6 +280,7 @@ module Google
       
           collection :secrets, as: 'secrets', class: Google::Apis::CloudbuildV1alpha1::Secret, decorator: Google::Apis::CloudbuildV1alpha1::Secret::Representation
       
+          property :service_account, as: 'serviceAccount'
           property :source, as: 'source', class: Google::Apis::CloudbuildV1alpha1::Source, decorator: Google::Apis::CloudbuildV1alpha1::Source::Representation
       
           property :source_provenance, as: 'sourceProvenance', class: Google::Apis::CloudbuildV1alpha1::SourceProvenance, decorator: Google::Apis::CloudbuildV1alpha1::SourceProvenance::Representation

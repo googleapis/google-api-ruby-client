@@ -204,17 +204,6 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction]
         attr_accessor :end_interaction
       
-        # Indicates that the conversation should be handed off to a human agent.
-        # Dialogflow only uses this to determine which conversations were handed off to
-        # a human agent for measurement purposes. What else to do with this signal is up
-        # to you and your handoff procedures. You may set this, for example: * In the
-        # entry_fulfillment of a Page if entering the page indicates something went
-        # extremely wrong in the conversation. * In a webhook response when you
-        # determine that the customer issue can only be handled by a human.
-        # Corresponds to the JSON property `humanAgentHandoff`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessageHumanAgentHandoff]
-        attr_accessor :human_agent_handoff
-      
         # Indicates that the conversation should be handed off to a live agent.
         # Dialogflow only uses this to determine which conversations were handed off to
         # a human agent for measurement purposes. What else to do with this signal is up
@@ -263,7 +252,6 @@ module Google
         def update!(**args)
           @conversation_success = args[:conversation_success] if args.key?(:conversation_success)
           @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
-          @human_agent_handoff = args[:human_agent_handoff] if args.key?(:human_agent_handoff)
           @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
           @mixed_audio = args[:mixed_audio] if args.key?(:mixed_audio)
           @output_audio_text = args[:output_audio_text] if args.key?(:output_audio_text)
@@ -311,32 +299,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Indicates that the conversation should be handed off to a human agent.
-      # Dialogflow only uses this to determine which conversations were handed off to
-      # a human agent for measurement purposes. What else to do with this signal is up
-      # to you and your handoff procedures. You may set this, for example: * In the
-      # entry_fulfillment of a Page if entering the page indicates something went
-      # extremely wrong in the conversation. * In a webhook response when you
-      # determine that the customer issue can only be handled by a human.
-      class GoogleCloudDialogflowCxV3beta1ResponseMessageHumanAgentHandoff
-        include Google::Apis::Core::Hashable
-      
-        # Custom metadata for your handoff procedure. Dialogflow doesn't impose any
-        # structure on this.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       

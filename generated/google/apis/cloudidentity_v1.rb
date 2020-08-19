@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/identity/
     module CloudidentityV1
       VERSION = 'V1'
-      REVISION = '20200809'
+      REVISION = '20200814'
 
       # See, change, create, and delete any of the Cloud Identity Groups that you can access, including the members of each group
       AUTH_CLOUD_IDENTITY_GROUPS = 'https://www.googleapis.com/auth/cloud-identity.groups'

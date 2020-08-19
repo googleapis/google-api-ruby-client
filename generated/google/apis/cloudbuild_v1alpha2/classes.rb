@@ -204,6 +204,14 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV1alpha2::Secret>]
         attr_accessor :secrets
       
+        # IAM service account whose credentials will be used at build runtime. Must be
+        # of the format `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``. ACCOUNT can
+        # be email address or uniqueId of the service account. This field is in alpha
+        # and is not publicly available.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Location of the source in a supported storage service.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::CloudbuildV1alpha2::Source]
@@ -280,6 +288,7 @@ module Google
           @queue_ttl = args[:queue_ttl] if args.key?(:queue_ttl)
           @results = args[:results] if args.key?(:results)
           @secrets = args[:secrets] if args.key?(:secrets)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @source = args[:source] if args.key?(:source)
           @source_provenance = args[:source_provenance] if args.key?(:source_provenance)
           @start_time = args[:start_time] if args.key?(:start_time)

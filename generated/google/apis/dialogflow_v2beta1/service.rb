@@ -3002,6 +3002,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets agent validation result. Agent validation is performed during training
+        # time and is updated automatically when training is completed.
+        # @param [String] parent
+        #   Required. The project that the agent is associated with. Format: `projects/`.
+        # @param [String] language_code
+        #   Optional. The language for which you want a validation result. If not
+        #   specified, the agent's default language is used. [Many languages](https://
+        #   cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
+        #   languages must be enabled in the agent before they can be used.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ValidationResult] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ValidationResult]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_agent_validation_result(parent, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta1/{+parent}/agent/validationResult', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ValidationResult::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ValidationResult
+          command.params['parent'] = parent unless parent.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Imports the specified agent from a ZIP file. Uploads new intents and entity
         # types without deleting the existing ones. Intents and entity types with the
         # same name are replaced with the new versions from ImportAgentRequest. After
