@@ -345,6 +345,39 @@ module Google
         end
       end
       
+      # Certificate chains needed to verify the attestation. Certificates in chains
+      # are PEM-encoded and are ordered based on https://tools.ietf.org/html/rfc5246#
+      # section-7.4.2.
+      class CertificateChains
+        include Google::Apis::Core::Hashable
+      
+        # Cavium certificate chain corresponding to the attestation.
+        # Corresponds to the JSON property `caviumCerts`
+        # @return [Array<String>]
+        attr_accessor :cavium_certs
+      
+        # Google card certificate chain corresponding to the attestation.
+        # Corresponds to the JSON property `googleCardCerts`
+        # @return [Array<String>]
+        attr_accessor :google_card_certs
+      
+        # Google partition certificate chain corresponding to the attestation.
+        # Corresponds to the JSON property `googlePartitionCerts`
+        # @return [Array<String>]
+        attr_accessor :google_partition_certs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cavium_certs = args[:cavium_certs] if args.key?(:cavium_certs)
+          @google_card_certs = args[:google_card_certs] if args.key?(:google_card_certs)
+          @google_partition_certs = args[:google_partition_certs] if args.key?(:google_partition_certs)
+        end
+      end
+      
       # A CryptoKey represents a logical key that can be used for cryptographic
       # operations. A CryptoKey is made up of zero or more versions, which represent
       # the actual key material used in cryptographic operations.
@@ -1066,6 +1099,13 @@ module Google
       class KeyOperationAttestation
         include Google::Apis::Core::Hashable
       
+        # Certificate chains needed to verify the attestation. Certificates in chains
+        # are PEM-encoded and are ordered based on https://tools.ietf.org/html/rfc5246#
+        # section-7.4.2.
+        # Corresponds to the JSON property `certChains`
+        # @return [Google::Apis::CloudkmsV1::CertificateChains]
+        attr_accessor :cert_chains
+      
         # Output only. The attestation data provided by the HSM when the key operation
         # was performed.
         # Corresponds to the JSON property `content`
@@ -1084,6 +1124,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cert_chains = args[:cert_chains] if args.key?(:cert_chains)
           @content = args[:content] if args.key?(:content)
           @format = args[:format] if args.key?(:format)
         end

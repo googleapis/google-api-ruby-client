@@ -47,18 +47,18 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Searches Knowledge Graph for entities that match the constraints.
-        # A list of matched entities will be returned in response, which will be in
-        # JSON-LD format and compatible with http://schema.org
+        # Searches Knowledge Graph for entities that match the constraints. A list of
+        # matched entities will be returned in response, which will be in JSON-LD format
+        # and compatible with http://schema.org
         # @param [Array<String>, String] ids
-        #   The list of entity id to be used for search instead of query string.
-        #   To specify multiple ids in the HTTP request, repeat the parameter in the
-        #   URL as in ...?ids=A&ids=B
+        #   The list of entity id to be used for search instead of query string. To
+        #   specify multiple ids in the HTTP request, repeat the parameter in the URL as
+        #   in ...?ids=A&ids=B
         # @param [Boolean] indent
         #   Enables indenting of json results.
         # @param [Array<String>, String] languages
-        #   The list of language codes (defined in ISO 693) to run the query with,
-        #   e.g. 'en'.
+        #   The list of language codes (defined in ISO 693) to run the query with, e.g. '
+        #   en'.
         # @param [Fixnum] limit
         #   Limits the number of entities to be returned.
         # @param [Boolean] prefix
@@ -66,9 +66,9 @@ module Google
         # @param [String] query
         #   The literal query string for search.
         # @param [Array<String>, String] types
-        #   Restricts returned entities with these types, e.g. Person
-        #   (as defined in http://schema.org/Person). If multiple types are specified,
-        #   returned entities will contain one or more of these types.
+        #   Restricts returned entities with these types, e.g. Person (as defined in http:/
+        #   /schema.org/Person). If multiple types are specified, returned entities will
+        #   contain one or more of these types.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

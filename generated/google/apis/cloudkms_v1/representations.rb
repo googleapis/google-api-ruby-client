@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CertificateChains
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CryptoKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -307,6 +313,15 @@ module Google
         end
       end
       
+      class CertificateChains
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cavium_certs, as: 'caviumCerts'
+          collection :google_card_certs, as: 'googleCardCerts'
+          collection :google_partition_certs, as: 'googlePartitionCerts'
+        end
+      end
+      
       class CryptoKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -453,6 +468,8 @@ module Google
       class KeyOperationAttestation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cert_chains, as: 'certChains', class: Google::Apis::CloudkmsV1::CertificateChains, decorator: Google::Apis::CloudkmsV1::CertificateChains::Representation
+      
           property :content, :base64 => true, as: 'content'
           property :format, as: 'format'
         end

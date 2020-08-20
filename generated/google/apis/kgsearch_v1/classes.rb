@@ -22,13 +22,13 @@ module Google
   module Apis
     module KgsearchV1
       
-      # Response message includes the context and a list of matching results
-      # which contain the detail of associated entities.
+      # Response message includes the context and a list of matching results which
+      # contain the detail of associated entities.
       class SearchResponse
         include Google::Apis::Core::Hashable
       
-        # The local context applicable for the response. See more details at
-        # http://www.w3.org/TR/json-ld/#context-definitions.
+        # The local context applicable for the response. See more details at http://www.
+        # w3.org/TR/json-ld/#context-definitions.
         # Corresponds to the JSON property `@context`
         # @return [Object]
         attr_accessor :_context

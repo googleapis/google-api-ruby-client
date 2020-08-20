@@ -44,8 +44,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/gmail/v1'
+          super('https://gmail.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Gets the current user's Gmail profile.

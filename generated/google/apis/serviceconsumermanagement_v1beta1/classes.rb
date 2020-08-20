@@ -1708,7 +1708,7 @@ module Google
       # AccessControl The mixin construct implies that all methods in `AccessControl`
       # are also declared with same name and request/response types in `Storage`. A
       # documentation generator or annotation processor will see the effective `
-      # Storage.GetAcl` method after inherting documentation and annotations as
+      # Storage.GetAcl` method after inheriting documentation and annotations as
       # follows: service Storage ` // Get the underlying ACL object. rpc GetAcl(
       # GetAclRequest) returns (Acl) ` option (google.api.http).get = "/v2/`resource=**
       # `:getAcl"; ` ... ` Note how the version in the path pattern changed from `v1`
@@ -3185,7 +3185,7 @@ module Google
       
         # The overrides to create. Each override must have a value for 'metric' and '
         # unit', to specify which metric and which limit the override should be applied
-        # to.
+        # to. The 'name' field of the override does not need to be set; it is ignored.
         # Corresponds to the JSON property `overrides`
         # @return [Array<Google::Apis::ServiceconsumermanagementV1beta1::V1Beta1QuotaOverride>]
         attr_accessor :overrides
