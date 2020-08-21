@@ -26541,7 +26541,7 @@ module Google
       class SecurityPolicyRuleMatcherConfig
         include Google::Apis::Core::Hashable
       
-        # CIDR IP address range.
+        # CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
         # Corresponds to the JSON property `srcIpRanges`
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
@@ -28764,7 +28764,7 @@ module Google
       # A target gRPC proxy is a component of load balancers intended for load
       # balancing gRPC traffic. Global forwarding rules reference a target gRPC proxy.
       # The Target gRPC Proxy references a URL map which specifies how traffic routes
-      # to gRPC backend services.
+      # to gRPC backend services. (== resource_for `$api_version`.targetGrpcProxies ==)
       class TargetGrpcProxy
         include Google::Apis::Core::Hashable
       
@@ -28831,12 +28831,11 @@ module Google
         # If true, indicates that the BackendServices referenced by the urlMap may be
         # accessed by gRPC applications without using a sidecar proxy. This will enable
         # configuration checks on urlMap and its referenced BackendServices to not allow
-        # unsupported features. A gRPC application must use "xds-experimental:///"
-        # scheme in the target URI of the service it is connecting to. If false,
-        # indicates that the BackendServices referenced by the urlMap will be accessed
-        # by gRPC applications via a sidecar proxy. In this case, a gRPC application
-        # must not use "xds-experimental:///" scheme in the target URI of the service it
-        # is connecting to
+        # unsupported features. A gRPC application must use "xds:///" scheme in the
+        # target URI of the service it is connecting to. If false, indicates that the
+        # BackendServices referenced by the urlMap will be accessed by gRPC applications
+        # via a sidecar proxy. In this case, a gRPC application must not use "xds:///"
+        # scheme in the target URI of the service it is connecting to
         # Corresponds to the JSON property `validateForProxyless`
         # @return [Boolean]
         attr_accessor :validate_for_proxyless
@@ -33457,7 +33456,7 @@ module Google
       end
       
       # Represents a Cloud VPN Tunnel resource.
-      # For more information about VPN, read the the Cloud VPN Overview. (==
+      # For more information about VPN, read the  the Cloud VPN Overview. (==
       # resource_for `$api_version`.vpnTunnels ==)
       class VpnTunnel
         include Google::Apis::Core::Hashable

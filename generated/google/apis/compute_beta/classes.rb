@@ -2620,7 +2620,7 @@ module Google
         attr_accessor :cache_mode
       
         # Specifies a separate client (e.g. browser client) TTL, separate from the TTL
-        # for Cloud CDN?s edge caches. Leaving this empty will use the same cache TTL
+        # for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL
         # for both Cloud CDN and the client-facing response. The maximum allowed value
         # is 86400s (1 day).
         # Corresponds to the JSON property `clientTtl`
@@ -2629,7 +2629,7 @@ module Google
       
         # Specifies the default TTL for cached content served by this origin for
         # responses that do not have an existing valid TTL (max-age or s-max-age).
-        # Setting a TTL of ?0? means ?always revalidate? and a value of ?-1? disables
+        # Setting a TTL of "0" means "always revalidate" and a value of "-1" disables
         # caching for that status code. The value of defaultTTL cannot be set to a value
         # greater than that of maxTTL, but can be equal. When the cacheMode is set to
         # FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
@@ -2643,7 +2643,7 @@ module Google
         # Cache directives that attempt to set a max-age or s-maxage higher than this,
         # or an Expires header more than maxTTL seconds in the future will be capped at
         # the value of maxTTL, as if it were the value of an s-maxage Cache-Control
-        # directive. Setting a TTL of ?0? means ?always revalidate? and a value of ?-1?
+        # directive. Setting a TTL of "0" means "always revalidate" and a value of "-1"
         # disables caching for that status code. The maximum allowed value is 31,622,
         # 400s (1 year), noting that infrequently accessed objects may be evicted from
         # the cache before the defined TTL.
@@ -2666,13 +2666,13 @@ module Google
       
         # Sets a cache TTL for the specified HTTP status code. negative_caching must be
         # enabled to configure negative_caching_policy. Omitting the policy and leaving
-        # negative_caching enabled will use Cloud CDN?s default cache TTLs. Note that
+        # negative_caching enabled will use Cloud CDN's default cache TTLs. Note that
         # when specifying an explicit negative_caching_policy, you should take care to
         # specify a cache TTL for all response codes that you wish to cache. Cloud CDN
         # will not apply any default negative caching when a policy exists.
-        # Corresponds to the JSON property `negativeCachingPolicys`
+        # Corresponds to the JSON property `negativeCachingPolicy`
         # @return [Array<Google::Apis::ComputeBeta::BackendBucketCdnPolicyNegativeCachingPolicy>]
-        attr_accessor :negative_caching_policys
+        attr_accessor :negative_caching_policy
       
         # Maximum number of seconds the response to a signed URL request will be
         # considered fresh. After this time period, the response will be revalidated
@@ -2701,7 +2701,7 @@ module Google
           @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
           @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
           @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
-          @negative_caching_policys = args[:negative_caching_policys] if args.key?(:negative_caching_policys)
+          @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
         end
@@ -2719,7 +2719,7 @@ module Google
         attr_accessor :code
       
         # The TTL (in seconds) to cache responses with the corresponding status code for.
-        # A TTL of ?0? means ?always revalidate? and a value of ?-1? disables caching
+        # A TTL of "0" means "always revalidate" and a value of "-1" disables caching
         # for that status code. The maximum allowed value is 1800s (30 minutes), noting
         # that infrequently accessed objects may be evicted from the cache before the
         # defined TTL.
@@ -3295,7 +3295,7 @@ module Google
         attr_accessor :cache_mode
       
         # Specifies a separate client (e.g. browser client) TTL, separate from the TTL
-        # for Cloud CDN?s edge caches. Leaving this empty will use the same cache TTL
+        # for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL
         # for both Cloud CDN and the client-facing response. The maximum allowed value
         # is 86400s (1 day).
         # Corresponds to the JSON property `clientTtl`
@@ -3304,7 +3304,7 @@ module Google
       
         # Specifies the default TTL for cached content served by this origin for
         # responses that do not have an existing valid TTL (max-age or s-max-age).
-        # Setting a TTL of ?0? means ?always revalidate? and a value of ?-1? disables
+        # Setting a TTL of "0" means "always revalidate" and a value of "-1" disables
         # caching for that status code. The value of defaultTTL cannot be set to a value
         # greater than that of maxTTL, but can be equal. When the cacheMode is set to
         # FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
@@ -3318,7 +3318,7 @@ module Google
         # Cache directives that attempt to set a max-age or s-maxage higher than this,
         # or an Expires header more than maxTTL seconds in the future will be capped at
         # the value of maxTTL, as if it were the value of an s-maxage Cache-Control
-        # directive. Setting a TTL of ?0? means ?always revalidate? and a value of ?-1?
+        # directive. Setting a TTL of "0" means "always revalidate" and a value of "-1"
         # disables caching for that status code. The maximum allowed value is 31,622,
         # 400s (1 year), noting that infrequently accessed objects may be evicted from
         # the cache before the defined TTL.
@@ -3341,13 +3341,13 @@ module Google
       
         # Sets a cache TTL for the specified HTTP status code. negative_caching must be
         # enabled to configure negative_caching_policy. Omitting the policy and leaving
-        # negative_caching enabled will use Cloud CDN?s default cache TTLs. Note that
+        # negative_caching enabled will use Cloud CDN's default cache TTLs. Note that
         # when specifying an explicit negative_caching_policy, you should take care to
         # specify a cache TTL for all response codes that you wish to cache. Cloud CDN
         # will not apply any default negative caching when a policy exists.
-        # Corresponds to the JSON property `negativeCachingPolicys`
+        # Corresponds to the JSON property `negativeCachingPolicy`
         # @return [Array<Google::Apis::ComputeBeta::BackendServiceCdnPolicyNegativeCachingPolicy>]
-        attr_accessor :negative_caching_policys
+        attr_accessor :negative_caching_policy
       
         # Maximum number of seconds the response to a signed URL request will be
         # considered fresh. After this time period, the response will be revalidated
@@ -3377,7 +3377,7 @@ module Google
           @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
           @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
           @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
-          @negative_caching_policys = args[:negative_caching_policys] if args.key?(:negative_caching_policys)
+          @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
         end
@@ -3395,7 +3395,7 @@ module Google
         attr_accessor :code
       
         # The TTL (in seconds) to cache responses with the corresponding status code for.
-        # A TTL of ?0? means ?always revalidate? and a value of ?-1? disables caching
+        # A TTL of "0" means "always revalidate" and a value of "-1" disables caching
         # for that status code. The maximum allowed value is 1800s (30 minutes), noting
         # that infrequently accessed objects may be evicted from the cache before the
         # defined TTL.
@@ -28491,7 +28491,7 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherConfigLayer4Config>]
         attr_accessor :layer4_configs
       
-        # CIDR IP address range.
+        # CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
         # Corresponds to the JSON property `srcIpRanges`
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
@@ -30427,16 +30427,6 @@ module Google
         # @return [String]
         attr_accessor :private_ipv6_google_access
       
-        # Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly.
-        # The service accounts can be used to selectively turn on Private IPv6 Google
-        # Access only on the VMs primary service account matching the value. This value
-        # only takes effect when PrivateIpv6GoogleAccess is
-        # ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or
-        # ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
-        # Corresponds to the JSON property `privateIpv6GoogleAccessServiceAccounts`
-        # @return [Array<String>]
-        attr_accessor :private_ipv6_google_access_service_accounts
-      
         # The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
         # INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
         # INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for
@@ -30507,7 +30497,6 @@ module Google
           @network = args[:network] if args.key?(:network)
           @private_ip_google_access = args[:private_ip_google_access] if args.key?(:private_ip_google_access)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
-          @private_ipv6_google_access_service_accounts = args[:private_ipv6_google_access_service_accounts] if args.key?(:private_ipv6_google_access_service_accounts)
           @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @role = args[:role] if args.key?(:role)
@@ -31079,7 +31068,7 @@ module Google
       # A target gRPC proxy is a component of load balancers intended for load
       # balancing gRPC traffic. Global forwarding rules reference a target gRPC proxy.
       # The Target gRPC Proxy references a URL map which specifies how traffic routes
-      # to gRPC backend services.
+      # to gRPC backend services. (== resource_for `$api_version`.targetGrpcProxies ==)
       class TargetGrpcProxy
         include Google::Apis::Core::Hashable
       
@@ -31146,12 +31135,11 @@ module Google
         # If true, indicates that the BackendServices referenced by the urlMap may be
         # accessed by gRPC applications without using a sidecar proxy. This will enable
         # configuration checks on urlMap and its referenced BackendServices to not allow
-        # unsupported features. A gRPC application must use "xds-experimental:///"
-        # scheme in the target URI of the service it is connecting to. If false,
-        # indicates that the BackendServices referenced by the urlMap will be accessed
-        # by gRPC applications via a sidecar proxy. In this case, a gRPC application
-        # must not use "xds-experimental:///" scheme in the target URI of the service it
-        # is connecting to
+        # unsupported features. A gRPC application must use "xds:///" scheme in the
+        # target URI of the service it is connecting to. If false, indicates that the
+        # BackendServices referenced by the urlMap will be accessed by gRPC applications
+        # via a sidecar proxy. In this case, a gRPC application must not use "xds:///"
+        # scheme in the target URI of the service it is connecting to
         # Corresponds to the JSON property `validateForProxyless`
         # @return [Boolean]
         attr_accessor :validate_for_proxyless
@@ -35917,7 +35905,7 @@ module Google
       end
       
       # Represents a Cloud VPN Tunnel resource.
-      # For more information about VPN, read the the Cloud VPN Overview. (==
+      # For more information about VPN, read the  the Cloud VPN Overview. (==
       # resource_for `$api_version`.vpnTunnels ==)
       class VpnTunnel
         include Google::Apis::Core::Hashable

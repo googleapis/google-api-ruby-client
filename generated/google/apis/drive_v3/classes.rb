@@ -1535,9 +1535,10 @@ module Google
           attr_accessor :can_move_children_out_of_team_drive
           alias_method :can_move_children_out_of_team_drive?, :can_move_children_out_of_team_drive
         
-          # Whether the current user can move children of this folder within the shared
-          # drive. This is false when the item is not a folder. Only populated for items
-          # in shared drives.
+          # Whether the current user can move children of this folder within this drive.
+          # This is false when the item is not a folder. Note that a request to move the
+          # child may still fail depending on the current user's access to the child and
+          # to the destination folder.
           # Corresponds to the JSON property `canMoveChildrenWithinDrive`
           # @return [Boolean]
           attr_accessor :can_move_children_within_drive
@@ -1569,9 +1570,9 @@ module Google
           attr_accessor :can_move_item_out_of_team_drive
           alias_method :can_move_item_out_of_team_drive?, :can_move_item_out_of_team_drive
         
-          # Whether the current user can move this item within this shared drive. Note
-          # that a request to change the parent of the item may still fail depending on
-          # the new parent that is being added. Only populated for items in shared drives.
+          # Whether the current user can move this item within this drive. Note that a
+          # request to change the parent of the item may still fail depending on the new
+          # parent that is being added and the parent that is being removed.
           # Corresponds to the JSON property `canMoveItemWithinDrive`
           # @return [Boolean]
           attr_accessor :can_move_item_within_drive

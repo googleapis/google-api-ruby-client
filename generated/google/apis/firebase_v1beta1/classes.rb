@@ -1076,17 +1076,6 @@ module Google
         # @return [Google::Apis::FirebaseV1beta1::MessageSet]
         attr_accessor :message_set
       
-        # Message that groups a protocol type_id (as defined by MessageSet), with an
-        # encoded message of that type. Its use is similar to MessageSet, except it
-        # represents a single (type, encoded message) instead of a set. To embed "proto"
-        # inside "typed_msg": MyProtoMessage proto; TypedMessage typed_msg; typed_msg.
-        # set_type_id(proto2::bridge::GetTypeId(proto)); proto.AppendToCord(typed_msg.
-        # mutable_message()); Error handling is omitted from the sample code above.
-        # GetTypeId() will return 0 for messages that don't have a TypeId specified.
-        # Corresponds to the JSON property `payload`
-        # @return [Google::Apis::FirebaseV1beta1::TypedMessage]
-        attr_accessor :payload
-      
         # The following are usually only present when code != 0 Space to which this
         # status belongs
         # Corresponds to the JSON property `space`
@@ -1103,7 +1092,6 @@ module Google
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
           @message_set = args[:message_set] if args.key?(:message_set)
-          @payload = args[:payload] if args.key?(:payload)
           @space = args[:space] if args.key?(:space)
         end
       end
@@ -1147,38 +1135,6 @@ module Google
           @app = args[:app] if args.key?(:app)
           @measurement_id = args[:measurement_id] if args.key?(:measurement_id)
           @stream_id = args[:stream_id] if args.key?(:stream_id)
-        end
-      end
-      
-      # Message that groups a protocol type_id (as defined by MessageSet), with an
-      # encoded message of that type. Its use is similar to MessageSet, except it
-      # represents a single (type, encoded message) instead of a set. To embed "proto"
-      # inside "typed_msg": MyProtoMessage proto; TypedMessage typed_msg; typed_msg.
-      # set_type_id(proto2::bridge::GetTypeId(proto)); proto.AppendToCord(typed_msg.
-      # mutable_message()); Error handling is omitted from the sample code above.
-      # GetTypeId() will return 0 for messages that don't have a TypeId specified.
-      class TypedMessage
-        include Google::Apis::Core::Hashable
-      
-        # Message bytes.
-        # Corresponds to the JSON property `message`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :message
-      
-        # Identifier for the type.
-        # Corresponds to the JSON property `typeId`
-        # @return [Fixnum]
-        attr_accessor :type_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message = args[:message] if args.key?(:message)
-          @type_id = args[:type_id] if args.key?(:type_id)
         end
       end
       

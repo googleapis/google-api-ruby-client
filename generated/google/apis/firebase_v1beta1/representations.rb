@@ -208,12 +208,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TypedMessage
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class WebApp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -496,8 +490,6 @@ module Google
           property :message, as: 'message'
           property :message_set, as: 'messageSet', class: Google::Apis::FirebaseV1beta1::MessageSet, decorator: Google::Apis::FirebaseV1beta1::MessageSet::Representation
       
-          property :payload, as: 'payload', class: Google::Apis::FirebaseV1beta1::TypedMessage, decorator: Google::Apis::FirebaseV1beta1::TypedMessage::Representation
-      
           property :space, as: 'space'
         end
       end
@@ -508,14 +500,6 @@ module Google
           property :app, as: 'app'
           property :measurement_id, as: 'measurementId'
           property :stream_id, :numeric_string => true, as: 'streamId'
-        end
-      end
-      
-      class TypedMessage
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :message, :base64 => true, as: 'message'
-          property :type_id, as: 'typeId'
         end
       end
       

@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeletePeeredDnsDomainMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DnsRecordSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +329,18 @@ module Google
       end
       
       class Page
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PeeredDnsDomain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PeeredDnsDomainMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -676,6 +694,12 @@ module Google
         end
       end
       
+      class DeletePeeredDnsDomainMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DnsRecordSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -984,6 +1008,20 @@ module Google
           property :name, as: 'name'
           collection :subpages, as: 'subpages', class: Google::Apis::ServicenetworkingV1beta::Page, decorator: Google::Apis::ServicenetworkingV1beta::Page::Representation
       
+        end
+      end
+      
+      class PeeredDnsDomain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_suffix, as: 'dnsSuffix'
+          property :name, as: 'name'
+        end
+      end
+      
+      class PeeredDnsDomainMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

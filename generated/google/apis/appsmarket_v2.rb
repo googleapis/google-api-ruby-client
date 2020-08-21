@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/apps-marketplace
     module AppsmarketV2
       VERSION = 'V2'
-      REVISION = '20200810'
+      REVISION = '20200817'
 
       # View your installed application's licensing information
       AUTH_APPSMARKETPLACE_LICENSE = 'https://www.googleapis.com/auth/appsmarketplace.license'

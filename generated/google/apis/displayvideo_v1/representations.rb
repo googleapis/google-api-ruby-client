@@ -1635,6 +1635,11 @@ module Google
       class AuditAdvertiserResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_group_criteria_count, :numeric_string => true, as: 'adGroupCriteriaCount'
+          property :campaign_criteria_count, :numeric_string => true, as: 'campaignCriteriaCount'
+          property :channels_count, :numeric_string => true, as: 'channelsCount'
+          property :negative_keyword_lists_count, :numeric_string => true, as: 'negativeKeywordListsCount'
+          property :negatively_targeted_channels_count, :numeric_string => true, as: 'negativelyTargetedChannelsCount'
           property :used_campaigns_count, :numeric_string => true, as: 'usedCampaignsCount'
           property :used_insertion_orders_count, :numeric_string => true, as: 'usedInsertionOrdersCount'
           property :used_line_items_count, :numeric_string => true, as: 'usedLineItemsCount'

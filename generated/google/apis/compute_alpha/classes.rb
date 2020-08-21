@@ -2901,7 +2901,7 @@ module Google
         attr_accessor :cache_mode
       
         # Specifies a separate client (e.g. browser client) TTL, separate from the TTL
-        # for Cloud CDN?s edge caches. Leaving this empty will use the same cache TTL
+        # for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL
         # for both Cloud CDN and the client-facing response. The maximum allowed value
         # is 86400s (1 day).
         # Corresponds to the JSON property `clientTtl`
@@ -2910,7 +2910,7 @@ module Google
       
         # Specifies the default TTL for cached content served by this origin for
         # responses that do not have an existing valid TTL (max-age or s-max-age).
-        # Setting a TTL of ?0? means ?always revalidate? and a value of ?-1? disables
+        # Setting a TTL of "0" means "always revalidate" and a value of "-1" disables
         # caching for that status code. The value of defaultTTL cannot be set to a value
         # greater than that of maxTTL, but can be equal. When the cacheMode is set to
         # FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
@@ -2924,7 +2924,7 @@ module Google
         # Cache directives that attempt to set a max-age or s-maxage higher than this,
         # or an Expires header more than maxTTL seconds in the future will be capped at
         # the value of maxTTL, as if it were the value of an s-maxage Cache-Control
-        # directive. Setting a TTL of ?0? means ?always revalidate? and a value of ?-1?
+        # directive. Setting a TTL of "0" means "always revalidate" and a value of "-1"
         # disables caching for that status code. The maximum allowed value is 31,622,
         # 400s (1 year), noting that infrequently accessed objects may be evicted from
         # the cache before the defined TTL.
@@ -2947,13 +2947,13 @@ module Google
       
         # Sets a cache TTL for the specified HTTP status code. negative_caching must be
         # enabled to configure negative_caching_policy. Omitting the policy and leaving
-        # negative_caching enabled will use Cloud CDN?s default cache TTLs. Note that
+        # negative_caching enabled will use Cloud CDN's default cache TTLs. Note that
         # when specifying an explicit negative_caching_policy, you should take care to
         # specify a cache TTL for all response codes that you wish to cache. Cloud CDN
         # will not apply any default negative caching when a policy exists.
-        # Corresponds to the JSON property `negativeCachingPolicys`
+        # Corresponds to the JSON property `negativeCachingPolicy`
         # @return [Array<Google::Apis::ComputeAlpha::BackendBucketCdnPolicyNegativeCachingPolicy>]
-        attr_accessor :negative_caching_policys
+        attr_accessor :negative_caching_policy
       
         # If true then Cloud CDN will combine multiple concurrent cache fill requests
         # into a small number of requests to the origin.
@@ -2989,7 +2989,7 @@ module Google
           @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
           @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
           @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
-          @negative_caching_policys = args[:negative_caching_policys] if args.key?(:negative_caching_policys)
+          @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
           @request_coalescing = args[:request_coalescing] if args.key?(:request_coalescing)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
@@ -3008,7 +3008,7 @@ module Google
         attr_accessor :code
       
         # The TTL (in seconds) to cache responses with the corresponding status code for.
-        # A TTL of ?0? means ?always revalidate? and a value of ?-1? disables caching
+        # A TTL of "0" means "always revalidate" and a value of "-1" disables caching
         # for that status code. The maximum allowed value is 1800s (30 minutes), noting
         # that infrequently accessed objects may be evicted from the cache before the
         # defined TTL.
@@ -3596,7 +3596,7 @@ module Google
         attr_accessor :cache_mode
       
         # Specifies a separate client (e.g. browser client) TTL, separate from the TTL
-        # for Cloud CDN?s edge caches. Leaving this empty will use the same cache TTL
+        # for Cloud CDN's edge caches. Leaving this empty will use the same cache TTL
         # for both Cloud CDN and the client-facing response. The maximum allowed value
         # is 86400s (1 day).
         # Corresponds to the JSON property `clientTtl`
@@ -3605,7 +3605,7 @@ module Google
       
         # Specifies the default TTL for cached content served by this origin for
         # responses that do not have an existing valid TTL (max-age or s-max-age).
-        # Setting a TTL of ?0? means ?always revalidate? and a value of ?-1? disables
+        # Setting a TTL of "0" means "always revalidate" and a value of "-1" disables
         # caching for that status code. The value of defaultTTL cannot be set to a value
         # greater than that of maxTTL, but can be equal. When the cacheMode is set to
         # FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
@@ -3619,7 +3619,7 @@ module Google
         # Cache directives that attempt to set a max-age or s-maxage higher than this,
         # or an Expires header more than maxTTL seconds in the future will be capped at
         # the value of maxTTL, as if it were the value of an s-maxage Cache-Control
-        # directive. Setting a TTL of ?0? means ?always revalidate? and a value of ?-1?
+        # directive. Setting a TTL of "0" means "always revalidate" and a value of "-1"
         # disables caching for that status code. The maximum allowed value is 31,622,
         # 400s (1 year), noting that infrequently accessed objects may be evicted from
         # the cache before the defined TTL.
@@ -3642,13 +3642,13 @@ module Google
       
         # Sets a cache TTL for the specified HTTP status code. negative_caching must be
         # enabled to configure negative_caching_policy. Omitting the policy and leaving
-        # negative_caching enabled will use Cloud CDN?s default cache TTLs. Note that
+        # negative_caching enabled will use Cloud CDN's default cache TTLs. Note that
         # when specifying an explicit negative_caching_policy, you should take care to
         # specify a cache TTL for all response codes that you wish to cache. Cloud CDN
         # will not apply any default negative caching when a policy exists.
-        # Corresponds to the JSON property `negativeCachingPolicys`
+        # Corresponds to the JSON property `negativeCachingPolicy`
         # @return [Array<Google::Apis::ComputeAlpha::BackendServiceCdnPolicyNegativeCachingPolicy>]
-        attr_accessor :negative_caching_policys
+        attr_accessor :negative_caching_policy
       
         # If true then Cloud CDN will combine multiple concurrent cache fill requests
         # into a small number of requests to the origin.
@@ -3685,7 +3685,7 @@ module Google
           @default_ttl = args[:default_ttl] if args.key?(:default_ttl)
           @max_ttl = args[:max_ttl] if args.key?(:max_ttl)
           @negative_caching = args[:negative_caching] if args.key?(:negative_caching)
-          @negative_caching_policys = args[:negative_caching_policys] if args.key?(:negative_caching_policys)
+          @negative_caching_policy = args[:negative_caching_policy] if args.key?(:negative_caching_policy)
           @request_coalescing = args[:request_coalescing] if args.key?(:request_coalescing)
           @signed_url_cache_max_age_sec = args[:signed_url_cache_max_age_sec] if args.key?(:signed_url_cache_max_age_sec)
           @signed_url_key_names = args[:signed_url_key_names] if args.key?(:signed_url_key_names)
@@ -3704,7 +3704,7 @@ module Google
         attr_accessor :code
       
         # The TTL (in seconds) to cache responses with the corresponding status code for.
-        # A TTL of ?0? means ?always revalidate? and a value of ?-1? disables caching
+        # A TTL of "0" means "always revalidate" and a value of "-1" disables caching
         # for that status code. The maximum allowed value is 1800s (30 minutes), noting
         # that infrequently accessed objects may be evicted from the cache before the
         # defined TTL.
@@ -29309,12 +29309,19 @@ module Google
       class ResourcePolicyInstanceSchedulePolicy
         include Google::Apis::Core::Hashable
       
-        # Schedule for the instance operation.
+        # Specifies the time zone to be used in interpreting Schedule.schedule. The
+        # value of this field must be a time zone name from the tz database: http://en.
+        # wikipedia.org/wiki/Tz_database.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        # Schedule for an instance operation.
         # Corresponds to the JSON property `vmStartSchedule`
         # @return [Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicySchedule]
         attr_accessor :vm_start_schedule
       
-        # Schedule for the instance operation.
+        # Schedule for an instance operation.
         # Corresponds to the JSON property `vmStopSchedule`
         # @return [Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicySchedule]
         attr_accessor :vm_stop_schedule
@@ -29325,12 +29332,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @vm_start_schedule = args[:vm_start_schedule] if args.key?(:vm_start_schedule)
           @vm_stop_schedule = args[:vm_stop_schedule] if args.key?(:vm_stop_schedule)
         end
       end
       
-      # Schedule for the instance operation.
+      # Schedule for an instance operation.
       class ResourcePolicyInstanceSchedulePolicySchedule
         include Google::Apis::Core::Hashable
       
@@ -29339,13 +29347,6 @@ module Google
         # @return [String]
         attr_accessor :schedule
       
-        # Specifies the time zone to be used in interpreting Schedule.schedule. The
-        # value of this field must be a time zone name from the tz database: http://en.
-        # wikipedia.org/wiki/Tz_database.
-        # Corresponds to the JSON property `timeZone`
-        # @return [String]
-        attr_accessor :time_zone
-      
         def initialize(**args)
            update!(**args)
         end
@@ -29353,7 +29354,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @schedule = args[:schedule] if args.key?(:schedule)
-          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
@@ -30980,12 +30980,12 @@ module Google
         # @return [String]
         attr_accessor :match
       
-        # An integer indicating the priority of a rule in the list. The priority must be
-        # a positive value between 0 and 65000. The priority must be unique among rules
-        # within a NAT.
-        # Corresponds to the JSON property `priority`
+        # An integer uniquely identifying a rule in the list. The rule number must be a
+        # positive value between 0 and 65000, and must be unique among rules within a
+        # NAT.
+        # Corresponds to the JSON property `ruleNumber`
         # @return [Fixnum]
-        attr_accessor :priority
+        attr_accessor :rule_number
       
         def initialize(**args)
            update!(**args)
@@ -30996,7 +30996,7 @@ module Google
           @action = args[:action] if args.key?(:action)
           @description = args[:description] if args.key?(:description)
           @match = args[:match] if args.key?(:match)
-          @priority = args[:priority] if args.key?(:priority)
+          @rule_number = args[:rule_number] if args.key?(:rule_number)
         end
       end
       
@@ -31286,10 +31286,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_vm_endpoints_with_nat_mappings
       
-        # Priority of the rule.
-        # Corresponds to the JSON property `priority`
+        # Rule number of the rule.
+        # Corresponds to the JSON property `ruleNumber`
         # @return [Fixnum]
-        attr_accessor :priority
+        attr_accessor :rule_number
       
         def initialize(**args)
            update!(**args)
@@ -31301,7 +31301,7 @@ module Google
           @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
           @min_extra_ips_needed = args[:min_extra_ips_needed] if args.key?(:min_extra_ips_needed)
           @num_vm_endpoints_with_nat_mappings = args[:num_vm_endpoints_with_nat_mappings] if args.key?(:num_vm_endpoints_with_nat_mappings)
-          @priority = args[:priority] if args.key?(:priority)
+          @rule_number = args[:rule_number] if args.key?(:rule_number)
         end
       end
       
@@ -32451,7 +32451,7 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherConfigLayer4Config>]
         attr_accessor :layer4_configs
       
-        # CIDR IP address range.
+        # CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
         # Corresponds to the JSON property `srcIpRanges`
         # @return [Array<String>]
         attr_accessor :src_ip_ranges
@@ -35511,7 +35511,7 @@ module Google
       # A target gRPC proxy is a component of load balancers intended for load
       # balancing gRPC traffic. Global forwarding rules reference a target gRPC proxy.
       # The Target gRPC Proxy references a URL map which specifies how traffic routes
-      # to gRPC backend services.
+      # to gRPC backend services. (== resource_for `$api_version`.targetGrpcProxies ==)
       class TargetGrpcProxy
         include Google::Apis::Core::Hashable
       
@@ -35578,12 +35578,11 @@ module Google
         # If true, indicates that the BackendServices referenced by the urlMap may be
         # accessed by gRPC applications without using a sidecar proxy. This will enable
         # configuration checks on urlMap and its referenced BackendServices to not allow
-        # unsupported features. A gRPC application must use "xds-experimental:///"
-        # scheme in the target URI of the service it is connecting to. If false,
-        # indicates that the BackendServices referenced by the urlMap will be accessed
-        # by gRPC applications via a sidecar proxy. In this case, a gRPC application
-        # must not use "xds-experimental:///" scheme in the target URI of the service it
-        # is connecting to
+        # unsupported features. A gRPC application must use "xds:///" scheme in the
+        # target URI of the service it is connecting to. If false, indicates that the
+        # BackendServices referenced by the urlMap will be accessed by gRPC applications
+        # via a sidecar proxy. In this case, a gRPC application must not use "xds:///"
+        # scheme in the target URI of the service it is connecting to
         # Corresponds to the JSON property `validateForProxyless`
         # @return [Boolean]
         attr_accessor :validate_for_proxyless
@@ -40022,10 +40021,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_total_nat_ports
       
-        # Priority of the NAT Rule.
-        # Corresponds to the JSON property `priority`
+        # Rule number of the NAT Rule.
+        # Corresponds to the JSON property `ruleNumber`
         # @return [Fixnum]
-        attr_accessor :priority
+        attr_accessor :rule_number
       
         def initialize(**args)
            update!(**args)
@@ -40037,7 +40036,7 @@ module Google
           @nat_ip_port_ranges = args[:nat_ip_port_ranges] if args.key?(:nat_ip_port_ranges)
           @num_total_drain_nat_ports = args[:num_total_drain_nat_ports] if args.key?(:num_total_drain_nat_ports)
           @num_total_nat_ports = args[:num_total_nat_ports] if args.key?(:num_total_nat_ports)
-          @priority = args[:priority] if args.key?(:priority)
+          @rule_number = args[:rule_number] if args.key?(:rule_number)
         end
       end
       
@@ -40761,7 +40760,7 @@ module Google
       end
       
       # Represents a Cloud VPN Tunnel resource.
-      # For more information about VPN, read the the Cloud VPN Overview. (==
+      # For more information about VPN, read the  the Cloud VPN Overview. (==
       # resource_for `$api_version`.vpnTunnels ==)
       class VpnTunnel
         include Google::Apis::Core::Hashable

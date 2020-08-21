@@ -436,6 +436,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Position
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryTimeSeriesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +527,12 @@ module Google
       end
       
       class Telemetry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TextLocator
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1299,6 +1317,23 @@ module Google
         end
       end
       
+      class Position
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :line, as: 'line'
+        end
+      end
+      
+      class QueryError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :locator, as: 'locator', class: Google::Apis::MonitoringV3::TextLocator, decorator: Google::Apis::MonitoringV3::TextLocator::Representation
+      
+          property :message, as: 'message'
+        end
+      end
+      
       class QueryTimeSeriesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1317,6 +1352,8 @@ module Google
           collection :time_series_data, as: 'timeSeriesData', class: Google::Apis::MonitoringV3::TimeSeriesData, decorator: Google::Apis::MonitoringV3::TimeSeriesData::Representation
       
           property :time_series_descriptor, as: 'timeSeriesDescriptor', class: Google::Apis::MonitoringV3::TimeSeriesDescriptor, decorator: Google::Apis::MonitoringV3::TimeSeriesDescriptor::Representation
+      
+          collection :warnings, as: 'warnings', class: Google::Apis::MonitoringV3::QueryError, decorator: Google::Apis::MonitoringV3::QueryError::Representation
       
         end
       end
@@ -1432,6 +1469,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class TextLocator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_position, as: 'endPosition', class: Google::Apis::MonitoringV3::Position, decorator: Google::Apis::MonitoringV3::Position::Representation
+      
+          property :nested_locator, as: 'nestedLocator', class: Google::Apis::MonitoringV3::TextLocator, decorator: Google::Apis::MonitoringV3::TextLocator::Representation
+      
+          property :nesting_reason, as: 'nestingReason'
+          property :source, as: 'source'
+          property :start_position, as: 'startPosition', class: Google::Apis::MonitoringV3::Position, decorator: Google::Apis::MonitoringV3::Position::Representation
+      
         end
       end
       

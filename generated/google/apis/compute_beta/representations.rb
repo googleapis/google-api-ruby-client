@@ -5575,7 +5575,7 @@ module Google
           property :default_ttl, as: 'defaultTtl'
           property :max_ttl, as: 'maxTtl'
           property :negative_caching, as: 'negativeCaching'
-          collection :negative_caching_policys, as: 'negativeCachingPolicys', class: Google::Apis::ComputeBeta::BackendBucketCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeBeta::BackendBucketCdnPolicyNegativeCachingPolicy::Representation
+          collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeBeta::BackendBucketCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeBeta::BackendBucketCdnPolicyNegativeCachingPolicy::Representation
       
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
@@ -5712,7 +5712,7 @@ module Google
           property :default_ttl, as: 'defaultTtl'
           property :max_ttl, as: 'maxTtl'
           property :negative_caching, as: 'negativeCaching'
-          collection :negative_caching_policys, as: 'negativeCachingPolicys', class: Google::Apis::ComputeBeta::BackendServiceCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceCdnPolicyNegativeCachingPolicy::Representation
+          collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeBeta::BackendServiceCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeBeta::BackendServiceCdnPolicyNegativeCachingPolicy::Representation
       
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
@@ -12426,7 +12426,6 @@ module Google
           property :network, as: 'network'
           property :private_ip_google_access, as: 'privateIpGoogleAccess'
           property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
-          collection :private_ipv6_google_access_service_accounts, as: 'privateIpv6GoogleAccessServiceAccounts'
           property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :role, as: 'role'

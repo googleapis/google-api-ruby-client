@@ -6174,7 +6174,7 @@ module Google
           property :default_ttl, as: 'defaultTtl'
           property :max_ttl, as: 'maxTtl'
           property :negative_caching, as: 'negativeCaching'
-          collection :negative_caching_policys, as: 'negativeCachingPolicys', class: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyNegativeCachingPolicy::Representation
+          collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeAlpha::BackendBucketCdnPolicyNegativeCachingPolicy::Representation
       
           property :request_coalescing, as: 'requestCoalescing'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
@@ -6314,7 +6314,7 @@ module Google
           property :default_ttl, as: 'defaultTtl'
           property :max_ttl, as: 'maxTtl'
           property :negative_caching, as: 'negativeCaching'
-          collection :negative_caching_policys, as: 'negativeCachingPolicys', class: Google::Apis::ComputeAlpha::BackendServiceCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeAlpha::BackendServiceCdnPolicyNegativeCachingPolicy::Representation
+          collection :negative_caching_policy, as: 'negativeCachingPolicy', class: Google::Apis::ComputeAlpha::BackendServiceCdnPolicyNegativeCachingPolicy, decorator: Google::Apis::ComputeAlpha::BackendServiceCdnPolicyNegativeCachingPolicy::Representation
       
           property :request_coalescing, as: 'requestCoalescing'
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
@@ -12652,6 +12652,7 @@ module Google
       class ResourcePolicyInstanceSchedulePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :time_zone, as: 'timeZone'
           property :vm_start_schedule, as: 'vmStartSchedule', class: Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicySchedule, decorator: Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicySchedule::Representation
       
           property :vm_stop_schedule, as: 'vmStopSchedule', class: Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicySchedule, decorator: Google::Apis::ComputeAlpha::ResourcePolicyInstanceSchedulePolicySchedule::Representation
@@ -12663,7 +12664,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :schedule, as: 'schedule'
-          property :time_zone, as: 'timeZone'
         end
       end
       
@@ -13053,7 +13053,7 @@ module Google
       
           property :description, as: 'description'
           property :match, as: 'match'
-          property :priority, as: 'priority'
+          property :rule_number, as: 'ruleNumber'
         end
       end
       
@@ -13131,7 +13131,7 @@ module Google
           collection :drain_nat_ips, as: 'drainNatIps'
           property :min_extra_ips_needed, as: 'minExtraIpsNeeded'
           property :num_vm_endpoints_with_nat_mappings, as: 'numVmEndpointsWithNatMappings'
-          property :priority, as: 'priority'
+          property :rule_number, as: 'ruleNumber'
         end
       end
       
@@ -15326,7 +15326,7 @@ module Google
           collection :nat_ip_port_ranges, as: 'natIpPortRanges'
           property :num_total_drain_nat_ports, as: 'numTotalDrainNatPorts'
           property :num_total_nat_ports, as: 'numTotalNatPorts'
-          property :priority, as: 'priority'
+          property :rule_number, as: 'ruleNumber'
         end
       end
       

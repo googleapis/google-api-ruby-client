@@ -1116,6 +1116,48 @@ module Google
       class AuditAdvertiserResponse
         include Google::Apis::Core::Hashable
       
+        # The number of individual targeting options from the following targeting types
+        # that are assigned to a line item under this advertiser. These individual
+        # targeting options count towards the limit of 4500000 ad group targeting
+        # options per advertiser. Qualifying Targeting types: * Channels, URLs, apps,
+        # and collections * Demographic * Google Audiences, including Affinity, Custom
+        # Affinity, and In-market audiences * Inventory source * Keyword * Mobile app
+        # category * User lists * Video targeting * Viewability
+        # Corresponds to the JSON property `adGroupCriteriaCount`
+        # @return [Fixnum]
+        attr_accessor :ad_group_criteria_count
+      
+        # The number of individual targeting options from the following targeting types
+        # that are assigned to a line item under this advertiser. These individual
+        # targeting options count towards the limit of 900000 campaign targeting options
+        # per advertiser. Qualifying Targeting types: * Position * Browser * Connection
+        # speed * Day and time * Device and operating system * Digital content label *
+        # Sensitive categories * Environment * Geography, including business chains and
+        # proximity * ISP * Language * Third-party verification
+        # Corresponds to the JSON property `campaignCriteriaCount`
+        # @return [Fixnum]
+        attr_accessor :campaign_criteria_count
+      
+        # The number of channels created under this advertiser. These channels count
+        # towards the limit of 1000 channels per advertiser.
+        # Corresponds to the JSON property `channelsCount`
+        # @return [Fixnum]
+        attr_accessor :channels_count
+      
+        # The number of negative keyword lists created under this advertiser. These
+        # negative keyword lists count towards the limit of 20 negative keyword lists
+        # per advertiser.
+        # Corresponds to the JSON property `negativeKeywordListsCount`
+        # @return [Fixnum]
+        attr_accessor :negative_keyword_lists_count
+      
+        # The number of negatively targeted channels created under this advertiser.
+        # These negatively targeted channels count towards the limit of 5 negatively
+        # targeted channels per advertiser.
+        # Corresponds to the JSON property `negativelyTargetedChannelsCount`
+        # @return [Fixnum]
+        attr_accessor :negatively_targeted_channels_count
+      
         # The number of ACTIVE and PAUSED campaigns under this advertiser. These
         # campaigns count towards the limit of 9999 campaigns per advertiser.
         # Corresponds to the JSON property `usedCampaignsCount`
@@ -1141,6 +1183,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ad_group_criteria_count = args[:ad_group_criteria_count] if args.key?(:ad_group_criteria_count)
+          @campaign_criteria_count = args[:campaign_criteria_count] if args.key?(:campaign_criteria_count)
+          @channels_count = args[:channels_count] if args.key?(:channels_count)
+          @negative_keyword_lists_count = args[:negative_keyword_lists_count] if args.key?(:negative_keyword_lists_count)
+          @negatively_targeted_channels_count = args[:negatively_targeted_channels_count] if args.key?(:negatively_targeted_channels_count)
           @used_campaigns_count = args[:used_campaigns_count] if args.key?(:used_campaigns_count)
           @used_insertion_orders_count = args[:used_insertion_orders_count] if args.key?(:used_insertion_orders_count)
           @used_line_items_count = args[:used_line_items_count] if args.key?(:used_line_items_count)

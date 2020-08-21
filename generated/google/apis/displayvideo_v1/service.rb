@@ -56,7 +56,9 @@ module Google
         # @param [String] read_mask
         #   Optional. The specific fields to return. If no mask is specified, all fields
         #   in the response proto will be filled. Valid values are: * usedLineItemsCount *
-        #   usedInsertionOrdersCount * usedCampaignsCount
+        #   usedInsertionOrdersCount * usedCampaignsCount * channelsCount *
+        #   negativelyTargetedChannelsCount * negativeKeywordListsCount *
+        #   adGroupCriteriaCount * campaignCriteriaCount
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -279,10 +281,10 @@ module Google
         #   expressions are made up of one or more restrictions. * Restrictions can be
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
-        #   entityStatus` Examples: * All active advertisers under a partner: `
-        #   entityStatus="ENTITY_STATUS_ACTIVE"` The length of this field should be no
-        #   more than 500 characters.
+        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: . - `
+        #   advertiserId` . - `displayName` - `entityStatus` Examples: * All active
+        #   advertisers under a partner: `entityStatus="ENTITY_STATUS_ACTIVE"` The length
+        #   of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) * `entityStatus` The default sorting order is ascending. To specify
@@ -523,10 +525,10 @@ module Google
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
         #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
-        #   entityStatus` Examples: * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
-        #   campaigns under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
-        #   entityStatus="ENTITY_STATUS_PAUSED")` The length of this field should be no
-        #   more than 500 characters.
+        #   campaignId` - `displayName` - `entityStatus` Examples: * All `
+        #   ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` campaigns under an advertiser:
+        #   `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")`
+        #   The length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `displayName` (
         #   default) * `entityStatus` The default sorting order is ascending. To specify
@@ -1291,12 +1293,16 @@ module Google
         #   expressions are made up of one or more restrictions. * Restrictions can be
         #   combined by `AND` or `OR` logical operators. A sequence of restrictions
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
-        #   value``. * The operator must be `EQUALS (=)`. * Supported fields: - `
-        #   campaignId` - `entityStatus` Examples: * All insertion orders under a campaign:
-        #   `campaignId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
-        #   insertion orders under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
-        #   entityStatus="ENTITY_STATUS_PAUSED")` The length of this field should be no
-        #   more than 500 characters.
+        #   value``. * The operator used on `budget.budget_segments.date_range.end_date`
+        #   must be LESS THAN (<). * The operators used on all other fields must be `
+        #   EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` - `
+        #   entityStatus` - `budget.budget_segments.date_range.end_date` (input as YYYY-MM-
+        #   DD) Examples: * All insertion orders under a campaign: `campaignId="1234"` *
+        #   All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders under an
+        #   advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="
+        #   ENTITY_STATUS_PAUSED")` * All insertion orders whose budget segments' dates
+        #   end before March 28, 2019: `budget.budget_segments.date_range.end_date<"2019-
+        #   03-28"` The length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * "displayName" (
         #   default) * "entityStatus" The default sorting order is ascending. To specify
@@ -1599,15 +1605,15 @@ module Google
         #   implicitly uses `AND`. * A restriction has the form of ``field` `operator` `
         #   value``. * The operator used on `flight.dateRange.endDate` must be LESS THAN (<
         #   ). * The operators used on all other fields must be `EQUALS (=)`. * Supported
-        #   fields: - `campaignId` - `insertionOrderId` - `entityStatus` - `lineItemType` -
-        #   `flight.dateRange.endDate` (input formatted as YYYY-MM-DD) Examples: * All
-        #   line items under an insertion order: `insertionOrderId="1234"` * All `
-        #   ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `
-        #   LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus=
-        #   "ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND
-        #   lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose flight
-        #   dates end before March 28, 2019: `flight.dateRange.endDate<"2019-03-28"` The
-        #   length of this field should be no more than 500 characters.
+        #   fields: - `campaignId` - `displayName` - `insertionOrderId` - `entityStatus` -
+        #   `lineItemId` - `lineItemType` - `flight.dateRange.endDate` (input formatted as
+        #   YYYY-MM-DD) Examples: * All line items under an insertion order: `
+        #   insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
+        #   and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(
+        #   entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")
+        #   AND lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose
+        #   flight dates end before March 28, 2019: `flight.dateRange.endDate<"2019-03-28"`
+        #   The length of this field should be no more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * "displayName" (
         #   default) * "entityStatus" * “flight.dateRange.endDate” The default sorting
@@ -4608,8 +4614,14 @@ module Google
         #   expressions are made up of one or more restrictions. * Restrictions can be
         #   combined by `OR` logical operators. * A restriction has the form of ``field` `
         #   operator` `value``. * The operator must be "=" (equal sign). * Supported
-        #   fields: - `targetingOptionId` The length of this field should be no more than
-        #   500 characters.
+        #   fields: - `carrier_and_isp_details.type` - `geo_region_details.geo_region_type`
+        #   - `targetingOptionId` Examples: * All `GEO REGION` targeting options that
+        #   belong to sub type `GEO_REGION_TYPE_COUNTRY` or `GEO_REGION_TYPE_STATE`: `
+        #   geo_region_details.geo_region_type="GEO_REGION_TYPE_COUNTRY" OR
+        #   geo_region_details.geo_region_type="GEO_REGION_TYPE_STATE"` * All `CARRIER AND
+        #   ISP` targeting options that belong to sub type `CARRIER_AND_ISP_TYPE_CARRIER`:
+        #   `carrier_and_isp_details.type="CARRIER_AND_ISP_TYPE_CARRIER"`. The length of
+        #   this field should be no more than 500 characters.
         # @param [String] order_by
         #   Field by which to sort the list. Acceptable values are: * `targetingOptionId` (
         #   default) The default sorting order is ascending. To specify descending order

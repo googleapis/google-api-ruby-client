@@ -2198,13 +2198,7 @@ module Google
       
       # Defines a metric type and its schema. Once a metric descriptor is created,
       # deleting or altering it stops data collection and makes the metric type's
-      # existing data unusable.The following are specific rules for service defined
-      # Monitoring metric descriptors: type, metric_kind, value_type and description
-      # fields are all required. The unit field must be specified if the value_type is
-      # any of DOUBLE, INT64, DISTRIBUTION. Maximum of default 500 metric descriptors
-      # per service is allowed. Maximum of default 10 labels per metric descriptor is
-      # allowed.The default maximum limit can be overridden. Please follow https://
-      # cloud.google.com/monitoring/quotas
+      # existing data unusable.
       class MetricDescriptor
         include Google::Apis::Core::Hashable
       
@@ -2222,12 +2216,10 @@ module Google
         attr_accessor :display_name
       
         # The set of labels that can be used to describe a specific instance of this
-        # metric type.The label key name must follow: Only upper and lower-case letters,
-        # digits and underscores (_) are allowed. Label name must start with a letter or
-        # digit. The maximum length of a label name is 100 characters.For example, the
-        # appengine.googleapis.com/http/server/response_latencies metric type has a
-        # label for the HTTP response code, response_code, so you can look at latencies
-        # for successful responses or just for responses that failed.
+        # metric type. For example, the appengine.googleapis.com/http/server/
+        # response_latencies metric type has a label for the HTTP response code,
+        # response_code, so you can look at latencies for successful responses or just
+        # for responses that failed.
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
         attr_accessor :labels
@@ -2262,16 +2254,11 @@ module Google
         attr_accessor :name
       
         # The metric type, including its DNS name prefix. The type is not URL-encoded.
-        # All service defined metrics must be prefixed with the service name, in the
-        # format of `service name`/`relative metric name`, such as cloudsql.googleapis.
-        # com/database/cpu/utilization. The relative metric name must follow: Only upper
-        # and lower-case letters, digits, '/' and underscores '_' are allowed. The
-        # maximum number of characters allowed for the relative_metric_name is 100.All
-        # user-defined metric types have the DNS name custom.googleapis.com, external.
-        # googleapis.com, or logging.googleapis.com/user/.Metric types should use a
-        # natural hierarchical grouping. For example: "custom.googleapis.com/invoice/
-        # paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/
-        # http/server/response_latencies"
+        # All user-defined metric types have the DNS name custom.googleapis.com or
+        # external.googleapis.com. Metric types should use a natural hierarchical
+        # grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.
+        # googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/
+        # response_latencies"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2558,16 +2545,9 @@ module Google
       # name and a set of labels. For example, the monitored resource descriptor for
       # Google Compute Engine VM instances has a type of "gce_instance" and specifies
       # the use of the labels "instance_id" and "zone" to identify particular VM
-      # instances.Different services can support different monitored resource types.
-      # The following are specific rules to service defined monitored resources for
-      # Monitoring and Logging: The type, display_name, description, labels and
-      # launch_stage fields are all required. The first label of the monitored
-      # resource descriptor must be resource_container. There are legacy monitored
-      # resource descritptors start with project_id. It must include a location label.
-      # Maximum of default 5 service defined monitored resource descriptors is allowed
-      # per service. Maximum of default 10 labels per monitored resource is allowed.
-      # The default maximum limit can be overridden. Please follow https://cloud.
-      # google.com/monitoring/quotas
+      # instances.Different APIs can support different monitored resource types. APIs
+      # generally provide a list method that returns the monitored resource
+      # descriptors used by the API.
       class MonitoredResourceDescriptor
         include Google::Apis::Core::Hashable
       
@@ -2585,11 +2565,8 @@ module Google
         attr_accessor :display_name
       
         # Required. A set of labels used to describe instances of this monitored
-        # resource type. The label key name must follow: Only upper and lower-case
-        # letters, digits and underscores (_) are allowed. Label name must start with a
-        # letter or digit. The maximum length of a label name is 100 characters.For
-        # example, an individual Google Cloud SQL database is identified by values for
-        # the labels database_id and location.
+        # resource type. For example, an individual Google Cloud SQL database is
+        # identified by values for the labels "database_id" and "zone".
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
         attr_accessor :labels
@@ -2609,14 +2586,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The monitored resource type. For example, the type cloudsql_database
-        # represents databases in Google Cloud SQL.All service defined monitored
-        # resource types must be prefixed with the service name, in the format of `
-        # service name`/`relative resource name`. The relative resource name must follow:
-        # Only upper and lower-case letters and digits are allowed. It must start with
-        # upper case character and is recommended to use Upper Camel Case style. The
-        # maximum number of characters allowed for the relative_resource_name is 100.
-        # Note there are legacy service monitored resources not following this rule.
+        # Required. The monitored resource type. For example, the type "
+        # cloudsql_database" represents databases in Google Cloud SQL.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3014,6 +2985,61 @@ module Google
         end
       end
       
+      # The position of a byte within the text.
+      class Position
+        include Google::Apis::Core::Hashable
+      
+        # The column within the line, starting with 1, where the byte is positioned.
+        # This is a byte index even though the text is UTF-8.
+        # Corresponds to the JSON property `column`
+        # @return [Fixnum]
+        attr_accessor :column
+      
+        # The line, starting with 1, where the byte is positioned.
+        # Corresponds to the JSON property `line`
+        # @return [Fixnum]
+        attr_accessor :line
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @line = args[:line] if args.key?(:line)
+        end
+      end
+      
+      # An error associated with a query in the time series query language format.
+      class QueryError
+        include Google::Apis::Core::Hashable
+      
+        # A locator for text. Indicates a particular part of the text of a request or of
+        # an object referenced in the request.For example, suppose the request field
+        # text contains:text: "The quick brown fox jumps over the lazy dog."Then the
+        # locator:source: "text" start_position ` line: 1 column: 17 ` end_position `
+        # line: 1 column: 19 `refers to the part of the text: "fox".
+        # Corresponds to the JSON property `locator`
+        # @return [Google::Apis::MonitoringV3::TextLocator]
+        attr_accessor :locator
+      
+        # The error message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locator = args[:locator] if args.key?(:locator)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # The QueryTimeSeries request.
       class QueryTimeSeriesRequest
         include Google::Apis::Core::Hashable
@@ -3075,6 +3101,11 @@ module Google
         # @return [Google::Apis::MonitoringV3::TimeSeriesDescriptor]
         attr_accessor :time_series_descriptor
       
+        # Warnings about query, includes unit errors.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::MonitoringV3::QueryError>]
+        attr_accessor :warnings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3085,6 +3116,7 @@ module Google
           @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
           @time_series_data = args[:time_series_data] if args.key?(:time_series_data)
           @time_series_descriptor = args[:time_series_descriptor] if args.key?(:time_series_descriptor)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -3496,6 +3528,66 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # A locator for text. Indicates a particular part of the text of a request or of
+      # an object referenced in the request.For example, suppose the request field
+      # text contains:text: "The quick brown fox jumps over the lazy dog."Then the
+      # locator:source: "text" start_position ` line: 1 column: 17 ` end_position `
+      # line: 1 column: 19 `refers to the part of the text: "fox".
+      class TextLocator
+        include Google::Apis::Core::Hashable
+      
+        # The position of a byte within the text.
+        # Corresponds to the JSON property `endPosition`
+        # @return [Google::Apis::MonitoringV3::Position]
+        attr_accessor :end_position
+      
+        # A locator for text. Indicates a particular part of the text of a request or of
+        # an object referenced in the request.For example, suppose the request field
+        # text contains:text: "The quick brown fox jumps over the lazy dog."Then the
+        # locator:source: "text" start_position ` line: 1 column: 17 ` end_position `
+        # line: 1 column: 19 `refers to the part of the text: "fox".
+        # Corresponds to the JSON property `nestedLocator`
+        # @return [Google::Apis::MonitoringV3::TextLocator]
+        attr_accessor :nested_locator
+      
+        # When nested_locator is set, this field gives the reason for the nesting.
+        # Usually, the reason is a macro invocation. In that case, the macro name (
+        # including the leading '@') signals the location of the macro call in the text
+        # and a macro argument name (including the leading '$') signals the location of
+        # the macro argument inside the macro body that got substituted away.
+        # Corresponds to the JSON property `nestingReason`
+        # @return [String]
+        attr_accessor :nesting_reason
+      
+        # The source of the text. The source may be a field in the request, in which
+        # case its format is the format of the google.rpc.BadRequest.FieldViolation.
+        # field field in https://cloud.google.com/apis/design/errors#error_details. It
+        # may also be be a source other than the request field (e.g. a macro definition
+        # referenced in the text of the query), in which case this is the name of the
+        # source (e.g. the macro name).
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # The position of a byte within the text.
+        # Corresponds to the JSON property `startPosition`
+        # @return [Google::Apis::MonitoringV3::Position]
+        attr_accessor :start_position
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_position = args[:end_position] if args.key?(:end_position)
+          @nested_locator = args[:nested_locator] if args.key?(:nested_locator)
+          @nesting_reason = args[:nesting_reason] if args.key?(:nesting_reason)
+          @source = args[:source] if args.key?(:source)
+          @start_position = args[:start_position] if args.key?(:start_position)
         end
       end
       
