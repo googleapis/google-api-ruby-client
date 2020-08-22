@@ -379,9 +379,9 @@ module Google
       class FirebaseAppInfo
         include Google::Apis::Core::Hashable
       
-        # Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`.
-        # This identifier should be treated as an opaque token, as the data format is
-        # not specified.
+        # Output only. Immutable. The globally unique, Firebase-assigned identifier for
+        # the `WebApp`. This identifier should be treated as an opaque token, as the
+        # data format is not specified.
         # Corresponds to the JSON property `appId`
         # @return [String]
         attr_accessor :app_id
@@ -398,6 +398,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Immutable. The platform-specific identifier of the App. *Note:*
+        # For most use cases, use `appId`, which is the canonical, globally unique
+        # identifier for referencing an App. This string is derived from a native
+        # identifier for each platform: `packageName` for an `AndroidApp`, `bundleId`
+        # for an `IosApp`, and `webId` for a `WebApp`. Its contents should be treated as
+        # opaque, as the native identifier format may change as platforms evolve. This
+        # string is only unique within a `FirebaseProject` and its associated Apps.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
         # The platform of the Firebase App.
         # Corresponds to the JSON property `platform`
         # @return [String]
@@ -412,6 +423,7 @@ module Google
           @app_id = args[:app_id] if args.key?(:app_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @namespace = args[:namespace] if args.key?(:namespace)
           @platform = args[:platform] if args.key?(:platform)
         end
       end
@@ -1178,6 +1190,15 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`
+        # . This identifier is only used to populate the `namespace` value for the `
+        # WebApp`. For most use cases, use `appId` to identify or reference the App. The
+        # `webId` value is only unique within a `FirebaseProject` and its associated
+        # Apps.
+        # Corresponds to the JSON property `webId`
+        # @return [String]
+        attr_accessor :web_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1189,6 +1210,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @web_id = args[:web_id] if args.key?(:web_id)
         end
       end
       

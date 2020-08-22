@@ -22,6 +22,12 @@ module Google
   module Apis
     module FileV1beta1
       
+      class Backup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBackupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,10 +154,33 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestoreInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Backup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_gb, :numeric_string => true, as: 'capacityGb'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :download_bytes, :numeric_string => true, as: 'downloadBytes'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :source_file_share, as: 'sourceFileShare'
+          property :source_instance, as: 'sourceInstance'
+          property :source_instance_tier, as: 'sourceInstanceTier'
+          property :state, as: 'state'
+          property :storage_bytes, :numeric_string => true, as: 'storageBytes'
+        end
       end
       
       class CancelOperationRequest
@@ -167,6 +202,7 @@ module Google
           property :name, as: 'name'
           collection :nfs_export_options, as: 'nfsExportOptions', class: Google::Apis::FileV1beta1::NfsExportOptions, decorator: Google::Apis::FileV1beta1::NfsExportOptions::Representation
       
+          property :source_backup, as: 'sourceBackup'
         end
       end
       
@@ -279,6 +315,16 @@ module Google
         end
       end
       
+      class ListBackupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backups, as: 'backups', class: Google::Apis::FileV1beta1::Backup, decorator: Google::Apis::FileV1beta1::Backup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -361,6 +407,15 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class RestoreInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_share, as: 'fileShare'
+          property :source_backup, as: 'sourceBackup'
+          property :source_snapshot, as: 'sourceSnapshot'
         end
       end
       

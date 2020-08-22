@@ -313,6 +313,7 @@ module Google
           property :app_id, as: 'appId'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :namespace, as: 'namespace'
           property :platform, as: 'platform'
         end
       end
@@ -511,6 +512,7 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :project_id, as: 'projectId'
+          property :web_id, as: 'webId'
         end
       end
       

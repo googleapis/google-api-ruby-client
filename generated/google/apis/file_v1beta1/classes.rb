@@ -22,6 +22,93 @@ module Google
   module Apis
     module FileV1beta1
       
+      # A Cloud Filestore backup.
+      class Backup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Capacity of the backup. This would be the size of the file share
+        # when the backup is restored.
+        # Corresponds to the JSON property `capacityGb`
+        # @return [Fixnum]
+        attr_accessor :capacity_gb
+      
+        # Output only. The time when the backup was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # A description of the backup with 2048 characters or less. Requests with longer
+        # descriptions will be rejected.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Amount of bytes that will be downloaded if the backup is restored
+        # Corresponds to the JSON property `downloadBytes`
+        # @return [Fixnum]
+        attr_accessor :download_bytes
+      
+        # Resource labels to represent user provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The resource name of the backup, in the format projects/`
+        # project_id`/locations/`location_id`/backups/`backup_id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Name of the file share in the source Cloud Filestore instance that the backup
+        # is created from.
+        # Corresponds to the JSON property `sourceFileShare`
+        # @return [String]
+        attr_accessor :source_file_share
+      
+        # The resource name of the source Cloud Filestore instance, in the format
+        # projects/`project_id`/locations/`location_id`/instances/`instance_id`, used to
+        # create this backup.
+        # Corresponds to the JSON property `sourceInstance`
+        # @return [String]
+        attr_accessor :source_instance
+      
+        # Output only. The service tier of the source Cloud Filestore instance that this
+        # backup is created from.
+        # Corresponds to the JSON property `sourceInstanceTier`
+        # @return [String]
+        attr_accessor :source_instance_tier
+      
+        # Output only. The backup state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The size of the storage used by the backup. As backups share
+        # storage, this number is expected to change with backup creation/deletion.
+        # Corresponds to the JSON property `storageBytes`
+        # @return [Fixnum]
+        attr_accessor :storage_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @source_file_share = args[:source_file_share] if args.key?(:source_file_share)
+          @source_instance = args[:source_instance] if args.key?(:source_instance)
+          @source_instance_tier = args[:source_instance_tier] if args.key?(:source_instance_tier)
+          @state = args[:state] if args.key?(:state)
+          @storage_bytes = args[:storage_bytes] if args.key?(:storage_bytes)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -72,6 +159,12 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::NfsExportOptions>]
         attr_accessor :nfs_export_options
       
+        # The resource name of the backup, in the format projects/`project_id`/locations/
+        # `location_id`/backups/`backup_id`, that this file share has been restored from.
+        # Corresponds to the JSON property `sourceBackup`
+        # @return [String]
+        attr_accessor :source_backup
+      
         def initialize(**args)
            update!(**args)
         end
@@ -81,6 +174,7 @@ module Google
           @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
           @name = args[:name] if args.key?(:name)
           @nfs_export_options = args[:nfs_export_options] if args.key?(:nfs_export_options)
+          @source_backup = args[:source_backup] if args.key?(:source_backup)
         end
       end
       
@@ -547,6 +641,42 @@ module Google
         end
       end
       
+      # ListBackupsResponse is the result of ListBackupsRequest.
+      class ListBackupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of backups in the project for the specified location. If the `location`
+        # value in the request is "-", the response contains a list of backups from all
+        # locations. If any location is unreachable, the response will only return
+        # backups in reachable locations and the "unreachable" field will be populated
+        # with a list of unreachable locations.
+        # Corresponds to the JSON property `backups`
+        # @return [Array<Google::Apis::FileV1beta1::Backup>]
+        attr_accessor :backups
+      
+        # The token you can use to retrieve the next page of results. Not returned if
+        # there are no more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backups = args[:backups] if args.key?(:backups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # ListInstancesResponse is the result of ListInstancesRequest.
       class ListInstancesResponse
         include Google::Apis::Core::Hashable
@@ -899,6 +1029,41 @@ module Google
           @status_detail = args[:status_detail] if args.key?(:status_detail)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # RestoreInstanceRequest restores an existing instances's file share from a
+      # snapshot or backup.
+      class RestoreInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the file share in the Cloud Filestore instance that the
+        # snapshot is being restored to.
+        # Corresponds to the JSON property `fileShare`
+        # @return [String]
+        attr_accessor :file_share
+      
+        # The resource name of the backup, in the format projects/`project_id`/locations/
+        # `location_id`/backups/`backup_id`.
+        # Corresponds to the JSON property `sourceBackup`
+        # @return [String]
+        attr_accessor :source_backup
+      
+        # The resource name of the snapshot, in the format projects/`project_id`/
+        # locations/`location_id`/snapshots/`snapshot_id`.
+        # Corresponds to the JSON property `sourceSnapshot`
+        # @return [String]
+        attr_accessor :source_snapshot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_share = args[:file_share] if args.key?(:file_share)
+          @source_backup = args[:source_backup] if args.key?(:source_backup)
+          @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
         end
       end
       

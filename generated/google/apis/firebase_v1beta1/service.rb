@@ -493,6 +493,12 @@ module Google
         #   The parent FirebaseProject for which to list Apps, in the format: projects/
         #   PROJECT_IDENTIFIER Refer to the `FirebaseProject` [`name`](../projects#
         #   FirebaseProject.FIELDS.name) field for details about PROJECT_IDENTIFIER values.
+        # @param [String] filter
+        #   A query string compatible with Google's [AIP-160](https://google.aip.dev/160)
+        #   standard. Use any of the following fields in a query: * [`appId`](../projects.
+        #   apps#FirebaseProjectInfo.FIELDS.app_id) * [`namespace`](../projects.apps#
+        #   FirebaseProjectInfo.FIELDS.namespace) * [`platform`](../projects.apps#
+        #   FirebaseProjectInfo.FIELDS.platform)
         # @param [Fixnum] page_size
         #   The maximum number of Apps to return in the response. The server may return
         #   fewer than this value at its discretion. If no value is specified (or too
@@ -518,11 +524,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_apps(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_apps(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}:searchApps', options)
           command.response_representation = Google::Apis::FirebaseV1beta1::SearchFirebaseAppsResponse::Representation
           command.response_class = Google::Apis::FirebaseV1beta1::SearchFirebaseAppsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
