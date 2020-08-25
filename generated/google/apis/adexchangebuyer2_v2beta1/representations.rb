@@ -1099,6 +1099,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bid_count, as: 'bidCount', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
       
+          property :detail, as: 'detail'
           property :detail_id, as: 'detailId'
           property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
       

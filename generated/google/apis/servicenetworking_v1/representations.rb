@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPeeredDnsDomainsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1013,6 +1019,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ServicenetworkingV1::Operation, decorator: Google::Apis::ServicenetworkingV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListPeeredDnsDomainsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :peered_dns_domains, as: 'peeredDnsDomains', class: Google::Apis::ServicenetworkingV1::PeeredDnsDomain, decorator: Google::Apis::ServicenetworkingV1::PeeredDnsDomain::Representation
       
         end
       end

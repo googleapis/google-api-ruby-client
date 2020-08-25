@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChannelElement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListChannelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +359,30 @@ module Google
       end
       
       class ContentRating
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Endscreen
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndscreenElement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndscreenElementSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndscreenGetResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -509,6 +539,18 @@ module Google
       end
       
       class LinkCardUploadedImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LinkElement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LinkElementUploadedImage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -754,6 +796,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MerchandiseElement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MonitorStreamInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -779,6 +827,12 @@ module Google
       end
       
       class PlaylistContentDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PlaylistElement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -905,6 +959,12 @@ module Google
       end
       
       class SponsorSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubscribeElement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1091,6 +1151,12 @@ module Google
       end
       
       class VideoContentDetailsRegionRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VideoElement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1596,6 +1662,14 @@ module Google
         end
       end
       
+      class ChannelElement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_id, as: 'channelId'
+          property :custom_message, as: 'customMessage'
+        end
+      end
+      
       class ListChannelsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1958,6 +2032,59 @@ module Google
         end
       end
       
+      class Endscreen
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :elements, as: 'elements', class: Google::Apis::YoutubeV3::EndscreenElement, decorator: Google::Apis::YoutubeV3::EndscreenElement::Representation
+      
+          property :start_offset, as: 'startOffset'
+        end
+      end
+      
+      class EndscreenElement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::EndscreenElementSnippet, decorator: Google::Apis::YoutubeV3::EndscreenElementSnippet::Representation
+      
+        end
+      end
+      
+      class EndscreenElementSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_element, as: 'channelElement', class: Google::Apis::YoutubeV3::ChannelElement, decorator: Google::Apis::YoutubeV3::ChannelElement::Representation
+      
+          property :duration, as: 'duration'
+          property :left, as: 'left'
+          property :link_element, as: 'linkElement', class: Google::Apis::YoutubeV3::LinkElement, decorator: Google::Apis::YoutubeV3::LinkElement::Representation
+      
+          property :merchandise_element, as: 'merchandiseElement', class: Google::Apis::YoutubeV3::MerchandiseElement, decorator: Google::Apis::YoutubeV3::MerchandiseElement::Representation
+      
+          property :playlist_element, as: 'playlistElement', class: Google::Apis::YoutubeV3::PlaylistElement, decorator: Google::Apis::YoutubeV3::PlaylistElement::Representation
+      
+          property :start_offset, as: 'startOffset'
+          property :subscribe_element, as: 'subscribeElement', class: Google::Apis::YoutubeV3::SubscribeElement, decorator: Google::Apis::YoutubeV3::SubscribeElement::Representation
+      
+          property :top, as: 'top'
+          property :video_element, as: 'videoElement', class: Google::Apis::YoutubeV3::VideoElement, decorator: Google::Apis::YoutubeV3::VideoElement::Representation
+      
+          property :width, as: 'width'
+        end
+      end
+      
+      class EndscreenGetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :kind, as: 'kind'
+          property :resource, as: 'resource', class: Google::Apis::YoutubeV3::Endscreen, decorator: Google::Apis::YoutubeV3::Endscreen::Representation
+      
+        end
+      end
+      
       class Entity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2242,6 +2369,27 @@ module Google
       end
       
       class LinkCardUploadedImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_file, as: 'imageFile'
+          property :version, :numeric_string => true, as: 'version'
+        end
+      end
+      
+      class LinkElement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :call_to_action_type, as: 'callToActionType'
+          property :custom_link_text, as: 'customLinkText'
+          property :external_image_url, as: 'externalImageUrl'
+          property :target_url, as: 'targetUrl'
+          property :uploaded_image, as: 'uploadedImage', class: Google::Apis::YoutubeV3::LinkElementUploadedImage, decorator: Google::Apis::YoutubeV3::LinkElementUploadedImage::Representation
+      
+          property :website_type, as: 'websiteType'
+        end
+      end
+      
+      class LinkElementUploadedImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image_file, as: 'imageFile'
@@ -2742,6 +2890,12 @@ module Google
         end
       end
       
+      class MerchandiseElement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class MonitorStreamInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2791,6 +2945,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :item_count, as: 'itemCount'
+        end
+      end
+      
+      class PlaylistElement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :playlist_id, as: 'playlistId'
         end
       end
       
@@ -3047,6 +3208,12 @@ module Google
           property :sponsor_details, as: 'sponsorDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
       
           property :sponsor_since, as: 'sponsorSince'
+        end
+      end
+      
+      class SubscribeElement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -3431,6 +3598,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed, as: 'allowed'
           collection :blocked, as: 'blocked'
+        end
+      end
+      
+      class VideoElement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :playback_start_offset, as: 'playbackStartOffset'
+          property :video_id, as: 'videoId'
+          property :video_type, as: 'videoType'
         end
       end
       

@@ -1048,7 +1048,13 @@ module Google
         # @return [String]
         attr_accessor :additional_data
       
-        # Controls personal usage on devices provisioned using this enrollment token.
+        # Controls whether personal usage is allowed on a device provisioned with this
+        # enrollment token.For company-owned devices: Enabling personal usage allows the
+        # user to set up a work profile on the device. Disabling personal usage requires
+        # the user provision the device as a fully managed device.For personally-owned
+        # devices: Enabling personal usage allows the user to set up a work profile on
+        # the device. Disabling personal usage will prevent the device from provisioning.
+        # Personal usage cannot be disabled on personally-owned device.
         # Corresponds to the JSON property `allowPersonalUsage`
         # @return [String]
         attr_accessor :allow_personal_usage
@@ -2220,8 +2226,8 @@ module Google
         end
       end
       
-      # Policies for apps on the personal profile of a Corporate Owned Personally
-      # Enabled device.
+      # Policies for apps on the personal profile of a company-owned device with a
+      # work profile.
       class PersonalApplicationPolicy
         include Google::Apis::Core::Hashable
       
@@ -2246,8 +2252,8 @@ module Google
         end
       end
       
-      # Policies controlling personal usage on a Corporate Owned Personally Enabled
-      # device.
+      # Policies controlling personal usage on a company-owned device with a work
+      # profile.
       class PersonalUsagePolicies
         include Google::Apis::Core::Hashable
       
@@ -2636,8 +2642,8 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::PersistentPreferredActivity>]
         attr_accessor :persistent_preferred_activities
       
-        # Policies controlling personal usage on a Corporate Owned Personally Enabled
-        # device.
+        # Policies controlling personal usage on a company-owned device with a work
+        # profile.
         # Corresponds to the JSON property `personalUsagePolicies`
         # @return [Google::Apis::AndroidmanagementV1::PersonalUsagePolicies]
         attr_accessor :personal_usage_policies
@@ -3227,6 +3233,11 @@ module Google
         # @return [String]
         attr_accessor :security_patch_level
       
+        # Information about a potential pending system update.
+        # Corresponds to the JSON property `systemUpdateInfo`
+        # @return [Google::Apis::AndroidmanagementV1::SystemUpdateInfo]
+        attr_accessor :system_update_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3243,6 +3254,7 @@ module Google
           @device_kernel_version = args[:device_kernel_version] if args.key?(:device_kernel_version)
           @primary_language_code = args[:primary_language_code] if args.key?(:primary_language_code)
           @security_patch_level = args[:security_patch_level] if args.key?(:security_patch_level)
+          @system_update_info = args[:system_update_info] if args.key?(:system_update_info)
         end
       end
       
@@ -3414,6 +3426,33 @@ module Google
           @freeze_periods = args[:freeze_periods] if args.key?(:freeze_periods)
           @start_minutes = args[:start_minutes] if args.key?(:start_minutes)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Information about a potential pending system update.
+      class SystemUpdateInfo
+        include Google::Apis::Core::Hashable
+      
+        # The time when the update was first available. A zero value indicates that this
+        # field is not set. This field is set only if an update is available (that is,
+        # updateStatus is neither UPDATE_STATUS_UNKNOWN nor UP_TO_DATE).
+        # Corresponds to the JSON property `updateReceivedTime`
+        # @return [String]
+        attr_accessor :update_received_time
+      
+        # The status of an update: whether an update exists and what type it is.
+        # Corresponds to the JSON property `updateStatus`
+        # @return [String]
+        attr_accessor :update_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_received_time = args[:update_received_time] if args.key?(:update_received_time)
+          @update_status = args[:update_status] if args.key?(:update_status)
         end
       end
       

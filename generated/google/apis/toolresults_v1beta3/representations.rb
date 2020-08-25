@@ -887,6 +887,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crashed, as: 'crashed'
+          property :device_out_of_memory, as: 'deviceOutOfMemory'
           property :failed_roboscript, as: 'failedRoboscript'
           property :not_installed, as: 'notInstalled'
           property :other_native_crash, as: 'otherNativeCrash'

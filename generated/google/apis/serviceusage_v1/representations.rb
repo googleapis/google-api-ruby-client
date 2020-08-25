@@ -931,6 +931,10 @@ module Google
       
           collection :endpoints, as: 'endpoints', class: Google::Apis::ServiceusageV1::Endpoint, decorator: Google::Apis::ServiceusageV1::Endpoint::Representation
       
+          collection :monitored_resources, as: 'monitoredResources', class: Google::Apis::ServiceusageV1::MonitoredResourceDescriptor, decorator: Google::Apis::ServiceusageV1::MonitoredResourceDescriptor::Representation
+      
+          property :monitoring, as: 'monitoring', class: Google::Apis::ServiceusageV1::Monitoring, decorator: Google::Apis::ServiceusageV1::Monitoring::Representation
+      
           property :name, as: 'name'
           property :quota, as: 'quota', class: Google::Apis::ServiceusageV1::Quota, decorator: Google::Apis::ServiceusageV1::Quota::Representation
       

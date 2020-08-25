@@ -58,9 +58,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The time at which the event took place. For example, if the finding represents
-        # an open firewall it would capture the time the detector believes the firewall
-        # became open. The accuracy is determined by the detector.
+        # The time at which the event took place, or when an update to the finding
+        # occurred. For example, if the finding represents an open firewall it would
+        # capture the time the detector believes the firewall became open. The accuracy
+        # is determined by the detector. If the finding were to be resolved afterward,
+        # this time would reflect when the finding was resolved.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
@@ -351,9 +353,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The time at which the event took place. For example, if the finding represents
-        # an open firewall it would capture the time the detector believes the firewall
-        # became open. The accuracy is determined by the detector.
+        # The time at which the event took place, or when an update to the finding
+        # occurred. For example, if the finding represents an open firewall it would
+        # capture the time the detector believes the firewall became open. The accuracy
+        # is determined by the detector. If the finding were to be resolved afterward,
+        # this time would reflect when the finding was resolved.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time

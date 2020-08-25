@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/ad-experience-report/
     module AdexperiencereportV1
       VERSION = 'V1'
-      REVISION = '20200803'
+      REVISION = '20200823'
     end
   end
 end

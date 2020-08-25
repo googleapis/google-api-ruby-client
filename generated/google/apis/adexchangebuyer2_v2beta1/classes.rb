@@ -1724,8 +1724,18 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :bid_count
       
-        # The ID of the detail. The associated value can be looked up in the dictionary
-        # file corresponding to the DetailType in the response message.
+        # The ID of the detail, can be numeric or text. The associated value can be
+        # looked up in the dictionary file corresponding to the DetailType in the
+        # response message.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # Note: this field will be deprecated, use "detail" field instead. When "detail"
+        # field represents an integer value, this field is populated as the same integer
+        # value "detail" field represents, otherwise this field will be 0. The ID of the
+        # detail. The associated value can be looked up in the dictionary file
+        # corresponding to the DetailType in the response message.
         # Corresponds to the JSON property `detailId`
         # @return [Fixnum]
         attr_accessor :detail_id
@@ -1743,6 +1753,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bid_count = args[:bid_count] if args.key?(:bid_count)
+          @detail = args[:detail] if args.key?(:detail)
           @detail_id = args[:detail_id] if args.key?(:detail_id)
           @row_dimensions = args[:row_dimensions] if args.key?(:row_dimensions)
         end
@@ -3350,9 +3361,9 @@ module Google
       
       # Note: this resource requires whitelisting for access. Please contact your
       # account manager for access to Marketplace resources. Represents a publisher
-      # profile (https://support.google.com/admanager/answer/6035806?hl=en) in
-      # Marketplace. All fields are read only. All string fields are free-form text
-      # entered by the publisher unless noted otherwise.
+      # profile (https://support.google.com/admanager/answer/6035806) in Marketplace.
+      # All fields are read only. All string fields are free-form text entered by the
+      # publisher unless noted otherwise.
       class PublisherProfile
         include Google::Apis::Core::Hashable
       
@@ -3398,7 +3409,7 @@ module Google
         # have only one parent publisher profile, and can have multiple child profiles.
         # Publisher profiles for the same seller will have same value of field google.
         # ads.adexchange.buyer.v2beta1.PublisherProfile.seller. See https://support.
-        # google.com/admanager/answer/6035806?hl=en for details.
+        # google.com/admanager/answer/6035806 for details.
         # Corresponds to the JSON property `isParent`
         # @return [Boolean]
         attr_accessor :is_parent

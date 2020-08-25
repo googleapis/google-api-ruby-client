@@ -1880,6 +1880,25 @@ module Google
         end
       end
       
+      # Response to list peered DNS domains for a given connection.
+      class ListPeeredDnsDomainsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of peered DNS domains.
+        # Corresponds to the JSON property `peeredDnsDomains`
+        # @return [Array<Google::Apis::ServicenetworkingV1::PeeredDnsDomain>]
+        attr_accessor :peered_dns_domains
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @peered_dns_domains = args[:peered_dns_domains] if args.key?(:peered_dns_domains)
+        end
+      end
+      
       # A description of a log type. Example in YAML format: - name: library.
       # googleapis.com/activity_history description: The history of borrowing and
       # returning library items. display_name: Activity labels: - key: /customer_id

@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -866,6 +872,14 @@ module Google
         end
       end
       
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_type, as: 'nodeType'
+          property :nodes_zone, as: 'nodesZone'
+        end
+      end
+      
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -899,6 +913,8 @@ module Google
           property :min_cpu_platform, as: 'minCpuPlatform'
           property :network_access, as: 'networkAccess'
           property :reserved, as: 'reserved'
+          property :sole_tenancy, as: 'soleTenancy', class: Google::Apis::RemotebuildexecutionV1::GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig, decorator: Google::Apis::RemotebuildexecutionV1::GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig::Representation
+      
           property :vm_image, as: 'vmImage'
         end
       end

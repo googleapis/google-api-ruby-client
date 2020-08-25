@@ -26,7 +26,13 @@ module Google
     # @see https://cloud.google.com/billing/
     module CloudbillingV1
       VERSION = 'V1'
-      REVISION = '20200817'
+      REVISION = '20200821'
+
+      # View and manage your Google Cloud Platform billing accounts
+      AUTH_CLOUD_BILLING = 'https://www.googleapis.com/auth/cloud-billing'
+
+      # View your Google Cloud Platform billing accounts
+      AUTH_CLOUD_BILLING_READONLY = 'https://www.googleapis.com/auth/cloud-billing.readonly'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

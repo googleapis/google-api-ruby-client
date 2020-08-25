@@ -226,14 +226,14 @@ module Google
       class GoogleCloudApigeeV1AliasRevisionConfig
         include Google::Apis::Core::Hashable
       
-        # The location of the alias file, e.g. a GCS URI.
+        # Location of the alias file. For example, a Google Cloud Storage URI.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # The name of the alias revision included in the keystore. Must be of the form: '
+        # Name of the alias revision included in the keystore in the following format: `
         # organizations/`org`/environments/`env`/keystores/`keystore`/aliases/`alias`/
-        # revisions/`rev`'.
+        # revisions/`rev``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -344,6 +344,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The OperationGroup contains a list of configuration details associated with
+        # Apigee proxies or Remote services. Remote services are non-Apigee Edge proxies.
+        # eg, Istio-Envoy.
+        # Corresponds to the JSON property `operationGroup`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup]
+        attr_accessor :operation_group
+      
         # A comma-separated list of API proxy names to which this API product is bound.
         # By specifying API proxies, you can associate resources in the API product with
         # specific API proxies, preventing developers from accessing those resources
@@ -395,6 +402,7 @@ module Google
           @environments = args[:environments] if args.key?(:environments)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
+          @operation_group = args[:operation_group] if args.key?(:operation_group)
           @proxies = args[:proxies] if args.key?(:proxies)
           @quota = args[:quota] if args.key?(:quota)
           @quota_interval = args[:quota_interval] if args.key?(:quota_interval)
@@ -1263,17 +1271,17 @@ module Google
         end
       end
       
-      # A DataCollector and its configuration.
+      # Data collector and its configuration.
       class GoogleCloudApigeeV1DataCollectorConfig
         include Google::Apis::Core::Hashable
       
-        # The name of the data collector. Must be of the form 'organizations/`org`/
-        # datacollectors/`dc`'.
+        # Name of the data collector in the following format: `organizations/`org`/
+        # datacollectors/`datacollector``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The data type this DataCollector accepts.
+        # Data type accepted by the data collector.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1840,35 +1848,34 @@ module Google
       class GoogleCloudApigeeV1DeploymentConfig
         include Google::Apis::Core::Hashable
       
-        # Additional key-value metadata about the deployment.
+        # Additional key-value metadata for the deployment.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,String>]
         attr_accessor :attributes
       
-        # Base path where the application needs to be hosted. Default value is assumed
-        # to be "/".
+        # Base path where the application will be hosted. Defaults to "/".
         # Corresponds to the JSON property `basePath`
         # @return [String]
         attr_accessor :base_path
       
-        # The location of the proxy bundle, as a uri.
+        # Location of the API proxy bundle as a URI.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # The name of the API or shared flow revision to be deployed. Must be of the
-        # form 'organizations/`org`/apis/`api`/revisions/`rev`' or 'organizations/`org`/
-        # sharedflows/`sf`/revisions/`rev`'.
+        # Name of the API or shared flow revision to be deployed in the following format:
+        # `organizations/`org`/apis/`api`/revisions/`rev`` or `organizations/`org`/
+        # sharedflows/`sharedflow`/revisions/`rev``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The uid of the proxy revision.
+        # Unique ID of the API proxy revision.
         # Corresponds to the JSON property `proxyUid`
         # @return [String]
         attr_accessor :proxy_uid
       
-        # A unique id that will only change if the deployment is deleted and recreated.
+        # Unique ID. The ID will only change if the deployment is deleted and recreated.
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -2264,12 +2271,12 @@ module Google
       class GoogleCloudApigeeV1EnvironmentConfig
         include Google::Apis::Core::Hashable
       
-        # The time at which this environment config was created.
+        # Time that the environment configuration was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # The list of Data Collectors used by deployments in the environment.
+        # List of data collectors used by the deployments in the environment.
         # Corresponds to the JSON property `dataCollectors`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataCollectorConfig>]
         attr_accessor :data_collectors
@@ -2279,72 +2286,71 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugMask]
         attr_accessor :debug_mask
       
-        # A list of deployments in the environment
+        # List of deployments in the environment.
         # Corresponds to the JSON property `deployments`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1DeploymentConfig>]
         attr_accessor :deployments
       
-        # Feature flags inherited from the org and environment parents.
+        # Feature flags inherited from the organization and environment.
         # Corresponds to the JSON property `featureFlags`
         # @return [Hash<String,String>]
         attr_accessor :feature_flags
       
-        # A list of flow hooks in the environment.
+        # List of flow hooks in the environment.
         # Corresponds to the JSON property `flowhooks`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1FlowHookConfig>]
         attr_accessor :flowhooks
       
-        # A list of keystores in the environment.
+        # List of keystores in the environment.
         # Corresponds to the JSON property `keystores`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeystoreConfig>]
         attr_accessor :keystores
       
-        # The name of the environment config. Must be of the form 'organizations/`org`/
-        # environments/`env`/configs/`config_id`
+        # Name of the environment configuration in the following format: `organizations/`
+        # org`/environments/`env`/configs/`config``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # This field can be used by the control plane to add some context information
-        # about itself. This information could help detect the source of the document
-        # during diagnostics and debugging.
+        # Used by the Control plane to add context information to help detect the source
+        # of the document during diagnostics and debugging.
         # Corresponds to the JSON property `provider`
         # @return [String]
         attr_accessor :provider
       
-        # Name of the pubsub topic for this environment.
+        # Name of the PubSub topic for the environment.
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
       
-        # A list of resource references in the environment.
+        # List of resource references in the environment.
         # Corresponds to the JSON property `resourceReferences`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ReferenceConfig>]
         attr_accessor :resource_references
       
-        # A list of resource versions in the environment.
+        # List of resource versions in the environment.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ResourceConfig>]
         attr_accessor :resources
       
-        # Revision id that defines the ordering on the environment config. The higher
-        # the revision, the more recently the configuration was deployed.
+        # Revision ID of the environment configuration. The higher the value, the more
+        # recently the configuration was deployed.
         # Corresponds to the JSON property `revisionId`
         # @return [Fixnum]
         attr_accessor :revision_id
       
-        # DEPRECATED: use revision_id
+        # DEPRECATED: Use revision_id.
         # Corresponds to the JSON property `sequenceNumber`
         # @return [Fixnum]
         attr_accessor :sequence_number
       
-        # A list of target servers in the environment. Disabled target servers are not
-        # included.
+        # List of target servers in the environment. Disabled target servers are not
+        # displayed.
         # Corresponds to the JSON property `targets`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServerConfig>]
         attr_accessor :targets
       
-        # A unique id for the environment config that will only change if the
+        # Unique ID for the environment configuration. The ID will only change if the
         # environment is deleted and recreated.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -2667,22 +2673,23 @@ module Google
       class GoogleCloudApigeeV1FlowHookConfig
         include Google::Apis::Core::Hashable
       
-        # Should the flow abort after an error in the flow hook. Should default to true
-        # if unset.
+        # Flag that specifies whether the flow should abort after an error in the flow
+        # hook. Defaults to `true` (continue on error).
         # Corresponds to the JSON property `continueOnError`
         # @return [Boolean]
         attr_accessor :continue_on_error
         alias_method :continue_on_error?, :continue_on_error
       
-        # The name of the flow hook. Must be of the form 'organizations/`org`/
-        # environments/`env`/flowhooks/`point`'. Known points are PreProxyFlowHook,
-        # PostProxyFlowHook, PreTargetFlowHook, and PostTargetFlowHook
+        # Name of the flow hook in the following format: `organizations/`org`/
+        # environments/`env`/flowhooks/`point``. Valid `point` values include: `
+        # PreProxyFlowHook`, `PostProxyFlowHook`, `PreTargetFlowHook`, and `
+        # PostTargetFlowHook`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The name of the shared flow to invoke. Must be of the form 'organizations/`org`
-        # /sharedflows/`sharedflow`'.
+        # Name of the shared flow to invoke in the following format: `organizations/`org`
+        # /sharedflows/`sharedflow``
         # Corresponds to the JSON property `sharedFlowName`
         # @return [String]
         attr_accessor :shared_flow_name
@@ -2959,13 +2966,13 @@ module Google
       class GoogleCloudApigeeV1KeyAliasReference
         include Google::Apis::Core::Hashable
       
-        # The alias id. Must exist in the keystore referred to by reference.
+        # Alias ID. Must exist in the keystore referred to by the reference.
         # Corresponds to the JSON property `aliasId`
         # @return [String]
         attr_accessor :alias_id
       
-        # The reference name. Must be of the form: organizations/`org`/environments/`env`
-        # /references/`ref`.
+        # Reference name in the following format: `organizations/`org`/environments/`env`
+        # /references/`reference``
         # Corresponds to the JSON property `reference`
         # @return [String]
         attr_accessor :reference
@@ -3042,8 +3049,8 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1AliasRevisionConfig>]
         attr_accessor :aliases
       
-        # The resource name. Must be of the form: 'organizations/`org`/environments/`env`
-        # /keystores/`keystore`'.
+        # Resource name in the following format: `organizations/`org`/environments/`env`/
+        # keystores/`keystore``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3510,6 +3517,88 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # OperationConfig binds the resources in a proxy or remote service with the
+      # allowed REST methods and its associated quota enforcement.
+      class GoogleCloudApigeeV1OperationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. api_source represents either a proxy or remote service name for
+        # which the resources, methods and quota are associated with.
+        # Corresponds to the JSON property `apiSource`
+        # @return [String]
+        attr_accessor :api_source
+      
+        # custom attribute associated with the operation.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
+        attr_accessor :attributes
+      
+        # methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/
+        # rfc2616-sec9.html. When none specified, all verb types are allowed.
+        # Corresponds to the JSON property `methods`
+        # @return [Array<String>]
+        attr_accessor :methods_prop
+      
+        # Quota contains the essential parameters needed that can be applied on a proxy/
+        # remote service, resources and methods combination associated with this API
+        # product. While setting of Quota is optional, setting it prevents requests from
+        # exceeding the provisioned parameters.
+        # Corresponds to the JSON property `quota`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota]
+        attr_accessor :quota
+      
+        # Required. resources represents a list of REST resource path associated with
+        # the proxy/remote service.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<String>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_source = args[:api_source] if args.key?(:api_source)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
+          @quota = args[:quota] if args.key?(:quota)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # The OperationGroup contains a list of configuration details associated with
+      # Apigee proxies or Remote services. Remote services are non-Apigee Edge proxies.
+      # eg, Istio-Envoy.
+      class GoogleCloudApigeeV1OperationGroup
+        include Google::Apis::Core::Hashable
+      
+        # Identfies whether the configuration is for Apigee proxy or a remote service.
+        # Possible values are "proxy" and "remote_service". If none specified, the
+        # default is "proxy". "proxy" is used when Apigee proxies are associated with
+        # the API product. "remote_service" is used when non-Apigee proxy like Envoy is
+        # used, and is associated with the API product.
+        # Corresponds to the JSON property `operationConfigType`
+        # @return [String]
+        attr_accessor :operation_config_type
+      
+        # Required. A list of OperationConfig for either Apigee proxies or other other
+        # remote services, that are associated with this API product.
+        # Corresponds to the JSON property `operationConfigs`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationConfig>]
+        attr_accessor :operation_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_config_type = args[:operation_config_type] if args.key?(:operation_config_type)
+          @operation_configs = args[:operation_configs] if args.key?(:operation_configs)
         end
       end
       
@@ -4117,6 +4206,44 @@ module Google
         end
       end
       
+      # Quota contains the essential parameters needed that can be applied on a proxy/
+      # remote service, resources and methods combination associated with this API
+      # product. While setting of Quota is optional, setting it prevents requests from
+      # exceeding the provisioned parameters.
+      class GoogleCloudApigeeV1Quota
+        include Google::Apis::Core::Hashable
+      
+        # Required. The time interval over which the number of request messages is
+        # calculated.
+        # Corresponds to the JSON property `interval`
+        # @return [String]
+        attr_accessor :interval
+      
+        # Required. Limit represents the upper bound count allowed for the time interval
+        # and time unit specified. Requests exceeding this limit will get rejected.
+        # Corresponds to the JSON property `limit`
+        # @return [String]
+        attr_accessor :limit
+      
+        # The time unit defined for the `interval`. Valid values include minute, hour,
+        # day, or month. The default value is empty. If limit and interval are valid,
+        # the default value is "hour".
+        # Corresponds to the JSON property `timeUnit`
+        # @return [String]
+        attr_accessor :time_unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
+          @limit = args[:limit] if args.key?(:limit)
+          @time_unit = args[:time_unit] if args.key?(:time_unit)
+        end
+      end
+      
       # A Reference configuration. References must refer to a keystore that also
       # exists in the parent environment.
       class GoogleCloudApigeeV1Reference
@@ -4163,15 +4290,15 @@ module Google
       class GoogleCloudApigeeV1ReferenceConfig
         include Google::Apis::Core::Hashable
       
-        # The name of the reference. Must be of the form 'organizations/`org`/
-        # environments/`env`/references/`ref`'.
+        # Name of the reference in the following format: `organizations/`org`/
+        # environments/`env`/references/`reference``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The name of the referred resource. Only references to keystore resources are
-        # supported. Must be of the form 'organizations/`org`/environments/`env`/
-        # keystores/`ks`'.
+        # Name of the referenced resource in the following format: `organizations/`org`/
+        # environments/`env`/keystores/`keystore`` Only references to keystore resources
+        # are supported.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -4263,14 +4390,14 @@ module Google
       class GoogleCloudApigeeV1ResourceConfig
         include Google::Apis::Core::Hashable
       
-        # The location of the resource as a URI.
+        # Location of the resource as a URI.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # The resource name. Only environment-scoped resource files are supported. Must
-        # be of the form 'organizations/`org`/environments/`env`/resourcefiles/`type`/`
-        # file`/revisions/`rev`'.
+        # Resource name in the following format: `organizations/`org`/environments/`env`/
+        # resourcefiles/`type`/`file`/revisions/`rev`` Only environment-scoped resource
+        # files are supported.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4994,23 +5121,23 @@ module Google
       class GoogleCloudApigeeV1TargetServerConfig
         include Google::Apis::Core::Hashable
       
-        # Target host name.
+        # Host name of the target server.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
       
-        # The target server revision name. Must be of the form 'organizations/`org`/
-        # environments/`env`/targetservers/`ts_id`/revisions/`rev`'.
+        # Target server revision name in the following format: `organizations/`org`/
+        # environments/`env`/targetservers/`targetserver`/revisions/`rev``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Target port.
+        # Port number for the target server.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
       
-        # TLS settings for the target.
+        # TLS settings for the target server.
         # Corresponds to the JSON property `tlsInfo`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TlsInfoConfig]
         attr_accessor :tls_info
@@ -5162,54 +5289,57 @@ module Google
       class GoogleCloudApigeeV1TlsInfoConfig
         include Google::Apis::Core::Hashable
       
-        # Whitelist of supported ciphers.
+        # List of ciphers that are granted access.
         # Corresponds to the JSON property `ciphers`
         # @return [Array<String>]
         attr_accessor :ciphers
       
-        # Indicates if client auth is enabled for the target. Enables two-way TLS.
+        # Flag that specifies whether client-side authentication is enabled for the
+        # target server. Enables two-way TLS.
         # Corresponds to the JSON property `clientAuthEnabled`
         # @return [Boolean]
         attr_accessor :client_auth_enabled
         alias_method :client_auth_enabled?, :client_auth_enabled
       
-        # Common name to validate the target against.
+        # Common name to validate the target server against.
         # Corresponds to the JSON property `commonName`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CommonNameConfig]
         attr_accessor :common_name
       
-        # Enables one-way TLS.
+        # Flag that specifies whether one-way TLS is enabled. Set to `true` to enable
+        # one-way TLS.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
-        # If true, ignore TLS certificate validation errors.
+        # Flag that specifies whether to ignore TLS certificate validation errors. Set
+        # to `true` to ignore errors.
         # Corresponds to the JSON property `ignoreValidationErrors`
         # @return [Boolean]
         attr_accessor :ignore_validation_errors
         alias_method :ignore_validation_errors?, :ignore_validation_errors
       
-        # The name of the Alias used for client side auth. It must be of the form:
-        # organizations/`org`/environments/`env`/keystores/`keystore`/aliases/`alias`
+        # Name of the alias used for client-side authentication in the following format:
+        # `organizations/`org`/environments/`env`/keystores/`keystore`/aliases/`alias``
         # Corresponds to the JSON property `keyAlias`
         # @return [String]
         attr_accessor :key_alias
       
-        # A pair of reference name and alias to use for client side auth.
+        # Reference name and alias pair to use for client-side authentication.
         # Corresponds to the JSON property `keyAliasReference`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyAliasReference]
         attr_accessor :key_alias_reference
       
-        # Whitelist of supported TLS protocols.
+        # List of TLS protocols that are granted access.
         # Corresponds to the JSON property `protocols`
         # @return [Array<String>]
         attr_accessor :protocols
       
-        # The name of the Keystore or keystore reference containing trusted certificates
-        # for the server. It must be of either the form organizations/`org`/environments/
-        # `env`/keystores/`keystore` or organizations/`org`/environments/`env`/
-        # references/`reference`.
+        # Name of the keystore or keystore reference containing trusted certificates for
+        # the server in the following format: `organizations/`org`/environments/`env`/
+        # keystores/`keystore`` or `organizations/`org`/environments/`env`/references/`
+        # reference``
         # Corresponds to the JSON property `trustStore`
         # @return [String]
         attr_accessor :trust_store

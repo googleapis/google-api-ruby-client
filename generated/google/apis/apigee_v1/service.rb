@@ -3591,9 +3591,6 @@ module Google
         # @param [String] name
         #   Required. Name of the API proxy revision deployment in the following format: `
         #   organizations/`org`/environments/`env`/apis/`api`/revisions/`rev``
-        # @param [String] basepath
-        #   Base path where the API proxy revision should be deployed. Defaults to '/' if
-        #   not provided.
         # @param [Boolean] override
         #   Flag that specifies whether the new deployment replaces other deployed
         #   revisions of the API proxy in the environment. Set override to true to replace
@@ -3628,12 +3625,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deploy_organization_environment_api_revision(name, basepath: nil, override: nil, sequenced_rollout: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def deploy_organization_environment_api_revision(name, override: nil, sequenced_rollout: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}/deployments', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Deployment
           command.params['name'] = name unless name.nil?
-          command.query['basepath'] = basepath unless basepath.nil?
           command.query['override'] = override unless override.nil?
           command.query['sequencedRollout'] = sequenced_rollout unless sequenced_rollout.nil?
           command.query['fields'] = fields unless fields.nil?

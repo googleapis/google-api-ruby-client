@@ -1321,6 +1321,31 @@ module Google
       end
       
       # 
+      class ChannelElement
+        include Google::Apis::Core::Hashable
+      
+        # External channel ID. Required.
+        # Corresponds to the JSON property `channelId`
+        # @return [String]
+        attr_accessor :channel_id
+      
+        # Customized message for the element. Required.
+        # Corresponds to the JSON property `customMessage`
+        # @return [String]
+        attr_accessor :custom_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @custom_message = args[:custom_message] if args.key?(:custom_message)
+        end
+      end
+      
+      # 
       class ListChannelsResponse
         include Google::Apis::Core::Hashable
       
@@ -2894,6 +2919,178 @@ module Google
       end
       
       # 
+      class Endscreen
+        include Google::Apis::Core::Hashable
+      
+        # A list of endscreen elements.
+        # Corresponds to the JSON property `elements`
+        # @return [Array<Google::Apis::YoutubeV3::EndscreenElement>]
+        attr_accessor :elements
+      
+        # The time we start the endscreen in milliseconds.
+        # Corresponds to the JSON property `startOffset`
+        # @return [String]
+        attr_accessor :start_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @elements = args[:elements] if args.key?(:elements)
+          @start_offset = args[:start_offset] if args.key?(:start_offset)
+        end
+      end
+      
+      # 
+      class EndscreenElement
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # UUID for this element.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The snippet object contains basic details about the element.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::EndscreenElementSnippet]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
+        end
+      end
+      
+      # 
+      class EndscreenElementSnippet
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `channelElement`
+        # @return [Google::Apis::YoutubeV3::ChannelElement]
+        attr_accessor :channel_element
+      
+        # Duration of the element in milliseconds. Required.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Fraction of video width.
+        # Corresponds to the JSON property `left`
+        # @return [Float]
+        attr_accessor :left
+      
+        # 
+        # Corresponds to the JSON property `linkElement`
+        # @return [Google::Apis::YoutubeV3::LinkElement]
+        attr_accessor :link_element
+      
+        # 
+        # Corresponds to the JSON property `merchandiseElement`
+        # @return [Google::Apis::YoutubeV3::MerchandiseElement]
+        attr_accessor :merchandise_element
+      
+        # 
+        # Corresponds to the JSON property `playlistElement`
+        # @return [Google::Apis::YoutubeV3::PlaylistElement]
+        attr_accessor :playlist_element
+      
+        # Start of the element in milliseconds. Required.
+        # Corresponds to the JSON property `startOffset`
+        # @return [String]
+        attr_accessor :start_offset
+      
+        # 
+        # Corresponds to the JSON property `subscribeElement`
+        # @return [Google::Apis::YoutubeV3::SubscribeElement]
+        attr_accessor :subscribe_element
+      
+        # Fraction of video height.
+        # Corresponds to the JSON property `top`
+        # @return [Float]
+        attr_accessor :top
+      
+        # 
+        # Corresponds to the JSON property `videoElement`
+        # @return [Google::Apis::YoutubeV3::VideoElement]
+        attr_accessor :video_element
+      
+        # Fraction of video width.
+        # Corresponds to the JSON property `width`
+        # @return [Float]
+        attr_accessor :width
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_element = args[:channel_element] if args.key?(:channel_element)
+          @duration = args[:duration] if args.key?(:duration)
+          @left = args[:left] if args.key?(:left)
+          @link_element = args[:link_element] if args.key?(:link_element)
+          @merchandise_element = args[:merchandise_element] if args.key?(:merchandise_element)
+          @playlist_element = args[:playlist_element] if args.key?(:playlist_element)
+          @start_offset = args[:start_offset] if args.key?(:start_offset)
+          @subscribe_element = args[:subscribe_element] if args.key?(:subscribe_element)
+          @top = args[:top] if args.key?(:top)
+          @video_element = args[:video_element] if args.key?(:video_element)
+          @width = args[:width] if args.key?(:width)
+        end
+      end
+      
+      # 
+      class EndscreenGetResponse
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifies what kind of resource this is.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Endscreen resource.
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::YoutubeV3::Endscreen]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @kind = args[:kind] if args.key?(:kind)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # 
       class Entity
         include Google::Apis::Core::Hashable
       
@@ -3911,6 +4108,80 @@ module Google
       
       # 
       class LinkCardUploadedImage
+        include Google::Apis::Core::Hashable
+      
+        # Image reference on the thumbnail service.
+        # Corresponds to the JSON property `imageFile`
+        # @return [String]
+        attr_accessor :image_file
+      
+        # The version in the thumbnail service.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_file = args[:image_file] if args.key?(:image_file)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class LinkElement
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `callToActionType`
+        # @return [String]
+        attr_accessor :call_to_action_type
+      
+        # Custom text to show as the website link.
+        # Corresponds to the JSON property `customLinkText`
+        # @return [String]
+        attr_accessor :custom_link_text
+      
+        # URL to an externally hosted image.
+        # Corresponds to the JSON property `externalImageUrl`
+        # @return [String]
+        attr_accessor :external_image_url
+      
+        # The URL to which this card points. Required.
+        # Corresponds to the JSON property `targetUrl`
+        # @return [String]
+        attr_accessor :target_url
+      
+        # Previously uploaded image.
+        # Corresponds to the JSON property `uploadedImage`
+        # @return [Google::Apis::YoutubeV3::LinkElementUploadedImage]
+        attr_accessor :uploaded_image
+      
+        # 
+        # Corresponds to the JSON property `websiteType`
+        # @return [String]
+        attr_accessor :website_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @call_to_action_type = args[:call_to_action_type] if args.key?(:call_to_action_type)
+          @custom_link_text = args[:custom_link_text] if args.key?(:custom_link_text)
+          @external_image_url = args[:external_image_url] if args.key?(:external_image_url)
+          @target_url = args[:target_url] if args.key?(:target_url)
+          @uploaded_image = args[:uploaded_image] if args.key?(:uploaded_image)
+          @website_type = args[:website_type] if args.key?(:website_type)
+        end
+      end
+      
+      # 
+      class LinkElementUploadedImage
         include Google::Apis::Core::Hashable
       
         # Image reference on the thumbnail service.
@@ -5808,6 +6079,19 @@ module Google
         end
       end
       
+      # 
+      class MerchandiseElement
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Settings and Info of the monitor stream
       class MonitorStreamInfo
         include Google::Apis::Core::Hashable
@@ -5996,6 +6280,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @item_count = args[:item_count] if args.key?(:item_count)
+        end
+      end
+      
+      # 
+      class PlaylistElement
+        include Google::Apis::Core::Hashable
+      
+        # External playlist ID. Required.
+        # Corresponds to the JSON property `playlistId`
+        # @return [String]
+        attr_accessor :playlist_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @playlist_id = args[:playlist_id] if args.key?(:playlist_id)
         end
       end
       
@@ -6965,6 +7268,19 @@ module Google
           @cumulative_duration_months = args[:cumulative_duration_months] if args.key?(:cumulative_duration_months)
           @sponsor_details = args[:sponsor_details] if args.key?(:sponsor_details)
           @sponsor_since = args[:sponsor_since] if args.key?(:sponsor_since)
+        end
+      end
+      
+      # 
+      class SubscribeElement
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -8340,6 +8656,37 @@ module Google
         def update!(**args)
           @allowed = args[:allowed] if args.key?(:allowed)
           @blocked = args[:blocked] if args.key?(:blocked)
+        end
+      end
+      
+      # 
+      class VideoElement
+        include Google::Apis::Core::Hashable
+      
+        # Playback start time offset in milliseconds. Optional.
+        # Corresponds to the JSON property `playbackStartOffset`
+        # @return [String]
+        attr_accessor :playback_start_offset
+      
+        # Encrypted Video ID. Required.
+        # Corresponds to the JSON property `videoId`
+        # @return [String]
+        attr_accessor :video_id
+      
+        # 
+        # Corresponds to the JSON property `videoType`
+        # @return [String]
+        attr_accessor :video_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @playback_start_offset = args[:playback_start_offset] if args.key?(:playback_start_offset)
+          @video_id = args[:video_id] if args.key?(:video_id)
+          @video_type = args[:video_type] if args.key?(:video_type)
         end
       end
       

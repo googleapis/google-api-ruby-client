@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SystemUpdateInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TermsAndConditions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1173,6 +1179,8 @@ module Google
           property :device_kernel_version, as: 'deviceKernelVersion'
           property :primary_language_code, as: 'primaryLanguageCode'
           property :security_patch_level, as: 'securityPatchLevel'
+          property :system_update_info, as: 'systemUpdateInfo', class: Google::Apis::AndroidmanagementV1::SystemUpdateInfo, decorator: Google::Apis::AndroidmanagementV1::SystemUpdateInfo::Representation
+      
         end
       end
       
@@ -1210,6 +1218,14 @@ module Google
       
           property :start_minutes, as: 'startMinutes'
           property :type, as: 'type'
+        end
+      end
+      
+      class SystemUpdateInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :update_received_time, as: 'updateReceivedTime'
+          property :update_status, as: 'updateStatus'
         end
       end
       

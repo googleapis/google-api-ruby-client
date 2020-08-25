@@ -2692,6 +2692,31 @@ module Google
         end
       end
       
+      # SoleTenancyConfig specifies information required to host a pool on STNs.
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig
+        include Google::Apis::Core::Hashable
+      
+        # The sole-tenant node type to host the pool's workers on.
+        # Corresponds to the JSON property `nodeType`
+        # @return [String]
+        attr_accessor :node_type
+      
+        # Zone in which STNs are reserved.
+        # Corresponds to the JSON property `nodesZone`
+        # @return [String]
+        attr_accessor :nodes_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_type = args[:node_type] if args.key?(:node_type)
+          @nodes_zone = args[:nodes_zone] if args.key?(:nodes_zone)
+        end
+      end
+      
       # The request used for `UpdateInstance`.
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest
         include Google::Apis::Core::Hashable
@@ -2771,7 +2796,7 @@ module Google
         end
       end
       
-      # Defines the configuration to be used for a creating workers in the worker pool.
+      # Defines the configuration to be used for creating workers in the worker pool.
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig
         include Google::Apis::Core::Hashable
       
@@ -2837,6 +2862,11 @@ module Google
         attr_accessor :reserved
         alias_method :reserved?, :reserved
       
+        # SoleTenancyConfig specifies information required to host a pool on STNs.
+        # Corresponds to the JSON property `soleTenancy`
+        # @return [Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig]
+        attr_accessor :sole_tenancy
+      
         # The name of the image used by each VM.
         # Corresponds to the JSON property `vmImage`
         # @return [String]
@@ -2857,6 +2887,7 @@ module Google
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_access = args[:network_access] if args.key?(:network_access)
           @reserved = args[:reserved] if args.key?(:reserved)
+          @sole_tenancy = args[:sole_tenancy] if args.key?(:sole_tenancy)
           @vm_image = args[:vm_image] if args.key?(:vm_image)
         end
       end
@@ -2887,7 +2918,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Defines the configuration to be used for a creating workers in the worker pool.
+        # Defines the configuration to be used for creating workers in the worker pool.
         # Corresponds to the JSON property `workerConfig`
         # @return [Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig]
         attr_accessor :worker_config

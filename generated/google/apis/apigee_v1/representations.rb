@@ -520,6 +520,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1OperationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1OperationGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -593,6 +605,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1QueryMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1Quota
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -940,6 +958,8 @@ module Google
           collection :environments, as: 'environments'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
+          property :operation_group, as: 'operationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup::Representation
+      
           collection :proxies, as: 'proxies'
           property :quota, as: 'quota'
           property :quota_interval, as: 'quotaInterval'
@@ -1792,6 +1812,28 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1OperationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_source, as: 'apiSource'
+          collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
+      
+          collection :methods_prop, as: 'methods'
+          property :quota, as: 'quota', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota::Representation
+      
+          collection :resources, as: 'resources'
+        end
+      end
+      
+      class GoogleCloudApigeeV1OperationGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_config_type, as: 'operationConfigType'
+          collection :operation_configs, as: 'operationConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudApigeeV1OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1936,6 +1978,15 @@ module Google
           property :name, as: 'name'
           property :operator, as: 'operator'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudApigeeV1Quota
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interval, as: 'interval'
+          property :limit, as: 'limit'
+          property :time_unit, as: 'timeUnit'
         end
       end
       

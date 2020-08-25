@@ -830,6 +830,12 @@ module Google
         attr_accessor :crashed
         alias_method :crashed?, :crashed
       
+        # If the device ran out of memory during a test, causing the test to crash.
+        # Corresponds to the JSON property `deviceOutOfMemory`
+        # @return [Boolean]
+        attr_accessor :device_out_of_memory
+        alias_method :device_out_of_memory?, :device_out_of_memory
+      
         # If the Roboscript failed to complete successfully, e.g., because a Roboscript
         # action or assertion failed or a Roboscript action could not be matched during
         # the entire crawl.
@@ -870,6 +876,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @crashed = args[:crashed] if args.key?(:crashed)
+          @device_out_of_memory = args[:device_out_of_memory] if args.key?(:device_out_of_memory)
           @failed_roboscript = args[:failed_roboscript] if args.key?(:failed_roboscript)
           @not_installed = args[:not_installed] if args.key?(:not_installed)
           @other_native_crash = args[:other_native_crash] if args.key?(:other_native_crash)
