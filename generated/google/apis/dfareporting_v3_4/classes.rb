@@ -70,11 +70,11 @@ module Google
         # for ITL - "11" for DKK - "12" for NOK - "13" for FIM - "14" for ZAR - "15" for
         # IEP - "16" for NLG - "17" for EUR - "18" for KRW - "19" for TWD - "20" for SGD
         # - "21" for CNY - "22" for HKD - "23" for NZD - "24" for MYR - "25" for BRL - "
-        # 26" for PTE - "27" for MXP - "28" for CLP - "29" for TRY - "30" for ARS - "31"
-        # for PEN - "32" for ILS - "33" for CHF - "34" for VEF - "35" for COP - "36" for
-        # GTQ - "37" for PLN - "39" for INR - "40" for THB - "41" for IDR - "42" for CZK
-        # - "43" for RON - "44" for HUF - "45" for RUB - "46" for AED - "47" for BGN - "
-        # 48" for HRK - "49" for MXN - "50" for NGN - "51" for EGP
+        # 26" for PTE - "28" for CLP - "29" for TRY - "30" for ARS - "31" for PEN - "32"
+        # for ILS - "33" for CHF - "34" for VEF - "35" for COP - "36" for GTQ - "37" for
+        # PLN - "39" for INR - "40" for THB - "41" for IDR - "42" for CZK - "43" for RON
+        # - "44" for HUF - "45" for RUB - "46" for AED - "47" for BGN - "48" for HRK - "
+        # 49" for MXN - "50" for NGN - "51" for EGP
         # Corresponds to the JSON property `currencyId`
         # @return [Fixnum]
         attr_accessor :currency_id
@@ -2427,10 +2427,18 @@ module Google
         # @return [Array<Google::Apis::DfareportingV3_4::CustomFloodlightVariable>]
         attr_accessor :custom_variables
       
+        # The display click ID. This field is mutually exclusive with encryptedUserId,
+        # encryptedUserIdCandidates[], matchId, mobileDeviceId and gclid. This or
+        # encryptedUserId or encryptedUserIdCandidates[] or matchId or mobileDeviceId or
+        # gclid is a required field.
+        # Corresponds to the JSON property `dclid`
+        # @return [String]
+        attr_accessor :dclid
+      
         # The alphanumeric encrypted user ID. When set, encryptionInfo should also be
         # specified. This field is mutually exclusive with encryptedUserIdCandidates[],
-        # matchId, mobileDeviceId and gclid. This or encryptedUserIdCandidates[] or
-        # matchId or mobileDeviceId or gclid is a required field.
+        # matchId, mobileDeviceId, gclid and dclid. This or encryptedUserIdCandidates[]
+        # or matchId or mobileDeviceId or gclid or dclid is a required field.
         # Corresponds to the JSON property `encryptedUserId`
         # @return [String]
         attr_accessor :encrypted_user_id
@@ -2441,8 +2449,8 @@ module Google
         # INVALID_ARGUMENT error. When set, encryptionInfo should also be specified.
         # This field may only be used when calling batchinsert; it is not supported by
         # batchupdate. This field is mutually exclusive with encryptedUserId, matchId,
-        # mobileDeviceId and gclid. This or encryptedUserId or matchId or mobileDeviceId
-        # or gclid is a required field.
+        # mobileDeviceId, gclid and dclid. This or encryptedUserId or matchId or
+        # mobileDeviceId or gclid or dclid is a required field.
         # Corresponds to the JSON property `encryptedUserIdCandidates`
         # @return [Array<String>]
         attr_accessor :encrypted_user_id_candidates
@@ -2458,9 +2466,9 @@ module Google
         attr_accessor :floodlight_configuration_id
       
         # The Google click ID. This field is mutually exclusive with encryptedUserId,
-        # encryptedUserIdCandidates[], matchId and mobileDeviceId. This or
-        # encryptedUserId or encryptedUserIdCandidates[] or matchId or mobileDeviceId is
-        # a required field.
+        # encryptedUserIdCandidates[], matchId, mobileDeviceId and dclid. This or
+        # encryptedUserId or encryptedUserIdCandidates[] or matchId or mobileDeviceId or
+        # dclid is a required field.
         # Corresponds to the JSON property `gclid`
         # @return [String]
         attr_accessor :gclid
@@ -2481,15 +2489,17 @@ module Google
         # The match ID field. A match ID is your own first-party identifier that has
         # been synced with Google using the match ID feature in Floodlight. This field
         # is mutually exclusive with encryptedUserId, encryptedUserIdCandidates[],
-        # mobileDeviceId and gclid. This or encryptedUserId or encryptedUserIdCandidates[
-        # ] or mobileDeviceId or gclid is a required field.
+        # mobileDeviceId, gclid and dclid. This or encryptedUserId or
+        # encryptedUserIdCandidates[] or mobileDeviceId or gclid or dclid is a required
+        # field.
         # Corresponds to the JSON property `matchId`
         # @return [String]
         attr_accessor :match_id
       
         # The mobile device ID. This field is mutually exclusive with encryptedUserId,
-        # encryptedUserIdCandidates[], matchId and gclid. This or encryptedUserId or
-        # encryptedUserIdCandidates[] or matchId or gclid is a required field.
+        # encryptedUserIdCandidates[], matchId, gclid and dclid. This or encryptedUserId
+        # or encryptedUserIdCandidates[] or matchId or gclid or dclid is a required
+        # field.
         # Corresponds to the JSON property `mobileDeviceId`
         # @return [String]
         attr_accessor :mobile_device_id
@@ -2537,6 +2547,7 @@ module Google
         def update!(**args)
           @child_directed_treatment = args[:child_directed_treatment] if args.key?(:child_directed_treatment)
           @custom_variables = args[:custom_variables] if args.key?(:custom_variables)
+          @dclid = args[:dclid] if args.key?(:dclid)
           @encrypted_user_id = args[:encrypted_user_id] if args.key?(:encrypted_user_id)
           @encrypted_user_id_candidates = args[:encrypted_user_id_candidates] if args.key?(:encrypted_user_id_candidates)
           @floodlight_activity_id = args[:floodlight_activity_id] if args.key?(:floodlight_activity_id)

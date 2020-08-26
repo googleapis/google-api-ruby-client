@@ -2128,6 +2128,7 @@ module Google
           property :child_directed_treatment, as: 'childDirectedTreatment'
           collection :custom_variables, as: 'customVariables', class: Google::Apis::DfareportingV3_4::CustomFloodlightVariable, decorator: Google::Apis::DfareportingV3_4::CustomFloodlightVariable::Representation
       
+          property :dclid, as: 'dclid'
           property :encrypted_user_id, as: 'encryptedUserId'
           collection :encrypted_user_id_candidates, as: 'encryptedUserIdCandidates'
           property :floodlight_activity_id, :numeric_string => true, as: 'floodlightActivityId'

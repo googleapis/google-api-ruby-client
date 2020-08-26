@@ -795,7 +795,8 @@ module Google
         
         # Imports a message into only this user's mailbox, with standard email delivery
         # scanning and classification similar to receiving via SMTP. Does not send a
-        # message.
+        # message. Note: This function doesn't trigger forwarding rules or filters set
+        # up by the user.
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.

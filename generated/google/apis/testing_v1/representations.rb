@@ -826,6 +826,8 @@ module Google
       class IosTestSetup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_ipas, as: 'additionalIpas', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
+      
           property :network_profile, as: 'networkProfile'
         end
       end

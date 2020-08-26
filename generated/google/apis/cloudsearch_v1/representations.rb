@@ -424,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListQuerySourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1537,6 +1543,15 @@ module Google
           collection :items, as: 'items', class: Google::Apis::CloudsearchV1::Item, decorator: Google::Apis::CloudsearchV1::Item::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::CloudsearchV1::Operation, decorator: Google::Apis::CloudsearchV1::Operation::Representation
+      
         end
       end
       

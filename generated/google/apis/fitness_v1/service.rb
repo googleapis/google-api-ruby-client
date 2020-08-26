@@ -43,8 +43,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', 'fitness/v1/users/')
-          @batch_path = 'batch/fitness/v1'
+          super('https://fitness.googleapis.com/', 'fitness/v1/users/')
+          @batch_path = 'batch'
         end
         
         # Creates a new data source that is unique across all data sources belonging to

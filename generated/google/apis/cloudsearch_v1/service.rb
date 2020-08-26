@@ -737,15 +737,15 @@ module Google
         # upload protocols and is intended for large items that can not be [inlined
         # during index requests](https://developers.google.com/cloud-search/docs/
         # reference/rest/v1/indexing.datasources.items#itemcontent). To index large
-        # content: 1. Call indexing.datasources.items.upload with the resource name to
-        # begin an upload session and retrieve the UploadItemRef. 1. Call media.upload
-        # to upload the content using the same resource name from step 1. 1. Call
-        # indexing.datasources.items.index to index the item. Populate the [ItemContent](
-        # /cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)
-        # with the UploadItemRef from step 1. For additional information, see [Create a
-        # content connector using the REST API](https://developers.google.com/cloud-
-        # search/docs/guides/content-connector#rest). **Note:** This API requires a
-        # service account to execute.
+        # content: 1. Call indexing.datasources.items.upload with the item name to begin
+        # an upload session and retrieve the UploadItemRef. 1. Call media.upload to
+        # upload the content, as a streaming request, using the same resource name from
+        # the UploadItemRef from step 1. 1. Call indexing.datasources.items.index to
+        # index the item. Populate the [ItemContent](/cloud-search/docs/reference/rest/
+        # v1/indexing.datasources.items#ItemContent) with the UploadItemRef from step 1.
+        # For additional information, see [Create a content connector using the REST API]
+        # (https://developers.google.com/cloud-search/docs/guides/content-connector#rest)
+        # . **Note:** This API requires a service account to execute.
         # @param [String] resource_name
         #   Name of the media that is being downloaded. See ReadRequest.resource_name.
         # @param [Google::Apis::CloudsearchV1::Media] media_object
@@ -814,6 +814,52 @@ module Google
           command.response_representation = Google::Apis::CloudsearchV1::Operation::Representation
           command.response_class = Google::Apis::CloudsearchV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name`
+        # binding allows API services to override the binding to use different resource
+        # name schemes, such as `users/*/operations`. To override the binding, API
+        # services can add a binding such as `"/v1/`name=users/*`/operations"` to their
+        # service configuration. For backwards compatibility, the default name includes
+        # the operations collection id, however overriding users must ensure the name
+        # binding is the parent resource, without the operations collection id.
+        # @param [String] name
+        #   The name of the operation's parent resource.
+        # @param [String] filter
+        #   The standard list filter.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsearchV1::ListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsearchV1::ListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_operation_lros(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/lro', options)
+          command.response_representation = Google::Apis::CloudsearchV1::ListOperationsResponse::Representation
+          command.response_class = Google::Apis::CloudsearchV1::ListOperationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

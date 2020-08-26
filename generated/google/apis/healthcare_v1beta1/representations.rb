@@ -1010,6 +1010,7 @@ module Google
           property :golden_store, as: 'goldenStore'
           property :info_type_config, as: 'infoTypeConfig', class: Google::Apis::HealthcareV1beta1::InfoTypeConfig, decorator: Google::Apis::HealthcareV1beta1::InfoTypeConfig::Representation
       
+          property :name, as: 'name'
         end
       end
       
@@ -1039,6 +1040,7 @@ module Google
       
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsDestination::Representation
       
+          property :name, as: 'name'
         end
       end
       
@@ -1383,6 +1385,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_source, as: 'gcsSource', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsSource, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsSource::Representation
       
+          property :name, as: 'name'
         end
       end
       
@@ -1729,6 +1732,7 @@ module Google
           property :schematized_parsing_type, as: 'schematizedParsingType'
           collection :types, as: 'types', class: Google::Apis::HealthcareV1beta1::Hl7TypesConfig, decorator: Google::Apis::HealthcareV1beta1::Hl7TypesConfig::Representation
       
+          property :unexpected_segment_handling, as: 'unexpectedSegmentHandling'
         end
       end
       

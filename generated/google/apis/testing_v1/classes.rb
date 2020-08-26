@@ -1368,6 +1368,11 @@ module Google
       class IosTestSetup
         include Google::Apis::Core::Hashable
       
+        # iOS apps to install in addition to those being directly tested.
+        # Corresponds to the JSON property `additionalIpas`
+        # @return [Array<Google::Apis::TestingV1::FileReference>]
+        attr_accessor :additional_ipas
+      
         # The network traffic profile used for running the test. Available network
         # profiles can be queried by using the NETWORK_CONFIGURATION environment type
         # when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
@@ -1381,6 +1386,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_ipas = args[:additional_ipas] if args.key?(:additional_ipas)
           @network_profile = args[:network_profile] if args.key?(:network_profile)
         end
       end
