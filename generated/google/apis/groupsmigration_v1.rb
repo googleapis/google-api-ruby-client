@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/google-apps/groups-migration/
     module GroupsmigrationV1
       VERSION = 'V1'
-      REVISION = '20200813'
+      REVISION = '20200820'
 
       # Manage messages in groups on your domain
       AUTH_APPS_GROUPS_MIGRATION = 'https://www.googleapis.com/auth/apps.groups.migration'

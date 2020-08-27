@@ -4154,6 +4154,7 @@ module Google
       
           property :shipping_width, as: 'shippingWidth', class: Google::Apis::ContentV2_1::ProductShippingDimension, decorator: Google::Apis::ContentV2_1::ProductShippingDimension::Representation
       
+          collection :shopping_ads_excluded_countries, as: 'shoppingAdsExcludedCountries'
           property :size_system, as: 'sizeSystem'
           property :size_type, as: 'sizeType'
           collection :sizes, as: 'sizes'
@@ -4244,10 +4245,10 @@ module Google
       class ProductStatusDestinationStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :approved_countrys, as: 'approvedCountrys'
+          collection :approved_countries, as: 'approvedCountries'
           property :destination, as: 'destination'
-          collection :disapproved_countrys, as: 'disapprovedCountrys'
-          collection :pending_countrys, as: 'pendingCountrys'
+          collection :disapproved_countries, as: 'disapprovedCountries'
+          collection :pending_countries, as: 'pendingCountries'
           property :status, as: 'status'
         end
       end
@@ -4255,7 +4256,7 @@ module Google
       class ProductStatusItemLevelIssue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :applicable_countrys, as: 'applicableCountrys'
+          collection :applicable_countries, as: 'applicableCountries'
           property :attribute_name, as: 'attributeName'
           property :code, as: 'code'
           property :description, as: 'description'

@@ -44,8 +44,8 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/groupsmigration/v1'
+          super('https://groupsmigration.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Inserts a new mail into the archive of the Google group.

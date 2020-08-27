@@ -8970,6 +8970,13 @@ module Google
         # @return [Google::Apis::ContentV2_1::ProductShippingDimension]
         attr_accessor :shipping_width
       
+        # List of country codes (ISO 3166-1 alpha-2) to exclude the offer from Shopping
+        # Ads destination. Countries from this list are removed from countries
+        # configured in MC feed settings.
+        # Corresponds to the JSON property `shoppingAdsExcludedCountries`
+        # @return [Array<String>]
+        attr_accessor :shopping_ads_excluded_countries
+      
         # System in which the size is specified. Recommended for apparel items.
         # Corresponds to the JSON property `sizeSystem`
         # @return [String]
@@ -9112,6 +9119,7 @@ module Google
           @shipping_length = args[:shipping_length] if args.key?(:shipping_length)
           @shipping_weight = args[:shipping_weight] if args.key?(:shipping_weight)
           @shipping_width = args[:shipping_width] if args.key?(:shipping_width)
+          @shopping_ads_excluded_countries = args[:shopping_ads_excluded_countries] if args.key?(:shopping_ads_excluded_countries)
           @size_system = args[:size_system] if args.key?(:size_system)
           @size_type = args[:size_type] if args.key?(:size_type)
           @sizes = args[:sizes] if args.key?(:sizes)
@@ -9372,9 +9380,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # List of country codes (ISO 3166-1 alpha-2) where the offer is approved.
-        # Corresponds to the JSON property `approvedCountrys`
+        # Corresponds to the JSON property `approvedCountries`
         # @return [Array<String>]
-        attr_accessor :approved_countrys
+        attr_accessor :approved_countries
       
         # The name of the destination
         # Corresponds to the JSON property `destination`
@@ -9382,14 +9390,14 @@ module Google
         attr_accessor :destination
       
         # List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved.
-        # Corresponds to the JSON property `disapprovedCountrys`
+        # Corresponds to the JSON property `disapprovedCountries`
         # @return [Array<String>]
-        attr_accessor :disapproved_countrys
+        attr_accessor :disapproved_countries
       
         # List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval.
-        # Corresponds to the JSON property `pendingCountrys`
+        # Corresponds to the JSON property `pendingCountries`
         # @return [Array<String>]
-        attr_accessor :pending_countrys
+        attr_accessor :pending_countries
       
         # Destination approval status in `targetCountry` of the offer.
         # Corresponds to the JSON property `status`
@@ -9402,10 +9410,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @approved_countrys = args[:approved_countrys] if args.key?(:approved_countrys)
+          @approved_countries = args[:approved_countries] if args.key?(:approved_countries)
           @destination = args[:destination] if args.key?(:destination)
-          @disapproved_countrys = args[:disapproved_countrys] if args.key?(:disapproved_countrys)
-          @pending_countrys = args[:pending_countrys] if args.key?(:pending_countrys)
+          @disapproved_countries = args[:disapproved_countries] if args.key?(:disapproved_countries)
+          @pending_countries = args[:pending_countries] if args.key?(:pending_countries)
           @status = args[:status] if args.key?(:status)
         end
       end
@@ -9415,9 +9423,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # List of country codes (ISO 3166-1 alpha-2) where issue applies to the offer.
-        # Corresponds to the JSON property `applicableCountrys`
+        # Corresponds to the JSON property `applicableCountries`
         # @return [Array<String>]
-        attr_accessor :applicable_countrys
+        attr_accessor :applicable_countries
       
         # The attribute's name, if the issue is caused by a single attribute.
         # Corresponds to the JSON property `attributeName`
@@ -9465,7 +9473,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @applicable_countrys = args[:applicable_countrys] if args.key?(:applicable_countrys)
+          @applicable_countries = args[:applicable_countries] if args.key?(:applicable_countries)
           @attribute_name = args[:attribute_name] if args.key?(:attribute_name)
           @code = args[:code] if args.key?(:code)
           @description = args[:description] if args.key?(:description)

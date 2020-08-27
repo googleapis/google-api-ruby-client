@@ -1217,6 +1217,11 @@ module Google
         # user must own the file or be an organizer on the parent for shared drive files.
         # @param [String] file_id
         #   The ID of the file to delete.
+        # @param [Boolean] enforce_single_parent
+        #   Set to true to opt in to API behavior that aims for all items to have exactly
+        #   one parent. This parameter will only take effect if the item is not in a
+        #   shared drive. If an item's last parent is deleted but the item itself is not,
+        #   the item will be placed under its owner's root.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -1240,9 +1245,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_file(file_id, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_file(file_id, enforce_single_parent: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/{fileId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
+          command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1252,6 +1258,11 @@ module Google
         end
         
         # Permanently deletes all of the user's trashed files.
+        # @param [Boolean] enforce_single_parent
+        #   Set to true to opt in to API behavior that aims for all items to have exactly
+        #   one parent. This parameter will only take effect if the item is not in a
+        #   shared drive. If an item's last parent is deleted but the item itself is not,
+        #   the item will be placed under its owner's root.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1271,8 +1282,9 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def empty_trash(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def empty_trash(enforce_single_parent: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/trash', options)
+          command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
